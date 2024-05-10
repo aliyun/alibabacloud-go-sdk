@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,6 +10,9 @@ import (
 )
 
 type ApplyForStreamAccessTokenRequest struct {
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 }
 
@@ -30,10 +30,23 @@ func (s *ApplyForStreamAccessTokenRequest) SetAgentKey(v string) *ApplyForStream
 }
 
 type ApplyForStreamAccessTokenResponseBody struct {
+	// example:
+	//
+	// 63ba97b4f18a4a04f715c81e8e643938
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// cc9e88c0-4f41-4f1d-a1a9-91a72d2aa27d
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	// Id of the request
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	//
+	// example:
+	//
+	// 736994BD-AA35-4742-88C9-E64BE4BAA14B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// cc9e88c0-4f41-4f1d-a1a9-91a72d2aa27d
 	StreamSecret *string `json:"StreamSecret,omitempty" xml:"StreamSecret,omitempty"`
 }
 
@@ -95,12 +108,30 @@ func (s *ApplyForStreamAccessTokenResponse) SetBody(v *ApplyForStreamAccessToken
 }
 
 type AssociateRequest struct {
-	AgentKey     *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Perspective  []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
-	RecommendNum *int64    `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
-	SessionId    *string   `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	Utterance    *string   `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ["qyzzVfyFfa"]
+	Perspective []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8
+	RecommendNum *int64 `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
+	// example:
+	//
+	// 7c3cec23cc8940bc9db4a318c8f4f0aa
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 公积金提取
+	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 
 func (s AssociateRequest) String() string {
@@ -142,12 +173,30 @@ func (s *AssociateRequest) SetUtterance(v string) *AssociateRequest {
 }
 
 type AssociateShrinkRequest struct {
-	AgentKey          *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ["qyzzVfyFfa"]
 	PerspectiveShrink *string `json:"Perspective,omitempty" xml:"Perspective,omitempty"`
-	RecommendNum      *int64  `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
-	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	Utterance         *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	// example:
+	//
+	// 8
+	RecommendNum *int64 `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
+	// example:
+	//
+	// 7c3cec23cc8940bc9db4a318c8f4f0aa
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 公积金提取
+	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 
 func (s AssociateShrinkRequest) String() string {
@@ -190,9 +239,18 @@ func (s *AssociateShrinkRequest) SetUtterance(v string) *AssociateShrinkRequest 
 
 type AssociateResponseBody struct {
 	Associate []*AssociateResponseBodyAssociate `json:"Associate,omitempty" xml:"Associate,omitempty" type:"Repeated"`
-	MessageId *string                           `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SessionId *string                           `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 5ADF0EBD-7C50-1922-A28B-43215B47CC1A
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 5C20F0D4-9721-178A-8236-3BF990634962
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1531ded6b3df4afca4be63943f708bb7
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s AssociateResponseBody) String() string {
@@ -224,7 +282,13 @@ func (s *AssociateResponseBody) SetSessionId(v string) *AssociateResponseBody {
 }
 
 type AssociateResponseBodyAssociate struct {
-	Meta  *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// example:
+	//
+	// {}
+	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// example:
+	//
+	// 公积金提取的政策
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -276,7 +340,13 @@ func (s *AssociateResponse) SetBody(v *AssociateResponseBody) *AssociateResponse
 }
 
 type BeginSessionRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -299,12 +369,22 @@ func (s *BeginSessionRequest) SetInstanceId(v string) *BeginSessionRequest {
 }
 
 type BeginSessionResponseBody struct {
-	AsrMaxEndSilence *int32  `json:"AsrMaxEndSilence,omitempty" xml:"AsrMaxEndSilence,omitempty"`
-	Interruptible    *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AsrMaxEndSilence *int32 `json:"AsrMaxEndSilence,omitempty" xml:"AsrMaxEndSilence,omitempty"`
+	Interruptible    *bool  `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// example:
+	//
+	// 149C7528-C104-1B50-A4F9-0C5907A8AD9D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 静默超时时间
-	SilenceReplyTimeout *int32  `json:"SilenceReplyTimeout,omitempty" xml:"SilenceReplyTimeout,omitempty"`
-	WelcomeMessage      *string `json:"WelcomeMessage,omitempty" xml:"WelcomeMessage,omitempty"`
+	//
+	// example:
+	//
+	// 5
+	SilenceReplyTimeout *int32 `json:"SilenceReplyTimeout,omitempty" xml:"SilenceReplyTimeout,omitempty"`
+	// example:
+	//
+	// 智能对话机器人为您服务，请问有什么可以帮您？
+	WelcomeMessage *string `json:"WelcomeMessage,omitempty" xml:"WelcomeMessage,omitempty"`
 }
 
 func (s BeginSessionResponseBody) String() string {
@@ -370,8 +450,17 @@ func (s *BeginSessionResponse) SetBody(v *BeginSessionResponseBody) *BeginSessio
 }
 
 type CancelInstancePublishTaskRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 8521
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -400,13 +489,31 @@ func (s *CancelInstancePublishTaskRequest) SetInstanceId(v string) *CancelInstan
 
 type CancelInstancePublishTaskResponseBody struct {
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	CreateTime  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Error       *string   `json:"Error,omitempty" xml:"Error,omitempty"`
-	Id          *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifyTime  *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Response    *string   `json:"Response,omitempty" xml:"Response,omitempty"`
-	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2022-04-12T06:30:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error      *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// 8522
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2022-04-12T06:30:33Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8522
+	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// example:
+	//
+	// FE_ABORTED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CancelInstancePublishTaskResponseBody) String() string {
@@ -487,8 +594,14 @@ func (s *CancelInstancePublishTaskResponse) SetBody(v *CancelInstancePublishTask
 }
 
 type CancelPublishTaskRequest struct {
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 8521
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s CancelPublishTaskRequest) String() string {
@@ -511,13 +624,31 @@ func (s *CancelPublishTaskRequest) SetId(v int64) *CancelPublishTaskRequest {
 
 type CancelPublishTaskResponseBody struct {
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	CreateTime  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Error       *string   `json:"Error,omitempty" xml:"Error,omitempty"`
-	Id          *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifyTime  *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Response    *string   `json:"Response,omitempty" xml:"Response,omitempty"`
-	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2022-04-12T06:30:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error      *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// 8522
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2022-04-12T06:30:33Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8522
+	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// example:
+	//
+	// FE_ABORTED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CancelPublishTaskResponseBody) String() string {
@@ -598,17 +729,38 @@ func (s *CancelPublishTaskResponse) SetBody(v *CancelPublishTaskResponseBody) *C
 }
 
 type ChatRequest struct {
-	AgentKey    *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IntentName  *string   `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// example:
+	//
+	// 30002406051
 	KnowledgeId *string   `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	Perspective []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
-	SandBox     *bool     `json:"SandBox,omitempty" xml:"SandBox,omitempty"`
-	SenderId    *string   `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	SenderNick  *string   `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
-	SessionId   *string   `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	Utterance   *string   `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
-	VendorParam *string   `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
+	// example:
+	//
+	// true
+	SandBox *bool `json:"SandBox,omitempty" xml:"SandBox,omitempty"`
+	// example:
+	//
+	// custumer_123456
+	SenderId   *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
+	// example:
+	//
+	// 9c6ebdc6e66f46ecadab3434314f6959
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	// example:
+	//
+	// {"phone":123456789}
+	VendorParam *string `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
 }
 
 func (s ChatRequest) String() string {
@@ -675,17 +827,38 @@ func (s *ChatRequest) SetVendorParam(v string) *ChatRequest {
 }
 
 type ChatShrinkRequest struct {
-	AgentKey          *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IntentName        *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// example:
+	//
+	// 30002406051
 	KnowledgeId       *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	PerspectiveShrink *string `json:"Perspective,omitempty" xml:"Perspective,omitempty"`
-	SandBox           *bool   `json:"SandBox,omitempty" xml:"SandBox,omitempty"`
-	SenderId          *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	SenderNick        *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
-	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	Utterance         *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
-	VendorParam       *string `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
+	// example:
+	//
+	// true
+	SandBox *bool `json:"SandBox,omitempty" xml:"SandBox,omitempty"`
+	// example:
+	//
+	// custumer_123456
+	SenderId   *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
+	// example:
+	//
+	// 9c6ebdc6e66f46ecadab3434314f6959
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	// example:
+	//
+	// {"phone":123456789}
+	VendorParam *string `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
 }
 
 func (s ChatShrinkRequest) String() string {
@@ -752,11 +925,20 @@ func (s *ChatShrinkRequest) SetVendorParam(v string) *ChatShrinkRequest {
 }
 
 type ChatResponseBody struct {
+	// example:
+	//
+	// A2315C4B-A872-5DEE-9DAD-D73B194A4AEC
 	MessageId    *string                     `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 	Messages     []*ChatResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
 	QuerySegList []*string                   `json:"QuerySegList,omitempty" xml:"QuerySegList,omitempty" type:"Repeated"`
-	RequestId    *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SessionId    *string                     `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// A2315C4B-A872-5DEE-9DAD-D73B194A4AEC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// a6f216a0685c4c8baa0e8beb6d5ec6db
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s ChatResponseBody) String() string {
@@ -793,13 +975,19 @@ func (s *ChatResponseBody) SetSessionId(v string) *ChatResponseBody {
 }
 
 type ChatResponseBodyMessages struct {
-	AnswerSource *string                               `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	AnswerType   *string                               `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
-	Knowledge    *ChatResponseBodyMessagesKnowledge    `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
-	Recommends   []*ChatResponseBodyMessagesRecommends `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
-	Text         *ChatResponseBodyMessagesText         `json:"Text,omitempty" xml:"Text,omitempty" type:"Struct"`
-	Title        *string                               `json:"Title,omitempty" xml:"Title,omitempty"`
-	VoiceTitle   *string                               `json:"VoiceTitle,omitempty" xml:"VoiceTitle,omitempty"`
+	// example:
+	//
+	// KNOWLEDGE
+	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	// example:
+	//
+	// Text
+	AnswerType *string                               `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
+	Knowledge  *ChatResponseBodyMessagesKnowledge    `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
+	Recommends []*ChatResponseBodyMessagesRecommends `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
+	Text       *ChatResponseBodyMessagesText         `json:"Text,omitempty" xml:"Text,omitempty" type:"Struct"`
+	Title      *string                               `json:"Title,omitempty" xml:"Title,omitempty"`
+	VoiceTitle *string                               `json:"VoiceTitle,omitempty" xml:"VoiceTitle,omitempty"`
 }
 
 func (s ChatResponseBodyMessages) String() string {
@@ -846,16 +1034,28 @@ func (s *ChatResponseBodyMessages) SetVoiceTitle(v string) *ChatResponseBodyMess
 }
 
 type ChatResponseBodyMessagesKnowledge struct {
-	AnswerSource      *string                                               `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	Category          *string                                               `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content           *string                                               `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentType       *string                                               `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	HitStatement      *string                                               `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
+	// example:
+	//
+	// KnowledgeBase
+	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// PLAIN_TEXT
+	ContentType  *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	HitStatement *string `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
+	// example:
+	//
+	// 735898
 	Id                *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
 	RelatedKnowledges []*ChatResponseBodyMessagesKnowledgeRelatedKnowledges `json:"RelatedKnowledges,omitempty" xml:"RelatedKnowledges,omitempty" type:"Repeated"`
-	Score             *float64                                              `json:"Score,omitempty" xml:"Score,omitempty"`
-	Summary           *string                                               `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Title             *string                                               `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 0.998
+	Score   *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Summary *string  `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Title   *string  `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ChatResponseBodyMessagesKnowledge) String() string {
@@ -917,6 +1117,9 @@ func (s *ChatResponseBodyMessagesKnowledge) SetTitle(v string) *ChatResponseBody
 }
 
 type ChatResponseBodyMessagesKnowledgeRelatedKnowledges struct {
+	// example:
+	//
+	// 735899
 	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -940,10 +1143,19 @@ func (s *ChatResponseBodyMessagesKnowledgeRelatedKnowledges) SetTitle(v string) 
 }
 
 type ChatResponseBodyMessagesRecommends struct {
-	AnswerSource *string  `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	KnowledgeId  *string  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	Score        *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	Title        *string  `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// KNOWLEDGE
+	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	// example:
+	//
+	// 4548
+	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// 0.46
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Title *string  `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ChatResponseBodyMessagesRecommends) String() string {
@@ -975,20 +1187,42 @@ func (s *ChatResponseBodyMessagesRecommends) SetTitle(v string) *ChatResponseBod
 }
 
 type ChatResponseBodyMessagesText struct {
-	AnswerSource         *string                              `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	ArticleTitle         *string                              `json:"ArticleTitle,omitempty" xml:"ArticleTitle,omitempty"`
-	Commands             map[string]interface{}               `json:"Commands,omitempty" xml:"Commands,omitempty"`
-	Content              *string                              `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentType          *string                              `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	DialogName           *string                              `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
-	Ext                  map[string]interface{}               `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	ExternalFlags        map[string]interface{}               `json:"ExternalFlags,omitempty" xml:"ExternalFlags,omitempty"`
-	HitStatement         *string                              `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
-	IntentName           *string                              `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	MetaData             *string                              `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	NodeId               *string                              `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName             *string                              `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	ResponseType         *string                              `json:"ResponseType,omitempty" xml:"ResponseType,omitempty"`
+	// example:
+	//
+	// BotFramework
+	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	ArticleTitle *string `json:"ArticleTitle,omitempty" xml:"ArticleTitle,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"sysToAgent": "{\\"skillGroup\\":\\"12\\"}"
+	//
+	// }
+	Commands map[string]interface{} `json:"Commands,omitempty" xml:"Commands,omitempty"`
+	Content  *string                `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// PLAIN_TEXT
+	ContentType   *string                `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	DialogName    *string                `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
+	Ext           map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	ExternalFlags map[string]interface{} `json:"ExternalFlags,omitempty" xml:"ExternalFlags,omitempty"`
+	HitStatement  *string                `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
+	IntentName    *string                `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	MetaData      *string                `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// example:
+	//
+	// 1410-c7a72a78.__city
+	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// example:
+	//
+	// SSML
+	ResponseType *string `json:"ResponseType,omitempty" xml:"ResponseType,omitempty"`
+	// example:
+	//
+	// 100.0
 	Score                *float64                             `json:"Score,omitempty" xml:"Score,omitempty"`
 	Slots                []*ChatResponseBodyMessagesTextSlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
 	UserDefinedChatTitle *string                              `json:"UserDefinedChatTitle,omitempty" xml:"UserDefinedChatTitle,omitempty"`
@@ -1088,6 +1322,9 @@ func (s *ChatResponseBodyMessagesText) SetUserDefinedChatTitle(v string) *ChatRe
 }
 
 type ChatResponseBodyMessagesTextSlots struct {
+	// example:
+	//
+	// false
 	Hit    *bool   `json:"Hit,omitempty" xml:"Hit,omitempty"`
 	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
@@ -1152,8 +1389,17 @@ func (s *ChatResponse) SetBody(v *ChatResponseBody) *ChatResponse {
 }
 
 type ContinueInstancePublishTaskRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 8521
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1181,16 +1427,40 @@ func (s *ContinueInstancePublishTaskRequest) SetInstanceId(v string) *ContinueIn
 }
 
 type ContinueInstancePublishTaskResponseBody struct {
-	BizTypeList []*string              `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	CreateTime  *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Error       *string                `json:"Error,omitempty" xml:"Error,omitempty"`
-	Errors      map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
-	Id          *int64                 `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifyTime  *string                `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	RequestId   *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Response    *string                `json:"Response,omitempty" xml:"Response,omitempty"`
-	Status      *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Warnings    map[string]interface{} `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
+	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-04-12T06:30:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error      *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// {}
+	Errors map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
+	// example:
+	//
+	// 8522
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2022-04-12T06:30:33Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8522
+	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// example:
+	//
+	// FE_RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// {         "category_bind_faq": [             "以下类目没有发布到正式环境: 项目交付信息汇总"         ]     }
+	Warnings map[string]interface{} `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
 }
 
 func (s ContinueInstancePublishTaskResponseBody) String() string {
@@ -1281,11 +1551,18 @@ func (s *ContinueInstancePublishTaskResponse) SetBody(v *ContinueInstancePublish
 }
 
 type CreateCategoryRequest struct {
-	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	BizCode          *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	KnowledgeType    *int32  `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	BizCode       *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	KnowledgeType *int32  `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// -1
+	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
 }
 
 func (s CreateCategoryRequest) String() string {
@@ -1322,8 +1599,11 @@ func (s *CreateCategoryRequest) SetParentCategoryId(v int64) *CreateCategoryRequ
 }
 
 type CreateCategoryResponseBody struct {
-	Category  *CreateCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Category *CreateCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
+	// example:
+	//
+	// A629A28F-F25E-5572-A679-FA46FB0151D6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCategoryResponseBody) String() string {
@@ -1345,11 +1625,20 @@ func (s *CreateCategoryResponseBody) SetRequestId(v string) *CreateCategoryRespo
 }
 
 type CreateCategoryResponseBodyCategory struct {
-	BizCode          *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
-	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// 30000049006
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// -1
+	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateCategoryResponseBodyCategory) String() string {
@@ -1415,9 +1704,22 @@ func (s *CreateCategoryResponse) SetBody(v *CreateCategoryResponseBody) *CreateC
 }
 
 type CreateConnQuestionRequest struct {
-	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	ConnQuestionId *int64  `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
-	KnowledgeId    *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30002654628
+	ConnQuestionId *int64 `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30002174773
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s CreateConnQuestionRequest) String() string {
@@ -1444,7 +1746,13 @@ func (s *CreateConnQuestionRequest) SetKnowledgeId(v int64) *CreateConnQuestionR
 }
 
 type CreateConnQuestionResponseBody struct {
-	OutlineId *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	// example:
+	//
+	// 1000002123
+	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	// example:
+	//
+	// C191B48B-9268-4FB1-A3C2-5143B4A91D0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1496,9 +1804,25 @@ func (s *CreateConnQuestionResponse) SetBody(v *CreateConnQuestionResponseBody) 
 }
 
 type CreateDSEntityRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 实体名称
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// example:
+	//
+	// synonyms
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1531,7 +1855,13 @@ func (s *CreateDSEntityRequest) SetInstanceId(v string) *CreateDSEntityRequest {
 }
 
 type CreateDSEntityResponseBody struct {
-	EntityId  *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// 23436345
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// adfad2343f1f2r
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1583,9 +1913,27 @@ func (s *CreateDSEntityResponse) SetBody(v *CreateDSEntityResponseBody) *CreateD
 }
 
 type CreateDSEntityValueRequest struct {
-	AgentKey   *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Content    *string   `json:"Content,omitempty" xml:"Content,omitempty"`
-	EntityId   *int64    `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ada
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Synonyms   []*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty" type:"Repeated"`
 }
@@ -1624,9 +1972,27 @@ func (s *CreateDSEntityValueRequest) SetSynonyms(v []*string) *CreateDSEntityVal
 }
 
 type CreateDSEntityValueShrinkRequest struct {
-	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	EntityId       *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ada
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SynonymsShrink *string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty"`
 }
@@ -1665,8 +2031,14 @@ func (s *CreateDSEntityValueShrinkRequest) SetSynonymsShrink(v string) *CreateDS
 }
 
 type CreateDSEntityValueResponseBody struct {
-	EntityValueId *int64  `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2434543453
+	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// example:
+	//
+	// g763hg48j3f3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDSEntityValueResponseBody) String() string {
@@ -1717,14 +2089,36 @@ func (s *CreateDSEntityValueResponse) SetBody(v *CreateDSEntityValueResponseBody
 }
 
 type CreateDocRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Config     *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Meta       *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30000049006
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":""}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// This parameter is required.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2032-05-25T16:28:36Z
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// {"code":"xxx"}
+	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// example:
+	//
+	// 2022-05-25T16:28:36Z
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateDocRequest) String() string {
@@ -1776,8 +2170,14 @@ func (s *CreateDocRequest) SetTitle(v string) *CreateDocRequest {
 }
 
 type CreateDocResponseBody struct {
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 30001905617
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// 07B270A4-61D8-57F6-A609-A3C216CFB872
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDocResponseBody) String() string {
@@ -1828,13 +2228,31 @@ func (s *CreateDocResponse) SetBody(v *CreateDocResponseBody) *CreateDocResponse
 }
 
 type CreateFaqRequest struct {
-	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	CategoryId      *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000053274
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 2030-12-31T16:00:00Z
 	EndDate         *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	SolutionContent *string `json:"SolutionContent,omitempty" xml:"SolutionContent,omitempty"`
-	SolutionType    *int32  `json:"SolutionType,omitempty" xml:"SolutionType,omitempty"`
-	StartDate       *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 0
+	SolutionType *int32 `json:"SolutionType,omitempty" xml:"SolutionType,omitempty"`
+	// example:
+	//
+	// 2022-05-25T16:28:36Z
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateFaqRequest) String() string {
@@ -1881,8 +2299,14 @@ func (s *CreateFaqRequest) SetTitle(v string) *CreateFaqRequest {
 }
 
 type CreateFaqResponseBody struct {
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 30001979424
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// 28805A7C-D695-548C-A31B-67E52C2C274F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateFaqResponseBody) String() string {
@@ -1933,11 +2357,26 @@ func (s *CreateFaqResponse) SetBody(v *CreateFaqResponseBody) *CreateFaqResponse
 }
 
 type CreateInstanceRequest struct {
-	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 用于手机app的小蜜机器人
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// example:
+	//
+	// zh-cn
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RobotType    *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
+	// example:
+	//
+	// 小蜜机器人
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// scenario_im
+	RobotType *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -1974,8 +2413,15 @@ func (s *CreateInstanceRequest) SetRobotType(v string) *CreateInstanceRequest {
 }
 
 type CreateInstanceResponseBody struct {
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// F2E2C40D-AB09-45A1-B5C5-EB9F5C4E4E4A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2027,7 +2473,13 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type CreateInstancePublishTaskRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2051,13 +2503,31 @@ func (s *CreateInstancePublishTaskRequest) SetInstanceId(v string) *CreateInstan
 
 type CreateInstancePublishTaskResponseBody struct {
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	CreateTime  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Error       *string   `json:"Error,omitempty" xml:"Error,omitempty"`
-	Id          *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifyTime  *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Response    *string   `json:"Response,omitempty" xml:"Response,omitempty"`
-	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2022-04-12T06:30:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error      *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// 8522
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2022-04-12T06:30:33Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8522
+	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// example:
+	//
+	// FE_RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateInstancePublishTaskResponseBody) String() string {
@@ -2138,7 +2608,15 @@ func (s *CreateInstancePublishTaskResponse) SetBody(v *CreateInstancePublishTask
 }
 
 type CreateIntentRequest struct {
-	AgentKey         *string                              `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId       *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentDefinition *CreateIntentRequestIntentDefinition `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty" type:"Struct"`
 }
@@ -2167,7 +2645,8 @@ func (s *CreateIntentRequest) SetIntentDefinition(v *CreateIntentRequestIntentDe
 }
 
 type CreateIntentRequestIntentDefinition struct {
-	AliasName  *string                                         `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// This parameter is required.
 	IntentName *string                                         `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	SlotInfos  []*CreateIntentRequestIntentDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
@@ -2196,12 +2675,28 @@ func (s *CreateIntentRequestIntentDefinition) SetSlotInfos(v []*CreateIntentRequ
 }
 
 type CreateIntentRequestIntentDefinitionSlotInfos struct {
-	Array       *bool   `json:"Array,omitempty" xml:"Array,omitempty"`
-	Encrypt     *bool   `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
-	Interactive *bool   `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SlotId      *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// false
+	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// example:
+	//
+	// false
+	Encrypt *bool `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	// example:
+	//
+	// false
+	Interactive *bool `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fg452dfg3df23
+	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	// This parameter is required.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateIntentRequestIntentDefinitionSlotInfos) String() string {
@@ -2243,7 +2738,15 @@ func (s *CreateIntentRequestIntentDefinitionSlotInfos) SetValue(v string) *Creat
 }
 
 type CreateIntentShrinkRequest struct {
-	AgentKey               *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentDefinitionShrink *string `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
 }
@@ -2272,7 +2775,13 @@ func (s *CreateIntentShrinkRequest) SetIntentDefinitionShrink(v string) *CreateI
 }
 
 type CreateIntentResponseBody struct {
-	IntentId  *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// 43546474
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// df56gjh5et34g3g3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2324,7 +2833,15 @@ func (s *CreateIntentResponse) SetBody(v *CreateIntentResponseBody) *CreateInten
 }
 
 type CreateLgfRequest struct {
-	AgentKey      *string                        `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId    *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LgfDefinition *CreateLgfRequestLgfDefinition `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty" type:"Struct"`
 }
@@ -2353,7 +2870,13 @@ func (s *CreateLgfRequest) SetLgfDefinition(v *CreateLgfRequestLgfDefinition) *C
 }
 
 type CreateLgfRequestLgfDefinition struct {
-	IntentId *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4675678567
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
 	RuleText *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
 }
 
@@ -2376,7 +2899,15 @@ func (s *CreateLgfRequestLgfDefinition) SetRuleText(v string) *CreateLgfRequestL
 }
 
 type CreateLgfShrinkRequest struct {
-	AgentKey            *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LgfDefinitionShrink *string `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty"`
 }
@@ -2406,7 +2937,14 @@ func (s *CreateLgfShrinkRequest) SetLgfDefinitionShrink(v string) *CreateLgfShri
 
 type CreateLgfResponseBody struct {
 	// LGF ID
-	LgfId     *int64  `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	//
+	// example:
+	//
+	// 123453433453
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// example:
+	//
+	// af5fg3sdf457j5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2458,9 +2996,18 @@ func (s *CreateLgfResponse) SetBody(v *CreateLgfResponseBody) *CreateLgfResponse
 }
 
 type CreatePerspectiveRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 用于购物APP的移动端视角
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 移动端视角
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreatePerspectiveRequest) String() string {
@@ -2487,8 +3034,14 @@ func (s *CreatePerspectiveRequest) SetName(v string) *CreatePerspectiveRequest {
 }
 
 type CreatePerspectiveResponseBody struct {
+	// example:
+	//
+	// 3001
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// F285D735-D580-18A8-B97F-B2E72B00F101
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePerspectiveResponseBody) String() string {
@@ -2539,8 +3092,17 @@ func (s *CreatePerspectiveResponse) SetBody(v *CreatePerspectiveResponseBody) *C
 }
 
 type CreatePublishTaskRequest struct {
-	AgentKey   *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	BizType    *string   `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// faq
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// ["8521"]
 	DataIdList []*string `json:"DataIdList,omitempty" xml:"DataIdList,omitempty" type:"Repeated"`
 }
 
@@ -2568,8 +3130,17 @@ func (s *CreatePublishTaskRequest) SetDataIdList(v []*string) *CreatePublishTask
 }
 
 type CreatePublishTaskShrinkRequest struct {
-	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	BizType          *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// faq
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// ["8521"]
 	DataIdListShrink *string `json:"DataIdList,omitempty" xml:"DataIdList,omitempty"`
 }
 
@@ -2598,13 +3169,31 @@ func (s *CreatePublishTaskShrinkRequest) SetDataIdListShrink(v string) *CreatePu
 
 type CreatePublishTaskResponseBody struct {
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	CreateTime  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Error       *string   `json:"Error,omitempty" xml:"Error,omitempty"`
-	Id          *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifyTime  *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Response    *string   `json:"Response,omitempty" xml:"Response,omitempty"`
-	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2022-04-12T06:30:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error      *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// 8522
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2022-04-12T06:30:33Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8522
+	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// example:
+	//
+	// FE_RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreatePublishTaskResponseBody) String() string {
@@ -2685,9 +3274,18 @@ func (s *CreatePublishTaskResponse) SetBody(v *CreatePublishTaskResponseBody) *C
 }
 
 type CreateSimQuestionRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001905617
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// This parameter is required.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateSimQuestionRequest) String() string {
@@ -2714,8 +3312,14 @@ func (s *CreateSimQuestionRequest) SetTitle(v string) *CreateSimQuestionRequest 
 }
 
 type CreateSimQuestionResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SimQuestionId *int64  `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
+	// example:
+	//
+	// 16AC1B3C-66E0-438B-BB7C-71B692407B67
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1000002788
+	SimQuestionId *int64 `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
 }
 
 func (s CreateSimQuestionResponseBody) String() string {
@@ -2766,10 +3370,23 @@ func (s *CreateSimQuestionResponse) SetBody(v *CreateSimQuestionResponseBody) *C
 }
 
 type CreateSolutionRequest struct {
-	AgentKey         *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Content          *string   `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentType      *int32    `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	KnowledgeId      *int64    `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 1
+	ContentType *int32 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001905617
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// This parameter is required.
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
 }
 
@@ -2807,8 +3424,14 @@ func (s *CreateSolutionRequest) SetPerspectiveCodes(v []*string) *CreateSolution
 }
 
 type CreateSolutionResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SolutionId *int64  `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	// example:
+	//
+	// F55D90C1-31BE-4B2A-AA3F-25EFC36F9419
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100001089003
+	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
 }
 
 func (s CreateSolutionResponseBody) String() string {
@@ -2859,7 +3482,15 @@ func (s *CreateSolutionResponse) SetBody(v *CreateSolutionResponseBody) *CreateS
 }
 
 type CreateUserSayRequest struct {
-	AgentKey          *string                                `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId        *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	UserSayDefinition *CreateUserSayRequestUserSayDefinition `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty" type:"Struct"`
 }
@@ -2888,7 +3519,13 @@ func (s *CreateUserSayRequest) SetUserSayDefinition(v *CreateUserSayRequestUserS
 }
 
 type CreateUserSayRequestUserSayDefinition struct {
-	Content   *string                                           `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123232
 	IntentId  *int64                                            `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 	SlotInfos []*CreateUserSayRequestUserSayDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
@@ -2917,9 +3554,18 @@ func (s *CreateUserSayRequestUserSayDefinition) SetSlotInfos(v []*CreateUserSayR
 }
 
 type CreateUserSayRequestUserSayDefinitionSlotInfos struct {
-	EndIndex   *int32  `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
-	SlotId     *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	StartIndex *int32  `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
+	// example:
+	//
+	// 6
+	EndIndex *int32 `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
+	// example:
+	//
+	// fb34adf2fv43f2
+	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	// example:
+	//
+	// 4
+	StartIndex *int32 `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
 }
 
 func (s CreateUserSayRequestUserSayDefinitionSlotInfos) String() string {
@@ -2946,7 +3592,15 @@ func (s *CreateUserSayRequestUserSayDefinitionSlotInfos) SetStartIndex(v int32) 
 }
 
 type CreateUserSayShrinkRequest struct {
-	AgentKey                *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	UserSayDefinitionShrink *string `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty"`
 }
@@ -2975,8 +3629,14 @@ func (s *CreateUserSayShrinkRequest) SetUserSayDefinitionShrink(v string) *Creat
 }
 
 type CreateUserSayResponseBody struct {
+	// example:
+	//
+	// 8g4n8bnd236fg79
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UserSayId *int64  `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+	// example:
+	//
+	// 46456176856
+	UserSayId *int64 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
 }
 
 func (s CreateUserSayResponseBody) String() string {
@@ -3027,8 +3687,16 @@ func (s *CreateUserSayResponse) SetBody(v *CreateUserSayResponseBody) *CreateUse
 }
 
 type DeleteCategoryRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30000049006
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
 
 func (s DeleteCategoryRequest) String() string {
@@ -3050,6 +3718,9 @@ func (s *DeleteCategoryRequest) SetCategoryId(v int64) *DeleteCategoryRequest {
 }
 
 type DeleteCategoryResponseBody struct {
+	// example:
+	//
+	// 4B3E0DE3-DC57-5BFE-88D4-ADD8ED024F55
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3096,8 +3767,16 @@ func (s *DeleteCategoryResponse) SetBody(v *DeleteCategoryResponseBody) *DeleteC
 }
 
 type DeleteConnQuestionRequest struct {
-	AgentKey  *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	OutlineId *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 877397683
+	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
 }
 
 func (s DeleteConnQuestionRequest) String() string {
@@ -3119,6 +3798,9 @@ func (s *DeleteConnQuestionRequest) SetOutlineId(v int64) *DeleteConnQuestionReq
 }
 
 type DeleteConnQuestionResponseBody struct {
+	// example:
+	//
+	// FC323352-3AD7-59A1-9088-A64470BAFC9D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3165,8 +3847,21 @@ func (s *DeleteConnQuestionResponse) SetBody(v *DeleteConnQuestionResponseBody) 
 }
 
 type DeleteDSEntityRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	EntityId   *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3194,7 +3889,13 @@ func (s *DeleteDSEntityRequest) SetInstanceId(v string) *DeleteDSEntityRequest {
 }
 
 type DeleteDSEntityResponseBody struct {
-	EntityId  *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// 123
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// 4dfghf56235asdf452
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3246,10 +3947,28 @@ func (s *DeleteDSEntityResponse) SetBody(v *DeleteDSEntityResponseBody) *DeleteD
 }
 
 type DeleteDSEntityValueRequest struct {
-	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	EntityId      *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityValueId *int64  `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 345346223452
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3453453452
+	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteDSEntityValueRequest) String() string {
@@ -3281,8 +4000,14 @@ func (s *DeleteDSEntityValueRequest) SetInstanceId(v string) *DeleteDSEntityValu
 }
 
 type DeleteDSEntityValueResponseBody struct {
-	EntityValueId *int64  `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3453453452
+	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// example:
+	//
+	// dfdf2t3rfvb45y
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteDSEntityValueResponseBody) String() string {
@@ -3333,8 +4058,19 @@ func (s *DeleteDSEntityValueResponse) SetBody(v *DeleteDSEntityValueResponseBody
 }
 
 type DeleteDocRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// 30001905617
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s DeleteDocRequest) String() string {
@@ -3356,8 +4092,14 @@ func (s *DeleteDocRequest) SetKnowledgeId(v int64) *DeleteDocRequest {
 }
 
 type DeleteDocResponseBody struct {
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 30002406051
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// DFB71B34-4188-4EA2-9988-EF3014E75910
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteDocResponseBody) String() string {
@@ -3408,8 +4150,16 @@ func (s *DeleteDocResponse) SetBody(v *DeleteDocResponseBody) *DeleteDocResponse
 }
 
 type DeleteFaqRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001905617
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s DeleteFaqRequest) String() string {
@@ -3431,6 +4181,9 @@ func (s *DeleteFaqRequest) SetKnowledgeId(v int64) *DeleteFaqRequest {
 }
 
 type DeleteFaqResponseBody struct {
+	// example:
+	//
+	// F79E7305-5314-5069-A701-9591AD051902
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3477,7 +4230,13 @@ func (s *DeleteFaqResponse) SetBody(v *DeleteFaqResponseBody) *DeleteFaqResponse
 }
 
 type DeleteInstanceRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3500,15 +4259,36 @@ func (s *DeleteInstanceRequest) SetInstanceId(v string) *DeleteInstanceRequest {
 }
 
 type DeleteInstanceResponseBody struct {
-	BizTypeList    []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	CreateTime     *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUserId   *int64    `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	CreateUserName *string   `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	Error          *string   `json:"Error,omitempty" xml:"Error,omitempty"`
-	Id             *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Response       *int64    `json:"Response,omitempty" xml:"Response,omitempty"`
-	Status         *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-09-11T09:26:14Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 9052
+	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// example:
+	//
+	// xuqiang_test
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	Error          *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// 8521
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8521
+	Response *int64 `json:"Response,omitempty" xml:"Response,omitempty"`
+	// example:
+	//
+	// FE_RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteInstanceResponseBody) String() string {
@@ -3594,9 +4374,22 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteIntentRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
 
 func (s DeleteIntentRequest) String() string {
@@ -3623,7 +4416,13 @@ func (s *DeleteIntentRequest) SetIntentId(v int64) *DeleteIntentRequest {
 }
 
 type DeleteIntentResponseBody struct {
-	IntentId  *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// 12345
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// 3464dfg3qwr34tf34
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3675,10 +4474,29 @@ func (s *DeleteIntentResponse) SetBody(v *DeleteIntentResponseBody) *DeleteInten
 }
 
 type DeleteLgfRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23242342
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 	// lgf Id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2342424
 	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
 }
 
@@ -3712,7 +4530,14 @@ func (s *DeleteLgfRequest) SetLgfId(v int64) *DeleteLgfRequest {
 
 type DeleteLgfResponseBody struct {
 	// LGF ID
-	LgfId     *int64  `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	//
+	// example:
+	//
+	// 2342424
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// example:
+	//
+	// dgw2342424qw42
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3764,7 +4589,13 @@ func (s *DeleteLgfResponse) SetBody(v *DeleteLgfResponseBody) *DeleteLgfResponse
 }
 
 type DeletePerspectiveRequest struct {
-	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 3001
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
 }
 
@@ -3787,8 +4618,14 @@ func (s *DeletePerspectiveRequest) SetPerspectiveId(v string) *DeletePerspective
 }
 
 type DeletePerspectiveResponseBody struct {
+	// example:
+	//
+	// FC384CE1-8D42-1900-84E1-F33F990F2B5E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DeletePerspectiveResponseBody) String() string {
@@ -3839,8 +4676,16 @@ func (s *DeletePerspectiveResponse) SetBody(v *DeletePerspectiveResponseBody) *D
 }
 
 type DeleteSimQuestionRequest struct {
-	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	SimQuestionId *int64  `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000002788
+	SimQuestionId *int64 `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
 }
 
 func (s DeleteSimQuestionRequest) String() string {
@@ -3862,6 +4707,9 @@ func (s *DeleteSimQuestionRequest) SetSimQuestionId(v int64) *DeleteSimQuestionR
 }
 
 type DeleteSimQuestionResponseBody struct {
+	// example:
+	//
+	// 6419BA93-D111-5225-8998-13E63E6D3940
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3908,8 +4756,16 @@ func (s *DeleteSimQuestionResponse) SetBody(v *DeleteSimQuestionResponseBody) *D
 }
 
 type DeleteSolutionRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	SolutionId *int64  `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100001321580
+	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
 }
 
 func (s DeleteSolutionRequest) String() string {
@@ -3931,6 +4787,9 @@ func (s *DeleteSolutionRequest) SetSolutionId(v int64) *DeleteSolutionRequest {
 }
 
 type DeleteSolutionResponseBody struct {
+	// example:
+	//
+	// F79E7305-5314-5069-A701-9591AD051902
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3977,10 +4836,28 @@ func (s *DeleteSolutionResponse) SetBody(v *DeleteSolutionResponseBody) *DeleteS
 }
 
 type DeleteUserSayRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 343df2sdf23
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	UserSayId  *int64  `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5564564546
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4562121234
+	UserSayId *int64 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
 }
 
 func (s DeleteUserSayRequest) String() string {
@@ -4012,8 +4889,14 @@ func (s *DeleteUserSayRequest) SetUserSayId(v int64) *DeleteUserSayRequest {
 }
 
 type DeleteUserSayResponseBody struct {
+	// example:
+	//
+	// dfgdg324gf34t34g34g3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UserSayId *int64  `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+	// example:
+	//
+	// 4562121234
+	UserSayId *int64 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
 }
 
 func (s DeleteUserSayResponseBody) String() string {
@@ -4064,8 +4947,16 @@ func (s *DeleteUserSayResponse) SetBody(v *DeleteUserSayResponseBody) *DeleteUse
 }
 
 type DescribeCategoryRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30000049006
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
 
 func (s DescribeCategoryRequest) String() string {
@@ -4087,8 +4978,11 @@ func (s *DescribeCategoryRequest) SetCategoryId(v int64) *DescribeCategoryReques
 }
 
 type DescribeCategoryResponseBody struct {
-	Category  *DescribeCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Category *DescribeCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2B0304FD-3804-5C06-9A83-77F5523664AF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCategoryResponseBody) String() string {
@@ -4110,11 +5004,20 @@ func (s *DescribeCategoryResponseBody) SetRequestId(v string) *DescribeCategoryR
 }
 
 type DescribeCategoryResponseBodyCategory struct {
-	BizCode          *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
-	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// 30000049006
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// -1
+	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCategoryResponseBodyCategory) String() string {
@@ -4180,8 +5083,21 @@ func (s *DescribeCategoryResponse) SetBody(v *DescribeCategoryResponseBody) *Des
 }
 
 type DescribeDSEntityRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	EntityId   *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4209,17 +5125,44 @@ func (s *DescribeDSEntityRequest) SetInstanceId(v string) *DescribeDSEntityReque
 }
 
 type DescribeDSEntityResponseBody struct {
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUserId   *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 123231
+	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// example:
+	//
+	// test
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	EntityId       *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityName     *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	EntityType     *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	ModifyTime     *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ModifyUserId   *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// example:
+	//
+	// 123
+	EntityId   *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// example:
+	//
+	// synonyms
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 123231
+	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// example:
+	//
+	// test
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SysEntityCode  *string `json:"SysEntityCode,omitempty" xml:"SysEntityCode,omitempty"`
+	// example:
+	//
+	// ad23234dsf234fga
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SysEntityCode *string `json:"SysEntityCode,omitempty" xml:"SysEntityCode,omitempty"`
 }
 
 func (s DescribeDSEntityResponseBody) String() string {
@@ -4315,9 +5258,20 @@ func (s *DescribeDSEntityResponse) SetBody(v *DescribeDSEntityResponseBody) *Des
 }
 
 type DescribeDocRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	ShowDetail  *bool   `json:"ShowDetail,omitempty" xml:"ShowDetail,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001979424
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// false
+	ShowDetail *bool `json:"ShowDetail,omitempty" xml:"ShowDetail,omitempty"`
 }
 
 func (s DescribeDocRequest) String() string {
@@ -4344,30 +5298,79 @@ func (s *DescribeDocRequest) SetShowDetail(v bool) *DescribeDocRequest {
 }
 
 type DescribeDocResponseBody struct {
-	BizCode         *string                         `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	CategoryId      *int64                          `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Config          *string                         `json:"Config,omitempty" xml:"Config,omitempty"`
-	CreateTime      *string                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUserId    *int64                          `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	CreateUserName  *string                         `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	DocInfo         *DescribeDocResponseBodyDocInfo `json:"DocInfo,omitempty" xml:"DocInfo,omitempty" type:"Struct"`
-	DocName         *string                         `json:"DocName,omitempty" xml:"DocName,omitempty"`
-	EffectStatus    *int32                          `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
-	EndDate         *string                         `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	KnowledgeId     *int64                          `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	Meta            *string                         `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	ModifyTime      *string                         `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ModifyUserId    *int64                          `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
-	ModifyUserName  *string                         `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	ProcessCanRetry *bool                           `json:"ProcessCanRetry,omitempty" xml:"ProcessCanRetry,omitempty"`
-	ProcessMessage  *string                         `json:"ProcessMessage,omitempty" xml:"ProcessMessage,omitempty"`
-	ProcessStatus   *int32                          `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	// example:
+	//
+	// bizcode123
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// 30000049006
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":"docName"}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 2022-04-12T06:30:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1111111111
+	CreateUserId   *int64                          `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	CreateUserName *string                         `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	DocInfo        *DescribeDocResponseBodyDocInfo `json:"DocInfo,omitempty" xml:"DocInfo,omitempty" type:"Struct"`
+	DocName        *string                         `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// example:
+	//
+	// 20
+	EffectStatus *int32 `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
+	// example:
+	//
+	// 2023-04-27T06:08:54Z
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// 30001979424
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// {"code":"xxx"}
+	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// example:
+	//
+	// 2020-11-25T08:56:55Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 2222222222
+	ModifyUserId   *int64  `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// example:
+	//
+	// true
+	ProcessCanRetry *bool   `json:"ProcessCanRetry,omitempty" xml:"ProcessCanRetry,omitempty"`
+	ProcessMessage  *string `json:"ProcessMessage,omitempty" xml:"ProcessMessage,omitempty"`
+	// example:
+	//
+	// 0
+	ProcessStatus *int32 `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 7F132693-212A-40A9-8A81-11E7694E478B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1979-12-31T16:00:00Z
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeDocResponseBody) String() string {
@@ -4511,10 +5514,19 @@ func (s *DescribeDocResponseBodyDocInfo) SetDocParas(v []*DescribeDocResponseBod
 }
 
 type DescribeDocResponseBodyDocInfoDocParas struct {
-	ParaLevel *int32  `json:"ParaLevel,omitempty" xml:"ParaLevel,omitempty"`
-	ParaNo    *int32  `json:"ParaNo,omitempty" xml:"ParaNo,omitempty"`
-	ParaText  *string `json:"ParaText,omitempty" xml:"ParaText,omitempty"`
-	ParaType  *string `json:"ParaType,omitempty" xml:"ParaType,omitempty"`
+	// example:
+	//
+	// 1
+	ParaLevel *int32 `json:"ParaLevel,omitempty" xml:"ParaLevel,omitempty"`
+	// example:
+	//
+	// 1
+	ParaNo   *int32  `json:"ParaNo,omitempty" xml:"ParaNo,omitempty"`
+	ParaText *string `json:"ParaText,omitempty" xml:"ParaText,omitempty"`
+	// example:
+	//
+	// text
+	ParaType *string `json:"ParaType,omitempty" xml:"ParaType,omitempty"`
 }
 
 func (s DescribeDocResponseBodyDocInfoDocParas) String() string {
@@ -4575,8 +5587,16 @@ func (s *DescribeDocResponse) SetBody(v *DescribeDocResponseBody) *DescribeDocRe
 }
 
 type DescribeFaqRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001979424
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s DescribeFaqRequest) String() string {
@@ -4598,21 +5618,54 @@ func (s *DescribeFaqRequest) SetKnowledgeId(v int64) *DescribeFaqRequest {
 }
 
 type DescribeFaqResponseBody struct {
-	CategoryId     *int64                                 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CreateTime     *string                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUserName *string                                `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	EffectStatus   *int32                                 `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
-	EndDate        *string                                `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	KnowledgeId    *int64                                 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	ModifyTime     *string                                `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ModifyUserName *string                                `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	Outlines       []*DescribeFaqResponseBodyOutlines     `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
-	RequestId      *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SimQuestions   []*DescribeFaqResponseBodySimQuestions `json:"SimQuestions,omitempty" xml:"SimQuestions,omitempty" type:"Repeated"`
-	Solutions      []*DescribeFaqResponseBodySolutions    `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
-	StartDate      *string                                `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Status         *int32                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title          *string                                `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 30000055617
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 2020-11-30T03:03:37Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// test01
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// example:
+	//
+	// 20
+	EffectStatus *int32 `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
+	// example:
+	//
+	// 2023-04-27T06:08:54Z
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// 30001979424
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// 2020-12-02T06:35:50Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// test01
+	ModifyUserName *string                            `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	Outlines       []*DescribeFaqResponseBodyOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8AD9FA10-7780-5E12-B701-13C928524F32
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SimQuestions []*DescribeFaqResponseBodySimQuestions `json:"SimQuestions,omitempty" xml:"SimQuestions,omitempty" type:"Repeated"`
+	Solutions    []*DescribeFaqResponseBodySolutions    `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-04-27T07:04:39Z
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 3
+	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribeFaqResponseBody) String() string {
@@ -4699,11 +5752,23 @@ func (s *DescribeFaqResponseBody) SetTitle(v string) *DescribeFaqResponseBody {
 }
 
 type DescribeFaqResponseBodyOutlines struct {
-	ConnQuestionId *int64  `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifyTime     *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	OutlineId      *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
-	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 1000098002
+	ConnQuestionId *int64 `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
+	// example:
+	//
+	// 2022-05-26T10:24:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2022-05-26T18:12:02Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 797
+	OutlineId *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribeFaqResponseBodyOutlines) String() string {
@@ -4740,8 +5805,17 @@ func (s *DescribeFaqResponseBodyOutlines) SetTitle(v string) *DescribeFaqRespons
 }
 
 type DescribeFaqResponseBodySimQuestions struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifyTime    *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 2022-05-26T10:24:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2022-05-29T03:55:07Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 10000000581
 	SimQuestionId *int64  `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
 	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -4775,13 +5849,25 @@ func (s *DescribeFaqResponseBodySimQuestions) SetTitle(v string) *DescribeFaqRes
 }
 
 type DescribeFaqResponseBodySolutions struct {
-	Content          *string   `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentType      *int32    `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	CreateTime       *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 0
+	ContentType *int32 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// example:
+	//
+	// 2022-05-26T10:24:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2022-05-29T07:07:13Z
 	ModifyTime       *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
 	PlainText        *string   `json:"PlainText,omitempty" xml:"PlainText,omitempty"`
-	SolutionId       *int64    `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	// example:
+	//
+	// 10000003071
+	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
 }
 
 func (s DescribeFaqResponseBodySolutions) String() string {
@@ -4857,7 +5943,13 @@ func (s *DescribeFaqResponse) SetBody(v *DescribeFaqResponseBody) *DescribeFaqRe
 }
 
 type DescribeInstanceRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4880,17 +5972,47 @@ func (s *DescribeInstanceRequest) SetInstanceId(v string) *DescribeInstanceReque
 }
 
 type DescribeInstanceResponseBody struct {
-	Avatar       *string                                   `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	Categories   []*DescribeInstanceResponseBodyCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	CreateTime   *string                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EditStatus   *string                                   `json:"EditStatus,omitempty" xml:"EditStatus,omitempty"`
-	InstanceId   *string                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Introduction *string                                   `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	LanguageCode *string                                   `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
-	Name         *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RobotType    *string                                   `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
-	TimeZone     *string                                   `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	// example:
+	//
+	// /alimefe/meebot/robot/0.0.5/img/xxx-90-97.png
+	Avatar     *string                                   `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	Categories []*DescribeInstanceResponseBodyCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// PUBLISHED
+	EditStatus *string `json:"EditStatus,omitempty" xml:"EditStatus,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 用于C端问答的机器人
+	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// example:
+	//
+	// zh-cn
+	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+	// example:
+	//
+	// 智能客服-小C
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 907AA5F2-0521-49AB-80AB-1ADEFAB2B901
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// scenario_im
+	RobotType *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
+	// example:
+	//
+	// Asia/Chongqing
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s DescribeInstanceResponseBody) String() string {
@@ -4957,9 +6079,18 @@ func (s *DescribeInstanceResponseBody) SetTimeZone(v string) *DescribeInstanceRe
 }
 
 type DescribeInstanceResponseBodyCategories struct {
-	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	// example:
+	//
+	// 30000066832
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 杭州市防疫政策
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// -1
+	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
 }
 
 func (s DescribeInstanceResponseBodyCategories) String() string {
@@ -5015,9 +6146,22 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 }
 
 type DescribeIntentRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
 
 func (s DescribeIntentRequest) String() string {
@@ -5044,17 +6188,41 @@ func (s *DescribeIntentRequest) SetIntentId(v int64) *DescribeIntentRequest {
 }
 
 type DescribeIntentResponseBody struct {
-	AliasName      *string                                `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	CreateTime     *string                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUserId   *string                                `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	CreateUserName *string                                `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	IntentId       *int64                                 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	IntentName     *string                                `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	ModifyTime     *string                                `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ModifyUserId   *string                                `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
-	ModifyUserName *string                                `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	RequestId      *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SlotInfos      []*DescribeIntentResponseBodySlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 123231
+	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// example:
+	//
+	// test
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// example:
+	//
+	// 84243341
+	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 123231
+	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// example:
+	//
+	// test
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// example:
+	//
+	// a22afaf2adfasf2gr345fga45ada
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SlotInfos []*DescribeIntentResponseBodySlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
 func (s DescribeIntentResponseBody) String() string {
@@ -5121,12 +6289,24 @@ func (s *DescribeIntentResponseBody) SetSlotInfos(v []*DescribeIntentResponseBod
 }
 
 type DescribeIntentResponseBodySlotInfos struct {
-	Array       *bool   `json:"Array,omitempty" xml:"Array,omitempty"`
-	Encrypt     *bool   `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	// example:
+	//
+	// false
+	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// example:
+	//
+	// false
+	Encrypt *bool `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	// example:
+	//
+	// false
 	Interactive *bool   `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SlotId      *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// aa4d2a343a3ad4afad
+	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeIntentResponseBodySlotInfos) String() string {
@@ -5197,7 +6377,13 @@ func (s *DescribeIntentResponse) SetBody(v *DescribeIntentResponseBody) *Describ
 }
 
 type DescribePerspectiveRequest struct {
-	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 3001
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
 }
 
@@ -5220,14 +6406,38 @@ func (s *DescribePerspectiveRequest) SetPerspectiveId(v string) *DescribePerspec
 }
 
 type DescribePerspectiveResponseBody struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifyTime      *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2021-07-27T07:05:37Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2021-07-26T07:05:37Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 移动端视角
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// FZJBY3raWr
 	PerspectiveCode *string `json:"PerspectiveCode,omitempty" xml:"PerspectiveCode,omitempty"`
-	PerspectiveId   *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SelfDefine      *bool   `json:"SelfDefine,omitempty" xml:"SelfDefine,omitempty"`
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 3001
+	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
+	// example:
+	//
+	// F285D735-D580-18A8-B97F-B2E72B00F101
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	SelfDefine *bool `json:"SelfDefine,omitempty" xml:"SelfDefine,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribePerspectiveResponseBody) String() string {
@@ -5308,12 +6518,30 @@ func (s *DescribePerspectiveResponse) SetBody(v *DescribePerspectiveResponseBody
 }
 
 type FeedbackRequest struct {
-	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Feedback        *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// good
+	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	// example:
+	//
+	// 这个回答很棒
 	FeedbackContent *string `json:"FeedbackContent,omitempty" xml:"FeedbackContent,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MessageId       *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	SessionId       *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 5ca40988-4f99-47ad-ac96-9060d0f81db9
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 7c3cec23cc8940bc9db4a318c8f4f0aa
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s FeedbackRequest) String() string {
@@ -5355,8 +6583,17 @@ func (s *FeedbackRequest) SetSessionId(v string) *FeedbackRequest {
 }
 
 type FeedbackResponseBody struct {
-	Feedback  *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	// example:
+	//
+	// good
+	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	// example:
+	//
+	// 5ca40988-4f99-47ad-ac96-9060d0f81db9
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 4e5eea71-f326-450c-8849-49515473ef64
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5413,13 +6650,28 @@ func (s *FeedbackResponse) SetBody(v *FeedbackResponseBody) *FeedbackResponse {
 }
 
 type GenerateUserAccessTokenRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Email      *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// a***bcx@gmail.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 1000
 	ExpireTime *int32  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	ExtraInfo  *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	ForeignId  *string `json:"ForeignId,omitempty" xml:"ForeignId,omitempty"`
-	Nick       *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
-	Telephone  *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// 8882022040000000171
+	ForeignId *string `json:"ForeignId,omitempty" xml:"ForeignId,omitempty"`
+	Nick      *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	// example:
+	//
+	// 1381111****
+	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
 }
 
 func (s GenerateUserAccessTokenRequest) String() string {
@@ -5466,12 +6718,28 @@ func (s *GenerateUserAccessTokenRequest) SetTelephone(v string) *GenerateUserAcc
 }
 
 type GenerateUserAccessTokenResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// DDEXEDAFWAGASDFWAEFFAWEFAWFWEAFWAFWAEF
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Parameter.Invalid
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// E6988CE6-41CF-1103-9BEC-2B20D26C0B51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GenerateUserAccessTokenResponseBody) String() string {
@@ -5537,6 +6805,9 @@ func (s *GenerateUserAccessTokenResponse) SetBody(v *GenerateUserAccessTokenResp
 }
 
 type GetAgentInfoRequest struct {
+	// example:
+	//
+	// beebot_bot_public_cn-ca36x8v3n1x
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5554,11 +6825,21 @@ func (s *GetAgentInfoRequest) SetInstanceId(v string) *GetAgentInfoRequest {
 }
 
 type GetAgentInfoResponseBody struct {
-	Data    *GetAgentInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data *GetAgentInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Parameter.Invalid
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// FC384CE1-8D42-1900-84E1-F33F990F2B5E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAgentInfoResponseBody) String() string {
@@ -5590,6 +6871,9 @@ func (s *GetAgentInfoResponseBody) SetSuccess(v bool) *GetAgentInfoResponseBody 
 }
 
 type GetAgentInfoResponseBodyData struct {
+	// example:
+	//
+	// 4e7400028e6f4a7393ed3acf6a7b8927_p_beebot_public
 	AgentKey  *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 }
@@ -5642,8 +6926,12 @@ func (s *GetAgentInfoResponse) SetBody(v *GetAgentInfoResponseBody) *GetAgentInf
 }
 
 type GetAsyncResultRequest struct {
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetAsyncResultRequest) String() string {
@@ -5665,9 +6953,15 @@ func (s *GetAsyncResultRequest) SetTaskId(v string) *GetAsyncResultRequest {
 }
 
 type GetAsyncResultResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// F79E7305-5314-5069-A701-9591AD051902
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAsyncResultResponseBody) String() string {
@@ -5723,8 +7017,17 @@ func (s *GetAsyncResultResponse) SetBody(v *GetAsyncResultResponseBody) *GetAsyn
 }
 
 type GetInstancePublishTaskStateRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 8521
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5752,16 +7055,34 @@ func (s *GetInstancePublishTaskStateRequest) SetInstanceId(v string) *GetInstanc
 }
 
 type GetInstancePublishTaskStateResponseBody struct {
-	BizTypeList []*string              `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	CreateTime  *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Error       *string                `json:"Error,omitempty" xml:"Error,omitempty"`
-	Errors      map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
-	Id          *int64                 `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifyTime  *string                `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	RequestId   *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Response    *string                `json:"Response,omitempty" xml:"Response,omitempty"`
-	Status      *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Warnings    map[string]interface{} `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
+	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-04-12T06:30:17Z
+	CreateTime *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error      *string                `json:"Error,omitempty" xml:"Error,omitempty"`
+	Errors     map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
+	// example:
+	//
+	// 8522
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2022-04-12T06:30:33Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8522
+	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// example:
+	//
+	// FE_RUNNING
+	Status   *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Warnings map[string]interface{} `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
 }
 
 func (s GetInstancePublishTaskStateResponseBody) String() string {
@@ -5852,8 +7173,14 @@ func (s *GetInstancePublishTaskStateResponse) SetBody(v *GetInstancePublishTaskS
 }
 
 type GetPublishTaskStateRequest struct {
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 8521
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s GetPublishTaskStateRequest) String() string {
@@ -5875,16 +7202,34 @@ func (s *GetPublishTaskStateRequest) SetId(v int64) *GetPublishTaskStateRequest 
 }
 
 type GetPublishTaskStateResponseBody struct {
-	BizTypeList []*string              `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	CreateTime  *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Error       *string                `json:"Error,omitempty" xml:"Error,omitempty"`
-	Errors      map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
-	Id          *int64                 `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifyTime  *string                `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	RequestId   *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Response    *string                `json:"Response,omitempty" xml:"Response,omitempty"`
-	Status      *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Warnings    map[string]interface{} `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
+	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-04-12T06:30:17Z
+	CreateTime *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error      *string                `json:"Error,omitempty" xml:"Error,omitempty"`
+	Errors     map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
+	// example:
+	//
+	// 8522
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2022-04-12T06:30:33Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 5CBF0581-EAE7-1DC4-95C6-A089656A1E2D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8522
+	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// example:
+	//
+	// FE_RUNNING
+	Status   *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Warnings map[string]interface{} `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
 }
 
 func (s GetPublishTaskStateResponseBody) String() string {
@@ -5975,8 +7320,19 @@ func (s *GetPublishTaskStateResponse) SetBody(v *GetPublishTaskStateResponseBody
 }
 
 type InitIMConnectRequest struct {
-	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	From            *string `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8XNBzDucJv
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// QUM4SndaY3VPMjhkQldDZUNOR0ZaTmZ5R3NBY0FKWHJ4OGc4dERZbEJzcjNIKzFiS1RyTjhXRUpBYmVpQlpsakprNDRFVkdxcy9HWVk2RXZvalU3bHhxRkJlc1NBUXZwdHFKOTE2UTNwamQ4b1U4N3dEbmhyRjc4R2hOQStvMnMrYkV2dlVpSHNvWC96SEVNZWRqMjBuMXdjNklpamJzaDNWYllnUldDZGhJPQ==
 	UserAccessToken *string `json:"UserAccessToken,omitempty" xml:"UserAccessToken,omitempty"`
 }
 
@@ -6004,12 +7360,28 @@ func (s *InitIMConnectRequest) SetUserAccessToken(v string) *InitIMConnectReques
 }
 
 type InitIMConnectResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {     "imDomain": "im.alimebot.com",     "appKey": "WDg2VfNv",     "token": "QUM4SndaY3VPMjhkQldDZUNOR0ZaTmZ5R3NBY0FKWHJ4OGc4dERZbEJzcjNIKzFiS1RyTjhXRUpBYmVpQlpsakprNDRFVkdxcy9HWVk2RXZvalU3bHhxRkJlc1NBUXZwdHFKOTE2UTNwamQ4b1U4N3dEbmhyRjc4R2hOQStvMnMrYkV2dlVpSHNvWC96SEVNZWRqMjBuMXdjNklpamJzaDNWYllnUldDZGhJPQ=="   }
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Parameter.Invalid
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// E6988CE6-41CF-1103-9BEC-2B20D26C0B52
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InitIMConnectResponseBody) String() string {
@@ -6075,9 +7447,18 @@ func (s *InitIMConnectResponse) SetBody(v *InitIMConnectResponseBody) *InitIMCon
 }
 
 type LinkInstanceCategoryRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// [\\"30000065789\\"]
 	CategoryIds *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s LinkInstanceCategoryRequest) String() string {
@@ -6104,6 +7485,9 @@ func (s *LinkInstanceCategoryRequest) SetInstanceId(v string) *LinkInstanceCateg
 }
 
 type LinkInstanceCategoryResponseBody struct {
+	// example:
+	//
+	// D8C96601-E645-1BD7-99F3-04EADAB84E29
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6150,9 +7534,15 @@ func (s *LinkInstanceCategoryResponse) SetBody(v *LinkInstanceCategoryResponseBo
 }
 
 type ListAgentRequest struct {
-	AgentName   *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	GoodsCodes  *string `json:"GoodsCodes,omitempty" xml:"GoodsCodes,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	AgentName  *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	GoodsCodes *string `json:"GoodsCodes,omitempty" xml:"GoodsCodes,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
@@ -6191,12 +7581,25 @@ func (s *ListAgentRequest) SetProductCode(v string) *ListAgentRequest {
 }
 
 type ListAgentResponseBody struct {
-	Data       []*ListAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNumber *int32                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Data []*ListAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// F55D90C1-31BE-4B2A-AA3F-25EFC36F9419
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 6
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAgentResponseBody) String() string {
@@ -6233,7 +7636,13 @@ func (s *ListAgentResponseBody) SetTotalCount(v int32) *ListAgentResponseBody {
 }
 
 type ListAgentResponseBodyData struct {
-	AgentId       *int64                 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// example:
+	//
+	// 881
+	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// example:
+	//
+	// 4e7400028e6f4a7393ed3acf6a7b8927_p_beebot_public
 	AgentKey      *string                `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	AgentName     *string                `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	DefaultAgent  *bool                  `json:"DefaultAgent,omitempty" xml:"DefaultAgent,omitempty"`
@@ -6303,9 +7712,15 @@ func (s *ListAgentResponse) SetBody(v *ListAgentResponseBody) *ListAgentResponse
 }
 
 type ListCategoryRequest struct {
-	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	KnowledgeType    *int32  `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
-	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeType *int32  `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
+	// example:
+	//
+	// -1
+	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
 }
 
 func (s ListCategoryRequest) String() string {
@@ -6333,7 +7748,10 @@ func (s *ListCategoryRequest) SetParentCategoryId(v int64) *ListCategoryRequest 
 
 type ListCategoryResponseBody struct {
 	Categories []*ListCategoryResponseBodyCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 9C5F8186-2D22-433E-9545-606D344F30B5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListCategoryResponseBody) String() string {
@@ -6355,11 +7773,20 @@ func (s *ListCategoryResponseBody) SetRequestId(v string) *ListCategoryResponseB
 }
 
 type ListCategoryResponseBodyCategories struct {
-	BizCode          *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
-	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// 231001028593
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// -1
+	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCategoryResponseBodyCategories) String() string {
@@ -6425,8 +7852,16 @@ func (s *ListCategoryResponse) SetBody(v *ListCategoryResponseBody) *ListCategor
 }
 
 type ListConnQuestionRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001905617
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s ListConnQuestionRequest) String() string {
@@ -6448,8 +7883,11 @@ func (s *ListConnQuestionRequest) SetKnowledgeId(v int64) *ListConnQuestionReque
 }
 
 type ListConnQuestionResponseBody struct {
-	Outlines  []*ListConnQuestionResponseBodyOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Outlines []*ListConnQuestionResponseBodyOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 92B81548-42B9-4B34-924B-4E778AEB412B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListConnQuestionResponseBody) String() string {
@@ -6471,11 +7909,23 @@ func (s *ListConnQuestionResponseBody) SetRequestId(v string) *ListConnQuestionR
 }
 
 type ListConnQuestionResponseBodyOutlines struct {
-	ConnQuestionId *int64  `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifyTime     *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	OutlineId      *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
-	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 30001979424
+	ConnQuestionId *int64 `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
+	// example:
+	//
+	// 2022-02-25T02:47:18Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2022-05-26T10:18:15Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 797
+	OutlineId *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListConnQuestionResponseBodyOutlines) String() string {
@@ -6541,12 +7991,32 @@ func (s *ListConnQuestionResponse) SetBody(v *ListConnQuestionResponseBody) *Lis
 }
 
 type ListDSEntityRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// system
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 实体
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListDSEntityRequest) String() string {
@@ -6588,11 +8058,23 @@ func (s *ListDSEntityRequest) SetPageSize(v int32) *ListDSEntityRequest {
 }
 
 type ListDSEntityResponseBody struct {
-	Entities   []*ListDSEntityResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
-	PageNumber *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Entities []*ListDSEntityResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ga4h345defgwet2sdf223
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDSEntityResponseBody) String() string {
@@ -6629,14 +8111,38 @@ func (s *ListDSEntityResponseBody) SetTotalCount(v int32) *ListDSEntityResponseB
 }
 
 type ListDSEntityResponseBodyEntities struct {
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUserId   *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 123231
+	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// example:
+	//
+	// test
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	EntityId       *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityName     *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	EntityType     *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	ModifyTime     *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ModifyUserId   *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// example:
+	//
+	// 234564567445
+	EntityId   *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// example:
+	//
+	// synonyms
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 123231
+	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// example:
+	//
+	// test
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
 	SysEntityCode  *string `json:"SysEntityCode,omitempty" xml:"SysEntityCode,omitempty"`
 }
@@ -6729,13 +8235,35 @@ func (s *ListDSEntityResponse) SetBody(v *ListDSEntityResponseBody) *ListDSEntit
 }
 
 type ListDSEntityValueRequest struct {
-	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	EntityId      *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityValueId *int64  `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Keyword       *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// 234
+	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListDSEntityValueRequest) String() string {
@@ -6783,10 +8311,22 @@ func (s *ListDSEntityValueRequest) SetPageSize(v int32) *ListDSEntityValueReques
 
 type ListDSEntityValueResponseBody struct {
 	EntityValues []*ListDSEntityValueResponseBodyEntityValues `json:"EntityValues,omitempty" xml:"EntityValues,omitempty" type:"Repeated"`
-	PageNumber   *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// n3fg34gbfj8adf2gj923
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDSEntityValueResponseBody) String() string {
@@ -6823,12 +8363,24 @@ func (s *ListDSEntityValueResponseBody) SetTotalCount(v int32) *ListDSEntityValu
 }
 
 type ListDSEntityValueResponseBodyEntityValues struct {
-	Content       *string   `json:"Content,omitempty" xml:"Content,omitempty"`
-	CreateTime    *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EntityId      *int64    `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityValueId *int64    `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	ModifyTime    *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Synonyms      []*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty" type:"Repeated"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 34313785463
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// 3467858234534534532
+	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
+	ModifyTime *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Synonyms   []*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty" type:"Repeated"`
 }
 
 func (s ListDSEntityValueResponseBodyEntityValues) String() string {
@@ -6899,11 +8451,26 @@ func (s *ListDSEntityValueResponse) SetBody(v *ListDSEntityValueResponseBody) *L
 }
 
 type ListInstanceRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RobotType  *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// scenario_im
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// scenario_im
+	RobotType *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
 }
 
 func (s ListInstanceRequest) String() string {
@@ -6940,11 +8507,23 @@ func (s *ListInstanceRequest) SetRobotType(v string) *ListInstanceRequest {
 }
 
 type ListInstanceResponseBody struct {
-	Instances  []*ListInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	PageNumber *int64                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Instances []*ListInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 5
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 92B81548-42B9-4B34-924B-4E778AEB412B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 23
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInstanceResponseBody) String() string {
@@ -6981,13 +8560,34 @@ func (s *ListInstanceResponseBody) SetTotalCount(v int64) *ListInstanceResponseB
 }
 
 type ListInstanceResponseBodyInstances struct {
-	Avatar       *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// /alimefe/meebot/robot/0.0.5/img/xxx-90-97.png
+	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 用于C端问答的机器人
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// example:
+	//
+	// zh-cn
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RobotType    *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
+	// example:
+	//
+	// 智能客服-小C
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// scenario_im
+	RobotType *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
 }
 
 func (s ListInstanceResponseBodyInstances) String() string {
@@ -7063,11 +8663,28 @@ func (s *ListInstanceResponse) SetBody(v *ListInstanceResponseBody) *ListInstanc
 }
 
 type ListIntentRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 查天气
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListIntentRequest) String() string {
@@ -7104,11 +8721,23 @@ func (s *ListIntentRequest) SetPageSize(v int32) *ListIntentRequest {
 }
 
 type ListIntentResponseBody struct {
-	Intents    []*ListIntentResponseBodyIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
-	PageNumber *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Intents []*ListIntentResponseBodyIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 23dsfa34r2s2s2sd12
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListIntentResponseBody) String() string {
@@ -7145,14 +8774,35 @@ func (s *ListIntentResponseBody) SetTotalCount(v int32) *ListIntentResponseBody 
 }
 
 type ListIntentResponseBodyIntents struct {
-	AliasName      *string                                   `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	CreateTime     *string                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUserId   *string                                   `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	CreateUserName *string                                   `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	IntentId       *int64                                    `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	IntentName     *string                                   `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	ModifyTime     *string                                   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ModifyUserId   *string                                   `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 123231
+	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// example:
+	//
+	// test
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// example:
+	//
+	// 234234234234
+	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 123231
+	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// example:
+	//
+	// test
 	ModifyUserName *string                                   `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
 	SlotInfos      []*ListIntentResponseBodyIntentsSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
@@ -7216,12 +8866,24 @@ func (s *ListIntentResponseBodyIntents) SetSlotInfos(v []*ListIntentResponseBody
 }
 
 type ListIntentResponseBodyIntentsSlotInfos struct {
-	Array       *bool   `json:"Array,omitempty" xml:"Array,omitempty"`
-	Encrypt     *bool   `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	// example:
+	//
+	// false
+	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// example:
+	//
+	// false
+	Encrypt *bool `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	// example:
+	//
+	// false
 	Interactive *bool   `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SlotId      *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 12134223
+	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListIntentResponseBodyIntentsSlotInfos) String() string {
@@ -7292,12 +8954,34 @@ func (s *ListIntentResponse) SetBody(v *ListIntentResponseBody) *ListIntentRespo
 }
 
 type ListLgfRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	LgfText    *string `json:"LgfText,omitempty" xml:"LgfText,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// .{0,5}北京天气
+	LgfText *string `json:"LgfText,omitempty" xml:"LgfText,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListLgfRequest) String() string {
@@ -7339,11 +9023,23 @@ func (s *ListLgfRequest) SetPageSize(v int32) *ListLgfRequest {
 }
 
 type ListLgfResponseBody struct {
-	Lgfs       []*ListLgfResponseBodyLgfs `json:"Lgfs,omitempty" xml:"Lgfs,omitempty" type:"Repeated"`
-	PageNumber *int32                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Lgfs []*ListLgfResponseBodyLgfs `json:"Lgfs,omitempty" xml:"Lgfs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 34fg57h2gh5783
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLgfResponseBody) String() string {
@@ -7380,10 +9076,23 @@ func (s *ListLgfResponseBody) SetTotalCount(v int32) *ListLgfResponseBody {
 }
 
 type ListLgfResponseBodyLgfs struct {
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// 256756734345
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 	// LGF ID
-	LgfId      *int64  `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	//
+	// example:
+	//
+	// 123
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	RuleText   *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
 }
@@ -7451,9 +9160,20 @@ func (s *ListLgfResponse) SetBody(v *ListLgfResponseBody) *ListLgfResponse {
 }
 
 type ListSaasInfoRequest struct {
-	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// DS,FAQ
 	SaasGroupCodes *string `json:"SaasGroupCodes,omitempty" xml:"SaasGroupCodes,omitempty"`
-	SaasName       *string `json:"SaasName,omitempty" xml:"SaasName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// userTest
+	SaasName *string `json:"SaasName,omitempty" xml:"SaasName,omitempty"`
 }
 
 func (s ListSaasInfoRequest) String() string {
@@ -7482,7 +9202,14 @@ func (s *ListSaasInfoRequest) SetSaasName(v string) *ListSaasInfoRequest {
 type ListSaasInfoResponseBody struct {
 	Data []*ListSaasInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// A629A28F-F25E-5572-A679-FA46FB0151D6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 06614fdb-c72f-436e-8003-dfe8a2854a15
 	SaasToken *string `json:"SaasToken,omitempty" xml:"SaasToken,omitempty"`
 }
 
@@ -7510,11 +9237,23 @@ func (s *ListSaasInfoResponseBody) SetSaasToken(v string) *ListSaasInfoResponseB
 }
 
 type ListSaasInfoResponseBodyData struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	EnName     *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// GLOBAL_SERVICE
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// GLOBAL SERVICE
+	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// https://pre-alime4service.console.aliyun.com/?productCode=p_beebot_public&switchAgent=1204001&saasCode=Robot&saasToken=06614fdb-c72f-436e-8003-dfe8a2854a15&saasName=123#/robot
 	ServiceUrl *string `json:"ServiceUrl,omitempty" xml:"ServiceUrl,omitempty"`
-	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// https://alime.console.aliyun.com/?productCode=p_beebot_public&switchAgent=1204001&saasCode=Robot&saasToken=06614fdb-c72f-436e-8003-dfe8a2854a15&saasName=123#/robot
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s ListSaasInfoResponseBodyData) String() string {
@@ -7580,6 +9319,11 @@ func (s *ListSaasInfoResponse) SetBody(v *ListSaasInfoResponseBody) *ListSaasInf
 }
 
 type ListSaasPermissionGroupInfosRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 }
 
@@ -7599,6 +9343,10 @@ func (s *ListSaasPermissionGroupInfosRequest) SetAgentKey(v string) *ListSaasPer
 type ListSaasPermissionGroupInfosResponseBody struct {
 	Data []*ListSaasPermissionGroupInfosResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 8AD9FA10-7780-5E12-B701-13C928524F32
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7621,10 +9369,16 @@ func (s *ListSaasPermissionGroupInfosResponseBody) SetRequestId(v string) *ListS
 }
 
 type ListSaasPermissionGroupInfosResponseBodyData struct {
-	EnName   *string                                                `json:"EnName,omitempty" xml:"EnName,omitempty"`
-	Name     *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	PgInfos  []*ListSaasPermissionGroupInfosResponseBodyDataPgInfos `json:"PgInfos,omitempty" xml:"PgInfos,omitempty" type:"Repeated"`
-	SaasCode *string                                                `json:"SaasCode,omitempty" xml:"SaasCode,omitempty"`
+	// example:
+	//
+	// Release Center
+	EnName  *string                                                `json:"EnName,omitempty" xml:"EnName,omitempty"`
+	Name    *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	PgInfos []*ListSaasPermissionGroupInfosResponseBodyDataPgInfos `json:"PgInfos,omitempty" xml:"PgInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// FAQ
+	SaasCode *string `json:"SaasCode,omitempty" xml:"SaasCode,omitempty"`
 }
 
 func (s ListSaasPermissionGroupInfosResponseBodyData) String() string {
@@ -7656,7 +9410,13 @@ func (s *ListSaasPermissionGroupInfosResponseBodyData) SetSaasCode(v string) *Li
 }
 
 type ListSaasPermissionGroupInfosResponseBodyDataPgInfos struct {
-	PgCode   *string `json:"PgCode,omitempty" xml:"PgCode,omitempty"`
+	// example:
+	//
+	// FAQ
+	PgCode *string `json:"PgCode,omitempty" xml:"PgCode,omitempty"`
+	// example:
+	//
+	// FAQ
 	PgEnName *string `json:"PgEnName,omitempty" xml:"PgEnName,omitempty"`
 	PgName   *string `json:"PgName,omitempty" xml:"PgName,omitempty"`
 }
@@ -7714,8 +9474,16 @@ func (s *ListSaasPermissionGroupInfosResponse) SetBody(v *ListSaasPermissionGrou
 }
 
 type ListSimQuestionRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30002299537
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s ListSimQuestionRequest) String() string {
@@ -7737,6 +9505,9 @@ func (s *ListSimQuestionRequest) SetKnowledgeId(v int64) *ListSimQuestionRequest
 }
 
 type ListSimQuestionResponseBody struct {
+	// example:
+	//
+	// 15CD94CC-CBEB-4189-806C-A132D1F45D51
 	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SimQuestions []*ListSimQuestionResponseBodySimQuestions `json:"SimQuestions,omitempty" xml:"SimQuestions,omitempty" type:"Repeated"`
 }
@@ -7760,8 +9531,17 @@ func (s *ListSimQuestionResponseBody) SetSimQuestions(v []*ListSimQuestionRespon
 }
 
 type ListSimQuestionResponseBodySimQuestions struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifyTime    *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 2022-05-30T02:08:33Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2022-05-13T03:49:28Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 30001979424
 	SimQuestionId *int64  `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
 	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -7824,8 +9604,16 @@ func (s *ListSimQuestionResponse) SetBody(v *ListSimQuestionResponseBody) *ListS
 }
 
 type ListSolutionRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001905617
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s ListSolutionRequest) String() string {
@@ -7847,6 +9635,9 @@ func (s *ListSolutionRequest) SetKnowledgeId(v int64) *ListSolutionRequest {
 }
 
 type ListSolutionResponseBody struct {
+	// example:
+	//
+	// 5B29DB5E-251D-5A73-84B5-A12DF795F231
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Solutions []*ListSolutionResponseBodySolutions `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
 }
@@ -7870,13 +9661,25 @@ func (s *ListSolutionResponseBody) SetSolutions(v []*ListSolutionResponseBodySol
 }
 
 type ListSolutionResponseBodySolutions struct {
-	Content          *string   `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentType      *int32    `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	CreateTime       *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 1
+	ContentType *int32 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// example:
+	//
+	// 2022-03-29T03:55:04Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2022-03-29T06:23:53Z
 	ModifyTime       *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
 	PlainText        *string   `json:"PlainText,omitempty" xml:"PlainText,omitempty"`
-	SolutionId       *int64    `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	// example:
+	//
+	// 496
+	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
 }
 
 func (s ListSolutionResponseBodySolutions) String() string {
@@ -7951,13 +9754,161 @@ func (s *ListSolutionResponse) SetBody(v *ListSolutionResponseBody) *ListSolutio
 	return s
 }
 
+type ListTongyiChatHistorysRequest struct {
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-04-01 08:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 30
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-7QuUfaqMQe
+	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-04-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListTongyiChatHistorysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTongyiChatHistorysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTongyiChatHistorysRequest) SetAgentKey(v string) *ListTongyiChatHistorysRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListTongyiChatHistorysRequest) SetEndTime(v string) *ListTongyiChatHistorysRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTongyiChatHistorysRequest) SetLimit(v int32) *ListTongyiChatHistorysRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListTongyiChatHistorysRequest) SetRobotInstanceId(v string) *ListTongyiChatHistorysRequest {
+	s.RobotInstanceId = &v
+	return s
+}
+
+func (s *ListTongyiChatHistorysRequest) SetStartTime(v string) *ListTongyiChatHistorysRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListTongyiChatHistorysResponseBody struct {
+	// example:
+	//
+	// 116
+	CostTime *string                  `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	Datas    []map[string]interface{} `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Repeated"`
+	// example:
+	//
+	// D0DDFC4C-D66D-4787-9AE4-4D757481EDEE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListTongyiChatHistorysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTongyiChatHistorysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTongyiChatHistorysResponseBody) SetCostTime(v string) *ListTongyiChatHistorysResponseBody {
+	s.CostTime = &v
+	return s
+}
+
+func (s *ListTongyiChatHistorysResponseBody) SetDatas(v []map[string]interface{}) *ListTongyiChatHistorysResponseBody {
+	s.Datas = v
+	return s
+}
+
+func (s *ListTongyiChatHistorysResponseBody) SetRequestId(v string) *ListTongyiChatHistorysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTongyiChatHistorysResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTongyiChatHistorysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTongyiChatHistorysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTongyiChatHistorysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTongyiChatHistorysResponse) SetHeaders(v map[string]*string) *ListTongyiChatHistorysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTongyiChatHistorysResponse) SetStatusCode(v int32) *ListTongyiChatHistorysResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTongyiChatHistorysResponse) SetBody(v *ListTongyiChatHistorysResponseBody) *ListTongyiChatHistorysResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserSayRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 您做核酸了嘛
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 232
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListUserSayRequest) String() string {
@@ -7999,9 +9950,21 @@ func (s *ListUserSayRequest) SetPageSize(v int32) *ListUserSayRequest {
 }
 
 type ListUserSayResponseBody struct {
-	PageNumber *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// fs1fg4512v43572v23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
 	TotalCount *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	UserSays   []*ListUserSayResponseBodyUserSays `json:"UserSays,omitempty" xml:"UserSays,omitempty" type:"Repeated"`
 }
@@ -8040,12 +10003,24 @@ func (s *ListUserSayResponseBody) SetUserSays(v []*ListUserSayResponseBodyUserSa
 }
 
 type ListUserSayResponseBodyUserSays struct {
-	Content    *string                                     `json:"Content,omitempty" xml:"Content,omitempty"`
-	CreateTime *string                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IntentId   *int64                                      `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 235564564
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// 2021-08-12T16:00:01Z
 	ModifyTime *string                                     `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	SlotInfos  []*ListUserSayResponseBodyUserSaysSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
-	UserSayId  *int64                                      `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+	// example:
+	//
+	// 3453452138
+	UserSayId *int64 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
 }
 
 func (s ListUserSayResponseBodyUserSays) String() string {
@@ -8087,9 +10062,18 @@ func (s *ListUserSayResponseBodyUserSays) SetUserSayId(v int64) *ListUserSayResp
 }
 
 type ListUserSayResponseBodyUserSaysSlotInfos struct {
-	EndIndex   *int32  `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
-	SlotId     *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	StartIndex *int32  `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
+	// example:
+	//
+	// 4
+	EndIndex *int32 `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
+	// example:
+	//
+	// 3456sdfg3tu
+	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	// example:
+	//
+	// 2
+	StartIndex *int32 `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
 }
 
 func (s ListUserSayResponseBodyUserSaysSlotInfos) String() string {
@@ -8145,9 +10129,18 @@ func (s *ListUserSayResponse) SetBody(v *ListUserSayResponseBody) *ListUserSayRe
 }
 
 type NluRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Utterance  *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	// example:
+	//
+	// 北京的天气怎么样
+	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 
 func (s NluRequest) String() string {
@@ -8174,9 +10167,15 @@ func (s *NluRequest) SetUtterance(v string) *NluRequest {
 }
 
 type NluResponseBody struct {
+	// example:
+	//
+	// 2828708A-2C7A-1BAE-B810-87DB9DA9C661
 	MessageId *string                    `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 	Messages  []*NluResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// A6357C1B-1D79-1382-B259-BD9E80751B42
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s NluResponseBody) String() string {
@@ -8249,8 +10248,14 @@ func (s *NluResponseBodyMessagesDialogHubNluInfo) SetGlobalSensitiveWordList(v [
 }
 
 type NluResponseBodyMessagesDialogHubNluInfoGlobalDictList struct {
+	// example:
+	//
+	// 天气
 	StandardWord *string `json:"StandardWord,omitempty" xml:"StandardWord,omitempty"`
-	Word         *string `json:"Word,omitempty" xml:"Word,omitempty"`
+	// example:
+	//
+	// 天气
+	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 
 func (s NluResponseBodyMessagesDialogHubNluInfoGlobalDictList) String() string {
@@ -8272,8 +10277,14 @@ func (s *NluResponseBodyMessagesDialogHubNluInfoGlobalDictList) SetWord(v string
 }
 
 type NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList struct {
+	// example:
+	//
+	// 天气
 	StandardWord *string `json:"StandardWord,omitempty" xml:"StandardWord,omitempty"`
-	Word         *string `json:"Word,omitempty" xml:"Word,omitempty"`
+	// example:
+	//
+	// 天气
+	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 
 func (s NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList) String() string {
@@ -8318,10 +10329,22 @@ func (s *NluResponseBodyMessagesDsNluInfo) SetIntentList(v []*NluResponseBodyMes
 }
 
 type NluResponseBodyMessagesDsNluInfoEntityList struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// @城市
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 北京
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 首都
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s NluResponseBodyMessagesDsNluInfoEntityList) String() string {
@@ -8353,12 +10376,27 @@ func (s *NluResponseBodyMessagesDsNluInfoEntityList) SetValue(v string) *NluResp
 }
 
 type NluResponseBodyMessagesDsNluInfoIntentList struct {
-	IntentId    *int64                                                `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	MatchDetail *string                                               `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
-	MatchType   *string                                               `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Name        *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	Score       *float64                                              `json:"Score,omitempty" xml:"Score,omitempty"`
-	SlotList    []*NluResponseBodyMessagesDsNluInfoIntentListSlotList `json:"SlotList,omitempty" xml:"SlotList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 724387
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// classifierType=Fewshot,from=Fewshot,content=[我要查北京的天气, 帮我查北京的天气, 北京天气怎么样, 北京今天下雨吗, 北京今天多少度]
+	MatchDetail *string `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
+	// example:
+	//
+	// FewShotLearning
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// example:
+	//
+	// 查天气意图
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0.995
+	Score    *float64                                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	SlotList []*NluResponseBodyMessagesDsNluInfoIntentListSlotList `json:"SlotList,omitempty" xml:"SlotList,omitempty" type:"Repeated"`
 }
 
 func (s NluResponseBodyMessagesDsNluInfoIntentList) String() string {
@@ -8400,10 +10438,22 @@ func (s *NluResponseBodyMessagesDsNluInfoIntentList) SetSlotList(v []*NluRespons
 }
 
 type NluResponseBodyMessagesDsNluInfoIntentListSlotList struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// @城市
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 北京
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 首都
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s NluResponseBodyMessagesDsNluInfoIntentListSlotList) String() string {
@@ -8464,6 +10514,9 @@ func (s *NluResponse) SetBody(v *NluResponseBody) *NluResponse {
 }
 
 type QueryPerspectivesRequest struct {
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 }
 
@@ -8482,7 +10535,10 @@ func (s *QueryPerspectivesRequest) SetAgentKey(v string) *QueryPerspectivesReque
 
 type QueryPerspectivesResponseBody struct {
 	Perspectives []*QueryPerspectivesResponseBodyPerspectives `json:"Perspectives,omitempty" xml:"Perspectives,omitempty" type:"Repeated"`
-	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// F285D735-D580-18A8-B97F-B2E72B00F101
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryPerspectivesResponseBody) String() string {
@@ -8504,13 +10560,34 @@ func (s *QueryPerspectivesResponseBody) SetRequestId(v string) *QueryPerspective
 }
 
 type QueryPerspectivesResponseBodyPerspectives struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ModifyTime      *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2022-04-12T06:30:17Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2022-04-29T03:38:54Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 移动端视角
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// FZJBY3raWr
 	PerspectiveCode *string `json:"PerspectiveCode,omitempty" xml:"PerspectiveCode,omitempty"`
-	PerspectiveId   *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
-	SelfDefine      *bool   `json:"SelfDefine,omitempty" xml:"SelfDefine,omitempty"`
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 3001
+	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
+	// example:
+	//
+	// true
+	SelfDefine *bool `json:"SelfDefine,omitempty" xml:"SelfDefine,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryPerspectivesResponseBodyPerspectives) String() string {
@@ -8586,8 +10663,16 @@ func (s *QueryPerspectivesResponse) SetBody(v *QueryPerspectivesResponseBody) *Q
 }
 
 type RetryDocRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// e2a20f74cd9042558002c0f7dc873739_p_outbound_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001905617
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s RetryDocRequest) String() string {
@@ -8609,8 +10694,15 @@ func (s *RetryDocRequest) SetKnowledgeId(v int64) *RetryDocRequest {
 }
 
 type RetryDocResponseBody struct {
+	// example:
+	//
+	// 30001905617
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 6419BA93-D111-5225-8998-13E63E6D3940
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8662,24 +10754,66 @@ func (s *RetryDocResponse) SetBody(v *RetryDocResponseBody) *RetryDocResponse {
 }
 
 type SearchDocRequest struct {
-	AgentKey        *string  `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	CategoryIds     []*int64 `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
-	CreateTimeBegin *string  `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
-	CreateTimeEnd   *string  `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	CreateUserName  *string  `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	EndTimeBegin    *string  `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
-	EndTimeEnd      *string  `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
-	Keyword         *string  `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	ModifyTimeBegin *string  `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
-	ModifyTimeEnd   *string  `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
-	ModifyUserName  *string  `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	PageNumber      *int32   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProcessStatus   *int32   `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
-	SearchScope     *int32   `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
-	StartTimeBegin  *string  `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
-	StartTimeEnd    *string  `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
-	Status          *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey    *string  `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryIds []*int64 `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-04-02T03:09:30Z
+	CreateTimeBegin *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
+	// example:
+	//
+	// 2022-05-02T03:09:30Z
+	CreateTimeEnd  *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// example:
+	//
+	// 2023-04-02T03:09:30Z
+	EndTimeBegin *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
+	// example:
+	//
+	// 2023-05-02T03:09:30Z
+	EndTimeEnd *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 2023-04-02T03:09:30Z
+	ModifyTimeBegin *string `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
+	// example:
+	//
+	// 2023-05-02T03:09:30Z
+	ModifyTimeEnd  *string `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0
+	ProcessStatus *int32 `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	// example:
+	//
+	// 1
+	SearchScope *int32 `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
+	// example:
+	//
+	// 2022-04-02T03:09:30Z
+	StartTimeBegin *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
+	// example:
+	//
+	// 2022-04-03T03:09:30Z
+	StartTimeEnd *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SearchDocRequest) String() string {
@@ -8781,24 +10915,66 @@ func (s *SearchDocRequest) SetStatus(v int32) *SearchDocRequest {
 }
 
 type SearchDocShrinkRequest struct {
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey          *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CategoryIdsShrink *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
-	CreateTimeBegin   *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
-	CreateTimeEnd     *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	CreateUserName    *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	EndTimeBegin      *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
-	EndTimeEnd        *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
-	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	ModifyTimeBegin   *string `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
-	ModifyTimeEnd     *string `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
-	ModifyUserName    *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProcessStatus     *int32  `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
-	SearchScope       *int32  `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
-	StartTimeBegin    *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
-	StartTimeEnd      *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
-	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2022-04-02T03:09:30Z
+	CreateTimeBegin *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
+	// example:
+	//
+	// 2022-05-02T03:09:30Z
+	CreateTimeEnd  *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// example:
+	//
+	// 2023-04-02T03:09:30Z
+	EndTimeBegin *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
+	// example:
+	//
+	// 2023-05-02T03:09:30Z
+	EndTimeEnd *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 2023-04-02T03:09:30Z
+	ModifyTimeBegin *string `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
+	// example:
+	//
+	// 2023-05-02T03:09:30Z
+	ModifyTimeEnd  *string `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0
+	ProcessStatus *int32 `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	// example:
+	//
+	// 1
+	SearchScope *int32 `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
+	// example:
+	//
+	// 2022-04-02T03:09:30Z
+	StartTimeBegin *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
+	// example:
+	//
+	// 2022-04-03T03:09:30Z
+	StartTimeEnd *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SearchDocShrinkRequest) String() string {
@@ -8900,12 +11076,25 @@ func (s *SearchDocShrinkRequest) SetStatus(v int32) *SearchDocShrinkRequest {
 }
 
 type SearchDocResponseBody struct {
-	DocHits    []*SearchDocResponseBodyDocHits `json:"DocHits,omitempty" xml:"DocHits,omitempty" type:"Repeated"`
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	DocHits []*SearchDocResponseBodyDocHits `json:"DocHits,omitempty" xml:"DocHits,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// E3E5C779-A630-45AC-B0F2-A4506A4212F1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 141
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s SearchDocResponseBody) String() string {
@@ -8942,26 +11131,71 @@ func (s *SearchDocResponseBody) SetTotalCount(v int32) *SearchDocResponseBody {
 }
 
 type SearchDocResponseBodyDocHits struct {
-	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	CategoryId      *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUserId    *int64  `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	CreateUserName  *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	DocName         *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
-	EffectStatus    *int32  `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
-	EndDate         *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	KnowledgeId     *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	Meta            *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	ModifyTime      *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ModifyUserId    *int64  `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
-	ModifyUserName  *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// example:
+	//
+	// cn_dytns
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// 30000135654
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":"docName"}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 2023-06-22T03:53:41Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 111111111
+	CreateUserId   *int64  `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	DocName        *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// example:
+	//
+	// 20
+	EffectStatus *int32 `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
+	// example:
+	//
+	// 2099-12-31T16:00:00Z
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// 30002692007
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// {"code":"xxx"}
+	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// example:
+	//
+	// 2023-06-25T02:27:42Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 222222222
+	ModifyUserId   *int64  `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// example:
+	//
+	// true
 	ProcessCanRetry *bool   `json:"ProcessCanRetry,omitempty" xml:"ProcessCanRetry,omitempty"`
 	ProcessMessage  *string `json:"ProcessMessage,omitempty" xml:"ProcessMessage,omitempty"`
-	ProcessStatus   *int32  `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
-	StartDate       *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Url             *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0
+	ProcessStatus *int32 `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	// example:
+	//
+	// 2023-02-28T11:40:18Z
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s SearchDocResponseBodyDocHits) String() string {
@@ -9102,23 +11336,68 @@ func (s *SearchDocResponse) SetBody(v *SearchDocResponseBody) *SearchDocResponse
 }
 
 type SearchFaqRequest struct {
-	AgentKey        *string  `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	CategoryIds     []*int64 `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
-	CreateTimeBegin *string  `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
-	CreateTimeEnd   *string  `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	CreateUserName  *string  `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	EndTimeBegin    *string  `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
-	EndTimeEnd      *string  `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
-	Keyword         *string  `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	ModifyTimeBegin *string  `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
-	ModifyTimeEnd   *string  `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
-	ModifyUserName  *string  `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	PageNumber      *int32   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchScope     *int32   `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
-	StartTimeBegin  *string  `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
-	StartTimeEnd    *string  `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
-	Status          *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey    *string  `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryIds []*int64 `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-04-02T03:09:30Z
+	CreateTimeBegin *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
+	// example:
+	//
+	// 2022-05-02T03:09:30Z
+	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// example:
+	//
+	// test01
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// example:
+	//
+	// 2023-04-02T03:09:30Z
+	EndTimeBegin *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
+	// example:
+	//
+	// 2023-05-02T03:09:30Z
+	EndTimeEnd *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 2023-04-02T03:09:30Z
+	ModifyTimeBegin *string `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
+	// example:
+	//
+	// 2023-05-02T03:09:30Z
+	ModifyTimeEnd *string `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
+	// example:
+	//
+	// test01
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	SearchScope *int32 `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
+	// example:
+	//
+	// 2022-04-02T03:09:30Z
+	StartTimeBegin *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
+	// example:
+	//
+	// 2022-04-03T03:09:30Z
+	StartTimeEnd *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SearchFaqRequest) String() string {
@@ -9215,23 +11494,68 @@ func (s *SearchFaqRequest) SetStatus(v int32) *SearchFaqRequest {
 }
 
 type SearchFaqShrinkRequest struct {
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey          *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CategoryIdsShrink *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
-	CreateTimeBegin   *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
-	CreateTimeEnd     *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	CreateUserName    *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	EndTimeBegin      *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
-	EndTimeEnd        *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
-	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	ModifyTimeBegin   *string `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
-	ModifyTimeEnd     *string `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
-	ModifyUserName    *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchScope       *int32  `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
-	StartTimeBegin    *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
-	StartTimeEnd      *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
-	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2022-04-02T03:09:30Z
+	CreateTimeBegin *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
+	// example:
+	//
+	// 2022-05-02T03:09:30Z
+	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// example:
+	//
+	// test01
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// example:
+	//
+	// 2023-04-02T03:09:30Z
+	EndTimeBegin *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
+	// example:
+	//
+	// 2023-05-02T03:09:30Z
+	EndTimeEnd *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 2023-04-02T03:09:30Z
+	ModifyTimeBegin *string `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
+	// example:
+	//
+	// 2023-05-02T03:09:30Z
+	ModifyTimeEnd *string `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
+	// example:
+	//
+	// test01
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	SearchScope *int32 `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
+	// example:
+	//
+	// 2022-04-02T03:09:30Z
+	StartTimeBegin *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
+	// example:
+	//
+	// 2022-04-03T03:09:30Z
+	StartTimeEnd *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SearchFaqShrinkRequest) String() string {
@@ -9328,11 +11652,23 @@ func (s *SearchFaqShrinkRequest) SetStatus(v int32) *SearchFaqShrinkRequest {
 }
 
 type SearchFaqResponseBody struct {
-	FaqHits    []*SearchFaqResponseBodyFaqHits `json:"FaqHits,omitempty" xml:"FaqHits,omitempty" type:"Repeated"`
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	FaqHits []*SearchFaqResponseBodyFaqHits `json:"FaqHits,omitempty" xml:"FaqHits,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// E45491D5-7E0A-42C6-9B21-91D1066B1475
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1075
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s SearchFaqResponseBody) String() string {
@@ -9369,19 +11705,49 @@ func (s *SearchFaqResponseBody) SetTotalCount(v int32) *SearchFaqResponseBody {
 }
 
 type SearchFaqResponseBodyFaqHits struct {
-	CategoryId       *int64    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CreateTime       *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUserId     *int64    `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	CreateUserName   *string   `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// example:
+	//
+	// 30000055639
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 2022-04-02T03:09:30Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 18453
+	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// example:
+	//
+	// test01
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// example:
+	//
+	// 20
 	EffectStatus     *int32    `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
 	HitSimilarTitles []*string `json:"HitSimilarTitles,omitempty" xml:"HitSimilarTitles,omitempty" type:"Repeated"`
 	HitSolutions     []*string `json:"HitSolutions,omitempty" xml:"HitSolutions,omitempty" type:"Repeated"`
-	KnowledgeId      *int64    `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	ModifyTime       *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ModifyUserId     *int64    `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
-	ModifyUserName   *string   `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	Status           *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title            *string   `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 30002145804
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// 2022-04-02T03:09:30Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 18453
+	ModifyUserId *int64 `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// example:
+	//
+	// test01
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	// example:
+	//
+	// 3
+	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s SearchFaqResponseBodyFaqHits) String() string {
@@ -9487,10 +11853,19 @@ func (s *SearchFaqResponse) SetBody(v *SearchFaqResponseBody) *SearchFaqResponse
 }
 
 type UpdateCategoryRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	BizCode    *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	BizCode  *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 231001028593
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateCategoryRequest) String() string {
@@ -9522,6 +11897,9 @@ func (s *UpdateCategoryRequest) SetName(v string) *UpdateCategoryRequest {
 }
 
 type UpdateCategoryResponseBody struct {
+	// example:
+	//
+	// F79E7305-5314-5069-A701-9591AD051902
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9568,9 +11946,22 @@ func (s *UpdateCategoryResponse) SetBody(v *UpdateCategoryResponseBody) *UpdateC
 }
 
 type UpdateConnQuestionRequest struct {
-	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	ConnQuestionId *int64  `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
-	OutlineId      *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000000295
+	ConnQuestionId *int64 `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 877397683
+	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
 }
 
 func (s UpdateConnQuestionRequest) String() string {
@@ -9597,6 +11988,9 @@ func (s *UpdateConnQuestionRequest) SetOutlineId(v int64) *UpdateConnQuestionReq
 }
 
 type UpdateConnQuestionResponseBody struct {
+	// example:
+	//
+	// 004EB5C0-9DEB-53BF-A57A-0407A6D6B3C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9643,10 +12037,31 @@ func (s *UpdateConnQuestionResponse) SetBody(v *UpdateConnQuestionResponseBody) 
 }
 
 type UpdateDSEntityRequest struct {
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	EntityId   *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 实体名称
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// example:
+	//
+	// synonyms
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9684,7 +12099,13 @@ func (s *UpdateDSEntityRequest) SetInstanceId(v string) *UpdateDSEntityRequest {
 }
 
 type UpdateDSEntityResponseBody struct {
-	EntityId  *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// 123
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// df23fgh4hyj67hn56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9736,12 +12157,31 @@ func (s *UpdateDSEntityResponse) SetBody(v *UpdateDSEntityResponseBody) *UpdateD
 }
 
 type UpdateDSEntityValueRequest struct {
-	AgentKey      *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Content       *string   `json:"Content,omitempty" xml:"Content,omitempty"`
-	EntityId      *int64    `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityValueId *int64    `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	InstanceId    *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Synonyms      []*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 223423423
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2342377423
+	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
+	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Synonyms   []*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty" type:"Repeated"`
 }
 
 func (s UpdateDSEntityValueRequest) String() string {
@@ -9783,10 +12223,29 @@ func (s *UpdateDSEntityValueRequest) SetSynonyms(v []*string) *UpdateDSEntityVal
 }
 
 type UpdateDSEntityValueShrinkRequest struct {
-	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	EntityId       *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityValueId  *int64  `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 223423423
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2342377423
+	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SynonymsShrink *string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty"`
 }
@@ -9830,8 +12289,14 @@ func (s *UpdateDSEntityValueShrinkRequest) SetSynonymsShrink(v string) *UpdateDS
 }
 
 type UpdateDSEntityValueResponseBody struct {
-	EntityValueId *int64  `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2342377423
+	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// example:
+	//
+	// sDag3g43wesf2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateDSEntityValueResponseBody) String() string {
@@ -9882,16 +12347,39 @@ func (s *UpdateDSEntityValueResponse) SetBody(v *UpdateDSEntityValueResponseBody
 }
 
 type UpdateDocRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	CategoryId  *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Config      *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DocName     *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
-	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	Meta        *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 231001028593
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":""}
+	Config  *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// example:
+	//
+	// 2023-03-11T23:59:59Z
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001905617
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// {"code":"xxx"}
+	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// example:
+	//
+	// 2022-05-25T16:28:36Z
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateDocRequest) String() string {
@@ -9953,8 +12441,15 @@ func (s *UpdateDocRequest) SetTitle(v string) *UpdateDocRequest {
 }
 
 type UpdateDocResponseBody struct {
+	// example:
+	//
+	// 30002406051
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 0F9F136A-1BF6-5CC1-9D57-9717761F03B8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10006,12 +12501,32 @@ func (s *UpdateDocResponse) SetBody(v *UpdateDocResponseBody) *UpdateDocResponse
 }
 
 type UpdateFaqRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	CategoryId  *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30000049006
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 2030-12-31T16:00:00Z
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001905617
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// 2022-05-27T05:18:20Z
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateFaqRequest) String() string {
@@ -10053,6 +12568,9 @@ func (s *UpdateFaqRequest) SetTitle(v string) *UpdateFaqRequest {
 }
 
 type UpdateFaqResponseBody struct {
+	// example:
+	//
+	// 736994BD-AA35-4742-88C9-E64BE4BAA14B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10099,10 +12617,22 @@ func (s *UpdateFaqResponse) SetBody(v *UpdateFaqResponseBody) *UpdateFaqResponse
 }
 
 type UpdateInstanceRequest struct {
-	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 用于C端问答的机器人
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 智能客服-小C
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateInstanceRequest) String() string {
@@ -10134,6 +12664,9 @@ func (s *UpdateInstanceRequest) SetName(v string) *UpdateInstanceRequest {
 }
 
 type UpdateInstanceResponseBody struct {
+	// example:
+	//
+	// C45BFEE4-F657-1332-8B47-2C757B94C972
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10180,10 +12713,23 @@ func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateI
 }
 
 type UpdateIntentRequest struct {
-	AgentKey         *string                              `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId       *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentDefinition *UpdateIntentRequestIntentDefinition `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty" type:"Struct"`
-	IntentId         *int64                               `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 234234234534
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
 
 func (s UpdateIntentRequest) String() string {
@@ -10215,7 +12761,8 @@ func (s *UpdateIntentRequest) SetIntentId(v int64) *UpdateIntentRequest {
 }
 
 type UpdateIntentRequestIntentDefinition struct {
-	AliasName  *string                                         `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// This parameter is required.
 	IntentName *string                                         `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	SlotInfos  []*UpdateIntentRequestIntentDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
@@ -10244,12 +12791,28 @@ func (s *UpdateIntentRequestIntentDefinition) SetSlotInfos(v []*UpdateIntentRequ
 }
 
 type UpdateIntentRequestIntentDefinitionSlotInfos struct {
-	Array       *bool   `json:"Array,omitempty" xml:"Array,omitempty"`
-	Encrypt     *bool   `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
-	Interactive *bool   `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SlotId      *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// false
+	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// example:
+	//
+	// false
+	Encrypt *bool `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	// example:
+	//
+	// false
+	Interactive *bool `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dgadf23dfg2f
+	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	// This parameter is required.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdateIntentRequestIntentDefinitionSlotInfos) String() string {
@@ -10291,10 +12854,23 @@ func (s *UpdateIntentRequestIntentDefinitionSlotInfos) SetValue(v string) *Updat
 }
 
 type UpdateIntentShrinkRequest struct {
-	AgentKey               *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentDefinitionShrink *string `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
-	IntentId               *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 234234234534
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
 
 func (s UpdateIntentShrinkRequest) String() string {
@@ -10326,7 +12902,13 @@ func (s *UpdateIntentShrinkRequest) SetIntentId(v int64) *UpdateIntentShrinkRequ
 }
 
 type UpdateIntentResponseBody struct {
-	IntentId  *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// 234234234534
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// dfaf23dfas234234234534
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10378,10 +12960,25 @@ func (s *UpdateIntentResponse) SetBody(v *UpdateIntentResponseBody) *UpdateInten
 }
 
 type UpdateLgfRequest struct {
-	AgentKey      *string                        `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	InstanceId    *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
 	LgfDefinition *UpdateLgfRequestLgfDefinition `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty" type:"Struct"`
 	// LGF ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12121
 	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
 }
 
@@ -10414,7 +13011,13 @@ func (s *UpdateLgfRequest) SetLgfId(v int64) *UpdateLgfRequest {
 }
 
 type UpdateLgfRequestLgfDefinition struct {
-	IntentId *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23234523522
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
 	RuleText *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
 }
 
@@ -10437,10 +13040,25 @@ func (s *UpdateLgfRequestLgfDefinition) SetRuleText(v string) *UpdateLgfRequestL
 }
 
 type UpdateLgfShrinkRequest struct {
-	AgentKey            *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
 	LgfDefinitionShrink *string `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty"`
 	// LGF ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12121
 	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
 }
 
@@ -10473,7 +13091,13 @@ func (s *UpdateLgfShrinkRequest) SetLgfId(v int64) *UpdateLgfShrinkRequest {
 }
 
 type UpdateLgfResponseBody struct {
-	LgfId     *int64  `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// example:
+	//
+	// 2342556223532
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// example:
+	//
+	// 289dfa131adf23wqe2r
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10525,8 +13149,17 @@ func (s *UpdateLgfResponse) SetBody(v *UpdateLgfResponseBody) *UpdateLgfResponse
 }
 
 type UpdatePerspectiveRequest struct {
-	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 客户端视角
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 3001
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
 }
 
@@ -10554,6 +13187,9 @@ func (s *UpdatePerspectiveRequest) SetPerspectiveId(v string) *UpdatePerspective
 }
 
 type UpdatePerspectiveResponseBody struct {
+	// example:
+	//
+	// FC384CE1-8D42-1900-84E1-F33F990F2B5E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10600,9 +13236,18 @@ func (s *UpdatePerspectiveResponse) SetBody(v *UpdatePerspectiveResponseBody) *U
 }
 
 type UpdateSimQuestionRequest struct {
-	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	SimQuestionId *int64  `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000002788
+	SimQuestionId *int64 `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
+	// This parameter is required.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateSimQuestionRequest) String() string {
@@ -10629,6 +13274,9 @@ func (s *UpdateSimQuestionRequest) SetTitle(v string) *UpdateSimQuestionRequest 
 }
 
 type UpdateSimQuestionResponseBody struct {
+	// example:
+	//
+	// DFB71B34-4188-4EA2-9988-EF3014E75910
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10675,11 +13323,24 @@ func (s *UpdateSimQuestionResponse) SetBody(v *UpdateSimQuestionResponseBody) *U
 }
 
 type UpdateSolutionRequest struct {
-	AgentKey         *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Content          *string   `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentType      *int32    `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 1
+	ContentType *int32 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// This parameter is required.
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
-	SolutionId       *int64    `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100001333260
+	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
 }
 
 func (s UpdateSolutionRequest) String() string {
@@ -10716,6 +13377,9 @@ func (s *UpdateSolutionRequest) SetSolutionId(v int64) *UpdateSolutionRequest {
 }
 
 type UpdateSolutionResponseBody struct {
+	// example:
+	//
+	// 8B8F098D-A338-54DD-B19C-24BBBCBD8498
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10762,10 +13426,23 @@ func (s *UpdateSolutionResponse) SetBody(v *UpdateSolutionResponseBody) *UpdateS
 }
 
 type UpdateUserSayRequest struct {
-	AgentKey          *string                                `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId        *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	UserSayDefinition *UpdateUserSayRequestUserSayDefinition `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty" type:"Struct"`
-	UserSayId         *int64                                 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 34512323
+	UserSayId *int64 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
 }
 
 func (s UpdateUserSayRequest) String() string {
@@ -10797,7 +13474,13 @@ func (s *UpdateUserSayRequest) SetUserSayId(v int64) *UpdateUserSayRequest {
 }
 
 type UpdateUserSayRequestUserSayDefinition struct {
-	Content   *string                                           `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	IntentId  *int64                                            `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 	SlotInfos []*UpdateUserSayRequestUserSayDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
@@ -10826,9 +13509,18 @@ func (s *UpdateUserSayRequestUserSayDefinition) SetSlotInfos(v []*UpdateUserSayR
 }
 
 type UpdateUserSayRequestUserSayDefinitionSlotInfos struct {
-	EndIndex   *int32  `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
-	SlotId     *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	StartIndex *int32  `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
+	// example:
+	//
+	// 3
+	EndIndex *int32 `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
+	// example:
+	//
+	// 346ffg3q23dv
+	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	// example:
+	//
+	// 1
+	StartIndex *int32 `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
 }
 
 func (s UpdateUserSayRequestUserSayDefinitionSlotInfos) String() string {
@@ -10855,10 +13547,23 @@ func (s *UpdateUserSayRequestUserSayDefinitionSlotInfos) SetStartIndex(v int32) 
 }
 
 type UpdateUserSayShrinkRequest struct {
-	AgentKey                *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-yjzbyrEvqd
 	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	UserSayDefinitionShrink *string `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty"`
-	UserSayId               *int64  `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 34512323
+	UserSayId *int64 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
 }
 
 func (s UpdateUserSayShrinkRequest) String() string {
@@ -10890,8 +13595,14 @@ func (s *UpdateUserSayShrinkRequest) SetUserSayId(v int64) *UpdateUserSayShrinkR
 }
 
 type UpdateUserSayResponseBody struct {
+	// example:
+	//
+	// 2356fg3wf34634vdt23wef2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UserSayId *int64  `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+	// example:
+	//
+	// 34512323
+	UserSayId *int64 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
 }
 
 func (s UpdateUserSayResponseBody) String() string {
@@ -10988,6 +13699,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 申请流式网关AccessToken
+//
+// @param request - ApplyForStreamAccessTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyForStreamAccessTokenResponse
 func (client *Client) ApplyForStreamAccessTokenWithOptions(request *ApplyForStreamAccessTokenRequest, runtime *util.RuntimeOptions) (_result *ApplyForStreamAccessTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11021,6 +13741,13 @@ func (client *Client) ApplyForStreamAccessTokenWithOptions(request *ApplyForStre
 	return _result, _err
 }
 
+// Summary:
+//
+// 申请流式网关AccessToken
+//
+// @param request - ApplyForStreamAccessTokenRequest
+//
+// @return ApplyForStreamAccessTokenResponse
 func (client *Client) ApplyForStreamAccessToken(request *ApplyForStreamAccessTokenRequest) (_result *ApplyForStreamAccessTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ApplyForStreamAccessTokenResponse{}
@@ -11032,6 +13759,15 @@ func (client *Client) ApplyForStreamAccessToken(request *ApplyForStreamAccessTok
 	return _result, _err
 }
 
+// Summary:
+//
+// 会话-联想API
+//
+// @param tmpReq - AssociateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateResponse
 func (client *Client) AssociateWithOptions(tmpReq *AssociateRequest, runtime *util.RuntimeOptions) (_result *AssociateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -11091,6 +13827,13 @@ func (client *Client) AssociateWithOptions(tmpReq *AssociateRequest, runtime *ut
 	return _result, _err
 }
 
+// Summary:
+//
+// 会话-联想API
+//
+// @param request - AssociateRequest
+//
+// @return AssociateResponse
 func (client *Client) Associate(request *AssociateRequest) (_result *AssociateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssociateResponse{}
@@ -11102,6 +13845,15 @@ func (client *Client) Associate(request *AssociateRequest) (_result *AssociateRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取欢迎语
+//
+// @param request - BeginSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BeginSessionResponse
 func (client *Client) BeginSessionWithOptions(request *BeginSessionRequest, runtime *util.RuntimeOptions) (_result *BeginSessionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11139,6 +13891,13 @@ func (client *Client) BeginSessionWithOptions(request *BeginSessionRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取欢迎语
+//
+// @param request - BeginSessionRequest
+//
+// @return BeginSessionResponse
 func (client *Client) BeginSession(request *BeginSessionRequest) (_result *BeginSessionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BeginSessionResponse{}
@@ -11150,6 +13909,15 @@ func (client *Client) BeginSession(request *BeginSessionRequest) (_result *Begin
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消机器人发布
+//
+// @param request - CancelInstancePublishTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelInstancePublishTaskResponse
 func (client *Client) CancelInstancePublishTaskWithOptions(request *CancelInstancePublishTaskRequest, runtime *util.RuntimeOptions) (_result *CancelInstancePublishTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11191,6 +13959,13 @@ func (client *Client) CancelInstancePublishTaskWithOptions(request *CancelInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消机器人发布
+//
+// @param request - CancelInstancePublishTaskRequest
+//
+// @return CancelInstancePublishTaskResponse
 func (client *Client) CancelInstancePublishTask(request *CancelInstancePublishTaskRequest) (_result *CancelInstancePublishTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelInstancePublishTaskResponse{}
@@ -11202,6 +13977,15 @@ func (client *Client) CancelInstancePublishTask(request *CancelInstancePublishTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消发布任务
+//
+// @param request - CancelPublishTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelPublishTaskResponse
 func (client *Client) CancelPublishTaskWithOptions(request *CancelPublishTaskRequest, runtime *util.RuntimeOptions) (_result *CancelPublishTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11239,6 +14023,13 @@ func (client *Client) CancelPublishTaskWithOptions(request *CancelPublishTaskReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消发布任务
+//
+// @param request - CancelPublishTaskRequest
+//
+// @return CancelPublishTaskResponse
 func (client *Client) CancelPublishTask(request *CancelPublishTaskRequest) (_result *CancelPublishTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelPublishTaskResponse{}
@@ -11250,6 +14041,15 @@ func (client *Client) CancelPublishTask(request *CancelPublishTaskRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 会话API
+//
+// @param tmpReq - ChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChatResponse
 func (client *Client) ChatWithOptions(tmpReq *ChatRequest, runtime *util.RuntimeOptions) (_result *ChatResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -11329,6 +14129,13 @@ func (client *Client) ChatWithOptions(tmpReq *ChatRequest, runtime *util.Runtime
 	return _result, _err
 }
 
+// Summary:
+//
+// 会话API
+//
+// @param request - ChatRequest
+//
+// @return ChatResponse
 func (client *Client) Chat(request *ChatRequest) (_result *ChatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChatResponse{}
@@ -11340,6 +14147,15 @@ func (client *Client) Chat(request *ChatRequest) (_result *ChatResponse, _err er
 	return _result, _err
 }
 
+// Summary:
+//
+// 继续机器人发布
+//
+// @param request - ContinueInstancePublishTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ContinueInstancePublishTaskResponse
 func (client *Client) ContinueInstancePublishTaskWithOptions(request *ContinueInstancePublishTaskRequest, runtime *util.RuntimeOptions) (_result *ContinueInstancePublishTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11381,6 +14197,13 @@ func (client *Client) ContinueInstancePublishTaskWithOptions(request *ContinueIn
 	return _result, _err
 }
 
+// Summary:
+//
+// 继续机器人发布
+//
+// @param request - ContinueInstancePublishTaskRequest
+//
+// @return ContinueInstancePublishTaskResponse
 func (client *Client) ContinueInstancePublishTask(request *ContinueInstancePublishTaskRequest) (_result *ContinueInstancePublishTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ContinueInstancePublishTaskResponse{}
@@ -11392,6 +14215,15 @@ func (client *Client) ContinueInstancePublishTask(request *ContinueInstancePubli
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增类目
+//
+// @param request - CreateCategoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCategoryResponse
 func (client *Client) CreateCategoryWithOptions(request *CreateCategoryRequest, runtime *util.RuntimeOptions) (_result *CreateCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11443,6 +14275,13 @@ func (client *Client) CreateCategoryWithOptions(request *CreateCategoryRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增类目
+//
+// @param request - CreateCategoryRequest
+//
+// @return CreateCategoryResponse
 func (client *Client) CreateCategory(request *CreateCategoryRequest) (_result *CreateCategoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCategoryResponse{}
@@ -11454,6 +14293,15 @@ func (client *Client) CreateCategory(request *CreateCategoryRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建FAQ关联问
+//
+// @param request - CreateConnQuestionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConnQuestionResponse
 func (client *Client) CreateConnQuestionWithOptions(request *CreateConnQuestionRequest, runtime *util.RuntimeOptions) (_result *CreateConnQuestionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11497,6 +14345,13 @@ func (client *Client) CreateConnQuestionWithOptions(request *CreateConnQuestionR
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建FAQ关联问
+//
+// @param request - CreateConnQuestionRequest
+//
+// @return CreateConnQuestionResponse
 func (client *Client) CreateConnQuestion(request *CreateConnQuestionRequest) (_result *CreateConnQuestionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateConnQuestionResponse{}
@@ -11508,6 +14363,15 @@ func (client *Client) CreateConnQuestion(request *CreateConnQuestionRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体-创建
+//
+// @param request - CreateDSEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDSEntityResponse
 func (client *Client) CreateDSEntityWithOptions(request *CreateDSEntityRequest, runtime *util.RuntimeOptions) (_result *CreateDSEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11553,6 +14417,13 @@ func (client *Client) CreateDSEntityWithOptions(request *CreateDSEntityRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体-创建
+//
+// @param request - CreateDSEntityRequest
+//
+// @return CreateDSEntityResponse
 func (client *Client) CreateDSEntity(request *CreateDSEntityRequest) (_result *CreateDSEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDSEntityResponse{}
@@ -11564,6 +14435,15 @@ func (client *Client) CreateDSEntity(request *CreateDSEntityRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体成员-创建
+//
+// @param tmpReq - CreateDSEntityValueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDSEntityValueResponse
 func (client *Client) CreateDSEntityValueWithOptions(tmpReq *CreateDSEntityValueRequest, runtime *util.RuntimeOptions) (_result *CreateDSEntityValueResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -11621,6 +14501,13 @@ func (client *Client) CreateDSEntityValueWithOptions(tmpReq *CreateDSEntityValue
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体成员-创建
+//
+// @param request - CreateDSEntityValueRequest
+//
+// @return CreateDSEntityValueResponse
 func (client *Client) CreateDSEntityValue(request *CreateDSEntityValueRequest) (_result *CreateDSEntityValueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDSEntityValueResponse{}
@@ -11632,6 +14519,15 @@ func (client *Client) CreateDSEntityValue(request *CreateDSEntityValueRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建文档
+//
+// @param request - CreateDocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDocResponse
 func (client *Client) CreateDocWithOptions(request *CreateDocRequest, runtime *util.RuntimeOptions) (_result *CreateDocResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11693,6 +14589,13 @@ func (client *Client) CreateDocWithOptions(request *CreateDocRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建文档
+//
+// @param request - CreateDocRequest
+//
+// @return CreateDocResponse
 func (client *Client) CreateDoc(request *CreateDocRequest) (_result *CreateDocResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDocResponse{}
@@ -11704,6 +14607,15 @@ func (client *Client) CreateDoc(request *CreateDocRequest) (_result *CreateDocRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建FAQ
+//
+// @param request - CreateFaqRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFaqResponse
 func (client *Client) CreateFaqWithOptions(request *CreateFaqRequest, runtime *util.RuntimeOptions) (_result *CreateFaqResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11763,6 +14675,13 @@ func (client *Client) CreateFaqWithOptions(request *CreateFaqRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建FAQ
+//
+// @param request - CreateFaqRequest
+//
+// @return CreateFaqResponse
 func (client *Client) CreateFaq(request *CreateFaqRequest) (_result *CreateFaqResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFaqResponse{}
@@ -11774,6 +14693,15 @@ func (client *Client) CreateFaq(request *CreateFaqRequest) (_result *CreateFaqRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人-创建
+//
+// @param request - CreateInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11823,6 +14751,13 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人-创建
+//
+// @param request - CreateInstanceRequest
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceResponse{}
@@ -11834,6 +14769,15 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建机器人发布任务
+//
+// @param request - CreateInstancePublishTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstancePublishTaskResponse
 func (client *Client) CreateInstancePublishTaskWithOptions(request *CreateInstancePublishTaskRequest, runtime *util.RuntimeOptions) (_result *CreateInstancePublishTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11871,6 +14815,13 @@ func (client *Client) CreateInstancePublishTaskWithOptions(request *CreateInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建机器人发布任务
+//
+// @param request - CreateInstancePublishTaskRequest
+//
+// @return CreateInstancePublishTaskResponse
 func (client *Client) CreateInstancePublishTask(request *CreateInstancePublishTaskRequest) (_result *CreateInstancePublishTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstancePublishTaskResponse{}
@@ -11882,6 +14833,15 @@ func (client *Client) CreateInstancePublishTask(request *CreateInstancePublishTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-创建
+//
+// @param tmpReq - CreateIntentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIntentResponse
 func (client *Client) CreateIntentWithOptions(tmpReq *CreateIntentRequest, runtime *util.RuntimeOptions) (_result *CreateIntentResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -11929,6 +14889,13 @@ func (client *Client) CreateIntentWithOptions(tmpReq *CreateIntentRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-创建
+//
+// @param request - CreateIntentRequest
+//
+// @return CreateIntentResponse
 func (client *Client) CreateIntent(request *CreateIntentRequest) (_result *CreateIntentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateIntentResponse{}
@@ -11940,6 +14907,15 @@ func (client *Client) CreateIntent(request *CreateIntentRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-LGF-创建
+//
+// @param tmpReq - CreateLgfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLgfResponse
 func (client *Client) CreateLgfWithOptions(tmpReq *CreateLgfRequest, runtime *util.RuntimeOptions) (_result *CreateLgfResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -11987,6 +14963,13 @@ func (client *Client) CreateLgfWithOptions(tmpReq *CreateLgfRequest, runtime *ut
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-LGF-创建
+//
+// @param request - CreateLgfRequest
+//
+// @return CreateLgfResponse
 func (client *Client) CreateLgf(request *CreateLgfRequest) (_result *CreateLgfResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLgfResponse{}
@@ -11998,6 +14981,15 @@ func (client *Client) CreateLgf(request *CreateLgfRequest) (_result *CreateLgfRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 视角-创建
+//
+// @param request - CreatePerspectiveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePerspectiveResponse
 func (client *Client) CreatePerspectiveWithOptions(request *CreatePerspectiveRequest, runtime *util.RuntimeOptions) (_result *CreatePerspectiveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12039,6 +15031,13 @@ func (client *Client) CreatePerspectiveWithOptions(request *CreatePerspectiveReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 视角-创建
+//
+// @param request - CreatePerspectiveRequest
+//
+// @return CreatePerspectiveResponse
 func (client *Client) CreatePerspective(request *CreatePerspectiveRequest) (_result *CreatePerspectiveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePerspectiveResponse{}
@@ -12050,6 +15049,15 @@ func (client *Client) CreatePerspective(request *CreatePerspectiveRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建发布任务
+//
+// @param tmpReq - CreatePublishTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePublishTaskResponse
 func (client *Client) CreatePublishTaskWithOptions(tmpReq *CreatePublishTaskRequest, runtime *util.RuntimeOptions) (_result *CreatePublishTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -12097,6 +15105,13 @@ func (client *Client) CreatePublishTaskWithOptions(tmpReq *CreatePublishTaskRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建发布任务
+//
+// @param request - CreatePublishTaskRequest
+//
+// @return CreatePublishTaskResponse
 func (client *Client) CreatePublishTask(request *CreatePublishTaskRequest) (_result *CreatePublishTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePublishTaskResponse{}
@@ -12108,6 +15123,15 @@ func (client *Client) CreatePublishTask(request *CreatePublishTaskRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建FAQ相似问
+//
+// @param request - CreateSimQuestionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSimQuestionResponse
 func (client *Client) CreateSimQuestionWithOptions(request *CreateSimQuestionRequest, runtime *util.RuntimeOptions) (_result *CreateSimQuestionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12151,6 +15175,13 @@ func (client *Client) CreateSimQuestionWithOptions(request *CreateSimQuestionReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建FAQ相似问
+//
+// @param request - CreateSimQuestionRequest
+//
+// @return CreateSimQuestionResponse
 func (client *Client) CreateSimQuestion(request *CreateSimQuestionRequest) (_result *CreateSimQuestionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSimQuestionResponse{}
@@ -12162,6 +15193,15 @@ func (client *Client) CreateSimQuestion(request *CreateSimQuestionRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建FAQ答案
+//
+// @param request - CreateSolutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSolutionResponse
 func (client *Client) CreateSolutionWithOptions(request *CreateSolutionRequest, runtime *util.RuntimeOptions) (_result *CreateSolutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12211,6 +15251,13 @@ func (client *Client) CreateSolutionWithOptions(request *CreateSolutionRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建FAQ答案
+//
+// @param request - CreateSolutionRequest
+//
+// @return CreateSolutionResponse
 func (client *Client) CreateSolution(request *CreateSolutionRequest) (_result *CreateSolutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSolutionResponse{}
@@ -12222,6 +15269,15 @@ func (client *Client) CreateSolution(request *CreateSolutionRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-话术-创建
+//
+// @param tmpReq - CreateUserSayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserSayResponse
 func (client *Client) CreateUserSayWithOptions(tmpReq *CreateUserSayRequest, runtime *util.RuntimeOptions) (_result *CreateUserSayResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -12269,6 +15325,13 @@ func (client *Client) CreateUserSayWithOptions(tmpReq *CreateUserSayRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-话术-创建
+//
+// @param request - CreateUserSayRequest
+//
+// @return CreateUserSayResponse
 func (client *Client) CreateUserSay(request *CreateUserSayRequest) (_result *CreateUserSayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUserSayResponse{}
@@ -12280,6 +15343,15 @@ func (client *Client) CreateUserSay(request *CreateUserSayRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除类目
+//
+// @param request - DeleteCategoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCategoryResponse
 func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, runtime *util.RuntimeOptions) (_result *DeleteCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12319,6 +15391,13 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除类目
+//
+// @param request - DeleteCategoryRequest
+//
+// @return DeleteCategoryResponse
 func (client *Client) DeleteCategory(request *DeleteCategoryRequest) (_result *DeleteCategoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCategoryResponse{}
@@ -12330,6 +15409,15 @@ func (client *Client) DeleteCategory(request *DeleteCategoryRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除FAQ关联问
+//
+// @param request - DeleteConnQuestionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConnQuestionResponse
 func (client *Client) DeleteConnQuestionWithOptions(request *DeleteConnQuestionRequest, runtime *util.RuntimeOptions) (_result *DeleteConnQuestionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12369,6 +15457,13 @@ func (client *Client) DeleteConnQuestionWithOptions(request *DeleteConnQuestionR
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除FAQ关联问
+//
+// @param request - DeleteConnQuestionRequest
+//
+// @return DeleteConnQuestionResponse
 func (client *Client) DeleteConnQuestion(request *DeleteConnQuestionRequest) (_result *DeleteConnQuestionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteConnQuestionResponse{}
@@ -12380,6 +15475,15 @@ func (client *Client) DeleteConnQuestion(request *DeleteConnQuestionRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体-删除
+//
+// @param request - DeleteDSEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDSEntityResponse
 func (client *Client) DeleteDSEntityWithOptions(request *DeleteDSEntityRequest, runtime *util.RuntimeOptions) (_result *DeleteDSEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12421,6 +15525,13 @@ func (client *Client) DeleteDSEntityWithOptions(request *DeleteDSEntityRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体-删除
+//
+// @param request - DeleteDSEntityRequest
+//
+// @return DeleteDSEntityResponse
 func (client *Client) DeleteDSEntity(request *DeleteDSEntityRequest) (_result *DeleteDSEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDSEntityResponse{}
@@ -12432,6 +15543,15 @@ func (client *Client) DeleteDSEntity(request *DeleteDSEntityRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体成员-删除
+//
+// @param request - DeleteDSEntityValueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDSEntityValueResponse
 func (client *Client) DeleteDSEntityValueWithOptions(request *DeleteDSEntityValueRequest, runtime *util.RuntimeOptions) (_result *DeleteDSEntityValueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12477,6 +15597,13 @@ func (client *Client) DeleteDSEntityValueWithOptions(request *DeleteDSEntityValu
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体成员-删除
+//
+// @param request - DeleteDSEntityValueRequest
+//
+// @return DeleteDSEntityValueResponse
 func (client *Client) DeleteDSEntityValue(request *DeleteDSEntityValueRequest) (_result *DeleteDSEntityValueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDSEntityValueResponse{}
@@ -12488,6 +15615,15 @@ func (client *Client) DeleteDSEntityValue(request *DeleteDSEntityValueRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档删除
+//
+// @param request - DeleteDocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDocResponse
 func (client *Client) DeleteDocWithOptions(request *DeleteDocRequest, runtime *util.RuntimeOptions) (_result *DeleteDocResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12525,6 +15661,13 @@ func (client *Client) DeleteDocWithOptions(request *DeleteDocRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档删除
+//
+// @param request - DeleteDocRequest
+//
+// @return DeleteDocResponse
 func (client *Client) DeleteDoc(request *DeleteDocRequest) (_result *DeleteDocResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDocResponse{}
@@ -12536,6 +15679,15 @@ func (client *Client) DeleteDoc(request *DeleteDocRequest) (_result *DeleteDocRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除FAQ，如果是已发布的知识，删除之后，变成已删除未发布，需要发布才能真正删除
+//
+// @param request - DeleteFaqRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFaqResponse
 func (client *Client) DeleteFaqWithOptions(request *DeleteFaqRequest, runtime *util.RuntimeOptions) (_result *DeleteFaqResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12575,6 +15727,13 @@ func (client *Client) DeleteFaqWithOptions(request *DeleteFaqRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除FAQ，如果是已发布的知识，删除之后，变成已删除未发布，需要发布才能真正删除
+//
+// @param request - DeleteFaqRequest
+//
+// @return DeleteFaqResponse
 func (client *Client) DeleteFaq(request *DeleteFaqRequest) (_result *DeleteFaqResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFaqResponse{}
@@ -12586,6 +15745,15 @@ func (client *Client) DeleteFaq(request *DeleteFaqRequest) (_result *DeleteFaqRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人-删除
+//
+// @param request - DeleteInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12623,6 +15791,13 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人-删除
+//
+// @param request - DeleteInstanceRequest
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteInstanceResponse{}
@@ -12634,6 +15809,15 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-删除
+//
+// @param request - DeleteIntentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIntentResponse
 func (client *Client) DeleteIntentWithOptions(request *DeleteIntentRequest, runtime *util.RuntimeOptions) (_result *DeleteIntentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12675,6 +15859,13 @@ func (client *Client) DeleteIntentWithOptions(request *DeleteIntentRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-删除
+//
+// @param request - DeleteIntentRequest
+//
+// @return DeleteIntentResponse
 func (client *Client) DeleteIntent(request *DeleteIntentRequest) (_result *DeleteIntentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIntentResponse{}
@@ -12686,6 +15877,15 @@ func (client *Client) DeleteIntent(request *DeleteIntentRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-LGF-删除
+//
+// @param request - DeleteLgfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLgfResponse
 func (client *Client) DeleteLgfWithOptions(request *DeleteLgfRequest, runtime *util.RuntimeOptions) (_result *DeleteLgfResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12731,6 +15931,13 @@ func (client *Client) DeleteLgfWithOptions(request *DeleteLgfRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-LGF-删除
+//
+// @param request - DeleteLgfRequest
+//
+// @return DeleteLgfResponse
 func (client *Client) DeleteLgf(request *DeleteLgfRequest) (_result *DeleteLgfResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLgfResponse{}
@@ -12742,6 +15949,15 @@ func (client *Client) DeleteLgf(request *DeleteLgfRequest) (_result *DeleteLgfRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 视角-删除
+//
+// @param request - DeletePerspectiveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePerspectiveResponse
 func (client *Client) DeletePerspectiveWithOptions(request *DeletePerspectiveRequest, runtime *util.RuntimeOptions) (_result *DeletePerspectiveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12779,6 +15995,13 @@ func (client *Client) DeletePerspectiveWithOptions(request *DeletePerspectiveReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 视角-删除
+//
+// @param request - DeletePerspectiveRequest
+//
+// @return DeletePerspectiveResponse
 func (client *Client) DeletePerspective(request *DeletePerspectiveRequest) (_result *DeletePerspectiveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePerspectiveResponse{}
@@ -12790,6 +16013,15 @@ func (client *Client) DeletePerspective(request *DeletePerspectiveRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除FAQ相似问
+//
+// @param request - DeleteSimQuestionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSimQuestionResponse
 func (client *Client) DeleteSimQuestionWithOptions(request *DeleteSimQuestionRequest, runtime *util.RuntimeOptions) (_result *DeleteSimQuestionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12829,6 +16061,13 @@ func (client *Client) DeleteSimQuestionWithOptions(request *DeleteSimQuestionReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除FAQ相似问
+//
+// @param request - DeleteSimQuestionRequest
+//
+// @return DeleteSimQuestionResponse
 func (client *Client) DeleteSimQuestion(request *DeleteSimQuestionRequest) (_result *DeleteSimQuestionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSimQuestionResponse{}
@@ -12840,6 +16079,15 @@ func (client *Client) DeleteSimQuestion(request *DeleteSimQuestionRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除FAQ答案
+//
+// @param request - DeleteSolutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSolutionResponse
 func (client *Client) DeleteSolutionWithOptions(request *DeleteSolutionRequest, runtime *util.RuntimeOptions) (_result *DeleteSolutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12879,6 +16127,13 @@ func (client *Client) DeleteSolutionWithOptions(request *DeleteSolutionRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除FAQ答案
+//
+// @param request - DeleteSolutionRequest
+//
+// @return DeleteSolutionResponse
 func (client *Client) DeleteSolution(request *DeleteSolutionRequest) (_result *DeleteSolutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSolutionResponse{}
@@ -12890,6 +16145,15 @@ func (client *Client) DeleteSolution(request *DeleteSolutionRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-用户话术-删除
+//
+// @param request - DeleteUserSayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserSayResponse
 func (client *Client) DeleteUserSayWithOptions(request *DeleteUserSayRequest, runtime *util.RuntimeOptions) (_result *DeleteUserSayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12935,6 +16199,13 @@ func (client *Client) DeleteUserSayWithOptions(request *DeleteUserSayRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-用户话术-删除
+//
+// @param request - DeleteUserSayRequest
+//
+// @return DeleteUserSayResponse
 func (client *Client) DeleteUserSay(request *DeleteUserSayRequest) (_result *DeleteUserSayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserSayResponse{}
@@ -12946,6 +16217,15 @@ func (client *Client) DeleteUserSay(request *DeleteUserSayRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看单个类目信息
+//
+// @param request - DescribeCategoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCategoryResponse
 func (client *Client) DescribeCategoryWithOptions(request *DescribeCategoryRequest, runtime *util.RuntimeOptions) (_result *DescribeCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12985,6 +16265,13 @@ func (client *Client) DescribeCategoryWithOptions(request *DescribeCategoryReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看单个类目信息
+//
+// @param request - DescribeCategoryRequest
+//
+// @return DescribeCategoryResponse
 func (client *Client) DescribeCategory(request *DescribeCategoryRequest) (_result *DescribeCategoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCategoryResponse{}
@@ -12996,6 +16283,15 @@ func (client *Client) DescribeCategory(request *DescribeCategoryRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体-详情
+//
+// @param request - DescribeDSEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDSEntityResponse
 func (client *Client) DescribeDSEntityWithOptions(request *DescribeDSEntityRequest, runtime *util.RuntimeOptions) (_result *DescribeDSEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13037,6 +16333,13 @@ func (client *Client) DescribeDSEntityWithOptions(request *DescribeDSEntityReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体-详情
+//
+// @param request - DescribeDSEntityRequest
+//
+// @return DescribeDSEntityResponse
 func (client *Client) DescribeDSEntity(request *DescribeDSEntityRequest) (_result *DescribeDSEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDSEntityResponse{}
@@ -13048,6 +16351,15 @@ func (client *Client) DescribeDSEntity(request *DescribeDSEntityRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档详情
+//
+// @param request - DescribeDocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDocResponse
 func (client *Client) DescribeDocWithOptions(request *DescribeDocRequest, runtime *util.RuntimeOptions) (_result *DescribeDocResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13089,6 +16401,13 @@ func (client *Client) DescribeDocWithOptions(request *DescribeDocRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档详情
+//
+// @param request - DescribeDocRequest
+//
+// @return DescribeDocResponse
 func (client *Client) DescribeDoc(request *DescribeDocRequest) (_result *DescribeDocResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDocResponse{}
@@ -13100,6 +16419,15 @@ func (client *Client) DescribeDoc(request *DescribeDocRequest) (_result *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// 知识详情
+//
+// @param request - DescribeFaqRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFaqResponse
 func (client *Client) DescribeFaqWithOptions(request *DescribeFaqRequest, runtime *util.RuntimeOptions) (_result *DescribeFaqResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13139,6 +16467,13 @@ func (client *Client) DescribeFaqWithOptions(request *DescribeFaqRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 知识详情
+//
+// @param request - DescribeFaqRequest
+//
+// @return DescribeFaqResponse
 func (client *Client) DescribeFaq(request *DescribeFaqRequest) (_result *DescribeFaqResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFaqResponse{}
@@ -13150,6 +16485,15 @@ func (client *Client) DescribeFaq(request *DescribeFaqRequest) (_result *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人-详情
+//
+// @param request - DescribeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceResponse
 func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13187,6 +16531,13 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人-详情
+//
+// @param request - DescribeInstanceRequest
+//
+// @return DescribeInstanceResponse
 func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_result *DescribeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceResponse{}
@@ -13198,6 +16549,15 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-详情
+//
+// @param request - DescribeIntentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIntentResponse
 func (client *Client) DescribeIntentWithOptions(request *DescribeIntentRequest, runtime *util.RuntimeOptions) (_result *DescribeIntentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13241,6 +16601,13 @@ func (client *Client) DescribeIntentWithOptions(request *DescribeIntentRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-详情
+//
+// @param request - DescribeIntentRequest
+//
+// @return DescribeIntentResponse
 func (client *Client) DescribeIntent(request *DescribeIntentRequest) (_result *DescribeIntentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIntentResponse{}
@@ -13252,6 +16619,15 @@ func (client *Client) DescribeIntent(request *DescribeIntentRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 视角-详情
+//
+// @param request - DescribePerspectiveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePerspectiveResponse
 func (client *Client) DescribePerspectiveWithOptions(request *DescribePerspectiveRequest, runtime *util.RuntimeOptions) (_result *DescribePerspectiveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13289,6 +16665,13 @@ func (client *Client) DescribePerspectiveWithOptions(request *DescribePerspectiv
 	return _result, _err
 }
 
+// Summary:
+//
+// 视角-详情
+//
+// @param request - DescribePerspectiveRequest
+//
+// @return DescribePerspectiveResponse
 func (client *Client) DescribePerspective(request *DescribePerspectiveRequest) (_result *DescribePerspectiveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePerspectiveResponse{}
@@ -13300,6 +16683,15 @@ func (client *Client) DescribePerspective(request *DescribePerspectiveRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 问答点赞、点踩API
+//
+// @param request - FeedbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FeedbackResponse
 func (client *Client) FeedbackWithOptions(request *FeedbackRequest, runtime *util.RuntimeOptions) (_result *FeedbackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13353,6 +16745,13 @@ func (client *Client) FeedbackWithOptions(request *FeedbackRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// 问答点赞、点踩API
+//
+// @param request - FeedbackRequest
+//
+// @return FeedbackResponse
 func (client *Client) Feedback(request *FeedbackRequest) (_result *FeedbackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FeedbackResponse{}
@@ -13364,6 +16763,15 @@ func (client *Client) Feedback(request *FeedbackRequest) (_result *FeedbackRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 生成用户免登Token
+//
+// @param request - GenerateUserAccessTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateUserAccessTokenResponse
 func (client *Client) GenerateUserAccessTokenWithOptions(request *GenerateUserAccessTokenRequest, runtime *util.RuntimeOptions) (_result *GenerateUserAccessTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13421,6 +16829,13 @@ func (client *Client) GenerateUserAccessTokenWithOptions(request *GenerateUserAc
 	return _result, _err
 }
 
+// Summary:
+//
+// 生成用户免登Token
+//
+// @param request - GenerateUserAccessTokenRequest
+//
+// @return GenerateUserAccessTokenResponse
 func (client *Client) GenerateUserAccessToken(request *GenerateUserAccessTokenRequest) (_result *GenerateUserAccessTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateUserAccessTokenResponse{}
@@ -13432,6 +16847,15 @@ func (client *Client) GenerateUserAccessToken(request *GenerateUserAccessTokenRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取业务空间信息
+//
+// @param request - GetAgentInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentInfoResponse
 func (client *Client) GetAgentInfoWithOptions(request *GetAgentInfoRequest, runtime *util.RuntimeOptions) (_result *GetAgentInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13465,6 +16889,13 @@ func (client *Client) GetAgentInfoWithOptions(request *GetAgentInfoRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取业务空间信息
+//
+// @param request - GetAgentInfoRequest
+//
+// @return GetAgentInfoResponse
 func (client *Client) GetAgentInfo(request *GetAgentInfoRequest) (_result *GetAgentInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAgentInfoResponse{}
@@ -13476,6 +16907,15 @@ func (client *Client) GetAgentInfo(request *GetAgentInfoRequest) (_result *GetAg
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异步函数执行结果接口
+//
+// @param request - GetAsyncResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsyncResultResponse
 func (client *Client) GetAsyncResultWithOptions(request *GetAsyncResultRequest, runtime *util.RuntimeOptions) (_result *GetAsyncResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13513,6 +16953,13 @@ func (client *Client) GetAsyncResultWithOptions(request *GetAsyncResultRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异步函数执行结果接口
+//
+// @param request - GetAsyncResultRequest
+//
+// @return GetAsyncResultResponse
 func (client *Client) GetAsyncResult(request *GetAsyncResultRequest) (_result *GetAsyncResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAsyncResultResponse{}
@@ -13524,6 +16971,15 @@ func (client *Client) GetAsyncResult(request *GetAsyncResultRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机器人发布进度
+//
+// @param request - GetInstancePublishTaskStateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstancePublishTaskStateResponse
 func (client *Client) GetInstancePublishTaskStateWithOptions(request *GetInstancePublishTaskStateRequest, runtime *util.RuntimeOptions) (_result *GetInstancePublishTaskStateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13565,6 +17021,13 @@ func (client *Client) GetInstancePublishTaskStateWithOptions(request *GetInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机器人发布进度
+//
+// @param request - GetInstancePublishTaskStateRequest
+//
+// @return GetInstancePublishTaskStateResponse
 func (client *Client) GetInstancePublishTaskState(request *GetInstancePublishTaskStateRequest) (_result *GetInstancePublishTaskStateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstancePublishTaskStateResponse{}
@@ -13576,6 +17039,15 @@ func (client *Client) GetInstancePublishTaskState(request *GetInstancePublishTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询发布进度
+//
+// @param request - GetPublishTaskStateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPublishTaskStateResponse
 func (client *Client) GetPublishTaskStateWithOptions(request *GetPublishTaskStateRequest, runtime *util.RuntimeOptions) (_result *GetPublishTaskStateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13613,6 +17085,13 @@ func (client *Client) GetPublishTaskStateWithOptions(request *GetPublishTaskStat
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询发布进度
+//
+// @param request - GetPublishTaskStateRequest
+//
+// @return GetPublishTaskStateResponse
 func (client *Client) GetPublishTaskState(request *GetPublishTaskStateRequest) (_result *GetPublishTaskStateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPublishTaskStateResponse{}
@@ -13624,6 +17103,15 @@ func (client *Client) GetPublishTaskState(request *GetPublishTaskStateRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 初始化im连接信息
+//
+// @param request - InitIMConnectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitIMConnectResponse
 func (client *Client) InitIMConnectWithOptions(request *InitIMConnectRequest, runtime *util.RuntimeOptions) (_result *InitIMConnectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13665,6 +17153,13 @@ func (client *Client) InitIMConnectWithOptions(request *InitIMConnectRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 初始化im连接信息
+//
+// @param request - InitIMConnectRequest
+//
+// @return InitIMConnectResponse
 func (client *Client) InitIMConnect(request *InitIMConnectRequest) (_result *InitIMConnectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InitIMConnectResponse{}
@@ -13676,6 +17171,15 @@ func (client *Client) InitIMConnect(request *InitIMConnectRequest) (_result *Ini
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人-绑定类目
+//
+// @param request - LinkInstanceCategoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LinkInstanceCategoryResponse
 func (client *Client) LinkInstanceCategoryWithOptions(request *LinkInstanceCategoryRequest, runtime *util.RuntimeOptions) (_result *LinkInstanceCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13719,6 +17223,13 @@ func (client *Client) LinkInstanceCategoryWithOptions(request *LinkInstanceCateg
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人-绑定类目
+//
+// @param request - LinkInstanceCategoryRequest
+//
+// @return LinkInstanceCategoryResponse
 func (client *Client) LinkInstanceCategory(request *LinkInstanceCategoryRequest) (_result *LinkInstanceCategoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &LinkInstanceCategoryResponse{}
@@ -13730,6 +17241,15 @@ func (client *Client) LinkInstanceCategory(request *LinkInstanceCategoryRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取业务空间列表
+//
+// @param request - ListAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentResponse
 func (client *Client) ListAgentWithOptions(request *ListAgentRequest, runtime *util.RuntimeOptions) (_result *ListAgentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13779,6 +17299,13 @@ func (client *Client) ListAgentWithOptions(request *ListAgentRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取业务空间列表
+//
+// @param request - ListAgentRequest
+//
+// @return ListAgentResponse
 func (client *Client) ListAgent(request *ListAgentRequest) (_result *ListAgentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAgentResponse{}
@@ -13790,6 +17317,15 @@ func (client *Client) ListAgent(request *ListAgentRequest) (_result *ListAgentRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 类目列表
+//
+// @param request - ListCategoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCategoryResponse
 func (client *Client) ListCategoryWithOptions(request *ListCategoryRequest, runtime *util.RuntimeOptions) (_result *ListCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13833,6 +17369,13 @@ func (client *Client) ListCategoryWithOptions(request *ListCategoryRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 类目列表
+//
+// @param request - ListCategoryRequest
+//
+// @return ListCategoryResponse
 func (client *Client) ListCategory(request *ListCategoryRequest) (_result *ListCategoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCategoryResponse{}
@@ -13844,6 +17387,15 @@ func (client *Client) ListCategory(request *ListCategoryRequest) (_result *ListC
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询FAQ关联问列表
+//
+// @param request - ListConnQuestionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConnQuestionResponse
 func (client *Client) ListConnQuestionWithOptions(request *ListConnQuestionRequest, runtime *util.RuntimeOptions) (_result *ListConnQuestionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13883,6 +17435,13 @@ func (client *Client) ListConnQuestionWithOptions(request *ListConnQuestionReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询FAQ关联问列表
+//
+// @param request - ListConnQuestionRequest
+//
+// @return ListConnQuestionResponse
 func (client *Client) ListConnQuestion(request *ListConnQuestionRequest) (_result *ListConnQuestionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConnQuestionResponse{}
@@ -13894,6 +17453,15 @@ func (client *Client) ListConnQuestion(request *ListConnQuestionRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体-列表
+//
+// @param request - ListDSEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDSEntityResponse
 func (client *Client) ListDSEntityWithOptions(request *ListDSEntityRequest, runtime *util.RuntimeOptions) (_result *ListDSEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13947,6 +17515,13 @@ func (client *Client) ListDSEntityWithOptions(request *ListDSEntityRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体-列表
+//
+// @param request - ListDSEntityRequest
+//
+// @return ListDSEntityResponse
 func (client *Client) ListDSEntity(request *ListDSEntityRequest) (_result *ListDSEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDSEntityResponse{}
@@ -13958,6 +17533,15 @@ func (client *Client) ListDSEntity(request *ListDSEntityRequest) (_result *ListD
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体成员-列表
+//
+// @param request - ListDSEntityValueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDSEntityValueResponse
 func (client *Client) ListDSEntityValueWithOptions(request *ListDSEntityValueRequest, runtime *util.RuntimeOptions) (_result *ListDSEntityValueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14017,6 +17601,13 @@ func (client *Client) ListDSEntityValueWithOptions(request *ListDSEntityValueReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体成员-列表
+//
+// @param request - ListDSEntityValueRequest
+//
+// @return ListDSEntityValueResponse
 func (client *Client) ListDSEntityValue(request *ListDSEntityValueRequest) (_result *ListDSEntityValueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDSEntityValueResponse{}
@@ -14028,6 +17619,15 @@ func (client *Client) ListDSEntityValue(request *ListDSEntityValueRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人-修改
+//
+// @param request - ListInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceResponse
 func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runtime *util.RuntimeOptions) (_result *ListInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14077,6 +17677,13 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人-修改
+//
+// @param request - ListInstanceRequest
+//
+// @return ListInstanceResponse
 func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstanceResponse{}
@@ -14088,6 +17695,15 @@ func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListI
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-列表
+//
+// @param request - ListIntentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntentResponse
 func (client *Client) ListIntentWithOptions(request *ListIntentRequest, runtime *util.RuntimeOptions) (_result *ListIntentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14137,6 +17753,13 @@ func (client *Client) ListIntentWithOptions(request *ListIntentRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-列表
+//
+// @param request - ListIntentRequest
+//
+// @return ListIntentResponse
 func (client *Client) ListIntent(request *ListIntentRequest) (_result *ListIntentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListIntentResponse{}
@@ -14148,6 +17771,15 @@ func (client *Client) ListIntent(request *ListIntentRequest) (_result *ListInten
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-LGF-列表
+//
+// @param request - ListLgfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLgfResponse
 func (client *Client) ListLgfWithOptions(request *ListLgfRequest, runtime *util.RuntimeOptions) (_result *ListLgfResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14201,6 +17833,13 @@ func (client *Client) ListLgfWithOptions(request *ListLgfRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-LGF-列表
+//
+// @param request - ListLgfRequest
+//
+// @return ListLgfResponse
 func (client *Client) ListLgf(request *ListLgfRequest) (_result *ListLgfResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLgfResponse{}
@@ -14212,6 +17851,15 @@ func (client *Client) ListLgf(request *ListLgfRequest) (_result *ListLgfResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取业务空间下可集成的SaaS信息列表
+//
+// @param request - ListSaasInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSaasInfoResponse
 func (client *Client) ListSaasInfoWithOptions(request *ListSaasInfoRequest, runtime *util.RuntimeOptions) (_result *ListSaasInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14253,6 +17901,13 @@ func (client *Client) ListSaasInfoWithOptions(request *ListSaasInfoRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取业务空间下可集成的SaaS信息列表
+//
+// @param request - ListSaasInfoRequest
+//
+// @return ListSaasInfoResponse
 func (client *Client) ListSaasInfo(request *ListSaasInfoRequest) (_result *ListSaasInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSaasInfoResponse{}
@@ -14264,6 +17919,15 @@ func (client *Client) ListSaasInfo(request *ListSaasInfoRequest) (_result *ListS
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取业务空间下可集成的权限组信息
+//
+// @param request - ListSaasPermissionGroupInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSaasPermissionGroupInfosResponse
 func (client *Client) ListSaasPermissionGroupInfosWithOptions(request *ListSaasPermissionGroupInfosRequest, runtime *util.RuntimeOptions) (_result *ListSaasPermissionGroupInfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14297,6 +17961,13 @@ func (client *Client) ListSaasPermissionGroupInfosWithOptions(request *ListSaasP
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取业务空间下可集成的权限组信息
+//
+// @param request - ListSaasPermissionGroupInfosRequest
+//
+// @return ListSaasPermissionGroupInfosResponse
 func (client *Client) ListSaasPermissionGroupInfos(request *ListSaasPermissionGroupInfosRequest) (_result *ListSaasPermissionGroupInfosResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSaasPermissionGroupInfosResponse{}
@@ -14308,6 +17979,15 @@ func (client *Client) ListSaasPermissionGroupInfos(request *ListSaasPermissionGr
 	return _result, _err
 }
 
+// Summary:
+//
+// FAQ相似问列表
+//
+// @param request - ListSimQuestionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSimQuestionResponse
 func (client *Client) ListSimQuestionWithOptions(request *ListSimQuestionRequest, runtime *util.RuntimeOptions) (_result *ListSimQuestionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14347,6 +18027,13 @@ func (client *Client) ListSimQuestionWithOptions(request *ListSimQuestionRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// FAQ相似问列表
+//
+// @param request - ListSimQuestionRequest
+//
+// @return ListSimQuestionResponse
 func (client *Client) ListSimQuestion(request *ListSimQuestionRequest) (_result *ListSimQuestionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSimQuestionResponse{}
@@ -14358,6 +18045,15 @@ func (client *Client) ListSimQuestion(request *ListSimQuestionRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// FAQ答案列表
+//
+// @param request - ListSolutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSolutionResponse
 func (client *Client) ListSolutionWithOptions(request *ListSolutionRequest, runtime *util.RuntimeOptions) (_result *ListSolutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14397,6 +18093,13 @@ func (client *Client) ListSolutionWithOptions(request *ListSolutionRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// FAQ答案列表
+//
+// @param request - ListSolutionRequest
+//
+// @return ListSolutionResponse
 func (client *Client) ListSolution(request *ListSolutionRequest) (_result *ListSolutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSolutionResponse{}
@@ -14408,6 +18111,91 @@ func (client *Client) ListSolution(request *ListSolutionRequest) (_result *ListS
 	return _result, _err
 }
 
+// Summary:
+//
+// Tongyi对话明细查询接口
+//
+// @param request - ListTongyiChatHistorysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTongyiChatHistorysResponse
+func (client *Client) ListTongyiChatHistorysWithOptions(request *ListTongyiChatHistorysRequest, runtime *util.RuntimeOptions) (_result *ListTongyiChatHistorysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTongyiChatHistorys"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTongyiChatHistorysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Tongyi对话明细查询接口
+//
+// @param request - ListTongyiChatHistorysRequest
+//
+// @return ListTongyiChatHistorysResponse
+func (client *Client) ListTongyiChatHistorys(request *ListTongyiChatHistorysRequest) (_result *ListTongyiChatHistorysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTongyiChatHistorysResponse{}
+	_body, _err := client.ListTongyiChatHistorysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 话术-列表
+//
+// @param request - ListUserSayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserSayResponse
 func (client *Client) ListUserSayWithOptions(request *ListUserSayRequest, runtime *util.RuntimeOptions) (_result *ListUserSayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14461,6 +18249,13 @@ func (client *Client) ListUserSayWithOptions(request *ListUserSayRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 话术-列表
+//
+// @param request - ListUserSayRequest
+//
+// @return ListUserSayResponse
 func (client *Client) ListUserSay(request *ListUserSayRequest) (_result *ListUserSayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserSayResponse{}
@@ -14472,6 +18267,15 @@ func (client *Client) ListUserSay(request *ListUserSayRequest) (_result *ListUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 统一NLU接口
+//
+// @param request - NluRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return NluResponse
 func (client *Client) NluWithOptions(request *NluRequest, runtime *util.RuntimeOptions) (_result *NluResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14513,6 +18317,13 @@ func (client *Client) NluWithOptions(request *NluRequest, runtime *util.RuntimeO
 	return _result, _err
 }
 
+// Summary:
+//
+// 统一NLU接口
+//
+// @param request - NluRequest
+//
+// @return NluResponse
 func (client *Client) Nlu(request *NluRequest) (_result *NluResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &NluResponse{}
@@ -14524,6 +18335,15 @@ func (client *Client) Nlu(request *NluRequest) (_result *NluResponse, _err error
 	return _result, _err
 }
 
+// Summary:
+//
+// 视角-列表
+//
+// @param request - QueryPerspectivesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPerspectivesResponse
 func (client *Client) QueryPerspectivesWithOptions(request *QueryPerspectivesRequest, runtime *util.RuntimeOptions) (_result *QueryPerspectivesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14557,6 +18377,13 @@ func (client *Client) QueryPerspectivesWithOptions(request *QueryPerspectivesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 视角-列表
+//
+// @param request - QueryPerspectivesRequest
+//
+// @return QueryPerspectivesResponse
 func (client *Client) QueryPerspectives(request *QueryPerspectivesRequest) (_result *QueryPerspectivesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPerspectivesResponse{}
@@ -14568,6 +18395,15 @@ func (client *Client) QueryPerspectives(request *QueryPerspectivesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档重试
+//
+// @param request - RetryDocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetryDocResponse
 func (client *Client) RetryDocWithOptions(request *RetryDocRequest, runtime *util.RuntimeOptions) (_result *RetryDocResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14605,6 +18441,13 @@ func (client *Client) RetryDocWithOptions(request *RetryDocRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档重试
+//
+// @param request - RetryDocRequest
+//
+// @return RetryDocResponse
 func (client *Client) RetryDoc(request *RetryDocRequest) (_result *RetryDocResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RetryDocResponse{}
@@ -14616,6 +18459,15 @@ func (client *Client) RetryDoc(request *RetryDocRequest) (_result *RetryDocRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档搜索
+//
+// @param tmpReq - SearchDocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchDocResponse
 func (client *Client) SearchDocWithOptions(tmpReq *SearchDocRequest, runtime *util.RuntimeOptions) (_result *SearchDocResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -14723,6 +18575,13 @@ func (client *Client) SearchDocWithOptions(tmpReq *SearchDocRequest, runtime *ut
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档搜索
+//
+// @param request - SearchDocRequest
+//
+// @return SearchDocResponse
 func (client *Client) SearchDoc(request *SearchDocRequest) (_result *SearchDocResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchDocResponse{}
@@ -14734,6 +18593,15 @@ func (client *Client) SearchDoc(request *SearchDocRequest) (_result *SearchDocRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 知识搜索
+//
+// @param tmpReq - SearchFaqRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchFaqResponse
 func (client *Client) SearchFaqWithOptions(tmpReq *SearchFaqRequest, runtime *util.RuntimeOptions) (_result *SearchFaqResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -14839,6 +18707,13 @@ func (client *Client) SearchFaqWithOptions(tmpReq *SearchFaqRequest, runtime *ut
 	return _result, _err
 }
 
+// Summary:
+//
+// 知识搜索
+//
+// @param request - SearchFaqRequest
+//
+// @return SearchFaqResponse
 func (client *Client) SearchFaq(request *SearchFaqRequest) (_result *SearchFaqResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchFaqResponse{}
@@ -14850,6 +18725,15 @@ func (client *Client) SearchFaq(request *SearchFaqRequest) (_result *SearchFaqRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 编辑类目
+//
+// @param request - UpdateCategoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCategoryResponse
 func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, runtime *util.RuntimeOptions) (_result *UpdateCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14897,6 +18781,13 @@ func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 编辑类目
+//
+// @param request - UpdateCategoryRequest
+//
+// @return UpdateCategoryResponse
 func (client *Client) UpdateCategory(request *UpdateCategoryRequest) (_result *UpdateCategoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCategoryResponse{}
@@ -14908,6 +18799,15 @@ func (client *Client) UpdateCategory(request *UpdateCategoryRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新FAQ关联问
+//
+// @param request - UpdateConnQuestionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConnQuestionResponse
 func (client *Client) UpdateConnQuestionWithOptions(request *UpdateConnQuestionRequest, runtime *util.RuntimeOptions) (_result *UpdateConnQuestionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14951,6 +18851,13 @@ func (client *Client) UpdateConnQuestionWithOptions(request *UpdateConnQuestionR
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新FAQ关联问
+//
+// @param request - UpdateConnQuestionRequest
+//
+// @return UpdateConnQuestionResponse
 func (client *Client) UpdateConnQuestion(request *UpdateConnQuestionRequest) (_result *UpdateConnQuestionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateConnQuestionResponse{}
@@ -14962,6 +18869,15 @@ func (client *Client) UpdateConnQuestion(request *UpdateConnQuestionRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体-更新
+//
+// @param request - UpdateDSEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDSEntityResponse
 func (client *Client) UpdateDSEntityWithOptions(request *UpdateDSEntityRequest, runtime *util.RuntimeOptions) (_result *UpdateDSEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15011,6 +18927,13 @@ func (client *Client) UpdateDSEntityWithOptions(request *UpdateDSEntityRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体-更新
+//
+// @param request - UpdateDSEntityRequest
+//
+// @return UpdateDSEntityResponse
 func (client *Client) UpdateDSEntity(request *UpdateDSEntityRequest) (_result *UpdateDSEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDSEntityResponse{}
@@ -15022,6 +18945,15 @@ func (client *Client) UpdateDSEntity(request *UpdateDSEntityRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体成员-更新
+//
+// @param tmpReq - UpdateDSEntityValueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDSEntityValueResponse
 func (client *Client) UpdateDSEntityValueWithOptions(tmpReq *UpdateDSEntityValueRequest, runtime *util.RuntimeOptions) (_result *UpdateDSEntityValueResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -15083,6 +19015,13 @@ func (client *Client) UpdateDSEntityValueWithOptions(tmpReq *UpdateDSEntityValue
 	return _result, _err
 }
 
+// Summary:
+//
+// 实体成员-更新
+//
+// @param request - UpdateDSEntityValueRequest
+//
+// @return UpdateDSEntityValueResponse
 func (client *Client) UpdateDSEntityValue(request *UpdateDSEntityValueRequest) (_result *UpdateDSEntityValueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDSEntityValueResponse{}
@@ -15094,6 +19033,15 @@ func (client *Client) UpdateDSEntityValue(request *UpdateDSEntityValueRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档变更
+//
+// @param request - UpdateDocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDocResponse
 func (client *Client) UpdateDocWithOptions(request *UpdateDocRequest, runtime *util.RuntimeOptions) (_result *UpdateDocResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15163,6 +19111,13 @@ func (client *Client) UpdateDocWithOptions(request *UpdateDocRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档变更
+//
+// @param request - UpdateDocRequest
+//
+// @return UpdateDocResponse
 func (client *Client) UpdateDoc(request *UpdateDocRequest) (_result *UpdateDocResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDocResponse{}
@@ -15174,6 +19129,15 @@ func (client *Client) UpdateDoc(request *UpdateDocRequest) (_result *UpdateDocRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新FAQ
+//
+// @param request - UpdateFaqRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFaqResponse
 func (client *Client) UpdateFaqWithOptions(request *UpdateFaqRequest, runtime *util.RuntimeOptions) (_result *UpdateFaqResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15229,6 +19193,13 @@ func (client *Client) UpdateFaqWithOptions(request *UpdateFaqRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新FAQ
+//
+// @param request - UpdateFaqRequest
+//
+// @return UpdateFaqResponse
 func (client *Client) UpdateFaq(request *UpdateFaqRequest) (_result *UpdateFaqResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateFaqResponse{}
@@ -15240,6 +19211,15 @@ func (client *Client) UpdateFaq(request *UpdateFaqRequest) (_result *UpdateFaqRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人-修改
+//
+// @param request - UpdateInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceResponse
 func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15285,6 +19265,13 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 机器人-修改
+//
+// @param request - UpdateInstanceRequest
+//
+// @return UpdateInstanceResponse
 func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceResponse{}
@@ -15296,6 +19283,15 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-更新
+//
+// @param tmpReq - UpdateIntentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIntentResponse
 func (client *Client) UpdateIntentWithOptions(tmpReq *UpdateIntentRequest, runtime *util.RuntimeOptions) (_result *UpdateIntentResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -15347,6 +19343,13 @@ func (client *Client) UpdateIntentWithOptions(tmpReq *UpdateIntentRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-更新
+//
+// @param request - UpdateIntentRequest
+//
+// @return UpdateIntentResponse
 func (client *Client) UpdateIntent(request *UpdateIntentRequest) (_result *UpdateIntentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateIntentResponse{}
@@ -15358,6 +19361,15 @@ func (client *Client) UpdateIntent(request *UpdateIntentRequest) (_result *Updat
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-LGF-更新
+//
+// @param tmpReq - UpdateLgfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLgfResponse
 func (client *Client) UpdateLgfWithOptions(tmpReq *UpdateLgfRequest, runtime *util.RuntimeOptions) (_result *UpdateLgfResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -15409,6 +19421,13 @@ func (client *Client) UpdateLgfWithOptions(tmpReq *UpdateLgfRequest, runtime *ut
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-LGF-更新
+//
+// @param request - UpdateLgfRequest
+//
+// @return UpdateLgfResponse
 func (client *Client) UpdateLgf(request *UpdateLgfRequest) (_result *UpdateLgfResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateLgfResponse{}
@@ -15420,6 +19439,15 @@ func (client *Client) UpdateLgf(request *UpdateLgfRequest) (_result *UpdateLgfRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 视角-修改
+//
+// @param request - UpdatePerspectiveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePerspectiveResponse
 func (client *Client) UpdatePerspectiveWithOptions(request *UpdatePerspectiveRequest, runtime *util.RuntimeOptions) (_result *UpdatePerspectiveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15461,6 +19489,13 @@ func (client *Client) UpdatePerspectiveWithOptions(request *UpdatePerspectiveReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 视角-修改
+//
+// @param request - UpdatePerspectiveRequest
+//
+// @return UpdatePerspectiveResponse
 func (client *Client) UpdatePerspective(request *UpdatePerspectiveRequest) (_result *UpdatePerspectiveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePerspectiveResponse{}
@@ -15472,6 +19507,15 @@ func (client *Client) UpdatePerspective(request *UpdatePerspectiveRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新FAQ相似问
+//
+// @param request - UpdateSimQuestionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSimQuestionResponse
 func (client *Client) UpdateSimQuestionWithOptions(request *UpdateSimQuestionRequest, runtime *util.RuntimeOptions) (_result *UpdateSimQuestionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15515,6 +19559,13 @@ func (client *Client) UpdateSimQuestionWithOptions(request *UpdateSimQuestionReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新FAQ相似问
+//
+// @param request - UpdateSimQuestionRequest
+//
+// @return UpdateSimQuestionResponse
 func (client *Client) UpdateSimQuestion(request *UpdateSimQuestionRequest) (_result *UpdateSimQuestionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSimQuestionResponse{}
@@ -15526,6 +19577,15 @@ func (client *Client) UpdateSimQuestion(request *UpdateSimQuestionRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新FAQ答案
+//
+// @param request - UpdateSolutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSolutionResponse
 func (client *Client) UpdateSolutionWithOptions(request *UpdateSolutionRequest, runtime *util.RuntimeOptions) (_result *UpdateSolutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15577,6 +19637,13 @@ func (client *Client) UpdateSolutionWithOptions(request *UpdateSolutionRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新FAQ答案
+//
+// @param request - UpdateSolutionRequest
+//
+// @return UpdateSolutionResponse
 func (client *Client) UpdateSolution(request *UpdateSolutionRequest) (_result *UpdateSolutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSolutionResponse{}
@@ -15588,6 +19655,15 @@ func (client *Client) UpdateSolution(request *UpdateSolutionRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-话术-更新
+//
+// @param tmpReq - UpdateUserSayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserSayResponse
 func (client *Client) UpdateUserSayWithOptions(tmpReq *UpdateUserSayRequest, runtime *util.RuntimeOptions) (_result *UpdateUserSayResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -15639,6 +19715,13 @@ func (client *Client) UpdateUserSayWithOptions(tmpReq *UpdateUserSayRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// 意图-话术-更新
+//
+// @param request - UpdateUserSayRequest
+//
+// @return UpdateUserSayResponse
 func (client *Client) UpdateUserSay(request *UpdateUserSayRequest) (_result *UpdateUserSayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserSayResponse{}
