@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,7 +10,13 @@ import (
 )
 
 type DescribeFileModerationResultRequest struct {
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// document_detection
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// {\\"taskId\\":\\"vi_f_hPgx9PFIQISdlfA888hOFG-1yJq8v\\"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -36,10 +39,20 @@ func (s *DescribeFileModerationResultRequest) SetServiceParameters(v string) *De
 }
 
 type DescribeFileModerationResultResponseBody struct {
-	Code    *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *DescribeFileModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeFileModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 6CF2815C-C8C7-4A01-B52E-FF6E24F53492
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -72,10 +85,19 @@ func (s *DescribeFileModerationResultResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeFileModerationResultResponseBodyData struct {
-	DataId     *string                                                   `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// example:
+	//
+	// 26769ada6e264e7ba9aa048241e12be9
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// example:
+	//
+	// doc
 	DocType    *string                                                   `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	PageResult []*DescribeFileModerationResultResponseBodyDataPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Repeated"`
-	Url        *string                                                   `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// https://detect-obj.oss-cn-hangzhou.aliyuncs.com/sample/xxxx.pdf
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeFileModerationResultResponseBodyData) String() string {
@@ -108,10 +130,19 @@ func (s *DescribeFileModerationResultResponseBodyData) SetUrl(v string) *Describ
 
 type DescribeFileModerationResultResponseBodyDataPageResult struct {
 	ImageResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
-	ImageUrl    *string                                                              `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	PageNum     *int32                                                               `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	TextResult  []*DescribeFileModerationResultResponseBodyDataPageResultTextResult  `json:"TextResult,omitempty" xml:"TextResult,omitempty" type:"Repeated"`
-	TextUrl     *string                                                              `json:"TextUrl,omitempty" xml:"TextUrl,omitempty"`
+	// example:
+	//
+	// https://detect-obj.oss-cn-hangzhou.aliyuncs.com/sample/xxxx.jpg
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum    *int32                                                              `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	TextResult []*DescribeFileModerationResultResponseBodyDataPageResultTextResult `json:"TextResult,omitempty" xml:"TextResult,omitempty" type:"Repeated"`
+	// example:
+	//
+	// https://detect-obj.oss-cn-hangzhou.aliyuncs.com/sample/xxxx.txt
+	TextUrl *string `json:"TextUrl,omitempty" xml:"TextUrl,omitempty"`
 }
 
 func (s DescribeFileModerationResultResponseBodyDataPageResult) String() string {
@@ -151,7 +182,10 @@ type DescribeFileModerationResultResponseBodyDataPageResultImageResult struct {
 	Description *string                                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
 	LabelResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult `json:"LabelResult,omitempty" xml:"LabelResult,omitempty" type:"Repeated"`
 	Location    *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation      `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	Service     *string                                                                         `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// baselineCheck
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
 }
 
 func (s DescribeFileModerationResultResponseBodyDataPageResultImageResult) String() string {
@@ -183,8 +217,14 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) SetS
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult struct {
+	// example:
+	//
+	// 25.0
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Label      *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// nonlabel
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
 func (s DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult) String() string {
@@ -206,9 +246,21 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelR
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation struct {
+	// example:
+	//
+	// 44
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	// example:
+	//
+	// 33
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	// example:
+	//
+	// 11
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 22
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -242,11 +294,26 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocati
 
 type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Labels      *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	RiskTips    *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	RiskWords   *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
-	Service     *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// porn
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// xxx
+	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
+	// example:
+	//
+	// xxx
+	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	// example:
+	//
+	// chat_detection
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	Text    *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// [0,999]
 	TextSegment *string `json:"TextSegment,omitempty" xml:"TextSegment,omitempty"`
 }
 
@@ -323,6 +390,9 @@ func (s *DescribeFileModerationResultResponse) SetBody(v *DescribeFileModeration
 }
 
 type DescribeImageModerationResultRequest struct {
+	// example:
+	//
+	// B0963D30-BAB4-562F-9ED0-7A23AEC51C7C
 	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 }
 
@@ -340,10 +410,19 @@ func (s *DescribeImageModerationResultRequest) SetReqId(v string) *DescribeImage
 }
 
 type DescribeImageModerationResultResponseBody struct {
-	Code      *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeImageModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Msg       *string                                        `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeImageModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 2881AD4F-638B-52A3-BA20-F74C5B1CEAE3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeImageModerationResultResponseBody) String() string {
@@ -375,8 +454,17 @@ func (s *DescribeImageModerationResultResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeImageModerationResultResponseBodyData struct {
-	DataId   *string                                                `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Frame    *string                                                `json:"Frame,omitempty" xml:"Frame,omitempty"`
+	// example:
+	//
+	// 2a5389eb-4ff8-4584-ac99-644e2a539aa1
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// example:
+	//
+	// [{"result":[{"confidence":81.22,"label":"violent_explosion"}]}]
+	Frame *string `json:"Frame,omitempty" xml:"Frame,omitempty"`
+	// example:
+	//
+	// 1
 	FrameNum *int32                                                 `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
 	ReqId    *string                                                `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 	Result   []*DescribeImageModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
@@ -416,8 +504,14 @@ func (s *DescribeImageModerationResultResponseBodyData) SetResult(v []*DescribeI
 }
 
 type DescribeImageModerationResultResponseBodyDataResult struct {
+	// example:
+	//
+	// 81.22
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Label      *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// violent_explosion
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
 func (s DescribeImageModerationResultResponseBodyDataResult) String() string {
@@ -468,8 +562,14 @@ func (s *DescribeImageModerationResultResponse) SetBody(v *DescribeImageModerati
 }
 
 type DescribeImageResultExtRequest struct {
+	// example:
+	//
+	// customImage,textInImage
 	InfoType *string `json:"InfoType,omitempty" xml:"InfoType,omitempty"`
-	ReqId    *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	// example:
+	//
+	// 638EDDC65C82AB39319A9F60
+	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 }
 
 func (s DescribeImageResultExtRequest) String() string {
@@ -491,10 +591,19 @@ func (s *DescribeImageResultExtRequest) SetReqId(v string) *DescribeImageResultE
 }
 
 type DescribeImageResultExtResponseBody struct {
-	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeImageResultExtResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Msg       *string                                 `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeImageResultExtResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 6CF2815C-C8C7-4A01-B52E-FF6E24F53492
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeImageResultExtResponseBody) String() string {
@@ -556,10 +665,22 @@ func (s *DescribeImageResultExtResponseBodyData) SetTextInImage(v *DescribeImage
 
 type DescribeImageResultExtResponseBodyDataCustomImage struct {
 	// 图片ID。
+	//
+	// example:
+	//
+	// 123456
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// 图库ID。
+	//
+	// example:
+	//
+	// 123456
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
 	// 图库名。
+	//
+	// example:
+	//
+	// 图库123
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 
@@ -588,6 +709,10 @@ func (s *DescribeImageResultExtResponseBodyDataCustomImage) SetLibName(v string)
 
 type DescribeImageResultExtResponseBodyDataPublicFigure struct {
 	// 人物ID。
+	//
+	// example:
+	//
+	// yzazhzou
 	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
 }
 
@@ -815,6 +940,9 @@ func (s *DescribeUploadTokenResponse) SetBody(v *DescribeUploadTokenResponseBody
 }
 
 type DescribeUrlModerationResultRequest struct {
+	// example:
+	//
+	// B0963D30-BAB4-562F-9ED0-7A23AEC51C7C
 	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 }
 
@@ -832,10 +960,19 @@ func (s *DescribeUrlModerationResultRequest) SetReqId(v string) *DescribeUrlMode
 }
 
 type DescribeUrlModerationResultResponseBody struct {
-	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeUrlModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Msg       *string                                      `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeUrlModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 01F9144A-2088-5D87-935B-2DB865284B1A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeUrlModerationResultResponseBody) String() string {
@@ -867,10 +1004,16 @@ func (s *DescribeUrlModerationResultResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeUrlModerationResultResponseBodyData struct {
+	// example:
+	//
+	// 26769ada6e264e7ba9aa048241e12be9
 	DataId    *string                                               `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	ExtraInfo *DescribeUrlModerationResultResponseBodyDataExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
-	ReqId     *string                                               `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
-	Result    []*DescribeUrlModerationResultResponseBodyDataResult  `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// B0963D30-BAB4-562F-9ED0-7A23AEC51C7C
+	ReqId  *string                                              `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	Result []*DescribeUrlModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s DescribeUrlModerationResultResponseBodyData) String() string {
@@ -925,8 +1068,14 @@ func (s *DescribeUrlModerationResultResponseBodyDataExtraInfo) SetIcpType(v stri
 }
 
 type DescribeUrlModerationResultResponseBodyDataResult struct {
+	// example:
+	//
+	// 81.22
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Label      *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// sexual_url
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
 func (s DescribeUrlModerationResultResponseBodyDataResult) String() string {
@@ -977,7 +1126,13 @@ func (s *DescribeUrlModerationResultResponse) SetBody(v *DescribeUrlModerationRe
 }
 
 type FileModerationRequest struct {
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// document_detection
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// {"url":"https://detect-obj.oss-cn-hangzhou.aliyuncs.com/sample/xxxx.pdf"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -1000,10 +1155,20 @@ func (s *FileModerationRequest) SetServiceParameters(v string) *FileModerationRe
 }
 
 type FileModerationResponseBody struct {
-	Code    *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *FileModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *FileModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1036,6 +1201,9 @@ func (s *FileModerationResponseBody) SetRequestId(v string) *FileModerationRespo
 }
 
 type FileModerationResponseBodyData struct {
+	// example:
+	//
+	// xxxxx-xxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1082,7 +1250,13 @@ func (s *FileModerationResponse) SetBody(v *FileModerationResponseBody) *FileMod
 }
 
 type ImageAsyncModerationRequest struct {
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// baselineCheck
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// {"imageUrl":"https://img.alicdn.com/tfs/TB1U4r9AeH2gK0jSZJnXXaT1FXa-2880-480.png","dataId":"img123****"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -1105,10 +1279,19 @@ func (s *ImageAsyncModerationRequest) SetServiceParameters(v string) *ImageAsync
 }
 
 type ImageAsyncModerationResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ImageAsyncModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Msg       *string                               `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ImageAsyncModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 4A926AE2-4C96-573F-824F-0532960799F8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ImageAsyncModerationResponseBody) String() string {
@@ -1140,8 +1323,14 @@ func (s *ImageAsyncModerationResponseBody) SetRequestId(v string) *ImageAsyncMod
 }
 
 type ImageAsyncModerationResponseBodyData struct {
+	// example:
+	//
+	// fb5ffab1-993b-449f-b8d6-b97d5e3331f2
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	ReqId  *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	// example:
+	//
+	// A07B3DB9-D762-5C56-95B1-8EC55CF176D2
+	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 }
 
 func (s ImageAsyncModerationResponseBodyData) String() string {
@@ -1192,7 +1381,13 @@ func (s *ImageAsyncModerationResponse) SetBody(v *ImageAsyncModerationResponseBo
 }
 
 type ImageModerationRequest struct {
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// baselineCheck
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// {"imageUrl":"https://www.aliyun.com/test.jpg","dataId":"img1234567"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -1215,10 +1410,19 @@ func (s *ImageModerationRequest) SetServiceParameters(v string) *ImageModeration
 }
 
 type ImageModerationResponseBody struct {
-	Code      *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ImageModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Msg       *string                          `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ImageModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 6CF2815C-C8C7-4A01-B52E-FF6E24F53492
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ImageModerationResponseBody) String() string {
@@ -1250,6 +1454,9 @@ func (s *ImageModerationResponseBody) SetRequestId(v string) *ImageModerationRes
 }
 
 type ImageModerationResponseBodyData struct {
+	// example:
+	//
+	// fb5ffab1-993b-449f-b8d6-b97d5e3331f2
 	DataId *string                                  `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	Ext    *ImageModerationResponseBodyDataExt      `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
 	Result []*ImageModerationResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
@@ -1279,6 +1486,7 @@ func (s *ImageModerationResponseBodyData) SetResult(v []*ImageModerationResponse
 }
 
 type ImageModerationResponseBodyDataExt struct {
+	OcrResult   []*ImageModerationResponseBodyDataExtOcrResult   `json:"OcrResult,omitempty" xml:"OcrResult,omitempty" type:"Repeated"`
 	Recognition []*ImageModerationResponseBodyDataExtRecognition `json:"Recognition,omitempty" xml:"Recognition,omitempty" type:"Repeated"`
 }
 
@@ -1290,8 +1498,71 @@ func (s ImageModerationResponseBodyDataExt) GoString() string {
 	return s.String()
 }
 
+func (s *ImageModerationResponseBodyDataExt) SetOcrResult(v []*ImageModerationResponseBodyDataExtOcrResult) *ImageModerationResponseBodyDataExt {
+	s.OcrResult = v
+	return s
+}
+
 func (s *ImageModerationResponseBodyDataExt) SetRecognition(v []*ImageModerationResponseBodyDataExtRecognition) *ImageModerationResponseBodyDataExt {
 	s.Recognition = v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtOcrResult struct {
+	Location *ImageModerationResponseBodyDataExtOcrResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	Text     *string                                              `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtOcrResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtOcrResult) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtOcrResult) SetLocation(v *ImageModerationResponseBodyDataExtOcrResultLocation) *ImageModerationResponseBodyDataExtOcrResult {
+	s.Location = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtOcrResult) SetText(v string) *ImageModerationResponseBodyDataExtOcrResult {
+	s.Text = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtOcrResultLocation struct {
+	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtOcrResultLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtOcrResultLocation) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtOcrResultLocation) SetH(v int32) *ImageModerationResponseBodyDataExtOcrResultLocation {
+	s.H = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtOcrResultLocation) SetW(v int32) *ImageModerationResponseBodyDataExtOcrResultLocation {
+	s.W = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtOcrResultLocation) SetX(v int32) *ImageModerationResponseBodyDataExtOcrResultLocation {
+	s.X = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtOcrResultLocation) SetY(v int32) *ImageModerationResponseBodyDataExtOcrResultLocation {
+	s.Y = &v
 	return s
 }
 
@@ -1319,8 +1590,14 @@ func (s *ImageModerationResponseBodyDataExtRecognition) SetConfidence(v float32)
 }
 
 type ImageModerationResponseBodyDataResult struct {
+	// example:
+	//
+	// 81.22
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Label      *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// violent_explosion
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataResult) String() string {
@@ -1371,6 +1648,9 @@ func (s *ImageModerationResponse) SetBody(v *ImageModerationResponseBody) *Image
 }
 
 type TextModerationRequest struct {
+	// example:
+	//
+	// nickname_detection
 	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
@@ -1394,10 +1674,19 @@ func (s *TextModerationRequest) SetServiceParameters(v string) *TextModerationRe
 }
 
 type TextModerationResponseBody struct {
-	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *TextModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *TextModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s TextModerationResponseBody) String() string {
@@ -1431,8 +1720,11 @@ func (s *TextModerationResponseBody) SetRequestId(v string) *TextModerationRespo
 type TextModerationResponseBodyData struct {
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	DeviceId  *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
-	Labels    *string `json:"labels,omitempty" xml:"labels,omitempty"`
-	Reason    *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// example:
+	//
+	// porn
+	Labels *string `json:"labels,omitempty" xml:"labels,omitempty"`
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
 }
 
 func (s TextModerationResponseBodyData) String() string {
@@ -1493,6 +1785,9 @@ func (s *TextModerationResponse) SetBody(v *TextModerationResponseBody) *TextMod
 }
 
 type TextModerationPlusRequest struct {
+	// example:
+	//
+	// llm_query_moderation
 	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
@@ -1516,10 +1811,20 @@ func (s *TextModerationPlusRequest) SetServiceParameters(v string) *TextModerati
 }
 
 type TextModerationPlusResponseBody struct {
-	Code    *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *TextModerationPlusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *TextModerationPlusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1554,7 +1859,10 @@ func (s *TextModerationPlusResponseBody) SetRequestId(v string) *TextModerationP
 type TextModerationPlusResponseBodyData struct {
 	Advice []*TextModerationPlusResponseBodyDataAdvice `json:"Advice,omitempty" xml:"Advice,omitempty" type:"Repeated"`
 	Result []*TextModerationPlusResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Score  *float32                                    `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// 1
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
 }
 
 func (s TextModerationPlusResponseBodyData) String() string {
@@ -1581,6 +1889,9 @@ func (s *TextModerationPlusResponseBodyData) SetScore(v float32) *TextModeration
 }
 
 type TextModerationPlusResponseBodyDataAdvice struct {
+	// example:
+	//
+	// XXX
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
 }
 
@@ -1598,10 +1909,19 @@ func (s *TextModerationPlusResponseBodyDataAdvice) SetAnswer(v string) *TextMode
 }
 
 type TextModerationPlusResponseBodyDataResult struct {
+	// example:
+	//
+	// 81.22
 	Confidence    *float32                                                 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
 	CustomizedHit []*TextModerationPlusResponseBodyDataResultCustomizedHit `json:"CustomizedHit,omitempty" xml:"CustomizedHit,omitempty" type:"Repeated"`
-	Label         *string                                                  `json:"Label,omitempty" xml:"Label,omitempty"`
-	RiskWords     *string                                                  `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	// example:
+	//
+	// porn
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// XXX
+	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
 }
 
 func (s TextModerationPlusResponseBodyDataResult) String() string {
@@ -1633,6 +1953,9 @@ func (s *TextModerationPlusResponseBodyDataResult) SetRiskWords(v string) *TextM
 }
 
 type TextModerationPlusResponseBodyDataResultCustomizedHit struct {
+	// example:
+	//
+	// xxx
 	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
 	LibName  *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
@@ -1685,7 +2008,16 @@ func (s *TextModerationPlusResponse) SetBody(v *TextModerationPlusResponseBody) 
 }
 
 type UrlAsyncModerationRequest struct {
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//         "url": "https://help.aliyun.com/",
+	//
+	//         "dataId": "url123******"
+	//
+	// }
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -1708,10 +2040,20 @@ func (s *UrlAsyncModerationRequest) SetServiceParameters(v string) *UrlAsyncMode
 }
 
 type UrlAsyncModerationResponseBody struct {
+	// example:
+	//
+	// 200
 	Code *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *UrlAsyncModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Msg  *string                             `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 6CF2815C-****-****-B52E-FF6E2****492
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1744,8 +2086,14 @@ func (s *UrlAsyncModerationResponseBody) SetRequestId(v string) *UrlAsyncModerat
 }
 
 type UrlAsyncModerationResponseBodyData struct {
+	// example:
+	//
+	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	ReqId  *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	// example:
+	//
+	// A07B3DB9-D762-5C56-95B1-8EC55CF176D2
+	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 }
 
 func (s UrlAsyncModerationResponseBodyData) String() string {
@@ -1796,7 +2144,13 @@ func (s *UrlAsyncModerationResponse) SetBody(v *UrlAsyncModerationResponseBody) 
 }
 
 type VideoModerationRequest struct {
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// videoDetection
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// {\\"url\\": \\"https://talesofai.oss-cn-shanghai.aliyuncs.com/xxx.mp4\\", \\"dataId\\": \\"94db0b88-f521-11ed-806e-fae21c1f239c\\"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -1819,10 +2173,20 @@ func (s *VideoModerationRequest) SetServiceParameters(v string) *VideoModeration
 }
 
 type VideoModerationResponseBody struct {
-	Code    *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *VideoModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *VideoModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1856,6 +2220,9 @@ func (s *VideoModerationResponseBody) SetRequestId(v string) *VideoModerationRes
 
 type VideoModerationResponseBodyData struct {
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// example:
+	//
+	// xxxxx-xxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1907,7 +2274,13 @@ func (s *VideoModerationResponse) SetBody(v *VideoModerationResponseBody) *Video
 }
 
 type VideoModerationCancelRequest struct {
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// videoDetection
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// {\\"taskId\\":\\"vi_s_4O9gp7GfNQdx9GOqdekFmk-1z2RJT\\"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -1930,9 +2303,19 @@ func (s *VideoModerationCancelRequest) SetServiceParameters(v string) *VideoMode
 }
 
 type VideoModerationCancelResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 6CF2815C-****-****-B52E-FF6E2****492
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1989,7 +2372,13 @@ func (s *VideoModerationCancelResponse) SetBody(v *VideoModerationCancelResponse
 }
 
 type VideoModerationResultRequest struct {
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// videoDetection
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// {\\"taskId\\":\\"au_f_8PoWiZKoLbczp5HRn69VdT-1y8@U5\\"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -2012,10 +2401,20 @@ func (s *VideoModerationResultRequest) SetServiceParameters(v string) *VideoMode
 }
 
 type VideoModerationResultResponseBody struct {
-	Code    *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *VideoModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *VideoModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success finished
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 6CF2815C-C8C7-4A01-B52E-FF6E24F53492
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2049,10 +2448,16 @@ func (s *VideoModerationResultResponseBody) SetRequestId(v string) *VideoModerat
 
 type VideoModerationResultResponseBodyData struct {
 	AudioResult *VideoModerationResultResponseBodyDataAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Struct"`
+	// example:
+	//
+	// product_content-2055763
 	DataId      *string                                           `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	FrameResult *VideoModerationResultResponseBodyDataFrameResult `json:"FrameResult,omitempty" xml:"FrameResult,omitempty" type:"Struct"`
-	LiveId      *string                                           `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	TaskId      *string                                           `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// liveId
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyData) String() string {
@@ -2135,17 +2540,47 @@ func (s *VideoModerationResultResponseBodyDataAudioResultAudioSummarys) SetLabel
 }
 
 type VideoModerationResultResponseBodyDataAudioResultSliceDetails struct {
-	EndTime        *int64   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EndTimestamp   *int64   `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	Extend         *string  `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	Labels         *string  `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	RiskTips       *string  `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	RiskWords      *string  `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
-	Score          *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	StartTime      *int64   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StartTimestamp *int64   `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	Text           *string  `json:"Text,omitempty" xml:"Text,omitempty"`
-	Url            *string  `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 30
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1685245261939
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// example:
+	//
+	// {\\"consoleProduct\\":\\"slbnext\\"}
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// example:
+	//
+	// porn
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// ""
+	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
+	// example:
+	//
+	// ""
+	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	// example:
+	//
+	// 5
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// 0
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1659935002123
+	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	Text           *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// http://xxxx.abc.img
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataAudioResultSliceDetails) String() string {
@@ -2212,6 +2647,9 @@ func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetUrl(v 
 }
 
 type VideoModerationResultResponseBodyDataFrameResult struct {
+	// example:
+	//
+	// 10
 	FrameNum      *int32                                                           `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
 	FrameSummarys []*VideoModerationResultResponseBodyDataFrameResultFrameSummarys `json:"FrameSummarys,omitempty" xml:"FrameSummarys,omitempty" type:"Repeated"`
 	Frames        []*VideoModerationResultResponseBodyDataFrameResultFrames        `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
@@ -2264,10 +2702,16 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrameSummarys) SetLabel
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFrames struct {
-	Offset    *float32                                                         `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Results   []*VideoModerationResultResponseBodyDataFrameResultFramesResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	TempUrl   *string                                                          `json:"TempUrl,omitempty" xml:"TempUrl,omitempty"`
-	Timestamp *int64                                                           `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 338
+	Offset  *float32                                                         `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	Results []*VideoModerationResultResponseBodyDataFrameResultFramesResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://xxxx.abc.jpg
+	TempUrl   *string `json:"TempUrl,omitempty" xml:"TempUrl,omitempty"`
+	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResultFrames) String() string {
@@ -2302,8 +2746,11 @@ type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
 	CustomImage  []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage  `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
 	PublicFigure []*VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
 	Result       []*VideoModerationResultResponseBodyDataFrameResultFramesResultsResult       `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Service      *string                                                                      `json:"Service,omitempty" xml:"Service,omitempty"`
-	TextInImage  map[string]interface{}                                                       `json:"TextInImage,omitempty" xml:"TextInImage,omitempty"`
+	// example:
+	//
+	// tonalityImprove
+	Service     *string                `json:"Service,omitempty" xml:"Service,omitempty"`
+	TextInImage map[string]interface{} `json:"TextInImage,omitempty" xml:"TextInImage,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResultFramesResults) String() string {
@@ -2380,8 +2827,14 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigu
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsResult struct {
+	// example:
+	//
+	// 50
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Label      *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// bloody
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) String() string {
@@ -2432,6 +2885,9 @@ func (s *VideoModerationResultResponse) SetBody(v *VideoModerationResultResponse
 }
 
 type VoiceModerationRequest struct {
+	// example:
+	//
+	// nickname_detection
 	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
@@ -2455,10 +2911,20 @@ func (s *VoiceModerationRequest) SetServiceParameters(v string) *VoiceModeration
 }
 
 type VoiceModerationResponseBody struct {
-	Code    *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *VoiceModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *VoiceModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2492,6 +2958,9 @@ func (s *VoiceModerationResponseBody) SetRequestId(v string) *VoiceModerationRes
 
 type VoiceModerationResponseBodyData struct {
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// example:
+	//
+	// xxxxx-xxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2543,7 +3012,17 @@ func (s *VoiceModerationResponse) SetBody(v *VoiceModerationResponseBody) *Voice
 }
 
 type VoiceModerationCancelRequest struct {
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// nickname_detection
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//         "taskId": "xxxxx-xxxx"
+	//
+	//     }
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -2566,9 +3045,19 @@ func (s *VoiceModerationCancelRequest) SetServiceParameters(v string) *VoiceMode
 }
 
 type VoiceModerationCancelResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 4A926AE2-4C96-573F-824F-0532960799F8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2625,6 +3114,9 @@ func (s *VoiceModerationCancelResponse) SetBody(v *VoiceModerationCancelResponse
 }
 
 type VoiceModerationResultRequest struct {
+	// example:
+	//
+	// nickname_detection
 	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
@@ -2648,10 +3140,20 @@ func (s *VoiceModerationResultRequest) SetServiceParameters(v string) *VoiceMode
 }
 
 type VoiceModerationResultResponseBody struct {
-	Code    *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *VoiceModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *VoiceModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 2881AD4F-638B-52A3-BA20-F74C5B1CEAE3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2684,11 +3186,17 @@ func (s *VoiceModerationResultResponseBody) SetRequestId(v string) *VoiceModerat
 }
 
 type VoiceModerationResultResponseBodyData struct {
-	DataId       *string                                              `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// example:
+	//
+	// liveId
 	LiveId       *string                                              `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 	SliceDetails []*VoiceModerationResultResponseBodyDataSliceDetails `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
-	TaskId       *string                                              `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Url          *string                                              `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// kw24ihd0WGkdi5nniVZM@qOj-1x5Ibb
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s VoiceModerationResultResponseBodyData) String() string {
@@ -2725,18 +3233,30 @@ func (s *VoiceModerationResultResponseBodyData) SetUrl(v string) *VoiceModeratio
 }
 
 type VoiceModerationResultResponseBodyDataSliceDetails struct {
-	EndTime          *int64                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EndTimestamp     *int64                 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	Extend           *string                `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// example:
+	//
+	// 10
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTimestamp *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	Extend       *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// example:
+	//
+	// sexual_sounds
 	Labels           *string                `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	OriginAlgoResult map[string]interface{} `json:"OriginAlgoResult,omitempty" xml:"OriginAlgoResult,omitempty"`
 	RiskTips         *string                `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
 	RiskWords        *string                `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
-	Score            *float32               `json:"Score,omitempty" xml:"Score,omitempty"`
-	StartTime        *int64                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StartTimestamp   *int64                 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	Text             *string                `json:"Text,omitempty" xml:"Text,omitempty"`
-	Url              *string                `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 87.01
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// 0
+	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	Text           *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s VoiceModerationResultResponseBodyDataSliceDetails) String() string {
@@ -2903,6 +3423,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档审核结果
+//
+// @param request - DescribeFileModerationResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFileModerationResultResponse
 func (client *Client) DescribeFileModerationResultWithOptions(request *DescribeFileModerationResultRequest, runtime *util.RuntimeOptions) (_result *DescribeFileModerationResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2940,6 +3469,13 @@ func (client *Client) DescribeFileModerationResultWithOptions(request *DescribeF
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档审核结果
+//
+// @param request - DescribeFileModerationResultRequest
+//
+// @return DescribeFileModerationResultResponse
 func (client *Client) DescribeFileModerationResult(request *DescribeFileModerationResultRequest) (_result *DescribeFileModerationResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFileModerationResultResponse{}
@@ -2951,6 +3487,15 @@ func (client *Client) DescribeFileModerationResult(request *DescribeFileModerati
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询异步检测结果
+//
+// @param request - DescribeImageModerationResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeImageModerationResultResponse
 func (client *Client) DescribeImageModerationResultWithOptions(request *DescribeImageModerationResultRequest, runtime *util.RuntimeOptions) (_result *DescribeImageModerationResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2984,6 +3529,13 @@ func (client *Client) DescribeImageModerationResultWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询异步检测结果
+//
+// @param request - DescribeImageModerationResultRequest
+//
+// @return DescribeImageModerationResultResponse
 func (client *Client) DescribeImageModerationResult(request *DescribeImageModerationResultRequest) (_result *DescribeImageModerationResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeImageModerationResultResponse{}
@@ -2995,6 +3547,15 @@ func (client *Client) DescribeImageModerationResult(request *DescribeImageModera
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询检测结果辅助信息
+//
+// @param request - DescribeImageResultExtRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeImageResultExtResponse
 func (client *Client) DescribeImageResultExtWithOptions(request *DescribeImageResultExtRequest, runtime *util.RuntimeOptions) (_result *DescribeImageResultExtResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3032,6 +3593,13 @@ func (client *Client) DescribeImageResultExtWithOptions(request *DescribeImageRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询检测结果辅助信息
+//
+// @param request - DescribeImageResultExtRequest
+//
+// @return DescribeImageResultExtResponse
 func (client *Client) DescribeImageResultExt(request *DescribeImageResultExtRequest) (_result *DescribeImageResultExtResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeImageResultExtResponse{}
@@ -3043,6 +3611,15 @@ func (client *Client) DescribeImageResultExt(request *DescribeImageResultExtRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询上传token
+//
+// @param request - DescribeUploadTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUploadTokenResponse
 func (client *Client) DescribeUploadTokenWithOptions(runtime *util.RuntimeOptions) (_result *DescribeUploadTokenResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -3065,6 +3642,11 @@ func (client *Client) DescribeUploadTokenWithOptions(runtime *util.RuntimeOption
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询上传token
+//
+// @return DescribeUploadTokenResponse
 func (client *Client) DescribeUploadToken() (_result *DescribeUploadTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUploadTokenResponse{}
@@ -3076,6 +3658,15 @@ func (client *Client) DescribeUploadToken() (_result *DescribeUploadTokenRespons
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询 url 检测结果
+//
+// @param request - DescribeUrlModerationResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUrlModerationResultResponse
 func (client *Client) DescribeUrlModerationResultWithOptions(request *DescribeUrlModerationResultRequest, runtime *util.RuntimeOptions) (_result *DescribeUrlModerationResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3109,6 +3700,13 @@ func (client *Client) DescribeUrlModerationResultWithOptions(request *DescribeUr
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询 url 检测结果
+//
+// @param request - DescribeUrlModerationResultRequest
+//
+// @return DescribeUrlModerationResultResponse
 func (client *Client) DescribeUrlModerationResult(request *DescribeUrlModerationResultRequest) (_result *DescribeUrlModerationResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUrlModerationResultResponse{}
@@ -3120,6 +3718,15 @@ func (client *Client) DescribeUrlModerationResult(request *DescribeUrlModeration
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档审核
+//
+// @param request - FileModerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FileModerationResponse
 func (client *Client) FileModerationWithOptions(request *FileModerationRequest, runtime *util.RuntimeOptions) (_result *FileModerationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3157,6 +3764,13 @@ func (client *Client) FileModerationWithOptions(request *FileModerationRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档审核
+//
+// @param request - FileModerationRequest
+//
+// @return FileModerationResponse
 func (client *Client) FileModeration(request *FileModerationRequest) (_result *FileModerationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FileModerationResponse{}
@@ -3168,6 +3782,15 @@ func (client *Client) FileModeration(request *FileModerationRequest) (_result *F
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片异步检测
+//
+// @param request - ImageAsyncModerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageAsyncModerationResponse
 func (client *Client) ImageAsyncModerationWithOptions(request *ImageAsyncModerationRequest, runtime *util.RuntimeOptions) (_result *ImageAsyncModerationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3205,6 +3828,13 @@ func (client *Client) ImageAsyncModerationWithOptions(request *ImageAsyncModerat
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片异步检测
+//
+// @param request - ImageAsyncModerationRequest
+//
+// @return ImageAsyncModerationResponse
 func (client *Client) ImageAsyncModeration(request *ImageAsyncModerationRequest) (_result *ImageAsyncModerationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ImageAsyncModerationResponse{}
@@ -3216,6 +3846,15 @@ func (client *Client) ImageAsyncModeration(request *ImageAsyncModerationRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片审核
+//
+// @param request - ImageModerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageModerationResponse
 func (client *Client) ImageModerationWithOptions(request *ImageModerationRequest, runtime *util.RuntimeOptions) (_result *ImageModerationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3253,6 +3892,13 @@ func (client *Client) ImageModerationWithOptions(request *ImageModerationRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片审核
+//
+// @param request - ImageModerationRequest
+//
+// @return ImageModerationResponse
 func (client *Client) ImageModeration(request *ImageModerationRequest) (_result *ImageModerationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ImageModerationResponse{}
@@ -3264,6 +3910,15 @@ func (client *Client) ImageModeration(request *ImageModerationRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 文本审核
+//
+// @param request - TextModerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TextModerationResponse
 func (client *Client) TextModerationWithOptions(request *TextModerationRequest, runtime *util.RuntimeOptions) (_result *TextModerationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3301,6 +3956,13 @@ func (client *Client) TextModerationWithOptions(request *TextModerationRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 文本审核
+//
+// @param request - TextModerationRequest
+//
+// @return TextModerationResponse
 func (client *Client) TextModeration(request *TextModerationRequest) (_result *TextModerationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TextModerationResponse{}
@@ -3312,6 +3974,15 @@ func (client *Client) TextModeration(request *TextModerationRequest) (_result *T
 	return _result, _err
 }
 
+// Summary:
+//
+// 文本检测Plus版
+//
+// @param request - TextModerationPlusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TextModerationPlusResponse
 func (client *Client) TextModerationPlusWithOptions(request *TextModerationPlusRequest, runtime *util.RuntimeOptions) (_result *TextModerationPlusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3349,6 +4020,13 @@ func (client *Client) TextModerationPlusWithOptions(request *TextModerationPlusR
 	return _result, _err
 }
 
+// Summary:
+//
+// 文本检测Plus版
+//
+// @param request - TextModerationPlusRequest
+//
+// @return TextModerationPlusResponse
 func (client *Client) TextModerationPlus(request *TextModerationPlusRequest) (_result *TextModerationPlusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TextModerationPlusResponse{}
@@ -3360,6 +4038,15 @@ func (client *Client) TextModerationPlus(request *TextModerationPlusRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// url异步检测
+//
+// @param request - UrlAsyncModerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UrlAsyncModerationResponse
 func (client *Client) UrlAsyncModerationWithOptions(request *UrlAsyncModerationRequest, runtime *util.RuntimeOptions) (_result *UrlAsyncModerationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3397,6 +4084,13 @@ func (client *Client) UrlAsyncModerationWithOptions(request *UrlAsyncModerationR
 	return _result, _err
 }
 
+// Summary:
+//
+// url异步检测
+//
+// @param request - UrlAsyncModerationRequest
+//
+// @return UrlAsyncModerationResponse
 func (client *Client) UrlAsyncModeration(request *UrlAsyncModerationRequest) (_result *UrlAsyncModerationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UrlAsyncModerationResponse{}
@@ -3408,6 +4102,15 @@ func (client *Client) UrlAsyncModeration(request *UrlAsyncModerationRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频检测任务提交
+//
+// @param request - VideoModerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VideoModerationResponse
 func (client *Client) VideoModerationWithOptions(request *VideoModerationRequest, runtime *util.RuntimeOptions) (_result *VideoModerationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3445,6 +4148,13 @@ func (client *Client) VideoModerationWithOptions(request *VideoModerationRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频检测任务提交
+//
+// @param request - VideoModerationRequest
+//
+// @return VideoModerationResponse
 func (client *Client) VideoModeration(request *VideoModerationRequest) (_result *VideoModerationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VideoModerationResponse{}
@@ -3456,6 +4166,15 @@ func (client *Client) VideoModeration(request *VideoModerationRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消视频直播流检测
+//
+// @param request - VideoModerationCancelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VideoModerationCancelResponse
 func (client *Client) VideoModerationCancelWithOptions(request *VideoModerationCancelRequest, runtime *util.RuntimeOptions) (_result *VideoModerationCancelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3493,6 +4212,13 @@ func (client *Client) VideoModerationCancelWithOptions(request *VideoModerationC
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消视频直播流检测
+//
+// @param request - VideoModerationCancelRequest
+//
+// @return VideoModerationCancelResponse
 func (client *Client) VideoModerationCancel(request *VideoModerationCancelRequest) (_result *VideoModerationCancelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VideoModerationCancelResponse{}
@@ -3504,6 +4230,15 @@ func (client *Client) VideoModerationCancel(request *VideoModerationCancelReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取视频检测结果
+//
+// @param request - VideoModerationResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VideoModerationResultResponse
 func (client *Client) VideoModerationResultWithOptions(request *VideoModerationResultRequest, runtime *util.RuntimeOptions) (_result *VideoModerationResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3541,6 +4276,13 @@ func (client *Client) VideoModerationResultWithOptions(request *VideoModerationR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取视频检测结果
+//
+// @param request - VideoModerationResultRequest
+//
+// @return VideoModerationResultResponse
 func (client *Client) VideoModerationResult(request *VideoModerationResultRequest) (_result *VideoModerationResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VideoModerationResultResponse{}
@@ -3552,6 +4294,15 @@ func (client *Client) VideoModerationResult(request *VideoModerationResultReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 语音审核
+//
+// @param request - VoiceModerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceModerationResponse
 func (client *Client) VoiceModerationWithOptions(request *VoiceModerationRequest, runtime *util.RuntimeOptions) (_result *VoiceModerationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3589,6 +4340,13 @@ func (client *Client) VoiceModerationWithOptions(request *VoiceModerationRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 语音审核
+//
+// @param request - VoiceModerationRequest
+//
+// @return VoiceModerationResponse
 func (client *Client) VoiceModeration(request *VoiceModerationRequest) (_result *VoiceModerationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VoiceModerationResponse{}
@@ -3600,6 +4358,15 @@ func (client *Client) VoiceModeration(request *VoiceModerationRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消检测
+//
+// @param request - VoiceModerationCancelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceModerationCancelResponse
 func (client *Client) VoiceModerationCancelWithOptions(request *VoiceModerationCancelRequest, runtime *util.RuntimeOptions) (_result *VoiceModerationCancelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3637,6 +4404,13 @@ func (client *Client) VoiceModerationCancelWithOptions(request *VoiceModerationC
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消检测
+//
+// @param request - VoiceModerationCancelRequest
+//
+// @return VoiceModerationCancelResponse
 func (client *Client) VoiceModerationCancel(request *VoiceModerationCancelRequest) (_result *VoiceModerationCancelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VoiceModerationCancelResponse{}
@@ -3648,6 +4422,15 @@ func (client *Client) VoiceModerationCancel(request *VoiceModerationCancelReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 语音检测结果获取接口
+//
+// @param request - VoiceModerationResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VoiceModerationResultResponse
 func (client *Client) VoiceModerationResultWithOptions(request *VoiceModerationResultRequest, runtime *util.RuntimeOptions) (_result *VoiceModerationResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3685,6 +4468,13 @@ func (client *Client) VoiceModerationResultWithOptions(request *VoiceModerationR
 	return _result, _err
 }
 
+// Summary:
+//
+// 语音检测结果获取接口
+//
+// @param request - VoiceModerationResultRequest
+//
+// @return VoiceModerationResultResponse
 func (client *Client) VoiceModerationResult(request *VoiceModerationResultRequest) (_result *VoiceModerationResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VoiceModerationResultResponse{}
