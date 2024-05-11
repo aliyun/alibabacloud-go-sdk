@@ -31,13 +31,17 @@ type AllocateInstancePublicConnectionRequest struct {
 	//
 	// Specify a prefix for the endpoint. Example: `gp-bp12ga6v69h86****`. In this example, the endpoint is `gp-bp12ga6v69h86****.gpdb.rds.aliyuncs.com`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -45,6 +49,8 @@ type AllocateInstancePublicConnectionRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The port number. Example: 5432.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -149,14 +155,20 @@ func (s *AllocateInstancePublicConnectionResponse) SetBody(v *AllocateInstancePu
 }
 
 type CancelUploadDocumentJobRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 231460f8-75dc-405e-a669-0c5204887e91
@@ -165,11 +177,15 @@ type CancelUploadDocumentJobRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -287,14 +303,20 @@ func (s *CancelUploadDocumentJobResponse) SetBody(v *CancelUploadDocumentJobResp
 }
 
 type CancelUpsertCollectionDataJobRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// bf8f7bc4-9276-44f7-9c22-1d06edc8dfd1
@@ -303,11 +325,15 @@ type CancelUpsertCollectionDataJobRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -425,7 +451,7 @@ func (s *CancelUpsertCollectionDataJobResponse) SetBody(v *CancelUpsertCollectio
 }
 
 type CheckServiceLinkedRoleRequest struct {
-	// The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -528,13 +554,15 @@ type CreateAccountRequest struct {
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the privileged account.
 	//
-	// 	- The name can contain lowercase letters, digits, and underscores (\_).
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
 	//
 	// 	- The name must start with a lowercase letter and end with a lowercase letter or a digit.
 	//
 	// 	- The name cannot start with gp.
 	//
 	// 	- The name must be 2 to 16 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -548,13 +576,17 @@ type CreateAccountRequest struct {
 	//
 	// 	- The password must be 8 to 32 characters in length.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Pw123456
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -670,10 +702,14 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 }
 
 type CreateCollectionRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -688,14 +724,20 @@ type CreateCollectionRequest struct {
 	// title,content
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
 	HnswM                   *int32  `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"title":"text","content":"text","response":"int"}
@@ -711,6 +753,8 @@ type CreateCollectionRequest struct {
 	// zh_cn
 	Parser   *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
 	PqEnable *int32  `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -870,13 +914,13 @@ func (s *CreateCollectionResponse) SetBody(v *CreateCollectionResponseBody) *Cre
 type CreateDBInstanceRequest struct {
 	// The ID of the backup set.
 	//
-	// >  You can call the [DescribeDataBackups](~~210093~~) operation to query the IDs of all backup sets in the instance.
+	// >  You can call the [DescribeDataBackups](https://help.aliyun.com/document_detail/210093.html) operation to query the IDs of all backup sets in the instance.
 	//
 	// example:
 	//
 	// 1111111111
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. For more information, see [Ensure idempotence](~~327176~~).
+	// The client token that is used to ensure the idempotence of the request. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/327176.html).
 	//
 	// example:
 	//
@@ -906,7 +950,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// HighAvailability
 	DBInstanceCategory *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
-	// The instance type of the instance. For information, see [Instance types](~~86942~~).
+	// The instance type of the instance. For information, see [Instance types](https://help.aliyun.com/document_detail/86942.html).
 	//
 	// > This parameter must be specified when you create an instance in reserved storage mode.
 	//
@@ -938,6 +982,8 @@ type CreateDBInstanceRequest struct {
 	//
 	// > This parameter must be specified.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// StorageElastic
@@ -965,6 +1011,8 @@ type CreateDBInstanceRequest struct {
 	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
 	// The database engine of the instance. Set the value to gpdb.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gpdb
@@ -974,6 +1022,8 @@ type CreateDBInstanceRequest struct {
 	// - 6.0
 	//
 	// - 7.0
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1091,7 +1141,9 @@ type CreateDBInstanceRequest struct {
 	// 1.1.1.*
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	ProdType         *string `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1105,7 +1157,9 @@ type CreateDBInstanceRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The IP address whitelist of the instance.
 	//
-	// A value of 127.0.0.1 specifies that no IP address is allowed for external access. You can call the [ModifySecurityIps](~~86928~~) operation to modify the IP address whitelist after you create an instance.
+	// A value of 127.0.0.1 specifies that no IP address is allowed for external access. You can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist after you create an instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1173,7 +1227,7 @@ type CreateDBInstanceRequest struct {
 	ServerlessResource *int32 `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
 	// The ID of the source instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
 	// example:
 	//
@@ -1247,7 +1301,9 @@ type CreateDBInstanceRequest struct {
 	//
 	// enabled
 	VectorConfigurationStatus *string `json:"VectorConfigurationStatus,omitempty" xml:"VectorConfigurationStatus,omitempty"`
-	// The zone ID of the read-only instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent zone list.
+	// The zone ID of the read-only instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent zone list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1511,7 +1567,7 @@ func (s *CreateDBInstanceRequestTag) SetValue(v string) *CreateDBInstanceRequest
 type CreateDBInstanceResponseBody struct {
 	// An invalid parameter. It is no longer returned when you call this operation.
 	//
-	// You can call the [DescribeDBInstanceAttribute](~~86910~~) operation to query the endpoint that is used to connect to the instance.
+	// You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the endpoint that is used to connect to the instance.
 	//
 	// example:
 	//
@@ -1531,7 +1587,7 @@ type CreateDBInstanceResponseBody struct {
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
 	//
-	// You can call the [DescribeDBInstanceAttribute](~~86910~~) operation to query the port number that is used to connect to the instance.
+	// You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the port number that is used to connect to the instance.
 	//
 	// example:
 	//
@@ -1610,7 +1666,9 @@ func (s *CreateDBInstanceResponse) SetBody(v *CreateDBInstanceResponseBody) *Cre
 type CreateDBInstancePlanRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1618,6 +1676,8 @@ type CreateDBInstancePlanRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The execution information of the plan. Specify the parameter in the JSON format. The parameter value varies based on the values of **PlanType*	- and **PlanScheduleType**. The following section describes the PlanConfig parameter.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1643,6 +1703,8 @@ type CreateDBInstancePlanRequest struct {
 	PlanEndDate *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
 	// The name of the plan.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test-plan
@@ -1652,6 +1714,8 @@ type CreateDBInstancePlanRequest struct {
 	// 	- **Postpone**: The plan is executed later.
 	//
 	// 	- **Regular**: The plan is executed periodically.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1682,6 +1746,8 @@ type CreateDBInstancePlanRequest struct {
 	// 	- You can specify the value to Resize only for instances in Serverless mode.
 	//
 	// 	- You can specify the value to ModifySpec only for instances in elastic storage mode.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1842,10 +1908,14 @@ func (s *CreateDBInstancePlanResponse) SetBody(v *CreateDBInstancePlanResponseBo
 }
 
 type CreateDocumentCollectionRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -1863,10 +1933,14 @@ type CreateDocumentCollectionRequest struct {
 	//
 	// 64
 	HnswM *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
@@ -1892,6 +1966,8 @@ type CreateDocumentCollectionRequest struct {
 	//
 	// 0
 	PqEnable *int32 `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -2051,7 +2127,9 @@ func (s *CreateDocumentCollectionResponse) SetBody(v *CreateDocumentCollectionRe
 type CreateNamespaceRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~196830~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2059,11 +2137,15 @@ type CreateNamespaceRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the manager account.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2077,6 +2159,8 @@ type CreateNamespaceRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword2
@@ -2084,7 +2168,9 @@ type CreateNamespaceRequest struct {
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2215,7 +2301,9 @@ func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *Creat
 type CreateSampleDataRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2334,6 +2422,8 @@ type CreateServiceLinkedRoleRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -2410,24 +2500,34 @@ func (s *CreateServiceLinkedRoleResponse) SetBody(v *CreateServiceLinkedRoleResp
 }
 
 type CreateVectorIndexRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1024
 	Dimension       *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	ExternalStorage *int32 `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
 	HnswM           *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
@@ -2444,6 +2544,8 @@ type CreateVectorIndexRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PqEnable  *int32  `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -2588,13 +2690,17 @@ func (s *CreateVectorIndexResponse) SetBody(v *CreateVectorIndexResponseBody) *C
 type DeleteCollectionRequest struct {
 	// The name of the collection.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2608,6 +2714,8 @@ type DeleteCollectionRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
@@ -2615,7 +2723,9 @@ type DeleteCollectionRequest struct {
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2741,6 +2851,8 @@ func (s *DeleteCollectionResponse) SetBody(v *DeleteCollectionResponseBody) *Del
 type DeleteCollectionDataRequest struct {
 	// The name of the collection.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
@@ -2759,7 +2871,9 @@ type DeleteCollectionDataRequest struct {
 	CollectionDataFilter *string `json:"CollectionDataFilter,omitempty" xml:"CollectionDataFilter,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2773,6 +2887,8 @@ type DeleteCollectionDataRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
@@ -2780,7 +2896,9 @@ type DeleteCollectionDataRequest struct {
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2925,7 +3043,7 @@ func (s *DeleteCollectionDataResponse) SetBody(v *DeleteCollectionDataResponseBo
 }
 
 type DeleteDBInstanceRequest struct {
-	// The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](~~327176~~).
+	// The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/327176.html).
 	//
 	// example:
 	//
@@ -2933,7 +3051,9 @@ type DeleteDBInstanceRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3030,7 +3150,9 @@ func (s *DeleteDBInstanceResponse) SetBody(v *DeleteDBInstanceResponseBody) *Del
 type DeleteDBInstancePlanRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3039,7 +3161,9 @@ type DeleteDBInstancePlanRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the plan.
 	//
-	// >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+	// >  You can call the [DescribeDBInstancePlans](https://help.aliyun.com/document_detail/449398.html) operation to query the details of plans, including plan IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3170,14 +3294,20 @@ func (s *DeleteDBInstancePlanResponse) SetBody(v *DeleteDBInstancePlanResponseBo
 }
 
 type DeleteDocumentRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// music.txt
@@ -3186,11 +3316,15 @@ type DeleteDocumentRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3308,10 +3442,14 @@ func (s *DeleteDocumentResponse) SetBody(v *DeleteDocumentResponseBody) *DeleteD
 }
 
 type DeleteDocumentCollectionRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -3320,11 +3458,15 @@ type DeleteDocumentCollectionRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3439,7 +3581,9 @@ func (s *DeleteDocumentCollectionResponse) SetBody(v *DeleteDocumentCollectionRe
 type DeleteNamespaceRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3447,17 +3591,23 @@ type DeleteNamespaceRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the manager account.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	// The name of the namespace.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3466,7 +3616,9 @@ type DeleteNamespaceRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3592,13 +3744,17 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 type DeleteVectorIndexRequest struct {
 	// The name of the collection.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3606,11 +3762,15 @@ type DeleteVectorIndexRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the manager account.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3625,7 +3785,9 @@ type DeleteVectorIndexRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3762,7 +3924,9 @@ type DescribeAccountsRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3925,6 +4089,8 @@ func (s *DescribeAccountsResponse) SetBody(v *DescribeAccountsResponseBody) *Des
 }
 
 type DescribeActiveSQLRecordsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
@@ -4197,7 +4363,9 @@ type DescribeAvailableResourcesRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4205,7 +4373,9 @@ type DescribeAvailableResourcesRequest struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The zone ID.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent zone list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent zone list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4557,7 +4727,9 @@ func (s *DescribeAvailableResourcesResponse) SetBody(v *DescribeAvailableResourc
 type DescribeBackupPolicyRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4713,13 +4885,17 @@ func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBo
 type DescribeCollectionRequest struct {
 	// The name of the collection.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4733,6 +4909,8 @@ type DescribeCollectionRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
@@ -4740,7 +4918,9 @@ type DescribeCollectionRequest struct {
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4954,7 +5134,9 @@ func (s *DescribeCollectionResponse) SetBody(v *DescribeCollectionResponseBody) 
 type DescribeDBClusterNodeRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5086,7 +5268,9 @@ func (s *DescribeDBClusterNodeResponse) SetBody(v *DescribeDBClusterNodeResponse
 type DescribeDBClusterPerformanceRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5096,11 +5280,15 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// > The end time must be later than the start time. The maximum time range that can be specified is seven days.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-11-03T15:10Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
+	// The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5118,7 +5306,7 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// master
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The nodes for which you want to query performance metrics. Separate multiple values with commas (,). Example: `master-10******1,master-10******2`. You can call the [DescribeDBClusterNode](~~390136~~) operation to query the names of nodes.
+	// The nodes for which you want to query performance metrics. Separate multiple values with commas (,). Example: `master-10******1,master-10******2`. You can call the [DescribeDBClusterNode](https://help.aliyun.com/document_detail/390136.html) operation to query the names of nodes.
 	//
 	// You can also filter the nodes based on their metric values. Valid values:
 	//
@@ -5138,6 +5326,8 @@ type DescribeDBClusterPerformanceRequest struct {
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
 	//
 	// > You can query monitoring information only within the last 30 days.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5201,7 +5391,7 @@ type DescribeDBClusterPerformanceResponseBody struct {
 	//
 	// 2021-11-03T15:10Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the performance metric. For more information, see [Performance parameters](~~86943~~).
+	// The name of the performance metric. For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
 	PerformanceKeys []*DescribeDBClusterPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -5251,7 +5441,7 @@ func (s *DescribeDBClusterPerformanceResponseBody) SetStartTime(v string) *Descr
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeys struct {
-	// The name of the performance metric. For more information, see [Performance parameters](~~86943~~).
+	// The name of the performance metric. For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
 	//
 	// example:
 	//
@@ -5386,7 +5576,9 @@ func (s *DescribeDBClusterPerformanceResponse) SetBody(v *DescribeDBClusterPerfo
 type DescribeDBInstanceAttributeRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6361,7 +6553,9 @@ func (s *DescribeDBInstanceAttributeResponse) SetBody(v *DescribeDBInstanceAttri
 type DescribeDBInstanceDataBloatRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6648,7 +6842,9 @@ func (s *DescribeDBInstanceDataBloatResponse) SetBody(v *DescribeDBInstanceDataB
 type DescribeDBInstanceDataSkewRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6892,7 +7088,9 @@ func (s *DescribeDBInstanceDataSkewResponse) SetBody(v *DescribeDBInstanceDataSk
 type DescribeDBInstanceDiagnosisSummaryRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7401,7 +7599,9 @@ func (s *DescribeDBInstanceDiagnosisSummaryResponse) SetBody(v *DescribeDBInstan
 type DescribeDBInstanceErrorLogRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7705,13 +7905,15 @@ type DescribeDBInstanceIPArrayListRequest struct {
 	DBInstanceIPArrayName *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -7870,7 +8072,9 @@ func (s *DescribeDBInstanceIPArrayListResponse) SetBody(v *DescribeDBInstanceIPA
 type DescribeDBInstanceIndexUsageRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8137,7 +8341,9 @@ type DescribeDBInstanceNetInfoRequest struct {
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The instance ID.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8359,7 +8565,9 @@ func (s *DescribeDBInstanceNetInfoResponse) SetBody(v *DescribeDBInstanceNetInfo
 type DescribeDBInstancePerformanceRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8367,11 +8575,15 @@ type DescribeDBInstancePerformanceRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-07-09T03:47Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The performance metric. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
+	// The performance metric. Separate multiple values with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8384,6 +8596,8 @@ type DescribeDBInstancePerformanceRequest struct {
 	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8529,7 +8743,9 @@ func (s *DescribeDBInstancePerformanceResponse) SetBody(v *DescribeDBInstancePer
 type DescribeDBInstancePlansRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8550,7 +8766,7 @@ type DescribeDBInstancePlansRequest struct {
 	PlanDesc *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
 	// The plan ID.
 	//
-	// > You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the information about plans, including plan IDs.
+	// > You can call the [DescribeDBInstancePlans](https://help.aliyun.com/document_detail/449398.html) operation to query the information about plans, including plan IDs.
 	//
 	// example:
 	//
@@ -8899,6 +9115,8 @@ func (s *DescribeDBInstancePlansResponse) SetBody(v *DescribeDBInstancePlansResp
 type DescribeDBInstanceSSLRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
@@ -9025,6 +9243,8 @@ func (s *DescribeDBInstanceSSLResponse) SetBody(v *DescribeDBInstanceSSLResponse
 }
 
 type DescribeDBInstanceSupportMaxPerformanceRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-bp***************
@@ -9228,7 +9448,9 @@ type DescribeDBInstancesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9412,7 +9634,9 @@ type DescribeDBInstancesShrinkRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9622,7 +9846,7 @@ func (s *DescribeDBInstancesResponseBodyItems) SetDBInstance(v []*DescribeDBInst
 type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	// An invalid parameter. It is no longer returned when you call this operation.
 	//
-	// You can call the [DescribeDBInstanceAttribute](~~86910~~) operation to query the access mode of an instance.
+	// You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the access mode of an instance.
 	//
 	// example:
 	//
@@ -9682,7 +9906,7 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	//
 	// 2
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// The state of the instance. For more information, see [Instance statuses](~~86944~~).
+	// The state of the instance. For more information, see [Instance statuses](https://help.aliyun.com/document_detail/86944.html).
 	//
 	// example:
 	//
@@ -10077,6 +10301,8 @@ func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody
 }
 
 type DescribeDBResourceManagementModeRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -10180,13 +10406,15 @@ type DescribeDBVersionInfosRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -10413,7 +10641,7 @@ func (s *DescribeDBVersionInfosResponse) SetBody(v *DescribeDBVersionInfosRespon
 type DescribeDataBackupsRequest struct {
 	// The ID of the backup set. If you specify BackupId, the details of the backup set are returned.
 	//
-	// > You can call the [DescribeDataBackups](~~210093~~) operation to query the information about all backup sets of an instance, including backup set IDs.
+	// > You can call the [DescribeDataBackups](https://help.aliyun.com/document_detail/210093.html) operation to query the information about all backup sets of an instance, including backup set IDs.
 	//
 	// example:
 	//
@@ -10445,7 +10673,9 @@ type DescribeDataBackupsRequest struct {
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10464,6 +10694,8 @@ type DescribeDataBackupsRequest struct {
 	// DATA
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10490,6 +10722,8 @@ type DescribeDataBackupsRequest struct {
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10839,7 +11073,9 @@ func (s *DescribeDataBackupsResponse) SetBody(v *DescribeDataBackupsResponseBody
 type DescribeDataReDistributeInfoRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11025,13 +11261,15 @@ type DescribeDataShareInstancesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -11039,7 +11277,7 @@ type DescribeDataShareInstancesRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The keyword used to filter instances, which can be an instance ID or instance description.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs and instance descriptions.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs and instance descriptions.
 	//
 	// example:
 	//
@@ -11305,13 +11543,17 @@ type DescribeDataSharePerformanceRequest struct {
 	//
 	// 	- **adbpg_datashare_data_size_mb**: the amount of data shared.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// adbpg_datashare_topic_count
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The region ID of the instance.
 	//
-	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11545,7 +11787,9 @@ func (s *DescribeDataSharePerformanceResponse) SetBody(v *DescribeDataSharePerfo
 type DescribeDiagnosisDimensionsRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11634,13 +11878,17 @@ func (s *DescribeDiagnosisDimensionsResponse) SetBody(v *DescribeDiagnosisDimens
 type DescribeDiagnosisMonitorPerformanceRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11892,13 +12140,17 @@ func (s *DescribeDiagnosisMonitorPerformanceResponse) SetBody(v *DescribeDiagnos
 type DescribeDiagnosisRecordsRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12246,7 +12498,9 @@ func (s *DescribeDiagnosisRecordsResponse) SetBody(v *DescribeDiagnosisRecordsRe
 type DescribeDiagnosisSQLInfoRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12254,13 +12508,17 @@ type DescribeDiagnosisSQLInfoRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The query ID. It is a unique identifier of the query.
 	//
-	// > You can call the [DescribeDiagnosisRecords](~~450511~~) operation to obtain query IDs.
+	// > You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/450511.html) operation to obtain query IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12320,7 +12578,7 @@ type DescribeDiagnosisSQLInfoResponseBody struct {
 	//
 	// example:
 	//
-	// {\"children\":********\"startTime\":1660719602199}
+	// {\\"children\\":********\\"startTime\\":1660719602199}
 	QueryPlan *string `json:"QueryPlan,omitempty" xml:"QueryPlan,omitempty"`
 	// The request ID.
 	//
@@ -12344,7 +12602,7 @@ type DescribeDiagnosisSQLInfoResponseBody struct {
 	//
 	// example:
 	//
-	// {\"costSort\":******:\"Seq Scan-9\",\"value\":0.0}]}
+	// {\\"costSort\\":******:\\"Seq Scan-9\\",\\"value\\":0.0}]}
 	SortedMetrics *string `json:"SortedMetrics,omitempty" xml:"SortedMetrics,omitempty"`
 	// The start time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
@@ -12479,14 +12737,20 @@ func (s *DescribeDiagnosisSQLInfoResponse) SetBody(v *DescribeDiagnosisSQLInfoRe
 }
 
 type DescribeDocumentRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// music.txt
@@ -12495,11 +12759,15 @@ type DescribeDocumentRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -12709,7 +12977,9 @@ func (s *DescribeDocumentResponse) SetBody(v *DescribeDocumentResponseBody) *Des
 type DescribeDownloadRecordsRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12863,7 +13133,9 @@ func (s *DescribeDownloadRecordsResponse) SetBody(v *DescribeDownloadRecordsResp
 type DescribeDownloadSQLLogsRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13001,13 +13273,17 @@ func (s *DescribeDownloadSQLLogsResponse) SetBody(v *DescribeDownloadSQLLogsResp
 type DescribeHealthStatusRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
+	// The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13048,7 +13324,7 @@ type DescribeHealthStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The queried performance metrics. Each performance metric consists of the parameter name, status, and metric value. The metric information is returned only for the performance parameters specified by **Key**. For example, if you set **Key*	- to **adbpg_status**, only the metric information of **adbpg_status*	- is returned.
 	//
-	// For more information about performance parameters, see [Performance parameters](~~86943~~).
+	// For more information about performance parameters, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
 	//
 	// example:
 	//
@@ -13783,10 +14059,14 @@ func (s *DescribeHealthStatusResponse) SetBody(v *DescribeHealthStatusResponseBo
 }
 
 type DescribeIMVInfosRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testdb
@@ -13862,7 +14142,7 @@ type DescribeIMVInfosResponseBodyImvInfos struct {
 	Base *string `json:"Base,omitempty" xml:"Base,omitempty"`
 	// example:
 	//
-	// {\"maintenance_calls\" : 1, \"avg_apply_time\" : 2, \"avg_calc_rows\" : 1, \"avg_calc_time\" : 11, \"avg_delta_rows\" : 1, \"avg_maintenance_total_time\" : 14, \"avg_maintenance_total_time_total\" : 14, \"max_apply_time\" : 2, \"max_calc_rows\" : 1, \"max_calc_time\" : 11, \"max_delta_rows\" : 1, \"max_maintenance_total_time\" : 14, \"max_maintenance_total_time_total\" : 14, \"min_apply_time\" : 2, \"min_calc_rows\" : 1, \"min_calc_time\" : 11, \"min_delta_rows\" : 1, \"min_maintenance_total_time\" : 14, \"min_maintenance_total_time_total\" : 14, \"max_outerjoin_apply_time\" : null, \"max_outerjoin_calc_rows\" : null, \"max_outerjoin_calc_time\" : null, \"max_outerjoin_delta_rows\" : null, \"avg_outerjoin_apply_time\" : null, \"avg_outerjoin_calc_rows\" : null, \"avg_outerjoin_calc_time\" : null, \"avg_outerjoin_delta_rows\" : null, \"min_outerjoin_apply_time\" : null, \"min_outerjoin_calc_rows\" : null, \"min_outerjoin_calc_time\" : null, \"min_outerjoin_delta_rows\" : null, \"create_rows\" : null, \"create_time\" : null, \"direct_visited\" : null, \"indirect_visited\" : null, \"max_refresh_rows\" : null, \"max_refresh_time\" : null, \"avg_refresh_rows\" : null, \"avg_refresh_time\" : null, \"min_refresh_rows\" : null, \"min_refresh_time\" : null, \"refresh_calls\" : null, \"avg_wait_lock_time\" : null, \"max_wait_lock_time\" : null, \"min_wait_lock_time\" : null, \"latest_maintenance_time\" : \"2023-08-09T07:39:14.753252+00:00\"}
+	// {\\"maintenance_calls\\" : 1, \\"avg_apply_time\\" : 2, \\"avg_calc_rows\\" : 1, \\"avg_calc_time\\" : 11, \\"avg_delta_rows\\" : 1, \\"avg_maintenance_total_time\\" : 14, \\"avg_maintenance_total_time_total\\" : 14, \\"max_apply_time\\" : 2, \\"max_calc_rows\\" : 1, \\"max_calc_time\\" : 11, \\"max_delta_rows\\" : 1, \\"max_maintenance_total_time\\" : 14, \\"max_maintenance_total_time_total\\" : 14, \\"min_apply_time\\" : 2, \\"min_calc_rows\\" : 1, \\"min_calc_time\\" : 11, \\"min_delta_rows\\" : 1, \\"min_maintenance_total_time\\" : 14, \\"min_maintenance_total_time_total\\" : 14, \\"max_outerjoin_apply_time\\" : null, \\"max_outerjoin_calc_rows\\" : null, \\"max_outerjoin_calc_time\\" : null, \\"max_outerjoin_delta_rows\\" : null, \\"avg_outerjoin_apply_time\\" : null, \\"avg_outerjoin_calc_rows\\" : null, \\"avg_outerjoin_calc_time\\" : null, \\"avg_outerjoin_delta_rows\\" : null, \\"min_outerjoin_apply_time\\" : null, \\"min_outerjoin_calc_rows\\" : null, \\"min_outerjoin_calc_time\\" : null, \\"min_outerjoin_delta_rows\\" : null, \\"create_rows\\" : null, \\"create_time\\" : null, \\"direct_visited\\" : null, \\"indirect_visited\\" : null, \\"max_refresh_rows\\" : null, \\"max_refresh_time\\" : null, \\"avg_refresh_rows\\" : null, \\"avg_refresh_time\\" : null, \\"min_refresh_rows\\" : null, \\"min_refresh_time\\" : null, \\"refresh_calls\\" : null, \\"avg_wait_lock_time\\" : null, \\"max_wait_lock_time\\" : null, \\"min_wait_lock_time\\" : null, \\"latest_maintenance_time\\" : \\"2023-08-09T07:39:14.753252+00:00\\"}
 	DetailInfo *string `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty"`
 	// example:
 	//
@@ -13925,13 +14205,17 @@ func (s *DescribeIMVInfosResponse) SetBody(v *DescribeIMVInfosResponseBody) *Des
 type DescribeLogBackupsRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13958,6 +14242,8 @@ type DescribeLogBackupsRequest struct {
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14180,7 +14466,9 @@ func (s *DescribeLogBackupsResponse) SetBody(v *DescribeLogBackupsResponseBody) 
 type DescribeModifyParameterLogRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~196830~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14350,7 +14638,9 @@ func (s *DescribeModifyParameterLogResponse) SetBody(v *DescribeModifyParameterL
 type DescribeNamespaceRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14358,17 +14648,23 @@ type DescribeNamespaceRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the manager account.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	// The name of the namespace.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14377,7 +14673,9 @@ type DescribeNamespaceRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14543,7 +14841,9 @@ func (s *DescribeNamespaceResponse) SetBody(v *DescribeNamespaceResponseBody) *D
 type DescribeParametersRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14723,7 +15023,7 @@ type DescribeRdsVSwitchsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
 	//
-	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list and zone list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list and zone list.
 	//
 	// example:
 	//
@@ -14742,7 +15042,7 @@ type DescribeRdsVSwitchsRequest struct {
 	//
 	// >
 	//
-	// 	- You can call the [DescribeRdsVpcs](~~208327~~) operation to query the available VPC IDs.
+	// 	- You can call the [DescribeRdsVpcs](https://help.aliyun.com/document_detail/208327.html) operation to query the available VPC IDs.
 	//
 	// 	- This parameter must be specified.
 	//
@@ -14752,7 +15052,7 @@ type DescribeRdsVSwitchsRequest struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the zone.
 	//
-	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list and zone list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list and zone list.
 	//
 	// example:
 	//
@@ -15030,7 +15330,7 @@ type DescribeRdsVpcsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
 	//
-	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -15415,7 +15715,7 @@ func (s *DescribeRdsVpcsResponse) SetBody(v *DescribeRdsVpcsResponseBody) *Descr
 type DescribeRegionsRequest struct {
 	// The ID of the region.
 	//
-	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -15597,7 +15897,9 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 type DescribeSQLLogCountRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15612,6 +15914,8 @@ type DescribeSQLLogCountRequest struct {
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	//
 	// > The end time must be later than the start time. The maximum time range that can be specified is seven days.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15688,6 +15992,8 @@ type DescribeSQLLogCountRequest struct {
 	// 10.**.**.13
 	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15933,7 +16239,9 @@ func (s *DescribeSQLLogCountResponse) SetBody(v *DescribeSQLLogCountResponseBody
 type DescribeSQLLogsRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15948,6 +16256,8 @@ type DescribeSQLLogsRequest struct {
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
 	//
 	// > The end time must be later than the start time. The maximum time range that can be specified is seven days.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16044,6 +16354,8 @@ type DescribeSQLLogsRequest struct {
 	// 100.**.**.90
 	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16392,7 +16704,9 @@ func (s *DescribeSQLLogsResponse) SetBody(v *DescribeSQLLogsResponseBody) *Descr
 type DescribeSQLLogsV2Request struct {
 	// The ID of instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16488,7 +16802,9 @@ type DescribeSQLLogsV2Request struct {
 	QueryKeywords *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16854,7 +17170,9 @@ func (s *DescribeSQLLogsV2Response) SetBody(v *DescribeSQLLogsV2ResponseBody) *D
 type DescribeSampleDataRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16978,7 +17296,9 @@ func (s *DescribeSampleDataResponse) SetBody(v *DescribeSampleDataResponseBody) 
 type DescribeSupportFeaturesRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17020,9 +17340,9 @@ type DescribeSupportFeaturesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The features supported by the instance. Valid values:
 	//
-	// 	- sample_data: sample dataset. For more information, see [Sample dataset](~~452278~~).
+	// 	- sample_data: sample dataset. For more information, see [Sample dataset](https://help.aliyun.com/document_detail/452278.html).
 	//
-	// 	- diagnose_and_optimize: diagnostics and optimization. For more information, see [Diagnostics and optimization](~~323453~~).
+	// 	- diagnose_and_optimize: diagnostics and optimization. For more information, see [Diagnostics and optimization](https://help.aliyun.com/document_detail/323453.html).
 	//
 	// example:
 	//
@@ -17087,7 +17407,9 @@ type DescribeTagsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
 	//
-	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17102,6 +17424,8 @@ type DescribeTagsRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the resource. Set the value to **instance**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17258,6 +17582,8 @@ type DescribeUserEncryptionKeyListRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ap-southeast-1
@@ -17370,7 +17696,9 @@ func (s *DescribeUserEncryptionKeyListResponse) SetBody(v *DescribeUserEncryptio
 type DescribeWaitingSQLInfoRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17378,13 +17706,17 @@ type DescribeWaitingSQLInfoRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The ID of the process that uniquely identifies the query.
 	//
-	// >  You can call the [DescribeWaitingSQLRecords](~~461735~~) operation to obtain the process IDs of lock-waiting queries.
+	// >  You can call the [DescribeWaitingSQLRecords](https://help.aliyun.com/document_detail/461735.html) operation to obtain the process IDs of lock-waiting queries.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17608,13 +17940,17 @@ func (s *DescribeWaitingSQLInfoResponse) SetBody(v *DescribeWaitingSQLInfoRespon
 type DescribeWaitingSQLRecordsRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17669,6 +18005,8 @@ type DescribeWaitingSQLRecordsRequest struct {
 	// 	- `{"Type":"status","Value":"LockWaiting"}`: filters lock-waiting queries.
 	//
 	// 	- `{"Type":"status","Value":"ResourceWaiting"}`: filters resource-waiting queries.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17934,13 +18272,17 @@ func (s *DescribeWaitingSQLRecordsResponse) SetBody(v *DescribeWaitingSQLRecords
 type DownloadDiagnosisRecordsRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17986,7 +18328,7 @@ type DownloadDiagnosisRecordsRequest struct {
 	//
 	// { "Type":"maxCost", "Value":"100" }
 	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
-	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -18130,7 +18472,9 @@ func (s *DownloadDiagnosisRecordsResponse) SetBody(v *DownloadDiagnosisRecordsRe
 type DownloadSQLLogsRecordsRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18143,6 +18487,8 @@ type DownloadSQLLogsRecordsRequest struct {
 	// testdb
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The end time must be later than the start time.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18235,6 +18581,8 @@ type DownloadSQLLogsRecordsRequest struct {
 	// 100.XX.XX.90
 	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18399,14 +18747,20 @@ func (s *DownloadSQLLogsRecordsResponse) SetBody(v *DownloadSQLLogsRecordsRespon
 }
 
 type GetUploadDocumentJobRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// bf8f7bc4-9276-44f7-9c22-1d06edc8dfd1
@@ -18415,11 +18769,15 @@ type GetUploadDocumentJobRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -18686,14 +19044,20 @@ func (s *GetUploadDocumentJobResponse) SetBody(v *GetUploadDocumentJobResponseBo
 }
 
 type GetUpsertCollectionDataJobRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 231460f8-75dc-405e-a669-0c5204887e91
@@ -18702,11 +19066,15 @@ type GetUpsertCollectionDataJobRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -18908,19 +19276,25 @@ func (s *GetUpsertCollectionDataJobResponse) SetBody(v *GetUpsertCollectionDataJ
 type GrantCollectionRequest struct {
 	// The name of the collection.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The ID of the instance in reserved storage mode.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the namespace to which you want to grant the vector collection permissions.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18934,17 +19308,23 @@ type GrantCollectionRequest struct {
 	//
 	// 	- none: the delete permission.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// rw
 	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the manager account.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18959,7 +19339,9 @@ type GrantCollectionRequest struct {
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19098,6 +19480,8 @@ func (s *GrantCollectionResponse) SetBody(v *GrantCollectionResponseBody) *Grant
 }
 
 type HandleActiveSQLRecordRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-bp***************
@@ -19106,6 +19490,8 @@ type HandleActiveSQLRecordRequest struct {
 	//
 	// 0
 	OperateType *int32 `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// "3003925,3003928"
@@ -19240,7 +19626,9 @@ func (s *HandleActiveSQLRecordResponse) SetBody(v *HandleActiveSQLRecordResponse
 type InitVectorDatabaseRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19248,11 +19636,15 @@ type InitVectorDatabaseRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database account that has the rds_superuser permission.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the database account.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19261,7 +19653,9 @@ type InitVectorDatabaseRequest struct {
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19382,7 +19776,9 @@ func (s *InitVectorDatabaseResponse) SetBody(v *InitVectorDatabaseResponseBody) 
 type ListCollectionsRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19396,6 +19792,8 @@ type ListCollectionsRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
@@ -19403,7 +19801,9 @@ type ListCollectionsRequest struct {
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19590,6 +19990,8 @@ func (s *ListCollectionsResponse) SetBody(v *ListCollectionsResponseBody) *ListC
 }
 
 type ListDocumentCollectionsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -19598,11 +20000,15 @@ type ListDocumentCollectionsRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -19731,7 +20137,7 @@ type ListDocumentCollectionsResponseBodyItemsCollectionList struct {
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
 	// example:
 	//
-	// {\"page\": \"int\", \"title\": \"text\"}
+	// {\\"page\\": \\"int\\", \\"title\\": \\"text\\"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// example:
 	//
@@ -19816,10 +20222,14 @@ func (s *ListDocumentCollectionsResponse) SetBody(v *ListDocumentCollectionsResp
 }
 
 type ListDocumentsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -19828,11 +20238,15 @@ type ListDocumentsRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -19999,7 +20413,9 @@ func (s *ListDocumentsResponse) SetBody(v *ListDocumentsResponseBody) *ListDocum
 type ListNamespacesRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20007,11 +20423,15 @@ type ListNamespacesRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the manager account.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20020,7 +20440,9 @@ type ListNamespacesRequest struct {
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20204,7 +20626,9 @@ type ListTagResourcesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20223,6 +20647,8 @@ type ListTagResourcesRequest struct {
 	// 	- `instance`: reserved storage mode
 	//
 	// 	- `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20478,9 +20904,11 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// 	- The description cannot start with `http://` or `https://`.
 	//
-	// 	- The description can contain letters, underscores (\_), hyphens (-), and digits.
+	// 	- The description can contain letters, underscores (_), hyphens (-), and digits.
 	//
 	// 	- The description must be 2 to 256 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20488,13 +20916,17 @@ type ModifyAccountDescriptionRequest struct {
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the database account.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testAccout
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20585,6 +21017,8 @@ type ModifyBackupPolicyRequest struct {
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-bp***************
@@ -20617,11 +21051,15 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 	- Sunday
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Tuesday, Thursday, Saturday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	// The backup window. Specify the backup window in the HH:mmZ-HH:mmZ format. The backup window must be in UTC. Default value: 00:00-01:00.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20743,7 +21181,9 @@ type ModifyDBInstanceConfigRequest struct {
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20755,7 +21195,7 @@ type ModifyDBInstanceConfigRequest struct {
 	//
 	// 600
 	IdleTime *int32 `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
-	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -20813,7 +21253,7 @@ type ModifyDBInstanceConfigResponseBody struct {
 	//
 	// example:
 	//
-	// \"error message\"
+	// \\"error message\\"
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
 	//
@@ -20893,11 +21333,15 @@ func (s *ModifyDBInstanceConfigResponse) SetBody(v *ModifyDBInstanceConfigRespon
 type ModifyDBInstanceConnectionStringRequest struct {
 	// The endpoint prefix of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-test
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The current endpoint of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20905,11 +21349,15 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
 	// The instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-t4n2qg19bnn98****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The port number. Example: 5432.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21001,13 +21449,17 @@ type ModifyDBInstanceDescriptionRequest struct {
 	//
 	// The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21098,13 +21550,17 @@ func (s *ModifyDBInstanceDescriptionResponse) SetBody(v *ModifyDBInstanceDescrip
 type ModifyDBInstanceMaintainTimeRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end time of the maintenance window. The end time must be later than the start time. Specify the time in the HH:mmZ format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21117,6 +21573,8 @@ type ModifyDBInstanceMaintainTimeRequest struct {
 	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The start time of the maintenance window. Specify the time in the HH:mmZ format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21206,13 +21664,17 @@ func (s *ModifyDBInstanceMaintainTimeResponse) SetBody(v *ModifyDBInstanceMainta
 type ModifyDBInstanceResourceGroupRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the resource group to which you want to move the instance. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// The ID of the resource group to which you want to move the instance. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21220,7 +21682,7 @@ type ModifyDBInstanceResourceGroupRequest struct {
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -21333,6 +21795,8 @@ type ModifyDBInstanceSSLRequest struct {
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxxxx
@@ -21344,6 +21808,8 @@ type ModifyDBInstanceSSLRequest struct {
 	// 	- 1: enables SSL encryption.
 	//
 	// 	- 2: updates SSL encryption.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21430,6 +21896,8 @@ type ModifyMasterSpecRequest struct {
 	//
 	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -21551,7 +22019,9 @@ func (s *ModifyMasterSpecResponse) SetBody(v *ModifyMasterSpecResponseBody) *Mod
 type ModifyParametersRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21569,7 +22039,9 @@ type ModifyParametersRequest struct {
 	ForceRestartInstance *bool `json:"ForceRestartInstance,omitempty" xml:"ForceRestartInstance,omitempty"`
 	// The name and value of the parameter to be modified. Specify the parameter in the `<Parameter name>:<Parameter value>` format.
 	//
-	// You can call the [DescribeParameters](~~208310~~) operation to query the parameters that can be modified.
+	// You can call the [DescribeParameters](https://help.aliyun.com/document_detail/208310.html) operation to query the parameters that can be modified.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21654,6 +22126,8 @@ func (s *ModifyParametersResponse) SetBody(v *ModifyParametersResponseBody) *Mod
 type ModifySQLCollectorPolicyRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxx
@@ -21663,6 +22137,8 @@ type ModifySQLCollectorPolicyRequest struct {
 	// 	- Enable: enables SQL collection.
 	//
 	// 	- Disabled: disables SQL collection.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21756,7 +22232,9 @@ type ModifySecurityIpsRequest struct {
 	DBInstanceIPArrayName *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21774,7 +22252,7 @@ type ModifySecurityIpsRequest struct {
 	//
 	// 0
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
-	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -21788,9 +22266,11 @@ type ModifySecurityIpsRequest struct {
 	//
 	// 	- 10.23.12.24/24. This is a CIDR block. The value `/24` indicates that the prefix of the CIDR block is 24-bit long. You can replace 24 with a value in the range of `1 to 32`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// 10.10.**.**
+	// 10.10.\*\*.**
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 }
 
@@ -21886,7 +22366,7 @@ func (s *ModifySecurityIpsResponse) SetBody(v *ModifySecurityIpsResponseBody) *M
 type ModifyVectorConfigurationRequest struct {
 	// The instance ID.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
 	//
 	// example:
 	//
@@ -22025,7 +22505,9 @@ func (s *ModifyVectorConfigurationResponse) SetBody(v *ModifyVectorConfiguration
 type PauseInstanceRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22143,6 +22625,8 @@ func (s *PauseInstanceResponse) SetBody(v *PauseInstanceResponseBody) *PauseInst
 }
 
 type QueryCollectionDataRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
@@ -22151,6 +22635,8 @@ type QueryCollectionDataRequest struct {
 	//
 	// hello_world
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -22168,6 +22654,8 @@ type QueryCollectionDataRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
@@ -22175,10 +22663,14 @@ type QueryCollectionDataRequest struct {
 	Offset            *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	OrderBy           *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -22280,6 +22772,8 @@ func (s *QueryCollectionDataRequest) SetVector(v []*float64) *QueryCollectionDat
 }
 
 type QueryCollectionDataShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
@@ -22288,6 +22782,8 @@ type QueryCollectionDataShrinkRequest struct {
 	//
 	// hello_world
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -22305,6 +22801,8 @@ type QueryCollectionDataShrinkRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
@@ -22312,10 +22810,14 @@ type QueryCollectionDataShrinkRequest struct {
 	Offset            *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	OrderBy           *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -22565,11 +23067,15 @@ func (s *QueryCollectionDataResponse) SetBody(v *QueryCollectionDataResponseBody
 }
 
 type QueryContentRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -22578,7 +23084,7 @@ type QueryContentRequest struct {
 	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// example:
 	//
-	// title = \"test\"
+	// title = \\"test\\"
 	Filter                *string                           `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	HybridSearch          *string                           `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
 	HybridSearchArgs      map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
@@ -22592,12 +23098,16 @@ type QueryContentRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string  `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RecallWindow      []*int32 `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -22717,11 +23227,15 @@ func (s *QueryContentRequest) SetUseFullTextRetrieval(v bool) *QueryContentReque
 }
 
 type QueryContentAdvanceRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -22730,7 +23244,7 @@ type QueryContentAdvanceRequest struct {
 	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// example:
 	//
-	// title = \"test\"
+	// title = \\"test\\"
 	Filter                *string                           `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	HybridSearch          *string                           `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
 	HybridSearchArgs      map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
@@ -22744,12 +23258,16 @@ type QueryContentAdvanceRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string  `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RecallWindow      []*int32 `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -22869,11 +23387,15 @@ func (s *QueryContentAdvanceRequest) SetUseFullTextRetrieval(v bool) *QueryConte
 }
 
 type QueryContentShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -22882,7 +23404,7 @@ type QueryContentShrinkRequest struct {
 	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// example:
 	//
-	// title = \"test\"
+	// title = \\"test\\"
 	Filter                 *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	HybridSearch           *string `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
 	HybridSearchArgsShrink *string `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
@@ -22896,12 +23418,16 @@ type QueryContentShrinkRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword  *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RecallWindowShrink *string `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -23352,15 +23878,17 @@ func (s *QueryContentResponse) SetBody(v *QueryContentResponseBody) *QueryConten
 type RebalanceDBInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests.
 	//
-	// The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
 	//
-	// For more information, see [How to ensure idempotence](~~134212~~).
+	// For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88**********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23452,13 +23980,17 @@ type ReleaseInstancePublicConnectionRequest struct {
 	//
 	// You can log on to the AnalyticDB for PostgreSQL console and go to the **Basic Information*	- page of the instance to view the **public endpoint*	- in the **Database Connection*	- section.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****.gpdb.rds.aliyuncs.com
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23543,11 +24075,15 @@ func (s *ReleaseInstancePublicConnectionResponse) SetBody(v *ReleaseInstancePubl
 type ResetAccountPasswordRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testaccount_1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The name of the account.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23558,6 +24094,8 @@ type ResetAccountPasswordRequest struct {
 	// 	- The instance is in the running state.
 	//
 	// 	- The instance is not locked.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23640,10 +24178,14 @@ func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBo
 }
 
 type ResetIMVMonitorDataRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-bp152460513z****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testdb
@@ -23727,7 +24269,7 @@ func (s *ResetIMVMonitorDataResponse) SetBody(v *ResetIMVMonitorDataResponseBody
 }
 
 type RestartDBInstanceRequest struct {
-	// The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](~~327176~~).
+	// The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/327176.html).
 	//
 	// example:
 	//
@@ -23735,7 +24277,9 @@ type RestartDBInstanceRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23815,7 +24359,9 @@ func (s *RestartDBInstanceResponse) SetBody(v *RestartDBInstanceResponseBody) *R
 type ResumeInstanceRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23935,7 +24481,9 @@ func (s *ResumeInstanceResponse) SetBody(v *ResumeInstanceResponseBody) *ResumeI
 type SetDBInstancePlanStatusRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23944,7 +24492,9 @@ type SetDBInstancePlanStatusRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the plan.
 	//
-	// >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+	// >  You can call the [DescribeDBInstancePlans](https://help.aliyun.com/document_detail/449398.html) operation to query the details of plans, including plan IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23955,6 +24505,8 @@ type SetDBInstancePlanStatusRequest struct {
 	// 	- **disable**: disables the plan.
 	//
 	// 	- **enable**: enables the plan.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24081,13 +24633,17 @@ func (s *SetDBInstancePlanStatusResponse) SetBody(v *SetDBInstancePlanStatusResp
 type SetDataShareInstanceRequest struct {
 	// The ID of the AnalyticDB for PostgreSQL instance in Serverless mode.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	InstanceList []*string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	// Specifies whether to enable or disable data sharing. Valid values:
 	//
 	// 	- **add**: enables data sharing.
 	//
 	// 	- **remove**: disables data sharing.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24096,7 +24652,9 @@ type SetDataShareInstanceRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
 	//
-	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24135,13 +24693,17 @@ func (s *SetDataShareInstanceRequest) SetRegionId(v string) *SetDataShareInstanc
 type SetDataShareInstanceShrinkRequest struct {
 	// The ID of the AnalyticDB for PostgreSQL instance in Serverless mode.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	InstanceListShrink *string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty"`
 	// Specifies whether to enable or disable data sharing. Valid values:
 	//
 	// 	- **add**: enables data sharing.
 	//
 	// 	- **remove**: disables data sharing.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24150,7 +24712,9 @@ type SetDataShareInstanceShrinkRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
 	//
-	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24270,19 +24834,25 @@ type SwitchDBInstanceNetTypeRequest struct {
 	//
 	// 	- The prefix can be up to 30 characters in length.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test1234
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The port number.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24367,13 +24937,17 @@ func (s *SwitchDBInstanceNetTypeResponse) SetBody(v *SwitchDBInstanceNetTypeResp
 type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query region IDs.
+	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query region IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of an instance. Valid values of N: 1 to 50.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24387,11 +24961,15 @@ type TagResourcesRequest struct {
 	//
 	// 	- `ALIYUN::GPDB::INSTANCE`: elastic storage mode
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The list of tags.
+	//
+	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -24446,11 +25024,15 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 type TagResourcesRequestTag struct {
 	// The key of a tag. Valid values of N: 1 to 20. This parameter value cannot be an empty string. A tag key can contain a maximum of 128 characters. It cannot start with `aliyun` or`  acs: ` and cannot contain `http://` or`  https:// `.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of a tag. Valid values of N: 1 to 20. This parameter value can be an empty string. A tag value can contain a maximum of 128 characters. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24530,7 +25112,9 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type UnloadSampleDataRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24660,12 +25244,15 @@ type UntagResourcesRequest struct {
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -24674,6 +25261,8 @@ type UntagResourcesRequest struct {
 	// 	- `instance`: reserved storage mode
 	//
 	// 	- `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24787,21 +25376,27 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateCollectionDataMetadataRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// example:
 	//
-	// business_value = \"chat_file_1\"
+	// business_value = \\"chat_file_1\\"
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The row IDs of the data that you want to update. You must specify one of the Ids and Filter parameters.
 	Ids []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 	// The data that you want to update, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24817,12 +25412,16 @@ type UpdateCollectionDataMetadataRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24884,21 +25483,27 @@ func (s *UpdateCollectionDataMetadataRequest) SetRegionId(v string) *UpdateColle
 }
 
 type UpdateCollectionDataMetadataShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// example:
 	//
-	// business_value = \"chat_file_1\"
+	// business_value = \\"chat_file_1\\"
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The row IDs of the data that you want to update. You must specify one of the Ids and Filter parameters.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	// The data that you want to update, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24914,12 +25519,16 @@ type UpdateCollectionDataMetadataShrinkRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25059,7 +25668,9 @@ func (s *UpdateCollectionDataMetadataResponse) SetBody(v *UpdateCollectionDataMe
 type UpdateDBInstancePlanRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25088,7 +25699,9 @@ type UpdateDBInstancePlanRequest struct {
 	PlanEndDate *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
 	// The ID of the plan.
 	//
-	// >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+	// >  You can call the [DescribeDBInstancePlans](https://help.aliyun.com/document_detail/449398.html) operation to query the details of plans, including plan IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25272,13 +25885,15 @@ type UpgradeDBInstanceRequest struct {
 	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-rj***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The specifications of each compute node. For information about the supported specifications, see [Instance specifications](~~35406~~).
+	// The specifications of each compute node. For information about the supported specifications, see [Instance specifications](https://help.aliyun.com/document_detail/35406.html).
 	//
 	// > This parameter is available only for instances in elastic storage mode.
 	//
@@ -25301,13 +25916,13 @@ type UpgradeDBInstanceRequest struct {
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -25363,7 +25978,7 @@ type UpgradeDBInstanceRequest struct {
 	//
 	// >
 	//
-	// 	- The supported changes to compute node configurations vary based on the instance resource type. For more information, see the "[Usage notes](~~50956~~)" section of the Change compute node configurations topic.
+	// 	- The supported changes to compute node configurations vary based on the instance resource type. For more information, see the "[Usage notes](https://help.aliyun.com/document_detail/50956.html)" section of the Change compute node configurations topic.
 	//
 	// 	- After you specify a change type, only the corresponding parameters take effect. For example, if you set **UpgradeType*	- to 0, the parameter that is used to change the number of compute nodes takes effect, but the parameter that is used to change the number of coordinator nodes does not.
 	//
@@ -25530,6 +26145,8 @@ func (s *UpgradeDBInstanceResponse) SetBody(v *UpgradeDBInstanceResponseBody) *U
 
 type UpgradeDBVersionRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25704,10 +26321,14 @@ type UploadDocumentAsyncRequest struct {
 	//
 	// 250
 	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
@@ -25720,10 +26341,14 @@ type UploadDocumentAsyncRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// mydoc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://xx/mydoc.txt
@@ -25733,11 +26358,15 @@ type UploadDocumentAsyncRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -25850,10 +26479,14 @@ type UploadDocumentAsyncAdvanceRequest struct {
 	//
 	// 250
 	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
@@ -25866,10 +26499,14 @@ type UploadDocumentAsyncAdvanceRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// mydoc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://xx/mydoc.txt
@@ -25879,11 +26516,15 @@ type UploadDocumentAsyncAdvanceRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -25996,10 +26637,14 @@ type UploadDocumentAsyncShrinkRequest struct {
 	//
 	// 250
 	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-bp12ga6v69h86****
@@ -26012,10 +26657,14 @@ type UploadDocumentAsyncShrinkRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// mydoc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://xx/mydoc.txt
@@ -26025,11 +26674,15 @@ type UploadDocumentAsyncShrinkRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -26210,10 +26863,14 @@ func (s *UploadDocumentAsyncResponse) SetBody(v *UploadDocumentAsyncResponseBody
 }
 
 type UpsertChunksRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -26226,11 +26883,15 @@ type UpsertChunksRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -26287,6 +26948,7 @@ func (s *UpsertChunksRequest) SetTextChunks(v []*UpsertChunksRequestTextChunks) 
 }
 
 type UpsertChunksRequestTextChunks struct {
+	// This parameter is required.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// example:
 	//
@@ -26313,10 +26975,14 @@ func (s *UpsertChunksRequestTextChunks) SetMetadata(v map[string]interface{}) *U
 }
 
 type UpsertChunksShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -26329,11 +26995,15 @@ type UpsertChunksShrinkRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -26468,13 +27138,17 @@ func (s *UpsertChunksResponse) SetBody(v *UpsertChunksResponseBody) *UpsertChunk
 type UpsertCollectionDataRequest struct {
 	// The name of the collection.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26488,6 +27162,8 @@ type UpsertCollectionDataRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
@@ -26495,7 +27171,9 @@ type UpsertCollectionDataRequest struct {
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26550,7 +27228,8 @@ func (s *UpsertCollectionDataRequest) SetRows(v []*UpsertCollectionDataRequestRo
 type UpsertCollectionDataRequestRows struct {
 	Id       *string            `json:"Id,omitempty" xml:"Id,omitempty"`
 	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Vector   []*float64         `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Vector []*float64 `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
 }
 
 func (s UpsertCollectionDataRequestRows) String() string {
@@ -26579,13 +27258,17 @@ func (s *UpsertCollectionDataRequestRows) SetVector(v []*float64) *UpsertCollect
 type UpsertCollectionDataShrinkRequest struct {
 	// The name of the collection.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26599,6 +27282,8 @@ type UpsertCollectionDataShrinkRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
@@ -26606,7 +27291,9 @@ type UpsertCollectionDataShrinkRequest struct {
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
-	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26736,14 +27423,20 @@ func (s *UpsertCollectionDataResponse) SetBody(v *UpsertCollectionDataResponseBo
 }
 
 type UpsertCollectionDataAsyncRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://xx/vectors.jsonl
@@ -26752,11 +27445,15 @@ type UpsertCollectionDataAsyncRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -26807,14 +27504,20 @@ func (s *UpsertCollectionDataAsyncRequest) SetRegionId(v string) *UpsertCollecti
 }
 
 type UpsertCollectionDataAsyncAdvanceRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://xx/vectors.jsonl
@@ -26823,11 +27526,15 @@ type UpsertCollectionDataAsyncAdvanceRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -27015,9 +27722,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Allocates a public endpoint for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](~~204879~~).
+// You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](https://help.aliyun.com/document_detail/204879.html).
 //
 // ## Limits
 //
@@ -27085,9 +27796,13 @@ func (client *Client) AllocateInstancePublicConnectionWithOptions(request *Alloc
 	return _result, _err
 }
 
+// Summary:
+//
+// Allocates a public endpoint for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](~~204879~~).
+// You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](https://help.aliyun.com/document_detail/204879.html).
 //
 // ## Limits
 //
@@ -27107,6 +27822,15 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消上传文档任务
+//
+// @param request - CancelUploadDocumentJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelUploadDocumentJobResponse
 func (client *Client) CancelUploadDocumentJobWithOptions(request *CancelUploadDocumentJobRequest, runtime *util.RuntimeOptions) (_result *CancelUploadDocumentJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27166,6 +27890,13 @@ func (client *Client) CancelUploadDocumentJobWithOptions(request *CancelUploadDo
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消上传文档任务
+//
+// @param request - CancelUploadDocumentJobRequest
+//
+// @return CancelUploadDocumentJobResponse
 func (client *Client) CancelUploadDocumentJob(request *CancelUploadDocumentJobRequest) (_result *CancelUploadDocumentJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelUploadDocumentJobResponse{}
@@ -27177,6 +27908,15 @@ func (client *Client) CancelUploadDocumentJob(request *CancelUploadDocumentJobRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消上传数据任务
+//
+// @param request - CancelUpsertCollectionDataJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelUpsertCollectionDataJobResponse
 func (client *Client) CancelUpsertCollectionDataJobWithOptions(request *CancelUpsertCollectionDataJobRequest, runtime *util.RuntimeOptions) (_result *CancelUpsertCollectionDataJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27236,6 +27976,13 @@ func (client *Client) CancelUpsertCollectionDataJobWithOptions(request *CancelUp
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消上传数据任务
+//
+// @param request - CancelUpsertCollectionDataJobRequest
+//
+// @return CancelUpsertCollectionDataJobResponse
 func (client *Client) CancelUpsertCollectionDataJob(request *CancelUpsertCollectionDataJobRequest) (_result *CancelUpsertCollectionDataJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelUpsertCollectionDataJobResponse{}
@@ -27247,6 +27994,15 @@ func (client *Client) CancelUpsertCollectionDataJob(request *CancelUpsertCollect
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether a service-linked role is created.
+//
+// @param request - CheckServiceLinkedRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckServiceLinkedRoleResponse
 func (client *Client) CheckServiceLinkedRoleWithOptions(request *CheckServiceLinkedRoleRequest, runtime *util.RuntimeOptions) (_result *CheckServiceLinkedRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27280,6 +28036,13 @@ func (client *Client) CheckServiceLinkedRoleWithOptions(request *CheckServiceLin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether a service-linked role is created.
+//
+// @param request - CheckServiceLinkedRoleRequest
+//
+// @return CheckServiceLinkedRoleResponse
 func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequest) (_result *CheckServiceLinkedRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckServiceLinkedRoleResponse{}
@@ -27291,11 +28054,15 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a privileged account for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// 	- Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
+//   Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
 //
-// 	- You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](~~50206~~).
+// 	- You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
 //
 // ## Limits
 //
@@ -27363,11 +28130,15 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a privileged account for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// 	- Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
+//   Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
 //
-// 	- You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](~~50206~~).
+// 	- You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
 //
 // ## Limits
 //
@@ -27387,6 +28158,15 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建Collection
+//
+// @param request - CreateCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCollectionResponse
 func (client *Client) CreateCollectionWithOptions(request *CreateCollectionRequest, runtime *util.RuntimeOptions) (_result *CreateCollectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27476,6 +28256,13 @@ func (client *Client) CreateCollectionWithOptions(request *CreateCollectionReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建Collection
+//
+// @param request - CreateCollectionRequest
+//
+// @return CreateCollectionResponse
 func (client *Client) CreateCollection(request *CreateCollectionRequest) (_result *CreateCollectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCollectionResponse{}
@@ -27487,11 +28274,15 @@ func (client *Client) CreateCollection(request *CreateCollectionRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
 //
-// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
 //
 // ## Limits
 //
@@ -27691,11 +28482,15 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
 //
-// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
 //
 // ## Limits
 //
@@ -27715,13 +28510,17 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a plan for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// 	- The plan management feature is supported only for pay-as-you-go instances.
+//   The plan management feature is supported only for pay-as-you-go instances.
 //
 // 	- When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
 //
-// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
 //
 // @param request - CreateDBInstancePlanRequest
 //
@@ -27793,13 +28592,17 @@ func (client *Client) CreateDBInstancePlanWithOptions(request *CreateDBInstanceP
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a plan for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// 	- The plan management feature is supported only for pay-as-you-go instances.
+//   The plan management feature is supported only for pay-as-you-go instances.
 //
 // 	- When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
 //
-// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
 //
 // @param request - CreateDBInstancePlanRequest
 //
@@ -27815,6 +28618,15 @@ func (client *Client) CreateDBInstancePlan(request *CreateDBInstancePlanRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建知识库
+//
+// @param request - CreateDocumentCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDocumentCollectionResponse
 func (client *Client) CreateDocumentCollectionWithOptions(request *CreateDocumentCollectionRequest, runtime *util.RuntimeOptions) (_result *CreateDocumentCollectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27904,6 +28716,13 @@ func (client *Client) CreateDocumentCollectionWithOptions(request *CreateDocumen
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建知识库
+//
+// @param request - CreateDocumentCollectionRequest
+//
+// @return CreateDocumentCollectionResponse
 func (client *Client) CreateDocumentCollection(request *CreateDocumentCollectionRequest) (_result *CreateDocumentCollectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDocumentCollectionResponse{}
@@ -27915,6 +28734,15 @@ func (client *Client) CreateDocumentCollection(request *CreateDocumentCollection
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a vector namespace.
+//
+// @param request - CreateNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNamespaceResponse
 func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27972,6 +28800,13 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a vector namespace.
+//
+// @param request - CreateNamespaceRequest
+//
+// @return CreateNamespaceResponse
 func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNamespaceResponse{}
@@ -27983,9 +28818,13 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a sample dataset for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](~~452277~~).
+// You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
 //
 // ## Precautions
 //
@@ -28043,9 +28882,13 @@ func (client *Client) CreateSampleDataWithOptions(request *CreateSampleDataReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a sample dataset for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](~~452277~~).
+// You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
 //
 // ## Precautions
 //
@@ -28075,6 +28918,15 @@ func (client *Client) CreateSampleData(request *CreateSampleDataRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a service-linked role.
+//
+// @param request - CreateServiceLinkedRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceLinkedRoleResponse
 func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceLinkedRoleRequest, runtime *util.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28112,6 +28964,13 @@ func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceL
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a service-linked role.
+//
+// @param request - CreateServiceLinkedRoleRequest
+//
+// @return CreateServiceLinkedRoleResponse
 func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRequest) (_result *CreateServiceLinkedRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServiceLinkedRoleResponse{}
@@ -28123,6 +28982,15 @@ func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建向量索引
+//
+// @param request - CreateVectorIndexRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVectorIndexResponse
 func (client *Client) CreateVectorIndexWithOptions(request *CreateVectorIndexRequest, runtime *util.RuntimeOptions) (_result *CreateVectorIndexResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28200,6 +29068,13 @@ func (client *Client) CreateVectorIndexWithOptions(request *CreateVectorIndexReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建向量索引
+//
+// @param request - CreateVectorIndexRequest
+//
+// @return CreateVectorIndexResponse
 func (client *Client) CreateVectorIndex(request *CreateVectorIndexRequest) (_result *CreateVectorIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVectorIndexResponse{}
@@ -28211,6 +29086,15 @@ func (client *Client) CreateVectorIndex(request *CreateVectorIndexRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a vector collection.
+//
+// @param request - DeleteCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCollectionResponse
 func (client *Client) DeleteCollectionWithOptions(request *DeleteCollectionRequest, runtime *util.RuntimeOptions) (_result *DeleteCollectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28264,6 +29148,13 @@ func (client *Client) DeleteCollectionWithOptions(request *DeleteCollectionReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a vector collection.
+//
+// @param request - DeleteCollectionRequest
+//
+// @return DeleteCollectionResponse
 func (client *Client) DeleteCollection(request *DeleteCollectionRequest) (_result *DeleteCollectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCollectionResponse{}
@@ -28275,6 +29166,15 @@ func (client *Client) DeleteCollection(request *DeleteCollectionRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes vector data.
+//
+// @param request - DeleteCollectionDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCollectionDataResponse
 func (client *Client) DeleteCollectionDataWithOptions(request *DeleteCollectionDataRequest, runtime *util.RuntimeOptions) (_result *DeleteCollectionDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28336,6 +29236,13 @@ func (client *Client) DeleteCollectionDataWithOptions(request *DeleteCollectionD
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes vector data.
+//
+// @param request - DeleteCollectionDataRequest
+//
+// @return DeleteCollectionDataResponse
 func (client *Client) DeleteCollectionData(request *DeleteCollectionDataRequest) (_result *DeleteCollectionDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCollectionDataResponse{}
@@ -28347,9 +29254,13 @@ func (client *Client) DeleteCollectionData(request *DeleteCollectionDataRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a pay-as-you-go AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// 	- Subscription instances cannot be manually released. They are automatically released when they expire.
+//   Subscription instances cannot be manually released. They are automatically released when they expire.
 //
 // 	- You can call this operation to release pay-as-you-go instances only when they are in the **Running*	- state.
 //
@@ -28407,9 +29318,13 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a pay-as-you-go AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// 	- Subscription instances cannot be manually released. They are automatically released when they expire.
+//   Subscription instances cannot be manually released. They are automatically released when they expire.
 //
 // 	- You can call this operation to release pay-as-you-go instances only when they are in the **Running*	- state.
 //
@@ -28431,6 +29346,10 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a plan from an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
@@ -28485,6 +29404,10 @@ func (client *Client) DeleteDBInstancePlanWithOptions(request *DeleteDBInstanceP
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a plan from an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
@@ -28507,6 +29430,15 @@ func (client *Client) DeleteDBInstancePlan(request *DeleteDBInstancePlanRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除文档
+//
+// @param request - DeleteDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDocumentResponse
 func (client *Client) DeleteDocumentWithOptions(request *DeleteDocumentRequest, runtime *util.RuntimeOptions) (_result *DeleteDocumentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28564,6 +29496,13 @@ func (client *Client) DeleteDocumentWithOptions(request *DeleteDocumentRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除文档
+//
+// @param request - DeleteDocumentRequest
+//
+// @return DeleteDocumentResponse
 func (client *Client) DeleteDocument(request *DeleteDocumentRequest) (_result *DeleteDocumentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDocumentResponse{}
@@ -28575,6 +29514,15 @@ func (client *Client) DeleteDocument(request *DeleteDocumentRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除知识库
+//
+// @param request - DeleteDocumentCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDocumentCollectionResponse
 func (client *Client) DeleteDocumentCollectionWithOptions(request *DeleteDocumentCollectionRequest, runtime *util.RuntimeOptions) (_result *DeleteDocumentCollectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28628,6 +29576,13 @@ func (client *Client) DeleteDocumentCollectionWithOptions(request *DeleteDocumen
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除知识库
+//
+// @param request - DeleteDocumentCollectionRequest
+//
+// @return DeleteDocumentCollectionResponse
 func (client *Client) DeleteDocumentCollection(request *DeleteDocumentCollectionRequest) (_result *DeleteDocumentCollectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDocumentCollectionResponse{}
@@ -28639,6 +29594,15 @@ func (client *Client) DeleteDocumentCollection(request *DeleteDocumentCollection
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a namespace.
+//
+// @param request - DeleteNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNamespaceResponse
 func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest, runtime *util.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28692,6 +29656,13 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a namespace.
+//
+// @param request - DeleteNamespaceRequest
+//
+// @return DeleteNamespaceResponse
 func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNamespaceResponse{}
@@ -28703,6 +29674,15 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a vector index.
+//
+// @param request - DeleteVectorIndexRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVectorIndexResponse
 func (client *Client) DeleteVectorIndexWithOptions(request *DeleteVectorIndexRequest, runtime *util.RuntimeOptions) (_result *DeleteVectorIndexResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28760,6 +29740,13 @@ func (client *Client) DeleteVectorIndexWithOptions(request *DeleteVectorIndexReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a vector index.
+//
+// @param request - DeleteVectorIndexRequest
+//
+// @return DeleteVectorIndexResponse
 func (client *Client) DeleteVectorIndex(request *DeleteVectorIndexRequest) (_result *DeleteVectorIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVectorIndexResponse{}
@@ -28771,6 +29758,10 @@ func (client *Client) DeleteVectorIndex(request *DeleteVectorIndexRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about database accounts for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
@@ -28821,6 +29812,10 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about database accounts for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
@@ -28843,6 +29838,15 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例活跃的SQL列表
+//
+// @param request - DescribeActiveSQLRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActiveSQLRecordsResponse
 func (client *Client) DescribeActiveSQLRecordsWithOptions(request *DescribeActiveSQLRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeActiveSQLRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28908,6 +29912,13 @@ func (client *Client) DescribeActiveSQLRecordsWithOptions(request *DescribeActiv
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例活跃的SQL列表
+//
+// @param request - DescribeActiveSQLRecordsRequest
+//
+// @return DescribeActiveSQLRecordsResponse
 func (client *Client) DescribeActiveSQLRecords(request *DescribeActiveSQLRecordsRequest) (_result *DescribeActiveSQLRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeActiveSQLRecordsResponse{}
@@ -28919,6 +29930,10 @@ func (client *Client) DescribeActiveSQLRecords(request *DescribeActiveSQLRecords
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about available resources of AnalyticDB for PostgreSQL.
+//
 // Description:
 //
 // When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
@@ -28969,6 +29984,10 @@ func (client *Client) DescribeAvailableResourcesWithOptions(request *DescribeAva
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about available resources of AnalyticDB for PostgreSQL.
+//
 // Description:
 //
 // When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
@@ -28987,9 +30006,13 @@ func (client *Client) DescribeAvailableResources(request *DescribeAvailableResou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup policy of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](~~210095~~).
+// You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](https://help.aliyun.com/document_detail/210095.html).
 //
 // ## Limits
 //
@@ -29033,9 +30056,13 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup policy of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](~~210095~~).
+// You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](https://help.aliyun.com/document_detail/210095.html).
 //
 // ## Limits
 //
@@ -29055,6 +30082,15 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a vector collection.
+//
+// @param request - DescribeCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCollectionResponse
 func (client *Client) DescribeCollectionWithOptions(request *DescribeCollectionRequest, runtime *util.RuntimeOptions) (_result *DescribeCollectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29108,6 +30144,13 @@ func (client *Client) DescribeCollectionWithOptions(request *DescribeCollectionR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a vector collection.
+//
+// @param request - DescribeCollectionRequest
+//
+// @return DescribeCollectionResponse
 func (client *Client) DescribeCollection(request *DescribeCollectionRequest) (_result *DescribeCollectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCollectionResponse{}
@@ -29119,6 +30162,10 @@ func (client *Client) DescribeCollection(request *DescribeCollectionRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of nodes in an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // ##
@@ -29171,6 +30218,10 @@ func (client *Client) DescribeDBClusterNodeWithOptions(request *DescribeDBCluste
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of nodes in an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // ##
@@ -29195,6 +30246,10 @@ func (client *Client) DescribeDBClusterNode(request *DescribeDBClusterNodeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about performance metrics of an AnalyticDB for PostgreSQL instance within a time range.
+//
 // Description:
 //
 // You can query monitoring information only within the last 30 days.
@@ -29261,6 +30316,10 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about performance metrics of an AnalyticDB for PostgreSQL instance within a time range.
+//
 // Description:
 //
 // You can query monitoring information only within the last 30 days.
@@ -29279,6 +30338,10 @@ func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPer
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // ##
@@ -29335,6 +30398,10 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // ##
@@ -29359,9 +30426,13 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about data bloat for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
 // ## Limits
 //
@@ -29413,9 +30484,13 @@ func (client *Client) DescribeDBInstanceDataBloatWithOptions(request *DescribeDB
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about data bloat for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
 // ## Limits
 //
@@ -29435,6 +30510,10 @@ func (client *Client) DescribeDBInstanceDataBloat(request *DescribeDBInstanceDat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about data skew for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
@@ -29489,6 +30568,10 @@ func (client *Client) DescribeDBInstanceDataSkewWithOptions(request *DescribeDBI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about data skew for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
@@ -29511,6 +30594,10 @@ func (client *Client) DescribeDBInstanceDataSkew(request *DescribeDBInstanceData
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about nodes in an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
@@ -29573,6 +30660,10 @@ func (client *Client) DescribeDBInstanceDiagnosisSummaryWithOptions(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about nodes in an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
@@ -29591,6 +30682,10 @@ func (client *Client) DescribeDBInstanceDiagnosisSummary(request *DescribeDBInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the error logs of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
@@ -29673,6 +30768,10 @@ func (client *Client) DescribeDBInstanceErrorLogWithOptions(request *DescribeDBI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the error logs of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
@@ -29695,6 +30794,10 @@ func (client *Client) DescribeDBInstanceErrorLog(request *DescribeDBInstanceErro
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
@@ -29749,6 +30852,10 @@ func (client *Client) DescribeDBInstanceIPArrayListWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
@@ -29771,11 +30878,15 @@ func (client *Client) DescribeDBInstanceIPArrayList(request *DescribeDBInstanceI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the index usage of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
 //
-// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
 // @param request - DescribeDBInstanceIndexUsageRequest
 //
@@ -29823,11 +30934,15 @@ func (client *Client) DescribeDBInstanceIndexUsageWithOptions(request *DescribeD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the index usage of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
 //
-// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
 // @param request - DescribeDBInstanceIndexUsageRequest
 //
@@ -29843,6 +30958,15 @@ func (client *Client) DescribeDBInstanceIndexUsage(request *DescribeDBInstanceIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the connection information of an instance.
+//
+// @param request - DescribeDBInstanceNetInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceNetInfoResponse
 func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBInstanceNetInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceNetInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29880,6 +31004,13 @@ func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the connection information of an instance.
+//
+// @param request - DescribeDBInstanceNetInfoRequest
+//
+// @return DescribeDBInstanceNetInfoResponse
 func (client *Client) DescribeDBInstanceNetInfo(request *DescribeDBInstanceNetInfoRequest) (_result *DescribeDBInstanceNetInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceNetInfoResponse{}
@@ -29891,6 +31022,15 @@ func (client *Client) DescribeDBInstanceNetInfo(request *DescribeDBInstanceNetIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about performance metrics of an AnalyticDB for PostgreSQL instance within a time range.
+//
+// @param request - DescribeDBInstancePerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstancePerformanceResponse
 func (client *Client) DescribeDBInstancePerformanceWithOptions(request *DescribeDBInstancePerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancePerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29940,6 +31080,13 @@ func (client *Client) DescribeDBInstancePerformanceWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about performance metrics of an AnalyticDB for PostgreSQL instance within a time range.
+//
+// @param request - DescribeDBInstancePerformanceRequest
+//
+// @return DescribeDBInstancePerformanceResponse
 func (client *Client) DescribeDBInstancePerformance(request *DescribeDBInstancePerformanceRequest) (_result *DescribeDBInstancePerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstancePerformanceResponse{}
@@ -29951,6 +31098,10 @@ func (client *Client) DescribeDBInstancePerformance(request *DescribeDBInstanceP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about plans for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
@@ -30021,6 +31172,10 @@ func (client *Client) DescribeDBInstancePlansWithOptions(request *DescribeDBInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about plans for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
@@ -30043,6 +31198,15 @@ func (client *Client) DescribeDBInstancePlans(request *DescribeDBInstancePlansRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the SSL information about an AnalyticDB for PostgreSQL instance.
+//
+// @param request - DescribeDBInstanceSSLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceSSLResponse
 func (client *Client) DescribeDBInstanceSSLWithOptions(request *DescribeDBInstanceSSLRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceSSLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30076,6 +31240,13 @@ func (client *Client) DescribeDBInstanceSSLWithOptions(request *DescribeDBInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the SSL information about an AnalyticDB for PostgreSQL instance.
+//
+// @param request - DescribeDBInstanceSSLRequest
+//
+// @return DescribeDBInstanceSSLResponse
 func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLRequest) (_result *DescribeDBInstanceSSLResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceSSLResponse{}
@@ -30087,6 +31258,15 @@ func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例最大吞吐和IOPS
+//
+// @param request - DescribeDBInstanceSupportMaxPerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceSupportMaxPerformanceResponse
 func (client *Client) DescribeDBInstanceSupportMaxPerformanceWithOptions(request *DescribeDBInstanceSupportMaxPerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceSupportMaxPerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30124,6 +31304,13 @@ func (client *Client) DescribeDBInstanceSupportMaxPerformanceWithOptions(request
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例最大吞吐和IOPS
+//
+// @param request - DescribeDBInstanceSupportMaxPerformanceRequest
+//
+// @return DescribeDBInstanceSupportMaxPerformanceResponse
 func (client *Client) DescribeDBInstanceSupportMaxPerformance(request *DescribeDBInstanceSupportMaxPerformanceRequest) (_result *DescribeDBInstanceSupportMaxPerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceSupportMaxPerformanceResponse{}
@@ -30135,6 +31322,10 @@ func (client *Client) DescribeDBInstanceSupportMaxPerformance(request *DescribeD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of AnalyticDB for PostgreSQL instances.
+//
 // Description:
 //
 // ##
@@ -30253,6 +31444,10 @@ func (client *Client) DescribeDBInstancesWithOptions(tmpReq *DescribeDBInstances
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of AnalyticDB for PostgreSQL instances.
+//
 // Description:
 //
 // ##
@@ -30277,12 +31472,29 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源管理模式
+//
+// @param request - DescribeDBResourceManagementModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBResourceManagementModeResponse
 func (client *Client) DescribeDBResourceManagementModeWithOptions(request *DescribeDBResourceManagementModeRequest, runtime *util.RuntimeOptions) (_result *DescribeDBResourceManagementModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30291,7 +31503,7 @@ func (client *Client) DescribeDBResourceManagementModeWithOptions(request *Descr
 		Version:     tea.String("2016-05-03"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -30306,6 +31518,13 @@ func (client *Client) DescribeDBResourceManagementModeWithOptions(request *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源管理模式
+//
+// @param request - DescribeDBResourceManagementModeRequest
+//
+// @return DescribeDBResourceManagementModeResponse
 func (client *Client) DescribeDBResourceManagementMode(request *DescribeDBResourceManagementModeRequest) (_result *DescribeDBResourceManagementModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBResourceManagementModeResponse{}
@@ -30317,6 +31536,15 @@ func (client *Client) DescribeDBResourceManagementMode(request *DescribeDBResour
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about minor versions of AnalyticDB for PostgreSQL instances.
+//
+// @param request - DescribeDBVersionInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBVersionInfosResponse
 func (client *Client) DescribeDBVersionInfosWithOptions(request *DescribeDBVersionInfosRequest, runtime *util.RuntimeOptions) (_result *DescribeDBVersionInfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30366,6 +31594,13 @@ func (client *Client) DescribeDBVersionInfosWithOptions(request *DescribeDBVersi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about minor versions of AnalyticDB for PostgreSQL instances.
+//
+// @param request - DescribeDBVersionInfosRequest
+//
+// @return DescribeDBVersionInfosResponse
 func (client *Client) DescribeDBVersionInfos(request *DescribeDBVersionInfosRequest) (_result *DescribeDBVersionInfosResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBVersionInfosResponse{}
@@ -30377,6 +31612,10 @@ func (client *Client) DescribeDBVersionInfos(request *DescribeDBVersionInfosRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of backup sets of full backup or point-in-time backup for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
@@ -30451,6 +31690,10 @@ func (client *Client) DescribeDataBackupsWithOptions(request *DescribeDataBackup
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of backup sets of full backup or point-in-time backup for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
@@ -30469,6 +31712,15 @@ func (client *Client) DescribeDataBackups(request *DescribeDataBackupsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the data redistribution information about an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+//
+// @param request - DescribeDataReDistributeInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataReDistributeInfoResponse
 func (client *Client) DescribeDataReDistributeInfoWithOptions(request *DescribeDataReDistributeInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDataReDistributeInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30506,6 +31758,13 @@ func (client *Client) DescribeDataReDistributeInfoWithOptions(request *DescribeD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the data redistribution information about an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+//
+// @param request - DescribeDataReDistributeInfoRequest
+//
+// @return DescribeDataReDistributeInfoResponse
 func (client *Client) DescribeDataReDistributeInfo(request *DescribeDataReDistributeInfoRequest) (_result *DescribeDataReDistributeInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataReDistributeInfoResponse{}
@@ -30517,6 +31776,10 @@ func (client *Client) DescribeDataReDistributeInfo(request *DescribeDataReDistri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the state of data sharing for AnalyticDB for PostgreSQL instances.
+//
 // Description:
 //
 // Data sharing is supported only for instances in Serverless mode.
@@ -30579,6 +31842,10 @@ func (client *Client) DescribeDataShareInstancesWithOptions(request *DescribeDat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the state of data sharing for AnalyticDB for PostgreSQL instances.
+//
 // Description:
 //
 // Data sharing is supported only for instances in Serverless mode.
@@ -30597,6 +31864,10 @@ func (client *Client) DescribeDataShareInstances(request *DescribeDataShareInsta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about data sharing performance metrics.
+//
 // Description:
 //
 // You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
@@ -30659,6 +31930,10 @@ func (client *Client) DescribeDataSharePerformanceWithOptions(request *DescribeD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about data sharing performance metrics.
+//
 // Description:
 //
 // You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
@@ -30681,6 +31956,10 @@ func (client *Client) DescribeDataSharePerformance(request *DescribeDataSharePer
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all databases and database accounts for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
@@ -30727,6 +32006,10 @@ func (client *Client) DescribeDiagnosisDimensionsWithOptions(request *DescribeDi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all databases and database accounts for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
@@ -30749,6 +32032,10 @@ func (client *Client) DescribeDiagnosisDimensions(request *DescribeDiagnosisDime
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of query execution on an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
@@ -30815,6 +32102,10 @@ func (client *Client) DescribeDiagnosisMonitorPerformanceWithOptions(request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of query execution on an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
@@ -30837,6 +32128,10 @@ func (client *Client) DescribeDiagnosisMonitorPerformance(request *DescribeDiagn
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about SQL queries for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
@@ -30919,6 +32214,10 @@ func (client *Client) DescribeDiagnosisRecordsWithOptions(request *DescribeDiagn
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about SQL queries for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
@@ -30941,11 +32240,15 @@ func (client *Client) DescribeDiagnosisRecords(request *DescribeDiagnosisRecords
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a query for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
 //
-// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
 // @param request - DescribeDiagnosisSQLInfoRequest
 //
@@ -30993,11 +32296,15 @@ func (client *Client) DescribeDiagnosisSQLInfoWithOptions(request *DescribeDiagn
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a query for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
 //
-// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
 // @param request - DescribeDiagnosisSQLInfoRequest
 //
@@ -31013,6 +32320,15 @@ func (client *Client) DescribeDiagnosisSQLInfo(request *DescribeDiagnosisSQLInfo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取文档详情
+//
+// @param request - DescribeDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDocumentResponse
 func (client *Client) DescribeDocumentWithOptions(request *DescribeDocumentRequest, runtime *util.RuntimeOptions) (_result *DescribeDocumentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31070,6 +32386,13 @@ func (client *Client) DescribeDocumentWithOptions(request *DescribeDocumentReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取文档详情
+//
+// @param request - DescribeDocumentRequest
+//
+// @return DescribeDocumentResponse
 func (client *Client) DescribeDocument(request *DescribeDocumentRequest) (_result *DescribeDocumentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDocumentResponse{}
@@ -31081,11 +32404,15 @@ func (client *Client) DescribeDocument(request *DescribeDocumentRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the download records of query diagnostic information for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// You must call the [DownloadDiagnosisRecords](~~447700~~) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
+// You must call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/447700.html) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
 //
-// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
 // @param request - DescribeDownloadRecordsRequest
 //
@@ -31125,11 +32452,15 @@ func (client *Client) DescribeDownloadRecordsWithOptions(request *DescribeDownlo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the download records of query diagnostic information for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// You must call the [DownloadDiagnosisRecords](~~447700~~) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
+// You must call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/447700.html) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
 //
-// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
 // @param request - DescribeDownloadRecordsRequest
 //
@@ -31145,6 +32476,15 @@ func (client *Client) DescribeDownloadRecords(request *DescribeDownloadRecordsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+//
+// @param request - DescribeDownloadSQLLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDownloadSQLLogsResponse
 func (client *Client) DescribeDownloadSQLLogsWithOptions(request *DescribeDownloadSQLLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeDownloadSQLLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31178,6 +32518,13 @@ func (client *Client) DescribeDownloadSQLLogsWithOptions(request *DescribeDownlo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+//
+// @param request - DescribeDownloadSQLLogsRequest
+//
+// @return DescribeDownloadSQLLogsResponse
 func (client *Client) DescribeDownloadSQLLogs(request *DescribeDownloadSQLLogsRequest) (_result *DescribeDownloadSQLLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDownloadSQLLogsResponse{}
@@ -31189,6 +32536,10 @@ func (client *Client) DescribeDownloadSQLLogs(request *DescribeDownloadSQLLogsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the health status of an AnalyticDB for PostgreSQL instance and its nodes.
+//
 // Description:
 //
 // This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
@@ -31239,6 +32590,10 @@ func (client *Client) DescribeHealthStatusWithOptions(request *DescribeHealthSta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the health status of an AnalyticDB for PostgreSQL instance and its nodes.
+//
 // Description:
 //
 // This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
@@ -31261,6 +32616,15 @@ func (client *Client) DescribeHealthStatus(request *DescribeHealthStatusRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实时物化视图信息
+//
+// @param request - DescribeIMVInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIMVInfosResponse
 func (client *Client) DescribeIMVInfosWithOptions(request *DescribeIMVInfosRequest, runtime *util.RuntimeOptions) (_result *DescribeIMVInfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31302,6 +32666,13 @@ func (client *Client) DescribeIMVInfosWithOptions(request *DescribeIMVInfosReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实时物化视图信息
+//
+// @param request - DescribeIMVInfosRequest
+//
+// @return DescribeIMVInfosResponse
 func (client *Client) DescribeIMVInfos(request *DescribeIMVInfosRequest) (_result *DescribeIMVInfosResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIMVInfosResponse{}
@@ -31313,6 +32684,15 @@ func (client *Client) DescribeIMVInfos(request *DescribeIMVInfosRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of log backups.
+//
+// @param request - DescribeLogBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLogBackupsResponse
 func (client *Client) DescribeLogBackupsWithOptions(request *DescribeLogBackupsRequest, runtime *util.RuntimeOptions) (_result *DescribeLogBackupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31362,6 +32742,13 @@ func (client *Client) DescribeLogBackupsWithOptions(request *DescribeLogBackupsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of log backups.
+//
+// @param request - DescribeLogBackupsRequest
+//
+// @return DescribeLogBackupsResponse
 func (client *Client) DescribeLogBackups(request *DescribeLogBackupsRequest) (_result *DescribeLogBackupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLogBackupsResponse{}
@@ -31373,6 +32760,15 @@ func (client *Client) DescribeLogBackups(request *DescribeLogBackupsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameter modification logs of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - DescribeModifyParameterLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeModifyParameterLogResponse
 func (client *Client) DescribeModifyParameterLogWithOptions(request *DescribeModifyParameterLogRequest, runtime *util.RuntimeOptions) (_result *DescribeModifyParameterLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31414,6 +32810,13 @@ func (client *Client) DescribeModifyParameterLogWithOptions(request *DescribeMod
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameter modification logs of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - DescribeModifyParameterLogRequest
+//
+// @return DescribeModifyParameterLogResponse
 func (client *Client) DescribeModifyParameterLog(request *DescribeModifyParameterLogRequest) (_result *DescribeModifyParameterLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeModifyParameterLogResponse{}
@@ -31425,6 +32828,15 @@ func (client *Client) DescribeModifyParameterLog(request *DescribeModifyParamete
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a namespace.
+//
+// @param request - DescribeNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNamespaceResponse
 func (client *Client) DescribeNamespaceWithOptions(request *DescribeNamespaceRequest, runtime *util.RuntimeOptions) (_result *DescribeNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31478,6 +32890,13 @@ func (client *Client) DescribeNamespaceWithOptions(request *DescribeNamespaceReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a namespace.
+//
+// @param request - DescribeNamespaceRequest
+//
+// @return DescribeNamespaceResponse
 func (client *Client) DescribeNamespace(request *DescribeNamespaceRequest) (_result *DescribeNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNamespaceResponse{}
@@ -31489,6 +32908,10 @@ func (client *Client) DescribeNamespace(request *DescribeNamespaceRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about configuration parameters for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
@@ -31535,6 +32958,10 @@ func (client *Client) DescribeParametersWithOptions(request *DescribeParametersR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about configuration parameters for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
@@ -31557,6 +32984,10 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of vSwitches.
+//
 // Description:
 //
 // When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
@@ -31635,6 +33066,10 @@ func (client *Client) DescribeRdsVSwitchsWithOptions(request *DescribeRdsVSwitch
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of vSwitches.
+//
 // Description:
 //
 // When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
@@ -31657,6 +33092,10 @@ func (client *Client) DescribeRdsVSwitchs(request *DescribeRdsVSwitchsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of VPCs.
+//
 // Description:
 //
 // When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
@@ -31731,6 +33170,10 @@ func (client *Client) DescribeRdsVpcsWithOptions(request *DescribeRdsVpcsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of VPCs.
+//
 // Description:
 //
 // When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
@@ -31753,6 +33196,10 @@ func (client *Client) DescribeRdsVpcs(request *DescribeRdsVpcsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of regions and zones where AnalyticDB for PostgreSQL is available.
+//
 // Description:
 //
 // Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
@@ -31799,6 +33246,10 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of regions and zones where AnalyticDB for PostgreSQL is available.
+//
 // Description:
 //
 // Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
@@ -31821,6 +33272,10 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of audit logs for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // This operation is not available for instances in reserved storage mode.
@@ -31911,6 +33366,10 @@ func (client *Client) DescribeSQLLogCountWithOptions(request *DescribeSQLLogCoun
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of audit logs for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // This operation is not available for instances in reserved storage mode.
@@ -31929,9 +33388,13 @@ func (client *Client) DescribeSQLLogCount(request *DescribeSQLLogCountRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the SQL execution logs of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](~~453722~~) operation.
+// > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](https://help.aliyun.com/document_detail/453722.html) operation.
 //
 // @param request - DescribeSQLLogsRequest
 //
@@ -32027,9 +33490,13 @@ func (client *Client) DescribeSQLLogsWithOptions(request *DescribeSQLLogsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the SQL execution logs of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](~~453722~~) operation.
+// > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](https://help.aliyun.com/document_detail/453722.html) operation.
 //
 // @param request - DescribeSQLLogsRequest
 //
@@ -32045,6 +33512,10 @@ func (client *Client) DescribeSQLLogs(request *DescribeSQLLogsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries SQL logs within a specific time range.
+//
 // Description:
 //
 // You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
@@ -32155,6 +33626,10 @@ func (client *Client) DescribeSQLLogsV2WithOptions(request *DescribeSQLLogsV2Req
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries SQL logs within a specific time range.
+//
 // Description:
 //
 // You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
@@ -32177,6 +33652,10 @@ func (client *Client) DescribeSQLLogsV2(request *DescribeSQLLogsV2Request) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether a sample dataset is loaded to an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -32223,6 +33702,10 @@ func (client *Client) DescribeSampleDataWithOptions(request *DescribeSampleDataR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether a sample dataset is loaded to an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -32241,6 +33724,15 @@ func (client *Client) DescribeSampleData(request *DescribeSampleDataRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the features that are supported by an AnalyticDB for PostgreSQL instance.
+//
+// @param request - DescribeSupportFeaturesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSupportFeaturesResponse
 func (client *Client) DescribeSupportFeaturesWithOptions(request *DescribeSupportFeaturesRequest, runtime *util.RuntimeOptions) (_result *DescribeSupportFeaturesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32278,6 +33770,13 @@ func (client *Client) DescribeSupportFeaturesWithOptions(request *DescribeSuppor
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the features that are supported by an AnalyticDB for PostgreSQL instance.
+//
+// @param request - DescribeSupportFeaturesRequest
+//
+// @return DescribeSupportFeaturesResponse
 func (client *Client) DescribeSupportFeatures(request *DescribeSupportFeaturesRequest) (_result *DescribeSupportFeaturesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSupportFeaturesResponse{}
@@ -32289,6 +33788,15 @@ func (client *Client) DescribeSupportFeatures(request *DescribeSupportFeaturesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of tags for AnalyticDB for PostgreSQL instances.
+//
+// @param request - DescribeTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTagsResponse
 func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runtime *util.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32346,6 +33854,13 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of tags for AnalyticDB for PostgreSQL instances.
+//
+// @param request - DescribeTagsRequest
+//
+// @return DescribeTagsResponse
 func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *DescribeTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTagsResponse{}
@@ -32357,6 +33872,15 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of Key Management Service (KMS) keys.
+//
+// @param request - DescribeUserEncryptionKeyListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserEncryptionKeyListResponse
 func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *DescribeUserEncryptionKeyListRequest, runtime *util.RuntimeOptions) (_result *DescribeUserEncryptionKeyListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32398,6 +33922,13 @@ func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of Key Management Service (KMS) keys.
+//
+// @param request - DescribeUserEncryptionKeyListRequest
+//
+// @return DescribeUserEncryptionKeyListResponse
 func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncryptionKeyListRequest) (_result *DescribeUserEncryptionKeyListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserEncryptionKeyListResponse{}
@@ -32409,6 +33940,10 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a lock-waiting query for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
@@ -32463,6 +33998,10 @@ func (client *Client) DescribeWaitingSQLInfoWithOptions(request *DescribeWaiting
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a lock-waiting query for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
@@ -32485,6 +34024,10 @@ func (client *Client) DescribeWaitingSQLInfo(request *DescribeWaitingSQLInfoRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the lock diagnostic records of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
@@ -32567,6 +34110,10 @@ func (client *Client) DescribeWaitingSQLRecordsWithOptions(request *DescribeWait
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the lock diagnostic records of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
@@ -32589,11 +34136,15 @@ func (client *Client) DescribeWaitingSQLRecords(request *DescribeWaitingSQLRecor
 	return _result, _err
 }
 
+// Summary:
+//
+// Downloads the query diagnostic information of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](~~447712~~) operation to query download records and download URLs.
+// You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](https://help.aliyun.com/document_detail/447712.html) operation to query download records and download URLs.
 //
-// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
 // ## Limits
 //
@@ -32665,11 +34216,15 @@ func (client *Client) DownloadDiagnosisRecordsWithOptions(request *DownloadDiagn
 	return _result, _err
 }
 
+// Summary:
+//
+// Downloads the query diagnostic information of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
-// You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](~~447712~~) operation to query download records and download URLs.
+// You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](https://help.aliyun.com/document_detail/447712.html) operation to query download records and download URLs.
 //
-// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
 // ## Limits
 //
@@ -32689,6 +34244,15 @@ func (client *Client) DownloadDiagnosisRecords(request *DownloadDiagnosisRecords
 	return _result, _err
 }
 
+// Summary:
+//
+// Download the slow query logs of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - DownloadSQLLogsRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadSQLLogsRecordsResponse
 func (client *Client) DownloadSQLLogsRecordsWithOptions(request *DownloadSQLLogsRecordsRequest, runtime *util.RuntimeOptions) (_result *DownloadSQLLogsRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32782,6 +34346,13 @@ func (client *Client) DownloadSQLLogsRecordsWithOptions(request *DownloadSQLLogs
 	return _result, _err
 }
 
+// Summary:
+//
+// Download the slow query logs of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - DownloadSQLLogsRecordsRequest
+//
+// @return DownloadSQLLogsRecordsResponse
 func (client *Client) DownloadSQLLogsRecords(request *DownloadSQLLogsRecordsRequest) (_result *DownloadSQLLogsRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DownloadSQLLogsRecordsResponse{}
@@ -32793,6 +34364,15 @@ func (client *Client) DownloadSQLLogsRecords(request *DownloadSQLLogsRecordsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询上传文档任务的状态
+//
+// @param request - GetUploadDocumentJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUploadDocumentJobResponse
 func (client *Client) GetUploadDocumentJobWithOptions(request *GetUploadDocumentJobRequest, runtime *util.RuntimeOptions) (_result *GetUploadDocumentJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32852,6 +34432,13 @@ func (client *Client) GetUploadDocumentJobWithOptions(request *GetUploadDocument
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询上传文档任务的状态
+//
+// @param request - GetUploadDocumentJobRequest
+//
+// @return GetUploadDocumentJobResponse
 func (client *Client) GetUploadDocumentJob(request *GetUploadDocumentJobRequest) (_result *GetUploadDocumentJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUploadDocumentJobResponse{}
@@ -32863,6 +34450,15 @@ func (client *Client) GetUploadDocumentJob(request *GetUploadDocumentJobRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询上传向量任务结果
+//
+// @param request - GetUpsertCollectionDataJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUpsertCollectionDataJobResponse
 func (client *Client) GetUpsertCollectionDataJobWithOptions(request *GetUpsertCollectionDataJobRequest, runtime *util.RuntimeOptions) (_result *GetUpsertCollectionDataJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32922,6 +34518,13 @@ func (client *Client) GetUpsertCollectionDataJobWithOptions(request *GetUpsertCo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询上传向量任务结果
+//
+// @param request - GetUpsertCollectionDataJobRequest
+//
+// @return GetUpsertCollectionDataJobResponse
 func (client *Client) GetUpsertCollectionDataJob(request *GetUpsertCollectionDataJobRequest) (_result *GetUpsertCollectionDataJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUpsertCollectionDataJobResponse{}
@@ -32933,6 +34536,15 @@ func (client *Client) GetUpsertCollectionDataJob(request *GetUpsertCollectionDat
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants vector collection permissions to a namespace.
+//
+// @param request - GrantCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantCollectionResponse
 func (client *Client) GrantCollectionWithOptions(request *GrantCollectionRequest, runtime *util.RuntimeOptions) (_result *GrantCollectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32998,6 +34610,13 @@ func (client *Client) GrantCollectionWithOptions(request *GrantCollectionRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants vector collection permissions to a namespace.
+//
+// @param request - GrantCollectionRequest
+//
+// @return GrantCollectionResponse
 func (client *Client) GrantCollection(request *GrantCollectionRequest) (_result *GrantCollectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GrantCollectionResponse{}
@@ -33009,6 +34628,15 @@ func (client *Client) GrantCollection(request *GrantCollectionRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 处理指定的查询SQL
+//
+// @param request - HandleActiveSQLRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HandleActiveSQLRecordResponse
 func (client *Client) HandleActiveSQLRecordWithOptions(request *HandleActiveSQLRecordRequest, runtime *util.RuntimeOptions) (_result *HandleActiveSQLRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33050,6 +34678,13 @@ func (client *Client) HandleActiveSQLRecordWithOptions(request *HandleActiveSQLR
 	return _result, _err
 }
 
+// Summary:
+//
+// 处理指定的查询SQL
+//
+// @param request - HandleActiveSQLRecordRequest
+//
+// @return HandleActiveSQLRecordResponse
 func (client *Client) HandleActiveSQLRecord(request *HandleActiveSQLRecordRequest) (_result *HandleActiveSQLRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &HandleActiveSQLRecordResponse{}
@@ -33061,6 +34696,15 @@ func (client *Client) HandleActiveSQLRecord(request *HandleActiveSQLRecordReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Initializes vector databases.
+//
+// @param request - InitVectorDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitVectorDatabaseResponse
 func (client *Client) InitVectorDatabaseWithOptions(request *InitVectorDatabaseRequest, runtime *util.RuntimeOptions) (_result *InitVectorDatabaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33110,6 +34754,13 @@ func (client *Client) InitVectorDatabaseWithOptions(request *InitVectorDatabaseR
 	return _result, _err
 }
 
+// Summary:
+//
+// Initializes vector databases.
+//
+// @param request - InitVectorDatabaseRequest
+//
+// @return InitVectorDatabaseResponse
 func (client *Client) InitVectorDatabase(request *InitVectorDatabaseRequest) (_result *InitVectorDatabaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InitVectorDatabaseResponse{}
@@ -33121,6 +34772,15 @@ func (client *Client) InitVectorDatabase(request *InitVectorDatabaseRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of vector collections.
+//
+// @param request - ListCollectionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCollectionsResponse
 func (client *Client) ListCollectionsWithOptions(request *ListCollectionsRequest, runtime *util.RuntimeOptions) (_result *ListCollectionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33170,6 +34830,13 @@ func (client *Client) ListCollectionsWithOptions(request *ListCollectionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of vector collections.
+//
+// @param request - ListCollectionsRequest
+//
+// @return ListCollectionsResponse
 func (client *Client) ListCollections(request *ListCollectionsRequest) (_result *ListCollectionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCollectionsResponse{}
@@ -33181,6 +34848,15 @@ func (client *Client) ListCollections(request *ListCollectionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取知识库列表
+//
+// @param request - ListDocumentCollectionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDocumentCollectionsResponse
 func (client *Client) ListDocumentCollectionsWithOptions(request *ListDocumentCollectionsRequest, runtime *util.RuntimeOptions) (_result *ListDocumentCollectionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33230,6 +34906,13 @@ func (client *Client) ListDocumentCollectionsWithOptions(request *ListDocumentCo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取知识库列表
+//
+// @param request - ListDocumentCollectionsRequest
+//
+// @return ListDocumentCollectionsResponse
 func (client *Client) ListDocumentCollections(request *ListDocumentCollectionsRequest) (_result *ListDocumentCollectionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDocumentCollectionsResponse{}
@@ -33241,6 +34924,15 @@ func (client *Client) ListDocumentCollections(request *ListDocumentCollectionsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询文档列表
+//
+// @param request - ListDocumentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDocumentsResponse
 func (client *Client) ListDocumentsWithOptions(request *ListDocumentsRequest, runtime *util.RuntimeOptions) (_result *ListDocumentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33294,6 +34986,13 @@ func (client *Client) ListDocumentsWithOptions(request *ListDocumentsRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询文档列表
+//
+// @param request - ListDocumentsRequest
+//
+// @return ListDocumentsResponse
 func (client *Client) ListDocuments(request *ListDocumentsRequest) (_result *ListDocumentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDocumentsResponse{}
@@ -33305,6 +35004,15 @@ func (client *Client) ListDocuments(request *ListDocumentsRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of namespaces.
+//
+// @param request - ListNamespacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNamespacesResponse
 func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, runtime *util.RuntimeOptions) (_result *ListNamespacesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33354,6 +35062,13 @@ func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of namespaces.
+//
+// @param request - ListNamespacesRequest
+//
+// @return ListNamespacesResponse
 func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *ListNamespacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNamespacesResponse{}
@@ -33365,6 +35080,15 @@ func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of tags that are added to AnalyticDB for PostgreSQL instances.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33430,6 +35154,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of tags that are added to AnalyticDB for PostgreSQL instances.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -33441,6 +35172,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a database account for an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ModifyAccountDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountDescriptionResponse
 func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccountDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33482,6 +35222,13 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a database account for an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ModifyAccountDescriptionRequest
+//
+// @return ModifyAccountDescriptionResponse
 func (client *Client) ModifyAccountDescription(request *ModifyAccountDescriptionRequest) (_result *ModifyAccountDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountDescriptionResponse{}
@@ -33493,6 +35240,15 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the backup policy of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ModifyBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBackupPolicyResponse
 func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33546,6 +35302,13 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the backup policy of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ModifyBackupPolicyRequest
+//
+// @return ModifyBackupPolicyResponse
 func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_result *ModifyBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBackupPolicyResponse{}
@@ -33557,6 +35320,15 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the threshold of computing resources and the wait period of idle resources for an AnalyticDB for PostgreSQL instance in Serverless automatic scheduling mode.
+//
+// @param request - ModifyDBInstanceConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceConfigResponse
 func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanceConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33606,6 +35378,13 @@ func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the threshold of computing resources and the wait period of idle resources for an AnalyticDB for PostgreSQL instance in Serverless automatic scheduling mode.
+//
+// @param request - ModifyDBInstanceConfigRequest
+//
+// @return ModifyDBInstanceConfigResponse
 func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequest) (_result *ModifyDBInstanceConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceConfigResponse{}
@@ -33617,6 +35396,15 @@ func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the endpoint of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ModifyDBInstanceConnectionStringRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceConnectionStringResponse
 func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *ModifyDBInstanceConnectionStringRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceConnectionStringResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33662,6 +35450,13 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the endpoint of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ModifyDBInstanceConnectionStringRequest
+//
+// @return ModifyDBInstanceConnectionStringResponse
 func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstanceConnectionStringRequest) (_result *ModifyDBInstanceConnectionStringResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceConnectionStringResponse{}
@@ -33673,6 +35468,10 @@ func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the description of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
@@ -33727,6 +35526,10 @@ func (client *Client) ModifyDBInstanceDescriptionWithOptions(request *ModifyDBIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the description of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
@@ -33749,6 +35552,10 @@ func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescr
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the maintenance window of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
@@ -33807,6 +35614,10 @@ func (client *Client) ModifyDBInstanceMaintainTimeWithOptions(request *ModifyDBI
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the maintenance window of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
@@ -33829,9 +35640,13 @@ func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMain
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves an AnalyticDB for PostgreSQL instance to a resource group.
+//
 // Description:
 //
-// Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+// Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
 //
 // @param request - ModifyDBInstanceResourceGroupRequest
 //
@@ -33895,9 +35710,13 @@ func (client *Client) ModifyDBInstanceResourceGroupWithOptions(request *ModifyDB
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves an AnalyticDB for PostgreSQL instance to a resource group.
+//
 // Description:
 //
-// Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+// Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
 //
 // @param request - ModifyDBInstanceResourceGroupRequest
 //
@@ -33913,6 +35732,15 @@ func (client *Client) ModifyDBInstanceResourceGroup(request *ModifyDBInstanceRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables, disables, or updates SSL encryption for an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ModifyDBInstanceSSLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceSSLResponse
 func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSSLRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceSSLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33954,6 +35782,13 @@ func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSS
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables, disables, or updates SSL encryption for an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ModifyDBInstanceSSLRequest
+//
+// @return ModifyDBInstanceSSLResponse
 func (client *Client) ModifyDBInstanceSSL(request *ModifyDBInstanceSSLRequest) (_result *ModifyDBInstanceSSLResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceSSLResponse{}
@@ -33965,6 +35800,15 @@ func (client *Client) ModifyDBInstanceSSL(request *ModifyDBInstanceSSLRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改master规格
+//
+// @param request - ModifyMasterSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyMasterSpecResponse
 func (client *Client) ModifyMasterSpecWithOptions(request *ModifyMasterSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyMasterSpecResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34010,6 +35854,13 @@ func (client *Client) ModifyMasterSpecWithOptions(request *ModifyMasterSpecReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改master规格
+//
+// @param request - ModifyMasterSpecRequest
+//
+// @return ModifyMasterSpecResponse
 func (client *Client) ModifyMasterSpec(request *ModifyMasterSpecRequest) (_result *ModifyMasterSpecResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyMasterSpecResponse{}
@@ -34021,6 +35872,10 @@ func (client *Client) ModifyMasterSpec(request *ModifyMasterSpecRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configuration parameters of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
@@ -34075,6 +35930,10 @@ func (client *Client) ModifyParametersWithOptions(request *ModifyParametersReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configuration parameters of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
@@ -34097,6 +35956,15 @@ func (client *Client) ModifyParameters(request *ModifyParametersRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the SQL Explorer feature for an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ModifySQLCollectorPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySQLCollectorPolicyResponse
 func (client *Client) ModifySQLCollectorPolicyWithOptions(request *ModifySQLCollectorPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifySQLCollectorPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34134,6 +36002,13 @@ func (client *Client) ModifySQLCollectorPolicyWithOptions(request *ModifySQLColl
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the SQL Explorer feature for an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ModifySQLCollectorPolicyRequest
+//
+// @return ModifySQLCollectorPolicyResponse
 func (client *Client) ModifySQLCollectorPolicy(request *ModifySQLCollectorPolicyRequest) (_result *ModifySQLCollectorPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySQLCollectorPolicyResponse{}
@@ -34145,6 +36020,10 @@ func (client *Client) ModifySQLCollectorPolicy(request *ModifySQLCollectorPolicy
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP address whitelist of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
@@ -34211,6 +36090,10 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP address whitelist of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
@@ -34233,6 +36116,15 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the vector engine optimization configuration of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ModifyVectorConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyVectorConfigurationResponse
 func (client *Client) ModifyVectorConfigurationWithOptions(request *ModifyVectorConfigurationRequest, runtime *util.RuntimeOptions) (_result *ModifyVectorConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34274,6 +36166,13 @@ func (client *Client) ModifyVectorConfigurationWithOptions(request *ModifyVector
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the vector engine optimization configuration of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ModifyVectorConfigurationRequest
+//
+// @return ModifyVectorConfigurationResponse
 func (client *Client) ModifyVectorConfiguration(request *ModifyVectorConfigurationRequest) (_result *ModifyVectorConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyVectorConfigurationResponse{}
@@ -34285,13 +36184,17 @@ func (client *Client) ModifyVectorConfiguration(request *ModifyVectorConfigurati
 	return _result, _err
 }
 
+// Summary:
+//
+// Pauses an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the **Running*	- state.
 //
-// This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
-// >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
 //
 // ## Limits
 //
@@ -34339,13 +36242,17 @@ func (client *Client) PauseInstanceWithOptions(request *PauseInstanceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Pauses an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the **Running*	- state.
 //
-// This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
-// >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
 //
 // ## Limits
 //
@@ -34365,6 +36272,15 @@ func (client *Client) PauseInstance(request *PauseInstanceRequest) (_result *Pau
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询向量数据
+//
+// @param tmpReq - QueryCollectionDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCollectionDataResponse
 func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionDataRequest, runtime *util.RuntimeOptions) (_result *QueryCollectionDataResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -34472,6 +36388,13 @@ func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionData
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询向量数据
+//
+// @param request - QueryCollectionDataRequest
+//
+// @return QueryCollectionDataResponse
 func (client *Client) QueryCollectionData(request *QueryCollectionDataRequest) (_result *QueryCollectionDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCollectionDataResponse{}
@@ -34483,6 +36406,15 @@ func (client *Client) QueryCollectionData(request *QueryCollectionDataRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询
+//
+// @param tmpReq - QueryContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryContentResponse
 func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runtime *util.RuntimeOptions) (_result *QueryContentResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -34598,6 +36530,13 @@ func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询
+//
+// @param request - QueryContentRequest
+//
+// @return QueryContentResponse
 func (client *Client) QueryContent(request *QueryContentRequest) (_result *QueryContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryContentResponse{}
@@ -34715,6 +36654,15 @@ func (client *Client) QueryContentAdvance(request *QueryContentAdvanceRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Rebalances an AnalyticDB for PostgreSQL instance.
+//
+// @param request - RebalanceDBInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RebalanceDBInstanceResponse
 func (client *Client) RebalanceDBInstanceWithOptions(request *RebalanceDBInstanceRequest, runtime *util.RuntimeOptions) (_result *RebalanceDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34752,6 +36700,13 @@ func (client *Client) RebalanceDBInstanceWithOptions(request *RebalanceDBInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// Rebalances an AnalyticDB for PostgreSQL instance.
+//
+// @param request - RebalanceDBInstanceRequest
+//
+// @return RebalanceDBInstanceResponse
 func (client *Client) RebalanceDBInstance(request *RebalanceDBInstanceRequest) (_result *RebalanceDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RebalanceDBInstanceResponse{}
@@ -34763,6 +36718,15 @@ func (client *Client) RebalanceDBInstance(request *RebalanceDBInstanceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the public endpoint of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ReleaseInstancePublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseInstancePublicConnectionResponse
 func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *ReleaseInstancePublicConnectionRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstancePublicConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34804,6 +36768,13 @@ func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *Releas
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the public endpoint of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ReleaseInstancePublicConnectionRequest
+//
+// @return ReleaseInstancePublicConnectionResponse
 func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePublicConnectionRequest) (_result *ReleaseInstancePublicConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstancePublicConnectionResponse{}
@@ -34815,6 +36786,15 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password of a database account for an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ResetAccountPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetAccountPasswordResponse
 func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPasswordRequest, runtime *util.RuntimeOptions) (_result *ResetAccountPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34856,6 +36836,13 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password of a database account for an AnalyticDB for PostgreSQL instance.
+//
+// @param request - ResetAccountPasswordRequest
+//
+// @return ResetAccountPasswordResponse
 func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (_result *ResetAccountPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetAccountPasswordResponse{}
@@ -34867,6 +36854,15 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置IMV统计信息
+//
+// @param request - ResetIMVMonitorDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetIMVMonitorDataResponse
 func (client *Client) ResetIMVMonitorDataWithOptions(request *ResetIMVMonitorDataRequest, runtime *util.RuntimeOptions) (_result *ResetIMVMonitorDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34904,6 +36900,13 @@ func (client *Client) ResetIMVMonitorDataWithOptions(request *ResetIMVMonitorDat
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置IMV统计信息
+//
+// @param request - ResetIMVMonitorDataRequest
+//
+// @return ResetIMVMonitorDataResponse
 func (client *Client) ResetIMVMonitorData(request *ResetIMVMonitorDataRequest) (_result *ResetIMVMonitorDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetIMVMonitorDataResponse{}
@@ -34915,6 +36918,10 @@ func (client *Client) ResetIMVMonitorData(request *ResetIMVMonitorDataRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
@@ -34965,6 +36972,10 @@ func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
@@ -34987,13 +36998,17 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the **Paused*	- state.
 //
-// This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
-// >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
 //
 // ## Limits
 //
@@ -35041,13 +37056,17 @@ func (client *Client) ResumeInstanceWithOptions(request *ResumeInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the **Paused*	- state.
 //
-// This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+// This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
 //
-// >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
 //
 // ## Limits
 //
@@ -35067,6 +37086,10 @@ func (client *Client) ResumeInstance(request *ResumeInstanceRequest) (_result *R
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables a plan for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
@@ -35125,6 +37148,10 @@ func (client *Client) SetDBInstancePlanStatusWithOptions(request *SetDBInstanceP
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables a plan for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
@@ -35147,6 +37174,10 @@ func (client *Client) SetDBInstancePlanStatus(request *SetDBInstancePlanStatusRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables data sharing for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
@@ -35211,6 +37242,10 @@ func (client *Client) SetDataShareInstanceWithOptions(tmpReq *SetDataShareInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables data sharing for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
@@ -35233,6 +37268,15 @@ func (client *Client) SetDataShareInstance(request *SetDataShareInstanceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches the internal or public endpoint for an AnalyticDB for PostgreSQL instance.
+//
+// @param request - SwitchDBInstanceNetTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchDBInstanceNetTypeResponse
 func (client *Client) SwitchDBInstanceNetTypeWithOptions(request *SwitchDBInstanceNetTypeRequest, runtime *util.RuntimeOptions) (_result *SwitchDBInstanceNetTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35274,6 +37318,13 @@ func (client *Client) SwitchDBInstanceNetTypeWithOptions(request *SwitchDBInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches the internal or public endpoint for an AnalyticDB for PostgreSQL instance.
+//
+// @param request - SwitchDBInstanceNetTypeRequest
+//
+// @return SwitchDBInstanceNetTypeResponse
 func (client *Client) SwitchDBInstanceNetType(request *SwitchDBInstanceNetTypeRequest) (_result *SwitchDBInstanceNetTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchDBInstanceNetTypeResponse{}
@@ -35285,6 +37336,15 @@ func (client *Client) SwitchDBInstanceNetType(request *SwitchDBInstanceNetTypeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates and adds tags to AnalyticDB for PostgreSQL instances.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35346,6 +37406,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates and adds tags to AnalyticDB for PostgreSQL instances.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -35357,6 +37424,10 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a sample dataset from an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
@@ -35407,6 +37478,10 @@ func (client *Client) UnloadSampleDataWithOptions(request *UnloadSampleDataReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a sample dataset from an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
@@ -35429,6 +37504,15 @@ func (client *Client) UnloadSampleData(request *UnloadSampleDataRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35494,6 +37578,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
@@ -35505,6 +37596,15 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新Collection Data的Metadata数据
+//
+// @param tmpReq - UpdateCollectionDataMetadataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCollectionDataMetadataResponse
 func (client *Client) UpdateCollectionDataMetadataWithOptions(tmpReq *UpdateCollectionDataMetadataRequest, runtime *util.RuntimeOptions) (_result *UpdateCollectionDataMetadataResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -35580,6 +37680,13 @@ func (client *Client) UpdateCollectionDataMetadataWithOptions(tmpReq *UpdateColl
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新Collection Data的Metadata数据
+//
+// @param request - UpdateCollectionDataMetadataRequest
+//
+// @return UpdateCollectionDataMetadataResponse
 func (client *Client) UpdateCollectionDataMetadata(request *UpdateCollectionDataMetadataRequest) (_result *UpdateCollectionDataMetadataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCollectionDataMetadataResponse{}
@@ -35591,6 +37698,10 @@ func (client *Client) UpdateCollectionDataMetadata(request *UpdateCollectionData
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a plan for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
@@ -35665,6 +37776,10 @@ func (client *Client) UpdateDBInstancePlanWithOptions(request *UpdateDBInstanceP
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a plan for an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
@@ -35687,11 +37802,15 @@ func (client *Client) UpdateDBInstancePlan(request *UpdateDBInstancePlanRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the configurations of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // This operation is not available for instances in reserved storage mode.
 //
-// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
 //
 // @param request - UpgradeDBInstanceRequest
 //
@@ -35783,11 +37902,15 @@ func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the configurations of an AnalyticDB for PostgreSQL instance.
+//
 // Description:
 //
 // This operation is not available for instances in reserved storage mode.
 //
-// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
 //
 // @param request - UpgradeDBInstanceRequest
 //
@@ -35803,6 +37926,15 @@ func (client *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades the minor version of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - UpgradeDBVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeDBVersionResponse
 func (client *Client) UpgradeDBVersionWithOptions(request *UpgradeDBVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeDBVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35860,6 +37992,13 @@ func (client *Client) UpgradeDBVersionWithOptions(request *UpgradeDBVersionReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades the minor version of an AnalyticDB for PostgreSQL instance.
+//
+// @param request - UpgradeDBVersionRequest
+//
+// @return UpgradeDBVersionResponse
 func (client *Client) UpgradeDBVersion(request *UpgradeDBVersionRequest) (_result *UpgradeDBVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeDBVersionResponse{}
@@ -35871,6 +38010,15 @@ func (client *Client) UpgradeDBVersion(request *UpgradeDBVersionRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 异步上传文档
+//
+// @param tmpReq - UploadDocumentAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadDocumentAsyncResponse
 func (client *Client) UploadDocumentAsyncWithOptions(tmpReq *UploadDocumentAsyncRequest, runtime *util.RuntimeOptions) (_result *UploadDocumentAsyncResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -35976,6 +38124,13 @@ func (client *Client) UploadDocumentAsyncWithOptions(tmpReq *UploadDocumentAsync
 	return _result, _err
 }
 
+// Summary:
+//
+// 异步上传文档
+//
+// @param request - UploadDocumentAsyncRequest
+//
+// @return UploadDocumentAsyncResponse
 func (client *Client) UploadDocumentAsync(request *UploadDocumentAsyncRequest) (_result *UploadDocumentAsyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UploadDocumentAsyncResponse{}
@@ -36093,6 +38248,15 @@ func (client *Client) UploadDocumentAsyncAdvance(request *UploadDocumentAsyncAdv
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传切分后的文本
+//
+// @param tmpReq - UpsertChunksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpsertChunksResponse
 func (client *Client) UpsertChunksWithOptions(tmpReq *UpsertChunksRequest, runtime *util.RuntimeOptions) (_result *UpsertChunksResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -36162,6 +38326,13 @@ func (client *Client) UpsertChunksWithOptions(tmpReq *UpsertChunksRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传切分后的文本
+//
+// @param request - UpsertChunksRequest
+//
+// @return UpsertChunksResponse
 func (client *Client) UpsertChunks(request *UpsertChunksRequest) (_result *UpsertChunksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpsertChunksResponse{}
@@ -36173,6 +38344,15 @@ func (client *Client) UpsertChunks(request *UpsertChunksRequest) (_result *Upser
 	return _result, _err
 }
 
+// Summary:
+//
+// Uploads vector data to a vector collection.
+//
+// @param tmpReq - UpsertCollectionDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpsertCollectionDataResponse
 func (client *Client) UpsertCollectionDataWithOptions(tmpReq *UpsertCollectionDataRequest, runtime *util.RuntimeOptions) (_result *UpsertCollectionDataResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -36238,6 +38418,13 @@ func (client *Client) UpsertCollectionDataWithOptions(tmpReq *UpsertCollectionDa
 	return _result, _err
 }
 
+// Summary:
+//
+// Uploads vector data to a vector collection.
+//
+// @param request - UpsertCollectionDataRequest
+//
+// @return UpsertCollectionDataResponse
 func (client *Client) UpsertCollectionData(request *UpsertCollectionDataRequest) (_result *UpsertCollectionDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpsertCollectionDataResponse{}
@@ -36249,6 +38436,15 @@ func (client *Client) UpsertCollectionData(request *UpsertCollectionDataRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传向量数据异步接口
+//
+// @param request - UpsertCollectionDataAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpsertCollectionDataAsyncResponse
 func (client *Client) UpsertCollectionDataAsyncWithOptions(request *UpsertCollectionDataAsyncRequest, runtime *util.RuntimeOptions) (_result *UpsertCollectionDataAsyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36308,6 +38504,13 @@ func (client *Client) UpsertCollectionDataAsyncWithOptions(request *UpsertCollec
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传向量数据异步接口
+//
+// @param request - UpsertCollectionDataAsyncRequest
+//
+// @return UpsertCollectionDataAsyncResponse
 func (client *Client) UpsertCollectionDataAsync(request *UpsertCollectionDataAsyncRequest) (_result *UpsertCollectionDataAsyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpsertCollectionDataAsyncResponse{}

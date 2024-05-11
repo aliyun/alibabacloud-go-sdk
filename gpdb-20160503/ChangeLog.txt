@@ -1,3 +1,6 @@
+2024-05-11 Version: v3.6.1
+- Generated golang 2016-05-03 for gpdb.
+
 2024-05-09 Version: v3.6.0
 - Support API DescribeDBResourceManagementMode.
 - Update API QueryCollectionData: add param IncludeMetadataFields.
