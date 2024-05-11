@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -107,15 +104,36 @@ func (s *AddressForStory) SetTownship(v string) *AddressForStory {
 }
 
 type AlgorithmDefinition struct {
-	AlgorithmDefinitionId *string                `json:"AlgorithmDefinitionId,omitempty" xml:"AlgorithmDefinitionId,omitempty"`
-	CreateTime            *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CustomLabels          []map[string]*string   `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty" type:"Repeated"`
-	Description           *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                  *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId               *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 8fc6e718-8d19-495f-a510-bcee3c598588
+	AlgorithmDefinitionId *string `json:"AlgorithmDefinitionId,omitempty" xml:"AlgorithmDefinitionId,omitempty"`
+	// example:
+	//
+	// 2023-05-31T10:19:40.572325888+08:00
+	CreateTime   *string              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CustomLabels []map[string]*string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// algoName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// user1
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// traningtest
 	ProjectName           *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	TrainingSpecification *TrainingSpecification `json:"TrainingSpecification,omitempty" xml:"TrainingSpecification,omitempty"`
-	UpdateTime            *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 2023-05-31T10:19:40.572325888+08:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s AlgorithmDefinition) String() string {
@@ -260,9 +278,24 @@ func (s *AssumeRoleChain) SetPolicy(v string) *AssumeRoleChain {
 }
 
 type AssumeRoleChainNode struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1023210024677934
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Role    *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-role
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AssumeRoleChainNode) String() string {
@@ -404,9 +437,9 @@ func (s *AudioStream) SetTimeBase(v string) *AudioStream {
 type Binding struct {
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Detail      *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	Phase       *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	State       *string `json:"State,omitempty" xml:"State,omitempty"`
 	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
 	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
@@ -430,11 +463,6 @@ func (s *Binding) SetDatasetName(v string) *Binding {
 	return s
 }
 
-func (s *Binding) SetDetail(v string) *Binding {
-	s.Detail = &v
-	return s
-}
-
 func (s *Binding) SetPhase(v string) *Binding {
 	s.Phase = &v
 	return s
@@ -442,6 +470,11 @@ func (s *Binding) SetPhase(v string) *Binding {
 
 func (s *Binding) SetProjectName(v string) *Binding {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *Binding) SetReason(v string) *Binding {
+	s.Reason = &v
 	return s
 }
 
@@ -775,6 +808,9 @@ func (s *CroppingSuggestion) SetConfidence(v float32) *CroppingSuggestion {
 }
 
 type CustomParams struct {
+	// example:
+	//
+	// Normalize
 	Name       *string     `json:"Name,omitempty" xml:"Name,omitempty"`
 	Properties []*Property `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
 }
@@ -805,12 +841,18 @@ type DataIngestion struct {
 	Input        *Input                     `json:"Input,omitempty" xml:"Input,omitempty"`
 	Marker       *string                    `json:"Marker,omitempty" xml:"Marker,omitempty"`
 	Notification *DataIngestionNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
-	Phase        *string                    `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	ServiceRole  *string                    `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	State        *string                    `json:"State,omitempty" xml:"State,omitempty"`
-	Statistic    *DataIngestionStatistic    `json:"Statistic,omitempty" xml:"Statistic,omitempty" type:"Struct"`
-	Tags         map[string]interface{}     `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UpdateTime   *string                    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// IncrementalScanning
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// example:
+	//
+	// AliyunIMMBatchTriggerRole
+	ServiceRole *string                 `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	State       *string                 `json:"State,omitempty" xml:"State,omitempty"`
+	Statistic   *DataIngestionStatistic `json:"Statistic,omitempty" xml:"Statistic,omitempty" type:"Struct"`
+	Tags        map[string]interface{}  `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UpdateTime  *string                 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DataIngestion) String() string {
@@ -1121,6 +1163,9 @@ func (s *ElementContent) SetURL(v string) *ElementContent {
 }
 
 type FastFailPolicy struct {
+	// example:
+	//
+	// abort
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 }
 
@@ -2031,14 +2076,28 @@ func (s *HeadPose) SetYaw(v float32) *HeadPose {
 }
 
 type Hyperparameters struct {
-	BackupInterval    *int64        `json:"BackupInterval,omitempty" xml:"BackupInterval,omitempty"`
-	BatchSize         *int64        `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
-	DataLoaderWorkers *int64        `json:"DataLoaderWorkers,omitempty" xml:"DataLoaderWorkers,omitempty"`
-	Evaluator         *CustomParams `json:"Evaluator,omitempty" xml:"Evaluator,omitempty"`
-	InputSize         []*int64      `json:"InputSize,omitempty" xml:"InputSize,omitempty" type:"Repeated"`
-	MaxEpoch          *int64        `json:"MaxEpoch,omitempty" xml:"MaxEpoch,omitempty"`
-	Optimization      *Optimization `json:"Optimization,omitempty" xml:"Optimization,omitempty"`
-	Schedule          *Schedule     `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// example:
+	//
+	// 1
+	BackupInterval *int64 `json:"BackupInterval,omitempty" xml:"BackupInterval,omitempty"`
+	// example:
+	//
+	// 32
+	BatchSize *int64 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// example:
+	//
+	// 4
+	DataLoaderWorkers *int64 `json:"DataLoaderWorkers,omitempty" xml:"DataLoaderWorkers,omitempty"`
+	// This parameter is required.
+	Evaluator *CustomParams `json:"Evaluator,omitempty" xml:"Evaluator,omitempty"`
+	// This parameter is required.
+	InputSize []*int64 `json:"InputSize,omitempty" xml:"InputSize,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	MaxEpoch     *int64        `json:"MaxEpoch,omitempty" xml:"MaxEpoch,omitempty"`
+	Optimization *Optimization `json:"Optimization,omitempty" xml:"Optimization,omitempty"`
+	Schedule     *Schedule     `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 }
 
 func (s Hyperparameters) String() string {
@@ -2171,15 +2230,23 @@ func (s *Input) SetOSS(v *InputOSS) *Input {
 }
 
 type InputFile struct {
+	Addresses    []*Address             `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	Album        *string                `json:"Album,omitempty" xml:"Album,omitempty"`
+	AlbumArtist  *string                `json:"AlbumArtist,omitempty" xml:"AlbumArtist,omitempty"`
+	Artist       *string                `json:"Artist,omitempty" xml:"Artist,omitempty"`
+	Composer     *string                `json:"Composer,omitempty" xml:"Composer,omitempty"`
 	ContentType  *string                `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 	CustomId     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
 	Figures      []*InputFileFigures    `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
 	FileHash     *string                `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
+	Labels       []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	LatLong      *string                `json:"LatLong,omitempty" xml:"LatLong,omitempty"`
 	MediaType    *string                `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	OSSURI       *string                `json:"OSSURI,omitempty" xml:"OSSURI,omitempty"`
+	Performer    *string                `json:"Performer,omitempty" xml:"Performer,omitempty"`
 	ProduceTime  *string                `json:"ProduceTime,omitempty" xml:"ProduceTime,omitempty"`
+	Title        *string                `json:"Title,omitempty" xml:"Title,omitempty"`
 	URI          *string                `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -2189,6 +2256,31 @@ func (s InputFile) String() string {
 
 func (s InputFile) GoString() string {
 	return s.String()
+}
+
+func (s *InputFile) SetAddresses(v []*Address) *InputFile {
+	s.Addresses = v
+	return s
+}
+
+func (s *InputFile) SetAlbum(v string) *InputFile {
+	s.Album = &v
+	return s
+}
+
+func (s *InputFile) SetAlbumArtist(v string) *InputFile {
+	s.AlbumArtist = &v
+	return s
+}
+
+func (s *InputFile) SetArtist(v string) *InputFile {
+	s.Artist = &v
+	return s
+}
+
+func (s *InputFile) SetComposer(v string) *InputFile {
+	s.Composer = &v
+	return s
 }
 
 func (s *InputFile) SetContentType(v string) *InputFile {
@@ -2216,6 +2308,11 @@ func (s *InputFile) SetFileHash(v string) *InputFile {
 	return s
 }
 
+func (s *InputFile) SetLabels(v []*Label) *InputFile {
+	s.Labels = v
+	return s
+}
+
 func (s *InputFile) SetLatLong(v string) *InputFile {
 	s.LatLong = &v
 	return s
@@ -2231,8 +2328,18 @@ func (s *InputFile) SetOSSURI(v string) *InputFile {
 	return s
 }
 
+func (s *InputFile) SetPerformer(v string) *InputFile {
+	s.Performer = &v
+	return s
+}
+
 func (s *InputFile) SetProduceTime(v string) *InputFile {
 	s.ProduceTime = &v
+	return s
+}
+
+func (s *InputFile) SetTitle(v string) *InputFile {
+	s.Title = &v
 	return s
 }
 
@@ -2271,6 +2378,7 @@ func (s *InputFileFigures) SetFigureType(v string) *InputFileFigures {
 }
 
 type InputOSS struct {
+	// This parameter is required.
 	Bucket           *string   `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	MatchExpressions []*string `json:"MatchExpressions,omitempty" xml:"MatchExpressions,omitempty" type:"Repeated"`
 	Prefix           *string   `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
@@ -2300,7 +2408,10 @@ func (s *InputOSS) SetPrefix(v string) *InputOSS {
 }
 
 type KdtreeOption struct {
-	CompressionLevel *int32  `json:"CompressionLevel,omitempty" xml:"CompressionLevel,omitempty"`
+	CompressionLevel *int32 `json:"CompressionLevel,omitempty" xml:"CompressionLevel,omitempty"`
+	// example:
+	//
+	// draco
 	LibraryName      *string `json:"LibraryName,omitempty" xml:"LibraryName,omitempty"`
 	QuantizationBits *int32  `json:"QuantizationBits,omitempty" xml:"QuantizationBits,omitempty"`
 }
@@ -2401,7 +2512,10 @@ func (s *Label) SetParentLabelName(v string) *Label {
 type LicensePlate struct {
 	Boundary   *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
 	Confidence *float64  `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Content    *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 川A0123
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 
 func (s LicensePlate) String() string {
@@ -2515,10 +2629,102 @@ func (s *MNS) SetTopicName(v string) *MNS {
 	return s
 }
 
+type Message struct {
+	AssistantType *string  `json:"AssistantType,omitempty" xml:"AssistantType,omitempty"`
+	Content       *string  `json:"Content,omitempty" xml:"Content,omitempty"`
+	CreateTime    *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DatasetName   *string  `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Language      *string  `json:"Language,omitempty" xml:"Language,omitempty"`
+	Regenerate    *bool    `json:"Regenerate,omitempty" xml:"Regenerate,omitempty"`
+	Reply         *string  `json:"Reply,omitempty" xml:"Reply,omitempty"`
+	Score         *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	SourceURI     *string  `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Suggestion    *string  `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	Tone          *string  `json:"Tone,omitempty" xml:"Tone,omitempty"`
+	Topic         *string  `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s Message) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Message) GoString() string {
+	return s.String()
+}
+
+func (s *Message) SetAssistantType(v string) *Message {
+	s.AssistantType = &v
+	return s
+}
+
+func (s *Message) SetContent(v string) *Message {
+	s.Content = &v
+	return s
+}
+
+func (s *Message) SetCreateTime(v string) *Message {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Message) SetDatasetName(v string) *Message {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *Message) SetLanguage(v string) *Message {
+	s.Language = &v
+	return s
+}
+
+func (s *Message) SetRegenerate(v bool) *Message {
+	s.Regenerate = &v
+	return s
+}
+
+func (s *Message) SetReply(v string) *Message {
+	s.Reply = &v
+	return s
+}
+
+func (s *Message) SetScore(v float64) *Message {
+	s.Score = &v
+	return s
+}
+
+func (s *Message) SetSourceURI(v string) *Message {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *Message) SetSuggestion(v string) *Message {
+	s.Suggestion = &v
+	return s
+}
+
+func (s *Message) SetTone(v string) *Message {
+	s.Tone = &v
+	return s
+}
+
+func (s *Message) SetTopic(v string) *Message {
+	s.Topic = &v
+	return s
+}
+
 type MetaData struct {
+	// example:
+	//
+	// detection
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	Provider   *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// imm
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// example:
+	//
+	// v1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s MetaData) String() string {
@@ -2545,8 +2751,10 @@ func (s *MetaData) SetVersion(v string) *MetaData {
 }
 
 type ModelSpecification struct {
+	// This parameter is required.
 	MetaData *MetaData `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	Spec     *Spec     `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// This parameter is required.
+	Spec *Spec `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
 func (s ModelSpecification) String() string {
@@ -2632,10 +2840,22 @@ func (s *OCRContents) SetLanguage(v string) *OCRContents {
 }
 
 type OctreeOption struct {
-	DoVoxelGridDownDownSampling *bool    `json:"DoVoxelGridDownDownSampling,omitempty" xml:"DoVoxelGridDownDownSampling,omitempty"`
-	LibraryName                 *string  `json:"LibraryName,omitempty" xml:"LibraryName,omitempty"`
-	OctreeResolution            *float64 `json:"OctreeResolution,omitempty" xml:"OctreeResolution,omitempty"`
-	PointResolution             *float64 `json:"PointResolution,omitempty" xml:"PointResolution,omitempty"`
+	// example:
+	//
+	// false
+	DoVoxelGridDownDownSampling *bool `json:"DoVoxelGridDownDownSampling,omitempty" xml:"DoVoxelGridDownDownSampling,omitempty"`
+	// example:
+	//
+	// pcl
+	LibraryName *string `json:"LibraryName,omitempty" xml:"LibraryName,omitempty"`
+	// example:
+	//
+	// 0.01
+	OctreeResolution *float64 `json:"OctreeResolution,omitempty" xml:"OctreeResolution,omitempty"`
+	// example:
+	//
+	// 0.01
+	PointResolution *float64 `json:"PointResolution,omitempty" xml:"PointResolution,omitempty"`
 }
 
 func (s OctreeOption) String() string {
@@ -2667,8 +2887,14 @@ func (s *OctreeOption) SetPointResolution(v float64) *OctreeOption {
 }
 
 type Optimization struct {
+	// example:
+	//
+	// 0.01
 	LearningRate *float32 `json:"LearningRate,omitempty" xml:"LearningRate,omitempty"`
-	Optimizer    *string  `json:"Optimizer,omitempty" xml:"Optimizer,omitempty"`
+	// example:
+	//
+	// SGD
+	Optimizer *string `json:"Optimizer,omitempty" xml:"Optimizer,omitempty"`
 }
 
 func (s Optimization) String() string {
@@ -2713,7 +2939,9 @@ func (s *PointInt64) SetY(v int64) *PointInt64 {
 }
 
 type PresetReference struct {
+	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -2736,23 +2964,24 @@ func (s *PresetReference) SetType(v string) *PresetReference {
 }
 
 type Project struct {
-	CreateTime              *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DatasetCount            *int64  `json:"DatasetCount,omitempty" xml:"DatasetCount,omitempty"`
-	DatasetMaxBindCount     *int64  `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxFileCount     *int64  `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	DatasetMaxTotalFileSize *int64  `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EngineConcurrency       *int64  `json:"EngineConcurrency,omitempty" xml:"EngineConcurrency,omitempty"`
-	FileCount               *int64  `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
-	ProjectMaxDatasetCount  *int64  `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	ProjectName             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectQueriesPerSecond *int64  `json:"ProjectQueriesPerSecond,omitempty" xml:"ProjectQueriesPerSecond,omitempty"`
-	ServiceRole             *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TotalFileSize           *int64  `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
-	UpdateTime              *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime              *string        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DatasetCount            *int64         `json:"DatasetCount,omitempty" xml:"DatasetCount,omitempty"`
+	DatasetMaxBindCount     *int64         `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	DatasetMaxEntityCount   *int64         `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	DatasetMaxFileCount     *int64         `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	DatasetMaxRelationCount *int64         `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	DatasetMaxTotalFileSize *int64         `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	Description             *string        `json:"Description,omitempty" xml:"Description,omitempty"`
+	EngineConcurrency       *int64         `json:"EngineConcurrency,omitempty" xml:"EngineConcurrency,omitempty"`
+	FileCount               *int64         `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
+	ProjectMaxDatasetCount  *int64         `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
+	ProjectName             *string        `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectQueriesPerSecond *int64         `json:"ProjectQueriesPerSecond,omitempty" xml:"ProjectQueriesPerSecond,omitempty"`
+	ServiceRole             *string        `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	Tags                    []*ProjectTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateId              *string        `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TotalFileSize           *int64         `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
+	UpdateTime              *string        `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s Project) String() string {
@@ -2833,6 +3062,11 @@ func (s *Project) SetServiceRole(v string) *Project {
 	return s
 }
 
+func (s *Project) SetTags(v []*ProjectTags) *Project {
+	s.Tags = v
+	return s
+}
+
 func (s *Project) SetTemplateId(v string) *Project {
 	s.TemplateId = &v
 	return s
@@ -2848,10 +3082,45 @@ func (s *Project) SetUpdateTime(v string) *Project {
 	return s
 }
 
+type ProjectTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ProjectTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProjectTags) GoString() string {
+	return s.String()
+}
+
+func (s *ProjectTags) SetTagKey(v string) *ProjectTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ProjectTags) SetTagValue(v string) *ProjectTags {
+	s.TagValue = &v
+	return s
+}
+
 type Property struct {
+	// example:
+	//
+	// float
 	ItemsType *string `json:"ItemsType,omitempty" xml:"ItemsType,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// channels
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// [40, 80, 160, 320]
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// array
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -2907,12 +3176,30 @@ func (s *RegionType) SetRegionId(v string) *RegionType {
 }
 
 type Resource struct {
-	CPU         *int64  `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// 2
+	CPU *int64 `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// ecs.gn5i-c2g1.large
 	ECSInstance *string `json:"ECSInstance,omitempty" xml:"ECSInstance,omitempty"`
-	GPUModel    *string `json:"GPUModel,omitempty" xml:"GPUModel,omitempty"`
-	GPUNum      *int64  `json:"GPUNum,omitempty" xml:"GPUNum,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RAM         *int64  `json:"RAM,omitempty" xml:"RAM,omitempty"`
+	// example:
+	//
+	// string	NVIDIA_P4
+	GPUModel *string `json:"GPUModel,omitempty" xml:"GPUModel,omitempty"`
+	// example:
+	//
+	// 1
+	GPUNum *int64 `json:"GPUNum,omitempty" xml:"GPUNum,omitempty"`
+	// example:
+	//
+	// string	ecs.gn5i-c2g1.large-2vCPU-8GB-1*NVIDIA_P4
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 8
+	RAM *int64 `json:"RAM,omitempty" xml:"RAM,omitempty"`
 }
 
 func (s Resource) String() string {
@@ -3000,8 +3287,10 @@ func (s *Row) SetURI(v string) *Row {
 }
 
 type Runtime struct {
+	// This parameter is required.
 	Hyperparameters *Hyperparameters `json:"Hyperparameters,omitempty" xml:"Hyperparameters,omitempty"`
-	Resource        *Resource        `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// This parameter is required.
+	Resource *Resource `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
 func (s Runtime) String() string {
@@ -3023,9 +3312,18 @@ func (s *Runtime) SetResource(v *Resource) *Runtime {
 }
 
 type Schedule struct {
-	Gamma       *float32 `json:"Gamma,omitempty" xml:"Gamma,omitempty"`
-	LRScheduler *string  `json:"LRScheduler,omitempty" xml:"LRScheduler,omitempty"`
-	StepSize    *int64   `json:"StepSize,omitempty" xml:"StepSize,omitempty"`
+	// example:
+	//
+	// 0.97
+	Gamma *float32 `json:"Gamma,omitempty" xml:"Gamma,omitempty"`
+	// example:
+	//
+	// StepLR
+	LRScheduler *string `json:"LRScheduler,omitempty" xml:"LRScheduler,omitempty"`
+	// example:
+	//
+	// 1
+	StepSize *int64 `json:"StepSize,omitempty" xml:"StepSize,omitempty"`
 }
 
 func (s Schedule) String() string {
@@ -3116,7 +3414,10 @@ func (s *SimilarImageCluster) SetUpdateTime(v string) *SimilarImageCluster {
 }
 
 type SimpleQuery struct {
-	Field      *string        `json:"Field,omitempty" xml:"Field,omitempty"`
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// example:
+	//
+	// eq / gt / gte / lt / lte / match / prefix / and / or / not
 	Operation  *string        `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	SubQueries []*SimpleQuery `json:"SubQueries,omitempty" xml:"SubQueries,omitempty" type:"Repeated"`
 	Value      *string        `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -3151,15 +3452,32 @@ func (s *SimpleQuery) SetValue(v string) *SimpleQuery {
 }
 
 type Spec struct {
-	Backbone       *CustomParams `json:"Backbone,omitempty" xml:"Backbone,omitempty"`
-	ClassNum       *int64        `json:"ClassNum,omitempty" xml:"ClassNum,omitempty"`
-	Head           *CustomParams `json:"Head,omitempty" xml:"Head,omitempty"`
-	InputChannel   *int64        `json:"InputChannel,omitempty" xml:"InputChannel,omitempty"`
-	Loss           *CustomParams `json:"Loss,omitempty" xml:"Loss,omitempty"`
-	Name           *string       `json:"Name,omitempty" xml:"Name,omitempty"`
-	Neck           *CustomParams `json:"Neck,omitempty" xml:"Neck,omitempty"`
-	NumLandmarks   *int64        `json:"NumLandmarks,omitempty" xml:"NumLandmarks,omitempty"`
-	PretrainedPath *string       `json:"PretrainedPath,omitempty" xml:"PretrainedPath,omitempty"`
+	Backbone *CustomParams `json:"Backbone,omitempty" xml:"Backbone,omitempty"`
+	// example:
+	//
+	// 10
+	ClassNum *int64        `json:"ClassNum,omitempty" xml:"ClassNum,omitempty"`
+	Head     *CustomParams `json:"Head,omitempty" xml:"Head,omitempty"`
+	// example:
+	//
+	// 3
+	InputChannel *int64        `json:"InputChannel,omitempty" xml:"InputChannel,omitempty"`
+	Loss         *CustomParams `json:"Loss,omitempty" xml:"Loss,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ClsResNet
+	Name *string       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Neck *CustomParams `json:"Neck,omitempty" xml:"Neck,omitempty"`
+	// example:
+	//
+	// 5
+	NumLandmarks *int64 `json:"NumLandmarks,omitempty" xml:"NumLandmarks,omitempty"`
+	// example:
+	//
+	// oss://bucket/abc/xxx.json
+	PretrainedPath *string `json:"PretrainedPath,omitempty" xml:"PretrainedPath,omitempty"`
 }
 
 func (s Spec) String() string {
@@ -3552,6 +3870,7 @@ func (s *TargetImage) SetSprites(v []*TargetImageSprites) *TargetImage {
 }
 
 type TargetImageAnimations struct {
+	// This parameter is required.
 	Format    *string  `json:"Format,omitempty" xml:"Format,omitempty"`
 	FrameRate *float64 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
 	Height    *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
@@ -3559,8 +3878,9 @@ type TargetImageAnimations struct {
 	Number    *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
 	ScaleType *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
 	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	URI       *string  `json:"URI,omitempty" xml:"URI,omitempty"`
-	Width     *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	URI   *string  `json:"URI,omitempty" xml:"URI,omitempty"`
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s TargetImageAnimations) String() string {
@@ -3617,14 +3937,16 @@ func (s *TargetImageAnimations) SetWidth(v float64) *TargetImageAnimations {
 }
 
 type TargetImageSnapshots struct {
+	// This parameter is required.
 	Format    *string  `json:"Format,omitempty" xml:"Format,omitempty"`
 	Height    *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
 	Interval  *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	Number    *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
 	ScaleType *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
 	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	URI       *string  `json:"URI,omitempty" xml:"URI,omitempty"`
-	Width     *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	URI   *string  `json:"URI,omitempty" xml:"URI,omitempty"`
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s TargetImageSnapshots) String() string {
@@ -3676,6 +3998,7 @@ func (s *TargetImageSnapshots) SetWidth(v float64) *TargetImageSnapshots {
 }
 
 type TargetImageSprites struct {
+	// This parameter is required.
 	Format      *string  `json:"Format,omitempty" xml:"Format,omitempty"`
 	Interval    *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	Margin      *int32   `json:"Margin,omitempty" xml:"Margin,omitempty"`
@@ -3687,7 +4010,8 @@ type TargetImageSprites struct {
 	StartTime   *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TileHeight  *int32   `json:"TileHeight,omitempty" xml:"TileHeight,omitempty"`
 	TileWidth   *int32   `json:"TileWidth,omitempty" xml:"TileWidth,omitempty"`
-	URI         *string  `json:"URI,omitempty" xml:"URI,omitempty"`
+	// This parameter is required.
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s TargetImageSprites) String() string {
@@ -4242,15 +4566,34 @@ func (s *TimeRange) SetStart(v string) *TimeRange {
 }
 
 type TrainingSpecification struct {
-	DatasetName         *string             `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Endpoint            *string             `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	ModelSpecification  *ModelSpecification `json:"ModelSpecification,omitempty" xml:"ModelSpecification,omitempty"`
-	Runtime             *Runtime            `json:"Runtime,omitempty" xml:"Runtime,omitempty"`
-	SourceURI           *string             `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TargetURI           *string             `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	Transforms          []*CustomParams     `json:"Transforms,omitempty" xml:"Transforms,omitempty" type:"Repeated"`
-	ValidationSourceURI *string             `json:"ValidationSourceURI,omitempty" xml:"ValidationSourceURI,omitempty"`
-	ValidationSplit     *float32            `json:"ValidationSplit,omitempty" xml:"ValidationSplit,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// This parameter is required.
+	ModelSpecification *ModelSpecification `json:"ModelSpecification,omitempty" xml:"ModelSpecification,omitempty"`
+	// This parameter is required.
+	Runtime *Runtime `json:"Runtime,omitempty" xml:"Runtime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://imm-alg-dataset-bj/cifar10/test_index.json
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://imm-alg-dataset-bj/model_training_test/
+	TargetURI  *string         `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	Transforms []*CustomParams `json:"Transforms,omitempty" xml:"Transforms,omitempty" type:"Repeated"`
+	// example:
+	//
+	// oss://imm-alg-dataset-bj/cifar10/test_index.json
+	ValidationSourceURI *string `json:"ValidationSourceURI,omitempty" xml:"ValidationSourceURI,omitempty"`
+	// example:
+	//
+	// 0.95
+	ValidationSplit *float32 `json:"ValidationSplit,omitempty" xml:"ValidationSplit,omitempty"`
 }
 
 func (s TrainingSpecification) String() string {
@@ -4597,7 +4940,13 @@ func (s *WebofficeUser) SetName(v string) *WebofficeUser {
 }
 
 type WebofficeWatermark struct {
-	FillStyle  *string  `json:"FillStyle,omitempty" xml:"FillStyle,omitempty"`
+	// example:
+	//
+	// rgba(192, 192, 192, 0.6)
+	FillStyle *string `json:"FillStyle,omitempty" xml:"FillStyle,omitempty"`
+	// example:
+	//
+	// bold 20px Serif
 	Font       *string  `json:"Font,omitempty" xml:"Font,omitempty"`
 	Horizontal *int64   `json:"Horizontal,omitempty" xml:"Horizontal,omitempty"`
 	Rotate     *float32 `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
@@ -4650,13 +4999,23 @@ func (s *WebofficeWatermark) SetVertical(v int64) *WebofficeWatermark {
 }
 
 type AddImageMosaicRequest struct {
-	CredentialConfig *CredentialConfig               `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ImageFormat      *string                         `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
-	ProjectName      *string                         `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Quality          *int32                          `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	SourceURI        *string                         `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TargetURI        *string                         `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	Targets          []*AddImageMosaicRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// example:
+	//
+	// jpg
+	ImageFormat *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 80
+	Quality *int32 `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// This parameter is required.
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// This parameter is required.
+	Targets []*AddImageMosaicRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
 
 func (s AddImageMosaicRequest) String() string {
@@ -4703,12 +5062,30 @@ func (s *AddImageMosaicRequest) SetTargets(v []*AddImageMosaicRequestTargets) *A
 }
 
 type AddImageMosaicRequestTargets struct {
-	BlurRadius   *int32                                `json:"BlurRadius,omitempty" xml:"BlurRadius,omitempty"`
-	Boundary     *AddImageMosaicRequestTargetsBoundary `json:"Boundary,omitempty" xml:"Boundary,omitempty" type:"Struct"`
-	Color        *string                               `json:"Color,omitempty" xml:"Color,omitempty"`
-	MosaicRadius *int32                                `json:"MosaicRadius,omitempty" xml:"MosaicRadius,omitempty"`
-	Sigma        *int32                                `json:"Sigma,omitempty" xml:"Sigma,omitempty"`
-	Type         *string                               `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 3
+	BlurRadius *int32 `json:"BlurRadius,omitempty" xml:"BlurRadius,omitempty"`
+	// This parameter is required.
+	Boundary *AddImageMosaicRequestTargetsBoundary `json:"Boundary,omitempty" xml:"Boundary,omitempty" type:"Struct"`
+	// example:
+	//
+	// #FFFFFF
+	Color *string `json:"Color,omitempty" xml:"Color,omitempty"`
+	// example:
+	//
+	// 5
+	MosaicRadius *int32 `json:"MosaicRadius,omitempty" xml:"MosaicRadius,omitempty"`
+	// example:
+	//
+	// 5
+	Sigma *int32 `json:"Sigma,omitempty" xml:"Sigma,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// square
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AddImageMosaicRequestTargets) String() string {
@@ -4750,11 +5127,34 @@ func (s *AddImageMosaicRequestTargets) SetType(v string) *AddImageMosaicRequestT
 }
 
 type AddImageMosaicRequestTargetsBoundary struct {
-	Height   *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	ReferPos *string  `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	Width    *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X        *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y        *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// topleft
+	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s AddImageMosaicRequestTargetsBoundary) String() string {
@@ -4792,12 +5192,22 @@ func (s *AddImageMosaicRequestTargetsBoundary) SetY(v float32) *AddImageMosaicRe
 
 type AddImageMosaicShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ImageFormat            *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Quality                *int32  `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	TargetsShrink          *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
+	// example:
+	//
+	// jpg
+	ImageFormat *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 80
+	Quality *int32 `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// This parameter is required.
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// This parameter is required.
+	TargetsShrink *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
 }
 
 func (s AddImageMosaicShrinkRequest) String() string {
@@ -4844,6 +5254,9 @@ func (s *AddImageMosaicShrinkRequest) SetTargetsShrink(v string) *AddImageMosaic
 }
 
 type AddImageMosaicResponseBody struct {
+	// example:
+	//
+	// CA995EFD-083D-4F40-BE8A-BDF75FF*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4890,10 +5303,26 @@ func (s *AddImageMosaicResponse) SetBody(v *AddImageMosaicResponseBody) *AddImag
 }
 
 type AddStoryFilesRequest struct {
-	DatasetName *string                      `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Files       []*AddStoryFilesRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	ObjectId    *string                      `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ProjectName *string                      `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	Files []*AddStoryFilesRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s AddStoryFilesRequest) String() string {
@@ -4925,6 +5354,9 @@ func (s *AddStoryFilesRequest) SetProjectName(v string) *AddStoryFilesRequest {
 }
 
 type AddStoryFilesRequestFiles struct {
+	// example:
+	//
+	// oss://test-bucket/test-object
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -4942,9 +5374,25 @@ func (s *AddStoryFilesRequestFiles) SetURI(v string) *AddStoryFilesRequestFiles 
 }
 
 type AddStoryFilesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
-	ObjectId    *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -4977,8 +5425,11 @@ func (s *AddStoryFilesShrinkRequest) SetProjectName(v string) *AddStoryFilesShri
 }
 
 type AddStoryFilesResponseBody struct {
-	Files     []*AddStoryFilesResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Files []*AddStoryFilesResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddStoryFilesResponseBody) String() string {
@@ -5000,9 +5451,18 @@ func (s *AddStoryFilesResponseBody) SetRequestId(v string) *AddStoryFilesRespons
 }
 
 type AddStoryFilesResponseBodyFiles struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// ResourceNotFound
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The specified resource %s is not found.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	URI          *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test-object
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s AddStoryFilesResponseBodyFiles) String() string {
@@ -5059,7 +5519,17 @@ func (s *AddStoryFilesResponse) SetBody(v *AddStoryFilesResponseBody) *AddStoryF
 
 type AttachOSSBucketRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	OSSBucket   *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// examplebucket
+	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -5087,6 +5557,9 @@ func (s *AttachOSSBucketRequest) SetProjectName(v string) *AttachOSSBucketReques
 }
 
 type AttachOSSBucketResponseBody struct {
+	// example:
+	//
+	// 5F74C5C9-5AC0-49F9-914D-E01589D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5133,9 +5606,12 @@ func (s *AttachOSSBucketResponse) SetBody(v *AttachOSSBucketResponseBody) *Attac
 }
 
 type BatchDeleteFileMetaRequest struct {
-	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URIs        []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
+	// This parameter is required.
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	URIs []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
 }
 
 func (s BatchDeleteFileMetaRequest) String() string {
@@ -5162,9 +5638,12 @@ func (s *BatchDeleteFileMetaRequest) SetURIs(v []*string) *BatchDeleteFileMetaRe
 }
 
 type BatchDeleteFileMetaShrinkRequest struct {
+	// This parameter is required.
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URIsShrink  *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
+	// This parameter is required.
+	URIsShrink *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
 }
 
 func (s BatchDeleteFileMetaShrinkRequest) String() string {
@@ -5191,6 +5670,9 @@ func (s *BatchDeleteFileMetaShrinkRequest) SetURIsShrink(v string) *BatchDeleteF
 }
 
 type BatchDeleteFileMetaResponseBody struct {
+	// example:
+	//
+	// 3A82F6C9-5AC0-38F9-914F-F02623B3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5237,9 +5719,20 @@ func (s *BatchDeleteFileMetaResponse) SetBody(v *BatchDeleteFileMetaResponseBody
 }
 
 type BatchGetFigureClusterRequest struct {
-	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ObjectIds   []*string `json:"ObjectIds,omitempty" xml:"ObjectIds,omitempty" type:"Repeated"`
-	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	ObjectIds []*string `json:"ObjectIds,omitempty" xml:"ObjectIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s BatchGetFigureClusterRequest) String() string {
@@ -5266,9 +5759,20 @@ func (s *BatchGetFigureClusterRequest) SetProjectName(v string) *BatchGetFigureC
 }
 
 type BatchGetFigureClusterShrinkRequest struct {
-	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	ObjectIdsShrink *string `json:"ObjectIds,omitempty" xml:"ObjectIds,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s BatchGetFigureClusterShrinkRequest) String() string {
@@ -5296,7 +5800,10 @@ func (s *BatchGetFigureClusterShrinkRequest) SetProjectName(v string) *BatchGetF
 
 type BatchGetFigureClusterResponseBody struct {
 	FigureClusters []*FigureCluster `json:"FigureClusters,omitempty" xml:"FigureClusters,omitempty" type:"Repeated"`
-	RequestId      *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CA995EFD-083D-4F40-BE8A-BDF75FFF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BatchGetFigureClusterResponseBody) String() string {
@@ -5347,9 +5854,12 @@ func (s *BatchGetFigureClusterResponse) SetBody(v *BatchGetFigureClusterResponse
 }
 
 type BatchGetFileMetaRequest struct {
-	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URIs        []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
+	// This parameter is required.
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	URIs []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
 }
 
 func (s BatchGetFileMetaRequest) String() string {
@@ -5376,9 +5886,12 @@ func (s *BatchGetFileMetaRequest) SetURIs(v []*string) *BatchGetFileMetaRequest 
 }
 
 type BatchGetFileMetaShrinkRequest struct {
+	// This parameter is required.
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URIsShrink  *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
+	// This parameter is required.
+	URIsShrink *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
 }
 
 func (s BatchGetFileMetaShrinkRequest) String() string {
@@ -5405,7 +5918,10 @@ func (s *BatchGetFileMetaShrinkRequest) SetURIsShrink(v string) *BatchGetFileMet
 }
 
 type BatchGetFileMetaResponseBody struct {
-	Files     []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7F84C6D9-5AC0-49F9-914D-F02678E3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5457,10 +5973,22 @@ func (s *BatchGetFileMetaResponse) SetBody(v *BatchGetFileMetaResponseBody) *Bat
 }
 
 type BatchIndexFileMetaRequest struct {
-	DatasetName  *string       `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	Files        []*InputFile  `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName  *string       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s BatchIndexFileMetaRequest) String() string {
@@ -5491,11 +6019,28 @@ func (s *BatchIndexFileMetaRequest) SetProjectName(v string) *BatchIndexFileMeta
 	return s
 }
 
+func (s *BatchIndexFileMetaRequest) SetUserData(v string) *BatchIndexFileMetaRequest {
+	s.UserData = &v
+	return s
+}
+
 type BatchIndexFileMetaShrinkRequest struct {
-	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	FilesShrink        *string `json:"Files,omitempty" xml:"Files,omitempty"`
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s BatchIndexFileMetaShrinkRequest) String() string {
@@ -5526,8 +6071,19 @@ func (s *BatchIndexFileMetaShrinkRequest) SetProjectName(v string) *BatchIndexFi
 	return s
 }
 
+func (s *BatchIndexFileMetaShrinkRequest) SetUserData(v string) *BatchIndexFileMetaShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
 type BatchIndexFileMetaResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 387-1DAPFFZplUZhuCuhnB6I9H****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 8F93E6D9-5AC0-49F9-914D-E02678A3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5579,9 +6135,20 @@ func (s *BatchIndexFileMetaResponse) SetBody(v *BatchIndexFileMetaResponseBody) 
 }
 
 type BatchUpdateFileMetaRequest struct {
-	DatasetName *string      `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Files       []*InputFile `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	ProjectName *string      `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	Files []*InputFile `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s BatchUpdateFileMetaRequest) String() string {
@@ -5608,8 +6175,19 @@ func (s *BatchUpdateFileMetaRequest) SetProjectName(v string) *BatchUpdateFileMe
 }
 
 type BatchUpdateFileMetaShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -5637,8 +6215,11 @@ func (s *BatchUpdateFileMetaShrinkRequest) SetProjectName(v string) *BatchUpdate
 }
 
 type BatchUpdateFileMetaResponseBody struct {
-	Files     []*BatchUpdateFileMetaResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Files []*BatchUpdateFileMetaResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// example:
+	//
+	// F5BF215E-3237-0852-B9C6-F233D44A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BatchUpdateFileMetaResponseBody) String() string {
@@ -5660,6 +6241,9 @@ func (s *BatchUpdateFileMetaResponseBody) SetRequestId(v string) *BatchUpdateFil
 }
 
 type BatchUpdateFileMetaResponseBodyFiles struct {
+	// example:
+	//
+	// *error.OpError : InvalidArgument | Index KV count exceeded, should be no more than 100.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 	URI     *string `json:"URI,omitempty" xml:"URI,omitempty"`
@@ -5718,9 +6302,14 @@ func (s *BatchUpdateFileMetaResponse) SetBody(v *BatchUpdateFileMetaResponseBody
 }
 
 type CompareImageFacesRequest struct {
-	CredentialConfig *CredentialConfig               `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName      *string                         `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Source           *CompareImageFacesRequestSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string                         `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Source      *CompareImageFacesRequestSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
 }
 
 func (s CompareImageFacesRequest) String() string {
@@ -5747,7 +6336,13 @@ func (s *CompareImageFacesRequest) SetSource(v *CompareImageFacesRequestSource) 
 }
 
 type CompareImageFacesRequestSource struct {
+	// example:
+	//
+	// oss://test-bucket/test-object1
 	URI1 *string `json:"URI1,omitempty" xml:"URI1,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test-object2
 	URI2 *string `json:"URI2,omitempty" xml:"URI2,omitempty"`
 }
 
@@ -5771,8 +6366,13 @@ func (s *CompareImageFacesRequestSource) SetURI2(v string) *CompareImageFacesReq
 
 type CompareImageFacesShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceShrink           *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceShrink *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s CompareImageFacesShrinkRequest) String() string {
@@ -5799,7 +6399,13 @@ func (s *CompareImageFacesShrinkRequest) SetSourceShrink(v string) *CompareImage
 }
 
 type CompareImageFacesResponseBody struct {
-	RequestId  *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// F73AC982-2B9E-4ECD-AED5-F8331C5******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0.8848152756690983
 	Similarity *float32 `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
 }
 
@@ -5853,10 +6459,24 @@ func (s *CompareImageFacesResponse) SetBody(v *CompareImageFacesResponseBody) *C
 type CreateArchiveFileInspectionTaskRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	Notification     *Notification     `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Password         *string           `json:"Password,omitempty" xml:"Password,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	UserData         *string           `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// 123456
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// oss://imm-apitest-fxf2/name.zip
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateArchiveFileInspectionTaskRequest) String() string {
@@ -5900,10 +6520,24 @@ func (s *CreateArchiveFileInspectionTaskRequest) SetUserData(v string) *CreateAr
 type CreateArchiveFileInspectionTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// 123456
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// oss://imm-apitest-fxf2/name.zip
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateArchiveFileInspectionTaskShrinkRequest) String() string {
@@ -5945,9 +6579,18 @@ func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetUserData(v string) *Cr
 }
 
 type CreateArchiveFileInspectionTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 0ED-1Bz8z71k5TtsUejT4UJ16Es*****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// ArchiveFileInspection-8475218e-d86e-4c66-b3cf-50e74d6c****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateArchiveFileInspectionTaskResponseBody) String() string {
@@ -6003,12 +6646,27 @@ func (s *CreateArchiveFileInspectionTaskResponse) SetBody(v *CreateArchiveFileIn
 }
 
 type CreateBatchRequest struct {
-	Actions      []*CreateBatchRequestActions    `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Actions []*CreateBatchRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// This parameter is required.
 	Input        *Input                          `json:"Input,omitempty" xml:"Input,omitempty"`
 	Notification *CreateBatchRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
-	ProjectName  *string                         `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ServiceRole  *string                         `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	Tags         map[string]interface{}          `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AliyunIMMDefaultRole
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// example:
+	//
+	// {"key": "val"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s CreateBatchRequest) String() string {
@@ -6051,8 +6709,13 @@ func (s *CreateBatchRequest) SetTags(v map[string]interface{}) *CreateBatchReque
 
 type CreateBatchRequestActions struct {
 	FastFailPolicy *FastFailPolicy `json:"FastFailPolicy,omitempty" xml:"FastFailPolicy,omitempty"`
-	Name           *string         `json:"Name,omitempty" xml:"Name,omitempty"`
-	Parameters     []*string       `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// doc/convert
+	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
 func (s CreateBatchRequestActions) String() string {
@@ -6096,12 +6759,27 @@ func (s *CreateBatchRequestNotification) SetMNS(v *MNS) *CreateBatchRequestNotif
 }
 
 type CreateBatchShrinkRequest struct {
-	ActionsShrink      *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
+	// This parameter is required.
+	ActionsShrink *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
+	// This parameter is required.
 	InputShrink        *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ServiceRole        *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AliyunIMMDefaultRole
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// example:
+	//
+	// {"key": "val"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s CreateBatchShrinkRequest) String() string {
@@ -6143,7 +6821,13 @@ func (s *CreateBatchShrinkRequest) SetTagsShrink(v string) *CreateBatchShrinkReq
 }
 
 type CreateBatchResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// batch-4eb9223f-3e88-42d3-a578-3f2852******
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6195,9 +6879,24 @@ func (s *CreateBatchResponse) SetBody(v *CreateBatchResponseBody) *CreateBatchRe
 }
 
 type CreateBindingRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s CreateBindingRequest) String() string {
@@ -6224,8 +6923,11 @@ func (s *CreateBindingRequest) SetURI(v string) *CreateBindingRequest {
 }
 
 type CreateBindingResponseBody struct {
-	Binding   *Binding `json:"Binding,omitempty" xml:"Binding,omitempty"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Binding *Binding `json:"Binding,omitempty" xml:"Binding,omitempty"`
+	// example:
+	//
+	// 5F74C5C9-5AC0-49F9-914D-E01589D3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBindingResponseBody) String() string {
@@ -6276,18 +6978,48 @@ func (s *CreateBindingResponse) SetBody(v *CreateBindingResponseBody) *CreateBin
 }
 
 type CreateCompressPointCloudTaskRequest struct {
-	CompressMethod       *string                `json:"CompressMethod,omitempty" xml:"CompressMethod,omitempty"`
-	CredentialConfig     *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	KdtreeOption         *KdtreeOption          `json:"KdtreeOption,omitempty" xml:"KdtreeOption,omitempty"`
-	Notification         *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	OctreeOption         *OctreeOption          `json:"OctreeOption,omitempty" xml:"OctreeOption,omitempty"`
-	PointCloudFields     []*string              `json:"PointCloudFields,omitempty" xml:"PointCloudFields,omitempty" type:"Repeated"`
-	PointCloudFileFormat *string                `json:"PointCloudFileFormat,omitempty" xml:"PointCloudFileFormat,omitempty"`
-	ProjectName          *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI            *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Tags                 map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI            *string                `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData             *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// octree
+	CompressMethod   *string           `json:"CompressMethod,omitempty" xml:"CompressMethod,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	KdtreeOption     *KdtreeOption     `json:"KdtreeOption,omitempty" xml:"KdtreeOption,omitempty"`
+	Notification     *Notification     `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	OctreeOption     *OctreeOption     `json:"OctreeOption,omitempty" xml:"OctreeOption,omitempty"`
+	// This parameter is required.
+	PointCloudFields []*string `json:"PointCloudFields,omitempty" xml:"PointCloudFields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pcd
+	PointCloudFileFormat *string `json:"PointCloudFileFormat,omitempty" xml:"PointCloudFileFormat,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test/src/test.pcd
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// {"LabelKey": "Value"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test/tgt
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateCompressPointCloudTaskRequest) String() string {
@@ -6359,18 +7091,48 @@ func (s *CreateCompressPointCloudTaskRequest) SetUserData(v string) *CreateCompr
 }
 
 type CreateCompressPointCloudTaskShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// octree
 	CompressMethod         *string `json:"CompressMethod,omitempty" xml:"CompressMethod,omitempty"`
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	KdtreeOptionShrink     *string `json:"KdtreeOption,omitempty" xml:"KdtreeOption,omitempty"`
 	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	OctreeOptionShrink     *string `json:"OctreeOption,omitempty" xml:"OctreeOption,omitempty"`
+	// This parameter is required.
 	PointCloudFieldsShrink *string `json:"PointCloudFields,omitempty" xml:"PointCloudFields,omitempty"`
-	PointCloudFileFormat   *string `json:"PointCloudFileFormat,omitempty" xml:"PointCloudFileFormat,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// pcd
+	PointCloudFileFormat *string `json:"PointCloudFileFormat,omitempty" xml:"PointCloudFileFormat,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test/src/test.pcd
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// {"LabelKey": "Value"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test/tgt
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateCompressPointCloudTaskShrinkRequest) String() string {
@@ -6442,9 +7204,18 @@ func (s *CreateCompressPointCloudTaskShrinkRequest) SetUserData(v string) *Creat
 }
 
 type CreateCompressPointCloudTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 0B7-1LR4Wcue1aBhk2xT85MfL*****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// CA995EFD-083D-4F40-BE8A-BDF75FFF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// PointCloudCompress-badda57d-a3ab-4e6d-938f-49b77ce****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateCompressPointCloudTaskResponseBody) String() string {
@@ -6500,14 +7271,44 @@ func (s *CreateCompressPointCloudTaskResponse) SetBody(v *CreateCompressPointClo
 }
 
 type CreateCustomizedStoryRequest struct {
-	Cover        *CreateCustomizedStoryRequestCover   `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
-	CustomLabels map[string]interface{}               `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName  *string                              `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Files        []*CreateCustomizedStoryRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	ProjectName  *string                              `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	StoryName    *string                              `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
-	StorySubType *string                              `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
-	StoryType    *string                              `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+	// This parameter is required.
+	Cover *CreateCustomizedStoryRequestCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// example:
+	//
+	// {"Bucket": "examplebucket"}
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	Files []*CreateCustomizedStoryRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// name1
+	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Solo
+	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PeopleMemory
+	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
 }
 
 func (s CreateCustomizedStoryRequest) String() string {
@@ -6559,6 +7360,11 @@ func (s *CreateCustomizedStoryRequest) SetStoryType(v string) *CreateCustomizedS
 }
 
 type CreateCustomizedStoryRequestCover struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://bucket1/cover
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -6576,6 +7382,11 @@ func (s *CreateCustomizedStoryRequestCover) SetURI(v string) *CreateCustomizedSt
 }
 
 type CreateCustomizedStoryRequestFiles struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"URI":"oss://bucket1/file1"}]
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -6593,14 +7404,44 @@ func (s *CreateCustomizedStoryRequestFiles) SetURI(v string) *CreateCustomizedSt
 }
 
 type CreateCustomizedStoryShrinkRequest struct {
-	CoverShrink        *string `json:"Cover,omitempty" xml:"Cover,omitempty"`
+	// This parameter is required.
+	CoverShrink *string `json:"Cover,omitempty" xml:"Cover,omitempty"`
+	// example:
+	//
+	// {"Bucket": "examplebucket"}
 	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FilesShrink        *string `json:"Files,omitempty" xml:"Files,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	StoryName          *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
-	StorySubType       *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
-	StoryType          *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// name1
+	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Solo
+	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PeopleMemory
+	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
 }
 
 func (s CreateCustomizedStoryShrinkRequest) String() string {
@@ -6652,7 +7493,13 @@ func (s *CreateCustomizedStoryShrinkRequest) SetStoryType(v string) *CreateCusto
 }
 
 type CreateCustomizedStoryResponseBody struct {
-	ObjectId  *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// example:
+	//
+	// 563062c0b085733f34ab****
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// example:
+	//
+	// BC91D091-D49F-0ACD-95D5-F0621045****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6704,15 +7551,42 @@ func (s *CreateCustomizedStoryResponse) SetBody(v *CreateCustomizedStoryResponse
 }
 
 type CreateDatasetRequest struct {
-	DatasetMaxBindCount     *int64  `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxFileCount     *int64  `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	DatasetMaxTotalFileSize *int64  `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	DatasetName             *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ProjectName             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 10
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// example:
+	//
+	// 10000000000
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// example:
+	//
+	// 100000000
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// example:
+	//
+	// 100000000000
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// example:
+	//
+	// 90000000000000000
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// immtest
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// Official:AllFunction
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s CreateDatasetRequest) String() string {
@@ -6769,8 +7643,11 @@ func (s *CreateDatasetRequest) SetTemplateId(v string) *CreateDatasetRequest {
 }
 
 type CreateDatasetResponseBody struct {
-	Dataset   *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Dataset *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	// example:
+	//
+	// 6D74B3A9-5AC0-49F9-914D-E01589D3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDatasetResponseBody) String() string {
@@ -6820,13 +7697,282 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 	return s
 }
 
+type CreateDecodeBlindWatermarkTaskRequest struct {
+	// example:
+	//
+	// 90
+	ImageQuality *int32 `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty"`
+	// example:
+	//
+	// FFT
+	Model        *string       `json:"Model,omitempty" xml:"Model,omitempty"`
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// example:
+	//
+	// oss://imm-test/testcases/watermarktestbefore.jpg
+	OriginalImageURI *string `json:"OriginalImageURI,omitempty" xml:"OriginalImageURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://target/sampleobject.jpg
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// low
+	StrengthLevel *string `json:"StrengthLevel,omitempty" xml:"StrengthLevel,omitempty"`
+	// example:
+	//
+	// oss://target/targetobject.jpg
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// example:
+	//
+	// text
+	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
+}
+
+func (s CreateDecodeBlindWatermarkTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDecodeBlindWatermarkTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDecodeBlindWatermarkTaskRequest) SetImageQuality(v int32) *CreateDecodeBlindWatermarkTaskRequest {
+	s.ImageQuality = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskRequest) SetModel(v string) *CreateDecodeBlindWatermarkTaskRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskRequest) SetNotification(v *Notification) *CreateDecodeBlindWatermarkTaskRequest {
+	s.Notification = v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskRequest) SetOriginalImageURI(v string) *CreateDecodeBlindWatermarkTaskRequest {
+	s.OriginalImageURI = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskRequest) SetProjectName(v string) *CreateDecodeBlindWatermarkTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskRequest) SetSourceURI(v string) *CreateDecodeBlindWatermarkTaskRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskRequest) SetStrengthLevel(v string) *CreateDecodeBlindWatermarkTaskRequest {
+	s.StrengthLevel = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskRequest) SetTargetURI(v string) *CreateDecodeBlindWatermarkTaskRequest {
+	s.TargetURI = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskRequest) SetWatermarkType(v string) *CreateDecodeBlindWatermarkTaskRequest {
+	s.WatermarkType = &v
+	return s
+}
+
+type CreateDecodeBlindWatermarkTaskShrinkRequest struct {
+	// example:
+	//
+	// 90
+	ImageQuality *int32 `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty"`
+	// example:
+	//
+	// FFT
+	Model              *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// example:
+	//
+	// oss://imm-test/testcases/watermarktestbefore.jpg
+	OriginalImageURI *string `json:"OriginalImageURI,omitempty" xml:"OriginalImageURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://target/sampleobject.jpg
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// low
+	StrengthLevel *string `json:"StrengthLevel,omitempty" xml:"StrengthLevel,omitempty"`
+	// example:
+	//
+	// oss://target/targetobject.jpg
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// example:
+	//
+	// text
+	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
+}
+
+func (s CreateDecodeBlindWatermarkTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDecodeBlindWatermarkTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDecodeBlindWatermarkTaskShrinkRequest) SetImageQuality(v int32) *CreateDecodeBlindWatermarkTaskShrinkRequest {
+	s.ImageQuality = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskShrinkRequest) SetModel(v string) *CreateDecodeBlindWatermarkTaskShrinkRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskShrinkRequest) SetNotificationShrink(v string) *CreateDecodeBlindWatermarkTaskShrinkRequest {
+	s.NotificationShrink = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskShrinkRequest) SetOriginalImageURI(v string) *CreateDecodeBlindWatermarkTaskShrinkRequest {
+	s.OriginalImageURI = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskShrinkRequest) SetProjectName(v string) *CreateDecodeBlindWatermarkTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskShrinkRequest) SetSourceURI(v string) *CreateDecodeBlindWatermarkTaskShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskShrinkRequest) SetStrengthLevel(v string) *CreateDecodeBlindWatermarkTaskShrinkRequest {
+	s.StrengthLevel = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskShrinkRequest) SetTargetURI(v string) *CreateDecodeBlindWatermarkTaskShrinkRequest {
+	s.TargetURI = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskShrinkRequest) SetWatermarkType(v string) *CreateDecodeBlindWatermarkTaskShrinkRequest {
+	s.WatermarkType = &v
+	return s
+}
+
+type CreateDecodeBlindWatermarkTaskResponseBody struct {
+	// example:
+	//
+	// 27C-1jyAP5qQI7RoI8lFFwvMrWtl0ft
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 4A7A2D0E-D8B8-4DA0-8127-EB32C6600ADE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// DecodeBlindWatermark-78ac8f3b-59e0-45a6-9b67-32168c3f22b9
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateDecodeBlindWatermarkTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDecodeBlindWatermarkTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDecodeBlindWatermarkTaskResponseBody) SetEventId(v string) *CreateDecodeBlindWatermarkTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskResponseBody) SetRequestId(v string) *CreateDecodeBlindWatermarkTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskResponseBody) SetTaskId(v string) *CreateDecodeBlindWatermarkTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateDecodeBlindWatermarkTaskResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDecodeBlindWatermarkTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDecodeBlindWatermarkTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDecodeBlindWatermarkTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDecodeBlindWatermarkTaskResponse) SetHeaders(v map[string]*string) *CreateDecodeBlindWatermarkTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskResponse) SetStatusCode(v int32) *CreateDecodeBlindWatermarkTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDecodeBlindWatermarkTaskResponse) SetBody(v *CreateDecodeBlindWatermarkTaskResponseBody) *CreateDecodeBlindWatermarkTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFacesSearchingTaskRequest struct {
-	DatasetName  *string                                   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResult    *int64                                    `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
-	Notification *Notification                             `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName  *string                                   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sources      []*CreateFacesSearchingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	UserData     *string                                   `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// 100
+	MaxResult    *int64        `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string                                   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sources     []*CreateFacesSearchingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {"ID": "testuid","Name": "test-user","Avatar": "http://test.com/testuid"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFacesSearchingTaskRequest) String() string {
@@ -6868,6 +8014,9 @@ func (s *CreateFacesSearchingTaskRequest) SetUserData(v string) *CreateFacesSear
 }
 
 type CreateFacesSearchingTaskRequestSources struct {
+	// example:
+	//
+	// oss://test-bucket/test-object
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -6885,12 +8034,28 @@ func (s *CreateFacesSearchingTaskRequestSources) SetURI(v string) *CreateFacesSe
 }
 
 type CreateFacesSearchingTaskShrinkRequest struct {
-	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// 100
 	MaxResult          *int64  `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourcesShrink      *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName   *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	// example:
+	//
+	// {"ID": "testuid","Name": "test-user","Avatar": "http://test.com/testuid"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFacesSearchingTaskShrinkRequest) String() string {
@@ -6932,9 +8097,18 @@ func (s *CreateFacesSearchingTaskShrinkRequest) SetUserData(v string) *CreateFac
 }
 
 type CreateFacesSearchingTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 0ED-1Bz8z71k5TtsUejT4UJ16****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// B1E79399-05F7-06D8-95FE-EBE17BA*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// CreateFacesSearchingTask-00bec802-073a-4b61-ba*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateFacesSearchingTaskResponseBody) String() string {
@@ -6990,11 +8164,27 @@ func (s *CreateFacesSearchingTaskResponse) SetBody(v *CreateFacesSearchingTaskRe
 }
 
 type CreateFigureClusteringTaskRequest struct {
-	DatasetName  *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Notification *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Tags         map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData     *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
+	DatasetName  *string       `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// {"test": "val1"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFigureClusteringTaskRequest) String() string {
@@ -7031,11 +8221,27 @@ func (s *CreateFigureClusteringTaskRequest) SetUserData(v string) *CreateFigureC
 }
 
 type CreateFigureClusteringTaskShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
 	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// {"test": "val1"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFigureClusteringTaskShrinkRequest) String() string {
@@ -7072,9 +8278,18 @@ func (s *CreateFigureClusteringTaskShrinkRequest) SetUserData(v string) *CreateF
 }
 
 type CreateFigureClusteringTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 0ED-1Bz8z71k5TtsUejT4UJ16****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// formatconvert-00bec802-073a-4b61-ba3b-39bc****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateFigureClusteringTaskResponseBody) String() string {
@@ -7130,14 +8345,38 @@ func (s *CreateFigureClusteringTaskResponse) SetBody(v *CreateFigureClusteringTa
 }
 
 type CreateFigureClustersMergingTaskRequest struct {
-	DatasetName  *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	From         *string                `json:"From,omitempty" xml:"From,omitempty"`
-	Froms        []*string              `json:"Froms,omitempty" xml:"Froms,omitempty" type:"Repeated"`
-	Notification *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Tags         map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	To           *string                `json:"To,omitempty" xml:"To,omitempty"`
-	UserData     *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// Cluster-2ab85905-23ba-4632-b2d8-1c21cfe****
+	From         *string       `json:"From,omitempty" xml:"From,omitempty"`
+	Froms        []*string     `json:"Froms,omitempty" xml:"Froms,omitempty" type:"Repeated"`
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// {"key":"val"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Cluster-4a3a71c1-c092-4788-8826-2f65d17****
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFigureClustersMergingTaskRequest) String() string {
@@ -7189,14 +8428,38 @@ func (s *CreateFigureClustersMergingTaskRequest) SetUserData(v string) *CreateFi
 }
 
 type CreateFigureClustersMergingTaskShrinkRequest struct {
-	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// Cluster-2ab85905-23ba-4632-b2d8-1c21cfe****
 	From               *string `json:"From,omitempty" xml:"From,omitempty"`
 	FromsShrink        *string `json:"Froms,omitempty" xml:"Froms,omitempty"`
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	To                 *string `json:"To,omitempty" xml:"To,omitempty"`
-	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// {"key":"val"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Cluster-4a3a71c1-c092-4788-8826-2f65d17****
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFigureClustersMergingTaskShrinkRequest) String() string {
@@ -7248,9 +8511,18 @@ func (s *CreateFigureClustersMergingTaskShrinkRequest) SetUserData(v string) *Cr
 }
 
 type CreateFigureClustersMergingTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 0ED-1Bz8z71k5TtsUejT4UJ16E****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// CA995EFD-083D-4F40-BE8A-BDF75FF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 92376fbb-171f-4259-913f-705f7ee0****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateFigureClustersMergingTaskResponseBody) String() string {
@@ -7306,14 +8578,33 @@ func (s *CreateFigureClustersMergingTaskResponse) SetBody(v *CreateFigureCluster
 }
 
 type CreateFileCompressionTaskRequest struct {
-	CompressedFormat  *string                                    `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
-	CredentialConfig  *CredentialConfig                          `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Notification      *Notification                              `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName       *string                                    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// zip
+	CompressedFormat *string           `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Notification     *Notification     `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test-object.json
 	SourceManifestURI *string                                    `json:"SourceManifestURI,omitempty" xml:"SourceManifestURI,omitempty"`
 	Sources           []*CreateFileCompressionTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	TargetURI         *string                                    `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData          *string                                    `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-target-object.zip
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// example:
+	//
+	// {"ID": "testuid","Name": "test-user","Avatar": "http://test.com/testuid"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFileCompressionTaskRequest) String() string {
@@ -7365,9 +8656,15 @@ func (s *CreateFileCompressionTaskRequest) SetUserData(v string) *CreateFileComp
 }
 
 type CreateFileCompressionTaskRequestSources struct {
+	// example:
+	//
+	// /new-dir/
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	Mode  *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	URI   *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test-object
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s CreateFileCompressionTaskRequestSources) String() string {
@@ -7394,14 +8691,33 @@ func (s *CreateFileCompressionTaskRequestSources) SetURI(v string) *CreateFileCo
 }
 
 type CreateFileCompressionTaskShrinkRequest struct {
+	// example:
+	//
+	// zip
 	CompressedFormat       *string `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceManifestURI      *string `json:"SourceManifestURI,omitempty" xml:"SourceManifestURI,omitempty"`
-	SourcesShrink          *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test-object.json
+	SourceManifestURI *string `json:"SourceManifestURI,omitempty" xml:"SourceManifestURI,omitempty"`
+	SourcesShrink     *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-target-object.zip
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// example:
+	//
+	// {"ID": "testuid","Name": "test-user","Avatar": "http://test.com/testuid"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFileCompressionTaskShrinkRequest) String() string {
@@ -7453,9 +8769,18 @@ func (s *CreateFileCompressionTaskShrinkRequest) SetUserData(v string) *CreateFi
 }
 
 type CreateFileCompressionTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 0ED-1Bz8z71k5TtsUejT4UJ16Es*****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// FileCompression-3579a380-6f7a-4a9d-b9d2-65996*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateFileCompressionTaskResponseBody) String() string {
@@ -7513,12 +8838,28 @@ func (s *CreateFileCompressionTaskResponse) SetBody(v *CreateFileCompressionTask
 type CreateFileUncompressionTaskRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	Notification     *Notification     `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Password         *string           `json:"Password,omitempty" xml:"Password,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SelectedFiles    []*string         `json:"SelectedFiles,omitempty" xml:"SelectedFiles,omitempty" type:"Repeated"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TargetURI        *string           `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData         *string           `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// 123456
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName   *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SelectedFiles []*string `json:"SelectedFiles,omitempty" xml:"SelectedFiles,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://imm-apitest-fxf2/name.zip
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFileUncompressionTaskRequest) String() string {
@@ -7572,12 +8913,28 @@ func (s *CreateFileUncompressionTaskRequest) SetUserData(v string) *CreateFileUn
 type CreateFileUncompressionTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SelectedFilesShrink    *string `json:"SelectedFiles,omitempty" xml:"SelectedFiles,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// 123456
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName         *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SelectedFilesShrink *string `json:"SelectedFiles,omitempty" xml:"SelectedFiles,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://imm-apitest-fxf2/name.zip
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFileUncompressionTaskShrinkRequest) String() string {
@@ -7629,9 +8986,18 @@ func (s *CreateFileUncompressionTaskShrinkRequest) SetUserData(v string) *Create
 }
 
 type CreateFileUncompressionTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 0ED-1Bz8z71k5TtsUejT4UJ16Es*****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// FileUncompression-16ab5dd6-af02-480e-9ed7-a8d51b1*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateFileUncompressionTaskResponseBody) String() string {
@@ -7688,15 +9054,37 @@ func (s *CreateFileUncompressionTaskResponse) SetBody(v *CreateFileUncompression
 
 type CreateImageModerationTaskRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Interval         *int64            `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	MaxFrames        *int64            `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	// example:
+	//
+	// 2
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 10
+	MaxFrames *int64 `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
-	Notification *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Scenes       []*string              `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
-	SourceURI    *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Tags         map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData     *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Scenes      []*string `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// {"test": "val1"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageModerationTaskRequest) String() string {
@@ -7754,15 +9142,37 @@ func (s *CreateImageModerationTaskRequest) SetUserData(v string) *CreateImageMod
 
 type CreateImageModerationTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Interval               *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	MaxFrames              *int64  `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	// example:
+	//
+	// 2
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 10
+	MaxFrames *int64 `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ScenesShrink       *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
-	SourceURI          *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ScenesShrink *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// {"test": "val1"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageModerationTaskShrinkRequest) String() string {
@@ -7819,9 +9229,18 @@ func (s *CreateImageModerationTaskShrinkRequest) SetUserData(v string) *CreateIm
 }
 
 type CreateImageModerationTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 2E6-1I0FGn0zFnl5AflRfhzClma*****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// ImageModeration-179ef4f8-d583-4f0c-a293-7c0889c*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateImageModerationTaskResponseBody) String() string {
@@ -7877,21 +9296,52 @@ func (s *CreateImageModerationTaskResponse) SetBody(v *CreateImageModerationTask
 }
 
 type CreateImageSplicingTaskRequest struct {
-	Align            *int64                                   `json:"Align,omitempty" xml:"Align,omitempty"`
-	BackgroundColor  *string                                  `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
-	CredentialConfig *CredentialConfig                        `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Direction        *string                                  `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	ImageFormat      *string                                  `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
-	Margin           *int64                                   `json:"Margin,omitempty" xml:"Margin,omitempty"`
-	Notification     *Notification                            `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Padding          *int64                                   `json:"Padding,omitempty" xml:"Padding,omitempty"`
-	ProjectName      *string                                  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Quality          *int64                                   `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	ScaleType        *string                                  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	Sources          []*CreateImageSplicingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags             map[string]interface{}                   `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI        *string                                  `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData         *string                                  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// 192
+	Align *int64 `json:"Align,omitempty" xml:"Align,omitempty"`
+	// example:
+	//
+	// red
+	BackgroundColor  *string           `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// example:
+	//
+	// vertical
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// example:
+	//
+	// jpg
+	ImageFormat *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	// example:
+	//
+	// 2
+	Margin       *int64        `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// example:
+	//
+	// 2
+	Padding *int64 `json:"Padding,omitempty" xml:"Padding,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 80
+	Quality *int64 `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// example:
+	//
+	// stretch
+	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	// This parameter is required.
+	Sources []*CreateImageSplicingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	Tags    map[string]interface{}                   `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageSplicingTaskRequest) String() string {
@@ -7978,8 +9428,12 @@ func (s *CreateImageSplicingTaskRequest) SetUserData(v string) *CreateImageSplic
 }
 
 type CreateImageSplicingTaskRequestSources struct {
-	Rotate *int64  `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	URI    *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// example:
+	//
+	// 90
+	Rotate *int64 `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// This parameter is required.
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s CreateImageSplicingTaskRequestSources) String() string {
@@ -8001,21 +9455,52 @@ func (s *CreateImageSplicingTaskRequestSources) SetURI(v string) *CreateImageSpl
 }
 
 type CreateImageSplicingTaskShrinkRequest struct {
-	Align                  *int64  `json:"Align,omitempty" xml:"Align,omitempty"`
+	// example:
+	//
+	// 192
+	Align *int64 `json:"Align,omitempty" xml:"Align,omitempty"`
+	// example:
+	//
+	// red
 	BackgroundColor        *string `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Direction              *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	ImageFormat            *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
-	Margin                 *int64  `json:"Margin,omitempty" xml:"Margin,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Padding                *int64  `json:"Padding,omitempty" xml:"Padding,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Quality                *int64  `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	ScaleType              *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	SourcesShrink          *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// vertical
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// example:
+	//
+	// jpg
+	ImageFormat *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	// example:
+	//
+	// 2
+	Margin             *int64  `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// example:
+	//
+	// 2
+	Padding *int64 `json:"Padding,omitempty" xml:"Padding,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 80
+	Quality *int64 `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// example:
+	//
+	// stretch
+	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	// This parameter is required.
+	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	TagsShrink    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageSplicingTaskShrinkRequest) String() string {
@@ -8102,9 +9587,18 @@ func (s *CreateImageSplicingTaskShrinkRequest) SetUserData(v string) *CreateImag
 }
 
 type CreateImageSplicingTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 10C-1R6p7Km0H5Ieg38LKXTIvw*****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 94D6F994-E298-037E-8E8B-0090F27*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// ImageSplicing-537cc157-7645-444a-a631-c8db4d02*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateImageSplicingTaskResponseBody) String() string {
@@ -8160,13 +9654,20 @@ func (s *CreateImageSplicingTaskResponse) SetBody(v *CreateImageSplicingTaskResp
 }
 
 type CreateImageToPDFTaskRequest struct {
-	CredentialConfig *CredentialConfig                     `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Notification     *Notification                         `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName      *string                               `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sources          []*CreateImageToPDFTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags             map[string]interface{}                `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI        *string                               `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData         *string                               `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Notification     *Notification     `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	Sources []*CreateImageToPDFTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	Tags    map[string]interface{}                `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageToPDFTaskRequest) String() string {
@@ -8213,8 +9714,12 @@ func (s *CreateImageToPDFTaskRequest) SetUserData(v string) *CreateImageToPDFTas
 }
 
 type CreateImageToPDFTaskRequestSources struct {
-	Rotate *int64  `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	URI    *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// example:
+	//
+	// 90
+	Rotate *int64 `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// This parameter is required.
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s CreateImageToPDFTaskRequestSources) String() string {
@@ -8238,11 +9743,18 @@ func (s *CreateImageToPDFTaskRequestSources) SetURI(v string) *CreateImageToPDFT
 type CreateImageToPDFTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourcesShrink          *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	TagsShrink    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageToPDFTaskShrinkRequest) String() string {
@@ -8289,9 +9801,18 @@ func (s *CreateImageToPDFTaskShrinkRequest) SetUserData(v string) *CreateImageTo
 }
 
 type CreateImageToPDFTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 0ED-1Bz8z71k5TtsUejT4UJ16Es*****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// ImageToPDF-cbe6ae3e-f8dc-4566-9da7-535d5d*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateImageToPDFTaskResponseBody) String() string {
@@ -8347,13 +9868,17 @@ func (s *CreateImageToPDFTaskResponse) SetBody(v *CreateImageToPDFTaskResponseBo
 }
 
 type CreateLocationDateClusteringTaskRequest struct {
-	DatasetName     *string                                                 `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	DateOptions     *CreateLocationDateClusteringTaskRequestDateOptions     `json:"DateOptions,omitempty" xml:"DateOptions,omitempty" type:"Struct"`
+	// This parameter is required.
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	DateOptions *CreateLocationDateClusteringTaskRequestDateOptions `json:"DateOptions,omitempty" xml:"DateOptions,omitempty" type:"Struct"`
+	// This parameter is required.
 	LocationOptions *CreateLocationDateClusteringTaskRequestLocationOptions `json:"LocationOptions,omitempty" xml:"LocationOptions,omitempty" type:"Struct"`
 	Notification    *Notification                                           `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName     *string                                                 `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Tags            map[string]interface{}                                  `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData        *string                                                 `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	ProjectName *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Tags        map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData    *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateLocationDateClusteringTaskRequest) String() string {
@@ -8400,8 +9925,19 @@ func (s *CreateLocationDateClusteringTaskRequest) SetUserData(v string) *CreateL
 }
 
 type CreateLocationDateClusteringTaskRequestDateOptions struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	GapDays *int64 `json:"GapDays,omitempty" xml:"GapDays,omitempty"`
+	// This parameter is required.
 	MaxDays *int64 `json:"MaxDays,omitempty" xml:"MaxDays,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	MinDays *int64 `json:"MinDays,omitempty" xml:"MinDays,omitempty"`
 }
 
@@ -8429,6 +9965,7 @@ func (s *CreateLocationDateClusteringTaskRequestDateOptions) SetMinDays(v int64)
 }
 
 type CreateLocationDateClusteringTaskRequestLocationOptions struct {
+	// This parameter is required.
 	LocationDateClusterLevels []*string `json:"LocationDateClusterLevels,omitempty" xml:"LocationDateClusterLevels,omitempty" type:"Repeated"`
 }
 
@@ -8446,13 +9983,17 @@ func (s *CreateLocationDateClusteringTaskRequestLocationOptions) SetLocationDate
 }
 
 type CreateLocationDateClusteringTaskShrinkRequest struct {
-	DatasetName           *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	DateOptionsShrink     *string `json:"DateOptions,omitempty" xml:"DateOptions,omitempty"`
+	// This parameter is required.
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	DateOptionsShrink *string `json:"DateOptions,omitempty" xml:"DateOptions,omitempty"`
+	// This parameter is required.
 	LocationOptionsShrink *string `json:"LocationOptions,omitempty" xml:"LocationOptions,omitempty"`
 	NotificationShrink    *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName           *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TagsShrink            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData              *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TagsShrink  *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateLocationDateClusteringTaskShrinkRequest) String() string {
@@ -8499,7 +10040,10 @@ func (s *CreateLocationDateClusteringTaskShrinkRequest) SetUserData(v string) *C
 }
 
 type CreateLocationDateClusteringTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// B121940C-9794-4EE3-8D6E-F8EC525F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -8560,12 +10104,25 @@ type CreateMediaConvertTaskRequest struct {
 	AlignmentIndex   *int32            `json:"AlignmentIndex,omitempty" xml:"AlignmentIndex,omitempty"`
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
-	Notification *Notification                           `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName  *string                                 `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sources      []*CreateMediaConvertTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags         map[string]interface{}                  `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Targets      []*CreateMediaConvertTaskRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	UserData     *string                                 `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	Sources []*CreateMediaConvertTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {"test":"val1"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	Targets []*CreateMediaConvertTaskRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateMediaConvertTaskRequest) String() string {
@@ -8617,10 +10174,19 @@ func (s *CreateMediaConvertTaskRequest) SetUserData(v string) *CreateMediaConver
 }
 
 type CreateMediaConvertTaskRequestSources struct {
-	Duration  *float64                                         `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 0
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 0
 	StartTime *float64                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Subtitles []*CreateMediaConvertTaskRequestSourcesSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	URI       *string                                          `json:"URI,omitempty" xml:"URI,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test-object
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s CreateMediaConvertTaskRequestSources) String() string {
@@ -8652,9 +10218,18 @@ func (s *CreateMediaConvertTaskRequestSources) SetURI(v string) *CreateMediaConv
 }
 
 type CreateMediaConvertTaskRequestSourcesSubtitles struct {
-	Language   *string  `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// eng
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 10.5
 	TimeOffset *float64 `json:"TimeOffset,omitempty" xml:"TimeOffset,omitempty"`
-	URI        *string  `json:"URI,omitempty" xml:"URI,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/subtitles
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s CreateMediaConvertTaskRequestSourcesSubtitles) String() string {
@@ -8681,15 +10256,24 @@ func (s *CreateMediaConvertTaskRequestSourcesSubtitles) SetURI(v string) *Create
 }
 
 type CreateMediaConvertTaskRequestTargets struct {
-	Audio         *TargetAudio                                 `json:"Audio,omitempty" xml:"Audio,omitempty"`
-	Container     *string                                      `json:"Container,omitempty" xml:"Container,omitempty"`
-	Image         *TargetImage                                 `json:"Image,omitempty" xml:"Image,omitempty"`
-	Segment       *CreateMediaConvertTaskRequestTargetsSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
-	Speed         *float32                                     `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	StripMetadata *bool                                        `json:"StripMetadata,omitempty" xml:"StripMetadata,omitempty"`
-	Subtitle      *TargetSubtitle                              `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
-	URI           *string                                      `json:"URI,omitempty" xml:"URI,omitempty"`
-	Video         *TargetVideo                                 `json:"Video,omitempty" xml:"Video,omitempty"`
+	Audio *TargetAudio `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	// example:
+	//
+	// mp4
+	Container *string                                      `json:"Container,omitempty" xml:"Container,omitempty"`
+	Image     *TargetImage                                 `json:"Image,omitempty" xml:"Image,omitempty"`
+	Segment   *CreateMediaConvertTaskRequestTargetsSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1.0
+	Speed         *float32        `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	StripMetadata *bool           `json:"StripMetadata,omitempty" xml:"StripMetadata,omitempty"`
+	Subtitle      *TargetSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/targets
+	URI   *string      `json:"URI,omitempty" xml:"URI,omitempty"`
+	Video *TargetVideo `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 
 func (s CreateMediaConvertTaskRequestTargets) String() string {
@@ -8746,9 +10330,18 @@ func (s *CreateMediaConvertTaskRequestTargets) SetVideo(v *TargetVideo) *CreateM
 }
 
 type CreateMediaConvertTaskRequestTargetsSegment struct {
-	Duration    *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Format      *string  `json:"Format,omitempty" xml:"Format,omitempty"`
-	StartNumber *int32   `json:"StartNumber,omitempty" xml:"StartNumber,omitempty"`
+	// example:
+	//
+	// 30
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// hls
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// example:
+	//
+	// 5
+	StartNumber *int32 `json:"StartNumber,omitempty" xml:"StartNumber,omitempty"`
 }
 
 func (s CreateMediaConvertTaskRequestTargetsSegment) String() string {
@@ -8779,11 +10372,24 @@ type CreateMediaConvertTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourcesShrink      *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetsShrink      *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
-	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	// example:
+	//
+	// {"test":"val1"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	TargetsShrink *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateMediaConvertTaskShrinkRequest) String() string {
@@ -8835,9 +10441,18 @@ func (s *CreateMediaConvertTaskShrinkRequest) SetUserData(v string) *CreateMedia
 }
 
 type CreateMediaConvertTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 0ED-1Bz8z71k5TtsUejT4UJ16Es****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// CA995EFD-083D-4F40-BE8A-BDF75FFFE0B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// MediaConvert-adb1ee28-c4c9-42a7-9f54-3b8eadcb****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateMediaConvertTaskResponseBody) String() string {
@@ -8893,37 +10508,127 @@ func (s *CreateMediaConvertTaskResponse) SetBody(v *CreateMediaConvertTaskRespon
 }
 
 type CreateOfficeConversionTaskRequest struct {
-	CredentialConfig *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	EndPage          *int64                 `json:"EndPage,omitempty" xml:"EndPage,omitempty"`
-	FirstPage        *bool                  `json:"FirstPage,omitempty" xml:"FirstPage,omitempty"`
-	FitToHeight      *bool                  `json:"FitToHeight,omitempty" xml:"FitToHeight,omitempty"`
-	FitToWidth       *bool                  `json:"FitToWidth,omitempty" xml:"FitToWidth,omitempty"`
-	HoldLineFeed     *bool                  `json:"HoldLineFeed,omitempty" xml:"HoldLineFeed,omitempty"`
-	ImageDPI         *int64                 `json:"ImageDPI,omitempty" xml:"ImageDPI,omitempty"`
-	LongPicture      *bool                  `json:"LongPicture,omitempty" xml:"LongPicture,omitempty"`
-	LongText         *bool                  `json:"LongText,omitempty" xml:"LongText,omitempty"`
-	MaxSheetColumn   *int64                 `json:"MaxSheetColumn,omitempty" xml:"MaxSheetColumn,omitempty"`
-	MaxSheetRow      *int64                 `json:"MaxSheetRow,omitempty" xml:"MaxSheetRow,omitempty"`
-	Notification     *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Pages            *string                `json:"Pages,omitempty" xml:"Pages,omitempty"`
-	PaperHorizontal  *bool                  `json:"PaperHorizontal,omitempty" xml:"PaperHorizontal,omitempty"`
-	PaperSize        *string                `json:"PaperSize,omitempty" xml:"PaperSize,omitempty"`
-	Password         *string                `json:"Password,omitempty" xml:"Password,omitempty"`
-	ProjectName      *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Quality          *int64                 `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	ScalePercentage  *int64                 `json:"ScalePercentage,omitempty" xml:"ScalePercentage,omitempty"`
-	SheetCount       *int64                 `json:"SheetCount,omitempty" xml:"SheetCount,omitempty"`
-	SheetIndex       *int64                 `json:"SheetIndex,omitempty" xml:"SheetIndex,omitempty"`
-	ShowComments     *bool                  `json:"ShowComments,omitempty" xml:"ShowComments,omitempty"`
-	SourceType       *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SourceURI        *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	StartPage        *int64                 `json:"StartPage,omitempty" xml:"StartPage,omitempty"`
-	Tags             map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetType       *string                `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	TargetURI        *string                `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	TargetURIPrefix  *string                `json:"TargetURIPrefix,omitempty" xml:"TargetURIPrefix,omitempty"`
-	TrimPolicy       *TrimPolicy            `json:"TrimPolicy,omitempty" xml:"TrimPolicy,omitempty"`
-	UserData         *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// example:
+	//
+	// -1
+	EndPage *int64 `json:"EndPage,omitempty" xml:"EndPage,omitempty"`
+	// example:
+	//
+	// false
+	FirstPage *bool `json:"FirstPage,omitempty" xml:"FirstPage,omitempty"`
+	// example:
+	//
+	// false
+	FitToHeight *bool `json:"FitToHeight,omitempty" xml:"FitToHeight,omitempty"`
+	// example:
+	//
+	// false
+	FitToWidth *bool `json:"FitToWidth,omitempty" xml:"FitToWidth,omitempty"`
+	// example:
+	//
+	// false
+	HoldLineFeed *bool `json:"HoldLineFeed,omitempty" xml:"HoldLineFeed,omitempty"`
+	// example:
+	//
+	// 96
+	ImageDPI *int64 `json:"ImageDPI,omitempty" xml:"ImageDPI,omitempty"`
+	// example:
+	//
+	// false
+	LongPicture *bool `json:"LongPicture,omitempty" xml:"LongPicture,omitempty"`
+	// example:
+	//
+	// false
+	LongText *bool `json:"LongText,omitempty" xml:"LongText,omitempty"`
+	// example:
+	//
+	// 10
+	MaxSheetColumn *int64 `json:"MaxSheetColumn,omitempty" xml:"MaxSheetColumn,omitempty"`
+	// example:
+	//
+	// 10
+	MaxSheetRow  *int64        `json:"MaxSheetRow,omitempty" xml:"MaxSheetRow,omitempty"`
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// example:
+	//
+	// 1,2-4,7
+	Pages *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	// example:
+	//
+	// false
+	PaperHorizontal *bool `json:"PaperHorizontal,omitempty" xml:"PaperHorizontal,omitempty"`
+	// example:
+	//
+	// A4
+	PaperSize *string `json:"PaperSize,omitempty" xml:"PaperSize,omitempty"`
+	// example:
+	//
+	// ********
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 60
+	Quality *int64 `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// example:
+	//
+	// 100
+	ScalePercentage *int64 `json:"ScalePercentage,omitempty" xml:"ScalePercentage,omitempty"`
+	// example:
+	//
+	// 1
+	SheetCount *int64 `json:"SheetCount,omitempty" xml:"SheetCount,omitempty"`
+	// example:
+	//
+	// 1
+	SheetIndex *int64 `json:"SheetIndex,omitempty" xml:"SheetIndex,omitempty"`
+	// example:
+	//
+	// false
+	ShowComments *bool `json:"ShowComments,omitempty" xml:"ShowComments,omitempty"`
+	// example:
+	//
+	// doc
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// 1
+	StartPage *int64 `json:"StartPage,omitempty" xml:"StartPage,omitempty"`
+	// example:
+	//
+	// {"test":"val1"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// png
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// example:
+	//
+	// oss://{bucket}/{tags.custom}/{dirname}/{barename}.{autoext}
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// example:
+	//
+	// oss://bucket1/
+	TargetURIPrefix *string     `json:"TargetURIPrefix,omitempty" xml:"TargetURIPrefix,omitempty"`
+	TrimPolicy      *TrimPolicy `json:"TrimPolicy,omitempty" xml:"TrimPolicy,omitempty"`
+	// example:
+	//
+	// {"file_id": "abc"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateOfficeConversionTaskRequest) String() string {
@@ -9091,36 +10796,126 @@ func (s *CreateOfficeConversionTaskRequest) SetUserData(v string) *CreateOfficeC
 
 type CreateOfficeConversionTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	EndPage                *int64  `json:"EndPage,omitempty" xml:"EndPage,omitempty"`
-	FirstPage              *bool   `json:"FirstPage,omitempty" xml:"FirstPage,omitempty"`
-	FitToHeight            *bool   `json:"FitToHeight,omitempty" xml:"FitToHeight,omitempty"`
-	FitToWidth             *bool   `json:"FitToWidth,omitempty" xml:"FitToWidth,omitempty"`
-	HoldLineFeed           *bool   `json:"HoldLineFeed,omitempty" xml:"HoldLineFeed,omitempty"`
-	ImageDPI               *int64  `json:"ImageDPI,omitempty" xml:"ImageDPI,omitempty"`
-	LongPicture            *bool   `json:"LongPicture,omitempty" xml:"LongPicture,omitempty"`
-	LongText               *bool   `json:"LongText,omitempty" xml:"LongText,omitempty"`
-	MaxSheetColumn         *int64  `json:"MaxSheetColumn,omitempty" xml:"MaxSheetColumn,omitempty"`
-	MaxSheetRow            *int64  `json:"MaxSheetRow,omitempty" xml:"MaxSheetRow,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Pages                  *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
-	PaperHorizontal        *bool   `json:"PaperHorizontal,omitempty" xml:"PaperHorizontal,omitempty"`
-	PaperSize              *string `json:"PaperSize,omitempty" xml:"PaperSize,omitempty"`
-	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Quality                *int64  `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	ScalePercentage        *int64  `json:"ScalePercentage,omitempty" xml:"ScalePercentage,omitempty"`
-	SheetCount             *int64  `json:"SheetCount,omitempty" xml:"SheetCount,omitempty"`
-	SheetIndex             *int64  `json:"SheetIndex,omitempty" xml:"SheetIndex,omitempty"`
-	ShowComments           *bool   `json:"ShowComments,omitempty" xml:"ShowComments,omitempty"`
-	SourceType             *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	StartPage              *int64  `json:"StartPage,omitempty" xml:"StartPage,omitempty"`
-	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetType             *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	TargetURIPrefix        *string `json:"TargetURIPrefix,omitempty" xml:"TargetURIPrefix,omitempty"`
-	TrimPolicyShrink       *string `json:"TrimPolicy,omitempty" xml:"TrimPolicy,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// -1
+	EndPage *int64 `json:"EndPage,omitempty" xml:"EndPage,omitempty"`
+	// example:
+	//
+	// false
+	FirstPage *bool `json:"FirstPage,omitempty" xml:"FirstPage,omitempty"`
+	// example:
+	//
+	// false
+	FitToHeight *bool `json:"FitToHeight,omitempty" xml:"FitToHeight,omitempty"`
+	// example:
+	//
+	// false
+	FitToWidth *bool `json:"FitToWidth,omitempty" xml:"FitToWidth,omitempty"`
+	// example:
+	//
+	// false
+	HoldLineFeed *bool `json:"HoldLineFeed,omitempty" xml:"HoldLineFeed,omitempty"`
+	// example:
+	//
+	// 96
+	ImageDPI *int64 `json:"ImageDPI,omitempty" xml:"ImageDPI,omitempty"`
+	// example:
+	//
+	// false
+	LongPicture *bool `json:"LongPicture,omitempty" xml:"LongPicture,omitempty"`
+	// example:
+	//
+	// false
+	LongText *bool `json:"LongText,omitempty" xml:"LongText,omitempty"`
+	// example:
+	//
+	// 10
+	MaxSheetColumn *int64 `json:"MaxSheetColumn,omitempty" xml:"MaxSheetColumn,omitempty"`
+	// example:
+	//
+	// 10
+	MaxSheetRow        *int64  `json:"MaxSheetRow,omitempty" xml:"MaxSheetRow,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// example:
+	//
+	// 1,2-4,7
+	Pages *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	// example:
+	//
+	// false
+	PaperHorizontal *bool `json:"PaperHorizontal,omitempty" xml:"PaperHorizontal,omitempty"`
+	// example:
+	//
+	// A4
+	PaperSize *string `json:"PaperSize,omitempty" xml:"PaperSize,omitempty"`
+	// example:
+	//
+	// ********
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 60
+	Quality *int64 `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// example:
+	//
+	// 100
+	ScalePercentage *int64 `json:"ScalePercentage,omitempty" xml:"ScalePercentage,omitempty"`
+	// example:
+	//
+	// 1
+	SheetCount *int64 `json:"SheetCount,omitempty" xml:"SheetCount,omitempty"`
+	// example:
+	//
+	// 1
+	SheetIndex *int64 `json:"SheetIndex,omitempty" xml:"SheetIndex,omitempty"`
+	// example:
+	//
+	// false
+	ShowComments *bool `json:"ShowComments,omitempty" xml:"ShowComments,omitempty"`
+	// example:
+	//
+	// doc
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// 1
+	StartPage *int64 `json:"StartPage,omitempty" xml:"StartPage,omitempty"`
+	// example:
+	//
+	// {"test":"val1"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// png
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// example:
+	//
+	// oss://{bucket}/{tags.custom}/{dirname}/{barename}.{autoext}
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// example:
+	//
+	// oss://bucket1/
+	TargetURIPrefix  *string `json:"TargetURIPrefix,omitempty" xml:"TargetURIPrefix,omitempty"`
+	TrimPolicyShrink *string `json:"TrimPolicy,omitempty" xml:"TrimPolicy,omitempty"`
+	// example:
+	//
+	// {"file_id": "abc"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateOfficeConversionTaskShrinkRequest) String() string {
@@ -9287,9 +11082,18 @@ func (s *CreateOfficeConversionTaskShrinkRequest) SetUserData(v string) *CreateO
 }
 
 type CreateOfficeConversionTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 2C2-1I0EG57VR37J4rQ8oKG6C9*****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// FF3B7D81-66AE-47E0-BF69-157DCF18*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// formatconvert-00bec802-073a-4b61-ba3b-39bc2fdd*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateOfficeConversionTaskResponseBody) String() string {
@@ -9345,16 +11149,44 @@ func (s *CreateOfficeConversionTaskResponse) SetBody(v *CreateOfficeConversionTa
 }
 
 type CreateProjectRequest struct {
-	DatasetMaxBindCount     *int64  `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxFileCount     *int64  `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	DatasetMaxTotalFileSize *int64  `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ProjectMaxDatasetCount  *int64  `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	ProjectName             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ServiceRole             *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 10
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// example:
+	//
+	// 10000000000
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// example:
+	//
+	// 100000000
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// example:
+	//
+	// 100000000000
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// example:
+	//
+	// 90000000000000000
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// example:
+	//
+	// immtest
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1000000000
+	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// AliyunIMMDefaultRole
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// example:
+	//
+	// Official:AllFunction
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s CreateProjectRequest) String() string {
@@ -9416,8 +11248,11 @@ func (s *CreateProjectRequest) SetTemplateId(v string) *CreateProjectRequest {
 }
 
 type CreateProjectResponseBody struct {
-	Project   *Project `json:"Project,omitempty" xml:"Project,omitempty"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Project *Project `json:"Project,omitempty" xml:"Project,omitempty"`
+	// example:
+	//
+	// 7F7D235C-76FF-4B65-800C-8238AE3F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateProjectResponseBody) String() string {
@@ -9468,11 +11303,13 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 }
 
 type CreateSimilarImageClusteringTaskRequest struct {
-	DatasetName  *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Notification *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Tags         map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData     *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	DatasetName  *string       `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// This parameter is required.
+	ProjectName *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Tags        map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData    *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateSimilarImageClusteringTaskRequest) String() string {
@@ -9509,11 +11346,13 @@ func (s *CreateSimilarImageClusteringTaskRequest) SetUserData(v string) *CreateS
 }
 
 type CreateSimilarImageClusteringTaskShrinkRequest struct {
+	// This parameter is required.
 	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TagsShrink  *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateSimilarImageClusteringTaskShrinkRequest) String() string {
@@ -9550,9 +11389,18 @@ func (s *CreateSimilarImageClusteringTaskShrinkRequest) SetUserData(v string) *C
 }
 
 type CreateSimilarImageClusteringTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 3BF-1UhtFyrua71eOkFlqYq23Co****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// SimilarImageClustering-48d0a0f3-8459-47f4-b8af-ff49c64****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateSimilarImageClusteringTaskResponseBody) String() string {
@@ -9608,24 +11456,75 @@ func (s *CreateSimilarImageClusteringTaskResponse) SetBody(v *CreateSimilarImage
 }
 
 type CreateStoryRequest struct {
-	Address      *AddressForStory       `json:"Address,omitempty" xml:"Address,omitempty"`
-	CustomId     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	Address *AddressForStory `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// test
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// example:
+	//
+	// {"Bucket": "examplebucket"}
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName  *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxFileCount *int64                 `json:"MaxFileCount,omitempty" xml:"MaxFileCount,omitempty"`
-	MinFileCount *int64                 `json:"MinFileCount,omitempty" xml:"MinFileCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// 3
+	MaxFileCount *int64 `json:"MaxFileCount,omitempty" xml:"MaxFileCount,omitempty"`
+	// example:
+	//
+	// 1
+	MinFileCount *int64 `json:"MinFileCount,omitempty" xml:"MinFileCount,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
-	Notification    *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	NotifyTopicName *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ObjectId        *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ProjectName     *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	StoryEndTime    *string                `json:"StoryEndTime,omitempty" xml:"StoryEndTime,omitempty"`
-	StoryName       *string                `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
-	StoryStartTime  *string                `json:"StoryStartTime,omitempty" xml:"StoryStartTime,omitempty"`
-	StorySubType    *string                `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
-	StoryType       *string                `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
-	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData        *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// example:
+	//
+	// test-topic
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// example:
+	//
+	// id1
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 2021-12-30T16:00:00Z
+	StoryEndTime *string `json:"StoryEndTime,omitempty" xml:"StoryEndTime,omitempty"`
+	// example:
+	//
+	// name1
+	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	// example:
+	//
+	// 2016-12-30T16:00:00Z
+	StoryStartTime *string `json:"StoryStartTime,omitempty" xml:"StoryStartTime,omitempty"`
+	// example:
+	//
+	// Solo
+	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PeopleMemory
+	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+	// example:
+	//
+	// {"key":"val"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// {"ID": "testuid","Name": "test-user","Avatar": "http://test.com/testuid"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateStoryRequest) String() string {
@@ -9722,24 +11621,75 @@ func (s *CreateStoryRequest) SetUserData(v string) *CreateStoryRequest {
 }
 
 type CreateStoryShrinkRequest struct {
-	AddressShrink      *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	CustomId           *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	AddressShrink *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// test
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// example:
+	//
+	// {"Bucket": "examplebucket"}
 	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxFileCount       *int64  `json:"MaxFileCount,omitempty" xml:"MaxFileCount,omitempty"`
-	MinFileCount       *int64  `json:"MinFileCount,omitempty" xml:"MinFileCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// 3
+	MaxFileCount *int64 `json:"MaxFileCount,omitempty" xml:"MaxFileCount,omitempty"`
+	// example:
+	//
+	// 1
+	MinFileCount *int64 `json:"MinFileCount,omitempty" xml:"MinFileCount,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	NotifyTopicName    *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ObjectId           *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	StoryEndTime       *string `json:"StoryEndTime,omitempty" xml:"StoryEndTime,omitempty"`
-	StoryName          *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
-	StoryStartTime     *string `json:"StoryStartTime,omitempty" xml:"StoryStartTime,omitempty"`
-	StorySubType       *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
-	StoryType          *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// test-topic
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// example:
+	//
+	// id1
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 2021-12-30T16:00:00Z
+	StoryEndTime *string `json:"StoryEndTime,omitempty" xml:"StoryEndTime,omitempty"`
+	// example:
+	//
+	// name1
+	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	// example:
+	//
+	// 2016-12-30T16:00:00Z
+	StoryStartTime *string `json:"StoryStartTime,omitempty" xml:"StoryStartTime,omitempty"`
+	// example:
+	//
+	// Solo
+	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PeopleMemory
+	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+	// example:
+	//
+	// {"key":"val"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// {"ID": "testuid","Name": "test-user","Avatar": "http://test.com/testuid"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateStoryShrinkRequest) String() string {
@@ -9836,9 +11786,18 @@ func (s *CreateStoryShrinkRequest) SetUserData(v string) *CreateStoryShrinkReque
 }
 
 type CreateStoryResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 392-1CqzvESGTEeNZ2OWFbRKIM****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// CreateStory-4ef6ff43-edf3-4612-9cc4-0c7f9e19****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateStoryResponseBody) String() string {
@@ -9894,12 +11853,27 @@ func (s *CreateStoryResponse) SetBody(v *CreateStoryResponseBody) *CreateStoryRe
 }
 
 type CreateTriggerRequest struct {
-	Actions      []*CreateTriggerRequestActions    `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Actions []*CreateTriggerRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// This parameter is required.
 	Input        *Input                            `json:"Input,omitempty" xml:"Input,omitempty"`
 	Notification *CreateTriggerRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
-	ProjectName  *string                           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ServiceRole  *string                           `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	Tags         map[string]interface{}            `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AliyunIMMDefaultRole
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// example:
+	//
+	// {"key":"val"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s CreateTriggerRequest) String() string {
@@ -9942,8 +11916,13 @@ func (s *CreateTriggerRequest) SetTags(v map[string]interface{}) *CreateTriggerR
 
 type CreateTriggerRequestActions struct {
 	FastFailPolicy *FastFailPolicy `json:"FastFailPolicy,omitempty" xml:"FastFailPolicy,omitempty"`
-	Name           *string         `json:"Name,omitempty" xml:"Name,omitempty"`
-	Parameters     []*string       `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// doc/convert
+	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
 func (s CreateTriggerRequestActions) String() string {
@@ -9987,12 +11966,27 @@ func (s *CreateTriggerRequestNotification) SetMNS(v *MNS) *CreateTriggerRequestN
 }
 
 type CreateTriggerShrinkRequest struct {
-	ActionsShrink      *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
+	// This parameter is required.
+	ActionsShrink *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
+	// This parameter is required.
 	InputShrink        *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ServiceRole        *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AliyunIMMDefaultRole
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// example:
+	//
+	// {"key":"val"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s CreateTriggerShrinkRequest) String() string {
@@ -10034,7 +12028,10 @@ func (s *CreateTriggerShrinkRequest) SetTagsShrink(v string) *CreateTriggerShrin
 }
 
 type CreateTriggerResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10088,11 +12085,27 @@ func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTri
 type CreateVideoLabelClassificationTaskRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
-	Notification *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI    *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Tags         map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData     *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://bucket1/object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// {"test":"val1"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateVideoLabelClassificationTaskRequest) String() string {
@@ -10137,10 +12150,26 @@ type CreateVideoLabelClassificationTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI          *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://bucket1/object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// {"test":"val1"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateVideoLabelClassificationTaskShrinkRequest) String() string {
@@ -10182,9 +12211,18 @@ func (s *CreateVideoLabelClassificationTaskShrinkRequest) SetUserData(v string) 
 }
 
 type CreateVideoLabelClassificationTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 03F-1Qt1Yn5RZZ0Zh3ZdYlDblv7****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// CA995EFD-083D-4F40-BE8A-BDF75FFFE0B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// VideoLabelClassification-2f157087-91df-4fda-8c3e-232407ec*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateVideoLabelClassificationTaskResponseBody) String() string {
@@ -10241,15 +12279,37 @@ func (s *CreateVideoLabelClassificationTaskResponse) SetBody(v *CreateVideoLabel
 
 type CreateVideoModerationTaskRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Interval         *int64            `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	MaxFrames        *int64            `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	// example:
+	//
+	// 1
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 200
+	MaxFrames *int64 `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
-	Notification *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Scenes       []*string              `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
-	SourceURI    *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Tags         map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData     *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Scenes      []*string `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// {"test": "val1"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateVideoModerationTaskRequest) String() string {
@@ -10307,15 +12367,37 @@ func (s *CreateVideoModerationTaskRequest) SetUserData(v string) *CreateVideoMod
 
 type CreateVideoModerationTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Interval               *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	MaxFrames              *int64  `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	// example:
+	//
+	// 1
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 200
+	MaxFrames *int64 `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ScenesShrink       *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
-	SourceURI          *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ScenesShrink *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// {"test": "val1"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateVideoModerationTaskShrinkRequest) String() string {
@@ -10372,9 +12454,18 @@ func (s *CreateVideoModerationTaskShrinkRequest) SetUserData(v string) *CreateVi
 }
 
 type CreateVideoModerationTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 2E6-1I0FGn0zFnl5AflRfhzClma*****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// VideoModeration-9442a216-4691-4a48-846d-76daccaf*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateVideoModerationTaskResponseBody) String() string {
@@ -10430,7 +12521,17 @@ func (s *CreateVideoModerationTaskResponse) SetBody(v *CreateVideoModerationTask
 }
 
 type DeleteBatchRequest struct {
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// batch-4eb9223f-3e88-42d3-a578-3f2852******
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -10453,6 +12554,9 @@ func (s *DeleteBatchRequest) SetProjectName(v string) *DeleteBatchRequest {
 }
 
 type DeleteBatchResponseBody struct {
+	// example:
+	//
+	// 91AC8C98-0F36-49D2-8290-742E24******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10499,9 +12603,24 @@ func (s *DeleteBatchResponse) SetBody(v *DeleteBatchResponseBody) *DeleteBatchRe
 }
 
 type DeleteBindingRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s DeleteBindingRequest) String() string {
@@ -10528,6 +12647,9 @@ func (s *DeleteBindingRequest) SetURI(v string) *DeleteBindingRequest {
 }
 
 type DeleteBindingResponseBody struct {
+	// example:
+	//
+	// ACDFE467-C817-4B36-951A-6EB5A592****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10574,7 +12696,17 @@ func (s *DeleteBindingResponse) SetBody(v *DeleteBindingResponseBody) *DeleteBin
 }
 
 type DeleteDatasetRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -10597,6 +12729,9 @@ func (s *DeleteDatasetRequest) SetProjectName(v string) *DeleteDatasetRequest {
 }
 
 type DeleteDatasetResponseBody struct {
+	// example:
+	//
+	// EC564B8B-BA5C-4499-B196-D9B9E76E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10643,9 +12778,16 @@ func (s *DeleteDatasetResponse) SetBody(v *DeleteDatasetResponseBody) *DeleteDat
 }
 
 type DeleteFileMetaRequest struct {
+	// This parameter is required.
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket/exampleobject.txt
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s DeleteFileMetaRequest) String() string {
@@ -10672,6 +12814,9 @@ func (s *DeleteFileMetaRequest) SetURI(v string) *DeleteFileMetaRequest {
 }
 
 type DeleteFileMetaResponseBody struct {
+	// example:
+	//
+	// 7F82D6C9-5AC0-49F9-914D-F02678F3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10718,8 +12863,11 @@ func (s *DeleteFileMetaResponse) SetBody(v *DeleteFileMetaResponseBody) *DeleteF
 }
 
 type DeleteLocationDateClusterRequest struct {
+	// This parameter is required.
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ObjectId    *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -10747,6 +12895,9 @@ func (s *DeleteLocationDateClusterRequest) SetProjectName(v string) *DeleteLocat
 }
 
 type DeleteLocationDateClusterResponseBody struct {
+	// example:
+	//
+	// B121940C-9794-4EE3-8D6E-F8EC525F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10793,6 +12944,11 @@ func (s *DeleteLocationDateClusterResponse) SetBody(v *DeleteLocationDateCluster
 }
 
 type DeleteProjectRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -10810,6 +12966,9 @@ func (s *DeleteProjectRequest) SetProjectName(v string) *DeleteProjectRequest {
 }
 
 type DeleteProjectResponseBody struct {
+	// example:
+	//
+	// FEDC9B1F-30F2-4C1F-8ED2-B7860187****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10856,8 +13015,23 @@ func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeletePro
 }
 
 type DeleteStoryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ObjectId    *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// id1
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -10885,6 +13059,9 @@ func (s *DeleteStoryRequest) SetProjectName(v string) *DeleteStoryRequest {
 }
 
 type DeleteStoryResponseBody struct {
+	// example:
+	//
+	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10931,7 +13108,17 @@ func (s *DeleteStoryResponse) SetBody(v *DeleteStoryResponseBody) *DeleteStoryRe
 }
 
 type DeleteTriggerRequest struct {
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// trigger-9f72636a-0f0c-4baf-ae78-38b27b******
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -10954,6 +13141,9 @@ func (s *DeleteTriggerRequest) SetProjectName(v string) *DeleteTriggerRequest {
 }
 
 type DeleteTriggerResponseBody struct {
+	// example:
+	//
+	// FEDC9B1F-30F2-4C1F-8ED2-B7860187****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11000,6 +13190,11 @@ func (s *DeleteTriggerResponse) SetBody(v *DeleteTriggerResponseBody) *DeleteTri
 }
 
 type DetachOSSBucketRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// examplebucket
 	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
 }
 
@@ -11017,6 +13212,9 @@ func (s *DetachOSSBucketRequest) SetOSSBucket(v string) *DetachOSSBucketRequest 
 }
 
 type DetachOSSBucketResponseBody struct {
+	// example:
+	//
+	// 5F74C5C9-5AC0-49F9-914D-E01589D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11064,9 +13262,23 @@ func (s *DetachOSSBucketResponse) SetBody(v *DetachOSSBucketResponseBody) *Detac
 
 type DetectImageBodiesRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sensitivity      *float32          `json:"Sensitivity,omitempty" xml:"Sensitivity,omitempty"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 0.6
+	Sensitivity *float32 `json:"Sensitivity,omitempty" xml:"Sensitivity,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageBodiesRequest) String() string {
@@ -11098,10 +13310,24 @@ func (s *DetectImageBodiesRequest) SetSourceURI(v string) *DetectImageBodiesRequ
 }
 
 type DetectImageBodiesShrinkRequest struct {
-	CredentialConfigShrink *string  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName            *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sensitivity            *float32 `json:"Sensitivity,omitempty" xml:"Sensitivity,omitempty"`
-	SourceURI              *string  `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 0.6
+	Sensitivity *float32 `json:"Sensitivity,omitempty" xml:"Sensitivity,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageBodiesShrinkRequest) String() string {
@@ -11133,7 +13359,10 @@ func (s *DetectImageBodiesShrinkRequest) SetSourceURI(v string) *DetectImageBodi
 }
 
 type DetectImageBodiesResponseBody struct {
-	Bodies    []*Body `json:"Bodies,omitempty" xml:"Bodies,omitempty" type:"Repeated"`
+	Bodies []*Body `json:"Bodies,omitempty" xml:"Bodies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 501339F9-4B70-0CE2-AB8C-866C********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11186,8 +13415,18 @@ func (s *DetectImageBodiesResponse) SetBody(v *DetectImageBodiesResponseBody) *D
 
 type DetectImageCarsRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageCarsRequest) String() string {
@@ -11215,8 +13454,18 @@ func (s *DetectImageCarsRequest) SetSourceURI(v string) *DetectImageCarsRequest 
 
 type DetectImageCarsShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageCarsShrinkRequest) String() string {
@@ -11243,7 +13492,11 @@ func (s *DetectImageCarsShrinkRequest) SetSourceURI(v string) *DetectImageCarsSh
 }
 
 type DetectImageCarsResponseBody struct {
-	Cars      []*Car  `json:"Cars,omitempty" xml:"Cars,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Cars []*Car `json:"Cars,omitempty" xml:"Cars,omitempty" type:"Repeated"`
+	// example:
+	//
+	// A8745209-DD0E-027E-8ABA-085E0C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11296,8 +13549,18 @@ func (s *DetectImageCarsResponse) SetBody(v *DetectImageCarsResponseBody) *Detec
 
 type DetectImageCodesRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://bucketname/objectname
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageCodesRequest) String() string {
@@ -11325,8 +13588,18 @@ func (s *DetectImageCodesRequest) SetSourceURI(v string) *DetectImageCodesReques
 
 type DetectImageCodesShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://bucketname/objectname
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageCodesShrinkRequest) String() string {
@@ -11353,8 +13626,12 @@ func (s *DetectImageCodesShrinkRequest) SetSourceURI(v string) *DetectImageCodes
 }
 
 type DetectImageCodesResponseBody struct {
-	Codes     []*Codes `json:"Codes,omitempty" xml:"Codes,omitempty" type:"Repeated"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// This parameter is required.
+	Codes []*Codes `json:"Codes,omitempty" xml:"Codes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectImageCodesResponseBody) String() string {
@@ -11405,10 +13682,21 @@ func (s *DetectImageCodesResponse) SetBody(v *DetectImageCodesResponseBody) *Det
 }
 
 type DetectImageCroppingRequest struct {
+	// example:
+	//
+	// ["1:1"]
 	AspectRatios     *string           `json:"AspectRatios,omitempty" xml:"AspectRatios,omitempty"`
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// oss://imm-test/testcases/facetest.jpg
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageCroppingRequest) String() string {
@@ -11440,10 +13728,21 @@ func (s *DetectImageCroppingRequest) SetSourceURI(v string) *DetectImageCropping
 }
 
 type DetectImageCroppingShrinkRequest struct {
+	// example:
+	//
+	// ["1:1"]
 	AspectRatios           *string `json:"AspectRatios,omitempty" xml:"AspectRatios,omitempty"`
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// oss://imm-test/testcases/facetest.jpg
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageCroppingShrinkRequest) String() string {
@@ -11476,7 +13775,10 @@ func (s *DetectImageCroppingShrinkRequest) SetSourceURI(v string) *DetectImageCr
 
 type DetectImageCroppingResponseBody struct {
 	Croppings []*CroppingSuggestion `json:"Croppings,omitempty" xml:"Croppings,omitempty" type:"Repeated"`
-	RequestId *string               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 91AC8C98-0F36-49D2-8290-742E24D*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectImageCroppingResponseBody) String() string {
@@ -11528,8 +13830,13 @@ func (s *DetectImageCroppingResponse) SetBody(v *DetectImageCroppingResponseBody
 
 type DetectImageFacesRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI   *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageFacesRequest) String() string {
@@ -11557,8 +13864,13 @@ func (s *DetectImageFacesRequest) SetSourceURI(v string) *DetectImageFacesReques
 
 type DetectImageFacesShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI   *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageFacesShrinkRequest) String() string {
@@ -11585,8 +13897,11 @@ func (s *DetectImageFacesShrinkRequest) SetSourceURI(v string) *DetectImageFaces
 }
 
 type DetectImageFacesResponseBody struct {
-	Faces     []*Figure `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Faces []*Figure `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectImageFacesResponseBody) String() string {
@@ -11638,9 +13953,22 @@ func (s *DetectImageFacesResponse) SetBody(v *DetectImageFacesResponseBody) *Det
 
 type DetectImageLabelsRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Threshold        *float32          `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immimagetest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://imm-test/testcases/facetest.jpg
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// 1
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s DetectImageLabelsRequest) String() string {
@@ -11672,10 +14000,23 @@ func (s *DetectImageLabelsRequest) SetThreshold(v float32) *DetectImageLabelsReq
 }
 
 type DetectImageLabelsShrinkRequest struct {
-	CredentialConfigShrink *string  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName            *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string  `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Threshold              *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immimagetest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://imm-test/testcases/facetest.jpg
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// 1
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s DetectImageLabelsShrinkRequest) String() string {
@@ -11707,8 +14048,11 @@ func (s *DetectImageLabelsShrinkRequest) SetThreshold(v float32) *DetectImageLab
 }
 
 type DetectImageLabelsResponseBody struct {
-	Labels    []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 91AC8C98-0F36-49D2-8290-742E24DF1F69
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectImageLabelsResponseBody) String() string {
@@ -11760,8 +14104,16 @@ func (s *DetectImageLabelsResponse) SetBody(v *DetectImageLabelsResponseBody) *D
 
 type DetectImageScoreRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// oss://bucketname/objectname
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageScoreRequest) String() string {
@@ -11789,8 +14141,16 @@ func (s *DetectImageScoreRequest) SetSourceURI(v string) *DetectImageScoreReques
 
 type DetectImageScoreShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// oss://bucketname/objectname
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageScoreShrinkRequest) String() string {
@@ -11818,7 +14178,10 @@ func (s *DetectImageScoreShrinkRequest) SetSourceURI(v string) *DetectImageScore
 
 type DetectImageScoreResponseBody struct {
 	ImageScore *DetectImageScoreResponseBodyImageScore `json:"ImageScore,omitempty" xml:"ImageScore,omitempty" type:"Struct"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectImageScoreResponseBody) String() string {
@@ -11840,6 +14203,9 @@ func (s *DetectImageScoreResponseBody) SetRequestId(v string) *DetectImageScoreR
 }
 
 type DetectImageScoreResponseBodyImageScore struct {
+	// example:
+	//
+	// 0.6
 	OverallQualityScore *float32 `json:"OverallQualityScore,omitempty" xml:"OverallQualityScore,omitempty"`
 }
 
@@ -11887,8 +14253,18 @@ func (s *DetectImageScoreResponse) SetBody(v *DetectImageScoreResponseBody) *Det
 
 type DetectImageTextsRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object.jpg
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageTextsRequest) String() string {
@@ -11916,8 +14292,18 @@ func (s *DetectImageTextsRequest) SetSourceURI(v string) *DetectImageTextsReques
 
 type DetectImageTextsShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object.jpg
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageTextsShrinkRequest) String() string {
@@ -11946,7 +14332,10 @@ func (s *DetectImageTextsShrinkRequest) SetSourceURI(v string) *DetectImageTexts
 type DetectImageTextsResponseBody struct {
 	OCRContents []*OCRContents `json:"OCRContents,omitempty" xml:"OCRContents,omitempty" type:"Repeated"`
 	OCRTexts    *string        `json:"OCRTexts,omitempty" xml:"OCRTexts,omitempty"`
-	RequestId   *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectImageTextsResponseBody) String() string {
@@ -12060,30 +14449,90 @@ func (s *DetectMediaMetaShrinkRequest) SetSourceURI(v string) *DetectMediaMetaSh
 }
 
 type DetectMediaMetaResponseBody struct {
-	Addresses      []*Address        `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	Album          *string           `json:"Album,omitempty" xml:"Album,omitempty"`
-	AlbumArtist    *string           `json:"AlbumArtist,omitempty" xml:"AlbumArtist,omitempty"`
-	Artist         *string           `json:"Artist,omitempty" xml:"Artist,omitempty"`
-	AudioStreams   []*AudioStream    `json:"AudioStreams,omitempty" xml:"AudioStreams,omitempty" type:"Repeated"`
-	Bitrate        *int64            `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	Composer       *string           `json:"Composer,omitempty" xml:"Composer,omitempty"`
-	Duration       *float64          `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	FormatLongName *string           `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
-	FormatName     *string           `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	Language       *string           `json:"Language,omitempty" xml:"Language,omitempty"`
-	LatLong        *string           `json:"LatLong,omitempty" xml:"LatLong,omitempty"`
-	Performer      *string           `json:"Performer,omitempty" xml:"Performer,omitempty"`
-	ProduceTime    *string           `json:"ProduceTime,omitempty" xml:"ProduceTime,omitempty"`
-	ProgramCount   *int64            `json:"ProgramCount,omitempty" xml:"ProgramCount,omitempty"`
-	RequestId      *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Size           *int64            `json:"Size,omitempty" xml:"Size,omitempty"`
-	StartTime      *float64          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StreamCount    *int64            `json:"StreamCount,omitempty" xml:"StreamCount,omitempty"`
-	Subtitles      []*SubtitleStream `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	Title          *string           `json:"Title,omitempty" xml:"Title,omitempty"`
-	VideoHeight    *int64            `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
-	VideoStreams   []*VideoStream    `json:"VideoStreams,omitempty" xml:"VideoStreams,omitempty" type:"Repeated"`
-	VideoWidth     *int64            `json:"VideoWidth,omitempty" xml:"VideoWidth,omitempty"`
+	Addresses []*Address `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// unable
+	Album *string `json:"Album,omitempty" xml:"Album,omitempty"`
+	// example:
+	//
+	// unable
+	AlbumArtist *string `json:"AlbumArtist,omitempty" xml:"AlbumArtist,omitempty"`
+	// example:
+	//
+	// unable
+	Artist       *string        `json:"Artist,omitempty" xml:"Artist,omitempty"`
+	AudioStreams []*AudioStream `json:"AudioStreams,omitempty" xml:"AudioStreams,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 13164131
+	Bitrate *int64 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// example:
+	//
+	// unable
+	Composer *string `json:"Composer,omitempty" xml:"Composer,omitempty"`
+	// example:
+	//
+	// 15.263000
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// QuickTime / MOV
+	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
+	// example:
+	//
+	// mov,mp4,m4a,3gp,3g2,mj2
+	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// example:
+	//
+	// eng
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// +120.029003,+30.283095
+	LatLong *string `json:"LatLong,omitempty" xml:"LatLong,omitempty"`
+	// example:
+	//
+	// unable
+	Performer *string `json:"Performer,omitempty" xml:"Performer,omitempty"`
+	// example:
+	//
+	// 2022-04-24T02:39:57Z
+	ProduceTime *string `json:"ProduceTime,omitempty" xml:"ProduceTime,omitempty"`
+	// example:
+	//
+	// 2
+	ProgramCount *int64 `json:"ProgramCount,omitempty" xml:"ProgramCount,omitempty"`
+	// example:
+	//
+	// 2213B1A9-EB3D-4666-84E0-24980BC*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 25115517
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 0.000000
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2
+	StreamCount *int64            `json:"StreamCount,omitempty" xml:"StreamCount,omitempty"`
+	Subtitles   []*SubtitleStream `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 1920
+	VideoHeight  *int64         `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
+	VideoStreams []*VideoStream `json:"VideoStreams,omitempty" xml:"VideoStreams,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1080
+	VideoWidth *int64 `json:"VideoWidth,omitempty" xml:"VideoWidth,omitempty"`
 }
 
 func (s DetectMediaMetaResponseBody) String() string {
@@ -12244,7 +14693,17 @@ func (s *DetectMediaMetaResponse) SetBody(v *DetectMediaMetaResponseBody) *Detec
 }
 
 type DetectTextAnomalyRequest struct {
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// content
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -12267,7 +14726,13 @@ func (s *DetectTextAnomalyRequest) SetProjectName(v string) *DetectTextAnomalyRe
 }
 
 type DetectTextAnomalyResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 91AC8C98-0F36-49D2-8290-742E24DF*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// pass
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 }
 
@@ -12318,11 +14783,138 @@ func (s *DetectTextAnomalyResponse) SetBody(v *DetectTextAnomalyResponseBody) *D
 	return s
 }
 
+type EncodeBlindWatermarkRequest struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 90
+	ImageQuality *int32 `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object.jpg
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// low
+	StrengthLevel *string `json:"StrengthLevel,omitempty" xml:"StrengthLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/target-object.jpg
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+}
+
+func (s EncodeBlindWatermarkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EncodeBlindWatermarkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EncodeBlindWatermarkRequest) SetContent(v string) *EncodeBlindWatermarkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *EncodeBlindWatermarkRequest) SetImageQuality(v int32) *EncodeBlindWatermarkRequest {
+	s.ImageQuality = &v
+	return s
+}
+
+func (s *EncodeBlindWatermarkRequest) SetProjectName(v string) *EncodeBlindWatermarkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *EncodeBlindWatermarkRequest) SetSourceURI(v string) *EncodeBlindWatermarkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *EncodeBlindWatermarkRequest) SetStrengthLevel(v string) *EncodeBlindWatermarkRequest {
+	s.StrengthLevel = &v
+	return s
+}
+
+func (s *EncodeBlindWatermarkRequest) SetTargetURI(v string) *EncodeBlindWatermarkRequest {
+	s.TargetURI = &v
+	return s
+}
+
+type EncodeBlindWatermarkResponseBody struct {
+	// example:
+	//
+	// 8E0DD64B-28C6-4653-8FF7-93E4C234BCF0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EncodeBlindWatermarkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EncodeBlindWatermarkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EncodeBlindWatermarkResponseBody) SetRequestId(v string) *EncodeBlindWatermarkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EncodeBlindWatermarkResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EncodeBlindWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EncodeBlindWatermarkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EncodeBlindWatermarkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EncodeBlindWatermarkResponse) SetHeaders(v map[string]*string) *EncodeBlindWatermarkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EncodeBlindWatermarkResponse) SetStatusCode(v int32) *EncodeBlindWatermarkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EncodeBlindWatermarkResponse) SetBody(v *EncodeBlindWatermarkResponseBody) *EncodeBlindWatermarkResponse {
+	s.Body = v
+	return s
+}
+
 type ExtractDocumentTextRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceType       *string           `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceType  *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s ExtractDocumentTextRequest) String() string {
@@ -12355,9 +14947,19 @@ func (s *ExtractDocumentTextRequest) SetSourceURI(v string) *ExtractDocumentText
 
 type ExtractDocumentTextShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceType             *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceType  *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s ExtractDocumentTextShrinkRequest) String() string {
@@ -12390,7 +14992,10 @@ func (s *ExtractDocumentTextShrinkRequest) SetSourceURI(v string) *ExtractDocume
 
 type ExtractDocumentTextResponseBody struct {
 	DocumentText *string `json:"DocumentText,omitempty" xml:"DocumentText,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 94D6F994-E298-037E-8E8B-0090F27*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ExtractDocumentTextResponseBody) String() string {
@@ -12441,14 +15046,37 @@ func (s *ExtractDocumentTextResponse) SetBody(v *ExtractDocumentTextResponseBody
 }
 
 type FuzzyQueryRequest struct {
-	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults  *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order       *string   `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Query       *string   `json:"Query,omitempty" xml:"Query,omitempty"`
-	Sort        *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	WithFields  []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// 1
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// asc,desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// Size,Filename
+	Sort       *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
 
 func (s FuzzyQueryRequest) String() string {
@@ -12500,12 +15128,35 @@ func (s *FuzzyQueryRequest) SetWithFields(v []*string) *FuzzyQueryRequest {
 }
 
 type FuzzyQueryShrinkRequest struct {
-	DatasetName      *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults       *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order            *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName      *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// 1
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// asc,desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// Size,Filename
 	Sort             *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
 }
@@ -12559,8 +15210,16 @@ func (s *FuzzyQueryShrinkRequest) SetWithFieldsShrink(v string) *FuzzyQueryShrin
 }
 
 type FuzzyQueryResponseBody struct {
-	Files     []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalHits *int64  `json:"TotalHits,omitempty" xml:"TotalHits,omitempty"`
 }
@@ -12623,18 +15282,41 @@ func (s *FuzzyQueryResponse) SetBody(v *FuzzyQueryResponseBody) *FuzzyQueryRespo
 }
 
 type GenerateVideoPlaylistRequest struct {
-	CredentialConfig *CredentialConfig                              `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	MasterURI        *string                                        `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
-	Notification     *Notification                                  `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	OverwritePolicy  *string                                        `json:"OverwritePolicy,omitempty" xml:"OverwritePolicy,omitempty"`
-	ProjectName      *string                                        `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceDuration   *float32                                       `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
-	SourceStartTime  *float32                                       `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
-	SourceSubtitles  []*GenerateVideoPlaylistRequestSourceSubtitles `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty" type:"Repeated"`
-	SourceURI        *string                                        `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Tags             map[string]*string                             `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Targets          []*GenerateVideoPlaylistRequestTargets         `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	UserData         *string                                        `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// example:
+	//
+	// oss://bucket/object/master.m3u8
+	MasterURI       *string       `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	Notification    *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	OverwritePolicy *string       `json:"OverwritePolicy,omitempty" xml:"OverwritePolicy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 0
+	SourceDuration *float32 `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
+	// example:
+	//
+	// 0
+	SourceStartTime *float32                                       `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
+	SourceSubtitles []*GenerateVideoPlaylistRequestSourceSubtitles `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://imm-test/testcases/video.mp4
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// {"key1": "value1", "key2": "value2"}
+	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	Targets  []*GenerateVideoPlaylistRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	UserData *string                                `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GenerateVideoPlaylistRequest) String() string {
@@ -12706,8 +15388,12 @@ func (s *GenerateVideoPlaylistRequest) SetUserData(v string) *GenerateVideoPlayl
 }
 
 type GenerateVideoPlaylistRequestSourceSubtitles struct {
+	// example:
+	//
+	// eng
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	URI      *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// This parameter is required.
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s GenerateVideoPlaylistRequestSourceSubtitles) String() string {
@@ -12729,15 +15415,27 @@ func (s *GenerateVideoPlaylistRequestSourceSubtitles) SetURI(v string) *Generate
 }
 
 type GenerateVideoPlaylistRequestTargets struct {
-	Audio            *TargetAudio       `json:"Audio,omitempty" xml:"Audio,omitempty"`
-	Duration         *float32           `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InitialSegments  []*float32         `json:"InitialSegments,omitempty" xml:"InitialSegments,omitempty" type:"Repeated"`
+	Audio *TargetAudio `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	// example:
+	//
+	// 5
+	Duration        *float32   `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InitialSegments []*float32 `json:"InitialSegments,omitempty" xml:"InitialSegments,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30.0
 	InitialTranscode *float32           `json:"InitialTranscode,omitempty" xml:"InitialTranscode,omitempty"`
 	Subtitle         *TargetSubtitle    `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
 	Tags             map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TranscodeAhead   *int32             `json:"TranscodeAhead,omitempty" xml:"TranscodeAhead,omitempty"`
-	URI              *string            `json:"URI,omitempty" xml:"URI,omitempty"`
-	Video            *TargetVideo       `json:"Video,omitempty" xml:"Video,omitempty"`
+	// example:
+	//
+	// 3
+	TranscodeAhead *int32 `json:"TranscodeAhead,omitempty" xml:"TranscodeAhead,omitempty"`
+	// example:
+	//
+	// oss://imm-test/testcases/video
+	URI   *string      `json:"URI,omitempty" xml:"URI,omitempty"`
+	Video *TargetVideo `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 
 func (s GenerateVideoPlaylistRequestTargets) String() string {
@@ -12794,18 +15492,41 @@ func (s *GenerateVideoPlaylistRequestTargets) SetVideo(v *TargetVideo) *Generate
 }
 
 type GenerateVideoPlaylistShrinkRequest struct {
-	CredentialConfigShrink *string  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	MasterURI              *string  `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
-	NotificationShrink     *string  `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	OverwritePolicy        *string  `json:"OverwritePolicy,omitempty" xml:"OverwritePolicy,omitempty"`
-	ProjectName            *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceDuration         *float32 `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
-	SourceStartTime        *float32 `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
-	SourceSubtitlesShrink  *string  `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty"`
-	SourceURI              *string  `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TagsShrink             *string  `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetsShrink          *string  `json:"Targets,omitempty" xml:"Targets,omitempty"`
-	UserData               *string  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// example:
+	//
+	// oss://bucket/object/master.m3u8
+	MasterURI          *string `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	OverwritePolicy    *string `json:"OverwritePolicy,omitempty" xml:"OverwritePolicy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 0
+	SourceDuration *float32 `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
+	// example:
+	//
+	// 0
+	SourceStartTime       *float32 `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
+	SourceSubtitlesShrink *string  `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://imm-test/testcases/video.mp4
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// example:
+	//
+	// {"key1": "value1", "key2": "value2"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	TargetsShrink *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
+	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GenerateVideoPlaylistShrinkRequest) String() string {
@@ -12881,11 +15602,16 @@ type GenerateVideoPlaylistResponseBody struct {
 	AudioPlaylist []*GenerateVideoPlaylistResponseBodyAudioPlaylist `json:"AudioPlaylist,omitempty" xml:"AudioPlaylist,omitempty" type:"Repeated"`
 	Duration      *float32                                          `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	MasterURI     *string                                           `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CA995EFD-083D-4F40-BE8A-BDF75FFF*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 转码文件列表。
 	SubtitlePlaylist []*GenerateVideoPlaylistResponseBodySubtitlePlaylist `json:"SubtitlePlaylist,omitempty" xml:"SubtitlePlaylist,omitempty" type:"Repeated"`
-	Token            *string                                              `json:"Token,omitempty" xml:"Token,omitempty"`
-	URI              *string                                              `json:"URI,omitempty" xml:"URI,omitempty"`
+	// example:
+	//
+	// 92376fbb-171f-4259-913f-705f7ee0****
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	// 转码文件列表。
 	VideoPlaylist []*GenerateVideoPlaylistResponseBodyVideoPlaylist `json:"VideoPlaylist,omitempty" xml:"VideoPlaylist,omitempty" type:"Repeated"`
 }
@@ -12928,11 +15654,6 @@ func (s *GenerateVideoPlaylistResponseBody) SetToken(v string) *GenerateVideoPla
 	return s
 }
 
-func (s *GenerateVideoPlaylistResponseBody) SetURI(v string) *GenerateVideoPlaylistResponseBody {
-	s.URI = &v
-	return s
-}
-
 func (s *GenerateVideoPlaylistResponseBody) SetVideoPlaylist(v []*GenerateVideoPlaylistResponseBodyVideoPlaylist) *GenerateVideoPlaylistResponseBody {
 	s.VideoPlaylist = v
 	return s
@@ -12941,8 +15662,16 @@ func (s *GenerateVideoPlaylistResponseBody) SetVideoPlaylist(v []*GenerateVideoP
 type GenerateVideoPlaylistResponseBodyAudioPlaylist struct {
 	Channels *int32 `json:"Channels,omitempty" xml:"Channels,omitempty"`
 	// 转码生成的Token。用于LiveTranscoding访问的参数。
+	//
+	// example:
+	//
+	// affe0c6042f09722fec95a21b8b******
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	// 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+	//
+	// example:
+	//
+	// oss://imm-test/testcases/video.m3u8
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -12971,12 +15700,28 @@ func (s *GenerateVideoPlaylistResponseBodyAudioPlaylist) SetURI(v string) *Gener
 
 type GenerateVideoPlaylistResponseBodySubtitlePlaylist struct {
 	// 字幕流编号，从0开始。
+	//
+	// example:
+	//
+	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
 	// 视频源中字幕流的语言。
+	//
+	// example:
+	//
+	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// 转码生成的Token。用于LiveTranscoding访问的参数。
+	//
+	// example:
+	//
+	// affe0c6042f09722fec95a21b8b******
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	// 输出m3u8的OSS地址。地址规则为 Target.URI + “_” + Index + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+	//
+	// example:
+	//
+	// oss://imm-test/testcases/vide_0.m3u8
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -13012,8 +15757,16 @@ type GenerateVideoPlaylistResponseBodyVideoPlaylist struct {
 	FrameRate  *string `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
 	// 转码生成的Token。用于LiveTranscoding访问的参数。
+	//
+	// example:
+	//
+	// affe0c6042f09722fec95a21b8b******
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	// 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+	//
+	// example:
+	//
+	// oss://imm-test/testcases/video.m3u8
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -13075,23 +15828,60 @@ func (s *GenerateVideoPlaylistResponse) SetBody(v *GenerateVideoPlaylistResponse
 }
 
 type GenerateWebofficeTokenRequest struct {
+	// example:
+	//
+	// false
 	CachePreview     *bool             `json:"CachePreview,omitempty" xml:"CachePreview,omitempty"`
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ExternalUploaded *bool             `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
-	Filename         *string           `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	Hidecmb          *bool             `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
+	// example:
+	//
+	// false
+	ExternalUploaded *bool `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
+	// example:
+	//
+	// test.pptx
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// example:
+	//
+	// false
+	Hidecmb *bool `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
-	Notification    *Notification        `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	NotifyTopicName *string              `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	Password        *string              `json:"Password,omitempty" xml:"Password,omitempty"`
-	Permission      *WebofficePermission `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	PreviewPages    *int64               `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
-	ProjectName     *string              `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Referer         *string              `json:"Referer,omitempty" xml:"Referer,omitempty"`
-	SourceURI       *string              `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	User            *WebofficeUser       `json:"User,omitempty" xml:"User,omitempty"`
-	UserData        *string              `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	Watermark       *WebofficeWatermark  `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// example:
+	//
+	// topic1
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// example:
+	//
+	// 123456
+	Password   *string              `json:"Password,omitempty" xml:"Password,omitempty"`
+	Permission *WebofficePermission `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// example:
+	//
+	// 5
+	PreviewPages *int64 `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// *
+	Referer *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://imm-test/test.pptx
+	SourceURI *string        `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	User      *WebofficeUser `json:"User,omitempty" xml:"User,omitempty"`
+	// example:
+	//
+	// {"file_id": "abc"}
+	UserData  *string             `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Watermark *WebofficeWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
 }
 
 func (s GenerateWebofficeTokenRequest) String() string {
@@ -13183,23 +15973,60 @@ func (s *GenerateWebofficeTokenRequest) SetWatermark(v *WebofficeWatermark) *Gen
 }
 
 type GenerateWebofficeTokenShrinkRequest struct {
+	// example:
+	//
+	// false
 	CachePreview           *bool   `json:"CachePreview,omitempty" xml:"CachePreview,omitempty"`
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ExternalUploaded       *bool   `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
-	Filename               *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	Hidecmb                *bool   `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
+	// example:
+	//
+	// false
+	ExternalUploaded *bool `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
+	// example:
+	//
+	// test.pptx
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// example:
+	//
+	// false
+	Hidecmb *bool `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	NotifyTopicName    *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	Password           *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	PermissionShrink   *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	PreviewPages       *int64  `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Referer            *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
-	SourceURI          *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	UserShrink         *string `json:"User,omitempty" xml:"User,omitempty"`
-	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	WatermarkShrink    *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+	// example:
+	//
+	// topic1
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// example:
+	//
+	// 123456
+	Password         *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	PermissionShrink *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// example:
+	//
+	// 5
+	PreviewPages *int64 `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// *
+	Referer *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://imm-test/test.pptx
+	SourceURI  *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	UserShrink *string `json:"User,omitempty" xml:"User,omitempty"`
+	// example:
+	//
+	// {"file_id": "abc"}
+	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	WatermarkShrink *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
 }
 
 func (s GenerateWebofficeTokenShrinkRequest) String() string {
@@ -13291,12 +16118,30 @@ func (s *GenerateWebofficeTokenShrinkRequest) SetWatermarkShrink(v string) *Gene
 }
 
 type GenerateWebofficeTokenResponseBody struct {
-	AccessToken             *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	AccessTokenExpiredTime  *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
-	RefreshToken            *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// example:
+	//
+	// 2d73dd5d87524c5e8a194c3eb5********
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// example:
+	//
+	// 2021-08-30T13:13:11.347146982Z
+	AccessTokenExpiredTime *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
+	// example:
+	//
+	// e374995ec532432bb678074d36********
+	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// example:
+	//
+	// 2021-08-31T12:43:11.347146982Z
 	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	WebofficeURL            *string `json:"WebofficeURL,omitempty" xml:"WebofficeURL,omitempty"`
+	// example:
+	//
+	// 1759315A-CB33-0A75-A72B-62D7********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// https://office-hl.imm.aliyuncs.com/office/s/dd221b2cdb44fb66e9070d1d70a8b9bbb6d6fff7?_w_tokentype=1
+	WebofficeURL *string `json:"WebofficeURL,omitempty" xml:"WebofficeURL,omitempty"`
 }
 
 func (s GenerateWebofficeTokenResponseBody) String() string {
@@ -13367,7 +16212,17 @@ func (s *GenerateWebofficeTokenResponse) SetBody(v *GenerateWebofficeTokenRespon
 }
 
 type GetBatchRequest struct {
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// batch-4eb9223f-3e88-42d3-a578-3f2852******
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -13390,8 +16245,11 @@ func (s *GetBatchRequest) SetProjectName(v string) *GetBatchRequest {
 }
 
 type GetBatchResponseBody struct {
-	Batch     *DataIngestion `json:"Batch,omitempty" xml:"Batch,omitempty"`
-	RequestId *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Batch *DataIngestion `json:"Batch,omitempty" xml:"Batch,omitempty"`
+	// example:
+	//
+	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetBatchResponseBody) String() string {
@@ -13442,9 +16300,24 @@ func (s *GetBatchResponse) SetBody(v *GetBatchResponseBody) *GetBatchResponse {
 }
 
 type GetBindingRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s GetBindingRequest) String() string {
@@ -13471,8 +16344,11 @@ func (s *GetBindingRequest) SetURI(v string) *GetBindingRequest {
 }
 
 type GetBindingResponseBody struct {
-	Binding   *Binding `json:"Binding,omitempty" xml:"Binding,omitempty"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Binding *Binding `json:"Binding,omitempty" xml:"Binding,omitempty"`
+	// example:
+	//
+	// AEFCD467-C928-4A36-951A-6EB5A592****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetBindingResponseBody) String() string {
@@ -13522,10 +16398,155 @@ func (s *GetBindingResponse) SetBody(v *GetBindingResponseBody) *GetBindingRespo
 	return s
 }
 
+type GetDRMLicenseRequest struct {
+	// example:
+	//
+	// AESzB8SQgpACioSEJ3yqiFwruAOUgIvlCx*****
+	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// example:
+	//
+	// http://1111111111.mns.cn-hangzhou.aliyuncs.com
+	NotifyEndpoint *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	// example:
+	//
+	// topic1
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// widevine
+	ProtectionSystem *string `json:"ProtectionSystem,omitempty" xml:"ProtectionSystem,omitempty"`
+}
+
+func (s GetDRMLicenseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDRMLicenseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDRMLicenseRequest) SetKeyId(v string) *GetDRMLicenseRequest {
+	s.KeyId = &v
+	return s
+}
+
+func (s *GetDRMLicenseRequest) SetNotifyEndpoint(v string) *GetDRMLicenseRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *GetDRMLicenseRequest) SetNotifyTopicName(v string) *GetDRMLicenseRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *GetDRMLicenseRequest) SetProjectName(v string) *GetDRMLicenseRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetDRMLicenseRequest) SetProtectionSystem(v string) *GetDRMLicenseRequest {
+	s.ProtectionSystem = &v
+	return s
+}
+
+type GetDRMLicenseResponseBody struct {
+	// example:
+	//
+	// IEEE1284DeviceID
+	DeviceInfo *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// example:
+	//
+	// AESzB8SQgpACioSEJ3yqiFwruAOUgIvlCx*****
+	License *string `json:"License,omitempty" xml:"License,omitempty"`
+	// example:
+	//
+	// 896ABAD1-C452-4BED-B5E0-302955F*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	States *int64 `json:"States,omitempty" xml:"States,omitempty"`
+}
+
+func (s GetDRMLicenseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDRMLicenseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDRMLicenseResponseBody) SetDeviceInfo(v string) *GetDRMLicenseResponseBody {
+	s.DeviceInfo = &v
+	return s
+}
+
+func (s *GetDRMLicenseResponseBody) SetLicense(v string) *GetDRMLicenseResponseBody {
+	s.License = &v
+	return s
+}
+
+func (s *GetDRMLicenseResponseBody) SetRequestId(v string) *GetDRMLicenseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDRMLicenseResponseBody) SetStates(v int64) *GetDRMLicenseResponseBody {
+	s.States = &v
+	return s
+}
+
+type GetDRMLicenseResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDRMLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDRMLicenseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDRMLicenseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDRMLicenseResponse) SetHeaders(v map[string]*string) *GetDRMLicenseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDRMLicenseResponse) SetStatusCode(v int32) *GetDRMLicenseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDRMLicenseResponse) SetBody(v *GetDRMLicenseResponseBody) *GetDRMLicenseResponse {
+	s.Body = v
+	return s
+}
+
 type GetDatasetRequest struct {
-	DatasetName    *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ProjectName    *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	WithStatistics *bool   `json:"WithStatistics,omitempty" xml:"WithStatistics,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// true
+	WithStatistics *bool `json:"WithStatistics,omitempty" xml:"WithStatistics,omitempty"`
 }
 
 func (s GetDatasetRequest) String() string {
@@ -13552,8 +16573,11 @@ func (s *GetDatasetRequest) SetWithStatistics(v bool) *GetDatasetRequest {
 }
 
 type GetDatasetResponseBody struct {
-	Dataset   *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Dataset *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	// example:
+	//
+	// 6D74B3A9-5AC0-49F9-914D-E01589D3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDatasetResponseBody) String() string {
@@ -13603,9 +16627,213 @@ func (s *GetDatasetResponse) SetBody(v *GetDatasetResponseBody) *GetDatasetRespo
 	return s
 }
 
+type GetDecodeBlindWatermarkResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DecodeBlindWatermark-c09b0943-ed79-4983-8dbe-7a882574****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DecodeBlindWatermark
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s GetDecodeBlindWatermarkResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDecodeBlindWatermarkResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDecodeBlindWatermarkResultRequest) SetProjectName(v string) *GetDecodeBlindWatermarkResultRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultRequest) SetTaskId(v string) *GetDecodeBlindWatermarkResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultRequest) SetTaskType(v string) *GetDecodeBlindWatermarkResultRequest {
+	s.TaskType = &v
+	return s
+}
+
+type GetDecodeBlindWatermarkResultResponseBody struct {
+	// example:
+	//
+	// ResourceNotFound
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2024-03-03T09:45:56.87Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2C2-1I0EG57VR37J4rQ8oKG6C9*****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// The specified resource project is not found.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 93126E40-0296-4129-95E3-AFAC709372E5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2024-03-03T09:44:31.029Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Succeeded
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// DecodeBlindWatermark-c09b0943-ed79-4983-8dbe-7a882574****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// DecodeBlindWatermark
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s GetDecodeBlindWatermarkResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDecodeBlindWatermarkResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDecodeBlindWatermarkResultResponseBody) SetCode(v string) *GetDecodeBlindWatermarkResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultResponseBody) SetContent(v string) *GetDecodeBlindWatermarkResultResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultResponseBody) SetEndTime(v string) *GetDecodeBlindWatermarkResultResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultResponseBody) SetEventId(v string) *GetDecodeBlindWatermarkResultResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultResponseBody) SetMessage(v string) *GetDecodeBlindWatermarkResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultResponseBody) SetProjectName(v string) *GetDecodeBlindWatermarkResultResponseBody {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultResponseBody) SetRequestId(v string) *GetDecodeBlindWatermarkResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultResponseBody) SetStartTime(v string) *GetDecodeBlindWatermarkResultResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultResponseBody) SetStatus(v string) *GetDecodeBlindWatermarkResultResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultResponseBody) SetTaskId(v string) *GetDecodeBlindWatermarkResultResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultResponseBody) SetTaskType(v string) *GetDecodeBlindWatermarkResultResponseBody {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultResponseBody) SetUserData(v string) *GetDecodeBlindWatermarkResultResponseBody {
+	s.UserData = &v
+	return s
+}
+
+type GetDecodeBlindWatermarkResultResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDecodeBlindWatermarkResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDecodeBlindWatermarkResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDecodeBlindWatermarkResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDecodeBlindWatermarkResultResponse) SetHeaders(v map[string]*string) *GetDecodeBlindWatermarkResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultResponse) SetStatusCode(v int32) *GetDecodeBlindWatermarkResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDecodeBlindWatermarkResultResponse) SetBody(v *GetDecodeBlindWatermarkResultResponseBody) *GetDecodeBlindWatermarkResultResponse {
+	s.Body = v
+	return s
+}
+
 type GetFigureClusterRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ObjectId    *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Cluster-1f2e1a2c-d5ee-4bc5-84f6-fef94ea****
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -13634,7 +16862,10 @@ func (s *GetFigureClusterRequest) SetProjectName(v string) *GetFigureClusterRequ
 
 type GetFigureClusterResponseBody struct {
 	FigureCluster *FigureCluster `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
-	RequestId     *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5F74C5C9-5AC0-49F9-914D-E01589D3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetFigureClusterResponseBody) String() string {
@@ -13685,9 +16916,12 @@ func (s *GetFigureClusterResponse) SetBody(v *GetFigureClusterResponseBody) *Get
 }
 
 type GetFileMetaRequest struct {
+	// This parameter is required.
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// This parameter is required.
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s GetFileMetaRequest) String() string {
@@ -13714,7 +16948,10 @@ func (s *GetFileMetaRequest) SetURI(v string) *GetFileMetaRequest {
 }
 
 type GetFileMetaResponseBody struct {
-	Files     []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7F84C6D9-5AC0-49F9-914D-F02678E3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13766,9 +17003,24 @@ func (s *GetFileMetaResponse) SetBody(v *GetFileMetaResponseBody) *GetFileMetaRe
 }
 
 type GetImageModerationResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ImageModeration-ff207203-3f93-4645-a041-7b8f0f******
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ImageModeration
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s GetImageModerationResultRequest) String() string {
@@ -13795,18 +17047,55 @@ func (s *GetImageModerationResultRequest) SetTaskType(v string) *GetImageModerat
 }
 
 type GetImageModerationResultResponseBody struct {
-	Code             *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	EndTime          *string                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EventId          *string                                               `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// ResourceNotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 2023-04-03T09:44:32Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1B6-1XBMX3BixLMILvXVGtlkr******
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// The specified resource TaskId is not found.
 	Message          *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	ModerationResult *GetImageModerationResultResponseBodyModerationResult `json:"ModerationResult,omitempty" xml:"ModerationResult,omitempty" type:"Struct"`
-	ProjectName      *string                                               `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime        *string                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status           *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId           *string                                               `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType         *string                                               `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	UserData         *string                                               `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// E6A120B1-BEB3-0F63-A7C2-0783B6******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2023-04-03T09:44:31.029Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Succeeded
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ImageModeration-ff207203-3f93-4645-a041-7b8f0f******
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// ImageModeration
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//       "fileId": "123"
+	//
+	// }
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetImageModerationResultResponseBody) String() string {
@@ -13880,8 +17169,14 @@ func (s *GetImageModerationResultResponseBody) SetUserData(v string) *GetImageMo
 type GetImageModerationResultResponseBodyModerationResult struct {
 	Categories []*string                                                   `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
 	Frames     *GetImageModerationResultResponseBodyModerationResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Struct"`
-	Suggestion *string                                                     `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	URI        *string                                                     `json:"URI,omitempty" xml:"URI,omitempty"`
+	// example:
+	//
+	// block
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test-object
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s GetImageModerationResultResponseBodyModerationResult) String() string {
@@ -13914,7 +17209,10 @@ func (s *GetImageModerationResultResponseBodyModerationResult) SetURI(v string) 
 
 type GetImageModerationResultResponseBodyModerationResultFrames struct {
 	BlockFrames []*GetImageModerationResultResponseBodyModerationResultFramesBlockFrames `json:"BlockFrames,omitempty" xml:"BlockFrames,omitempty" type:"Repeated"`
-	TotalCount  *int32                                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 30
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetImageModerationResultResponseBodyModerationResultFrames) String() string {
@@ -13936,9 +17234,22 @@ func (s *GetImageModerationResultResponseBodyModerationResultFrames) SetTotalCou
 }
 
 type GetImageModerationResultResponseBodyModerationResultFramesBlockFrames struct {
-	Label  *string  `json:"Label,omitempty" xml:"Label,omitempty"`
-	Offset *int32   `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Rate   *float64 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//       "test": "val"
+	//
+	// }
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// 2
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// example:
+	//
+	// 30
+	Rate *float64 `json:"Rate,omitempty" xml:"Rate,omitempty"`
 }
 
 func (s GetImageModerationResultResponseBodyModerationResultFramesBlockFrames) String() string {
@@ -13994,6 +17305,11 @@ func (s *GetImageModerationResultResponse) SetBody(v *GetImageModerationResultRe
 }
 
 type GetOSSBucketAttachmentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// examplebucket
 	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
 }
 
@@ -14013,9 +17329,15 @@ func (s *GetOSSBucketAttachmentRequest) SetOSSBucket(v string) *GetOSSBucketAtta
 type GetOSSBucketAttachmentResponseBody struct {
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 5F74C5C9-5AC0-49F9-914D-E01589D3****
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetOSSBucketAttachmentResponseBody) String() string {
@@ -14081,8 +17403,16 @@ func (s *GetOSSBucketAttachmentResponse) SetBody(v *GetOSSBucketAttachmentRespon
 }
 
 type GetProjectRequest struct {
-	ProjectName    *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	WithStatistics *bool   `json:"WithStatistics,omitempty" xml:"WithStatistics,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// true
+	WithStatistics *bool `json:"WithStatistics,omitempty" xml:"WithStatistics,omitempty"`
 }
 
 func (s GetProjectRequest) String() string {
@@ -14104,8 +17434,11 @@ func (s *GetProjectRequest) SetWithStatistics(v bool) *GetProjectRequest {
 }
 
 type GetProjectResponseBody struct {
-	Project   *Project `json:"Project,omitempty" xml:"Project,omitempty"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Project *Project `json:"Project,omitempty" xml:"Project,omitempty"`
+	// example:
+	//
+	// 5A022F78-B9A8-4ACC-BB6B-B3597553
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetProjectResponseBody) String() string {
@@ -14156,8 +17489,23 @@ func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectRespo
 }
 
 type GetStoryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ObjectId    *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// id1
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -14185,6 +17533,9 @@ func (s *GetStoryRequest) SetProjectName(v string) *GetStoryRequest {
 }
 
 type GetStoryResponseBody struct {
+	// example:
+	//
+	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Story     *Story  `json:"Story,omitempty" xml:"Story,omitempty"`
 }
@@ -14237,10 +17588,25 @@ func (s *GetStoryResponse) SetBody(v *GetStoryResponseBody) *GetStoryResponse {
 }
 
 type GetTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
 	ProjectName       *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	RequestDefinition *bool   `json:"RequestDefinition,omitempty" xml:"RequestDefinition,omitempty"`
-	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType          *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c2b277b9-0d30-4882-ad6d-ad661382****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VideoLabelClassification
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s GetTaskRequest) String() string {
@@ -14272,20 +17638,56 @@ func (s *GetTaskRequest) SetTaskType(v string) *GetTaskRequest {
 }
 
 type GetTaskResponseBody struct {
-	Code                  *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	EndTime               *string                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EventId               *string                `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	Message               *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Progress              *int32                 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	ProjectName           *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId             *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime             *string                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status                *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                  map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TaskId                *string                `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskRequestDefinition *string                `json:"TaskRequestDefinition,omitempty" xml:"TaskRequestDefinition,omitempty"`
-	TaskType              *string                `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	UserData              *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// ResourceNotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 2021-12-24T03:01:49.480109219Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2F6-1Bz99Xi93EnRpNEyLudILJm****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// The specified resource project is not found.
+	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Progress *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 2C5C1E0F-D8B8-4DA0-8127-EC32C771****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2021-12-24T03:01:41.662060377Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// {"test": "val1"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// c2b277b9-0d30-4882-ad6d-ad661382****
+	TaskId                *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskRequestDefinition *string `json:"TaskRequestDefinition,omitempty" xml:"TaskRequestDefinition,omitempty"`
+	// example:
+	//
+	// VideoLabelClassification
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetTaskResponseBody) String() string {
@@ -14396,7 +17798,17 @@ func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
 }
 
 type GetTriggerRequest struct {
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// trigger-9f72636a-0f0c-4baf-ae78-38b27b******
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -14419,6 +17831,9 @@ func (s *GetTriggerRequest) SetProjectName(v string) *GetTriggerRequest {
 }
 
 type GetTriggerResponseBody struct {
+	// example:
+	//
+	// 4A7A2D0E-D8B8-4DA0-8127-EB32C6******
 	RequestId *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Trigger   *DataIngestion `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
 }
@@ -14471,9 +17886,24 @@ func (s *GetTriggerResponse) SetBody(v *GetTriggerResponseBody) *GetTriggerRespo
 }
 
 type GetVideoLabelClassificationResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VideoLabelClassification-2f157087-91df-4fda-8c3e-232407ec****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VideoLabelClassification
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s GetVideoLabelClassificationResultRequest) String() string {
@@ -14500,18 +17930,51 @@ func (s *GetVideoLabelClassificationResultRequest) SetTaskType(v string) *GetVid
 }
 
 type GetVideoLabelClassificationResultResponseBody struct {
-	Code        *string  `json:"Code,omitempty" xml:"Code,omitempty"`
-	EndTime     *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EventId     *string  `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	Labels      []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Message     *string  `json:"Message,omitempty" xml:"Message,omitempty"`
-	ProjectName *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId   *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime   *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status      *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId      *string  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType    *string  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	UserData    *string  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// ResourceNotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 2021-12-24T03:00:42.134971294Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2F6-1Bz99Xi93EnRpNEyLudILJm****
+	EventId *string  `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	Labels  []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// The specified resource project is not found.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 7F84C6D9-5AC0-49F9-914D-F02678E3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2021-12-24T03:00:38.892462383Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Succeeded
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// VideoLabelClassification-2f157087-91df-4fda-8c3e-232407ec****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// VideoLabelClassification
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetVideoLabelClassificationResultResponseBody) String() string {
@@ -14612,9 +18075,24 @@ func (s *GetVideoLabelClassificationResultResponse) SetBody(v *GetVideoLabelClas
 }
 
 type GetVideoModerationResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VideoModeration-d0f0df1d-531d-4ab4-b353-e7f475******
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VideoModeration
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s GetVideoModerationResultRequest) String() string {
@@ -14641,18 +18119,48 @@ func (s *GetVideoModerationResultRequest) SetTaskType(v string) *GetVideoModerat
 }
 
 type GetVideoModerationResultResponseBody struct {
-	Code             *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	EndTime          *string                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EventId          *string                                               `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// ResourceNotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 2023-04-03T10:20:56.87Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 05C-1XBQvsG2Tn5kBx2dUWo43******
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// The specified resource TaskId is not found.
 	Message          *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	ModerationResult *GetVideoModerationResultResponseBodyModerationResult `json:"ModerationResult,omitempty" xml:"ModerationResult,omitempty" type:"Struct"`
-	ProjectName      *string                                               `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime        *string                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status           *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId           *string                                               `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType         *string                                               `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	UserData         *string                                               `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// VideoModeration-d0f0df1d-531d-4ab4-b353-e7f475******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2023-04-03T10:20:41.432Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Succeeded
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// VideoModeration-d0f0df1d-531d-4ab4-b353-e7f4750******
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// VideoModeration
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetVideoModerationResultResponseBody) String() string {
@@ -14726,8 +18234,14 @@ func (s *GetVideoModerationResultResponseBody) SetUserData(v string) *GetVideoMo
 type GetVideoModerationResultResponseBodyModerationResult struct {
 	Categories []*string                                                   `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
 	Frames     *GetVideoModerationResultResponseBodyModerationResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Struct"`
-	Suggestion *string                                                     `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	URI        *string                                                     `json:"URI,omitempty" xml:"URI,omitempty"`
+	// example:
+	//
+	// block
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test-object
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s GetVideoModerationResultResponseBodyModerationResult) String() string {
@@ -14760,7 +18274,10 @@ func (s *GetVideoModerationResultResponseBodyModerationResult) SetURI(v string) 
 
 type GetVideoModerationResultResponseBodyModerationResultFrames struct {
 	BlockFrames []*GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames `json:"BlockFrames,omitempty" xml:"BlockFrames,omitempty" type:"Repeated"`
-	TotalCount  *int32                                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 12
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetVideoModerationResultResponseBodyModerationResultFrames) String() string {
@@ -14782,9 +18299,18 @@ func (s *GetVideoModerationResultResponseBodyModerationResultFrames) SetTotalCou
 }
 
 type GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames struct {
-	Label  *string  `json:"Label,omitempty" xml:"Label,omitempty"`
-	Offset *int32   `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Rate   *float64 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// example:
+	//
+	// {"teat":"val"}
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// 1
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// example:
+	//
+	// 10
+	Rate *float64 `json:"Rate,omitempty" xml:"Rate,omitempty"`
 }
 
 func (s GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames) String() string {
@@ -14840,10 +18366,22 @@ func (s *GetVideoModerationResultResponse) SetBody(v *GetVideoModerationResultRe
 }
 
 type IndexFileMetaRequest struct {
-	DatasetName  *string       `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	File         *InputFile    `json:"File,omitempty" xml:"File,omitempty"`
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName  *string       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s IndexFileMetaRequest) String() string {
@@ -14874,11 +18412,28 @@ func (s *IndexFileMetaRequest) SetProjectName(v string) *IndexFileMetaRequest {
 	return s
 }
 
+func (s *IndexFileMetaRequest) SetUserData(v string) *IndexFileMetaRequest {
+	s.UserData = &v
+	return s
+}
+
 type IndexFileMetaShrinkRequest struct {
-	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	FileShrink         *string `json:"File,omitempty" xml:"File,omitempty"`
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s IndexFileMetaShrinkRequest) String() string {
@@ -14909,8 +18464,19 @@ func (s *IndexFileMetaShrinkRequest) SetProjectName(v string) *IndexFileMetaShri
 	return s
 }
 
+func (s *IndexFileMetaShrinkRequest) SetUserData(v string) *IndexFileMetaShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
 type IndexFileMetaResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 30F-1D8FxFzDXKJH9YQdve4CjR****
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14962,12 +18528,35 @@ func (s *IndexFileMetaResponse) SetBody(v *IndexFileMetaResponseBody) *IndexFile
 }
 
 type ListBatchesRequest struct {
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 2020-11-11T06:51:17.5Z
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// example:
+	//
+	// Succeed
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// test=val1
 	TagSelector *string `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
 }
 
@@ -15015,9 +18604,15 @@ func (s *ListBatchesRequest) SetTagSelector(v string) *ListBatchesRequest {
 }
 
 type ListBatchesResponseBody struct {
-	Batches   []*DataIngestion `json:"Batches,omitempty" xml:"Batches,omitempty" type:"Repeated"`
-	NextToken *string          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Batches []*DataIngestion `json:"Batches,omitempty" xml:"Batches,omitempty" type:"Repeated"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpw****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// FEDC9B1F-30F2-4C1F-8ED2-B7860187****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListBatchesResponseBody) String() string {
@@ -15073,9 +18668,25 @@ func (s *ListBatchesResponse) SetBody(v *ListBatchesResponseBody) *ListBatchesRe
 }
 
 type ListBindingsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// immtest:dataset001:examplebucket01
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -15108,9 +18719,15 @@ func (s *ListBindingsRequest) SetProjectName(v string) *ListBindingsRequest {
 }
 
 type ListBindingsResponseBody struct {
-	Bindings  []*Binding `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
-	NextToken *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Bindings []*Binding `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+	// example:
+	//
+	// immtest:dataset001:examplebucket01
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// EFDFD356-C928-4A36-951A-6EB5A592****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListBindingsResponseBody) String() string {
@@ -15166,9 +18783,23 @@ func (s *ListBindingsResponse) SetBody(v *ListBindingsResponseBody) *ListBinding
 }
 
 type ListDatasetsRequest struct {
-	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Prefix      *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// example:
+	//
+	// 1
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 12345678:immtest:dataset002
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// dataset
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -15201,9 +18832,15 @@ func (s *ListDatasetsRequest) SetProjectName(v string) *ListDatasetsRequest {
 }
 
 type ListDatasetsResponseBody struct {
-	Datasets  []*Dataset `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
-	NextToken *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Datasets []*Dataset `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 12345678:immtest:dataset002
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// FEEDE356-C928-4A36-951A-6EB5A592****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDatasetsResponseBody) String() string {
@@ -15261,7 +18898,10 @@ func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDataset
 type ListProjectsRequest struct {
 	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Prefix     *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// example:
+	//
+	// immtest
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 }
 
 func (s ListProjectsRequest) String() string {
@@ -15290,7 +18930,10 @@ func (s *ListProjectsRequest) SetPrefix(v string) *ListProjectsRequest {
 type ListProjectsResponseBody struct {
 	NextToken *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Projects  []*Project `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
-	RequestId *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4A7A2D0E-D8B8-4DA0-8127-EB32C660
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListProjectsResponseBody) String() string {
@@ -15346,6 +18989,11 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 }
 
 type ListRegionsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 }
 
@@ -15363,8 +19011,11 @@ func (s *ListRegionsRequest) SetAcceptLanguage(v string) *ListRegionsRequest {
 }
 
 type ListRegionsResponseBody struct {
-	Regions   []*RegionType `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions []*RegionType `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7F7D235C-76FF-4B65-800C-8238AE3F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListRegionsResponseBody) String() string {
@@ -15415,17 +19066,39 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 }
 
 type ListTasksRequest struct {
-	EndTimeRange      *TimeRange `json:"EndTimeRange,omitempty" xml:"EndTimeRange,omitempty"`
-	MaxResults        *int64     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken         *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order             *string    `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName       *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestDefinition *bool      `json:"RequestDefinition,omitempty" xml:"RequestDefinition,omitempty"`
-	Sort              *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	StartTimeRange    *TimeRange `json:"StartTimeRange,omitempty" xml:"StartTimeRange,omitempty"`
-	Status            *string    `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagSelector       *string    `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
-	TaskTypes         []*string  `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
+	EndTimeRange *TimeRange `json:"EndTimeRange,omitempty" xml:"EndTimeRange,omitempty"`
+	// example:
+	//
+	// 1
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// True
+	RequestDefinition *bool `json:"RequestDefinition,omitempty" xml:"RequestDefinition,omitempty"`
+	// example:
+	//
+	// TaskId
+	Sort           *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	StartTimeRange *TimeRange `json:"StartTimeRange,omitempty" xml:"StartTimeRange,omitempty"`
+	// example:
+	//
+	// Succeeded
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// test=val1
+	TagSelector *string   `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
+	TaskTypes   []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 
 func (s ListTasksRequest) String() string {
@@ -15492,17 +19165,39 @@ func (s *ListTasksRequest) SetTaskTypes(v []*string) *ListTasksRequest {
 }
 
 type ListTasksShrinkRequest struct {
-	EndTimeRangeShrink   *string `json:"EndTimeRange,omitempty" xml:"EndTimeRange,omitempty"`
-	MaxResults           *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order                *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName          *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestDefinition    *bool   `json:"RequestDefinition,omitempty" xml:"RequestDefinition,omitempty"`
+	EndTimeRangeShrink *string `json:"EndTimeRange,omitempty" xml:"EndTimeRange,omitempty"`
+	// example:
+	//
+	// 1
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// True
+	RequestDefinition *bool `json:"RequestDefinition,omitempty" xml:"RequestDefinition,omitempty"`
+	// example:
+	//
+	// TaskId
 	Sort                 *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	StartTimeRangeShrink *string `json:"StartTimeRange,omitempty" xml:"StartTimeRange,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagSelector          *string `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
-	TaskTypesShrink      *string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty"`
+	// example:
+	//
+	// Succeeded
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// test=val1
+	TagSelector     *string `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
+	TaskTypesShrink *string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty"`
 }
 
 func (s ListTasksShrinkRequest) String() string {
@@ -15569,11 +19264,23 @@ func (s *ListTasksShrinkRequest) SetTaskTypesShrink(v string) *ListTasksShrinkRe
 }
 
 type ListTasksResponseBody struct {
-	MaxResults  *string     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ProjectName *string     `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId   *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks       []*TaskInfo `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 9847E7D0-A9A3-0053-84C6-BA16FFFA726E
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks     []*TaskInfo `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s ListTasksResponseBody) String() string {
@@ -15639,12 +19346,35 @@ func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse
 }
 
 type ListTriggersRequest struct {
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 2020-11-11T06:51:17.5Z
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// example:
+	//
+	// Succeeded
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// test=val1
 	TagSelector *string `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
 }
 
@@ -15692,7 +19422,13 @@ func (s *ListTriggersRequest) SetTagSelector(v string) *ListTriggersRequest {
 }
 
 type ListTriggersResponseBody struct {
-	NextToken *string          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// F480BFAF-E778-5079-93AD-1E4631******
 	RequestId *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Triggers  []*DataIngestion `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
@@ -15752,14 +19488,36 @@ func (s *ListTriggersResponse) SetBody(v *ListTriggersResponseBody) *ListTrigger
 type QueryFigureClustersRequest struct {
 	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
 	CustomLabels    *string    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName     *string    `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults      *int64     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order           *string    `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName     *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 10
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// ImageCount
 	Sort            *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	UpdateTimeRange *TimeRange `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
-	WithTotalCount  *bool      `json:"WithTotalCount,omitempty" xml:"WithTotalCount,omitempty"`
+	// example:
+	//
+	// false
+	WithTotalCount *bool `json:"WithTotalCount,omitempty" xml:"WithTotalCount,omitempty"`
 }
 
 func (s QueryFigureClustersRequest) String() string {
@@ -15823,14 +19581,36 @@ func (s *QueryFigureClustersRequest) SetWithTotalCount(v bool) *QueryFigureClust
 type QueryFigureClustersShrinkRequest struct {
 	CreateTimeRangeShrink *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
 	CustomLabels          *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName           *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults            *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken             *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order                 *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName           *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 10
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// ImageCount
 	Sort                  *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	UpdateTimeRangeShrink *string `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
-	WithTotalCount        *bool   `json:"WithTotalCount,omitempty" xml:"WithTotalCount,omitempty"`
+	// example:
+	//
+	// false
+	WithTotalCount *bool `json:"WithTotalCount,omitempty" xml:"WithTotalCount,omitempty"`
 }
 
 func (s QueryFigureClustersShrinkRequest) String() string {
@@ -15893,9 +19673,18 @@ func (s *QueryFigureClustersShrinkRequest) SetWithTotalCount(v bool) *QueryFigur
 
 type QueryFigureClustersResponseBody struct {
 	FigureClusters []*FigureCluster `json:"FigureClusters,omitempty" xml:"FigureClusters,omitempty" type:"Repeated"`
-	NextToken      *string          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId      *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount     *int64           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 10
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// CA995EFD-083D-4F40-BE8A-BDF75FFF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryFigureClustersResponseBody) String() string {
@@ -15956,21 +19745,35 @@ func (s *QueryFigureClustersResponse) SetBody(v *QueryFigureClustersResponseBody
 }
 
 type QueryLocationDateClustersRequest struct {
-	Address                           *Address   `json:"Address,omitempty" xml:"Address,omitempty"`
-	CreateTimeRange                   *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
-	CustomLabels                      *string    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	Address         *Address   `json:"Address,omitempty" xml:"Address,omitempty"`
+	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
+	// example:
+	//
+	// key=value
+	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// This parameter is required.
 	DatasetName                       *string    `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	LocationDateClusterEndTimeRange   *TimeRange `json:"LocationDateClusterEndTimeRange,omitempty" xml:"LocationDateClusterEndTimeRange,omitempty"`
 	LocationDateClusterLevels         []*string  `json:"LocationDateClusterLevels,omitempty" xml:"LocationDateClusterLevels,omitempty" type:"Repeated"`
 	LocationDateClusterStartTimeRange *TimeRange `json:"LocationDateClusterStartTimeRange,omitempty" xml:"LocationDateClusterStartTimeRange,omitempty"`
 	MaxResults                        *int32     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                         *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ObjectId                          *string    `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	Order                             *string    `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName                       *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sort                              *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	Title                             *string    `json:"Title,omitempty" xml:"Title,omitempty"`
-	UpdateTimeRange                   *TimeRange `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
+	// example:
+	//
+	// MzQNjmY2MzYxNhNjk2ZNjEu****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ObjectId  *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// example:
+	//
+	// asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// LocationDateClusterStartTime
+	Sort            *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Title           *string    `json:"Title,omitempty" xml:"Title,omitempty"`
+	UpdateTimeRange *TimeRange `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
 }
 
 func (s QueryLocationDateClustersRequest) String() string {
@@ -16057,21 +19860,35 @@ func (s *QueryLocationDateClustersRequest) SetUpdateTimeRange(v *TimeRange) *Que
 }
 
 type QueryLocationDateClustersShrinkRequest struct {
-	AddressShrink                           *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	CreateTimeRangeShrink                   *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
-	CustomLabels                            *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	AddressShrink         *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	CreateTimeRangeShrink *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
+	// example:
+	//
+	// key=value
+	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// This parameter is required.
 	DatasetName                             *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	LocationDateClusterEndTimeRangeShrink   *string `json:"LocationDateClusterEndTimeRange,omitempty" xml:"LocationDateClusterEndTimeRange,omitempty"`
 	LocationDateClusterLevelsShrink         *string `json:"LocationDateClusterLevels,omitempty" xml:"LocationDateClusterLevels,omitempty"`
 	LocationDateClusterStartTimeRangeShrink *string `json:"LocationDateClusterStartTimeRange,omitempty" xml:"LocationDateClusterStartTimeRange,omitempty"`
 	MaxResults                              *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                               *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ObjectId                                *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	Order                                   *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName                             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sort                                    *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	Title                                   *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	UpdateTimeRangeShrink                   *string `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
+	// example:
+	//
+	// MzQNjmY2MzYxNhNjk2ZNjEu****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ObjectId  *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// example:
+	//
+	// asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// LocationDateClusterStartTime
+	Sort                  *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Title                 *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UpdateTimeRangeShrink *string `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
 }
 
 func (s QueryLocationDateClustersShrinkRequest) String() string {
@@ -16159,8 +19976,14 @@ func (s *QueryLocationDateClustersShrinkRequest) SetUpdateTimeRangeShrink(v stri
 
 type QueryLocationDateClustersResponseBody struct {
 	LocationDateClusters []*LocationDateCluster `json:"LocationDateClusters,omitempty" xml:"LocationDateClusters,omitempty" type:"Repeated"`
-	NextToken            *string                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId            *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// MzQNjmY2MzYxNhNjk2ZNjEu****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 7055FCF7-4D7B-098E-BD4D-DD2932B0****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryLocationDateClustersResponseBody) String() string {
@@ -16216,13 +20039,30 @@ func (s *QueryLocationDateClustersResponse) SetBody(v *QueryLocationDateClusters
 }
 
 type QuerySimilarImageClustersRequest struct {
+	// example:
+	//
+	// {"key": "val"}
 	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName  *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sort         *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// This parameter is required.
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// CAESEgoQCg4KClVwZGF0ZVRpbWUQARgBIs8ECgkAAJLUwUCAQ****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// UpdateTime
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 
 func (s QuerySimilarImageClustersRequest) String() string {
@@ -16269,7 +20109,13 @@ func (s *QuerySimilarImageClustersRequest) SetSort(v string) *QuerySimilarImageC
 }
 
 type QuerySimilarImageClustersResponseBody struct {
-	NextToken            *string                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// CAESEgoQCg4KClVwZGF0ZVRpbWUQARgBIs8ECgkAAJLUwUCAQ****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// CA995EFD-083D-4F40-BE8A-BDF75FFF****
 	RequestId            *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SimilarImageClusters []*SimilarImageCluster `json:"SimilarImageClusters,omitempty" xml:"SimilarImageClusters,omitempty" type:"Repeated"`
 }
@@ -16327,22 +20173,59 @@ func (s *QuerySimilarImageClustersResponse) SetBody(v *QuerySimilarImageClusters
 }
 
 type QueryStoriesRequest struct {
-	CreateTimeRange     *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
-	CustomLabels        *string    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName         *string    `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FigureClusterIds    []*string  `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty" type:"Repeated"`
-	MaxResults          *int64     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken           *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ObjectId            *string    `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	Order               *string    `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName         *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sort                *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	StoryEndTimeRange   *TimeRange `json:"StoryEndTimeRange,omitempty" xml:"StoryEndTimeRange,omitempty"`
+	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
+	CustomLabels    *string    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName      *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FigureClusterIds []*string `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpw****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// id1
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// example:
+	//
+	// asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// CreateTime
+	Sort              *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	StoryEndTimeRange *TimeRange `json:"StoryEndTimeRange,omitempty" xml:"StoryEndTimeRange,omitempty"`
+	// example:
+	//
+	// name1
 	StoryName           *string    `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
 	StoryStartTimeRange *TimeRange `json:"StoryStartTimeRange,omitempty" xml:"StoryStartTimeRange,omitempty"`
-	StorySubType        *string    `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
-	StoryType           *string    `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
-	WithEmptyStories    *bool      `json:"WithEmptyStories,omitempty" xml:"WithEmptyStories,omitempty"`
+	// example:
+	//
+	// SeasonHighlights
+	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// example:
+	//
+	// TimeMemory
+	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+	// example:
+	//
+	// true
+	WithEmptyStories *bool `json:"WithEmptyStories,omitempty" xml:"WithEmptyStories,omitempty"`
 }
 
 func (s QueryStoriesRequest) String() string {
@@ -16434,22 +20317,59 @@ func (s *QueryStoriesRequest) SetWithEmptyStories(v bool) *QueryStoriesRequest {
 }
 
 type QueryStoriesShrinkRequest struct {
-	CreateTimeRangeShrink     *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
-	CustomLabels              *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName               *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FigureClusterIdsShrink    *string `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty"`
-	MaxResults                *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                 *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ObjectId                  *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	Order                     *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName               *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sort                      *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	StoryEndTimeRangeShrink   *string `json:"StoryEndTimeRange,omitempty" xml:"StoryEndTimeRange,omitempty"`
+	CreateTimeRangeShrink *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
+	CustomLabels          *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName            *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FigureClusterIdsShrink *string `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpw****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// id1
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// example:
+	//
+	// asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// CreateTime
+	Sort                    *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	StoryEndTimeRangeShrink *string `json:"StoryEndTimeRange,omitempty" xml:"StoryEndTimeRange,omitempty"`
+	// example:
+	//
+	// name1
 	StoryName                 *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
 	StoryStartTimeRangeShrink *string `json:"StoryStartTimeRange,omitempty" xml:"StoryStartTimeRange,omitempty"`
-	StorySubType              *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
-	StoryType                 *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
-	WithEmptyStories          *bool   `json:"WithEmptyStories,omitempty" xml:"WithEmptyStories,omitempty"`
+	// example:
+	//
+	// SeasonHighlights
+	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// example:
+	//
+	// TimeMemory
+	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+	// example:
+	//
+	// true
+	WithEmptyStories *bool `json:"WithEmptyStories,omitempty" xml:"WithEmptyStories,omitempty"`
 }
 
 func (s QueryStoriesShrinkRequest) String() string {
@@ -16541,7 +20461,13 @@ func (s *QueryStoriesShrinkRequest) SetWithEmptyStories(v bool) *QueryStoriesShr
 }
 
 type QueryStoriesResponseBody struct {
-	NextToken *string  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3Qx****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 2C5C1E0F-D8B8-4DA0-8127-EC32C771****
 	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Stories   []*Story `json:"Stories,omitempty" xml:"Stories,omitempty" type:"Repeated"`
 }
@@ -16599,10 +20525,25 @@ func (s *QueryStoriesResponse) SetBody(v *QueryStoriesResponseBody) *QueryStorie
 }
 
 type RefreshWebofficeTokenRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 99d1b8b478b641c1b3372f5bd6********
 	AccessToken      *string           `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RefreshToken     *string           `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a730ae0d7c6a487d87c661d199********
+	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
 }
 
 func (s RefreshWebofficeTokenRequest) String() string {
@@ -16634,10 +20575,25 @@ func (s *RefreshWebofficeTokenRequest) SetRefreshToken(v string) *RefreshWeboffi
 }
 
 type RefreshWebofficeTokenShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 99d1b8b478b641c1b3372f5bd6********
 	AccessToken            *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RefreshToken           *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a730ae0d7c6a487d87c661d199********
+	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
 }
 
 func (s RefreshWebofficeTokenShrinkRequest) String() string {
@@ -16669,11 +20625,26 @@ func (s *RefreshWebofficeTokenShrinkRequest) SetRefreshToken(v string) *RefreshW
 }
 
 type RefreshWebofficeTokenResponseBody struct {
-	AccessToken             *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	AccessTokenExpiredTime  *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
-	RefreshToken            *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// example:
+	//
+	// 4996466c690a4902846ce00f96********
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// example:
+	//
+	// 2021-08-31T13:07:28.950065359Z
+	AccessTokenExpiredTime *string `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
+	// example:
+	//
+	// 72a52ab3702a4123ab5594671a********
+	RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+	// example:
+	//
+	// 2021-09-01T12:37:28.950065359Z
 	RefreshTokenExpiredTime *string `json:"RefreshTokenExpiredTime,omitempty" xml:"RefreshTokenExpiredTime,omitempty"`
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 501339F9-4B70-0CE2-AB8C-866C********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RefreshWebofficeTokenResponseBody) String() string {
@@ -16739,10 +20710,26 @@ func (s *RefreshWebofficeTokenResponse) SetBody(v *RefreshWebofficeTokenResponse
 }
 
 type RemoveStoryFilesRequest struct {
-	DatasetName *string                         `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Files       []*RemoveStoryFilesRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	ObjectId    *string                         `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ProjectName *string                         `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	Files []*RemoveStoryFilesRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s RemoveStoryFilesRequest) String() string {
@@ -16774,6 +20761,9 @@ func (s *RemoveStoryFilesRequest) SetProjectName(v string) *RemoveStoryFilesRequ
 }
 
 type RemoveStoryFilesRequestFiles struct {
+	// example:
+	//
+	// oss://bucket1/object
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -16791,9 +20781,25 @@ func (s *RemoveStoryFilesRequestFiles) SetURI(v string) *RemoveStoryFilesRequest
 }
 
 type RemoveStoryFilesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
-	ObjectId    *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -16826,6 +20832,9 @@ func (s *RemoveStoryFilesShrinkRequest) SetProjectName(v string) *RemoveStoryFil
 }
 
 type RemoveStoryFilesResponseBody struct {
+	// example:
+	//
+	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16872,7 +20881,17 @@ func (s *RemoveStoryFilesResponse) SetBody(v *RemoveStoryFilesResponseBody) *Rem
 }
 
 type ResumeBatchRequest struct {
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// batch-4eb9223f-3e88-42d3-a578-3f2852******
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -16895,6 +20914,9 @@ func (s *ResumeBatchRequest) SetProjectName(v string) *ResumeBatchRequest {
 }
 
 type ResumeBatchResponseBody struct {
+	// example:
+	//
+	// D2C628B8-35DF-473C-8A41-757F30******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16941,7 +20963,17 @@ func (s *ResumeBatchResponse) SetBody(v *ResumeBatchResponseBody) *ResumeBatchRe
 }
 
 type ResumeTriggerRequest struct {
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// trigger-9f72636a-0f0c-4baf-ae78-38b27b******
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -16964,6 +20996,9 @@ func (s *ResumeTriggerRequest) SetProjectName(v string) *ResumeTriggerRequest {
 }
 
 type ResumeTriggerResponseBody struct {
+	// example:
+	//
+	// FEDC9B1F-30F2-4C1F-8ED2-B7860187****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17011,9 +21046,22 @@ func (s *ResumeTriggerResponse) SetBody(v *ResumeTriggerResponseBody) *ResumeTri
 
 type SearchImageFigureClusterRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	DatasetName      *string           `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s SearchImageFigureClusterRequest) String() string {
@@ -17046,9 +21094,22 @@ func (s *SearchImageFigureClusterRequest) SetSourceURI(v string) *SearchImageFig
 
 type SearchImageFigureClusterShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	DatasetName            *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test-object
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s SearchImageFigureClusterShrinkRequest) String() string {
@@ -17080,8 +21141,11 @@ func (s *SearchImageFigureClusterShrinkRequest) SetSourceURI(v string) *SearchIm
 }
 
 type SearchImageFigureClusterResponseBody struct {
-	Clusters  []*SearchImageFigureClusterResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Clusters []*SearchImageFigureClusterResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// C2734912-E6D5-052C-AC67-6A9FD02*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SearchImageFigureClusterResponseBody) String() string {
@@ -17103,9 +21167,15 @@ func (s *SearchImageFigureClusterResponseBody) SetRequestId(v string) *SearchIma
 }
 
 type SearchImageFigureClusterResponseBodyClusters struct {
-	Boundary   *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
-	ClusterId  *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Similarity *float32  `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
+	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+	// example:
+	//
+	// Cluster-ca730577-06b1-42c7-a25b-8f2c7******
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 0.87413794
+	Similarity *float32 `json:"Similarity,omitempty" xml:"Similarity,omitempty"`
 }
 
 func (s SearchImageFigureClusterResponseBodyClusters) String() string {
@@ -17161,13 +21231,30 @@ func (s *SearchImageFigureClusterResponse) SetBody(v *SearchImageFigureClusterRe
 }
 
 type SemanticQueryRequest struct {
-	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults  *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	MediaTypes  []*string `json:"MediaTypes,omitempty" xml:"MediaTypes,omitempty" type:"Repeated"`
-	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Query       *string   `json:"Query,omitempty" xml:"Query,omitempty"`
-	WithFields  []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immDatatest
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MediaTypes []*string `json:"MediaTypes,omitempty" xml:"MediaTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	Query      *string   `json:"Query,omitempty" xml:"Query,omitempty"`
+	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
 
 func (s SemanticQueryRequest) String() string {
@@ -17214,11 +21301,28 @@ func (s *SemanticQueryRequest) SetWithFields(v []*string) *SemanticQueryRequest 
 }
 
 type SemanticQueryShrinkRequest struct {
-	DatasetName      *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immDatatest
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// 10
 	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	MediaTypesShrink *string `json:"MediaTypes,omitempty" xml:"MediaTypes,omitempty"`
-	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ProjectName      *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
 	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
 }
@@ -17267,7 +21371,10 @@ func (s *SemanticQueryShrinkRequest) SetWithFieldsShrink(v string) *SemanticQuer
 }
 
 type SemanticQueryResponseBody struct {
-	Files     []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2C5C1E0F-D8B8-4DA0-8127-EC32C771****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17319,16 +21426,37 @@ func (s *SemanticQueryResponse) SetBody(v *SemanticQueryResponseBody) *SemanticQ
 }
 
 type SimpleQueryRequest struct {
-	Aggregations     []*SimpleQueryRequestAggregations `json:"Aggregations,omitempty" xml:"Aggregations,omitempty" type:"Repeated"`
-	DatasetName      *string                           `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults       *int32                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order            *string                           `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName      *string                           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Query            *SimpleQuery                      `json:"Query,omitempty" xml:"Query,omitempty"`
-	Sort             *string                           `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	WithFields       []*string                         `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
-	WithoutTotalHits *bool                             `json:"WithoutTotalHits,omitempty" xml:"WithoutTotalHits,omitempty"`
+	Aggregations []*SimpleQueryRequestAggregations `json:"Aggregations,omitempty" xml:"Aggregations,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// asc,desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string      `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Query       *SimpleQuery `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// Size,Filename
+	Sort       *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	WithoutTotalHits *bool `json:"WithoutTotalHits,omitempty" xml:"WithoutTotalHits,omitempty"`
 }
 
 func (s SimpleQueryRequest) String() string {
@@ -17390,7 +21518,13 @@ func (s *SimpleQueryRequest) SetWithoutTotalHits(v bool) *SimpleQueryRequest {
 }
 
 type SimpleQueryRequestAggregations struct {
-	Field     *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// example:
+	//
+	// Size
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// example:
+	//
+	// sum
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 }
 
@@ -17414,15 +21548,36 @@ func (s *SimpleQueryRequestAggregations) SetOperation(v string) *SimpleQueryRequ
 
 type SimpleQueryShrinkRequest struct {
 	AggregationsShrink *string `json:"Aggregations,omitempty" xml:"Aggregations,omitempty"`
-	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order              *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	QueryShrink        *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	Sort               *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	WithFieldsShrink   *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
-	WithoutTotalHits   *bool   `json:"WithoutTotalHits,omitempty" xml:"WithoutTotalHits,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// asc,desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	QueryShrink *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// Size,Filename
+	Sort             *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
+	// if can be null:
+	// true
+	WithoutTotalHits *bool `json:"WithoutTotalHits,omitempty" xml:"WithoutTotalHits,omitempty"`
 }
 
 func (s SimpleQueryShrinkRequest) String() string {
@@ -17486,9 +21641,17 @@ func (s *SimpleQueryShrinkRequest) SetWithoutTotalHits(v bool) *SimpleQueryShrin
 type SimpleQueryResponseBody struct {
 	Aggregations []*SimpleQueryResponseBodyAggregations `json:"Aggregations,omitempty" xml:"Aggregations,omitempty" type:"Repeated"`
 	Files        []*File                                `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	NextToken    *string                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalHits    *int64                                 `json:"TotalHits,omitempty" xml:"TotalHits,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 2C5C1E0F-D8B8-4DA0-8127-EC32C771****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalHits *int64  `json:"TotalHits,omitempty" xml:"TotalHits,omitempty"`
 }
 
 func (s SimpleQueryResponseBody) String() string {
@@ -17525,10 +21688,19 @@ func (s *SimpleQueryResponseBody) SetTotalHits(v int64) *SimpleQueryResponseBody
 }
 
 type SimpleQueryResponseBodyAggregations struct {
-	Field     *string                                      `json:"Field,omitempty" xml:"Field,omitempty"`
-	Groups    []*SimpleQueryResponseBodyAggregationsGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	Operation *string                                      `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	Value     *float64                                     `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// Size
+	Field  *string                                      `json:"Field,omitempty" xml:"Field,omitempty"`
+	Groups []*SimpleQueryResponseBodyAggregationsGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// example:
+	//
+	// sum
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// example:
+	//
+	// 200
+	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SimpleQueryResponseBodyAggregations) String() string {
@@ -17560,7 +21732,13 @@ func (s *SimpleQueryResponseBodyAggregations) SetValue(v float64) *SimpleQueryRe
 }
 
 type SimpleQueryResponseBodyAggregationsGroups struct {
-	Count *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 5
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 100
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -17612,7 +21790,17 @@ func (s *SimpleQueryResponse) SetBody(v *SimpleQueryResponseBody) *SimpleQueryRe
 }
 
 type SuspendBatchRequest struct {
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// batch-4eb9223f-3e88-42d3-a578-3f2852******
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -17635,6 +21823,9 @@ func (s *SuspendBatchRequest) SetProjectName(v string) *SuspendBatchRequest {
 }
 
 type SuspendBatchResponseBody struct {
+	// example:
+	//
+	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17681,7 +21872,17 @@ func (s *SuspendBatchResponse) SetBody(v *SuspendBatchResponseBody) *SuspendBatc
 }
 
 type SuspendTriggerRequest struct {
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// trigger-9f72636a-0f0c-4baf-ae78-38b27b******
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -17704,6 +21905,9 @@ func (s *SuspendTriggerRequest) SetProjectName(v string) *SuspendTriggerRequest 
 }
 
 type SuspendTriggerResponseBody struct {
+	// example:
+	//
+	// 0BC1F0C9-8E99-46C6-B502-10DED******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17750,11 +21954,24 @@ func (s *SuspendTriggerResponse) SetBody(v *SuspendTriggerResponseBody) *Suspend
 }
 
 type UpdateBatchRequest struct {
-	Actions     []*UpdateBatchRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	Id          *string                      `json:"Id,omitempty" xml:"Id,omitempty"`
-	Input       *Input                       `json:"Input,omitempty" xml:"Input,omitempty"`
-	ProjectName *string                      `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Tags        map[string]interface{}       `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Actions []*UpdateBatchRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// batch-4eb9223f-3e88-42d3-a578-3f2852******
+	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Input *Input  `json:"Input,omitempty" xml:"Input,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// {"key":"val"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s UpdateBatchRequest) String() string {
@@ -17791,6 +22008,9 @@ func (s *UpdateBatchRequest) SetTags(v map[string]interface{}) *UpdateBatchReque
 }
 
 type UpdateBatchRequestActions struct {
+	// example:
+	//
+	// doc/convert
 	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
@@ -17815,10 +22035,23 @@ func (s *UpdateBatchRequestActions) SetParameters(v []*string) *UpdateBatchReque
 
 type UpdateBatchShrinkRequest struct {
 	ActionsShrink *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InputShrink   *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	ProjectName   *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TagsShrink    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// batch-4eb9223f-3e88-42d3-a578-3f2852******
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// {"key":"val"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s UpdateBatchShrinkRequest) String() string {
@@ -17855,6 +22088,9 @@ func (s *UpdateBatchShrinkRequest) SetTagsShrink(v string) *UpdateBatchShrinkReq
 }
 
 type UpdateBatchResponseBody struct {
+	// example:
+	//
+	// CB4D73A3-BAF4-4A9D-A631-15F219AF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17901,15 +22137,38 @@ func (s *UpdateBatchResponse) SetBody(v *UpdateBatchResponseBody) *UpdateBatchRe
 }
 
 type UpdateDatasetRequest struct {
-	DatasetMaxBindCount     *int64  `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxFileCount     *int64  `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	DatasetMaxTotalFileSize *int64  `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	DatasetName             *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ProjectName             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 10
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// example:
+	//
+	// 10000000000
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// example:
+	//
+	// 100000000
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// example:
+	//
+	// 100000000000
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// example:
+	//
+	// 90000000000000000
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// This parameter is required.
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// immtest
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// Official:AllFunction
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s UpdateDatasetRequest) String() string {
@@ -17966,8 +22225,11 @@ func (s *UpdateDatasetRequest) SetTemplateId(v string) *UpdateDatasetRequest {
 }
 
 type UpdateDatasetResponseBody struct {
-	Dataset   *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Dataset *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	// example:
+	//
+	// 45234D4A-A3E3-4B23-AACA-8D897514****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateDatasetResponseBody) String() string {
@@ -18018,9 +22280,12 @@ func (s *UpdateDatasetResponse) SetBody(v *UpdateDatasetResponseBody) *UpdateDat
 }
 
 type UpdateFigureClusterRequest struct {
-	DatasetName   *string              `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	FigureCluster *FigureClusterForReq `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
-	ProjectName   *string              `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s UpdateFigureClusterRequest) String() string {
@@ -18047,9 +22312,12 @@ func (s *UpdateFigureClusterRequest) SetProjectName(v string) *UpdateFigureClust
 }
 
 type UpdateFigureClusterShrinkRequest struct {
-	DatasetName         *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
 	FigureClusterShrink *string `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
-	ProjectName         *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s UpdateFigureClusterShrinkRequest) String() string {
@@ -18076,6 +22344,9 @@ func (s *UpdateFigureClusterShrinkRequest) SetProjectName(v string) *UpdateFigur
 }
 
 type UpdateFigureClusterResponseBody struct {
+	// example:
+	//
+	// 5F74C5C9-5AC0-49F9-914D-E01589D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18122,9 +22393,12 @@ func (s *UpdateFigureClusterResponse) SetBody(v *UpdateFigureClusterResponseBody
 }
 
 type UpdateFileMetaRequest struct {
-	DatasetName *string    `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	File        *InputFile `json:"File,omitempty" xml:"File,omitempty"`
-	ProjectName *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	File *InputFile `json:"File,omitempty" xml:"File,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s UpdateFileMetaRequest) String() string {
@@ -18151,8 +22425,11 @@ func (s *UpdateFileMetaRequest) SetProjectName(v string) *UpdateFileMetaRequest 
 }
 
 type UpdateFileMetaShrinkRequest struct {
+	// This parameter is required.
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FileShrink  *string `json:"File,omitempty" xml:"File,omitempty"`
+	// This parameter is required.
+	FileShrink *string `json:"File,omitempty" xml:"File,omitempty"`
+	// This parameter is required.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -18180,6 +22457,9 @@ func (s *UpdateFileMetaShrinkRequest) SetProjectName(v string) *UpdateFileMetaSh
 }
 
 type UpdateFileMetaResponseBody struct {
+	// example:
+	//
+	// 6D53E6C9-5AC0-48F9-825F-D02678E3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18228,10 +22508,13 @@ func (s *UpdateFileMetaResponse) SetBody(v *UpdateFileMetaResponseBody) *UpdateF
 type UpdateLocationDateClusterRequest struct {
 	CustomId     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName  *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ObjectId     *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Title        *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+	// This parameter is required.
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateLocationDateClusterRequest) String() string {
@@ -18275,10 +22558,13 @@ func (s *UpdateLocationDateClusterRequest) SetTitle(v string) *UpdateLocationDat
 type UpdateLocationDateClusterShrinkRequest struct {
 	CustomId           *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
 	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ObjectId           *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Title              *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// This parameter is required.
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateLocationDateClusterShrinkRequest) String() string {
@@ -18320,6 +22606,9 @@ func (s *UpdateLocationDateClusterShrinkRequest) SetTitle(v string) *UpdateLocat
 }
 
 type UpdateLocationDateClusterResponseBody struct {
+	// example:
+	//
+	// 52B017A8-FEF5-0A61-BAEE-234A8AD8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18366,16 +22655,44 @@ func (s *UpdateLocationDateClusterResponse) SetBody(v *UpdateLocationDateCluster
 }
 
 type UpdateProjectRequest struct {
-	DatasetMaxBindCount     *int64  `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	DatasetMaxFileCount     *int64  `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	DatasetMaxRelationCount *int64  `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	DatasetMaxTotalFileSize *int64  `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ProjectMaxDatasetCount  *int64  `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	ProjectName             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ServiceRole             *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	TemplateId              *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 10
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// example:
+	//
+	// 10000000000
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// example:
+	//
+	// 100000000
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// example:
+	//
+	// 100000000000
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// example:
+	//
+	// 90000000000000000
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// example:
+	//
+	// immtest
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1000000000
+	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// AliyunIMMDefaultRole
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// example:
+	//
+	// AliyunIMMDefaultRole
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s UpdateProjectRequest) String() string {
@@ -18437,8 +22754,11 @@ func (s *UpdateProjectRequest) SetTemplateId(v string) *UpdateProjectRequest {
 }
 
 type UpdateProjectResponseBody struct {
-	Project   *Project `json:"Project,omitempty" xml:"Project,omitempty"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Project *Project `json:"Project,omitempty" xml:"Project,omitempty"`
+	// example:
+	//
+	// D33C3574-4093-448E-86E7-15BE2BD3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateProjectResponseBody) String() string {
@@ -18489,13 +22809,37 @@ func (s *UpdateProjectResponse) SetBody(v *UpdateProjectResponseBody) *UpdatePro
 }
 
 type UpdateStoryRequest struct {
-	Cover        *UpdateStoryRequestCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
-	CustomId     *string                  `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	CustomLabels map[string]interface{}   `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName  *string                  `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ObjectId     *string                  `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ProjectName  *string                  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	StoryName    *string                  `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	Cover *UpdateStoryRequestCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// example:
+	//
+	// test
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// example:
+	//
+	// {"key": "value"}
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdata
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// newstory
+	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
 }
 
 func (s UpdateStoryRequest) String() string {
@@ -18542,6 +22886,9 @@ func (s *UpdateStoryRequest) SetStoryName(v string) *UpdateStoryRequest {
 }
 
 type UpdateStoryRequestCover struct {
+	// example:
+	//
+	// oss://bucket1/object
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -18559,13 +22906,37 @@ func (s *UpdateStoryRequestCover) SetURI(v string) *UpdateStoryRequestCover {
 }
 
 type UpdateStoryShrinkRequest struct {
-	CoverShrink        *string `json:"Cover,omitempty" xml:"Cover,omitempty"`
-	CustomId           *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	CoverShrink *string `json:"Cover,omitempty" xml:"Cover,omitempty"`
+	// example:
+	//
+	// test
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// example:
+	//
+	// {"key": "value"}
 	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ObjectId           *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	StoryName          *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdata
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// immtest
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// newstory
+	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
 }
 
 func (s UpdateStoryShrinkRequest) String() string {
@@ -18612,6 +22983,9 @@ func (s *UpdateStoryShrinkRequest) SetStoryName(v string) *UpdateStoryShrinkRequ
 }
 
 type UpdateStoryResponseBody struct {
+	// example:
+	//
+	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18658,11 +23032,24 @@ func (s *UpdateStoryResponse) SetBody(v *UpdateStoryResponseBody) *UpdateStoryRe
 }
 
 type UpdateTriggerRequest struct {
-	Actions     []*UpdateTriggerRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	Id          *string                        `json:"Id,omitempty" xml:"Id,omitempty"`
-	Input       *Input                         `json:"Input,omitempty" xml:"Input,omitempty"`
-	ProjectName *string                        `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Tags        map[string]interface{}         `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Actions []*UpdateTriggerRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// trigger-9f72636a-0f0c-4baf-ae78-38b27b******
+	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Input *Input  `json:"Input,omitempty" xml:"Input,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// {"test": "val1"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s UpdateTriggerRequest) String() string {
@@ -18699,6 +23086,9 @@ func (s *UpdateTriggerRequest) SetTags(v map[string]interface{}) *UpdateTriggerR
 }
 
 type UpdateTriggerRequestActions struct {
+	// example:
+	//
+	// doc/convert
 	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
@@ -18723,10 +23113,23 @@ func (s *UpdateTriggerRequestActions) SetParameters(v []*string) *UpdateTriggerR
 
 type UpdateTriggerShrinkRequest struct {
 	ActionsShrink *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InputShrink   *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	ProjectName   *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TagsShrink    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// trigger-9f72636a-0f0c-4baf-ae78-38b27b******
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// {"test": "val1"}
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s UpdateTriggerShrinkRequest) String() string {
@@ -18763,6 +23166,9 @@ func (s *UpdateTriggerShrinkRequest) SetTagsShrink(v string) *UpdateTriggerShrin
 }
 
 type UpdateTriggerResponseBody struct {
+	// example:
+	//
+	// 5A022F78-B9A8-4ACC-BB6B-B35975******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18858,6 +23264,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片打马赛克算子
+//
+// @param tmpReq - AddImageMosaicRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddImageMosaicResponse
 func (client *Client) AddImageMosaicWithOptions(tmpReq *AddImageMosaicRequest, runtime *util.RuntimeOptions) (_result *AddImageMosaicResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -18925,6 +23340,13 @@ func (client *Client) AddImageMosaicWithOptions(tmpReq *AddImageMosaicRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片打马赛克算子
+//
+// @param request - AddImageMosaicRequest
+//
+// @return AddImageMosaicResponse
 func (client *Client) AddImageMosaic(request *AddImageMosaicRequest) (_result *AddImageMosaicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddImageMosaicResponse{}
@@ -18936,6 +23358,15 @@ func (client *Client) AddImageMosaic(request *AddImageMosaicRequest) (_result *A
 	return _result, _err
 }
 
+// Summary:
+//
+// 为故事新增文件
+//
+// @param tmpReq - AddStoryFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddStoryFilesResponse
 func (client *Client) AddStoryFilesWithOptions(tmpReq *AddStoryFilesRequest, runtime *util.RuntimeOptions) (_result *AddStoryFilesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -18987,6 +23418,13 @@ func (client *Client) AddStoryFilesWithOptions(tmpReq *AddStoryFilesRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// 为故事新增文件
+//
+// @param request - AddStoryFilesRequest
+//
+// @return AddStoryFilesResponse
 func (client *Client) AddStoryFiles(request *AddStoryFilesRequest) (_result *AddStoryFilesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddStoryFilesResponse{}
@@ -18998,6 +23436,15 @@ func (client *Client) AddStoryFiles(request *AddStoryFilesRequest) (_result *Add
 	return _result, _err
 }
 
+// Summary:
+//
+// 绑定ossbucket
+//
+// @param request - AttachOSSBucketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachOSSBucketResponse
 func (client *Client) AttachOSSBucketWithOptions(request *AttachOSSBucketRequest, runtime *util.RuntimeOptions) (_result *AttachOSSBucketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19039,6 +23486,13 @@ func (client *Client) AttachOSSBucketWithOptions(request *AttachOSSBucketRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 绑定ossbucket
+//
+// @param request - AttachOSSBucketRequest
+//
+// @return AttachOSSBucketResponse
 func (client *Client) AttachOSSBucket(request *AttachOSSBucketRequest) (_result *AttachOSSBucketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachOSSBucketResponse{}
@@ -19050,6 +23504,15 @@ func (client *Client) AttachOSSBucket(request *AttachOSSBucketRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量删除文件元信息
+//
+// @param tmpReq - BatchDeleteFileMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeleteFileMetaResponse
 func (client *Client) BatchDeleteFileMetaWithOptions(tmpReq *BatchDeleteFileMetaRequest, runtime *util.RuntimeOptions) (_result *BatchDeleteFileMetaResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19097,6 +23560,13 @@ func (client *Client) BatchDeleteFileMetaWithOptions(tmpReq *BatchDeleteFileMeta
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量删除文件元信息
+//
+// @param request - BatchDeleteFileMetaRequest
+//
+// @return BatchDeleteFileMetaResponse
 func (client *Client) BatchDeleteFileMeta(request *BatchDeleteFileMetaRequest) (_result *BatchDeleteFileMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchDeleteFileMetaResponse{}
@@ -19108,6 +23578,15 @@ func (client *Client) BatchDeleteFileMeta(request *BatchDeleteFileMetaRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量获取分组信息
+//
+// @param tmpReq - BatchGetFigureClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetFigureClusterResponse
 func (client *Client) BatchGetFigureClusterWithOptions(tmpReq *BatchGetFigureClusterRequest, runtime *util.RuntimeOptions) (_result *BatchGetFigureClusterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19155,6 +23634,13 @@ func (client *Client) BatchGetFigureClusterWithOptions(tmpReq *BatchGetFigureClu
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量获取分组信息
+//
+// @param request - BatchGetFigureClusterRequest
+//
+// @return BatchGetFigureClusterResponse
 func (client *Client) BatchGetFigureCluster(request *BatchGetFigureClusterRequest) (_result *BatchGetFigureClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchGetFigureClusterResponse{}
@@ -19166,6 +23652,15 @@ func (client *Client) BatchGetFigureCluster(request *BatchGetFigureClusterReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量获取文件元信息
+//
+// @param tmpReq - BatchGetFileMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetFileMetaResponse
 func (client *Client) BatchGetFileMetaWithOptions(tmpReq *BatchGetFileMetaRequest, runtime *util.RuntimeOptions) (_result *BatchGetFileMetaResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19213,6 +23708,13 @@ func (client *Client) BatchGetFileMetaWithOptions(tmpReq *BatchGetFileMetaReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量获取文件元信息
+//
+// @param request - BatchGetFileMetaRequest
+//
+// @return BatchGetFileMetaResponse
 func (client *Client) BatchGetFileMeta(request *BatchGetFileMetaRequest) (_result *BatchGetFileMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchGetFileMetaResponse{}
@@ -19224,6 +23726,15 @@ func (client *Client) BatchGetFileMeta(request *BatchGetFileMetaRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量索引文件元信息
+//
+// @param tmpReq - BatchIndexFileMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchIndexFileMetaResponse
 func (client *Client) BatchIndexFileMetaWithOptions(tmpReq *BatchIndexFileMetaRequest, runtime *util.RuntimeOptions) (_result *BatchIndexFileMetaResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19256,6 +23767,10 @@ func (client *Client) BatchIndexFileMetaWithOptions(tmpReq *BatchIndexFileMetaRe
 		query["ProjectName"] = request.ProjectName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19279,6 +23794,13 @@ func (client *Client) BatchIndexFileMetaWithOptions(tmpReq *BatchIndexFileMetaRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量索引文件元信息
+//
+// @param request - BatchIndexFileMetaRequest
+//
+// @return BatchIndexFileMetaResponse
 func (client *Client) BatchIndexFileMeta(request *BatchIndexFileMetaRequest) (_result *BatchIndexFileMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchIndexFileMetaResponse{}
@@ -19290,6 +23812,15 @@ func (client *Client) BatchIndexFileMeta(request *BatchIndexFileMetaRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新文件元信息
+//
+// @param tmpReq - BatchUpdateFileMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchUpdateFileMetaResponse
 func (client *Client) BatchUpdateFileMetaWithOptions(tmpReq *BatchUpdateFileMetaRequest, runtime *util.RuntimeOptions) (_result *BatchUpdateFileMetaResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19337,6 +23868,13 @@ func (client *Client) BatchUpdateFileMetaWithOptions(tmpReq *BatchUpdateFileMeta
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新文件元信息
+//
+// @param request - BatchUpdateFileMetaRequest
+//
+// @return BatchUpdateFileMetaResponse
 func (client *Client) BatchUpdateFileMeta(request *BatchUpdateFileMetaRequest) (_result *BatchUpdateFileMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchUpdateFileMetaResponse{}
@@ -19348,6 +23886,15 @@ func (client *Client) BatchUpdateFileMeta(request *BatchUpdateFileMetaRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 以脸搜分组
+//
+// @param tmpReq - CompareImageFacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CompareImageFacesResponse
 func (client *Client) CompareImageFacesWithOptions(tmpReq *CompareImageFacesRequest, runtime *util.RuntimeOptions) (_result *CompareImageFacesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19399,6 +23946,13 @@ func (client *Client) CompareImageFacesWithOptions(tmpReq *CompareImageFacesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 以脸搜分组
+//
+// @param request - CompareImageFacesRequest
+//
+// @return CompareImageFacesResponse
 func (client *Client) CompareImageFaces(request *CompareImageFacesRequest) (_result *CompareImageFacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CompareImageFacesResponse{}
@@ -19410,6 +23964,15 @@ func (client *Client) CompareImageFaces(request *CompareImageFacesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建查看压缩包内文件列表任务
+//
+// @param tmpReq - CreateArchiveFileInspectionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateArchiveFileInspectionTaskResponse
 func (client *Client) CreateArchiveFileInspectionTaskWithOptions(tmpReq *CreateArchiveFileInspectionTaskRequest, runtime *util.RuntimeOptions) (_result *CreateArchiveFileInspectionTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19473,6 +24036,13 @@ func (client *Client) CreateArchiveFileInspectionTaskWithOptions(tmpReq *CreateA
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建查看压缩包内文件列表任务
+//
+// @param request - CreateArchiveFileInspectionTaskRequest
+//
+// @return CreateArchiveFileInspectionTaskResponse
 func (client *Client) CreateArchiveFileInspectionTask(request *CreateArchiveFileInspectionTaskRequest) (_result *CreateArchiveFileInspectionTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateArchiveFileInspectionTaskResponse{}
@@ -19484,6 +24054,15 @@ func (client *Client) CreateArchiveFileInspectionTask(request *CreateArchiveFile
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据接入
+//
+// @param tmpReq - CreateBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBatchResponse
 func (client *Client) CreateBatchWithOptions(tmpReq *CreateBatchRequest, runtime *util.RuntimeOptions) (_result *CreateBatchResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19555,6 +24134,13 @@ func (client *Client) CreateBatchWithOptions(tmpReq *CreateBatchRequest, runtime
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据接入
+//
+// @param request - CreateBatchRequest
+//
+// @return CreateBatchResponse
 func (client *Client) CreateBatch(request *CreateBatchRequest) (_result *CreateBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBatchResponse{}
@@ -19566,6 +24152,15 @@ func (client *Client) CreateBatch(request *CreateBatchRequest) (_result *CreateB
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建绑定
+//
+// @param request - CreateBindingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBindingResponse
 func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, runtime *util.RuntimeOptions) (_result *CreateBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19607,6 +24202,13 @@ func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建绑定
+//
+// @param request - CreateBindingRequest
+//
+// @return CreateBindingResponse
 func (client *Client) CreateBinding(request *CreateBindingRequest) (_result *CreateBindingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBindingResponse{}
@@ -19618,6 +24220,15 @@ func (client *Client) CreateBinding(request *CreateBindingRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建点云压缩任务
+//
+// @param tmpReq - CreateCompressPointCloudTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCompressPointCloudTaskResponse
 func (client *Client) CreateCompressPointCloudTaskWithOptions(tmpReq *CreateCompressPointCloudTaskRequest, runtime *util.RuntimeOptions) (_result *CreateCompressPointCloudTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19721,6 +24332,13 @@ func (client *Client) CreateCompressPointCloudTaskWithOptions(tmpReq *CreateComp
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建点云压缩任务
+//
+// @param request - CreateCompressPointCloudTaskRequest
+//
+// @return CreateCompressPointCloudTaskResponse
 func (client *Client) CreateCompressPointCloudTask(request *CreateCompressPointCloudTaskRequest) (_result *CreateCompressPointCloudTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCompressPointCloudTaskResponse{}
@@ -19732,6 +24350,15 @@ func (client *Client) CreateCompressPointCloudTask(request *CreateCompressPointC
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自定义故事
+//
+// @param tmpReq - CreateCustomizedStoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomizedStoryResponse
 func (client *Client) CreateCustomizedStoryWithOptions(tmpReq *CreateCustomizedStoryRequest, runtime *util.RuntimeOptions) (_result *CreateCustomizedStoryResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19807,6 +24434,13 @@ func (client *Client) CreateCustomizedStoryWithOptions(tmpReq *CreateCustomizedS
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自定义故事
+//
+// @param request - CreateCustomizedStoryRequest
+//
+// @return CreateCustomizedStoryResponse
 func (client *Client) CreateCustomizedStory(request *CreateCustomizedStoryRequest) (_result *CreateCustomizedStoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCustomizedStoryResponse{}
@@ -19818,6 +24452,15 @@ func (client *Client) CreateCustomizedStory(request *CreateCustomizedStoryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据集
+//
+// @param request - CreateDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetResponse
 func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, runtime *util.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19883,6 +24526,13 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据集
+//
+// @param request - CreateDatasetRequest
+//
+// @return CreateDatasetResponse
 func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDatasetResponse{}
@@ -19894,6 +24544,113 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 提取盲水印
+//
+// @param tmpReq - CreateDecodeBlindWatermarkTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDecodeBlindWatermarkTaskResponse
+func (client *Client) CreateDecodeBlindWatermarkTaskWithOptions(tmpReq *CreateDecodeBlindWatermarkTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDecodeBlindWatermarkTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDecodeBlindWatermarkTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageQuality)) {
+		query["ImageQuality"] = request.ImageQuality
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		query["Model"] = request.Model
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalImageURI)) {
+		query["OriginalImageURI"] = request.OriginalImageURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrengthLevel)) {
+		query["StrengthLevel"] = request.StrengthLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetURI)) {
+		query["TargetURI"] = request.TargetURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkType)) {
+		query["WatermarkType"] = request.WatermarkType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDecodeBlindWatermarkTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDecodeBlindWatermarkTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提取盲水印
+//
+// @param request - CreateDecodeBlindWatermarkTaskRequest
+//
+// @return CreateDecodeBlindWatermarkTaskResponse
+func (client *Client) CreateDecodeBlindWatermarkTask(request *CreateDecodeBlindWatermarkTaskRequest) (_result *CreateDecodeBlindWatermarkTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDecodeBlindWatermarkTaskResponse{}
+	_body, _err := client.CreateDecodeBlindWatermarkTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 以脸搜图
+//
+// @param tmpReq - CreateFacesSearchingTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFacesSearchingTaskResponse
 func (client *Client) CreateFacesSearchingTaskWithOptions(tmpReq *CreateFacesSearchingTaskRequest, runtime *util.RuntimeOptions) (_result *CreateFacesSearchingTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19957,6 +24714,13 @@ func (client *Client) CreateFacesSearchingTaskWithOptions(tmpReq *CreateFacesSea
 	return _result, _err
 }
 
+// Summary:
+//
+// 以脸搜图
+//
+// @param request - CreateFacesSearchingTaskRequest
+//
+// @return CreateFacesSearchingTaskResponse
 func (client *Client) CreateFacesSearchingTask(request *CreateFacesSearchingTaskRequest) (_result *CreateFacesSearchingTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFacesSearchingTaskResponse{}
@@ -19968,6 +24732,15 @@ func (client *Client) CreateFacesSearchingTask(request *CreateFacesSearchingTask
 	return _result, _err
 }
 
+// Summary:
+//
+// 聚类
+//
+// @param tmpReq - CreateFigureClusteringTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFigureClusteringTaskResponse
 func (client *Client) CreateFigureClusteringTaskWithOptions(tmpReq *CreateFigureClusteringTaskRequest, runtime *util.RuntimeOptions) (_result *CreateFigureClusteringTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20027,6 +24800,13 @@ func (client *Client) CreateFigureClusteringTaskWithOptions(tmpReq *CreateFigure
 	return _result, _err
 }
 
+// Summary:
+//
+// 聚类
+//
+// @param request - CreateFigureClusteringTaskRequest
+//
+// @return CreateFigureClusteringTaskResponse
 func (client *Client) CreateFigureClusteringTask(request *CreateFigureClusteringTaskRequest) (_result *CreateFigureClusteringTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFigureClusteringTaskResponse{}
@@ -20038,6 +24818,15 @@ func (client *Client) CreateFigureClusteringTask(request *CreateFigureClustering
 	return _result, _err
 }
 
+// Summary:
+//
+// 合并聚类
+//
+// @param tmpReq - CreateFigureClustersMergingTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFigureClustersMergingTaskResponse
 func (client *Client) CreateFigureClustersMergingTaskWithOptions(tmpReq *CreateFigureClustersMergingTaskRequest, runtime *util.RuntimeOptions) (_result *CreateFigureClustersMergingTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20113,6 +24902,13 @@ func (client *Client) CreateFigureClustersMergingTaskWithOptions(tmpReq *CreateF
 	return _result, _err
 }
 
+// Summary:
+//
+// 合并聚类
+//
+// @param request - CreateFigureClustersMergingTaskRequest
+//
+// @return CreateFigureClustersMergingTaskResponse
 func (client *Client) CreateFigureClustersMergingTask(request *CreateFigureClustersMergingTaskRequest) (_result *CreateFigureClustersMergingTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFigureClustersMergingTaskResponse{}
@@ -20124,6 +24920,15 @@ func (client *Client) CreateFigureClustersMergingTask(request *CreateFigureClust
 	return _result, _err
 }
 
+// Summary:
+//
+// 压缩/打包下载API
+//
+// @param tmpReq - CreateFileCompressionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFileCompressionTaskResponse
 func (client *Client) CreateFileCompressionTaskWithOptions(tmpReq *CreateFileCompressionTaskRequest, runtime *util.RuntimeOptions) (_result *CreateFileCompressionTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20199,6 +25004,13 @@ func (client *Client) CreateFileCompressionTaskWithOptions(tmpReq *CreateFileCom
 	return _result, _err
 }
 
+// Summary:
+//
+// 压缩/打包下载API
+//
+// @param request - CreateFileCompressionTaskRequest
+//
+// @return CreateFileCompressionTaskResponse
 func (client *Client) CreateFileCompressionTask(request *CreateFileCompressionTaskRequest) (_result *CreateFileCompressionTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFileCompressionTaskResponse{}
@@ -20210,6 +25022,15 @@ func (client *Client) CreateFileCompressionTask(request *CreateFileCompressionTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 在线解压API
+//
+// @param tmpReq - CreateFileUncompressionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFileUncompressionTaskResponse
 func (client *Client) CreateFileUncompressionTaskWithOptions(tmpReq *CreateFileUncompressionTaskRequest, runtime *util.RuntimeOptions) (_result *CreateFileUncompressionTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20285,6 +25106,13 @@ func (client *Client) CreateFileUncompressionTaskWithOptions(tmpReq *CreateFileU
 	return _result, _err
 }
 
+// Summary:
+//
+// 在线解压API
+//
+// @param request - CreateFileUncompressionTaskRequest
+//
+// @return CreateFileUncompressionTaskResponse
 func (client *Client) CreateFileUncompressionTask(request *CreateFileUncompressionTaskRequest) (_result *CreateFileUncompressionTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFileUncompressionTaskResponse{}
@@ -20296,6 +25124,15 @@ func (client *Client) CreateFileUncompressionTask(request *CreateFileUncompressi
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建图片检测
+//
+// @param tmpReq - CreateImageModerationTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateImageModerationTaskResponse
 func (client *Client) CreateImageModerationTaskWithOptions(tmpReq *CreateImageModerationTaskRequest, runtime *util.RuntimeOptions) (_result *CreateImageModerationTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20379,6 +25216,13 @@ func (client *Client) CreateImageModerationTaskWithOptions(tmpReq *CreateImageMo
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建图片检测
+//
+// @param request - CreateImageModerationTaskRequest
+//
+// @return CreateImageModerationTaskResponse
 func (client *Client) CreateImageModerationTask(request *CreateImageModerationTaskRequest) (_result *CreateImageModerationTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateImageModerationTaskResponse{}
@@ -20390,6 +25234,15 @@ func (client *Client) CreateImageModerationTask(request *CreateImageModerationTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片拼接
+//
+// @param tmpReq - CreateImageSplicingTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateImageSplicingTaskResponse
 func (client *Client) CreateImageSplicingTaskWithOptions(tmpReq *CreateImageSplicingTaskRequest, runtime *util.RuntimeOptions) (_result *CreateImageSplicingTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20497,6 +25350,13 @@ func (client *Client) CreateImageSplicingTaskWithOptions(tmpReq *CreateImageSpli
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片拼接
+//
+// @param request - CreateImageSplicingTaskRequest
+//
+// @return CreateImageSplicingTaskResponse
 func (client *Client) CreateImageSplicingTask(request *CreateImageSplicingTaskRequest) (_result *CreateImageSplicingTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateImageSplicingTaskResponse{}
@@ -20508,6 +25368,15 @@ func (client *Client) CreateImageSplicingTask(request *CreateImageSplicingTaskRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片转PDF
+//
+// @param tmpReq - CreateImageToPDFTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateImageToPDFTaskResponse
 func (client *Client) CreateImageToPDFTaskWithOptions(tmpReq *CreateImageToPDFTaskRequest, runtime *util.RuntimeOptions) (_result *CreateImageToPDFTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20583,6 +25452,13 @@ func (client *Client) CreateImageToPDFTaskWithOptions(tmpReq *CreateImageToPDFTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片转PDF
+//
+// @param request - CreateImageToPDFTaskRequest
+//
+// @return CreateImageToPDFTaskResponse
 func (client *Client) CreateImageToPDFTask(request *CreateImageToPDFTaskRequest) (_result *CreateImageToPDFTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateImageToPDFTaskResponse{}
@@ -20594,6 +25470,15 @@ func (client *Client) CreateImageToPDFTask(request *CreateImageToPDFTaskRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建时空聚类任务
+//
+// @param tmpReq - CreateLocationDateClusteringTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLocationDateClusteringTaskResponse
 func (client *Client) CreateLocationDateClusteringTaskWithOptions(tmpReq *CreateLocationDateClusteringTaskRequest, runtime *util.RuntimeOptions) (_result *CreateLocationDateClusteringTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20669,6 +25554,13 @@ func (client *Client) CreateLocationDateClusteringTaskWithOptions(tmpReq *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建时空聚类任务
+//
+// @param request - CreateLocationDateClusteringTaskRequest
+//
+// @return CreateLocationDateClusteringTaskResponse
 func (client *Client) CreateLocationDateClusteringTask(request *CreateLocationDateClusteringTaskRequest) (_result *CreateLocationDateClusteringTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLocationDateClusteringTaskResponse{}
@@ -20680,6 +25572,15 @@ func (client *Client) CreateLocationDateClusteringTask(request *CreateLocationDa
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建转码服务
+//
+// @param tmpReq - CreateMediaConvertTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMediaConvertTaskResponse
 func (client *Client) CreateMediaConvertTaskWithOptions(tmpReq *CreateMediaConvertTaskRequest, runtime *util.RuntimeOptions) (_result *CreateMediaConvertTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20763,6 +25664,13 @@ func (client *Client) CreateMediaConvertTaskWithOptions(tmpReq *CreateMediaConve
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建转码服务
+//
+// @param request - CreateMediaConvertTaskRequest
+//
+// @return CreateMediaConvertTaskResponse
 func (client *Client) CreateMediaConvertTask(request *CreateMediaConvertTaskRequest) (_result *CreateMediaConvertTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMediaConvertTaskResponse{}
@@ -20774,6 +25682,15 @@ func (client *Client) CreateMediaConvertTask(request *CreateMediaConvertTaskRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建文档转换任务
+//
+// @param tmpReq - CreateOfficeConversionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOfficeConversionTaskResponse
 func (client *Client) CreateOfficeConversionTaskWithOptions(tmpReq *CreateOfficeConversionTaskRequest, runtime *util.RuntimeOptions) (_result *CreateOfficeConversionTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20945,6 +25862,13 @@ func (client *Client) CreateOfficeConversionTaskWithOptions(tmpReq *CreateOffice
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建文档转换任务
+//
+// @param request - CreateOfficeConversionTaskRequest
+//
+// @return CreateOfficeConversionTaskResponse
 func (client *Client) CreateOfficeConversionTask(request *CreateOfficeConversionTaskRequest) (_result *CreateOfficeConversionTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOfficeConversionTaskResponse{}
@@ -20956,6 +25880,15 @@ func (client *Client) CreateOfficeConversionTask(request *CreateOfficeConversion
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建项目
+//
+// @param request - CreateProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProjectResponse
 func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21025,6 +25958,13 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建项目
+//
+// @param request - CreateProjectRequest
+//
+// @return CreateProjectResponse
 func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateProjectResponse{}
@@ -21036,6 +25976,15 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建相似图片聚类任务
+//
+// @param tmpReq - CreateSimilarImageClusteringTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSimilarImageClusteringTaskResponse
 func (client *Client) CreateSimilarImageClusteringTaskWithOptions(tmpReq *CreateSimilarImageClusteringTaskRequest, runtime *util.RuntimeOptions) (_result *CreateSimilarImageClusteringTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21095,6 +26044,13 @@ func (client *Client) CreateSimilarImageClusteringTaskWithOptions(tmpReq *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建相似图片聚类任务
+//
+// @param request - CreateSimilarImageClusteringTaskRequest
+//
+// @return CreateSimilarImageClusteringTaskResponse
 func (client *Client) CreateSimilarImageClusteringTask(request *CreateSimilarImageClusteringTaskRequest) (_result *CreateSimilarImageClusteringTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSimilarImageClusteringTaskResponse{}
@@ -21106,6 +26062,15 @@ func (client *Client) CreateSimilarImageClusteringTask(request *CreateSimilarIma
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个 Story
+//
+// @param tmpReq - CreateStoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStoryResponse
 func (client *Client) CreateStoryWithOptions(tmpReq *CreateStoryRequest, runtime *util.RuntimeOptions) (_result *CreateStoryResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21223,6 +26188,13 @@ func (client *Client) CreateStoryWithOptions(tmpReq *CreateStoryRequest, runtime
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个 Story
+//
+// @param request - CreateStoryRequest
+//
+// @return CreateStoryResponse
 func (client *Client) CreateStory(request *CreateStoryRequest) (_result *CreateStoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateStoryResponse{}
@@ -21234,6 +26206,15 @@ func (client *Client) CreateStory(request *CreateStoryRequest) (_result *CreateS
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据接入
+//
+// @param tmpReq - CreateTriggerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTriggerResponse
 func (client *Client) CreateTriggerWithOptions(tmpReq *CreateTriggerRequest, runtime *util.RuntimeOptions) (_result *CreateTriggerResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21305,6 +26286,13 @@ func (client *Client) CreateTriggerWithOptions(tmpReq *CreateTriggerRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据接入
+//
+// @param request - CreateTriggerRequest
+//
+// @return CreateTriggerResponse
 func (client *Client) CreateTrigger(request *CreateTriggerRequest) (_result *CreateTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTriggerResponse{}
@@ -21316,6 +26304,15 @@ func (client *Client) CreateTrigger(request *CreateTriggerRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 检测视频中的内容
+//
+// @param tmpReq - CreateVideoLabelClassificationTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVideoLabelClassificationTaskResponse
 func (client *Client) CreateVideoLabelClassificationTaskWithOptions(tmpReq *CreateVideoLabelClassificationTaskRequest, runtime *util.RuntimeOptions) (_result *CreateVideoLabelClassificationTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21383,6 +26380,13 @@ func (client *Client) CreateVideoLabelClassificationTaskWithOptions(tmpReq *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// 检测视频中的内容
+//
+// @param request - CreateVideoLabelClassificationTaskRequest
+//
+// @return CreateVideoLabelClassificationTaskResponse
 func (client *Client) CreateVideoLabelClassificationTask(request *CreateVideoLabelClassificationTaskRequest) (_result *CreateVideoLabelClassificationTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVideoLabelClassificationTaskResponse{}
@@ -21394,6 +26398,15 @@ func (client *Client) CreateVideoLabelClassificationTask(request *CreateVideoLab
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建视频检测
+//
+// @param tmpReq - CreateVideoModerationTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVideoModerationTaskResponse
 func (client *Client) CreateVideoModerationTaskWithOptions(tmpReq *CreateVideoModerationTaskRequest, runtime *util.RuntimeOptions) (_result *CreateVideoModerationTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21477,6 +26490,13 @@ func (client *Client) CreateVideoModerationTaskWithOptions(tmpReq *CreateVideoMo
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建视频检测
+//
+// @param request - CreateVideoModerationTaskRequest
+//
+// @return CreateVideoModerationTaskResponse
 func (client *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskRequest) (_result *CreateVideoModerationTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVideoModerationTaskResponse{}
@@ -21488,6 +26508,15 @@ func (client *Client) CreateVideoModerationTask(request *CreateVideoModerationTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除数据接入实例
+//
+// @param request - DeleteBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBatchResponse
 func (client *Client) DeleteBatchWithOptions(request *DeleteBatchRequest, runtime *util.RuntimeOptions) (_result *DeleteBatchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21525,6 +26554,13 @@ func (client *Client) DeleteBatchWithOptions(request *DeleteBatchRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除数据接入实例
+//
+// @param request - DeleteBatchRequest
+//
+// @return DeleteBatchResponse
 func (client *Client) DeleteBatch(request *DeleteBatchRequest) (_result *DeleteBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBatchResponse{}
@@ -21536,6 +26572,15 @@ func (client *Client) DeleteBatch(request *DeleteBatchRequest) (_result *DeleteB
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除绑定
+//
+// @param request - DeleteBindingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBindingResponse
 func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, runtime *util.RuntimeOptions) (_result *DeleteBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21577,6 +26622,13 @@ func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除绑定
+//
+// @param request - DeleteBindingRequest
+//
+// @return DeleteBindingResponse
 func (client *Client) DeleteBinding(request *DeleteBindingRequest) (_result *DeleteBindingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBindingResponse{}
@@ -21588,6 +26640,15 @@ func (client *Client) DeleteBinding(request *DeleteBindingRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除媒体集
+//
+// @param request - DeleteDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetResponse
 func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, runtime *util.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21625,6 +26686,13 @@ func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除媒体集
+//
+// @param request - DeleteDatasetRequest
+//
+// @return DeleteDatasetResponse
 func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *DeleteDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDatasetResponse{}
@@ -21636,6 +26704,15 @@ func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除文件元信息
+//
+// @param request - DeleteFileMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFileMetaResponse
 func (client *Client) DeleteFileMetaWithOptions(request *DeleteFileMetaRequest, runtime *util.RuntimeOptions) (_result *DeleteFileMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21677,6 +26754,13 @@ func (client *Client) DeleteFileMetaWithOptions(request *DeleteFileMetaRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除文件元信息
+//
+// @param request - DeleteFileMetaRequest
+//
+// @return DeleteFileMetaResponse
 func (client *Client) DeleteFileMeta(request *DeleteFileMetaRequest) (_result *DeleteFileMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFileMetaResponse{}
@@ -21688,6 +26772,15 @@ func (client *Client) DeleteFileMeta(request *DeleteFileMetaRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除时空聚类
+//
+// @param request - DeleteLocationDateClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLocationDateClusterResponse
 func (client *Client) DeleteLocationDateClusterWithOptions(request *DeleteLocationDateClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteLocationDateClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21731,6 +26824,13 @@ func (client *Client) DeleteLocationDateClusterWithOptions(request *DeleteLocati
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除时空聚类
+//
+// @param request - DeleteLocationDateClusterRequest
+//
+// @return DeleteLocationDateClusterResponse
 func (client *Client) DeleteLocationDateCluster(request *DeleteLocationDateClusterRequest) (_result *DeleteLocationDateClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLocationDateClusterResponse{}
@@ -21742,6 +26842,15 @@ func (client *Client) DeleteLocationDateCluster(request *DeleteLocationDateClust
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除项目
+//
+// @param request - DeleteProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProjectResponse
 func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21775,6 +26884,13 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除项目
+//
+// @param request - DeleteProjectRequest
+//
+// @return DeleteProjectResponse
 func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteProjectResponse{}
@@ -21786,6 +26902,15 @@ func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除一个 Story
+//
+// @param request - DeleteStoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStoryResponse
 func (client *Client) DeleteStoryWithOptions(request *DeleteStoryRequest, runtime *util.RuntimeOptions) (_result *DeleteStoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21827,6 +26952,13 @@ func (client *Client) DeleteStoryWithOptions(request *DeleteStoryRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除一个 Story
+//
+// @param request - DeleteStoryRequest
+//
+// @return DeleteStoryResponse
 func (client *Client) DeleteStory(request *DeleteStoryRequest) (_result *DeleteStoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteStoryResponse{}
@@ -21838,6 +26970,15 @@ func (client *Client) DeleteStory(request *DeleteStoryRequest) (_result *DeleteS
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除数据接入实例
+//
+// @param request - DeleteTriggerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTriggerResponse
 func (client *Client) DeleteTriggerWithOptions(request *DeleteTriggerRequest, runtime *util.RuntimeOptions) (_result *DeleteTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21875,6 +27016,13 @@ func (client *Client) DeleteTriggerWithOptions(request *DeleteTriggerRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除数据接入实例
+//
+// @param request - DeleteTriggerRequest
+//
+// @return DeleteTriggerResponse
 func (client *Client) DeleteTrigger(request *DeleteTriggerRequest) (_result *DeleteTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTriggerResponse{}
@@ -21886,6 +27034,15 @@ func (client *Client) DeleteTrigger(request *DeleteTriggerRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑ossbucket
+//
+// @param request - DetachOSSBucketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachOSSBucketResponse
 func (client *Client) DetachOSSBucketWithOptions(request *DetachOSSBucketRequest, runtime *util.RuntimeOptions) (_result *DetachOSSBucketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21919,6 +27076,13 @@ func (client *Client) DetachOSSBucketWithOptions(request *DetachOSSBucketRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑ossbucket
+//
+// @param request - DetachOSSBucketRequest
+//
+// @return DetachOSSBucketResponse
 func (client *Client) DetachOSSBucket(request *DetachOSSBucketRequest) (_result *DetachOSSBucketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachOSSBucketResponse{}
@@ -21930,6 +27094,15 @@ func (client *Client) DetachOSSBucket(request *DetachOSSBucketRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 人体检测算子
+//
+// @param tmpReq - DetectImageBodiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectImageBodiesResponse
 func (client *Client) DetectImageBodiesWithOptions(tmpReq *DetectImageBodiesRequest, runtime *util.RuntimeOptions) (_result *DetectImageBodiesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21981,6 +27154,13 @@ func (client *Client) DetectImageBodiesWithOptions(tmpReq *DetectImageBodiesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 人体检测算子
+//
+// @param request - DetectImageBodiesRequest
+//
+// @return DetectImageBodiesResponse
 func (client *Client) DetectImageBodies(request *DetectImageBodiesRequest) (_result *DetectImageBodiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectImageBodiesResponse{}
@@ -21992,6 +27172,15 @@ func (client *Client) DetectImageBodies(request *DetectImageBodiesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 检测图片中车辆信息
+//
+// @param tmpReq - DetectImageCarsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectImageCarsResponse
 func (client *Client) DetectImageCarsWithOptions(tmpReq *DetectImageCarsRequest, runtime *util.RuntimeOptions) (_result *DetectImageCarsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22039,6 +27228,13 @@ func (client *Client) DetectImageCarsWithOptions(tmpReq *DetectImageCarsRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 检测图片中车辆信息
+//
+// @param request - DetectImageCarsRequest
+//
+// @return DetectImageCarsResponse
 func (client *Client) DetectImageCars(request *DetectImageCarsRequest) (_result *DetectImageCarsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectImageCarsResponse{}
@@ -22050,6 +27246,15 @@ func (client *Client) DetectImageCars(request *DetectImageCarsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片二维码检测
+//
+// @param tmpReq - DetectImageCodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectImageCodesResponse
 func (client *Client) DetectImageCodesWithOptions(tmpReq *DetectImageCodesRequest, runtime *util.RuntimeOptions) (_result *DetectImageCodesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22097,6 +27302,13 @@ func (client *Client) DetectImageCodesWithOptions(tmpReq *DetectImageCodesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片二维码检测
+//
+// @param request - DetectImageCodesRequest
+//
+// @return DetectImageCodesResponse
 func (client *Client) DetectImageCodes(request *DetectImageCodesRequest) (_result *DetectImageCodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectImageCodesResponse{}
@@ -22108,6 +27320,15 @@ func (client *Client) DetectImageCodes(request *DetectImageCodesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片裁剪信息
+//
+// @param tmpReq - DetectImageCroppingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectImageCroppingResponse
 func (client *Client) DetectImageCroppingWithOptions(tmpReq *DetectImageCroppingRequest, runtime *util.RuntimeOptions) (_result *DetectImageCroppingResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22159,6 +27380,13 @@ func (client *Client) DetectImageCroppingWithOptions(tmpReq *DetectImageCropping
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片裁剪信息
+//
+// @param request - DetectImageCroppingRequest
+//
+// @return DetectImageCroppingResponse
 func (client *Client) DetectImageCropping(request *DetectImageCroppingRequest) (_result *DetectImageCroppingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectImageCroppingResponse{}
@@ -22170,6 +27398,15 @@ func (client *Client) DetectImageCropping(request *DetectImageCroppingRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片人脸信息
+//
+// @param tmpReq - DetectImageFacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectImageFacesResponse
 func (client *Client) DetectImageFacesWithOptions(tmpReq *DetectImageFacesRequest, runtime *util.RuntimeOptions) (_result *DetectImageFacesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22217,6 +27454,13 @@ func (client *Client) DetectImageFacesWithOptions(tmpReq *DetectImageFacesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片人脸信息
+//
+// @param request - DetectImageFacesRequest
+//
+// @return DetectImageFacesResponse
 func (client *Client) DetectImageFaces(request *DetectImageFacesRequest) (_result *DetectImageFacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectImageFacesResponse{}
@@ -22228,6 +27472,15 @@ func (client *Client) DetectImageFaces(request *DetectImageFacesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 检测图像中的内容
+//
+// @param tmpReq - DetectImageLabelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectImageLabelsResponse
 func (client *Client) DetectImageLabelsWithOptions(tmpReq *DetectImageLabelsRequest, runtime *util.RuntimeOptions) (_result *DetectImageLabelsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22279,6 +27532,13 @@ func (client *Client) DetectImageLabelsWithOptions(tmpReq *DetectImageLabelsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 检测图像中的内容
+//
+// @param request - DetectImageLabelsRequest
+//
+// @return DetectImageLabelsResponse
 func (client *Client) DetectImageLabels(request *DetectImageLabelsRequest) (_result *DetectImageLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectImageLabelsResponse{}
@@ -22290,6 +27550,15 @@ func (client *Client) DetectImageLabels(request *DetectImageLabelsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片打分
+//
+// @param tmpReq - DetectImageScoreRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectImageScoreResponse
 func (client *Client) DetectImageScoreWithOptions(tmpReq *DetectImageScoreRequest, runtime *util.RuntimeOptions) (_result *DetectImageScoreResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22337,6 +27606,13 @@ func (client *Client) DetectImageScoreWithOptions(tmpReq *DetectImageScoreReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片打分
+//
+// @param request - DetectImageScoreRequest
+//
+// @return DetectImageScoreResponse
 func (client *Client) DetectImageScore(request *DetectImageScoreRequest) (_result *DetectImageScoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectImageScoreResponse{}
@@ -22348,6 +27624,15 @@ func (client *Client) DetectImageScore(request *DetectImageScoreRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 进行图片光学字符检测
+//
+// @param tmpReq - DetectImageTextsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectImageTextsResponse
 func (client *Client) DetectImageTextsWithOptions(tmpReq *DetectImageTextsRequest, runtime *util.RuntimeOptions) (_result *DetectImageTextsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22395,6 +27680,13 @@ func (client *Client) DetectImageTextsWithOptions(tmpReq *DetectImageTextsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 进行图片光学字符检测
+//
+// @param request - DetectImageTextsRequest
+//
+// @return DetectImageTextsResponse
 func (client *Client) DetectImageTexts(request *DetectImageTextsRequest) (_result *DetectImageTextsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectImageTextsResponse{}
@@ -22406,6 +27698,15 @@ func (client *Client) DetectImageTexts(request *DetectImageTextsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取媒体文件信息
+//
+// @param tmpReq - DetectMediaMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectMediaMetaResponse
 func (client *Client) DetectMediaMetaWithOptions(tmpReq *DetectMediaMetaRequest, runtime *util.RuntimeOptions) (_result *DetectMediaMetaResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22453,6 +27754,13 @@ func (client *Client) DetectMediaMetaWithOptions(tmpReq *DetectMediaMetaRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取媒体文件信息
+//
+// @param request - DetectMediaMetaRequest
+//
+// @return DetectMediaMetaResponse
 func (client *Client) DetectMediaMeta(request *DetectMediaMetaRequest) (_result *DetectMediaMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectMediaMetaResponse{}
@@ -22464,6 +27772,15 @@ func (client *Client) DetectMediaMeta(request *DetectMediaMetaRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 检测文本
+//
+// @param request - DetectTextAnomalyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectTextAnomalyResponse
 func (client *Client) DetectTextAnomalyWithOptions(request *DetectTextAnomalyRequest, runtime *util.RuntimeOptions) (_result *DetectTextAnomalyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22501,6 +27818,13 @@ func (client *Client) DetectTextAnomalyWithOptions(request *DetectTextAnomalyReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 检测文本
+//
+// @param request - DetectTextAnomalyRequest
+//
+// @return DetectTextAnomalyResponse
 func (client *Client) DetectTextAnomaly(request *DetectTextAnomalyRequest) (_result *DetectTextAnomalyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectTextAnomalyResponse{}
@@ -22512,6 +27836,95 @@ func (client *Client) DetectTextAnomaly(request *DetectTextAnomalyRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 嵌入图片盲水印算子
+//
+// @param request - EncodeBlindWatermarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EncodeBlindWatermarkResponse
+func (client *Client) EncodeBlindWatermarkWithOptions(request *EncodeBlindWatermarkRequest, runtime *util.RuntimeOptions) (_result *EncodeBlindWatermarkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageQuality)) {
+		query["ImageQuality"] = request.ImageQuality
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrengthLevel)) {
+		query["StrengthLevel"] = request.StrengthLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetURI)) {
+		query["TargetURI"] = request.TargetURI
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EncodeBlindWatermark"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EncodeBlindWatermarkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 嵌入图片盲水印算子
+//
+// @param request - EncodeBlindWatermarkRequest
+//
+// @return EncodeBlindWatermarkResponse
+func (client *Client) EncodeBlindWatermark(request *EncodeBlindWatermarkRequest) (_result *EncodeBlindWatermarkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EncodeBlindWatermarkResponse{}
+	_body, _err := client.EncodeBlindWatermarkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提取文档中的文本
+//
+// @param tmpReq - ExtractDocumentTextRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExtractDocumentTextResponse
 func (client *Client) ExtractDocumentTextWithOptions(tmpReq *ExtractDocumentTextRequest, runtime *util.RuntimeOptions) (_result *ExtractDocumentTextResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22563,6 +27976,13 @@ func (client *Client) ExtractDocumentTextWithOptions(tmpReq *ExtractDocumentText
 	return _result, _err
 }
 
+// Summary:
+//
+// 提取文档中的文本
+//
+// @param request - ExtractDocumentTextRequest
+//
+// @return ExtractDocumentTextResponse
 func (client *Client) ExtractDocumentText(request *ExtractDocumentTextRequest) (_result *ExtractDocumentTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExtractDocumentTextResponse{}
@@ -22574,6 +27994,15 @@ func (client *Client) ExtractDocumentText(request *ExtractDocumentTextRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 对 Dataset 内的元数据进行模糊搜索。
+//
+// @param tmpReq - FuzzyQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FuzzyQueryResponse
 func (client *Client) FuzzyQueryWithOptions(tmpReq *FuzzyQueryRequest, runtime *util.RuntimeOptions) (_result *FuzzyQueryResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22641,6 +28070,13 @@ func (client *Client) FuzzyQueryWithOptions(tmpReq *FuzzyQueryRequest, runtime *
 	return _result, _err
 }
 
+// Summary:
+//
+// 对 Dataset 内的元数据进行模糊搜索。
+//
+// @param request - FuzzyQueryRequest
+//
+// @return FuzzyQueryResponse
 func (client *Client) FuzzyQuery(request *FuzzyQueryRequest) (_result *FuzzyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FuzzyQueryResponse{}
@@ -22652,6 +28088,15 @@ func (client *Client) FuzzyQuery(request *FuzzyQueryRequest) (_result *FuzzyQuer
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实时转码任务
+//
+// @param tmpReq - GenerateVideoPlaylistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateVideoPlaylistResponse
 func (client *Client) GenerateVideoPlaylistWithOptions(tmpReq *GenerateVideoPlaylistRequest, runtime *util.RuntimeOptions) (_result *GenerateVideoPlaylistResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22751,6 +28196,13 @@ func (client *Client) GenerateVideoPlaylistWithOptions(tmpReq *GenerateVideoPlay
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实时转码任务
+//
+// @param request - GenerateVideoPlaylistRequest
+//
+// @return GenerateVideoPlaylistResponse
 func (client *Client) GenerateVideoPlaylist(request *GenerateVideoPlaylistRequest) (_result *GenerateVideoPlaylistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateVideoPlaylistResponse{}
@@ -22762,6 +28214,15 @@ func (client *Client) GenerateVideoPlaylist(request *GenerateVideoPlaylistReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取文档预览编辑凭证
+//
+// @param tmpReq - GenerateWebofficeTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateWebofficeTokenResponse
 func (client *Client) GenerateWebofficeTokenWithOptions(tmpReq *GenerateWebofficeTokenRequest, runtime *util.RuntimeOptions) (_result *GenerateWebofficeTokenResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22877,6 +28338,13 @@ func (client *Client) GenerateWebofficeTokenWithOptions(tmpReq *GenerateWeboffic
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取文档预览编辑凭证
+//
+// @param request - GenerateWebofficeTokenRequest
+//
+// @return GenerateWebofficeTokenResponse
 func (client *Client) GenerateWebofficeToken(request *GenerateWebofficeTokenRequest) (_result *GenerateWebofficeTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateWebofficeTokenResponse{}
@@ -22888,6 +28356,15 @@ func (client *Client) GenerateWebofficeToken(request *GenerateWebofficeTokenRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据接入实例
+//
+// @param request - GetBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBatchResponse
 func (client *Client) GetBatchWithOptions(request *GetBatchRequest, runtime *util.RuntimeOptions) (_result *GetBatchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22925,6 +28402,13 @@ func (client *Client) GetBatchWithOptions(request *GetBatchRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据接入实例
+//
+// @param request - GetBatchRequest
+//
+// @return GetBatchResponse
 func (client *Client) GetBatch(request *GetBatchRequest) (_result *GetBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetBatchResponse{}
@@ -22936,6 +28420,15 @@ func (client *Client) GetBatch(request *GetBatchRequest) (_result *GetBatchRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取绑定
+//
+// @param request - GetBindingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBindingResponse
 func (client *Client) GetBindingWithOptions(request *GetBindingRequest, runtime *util.RuntimeOptions) (_result *GetBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22977,6 +28470,13 @@ func (client *Client) GetBindingWithOptions(request *GetBindingRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取绑定
+//
+// @param request - GetBindingRequest
+//
+// @return GetBindingResponse
 func (client *Client) GetBinding(request *GetBindingRequest) (_result *GetBindingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetBindingResponse{}
@@ -22988,6 +28488,97 @@ func (client *Client) GetBinding(request *GetBindingRequest) (_result *GetBindin
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetDRMLicense is deprecated
+//
+// Summary:
+//
+// drmlicense获取
+//
+// @param request - GetDRMLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDRMLicenseResponse
+// Deprecated
+func (client *Client) GetDRMLicenseWithOptions(request *GetDRMLicenseRequest, runtime *util.RuntimeOptions) (_result *GetDRMLicenseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
+		query["NotifyEndpoint"] = request.NotifyEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProtectionSystem)) {
+		query["ProtectionSystem"] = request.ProtectionSystem
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDRMLicense"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDRMLicenseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Deprecated: OpenAPI GetDRMLicense is deprecated
+//
+// Summary:
+//
+// drmlicense获取
+//
+// @param request - GetDRMLicenseRequest
+//
+// @return GetDRMLicenseResponse
+// Deprecated
+func (client *Client) GetDRMLicense(request *GetDRMLicenseRequest) (_result *GetDRMLicenseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDRMLicenseResponse{}
+	_body, _err := client.GetDRMLicenseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取媒体集信息
+//
+// @param request - GetDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatasetResponse
 func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime *util.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23029,6 +28620,13 @@ func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取媒体集信息
+//
+// @param request - GetDatasetRequest
+//
+// @return GetDatasetResponse
 func (client *Client) GetDataset(request *GetDatasetRequest) (_result *GetDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDatasetResponse{}
@@ -23040,6 +28638,83 @@ func (client *Client) GetDataset(request *GetDatasetRequest) (_result *GetDatase
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取提取水印的结果
+//
+// @param request - GetDecodeBlindWatermarkResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDecodeBlindWatermarkResultResponse
+func (client *Client) GetDecodeBlindWatermarkResultWithOptions(request *GetDecodeBlindWatermarkResultRequest, runtime *util.RuntimeOptions) (_result *GetDecodeBlindWatermarkResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDecodeBlindWatermarkResult"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDecodeBlindWatermarkResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取提取水印的结果
+//
+// @param request - GetDecodeBlindWatermarkResultRequest
+//
+// @return GetDecodeBlindWatermarkResultResponse
+func (client *Client) GetDecodeBlindWatermarkResult(request *GetDecodeBlindWatermarkResultRequest) (_result *GetDecodeBlindWatermarkResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDecodeBlindWatermarkResultResponse{}
+	_body, _err := client.GetDecodeBlindWatermarkResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取聚类
+//
+// @param request - GetFigureClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFigureClusterResponse
 func (client *Client) GetFigureClusterWithOptions(request *GetFigureClusterRequest, runtime *util.RuntimeOptions) (_result *GetFigureClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23081,6 +28756,13 @@ func (client *Client) GetFigureClusterWithOptions(request *GetFigureClusterReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取聚类
+//
+// @param request - GetFigureClusterRequest
+//
+// @return GetFigureClusterResponse
 func (client *Client) GetFigureCluster(request *GetFigureClusterRequest) (_result *GetFigureClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFigureClusterResponse{}
@@ -23092,6 +28774,15 @@ func (client *Client) GetFigureCluster(request *GetFigureClusterRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取文件元信息
+//
+// @param request - GetFileMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFileMetaResponse
 func (client *Client) GetFileMetaWithOptions(request *GetFileMetaRequest, runtime *util.RuntimeOptions) (_result *GetFileMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23133,6 +28824,13 @@ func (client *Client) GetFileMetaWithOptions(request *GetFileMetaRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取文件元信息
+//
+// @param request - GetFileMetaRequest
+//
+// @return GetFileMetaResponse
 func (client *Client) GetFileMeta(request *GetFileMetaRequest) (_result *GetFileMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFileMetaResponse{}
@@ -23144,6 +28842,15 @@ func (client *Client) GetFileMeta(request *GetFileMetaRequest) (_result *GetFile
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片审核任务结果
+//
+// @param request - GetImageModerationResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageModerationResultResponse
 func (client *Client) GetImageModerationResultWithOptions(request *GetImageModerationResultRequest, runtime *util.RuntimeOptions) (_result *GetImageModerationResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23185,6 +28892,13 @@ func (client *Client) GetImageModerationResultWithOptions(request *GetImageModer
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片审核任务结果
+//
+// @param request - GetImageModerationResultRequest
+//
+// @return GetImageModerationResultResponse
 func (client *Client) GetImageModerationResult(request *GetImageModerationResultRequest) (_result *GetImageModerationResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetImageModerationResultResponse{}
@@ -23196,6 +28910,15 @@ func (client *Client) GetImageModerationResult(request *GetImageModerationResult
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取绑定的ossbucket
+//
+// @param request - GetOSSBucketAttachmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOSSBucketAttachmentResponse
 func (client *Client) GetOSSBucketAttachmentWithOptions(request *GetOSSBucketAttachmentRequest, runtime *util.RuntimeOptions) (_result *GetOSSBucketAttachmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23229,6 +28952,13 @@ func (client *Client) GetOSSBucketAttachmentWithOptions(request *GetOSSBucketAtt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取绑定的ossbucket
+//
+// @param request - GetOSSBucketAttachmentRequest
+//
+// @return GetOSSBucketAttachmentResponse
 func (client *Client) GetOSSBucketAttachment(request *GetOSSBucketAttachmentRequest) (_result *GetOSSBucketAttachmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOSSBucketAttachmentResponse{}
@@ -23240,6 +28970,15 @@ func (client *Client) GetOSSBucketAttachment(request *GetOSSBucketAttachmentRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目信息
+//
+// @param request - GetProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectResponse
 func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23277,6 +29016,13 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目信息
+//
+// @param request - GetProjectRequest
+//
+// @return GetProjectResponse
 func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetProjectResponse{}
@@ -23288,6 +29034,15 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 	return _result, _err
 }
 
+// Summary:
+//
+// 返回一个 Story 的详细信息
+//
+// @param request - GetStoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStoryResponse
 func (client *Client) GetStoryWithOptions(request *GetStoryRequest, runtime *util.RuntimeOptions) (_result *GetStoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23329,6 +29084,13 @@ func (client *Client) GetStoryWithOptions(request *GetStoryRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// 返回一个 Story 的详细信息
+//
+// @param request - GetStoryRequest
+//
+// @return GetStoryResponse
 func (client *Client) GetStory(request *GetStoryRequest) (_result *GetStoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetStoryResponse{}
@@ -23340,6 +29102,15 @@ func (client *Client) GetStory(request *GetStoryRequest) (_result *GetStoryRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务信息
+//
+// @param request - GetTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskResponse
 func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.RuntimeOptions) (_result *GetTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23385,6 +29156,13 @@ func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务信息
+//
+// @param request - GetTaskRequest
+//
+// @return GetTaskResponse
 func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTaskResponse{}
@@ -23396,6 +29174,15 @@ func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据接入实例
+//
+// @param request - GetTriggerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTriggerResponse
 func (client *Client) GetTriggerWithOptions(request *GetTriggerRequest, runtime *util.RuntimeOptions) (_result *GetTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23433,6 +29220,13 @@ func (client *Client) GetTriggerWithOptions(request *GetTriggerRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据接入实例
+//
+// @param request - GetTriggerRequest
+//
+// @return GetTriggerResponse
 func (client *Client) GetTrigger(request *GetTriggerRequest) (_result *GetTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTriggerResponse{}
@@ -23444,6 +29238,15 @@ func (client *Client) GetTrigger(request *GetTriggerRequest) (_result *GetTrigge
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取视频标签检测任务结果
+//
+// @param request - GetVideoLabelClassificationResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoLabelClassificationResultResponse
 func (client *Client) GetVideoLabelClassificationResultWithOptions(request *GetVideoLabelClassificationResultRequest, runtime *util.RuntimeOptions) (_result *GetVideoLabelClassificationResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23485,6 +29288,13 @@ func (client *Client) GetVideoLabelClassificationResultWithOptions(request *GetV
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取视频标签检测任务结果
+//
+// @param request - GetVideoLabelClassificationResultRequest
+//
+// @return GetVideoLabelClassificationResultResponse
 func (client *Client) GetVideoLabelClassificationResult(request *GetVideoLabelClassificationResultRequest) (_result *GetVideoLabelClassificationResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVideoLabelClassificationResultResponse{}
@@ -23496,6 +29306,15 @@ func (client *Client) GetVideoLabelClassificationResult(request *GetVideoLabelCl
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取视频审核任务结果
+//
+// @param request - GetVideoModerationResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoModerationResultResponse
 func (client *Client) GetVideoModerationResultWithOptions(request *GetVideoModerationResultRequest, runtime *util.RuntimeOptions) (_result *GetVideoModerationResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23537,6 +29356,13 @@ func (client *Client) GetVideoModerationResultWithOptions(request *GetVideoModer
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取视频审核任务结果
+//
+// @param request - GetVideoModerationResultRequest
+//
+// @return GetVideoModerationResultResponse
 func (client *Client) GetVideoModerationResult(request *GetVideoModerationResultRequest) (_result *GetVideoModerationResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVideoModerationResultResponse{}
@@ -23548,6 +29374,15 @@ func (client *Client) GetVideoModerationResult(request *GetVideoModerationResult
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加文件元信息
+//
+// @param tmpReq - IndexFileMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IndexFileMetaResponse
 func (client *Client) IndexFileMetaWithOptions(tmpReq *IndexFileMetaRequest, runtime *util.RuntimeOptions) (_result *IndexFileMetaResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23580,6 +29415,10 @@ func (client *Client) IndexFileMetaWithOptions(tmpReq *IndexFileMetaRequest, run
 		query["ProjectName"] = request.ProjectName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23603,6 +29442,13 @@ func (client *Client) IndexFileMetaWithOptions(tmpReq *IndexFileMetaRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加文件元信息
+//
+// @param request - IndexFileMetaRequest
+//
+// @return IndexFileMetaResponse
 func (client *Client) IndexFileMeta(request *IndexFileMetaRequest) (_result *IndexFileMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &IndexFileMetaResponse{}
@@ -23614,6 +29460,15 @@ func (client *Client) IndexFileMeta(request *IndexFileMetaRequest) (_result *Ind
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出数据接入实例
+//
+// @param request - ListBatchesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBatchesResponse
 func (client *Client) ListBatchesWithOptions(request *ListBatchesRequest, runtime *util.RuntimeOptions) (_result *ListBatchesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23671,6 +29526,13 @@ func (client *Client) ListBatchesWithOptions(request *ListBatchesRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出数据接入实例
+//
+// @param request - ListBatchesRequest
+//
+// @return ListBatchesResponse
 func (client *Client) ListBatches(request *ListBatchesRequest) (_result *ListBatchesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListBatchesResponse{}
@@ -23682,6 +29544,15 @@ func (client *Client) ListBatches(request *ListBatchesRequest) (_result *ListBat
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出绑定
+//
+// @param request - ListBindingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBindingsResponse
 func (client *Client) ListBindingsWithOptions(request *ListBindingsRequest, runtime *util.RuntimeOptions) (_result *ListBindingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23727,6 +29598,13 @@ func (client *Client) ListBindingsWithOptions(request *ListBindingsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出绑定
+//
+// @param request - ListBindingsRequest
+//
+// @return ListBindingsResponse
 func (client *Client) ListBindings(request *ListBindingsRequest) (_result *ListBindingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListBindingsResponse{}
@@ -23738,6 +29616,15 @@ func (client *Client) ListBindings(request *ListBindingsRequest) (_result *ListB
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出媒体集列表
+//
+// @param request - ListDatasetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasetsResponse
 func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, runtime *util.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23783,6 +29670,13 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出媒体集列表
+//
+// @param request - ListDatasetsRequest
+//
+// @return ListDatasetsResponse
 func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListDatasetsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDatasetsResponse{}
@@ -23794,6 +29688,15 @@ func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListD
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目列表
+//
+// @param request - ListProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectsResponse
 func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23835,6 +29738,13 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目列表
+//
+// @param request - ListProjectsRequest
+//
+// @return ListProjectsResponse
 func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListProjectsResponse{}
@@ -23846,6 +29756,15 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取地区列表
+//
+// @param request - ListRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRegionsResponse
 func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtime *util.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23879,6 +29798,13 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取地区列表
+//
+// @param request - ListRegionsRequest
+//
+// @return ListRegionsResponse
 func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRegionsResponse{}
@@ -23890,6 +29816,15 @@ func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListReg
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务信息列表
+//
+// @param tmpReq - ListTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTasksResponse
 func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, runtime *util.RuntimeOptions) (_result *ListTasksResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23977,6 +29912,13 @@ func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, runtime *ut
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务信息列表
+//
+// @param request - ListTasksRequest
+//
+// @return ListTasksResponse
 func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTasksResponse{}
@@ -23988,6 +29930,15 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出数据接入实例
+//
+// @param request - ListTriggersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTriggersResponse
 func (client *Client) ListTriggersWithOptions(request *ListTriggersRequest, runtime *util.RuntimeOptions) (_result *ListTriggersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24045,6 +29996,13 @@ func (client *Client) ListTriggersWithOptions(request *ListTriggersRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出数据接入实例
+//
+// @param request - ListTriggersRequest
+//
+// @return ListTriggersResponse
 func (client *Client) ListTriggers(request *ListTriggersRequest) (_result *ListTriggersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTriggersResponse{}
@@ -24056,6 +30014,15 @@ func (client *Client) ListTriggers(request *ListTriggersRequest) (_result *ListT
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询聚类分组
+//
+// @param tmpReq - QueryFigureClustersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryFigureClustersResponse
 func (client *Client) QueryFigureClustersWithOptions(tmpReq *QueryFigureClustersRequest, runtime *util.RuntimeOptions) (_result *QueryFigureClustersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24135,6 +30102,13 @@ func (client *Client) QueryFigureClustersWithOptions(tmpReq *QueryFigureClusters
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询聚类分组
+//
+// @param request - QueryFigureClustersRequest
+//
+// @return QueryFigureClustersResponse
 func (client *Client) QueryFigureClusters(request *QueryFigureClustersRequest) (_result *QueryFigureClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryFigureClustersResponse{}
@@ -24146,6 +30120,15 @@ func (client *Client) QueryFigureClusters(request *QueryFigureClustersRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查找时空分组
+//
+// @param tmpReq - QueryLocationDateClustersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryLocationDateClustersResponse
 func (client *Client) QueryLocationDateClustersWithOptions(tmpReq *QueryLocationDateClustersRequest, runtime *util.RuntimeOptions) (_result *QueryLocationDateClustersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24261,6 +30244,13 @@ func (client *Client) QueryLocationDateClustersWithOptions(tmpReq *QueryLocation
 	return _result, _err
 }
 
+// Summary:
+//
+// 查找时空分组
+//
+// @param request - QueryLocationDateClustersRequest
+//
+// @return QueryLocationDateClustersResponse
 func (client *Client) QueryLocationDateClusters(request *QueryLocationDateClustersRequest) (_result *QueryLocationDateClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryLocationDateClustersResponse{}
@@ -24272,6 +30262,15 @@ func (client *Client) QueryLocationDateClusters(request *QueryLocationDateCluste
 	return _result, _err
 }
 
+// Summary:
+//
+// 查找相似图片分组
+//
+// @param request - QuerySimilarImageClustersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySimilarImageClustersResponse
 func (client *Client) QuerySimilarImageClustersWithOptions(request *QuerySimilarImageClustersRequest, runtime *util.RuntimeOptions) (_result *QuerySimilarImageClustersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24329,6 +30328,13 @@ func (client *Client) QuerySimilarImageClustersWithOptions(request *QuerySimilar
 	return _result, _err
 }
 
+// Summary:
+//
+// 查找相似图片分组
+//
+// @param request - QuerySimilarImageClustersRequest
+//
+// @return QuerySimilarImageClustersResponse
 func (client *Client) QuerySimilarImageClusters(request *QuerySimilarImageClustersRequest) (_result *QuerySimilarImageClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySimilarImageClustersResponse{}
@@ -24340,6 +30346,15 @@ func (client *Client) QuerySimilarImageClusters(request *QuerySimilarImageCluste
 	return _result, _err
 }
 
+// Summary:
+//
+// 查找 Story
+//
+// @param tmpReq - QueryStoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryStoriesResponse
 func (client *Client) QueryStoriesWithOptions(tmpReq *QueryStoriesRequest, runtime *util.RuntimeOptions) (_result *QueryStoriesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24451,6 +30466,13 @@ func (client *Client) QueryStoriesWithOptions(tmpReq *QueryStoriesRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// 查找 Story
+//
+// @param request - QueryStoriesRequest
+//
+// @return QueryStoriesResponse
 func (client *Client) QueryStories(request *QueryStoriesRequest) (_result *QueryStoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryStoriesResponse{}
@@ -24462,6 +30484,15 @@ func (client *Client) QueryStories(request *QueryStoriesRequest) (_result *Query
 	return _result, _err
 }
 
+// Summary:
+//
+// 刷新文档预览编辑凭证
+//
+// @param tmpReq - RefreshWebofficeTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshWebofficeTokenResponse
 func (client *Client) RefreshWebofficeTokenWithOptions(tmpReq *RefreshWebofficeTokenRequest, runtime *util.RuntimeOptions) (_result *RefreshWebofficeTokenResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24513,6 +30544,13 @@ func (client *Client) RefreshWebofficeTokenWithOptions(tmpReq *RefreshWebofficeT
 	return _result, _err
 }
 
+// Summary:
+//
+// 刷新文档预览编辑凭证
+//
+// @param request - RefreshWebofficeTokenRequest
+//
+// @return RefreshWebofficeTokenResponse
 func (client *Client) RefreshWebofficeToken(request *RefreshWebofficeTokenRequest) (_result *RefreshWebofficeTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RefreshWebofficeTokenResponse{}
@@ -24524,6 +30562,15 @@ func (client *Client) RefreshWebofficeToken(request *RefreshWebofficeTokenReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 为故事移除文件
+//
+// @param tmpReq - RemoveStoryFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveStoryFilesResponse
 func (client *Client) RemoveStoryFilesWithOptions(tmpReq *RemoveStoryFilesRequest, runtime *util.RuntimeOptions) (_result *RemoveStoryFilesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24575,6 +30622,13 @@ func (client *Client) RemoveStoryFilesWithOptions(tmpReq *RemoveStoryFilesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 为故事移除文件
+//
+// @param request - RemoveStoryFilesRequest
+//
+// @return RemoveStoryFilesResponse
 func (client *Client) RemoveStoryFiles(request *RemoveStoryFilesRequest) (_result *RemoveStoryFilesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveStoryFilesResponse{}
@@ -24586,6 +30640,15 @@ func (client *Client) RemoveStoryFiles(request *RemoveStoryFilesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 恢复一个挂起的数据接入任务
+//
+// @param request - ResumeBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeBatchResponse
 func (client *Client) ResumeBatchWithOptions(request *ResumeBatchRequest, runtime *util.RuntimeOptions) (_result *ResumeBatchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24623,6 +30686,13 @@ func (client *Client) ResumeBatchWithOptions(request *ResumeBatchRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 恢复一个挂起的数据接入任务
+//
+// @param request - ResumeBatchRequest
+//
+// @return ResumeBatchResponse
 func (client *Client) ResumeBatch(request *ResumeBatchRequest) (_result *ResumeBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeBatchResponse{}
@@ -24634,6 +30704,15 @@ func (client *Client) ResumeBatch(request *ResumeBatchRequest) (_result *ResumeB
 	return _result, _err
 }
 
+// Summary:
+//
+// 恢复一个挂起的数据接入任务
+//
+// @param request - ResumeTriggerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeTriggerResponse
 func (client *Client) ResumeTriggerWithOptions(request *ResumeTriggerRequest, runtime *util.RuntimeOptions) (_result *ResumeTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24671,6 +30750,13 @@ func (client *Client) ResumeTriggerWithOptions(request *ResumeTriggerRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 恢复一个挂起的数据接入任务
+//
+// @param request - ResumeTriggerRequest
+//
+// @return ResumeTriggerResponse
 func (client *Client) ResumeTrigger(request *ResumeTriggerRequest) (_result *ResumeTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeTriggerResponse{}
@@ -24682,6 +30768,15 @@ func (client *Client) ResumeTrigger(request *ResumeTriggerRequest) (_result *Res
 	return _result, _err
 }
 
+// Summary:
+//
+// 以脸搜分组
+//
+// @param tmpReq - SearchImageFigureClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchImageFigureClusterResponse
 func (client *Client) SearchImageFigureClusterWithOptions(tmpReq *SearchImageFigureClusterRequest, runtime *util.RuntimeOptions) (_result *SearchImageFigureClusterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24733,6 +30828,13 @@ func (client *Client) SearchImageFigureClusterWithOptions(tmpReq *SearchImageFig
 	return _result, _err
 }
 
+// Summary:
+//
+// 以脸搜分组
+//
+// @param request - SearchImageFigureClusterRequest
+//
+// @return SearchImageFigureClusterResponse
 func (client *Client) SearchImageFigureCluster(request *SearchImageFigureClusterRequest) (_result *SearchImageFigureClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchImageFigureClusterResponse{}
@@ -24744,6 +30846,15 @@ func (client *Client) SearchImageFigureCluster(request *SearchImageFigureCluster
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过输入自然语言文字，对 Dataset 内的元数据进行查询与统计分析
+//
+// @param tmpReq - SemanticQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SemanticQueryResponse
 func (client *Client) SemanticQueryWithOptions(tmpReq *SemanticQueryRequest, runtime *util.RuntimeOptions) (_result *SemanticQueryResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24811,6 +30922,13 @@ func (client *Client) SemanticQueryWithOptions(tmpReq *SemanticQueryRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过输入自然语言文字，对 Dataset 内的元数据进行查询与统计分析
+//
+// @param request - SemanticQueryRequest
+//
+// @return SemanticQueryResponse
 func (client *Client) SemanticQuery(request *SemanticQueryRequest) (_result *SemanticQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SemanticQueryResponse{}
@@ -24822,6 +30940,15 @@ func (client *Client) SemanticQuery(request *SemanticQueryRequest) (_result *Sem
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过 JSON 结构的查询语言，对 Dataset 内的元数据进行查询与统计分析。
+//
+// @param tmpReq - SimpleQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SimpleQueryResponse
 func (client *Client) SimpleQueryWithOptions(tmpReq *SimpleQueryRequest, runtime *util.RuntimeOptions) (_result *SimpleQueryResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24905,6 +31032,13 @@ func (client *Client) SimpleQueryWithOptions(tmpReq *SimpleQueryRequest, runtime
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过 JSON 结构的查询语言，对 Dataset 内的元数据进行查询与统计分析。
+//
+// @param request - SimpleQueryRequest
+//
+// @return SimpleQueryResponse
 func (client *Client) SimpleQuery(request *SimpleQueryRequest) (_result *SimpleQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SimpleQueryResponse{}
@@ -24916,6 +31050,15 @@ func (client *Client) SimpleQuery(request *SimpleQueryRequest) (_result *SimpleQ
 	return _result, _err
 }
 
+// Summary:
+//
+// 挂起一个数据接入任务
+//
+// @param request - SuspendBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SuspendBatchResponse
 func (client *Client) SuspendBatchWithOptions(request *SuspendBatchRequest, runtime *util.RuntimeOptions) (_result *SuspendBatchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24953,6 +31096,13 @@ func (client *Client) SuspendBatchWithOptions(request *SuspendBatchRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 挂起一个数据接入任务
+//
+// @param request - SuspendBatchRequest
+//
+// @return SuspendBatchResponse
 func (client *Client) SuspendBatch(request *SuspendBatchRequest) (_result *SuspendBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SuspendBatchResponse{}
@@ -24964,6 +31114,15 @@ func (client *Client) SuspendBatch(request *SuspendBatchRequest) (_result *Suspe
 	return _result, _err
 }
 
+// Summary:
+//
+// 挂起一个数据接入任务
+//
+// @param request - SuspendTriggerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SuspendTriggerResponse
 func (client *Client) SuspendTriggerWithOptions(request *SuspendTriggerRequest, runtime *util.RuntimeOptions) (_result *SuspendTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25001,6 +31160,13 @@ func (client *Client) SuspendTriggerWithOptions(request *SuspendTriggerRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 挂起一个数据接入任务
+//
+// @param request - SuspendTriggerRequest
+//
+// @return SuspendTriggerResponse
 func (client *Client) SuspendTrigger(request *SuspendTriggerRequest) (_result *SuspendTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SuspendTriggerResponse{}
@@ -25012,6 +31178,15 @@ func (client *Client) SuspendTrigger(request *SuspendTriggerRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新数据接入实例
+//
+// @param tmpReq - UpdateBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBatchResponse
 func (client *Client) UpdateBatchWithOptions(tmpReq *UpdateBatchRequest, runtime *util.RuntimeOptions) (_result *UpdateBatchResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -25075,6 +31250,13 @@ func (client *Client) UpdateBatchWithOptions(tmpReq *UpdateBatchRequest, runtime
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新数据接入实例
+//
+// @param request - UpdateBatchRequest
+//
+// @return UpdateBatchResponse
 func (client *Client) UpdateBatch(request *UpdateBatchRequest) (_result *UpdateBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateBatchResponse{}
@@ -25086,6 +31268,15 @@ func (client *Client) UpdateBatch(request *UpdateBatchRequest) (_result *UpdateB
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新媒体集
+//
+// @param request - UpdateDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDatasetResponse
 func (client *Client) UpdateDatasetWithOptions(request *UpdateDatasetRequest, runtime *util.RuntimeOptions) (_result *UpdateDatasetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25151,6 +31342,13 @@ func (client *Client) UpdateDatasetWithOptions(request *UpdateDatasetRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新媒体集
+//
+// @param request - UpdateDatasetRequest
+//
+// @return UpdateDatasetResponse
 func (client *Client) UpdateDataset(request *UpdateDatasetRequest) (_result *UpdateDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDatasetResponse{}
@@ -25162,6 +31360,15 @@ func (client *Client) UpdateDataset(request *UpdateDatasetRequest) (_result *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新聚类
+//
+// @param tmpReq - UpdateFigureClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFigureClusterResponse
 func (client *Client) UpdateFigureClusterWithOptions(tmpReq *UpdateFigureClusterRequest, runtime *util.RuntimeOptions) (_result *UpdateFigureClusterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -25209,6 +31416,13 @@ func (client *Client) UpdateFigureClusterWithOptions(tmpReq *UpdateFigureCluster
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新聚类
+//
+// @param request - UpdateFigureClusterRequest
+//
+// @return UpdateFigureClusterResponse
 func (client *Client) UpdateFigureCluster(request *UpdateFigureClusterRequest) (_result *UpdateFigureClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateFigureClusterResponse{}
@@ -25220,6 +31434,15 @@ func (client *Client) UpdateFigureCluster(request *UpdateFigureClusterRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新文件元信息
+//
+// @param tmpReq - UpdateFileMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFileMetaResponse
 func (client *Client) UpdateFileMetaWithOptions(tmpReq *UpdateFileMetaRequest, runtime *util.RuntimeOptions) (_result *UpdateFileMetaResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -25267,6 +31490,13 @@ func (client *Client) UpdateFileMetaWithOptions(tmpReq *UpdateFileMetaRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新文件元信息
+//
+// @param request - UpdateFileMetaRequest
+//
+// @return UpdateFileMetaResponse
 func (client *Client) UpdateFileMeta(request *UpdateFileMetaRequest) (_result *UpdateFileMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateFileMetaResponse{}
@@ -25278,6 +31508,15 @@ func (client *Client) UpdateFileMeta(request *UpdateFileMetaRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新时空聚类
+//
+// @param tmpReq - UpdateLocationDateClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLocationDateClusterResponse
 func (client *Client) UpdateLocationDateClusterWithOptions(tmpReq *UpdateLocationDateClusterRequest, runtime *util.RuntimeOptions) (_result *UpdateLocationDateClusterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -25337,6 +31576,13 @@ func (client *Client) UpdateLocationDateClusterWithOptions(tmpReq *UpdateLocatio
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新时空聚类
+//
+// @param request - UpdateLocationDateClusterRequest
+//
+// @return UpdateLocationDateClusterResponse
 func (client *Client) UpdateLocationDateCluster(request *UpdateLocationDateClusterRequest) (_result *UpdateLocationDateClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateLocationDateClusterResponse{}
@@ -25348,6 +31594,15 @@ func (client *Client) UpdateLocationDateCluster(request *UpdateLocationDateClust
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新项目
+//
+// @param request - UpdateProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProjectResponse
 func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, runtime *util.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25417,6 +31672,13 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新项目
+//
+// @param request - UpdateProjectRequest
+//
+// @return UpdateProjectResponse
 func (client *Client) UpdateProject(request *UpdateProjectRequest) (_result *UpdateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateProjectResponse{}
@@ -25428,6 +31690,15 @@ func (client *Client) UpdateProject(request *UpdateProjectRequest) (_result *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新故事
+//
+// @param tmpReq - UpdateStoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateStoryResponse
 func (client *Client) UpdateStoryWithOptions(tmpReq *UpdateStoryRequest, runtime *util.RuntimeOptions) (_result *UpdateStoryResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -25495,6 +31766,13 @@ func (client *Client) UpdateStoryWithOptions(tmpReq *UpdateStoryRequest, runtime
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新故事
+//
+// @param request - UpdateStoryRequest
+//
+// @return UpdateStoryResponse
 func (client *Client) UpdateStory(request *UpdateStoryRequest) (_result *UpdateStoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateStoryResponse{}
@@ -25506,6 +31784,15 @@ func (client *Client) UpdateStory(request *UpdateStoryRequest) (_result *UpdateS
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新数据接入实例
+//
+// @param tmpReq - UpdateTriggerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTriggerResponse
 func (client *Client) UpdateTriggerWithOptions(tmpReq *UpdateTriggerRequest, runtime *util.RuntimeOptions) (_result *UpdateTriggerResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -25569,6 +31856,13 @@ func (client *Client) UpdateTriggerWithOptions(tmpReq *UpdateTriggerRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新数据接入实例
+//
+// @param request - UpdateTriggerRequest
+//
+// @return UpdateTriggerResponse
 func (client *Client) UpdateTrigger(request *UpdateTriggerRequest) (_result *UpdateTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateTriggerResponse{}
