@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -15,9 +12,17 @@ import (
 type AddImageRequest struct {
 	ContainerImageSpec *AddImageRequestContainerImageSpec `json:"ContainerImageSpec,omitempty" xml:"ContainerImageSpec,omitempty" type:"Struct"`
 	Description        *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageVersion       *string                            `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	Name               *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	VMImageSpec        *AddImageRequestVMImageSpec        `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty" type:"Struct"`
+	// example:
+	//
+	// V1.0
+	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-image
+	Name        *string                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	VMImageSpec *AddImageRequestVMImageSpec `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty" type:"Struct"`
 }
 
 func (s AddImageRequest) String() string {
@@ -54,11 +59,23 @@ func (s *AddImageRequest) SetVMImageSpec(v *AddImageRequestVMImageSpec) *AddImag
 }
 
 type AddImageRequestContainerImageSpec struct {
-	IsACREnterprise    *bool                                                `json:"IsACREnterprise,omitempty" xml:"IsACREnterprise,omitempty"`
+	// example:
+	//
+	// True
+	IsACREnterprise *bool `json:"IsACREnterprise,omitempty" xml:"IsACREnterprise,omitempty"`
+	// example:
+	//
+	// True
 	IsACRRegistry      *bool                                                `json:"IsACRRegistry,omitempty" xml:"IsACRRegistry,omitempty"`
 	RegistryCredential *AddImageRequestContainerImageSpecRegistryCredential `json:"RegistryCredential,omitempty" xml:"RegistryCredential,omitempty" type:"Struct"`
-	RegistryCriId      *string                                              `json:"RegistryCriId,omitempty" xml:"RegistryCriId,omitempty"`
-	RegistryUrl        *string                                              `json:"RegistryUrl,omitempty" xml:"RegistryUrl,omitempty"`
+	// example:
+	//
+	// cri-xyz795ygf8k9****
+	RegistryCriId *string `json:"RegistryCriId,omitempty" xml:"RegistryCriId,omitempty"`
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com/ehpc_open/nginx:latest
+	RegistryUrl *string `json:"RegistryUrl,omitempty" xml:"RegistryUrl,omitempty"`
 }
 
 func (s AddImageRequestContainerImageSpec) String() string {
@@ -95,8 +112,17 @@ func (s *AddImageRequestContainerImageSpec) SetRegistryUrl(v string) *AddImageRe
 }
 
 type AddImageRequestContainerImageSpecRegistryCredential struct {
+	// example:
+	//
+	// userpassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// example:
+	//
+	// username
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -124,6 +150,9 @@ func (s *AddImageRequestContainerImageSpecRegistryCredential) SetUserName(v stri
 }
 
 type AddImageRequestVMImageSpec struct {
+	// example:
+	//
+	// m-bp1akkkr1rkxtb******
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 }
 
@@ -143,9 +172,17 @@ func (s *AddImageRequestVMImageSpec) SetImageId(v string) *AddImageRequestVMImag
 type AddImageShrinkRequest struct {
 	ContainerImageSpecShrink *string `json:"ContainerImageSpec,omitempty" xml:"ContainerImageSpec,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageVersion             *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	VMImageSpecShrink        *string `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty"`
+	// example:
+	//
+	// V1.0
+	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-image
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	VMImageSpecShrink *string `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty"`
 }
 
 func (s AddImageShrinkRequest) String() string {
@@ -182,9 +219,18 @@ func (s *AddImageShrinkRequest) SetVMImageSpecShrink(v string) *AddImageShrinkRe
 }
 
 type AddImageResponseBody struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// m-bp1akkkr1rkxtb******
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddImageResponseBody) String() string {
@@ -241,9 +287,18 @@ func (s *AddImageResponse) SetBody(v *AddImageResponseBody) *AddImageResponse {
 
 type CreateJobRequest struct {
 	DeploymentPolicy *CreateJobRequestDeploymentPolicy `json:"DeploymentPolicy,omitempty" xml:"DeploymentPolicy,omitempty" type:"Struct"`
-	JobDescription   *string                           `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	JobName          *string                           `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	Tasks            []*CreateJobRequestTasks          `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Demo
+	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testjob
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// This parameter is required.
+	Tasks []*CreateJobRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s CreateJobRequest) String() string {
@@ -275,6 +330,9 @@ func (s *CreateJobRequest) SetTasks(v []*CreateJobRequestTasks) *CreateJobReques
 }
 
 type CreateJobRequestDeploymentPolicy struct {
+	// example:
+	//
+	// Dedicated
 	AllocationSpec *string                                  `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
 	Network        *CreateJobRequestDeploymentPolicyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 }
@@ -315,10 +373,16 @@ func (s *CreateJobRequestDeploymentPolicyNetwork) SetVswitch(v []*string) *Creat
 }
 
 type CreateJobRequestTasks struct {
-	ExecutorPolicy  *CreateJobRequestTasksExecutorPolicy `json:"ExecutorPolicy,omitempty" xml:"ExecutorPolicy,omitempty" type:"Struct"`
-	TaskName        *string                              `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskSpec        *CreateJobRequestTasksTaskSpec       `json:"TaskSpec,omitempty" xml:"TaskSpec,omitempty" type:"Struct"`
-	TaskSustainable *bool                                `json:"TaskSustainable,omitempty" xml:"TaskSustainable,omitempty"`
+	ExecutorPolicy *CreateJobRequestTasksExecutorPolicy `json:"ExecutorPolicy,omitempty" xml:"ExecutorPolicy,omitempty" type:"Struct"`
+	// example:
+	//
+	// task0
+	TaskName *string                        `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskSpec *CreateJobRequestTasksTaskSpec `json:"TaskSpec,omitempty" xml:"TaskSpec,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	TaskSustainable *bool `json:"TaskSustainable,omitempty" xml:"TaskSustainable,omitempty"`
 }
 
 func (s CreateJobRequestTasks) String() string {
@@ -351,7 +415,10 @@ func (s *CreateJobRequestTasks) SetTaskSustainable(v bool) *CreateJobRequestTask
 
 type CreateJobRequestTasksExecutorPolicy struct {
 	ArraySpec *CreateJobRequestTasksExecutorPolicyArraySpec `json:"ArraySpec,omitempty" xml:"ArraySpec,omitempty" type:"Struct"`
-	MaxCount  *int32                                        `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	// example:
+	//
+	// 1
+	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
 }
 
 func (s CreateJobRequestTasksExecutorPolicy) String() string {
@@ -373,9 +440,18 @@ func (s *CreateJobRequestTasksExecutorPolicy) SetMaxCount(v int32) *CreateJobReq
 }
 
 type CreateJobRequestTasksExecutorPolicyArraySpec struct {
-	IndexEnd   *int32 `json:"IndexEnd,omitempty" xml:"IndexEnd,omitempty"`
+	// example:
+	//
+	// 9
+	IndexEnd *int32 `json:"IndexEnd,omitempty" xml:"IndexEnd,omitempty"`
+	// example:
+	//
+	// 0
 	IndexStart *int32 `json:"IndexStart,omitempty" xml:"IndexStart,omitempty"`
-	IndexStep  *int32 `json:"IndexStep,omitempty" xml:"IndexStep,omitempty"`
+	// example:
+	//
+	// 1
+	IndexStep *int32 `json:"IndexStep,omitempty" xml:"IndexStep,omitempty"`
 }
 
 func (s CreateJobRequestTasksExecutorPolicyArraySpec) String() string {
@@ -402,7 +478,8 @@ func (s *CreateJobRequestTasksExecutorPolicyArraySpec) SetIndexStep(v int32) *Cr
 }
 
 type CreateJobRequestTasksTaskSpec struct {
-	Resource     *CreateJobRequestTasksTaskSpecResource       `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	Resource *CreateJobRequestTasksTaskSpecResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	// This parameter is required.
 	TaskExecutor []*CreateJobRequestTasksTaskSpecTaskExecutor `json:"TaskExecutor,omitempty" xml:"TaskExecutor,omitempty" type:"Repeated"`
 	VolumeMount  []*CreateJobRequestTasksTaskSpecVolumeMount  `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
 }
@@ -431,9 +508,15 @@ func (s *CreateJobRequestTasksTaskSpec) SetVolumeMount(v []*CreateJobRequestTask
 }
 
 type CreateJobRequestTasksTaskSpecResource struct {
-	Cores  *float32                                      `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	Disks  []*CreateJobRequestTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	Memory *float32                                      `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 2
+	Cores *float32                                      `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	Disks []*CreateJobRequestTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
 func (s CreateJobRequestTasksTaskSpecResource) String() string {
@@ -460,7 +543,13 @@ func (s *CreateJobRequestTasksTaskSpecResource) SetMemory(v float32) *CreateJobR
 }
 
 type CreateJobRequestTasksTaskSpecResourceDisks struct {
-	Size *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 40
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// System
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -508,8 +597,16 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutor) SetVM(v *CreateJobRequestTas
 type CreateJobRequestTasksTaskSpecTaskExecutorContainer struct {
 	Command         []*string                                                            `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
 	EnvironmentVars []*CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
-	Image           *string                                                              `json:"Image,omitempty" xml:"Image,omitempty"`
-	WorkingDir      *string                                                              `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com/ehpc/hpl:latest
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// /usr/local/
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s CreateJobRequestTasksTaskSpecTaskExecutorContainer) String() string {
@@ -541,7 +638,13 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetWorkingDir(v str
 }
 
 type CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// PATH
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// /usr/local/bin
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -564,9 +667,20 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars) SetV
 }
 
 type CreateJobRequestTasksTaskSpecTaskExecutorVM struct {
-	Image        *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// m-xxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// ZWNobyBoZWxsbyBlY3Mh
 	PrologScript *string `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
-	Script       *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	// example:
+	//
+	// ZWNobyBoZWxsbyBlY3Mh
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
 }
 
 func (s CreateJobRequestTasksTaskSpecTaskExecutorVM) String() string {
@@ -593,8 +707,17 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorVM) SetScript(v string) *Creat
 }
 
 type CreateJobRequestTasksTaskSpecVolumeMount struct {
+	// example:
+	//
+	// {"server":"xxxxx-xxxxx.cn-heyuan.nas.aliyuncs.com","vers":"3","path":"/data","options":"nolock,tcp,noresvport"}
 	MountOptions *string `json:"MountOptions,omitempty" xml:"MountOptions,omitempty"`
-	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// /mnt
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// alicloud/nas
 	VolumeDriver *string `json:"VolumeDriver,omitempty" xml:"VolumeDriver,omitempty"`
 }
 
@@ -623,9 +746,18 @@ func (s *CreateJobRequestTasksTaskSpecVolumeMount) SetVolumeDriver(v string) *Cr
 
 type CreateJobShrinkRequest struct {
 	DeploymentPolicyShrink *string `json:"DeploymentPolicy,omitempty" xml:"DeploymentPolicy,omitempty"`
-	JobDescription         *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	JobName                *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	TasksShrink            *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
+	// example:
+	//
+	// Demo
+	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testjob
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// This parameter is required.
+	TasksShrink *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
 }
 
 func (s CreateJobShrinkRequest) String() string {
@@ -657,8 +789,15 @@ func (s *CreateJobShrinkRequest) SetTasksShrink(v string) *CreateJobShrinkReques
 }
 
 type CreateJobResponseBody struct {
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// job-xxxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 896D338C-E4F4-41EC-A154-D605E5DE****
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks     []*CreateJobResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s CreateJobResponseBody) String() string {
@@ -676,6 +815,34 @@ func (s *CreateJobResponseBody) SetJobId(v string) *CreateJobResponseBody {
 
 func (s *CreateJobResponseBody) SetRequestId(v string) *CreateJobResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateJobResponseBody) SetTasks(v []*CreateJobResponseBodyTasks) *CreateJobResponseBody {
+	s.Tasks = v
+	return s
+}
+
+type CreateJobResponseBodyTasks struct {
+	ExecutorIds []*string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
+	TaskName    *string   `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s CreateJobResponseBodyTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobResponseBodyTasks) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobResponseBodyTasks) SetExecutorIds(v []*string) *CreateJobResponseBodyTasks {
+	s.ExecutorIds = v
+	return s
+}
+
+func (s *CreateJobResponseBodyTasks) SetTaskName(v string) *CreateJobResponseBodyTasks {
+	s.TaskName = &v
 	return s
 }
 
@@ -732,6 +899,9 @@ func (s *DeleteJobsRequest) SetJobSpec(v []*DeleteJobsRequestJobSpec) *DeleteJob
 }
 
 type DeleteJobsRequestJobSpec struct {
+	// example:
+	//
+	// job-xxxx
 	JobId    *string                             `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	TaskSpec []*DeleteJobsRequestJobSpecTaskSpec `json:"TaskSpec,omitempty" xml:"TaskSpec,omitempty" type:"Repeated"`
 }
@@ -756,7 +926,10 @@ func (s *DeleteJobsRequestJobSpec) SetTaskSpec(v []*DeleteJobsRequestJobSpecTask
 
 type DeleteJobsRequestJobSpecTaskSpec struct {
 	ArrayIndex []*int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty" type:"Repeated"`
-	TaskName   *string  `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// task0
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s DeleteJobsRequestJobSpecTaskSpec) String() string {
@@ -801,6 +974,9 @@ func (s *DeleteJobsShrinkRequest) SetJobSpecShrink(v string) *DeleteJobsShrinkRe
 }
 
 type DeleteJobsResponseBody struct {
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -848,9 +1024,18 @@ func (s *DeleteJobsResponse) SetBody(v *DeleteJobsResponseBody) *DeleteJobsRespo
 
 type DescribeJobMetricDataRequest struct {
 	ArrayIndex []*int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty" type:"Repeated"`
-	JobId      *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	MetricName *string  `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	TaskName   *string  `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// job-xxxxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// cpu_utilization
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// example:
+	//
+	// Task0
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s DescribeJobMetricDataRequest) String() string {
@@ -883,9 +1068,18 @@ func (s *DescribeJobMetricDataRequest) SetTaskName(v string) *DescribeJobMetricD
 
 type DescribeJobMetricDataShrinkRequest struct {
 	ArrayIndexShrink *string `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
-	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	MetricName       *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	TaskName         *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// job-xxxxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// cpu_utilization
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// example:
+	//
+	// Task0
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s DescribeJobMetricDataShrinkRequest) String() string {
@@ -917,9 +1111,18 @@ func (s *DescribeJobMetricDataShrinkRequest) SetTaskName(v string) *DescribeJobM
 }
 
 type DescribeJobMetricDataResponseBody struct {
+	// example:
+	//
+	// [{"timestamp":1709540685000,"Minimum":28.45,"Maximum":28.45,"Average":28.45}]
 	DataPoints *string `json:"DataPoints,omitempty" xml:"DataPoints,omitempty"`
-	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 15
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeJobMetricDataResponseBody) String() string {
@@ -976,8 +1179,14 @@ func (s *DescribeJobMetricDataResponse) SetBody(v *DescribeJobMetricDataResponse
 
 type DescribeJobMetricLastRequest struct {
 	ArrayIndex []*int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty" type:"Repeated"`
-	JobId      *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	TaskName   *string  `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// job-xxxxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// Task0
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s DescribeJobMetricLastRequest) String() string {
@@ -1005,8 +1214,14 @@ func (s *DescribeJobMetricLastRequest) SetTaskName(v string) *DescribeJobMetricL
 
 type DescribeJobMetricLastShrinkRequest struct {
 	ArrayIndexShrink *string `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
-	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	TaskName         *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// job-xxxxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// Task0
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s DescribeJobMetricLastShrinkRequest) String() string {
@@ -1033,8 +1248,11 @@ func (s *DescribeJobMetricLastShrinkRequest) SetTaskName(v string) *DescribeJobM
 }
 
 type DescribeJobMetricLastResponseBody struct {
-	Metrics   []*DescribeJobMetricLastResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Metrics []*DescribeJobMetricLastResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeJobMetricLastResponseBody) String() string {
@@ -1056,8 +1274,14 @@ func (s *DescribeJobMetricLastResponseBody) SetRequestId(v string) *DescribeJobM
 }
 
 type DescribeJobMetricLastResponseBodyMetrics struct {
-	ArrayIndex *int32  `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
-	Metric     *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// example:
+	//
+	// 1
+	ArrayIndex *int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
+	// example:
+	//
+	// {"memory_utilization": 37.42,"cpu_utilization": 1.008, "disk_utilization": 3.562}
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
 }
 
 func (s DescribeJobMetricLastResponseBodyMetrics) String() string {
@@ -1108,6 +1332,11 @@ func (s *DescribeJobMetricLastResponse) SetBody(v *DescribeJobMetricLastResponse
 }
 
 type GetImageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// m-2ze74g5mvy4pjg*****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 }
 
@@ -1125,10 +1354,19 @@ func (s *GetImageRequest) SetImageId(v string) *GetImageRequest {
 }
 
 type GetImageResponseBody struct {
-	Image      *GetImageResponseBodyImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	RequestId  *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int32                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Image *GetImageResponseBodyImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetImageResponseBody) String() string {
@@ -1161,13 +1399,30 @@ func (s *GetImageResponseBody) SetTotalCount(v int32) *GetImageResponseBody {
 
 type GetImageResponseBodyImage struct {
 	ContainerImageSpec *GetImageResponseBodyImageContainerImageSpec `json:"ContainerImageSpec,omitempty" xml:"ContainerImageSpec,omitempty" type:"Struct"`
-	CreateTime         *string                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description        *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageType          *string                                      `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	Name               *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	Size               *string                                      `json:"Size,omitempty" xml:"Size,omitempty"`
-	VMImageSpec        *GetImageResponseBodyImageVMImageSpec        `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty" type:"Struct"`
-	Version            *string                                      `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 2022-12-23T09:51:39Z
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VM
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// example:
+	//
+	// app-image
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 40 GiB
+	Size        *string                               `json:"Size,omitempty" xml:"Size,omitempty"`
+	VMImageSpec *GetImageResponseBodyImageVMImageSpec `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty" type:"Struct"`
+	// example:
+	//
+	// v1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetImageResponseBodyImage) String() string {
@@ -1219,11 +1474,23 @@ func (s *GetImageResponseBodyImage) SetVersion(v string) *GetImageResponseBodyIm
 }
 
 type GetImageResponseBodyImageContainerImageSpec struct {
-	IsACREnterprise    *bool                                                          `json:"IsACREnterprise,omitempty" xml:"IsACREnterprise,omitempty"`
+	// example:
+	//
+	// True
+	IsACREnterprise *bool `json:"IsACREnterprise,omitempty" xml:"IsACREnterprise,omitempty"`
+	// example:
+	//
+	// True
 	IsACRRegistry      *bool                                                          `json:"IsACRRegistry,omitempty" xml:"IsACRRegistry,omitempty"`
 	RegistryCredential *GetImageResponseBodyImageContainerImageSpecRegistryCredential `json:"RegistryCredential,omitempty" xml:"RegistryCredential,omitempty" type:"Struct"`
-	RegistryCriId      *string                                                        `json:"RegistryCriId,omitempty" xml:"RegistryCriId,omitempty"`
-	RegistryUrl        *string                                                        `json:"RegistryUrl,omitempty" xml:"RegistryUrl,omitempty"`
+	// example:
+	//
+	// cri-xyz795ygf8k9****
+	RegistryCriId *string `json:"RegistryCriId,omitempty" xml:"RegistryCriId,omitempty"`
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com/ehpc_open/nginx:latest
+	RegistryUrl *string `json:"RegistryUrl,omitempty" xml:"RegistryUrl,omitempty"`
 }
 
 func (s GetImageResponseBodyImageContainerImageSpec) String() string {
@@ -1260,8 +1527,17 @@ func (s *GetImageResponseBodyImageContainerImageSpec) SetRegistryUrl(v string) *
 }
 
 type GetImageResponseBodyImageContainerImageSpecRegistryCredential struct {
+	// example:
+	//
+	// userpassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// example:
+	//
+	// username
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -1289,10 +1565,22 @@ func (s *GetImageResponseBodyImageContainerImageSpecRegistryCredential) SetUserN
 }
 
 type GetImageResponseBodyImageVMImageSpec struct {
+	// example:
+	//
+	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	OsTag        *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
-	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// example:
+	//
+	// m-uf60twafjtaart******
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// CentOS  7.6 64 bit
+	OsTag *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
+	// example:
+	//
+	// CentOS
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 }
 
 func (s GetImageResponseBodyImageVMImageSpec) String() string {
@@ -1353,6 +1641,9 @@ func (s *GetImageResponse) SetBody(v *GetImageResponseBody) *GetImageResponse {
 }
 
 type GetJobRequest struct {
+	// example:
+	//
+	// job-xxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -1370,8 +1661,11 @@ func (s *GetJobRequest) SetJobId(v string) *GetJobRequest {
 }
 
 type GetJobResponseBody struct {
-	JobInfo   *GetJobResponseBodyJobInfo `json:"JobInfo,omitempty" xml:"JobInfo,omitempty" type:"Struct"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JobInfo *GetJobResponseBodyJobInfo `json:"JobInfo,omitempty" xml:"JobInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 896D338C-E4F4-41EC-A154-D605E5DE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetJobResponseBody) String() string {
@@ -1393,15 +1687,36 @@ func (s *GetJobResponseBody) SetRequestId(v string) *GetJobResponseBody {
 }
 
 type GetJobResponseBodyJobInfo struct {
+	// example:
+	//
+	// 2024-03-05 20:00:46
 	CreateTime       *string                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DeploymentPolicy *GetJobResponseBodyJobInfoDeploymentPolicy `json:"DeploymentPolicy,omitempty" xml:"DeploymentPolicy,omitempty" type:"Struct"`
-	EndTime          *string                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	JobDescription   *string                                    `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	JobId            *string                                    `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName          *string                                    `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	StartTime        *string                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status           *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tasks            []*GetJobResponseBodyJobInfoTasks          `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-03-05 20:01:48
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Demo
+	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	// example:
+	//
+	// job-xxxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// testJob
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// 2024-03-05 20:00:48
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Succeed
+	Status *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tasks  []*GetJobResponseBodyJobInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s GetJobResponseBodyJobInfo) String() string {
@@ -1458,6 +1773,9 @@ func (s *GetJobResponseBodyJobInfo) SetTasks(v []*GetJobResponseBodyJobInfoTasks
 }
 
 type GetJobResponseBodyJobInfoDeploymentPolicy struct {
+	// example:
+	//
+	// Dedicated
 	AllocationSpec *string                                           `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
 	Network        *GetJobResponseBodyJobInfoDeploymentPolicyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 }
@@ -1498,11 +1816,17 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicyNetwork) SetVswitch(v []*strin
 }
 
 type GetJobResponseBodyJobInfoTasks struct {
-	ExecutorPolicy  *GetJobResponseBodyJobInfoTasksExecutorPolicy   `json:"ExecutorPolicy,omitempty" xml:"ExecutorPolicy,omitempty" type:"Struct"`
-	ExecutorStatus  []*GetJobResponseBodyJobInfoTasksExecutorStatus `json:"ExecutorStatus,omitempty" xml:"ExecutorStatus,omitempty" type:"Repeated"`
-	TaskName        *string                                         `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskSpec        *GetJobResponseBodyJobInfoTasksTaskSpec         `json:"TaskSpec,omitempty" xml:"TaskSpec,omitempty" type:"Struct"`
-	TaskSustainable *bool                                           `json:"TaskSustainable,omitempty" xml:"TaskSustainable,omitempty"`
+	ExecutorPolicy *GetJobResponseBodyJobInfoTasksExecutorPolicy   `json:"ExecutorPolicy,omitempty" xml:"ExecutorPolicy,omitempty" type:"Struct"`
+	ExecutorStatus []*GetJobResponseBodyJobInfoTasksExecutorStatus `json:"ExecutorStatus,omitempty" xml:"ExecutorStatus,omitempty" type:"Repeated"`
+	// example:
+	//
+	// task0
+	TaskName *string                                 `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskSpec *GetJobResponseBodyJobInfoTasksTaskSpec `json:"TaskSpec,omitempty" xml:"TaskSpec,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	TaskSustainable *bool `json:"TaskSustainable,omitempty" xml:"TaskSustainable,omitempty"`
 }
 
 func (s GetJobResponseBodyJobInfoTasks) String() string {
@@ -1540,7 +1864,10 @@ func (s *GetJobResponseBodyJobInfoTasks) SetTaskSustainable(v bool) *GetJobRespo
 
 type GetJobResponseBodyJobInfoTasksExecutorPolicy struct {
 	ArraySpec *GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec `json:"ArraySpec,omitempty" xml:"ArraySpec,omitempty" type:"Struct"`
-	MaxCount  *int32                                                 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	// example:
+	//
+	// 10
+	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
 }
 
 func (s GetJobResponseBodyJobInfoTasksExecutorPolicy) String() string {
@@ -1562,9 +1889,18 @@ func (s *GetJobResponseBodyJobInfoTasksExecutorPolicy) SetMaxCount(v int32) *Get
 }
 
 type GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec struct {
-	IndexEnd   *int32 `json:"IndexEnd,omitempty" xml:"IndexEnd,omitempty"`
+	// example:
+	//
+	// 9
+	IndexEnd *int32 `json:"IndexEnd,omitempty" xml:"IndexEnd,omitempty"`
+	// example:
+	//
+	// 0
 	IndexStart *int32 `json:"IndexStart,omitempty" xml:"IndexStart,omitempty"`
-	IndexStep  *int32 `json:"IndexStep,omitempty" xml:"IndexStep,omitempty"`
+	// example:
+	//
+	// 1
+	IndexStep *int32 `json:"IndexStep,omitempty" xml:"IndexStep,omitempty"`
 }
 
 func (s GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec) String() string {
@@ -1591,11 +1927,29 @@ func (s *GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec) SetIndexStep(v i
 }
 
 type GetJobResponseBodyJobInfoTasksExecutorStatus struct {
-	ArrayId      *int32  `json:"ArrayId,omitempty" xml:"ArrayId,omitempty"`
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0
+	ArrayId *int32 `json:"ArrayId,omitempty" xml:"ArrayId,omitempty"`
+	// example:
+	//
+	// 2024-02-04 13:54:10
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2024-02-04 13:54:10
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2024-02-04 13:54:10
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Creating executor
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 }
 
@@ -1661,9 +2015,15 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpec) SetTaskExecutor(v []*GetJobResp
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecResource struct {
-	Cores  *float32                                               `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	Disks  []*GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	Memory *int32                                                 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 1
+	Cores *float32                                               `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	Disks []*GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
 func (s GetJobResponseBodyJobInfoTasksTaskSpecResource) String() string {
@@ -1690,7 +2050,13 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) SetMemory(v int32) *Get
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks struct {
-	Size *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 100
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// System
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1730,9 +2096,18 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor) SetVM(v *GetJobResp
 }
 
 type GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM struct {
-	Image        *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// m-xxxx
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// ZWNobyAiMTIzNCIgPiBgZGF0ZSArJXNg
 	PrologScript *string `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
-	Script       *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	// example:
+	//
+	// ZWNobyAiMTIzNCIgPiBgZGF0ZSArJXNg
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
 }
 
 func (s GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) String() string {
@@ -1788,9 +2163,15 @@ func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
 }
 
 type ListExecutorsRequest struct {
-	Filter     *ListExecutorsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	PageNumber *string                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Filter *ListExecutorsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListExecutorsRequest) String() string {
@@ -1817,11 +2198,20 @@ func (s *ListExecutorsRequest) SetPageSize(v string) *ListExecutorsRequest {
 }
 
 type ListExecutorsRequestFilter struct {
-	ExecutorIds       []*string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
-	IpAddresses       []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	JobName           *string   `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	TimeCreatedAfter  *int32    `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
-	TimeCreatedBefore *int32    `json:"TimeCreatedBefore,omitempty" xml:"TimeCreatedBefore,omitempty"`
+	ExecutorIds []*string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
+	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// testJob
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// 1703819914
+	TimeCreatedAfter *int32 `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
+	// example:
+	//
+	// 1703820113
+	TimeCreatedBefore *int32 `json:"TimeCreatedBefore,omitempty" xml:"TimeCreatedBefore,omitempty"`
 }
 
 func (s ListExecutorsRequestFilter) String() string {
@@ -1859,8 +2249,14 @@ func (s *ListExecutorsRequestFilter) SetTimeCreatedBefore(v int32) *ListExecutor
 
 type ListExecutorsShrinkRequest struct {
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	PageNumber   *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListExecutorsShrinkRequest) String() string {
@@ -1887,11 +2283,23 @@ func (s *ListExecutorsShrinkRequest) SetPageSize(v string) *ListExecutorsShrinkR
 }
 
 type ListExecutorsResponseBody struct {
-	Executors  []*ListExecutorsResponseBodyExecutors `json:"Executors,omitempty" xml:"Executors,omitempty" type:"Repeated"`
-	PageNumber *string                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *string                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Executors []*ListExecutorsResponseBodyExecutors `json:"Executors,omitempty" xml:"Executors,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 896D338C-E4F4-41EC-A154-D605E5DE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 40
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListExecutorsResponseBody) String() string {
@@ -1928,17 +2336,44 @@ func (s *ListExecutorsResponseBody) SetTotalCount(v string) *ListExecutorsRespon
 }
 
 type ListExecutorsResponseBodyExecutors struct {
-	ArrayIndex   *int32    `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
-	CreateTime   *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EndTime      *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExecutorId   *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
-	HostName     []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
-	IpAddress    []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
-	JobId        *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName      *string   `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusReason *string   `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	TaskName     *string   `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// 0
+	ArrayIndex *int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
+	// example:
+	//
+	// 2024-02-20 10:04:10
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2024-02-20 10:04:18
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// job-xxxx-task0-1
+	ExecutorId *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	HostName   []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
+	IpAddress  []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	// example:
+	//
+	// job-hy1nggvyukuvkr******
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// testJob
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Succeeded to release executor resource
+	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	// example:
+	//
+	// task0
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s ListExecutorsResponseBodyExecutors) String() string {
@@ -2036,8 +2471,14 @@ func (s *ListExecutorsResponse) SetBody(v *ListExecutorsResponseBody) *ListExecu
 type ListImagesRequest struct {
 	ImageIds   []*string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty" type:"Repeated"`
 	ImageNames []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
-	PageNumber *int64    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListImagesRequest) String() string {
@@ -2071,8 +2512,14 @@ func (s *ListImagesRequest) SetPageSize(v int64) *ListImagesRequest {
 type ListImagesShrinkRequest struct {
 	ImageIdsShrink   *string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty"`
 	ImageNamesShrink *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
-	PageNumber       *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListImagesShrinkRequest) String() string {
@@ -2104,12 +2551,27 @@ func (s *ListImagesShrinkRequest) SetPageSize(v int64) *ListImagesShrinkRequest 
 }
 
 type ListImagesResponseBody struct {
-	Images     []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	PageNumber *int64                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Images []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 896D338C-E4F4-41EC-A154-D605E5DE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListImagesResponseBody) String() string {
@@ -2151,12 +2613,31 @@ func (s *ListImagesResponseBody) SetTotalCount(v int32) *ListImagesResponseBody 
 }
 
 type ListImagesResponseBodyImages struct {
+	// example:
+	//
+	// 2022-12-09T07:06:34Z
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageType   *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// m-bp181x855551ww5yq****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VM
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// example:
+	//
+	// app-image
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// v1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListImagesResponseBodyImages) String() string {
@@ -2227,10 +2708,22 @@ func (s *ListImagesResponse) SetBody(v *ListImagesResponseBody) *ListImagesRespo
 }
 
 type ListJobExecutorsRequest struct {
-	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// job-xxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TaskName   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// task0
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s ListJobExecutorsRequest) String() string {
@@ -2262,13 +2755,31 @@ func (s *ListJobExecutorsRequest) SetTaskName(v string) *ListJobExecutorsRequest
 }
 
 type ListJobExecutorsResponseBody struct {
-	Executors  []*ListJobExecutorsResponseBodyExecutors `json:"Executors,omitempty" xml:"Executors,omitempty" type:"Repeated"`
-	JobId      *string                                  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PageNumber *string                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskName   *string                                  `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TotalCount *string                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Executors []*ListJobExecutorsResponseBodyExecutors `json:"Executors,omitempty" xml:"Executors,omitempty" type:"Repeated"`
+	// example:
+	//
+	// job-xxxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 896D338C-E4F4-41EC-A154-D605E5DE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// task0
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// 50
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListJobExecutorsResponseBody) String() string {
@@ -2315,13 +2826,28 @@ func (s *ListJobExecutorsResponseBody) SetTotalCount(v string) *ListJobExecutors
 }
 
 type ListJobExecutorsResponseBodyExecutors struct {
-	ArrayIndex   *int32    `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
-	CreateTime   *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EndTime      *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	HostName     []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
-	IpAddress    []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
-	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusReason *string   `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	// example:
+	//
+	// 0
+	ArrayIndex *int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
+	// example:
+	//
+	// 2024-02-20 10:04:10
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2024-02-20 10:04:18
+	EndTime   *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	HostName  []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
+	IpAddress []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Creating executor
+	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 }
 
 func (s ListJobExecutorsResponseBodyExecutors) String() string {
@@ -2397,10 +2923,16 @@ func (s *ListJobExecutorsResponse) SetBody(v *ListJobExecutorsResponseBody) *Lis
 }
 
 type ListJobsRequest struct {
-	Filter     *ListJobsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	PageNumber *string                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy     *ListJobsRequestSortBy `json:"SortBy,omitempty" xml:"SortBy,omitempty" type:"Struct"`
+	Filter *ListJobsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *string                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy   *ListJobsRequestSortBy `json:"SortBy,omitempty" xml:"SortBy,omitempty" type:"Struct"`
 }
 
 func (s ListJobsRequest) String() string {
@@ -2432,11 +2964,26 @@ func (s *ListJobsRequest) SetSortBy(v *ListJobsRequestSortBy) *ListJobsRequest {
 }
 
 type ListJobsRequestFilter struct {
-	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName           *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TimeCreatedAfter  *int32  `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
-	TimeCreatedBefore *int32  `json:"TimeCreatedBefore,omitempty" xml:"TimeCreatedBefore,omitempty"`
+	// example:
+	//
+	// job-xxxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// testJob
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1703819914
+	TimeCreatedAfter *int32 `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
+	// example:
+	//
+	// 1703820113
+	TimeCreatedBefore *int32 `json:"TimeCreatedBefore,omitempty" xml:"TimeCreatedBefore,omitempty"`
 }
 
 func (s ListJobsRequestFilter) String() string {
@@ -2473,7 +3020,13 @@ func (s *ListJobsRequestFilter) SetTimeCreatedBefore(v int32) *ListJobsRequestFi
 }
 
 type ListJobsRequestSortBy struct {
+	// example:
+	//
+	// time_start
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 }
 
@@ -2497,7 +3050,13 @@ func (s *ListJobsRequestSortBy) SetOrder(v string) *ListJobsRequestSortBy {
 
 type ListJobsShrinkRequest struct {
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	PageNumber   *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
 	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SortByShrink *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
@@ -2531,11 +3090,23 @@ func (s *ListJobsShrinkRequest) SetSortByShrink(v string) *ListJobsShrinkRequest
 }
 
 type ListJobsResponseBody struct {
-	JobList    []*ListJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
-	PageNumber *int32                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	JobList []*ListJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 896D338C-E4F4-41EC-A154-D605E5DE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListJobsResponseBody) String() string {
@@ -2572,17 +3143,50 @@ func (s *ListJobsResponseBody) SetTotalCount(v int32) *ListJobsResponseBody {
 }
 
 type ListJobsResponseBodyJobList struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExecutorCount   *int32  `json:"ExecutorCount,omitempty" xml:"ExecutorCount,omitempty"`
-	JobDescription  *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	JobId           *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName         *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	OwnerUid        *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskCount       *int32  `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
-	TaskSustainable *bool   `json:"TaskSustainable,omitempty" xml:"TaskSustainable,omitempty"`
+	// example:
+	//
+	// 2024-01-25 12:29:21
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2024-01-25 12:35:23
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	ExecutorCount *int32 `json:"ExecutorCount,omitempty" xml:"ExecutorCount,omitempty"`
+	// example:
+	//
+	// Demo
+	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	// example:
+	//
+	// job-xxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// testJob
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// 129**********
+	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// example:
+	//
+	// 2024-01-25 12:29:23
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
+	// example:
+	//
+	// true
+	TaskSustainable *bool `json:"TaskSustainable,omitempty" xml:"TaskSustainable,omitempty"`
 }
 
 func (s ListJobsResponseBodyJobList) String() string {
@@ -2678,6 +3282,11 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 }
 
 type RemoveImageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// m-bp14wakr1rkxtb******
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 }
 
@@ -2695,8 +3304,14 @@ func (s *RemoveImageRequest) SetImageId(v string) *RemoveImageRequest {
 }
 
 type RemoveImageResponseBody struct {
+	// example:
+	//
+	// 896D338C-E4F4-41EC-A154-D605E5DE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RemoveImageResponseBody) String() string {
@@ -2793,6 +3408,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加托管侧用户自定义镜像
+//
+// @param tmpReq - AddImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddImageResponse
 func (client *Client) AddImageWithOptions(tmpReq *AddImageRequest, runtime *util.RuntimeOptions) (_result *AddImageResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2852,6 +3476,13 @@ func (client *Client) AddImageWithOptions(tmpReq *AddImageRequest, runtime *util
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加托管侧用户自定义镜像
+//
+// @param request - AddImageRequest
+//
+// @return AddImageResponse
 func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddImageResponse{}
@@ -2863,6 +3494,15 @@ func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交任务
+//
+// @param tmpReq - CreateJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateJobResponse
 func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *util.RuntimeOptions) (_result *CreateJobResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2918,6 +3558,13 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *ut
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交任务
+//
+// @param request - CreateJobRequest
+//
+// @return CreateJobResponse
 func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateJobResponse{}
@@ -2929,6 +3576,15 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除作业
+//
+// @param tmpReq - DeleteJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteJobsResponse
 func (client *Client) DeleteJobsWithOptions(tmpReq *DeleteJobsRequest, runtime *util.RuntimeOptions) (_result *DeleteJobsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2976,6 +3632,13 @@ func (client *Client) DeleteJobsWithOptions(tmpReq *DeleteJobsRequest, runtime *
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除作业
+//
+// @param request - DeleteJobsRequest
+//
+// @return DeleteJobsResponse
 func (client *Client) DeleteJobs(request *DeleteJobsRequest) (_result *DeleteJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteJobsResponse{}
@@ -2987,6 +3650,15 @@ func (client *Client) DeleteJobs(request *DeleteJobsRequest) (_result *DeleteJob
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询作业性能数据
+//
+// @param tmpReq - DescribeJobMetricDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeJobMetricDataResponse
 func (client *Client) DescribeJobMetricDataWithOptions(tmpReq *DescribeJobMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribeJobMetricDataResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3038,6 +3710,13 @@ func (client *Client) DescribeJobMetricDataWithOptions(tmpReq *DescribeJobMetric
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询作业性能数据
+//
+// @param request - DescribeJobMetricDataRequest
+//
+// @return DescribeJobMetricDataResponse
 func (client *Client) DescribeJobMetricData(request *DescribeJobMetricDataRequest) (_result *DescribeJobMetricDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeJobMetricDataResponse{}
@@ -3049,6 +3728,15 @@ func (client *Client) DescribeJobMetricData(request *DescribeJobMetricDataReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询作业即时监控项
+//
+// @param tmpReq - DescribeJobMetricLastRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeJobMetricLastResponse
 func (client *Client) DescribeJobMetricLastWithOptions(tmpReq *DescribeJobMetricLastRequest, runtime *util.RuntimeOptions) (_result *DescribeJobMetricLastResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3096,6 +3784,13 @@ func (client *Client) DescribeJobMetricLastWithOptions(tmpReq *DescribeJobMetric
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询作业即时监控项
+//
+// @param request - DescribeJobMetricLastRequest
+//
+// @return DescribeJobMetricLastResponse
 func (client *Client) DescribeJobMetricLast(request *DescribeJobMetricLastRequest) (_result *DescribeJobMetricLastResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeJobMetricLastResponse{}
@@ -3107,6 +3802,15 @@ func (client *Client) DescribeJobMetricLast(request *DescribeJobMetricLastReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询托管侧镜像详情。
+//
+// @param request - GetImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageResponse
 func (client *Client) GetImageWithOptions(request *GetImageRequest, runtime *util.RuntimeOptions) (_result *GetImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3140,6 +3844,13 @@ func (client *Client) GetImageWithOptions(request *GetImageRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询托管侧镜像详情。
+//
+// @param request - GetImageRequest
+//
+// @return GetImageResponse
 func (client *Client) GetImage(request *GetImageRequest) (_result *GetImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetImageResponse{}
@@ -3151,6 +3862,15 @@ func (client *Client) GetImage(request *GetImageRequest) (_result *GetImageRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询作业详情
+//
+// @param request - GetJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobResponse
 func (client *Client) GetJobWithOptions(request *GetJobRequest, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3184,6 +3904,13 @@ func (client *Client) GetJobWithOptions(request *GetJobRequest, runtime *util.Ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询作业详情
+//
+// @param request - GetJobRequest
+//
+// @return GetJobResponse
 func (client *Client) GetJob(request *GetJobRequest) (_result *GetJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetJobResponse{}
@@ -3195,6 +3922,15 @@ func (client *Client) GetJob(request *GetJobRequest) (_result *GetJobResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询全局Executor信息
+//
+// @param tmpReq - ListExecutorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExecutorsResponse
 func (client *Client) ListExecutorsWithOptions(tmpReq *ListExecutorsRequest, runtime *util.RuntimeOptions) (_result *ListExecutorsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3242,6 +3978,13 @@ func (client *Client) ListExecutorsWithOptions(tmpReq *ListExecutorsRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询全局Executor信息
+//
+// @param request - ListExecutorsRequest
+//
+// @return ListExecutorsResponse
 func (client *Client) ListExecutors(request *ListExecutorsRequest) (_result *ListExecutorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListExecutorsResponse{}
@@ -3253,6 +3996,15 @@ func (client *Client) ListExecutors(request *ListExecutorsRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看托管侧镜像列表
+//
+// @param tmpReq - ListImagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImagesResponse
 func (client *Client) ListImagesWithOptions(tmpReq *ListImagesRequest, runtime *util.RuntimeOptions) (_result *ListImagesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3308,6 +4060,13 @@ func (client *Client) ListImagesWithOptions(tmpReq *ListImagesRequest, runtime *
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看托管侧镜像列表
+//
+// @param request - ListImagesRequest
+//
+// @return ListImagesResponse
 func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListImagesResponse{}
@@ -3319,6 +4078,15 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询作业Executor信息
+//
+// @param request - ListJobExecutorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobExecutorsResponse
 func (client *Client) ListJobExecutorsWithOptions(request *ListJobExecutorsRequest, runtime *util.RuntimeOptions) (_result *ListJobExecutorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3364,6 +4132,13 @@ func (client *Client) ListJobExecutorsWithOptions(request *ListJobExecutorsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询作业Executor信息
+//
+// @param request - ListJobExecutorsRequest
+//
+// @return ListJobExecutorsResponse
 func (client *Client) ListJobExecutors(request *ListJobExecutorsRequest) (_result *ListJobExecutorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListJobExecutorsResponse{}
@@ -3375,6 +4150,15 @@ func (client *Client) ListJobExecutors(request *ListJobExecutorsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询作业列表
+//
+// @param tmpReq - ListJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobsResponse
 func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, runtime *util.RuntimeOptions) (_result *ListJobsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3430,6 +4214,13 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, runtime *util
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询作业列表
+//
+// @param request - ListJobsRequest
+//
+// @return ListJobsResponse
 func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListJobsResponse{}
@@ -3441,6 +4232,15 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除托管侧镜像信息。
+//
+// @param request - RemoveImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveImageResponse
 func (client *Client) RemoveImageWithOptions(request *RemoveImageRequest, runtime *util.RuntimeOptions) (_result *RemoveImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3474,6 +4274,13 @@ func (client *Client) RemoveImageWithOptions(request *RemoveImageRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除托管侧镜像信息。
+//
+// @param request - RemoveImageRequest
+//
+// @return RemoveImageResponse
 func (client *Client) RemoveImage(request *RemoveImageRequest) (_result *RemoveImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveImageResponse{}
