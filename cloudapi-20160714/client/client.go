@@ -12,6 +12,8 @@ import (
 type AbolishApiRequest struct {
 	// The ID of the specified API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// d6f679aeb3be4b91b3688e887ca1fe16
@@ -28,6 +30,8 @@ type AbolishApiRequest struct {
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -125,9 +129,11 @@ type AddAccessControlListEntryRequest struct {
 	//
 	// example:
 	//
-	// [{\"entry\": \"192.168.1.0/24\", \"comment\": \"test\"}]
+	// [{\\"entry\\": \\"192.168.1.0/24\\", \\"comment\\": \\"test\\"}]
 	AclEntrys *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
 	// The ID of the access control list (ACL).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -229,11 +235,15 @@ type AddIpControlPolicyItemRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The IP addresses or CIDR blocks involved in the policy. Separate multiple IP addresses or CIDR blocks with semicolons (;). You can specify a maximum of 10 IP addresses or CIDR blocks.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 113.125.1.101;101.11.1.1
 	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
 	// The ID of the ACL. The ID is unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -346,6 +356,8 @@ type AddTrafficSpecialControlRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the app or Alibaba Cloud account. Specify this parameter based on the value of the **SpecialType*	- parameter. You can view your account ID on the [Account Management](https://account.console.aliyun.com/?spm=a2c4g.11186623.2.15.3f053654YpMPwo#/secure) page.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3382463
@@ -356,17 +368,23 @@ type AddTrafficSpecialControlRequest struct {
 	//
 	// 	- **USER**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP
 	SpecialType *string `json:"SpecialType,omitempty" xml:"SpecialType,omitempty"`
 	// The ID of the specified throttling policy.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// tf123456
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 	// The special throttling value.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -461,11 +479,15 @@ func (s *AddTrafficSpecialControlResponse) SetBody(v *AddTrafficSpecialControlRe
 type AttachApiProductRequest struct {
 	// The ID of the API product.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 117b7a64a8b3f064eaa4a47ac62aac5e
 	ApiProductId *string `json:"ApiProductId,omitempty" xml:"ApiProductId,omitempty"`
 	// The APIs to be attached.
+	//
+	// This parameter is required.
 	Apis          []*AttachApiProductRequestApis `json:"Apis,omitempty" xml:"Apis,omitempty" type:"Repeated"`
 	SecurityToken *string                        `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -496,6 +518,8 @@ func (s *AttachApiProductRequest) SetSecurityToken(v string) *AttachApiProductRe
 type AttachApiProductRequestApis struct {
 	// The API ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 551877242a4b4f3a84a56b7c3570e4a7
@@ -507,6 +531,8 @@ type AttachApiProductRequestApis struct {
 	// 	- **PRE**: the staging environment
 	//
 	// 	- **TEST**: the test environment
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -604,6 +630,8 @@ type AttachPluginRequest struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The ID of the plug-in to be bound.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9a3f1a5279434f2ba74ccd91c295af9f
@@ -616,6 +644,8 @@ type AttachPluginRequest struct {
 	// 	- **PRE: the pre-release environment**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -714,6 +744,8 @@ func (s *AttachPluginResponse) SetBody(v *AttachPluginResponseBody) *AttachPlugi
 
 type BatchAbolishApisRequest struct {
 	// The APIs that you want to operate.
+	//
+	// This parameter is required.
 	Api           []*BatchAbolishApisRequestApi `json:"Api,omitempty" xml:"Api,omitempty" type:"Repeated"`
 	SecurityToken *string                       `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -739,11 +771,15 @@ func (s *BatchAbolishApisRequest) SetSecurityToken(v string) *BatchAbolishApisRe
 type BatchAbolishApisRequestApi struct {
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 994f72dcdaf04af0b38022c65fdbd1ac
 	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
 	// The ID of the API group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -858,6 +894,8 @@ type BatchDeployApisRequest struct {
 	Api []*BatchDeployApisRequestApi `json:"Api,omitempty" xml:"Api,omitempty" type:"Repeated"`
 	// The description.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test
@@ -870,6 +908,8 @@ type BatchDeployApisRequest struct {
 	// 	- **TEST**
 	//
 	// 	- PRE: the pre-release environment
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -908,11 +948,15 @@ func (s *BatchDeployApisRequest) SetStageName(v string) *BatchDeployApisRequest 
 type BatchDeployApisRequestApi struct {
 	// The API ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2b35dd68345b472f8051647306a16415
 	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
 	// The API group ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1001,7 +1045,9 @@ func (s *BatchDeployApisResponse) SetBody(v *BatchDeployApisResponseBody) *Batch
 }
 
 type CreateAccessControlListRequest struct {
-	// The name of the ACL. The name must be 1 to 30 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (\_). The name must be unique within the region.
+	// The name of the ACL. The name must be 1 to 30 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (_). The name must be unique within the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1111,7 +1157,9 @@ type CreateApiRequest struct {
 	//
 	// HmacSHA256
 	AllowSignatureMethod *string `json:"AllowSignatureMethod,omitempty" xml:"AllowSignatureMethod,omitempty"`
-	// The name of the API that you want to create. The name must be unique within the API group. The name must be 4 to 50 characters in length. It must start with a letter and can contain letters, digits, and underscores (\_).
+	// The name of the API that you want to create. The name must be unique within the API group. The name must be 4 to 50 characters in length. It must start with a letter and can contain letters, digits, and underscores (_).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1125,7 +1173,7 @@ type CreateApiRequest struct {
 	AppCodeAuthType *string `json:"AppCodeAuthType,omitempty" xml:"AppCodeAuthType,omitempty"`
 	// The configuration items of API requests sent by the consumer to API Gateway.
 	//
-	// For more information, see [RequestConfig](~~43985~~).
+	// For more information, see [RequestConfig](https://help.aliyun.com/document_detail/43985.html).
 	//
 	// example:
 	//
@@ -1176,6 +1224,8 @@ type CreateApiRequest struct {
 	ForceNonceCheck *bool `json:"ForceNonceCheck,omitempty" xml:"ForceNonceCheck,omitempty"`
 	// The ID of the API group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 08ae4aa0f95e4321849ee57f4e0b3077
@@ -1188,11 +1238,13 @@ type CreateApiRequest struct {
 	//
 	// example:
 	//
-	// {\"openIdApiType\":null,\"idTokenParamName\":null,\"publicKeyId\":null,\"publicKey\":null}
+	// {\\"openIdApiType\\":null,\\"idTokenParamName\\":null,\\"publicKeyId\\":null,\\"publicKey\\":null}
 	OpenIdConnectConfig *string `json:"OpenIdConnectConfig,omitempty" xml:"OpenIdConnectConfig,omitempty"`
 	// The configuration items of API requests sent by API Gateway to the backend service.
 	//
-	// For more information, see [ServiceConfig](~~43987~~).
+	// For more information, see [ServiceConfig](https://help.aliyun.com/document_detail/43987.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1218,7 +1270,9 @@ type CreateApiRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The parameters of API requests sent by the consumer to API Gateway.
 	//
-	// For more information, see [RequestParameter](~~43986~~).
+	// For more information, see [RequestParameter](https://help.aliyun.com/document_detail/43986.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1234,6 +1288,8 @@ type CreateApiRequest struct {
 	// 	- **PUBLIC**: Make the API public. If you set this parameter to PUBLIC, this API is displayed on the APIs page for all users after the API is published to the production environment.
 	//
 	// 	- **PRIVATE**: Make the API private. Private APIs are not displayed in the Alibaba Cloud Marketplace after the API group to which they belong is made available.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1499,6 +1555,8 @@ type CreateApiGroupRequest struct {
 	//
 	// The weather informations.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Weather
@@ -1705,12 +1763,16 @@ func (s *CreateApiGroupResponse) SetBody(v *CreateApiGroupResponseBody) *CreateA
 type CreateApiStageVariableRequest struct {
 	// The ID of the API group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 523e8dc7bbe04613b5b1d726c2a7889d
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the runtime environment.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1725,6 +1787,8 @@ type CreateApiStageVariableRequest struct {
 	// true
 	SupportRoute *bool `json:"SupportRoute,omitempty" xml:"SupportRoute,omitempty"`
 	// The name of the variable to be added. This parameter is case-sensitive.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1845,7 +1909,9 @@ type CreateAppRequest struct {
 	//
 	// 60030986
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The name of the application. The name must be 4 to 26 characters in length. The name can contain letters, digits, and underscores (\_), and must start with a letter.
+	// The name of the application. The name must be 4 to 26 characters in length. The name can contain letters, digits, and underscores (_), and must start with a letter.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1941,7 +2007,7 @@ type CreateAppRequestTag struct {
 	//
 	// example:
 	//
-	// \" \"
+	// \\" \\"
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2037,10 +2103,14 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 }
 
 type CreateBackendRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testBackendService
 	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HTTP
@@ -2186,7 +2256,7 @@ type CreateBackendModelRequest struct {
 	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
 	// example:
 	//
-	// {\"ServiceAddress\":\"http://apigateway-echo-redux.alicloudapi.com:8080\"}
+	// {\\"ServiceAddress\\":\\"http://apigateway-echo-redux.alicloudapi.com:8080\\"}
 	BackendModelData *string `json:"BackendModelData,omitempty" xml:"BackendModelData,omitempty"`
 	// example:
 	//
@@ -2302,6 +2372,8 @@ func (s *CreateBackendModelResponse) SetBody(v *CreateBackendModelResponseBody) 
 type CreateDatasetRequest struct {
 	// The name of the dataset.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// DatasetName
@@ -2313,6 +2385,8 @@ type CreateDatasetRequest struct {
 	// 	- IP_WHITELIST_CIDR : an IP address whitelist
 	//
 	// 	- PARAMETER_ACCESS : parameter-based access control
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2447,6 +2521,8 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 }
 
 type CreateDatasetItemRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// a25a6589b2584ff490e891cc********
@@ -2457,6 +2533,8 @@ type CreateDatasetItemRequest struct {
 	// 2022-09-22T12:00:00Z
 	ExpiredTime   *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 106.43.XXX.XXX
@@ -2558,7 +2636,8 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// false
-	AutoPay    *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// This parameter is required.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// example:
 	//
@@ -2569,10 +2648,14 @@ type CreateInstanceRequest struct {
 	// HTTPS2_TLS1_2
 	HttpsPolicy  *string `json:"HttpsPolicy,omitempty" xml:"HttpsPolicy,omitempty"`
 	InstanceCidr *string `json:"InstanceCidr,omitempty" xml:"InstanceCidr,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ApigatewayInstance
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// api.s1.small
@@ -2583,6 +2666,8 @@ type CreateInstanceRequest struct {
 	// Month
 	PricingCycle *string                     `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	Tag          []*CreateInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c20d86c4-1eb3-4d0b-afe9-c586df1e2136
@@ -2798,6 +2883,8 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 type CreateIntranetDomainRequest struct {
 	// The custom domain name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 927d50c0f2e54b359919923d908bb015
@@ -2892,7 +2979,9 @@ type CreateIpControlRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the ACL. The name must be 4 to 50 characters in length, and can contain letters, digits, and underscores (\_). The name cannot start with an underscore (\_).``
+	// The name of the ACL. The name must be 4 to 50 characters in length, and can contain letters, digits, and underscores (_). The name cannot start with an underscore (_).``
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2905,6 +2994,8 @@ type CreateIpControlRequest struct {
 	// 	- **ALLOW**: an IP address whitelist
 	//
 	// 	- **REFUSE**: an IP address blacklist
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3067,10 +3158,14 @@ type CreateLogConfigRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// slslogstore
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// api-gateway
 	SlsLogStore *string `json:"SlsLogStore,omitempty" xml:"SlsLogStore,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// rec-lq-sls
@@ -3163,17 +3258,23 @@ type CreateModelRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the API group to which the model belongs.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 30e792398d6c4569b04c0e53a3494381
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the model. The name must be unique within the group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Test
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The definition of the model in JSON Schema.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3308,7 +3409,7 @@ type CreateModelResponseBody struct {
 	//
 	// example:
 	//
-	// {\"type\":\"object\",\"properties\":{\"id\":{\"format\":\"int64\",\"maximum\":100,\"exclusiveMaximum\":true,\"type\":\"integer\"},\"name\":{\"maxLength\":10,\"type\":\"string\"}}}
+	// {\\"type\\":\\"object\\",\\"properties\\":{\\"id\\":{\\"format\\":\\"int64\\",\\"maximum\\":100,\\"exclusiveMaximum\\":true,\\"type\\":\\"integer\\"},\\"name\\":{\\"maxLength\\":10,\\"type\\":\\"string\\"}}}
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 }
 
@@ -3402,11 +3503,15 @@ func (s *CreateModelResponse) SetBody(v *CreateModelResponseBody) *CreateModelRe
 type CreateMonitorGroupRequest struct {
 	// The caller authentication status of the API. Valid values: **ok**: The authentication is successful. **mismatch**: The request is redirected. **servicenotfound**: A request error occurred. **Unknown**: An unknown error occurred.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// false
 	Auth *string `json:"Auth,omitempty" xml:"Auth,omitempty"`
 	// The ID of the API group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3520,11 +3625,15 @@ type CreatePluginRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The plug-in definition. Supported formats: JSON and YAML.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Plugin definition
 	PluginData *string `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
-	// The name of the plug-in. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\_). However, it cannot start with an underscore.
+	// The name of the plug-in. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (_). However, it cannot start with an underscore.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3543,6 +3652,8 @@ type CreatePluginRequest struct {
 	// 	- **cors*	- :cross-origin resource sharing (CORS)
 	//
 	// 	- **caching**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3600,6 +3711,8 @@ type CreatePluginRequestTag struct {
 	//
 	// N can be an integer from 1 to 20.``
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env
@@ -3608,9 +3721,11 @@ type CreatePluginRequestTag struct {
 	//
 	// N can be an integer from 1 to 20.``
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// \" \"
+	// \\" \\"
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3712,19 +3827,25 @@ type CreateSignatureRequest struct {
 	//
 	// fa876ffb-caab-4f0a-93b3-3409f2fa5199
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The Key value of the key. The value must be 6 to 20 characters in length and can contain letters, digits, and underscores (\_). It must start with a letter.
+	// The Key value of the key. The value must be 6 to 20 characters in length and can contain letters, digits, and underscores (_). It must start with a letter.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// qwertyuiop
 	SignatureKey *string `json:"SignatureKey,omitempty" xml:"SignatureKey,omitempty"`
-	// The displayed name of the key. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\_). It must start with a letter.
+	// The displayed name of the key. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (_). It must start with a letter.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// backendsignature
 	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
-	// The Secret value of the key. The value must be 6 to 30 characters in length and can contain letters, digits, and special characters. Special characters include underscores (\_), at signs (@), number signs (#), exclamation points (!), and asterisks (\*). The value must start with a letter.
+	// The Secret value of the key. The value must be 6 to 30 characters in length and can contain letters, digits, and special characters. Special characters include underscores (_), at signs (@), number signs (#), exclamation points (!), and asterisks (\\*). The value must start with a letter.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3836,6 +3957,8 @@ func (s *CreateSignatureResponse) SetBody(v *CreateSignatureResponseBody) *Creat
 type CreateTrafficControlRequest struct {
 	// The default throttling value for each API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10000
@@ -3858,7 +3981,9 @@ type CreateTrafficControlRequest struct {
 	//
 	// 436fa39b-b3b9-40c5-ae5d-ce3e000e38c5
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the throttling policy. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\_). It cannot start with an underscore.
+	// The name of the throttling policy. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (_). It cannot start with an underscore.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3873,6 +3998,8 @@ type CreateTrafficControlRequest struct {
 	// 	- **HOUR**
 	//
 	// 	- **DAY**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3994,6 +4121,8 @@ func (s *CreateTrafficControlResponse) SetBody(v *CreateTrafficControlResponseBo
 type DeleteAccessControlListRequest struct {
 	// The ID of the access control policy.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// acl-uf6fpfdg3b5muska7uqem
@@ -4079,6 +4208,8 @@ type DeleteAllTrafficSpecialControlRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the throttling policy.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// tf123456
@@ -4156,6 +4287,8 @@ func (s *DeleteAllTrafficSpecialControlResponse) SetBody(v *DeleteAllTrafficSpec
 
 type DeleteApiRequest struct {
 	// The ID of the API.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4247,6 +4380,8 @@ func (s *DeleteApiResponse) SetBody(v *DeleteApiResponseBody) *DeleteApiResponse
 type DeleteApiGroupRequest struct {
 	// The ID of the API group. This ID is generated by the system and globally unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 523e8dc7bbe04613b5b1d726c2a7889d
@@ -4286,11 +4421,15 @@ func (s *DeleteApiGroupRequest) SetTag(v []*DeleteApiGroupRequestTag) *DeleteApi
 type DeleteApiGroupRequestTag struct {
 	// The key of the tag.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4369,6 +4508,8 @@ func (s *DeleteApiGroupResponse) SetBody(v *DeleteApiGroupResponseBody) *DeleteA
 
 type DeleteApiProductRequest struct {
 	// The ID of the API product.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4449,6 +4590,8 @@ func (s *DeleteApiProductResponse) SetBody(v *DeleteApiProductResponseBody) *Del
 type DeleteApiStageVariableRequest struct {
 	// The ID of the API group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 523e8dc7bbe04613b5b1d726c2a7889d
@@ -4456,11 +4599,15 @@ type DeleteApiStageVariableRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the runtime environment.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
 	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
 	// The name of the variable to be deleted. This parameter is case-sensitive.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4550,6 +4697,8 @@ func (s *DeleteApiStageVariableResponse) SetBody(v *DeleteApiStageVariableRespon
 type DeleteAppRequest struct {
 	// The ID of the application.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 110840611
@@ -4588,6 +4737,8 @@ func (s *DeleteAppRequest) SetTag(v []*DeleteAppRequestTag) *DeleteAppRequest {
 
 type DeleteAppRequestTag struct {
 	// The key of the tag.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4754,6 +4905,8 @@ type DeleteBackendModelRequest struct {
 	//
 	// 20bcdc9453524b78a8beb1f6de21edb7
 	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4be6b110b7aa40b0bf0c83cc00b3bd86
@@ -4852,6 +5005,8 @@ func (s *DeleteBackendModelResponse) SetBody(v *DeleteBackendModelResponseBody) 
 }
 
 type DeleteDatasetRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// a25a6589b2584ff490e891cc********
@@ -4929,11 +5084,15 @@ func (s *DeleteDatasetResponse) SetBody(v *DeleteDatasetResponseBody) *DeleteDat
 type DeleteDatasetItemRequest struct {
 	// The ID of the dataset.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// a25a6589b2584ff490e891cc********
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	// The ID of the data entry.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5019,11 +5178,15 @@ func (s *DeleteDatasetItemResponse) SetBody(v *DeleteDatasetItemResponseBody) *D
 type DeleteDomainRequest struct {
 	// The custom domain name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// api.demo.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The ID of the API group to which the domain name to be unbound is bound. This ID is generated by the system and globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5109,17 +5272,23 @@ func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomai
 type DeleteDomainCertificateRequest struct {
 	// The ID of the SSL certificate that you want to delete. The ID is automatically generated by the system and globally unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c621720d1eb34843822b7fb5148e6926
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// The custom domain name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// api.demo.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The ID of the API group. This ID is generated by the system and globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5210,6 +5379,8 @@ func (s *DeleteDomainCertificateResponse) SetBody(v *DeleteDomainCertificateResp
 type DeleteInstanceRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// apigateway-sh-ae502ee79ef8
@@ -5243,11 +5414,15 @@ func (s *DeleteInstanceRequest) SetTag(v []*DeleteInstanceRequestTag) *DeleteIns
 type DeleteInstanceRequestTag struct {
 	// The key of the tag.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5326,6 +5501,8 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 
 type DeleteIpControlRequest struct {
 	// The ID of the ACL. The ID is unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5485,11 +5662,15 @@ func (s *DeleteLogConfigResponse) SetBody(v *DeleteLogConfigResponseBody) *Delet
 type DeleteModelRequest struct {
 	// The ID of the API group to which the model belongs.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 30e792398d6c4569b04c0e53a3494381
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the model.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5568,6 +5749,8 @@ func (s *DeleteModelResponse) SetBody(v *DeleteModelResponseBody) *DeleteModelRe
 
 type DeleteMonitorGroupRequest struct {
 	// The ID of the API group. This ID is generated by the system and globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5659,6 +5842,8 @@ func (s *DeleteMonitorGroupResponse) SetBody(v *DeleteMonitorGroupResponseBody) 
 type DeletePluginRequest struct {
 	// The ID of the plug-in to be deleted.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9a3f1a5279434f2ba74ccd91c295af9f
@@ -5696,6 +5881,8 @@ type DeletePluginRequestTag struct {
 	//
 	// N can be an integer from 1 to 20.``
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env
@@ -5704,9 +5891,11 @@ type DeletePluginRequestTag struct {
 	//
 	// N can be an integer from 1 to 20.``
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// \" \"
+	// \\" \\"
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5788,6 +5977,8 @@ type DeleteSignatureRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the key to be deleted.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dd05f1c54d6749eda95f9fa6d491449a
@@ -5866,6 +6057,8 @@ func (s *DeleteSignatureResponse) SetBody(v *DeleteSignatureResponseBody) *Delet
 type DeleteTrafficControlRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the throttling policy.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5951,6 +6144,8 @@ type DeleteTrafficSpecialControlRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the app or Alibaba Cloud account. You can view your account ID on the [Account Management](https://account.console.aliyun.com/?spm=a2c4g.11186623.2.15.343130a8sDi8cO#/secure) page.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3382463
@@ -5961,11 +6156,15 @@ type DeleteTrafficSpecialControlRequest struct {
 	//
 	// 	- **USER**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP
 	SpecialType *string `json:"SpecialType,omitempty" xml:"SpecialType,omitempty"`
 	// The ID of the throttling policy.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6055,11 +6254,15 @@ func (s *DeleteTrafficSpecialControlResponse) SetBody(v *DeleteTrafficSpecialCon
 type DeployApiRequest struct {
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// d6f679aeb3be4b91b3688e887ca1fe16
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The publishing remarks.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6079,6 +6282,8 @@ type DeployApiRequest struct {
 	// 	- **PRE**: the pre-release environment
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6172,6 +6377,8 @@ func (s *DeployApiResponse) SetBody(v *DeployApiResponseBody) *DeployApiResponse
 
 type DescribeAbolishApiTaskRequest struct {
 	// The ID of the unpublishing operation.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6759,6 +6966,8 @@ func (s *DescribeAccessControlListsResponse) SetBody(v *DescribeAccessControlLis
 
 type DescribeApiRequest struct {
 	// The ID of the API.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7496,7 +7705,7 @@ type DescribeApiResponseBodyErrorCodeSamplesErrorCodeSample struct {
 	//
 	// example:
 	//
-	// [\"*\"]
+	// [\\"*\\"]
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
 }
 
@@ -8737,6 +8946,8 @@ func (s *DescribeApiResponse) SetBody(v *DescribeApiResponseBody) *DescribeApiRe
 type DescribeApiDocRequest struct {
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3b81fd160f5645e097cc8855d75a1cf6
@@ -8819,7 +9030,7 @@ type DescribeApiDocResponseBody struct {
 	//
 	// example:
 	//
-	// Lynk\&Co Digital Mall OMS-UAT
+	// Lynk\\&Co Digital Mall OMS-UAT
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// 	- Specifies whether to set **DisableInternet*	- to **true*	- to limit API calls to within the VPC.
 	//
@@ -8877,7 +9088,7 @@ type DescribeApiDocResponseBody struct {
 	//
 	// example:
 	//
-	// {\n  \"status\": 0,\n  \"data\": {\n    \"count\": 1,\n    \"list\": [\n      \"352\"\n    ]\n  },\n  \"message\": \"success\"\n}
+	// {\\n  \\"status\\": 0,\\n  \\"data\\": {\\n    \\"count\\": 1,\\n    \\"list\\": [\\n      \\"352\\"\\n    ]\\n  },\\n  \\"message\\": \\"success\\"\\n}
 	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
 	// The return value type.
 	//
@@ -9399,6 +9610,8 @@ func (s *DescribeApiDocResponse) SetBody(v *DescribeApiDocResponseBody) *Describ
 type DescribeApiGroupRequest struct {
 	// The ID of the API group. This ID is generated by the system and globally unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 523e8dc7bbe04613b5b1d726c2a7889d
@@ -9515,7 +9728,7 @@ type DescribeApiGroupResponseBody struct {
 	//
 	// example:
 	//
-	// {\"parameterLocation\":\"HEADER\",\"parameterName\":\"traceId\"}
+	// {\\"parameterLocation\\":\\"HEADER\\",\\"parameterName\\":\\"traceId\\"}
 	CustomTraceConfig *string `json:"CustomTraceConfig,omitempty" xml:"CustomTraceConfig,omitempty"`
 	// The list of custom configuration items.
 	//
@@ -9661,7 +9874,7 @@ type DescribeApiGroupResponseBody struct {
 	//
 	// example:
 	//
-	// {\"requestBody\":true,\"responseBody\":true,\"queryString\":\"test\",\"requestHeaders\":\"test\",\"responseHeaders\":\"test\",\"jwtClaims\":\"test\"}
+	// {\\"requestBody\\":true,\\"responseBody\\":true,\\"queryString\\":\\"test\\",\\"requestHeaders\\":\\"test\\",\\"responseHeaders\\":\\"test\\",\\"jwtClaims\\":\\"test\\"}
 	UserLogConfig *string `json:"UserLogConfig,omitempty" xml:"UserLogConfig,omitempty"`
 	// The VPC domain name.
 	//
@@ -9963,7 +10176,7 @@ type DescribeApiGroupResponseBodyCustomDomainsDomainItem struct {
 	//
 	// example:
 	//
-	// [\"{test}.test.com\"]
+	// [\\"{test}.test.com\\"]
 	WildcardDomainPatterns *string `json:"WildcardDomainPatterns,omitempty" xml:"WildcardDomainPatterns,omitempty"`
 }
 
@@ -10142,6 +10355,8 @@ func (s *DescribeApiGroupResponse) SetBody(v *DescribeApiGroupResponseBody) *Des
 
 type DescribeApiGroupVpcWhitelistRequest struct {
 	// The ID of the API group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10721,6 +10936,8 @@ type DescribeApiHistoriesRequest struct {
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// The ID of the API group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1084f9034c744137901057206b39d2b6
@@ -11029,6 +11246,8 @@ func (s *DescribeApiHistoriesResponse) SetBody(v *DescribeApiHistoriesResponseBo
 type DescribeApiHistoryRequest struct {
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dc6e17ee3120404c839bbcd7622ab6ed
@@ -11040,6 +11259,8 @@ type DescribeApiHistoryRequest struct {
 	// 3013a55c0c44483f984d26df27120513
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// Specifies the version number that you want to query.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11053,6 +11274,8 @@ type DescribeApiHistoryRequest struct {
 	// 	- **TEST**: the test environment
 	//
 	// 	- **PRE**: the pre-release environment
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11176,7 +11399,7 @@ type DescribeApiHistoryResponseBody struct {
 	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
 	// The sample error codes returned by the backend service.
 	//
-	// For more information, see [ErrorCodeSample](~~44392~~).
+	// For more information, see [ErrorCodeSample](https://help.aliyun.com/document_detail/44392.html).
 	ErrorCodeSamples *DescribeApiHistoryResponseBodyErrorCodeSamples `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty" type:"Struct"`
 	// The sample error response from the backend service.
 	//
@@ -11220,7 +11443,7 @@ type DescribeApiHistoryResponseBody struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Configuration items of API requests sent by the consumer to API Gateway.
 	//
-	// For more information, see [RequestConfig](~~43985~~).
+	// For more information, see [RequestConfig](https://help.aliyun.com/document_detail/43985.html).
 	RequestConfig *DescribeApiHistoryResponseBodyRequestConfig `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -11230,7 +11453,7 @@ type DescribeApiHistoryResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The parameters of API requests sent by the consumer to API Gateway.
 	//
-	// For more information, see [RequestParameter](~~43986~~).
+	// For more information, see [RequestParameter](https://help.aliyun.com/document_detail/43986.html).
 	RequestParameters *DescribeApiHistoryResponseBodyRequestParameters `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty" type:"Struct"`
 	// The return description of the API.
 	//
@@ -11244,7 +11467,7 @@ type DescribeApiHistoryResponseBody struct {
 	//
 	// example:
 	//
-	// {\n  \"status\": 0,\n  \"data\": {\n    \"count\": 1,\n    \"list\": [\n      \"352\"\n    ]\n  },\n  \"message\": \"success\"\n}
+	// {\\n  \\"status\\": 0,\\n  \\"data\\": {\\n    \\"count\\": 1,\\n    \\"list\\": [\\n      \\"352\\"\\n    ]\\n  },\\n  \\"message\\": \\"success\\"\\n}
 	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
 	// The type of the data to return.
 	//
@@ -11256,11 +11479,11 @@ type DescribeApiHistoryResponseBody struct {
 	ServiceConfig *DescribeApiHistoryResponseBodyServiceConfig `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty" type:"Struct"`
 	// The parameters of API requests sent by API Gateway to the backend service.
 	//
-	// For more information, see [ServiceParameter](~~43988~~).
+	// For more information, see [ServiceParameter](https://help.aliyun.com/document_detail/43988.html).
 	ServiceParameters *DescribeApiHistoryResponseBodyServiceParameters `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty" type:"Struct"`
 	// The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
 	//
-	// For more information, see [ServiceParameterMap](~~43989~~).
+	// For more information, see [ServiceParameterMap](https://help.aliyun.com/document_detail/43989.html).
 	ServiceParametersMap *DescribeApiHistoryResponseBodyServiceParametersMap `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty" type:"Struct"`
 	// The environment in which the API is requested. Valid values:
 	//
@@ -13050,6 +13273,8 @@ type DescribeApiIpControlsRequest struct {
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	// The ID of the API group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0009db9c828549768a200320714b8930
@@ -13072,6 +13297,8 @@ type DescribeApiIpControlsRequest struct {
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13294,11 +13521,15 @@ func (s *DescribeApiIpControlsResponse) SetBody(v *DescribeApiIpControlsResponse
 type DescribeApiLatencyDataRequest struct {
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// d6f679aeb3be4b91b3688e887ca1fe16
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The end time in UTC. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13324,6 +13555,8 @@ type DescribeApiLatencyDataRequest struct {
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The start time in UTC. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13480,11 +13713,15 @@ func (s *DescribeApiLatencyDataResponse) SetBody(v *DescribeApiLatencyDataRespon
 type DescribeApiMarketAttributesRequest struct {
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1f9b5e9ba80943099cac52e040b7e160
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The ID of the API group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13602,6 +13839,8 @@ func (s *DescribeApiMarketAttributesResponse) SetBody(v *DescribeApiMarketAttrib
 
 type DescribeApiProductApisRequest struct {
 	// The ID of the API product.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13877,6 +14116,8 @@ func (s *DescribeApiProductApisResponse) SetBody(v *DescribeApiProductApisRespon
 type DescribeApiProductsByAppRequest struct {
 	// The application ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 110962435
@@ -14057,11 +14298,15 @@ func (s *DescribeApiProductsByAppResponse) SetBody(v *DescribeApiProductsByAppRe
 type DescribeApiQpsDataRequest struct {
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// d6f679aeb3be4b91b3688e887ca1fe16
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The end time in UTC. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14087,6 +14332,8 @@ type DescribeApiQpsDataRequest struct {
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The start time in UTC. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14306,6 +14553,8 @@ type DescribeApiSignaturesRequest struct {
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	// The ID of the API group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0009db9c828549768a200320714b8930
@@ -14328,6 +14577,8 @@ type DescribeApiSignaturesRequest struct {
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14556,6 +14807,8 @@ type DescribeApiTrafficControlsRequest struct {
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	// The ID of the API group that you want to query.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0009db9c828549768a200320714b8930
@@ -14578,6 +14831,8 @@ type DescribeApiTrafficControlsRequest struct {
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**: the test environment
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14800,11 +15055,15 @@ func (s *DescribeApiTrafficControlsResponse) SetBody(v *DescribeApiTrafficContro
 type DescribeApiTrafficDataRequest struct {
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// d6f679aeb3be4b91b3688e887ca1fe16
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The end time in UTC. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14830,6 +15089,8 @@ type DescribeApiTrafficDataRequest struct {
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The start time in UTC. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15627,6 +15888,8 @@ type DescribeApisByAppRequest struct {
 	//
 	// b19240592b1b4e74961fb8438ed7550c
 	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 333486644
@@ -15943,6 +16206,8 @@ func (s *DescribeApisByAppResponse) SetBody(v *DescribeApisByAppResponseBody) *D
 type DescribeApisByBackendRequest struct {
 	// The ID of the backend service.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4ac69b7a17524781b275ed4c5eb25c54
@@ -16207,6 +16472,8 @@ func (s *DescribeApisByBackendResponse) SetBody(v *DescribeApisByBackendResponse
 
 type DescribeApisByIpControlRequest struct {
 	// The ID of the ACL.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16497,6 +16764,8 @@ type DescribeApisBySignatureRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the signature key.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dd05f1c54d6749eda95f9fa6d491449a
@@ -16777,6 +17046,8 @@ type DescribeApisByTrafficControlRequest struct {
 	// 9abe3317-3e22-4957-ab9f-dd893d0ac956
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the throttling policy that you want to query.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17334,6 +17605,8 @@ type DescribeApisWithStageNameIntegratedByAppRequest struct {
 	// b19240592b1b4e74961fb8438ed7550c
 	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
 	// The application ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17957,6 +18230,8 @@ type DescribeAppAttributesRequestTag struct {
 	//
 	// Valid values of n: `[1, 20]`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env
@@ -17967,7 +18242,7 @@ type DescribeAppAttributesRequestTag struct {
 	//
 	// example:
 	//
-	// \" \"
+	// \\" \\"
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -18234,6 +18509,8 @@ func (s *DescribeAppAttributesResponse) SetBody(v *DescribeAppAttributesResponse
 type DescribeAppSecurityRequest struct {
 	// The ID of the app.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20112314518278
@@ -18272,6 +18549,8 @@ func (s *DescribeAppSecurityRequest) SetTag(v []*DescribeAppSecurityRequestTag) 
 
 type DescribeAppSecurityRequestTag struct {
 	// The key of the tag.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18625,6 +18904,8 @@ func (s *DescribeAppsResponse) SetBody(v *DescribeAppsResponseBody) *DescribeApp
 type DescribeAppsByApiProductRequest struct {
 	// The ID of the API product.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 117b7a64a8b3f064eaa4a47ac62aac5e
@@ -18866,6 +19147,8 @@ func (s *DescribeAppsByApiProductResponse) SetBody(v *DescribeAppsByApiProductRe
 
 type DescribeAuthorizedApisRequest struct {
 	// The application ID, which is generated by the system and globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19168,6 +19451,8 @@ func (s *DescribeAuthorizedApisResponse) SetBody(v *DescribeAuthorizedApisRespon
 
 type DescribeAuthorizedAppsRequest struct {
 	// The ID of the API. This ID is generated by the system and globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20425,7 +20710,7 @@ func (s *DescribeBackendInfoResponse) SetBody(v *DescribeBackendInfoResponseBody
 }
 
 type DescribeBackendListRequest struct {
-	// The name of the backend service. You can use \	- to perform fuzzy queries.
+	// The name of the backend service. You can use \\	- to perform fuzzy queries.
 	//
 	// example:
 	//
@@ -20714,6 +20999,8 @@ func (s *DescribeBackendListResponse) SetBody(v *DescribeBackendListResponseBody
 type DescribeDatasetInfoRequest struct {
 	// The ID of the dataset.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// a25a6589b2584ff490e891cc********
@@ -20870,6 +21157,8 @@ func (s *DescribeDatasetInfoResponse) SetBody(v *DescribeDatasetInfoResponseBody
 
 type DescribeDatasetItemInfoRequest struct {
 	// The ID of the dataset.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21066,6 +21355,8 @@ func (s *DescribeDatasetItemInfoResponse) SetBody(v *DescribeDatasetItemInfoResp
 
 type DescribeDatasetItemListRequest struct {
 	// The ID of the dataset.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21600,6 +21891,8 @@ func (s *DescribeDatasetListResponse) SetBody(v *DescribeDatasetListResponseBody
 type DescribeDeployApiTaskRequest struct {
 	// The task ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 51524fb8f12846d694d0a1de9a0cf274
@@ -21773,6 +22066,8 @@ func (s *DescribeDeployApiTaskResponse) SetBody(v *DescribeDeployApiTaskResponse
 type DescribeDeployedApiRequest struct {
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ab7c95a01a7e42f28718f34497bbf47c
@@ -21791,6 +22086,8 @@ type DescribeDeployedApiRequest struct {
 	// 	- **PRE: the pre-release environment**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21889,7 +22186,7 @@ type DescribeDeployedApiResponseBody struct {
 	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
 	// The sample error codes returned by the backend service.
 	//
-	// For more information, see [ErrorCodeSample](~~44392~~).
+	// For more information, see [ErrorCodeSample](https://help.aliyun.com/document_detail/44392.html).
 	ErrorCodeSamples *DescribeDeployedApiResponseBodyErrorCodeSamples `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty" type:"Struct"`
 	// The sample error response from the backend service.
 	//
@@ -21927,7 +22224,7 @@ type DescribeDeployedApiResponseBody struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Configuration items of API requests sent by the consumer to API Gateway.
 	//
-	// For more information, see [RequestConfig](~~43985~~).
+	// For more information, see [RequestConfig](https://help.aliyun.com/document_detail/43985.html).
 	RequestConfig *DescribeDeployedApiResponseBodyRequestConfig `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -21937,7 +22234,7 @@ type DescribeDeployedApiResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The parameters of API requests sent by the consumer to API Gateway.
 	//
-	// For more information, see [RequestParameter](~~43986~~).
+	// For more information, see [RequestParameter](https://help.aliyun.com/document_detail/43986.html).
 	RequestParameters *DescribeDeployedApiResponseBodyRequestParameters `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty" type:"Struct"`
 	// The return description of the API.
 	//
@@ -21951,7 +22248,7 @@ type DescribeDeployedApiResponseBody struct {
 	//
 	// example:
 	//
-	// {code: 200, message:\"success\", data: \"\"}
+	// {code: 200, message:\\"success\\", data: \\"\\"}
 	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
 	// The format of the response from the backend service. Valid values: JSON, TEXT, BINARY, XML, and HTML. Default value: JSON.
 	//
@@ -21961,15 +22258,15 @@ type DescribeDeployedApiResponseBody struct {
 	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
 	// The configuration items of API requests sent by API Gateway to the backend service.
 	//
-	// For more information, see [ServiceConfig](~~43987~~).
+	// For more information, see [ServiceConfig](https://help.aliyun.com/document_detail/43987.html).
 	ServiceConfig *DescribeDeployedApiResponseBodyServiceConfig `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty" type:"Struct"`
 	// The parameters of API requests sent by API Gateway to the backend service.
 	//
-	// For more information, see [ServiceParameter](~~43988~~).
+	// For more information, see [ServiceParameter](https://help.aliyun.com/document_detail/43988.html).
 	ServiceParameters *DescribeDeployedApiResponseBodyServiceParameters `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty" type:"Struct"`
 	// The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
 	//
-	// For more information, see [ServiceParameterMap](~~43989~~).
+	// For more information, see [ServiceParameterMap](https://help.aliyun.com/document_detail/43989.html).
 	ServiceParametersMap *DescribeDeployedApiResponseBodyServiceParametersMap `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty" type:"Struct"`
 	// The name of the runtime environment. Valid values:
 	//
@@ -23888,11 +24185,15 @@ func (s *DescribeDeployedApisResponse) SetBody(v *DescribeDeployedApisResponseBo
 type DescribeDomainRequest struct {
 	// The custom domain name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// api.demo.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The ID of the API group. An API group ID is generated by the system and is globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24144,11 +24445,15 @@ func (s *DescribeDomainResponse) SetBody(v *DescribeDomainResponseBody) *Describ
 type DescribeGroupLatencyRequest struct {
 	// The end time of the time range to query. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-04-14T06:26:14Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the API group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24163,11 +24468,15 @@ type DescribeGroupLatencyRequest struct {
 	//
 	// 	- **TEST**: the test environment
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The start time of the time range to query. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24334,11 +24643,15 @@ func (s *DescribeGroupLatencyResponse) SetBody(v *DescribeGroupLatencyResponseBo
 type DescribeGroupQpsRequest struct {
 	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-08-23T07:27:44Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The API group ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24353,11 +24666,15 @@ type DescribeGroupQpsRequest struct {
 	//
 	// 	- **TEST**: the test environment
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24509,11 +24826,15 @@ func (s *DescribeGroupQpsResponse) SetBody(v *DescribeGroupQpsResponseBody) *Des
 type DescribeGroupTrafficRequest struct {
 	// The end time for the query. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-06-16T02:16:53Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the API group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24528,11 +24849,15 @@ type DescribeGroupTrafficRequest struct {
 	//
 	// 	- **TEST**: the test environment
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The start time for the query. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24705,6 +25030,8 @@ type DescribeHistoryApisRequest struct {
 	//
 	// getPersonInfo
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0ccb66aadb5345b78a40f57d192d8aa4
@@ -24972,6 +25299,8 @@ func (s *DescribeHistoryApisResponse) SetBody(v *DescribeHistoryApisResponseBody
 
 type DescribeImportOASTaskRequest struct {
 	// The ID of the asynchronous API import task that was generated during the import operation. This ID is used to query the execution status of the API import task.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25271,11 +25600,15 @@ func (s *DescribeImportOASTaskResponse) SetBody(v *DescribeImportOASTaskResponse
 type DescribeInstanceDropConnectionsRequest struct {
 	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-01-31T07:00:09Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the dedicated instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25289,12 +25622,16 @@ type DescribeInstanceDropConnectionsRequest struct {
 	//
 	// 	- Average
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Maximum
 	SbcName       *string `json:"SbcName,omitempty" xml:"SbcName,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25446,11 +25783,15 @@ func (s *DescribeInstanceDropConnectionsResponse) SetBody(v *DescribeInstanceDro
 type DescribeInstanceDropPacketRequest struct {
 	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-12-16T02:04:36Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25464,12 +25805,16 @@ type DescribeInstanceDropPacketRequest struct {
 	//
 	// 	- Average
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Maximum
 	SbcName       *string `json:"SbcName,omitempty" xml:"SbcName,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25636,11 +25981,15 @@ func (s *DescribeInstanceDropPacketResponse) SetBody(v *DescribeInstanceDropPack
 type DescribeInstanceHttpCodeRequest struct {
 	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-07-21T06:05:52Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25655,11 +26004,15 @@ type DescribeInstanceHttpCodeRequest struct {
 	//
 	// 	- **TEST**: the test environment
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25811,11 +26164,15 @@ func (s *DescribeInstanceHttpCodeResponse) SetBody(v *DescribeInstanceHttpCodeRe
 type DescribeInstanceLatencyRequest struct {
 	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-09-06T02:05:13Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25830,11 +26187,15 @@ type DescribeInstanceLatencyRequest struct {
 	//
 	// 	- **TEST**: the test environment
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26001,11 +26362,15 @@ func (s *DescribeInstanceLatencyResponse) SetBody(v *DescribeInstanceLatencyResp
 type DescribeInstanceNewConnectionsRequest struct {
 	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-10-08T02:08:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26019,12 +26384,16 @@ type DescribeInstanceNewConnectionsRequest struct {
 	//
 	// 	- Average
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Maximum
 	SbcName       *string `json:"SbcName,omitempty" xml:"SbcName,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26176,11 +26545,15 @@ func (s *DescribeInstanceNewConnectionsResponse) SetBody(v *DescribeInstanceNewC
 type DescribeInstancePacketsRequest struct {
 	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-05-24T10:14:53Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26194,12 +26567,16 @@ type DescribeInstancePacketsRequest struct {
 	//
 	// 	- Average
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Maximum
 	SbcName       *string `json:"SbcName,omitempty" xml:"SbcName,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26366,11 +26743,15 @@ func (s *DescribeInstancePacketsResponse) SetBody(v *DescribeInstancePacketsResp
 type DescribeInstanceQpsRequest struct {
 	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-03-29T06:25:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26385,11 +26766,15 @@ type DescribeInstanceQpsRequest struct {
 	//
 	// 	- **TEST**: the test environment
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26541,11 +26926,15 @@ func (s *DescribeInstanceQpsResponse) SetBody(v *DescribeInstanceQpsResponseBody
 type DescribeInstanceSlbConnectRequest struct {
 	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-09-15T15:07:06Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26559,12 +26948,16 @@ type DescribeInstanceSlbConnectRequest struct {
 	//
 	// 	- Average
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Maximum
 	SbcName       *string `json:"SbcName,omitempty" xml:"SbcName,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26733,11 +27126,15 @@ func (s *DescribeInstanceSlbConnectResponse) SetBody(v *DescribeInstanceSlbConne
 type DescribeInstanceTrafficRequest struct {
 	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-04-01T06:34:03Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26752,11 +27149,15 @@ type DescribeInstanceTrafficRequest struct {
 	//
 	// 	- **TEST: the test environment**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -28305,6 +28706,8 @@ func (s *DescribeLogConfigResponse) SetBody(v *DescribeLogConfigResponseBody) *D
 type DescribeMarketRemainsQuotaRequest struct {
 	// The custom domain name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// *.demo.com
@@ -28394,6 +28797,8 @@ func (s *DescribeMarketRemainsQuotaResponse) SetBody(v *DescribeMarketRemainsQuo
 
 type DescribeModelsRequest struct {
 	// The ID of the API group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -28613,7 +29018,7 @@ type DescribeModelsResponseBodyModelDetailsModelDetail struct {
 	//
 	// example:
 	//
-	// {\"type\":\"object\",\"properties\":{\"id\":{\"format\":\"int64\",\"maximum\":100,\"exclusiveMaximum\":true,\"type\":\"integer\"},\"name\":{\"maxLength\":10,\"type\":\"string\"}}}
+	// {\\"type\\":\\"object\\",\\"properties\\":{\\"id\\":{\\"format\\":\\"int64\\",\\"maximum\\":100,\\"exclusiveMaximum\\":true,\\"type\\":\\"integer\\"},\\"name\\":{\\"maxLength\\":10,\\"type\\":\\"string\\"}}}
 	Schema *string                                                `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	Tags   *DescribeModelsResponseBodyModelDetailsModelDetailTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
@@ -28767,6 +29172,8 @@ type DescribePluginApisRequest struct {
 	//
 	// /sendVerifyCode
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// bf6583efcef44c51adb00c4e********
@@ -29464,7 +29871,7 @@ type DescribePluginsRequestTag struct {
 	//
 	// example:
 	//
-	// \" \"
+	// \\" \\"
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -29753,11 +30160,15 @@ func (s *DescribePluginsResponse) SetBody(v *DescribePluginsResponseBody) *Descr
 type DescribePluginsByApiRequest struct {
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 93f4ead4080c4b2da70b7f81f50ae459
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The ID of the group to which the API belongs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -29783,6 +30194,8 @@ type DescribePluginsByApiRequest struct {
 	// 	- **PRE**: staging
 	//
 	// 	- **TEST**: test
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -29930,7 +30343,7 @@ type DescribePluginsByApiResponseBodyPluginsPluginAttribute struct {
 	//
 	// example:
 	//
-	// {\"unit\":\"MINUTE\",\"apiDefault\":20}
+	// {\\"unit\\":\\"MINUTE\\",\\"apiDefault\\":20}
 	PluginData *string `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
 	// The plug-in ID.
 	//
@@ -30037,6 +30450,8 @@ func (s *DescribePluginsByApiResponse) SetBody(v *DescribePluginsByApiResponseBo
 
 type DescribePurchasedApiGroupRequest struct {
 	// The ID of the API group. This ID is generated by the system and globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -31273,11 +31688,15 @@ func (s *DescribeSignaturesResponse) SetBody(v *DescribeSignaturesResponseBody) 
 type DescribeSignaturesByApiRequest struct {
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3b81fd160f5645e097cc8855d75a1cf6
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The ID of the group to which the API belongs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -31289,6 +31708,8 @@ type DescribeSignaturesByApiRequest struct {
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -32150,11 +32571,15 @@ func (s *DescribeTrafficControlsResponse) SetBody(v *DescribeTrafficControlsResp
 type DescribeTrafficControlsByApiRequest struct {
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3b81fd160f5645e097cc8855d75a1cf6
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The ID of the group to which the API to be queried belongs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -32171,6 +32596,8 @@ type DescribeTrafficControlsByApiRequest struct {
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -32326,6 +32753,8 @@ func (s *DescribeTrafficControlsByApiResponse) SetBody(v *DescribeTrafficControl
 }
 
 type DescribeUpdateBackendTaskRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4e13c3e0c44c4a4ebb5231264eeb9bc1
@@ -32516,6 +32945,8 @@ func (s *DescribeUpdateBackendTaskResponse) SetBody(v *DescribeUpdateBackendTask
 }
 
 type DescribeUpdateVpcInfoTaskRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 7d341787517a47afaaef9cc1bdb7acce
@@ -32697,6 +33128,7 @@ func (s *DescribeUpdateVpcInfoTaskResponse) SetBody(v *DescribeUpdateVpcInfoTask
 }
 
 type DescribeVpcAccessesRequest struct {
+	AccurateQuery *bool `json:"AccurateQuery,omitempty" xml:"AccurateQuery,omitempty"`
 	// The ID of the instance.
 	//
 	// example:
@@ -32750,6 +33182,11 @@ func (s DescribeVpcAccessesRequest) String() string {
 
 func (s DescribeVpcAccessesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeVpcAccessesRequest) SetAccurateQuery(v bool) *DescribeVpcAccessesRequest {
+	s.AccurateQuery = &v
+	return s
 }
 
 func (s *DescribeVpcAccessesRequest) SetInstanceId(v string) *DescribeVpcAccessesRequest {
@@ -33150,7 +33587,7 @@ type DescribeZonesResponseBody struct {
 	//
 	// example:
 	//
-	// {\"Zone\": [{\"ZoneId\": \"cn-hangzhou-i\"}]}
+	// {\\"Zone\\": [{\\"ZoneId\\": \\"cn-hangzhou-i\\"}]}
 	Zones *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
@@ -33254,11 +33691,15 @@ func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZ
 type DetachApiProductRequest struct {
 	// The ID of the API product.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 117b7a64a8b3f064eaa4a47ac62aac5e
 	ApiProductId *string `json:"ApiProductId,omitempty" xml:"ApiProductId,omitempty"`
 	// The APIs that you want to detach from the API product.
+	//
+	// This parameter is required.
 	Apis          []*DetachApiProductRequestApis `json:"Apis,omitempty" xml:"Apis,omitempty" type:"Repeated"`
 	SecurityToken *string                        `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -33289,6 +33730,8 @@ func (s *DetachApiProductRequest) SetSecurityToken(v string) *DetachApiProductRe
 type DetachApiProductRequestApis struct {
 	// The API ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ba84c55eca46488598da17c0609f3ead
@@ -33300,6 +33743,8 @@ type DetachApiProductRequestApis struct {
 	// 	- **PRE**: the pre-release environment
 	//
 	// 	- **TEST**: the test environment
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -33385,11 +33830,15 @@ type DetachPluginRequest struct {
 	//
 	// 93b87279e54c4c0baeb7113cdf9c67f5
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 05df2b52a3644a3a8b1935ab8ab59e9d
 	PluginId      *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RELEASE
@@ -33481,6 +33930,8 @@ func (s *DetachPluginResponse) SetBody(v *DetachPluginResponseBody) *DetachPlugi
 type DisableInstanceAccessControlRequest struct {
 	// The ID of the access control policy.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// acl-grgqc0mnuhkqciwtam
@@ -33492,6 +33943,8 @@ type DisableInstanceAccessControlRequest struct {
 	// ipv4
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -33582,6 +34035,8 @@ func (s *DisableInstanceAccessControlResponse) SetBody(v *DisableInstanceAccessC
 type DryRunSwaggerRequest struct {
 	// The Swagger text content.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// "A Swagger API definition in YAML"
@@ -33591,6 +34046,8 @@ type DryRunSwaggerRequest struct {
 	// 	- json
 	//
 	// 	- yaml
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -33604,6 +34061,8 @@ type DryRunSwaggerRequest struct {
 	GlobalCondition map[string]interface{} `json:"GlobalCondition,omitempty" xml:"GlobalCondition,omitempty"`
 	// The ID of the API group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// d633cf5524f841b9950e245b191bdabf
@@ -33611,6 +34070,8 @@ type DryRunSwaggerRequest struct {
 	// Specifies whether to overwrite the existing API.
 	//
 	// APIs with the same HTTP request type and backend request path are considered the same.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -33660,6 +34121,8 @@ func (s *DryRunSwaggerRequest) SetSecurityToken(v string) *DryRunSwaggerRequest 
 type DryRunSwaggerShrinkRequest struct {
 	// The Swagger text content.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// "A Swagger API definition in YAML"
@@ -33669,6 +34132,8 @@ type DryRunSwaggerShrinkRequest struct {
 	// 	- json
 	//
 	// 	- yaml
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -33682,6 +34147,8 @@ type DryRunSwaggerShrinkRequest struct {
 	GlobalConditionShrink *string `json:"GlobalCondition,omitempty" xml:"GlobalCondition,omitempty"`
 	// The ID of the API group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// d633cf5524f841b9950e245b191bdabf
@@ -33689,6 +34156,8 @@ type DryRunSwaggerShrinkRequest struct {
 	// Specifies whether to overwrite the existing API.
 	//
 	// APIs with the same HTTP request type and backend request path are considered the same.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -34103,15 +34572,21 @@ func (s *DryRunSwaggerResponse) SetBody(v *DryRunSwaggerResponseBody) *DryRunSwa
 }
 
 type EnableInstanceAccessControlRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// acl-bp11escro2et2tioscy52
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// black
 	AclType          *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// apigateway-cn-v6419k43xxxxx
@@ -34221,6 +34696,8 @@ type ImportOASRequest struct {
 	// testBackendService
 	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
 	// The OAS-compliant text file or OSS object URL.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -34392,6 +34869,8 @@ type ImportOASRequest struct {
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the API group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 08ae4aa0f95e4321849ee57f4e0b3077
@@ -34411,6 +34890,8 @@ type ImportOASRequest struct {
 	// Specifies whether to overwrite an existing API.
 	//
 	// If an existing API has the same HTTP request type and backend request path as the API to be imported, the existing API is overwritten.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -34900,6 +35381,8 @@ func (s *ImportOASResponse) SetBody(v *ImportOASResponseBody) *ImportOASResponse
 type ImportSwaggerRequest struct {
 	// The Swagger text content.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// "A Swagger API definition in YAML"
@@ -34909,6 +35392,8 @@ type ImportSwaggerRequest struct {
 	// 	- json
 	//
 	// 	- yaml
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -34928,6 +35413,8 @@ type ImportSwaggerRequest struct {
 	GlobalCondition map[string]interface{} `json:"GlobalCondition,omitempty" xml:"GlobalCondition,omitempty"`
 	// The ID of the API group to which the Swagger is imported.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0009db9c828549768a200320714b8930
@@ -34935,6 +35422,8 @@ type ImportSwaggerRequest struct {
 	// Specifies whether to overwrite the existing API.
 	//
 	// APIs with the same HTTP request type and backend request path are considered the same.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -34989,6 +35478,8 @@ func (s *ImportSwaggerRequest) SetSecurityToken(v string) *ImportSwaggerRequest 
 type ImportSwaggerShrinkRequest struct {
 	// The Swagger text content.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// "A Swagger API definition in YAML"
@@ -34998,6 +35489,8 @@ type ImportSwaggerShrinkRequest struct {
 	// 	- json
 	//
 	// 	- yaml
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -35017,6 +35510,8 @@ type ImportSwaggerShrinkRequest struct {
 	GlobalConditionShrink *string `json:"GlobalCondition,omitempty" xml:"GlobalCondition,omitempty"`
 	// The ID of the API group to which the Swagger is imported.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0009db9c828549768a200320714b8930
@@ -35024,6 +35519,8 @@ type ImportSwaggerShrinkRequest struct {
 	// Specifies whether to overwrite the existing API.
 	//
 	// APIs with the same HTTP request type and backend request path are considered the same.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -35443,6 +35940,8 @@ type ListTagResourcesRequest struct {
 	//
 	// 	- **api**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// apiGroup
@@ -35676,11 +36175,15 @@ type ModifyApiRequest struct {
 	AllowSignatureMethod *string `json:"AllowSignatureMethod,omitempty" xml:"AllowSignatureMethod,omitempty"`
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 8afff6c8c4c6447abb035812e4d66b65
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API. The name must be unique within the API group. The name must be 4 to 50 characters in length. It must start with a letter and can contain letters, digits, and underscores (\_).
+	// The name of the API. The name must be unique within the API group. The name must be 4 to 50 characters in length. It must start with a letter and can contain letters, digits, and underscores (_).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -35757,9 +36260,11 @@ type ModifyApiRequest struct {
 	//
 	// example:
 	//
-	// {\"OpenIdApiType\":\"IDTOKEN\",\"PublicKey\":\"lzlj1573\",\"IdTokenParamName\":\"\",\"PublicKeyId\":\"lzljorders\"}
+	// {\\"OpenIdApiType\\":\\"IDTOKEN\\",\\"PublicKey\\":\\"lzlj1573\\",\\"IdTokenParamName\\":\\"\\",\\"PublicKeyId\\":\\"lzljorders\\"}
 	OpenIdConnectConfig *string `json:"OpenIdConnectConfig,omitempty" xml:"OpenIdConnectConfig,omitempty"`
 	// The configuration items of API requests sent by API Gateway to the backend service.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -35785,6 +36290,8 @@ type ModifyApiRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The parameters of API requests sent by the consumer to API Gateway.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"ServiceProtocol":"HTTP","ServiceHttpMethod":"GET","ServiceAddress":"http://www.customerdomain.com","ServiceTimeout":"1000","ServicePath":"/v3/getUserTest/[userId]"}
@@ -35797,6 +36304,8 @@ type ModifyApiRequest struct {
 	// 	- **PUBLIC**: Make the API public. If you set this parameter to PUBLIC, this API is displayed on the APIs page for all users after the API is published to the production environment.
 	//
 	// 	- **PRIVATE**: Make the API private. Private APIs are not displayed in the Alibaba Cloud Marketplace after the API group to which they belong is made available.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -36022,6 +36531,8 @@ type ModifyApiConfigurationRequest struct {
 	AllowSignatureMethod *string `json:"AllowSignatureMethod,omitempty" xml:"AllowSignatureMethod,omitempty"`
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// baacc592e63a4cb6a41920d9d3f91f38
@@ -36112,7 +36623,7 @@ type ModifyApiConfigurationRequest struct {
 	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
 	// The sample error codes returned by the backend service.
 	//
-	// For more information, see [ErrorCodeSample](~~44392~~).
+	// For more information, see [ErrorCodeSample](https://help.aliyun.com/document_detail/44392.html).
 	//
 	// example:
 	//
@@ -36188,7 +36699,7 @@ type ModifyApiConfigurationRequest struct {
 	RequestMode *string `json:"RequestMode,omitempty" xml:"RequestMode,omitempty"`
 	// The parameters of API requests sent by the consumer to API Gateway.
 	//
-	// For more information, see [RequestParameter](~~43986~~).
+	// For more information, see [RequestParameter](https://help.aliyun.com/document_detail/43986.html).
 	//
 	// example:
 	//
@@ -36210,7 +36721,7 @@ type ModifyApiConfigurationRequest struct {
 	//
 	// example:
 	//
-	// {\n  \"status\": 0,\n  \"data\": {\n    \"count\": 1,\n    \"list\": [\n      \"352\"\n    ]\n  },\n  \"message\": \"success\"\n}
+	// {\\n  \\"status\\": 0,\\n  \\"data\\": {\\n    \\"count\\": 1,\\n    \\"list\\": [\\n      \\"352\\"\\n    ]\\n  },\\n  \\"message\\": \\"success\\"\\n}
 	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
 	// The format of the response from the backend service. Valid values: JSON, TEXT, BINARY, XML, and HTML. This value is used only to generate documents. It does not affect the returned result.
 	//
@@ -36221,7 +36732,7 @@ type ModifyApiConfigurationRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The parameters of API requests sent by API Gateway to the backend service.
 	//
-	// For more information, see [ServiceParameter](~~43988~~).
+	// For more information, see [ServiceParameter](https://help.aliyun.com/document_detail/43988.html).
 	//
 	// example:
 	//
@@ -36229,7 +36740,7 @@ type ModifyApiConfigurationRequest struct {
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 	// The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
 	//
-	// For more information, see [ServiceParameterMap](~~43989~~).
+	// For more information, see [ServiceParameterMap](https://help.aliyun.com/document_detail/43989.html).
 	//
 	// example:
 	//
@@ -36545,7 +37056,7 @@ type ModifyApiGroupRequest struct {
 	//
 	// example:
 	//
-	// {\"parameterLocation\":\"HEADER\",\"parameterName\":\"traceId\"}
+	// {\\"parameterLocation\\":\\"HEADER\\",\\"parameterName\\":\\"traceId\\"}
 	CustomTraceConfig *string `json:"CustomTraceConfig,omitempty" xml:"CustomTraceConfig,omitempty"`
 	// The data of custom configuration items.
 	//
@@ -36567,11 +37078,13 @@ type ModifyApiGroupRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the API group. This ID is generated by the system and globally unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 523e8dc7bbe04613b5b1d726c2a7889d
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The API group name must be globally unique. The name must be 4 to 50 characters in length. It must start with a letter and can contain letters, digits, and underscores (\_). If this parameter is not specified, the group name is not modified.
+	// The API group name must be globally unique. The name must be 4 to 50 characters in length. It must start with a letter and can contain letters, digits, and underscores (_). If this parameter is not specified, the group name is not modified.
 	//
 	// example:
 	//
@@ -36586,7 +37099,9 @@ type ModifyApiGroupRequest struct {
 	// The RPC mode.
 	RpcPattern    *string `json:"RpcPattern,omitempty" xml:"RpcPattern,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	SupportSSE    *string `json:"SupportSSE,omitempty" xml:"SupportSSE,omitempty"`
+	// if can be null:
+	// true
+	SupportSSE *string `json:"SupportSSE,omitempty" xml:"SupportSSE,omitempty"`
 	// The object tags that match the lifecycle rule. You can specify multiple tags.
 	//
 	// example:
@@ -36597,7 +37112,7 @@ type ModifyApiGroupRequest struct {
 	//
 	// example:
 	//
-	// {\"requestBody\":false,\"responseBody\":false,\"queryString\":\"\",\"requestHeaders\":\"\",\"responseHeaders\":\"\",\"jwtClaims\":\"\"}
+	// {\\"requestBody\\":false,\\"responseBody\\":false,\\"queryString\\":\\"\\",\\"requestHeaders\\":\\"\\",\\"responseHeaders\\":\\"\\",\\"jwtClaims\\":\\"\\"}
 	UserLogConfig *string `json:"UserLogConfig,omitempty" xml:"UserLogConfig,omitempty"`
 }
 
@@ -36682,11 +37197,15 @@ func (s *ModifyApiGroupRequest) SetUserLogConfig(v string) *ModifyApiGroupReques
 type ModifyApiGroupRequestTag struct {
 	// The key of the tag.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -36819,6 +37338,8 @@ func (s *ModifyApiGroupResponse) SetBody(v *ModifyApiGroupResponseBody) *ModifyA
 }
 
 type ModifyApiGroupInstanceRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 01c97ed08a614118849b00079753d1e2
@@ -36829,6 +37350,8 @@ type ModifyApiGroupInstanceRequest struct {
 	Remark        *string                             `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	SecurityToken *string                             `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	Tag           []*ModifyApiGroupInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// apigateway-bj-c325375b1ebe
@@ -36869,10 +37392,14 @@ func (s *ModifyApiGroupInstanceRequest) SetTargetInstanceId(v string) *ModifyApi
 }
 
 type ModifyApiGroupInstanceRequestTag struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -36948,6 +37475,8 @@ func (s *ModifyApiGroupInstanceResponse) SetBody(v *ModifyApiGroupInstanceRespon
 
 type ModifyApiGroupNetworkPolicyRequest struct {
 	// The ID of the API group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -37098,12 +37627,16 @@ func (s *ModifyApiGroupNetworkPolicyResponse) SetBody(v *ModifyApiGroupNetworkPo
 type ModifyApiGroupVpcWhitelistRequest struct {
 	// The ID of the API group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9b80408147724ddab4c4e2703c6ca019
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the VPC instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -37188,11 +37721,13 @@ func (s *ModifyApiGroupVpcWhitelistResponse) SetBody(v *ModifyApiGroupVpcWhiteli
 type ModifyAppRequest struct {
 	// The ID of the application.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20112314518278
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID must be 4 to 26 characters in length and can contain letters, digits, and underscores (\_). It must start with a letter.
+	// The ID must be 4 to 26 characters in length and can contain letters, digits, and underscores (_). It must start with a letter.
 	//
 	// If you do not want to modify the existing value, do not specify this parameter.
 	//
@@ -37260,6 +37795,8 @@ type ModifyAppRequestTag struct {
 	// The key of the tag.
 	//
 	// Valid values of n: `[1, 20]`.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -37345,14 +37882,20 @@ func (s *ModifyAppResponse) SetBody(v *ModifyAppResponseBody) *ModifyAppResponse
 }
 
 type ModifyBackendRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20bcdc9453524b78a8beb1f6de21edb7
 	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testHttpModify
 	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HTTP
@@ -37453,7 +37996,7 @@ type ModifyBackendModelRequest struct {
 	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
 	// example:
 	//
-	// {\"ServiceAddress\":\"http://121.40.XX.XX\"}
+	// {\\"ServiceAddress\\":\\"http://121.40.XX.XX\\"}
 	BackendModelData *string `json:"BackendModelData,omitempty" xml:"BackendModelData,omitempty"`
 	// example:
 	//
@@ -37578,11 +38121,15 @@ func (s *ModifyBackendModelResponse) SetBody(v *ModifyBackendModelResponseBody) 
 type ModifyDatasetRequest struct {
 	// The ID of the dataset.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// a25a6589b2584ff490e891cc********
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	// The name of the dataset.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -37668,11 +38215,15 @@ func (s *ModifyDatasetResponse) SetBody(v *ModifyDatasetResponseBody) *ModifyDat
 type ModifyDatasetItemRequest struct {
 	// The ID of the dataset.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// a25a6589b2584ff490e891cc********
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	// The ID of the data entry.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -37794,6 +38345,8 @@ type ModifyInstanceAttributeRequest struct {
 	//
 	// true
 	IPV6Enabled *string `json:"IPV6Enabled,omitempty" xml:"IPV6Enabled,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// apigateway-ht-8xxxxxxxxx
@@ -37957,6 +38510,8 @@ type ModifyInstanceAttributeShrinkRequest struct {
 	//
 	// true
 	IPV6Enabled *string `json:"IPV6Enabled,omitempty" xml:"IPV6Enabled,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// apigateway-ht-8xxxxxxxxx
@@ -38120,11 +38675,15 @@ type ModifyInstanceSpecRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// apigateway-cn-v6419k43xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The specifications of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -38149,6 +38708,8 @@ type ModifyInstanceSpecRequest struct {
 	// false
 	SkipWaitSwitch *bool `json:"SkipWaitSwitch,omitempty" xml:"SkipWaitSwitch,omitempty"`
 	// The password.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -38248,6 +38809,8 @@ func (s *ModifyInstanceSpecResponse) SetBody(v *ModifyInstanceSpecResponseBody) 
 type ModifyIntranetDomainPolicyRequest struct {
 	// The ID of the API group. This ID is generated by the system and globally unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 523e8dc7bbe04613b5b1d726c2a7889d
@@ -38258,6 +38821,8 @@ type ModifyIntranetDomainPolicyRequest struct {
 	// 	- TRUE
 	//
 	// 	- FALSE
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -38348,11 +38913,13 @@ type ModifyIpControlRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the ACL. The ID is unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 7ea91319a34d48a09b5c9c871d9768b1
 	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
-	// The name of the ACL. The name must be 4 to 50 characters in length, and can contain letters, digits, and underscores (\_). The name cannot start with an underscore (\_).
+	// The name of the ACL. The name must be 4 to 50 characters in length, and can contain letters, digits, and underscores (_). The name cannot start with an underscore (_).
 	//
 	// example:
 	//
@@ -38459,17 +39026,23 @@ type ModifyIpControlPolicyItemRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The IP address or CIDR block that is defined in a policy. Separate multiple IP addresses or CIDR blocks with semicolons (;). You can add a maximum of 10 IP addresses or CIDR blocks.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 113.125.1.101;101.11.1.1
 	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
 	// The ID of the ACL. The ID is unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 7ea91319a34d48a09b5c9c871d9768b1
 	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
 	// The ID of the policy.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -38568,10 +39141,14 @@ type ModifyLogConfigRequest struct {
 	// PROVIDER
 	LogType       *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// logs-gateway
 	SlsLogStore *string `json:"SlsLogStore,omitempty" xml:"SlsLogStore,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ford-api-gateway-log
@@ -38664,11 +39241,15 @@ type ModifyModelRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the API group to which the model belongs.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 30e792398d6c4569b04c0e53a3494381
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the model.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -38684,7 +39265,7 @@ type ModifyModelRequest struct {
 	//
 	// example:
 	//
-	// {\"type\":\"object\",\"properties\":{\"id\":{\"format\":\"int64\",\"maximum\":100,\"exclusiveMaximum\":true,\"type\":\"integer\"},\"name\":{\"maxLength\":10,\"type\":\"string\"}}}
+	// {\\"type\\":\\"object\\",\\"properties\\":{\\"id\\":{\\"format\\":\\"int64\\",\\"maximum\\":100,\\"exclusiveMaximum\\":true,\\"type\\":\\"integer\\"},\\"name\\":{\\"maxLength\\":10,\\"type\\":\\"string\\"}}}
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 }
 
@@ -38787,11 +39368,13 @@ type ModifyPluginRequest struct {
 	PluginData *string `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
 	// The ID of the plug-in whose information you want to modify.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// a96926e82f994915a8da40a119374537
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The name of the plug-in. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\_). However, it cannot start with an underscore.
+	// The name of the plug-in. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (_). However, it cannot start with an underscore.
 	//
 	// example:
 	//
@@ -38849,6 +39432,8 @@ type ModifyPluginRequestTag struct {
 	//
 	// N can be an integer from 1 to 20.``
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env
@@ -38857,9 +39442,11 @@ type ModifyPluginRequestTag struct {
 	//
 	// N can be an integer from 1 to 20.``
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// \" \"
+	// \\" \\"
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -38941,23 +39528,25 @@ type ModifySignatureRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the signature key that you want to manage.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dd05f1c54d6749eda95f9fa6d491449a
 	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// The new Key value of the key. The value must be 6 to 20 characters in length and can contain letters, digits, and underscores (\_). It must start with a letter.
+	// The new Key value of the key. The value must be 6 to 20 characters in length and can contain letters, digits, and underscores (_). It must start with a letter.
 	//
 	// example:
 	//
 	// qwertyuiop
 	SignatureKey *string `json:"SignatureKey,omitempty" xml:"SignatureKey,omitempty"`
-	// The new name of the key. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\_). It must start with a letter.
+	// The new name of the key. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (_). It must start with a letter.
 	//
 	// example:
 	//
 	// backendsignature
 	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
-	// The new Secret value of the key. The value must be 6 to 30 characters in length and can contain letters, digits, and special characters. Special characters include underscores (\_), at signs (@), number signs (#), exclamation points (!), and asterisks (\*). The value must start with a letter.
+	// The new Secret value of the key. The value must be 6 to 30 characters in length and can contain letters, digits, and special characters. Special characters include underscores (_), at signs (@), number signs (#), exclamation points (!), and asterisks (\\*). The value must start with a letter.
 	//
 	// example:
 	//
@@ -39098,11 +39687,13 @@ type ModifyTrafficControlRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the throttling policy.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// tf123456
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
-	// The throttling policy name. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\_). It cannot start with an underscore.
+	// The throttling policy name. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (_). It cannot start with an underscore.
 	//
 	// example:
 	//
@@ -39243,6 +39834,8 @@ type ModifyVpcAccessAndUpdateApisRequest struct {
 	// 	- The name of a VPC authorization cannot be changed. You cannot use this parameter to change the name of a VPC authorization.
 	//
 	// 	- You must set this parameter to the name of the current VPC authorization.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -39474,6 +40067,8 @@ func (s *OpenApiGatewayServiceResponse) SetBody(v *OpenApiGatewayServiceResponse
 
 type QueryRequestLogsRequest struct {
 	// The ID of the request log.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40041,11 +40636,15 @@ func (s *QueryRequestLogsResponse) SetBody(v *QueryRequestLogsResponseBody) *Que
 type ReactivateDomainRequest struct {
 	// The custom domain name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// api.demo.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The ID of the API group to which the domain name is bound. This ID is generated by the system and globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40131,8 +40730,10 @@ func (s *ReactivateDomainResponse) SetBody(v *ReactivateDomainResponseBody) *Rea
 type RemoveAccessControlListEntryRequest struct {
 	// example:
 	//
-	// [{\"entry\":\"192.168.1.0/24\",\"comment\":\"WhiteIp\"}]
+	// [{\\"entry\\":\\"192.168.1.0/24\\",\\"comment\\":\\"WhiteIp\\"}]
 	AclEntrys *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// acl-bp12ag0xxcfhq1ll68wp9
@@ -40214,8 +40815,12 @@ func (s *RemoveAccessControlListEntryResponse) SetBody(v *RemoveAccessControlLis
 
 type RemoveApiProductsAuthoritiesRequest struct {
 	// The API products.
+	//
+	// This parameter is required.
 	ApiProductIds []*string `json:"ApiProductIds,omitempty" xml:"ApiProductIds,omitempty" type:"Repeated"`
 	// The application ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40249,8 +40854,12 @@ func (s *RemoveApiProductsAuthoritiesRequest) SetSecurityToken(v string) *Remove
 
 type RemoveApiProductsAuthoritiesShrinkRequest struct {
 	// The API products.
+	//
+	// This parameter is required.
 	ApiProductIdsShrink *string `json:"ApiProductIds,omitempty" xml:"ApiProductIds,omitempty"`
 	// The application ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40336,11 +40945,15 @@ func (s *RemoveApiProductsAuthoritiesResponse) SetBody(v *RemoveApiProductsAutho
 type RemoveApisAuthoritiesRequest struct {
 	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// baacc592e63a4cb6a41920d9d3f91f38,jkscc489e63a4cb6a41920d9d3f92d78
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	// The ID of the app. The ID is generated by the system and globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40364,6 +40977,8 @@ type RemoveApisAuthoritiesRequest struct {
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40463,11 +41078,15 @@ func (s *RemoveApisAuthoritiesResponse) SetBody(v *RemoveApisAuthoritiesResponse
 type RemoveAppsAuthoritiesRequest struct {
 	// The ID of the API. This ID is generated by the system and globally unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// baacc592e63a4cb6a41920d9d3f91f38
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The IDs of applications. Separate multiple application IDs with commas (,). A maximum of 100 applications IDs can be entered.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40485,6 +41104,8 @@ type RemoveAppsAuthoritiesRequest struct {
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40589,11 +41210,15 @@ type RemoveIpControlApisRequest struct {
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	// The ID of the API group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0009db9c828549768a200320714b8930
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The ID of the ACL.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40605,6 +41230,8 @@ type RemoveIpControlApisRequest struct {
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40699,11 +41326,15 @@ func (s *RemoveIpControlApisResponse) SetBody(v *RemoveIpControlApisResponseBody
 type RemoveIpControlPolicyItemRequest struct {
 	// The ID of the ACL. The ID is unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 7ea91319a34d48a09b5c9c871d9768b1
 	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
 	// The ID of a policy. Separate multiple IDs with semicolons (;). A maximum of 100 IDs can be entered.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40799,12 +41430,16 @@ type RemoveSignatureApisRequest struct {
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	// The ID of the API group to which the API that you want to manage belongs.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0009db9c828549768a200320714b8930
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the signature key.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40815,6 +41450,8 @@ type RemoveSignatureApisRequest struct {
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40919,6 +41556,8 @@ type RemoveTrafficControlApisRequest struct {
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	// The ID of the API group containing the APIs from which you want to unbind a specified throttling policy.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0009db9c828549768a200320714b8930
@@ -40935,11 +41574,15 @@ type RemoveTrafficControlApisRequest struct {
 	//
 	// 	- **TEST**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// TEST
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The ID of the throttling policy that you want to unbind from APIs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -41034,6 +41677,8 @@ func (s *RemoveTrafficControlApisResponse) SetBody(v *RemoveTrafficControlApisRe
 type RemoveVpcAccessRequest struct {
 	// The ID of an ECS or SLB instance in the VPC.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// i-uf6bzcg1pr4oh5jjmxxx
@@ -41046,12 +41691,16 @@ type RemoveVpcAccessRequest struct {
 	NeedBatchWork *bool `json:"NeedBatchWork,omitempty" xml:"NeedBatchWork,omitempty"`
 	// The port number that corresponds to the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 80
 	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the VPC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -41212,6 +41861,8 @@ func (s *RemoveVpcAccessResponse) SetBody(v *RemoveVpcAccessResponseBody) *Remov
 }
 
 type RemoveVpcAccessAndAbolishApisRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// i-uf6iaale3gfef9t9cb41
@@ -41220,11 +41871,15 @@ type RemoveVpcAccessAndAbolishApisRequest struct {
 	//
 	// true
 	NeedBatchWork *bool `json:"NeedBatchWork,omitempty" xml:"NeedBatchWork,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 8080
 	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// vpc-bp1iw82phcgkvupgfv0o8
@@ -41325,6 +41980,8 @@ func (s *RemoveVpcAccessAndAbolishApisResponse) SetBody(v *RemoveVpcAccessAndAbo
 type ResetAppCodeRequest struct {
 	// The AppCode of the app.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3aaf905a0a1f4f0eabc6d891dfa08afc
@@ -41414,6 +42071,8 @@ func (s *ResetAppCodeResponse) SetBody(v *ResetAppCodeResponseBody) *ResetAppCod
 
 type ResetAppSecretRequest struct {
 	// The key of the application that is used to make an API call.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -41514,10 +42173,14 @@ func (s *ResetAppSecretResponse) SetBody(v *ResetAppSecretResponseBody) *ResetAp
 }
 
 type SdkGenerateByAppRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 110797019
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// java
@@ -41607,10 +42270,14 @@ func (s *SdkGenerateByAppResponse) SetBody(v *SdkGenerateByAppResponseBody) *Sdk
 }
 
 type SdkGenerateByAppForRegionRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 110906109
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// java
@@ -41700,10 +42367,14 @@ func (s *SdkGenerateByAppForRegionResponse) SetBody(v *SdkGenerateByAppForRegion
 }
 
 type SdkGenerateByGroupRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1a991a450b9548a1a3df38fd3af117c2
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// java
@@ -41793,10 +42464,14 @@ func (s *SdkGenerateByGroupResponse) SetBody(v *SdkGenerateByGroupResponseBody) 
 }
 
 type SetAccessControlListAttributeRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// acl-bp1ohqkonqybecf4llbrc
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testAcl
@@ -41877,7 +42552,10 @@ func (s *SetAccessControlListAttributeResponse) SetBody(v *SetAccessControlListA
 }
 
 type SetApiProductsAuthoritiesRequest struct {
+	// This parameter is required.
 	ApiProductIds []*string `json:"ApiProductIds,omitempty" xml:"ApiProductIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 111385984
@@ -41921,7 +42599,10 @@ func (s *SetApiProductsAuthoritiesRequest) SetSecurityToken(v string) *SetApiPro
 }
 
 type SetApiProductsAuthoritiesShrinkRequest struct {
+	// This parameter is required.
 	ApiProductIdsShrink *string `json:"ApiProductIds,omitempty" xml:"ApiProductIds,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 111385984
@@ -42022,6 +42703,8 @@ type SetApisAuthoritiesRequest struct {
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	// The ID of the app. This ID is generated by the system and globally unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2386789
@@ -42050,6 +42733,8 @@ type SetApisAuthoritiesRequest struct {
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -42152,11 +42837,14 @@ func (s *SetApisAuthoritiesResponse) SetBody(v *SetApisAuthoritiesResponseBody) 
 }
 
 type SetAppsAuthToApiProductRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 117b7a64a8b3f064eaa4a47ac62aac5e
-	ApiProductId *string  `json:"ApiProductId,omitempty" xml:"ApiProductId,omitempty"`
-	AppIds       []*int64 `json:"AppIds,omitempty" xml:"AppIds,omitempty" type:"Repeated"`
+	ApiProductId *string `json:"ApiProductId,omitempty" xml:"ApiProductId,omitempty"`
+	// This parameter is required.
+	AppIds []*int64 `json:"AppIds,omitempty" xml:"AppIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2023-05-31T08:15:39Z
@@ -42250,11 +42938,15 @@ func (s *SetAppsAuthToApiProductResponse) SetBody(v *SetAppsAuthToApiProductResp
 type SetAppsAuthoritiesRequest struct {
 	// The ID of the API. This ID is generated by the system and globally unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// baacc592e63a4cb6a41920d9d3f91f38
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -42284,6 +42976,8 @@ type SetAppsAuthoritiesRequest struct {
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -42414,11 +43108,15 @@ type SetDomainRequest struct {
 	CustomDomainType *string `json:"CustomDomainType,omitempty" xml:"CustomDomainType,omitempty"`
 	// The custom domain name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// api.demo.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The ID of the API group. This ID is generated by the system and globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -42627,6 +43325,8 @@ type SetDomainCertificateRequest struct {
 	CertificateBody *string `json:"CertificateBody,omitempty" xml:"CertificateBody,omitempty"`
 	// The name of the SSL certificate.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test_cert
@@ -42639,11 +43339,15 @@ type SetDomainCertificateRequest struct {
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" xml:"CertificatePrivateKey,omitempty"`
 	// The custom domain name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// api.demo.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The ID of the API group to which the domain name is bound. This ID is generated by the system and globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -42760,17 +43464,23 @@ func (s *SetDomainCertificateResponse) SetBody(v *SetDomainCertificateResponseBo
 type SetDomainWebSocketStatusRequest struct {
 	// The action.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// OPEN
 	ActionValue *string `json:"ActionValue,omitempty" xml:"ActionValue,omitempty"`
 	// The custom domain name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ac.fluvet.cn
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The ID of the API group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -42865,7 +43575,9 @@ func (s *SetDomainWebSocketStatusResponse) SetBody(v *SetDomainWebSocketStatusRe
 }
 
 type SetGroupAuthAppCodeRequest struct {
-	AuthAppCode   *string `json:"AuthAppCode,omitempty" xml:"AuthAppCode,omitempty"`
+	// This parameter is required.
+	AuthAppCode *string `json:"AuthAppCode,omitempty" xml:"AuthAppCode,omitempty"`
+	// This parameter is required.
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -42942,17 +43654,23 @@ func (s *SetGroupAuthAppCodeResponse) SetBody(v *SetGroupAuthAppCodeResponseBody
 type SetIpControlApisRequest struct {
 	// The API IDs. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3b81fd160f5645e097cc8855d75a1cf6,46fbb52840d146f186e38e8e70fc8c12
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	// The ID of the API group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0009db9c828549768a200320714b8930
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The ID of the ACL.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -42966,6 +43684,8 @@ type SetIpControlApisRequest struct {
 	// 	- **PRE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -43060,11 +43780,15 @@ func (s *SetIpControlApisResponse) SetBody(v *SetIpControlApisResponseBody) *Set
 type SetSignatureApisRequest struct {
 	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3b81fd160f5645e097cc8855d75a1cf6,46fbb52840d146f186e38e8e70fc8c12
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	// The ID of the API group to which the API that you want to manage belongs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -43072,6 +43796,8 @@ type SetSignatureApisRequest struct {
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the signature key.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -43084,6 +43810,8 @@ type SetSignatureApisRequest struct {
 	// 	- **PRE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -43178,11 +43906,15 @@ func (s *SetSignatureApisResponse) SetBody(v *SetSignatureApisResponseBody) *Set
 type SetTrafficControlApisRequest struct {
 	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3b81fd160f5645e097cc8855d75a1cf6,46fbb52840d146f186e38e8e70fc8c12
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	// The ID of the API group containing the APIs to which you want to bind a specified throttling policy.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -43200,11 +43932,15 @@ type SetTrafficControlApisRequest struct {
 	//
 	// 	- **TEST**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RELEASE
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The ID of the throttling policy.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -43305,17 +44041,23 @@ type SetVpcAccessRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of an ECS or SLB instance in the VPC.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// i-uf6bzcg1pr4oh5jjmxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the authorization. The name must be unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The port number that corresponds to the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -43325,6 +44067,8 @@ type SetVpcAccessRequest struct {
 	// The tag of objects that match the rule. You can specify multiple tags.
 	Tag []*SetVpcAccessRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -43484,11 +44228,15 @@ func (s *SetVpcAccessResponse) SetBody(v *SetVpcAccessResponseBody) *SetVpcAcces
 type SetWildcardDomainPatternsRequest struct {
 	// The custom domain name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// *.prd.e-eir.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The ID of the API group. This ID is generated by the system and globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -43499,7 +44247,7 @@ type SetWildcardDomainPatternsRequest struct {
 	//
 	// example:
 	//
-	// [\"{svc}.prd.e-eir.com\"]
+	// [\\"{svc}.prd.e-eir.com\\"]
 	WildcardDomainPatterns *string `json:"WildcardDomainPatterns,omitempty" xml:"WildcardDomainPatterns,omitempty"`
 }
 
@@ -43585,11 +44333,15 @@ func (s *SetWildcardDomainPatternsResponse) SetBody(v *SetWildcardDomainPatterns
 type SwitchApiRequest struct {
 	// The ID of the API.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// d6f679aeb3be4b91b3688e887ca1fe16
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The description of the switch operation.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -43603,6 +44355,8 @@ type SwitchApiRequest struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The historical version that you want to switch to.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20160705104552292
@@ -43613,6 +44367,8 @@ type SwitchApiRequest struct {
 	// 	- **RELEASE**
 	//
 	// 	- **TEST**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -43712,6 +44468,8 @@ func (s *SwitchApiResponse) SetBody(v *SwitchApiResponseBody) *SwitchApiResponse
 type TagResourcesRequest struct {
 	// The ID of the resource.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 285bb759342649a1b70c2093a772e087
@@ -43724,12 +44482,16 @@ type TagResourcesRequest struct {
 	//
 	// 	- **app**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// apiGroup
 	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The tag of objects that match the lifecycle rule. You can specify multiple tags.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -43768,15 +44530,19 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 type TagResourcesRequestTag struct {
 	// The key of tag N.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// \" \"
+	// \\" \\"
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -43862,6 +44628,8 @@ type UntagResourcesRequest struct {
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The resource IDs.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 285bb759342649a1b70c2093a772e087
@@ -43873,6 +44641,8 @@ type UntagResourcesRequest struct {
 	// 	- **plugin**
 	//
 	// 	- **app**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -43979,12 +44749,16 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 type ValidateVpcConnectivityRequest struct {
 	// The ID of the API Gateway instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// apigateway-hz-72bc18******
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the VPC access authorization.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -44209,9 +44983,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Unpublishes a specified API from a specified runtime environment.
+//
 // Description:
 //
-// 	- This operation is intended for API providers and is the opposite of DeployApi.
+//   This operation is intended for API providers and is the opposite of DeployApi.
 //
 // 	- An API can be unpublished from a specified runtime environment in under 5 seconds.
 //
@@ -44267,9 +45045,13 @@ func (client *Client) AbolishApiWithOptions(request *AbolishApiRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Unpublishes a specified API from a specified runtime environment.
+//
 // Description:
 //
-// 	- This operation is intended for API providers and is the opposite of DeployApi.
+//   This operation is intended for API providers and is the opposite of DeployApi.
 //
 // 	- An API can be unpublished from a specified runtime environment in under 5 seconds.
 //
@@ -44289,6 +45071,15 @@ func (client *Client) AbolishApi(request *AbolishApiRequest) (_result *AbolishAp
 	return _result, _err
 }
 
+// Summary:
+//
+// This feature provides instance-level access control capabilities for dedicated instances. Adds an IP address entry to the access control polocy of an instance.
+//
+// @param request - AddAccessControlListEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAccessControlListEntryResponse
 func (client *Client) AddAccessControlListEntryWithOptions(request *AddAccessControlListEntryRequest, runtime *util.RuntimeOptions) (_result *AddAccessControlListEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44330,6 +45121,13 @@ func (client *Client) AddAccessControlListEntryWithOptions(request *AddAccessCon
 	return _result, _err
 }
 
+// Summary:
+//
+// This feature provides instance-level access control capabilities for dedicated instances. Adds an IP address entry to the access control polocy of an instance.
+//
+// @param request - AddAccessControlListEntryRequest
+//
+// @return AddAccessControlListEntryResponse
 func (client *Client) AddAccessControlListEntry(request *AddAccessControlListEntryRequest) (_result *AddAccessControlListEntryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddAccessControlListEntryResponse{}
@@ -44341,6 +45139,10 @@ func (client *Client) AddAccessControlListEntry(request *AddAccessControlListEnt
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a policy to an existing ACL.
+//
 // Description:
 //
 // When you call this operation, note that:
@@ -44401,6 +45203,10 @@ func (client *Client) AddIpControlPolicyItemWithOptions(request *AddIpControlPol
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a policy to an existing ACL.
+//
 // Description:
 //
 // When you call this operation, note that:
@@ -44425,9 +45231,13 @@ func (client *Client) AddIpControlPolicyItem(request *AddIpControlPolicyItemRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a custom special policy to a specified throttling policy.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
 //
@@ -44487,9 +45297,13 @@ func (client *Client) AddTrafficSpecialControlWithOptions(request *AddTrafficSpe
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a custom special policy to a specified throttling policy.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
 //
@@ -44509,6 +45323,15 @@ func (client *Client) AddTrafficSpecialControl(request *AddTrafficSpecialControl
 	return _result, _err
 }
 
+// Summary:
+//
+// Attaches APIs to an API product. If the API product does not exist, the system automatically creates the API product.
+//
+// @param request - AttachApiProductRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachApiProductResponse
 func (client *Client) AttachApiProductWithOptions(request *AttachApiProductRequest, runtime *util.RuntimeOptions) (_result *AttachApiProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44550,6 +45373,13 @@ func (client *Client) AttachApiProductWithOptions(request *AttachApiProductReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Attaches APIs to an API product. If the API product does not exist, the system automatically creates the API product.
+//
+// @param request - AttachApiProductRequest
+//
+// @return AttachApiProductResponse
 func (client *Client) AttachApiProduct(request *AttachApiProductRequest) (_result *AttachApiProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachApiProductResponse{}
@@ -44561,9 +45391,13 @@ func (client *Client) AttachApiProduct(request *AttachApiProductRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a plug-in to an API.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- You can only bind plug-ins to published APIs.
 //
@@ -44629,9 +45463,13 @@ func (client *Client) AttachPluginWithOptions(request *AttachPluginRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a plug-in to an API.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- You can only bind plug-ins to published APIs.
 //
@@ -44653,6 +45491,15 @@ func (client *Client) AttachPlugin(request *AttachPluginRequest) (_result *Attac
 	return _result, _err
 }
 
+// Summary:
+//
+// Unpublishes multiple published APIs at a time.
+//
+// @param request - BatchAbolishApisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchAbolishApisResponse
 func (client *Client) BatchAbolishApisWithOptions(request *BatchAbolishApisRequest, runtime *util.RuntimeOptions) (_result *BatchAbolishApisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44690,6 +45537,13 @@ func (client *Client) BatchAbolishApisWithOptions(request *BatchAbolishApisReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Unpublishes multiple published APIs at a time.
+//
+// @param request - BatchAbolishApisRequest
+//
+// @return BatchAbolishApisResponse
 func (client *Client) BatchAbolishApis(request *BatchAbolishApisRequest) (_result *BatchAbolishApisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchAbolishApisResponse{}
@@ -44701,6 +45555,15 @@ func (client *Client) BatchAbolishApis(request *BatchAbolishApisRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Publishes multiple APIs at a time.
+//
+// @param request - BatchDeployApisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeployApisResponse
 func (client *Client) BatchDeployApisWithOptions(request *BatchDeployApisRequest, runtime *util.RuntimeOptions) (_result *BatchDeployApisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44746,6 +45609,13 @@ func (client *Client) BatchDeployApisWithOptions(request *BatchDeployApisRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Publishes multiple APIs at a time.
+//
+// @param request - BatchDeployApisRequest
+//
+// @return BatchDeployApisResponse
 func (client *Client) BatchDeployApis(request *BatchDeployApisRequest) (_result *BatchDeployApisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchDeployApisResponse{}
@@ -44757,6 +45627,15 @@ func (client *Client) BatchDeployApis(request *BatchDeployApisRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// This feature provides instance-level access control capabilities for dedicated instances. Creates an Access Control List (ACL). Each user is allowed to create five ACLs in each region.
+//
+// @param request - CreateAccessControlListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAccessControlListResponse
 func (client *Client) CreateAccessControlListWithOptions(request *CreateAccessControlListRequest, runtime *util.RuntimeOptions) (_result *CreateAccessControlListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44798,6 +45677,13 @@ func (client *Client) CreateAccessControlListWithOptions(request *CreateAccessCo
 	return _result, _err
 }
 
+// Summary:
+//
+// This feature provides instance-level access control capabilities for dedicated instances. Creates an Access Control List (ACL). Each user is allowed to create five ACLs in each region.
+//
+// @param request - CreateAccessControlListRequest
+//
+// @return CreateAccessControlListResponse
 func (client *Client) CreateAccessControlList(request *CreateAccessControlListRequest) (_result *CreateAccessControlListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccessControlListResponse{}
@@ -44809,9 +45695,13 @@ func (client *Client) CreateAccessControlList(request *CreateAccessControlListRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an API.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- The name of an API must be unique within an API group.
 //
@@ -44967,9 +45857,13 @@ func (client *Client) CreateApiWithOptions(request *CreateApiRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an API.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- The name of an API must be unique within an API group.
 //
@@ -44991,6 +45885,11 @@ func (client *Client) CreateApi(request *CreateApiRequest) (_result *CreateApiRe
 	return _result, _err
 }
 
+// @param request - CreateApiGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApiGroupResponse
 func (client *Client) CreateApiGroupWithOptions(request *CreateApiGroupRequest, runtime *util.RuntimeOptions) (_result *CreateApiGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45044,6 +45943,9 @@ func (client *Client) CreateApiGroupWithOptions(request *CreateApiGroupRequest, 
 	return _result, _err
 }
 
+// @param request - CreateApiGroupRequest
+//
+// @return CreateApiGroupResponse
 func (client *Client) CreateApiGroup(request *CreateApiGroupRequest) (_result *CreateApiGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateApiGroupResponse{}
@@ -45055,9 +45957,13 @@ func (client *Client) CreateApiGroup(request *CreateApiGroupRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a variable to an environment.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // @param request - CreateApiStageVariableRequest
 //
@@ -45121,9 +46027,13 @@ func (client *Client) CreateApiStageVariableWithOptions(request *CreateApiStageV
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a variable to an environment.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // @param request - CreateApiStageVariableRequest
 //
@@ -45139,9 +46049,13 @@ func (client *Client) CreateApiStageVariable(request *CreateApiStageVariableRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an application for calling APIs in API Gateway.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- Each application has a key-value pair which is used for identity verification when you call an API.
 //
@@ -45219,9 +46133,13 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an application for calling APIs in API Gateway.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- Each application has a key-value pair which is used for identity verification when you call an API.
 //
@@ -45247,6 +46165,15 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建后端服务
+//
+// @param request - CreateBackendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBackendResponse
 func (client *Client) CreateBackendWithOptions(request *CreateBackendRequest, runtime *util.RuntimeOptions) (_result *CreateBackendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45304,6 +46231,13 @@ func (client *Client) CreateBackendWithOptions(request *CreateBackendRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建后端服务
+//
+// @param request - CreateBackendRequest
+//
+// @return CreateBackendResponse
 func (client *Client) CreateBackend(request *CreateBackendRequest) (_result *CreateBackendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBackendResponse{}
@@ -45315,6 +46249,15 @@ func (client *Client) CreateBackend(request *CreateBackendRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建后端服务在环境上的配置
+//
+// @param request - CreateBackendModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBackendModelResponse
 func (client *Client) CreateBackendModelWithOptions(request *CreateBackendModelRequest, runtime *util.RuntimeOptions) (_result *CreateBackendModelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45368,6 +46311,13 @@ func (client *Client) CreateBackendModelWithOptions(request *CreateBackendModelR
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建后端服务在环境上的配置
+//
+// @param request - CreateBackendModelRequest
+//
+// @return CreateBackendModelResponse
 func (client *Client) CreateBackendModel(request *CreateBackendModelRequest) (_result *CreateBackendModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBackendModelResponse{}
@@ -45379,6 +46329,15 @@ func (client *Client) CreateBackendModel(request *CreateBackendModelRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom dataset.
+//
+// @param request - CreateDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetResponse
 func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, runtime *util.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45424,6 +46383,13 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom dataset.
+//
+// @param request - CreateDatasetRequest
+//
+// @return CreateDatasetResponse
 func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDatasetResponse{}
@@ -45435,6 +46401,15 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自定义数据集条目
+//
+// @param request - CreateDatasetItemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetItemResponse
 func (client *Client) CreateDatasetItemWithOptions(request *CreateDatasetItemRequest, runtime *util.RuntimeOptions) (_result *CreateDatasetItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45484,6 +46459,13 @@ func (client *Client) CreateDatasetItemWithOptions(request *CreateDatasetItemReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自定义数据集条目
+//
+// @param request - CreateDatasetItemRequest
+//
+// @return CreateDatasetItemResponse
 func (client *Client) CreateDatasetItem(request *CreateDatasetItemRequest) (_result *CreateDatasetItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDatasetItemResponse{}
@@ -45495,6 +46477,15 @@ func (client *Client) CreateDatasetItem(request *CreateDatasetItemRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建网关实例
+//
+// @param request - CreateInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45580,6 +46571,13 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建网关实例
+//
+// @param request - CreateInstanceRequest
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceResponse{}
@@ -45591,6 +46589,11 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// @param request - CreateIntranetDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIntranetDomainResponse
 func (client *Client) CreateIntranetDomainWithOptions(request *CreateIntranetDomainRequest, runtime *util.RuntimeOptions) (_result *CreateIntranetDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45628,6 +46631,9 @@ func (client *Client) CreateIntranetDomainWithOptions(request *CreateIntranetDom
 	return _result, _err
 }
 
+// @param request - CreateIntranetDomainRequest
+//
+// @return CreateIntranetDomainResponse
 func (client *Client) CreateIntranetDomain(request *CreateIntranetDomainRequest) (_result *CreateIntranetDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateIntranetDomainResponse{}
@@ -45639,9 +46645,13 @@ func (client *Client) CreateIntranetDomain(request *CreateIntranetDomainRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an access control list (ACL) in a region.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
 //
@@ -45703,9 +46713,13 @@ func (client *Client) CreateIpControlWithOptions(request *CreateIpControlRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an access control list (ACL) in a region.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
 //
@@ -45727,6 +46741,11 @@ func (client *Client) CreateIpControl(request *CreateIpControlRequest) (_result 
 	return _result, _err
 }
 
+// @param request - CreateLogConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLogConfigResponse
 func (client *Client) CreateLogConfigWithOptions(request *CreateLogConfigRequest, runtime *util.RuntimeOptions) (_result *CreateLogConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45772,6 +46791,9 @@ func (client *Client) CreateLogConfigWithOptions(request *CreateLogConfigRequest
 	return _result, _err
 }
 
+// @param request - CreateLogConfigRequest
+//
+// @return CreateLogConfigResponse
 func (client *Client) CreateLogConfig(request *CreateLogConfigRequest) (_result *CreateLogConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLogConfigResponse{}
@@ -45783,9 +46805,13 @@ func (client *Client) CreateLogConfig(request *CreateLogConfigRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a model for an API group.
+//
 // Description:
 //
-// 	- For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
+//   For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
 //
 // 	- JSON Schema supports only element attributes of the Object type.
 //
@@ -45843,9 +46869,13 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a model for an API group.
+//
 // Description:
 //
-// 	- For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
+//   For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
 //
 // 	- JSON Schema supports only element attributes of the Object type.
 //
@@ -45863,6 +46893,15 @@ func (client *Client) CreateModel(request *CreateModelRequest) (_result *CreateM
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables CloudMonitor alerting for a specified API group.
+//
+// @param request - CreateMonitorGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMonitorGroupResponse
 func (client *Client) CreateMonitorGroupWithOptions(request *CreateMonitorGroupRequest, runtime *util.RuntimeOptions) (_result *CreateMonitorGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45908,6 +46947,13 @@ func (client *Client) CreateMonitorGroupWithOptions(request *CreateMonitorGroupR
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables CloudMonitor alerting for a specified API group.
+//
+// @param request - CreateMonitorGroupRequest
+//
+// @return CreateMonitorGroupResponse
 func (client *Client) CreateMonitorGroup(request *CreateMonitorGroupRequest) (_result *CreateMonitorGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMonitorGroupResponse{}
@@ -45919,9 +46965,13 @@ func (client *Client) CreateMonitorGroup(request *CreateMonitorGroupRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a plug-in.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
 //
@@ -45987,9 +47037,13 @@ func (client *Client) CreatePluginWithOptions(request *CreatePluginRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a plug-in.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
 //
@@ -46011,9 +47065,13 @@ func (client *Client) CreatePlugin(request *CreatePluginRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a backend signature key.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
 //
@@ -46071,9 +47129,13 @@ func (client *Client) CreateSignatureWithOptions(request *CreateSignatureRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a backend signature key.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
 //
@@ -46095,9 +47157,13 @@ func (client *Client) CreateSignature(request *CreateSignatureRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom throttling policy.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
 //
@@ -46165,9 +47231,13 @@ func (client *Client) CreateTrafficControlWithOptions(request *CreateTrafficCont
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom throttling policy.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
 //
@@ -46187,6 +47257,15 @@ func (client *Client) CreateTrafficControl(request *CreateTrafficControlRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// This feature provides instance-level access control capabilities for dedicated instances. Deletes an access control policy.
+//
+// @param request - DeleteAccessControlListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAccessControlListResponse
 func (client *Client) DeleteAccessControlListWithOptions(request *DeleteAccessControlListRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessControlListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46224,6 +47303,13 @@ func (client *Client) DeleteAccessControlListWithOptions(request *DeleteAccessCo
 	return _result, _err
 }
 
+// Summary:
+//
+// This feature provides instance-level access control capabilities for dedicated instances. Deletes an access control policy.
+//
+// @param request - DeleteAccessControlListRequest
+//
+// @return DeleteAccessControlListResponse
 func (client *Client) DeleteAccessControlList(request *DeleteAccessControlListRequest) (_result *DeleteAccessControlListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccessControlListResponse{}
@@ -46235,9 +47321,13 @@ func (client *Client) DeleteAccessControlList(request *DeleteAccessControlListRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes all custom special policies of a specified throttling policy.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // @param request - DeleteAllTrafficSpecialControlRequest
 //
@@ -46281,9 +47371,13 @@ func (client *Client) DeleteAllTrafficSpecialControlWithOptions(request *DeleteA
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes all custom special policies of a specified throttling policy.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // @param request - DeleteAllTrafficSpecialControlRequest
 //
@@ -46299,9 +47393,13 @@ func (client *Client) DeleteAllTrafficSpecialControl(request *DeleteAllTrafficSp
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an API.
+//
 // Description:
 //
-// 	- This operation is intended for API providers and cannot be undone after it is complete.
+//   This operation is intended for API providers and cannot be undone after it is complete.
 //
 // 	- An API that is running in the runtime environment must be unpublished before you can delete the API.****
 //
@@ -46353,9 +47451,13 @@ func (client *Client) DeleteApiWithOptions(request *DeleteApiRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an API.
+//
 // Description:
 //
-// 	- This operation is intended for API providers and cannot be undone after it is complete.
+//   This operation is intended for API providers and cannot be undone after it is complete.
 //
 // 	- An API that is running in the runtime environment must be unpublished before you can delete the API.****
 //
@@ -46375,9 +47477,13 @@ func (client *Client) DeleteApi(request *DeleteApiRequest) (_result *DeleteApiRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an API group.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
 //
@@ -46433,9 +47539,13 @@ func (client *Client) DeleteApiGroupWithOptions(request *DeleteApiGroupRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an API group.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
 //
@@ -46459,6 +47569,15 @@ func (client *Client) DeleteApiGroup(request *DeleteApiGroupRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an API product. Deleting an API product causes the association between APIs and the deleted API product to be deleted as well. Exercise caution when you delete an API product. If any API in the API product is associated with an application, the API product fails to be deleted.
+//
+// @param request - DeleteApiProductRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApiProductResponse
 func (client *Client) DeleteApiProductWithOptions(request *DeleteApiProductRequest, runtime *util.RuntimeOptions) (_result *DeleteApiProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46496,6 +47615,13 @@ func (client *Client) DeleteApiProductWithOptions(request *DeleteApiProductReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an API product. Deleting an API product causes the association between APIs and the deleted API product to be deleted as well. Exercise caution when you delete an API product. If any API in the API product is associated with an application, the API product fails to be deleted.
+//
+// @param request - DeleteApiProductRequest
+//
+// @return DeleteApiProductResponse
 func (client *Client) DeleteApiProduct(request *DeleteApiProductRequest) (_result *DeleteApiProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteApiProductResponse{}
@@ -46507,9 +47633,13 @@ func (client *Client) DeleteApiProduct(request *DeleteApiProductRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified variable in a specified environment.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // @param request - DeleteApiStageVariableRequest
 //
@@ -46561,9 +47691,13 @@ func (client *Client) DeleteApiStageVariableWithOptions(request *DeleteApiStageV
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified variable in a specified environment.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // @param request - DeleteApiStageVariableRequest
 //
@@ -46579,9 +47713,13 @@ func (client *Client) DeleteApiStageVariable(request *DeleteApiStageVariableRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an application.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- After an application is deleted, the application and its API authorization cannot be restored.
 //
@@ -46633,9 +47771,13 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an application.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- After an application is deleted, the application and its API authorization cannot be restored.
 //
@@ -46655,6 +47797,15 @@ func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a backend service.
+//
+// @param request - DeleteBackendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackendResponse
 func (client *Client) DeleteBackendWithOptions(request *DeleteBackendRequest, runtime *util.RuntimeOptions) (_result *DeleteBackendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46692,6 +47843,13 @@ func (client *Client) DeleteBackendWithOptions(request *DeleteBackendRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a backend service.
+//
+// @param request - DeleteBackendRequest
+//
+// @return DeleteBackendResponse
 func (client *Client) DeleteBackend(request *DeleteBackendRequest) (_result *DeleteBackendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBackendResponse{}
@@ -46703,6 +47861,15 @@ func (client *Client) DeleteBackend(request *DeleteBackendRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the definition of a backend service in an environment. After the definition is deleted, the API that uses the backend service and is published to this environment will be unpublished.
+//
+// @param request - DeleteBackendModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackendModelResponse
 func (client *Client) DeleteBackendModelWithOptions(request *DeleteBackendModelRequest, runtime *util.RuntimeOptions) (_result *DeleteBackendModelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46748,6 +47915,13 @@ func (client *Client) DeleteBackendModelWithOptions(request *DeleteBackendModelR
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the definition of a backend service in an environment. After the definition is deleted, the API that uses the backend service and is published to this environment will be unpublished.
+//
+// @param request - DeleteBackendModelRequest
+//
+// @return DeleteBackendModelResponse
 func (client *Client) DeleteBackendModel(request *DeleteBackendModelRequest) (_result *DeleteBackendModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBackendModelResponse{}
@@ -46759,6 +47933,15 @@ func (client *Client) DeleteBackendModel(request *DeleteBackendModelRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除自定义数据集
+//
+// @param request - DeleteDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetResponse
 func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, runtime *util.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46796,6 +47979,13 @@ func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除自定义数据集
+//
+// @param request - DeleteDatasetRequest
+//
+// @return DeleteDatasetResponse
 func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *DeleteDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDatasetResponse{}
@@ -46807,6 +47997,15 @@ func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a data entry from a custom dataset.
+//
+// @param request - DeleteDatasetItemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetItemResponse
 func (client *Client) DeleteDatasetItemWithOptions(request *DeleteDatasetItemRequest, runtime *util.RuntimeOptions) (_result *DeleteDatasetItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46848,6 +48047,13 @@ func (client *Client) DeleteDatasetItemWithOptions(request *DeleteDatasetItemReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a data entry from a custom dataset.
+//
+// @param request - DeleteDatasetItemRequest
+//
+// @return DeleteDatasetItemResponse
 func (client *Client) DeleteDatasetItem(request *DeleteDatasetItemRequest) (_result *DeleteDatasetItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDatasetItemResponse{}
@@ -46859,9 +48065,13 @@ func (client *Client) DeleteDatasetItem(request *DeleteDatasetItemRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds a custom domain name from a specified API group.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- If the specified domain name does not exist, a successful response will still appear.
 //
@@ -46913,9 +48123,13 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds a custom domain name from a specified API group.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- If the specified domain name does not exist, a successful response will still appear.
 //
@@ -46935,6 +48149,15 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the SSL certificate of a specified domain name. This operation is intended for API providers. If the SSL certificate does not exist, a success response is still returned. If the specified API group does not exist, the InvalidGroupId.NotFound error is returned. Access over HTTPS is not supported after the SSL certificate is deleted. Exercise caution when using this API operation.
+//
+// @param request - DeleteDomainCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDomainCertificateResponse
 func (client *Client) DeleteDomainCertificateWithOptions(request *DeleteDomainCertificateRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46980,6 +48203,13 @@ func (client *Client) DeleteDomainCertificateWithOptions(request *DeleteDomainCe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the SSL certificate of a specified domain name. This operation is intended for API providers. If the SSL certificate does not exist, a success response is still returned. If the specified API group does not exist, the InvalidGroupId.NotFound error is returned. Access over HTTPS is not supported after the SSL certificate is deleted. Exercise caution when using this API operation.
+//
+// @param request - DeleteDomainCertificateRequest
+//
+// @return DeleteDomainCertificateResponse
 func (client *Client) DeleteDomainCertificate(request *DeleteDomainCertificateRequest) (_result *DeleteDomainCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDomainCertificateResponse{}
@@ -46991,6 +48221,15 @@ func (client *Client) DeleteDomainCertificate(request *DeleteDomainCertificateRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an API Gateway instance.
+//
+// @param request - DeleteInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47028,6 +48267,13 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an API Gateway instance.
+//
+// @param request - DeleteInstanceRequest
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteInstanceResponse{}
@@ -47039,9 +48285,13 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an access control list (ACL).
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
 //
@@ -47089,9 +48339,13 @@ func (client *Client) DeleteIpControlWithOptions(request *DeleteIpControlRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an access control list (ACL).
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
 //
@@ -47111,6 +48365,15 @@ func (client *Client) DeleteIpControl(request *DeleteIpControlRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete the specified log configuration.
+//
+// @param request - DeleteLogConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLogConfigResponse
 func (client *Client) DeleteLogConfigWithOptions(request *DeleteLogConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteLogConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47148,6 +48411,13 @@ func (client *Client) DeleteLogConfigWithOptions(request *DeleteLogConfigRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete the specified log configuration.
+//
+// @param request - DeleteLogConfigRequest
+//
+// @return DeleteLogConfigResponse
 func (client *Client) DeleteLogConfig(request *DeleteLogConfigRequest) (_result *DeleteLogConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLogConfigResponse{}
@@ -47159,6 +48429,15 @@ func (client *Client) DeleteLogConfig(request *DeleteLogConfigRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a model from Model Management for an API group.
+//
+// @param request - DeleteModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelResponse
 func (client *Client) DeleteModelWithOptions(request *DeleteModelRequest, runtime *util.RuntimeOptions) (_result *DeleteModelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47196,6 +48475,13 @@ func (client *Client) DeleteModelWithOptions(request *DeleteModelRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a model from Model Management for an API group.
+//
+// @param request - DeleteModelRequest
+//
+// @return DeleteModelResponse
 func (client *Client) DeleteModel(request *DeleteModelRequest) (_result *DeleteModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteModelResponse{}
@@ -47207,6 +48493,15 @@ func (client *Client) DeleteModel(request *DeleteModelRequest) (_result *DeleteM
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a CloudMonitor application group corresponding to an API group.
+//
+// @param request - DeleteMonitorGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMonitorGroupResponse
 func (client *Client) DeleteMonitorGroupWithOptions(request *DeleteMonitorGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteMonitorGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47248,6 +48543,13 @@ func (client *Client) DeleteMonitorGroupWithOptions(request *DeleteMonitorGroupR
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a CloudMonitor application group corresponding to an API group.
+//
+// @param request - DeleteMonitorGroupRequest
+//
+// @return DeleteMonitorGroupResponse
 func (client *Client) DeleteMonitorGroup(request *DeleteMonitorGroupRequest) (_result *DeleteMonitorGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMonitorGroupResponse{}
@@ -47259,9 +48561,13 @@ func (client *Client) DeleteMonitorGroup(request *DeleteMonitorGroupRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a plug-in.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
 //
@@ -47311,9 +48617,13 @@ func (client *Client) DeletePluginWithOptions(request *DeletePluginRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a plug-in.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
 //
@@ -47331,9 +48641,13 @@ func (client *Client) DeletePlugin(request *DeletePluginRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a backend signature key.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This API operation deletes an existing backend signature key.
 //
@@ -47383,9 +48697,13 @@ func (client *Client) DeleteSignatureWithOptions(request *DeleteSignatureRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a backend signature key.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This API operation deletes an existing backend signature key.
 //
@@ -47407,9 +48725,13 @@ func (client *Client) DeleteSignature(request *DeleteSignatureRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom throttling policy and the special throttling rules in the policy.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
 //
@@ -47457,9 +48779,13 @@ func (client *Client) DeleteTrafficControlWithOptions(request *DeleteTrafficCont
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom throttling policy and the special throttling rules in the policy.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
 //
@@ -47479,9 +48805,13 @@ func (client *Client) DeleteTrafficControl(request *DeleteTrafficControlRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom special throttling policy.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- You can obtain the input parameters required in this operation by calling other APIs.
 //
@@ -47535,9 +48865,13 @@ func (client *Client) DeleteTrafficSpecialControlWithOptions(request *DeleteTraf
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom special throttling policy.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- You can obtain the input parameters required in this operation by calling other APIs.
 //
@@ -47555,9 +48889,13 @@ func (client *Client) DeleteTrafficSpecialControl(request *DeleteTrafficSpecialC
 	return _result, _err
 }
 
+// Summary:
+//
+// Publishes an API to an environment.
+//
 // Description:
 //
-// 	- This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
+//   This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
 //
 // 	- An API is published to a cluster in under 5 seconds.
 //
@@ -47617,9 +48955,13 @@ func (client *Client) DeployApiWithOptions(request *DeployApiRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Publishes an API to an environment.
+//
 // Description:
 //
-// 	- This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
+//   This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
 //
 // 	- An API is published to a cluster in under 5 seconds.
 //
@@ -47639,6 +48981,11 @@ func (client *Client) DeployApi(request *DeployApiRequest) (_result *DeployApiRe
 	return _result, _err
 }
 
+// @param request - DescribeAbolishApiTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAbolishApiTaskResponse
 func (client *Client) DescribeAbolishApiTaskWithOptions(request *DescribeAbolishApiTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeAbolishApiTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47676,6 +49023,9 @@ func (client *Client) DescribeAbolishApiTaskWithOptions(request *DescribeAbolish
 	return _result, _err
 }
 
+// @param request - DescribeAbolishApiTaskRequest
+//
+// @return DescribeAbolishApiTaskResponse
 func (client *Client) DescribeAbolishApiTask(request *DescribeAbolishApiTaskRequest) (_result *DescribeAbolishApiTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAbolishApiTaskResponse{}
@@ -47687,6 +49037,15 @@ func (client *Client) DescribeAbolishApiTask(request *DescribeAbolishApiTaskRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// This feature provides instance-level access control for dedicated instances. Queries the details of an access control policy.
+//
+// @param request - DescribeAccessControlListAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccessControlListAttributeResponse
 func (client *Client) DescribeAccessControlListAttributeWithOptions(request *DescribeAccessControlListAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeAccessControlListAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47724,6 +49083,13 @@ func (client *Client) DescribeAccessControlListAttributeWithOptions(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// This feature provides instance-level access control for dedicated instances. Queries the details of an access control policy.
+//
+// @param request - DescribeAccessControlListAttributeRequest
+//
+// @return DescribeAccessControlListAttributeResponse
 func (client *Client) DescribeAccessControlListAttribute(request *DescribeAccessControlListAttributeRequest) (_result *DescribeAccessControlListAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccessControlListAttributeResponse{}
@@ -47735,6 +49101,15 @@ func (client *Client) DescribeAccessControlListAttribute(request *DescribeAccess
 	return _result, _err
 }
 
+// Summary:
+//
+// This feature provides instance-level access control for dedicated instances. Queries access control policies.
+//
+// @param request - DescribeAccessControlListsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccessControlListsResponse
 func (client *Client) DescribeAccessControlListsWithOptions(request *DescribeAccessControlListsRequest, runtime *util.RuntimeOptions) (_result *DescribeAccessControlListsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47784,6 +49159,13 @@ func (client *Client) DescribeAccessControlListsWithOptions(request *DescribeAcc
 	return _result, _err
 }
 
+// Summary:
+//
+// This feature provides instance-level access control for dedicated instances. Queries access control policies.
+//
+// @param request - DescribeAccessControlListsRequest
+//
+// @return DescribeAccessControlListsResponse
 func (client *Client) DescribeAccessControlLists(request *DescribeAccessControlListsRequest) (_result *DescribeAccessControlListsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccessControlListsResponse{}
@@ -47795,9 +49177,13 @@ func (client *Client) DescribeAccessControlLists(request *DescribeAccessControlL
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the definition of an API.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // @param request - DescribeApiRequest
 //
@@ -47845,9 +49231,13 @@ func (client *Client) DescribeApiWithOptions(request *DescribeApiRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the definition of an API.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // @param request - DescribeApiRequest
 //
@@ -47863,9 +49253,13 @@ func (client *Client) DescribeApi(request *DescribeApiRequest) (_result *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the documentation of an API.
+//
 // Description:
 //
-// 	- For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
+//   For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
 //
 // 	- When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
 //
@@ -47923,9 +49317,13 @@ func (client *Client) DescribeApiDocWithOptions(request *DescribeApiDocRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the documentation of an API.
+//
 // Description:
 //
-// 	- For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
+//   For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
 //
 // 	- When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
 //
@@ -47947,9 +49345,13 @@ func (client *Client) DescribeApiDoc(request *DescribeApiDocRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call this operation to query details about an API group, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // @param request - DescribeApiGroupRequest
 //
@@ -47997,9 +49399,13 @@ func (client *Client) DescribeApiGroupWithOptions(request *DescribeApiGroupReque
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call this operation to query details about an API group, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // @param request - DescribeApiGroupRequest
 //
@@ -48015,6 +49421,15 @@ func (client *Client) DescribeApiGroup(request *DescribeApiGroupRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the VPC whitelist that is allowed to access an API group.
+//
+// @param request - DescribeApiGroupVpcWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApiGroupVpcWhitelistResponse
 func (client *Client) DescribeApiGroupVpcWhitelistWithOptions(request *DescribeApiGroupVpcWhitelistRequest, runtime *util.RuntimeOptions) (_result *DescribeApiGroupVpcWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48052,6 +49467,13 @@ func (client *Client) DescribeApiGroupVpcWhitelistWithOptions(request *DescribeA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the VPC whitelist that is allowed to access an API group.
+//
+// @param request - DescribeApiGroupVpcWhitelistRequest
+//
+// @return DescribeApiGroupVpcWhitelistResponse
 func (client *Client) DescribeApiGroupVpcWhitelist(request *DescribeApiGroupVpcWhitelistRequest) (_result *DescribeApiGroupVpcWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApiGroupVpcWhitelistResponse{}
@@ -48063,9 +49485,13 @@ func (client *Client) DescribeApiGroupVpcWhitelist(request *DescribeApiGroupVpcW
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries existing API groups and their basic information.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // @param request - DescribeApiGroupsRequest
 //
@@ -48137,9 +49563,13 @@ func (client *Client) DescribeApiGroupsWithOptions(request *DescribeApiGroupsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries existing API groups and their basic information.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // @param request - DescribeApiGroupsRequest
 //
@@ -48155,9 +49585,13 @@ func (client *Client) DescribeApiGroups(request *DescribeApiGroupsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the historical versions of a specified API.
+//
 // Description:
 //
-// 	- This operation is intended for API providers. Only APIs that have been published have historical version records.
+//   This operation is intended for API providers. Only APIs that have been published have historical version records.
 //
 // 	- This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
 //
@@ -48223,9 +49657,13 @@ func (client *Client) DescribeApiHistoriesWithOptions(request *DescribeApiHistor
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the historical versions of a specified API.
+//
 // Description:
 //
-// 	- This operation is intended for API providers. Only APIs that have been published have historical version records.
+//   This operation is intended for API providers. Only APIs that have been published have historical version records.
 //
 // 	- This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
 //
@@ -48243,6 +49681,10 @@ func (client *Client) DescribeApiHistories(request *DescribeApiHistoriesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a specified historical version of a specified API definition.
+//
 // Description:
 //
 // Queries the details of a specified historical version of a specified API definition.
@@ -48305,6 +49747,10 @@ func (client *Client) DescribeApiHistoryWithOptions(request *DescribeApiHistoryR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a specified historical version of a specified API definition.
+//
 // Description:
 //
 // Queries the details of a specified historical version of a specified API definition.
@@ -48327,9 +49773,13 @@ func (client *Client) DescribeApiHistory(request *DescribeApiHistoryRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the access control lists (ACLs) that are bound to all the APIs in an API group in a specified environment.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- If an optional parameter is not specified, all results are returned on separate pages.
 //
@@ -48393,9 +49843,13 @@ func (client *Client) DescribeApiIpControlsWithOptions(request *DescribeApiIpCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the access control lists (ACLs) that are bound to all the APIs in an API group in a specified environment.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- If an optional parameter is not specified, all results are returned on separate pages.
 //
@@ -48415,6 +49869,10 @@ func (client *Client) DescribeApiIpControls(request *DescribeApiIpControlsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the response time statistics of an API.
+//
 // Description:
 //
 // You can call this operation to query the latency metrics in milliseconds for a specified API.
@@ -48481,6 +49939,10 @@ func (client *Client) DescribeApiLatencyDataWithOptions(request *DescribeApiLate
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the response time statistics of an API.
+//
 // Description:
 //
 // You can call this operation to query the latency metrics in milliseconds for a specified API.
@@ -48503,6 +49965,15 @@ func (client *Client) DescribeApiLatencyData(request *DescribeApiLatencyDataRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Alibaba Cloud Marketplace attributes of an API.
+//
+// @param request - DescribeApiMarketAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApiMarketAttributesResponse
 func (client *Client) DescribeApiMarketAttributesWithOptions(request *DescribeApiMarketAttributesRequest, runtime *util.RuntimeOptions) (_result *DescribeApiMarketAttributesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48544,6 +50015,13 @@ func (client *Client) DescribeApiMarketAttributesWithOptions(request *DescribeAp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Alibaba Cloud Marketplace attributes of an API.
+//
+// @param request - DescribeApiMarketAttributesRequest
+//
+// @return DescribeApiMarketAttributesResponse
 func (client *Client) DescribeApiMarketAttributes(request *DescribeApiMarketAttributesRequest) (_result *DescribeApiMarketAttributesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApiMarketAttributesResponse{}
@@ -48555,6 +50033,15 @@ func (client *Client) DescribeApiMarketAttributes(request *DescribeApiMarketAttr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attached APIs of an API product.
+//
+// @param request - DescribeApiProductApisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApiProductApisResponse
 func (client *Client) DescribeApiProductApisWithOptions(request *DescribeApiProductApisRequest, runtime *util.RuntimeOptions) (_result *DescribeApiProductApisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48600,6 +50087,13 @@ func (client *Client) DescribeApiProductApisWithOptions(request *DescribeApiProd
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attached APIs of an API product.
+//
+// @param request - DescribeApiProductApisRequest
+//
+// @return DescribeApiProductApisResponse
 func (client *Client) DescribeApiProductApis(request *DescribeApiProductApisRequest) (_result *DescribeApiProductApisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApiProductApisResponse{}
@@ -48611,6 +50105,15 @@ func (client *Client) DescribeApiProductApis(request *DescribeApiProductApisRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries API products by application.
+//
+// @param request - DescribeApiProductsByAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApiProductsByAppResponse
 func (client *Client) DescribeApiProductsByAppWithOptions(request *DescribeApiProductsByAppRequest, runtime *util.RuntimeOptions) (_result *DescribeApiProductsByAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48656,6 +50159,13 @@ func (client *Client) DescribeApiProductsByAppWithOptions(request *DescribeApiPr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries API products by application.
+//
+// @param request - DescribeApiProductsByAppRequest
+//
+// @return DescribeApiProductsByAppResponse
 func (client *Client) DescribeApiProductsByApp(request *DescribeApiProductsByAppRequest) (_result *DescribeApiProductsByAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApiProductsByAppResponse{}
@@ -48667,9 +50177,13 @@ func (client *Client) DescribeApiProductsByApp(request *DescribeApiProductsByApp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the QPS statistics of an API.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- Only statistics for API calls made in the release environment are collected by default.
 //
@@ -48731,9 +50245,13 @@ func (client *Client) DescribeApiQpsDataWithOptions(request *DescribeApiQpsDataR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the QPS statistics of an API.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- Only statistics for API calls made in the release environment are collected by default.
 //
@@ -48751,9 +50269,13 @@ func (client *Client) DescribeApiQpsData(request *DescribeApiQpsDataRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backend signature keys that are bound to the APIs of a specified API group in a specified environment.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
 //
@@ -48815,9 +50337,13 @@ func (client *Client) DescribeApiSignaturesWithOptions(request *DescribeApiSigna
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backend signature keys that are bound to the APIs of a specified API group in a specified environment.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
 //
@@ -48835,9 +50361,13 @@ func (client *Client) DescribeApiSignatures(request *DescribeApiSignaturesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the throttling policies bound to all members of an API group in a specified environment.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
 //
@@ -48899,9 +50429,13 @@ func (client *Client) DescribeApiTrafficControlsWithOptions(request *DescribeApi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the throttling policies bound to all members of an API group in a specified environment.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
 //
@@ -48919,9 +50453,13 @@ func (client *Client) DescribeApiTrafficControls(request *DescribeApiTrafficCont
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on the traffic of an API.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- Only statistics for API calls made in the release environment are collected by default.
 //
@@ -48983,9 +50521,13 @@ func (client *Client) DescribeApiTrafficDataWithOptions(request *DescribeApiTraf
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on the traffic of an API.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- Only statistics for API calls made in the release environment are collected by default.
 //
@@ -49003,9 +50545,13 @@ func (client *Client) DescribeApiTrafficData(request *DescribeApiTrafficDataRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of APIs that are being defined.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
 //
@@ -49101,9 +50647,13 @@ func (client *Client) DescribeApisWithOptions(request *DescribeApisRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of APIs that are being defined.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
 //
@@ -49123,6 +50673,11 @@ func (client *Client) DescribeApis(request *DescribeApisRequest) (_result *Descr
 	return _result, _err
 }
 
+// @param request - DescribeApisByAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisByAppResponse
 func (client *Client) DescribeApisByAppWithOptions(request *DescribeApisByAppRequest, runtime *util.RuntimeOptions) (_result *DescribeApisByAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49188,6 +50743,9 @@ func (client *Client) DescribeApisByAppWithOptions(request *DescribeApisByAppReq
 	return _result, _err
 }
 
+// @param request - DescribeApisByAppRequest
+//
+// @return DescribeApisByAppResponse
 func (client *Client) DescribeApisByApp(request *DescribeApisByAppRequest) (_result *DescribeApisByAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApisByAppResponse{}
@@ -49199,6 +50757,15 @@ func (client *Client) DescribeApisByApp(request *DescribeApisByAppRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries APIs in the draft or published state that are created by using a specified backend service.
+//
+// @param request - DescribeApisByBackendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisByBackendResponse
 func (client *Client) DescribeApisByBackendWithOptions(request *DescribeApisByBackendRequest, runtime *util.RuntimeOptions) (_result *DescribeApisByBackendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49248,6 +50815,13 @@ func (client *Client) DescribeApisByBackendWithOptions(request *DescribeApisByBa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries APIs in the draft or published state that are created by using a specified backend service.
+//
+// @param request - DescribeApisByBackendRequest
+//
+// @return DescribeApisByBackendResponse
 func (client *Client) DescribeApisByBackend(request *DescribeApisByBackendRequest) (_result *DescribeApisByBackendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApisByBackendResponse{}
@@ -49259,9 +50833,13 @@ func (client *Client) DescribeApisByBackend(request *DescribeApisByBackendReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the APIs that are bound to an access control list (ACL).
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- You can specify PageNumber to obtain the result on the specified page.
 //
@@ -49315,9 +50893,13 @@ func (client *Client) DescribeApisByIpControlWithOptions(request *DescribeApisBy
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the APIs that are bound to an access control list (ACL).
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- You can specify PageNumber to obtain the result on the specified page.
 //
@@ -49335,9 +50917,13 @@ func (client *Client) DescribeApisByIpControl(request *DescribeApisByIpControlRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the APIs to which a specified backend signature key is bound.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
 //
@@ -49391,9 +50977,13 @@ func (client *Client) DescribeApisBySignatureWithOptions(request *DescribeApisBy
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the APIs to which a specified backend signature key is bound.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
 //
@@ -49411,9 +51001,13 @@ func (client *Client) DescribeApisBySignature(request *DescribeApisBySignatureRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the APIs to which a specified throttling policy is bound.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- You can specify PageNumber to obtain the result on the specified page.
 //
@@ -49467,9 +51061,13 @@ func (client *Client) DescribeApisByTrafficControlWithOptions(request *DescribeA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the APIs to which a specified throttling policy is bound.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- You can specify PageNumber to obtain the result on the specified page.
 //
@@ -49487,6 +51085,11 @@ func (client *Client) DescribeApisByTrafficControl(request *DescribeApisByTraffi
 	return _result, _err
 }
 
+// @param request - DescribeApisByVpcAccessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisByVpcAccessResponse
 func (client *Client) DescribeApisByVpcAccessWithOptions(request *DescribeApisByVpcAccessRequest, runtime *util.RuntimeOptions) (_result *DescribeApisByVpcAccessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49532,6 +51135,9 @@ func (client *Client) DescribeApisByVpcAccessWithOptions(request *DescribeApisBy
 	return _result, _err
 }
 
+// @param request - DescribeApisByVpcAccessRequest
+//
+// @return DescribeApisByVpcAccessResponse
 func (client *Client) DescribeApisByVpcAccess(request *DescribeApisByVpcAccessRequest) (_result *DescribeApisByVpcAccessResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApisByVpcAccessResponse{}
@@ -49543,6 +51149,15 @@ func (client *Client) DescribeApisByVpcAccess(request *DescribeApisByVpcAccessRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries APIs by application. The environment information is also returned.
+//
+// @param request - DescribeApisWithStageNameIntegratedByAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisWithStageNameIntegratedByAppResponse
 func (client *Client) DescribeApisWithStageNameIntegratedByAppWithOptions(request *DescribeApisWithStageNameIntegratedByAppRequest, runtime *util.RuntimeOptions) (_result *DescribeApisWithStageNameIntegratedByAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49608,6 +51223,13 @@ func (client *Client) DescribeApisWithStageNameIntegratedByAppWithOptions(reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries APIs by application. The environment information is also returned.
+//
+// @param request - DescribeApisWithStageNameIntegratedByAppRequest
+//
+// @return DescribeApisWithStageNameIntegratedByAppResponse
 func (client *Client) DescribeApisWithStageNameIntegratedByApp(request *DescribeApisWithStageNameIntegratedByAppRequest) (_result *DescribeApisWithStageNameIntegratedByAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApisWithStageNameIntegratedByAppResponse{}
@@ -49619,6 +51241,15 @@ func (client *Client) DescribeApisWithStageNameIntegratedByApp(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the apps that can be authorized.
+//
+// @param request - DescribeAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppResponse
 func (client *Client) DescribeAppWithOptions(request *DescribeAppRequest, runtime *util.RuntimeOptions) (_result *DescribeAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49656,6 +51287,13 @@ func (client *Client) DescribeAppWithOptions(request *DescribeAppRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the apps that can be authorized.
+//
+// @param request - DescribeAppRequest
+//
+// @return DescribeAppResponse
 func (client *Client) DescribeApp(request *DescribeAppRequest) (_result *DescribeAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAppResponse{}
@@ -49667,9 +51305,13 @@ func (client *Client) DescribeApp(request *DescribeAppRequest) (_result *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries apps and their basic information.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- AppId is optional.
 //
@@ -49751,9 +51393,13 @@ func (client *Client) DescribeAppAttributesWithOptions(request *DescribeAppAttri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries apps and their basic information.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- AppId is optional.
 //
@@ -49771,9 +51417,13 @@ func (client *Client) DescribeAppAttributes(request *DescribeAppAttributesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// This key is used for authentication when an API call is made.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // @param request - DescribeAppSecurityRequest
 //
@@ -49821,9 +51471,13 @@ func (client *Client) DescribeAppSecurityWithOptions(request *DescribeAppSecurit
 	return _result, _err
 }
 
+// Summary:
+//
+// This key is used for authentication when an API call is made.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // @param request - DescribeAppSecurityRequest
 //
@@ -49839,9 +51493,13 @@ func (client *Client) DescribeAppSecurity(request *DescribeAppSecurityRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the apps. App information is returned only to the app owner.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
 //
@@ -49901,9 +51559,13 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the apps. App information is returned only to the app owner.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
 //
@@ -49923,6 +51585,15 @@ func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries authorized applications by API product.
+//
+// @param request - DescribeAppsByApiProductRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppsByApiProductResponse
 func (client *Client) DescribeAppsByApiProductWithOptions(request *DescribeAppsByApiProductRequest, runtime *util.RuntimeOptions) (_result *DescribeAppsByApiProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49972,6 +51643,13 @@ func (client *Client) DescribeAppsByApiProductWithOptions(request *DescribeAppsB
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries authorized applications by API product.
+//
+// @param request - DescribeAppsByApiProductRequest
+//
+// @return DescribeAppsByApiProductResponse
 func (client *Client) DescribeAppsByApiProduct(request *DescribeAppsByApiProductRequest) (_result *DescribeAppsByApiProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAppsByApiProductResponse{}
@@ -49983,9 +51661,13 @@ func (client *Client) DescribeAppsByApiProduct(request *DescribeAppsByApiProduct
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the authorized APIs of a specified APP.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- The specified application can call all APIs included in the responses.
 //
@@ -50039,9 +51721,13 @@ func (client *Client) DescribeAuthorizedApisWithOptions(request *DescribeAuthori
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the authorized APIs of a specified APP.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- The specified application can call all APIs included in the responses.
 //
@@ -50059,9 +51745,13 @@ func (client *Client) DescribeAuthorizedApis(request *DescribeAuthorizedApisRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the current apps.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- All applications included in the responses have access to the specified API.
 //
@@ -50135,9 +51825,13 @@ func (client *Client) DescribeAuthorizedAppsWithOptions(request *DescribeAuthori
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the current apps.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- All applications included in the responses have access to the specified API.
 //
@@ -50155,6 +51849,15 @@ func (client *Client) DescribeAuthorizedApps(request *DescribeAuthorizedAppsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a backend service and its URL configured for each environment.
+//
+// @param request - DescribeBackendInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackendInfoResponse
 func (client *Client) DescribeBackendInfoWithOptions(request *DescribeBackendInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeBackendInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50192,6 +51895,13 @@ func (client *Client) DescribeBackendInfoWithOptions(request *DescribeBackendInf
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a backend service and its URL configured for each environment.
+//
+// @param request - DescribeBackendInfoRequest
+//
+// @return DescribeBackendInfoResponse
 func (client *Client) DescribeBackendInfo(request *DescribeBackendInfoRequest) (_result *DescribeBackendInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackendInfoResponse{}
@@ -50203,6 +51913,15 @@ func (client *Client) DescribeBackendInfo(request *DescribeBackendInfoRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries backend services. You can filter backend services by backend service name and backend service type.
+//
+// @param request - DescribeBackendListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackendListResponse
 func (client *Client) DescribeBackendListWithOptions(request *DescribeBackendListRequest, runtime *util.RuntimeOptions) (_result *DescribeBackendListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50256,6 +51975,13 @@ func (client *Client) DescribeBackendListWithOptions(request *DescribeBackendLis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries backend services. You can filter backend services by backend service name and backend service type.
+//
+// @param request - DescribeBackendListRequest
+//
+// @return DescribeBackendListResponse
 func (client *Client) DescribeBackendList(request *DescribeBackendListRequest) (_result *DescribeBackendListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackendListResponse{}
@@ -50267,6 +51993,15 @@ func (client *Client) DescribeBackendList(request *DescribeBackendListRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a single dataset.
+//
+// @param request - DescribeDatasetInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDatasetInfoResponse
 func (client *Client) DescribeDatasetInfoWithOptions(request *DescribeDatasetInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDatasetInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50304,6 +52039,13 @@ func (client *Client) DescribeDatasetInfoWithOptions(request *DescribeDatasetInf
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a single dataset.
+//
+// @param request - DescribeDatasetInfoRequest
+//
+// @return DescribeDatasetInfoResponse
 func (client *Client) DescribeDatasetInfo(request *DescribeDatasetInfoRequest) (_result *DescribeDatasetInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDatasetInfoResponse{}
@@ -50315,6 +52057,15 @@ func (client *Client) DescribeDatasetInfo(request *DescribeDatasetInfoRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a data entry in a custom dataset.
+//
+// @param request - DescribeDatasetItemInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDatasetItemInfoResponse
 func (client *Client) DescribeDatasetItemInfoWithOptions(request *DescribeDatasetItemInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDatasetItemInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50360,6 +52111,13 @@ func (client *Client) DescribeDatasetItemInfoWithOptions(request *DescribeDatase
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a data entry in a custom dataset.
+//
+// @param request - DescribeDatasetItemInfoRequest
+//
+// @return DescribeDatasetItemInfoResponse
 func (client *Client) DescribeDatasetItemInfo(request *DescribeDatasetItemInfoRequest) (_result *DescribeDatasetItemInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDatasetItemInfoResponse{}
@@ -50371,6 +52129,15 @@ func (client *Client) DescribeDatasetItemInfo(request *DescribeDatasetItemInfoRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the data entries of a custom dataset.
+//
+// @param request - DescribeDatasetItemListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDatasetItemListResponse
 func (client *Client) DescribeDatasetItemListWithOptions(request *DescribeDatasetItemListRequest, runtime *util.RuntimeOptions) (_result *DescribeDatasetItemListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50420,6 +52187,13 @@ func (client *Client) DescribeDatasetItemListWithOptions(request *DescribeDatase
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the data entries of a custom dataset.
+//
+// @param request - DescribeDatasetItemListRequest
+//
+// @return DescribeDatasetItemListResponse
 func (client *Client) DescribeDatasetItemList(request *DescribeDatasetItemListRequest) (_result *DescribeDatasetItemListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDatasetItemListResponse{}
@@ -50431,6 +52205,15 @@ func (client *Client) DescribeDatasetItemList(request *DescribeDatasetItemListRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries custom datasets.
+//
+// @param request - DescribeDatasetListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDatasetListResponse
 func (client *Client) DescribeDatasetListWithOptions(request *DescribeDatasetListRequest, runtime *util.RuntimeOptions) (_result *DescribeDatasetListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50480,6 +52263,13 @@ func (client *Client) DescribeDatasetListWithOptions(request *DescribeDatasetLis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries custom datasets.
+//
+// @param request - DescribeDatasetListRequest
+//
+// @return DescribeDatasetListResponse
 func (client *Client) DescribeDatasetList(request *DescribeDatasetListRequest) (_result *DescribeDatasetListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDatasetListResponse{}
@@ -50491,6 +52281,15 @@ func (client *Client) DescribeDatasetList(request *DescribeDatasetListRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the progress of an asynchronous API publishing task.
+//
+// @param request - DescribeDeployApiTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDeployApiTaskResponse
 func (client *Client) DescribeDeployApiTaskWithOptions(request *DescribeDeployApiTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeDeployApiTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50528,6 +52327,13 @@ func (client *Client) DescribeDeployApiTaskWithOptions(request *DescribeDeployAp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the progress of an asynchronous API publishing task.
+//
+// @param request - DescribeDeployApiTaskRequest
+//
+// @return DescribeDeployApiTaskResponse
 func (client *Client) DescribeDeployApiTask(request *DescribeDeployApiTaskRequest) (_result *DescribeDeployApiTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDeployApiTaskResponse{}
@@ -50539,6 +52345,15 @@ func (client *Client) DescribeDeployApiTask(request *DescribeDeployApiTaskReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the definition of an API that takes effect in an environment. The definition may differ from the definition being edited.
+//
+// @param request - DescribeDeployedApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDeployedApiResponse
 func (client *Client) DescribeDeployedApiWithOptions(request *DescribeDeployedApiRequest, runtime *util.RuntimeOptions) (_result *DescribeDeployedApiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50584,6 +52399,13 @@ func (client *Client) DescribeDeployedApiWithOptions(request *DescribeDeployedAp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the definition of an API that takes effect in an environment. The definition may differ from the definition being edited.
+//
+// @param request - DescribeDeployedApiRequest
+//
+// @return DescribeDeployedApiResponse
 func (client *Client) DescribeDeployedApi(request *DescribeDeployedApiRequest) (_result *DescribeDeployedApiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDeployedApiResponse{}
@@ -50595,9 +52417,13 @@ func (client *Client) DescribeDeployedApi(request *DescribeDeployedApiRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the APIs that are published to and running in an environment.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // @param request - DescribeDeployedApisRequest
 //
@@ -50677,9 +52503,13 @@ func (client *Client) DescribeDeployedApisWithOptions(request *DescribeDeployedA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the APIs that are published to and running in an environment.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // @param request - DescribeDeployedApisRequest
 //
@@ -50695,6 +52525,15 @@ func (client *Client) DescribeDeployedApis(request *DescribeDeployedApisRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about a bound custom domain name, including the system assigned second-level domain name, custom domain name, and SSL certificate.
+//
+// @param request - DescribeDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainResponse
 func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50736,6 +52575,13 @@ func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about a bound custom domain name, including the system assigned second-level domain name, custom domain name, and SSL certificate.
+//
+// @param request - DescribeDomainRequest
+//
+// @return DescribeDomainResponse
 func (client *Client) DescribeDomain(request *DescribeDomainRequest) (_result *DescribeDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainResponse{}
@@ -50747,6 +52593,15 @@ func (client *Client) DescribeDomain(request *DescribeDomainRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the average latency of an API group in an environment.
+//
+// @param request - DescribeGroupLatencyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGroupLatencyResponse
 func (client *Client) DescribeGroupLatencyWithOptions(request *DescribeGroupLatencyRequest, runtime *util.RuntimeOptions) (_result *DescribeGroupLatencyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50796,6 +52651,13 @@ func (client *Client) DescribeGroupLatencyWithOptions(request *DescribeGroupLate
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the average latency of an API group in an environment.
+//
+// @param request - DescribeGroupLatencyRequest
+//
+// @return DescribeGroupLatencyResponse
 func (client *Client) DescribeGroupLatency(request *DescribeGroupLatencyRequest) (_result *DescribeGroupLatencyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGroupLatencyResponse{}
@@ -50807,6 +52669,15 @@ func (client *Client) DescribeGroupLatency(request *DescribeGroupLatencyRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on the number of requests directed to an API group within a period of time.
+//
+// @param request - DescribeGroupQpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGroupQpsResponse
 func (client *Client) DescribeGroupQpsWithOptions(request *DescribeGroupQpsRequest, runtime *util.RuntimeOptions) (_result *DescribeGroupQpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50856,6 +52727,13 @@ func (client *Client) DescribeGroupQpsWithOptions(request *DescribeGroupQpsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on the number of requests directed to an API group within a period of time.
+//
+// @param request - DescribeGroupQpsRequest
+//
+// @return DescribeGroupQpsResponse
 func (client *Client) DescribeGroupQps(request *DescribeGroupQpsRequest) (_result *DescribeGroupQpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGroupQpsResponse{}
@@ -50867,6 +52745,15 @@ func (client *Client) DescribeGroupQps(request *DescribeGroupQpsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the traffic of an API group.
+//
+// @param request - DescribeGroupTrafficRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGroupTrafficResponse
 func (client *Client) DescribeGroupTrafficWithOptions(request *DescribeGroupTrafficRequest, runtime *util.RuntimeOptions) (_result *DescribeGroupTrafficResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50916,6 +52803,13 @@ func (client *Client) DescribeGroupTrafficWithOptions(request *DescribeGroupTraf
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the traffic of an API group.
+//
+// @param request - DescribeGroupTrafficRequest
+//
+// @return DescribeGroupTrafficResponse
 func (client *Client) DescribeGroupTraffic(request *DescribeGroupTrafficRequest) (_result *DescribeGroupTrafficResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGroupTrafficResponse{}
@@ -50927,6 +52821,11 @@ func (client *Client) DescribeGroupTraffic(request *DescribeGroupTrafficRequest)
 	return _result, _err
 }
 
+// @param request - DescribeHistoryApisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHistoryApisResponse
 func (client *Client) DescribeHistoryApisWithOptions(request *DescribeHistoryApisRequest, runtime *util.RuntimeOptions) (_result *DescribeHistoryApisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50984,6 +52883,9 @@ func (client *Client) DescribeHistoryApisWithOptions(request *DescribeHistoryApi
 	return _result, _err
 }
 
+// @param request - DescribeHistoryApisRequest
+//
+// @return DescribeHistoryApisResponse
 func (client *Client) DescribeHistoryApis(request *DescribeHistoryApisRequest) (_result *DescribeHistoryApisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHistoryApisResponse{}
@@ -50995,6 +52897,15 @@ func (client *Client) DescribeHistoryApis(request *DescribeHistoryApisRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the result of an OAS API import task.
+//
+// @param request - DescribeImportOASTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeImportOASTaskResponse
 func (client *Client) DescribeImportOASTaskWithOptions(request *DescribeImportOASTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeImportOASTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51032,6 +52943,13 @@ func (client *Client) DescribeImportOASTaskWithOptions(request *DescribeImportOA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the result of an OAS API import task.
+//
+// @param request - DescribeImportOASTaskRequest
+//
+// @return DescribeImportOASTaskResponse
 func (client *Client) DescribeImportOASTask(request *DescribeImportOASTaskRequest) (_result *DescribeImportOASTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeImportOASTaskResponse{}
@@ -51043,6 +52961,15 @@ func (client *Client) DescribeImportOASTask(request *DescribeImportOASTaskReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of lost connections to a dedicated instance within a period of time.
+//
+// @param request - DescribeInstanceDropConnectionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceDropConnectionsResponse
 func (client *Client) DescribeInstanceDropConnectionsWithOptions(request *DescribeInstanceDropConnectionsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceDropConnectionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51092,6 +53019,13 @@ func (client *Client) DescribeInstanceDropConnectionsWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of lost connections to a dedicated instance within a period of time.
+//
+// @param request - DescribeInstanceDropConnectionsRequest
+//
+// @return DescribeInstanceDropConnectionsResponse
 func (client *Client) DescribeInstanceDropConnections(request *DescribeInstanceDropConnectionsRequest) (_result *DescribeInstanceDropConnectionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceDropConnectionsResponse{}
@@ -51103,6 +53037,15 @@ func (client *Client) DescribeInstanceDropConnections(request *DescribeInstanceD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of dropped packets within a period of time.
+//
+// @param request - DescribeInstanceDropPacketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceDropPacketResponse
 func (client *Client) DescribeInstanceDropPacketWithOptions(request *DescribeInstanceDropPacketRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceDropPacketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51152,6 +53095,13 @@ func (client *Client) DescribeInstanceDropPacketWithOptions(request *DescribeIns
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of dropped packets within a period of time.
+//
+// @param request - DescribeInstanceDropPacketRequest
+//
+// @return DescribeInstanceDropPacketResponse
 func (client *Client) DescribeInstanceDropPacket(request *DescribeInstanceDropPacketRequest) (_result *DescribeInstanceDropPacketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceDropPacketResponse{}
@@ -51163,6 +53113,15 @@ func (client *Client) DescribeInstanceDropPacket(request *DescribeInstanceDropPa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the distribution of HTTP status codes of requests to a dedicated instance within a period of time.
+//
+// @param request - DescribeInstanceHttpCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceHttpCodeResponse
 func (client *Client) DescribeInstanceHttpCodeWithOptions(request *DescribeInstanceHttpCodeRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceHttpCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51212,6 +53171,13 @@ func (client *Client) DescribeInstanceHttpCodeWithOptions(request *DescribeInsta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the distribution of HTTP status codes of requests to a dedicated instance within a period of time.
+//
+// @param request - DescribeInstanceHttpCodeRequest
+//
+// @return DescribeInstanceHttpCodeResponse
 func (client *Client) DescribeInstanceHttpCode(request *DescribeInstanceHttpCodeRequest) (_result *DescribeInstanceHttpCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceHttpCodeResponse{}
@@ -51223,6 +53189,15 @@ func (client *Client) DescribeInstanceHttpCode(request *DescribeInstanceHttpCode
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the average latency of a dedicated instance over a period of time.
+//
+// @param request - DescribeInstanceLatencyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceLatencyResponse
 func (client *Client) DescribeInstanceLatencyWithOptions(request *DescribeInstanceLatencyRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceLatencyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51272,6 +53247,13 @@ func (client *Client) DescribeInstanceLatencyWithOptions(request *DescribeInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the average latency of a dedicated instance over a period of time.
+//
+// @param request - DescribeInstanceLatencyRequest
+//
+// @return DescribeInstanceLatencyResponse
 func (client *Client) DescribeInstanceLatency(request *DescribeInstanceLatencyRequest) (_result *DescribeInstanceLatencyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceLatencyResponse{}
@@ -51283,6 +53265,15 @@ func (client *Client) DescribeInstanceLatency(request *DescribeInstanceLatencyRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of new connections to a dedicated instance within a period of time.
+//
+// @param request - DescribeInstanceNewConnectionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceNewConnectionsResponse
 func (client *Client) DescribeInstanceNewConnectionsWithOptions(request *DescribeInstanceNewConnectionsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceNewConnectionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51332,6 +53323,13 @@ func (client *Client) DescribeInstanceNewConnectionsWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of new connections to a dedicated instance within a period of time.
+//
+// @param request - DescribeInstanceNewConnectionsRequest
+//
+// @return DescribeInstanceNewConnectionsResponse
 func (client *Client) DescribeInstanceNewConnections(request *DescribeInstanceNewConnectionsRequest) (_result *DescribeInstanceNewConnectionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceNewConnectionsResponse{}
@@ -51343,6 +53341,15 @@ func (client *Client) DescribeInstanceNewConnections(request *DescribeInstanceNe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the numbers of inbound and outbound packets of a dedicated instance within a period of time.
+//
+// @param request - DescribeInstancePacketsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstancePacketsResponse
 func (client *Client) DescribeInstancePacketsWithOptions(request *DescribeInstancePacketsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancePacketsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51392,6 +53399,13 @@ func (client *Client) DescribeInstancePacketsWithOptions(request *DescribeInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the numbers of inbound and outbound packets of a dedicated instance within a period of time.
+//
+// @param request - DescribeInstancePacketsRequest
+//
+// @return DescribeInstancePacketsResponse
 func (client *Client) DescribeInstancePackets(request *DescribeInstancePacketsRequest) (_result *DescribeInstancePacketsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstancePacketsResponse{}
@@ -51403,6 +53417,15 @@ func (client *Client) DescribeInstancePackets(request *DescribeInstancePacketsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of requests to a dedicated instance within a period of time.
+//
+// @param request - DescribeInstanceQpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceQpsResponse
 func (client *Client) DescribeInstanceQpsWithOptions(request *DescribeInstanceQpsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceQpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51452,6 +53475,13 @@ func (client *Client) DescribeInstanceQpsWithOptions(request *DescribeInstanceQp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of requests to a dedicated instance within a period of time.
+//
+// @param request - DescribeInstanceQpsRequest
+//
+// @return DescribeInstanceQpsResponse
 func (client *Client) DescribeInstanceQps(request *DescribeInstanceQpsRequest) (_result *DescribeInstanceQpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceQpsResponse{}
@@ -51463,6 +53493,15 @@ func (client *Client) DescribeInstanceQps(request *DescribeInstanceQpsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of concurrent connections to a dedicated instance within a period of time.
+//
+// @param request - DescribeInstanceSlbConnectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceSlbConnectResponse
 func (client *Client) DescribeInstanceSlbConnectWithOptions(request *DescribeInstanceSlbConnectRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSlbConnectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51512,6 +53551,13 @@ func (client *Client) DescribeInstanceSlbConnectWithOptions(request *DescribeIns
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of concurrent connections to a dedicated instance within a period of time.
+//
+// @param request - DescribeInstanceSlbConnectRequest
+//
+// @return DescribeInstanceSlbConnectResponse
 func (client *Client) DescribeInstanceSlbConnect(request *DescribeInstanceSlbConnectRequest) (_result *DescribeInstanceSlbConnectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceSlbConnectResponse{}
@@ -51523,6 +53569,15 @@ func (client *Client) DescribeInstanceSlbConnect(request *DescribeInstanceSlbCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the request traffic and response traffic of a dedicated instance within a period of time.
+//
+// @param request - DescribeInstanceTrafficRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceTrafficResponse
 func (client *Client) DescribeInstanceTrafficWithOptions(request *DescribeInstanceTrafficRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceTrafficResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51572,6 +53627,13 @@ func (client *Client) DescribeInstanceTrafficWithOptions(request *DescribeInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the request traffic and response traffic of a dedicated instance within a period of time.
+//
+// @param request - DescribeInstanceTrafficRequest
+//
+// @return DescribeInstanceTrafficResponse
 func (client *Client) DescribeInstanceTraffic(request *DescribeInstanceTrafficRequest) (_result *DescribeInstanceTrafficResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceTrafficResponse{}
@@ -51583,6 +53645,15 @@ func (client *Client) DescribeInstanceTraffic(request *DescribeInstanceTrafficRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例信息
+//
+// @param request - DescribeInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51632,6 +53703,13 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例信息
+//
+// @param request - DescribeInstancesRequest
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstancesResponse{}
@@ -51643,9 +53721,13 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the rule entries of an IP address-based traffic control policy.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- You can filter the query results by policy ID.
 //
@@ -51703,9 +53785,13 @@ func (client *Client) DescribeIpControlPolicyItemsWithOptions(request *DescribeI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the rule entries of an IP address-based traffic control policy.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- You can filter the query results by policy ID.
 //
@@ -51723,9 +53809,13 @@ func (client *Client) DescribeIpControlPolicyItems(request *DescribeIpControlPol
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries custom access control lists (ACLs) on separate pages.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- This operation is used to query the ACLs in a region. Region is a system parameter.
 //
@@ -51791,9 +53881,13 @@ func (client *Client) DescribeIpControlsWithOptions(request *DescribeIpControlsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries custom access control lists (ACLs) on separate pages.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- This operation is used to query the ACLs in a region. Region is a system parameter.
 //
@@ -51815,6 +53909,11 @@ func (client *Client) DescribeIpControls(request *DescribeIpControlsRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribeLogConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLogConfigResponse
 func (client *Client) DescribeLogConfigWithOptions(request *DescribeLogConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeLogConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51852,6 +53951,9 @@ func (client *Client) DescribeLogConfigWithOptions(request *DescribeLogConfigReq
 	return _result, _err
 }
 
+// @param request - DescribeLogConfigRequest
+//
+// @return DescribeLogConfigResponse
 func (client *Client) DescribeLogConfig(request *DescribeLogConfigRequest) (_result *DescribeLogConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLogConfigResponse{}
@@ -51863,6 +53965,15 @@ func (client *Client) DescribeLogConfig(request *DescribeLogConfigRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of remaining ordered relationships for a purchaser.
+//
+// @param request - DescribeMarketRemainsQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMarketRemainsQuotaResponse
 func (client *Client) DescribeMarketRemainsQuotaWithOptions(request *DescribeMarketRemainsQuotaRequest, runtime *util.RuntimeOptions) (_result *DescribeMarketRemainsQuotaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51900,6 +54011,13 @@ func (client *Client) DescribeMarketRemainsQuotaWithOptions(request *DescribeMar
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of remaining ordered relationships for a purchaser.
+//
+// @param request - DescribeMarketRemainsQuotaRequest
+//
+// @return DescribeMarketRemainsQuotaResponse
 func (client *Client) DescribeMarketRemainsQuota(request *DescribeMarketRemainsQuotaRequest) (_result *DescribeMarketRemainsQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMarketRemainsQuotaResponse{}
@@ -51911,9 +54029,13 @@ func (client *Client) DescribeMarketRemainsQuota(request *DescribeMarketRemainsQ
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the created models of an API group.
+//
 // Description:
 //
-// 	- Fuzzy queries are supported.
+//   Fuzzy queries are supported.
 //
 // @param request - DescribeModelsRequest
 //
@@ -51973,9 +54095,13 @@ func (client *Client) DescribeModelsWithOptions(request *DescribeModelsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the created models of an API group.
+//
 // Description:
 //
-// 	- Fuzzy queries are supported.
+//   Fuzzy queries are supported.
 //
 // @param request - DescribeModelsRequest
 //
@@ -51991,6 +54117,15 @@ func (client *Client) DescribeModels(request *DescribeModelsRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据查询查询绑定的API列表
+//
+// @param request - DescribePluginApisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePluginApisResponse
 func (client *Client) DescribePluginApisWithOptions(request *DescribePluginApisRequest, runtime *util.RuntimeOptions) (_result *DescribePluginApisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52060,6 +54195,13 @@ func (client *Client) DescribePluginApisWithOptions(request *DescribePluginApisR
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据查询查询绑定的API列表
+//
+// @param request - DescribePluginApisRequest
+//
+// @return DescribePluginApisResponse
 func (client *Client) DescribePluginApis(request *DescribePluginApisRequest) (_result *DescribePluginApisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePluginApisResponse{}
@@ -52071,6 +54213,11 @@ func (client *Client) DescribePluginApis(request *DescribePluginApisRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribePluginSchemasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePluginSchemasResponse
 func (client *Client) DescribePluginSchemasWithOptions(request *DescribePluginSchemasRequest, runtime *util.RuntimeOptions) (_result *DescribePluginSchemasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52108,6 +54255,9 @@ func (client *Client) DescribePluginSchemasWithOptions(request *DescribePluginSc
 	return _result, _err
 }
 
+// @param request - DescribePluginSchemasRequest
+//
+// @return DescribePluginSchemasResponse
 func (client *Client) DescribePluginSchemas(request *DescribePluginSchemasRequest) (_result *DescribePluginSchemasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePluginSchemasResponse{}
@@ -52119,6 +54269,11 @@ func (client *Client) DescribePluginSchemas(request *DescribePluginSchemasReques
 	return _result, _err
 }
 
+// @param request - DescribePluginTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePluginTemplatesResponse
 func (client *Client) DescribePluginTemplatesWithOptions(request *DescribePluginTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribePluginTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52160,6 +54315,9 @@ func (client *Client) DescribePluginTemplatesWithOptions(request *DescribePlugin
 	return _result, _err
 }
 
+// @param request - DescribePluginTemplatesRequest
+//
+// @return DescribePluginTemplatesResponse
 func (client *Client) DescribePluginTemplates(request *DescribePluginTemplatesRequest) (_result *DescribePluginTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePluginTemplatesResponse{}
@@ -52171,9 +54329,13 @@ func (client *Client) DescribePluginTemplates(request *DescribePluginTemplatesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries API Gateway plug-ins and the details of the plug-ins.
+//
 // Description:
 //
-// 	- This operation supports pagination.
+//   This operation supports pagination.
 //
 // 	- This operation allows you to query plug-ins by business type.
 //
@@ -52243,9 +54405,13 @@ func (client *Client) DescribePluginsWithOptions(request *DescribePluginsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries API Gateway plug-ins and the details of the plug-ins.
+//
 // Description:
 //
-// 	- This operation supports pagination.
+//   This operation supports pagination.
 //
 // 	- This operation allows you to query plug-ins by business type.
 //
@@ -52267,9 +54433,13 @@ func (client *Client) DescribePlugins(request *DescribePluginsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the plug-ins that are bound to a running API in an environment.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- This operation supports pagination.
 //
@@ -52331,9 +54501,13 @@ func (client *Client) DescribePluginsByApiWithOptions(request *DescribePluginsBy
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the plug-ins that are bound to a running API in an environment.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- This operation supports pagination.
 //
@@ -52351,6 +54525,15 @@ func (client *Client) DescribePluginsByApi(request *DescribePluginsByApiRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about an API group purchased from Alibaba Cloud Marketplace.
+//
+// @param request - DescribePurchasedApiGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePurchasedApiGroupResponse
 func (client *Client) DescribePurchasedApiGroupWithOptions(request *DescribePurchasedApiGroupRequest, runtime *util.RuntimeOptions) (_result *DescribePurchasedApiGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52388,6 +54571,13 @@ func (client *Client) DescribePurchasedApiGroupWithOptions(request *DescribePurc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about an API group purchased from Alibaba Cloud Marketplace.
+//
+// @param request - DescribePurchasedApiGroupRequest
+//
+// @return DescribePurchasedApiGroupResponse
 func (client *Client) DescribePurchasedApiGroup(request *DescribePurchasedApiGroupRequest) (_result *DescribePurchasedApiGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePurchasedApiGroupResponse{}
@@ -52399,6 +54589,15 @@ func (client *Client) DescribePurchasedApiGroup(request *DescribePurchasedApiGro
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries API groups that are purchased from Alibaba Cloud Marketplace.
+//
+// @param request - DescribePurchasedApiGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePurchasedApiGroupsResponse
 func (client *Client) DescribePurchasedApiGroupsWithOptions(request *DescribePurchasedApiGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribePurchasedApiGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52440,6 +54639,13 @@ func (client *Client) DescribePurchasedApiGroupsWithOptions(request *DescribePur
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries API groups that are purchased from Alibaba Cloud Marketplace.
+//
+// @param request - DescribePurchasedApiGroupsRequest
+//
+// @return DescribePurchasedApiGroupsResponse
 func (client *Client) DescribePurchasedApiGroups(request *DescribePurchasedApiGroupsRequest) (_result *DescribePurchasedApiGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePurchasedApiGroupsResponse{}
@@ -52451,6 +54657,15 @@ func (client *Client) DescribePurchasedApiGroups(request *DescribePurchasedApiGr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries APIs that are purchased from Alibaba Cloud Marketplace.
+//
+// @param request - DescribePurchasedApisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePurchasedApisResponse
 func (client *Client) DescribePurchasedApisWithOptions(request *DescribePurchasedApisRequest, runtime *util.RuntimeOptions) (_result *DescribePurchasedApisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52512,6 +54727,13 @@ func (client *Client) DescribePurchasedApisWithOptions(request *DescribePurchase
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries APIs that are purchased from Alibaba Cloud Marketplace.
+//
+// @param request - DescribePurchasedApisRequest
+//
+// @return DescribePurchasedApisResponse
 func (client *Client) DescribePurchasedApis(request *DescribePurchasedApisRequest) (_result *DescribePurchasedApisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePurchasedApisResponse{}
@@ -52523,6 +54745,10 @@ func (client *Client) DescribePurchasedApis(request *DescribePurchasedApisReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Alibaba Cloud regions that are supported by API Gateway.
+//
 // Description:
 //
 // This operation queries regions in which API Gateway is available.
@@ -52571,6 +54797,10 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Alibaba Cloud regions that are supported by API Gateway.
+//
 // Description:
 //
 // This operation queries regions in which API Gateway is available.
@@ -52591,9 +54821,13 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries backend signature keys.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This operation is used to query the backend signature keys in a Region. Region is a system parameter.
 //
@@ -52651,9 +54885,13 @@ func (client *Client) DescribeSignaturesWithOptions(request *DescribeSignaturesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries backend signature keys.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This operation is used to query the backend signature keys in a Region. Region is a system parameter.
 //
@@ -52671,9 +54909,13 @@ func (client *Client) DescribeSignatures(request *DescribeSignaturesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backend signature keys that are bound to a specified API.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // @param request - DescribeSignaturesByApiRequest
 //
@@ -52725,9 +54967,13 @@ func (client *Client) DescribeSignaturesByApiWithOptions(request *DescribeSignat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backend signature keys that are bound to a specified API.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // @param request - DescribeSignaturesByApiRequest
 //
@@ -52743,6 +54989,15 @@ func (client *Client) DescribeSignaturesByApi(request *DescribeSignaturesByApiRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of API Gateway resources in a region.
+//
+// @param request - DescribeSummaryDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSummaryDataResponse
 func (client *Client) DescribeSummaryDataWithOptions(request *DescribeSummaryDataRequest, runtime *util.RuntimeOptions) (_result *DescribeSummaryDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52776,6 +55031,13 @@ func (client *Client) DescribeSummaryDataWithOptions(request *DescribeSummaryDat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of API Gateway resources in a region.
+//
+// @param request - DescribeSummaryDataRequest
+//
+// @return DescribeSummaryDataResponse
 func (client *Client) DescribeSummaryData(request *DescribeSummaryDataRequest) (_result *DescribeSummaryDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSummaryDataResponse{}
@@ -52787,9 +55049,13 @@ func (client *Client) DescribeSummaryData(request *DescribeSummaryDataRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the common parameters supported by the system.
+//
 // Description:
 //
-// 	- This API is intended for API callers.
+//   This API is intended for API callers.
 //
 // 	- The response of this API contains the system parameters that are optional in API definitions.
 //
@@ -52831,9 +55097,13 @@ func (client *Client) DescribeSystemParametersWithOptions(request *DescribeSyste
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the common parameters supported by the system.
+//
 // Description:
 //
-// 	- This API is intended for API callers.
+//   This API is intended for API callers.
 //
 // 	- The response of this API contains the system parameters that are optional in API definitions.
 //
@@ -52851,9 +55121,13 @@ func (client *Client) DescribeSystemParameters(request *DescribeSystemParameters
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries custom throttling policies and their details. Conditional queries are supported.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This API can be used to query all existing throttling policies (including special throttling policies) and their details.
 //
@@ -52925,9 +55199,13 @@ func (client *Client) DescribeTrafficControlsWithOptions(request *DescribeTraffi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries custom throttling policies and their details. Conditional queries are supported.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This API can be used to query all existing throttling policies (including special throttling policies) and their details.
 //
@@ -52947,9 +55225,13 @@ func (client *Client) DescribeTrafficControls(request *DescribeTrafficControlsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the throttling policy that is bound to a specific API.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // @param request - DescribeTrafficControlsByApiRequest
 //
@@ -53001,9 +55283,13 @@ func (client *Client) DescribeTrafficControlsByApiWithOptions(request *DescribeT
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the throttling policy that is bound to a specific API.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // @param request - DescribeTrafficControlsByApiRequest
 //
@@ -53019,6 +55305,15 @@ func (client *Client) DescribeTrafficControlsByApi(request *DescribeTrafficContr
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询批量更新API后端元定结果
+//
+// @param request - DescribeUpdateBackendTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUpdateBackendTaskResponse
 func (client *Client) DescribeUpdateBackendTaskWithOptions(request *DescribeUpdateBackendTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeUpdateBackendTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53056,6 +55351,13 @@ func (client *Client) DescribeUpdateBackendTaskWithOptions(request *DescribeUpda
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询批量更新API后端元定结果
+//
+// @param request - DescribeUpdateBackendTaskRequest
+//
+// @return DescribeUpdateBackendTaskResponse
 func (client *Client) DescribeUpdateBackendTask(request *DescribeUpdateBackendTaskRequest) (_result *DescribeUpdateBackendTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUpdateBackendTaskResponse{}
@@ -53067,6 +55369,11 @@ func (client *Client) DescribeUpdateBackendTask(request *DescribeUpdateBackendTa
 	return _result, _err
 }
 
+// @param request - DescribeUpdateVpcInfoTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUpdateVpcInfoTaskResponse
 func (client *Client) DescribeUpdateVpcInfoTaskWithOptions(request *DescribeUpdateVpcInfoTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeUpdateVpcInfoTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53104,6 +55411,9 @@ func (client *Client) DescribeUpdateVpcInfoTaskWithOptions(request *DescribeUpda
 	return _result, _err
 }
 
+// @param request - DescribeUpdateVpcInfoTaskRequest
+//
+// @return DescribeUpdateVpcInfoTaskResponse
 func (client *Client) DescribeUpdateVpcInfoTask(request *DescribeUpdateVpcInfoTaskRequest) (_result *DescribeUpdateVpcInfoTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUpdateVpcInfoTaskResponse{}
@@ -53115,12 +55425,25 @@ func (client *Client) DescribeUpdateVpcInfoTask(request *DescribeUpdateVpcInfoTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries VPC access authorizations.
+//
+// @param request - DescribeVpcAccessesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcAccessesResponse
 func (client *Client) DescribeVpcAccessesWithOptions(request *DescribeVpcAccessesRequest, runtime *util.RuntimeOptions) (_result *DescribeVpcAccessesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccurateQuery)) {
+		query["AccurateQuery"] = request.AccurateQuery
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -53180,6 +55503,13 @@ func (client *Client) DescribeVpcAccessesWithOptions(request *DescribeVpcAccesse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries VPC access authorizations.
+//
+// @param request - DescribeVpcAccessesRequest
+//
+// @return DescribeVpcAccessesResponse
 func (client *Client) DescribeVpcAccesses(request *DescribeVpcAccessesRequest) (_result *DescribeVpcAccessesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVpcAccessesResponse{}
@@ -53191,6 +55521,15 @@ func (client *Client) DescribeVpcAccesses(request *DescribeVpcAccessesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries zones in a region.
+//
+// @param request - DescribeZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeZonesResponse
 func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *util.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53228,6 +55567,13 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries zones in a region.
+//
+// @param request - DescribeZonesRequest
+//
+// @return DescribeZonesResponse
 func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *DescribeZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeZonesResponse{}
@@ -53239,6 +55585,15 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Detaches APIs from an API product.
+//
+// @param request - DetachApiProductRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachApiProductResponse
 func (client *Client) DetachApiProductWithOptions(request *DetachApiProductRequest, runtime *util.RuntimeOptions) (_result *DetachApiProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53280,6 +55635,13 @@ func (client *Client) DetachApiProductWithOptions(request *DetachApiProductReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Detaches APIs from an API product.
+//
+// @param request - DetachApiProductRequest
+//
+// @return DetachApiProductResponse
 func (client *Client) DetachApiProduct(request *DetachApiProductRequest) (_result *DetachApiProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachApiProductResponse{}
@@ -53291,6 +55653,15 @@ func (client *Client) DetachApiProduct(request *DetachApiProductRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑插件
+//
+// @param request - DetachPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachPluginResponse
 func (client *Client) DetachPluginWithOptions(request *DetachPluginRequest, runtime *util.RuntimeOptions) (_result *DetachPluginResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53340,6 +55711,13 @@ func (client *Client) DetachPluginWithOptions(request *DetachPluginRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑插件
+//
+// @param request - DetachPluginRequest
+//
+// @return DetachPluginResponse
 func (client *Client) DetachPlugin(request *DetachPluginRequest) (_result *DetachPluginResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachPluginResponse{}
@@ -53351,6 +55729,15 @@ func (client *Client) DetachPlugin(request *DetachPluginRequest) (_result *Detac
 	return _result, _err
 }
 
+// Summary:
+//
+// This feature provides instance-level access control capabilities for dedicated API Gateway instances. Disables access control on an instance.
+//
+// @param request - DisableInstanceAccessControlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableInstanceAccessControlResponse
 func (client *Client) DisableInstanceAccessControlWithOptions(request *DisableInstanceAccessControlRequest, runtime *util.RuntimeOptions) (_result *DisableInstanceAccessControlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53396,6 +55783,13 @@ func (client *Client) DisableInstanceAccessControlWithOptions(request *DisableIn
 	return _result, _err
 }
 
+// Summary:
+//
+// This feature provides instance-level access control capabilities for dedicated API Gateway instances. Disables access control on an instance.
+//
+// @param request - DisableInstanceAccessControlRequest
+//
+// @return DisableInstanceAccessControlResponse
 func (client *Client) DisableInstanceAccessControl(request *DisableInstanceAccessControlRequest) (_result *DisableInstanceAccessControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableInstanceAccessControlResponse{}
@@ -53407,6 +55801,15 @@ func (client *Client) DisableInstanceAccessControl(request *DisableInstanceAcces
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks the syntax before Swagger-compliant data is imported.
+//
+// @param tmpReq - DryRunSwaggerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DryRunSwaggerResponse
 func (client *Client) DryRunSwaggerWithOptions(tmpReq *DryRunSwaggerRequest, runtime *util.RuntimeOptions) (_result *DryRunSwaggerResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -53468,6 +55871,13 @@ func (client *Client) DryRunSwaggerWithOptions(tmpReq *DryRunSwaggerRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks the syntax before Swagger-compliant data is imported.
+//
+// @param request - DryRunSwaggerRequest
+//
+// @return DryRunSwaggerResponse
 func (client *Client) DryRunSwagger(request *DryRunSwaggerRequest) (_result *DryRunSwaggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DryRunSwaggerResponse{}
@@ -53479,6 +55889,15 @@ func (client *Client) DryRunSwagger(request *DryRunSwaggerRequest) (_result *Dry
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启实例的访问控制
+//
+// @param request - EnableInstanceAccessControlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableInstanceAccessControlResponse
 func (client *Client) EnableInstanceAccessControlWithOptions(request *EnableInstanceAccessControlRequest, runtime *util.RuntimeOptions) (_result *EnableInstanceAccessControlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53528,6 +55947,13 @@ func (client *Client) EnableInstanceAccessControlWithOptions(request *EnableInst
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启实例的访问控制
+//
+// @param request - EnableInstanceAccessControlRequest
+//
+// @return EnableInstanceAccessControlResponse
 func (client *Client) EnableInstanceAccessControl(request *EnableInstanceAccessControlRequest) (_result *EnableInstanceAccessControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableInstanceAccessControlResponse{}
@@ -53539,6 +55965,15 @@ func (client *Client) EnableInstanceAccessControl(request *EnableInstanceAccessC
 	return _result, _err
 }
 
+// Summary:
+//
+// Imports APIs based on the OAS standard.
+//
+// @param request - ImportOASRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportOASResponse
 func (client *Client) ImportOASWithOptions(request *ImportOASRequest, runtime *util.RuntimeOptions) (_result *ImportOASResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53610,6 +56045,13 @@ func (client *Client) ImportOASWithOptions(request *ImportOASRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Imports APIs based on the OAS standard.
+//
+// @param request - ImportOASRequest
+//
+// @return ImportOASResponse
 func (client *Client) ImportOAS(request *ImportOASRequest) (_result *ImportOASResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportOASResponse{}
@@ -53621,9 +56063,13 @@ func (client *Client) ImportOAS(request *ImportOASRequest) (_result *ImportOASRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an API by importing Swagger-compliant data.
+//
 // Description:
 //
-// 	- Alibaba Cloud supports extensions based on Swagger 2.0.
+//   Alibaba Cloud supports extensions based on Swagger 2.0.
 //
 // 	- Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
 //
@@ -53697,9 +56143,13 @@ func (client *Client) ImportSwaggerWithOptions(tmpReq *ImportSwaggerRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an API by importing Swagger-compliant data.
+//
 // Description:
 //
-// 	- Alibaba Cloud supports extensions based on Swagger 2.0.
+//   Alibaba Cloud supports extensions based on Swagger 2.0.
 //
 // 	- Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
 //
@@ -53717,9 +56167,13 @@ func (client *Client) ImportSwagger(request *ImportSwaggerRequest) (_result *Imp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the visible resource tags.
+//
 // Description:
 //
-// 	- The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
+//   The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
 //
 // 	- ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
 //
@@ -53787,9 +56241,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the visible resource tags.
+//
 // Description:
 //
-// 	- The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
+//   The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
 //
 // 	- ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
 //
@@ -53821,9 +56279,13 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the definition of an API.
+//
 // Description:
 //
-// **This operation is intended for API providers.**
+// *This operation is intended for API providers.**
 //
 // 	- This API operation requires a full update. Updates of partial parameters are not supported.
 //
@@ -53981,9 +56443,13 @@ func (client *Client) ModifyApiWithOptions(request *ModifyApiRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the definition of an API.
+//
 // Description:
 //
-// **This operation is intended for API providers.**
+// *This operation is intended for API providers.**
 //
 // 	- This API operation requires a full update. Updates of partial parameters are not supported.
 //
@@ -54007,6 +56473,15 @@ func (client *Client) ModifyApi(request *ModifyApiRequest) (_result *ModifyApiRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the draft definition of an API. This operation is different from the ModifyApi operation. This operation does not require all information about the API. You need to only specify the parameters that you want to modify. For example, if you want to change the authentication method of the API from Anonymous to APP, you specify APP as the value of AuthType and do not need to configure other parameters.
+//
+// @param request - ModifyApiConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApiConfigurationResponse
 func (client *Client) ModifyApiConfigurationWithOptions(request *ModifyApiConfigurationRequest, runtime *util.RuntimeOptions) (_result *ModifyApiConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54180,6 +56655,13 @@ func (client *Client) ModifyApiConfigurationWithOptions(request *ModifyApiConfig
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the draft definition of an API. This operation is different from the ModifyApi operation. This operation does not require all information about the API. You need to only specify the parameters that you want to modify. For example, if you want to change the authentication method of the API from Anonymous to APP, you specify APP as the value of AuthType and do not need to configure other parameters.
+//
+// @param request - ModifyApiConfigurationRequest
+//
+// @return ModifyApiConfigurationResponse
 func (client *Client) ModifyApiConfiguration(request *ModifyApiConfigurationRequest) (_result *ModifyApiConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyApiConfigurationResponse{}
@@ -54191,9 +56673,13 @@ func (client *Client) ModifyApiConfiguration(request *ModifyApiConfigurationRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the name, description, or basepath of an existing API group.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- The QPS limit on this operation is 50 per user.
 //
@@ -54287,9 +56773,13 @@ func (client *Client) ModifyApiGroupWithOptions(request *ModifyApiGroupRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the name, description, or basepath of an existing API group.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- The QPS limit on this operation is 50 per user.
 //
@@ -54307,6 +56797,11 @@ func (client *Client) ModifyApiGroup(request *ModifyApiGroupRequest) (_result *M
 	return _result, _err
 }
 
+// @param request - ModifyApiGroupInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApiGroupInstanceResponse
 func (client *Client) ModifyApiGroupInstanceWithOptions(request *ModifyApiGroupInstanceRequest, runtime *util.RuntimeOptions) (_result *ModifyApiGroupInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54356,6 +56851,9 @@ func (client *Client) ModifyApiGroupInstanceWithOptions(request *ModifyApiGroupI
 	return _result, _err
 }
 
+// @param request - ModifyApiGroupInstanceRequest
+//
+// @return ModifyApiGroupInstanceResponse
 func (client *Client) ModifyApiGroupInstance(request *ModifyApiGroupInstanceRequest) (_result *ModifyApiGroupInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyApiGroupInstanceResponse{}
@@ -54367,6 +56865,15 @@ func (client *Client) ModifyApiGroupInstance(request *ModifyApiGroupInstanceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the network policy of an API group.
+//
+// @param request - ModifyApiGroupNetworkPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApiGroupNetworkPolicyResponse
 func (client *Client) ModifyApiGroupNetworkPolicyWithOptions(request *ModifyApiGroupNetworkPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyApiGroupNetworkPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54428,6 +56935,13 @@ func (client *Client) ModifyApiGroupNetworkPolicyWithOptions(request *ModifyApiG
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the network policy of an API group.
+//
+// @param request - ModifyApiGroupNetworkPolicyRequest
+//
+// @return ModifyApiGroupNetworkPolicyResponse
 func (client *Client) ModifyApiGroupNetworkPolicy(request *ModifyApiGroupNetworkPolicyRequest) (_result *ModifyApiGroupNetworkPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyApiGroupNetworkPolicyResponse{}
@@ -54439,6 +56953,15 @@ func (client *Client) ModifyApiGroupNetworkPolicy(request *ModifyApiGroupNetwork
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the VPC whitelist of an API group.
+//
+// @param request - ModifyApiGroupVpcWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApiGroupVpcWhitelistResponse
 func (client *Client) ModifyApiGroupVpcWhitelistWithOptions(request *ModifyApiGroupVpcWhitelistRequest, runtime *util.RuntimeOptions) (_result *ModifyApiGroupVpcWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54480,6 +57003,13 @@ func (client *Client) ModifyApiGroupVpcWhitelistWithOptions(request *ModifyApiGr
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the VPC whitelist of an API group.
+//
+// @param request - ModifyApiGroupVpcWhitelistRequest
+//
+// @return ModifyApiGroupVpcWhitelistResponse
 func (client *Client) ModifyApiGroupVpcWhitelist(request *ModifyApiGroupVpcWhitelistRequest) (_result *ModifyApiGroupVpcWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyApiGroupVpcWhitelistResponse{}
@@ -54491,9 +57021,13 @@ func (client *Client) ModifyApiGroupVpcWhitelist(request *ModifyApiGroupVpcWhite
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a specified application.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- **AppName*	- or **Description*	- can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
 //
@@ -54557,9 +57091,13 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a specified application.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- **AppName*	- or **Description*	- can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
 //
@@ -54579,6 +57117,15 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改后端服务
+//
+// @param request - ModifyBackendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBackendResponse
 func (client *Client) ModifyBackendWithOptions(request *ModifyBackendRequest, runtime *util.RuntimeOptions) (_result *ModifyBackendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54628,6 +57175,13 @@ func (client *Client) ModifyBackendWithOptions(request *ModifyBackendRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改后端服务
+//
+// @param request - ModifyBackendRequest
+//
+// @return ModifyBackendResponse
 func (client *Client) ModifyBackend(request *ModifyBackendRequest) (_result *ModifyBackendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBackendResponse{}
@@ -54639,6 +57193,15 @@ func (client *Client) ModifyBackend(request *ModifyBackendRequest) (_result *Mod
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改后端服务在环境上的定义
+//
+// @param request - ModifyBackendModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBackendModelResponse
 func (client *Client) ModifyBackendModelWithOptions(request *ModifyBackendModelRequest, runtime *util.RuntimeOptions) (_result *ModifyBackendModelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54696,6 +57259,13 @@ func (client *Client) ModifyBackendModelWithOptions(request *ModifyBackendModelR
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改后端服务在环境上的定义
+//
+// @param request - ModifyBackendModelRequest
+//
+// @return ModifyBackendModelResponse
 func (client *Client) ModifyBackendModel(request *ModifyBackendModelRequest) (_result *ModifyBackendModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBackendModelResponse{}
@@ -54707,6 +57277,15 @@ func (client *Client) ModifyBackendModel(request *ModifyBackendModelRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the name of a custom dataset.
+//
+// @param request - ModifyDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDatasetResponse
 func (client *Client) ModifyDatasetWithOptions(request *ModifyDatasetRequest, runtime *util.RuntimeOptions) (_result *ModifyDatasetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54748,6 +57327,13 @@ func (client *Client) ModifyDatasetWithOptions(request *ModifyDatasetRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the name of a custom dataset.
+//
+// @param request - ModifyDatasetRequest
+//
+// @return ModifyDatasetResponse
 func (client *Client) ModifyDataset(request *ModifyDatasetRequest) (_result *ModifyDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDatasetResponse{}
@@ -54759,6 +57345,15 @@ func (client *Client) ModifyDataset(request *ModifyDatasetRequest) (_result *Mod
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the expiration time and description of a data entry in a custom dataset.
+//
+// @param request - ModifyDatasetItemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDatasetItemResponse
 func (client *Client) ModifyDatasetItemWithOptions(request *ModifyDatasetItemRequest, runtime *util.RuntimeOptions) (_result *ModifyDatasetItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54808,6 +57403,13 @@ func (client *Client) ModifyDatasetItemWithOptions(request *ModifyDatasetItemReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the expiration time and description of a data entry in a custom dataset.
+//
+// @param request - ModifyDatasetItemRequest
+//
+// @return ModifyDatasetItemResponse
 func (client *Client) ModifyDatasetItem(request *ModifyDatasetItemRequest) (_result *ModifyDatasetItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDatasetItemResponse{}
@@ -54819,6 +57421,15 @@ func (client *Client) ModifyDatasetItem(request *ModifyDatasetItemRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改API网关实例属性
+//
+// @param tmpReq - ModifyInstanceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceAttributeResponse
 func (client *Client) ModifyInstanceAttributeWithOptions(tmpReq *ModifyInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceAttributeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -54902,6 +57513,13 @@ func (client *Client) ModifyInstanceAttributeWithOptions(tmpReq *ModifyInstanceA
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改API网关实例属性
+//
+// @param request - ModifyInstanceAttributeRequest
+//
+// @return ModifyInstanceAttributeResponse
 func (client *Client) ModifyInstanceAttribute(request *ModifyInstanceAttributeRequest) (_result *ModifyInstanceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceAttributeResponse{}
@@ -54913,6 +57531,15 @@ func (client *Client) ModifyInstanceAttribute(request *ModifyInstanceAttributeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades or downgrades the configurations of an API Gateway instance.
+//
+// @param request - ModifyInstanceSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceSpecResponse
 func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceSpecResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54966,6 +57593,13 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades or downgrades the configurations of an API Gateway instance.
+//
+// @param request - ModifyInstanceSpecRequest
+//
+// @return ModifyInstanceSpecResponse
 func (client *Client) ModifyInstanceSpec(request *ModifyInstanceSpecRequest) (_result *ModifyInstanceSpecResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceSpecResponse{}
@@ -54977,6 +57611,15 @@ func (client *Client) ModifyInstanceSpec(request *ModifyInstanceSpecRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the VPC domain name policy of an API group.
+//
+// @param request - ModifyIntranetDomainPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyIntranetDomainPolicyResponse
 func (client *Client) ModifyIntranetDomainPolicyWithOptions(request *ModifyIntranetDomainPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyIntranetDomainPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55018,6 +57661,13 @@ func (client *Client) ModifyIntranetDomainPolicyWithOptions(request *ModifyIntra
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the VPC domain name policy of an API group.
+//
+// @param request - ModifyIntranetDomainPolicyRequest
+//
+// @return ModifyIntranetDomainPolicyResponse
 func (client *Client) ModifyIntranetDomainPolicy(request *ModifyIntranetDomainPolicyRequest) (_result *ModifyIntranetDomainPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyIntranetDomainPolicyResponse{}
@@ -55029,9 +57679,13 @@ func (client *Client) ModifyIntranetDomainPolicy(request *ModifyIntranetDomainPo
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an access control list (ACL).
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
 //
@@ -55085,9 +57739,13 @@ func (client *Client) ModifyIpControlWithOptions(request *ModifyIpControlRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an access control list (ACL).
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
 //
@@ -55105,9 +57763,13 @@ func (client *Client) ModifyIpControl(request *ModifyIpControlRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a policy in an access control list (ACL).
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- The modification immediately takes effect on all the APIs that are bound to the policy.
 //
@@ -55167,9 +57829,13 @@ func (client *Client) ModifyIpControlPolicyItemWithOptions(request *ModifyIpCont
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a policy in an access control list (ACL).
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- The modification immediately takes effect on all the APIs that are bound to the policy.
 //
@@ -55189,6 +57855,11 @@ func (client *Client) ModifyIpControlPolicyItem(request *ModifyIpControlPolicyIt
 	return _result, _err
 }
 
+// @param request - ModifyLogConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLogConfigResponse
 func (client *Client) ModifyLogConfigWithOptions(request *ModifyLogConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyLogConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55234,6 +57905,9 @@ func (client *Client) ModifyLogConfigWithOptions(request *ModifyLogConfigRequest
 	return _result, _err
 }
 
+// @param request - ModifyLogConfigRequest
+//
+// @return ModifyLogConfigResponse
 func (client *Client) ModifyLogConfig(request *ModifyLogConfigRequest) (_result *ModifyLogConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyLogConfigResponse{}
@@ -55245,6 +57919,15 @@ func (client *Client) ModifyLogConfig(request *ModifyLogConfigRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the model of an API group.
+//
+// @param request - ModifyModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyModelResponse
 func (client *Client) ModifyModelWithOptions(request *ModifyModelRequest, runtime *util.RuntimeOptions) (_result *ModifyModelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55294,6 +57977,13 @@ func (client *Client) ModifyModelWithOptions(request *ModifyModelRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the model of an API group.
+//
+// @param request - ModifyModelRequest
+//
+// @return ModifyModelResponse
 func (client *Client) ModifyModel(request *ModifyModelRequest) (_result *ModifyModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyModelResponse{}
@@ -55305,9 +57995,13 @@ func (client *Client) ModifyModel(request *ModifyModelRequest) (_result *ModifyM
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information of a plug-in.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- The name of the plug-in must be unique.
 //
@@ -55369,9 +58063,13 @@ func (client *Client) ModifyPluginWithOptions(request *ModifyPluginRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information of a plug-in.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- The name of the plug-in must be unique.
 //
@@ -55389,9 +58087,13 @@ func (client *Client) ModifyPlugin(request *ModifyPluginRequest) (_result *Modif
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a backend signature key.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This API operation modifies the name, Key value, and Secret value of an existing signature key.
 //
@@ -55453,9 +58155,13 @@ func (client *Client) ModifySignatureWithOptions(request *ModifySignatureRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a backend signature key.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This API operation modifies the name, Key value, and Secret value of an existing signature key.
 //
@@ -55477,9 +58183,13 @@ func (client *Client) ModifySignature(request *ModifySignatureRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the settings of a custom throttling policy.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The modifications take effect on the bound APIs instantly.
 //
@@ -55551,9 +58261,13 @@ func (client *Client) ModifyTrafficControlWithOptions(request *ModifyTrafficCont
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the settings of a custom throttling policy.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The modifications take effect on the bound APIs instantly.
 //
@@ -55573,6 +58287,15 @@ func (client *Client) ModifyTrafficControl(request *ModifyTrafficControlRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a virtual private cloud (VPC) authorization and updates the metadata of the API associated with the VPC authorization.
+//
+// @param request - ModifyVpcAccessAndUpdateApisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyVpcAccessAndUpdateApisResponse
 func (client *Client) ModifyVpcAccessAndUpdateApisWithOptions(request *ModifyVpcAccessAndUpdateApisRequest, runtime *util.RuntimeOptions) (_result *ModifyVpcAccessAndUpdateApisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55638,6 +58361,13 @@ func (client *Client) ModifyVpcAccessAndUpdateApisWithOptions(request *ModifyVpc
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a virtual private cloud (VPC) authorization and updates the metadata of the API associated with the VPC authorization.
+//
+// @param request - ModifyVpcAccessAndUpdateApisRequest
+//
+// @return ModifyVpcAccessAndUpdateApisResponse
 func (client *Client) ModifyVpcAccessAndUpdateApis(request *ModifyVpcAccessAndUpdateApisRequest) (_result *ModifyVpcAccessAndUpdateApisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyVpcAccessAndUpdateApisResponse{}
@@ -55649,6 +58379,11 @@ func (client *Client) ModifyVpcAccessAndUpdateApis(request *ModifyVpcAccessAndUp
 	return _result, _err
 }
 
+// @param request - OpenApiGatewayServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenApiGatewayServiceResponse
 func (client *Client) OpenApiGatewayServiceWithOptions(runtime *util.RuntimeOptions) (_result *OpenApiGatewayServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -55671,6 +58406,7 @@ func (client *Client) OpenApiGatewayServiceWithOptions(runtime *util.RuntimeOpti
 	return _result, _err
 }
 
+// @return OpenApiGatewayServiceResponse
 func (client *Client) OpenApiGatewayService() (_result *OpenApiGatewayServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenApiGatewayServiceResponse{}
@@ -55682,6 +58418,15 @@ func (client *Client) OpenApiGatewayService() (_result *OpenApiGatewayServiceRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the request logs of a user.
+//
+// @param request - QueryRequestLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRequestLogsResponse
 func (client *Client) QueryRequestLogsWithOptions(request *QueryRequestLogsRequest, runtime *util.RuntimeOptions) (_result *QueryRequestLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55719,6 +58464,13 @@ func (client *Client) QueryRequestLogsWithOptions(request *QueryRequestLogsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the request logs of a user.
+//
+// @param request - QueryRequestLogsRequest
+//
+// @return QueryRequestLogsResponse
 func (client *Client) QueryRequestLogs(request *QueryRequestLogsRequest) (_result *QueryRequestLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRequestLogsResponse{}
@@ -55730,9 +58482,13 @@ func (client *Client) QueryRequestLogs(request *QueryRequestLogsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Reactivates a custom domain name whose validity status is Abnormal.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
 //
@@ -55786,9 +58542,13 @@ func (client *Client) ReactivateDomainWithOptions(request *ReactivateDomainReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Reactivates a custom domain name whose validity status is Abnormal.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
 //
@@ -55810,6 +58570,15 @@ func (client *Client) ReactivateDomain(request *ReactivateDomainRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除访问控制策略中IP条目
+//
+// @param request - RemoveAccessControlListEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveAccessControlListEntryResponse
 func (client *Client) RemoveAccessControlListEntryWithOptions(request *RemoveAccessControlListEntryRequest, runtime *util.RuntimeOptions) (_result *RemoveAccessControlListEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55851,6 +58620,13 @@ func (client *Client) RemoveAccessControlListEntryWithOptions(request *RemoveAcc
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除访问控制策略中IP条目
+//
+// @param request - RemoveAccessControlListEntryRequest
+//
+// @return RemoveAccessControlListEntryResponse
 func (client *Client) RemoveAccessControlListEntry(request *RemoveAccessControlListEntryRequest) (_result *RemoveAccessControlListEntryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveAccessControlListEntryResponse{}
@@ -55862,6 +58638,15 @@ func (client *Client) RemoveAccessControlListEntry(request *RemoveAccessControlL
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes permissions on API products from an application.
+//
+// @param tmpReq - RemoveApiProductsAuthoritiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveApiProductsAuthoritiesResponse
 func (client *Client) RemoveApiProductsAuthoritiesWithOptions(tmpReq *RemoveApiProductsAuthoritiesRequest, runtime *util.RuntimeOptions) (_result *RemoveApiProductsAuthoritiesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -55909,6 +58694,13 @@ func (client *Client) RemoveApiProductsAuthoritiesWithOptions(tmpReq *RemoveApiP
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes permissions on API products from an application.
+//
+// @param request - RemoveApiProductsAuthoritiesRequest
+//
+// @return RemoveApiProductsAuthoritiesResponse
 func (client *Client) RemoveApiProductsAuthorities(request *RemoveApiProductsAuthoritiesRequest) (_result *RemoveApiProductsAuthoritiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveApiProductsAuthoritiesResponse{}
@@ -55920,9 +58712,13 @@ func (client *Client) RemoveApiProductsAuthorities(request *RemoveApiProductsAut
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes the access permissions on multiple APIs from a specified application.
+//
 // Description:
 //
-// 	- This operation is intended for API providers and callers.
+//   This operation is intended for API providers and callers.
 //
 // 	- Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
 //
@@ -55984,9 +58780,13 @@ func (client *Client) RemoveApisAuthoritiesWithOptions(request *RemoveApisAuthor
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes the access permissions on multiple APIs from a specified application.
+//
 // Description:
 //
-// 	- This operation is intended for API providers and callers.
+//   This operation is intended for API providers and callers.
 //
 // 	- Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
 //
@@ -56004,9 +58804,13 @@ func (client *Client) RemoveApisAuthorities(request *RemoveApisAuthoritiesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes the access permissions on a specified API from multiple applications. In this case, multiple applications map to a single API.
+//
 // Description:
 //
-// 	- This operation is intended for API providers and callers.
+//   This operation is intended for API providers and callers.
 //
 // 	- Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
 //
@@ -56064,9 +58868,13 @@ func (client *Client) RemoveAppsAuthoritiesWithOptions(request *RemoveAppsAuthor
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes the access permissions on a specified API from multiple applications. In this case, multiple applications map to a single API.
+//
 // Description:
 //
-// 	- This operation is intended for API providers and callers.
+//   This operation is intended for API providers and callers.
 //
 // 	- Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
 //
@@ -56084,9 +58892,13 @@ func (client *Client) RemoveAppsAuthorities(request *RemoveAppsAuthoritiesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds an API from an access control list (ACL).
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
 //
@@ -56144,9 +58956,13 @@ func (client *Client) RemoveIpControlApisWithOptions(request *RemoveIpControlApi
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds an API from an access control list (ACL).
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
 //
@@ -56164,9 +58980,13 @@ func (client *Client) RemoveIpControlApis(request *RemoveIpControlApisRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes one or more policies from an access control list (ACL).
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // @param request - RemoveIpControlPolicyItemRequest
 //
@@ -56214,9 +59034,13 @@ func (client *Client) RemoveIpControlPolicyItemWithOptions(request *RemoveIpCont
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes one or more policies from an access control list (ACL).
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // @param request - RemoveIpControlPolicyItemRequest
 //
@@ -56232,9 +59056,13 @@ func (client *Client) RemoveIpControlPolicyItem(request *RemoveIpControlPolicyIt
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds a backend signature key from APIs.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
 //
@@ -56292,9 +59120,13 @@ func (client *Client) RemoveSignatureApisWithOptions(request *RemoveSignatureApi
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds a backend signature key from APIs.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
 //
@@ -56312,9 +59144,13 @@ func (client *Client) RemoveSignatureApis(request *RemoveSignatureApisRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds a specified throttling policy from APIs.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
 //
@@ -56372,9 +59208,13 @@ func (client *Client) RemoveTrafficControlApisWithOptions(request *RemoveTraffic
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds a specified throttling policy from APIs.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
 //
@@ -56392,9 +59232,13 @@ func (client *Client) RemoveTrafficControlApis(request *RemoveTrafficControlApis
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a VPC authorization without unpublishing the associated APIs.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- Revokes the permissions of API Gateway to access your VPC instance.
 //
@@ -56454,9 +59298,13 @@ func (client *Client) RemoveVpcAccessWithOptions(request *RemoveVpcAccessRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a VPC authorization without unpublishing the associated APIs.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- Revokes the permissions of API Gateway to access your VPC instance.
 //
@@ -56476,6 +59324,11 @@ func (client *Client) RemoveVpcAccess(request *RemoveVpcAccessRequest) (_result 
 	return _result, _err
 }
 
+// @param request - RemoveVpcAccessAndAbolishApisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveVpcAccessAndAbolishApisResponse
 func (client *Client) RemoveVpcAccessAndAbolishApisWithOptions(request *RemoveVpcAccessAndAbolishApisRequest, runtime *util.RuntimeOptions) (_result *RemoveVpcAccessAndAbolishApisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56525,6 +59378,9 @@ func (client *Client) RemoveVpcAccessAndAbolishApisWithOptions(request *RemoveVp
 	return _result, _err
 }
 
+// @param request - RemoveVpcAccessAndAbolishApisRequest
+//
+// @return RemoveVpcAccessAndAbolishApisResponse
 func (client *Client) RemoveVpcAccessAndAbolishApis(request *RemoveVpcAccessAndAbolishApisRequest) (_result *RemoveVpcAccessAndAbolishApisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveVpcAccessAndAbolishApisResponse{}
@@ -56536,6 +59392,15 @@ func (client *Client) RemoveVpcAccessAndAbolishApis(request *RemoveVpcAccessAndA
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the AppCode of an app.
+//
+// @param request - ResetAppCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetAppCodeResponse
 func (client *Client) ResetAppCodeWithOptions(request *ResetAppCodeRequest, runtime *util.RuntimeOptions) (_result *ResetAppCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56577,6 +59442,13 @@ func (client *Client) ResetAppCodeWithOptions(request *ResetAppCodeRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the AppCode of an app.
+//
+// @param request - ResetAppCodeRequest
+//
+// @return ResetAppCodeResponse
 func (client *Client) ResetAppCode(request *ResetAppCodeRequest) (_result *ResetAppCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetAppCodeResponse{}
@@ -56588,9 +59460,13 @@ func (client *Client) ResetAppCode(request *ResetAppCodeRequest) (_result *Reset
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the key of an application.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- A new secret is automatically generated after you have called this operation. This secret cannot be customized.
 //
@@ -56646,9 +59522,13 @@ func (client *Client) ResetAppSecretWithOptions(request *ResetAppSecretRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the key of an application.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- A new secret is automatically generated after you have called this operation. This secret cannot be customized.
 //
@@ -56668,6 +59548,11 @@ func (client *Client) ResetAppSecret(request *ResetAppSecretRequest) (_result *R
 	return _result, _err
 }
 
+// @param request - SdkGenerateByAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SdkGenerateByAppResponse
 func (client *Client) SdkGenerateByAppWithOptions(request *SdkGenerateByAppRequest, runtime *util.RuntimeOptions) (_result *SdkGenerateByAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56709,6 +59594,9 @@ func (client *Client) SdkGenerateByAppWithOptions(request *SdkGenerateByAppReque
 	return _result, _err
 }
 
+// @param request - SdkGenerateByAppRequest
+//
+// @return SdkGenerateByAppResponse
 func (client *Client) SdkGenerateByApp(request *SdkGenerateByAppRequest) (_result *SdkGenerateByAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SdkGenerateByAppResponse{}
@@ -56720,6 +59608,15 @@ func (client *Client) SdkGenerateByApp(request *SdkGenerateByAppRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 生成与App关联的API的SDK
+//
+// @param request - SdkGenerateByAppForRegionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SdkGenerateByAppForRegionResponse
 func (client *Client) SdkGenerateByAppForRegionWithOptions(request *SdkGenerateByAppForRegionRequest, runtime *util.RuntimeOptions) (_result *SdkGenerateByAppForRegionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56761,6 +59658,13 @@ func (client *Client) SdkGenerateByAppForRegionWithOptions(request *SdkGenerateB
 	return _result, _err
 }
 
+// Summary:
+//
+// 生成与App关联的API的SDK
+//
+// @param request - SdkGenerateByAppForRegionRequest
+//
+// @return SdkGenerateByAppForRegionResponse
 func (client *Client) SdkGenerateByAppForRegion(request *SdkGenerateByAppForRegionRequest) (_result *SdkGenerateByAppForRegionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SdkGenerateByAppForRegionResponse{}
@@ -56772,6 +59676,11 @@ func (client *Client) SdkGenerateByAppForRegion(request *SdkGenerateByAppForRegi
 	return _result, _err
 }
 
+// @param request - SdkGenerateByGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SdkGenerateByGroupResponse
 func (client *Client) SdkGenerateByGroupWithOptions(request *SdkGenerateByGroupRequest, runtime *util.RuntimeOptions) (_result *SdkGenerateByGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56813,6 +59722,9 @@ func (client *Client) SdkGenerateByGroupWithOptions(request *SdkGenerateByGroupR
 	return _result, _err
 }
 
+// @param request - SdkGenerateByGroupRequest
+//
+// @return SdkGenerateByGroupResponse
 func (client *Client) SdkGenerateByGroup(request *SdkGenerateByGroupRequest) (_result *SdkGenerateByGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SdkGenerateByGroupResponse{}
@@ -56824,6 +59736,15 @@ func (client *Client) SdkGenerateByGroup(request *SdkGenerateByGroupRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改访问控制策略的名称
+//
+// @param request - SetAccessControlListAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAccessControlListAttributeResponse
 func (client *Client) SetAccessControlListAttributeWithOptions(request *SetAccessControlListAttributeRequest, runtime *util.RuntimeOptions) (_result *SetAccessControlListAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56865,6 +59786,13 @@ func (client *Client) SetAccessControlListAttributeWithOptions(request *SetAcces
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改访问控制策略的名称
+//
+// @param request - SetAccessControlListAttributeRequest
+//
+// @return SetAccessControlListAttributeResponse
 func (client *Client) SetAccessControlListAttribute(request *SetAccessControlListAttributeRequest) (_result *SetAccessControlListAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetAccessControlListAttributeResponse{}
@@ -56876,6 +59804,15 @@ func (client *Client) SetAccessControlListAttribute(request *SetAccessControlLis
 	return _result, _err
 }
 
+// Summary:
+//
+// 给多个API产品添加APP授权
+//
+// @param tmpReq - SetApiProductsAuthoritiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetApiProductsAuthoritiesResponse
 func (client *Client) SetApiProductsAuthoritiesWithOptions(tmpReq *SetApiProductsAuthoritiesRequest, runtime *util.RuntimeOptions) (_result *SetApiProductsAuthoritiesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -56931,6 +59868,13 @@ func (client *Client) SetApiProductsAuthoritiesWithOptions(tmpReq *SetApiProduct
 	return _result, _err
 }
 
+// Summary:
+//
+// 给多个API产品添加APP授权
+//
+// @param request - SetApiProductsAuthoritiesRequest
+//
+// @return SetApiProductsAuthoritiesResponse
 func (client *Client) SetApiProductsAuthorities(request *SetApiProductsAuthoritiesRequest) (_result *SetApiProductsAuthoritiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetApiProductsAuthoritiesResponse{}
@@ -56942,9 +59886,13 @@ func (client *Client) SetApiProductsAuthorities(request *SetApiProductsAuthoriti
 	return _result, _err
 }
 
+// Summary:
+//
+// Authorizes a specified application to call multiple APIs.
+//
 // Description:
 //
-// 	- This operation is intended for API providers and callers.
+//   This operation is intended for API providers and callers.
 //
 // 	- API providers can authorize any apps to call their APIs.
 //
@@ -57012,9 +59960,13 @@ func (client *Client) SetApisAuthoritiesWithOptions(request *SetApisAuthoritiesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Authorizes a specified application to call multiple APIs.
+//
 // Description:
 //
-// 	- This operation is intended for API providers and callers.
+//   This operation is intended for API providers and callers.
 //
 // 	- API providers can authorize any apps to call their APIs.
 //
@@ -57034,6 +59986,15 @@ func (client *Client) SetApisAuthorities(request *SetApisAuthoritiesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 将多个APP授权给API产品
+//
+// @param request - SetAppsAuthToApiProductRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAppsAuthToApiProductResponse
 func (client *Client) SetAppsAuthToApiProductWithOptions(request *SetAppsAuthToApiProductRequest, runtime *util.RuntimeOptions) (_result *SetAppsAuthToApiProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57083,6 +60044,13 @@ func (client *Client) SetAppsAuthToApiProductWithOptions(request *SetAppsAuthToA
 	return _result, _err
 }
 
+// Summary:
+//
+// 将多个APP授权给API产品
+//
+// @param request - SetAppsAuthToApiProductRequest
+//
+// @return SetAppsAuthToApiProductResponse
 func (client *Client) SetAppsAuthToApiProduct(request *SetAppsAuthToApiProductRequest) (_result *SetAppsAuthToApiProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetAppsAuthToApiProductResponse{}
@@ -57094,9 +60062,13 @@ func (client *Client) SetAppsAuthToApiProduct(request *SetAppsAuthToApiProductRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants access permissions on a specified API to multiple applications.
+//
 // Description:
 //
-// 	- This operation is intended for API providers and callers.
+//   This operation is intended for API providers and callers.
 //
 // 	- API providers can authorize any apps to call their APIs.
 //
@@ -57164,9 +60136,13 @@ func (client *Client) SetAppsAuthoritiesWithOptions(request *SetAppsAuthoritiesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants access permissions on a specified API to multiple applications.
+//
 // Description:
 //
-// 	- This operation is intended for API providers and callers.
+//   This operation is intended for API providers and callers.
 //
 // 	- API providers can authorize any apps to call their APIs.
 //
@@ -57186,6 +60162,15 @@ func (client *Client) SetAppsAuthorities(request *SetAppsAuthoritiesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a custom domain name to a specified API group.
+//
+// @param request - SetDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetDomainResponse
 func (client *Client) SetDomainWithOptions(request *SetDomainRequest, runtime *util.RuntimeOptions) (_result *SetDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57239,6 +60224,13 @@ func (client *Client) SetDomainWithOptions(request *SetDomainRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a custom domain name to a specified API group.
+//
+// @param request - SetDomainRequest
+//
+// @return SetDomainResponse
 func (client *Client) SetDomain(request *SetDomainRequest) (_result *SetDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDomainResponse{}
@@ -57250,9 +60242,13 @@ func (client *Client) SetDomain(request *SetDomainRequest) (_result *SetDomainRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Uploads an SSL certificate for a custom domain name.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- The SSL certificate must match the custom domain name.
 //
@@ -57324,9 +60320,13 @@ func (client *Client) SetDomainCertificateWithOptions(request *SetDomainCertific
 	return _result, _err
 }
 
+// Summary:
+//
+// Uploads an SSL certificate for a custom domain name.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+//   This operation is intended for API providers.
 //
 // 	- The SSL certificate must match the custom domain name.
 //
@@ -57346,6 +60346,15 @@ func (client *Client) SetDomainCertificate(request *SetDomainCertificateRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables WebSocket for a custom domain name.
+//
+// @param request - SetDomainWebSocketStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetDomainWebSocketStatusResponse
 func (client *Client) SetDomainWebSocketStatusWithOptions(request *SetDomainWebSocketStatusRequest, runtime *util.RuntimeOptions) (_result *SetDomainWebSocketStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57395,6 +60404,13 @@ func (client *Client) SetDomainWebSocketStatusWithOptions(request *SetDomainWebS
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables WebSocket for a custom domain name.
+//
+// @param request - SetDomainWebSocketStatusRequest
+//
+// @return SetDomainWebSocketStatusResponse
 func (client *Client) SetDomainWebSocketStatus(request *SetDomainWebSocketStatusRequest) (_result *SetDomainWebSocketStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDomainWebSocketStatusResponse{}
@@ -57406,6 +60422,11 @@ func (client *Client) SetDomainWebSocketStatus(request *SetDomainWebSocketStatus
 	return _result, _err
 }
 
+// @param request - SetGroupAuthAppCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetGroupAuthAppCodeResponse
 func (client *Client) SetGroupAuthAppCodeWithOptions(request *SetGroupAuthAppCodeRequest, runtime *util.RuntimeOptions) (_result *SetGroupAuthAppCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57447,6 +60468,9 @@ func (client *Client) SetGroupAuthAppCodeWithOptions(request *SetGroupAuthAppCod
 	return _result, _err
 }
 
+// @param request - SetGroupAuthAppCodeRequest
+//
+// @return SetGroupAuthAppCodeResponse
 func (client *Client) SetGroupAuthAppCode(request *SetGroupAuthAppCodeRequest) (_result *SetGroupAuthAppCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetGroupAuthAppCodeResponse{}
@@ -57458,9 +60482,13 @@ func (client *Client) SetGroupAuthAppCode(request *SetGroupAuthAppCodeRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a binding relationship between specified access control lists (ACLs) and APIs.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- A maximum of 100 APIs can be bound at a time.
 //
@@ -57518,9 +60546,13 @@ func (client *Client) SetIpControlApisWithOptions(request *SetIpControlApisReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a binding relationship between specified access control lists (ACLs) and APIs.
+//
 // Description:
 //
-// 	- This operation is intended for API callers.
+//   This operation is intended for API callers.
 //
 // 	- A maximum of 100 APIs can be bound at a time.
 //
@@ -57538,9 +60570,13 @@ func (client *Client) SetIpControlApis(request *SetIpControlApisRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a signature key to APIs.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
 //
@@ -57598,9 +60634,13 @@ func (client *Client) SetSignatureApisWithOptions(request *SetSignatureApisReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a signature key to APIs.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
 //
@@ -57618,9 +60658,13 @@ func (client *Client) SetSignatureApis(request *SetSignatureApisRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a throttling policy to APIs.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
 //
@@ -57678,9 +60722,13 @@ func (client *Client) SetTrafficControlApisWithOptions(request *SetTrafficContro
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a throttling policy to APIs.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
 //
@@ -57698,9 +60746,13 @@ func (client *Client) SetTrafficControlApis(request *SetTrafficControlApisReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a virtual private cloud (VPC) access authorization and enables reverse access.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+// This operation is intended for API providers.
 //
 // 	- This operation is used to authorize API Gateway to access your VPC instance.
 //
@@ -57770,9 +60822,13 @@ func (client *Client) SetVpcAccessWithOptions(request *SetVpcAccessRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a virtual private cloud (VPC) access authorization and enables reverse access.
+//
 // Description:
 //
-// 	- This operation is intended for API providers.
+// This operation is intended for API providers.
 //
 // 	- This operation is used to authorize API Gateway to access your VPC instance.
 //
@@ -57790,6 +60846,15 @@ func (client *Client) SetVpcAccess(request *SetVpcAccessRequest) (_result *SetVp
 	return _result, _err
 }
 
+// Summary:
+//
+// Specifies a wildcard domain name template for a bound custom domain name.
+//
+// @param request - SetWildcardDomainPatternsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetWildcardDomainPatternsResponse
 func (client *Client) SetWildcardDomainPatternsWithOptions(request *SetWildcardDomainPatternsRequest, runtime *util.RuntimeOptions) (_result *SetWildcardDomainPatternsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57835,6 +60900,13 @@ func (client *Client) SetWildcardDomainPatternsWithOptions(request *SetWildcardD
 	return _result, _err
 }
 
+// Summary:
+//
+// Specifies a wildcard domain name template for a bound custom domain name.
+//
+// @param request - SetWildcardDomainPatternsRequest
+//
+// @return SetWildcardDomainPatternsResponse
 func (client *Client) SetWildcardDomainPatterns(request *SetWildcardDomainPatternsRequest) (_result *SetWildcardDomainPatternsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetWildcardDomainPatternsResponse{}
@@ -57846,9 +60918,13 @@ func (client *Client) SetWildcardDomainPatterns(request *SetWildcardDomainPatter
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches the definition of an API in a specified runtime environment to a historical version.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The historical version can be obtained by calling the **DescribeHistoryApis*	- operation.
 //
@@ -57916,9 +60992,13 @@ func (client *Client) SwitchApiWithOptions(request *SwitchApiRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches the definition of an API in a specified runtime environment to a historical version.
+//
 // Description:
 //
-// 	- This API is intended for API providers.
+//   This API is intended for API providers.
 //
 // 	- The historical version can be obtained by calling the **DescribeHistoryApis*	- operation.
 //
@@ -57942,9 +61022,13 @@ func (client *Client) SwitchApi(request *SwitchApiRequest) (_result *SwitchApiRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a tag-resource relationship.
+//
 // Description:
 //
-// 	- All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
+//   All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
 //
 // 	- Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
 //
@@ -58004,9 +61088,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a tag-resource relationship.
+//
 // Description:
 //
-// 	- All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
+//   All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
 //
 // 	- Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
 //
@@ -58030,9 +61118,13 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources.
+//
 // Description:
 //
-// 	- If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
+//   If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
 //
 // 	- If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
 //
@@ -58096,9 +61188,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources.
+//
 // Description:
 //
-// 	- If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
+//   If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
 //
 // 	- If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
 //
@@ -58122,6 +61218,15 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Tests the network connectivity between an API Gateway instance and a port on an Elastic Compute Service (ECS) or Server Load Balance (SLB) instance in a virtual private cloud (VPC) access authorization.
+//
+// @param request - ValidateVpcConnectivityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateVpcConnectivityResponse
 func (client *Client) ValidateVpcConnectivityWithOptions(request *ValidateVpcConnectivityRequest, runtime *util.RuntimeOptions) (_result *ValidateVpcConnectivityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58163,6 +61268,13 @@ func (client *Client) ValidateVpcConnectivityWithOptions(request *ValidateVpcCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Tests the network connectivity between an API Gateway instance and a port on an Elastic Compute Service (ECS) or Server Load Balance (SLB) instance in a virtual private cloud (VPC) access authorization.
+//
+// @param request - ValidateVpcConnectivityRequest
+//
+// @return ValidateVpcConnectivityResponse
 func (client *Client) ValidateVpcConnectivity(request *ValidateVpcConnectivityRequest) (_result *ValidateVpcConnectivityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ValidateVpcConnectivityResponse{}
