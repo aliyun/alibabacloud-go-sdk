@@ -1924,11 +1924,15 @@ func (s *QueryDataResponse) SetResults(v string) *QueryDataResponse {
 type AddAliClusterIdsToPrometheusGlobalViewRequest struct {
 	// The IDs of clusters. Separate multiple IDs with commas (,).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cd1d55bef19904324a20ed0ebb86caa5c,c5b48729918ab4745a24482ac29d0973a, c00a94896641449098bf24931e4166003, cd174485c09384060ba542bc1be1185a4
 	ClusterIds *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
 	// The ID of the global aggregation instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1936,11 +1940,15 @@ type AddAliClusterIdsToPrometheusGlobalViewRequest struct {
 	GlobalViewClusterId *string `json:"GlobalViewClusterId,omitempty" xml:"GlobalViewClusterId,omitempty"`
 	// The name of the global aggregation instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// zyGlobalView
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2107,17 +2115,23 @@ func (s *AddAliClusterIdsToPrometheusGlobalViewResponse) SetBody(v *AddAliCluste
 type AddGrafanaRequest struct {
 	// The ID of the Container Service for Kubernetes (ACK) cluster.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The abbreviation of the software that is supported by Application Real-Time Monitoring Service (ARMS). Valid values (case-insensitive): `ASM`, `IoT`, and `Flink`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// asm
 	Integration *string `json:"Integration,omitempty" xml:"Integration,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2213,17 +2227,23 @@ func (s *AddGrafanaResponse) SetBody(v *AddGrafanaResponseBody) *AddGrafanaRespo
 type AddIntegrationRequest struct {
 	// The ID of an Alibaba Cloud Container Service for Kubernetes cluster.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The software abbreviation that is supported by ARMS. Valid values (case-insensitive): `ASM`, `IoT`, and `Flink`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// asm
 	Integration *string `json:"Integration,omitempty" xml:"Integration,omitempty"`
 	// The region ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2341,17 +2361,23 @@ func (s *AddIntegrationResponse) SetBody(v *AddIntegrationResponseBody) *AddInte
 type AddPrometheusGlobalViewRequest struct {
 	// The queried global aggregation instances. The value is a JSON string.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [         {             "sourceName": "Data source name- ArmsPrometheus No.1",             "sourceType":"AlibabaPrometheus",             "userId":"UserID",             "clusterId":"ClusterId",         },         {             "sourceName": "Data source name - MetrcStore No.2",             "sourceType":"MetricStore",             "dataSource":"MetricStore remote read address",             "extras":{                 "username":"BasicAuthUsername",                 "password":"BasicAuthPassword"             }         },         {             "sourceName": "Custom ",             "sourceType":"CustomPrometheus",             "dataSource":"Build your own Prometheus data source remoteread address",             "extras":{                 "username":"BasicAuthUsername",                 "password":"BasicAuthPassword"             }         },         {           	"sourceName": "Other one ",             "sourceType":"Others",             "dataSource":"Other data sources such as Tencent remoteread address",             "headers":{                 "AnyHeaderToFill":"Headers to be populated"             },             "extras":{                 "username":"BasicAuthUsername",                 "password":"BasicAuthPassword"             }         }   // ....... more addre ]
 	Clusters *string `json:"Clusters,omitempty" xml:"Clusters,omitempty"`
 	// The name of the aggregation instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// zyGlobalView
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2533,7 +2559,7 @@ type AddPrometheusGlobalViewResponseBodyDataInfo struct {
 	//
 	// example:
 	//
-	// \[{"sourceName": "Data source name- ArmsPrometheus","sourceType":"AlibabaPrometheus","userId":"UserID","clusterId":"ClusterId",}]
+	// [{"sourceName": "Data source name- ArmsPrometheus","sourceType":"AlibabaPrometheus","userId":"UserID","clusterId":"ClusterId",}]
 	FailedInstances *string `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty"`
 	// The ID of the global aggregation instance.
 	//
@@ -2604,11 +2630,15 @@ func (s *AddPrometheusGlobalViewResponse) SetBody(v *AddPrometheusGlobalViewResp
 type AddPrometheusGlobalViewByAliClusterIdsRequest struct {
 	// The IDs of clusters. Separate multiple IDs with commas (,).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cd1d55bef19904324a20ed0ebb86caa5c,c5b48729918ab4745a24482ac29d0973a, c00a94896641449098bf24931e4166003, cd174485c09384060ba542bc1be1185a4
 	ClusterIds *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
 	// The name of the global aggregation instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2621,6 +2651,8 @@ type AddPrometheusGlobalViewByAliClusterIdsRequest struct {
 	// adcp
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2785,14 +2817,20 @@ func (s *AddPrometheusGlobalViewByAliClusterIdsResponse) SetBody(v *AddPrometheu
 }
 
 type AddPrometheusInstanceRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// notificationpolicy_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RW
@@ -2942,11 +2980,15 @@ func (s *AddPrometheusInstanceResponse) SetBody(v *AddPrometheusInstanceResponse
 type AddPrometheusIntegrationRequest struct {
 	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The type of the integration.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2954,11 +2996,15 @@ type AddPrometheusIntegrationRequest struct {
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The configurations of the exporter. The value is a JSON string.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"port":"5554","name":"kafka-test12","kafka_instance":"kafka-test","__label_value":"kafka-test","scrape_interval":33,"metrics_path":"/metrics","__label_key":"kafka-test"}
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3110,17 +3156,23 @@ func (s *AddPrometheusIntegrationResponse) SetBody(v *AddPrometheusIntegrationRe
 type AddPrometheusRemoteWriteRequest struct {
 	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// cc7a37ee31aea4ed1a059eff8034b\*\*\*\	- or vpc-xxxxx
+	// cc7a37ee31aea4ed1a059eff8034b\\*\\*\\*\\	- or vpc-xxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The details of the remote write configuration item. Specify the value in the YAML format.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3297,17 +3349,23 @@ func (s *AddPrometheusRemoteWriteResponse) SetBody(v *AddPrometheusRemoteWriteRe
 type AddRecordingRuleRequest struct {
 	// The cluster ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The custom recording rule. The value is in the YAML format.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3413,18 +3471,26 @@ func (s *AddRecordingRuleResponse) SetBody(v *AddRecordingRuleResponseBody) *Add
 }
 
 type AddTagToFlinkClusterRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c5defa51f******c92bd2ef5fb093269
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ab18f***93744d
 	FlinkWorkSpaceId *string `json:"FlinkWorkSpaceId,omitempty" xml:"FlinkWorkSpaceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// flink-demo
 	FlinkWorkSpaceName *string `json:"FlinkWorkSpaceName,omitempty" xml:"FlinkWorkSpaceName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3433,6 +3499,8 @@ type AddTagToFlinkClusterRequest struct {
 	//
 	// rg-acfmxyexli2****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 198608******7619
@@ -3558,11 +3626,15 @@ func (s *AddTagToFlinkClusterResponse) SetBody(v *AddTagToFlinkClusterResponseBo
 type AppendInstancesToPrometheusGlobalViewRequest struct {
 	// The list of global aggregation instances. The value is a JSON string.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// \[ { "sourceName": "Data source name- ArmsPrometheus No.1", "sourceType":"AlibabaPrometheus", "userId":"UserID", "clusterId":"ClusterId", }, { "sourceName": "Data source name - MetrcStore No.2", "sourceType":"MetricStore", "dataSource":"Remote read endpoint of the MetricStore", "extras":{ "username":"BasicAuthUsername", "password":"BasicAuthPassword" } }, { "sourceName": "Custom ", "sourceType":"CustomPrometheus", "dataSource":"Remote read endpoint of the self-managed Prometheus data source", "extras":{ "username":"BasicAuthUsername", "password":"BasicAuthPassword" } }, { "sourceName": "Other one ", "sourceType":"Others", "dataSource":"Endpoint of another data source such as Tencent remote read", "headers":{ "AnyHeaderToFill":"Headers to be filled" }, "extras":{ "username":"BasicAuthUsername", "password":"BasicAuthPassword" } } // ....... more addre ]
+	// [ { "sourceName": "Data source name- ArmsPrometheus No.1", "sourceType":"AlibabaPrometheus", "userId":"UserID", "clusterId":"ClusterId", }, { "sourceName": "Data source name - MetrcStore No.2", "sourceType":"MetricStore", "dataSource":"Remote read endpoint of the MetricStore", "extras":{ "username":"BasicAuthUsername", "password":"BasicAuthPassword" } }, { "sourceName": "Custom ", "sourceType":"CustomPrometheus", "dataSource":"Remote read endpoint of the self-managed Prometheus data source", "extras":{ "username":"BasicAuthUsername", "password":"BasicAuthPassword" } }, { "sourceName": "Other one ", "sourceType":"Others", "dataSource":"Endpoint of another data source such as Tencent remote read", "headers":{ "AnyHeaderToFill":"Headers to be filled" }, "extras":{ "username":"BasicAuthUsername", "password":"BasicAuthPassword" } } // ....... more addre ]
 	Clusters *string `json:"Clusters,omitempty" xml:"Clusters,omitempty"`
 	// The ID of the global aggregation instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3570,11 +3642,15 @@ type AppendInstancesToPrometheusGlobalViewRequest struct {
 	GlobalViewClusterId *string `json:"GlobalViewClusterId,omitempty" xml:"GlobalViewClusterId,omitempty"`
 	// The name of the global aggregation instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// zyGlobalView
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3731,17 +3807,23 @@ func (s *AppendInstancesToPrometheusGlobalViewResponse) SetBody(v *AppendInstanc
 type ApplyScenarioRequest struct {
 	// The ID of the application.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// b590lhguqs@28f515462f******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The configuration of the business monitoring job. The value is a JSON string. For more information about this parameter, see the following additional information about the **Config*	- parameter.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"rpcType":"0","nameMatchType":"EQUALS","service":"/api/pop/test","operator":"and","filterItems":[{"type":"HttpHeaders","key":"uid","opt":"==","value":"123456789"}],"group":{"type":"HttpRequestParameters","key":"name"}}
 	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The name of the business monitoring job.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3818,6 +3900,8 @@ type ApplyScenarioRequest struct {
 	// 	- `true`: update
 	//
 	// 	- `false`: insert
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3891,17 +3975,23 @@ func (s *ApplyScenarioRequest) SetUpdateOption(v bool) *ApplyScenarioRequest {
 type ApplyScenarioShrinkRequest struct {
 	// The ID of the application.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// b590lhguqs@28f515462f******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The configuration of the business monitoring job. The value is a JSON string. For more information about this parameter, see the following additional information about the **Config*	- parameter.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"rpcType":"0","nameMatchType":"EQUALS","service":"/api/pop/test","operator":"and","filterItems":[{"type":"HttpHeaders","key":"uid","opt":"==","value":"123456789"}],"group":{"type":"HttpRequestParameters","key":"name"}}
 	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The name of the business monitoring job.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3978,6 +4068,8 @@ type ApplyScenarioShrinkRequest struct {
 	// 	- `true`: update
 	//
 	// 	- `false`: insert
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4113,17 +4205,23 @@ func (s *ApplyScenarioResponse) SetBody(v *ApplyScenarioResponseBody) *ApplyScen
 type BindPrometheusGrafanaInstanceRequest struct {
 	// The ID of the Prometheus instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The ID of the Grafana workspace.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// grafana-bp1*****
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4254,6 +4352,8 @@ func (s *BindPrometheusGrafanaInstanceResponse) SetBody(v *BindPrometheusGrafana
 }
 
 type BlockAlarmNotificationRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 133
@@ -4262,10 +4362,14 @@ type BlockAlarmNotificationRequest struct {
 	//
 	// 2044049
 	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 180
@@ -4386,6 +4490,8 @@ func (s *BlockAlarmNotificationResponse) SetBody(v *BlockAlarmNotificationRespon
 }
 
 type ChangeAlarmSeverityRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 155
@@ -4394,10 +4500,14 @@ type ChangeAlarmSeverityRequest struct {
 	//
 	// 2046076
 	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// P1
@@ -4520,17 +4630,23 @@ func (s *ChangeAlarmSeverityResponse) SetBody(v *ChangeAlarmSeverityResponseBody
 type ChangeResourceGroupRequest struct {
 	// The ID of the new resource group. You can view the available resource groups in the Resource Management console.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// rg-aek2vezare****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	// The region ID of the resource.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4797,6 +4913,8 @@ type CheckServiceStatusRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service code of an Alibaba Cloud service. The service code of Managed Service for Prometheus is prometheus.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// prometheus
@@ -4888,6 +5006,8 @@ func (s *CheckServiceStatusResponse) SetBody(v *CheckServiceStatusResponseBody) 
 }
 
 type ClaimAlarmRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 30
@@ -4896,6 +5016,8 @@ type ClaimAlarmRequest struct {
 	//
 	// 2046076
 	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -5011,6 +5133,8 @@ func (s *ClaimAlarmResponse) SetBody(v *ClaimAlarmResponseBody) *ClaimAlarmRespo
 }
 
 type CloseAlarmRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 163
@@ -5019,6 +5143,8 @@ type CloseAlarmRequest struct {
 	//
 	// 2048065
 	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -5142,6 +5268,8 @@ func (s *CloseAlarmResponse) SetBody(v *CloseAlarmResponseBody) *CloseAlarmRespo
 type ConfigAppRequest struct {
 	// The process identifier (PID) of the application. Separate multiple PIDs with commas (,).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// iioe7jcnuk@582846f37******,atc889zkcf@d8deedfa9bf******
@@ -5157,6 +5285,8 @@ type ConfigAppRequest struct {
 	// true
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5203,7 +5333,7 @@ type ConfigAppResponseBody struct {
 	//
 	// example:
 	//
-	// abc@def success\nghi@jkl success\n
+	// abc@def success\\nghi@jkl success\\n
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
 	//
@@ -5288,6 +5418,8 @@ type CreateAlertContactRequest struct {
 	// 1381111****
 	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
 	// The ID of the region. Set the value to `cn-hangzhou`.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5417,6 +5549,8 @@ func (s *CreateAlertContactResponse) SetBody(v *CreateAlertContactResponseBody) 
 }
 
 type CreateAlertContactGroupRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// TestGroup
@@ -5425,6 +5559,8 @@ type CreateAlertContactGroupRequest struct {
 	//
 	// 12	- 23	- 34*
 	ContactIds *string `json:"ContactIds,omitempty" xml:"ContactIds,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -5635,10 +5771,14 @@ type CreateDispatchRuleRequest struct {
 	//
 	// 	- `_aliyun_arms_alert_level`: alert severity
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {   "system": false,   "ruleid": 10282,   "name": "Prometheus Alert",   "labelMatchExpressionGrid": {     "labelMatchExpressionGroups": [       {         "labelMatchExpressions": [           {             "key": "_aliyun_arms_involvedObject_kind",             "value": "app",             "operator": "eq"           }         ]       }     ]   },   "dispatchType": "CREATE_ALERT/DISCARD_ALERT",   "isRecover": true,   "groupRules": [     {       "groupId": 1,       "groupingFields": [         "alertname"       ],       "groupWait": 10,       "groupInterval": 15,       "repeatInterval": 20     }   ],   "notifyRules": [     {       "notifyObjects": [         {           "notifyType": "ARMS_CONTACT",           "name": "JohnDoe",           "notifyObjectId": 1         },         {           "notifyType": "ARMS_CONTACT_GROUP",           "name": "JohnDoe_group",           "notifyObjectId": 2         }       ],       "notifyChannels":["dingTalk","wechat","webhook","email"]     },   ], }
 	DispatchRule *string `json:"DispatchRule,omitempty" xml:"DispatchRule,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -5730,11 +5870,15 @@ type CreateEnvCustomJobRequest struct {
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The YAML configuration string of the custom job.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Refer to supplementary instructions.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
 	// The name of the custom job.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5742,11 +5886,15 @@ type CreateEnvCustomJobRequest struct {
 	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
 	// The ID of the environment instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5880,6 +6028,8 @@ type CreateEnvPodMonitorRequest struct {
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The YAML configuration string of the PodMonitor.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Refer to supplementary instructions.
@@ -5892,11 +6042,15 @@ type CreateEnvPodMonitorRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the environment instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6081,6 +6235,8 @@ type CreateEnvServiceMonitorRequest struct {
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The YAML configuration string of the ServiceMonitor.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Refer to supplementary instructions.
@@ -6093,11 +6249,15 @@ type CreateEnvServiceMonitorRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the environment instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6312,11 +6472,15 @@ type CreateEnvironmentRequest struct {
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The ID of the resource bound to the environment, such as the container ID or VPC ID. For a Cloud environment, specify the region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c6e9dec475dca4a50a188411d8cbxxx
 	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
 	// The name of the environment.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6330,6 +6494,8 @@ type CreateEnvironmentRequest struct {
 	//
 	// 	- Cloud: cloud service
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ECS, ACK, etc.
@@ -6341,6 +6507,8 @@ type CreateEnvironmentRequest struct {
 	// 	- ECS: ECS
 	//
 	// 	- Cloud: cloud service
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6376,11 +6544,16 @@ type CreateEnvironmentRequest struct {
 	PrometheusInstanceId *string `json:"PrometheusInstanceId,omitempty" xml:"PrometheusInstanceId,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -6579,14 +6752,20 @@ type CreateGrafanaWorkspaceRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10.0.x
 	GrafanaVersion *string `json:"GrafanaVersion,omitempty" xml:"GrafanaVersion,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// experts_edition
 	GrafanaWorkspaceEdition *string `json:"GrafanaWorkspaceEdition,omitempty" xml:"GrafanaWorkspaceEdition,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testgrafana
@@ -6595,6 +6774,8 @@ type CreateGrafanaWorkspaceRequest struct {
 	//
 	// Test123456!
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -6697,14 +6878,20 @@ type CreateGrafanaWorkspaceShrinkRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10.0.x
 	GrafanaVersion *string `json:"GrafanaVersion,omitempty" xml:"GrafanaVersion,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// experts_edition
 	GrafanaWorkspaceEdition *string `json:"GrafanaWorkspaceEdition,omitempty" xml:"GrafanaWorkspaceEdition,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testgrafana
@@ -6713,6 +6900,8 @@ type CreateGrafanaWorkspaceShrinkRequest struct {
 	//
 	// Test123456!
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -6887,6 +7076,8 @@ type CreateIntegrationRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the alert integration.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// CloudMonitor integration
@@ -6896,6 +7087,8 @@ type CreateIntegrationRequest struct {
 	// 	- CLOUD_MONITOR: CloudMonitor
 	//
 	// 	- LOG_SERVICE: Log Service
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7109,7 +7302,7 @@ type CreateOrUpdateAlertRuleRequest struct {
 	AlertCheckType *string `json:"AlertCheckType,omitempty" xml:"AlertCheckType,omitempty"`
 	// The alert contact group ID of the Prometheus alert rule. Valid values:
 	//
-	// 	- \-1: custom PromQL
+	// 	- \\-1: custom PromQL
 	//
 	// 	- 1: Kubernetes load
 	//
@@ -7130,6 +7323,8 @@ type CreateOrUpdateAlertRuleRequest struct {
 	// 546xxx
 	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
 	// The name of the alert rule.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7203,6 +7398,8 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	// 	- browser monitoring alert
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APPLICATION_MONITORING_ALERT_RULE
@@ -7211,7 +7408,7 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	// example:
 	//
-	// \[ { "Value": "PolarDB slow queries", "Name": "\_aliyun_display_name" }
+	// [ { "Value": "PolarDB slow queries", "Name": "_aliyun_display_name" }
 	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
 	// Specifies whether to apply the alert rule to new applications that are created in Application Monitoring or Browser Monitoring. Valid values:
 	//
@@ -7308,7 +7505,7 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	// example:
 	//
-	// Namespace: {{$labels.namespace}} / Pod: {{$labels.pod_name}} / Container: {{$labels.container}} Memory usage exceeds 80%. Current value: {{ printf \\\\\"%.2f\\\\\" $value }}%
+	// Namespace: {{$labels.namespace}} / Pod: {{$labels.pod_name}} / Container: {{$labels.container}} Memory usage exceeds 80%. Current value: {{ printf \\\\\\\\\\"%.2f\\\\\\\\\\" $value }}%
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The alert metrics. If you set the **AlertCheckType*	- parameter to **STATIC*	- when you create a Prometheus alert rule, you must specify the **MetricsKey*	- parameter.
 	//
@@ -7356,6 +7553,8 @@ type CreateOrUpdateAlertRuleRequest struct {
 	// node_memory_MemAvailable_bytes{} / node_memory_MemTotal_bytes{} 	- 100
 	PromQL *string `json:"PromQL,omitempty" xml:"PromQL,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7626,7 +7825,7 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
 	AlertCheckType *string `json:"AlertCheckType,omitempty" xml:"AlertCheckType,omitempty"`
 	// The alert contact group ID of the Prometheus alert rule. Valid values:
 	//
-	// 	- \-1: custom PromQL
+	// 	- \\-1: custom PromQL
 	//
 	// 	- 1: Kubernetes load
 	//
@@ -7710,7 +7909,7 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
 	//
 	// example:
 	//
-	// {\\"alarmContext\\":\\"{\\\\\"content\\\\\":\\\\Alert name: $Alert name\\\\\\nFilter condition: $Filter condition\\\\\\nAlert time: $Alert time\\\\\\nAlert content: $Alert content\\\\\\nNote: The alert persists before you receive an email that reminds you to clear the alert. You will be reminded of the alert again 24 hours later. \\\\\",\\\\\"subTitle\\\\\":\\\\\"\\\\\"}\\",\\"alertWays\\":\\"\[0,1]\\",\\"contactGroupIds\\":\\"381,5075\\",\\"notice\\":\\"{\\\\\"endTime\\\\\":1480607940000,\\\\\"noticeEndTime\\\\\":1480607940000,\\\\\"noticeStartTime\\\\\":1480521600000,\\\\\"startTime\\\\\":1480521600000}\\"}
+	// {\\\\"alarmContext\\\\":\\\\"{\\\\\\\\\\"content\\\\\\\\\\":\\\\\\\\Alert name: $Alert name\\\\\\\\\\\\nFilter condition: $Filter condition\\\\\\\\\\\\nAlert time: $Alert time\\\\\\\\\\\\nAlert content: $Alert content\\\\\\\\\\\\nNote: The alert persists before you receive an email that reminds you to clear the alert. You will be reminded of the alert again 24 hours later. \\\\\\\\\\",\\\\\\\\\\"subTitle\\\\\\\\\\":\\\\\\\\\\"\\\\\\\\\\"}\\\\",\\\\"alertWays\\\\":\\\\"[0,1]\\\\",\\\\"contactGroupIds\\\\":\\\\"381,5075\\\\",\\\\"notice\\\\":\\\\"{\\\\\\\\\\"endTime\\\\\\\\\\":1480607940000,\\\\\\\\\\"noticeEndTime\\\\\\\\\\":1480607940000,\\\\\\\\\\"noticeStartTime\\\\\\\\\\":1480521600000,\\\\\\\\\\"startTime\\\\\\\\\\":1480521600000}\\\\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The filter conditions of the Application Monitoring or Browser Monitoring alert rule.
 	Filters *CreateOrUpdateAlertRuleResponseBodyAlertRuleFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
@@ -7736,7 +7935,7 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
 	//
 	// example:
 	//
-	// Namespace: {{$labels.namespace}} / Pod: {{$labels.pod_name}} / Container: {{$labels.container}} Memory usage exceeds 80%. Current value: {{ printf \\\\\"%.2f\\\\\" $value }}%
+	// Namespace: {{$labels.namespace}} / Pod: {{$labels.pod_name}} / Container: {{$labels.container}} Memory usage exceeds 80%. Current value: {{ printf \\\\\\\\\\"%.2f\\\\\\\\\\" $value }}%
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The metric type of the Application Monitoring or Browser Monitoring alert rule.
 	//
@@ -8128,7 +8327,7 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersCustomSLSFilters struct 
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The logical operator of the filter condition. Valid values:
 	//
-	// 	- \=: equal to
+	// 	- \\=: equal to
 	//
 	// 	- not: not equal to
 	//
@@ -8336,6 +8535,8 @@ type CreateOrUpdateContactRequest struct {
 	// 123
 	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
 	// The name of the alert contact.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8620,6 +8821,8 @@ type CreateOrUpdateContactGroupRequest struct {
 	// 123
 	ContactGroupId *int64 `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
 	// The name of the alert contact group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9077,6 +9280,8 @@ type CreateOrUpdateIMRobotRequest struct {
 	EnableOutgoing *bool `json:"EnableOutgoing,omitempty" xml:"EnableOutgoing,omitempty"`
 	// The webhook URL of the IM chatbot.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=e1a049121******
@@ -9090,6 +9295,8 @@ type CreateOrUpdateIMRobotRequest struct {
 	// 123
 	RobotId *int64 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
 	// The name of the IM chatbot.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9432,6 +9639,8 @@ type CreateOrUpdateNotificationPolicyRequest struct {
 	MatchingRules *string `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty"`
 	// The name of the notification policy.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// notificationpolicy_test
@@ -9466,6 +9675,8 @@ type CreateOrUpdateNotificationPolicyRequest struct {
 	//
 	//      }]
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {     "notifyStartTime":"00:00",     "notifyEndTime":"23:59",     "notifyChannels":[         "dingTalk",         "email",         "sms",         "tts",         "webhook"     ],     "notifyObjects":[         {             "notifyObjectType":"CONTACT",             "notifyObjectId":123,             "notifyObjectName":"test"         }     ] }
@@ -9482,7 +9693,7 @@ type CreateOrUpdateNotificationPolicyRequest struct {
 	//
 	//  &gt;  App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }}
 	//
-	//  {{ end }}{{ for .alerts }} &gt;  {{ .annotations.message }} {{if .generatorURL }} [Details]({{.generatorURL}})  {{end}} {{if .annotations._aliyun_arms_insights_analyze_link }}[&lt;font color=\"#ff0000\"&gt;diagnostic analysis&lt;/font&gt;]({{ .annotations._aliyun_arms_insights_analyze_link}}){{ end }}{{if  eq "1" .labels._aliyun_arms_denoise_code }} (Important:{{.labels._aliyun_arms_important_reason }}) {{end}}
+	//  {{ end }}{{ for .alerts }} &gt;  {{ .annotations.message }} {{if .generatorURL }} [Details]({{.generatorURL}})  {{end}} {{if .annotations._aliyun_arms_insights_analyze_link }}[&lt;font color=\\"#ff0000\\"&gt;diagnostic analysis&lt;/font&gt;]({{ .annotations._aliyun_arms_insights_analyze_link}}){{ end }}{{if  eq "1" .labels._aliyun_arms_denoise_code }} (Important:{{.labels._aliyun_arms_important_reason }}) {{end}}
 	//
 	// {{end}}
 	NotifyTemplate *string `json:"NotifyTemplate,omitempty" xml:"NotifyTemplate,omitempty"`
@@ -10044,7 +10255,7 @@ type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyTemplat
 	//
 	//  &gt;  App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }}
 	//
-	//  {{ end }}{{ for .alerts }} &gt;  {{ .annotations.message }} {{if .generatorURL }} [Details]({{.generatorURL}})  {{end}} {{if .annotations._aliyun_arms_insights_analyze_link }}[&lt;font color=\"#ff0000\"&gt;diagnostic analysis&lt;/font&gt;]({{ .annotations._aliyun_arms_insights_analyze_link}}){{ end }}{{if  eq "1" .labels._aliyun_arms_denoise_code }} (Important:{{.labels._aliyun_arms_important_reason }}) {{end}}
+	//  {{ end }}{{ for .alerts }} &gt;  {{ .annotations.message }} {{if .generatorURL }} [Details]({{.generatorURL}})  {{end}} {{if .annotations._aliyun_arms_insights_analyze_link }}[&lt;font color=\\"#ff0000\\"&gt;diagnostic analysis&lt;/font&gt;]({{ .annotations._aliyun_arms_insights_analyze_link}}){{ end }}{{if  eq "1" .labels._aliyun_arms_denoise_code }} (Important:{{.labels._aliyun_arms_important_reason }}) {{end}}
 	//
 	// {{end}}
 	RobotContent *string `json:"RobotContent,omitempty" xml:"RobotContent,omitempty"`
@@ -10240,6 +10451,8 @@ type CreateOrUpdateSilencePolicyRequest struct {
 	// [ 	 { 	 "matchingConditions": [ 	 { 	 "value": "test", 	 "key": "altertname", 	 "operator": "eq" 	 } 	 ]      } 	 ]
 	MatchingRules *string `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty"`
 	// The name of the silence policy.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10466,11 +10679,11 @@ type CreateOrUpdateWebhookContactRequest struct {
 	//
 	// [{"content":"mike"}]
 	BizParams *string `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
-	// The notification template that is sent when an alert is triggered. This parameter is required if the **Method*	- parameter is set to **Post**. You can use the `$content` placeholder to specify the notification content. The content cannot exceed 500 characters in length. For more information, see [Variable description of a notification template](~~251834~~).\\
+	// The notification template that is sent when an alert is triggered. This parameter is required if the **Method*	- parameter is set to **Post**. You can use the `$content` placeholder to specify the notification content. The content cannot exceed 500 characters in length. For more information, see [Variable description of a notification template](https://help.aliyun.com/document_detail/251834.html).\\\\
 	//
 	// example:
 	//
-	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels.\_aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels.\_aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Alert time":"{{ .startTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
+	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Alert time":"{{ .startTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	// The HTTP request method.
 	//
@@ -10478,17 +10691,21 @@ type CreateOrUpdateWebhookContactRequest struct {
 	//
 	// 	- Get
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Post
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The notification template that is sent when an alert is resolved. This parameter is required if the **Method*	- parameter is set to **Post**. You can use the `$content` placeholder to specify the notification content. The content cannot exceed 500 characters in length. For more information, see [Variable description of a notification template](~~251834~~).
+	// The notification template that is sent when an alert is resolved. This parameter is required if the **Method*	- parameter is set to **Post**. You can use the `$content` placeholder to specify the notification content. The content cannot exceed 500 characters in length. For more information, see [Variable description of a notification template](https://help.aliyun.com/document_detail/251834.html).
 	//
 	// example:
 	//
-	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels.\_aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels.\_aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Recovery time":"{{ .endTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
+	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Recovery time":"{{ .endTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
 	RecoverBody *string `json:"RecoverBody,omitempty" xml:"RecoverBody,omitempty"`
 	// The URL of the HTTP request **method**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10505,6 +10722,8 @@ type CreateOrUpdateWebhookContactRequest struct {
 	// 123
 	WebhookId *int64 `json:"WebhookId,omitempty" xml:"WebhookId,omitempty"`
 	// The name of the webhook alert contact.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10646,7 +10865,7 @@ type CreateOrUpdateWebhookContactResponseBodyWebhookContactWebhook struct {
 	//
 	// example:
 	//
-	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels.\_aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels.\_aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Alert time":"{{ .startTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
+	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Alert time":"{{ .startTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	// The HTTP request method.
 	//
@@ -10662,7 +10881,7 @@ type CreateOrUpdateWebhookContactResponseBodyWebhookContactWebhook struct {
 	//
 	// example:
 	//
-	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels.\_aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels.\_aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Recovery time":"{{ .endTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
+	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Recovery time":"{{ .endTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
 	RecoverBody *string `json:"RecoverBody,omitempty" xml:"RecoverBody,omitempty"`
 	// The URL of the request method.
 	//
@@ -10740,6 +10959,8 @@ func (s *CreateOrUpdateWebhookContactResponse) SetBody(v *CreateOrUpdateWebhookC
 }
 
 type CreatePrometheusAlertRuleRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Prometheus_Alert
@@ -10748,6 +10969,8 @@ type CreatePrometheusAlertRuleRequest struct {
 	//
 	// [{"Value": "xxx","Name": "description"}]
 	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c0bad479465464e1d8c1e641b0afb****
@@ -10755,21 +10978,27 @@ type CreatePrometheusAlertRuleRequest struct {
 	// example:
 	//
 	// 10282
-	DispatchRuleId *int64  `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
-	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	DispatchRuleId *int64 `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
+	// This parameter is required.
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
-	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \"pod_name\", \"$1\", \"pod\", \"(.*)\")) by (pod_name))>75
+	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \\"pod_name\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (pod_name))>75
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// example:
 	//
 	// [{"Value": "critical","Name": "severity"}]
-	Labels  *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// This parameter is required.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
 	// ALERT_MANAGER
 	NotifyType *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -10937,7 +11166,7 @@ type CreatePrometheusAlertRuleResponseBodyPrometheusAlertRule struct {
 	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// example:
 	//
-	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \"pod_name\", \"$1\", \"pod\", \"(.*)\")) by (pod_name))>75
+	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \\"pod_name\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (pod_name))>75
 	Expression *string                                                           `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	Labels     []*CreatePrometheusAlertRuleResponseBodyPrometheusAlertRuleLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	Message    *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -11143,6 +11372,8 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// 	- aliyun-cs(Not supported): Prometheus instance for Container Service for Kubernetes (ACK).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// remote-write
@@ -11160,6 +11391,8 @@ type CreatePrometheusInstanceRequest struct {
 	// grafana-bp1*****
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
 	// The ID of the region. If you use a Prometheus instance to monitor an Alibaba Cloud service in China, this parameter must be set to cn-shanghai.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11483,17 +11716,23 @@ func (s *CreatePrometheusInstanceResponse) SetBody(v *CreatePrometheusInstanceRe
 type CreatePrometheusMonitoringRequest struct {
 	// The ID of the Prometheus instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The monitoring configuration. Specify a YAML string.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Please refer to the supplementary explanation of the request parameters.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11510,6 +11749,8 @@ type CreatePrometheusMonitoringRequest struct {
 	// Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, customJob, and probe.
 	//
 	// Valid values for a Prometheus instance for ECS: customJob and probe.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11637,6 +11878,8 @@ func (s *CreatePrometheusMonitoringResponse) SetBody(v *CreatePrometheusMonitori
 type CreateRetcodeAppRequest struct {
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -11649,11 +11892,15 @@ type CreateRetcodeAppRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the application that is monitored by Browser Monitoring.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// SdkTest
 	RetcodeAppName *string `json:"RetcodeAppName,omitempty" xml:"RetcodeAppName,omitempty"`
 	// The site type.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11943,6 +12190,8 @@ type CreateRumAppRequest struct {
 	//
 	// default
 	AppGroup *string `json:"AppGroup,omitempty" xml:"AppGroup,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test-app
@@ -11952,6 +12201,8 @@ type CreateRumAppRequest struct {
 	//
 	// com.xxxx.xxxxxx
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -11960,6 +12211,8 @@ type CreateRumAppRequest struct {
 	//
 	// rg-acfmxyexli2****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// web
@@ -12177,6 +12430,8 @@ type CreateRumUploadFileUrlRequest struct {
 	//
 	// iioe7jcnuk@582846f37******
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -12343,27 +12598,39 @@ type CreateSyntheticTaskRequest struct {
 	CommonParam    *CreateSyntheticTaskRequestCommonParam    `json:"CommonParam,omitempty" xml:"CommonParam,omitempty" type:"Struct"`
 	Download       *CreateSyntheticTaskRequestDownload       `json:"Download,omitempty" xml:"Download,omitempty" type:"Struct"`
 	ExtendInterval *CreateSyntheticTaskRequestExtendInterval `json:"ExtendInterval,omitempty" xml:"ExtendInterval,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 5
 	IntervalTime *string `json:"IntervalTime,omitempty" xml:"IntervalTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	IntervalType *string `json:"IntervalType,omitempty" xml:"IntervalType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
-	IpType      *int64                                   `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	IpType *int64 `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// This parameter is required.
 	MonitorList []*CreateSyntheticTaskRequestMonitorList `json:"MonitorList,omitempty" xml:"MonitorList,omitempty" type:"Repeated"`
 	Navigation  *CreateSyntheticTaskRequestNavigation    `json:"Navigation,omitempty" xml:"Navigation,omitempty" type:"Struct"`
 	Net         *CreateSyntheticTaskRequestNet           `json:"Net,omitempty" xml:"Net,omitempty" type:"Struct"`
 	Protocol    *CreateSyntheticTaskRequestProtocol      `json:"Protocol,omitempty" xml:"Protocol,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -12372,6 +12639,8 @@ type CreateSyntheticTaskRequest struct {
 	//
 	// false
 	UpdateTask *bool `json:"UpdateTask,omitempty" xml:"UpdateTask,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://www.example.com
@@ -12594,7 +12863,7 @@ type CreateSyntheticTaskRequestDownload struct {
 	VerifyWay *int64 `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
 	// example:
 	//
-	// [{\"src\":\"211.154.166.174\"}]
+	// [{\\"src\\":\\"211.154.166.174\\"}]
 	WhiteList *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
 }
 
@@ -12743,14 +13012,20 @@ func (s *CreateSyntheticTaskRequestExtendInterval) SetStartTime(v string) *Creat
 }
 
 type CreateSyntheticTaskRequestMonitorList struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1100101
 	CityCode *int64 `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// IDC
 	MonitorType *int64 `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 18
@@ -13445,27 +13720,39 @@ type CreateSyntheticTaskShrinkRequest struct {
 	CommonParamShrink    *string `json:"CommonParam,omitempty" xml:"CommonParam,omitempty"`
 	DownloadShrink       *string `json:"Download,omitempty" xml:"Download,omitempty"`
 	ExtendIntervalShrink *string `json:"ExtendInterval,omitempty" xml:"ExtendInterval,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 5
 	IntervalTime *string `json:"IntervalTime,omitempty" xml:"IntervalTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	IntervalType *string `json:"IntervalType,omitempty" xml:"IntervalType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
-	IpType            *int64  `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	IpType *int64 `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// This parameter is required.
 	MonitorListShrink *string `json:"MonitorList,omitempty" xml:"MonitorList,omitempty"`
 	NavigationShrink  *string `json:"Navigation,omitempty" xml:"Navigation,omitempty"`
 	NetShrink         *string `json:"Net,omitempty" xml:"Net,omitempty"`
 	ProtocolShrink    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -13474,6 +13761,8 @@ type CreateSyntheticTaskShrinkRequest struct {
 	//
 	// false
 	UpdateTask *bool `json:"UpdateTask,omitempty" xml:"UpdateTask,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://www.example.com
@@ -13660,20 +13949,30 @@ type CreateTimingSyntheticTaskRequest struct {
 	AvailableAssertions []*CreateTimingSyntheticTaskRequestAvailableAssertions `json:"AvailableAssertions,omitempty" xml:"AvailableAssertions,omitempty" type:"Repeated"`
 	CommonSetting       *CreateTimingSyntheticTaskRequestCommonSetting         `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty" type:"Struct"`
 	CustomPeriod        *CreateTimingSyntheticTaskRequestCustomPeriod          `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 5m
 	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
-	MonitorCategory *int32                                       `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
-	MonitorConf     *CreateTimingSyntheticTaskRequestMonitorConf `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty" type:"Struct"`
-	Monitors        []*CreateTimingSyntheticTaskRequestMonitors  `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
+	MonitorCategory *int32 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	// This parameter is required.
+	MonitorConf *CreateTimingSyntheticTaskRequestMonitorConf `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty" type:"Struct"`
+	// This parameter is required.
+	Monitors []*CreateTimingSyntheticTaskRequestMonitors `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// demo-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -13683,6 +13982,8 @@ type CreateTimingSyntheticTaskRequest struct {
 	// xxxx
 	ResourceGroupId *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tags            []*CreateTimingSyntheticTaskRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4
@@ -13758,10 +14059,14 @@ func (s *CreateTimingSyntheticTaskRequest) SetTaskType(v int32) *CreateTimingSyn
 }
 
 type CreateTimingSyntheticTaskRequestAvailableAssertions struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 200
 	Expect *string `json:"Expect,omitempty" xml:"Expect,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// eq
@@ -13770,6 +14075,8 @@ type CreateTimingSyntheticTaskRequestAvailableAssertions struct {
 	//
 	// key
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// DnsARecord
@@ -13870,7 +14177,10 @@ func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetXtraceRegion(v string
 }
 
 type CreateTimingSyntheticTaskRequestCommonSettingCustomHost struct {
+	// This parameter is required.
 	Hosts []*CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -13896,15 +14206,20 @@ func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomHost) SetSelectType(
 }
 
 type CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
-	IpType *int32    `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	Ips    []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
+	IpType *int32 `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// This parameter is required.
+	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
 }
 
 func (s CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) String() string {
@@ -13995,10 +14310,14 @@ func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting) SetVpcId
 }
 
 type CreateTimingSyntheticTaskRequestCustomPeriod struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 22
 	EndHour *int32 `json:"EndHour,omitempty" xml:"EndHour,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 8
@@ -14089,6 +14408,8 @@ type CreateTimingSyntheticTaskRequestMonitorConfApiHTTP struct {
 	ProtocolAlpnProtocol *int32                                                         `json:"ProtocolAlpnProtocol,omitempty" xml:"ProtocolAlpnProtocol,omitempty"`
 	RequestBody          *CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody `json:"RequestBody,omitempty" xml:"RequestBody,omitempty" type:"Struct"`
 	RequestHeaders       map[string]*string                                             `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// http://www.demo.com/api/list
@@ -14232,6 +14553,8 @@ type CreateTimingSyntheticTaskRequestMonitorConfFileDownload struct {
 	//
 	// 1
 	Redirection *int32 `json:"Redirection,omitempty" xml:"Redirection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://img.alicdn.com/tfs/TB13DzOjXP7gK0jSZFjXXc5aXXa-212-48.png
@@ -14356,6 +14679,8 @@ type CreateTimingSyntheticTaskRequestMonitorConfNetDNS struct {
 	//
 	// 0
 	QueryMethod *int32 `json:"QueryMethod,omitempty" xml:"QueryMethod,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// www.aliyun.com
@@ -14416,6 +14741,8 @@ type CreateTimingSyntheticTaskRequestMonitorConfNetICMP struct {
 	//
 	// true
 	SplitPackage *bool `json:"SplitPackage,omitempty" xml:"SplitPackage,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// www.example.com
@@ -14500,6 +14827,8 @@ type CreateTimingSyntheticTaskRequestMonitorConfNetTCP struct {
 	//
 	// 200
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// www.example.com
@@ -14661,6 +14990,8 @@ type CreateTimingSyntheticTaskRequestMonitorConfWebsite struct {
 	//
 	// 5000
 	SlowElementThreshold *int64 `json:"SlowElementThreshold,omitempty" xml:"SlowElementThreshold,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://www.aliyun.com
@@ -14777,14 +15108,20 @@ func (s *CreateTimingSyntheticTaskRequestMonitorConfWebsite) SetWaitCompletionTi
 }
 
 type CreateTimingSyntheticTaskRequestMonitors struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100023
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	ClientType *int32 `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -14847,20 +15184,30 @@ type CreateTimingSyntheticTaskShrinkRequest struct {
 	AvailableAssertionsShrink *string `json:"AvailableAssertions,omitempty" xml:"AvailableAssertions,omitempty"`
 	CommonSettingShrink       *string `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty"`
 	CustomPeriodShrink        *string `json:"CustomPeriod,omitempty" xml:"CustomPeriod,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 5m
 	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
-	MonitorCategory   *int32  `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	MonitorCategory *int32 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	// This parameter is required.
 	MonitorConfShrink *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
-	MonitorsShrink    *string `json:"Monitors,omitempty" xml:"Monitors,omitempty"`
+	// This parameter is required.
+	MonitorsShrink *string `json:"Monitors,omitempty" xml:"Monitors,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// demo-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -14870,6 +15217,8 @@ type CreateTimingSyntheticTaskShrinkRequest struct {
 	// xxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4
@@ -15060,11 +15409,15 @@ func (s *CreateTimingSyntheticTaskResponse) SetBody(v *CreateTimingSyntheticTask
 type CreateWebhookRequest struct {
 	// The notification template that is sent when an alert is triggered. This parameter is required if the **Method*	- parameter is set to **Post**. You can use the $content placeholder to specify the notification content. The content cannot exceed 500 characters in length.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// { "Alert Name": "{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster Name": "{{ .commonLabels.clustername }} {{ end }}{{if eq " app" .commonLabels._aliyun_arms_involvedObject_kind }}", "Application Name": "{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}", "Notification Policy": "{{ .dispatchRuleName }}", "Alarm Time": "{{ .startTime }}", "Alert Content": "{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	// The name of the contact.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15088,6 +15441,8 @@ type CreateWebhookRequest struct {
 	//
 	// 	- `Post`
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Post
@@ -15100,11 +15455,15 @@ type CreateWebhookRequest struct {
 	RecoverBody *string `json:"RecoverBody,omitempty" xml:"RecoverBody,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The URL of the request **method**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15231,6 +15590,8 @@ type DelAuthTokenRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -15320,6 +15681,8 @@ func (s *DelAuthTokenResponse) SetBody(v *DelAuthTokenResponseBody) *DelAuthToke
 type DeleteAddonReleaseRequest struct {
 	// Environment ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxx
@@ -15337,6 +15700,8 @@ type DeleteAddonReleaseRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Name of Release.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15474,11 +15839,15 @@ func (s *DeleteAddonReleaseResponse) SetBody(v *DeleteAddonReleaseResponseBody) 
 type DeleteAlertContactRequest struct {
 	// The ID of the alert contact.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
 	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15573,11 +15942,15 @@ func (s *DeleteAlertContactResponse) SetBody(v *DeleteAlertContactResponseBody) 
 type DeleteAlertContactGroupRequest struct {
 	// The ID of the alert contact group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
 	ContactGroupId *int64 `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15676,6 +16049,8 @@ type DeleteAlertRuleRequest struct {
 	//
 	// 	- `false`: The specified data fails to be deleted.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -15762,10 +16137,14 @@ func (s *DeleteAlertRuleResponse) SetBody(v *DeleteAlertRuleResponseBody) *Delet
 }
 
 type DeleteAlertRulesRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [123, 234]
 	AlertIds *string `json:"AlertIds,omitempty" xml:"AlertIds,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -15888,7 +16267,7 @@ type DeleteAppListResponseBody struct {
 	//
 	// example:
 	//
-	// "{\"code\":200,\"data\":\"{\\\"code\\\":200,\\\"data\\\":true,\\\"errorCode\\ \":\\\"Deletion of application successful\\\",\\\"Message\\\":\\\"Deletion of application successful\\\",\\\"Successful\\\":true,\ \\"traceId\\\":\\\"0bc1667516940677164677396d0088\\\"}\",\"errorCode\":\"Batch deletion of applications successful\",\"message\":\"Batch deletion of applications successful\ ",\"Success\":true,\"traceId\":\"210f470416940677161213505e0e7a\"}"
+	// "{\\"code\\":200,\\"data\\":\\"{\\\\\\"code\\\\\\":200,\\\\\\"data\\\\\\":true,\\\\\\"errorCode\\\\ \\":\\\\\\"Deletion of application successful\\\\\\",\\\\\\"Message\\\\\\":\\\\\\"Deletion of application successful\\\\\\",\\\\\\"Successful\\\\\\":true,\\ \\\\"traceId\\\\\\":\\\\\\"0bc1667516940677164677396d0088\\\\\\"}\\",\\"errorCode\\":\\"Batch deletion of applications successful\\",\\"message\\":\\"Batch deletion of applications successful\\ ",\\"Success\\":true,\\"traceId\\":\\"210f470416940677161213505e0e7a\\"}"
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error message returned when the request parameters are invalid.
 	//
@@ -15977,10 +16356,14 @@ func (s *DeleteAppListResponse) SetBody(v *DeleteAppListResponseBody) *DeleteApp
 }
 
 type DeleteCmsExporterRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -16066,6 +16449,8 @@ func (s *DeleteCmsExporterResponse) SetBody(v *DeleteCmsExporterResponseBody) *D
 type DeleteContactRequest struct {
 	// The operation that you want to perform. Set the value to **DeleteContact**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -16145,6 +16530,8 @@ func (s *DeleteContactResponse) SetBody(v *DeleteContactResponseBody) *DeleteCon
 
 type DeleteContactGroupRequest struct {
 	// The ID of the alert contact group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16232,10 +16619,14 @@ func (s *DeleteContactGroupResponse) SetBody(v *DeleteContactGroupResponseBody) 
 }
 
 type DeleteDispatchRuleRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -16321,17 +16712,23 @@ func (s *DeleteDispatchRuleResponse) SetBody(v *DeleteDispatchRuleResponseBody) 
 type DeleteEnvCustomJobRequest struct {
 	// Custom job name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// job1
 	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
 	// Environment ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16449,11 +16846,15 @@ func (s *DeleteEnvCustomJobResponse) SetBody(v *DeleteEnvCustomJobResponseBody) 
 type DeleteEnvPodMonitorRequest struct {
 	// Environment instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The namespace where podMonitor is located
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16461,11 +16862,15 @@ type DeleteEnvPodMonitorRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// PodMonitor name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// arms-admin-pm1
 	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16588,11 +16993,15 @@ func (s *DeleteEnvPodMonitorResponse) SetBody(v *DeleteEnvPodMonitorResponseBody
 type DeleteEnvServiceMonitorRequest struct {
 	// Environment instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The name of the namespace.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16600,11 +17009,15 @@ type DeleteEnvServiceMonitorRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The ID of the region.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// ServiceMonitor name.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16727,17 +17140,24 @@ func (s *DeleteEnvServiceMonitorResponse) SetBody(v *DeleteEnvServiceMonitorResp
 type DeleteEnvironmentRequest struct {
 	// cascade delete Prometheus instance.
 	//
+	// if can be null:
+	// true
+	//
 	// example:
 	//
 	// true
 	DeletePromInstance *bool `json:"DeletePromInstance,omitempty" xml:"DeletePromInstance,omitempty"`
 	// The ID of the environment instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16853,10 +17273,14 @@ func (s *DeleteEnvironmentResponse) SetBody(v *DeleteEnvironmentResponseBody) *D
 }
 
 type DeleteEnvironmentFeatureRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// metric-agent
@@ -17068,17 +17492,23 @@ func (s *DeleteEventBridgeIntegrationResponse) SetBody(v *DeleteEventBridgeInteg
 type DeleteGrafanaResourceRequest struct {
 	// The ID of the cluster.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the cluster.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// clusterNameOfTest
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17194,10 +17624,14 @@ func (s *DeleteGrafanaResourceResponse) SetBody(v *DeleteGrafanaResourceResponse
 }
 
 type DeleteGrafanaWorkspaceRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// grafana-rnglkcdrntlhk0****
 	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -17319,6 +17753,8 @@ func (s *DeleteGrafanaWorkspaceResponse) SetBody(v *DeleteGrafanaWorkspaceRespon
 type DeleteIMRobotRequest struct {
 	// The ID of the IM chatbot.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -17407,17 +17843,23 @@ func (s *DeleteIMRobotResponse) SetBody(v *DeleteIMRobotResponseBody) *DeleteIMR
 type DeleteIntegrationRequest struct {
 	// The ID of the ACK cluster.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The abbreviation of the software that is supported by Application Real-Time Monitoring Service (ARMS). Valid values (case-insensitive): `ASM`, `IoT`, and `Flink`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// asm
 	Integration *string `json:"Integration,omitempty" xml:"Integration,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17533,6 +17975,8 @@ func (s *DeleteIntegrationResponse) SetBody(v *DeleteIntegrationResponseBody) *D
 }
 
 type DeleteIntegrationsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234
@@ -17612,6 +18056,8 @@ func (s *DeleteIntegrationsResponse) SetBody(v *DeleteIntegrationsResponseBody) 
 
 type DeleteNotificationPolicyRequest struct {
 	// Deletes a notification policy based on its ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17700,6 +18146,8 @@ type DeletePrometheusAlertRuleRequest struct {
 	// 	- `true`: The alert rule was deleted.
 	//
 	// 	- `false`: The alert rule failed to be deleted.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17801,11 +18249,15 @@ func (s *DeletePrometheusAlertRuleResponse) SetBody(v *DeletePrometheusAlertRule
 type DeletePrometheusGlobalViewRequest struct {
 	// The ID of the global aggregation instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// global-v2-cn-1670100631025794-amaykca4
 	GlobalViewClusterId *string `json:"GlobalViewClusterId,omitempty" xml:"GlobalViewClusterId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17918,6 +18370,8 @@ func (s *DeletePrometheusGlobalViewResponse) SetBody(v *DeletePrometheusGlobalVi
 type DeletePrometheusIntegrationRequest struct {
 	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
@@ -17930,11 +18384,15 @@ type DeletePrometheusIntegrationRequest struct {
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the integration.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// kafka and mysql.
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18057,17 +18515,23 @@ func (s *DeletePrometheusIntegrationResponse) SetBody(v *DeletePrometheusIntegra
 type DeletePrometheusMonitoringRequest struct {
 	// The ID of the Prometheus instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the monitoring configuration.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// customJob1
 	MonitoringName *string `json:"MonitoringName,omitempty" xml:"MonitoringName,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18078,6 +18542,8 @@ type DeletePrometheusMonitoringRequest struct {
 	// Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, customJob, and probe.
 	//
 	// Valid values for a Prometheus instance for ECS: customJob and probe.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18200,17 +18666,23 @@ func (s *DeletePrometheusMonitoringResponse) SetBody(v *DeletePrometheusMonitori
 type DeletePrometheusRemoteWriteRequest struct {
 	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// cc7a37ee31aea4ed1a059eff8034b\*\*\*\	- or vpc-xxxx
+	// cc7a37ee31aea4ed1a059eff8034b\\*\\*\\*\\	- or vpc-xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The names of the remote write configuration items that you want to delete. Separate configuration items with commas (,).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18351,11 +18823,15 @@ type DeleteRetcodeAppRequest struct {
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The process identifier (PID) of the application.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// aokcdqn3ly@741623b4e91****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18499,10 +18975,14 @@ type DeleteRumAppRequest struct {
 	//
 	// default
 	AppGroup *string `json:"AppGroup,omitempty" xml:"AppGroup,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// b590lhguqs@28f515462******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -18646,6 +19126,8 @@ type DeleteRumUploadFileRequest struct {
 	//
 	// atc889zkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -18795,6 +19277,8 @@ type DeleteScenarioRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the business monitoring job. You can obtain the ID by calling the ListScenario operation.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 132
@@ -18888,6 +19372,8 @@ func (s *DeleteScenarioResponse) SetBody(v *DeleteScenarioResponseBody) *DeleteS
 type DeleteSilencePolicyRequest struct {
 	// The ID of the request.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234
@@ -18974,11 +19460,16 @@ func (s *DeleteSilencePolicyResponse) SetBody(v *DeleteSilencePolicyResponseBody
 }
 
 type DeleteSourceMapRequest struct {
+	// This parameter is required.
 	FidList []*string `json:"FidList,omitempty" xml:"FidList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// atc889zkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -19009,11 +19500,16 @@ func (s *DeleteSourceMapRequest) SetRegionId(v string) *DeleteSourceMapRequest {
 }
 
 type DeleteSourceMapShrinkRequest struct {
+	// This parameter is required.
 	FidListShrink *string `json:"FidList,omitempty" xml:"FidList,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// atc889zkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -19102,11 +19598,14 @@ func (s *DeleteSourceMapResponse) SetBody(v *DeleteSourceMapResponseBody) *Delet
 }
 
 type DeleteSyntheticTaskRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TaskIds  []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }
 
 func (s DeleteSyntheticTaskRequest) String() string {
@@ -19316,7 +19815,9 @@ func (s *DeleteTimingSyntheticTaskResponse) SetBody(v *DeleteTimingSyntheticTask
 }
 
 type DeleteTraceAppRequest struct {
-	// The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](~~130676~~).
+	// The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](https://help.aliyun.com/document_detail/130676.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19326,21 +19827,27 @@ type DeleteTraceAppRequest struct {
 	DeleteReason *DeleteTraceAppRequestDeleteReason `json:"DeleteReason,omitempty" xml:"DeleteReason,omitempty" type:"Struct"`
 	// The PID of the application. For more information about how to query the PID, see [QueryMetricByPage](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9w0sc5gxxz@edcsd447c2f****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The ID of the region in which the application is located.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](~~130676~~). Valid values:
+	// The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](https://help.aliyun.com/document_detail/130676.html). Valid values:
 	//
 	// 	- `TRACE`: Application Monitoring
 	//
 	// 	- `RETCODE`: frontend monitoring
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19444,7 +19951,9 @@ func (s *DeleteTraceAppRequestDeleteReasonReasonIds) SetName(v string) *DeleteTr
 }
 
 type DeleteTraceAppShrinkRequest struct {
-	// The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](~~130676~~).
+	// The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](https://help.aliyun.com/document_detail/130676.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19454,21 +19963,27 @@ type DeleteTraceAppShrinkRequest struct {
 	DeleteReasonShrink *string `json:"DeleteReason,omitempty" xml:"DeleteReason,omitempty"`
 	// The PID of the application. For more information about how to query the PID, see [QueryMetricByPage](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9w0sc5gxxz@edcsd447c2f****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The ID of the region in which the application is located.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](~~130676~~). Valid values:
+	// The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](https://help.aliyun.com/document_detail/130676.html). Valid values:
 	//
 	// 	- `TRACE`: Application Monitoring
 	//
 	// 	- `RETCODE`: frontend monitoring
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19520,7 +20035,7 @@ type DeleteTraceAppResponseBody struct {
 	//
 	// example:
 	//
-	// "{\\"code\\":200,\\"data\\":\\"{\\\\\"code\\\\\":200,\\\\\"data\\\\\":true,\\\\\"errorCode\\\\\":\\\\\"The application is deleted\\\\\",\\\\\"message\\\\\":\\\\\"The application is deleted\\\\\",\\\\\"success\\\\\":true,\\\\\"traceId\\\\\":\\\\\"0bc0594d15954826692915817e\*\*\*\*\\\\\"}\\",\\"errorCode\\":\\"The application is deleted\\",\\"message\\":\\"The application is deleted\\",\\"success\\":true,\\"traceId\\":\\"0ab2646915954826692568137d\*\*\*\*\\"}
+	// "{\\\\"code\\\\":200,\\\\"data\\\\":\\\\"{\\\\\\\\\\"code\\\\\\\\\\":200,\\\\\\\\\\"data\\\\\\\\\\":true,\\\\\\\\\\"errorCode\\\\\\\\\\":\\\\\\\\\\"The application is deleted\\\\\\\\\\",\\\\\\\\\\"message\\\\\\\\\\":\\\\\\\\\\"The application is deleted\\\\\\\\\\",\\\\\\\\\\"success\\\\\\\\\\":true,\\\\\\\\\\"traceId\\\\\\\\\\":\\\\\\\\\\"0bc0594d15954826692915817e\\*\\*\\*\\*\\\\\\\\\\"}\\\\",\\\\"errorCode\\\\":\\\\"The application is deleted\\\\",\\\\"message\\\\":\\\\"The application is deleted\\\\",\\\\"success\\\\":true,\\\\"traceId\\\\":\\\\"0ab2646915954826692568137d\\*\\*\\*\\*\\\\"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
@@ -19611,6 +20126,8 @@ func (s *DeleteTraceAppResponse) SetBody(v *DeleteTraceAppResponseBody) *DeleteT
 type DeleteWebhookContactRequest struct {
 	// The ID of the webhook alert contact.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -19699,6 +20216,8 @@ func (s *DeleteWebhookContactResponse) SetBody(v *DeleteWebhookContactResponseBo
 type DescribeAddonReleaseRequest struct {
 	// The environment ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxx
@@ -19710,6 +20229,8 @@ type DescribeAddonReleaseRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the add-on release.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20174,6 +20695,8 @@ type DescribeContactGroupsRequest struct {
 	IsDetail *bool `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -20185,6 +20708,8 @@ type DescribeContactGroupsRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of alert contact groups displayed on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20477,6 +21002,8 @@ type DescribeContactsRequest struct {
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -20494,6 +21021,8 @@ type DescribeContactsRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of alert contacts to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20778,11 +21307,15 @@ func (s *DescribeContactsResponse) SetBody(v *DescribeContactsResponseBody) *Des
 type DescribeDispatchRuleRequest struct {
 	// The ID of the dispatch policy.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21203,6 +21736,8 @@ func (s *DescribeDispatchRuleResponse) SetBody(v *DescribeDispatchRuleResponseBo
 type DescribeEnvCustomJobRequest struct {
 	// The name of the custom job.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// customJob1
@@ -21215,11 +21750,15 @@ type DescribeEnvCustomJobRequest struct {
 	EncryptYaml *bool `json:"EncryptYaml,omitempty" xml:"EncryptYaml,omitempty"`
 	// The ID of the environment instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21404,11 +21943,15 @@ func (s *DescribeEnvCustomJobResponse) SetBody(v *DescribeEnvCustomJobResponseBo
 type DescribeEnvPodMonitorRequest struct {
 	// The ID of the environment instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The namespace where the PodMonitor is located.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21416,11 +21959,15 @@ type DescribeEnvPodMonitorRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The name of the PodMonitor.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// arms-admin-pm1
 	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21616,11 +22163,15 @@ func (s *DescribeEnvPodMonitorResponse) SetBody(v *DescribeEnvPodMonitorResponse
 type DescribeEnvServiceMonitorRequest struct {
 	// The ID of the environment instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The namespace where the ServiceMonitor is located.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21628,11 +22179,15 @@ type DescribeEnvServiceMonitorRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the ServiceMonitor.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21828,11 +22383,15 @@ func (s *DescribeEnvServiceMonitorResponse) SetBody(v *DescribeEnvServiceMonitor
 type DescribeEnvironmentRequest struct {
 	// The ID of the environment instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22265,6 +22824,8 @@ type DescribeEnvironmentFeatureRequest struct {
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The environment ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxx
@@ -22288,6 +22849,8 @@ type DescribeEnvironmentFeatureRequest struct {
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22687,6 +23250,8 @@ func (s *DescribeEnvironmentFeatureResponse) SetBody(v *DescribeEnvironmentFeatu
 type DescribeIMRobotsRequest struct {
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -22704,6 +23269,8 @@ type DescribeIMRobotsRequest struct {
 	// Chatbot name
 	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
 	// The number of IM chatbots to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22998,6 +23565,8 @@ func (s *DescribeIMRobotsResponse) SetBody(v *DescribeIMRobotsResponseBody) *Des
 type DescribePrometheusAlertRuleRequest struct {
 	// The ID of the alert rule. You can call the ListPrometheusAlertRules operation to query the ID of the alert rule.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3888704
@@ -23107,7 +23676,7 @@ type DescribePrometheusAlertRuleResponseBodyPrometheusAlertRule struct {
 	//
 	// example:
 	//
-	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \"pod_name\", \"$1\", \"pod\", \"(.*)\")) by (pod_name))>75
+	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \\"pod_name\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (pod_name))>75
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The tags of the alert rule.
 	Labels []*DescribePrometheusAlertRuleResponseBodyPrometheusAlertRuleLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
@@ -23395,11 +23964,15 @@ type DescribeWebhookContactsRequest struct {
 	ContactIds *string `json:"ContactIds,omitempty" xml:"ContactIds,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// The number of alert contacts displayed on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23578,7 +24151,7 @@ type DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook struct {
 	//
 	// example:
 	//
-	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels.\_aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels.\_aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Alert time":"{{ .startTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
+	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Alert time":"{{ .startTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	// The HTTP request method.
 	//
@@ -23594,7 +24167,7 @@ type DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook struct {
 	//
 	// example:
 	//
-	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels.\_aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels.\_aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Recovery time":"{{ .endTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
+	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Recovery time":"{{ .endTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
 	RecoverBody *string `json:"RecoverBody,omitempty" xml:"RecoverBody,omitempty"`
 	// The URL of the request method.
 	//
@@ -23674,6 +24247,8 @@ func (s *DescribeWebhookContactsResponse) SetBody(v *DescribeWebhookContactsResp
 type EnableMetricRequest struct {
 	// The cluster ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ccfa5e34a5c1f4ce6b916a40a12151d88
@@ -23685,6 +24260,8 @@ type EnableMetricRequest struct {
 	// kube_pod_container_status_ready
 	DropMetric *string `json:"DropMetric,omitempty" xml:"DropMetric,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23825,6 +24402,8 @@ func (s *EnableMetricResponse) SetBody(v *EnableMetricResponseBody) *EnableMetri
 type GetAgentDownloadUrlRequest struct {
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -23963,6 +24542,8 @@ type GetAlertRulesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -23975,11 +24556,15 @@ type GetAlertRulesRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of alert rules to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24173,7 +24758,7 @@ type GetAlertRulesResponseBodyPageBeanAlertRules struct {
 	AlertCheckType *string `json:"AlertCheckType,omitempty" xml:"AlertCheckType,omitempty"`
 	// The ID of the alert contact group to which the alert rule belongs. Valid values:
 	//
-	// 	- \-1: custom PromQL
+	// 	- \\-1: custom PromQL
 	//
 	// 	- 1: Kubernetes load
 	//
@@ -24259,7 +24844,7 @@ type GetAlertRulesResponseBodyPageBeanAlertRules struct {
 	//
 	// example:
 	//
-	// {\\"alarmContext\\":\\"{\\\\\"content\\\\\":\\\\Alert name: $Alert name\\\\\\nFilter condition: $Filter condition\\\\\\nAlert time: $Alert time\\\\\\nAlert content: $Alert content\\\\\\nNote: The alert persists before you receive an email that reminds you to clear the alert. You will be reminded of the alert again 24 hours later. \\\\\",\\\\\"subTitle\\\\\":\\\\\"\\\\\"}\\",\\"alertWays\\":\\"\[0,1]\\",\\"contactGroupIds\\":\\"381,5075\\",\\"notice\\":\\"{\\\\\"endTime\\\\\":1480607940000,\\\\\"noticeEndTime\\\\\":1480607940000,\\\\\"noticeStartTime\\\\\":1480521600000,\\\\\"startTime\\\\\":1480521600000}\\"}
+	// {\\\\"alarmContext\\\\":\\\\"{\\\\\\\\\\"content\\\\\\\\\\":\\\\\\\\Alert name: $Alert name\\\\\\\\\\\\nFilter condition: $Filter condition\\\\\\\\\\\\nAlert time: $Alert time\\\\\\\\\\\\nAlert content: $Alert content\\\\\\\\\\\\nNote: The alert persists before you receive an email that reminds you to clear the alert. You will be reminded of the alert again 24 hours later. \\\\\\\\\\",\\\\\\\\\\"subTitle\\\\\\\\\\":\\\\\\\\\\"\\\\\\\\\\"}\\\\",\\\\"alertWays\\\\":\\\\"[0,1]\\\\",\\\\"contactGroupIds\\\\":\\\\"381,5075\\\\",\\\\"notice\\\\":\\\\"{\\\\\\\\\\"endTime\\\\\\\\\\":1480607940000,\\\\\\\\\\"noticeEndTime\\\\\\\\\\":1480607940000,\\\\\\\\\\"noticeStartTime\\\\\\\\\\":1480521600000,\\\\\\\\\\"startTime\\\\\\\\\\":1480521600000}\\\\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The filter conditions of the Application Monitoring or Browser Monitoring alert rule.
 	Filters *GetAlertRulesResponseBodyPageBeanAlertRulesFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
@@ -24666,7 +25251,7 @@ type GetAlertRulesResponseBodyPageBeanAlertRulesFiltersCustomSLSFilters struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The logical operator of the filter condition. Valid values:
 	//
-	// 	- \=: equal to
+	// 	- \\=: equal to
 	//
 	// 	- not: not equal to
 	//
@@ -24883,6 +25468,8 @@ type GetAppApiByPageRequest struct {
 	IntervalMills *int32 `json:"IntervalMills,omitempty" xml:"IntervalMills,omitempty"`
 	// The process identifier (PID) of the application. For information about how to obtain a PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// a2n80plglh@745eddxxx
@@ -24894,6 +25481,8 @@ type GetAppApiByPageRequest struct {
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25124,13 +25713,15 @@ type GetAppJVMConfigRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the application.
 	//
-	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Application Monitoring*	- > **Applications**. On the **Applications*	- page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Application Monitoring*	- > **Applications**. On the **Applications*	- page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\\*\\*\\*\\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\\*\\*\\*\\*.
 	//
 	// example:
 	//
 	// atc889zkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25347,11 +25938,15 @@ func (s *GetAppJVMConfigResponse) SetBody(v *GetAppJVMConfigResponseBody) *GetAp
 type GetAuthTokenRequest struct {
 	// The ID of the cluster.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25764,11 +26359,15 @@ func (s *GetCloudClusterAllUrlResponse) SetBody(v *GetCloudClusterAllUrlResponse
 type GetClusterAllUrlRequest struct {
 	// The cluster ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID. Default value: cn-hangzhou.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25804,7 +26403,7 @@ type GetClusterAllUrlResponseBody struct {
 	//
 	//   "RequestId": "41877338-646B-5DD6-BFBE-F89F1E7245AD",
 	//
-	//   "Data": "{\"clusterType\":\"ManagedKubernetes\",\"remoteWriteUrl\":\"http:/" }
+	//   "Data": "{\\"clusterType\\":\\"ManagedKubernetes\\",\\"remoteWriteUrl\\":\\"http:/" }
 	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
@@ -26041,6 +26640,8 @@ func (s *GetCommercialStatusResponse) SetBody(v *GetCommercialStatusResponseBody
 type GetExploreUrlRequest struct {
 	// The cluster ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c9cc4c5e220f8461f9d71b6ec6e******
@@ -26058,6 +26659,8 @@ type GetExploreUrlRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the Grafana data source.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26178,10 +26781,14 @@ type GetGrafanaWorkspaceRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// grafana-cn-4xl3g******
 	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -26305,14 +26912,20 @@ func (s *GetGrafanaWorkspaceResponse) SetBody(v *GetGrafanaWorkspaceResponseBody
 }
 
 type GetIntegrationStateRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// asm
 	Integration *string `json:"Integration,omitempty" xml:"Integration,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -26425,17 +27038,23 @@ func (s *GetIntegrationStateResponse) SetBody(v *GetIntegrationStateResponseBody
 type GetManagedPrometheusStatusRequest struct {
 	// The ID of the ASK cluster. This parameter is required if the ClusterType parameter is set to ask.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The type of the monitoring object. Valid values: ask , acs , one and ecs.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ask
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26604,6 +27223,8 @@ type GetMultipleTraceRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -26615,6 +27236,8 @@ type GetMultipleTraceRequest struct {
 	// 1657692507000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trace IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26795,7 +27418,7 @@ type GetMultipleTraceResponseBodyMultiCallChainInfosSpans struct {
 	//
 	// 	- 12: DSF provision
 	//
-	// 	- \-1: unknown call
+	// 	- \\-1: unknown call
 	//
 	// example:
 	//
@@ -27045,6 +27668,8 @@ type GetOnCallSchedulesDetailRequest struct {
 	// 2022-10-30
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the scheduling policy.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -27556,6 +28181,8 @@ func (s *GetOnCallSchedulesDetailResponse) SetBody(v *GetOnCallSchedulesDetailRe
 type GetPrometheusApiTokenRequest struct {
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -27640,11 +28267,15 @@ func (s *GetPrometheusApiTokenResponse) SetBody(v *GetPrometheusApiTokenResponse
 type GetPrometheusGlobalViewRequest struct {
 	// The ID of the global aggregation instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// global-v2-cn-1478326682034601-vss8pd0i
 	GlobalViewClusterId *string `json:"GlobalViewClusterId,omitempty" xml:"GlobalViewClusterId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -27681,7 +28312,7 @@ type GetPrometheusGlobalViewResponseBody struct {
 	//
 	// example:
 	//
-	// { "clusterId":"The ID of the global aggregation instance.", "groupName":"The name of the global aggregation instance.", "dataSources":\[ { "sourceName":"The name of the data source.- ArmsPrometheus No.1", "sourceType":"AlibabaPrometheus", "userId":"UserID", "clusterId":"ClusterId" }, // more datasources ] }
+	// { "clusterId":"The ID of the global aggregation instance.", "groupName":"The name of the global aggregation instance.", "dataSources":[ { "sourceName":"The name of the data source.- ArmsPrometheus No.1", "sourceType":"AlibabaPrometheus", "userId":"UserID", "clusterId":"ClusterId" }, // more datasources ] }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// Returns a hint message for the result.
 	//
@@ -27757,11 +28388,15 @@ func (s *GetPrometheusGlobalViewResponse) SetBody(v *GetPrometheusGlobalViewResp
 type GetPrometheusInstanceRequest struct {
 	// The ID of the Prometheus instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c77f6f2397ea74672872acf5e31374a27
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -27977,7 +28612,7 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// example:
 	//
-	// \[{"headers":{},"regionId":"cn-hangzhou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c39a1048921e04fceb039db2fbb73\*\*\*","sourceName":"arms-luyao-test","dataSource":"","userId":"167275301789\*\*\*"},{"headers":{},"regionId":"cn-beijing","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c6b6485496d5b400abde22cb47b5\*\*\*\*","sourceName":"agent-321-test","dataSource":"","userId":"1672753017899\*\*\*"},{"headers":{},"regionId":"cn-zhangjiakou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c261a4f3200c446659133f1ade789b15e","sourceName":"zaifeng-cardinality-01","dataSource":"","userId":"167275301789\*\*\*"}]
+	// [{"headers":{},"regionId":"cn-hangzhou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c39a1048921e04fceb039db2fbb73\\*\\*\\*","sourceName":"arms-luyao-test","dataSource":"","userId":"167275301789\\*\\*\\*"},{"headers":{},"regionId":"cn-beijing","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c6b6485496d5b400abde22cb47b5\\*\\*\\*\\*","sourceName":"agent-321-test","dataSource":"","userId":"1672753017899\\*\\*\\*"},{"headers":{},"regionId":"cn-zhangjiakou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c261a4f3200c446659133f1ade789b15e","sourceName":"zaifeng-cardinality-01","dataSource":"","userId":"167275301789\\*\\*\\*"}]
 	SubClustersJson *string `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
 	// The tags of the instance.
 	Tags []*GetPrometheusInstanceResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -28199,11 +28834,15 @@ func (s *GetPrometheusInstanceResponse) SetBody(v *GetPrometheusInstanceResponse
 type GetPrometheusIntegrationRequest struct {
 	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The exporter ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -28211,11 +28850,15 @@ type GetPrometheusIntegrationRequest struct {
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the integration.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// kafka, mysql, redis, snmp, emr, nubela, and tidb
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -28548,17 +29191,23 @@ func (s *GetPrometheusIntegrationResponse) SetBody(v *GetPrometheusIntegrationRe
 type GetPrometheusMonitoringRequest struct {
 	// The ID of the Prometheus instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the monitoring configuration.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// customJob1
 	MonitoringName *string `json:"MonitoringName,omitempty" xml:"MonitoringName,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -28569,6 +29218,8 @@ type GetPrometheusMonitoringRequest struct {
 	// Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, customJob, and probe.
 	//
 	// Valid values for a Prometheus instance for ECS: customJob and probe.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -28749,17 +29400,23 @@ func (s *GetPrometheusMonitoringResponse) SetBody(v *GetPrometheusMonitoringResp
 type GetPrometheusRemoteWriteRequest struct {
 	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// cc7a37ee31aea4ed1a059eff8034b\*\*\*\	- or vpc-\*\*\*
+	// cc7a37ee31aea4ed1a059eff8034b\\*\\*\\*\\	- or vpc-\\*\\*\\*
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the remote write configuration item.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -28974,11 +29631,15 @@ func (s *GetPrometheusRemoteWriteResponse) SetBody(v *GetPrometheusRemoteWriteRe
 type GetRecordingRuleRequest struct {
 	// The ID of the cluster.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -29338,22 +29999,32 @@ func (s *GetRetcodeAppByPidResponse) SetBody(v *GetRetcodeAppByPidResponseBody) 
 }
 
 type GetRetcodeDataByQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1668687302
 	From *int64 `json:"From,omitempty" xml:"From,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// atc889zkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// t : pv|select sum(times) as pv , approx_distinct(uid) as uv , (date-date%3600000) as date  group by date
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1668688000
@@ -29479,6 +30150,8 @@ func (s *GetRetcodeDataByQueryResponse) SetBody(v *GetRetcodeDataByQueryResponse
 }
 
 type GetRetcodeLogstoreRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// atc889zkcf@d8deedfa9bf****
@@ -29640,6 +30313,8 @@ type GetRetcodeShareUrlRequest struct {
 	//
 	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring*	- > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the `pid=xxx` format. The PID is usually percent encoded as `xxx%40xxx`. You must modify this value to remove the percent encoding. For example, if the PID in the URL is `eb4zdose6v%409781be0f44d****`, you must replace `%40` with @ to obtain `eb4zdose6v@9781be0f44d****`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// iioe7jcnuk@582846f37******
@@ -29730,6 +30405,8 @@ type GetRumAppInfoRequest struct {
 	//
 	// atc889zkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -30084,6 +30761,8 @@ type GetRumAppsRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -30493,6 +31172,8 @@ type GetRumDataForPageRequest struct {
 	//
 	// 	- and app.id: xxxx@586810fbxxxx19f
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -30712,7 +31393,7 @@ func (s *GetRumDataForPageResponse) SetBody(v *GetRumDataForPageResponseBody) *G
 type GetRumExceptionStackRequest struct {
 	// example:
 	//
-	// iOSDemo:arm64%3B1489F4D3-6DE2-300C-90E9-E1B869675351%3B0x0000000104064000\nAlibabaCloudRUM:arm64%3BAB7B3A8E-6CEE-325D-BCBB-8DA50E61804F%3B0x0000000106660000\nlibdispatch.dylib:arm
+	// iOSDemo:arm64%3B1489F4D3-6DE2-300C-90E9-E1B869675351%3B0x0000000104064000\\nAlibabaCloudRUM:arm64%3BAB7B3A8E-6CEE-325D-BCBB-8DA50E61804F%3B0x0000000106660000\\nlibdispatch.dylib:arm
 	ExceptionBinaryImages *string `json:"ExceptionBinaryImages,omitempty" xml:"ExceptionBinaryImages,omitempty"`
 	// example:
 	//
@@ -30720,7 +31401,7 @@ type GetRumExceptionStackRequest struct {
 	//
 	// {
 	//
-	//     "call_stack.info": "libsystem_kernel.dylib  0x00000001f1ce9178 0x00000001f1ce8000 + 4472\r\nlibsystem_kernel.dylib  0x00000001f1ce8f10 0x00000001f1ce8000 + 3856\r\nlibsystem_kernel.dylib  0x00000001f1ced718 0x00000001f1ce8000 + 22296\r\nAlibabaCloudRUM  0x0000000106711af4 0x0000000106660000 + 727796\r\nlibsystem_pthread.dylib  0x00000002146744d4 0x0000000214672000 + 9428",
+	//     "call_stack.info": "libsystem_kernel.dylib  0x00000001f1ce9178 0x00000001f1ce8000 + 4472\\r\\nlibsystem_kernel.dylib  0x00000001f1ce8f10 0x00000001f1ce8000 + 3856\\r\\nlibsystem_kernel.dylib  0x00000001f1ced718 0x00000001f1ce8000 + 22296\\r\\nAlibabaCloudRUM  0x0000000106711af4 0x0000000106660000 + 727796\\r\\nlibsystem_pthread.dylib  0x00000002146744d4 0x0000000214672000 + 9428",
 	//
 	//     "call_stack.thread.name": "#3 BRSCrash Exception Handler (Secondary)",
 	//
@@ -30734,6 +31415,8 @@ type GetRumExceptionStackRequest struct {
 	//
 	// 16643
 	ExceptionThreadId *string `json:"ExceptionThreadId,omitempty" xml:"ExceptionThreadId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// atxxxxzkcf@d8deedfa9bf****
@@ -30905,6 +31588,8 @@ type GetRumUploadFilesRequest struct {
 	//
 	// aoxxxxxly@741623b4e91****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -31089,6 +31774,8 @@ type GetSourceMapInfoRequest struct {
 	//
 	// 0.0.0
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// atc889zkcf@d8deedfa9bf****/0.0.0/test.sourcemap.js
@@ -31271,11 +31958,15 @@ type GetStackRequest struct {
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the remote procedure call (RPC) mode. You can obtain the ID by calling the **GetTrace*	- operation.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -31288,6 +31979,8 @@ type GetStackRequest struct {
 	// 1653555396
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trace ID. You can log on to the Application Real-Time Monitoring Service (ARMS) console and obtain the trace ID on the **Trace Query*	- page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -31521,6 +32214,8 @@ func (s *GetStackResponse) SetBody(v *GetStackResponseBody) *GetStackResponse {
 
 type GetSyntheticMonitorsRequest struct {
 	// The query conditions.
+	//
+	// This parameter is required.
 	Filter *GetSyntheticMonitorsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -31551,11 +32246,15 @@ func (s *GetSyntheticMonitorsRequest) SetRegionId(v string) *GetSyntheticMonitor
 type GetSyntheticMonitorsRequestFilter struct {
 	// The type of the monitoring point. Valid values: 1: PC. 2: mobile device.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	MonitorCategory *int32 `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
 	// The network type. Valid values: 1: private network. 2: Internet.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -31564,6 +32263,8 @@ type GetSyntheticMonitorsRequestFilter struct {
 	// The type of the monitoring task. Valid values:
 	//
 	// 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed. 6: file download.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -31596,6 +32297,8 @@ func (s *GetSyntheticMonitorsRequestFilter) SetTaskType(v int32) *GetSyntheticMo
 
 type GetSyntheticMonitorsShrinkRequest struct {
 	// The query conditions.
+	//
+	// This parameter is required.
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The region ID.
 	//
@@ -31832,6 +32535,8 @@ type GetSyntheticTaskDetailRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 云拨测任务ID。
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -32214,7 +32919,7 @@ type GetSyntheticTaskDetailResponseBodyTaskDetailDownload struct {
 	VerifyWay *int64 `json:"VerifyWay,omitempty" xml:"VerifyWay,omitempty"`
 	// example:
 	//
-	// [{\"src\":\"211.154.166.174\"}]
+	// [{\\"src\\":\\"211.154.166.174\\"}]
 	WhiteList *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
 }
 
@@ -33491,6 +34196,8 @@ func (s *GetSyntheticTaskListResponse) SetBody(v *GetSyntheticTaskListResponseBo
 }
 
 type GetSyntheticTaskMonitorsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -35302,6 +36009,8 @@ type GetTraceRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -35315,6 +36024,8 @@ type GetTraceRequest struct {
 	// 1623827602000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trace ID. You can log on to the ARMS console and obtain the trace ID on the **Trace Query*	- page or **Interface Snapshot*	- tab.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -35796,11 +36507,15 @@ func (s *GetTraceResponse) SetBody(v *GetTraceResponseBody) *GetTraceResponse {
 type GetTraceAppRequest struct {
 	// The process identifier (PID) of the application. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// b590lhguqs@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -36130,11 +36845,15 @@ type ImportAppAlertRulesRequest struct {
 	IsAutoStart *bool `json:"IsAutoStart,omitempty" xml:"IsAutoStart,omitempty"`
 	// The process identifiers (PIDs) of the applications associated with the alert rule. The value must be a JSON array. For more information about how to obtain the PID, see [Obtain the PID of an application](~~186100#section-bkl-3j6-ezg~~).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ["atc889zkcf@d8deedfa9bfxxxx", "acd129bfcf@d5daebfa6cdxxxx"]
 	Pids *string `json:"Pids,omitempty" xml:"Pids,omitempty"`
 	// The ID of the region where the associated applications reside.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -36146,7 +36865,7 @@ type ImportAppAlertRulesRequest struct {
 	//
 	// example:
 	//
-	// [ { "contactGroupIds": "381", "alertType": 5, "alarmContext": { "subTitle": "", "content": "Alarm name: $alarm name\nFilter condition: $filter\nAlarm time : $Alarm time\nAlarm content: $Alarm content\nNote: Before the recovery email is received, the alarm is in continuous alarm, and you will be reminded again after 24 hours!" }, "alertLevel": "WARN", " metricParam": { "appId": "70901", "pid": "atc889zkcf@d8deedfa9bf****", "type": "TXN", "dimensions": [ { "type": "STATIC", "value ": "\\/hello_test_api_address\\/test1", "key": "rpc" } ] }, "alertWay": [ "SMS", "MAIL", "DING_ROBOT" ], "alertRule": { "rules" : [ { "measure": "appstat.txn.rt", "alias": "Entry call response time_ms", "aggregates": "AVG", "nValue": 1, "value": 1, "operator ": "CURRENT_GTE" } ], "operator": "|" }, "title": "Alarm template alarm name", "config": "{\"continuous\":false,\"dataRevision\":2, \"ownerId\":\"123412341234\"}", "notice": { "noticeStartTime": 1480521600000, "startTime": 1480521600000, "endTime": 1480607940000, "noticeEndTime": 1480607940000 }, "stat us": "NON " } ]
+	// [ { "contactGroupIds": "381", "alertType": 5, "alarmContext": { "subTitle": "", "content": "Alarm name: $alarm name\\nFilter condition: $filter\\nAlarm time : $Alarm time\\nAlarm content: $Alarm content\\nNote: Before the recovery email is received, the alarm is in continuous alarm, and you will be reminded again after 24 hours!" }, "alertLevel": "WARN", " metricParam": { "appId": "70901", "pid": "atc889zkcf@d8deedfa9bf****", "type": "TXN", "dimensions": [ { "type": "STATIC", "value ": "\\\\/hello_test_api_address\\\\/test1", "key": "rpc" } ] }, "alertWay": [ "SMS", "MAIL", "DING_ROBOT" ], "alertRule": { "rules" : [ { "measure": "appstat.txn.rt", "alias": "Entry call response time_ms", "aggregates": "AVG", "nValue": 1, "value": 1, "operator ": "CURRENT_GTE" } ], "operator": "|" }, "title": "Alarm template alarm name", "config": "{\\"continuous\\":false,\\"dataRevision\\":2, \\"ownerId\\":\\"123412341234\\"}", "notice": { "noticeStartTime": 1480521600000, "startTime": 1480521600000, "endTime": 1480607940000, "noticeEndTime": 1480607940000 }, "stat us": "NON " } ]
 	TemplageAlertConfig *string `json:"TemplageAlertConfig,omitempty" xml:"TemplageAlertConfig,omitempty"`
 	// The ID of the alert template. You must set at least one of the **TemplateAlertId*	- and **TemplageAlertConfig*	- parameters. If you set both parameters, the **TemplateAlertId*	- parameter prevails.
 	//
@@ -36309,6 +37028,8 @@ type InitEnvironmentRequest struct {
 	CreateAuthToken *bool `json:"CreateAuthToken,omitempty" xml:"CreateAuthToken,omitempty"`
 	// The ID of the environment instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxx
@@ -36326,6 +37047,8 @@ type InitEnvironmentRequest struct {
 	// agent
 	ManagedType *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -36453,6 +37176,8 @@ func (s *InitEnvironmentResponse) SetBody(v *InitEnvironmentResponseBody) *InitE
 type InstallAddonRequest struct {
 	// The version of the add-on.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0.0.1
@@ -36471,11 +37196,15 @@ type InstallAddonRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The environment ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The name of the add-on.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -36930,6 +37659,8 @@ func (s *InstallAddonResponse) SetBody(v *InstallAddonResponseBody) *InstallAddo
 }
 
 type InstallCmsExporterRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
@@ -36946,6 +37677,8 @@ type InstallCmsExporterRequest struct {
 	//
 	// false
 	EnableTag *bool `json:"EnableTag,omitempty" xml:"EnableTag,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -37054,9 +37787,11 @@ type InstallEnvironmentFeatureRequest struct {
 	//
 	// example:
 	//
-	// {\"continuous\":true,\"dataRevision\":2}
+	// {\\"continuous\\":true,\\"dataRevision\\":2}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The environment ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -37082,11 +37817,15 @@ type InstallEnvironmentFeatureRequest struct {
 	//
 	//     <!-- -->
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// metric-agent
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
 	// The version of the feature.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -37297,6 +38036,8 @@ type InstallManagedPrometheusRequest struct {
 	//
 	//     <!-- -->
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ask
@@ -37308,6 +38049,9 @@ type InstallManagedPrometheusRequest struct {
 	// grafana-bp1*****
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
 	// This parameter is not supported.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -37327,17 +38071,23 @@ type InstallManagedPrometheusRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The security group of the ASK cluster or ECS instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// sg-bp1********
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The vSwitch used by the ASK cluster or ECS instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// vsw-bp1*********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The virtual private cloud (VPC) where the ASK cluster or ECS instance resides.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -37501,6 +38251,8 @@ func (s *InstallManagedPrometheusResponse) SetBody(v *InstallManagedPrometheusRe
 type ListActivatedAlertsRequest struct {
 	// The number of the page to return. Default value: `1`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -37513,11 +38265,15 @@ type ListActivatedAlertsRequest struct {
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The number of entries to return on each page. Default value: `10`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -37708,7 +38464,7 @@ type ListActivatedAlertsResponseBodyPageAlerts struct {
 	//
 	// example:
 	//
-	// Alarm name: PodRestart_testphp2,\n Pod night-test-group-1-1-5f5d6f4d84-pszns is restart, Value: 133.33%, 1.33%
+	// Alarm name: PodRestart_testphp2,\\n Pod night-test-group-1-1-5f5d6f4d84-pszns is restart, Value: 133.33%, 1.33%
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The level of the alert. Valid values:
 	//
@@ -37904,6 +38660,8 @@ type ListAddonReleasesRequest struct {
 	// mysql
 	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
 	// Environment instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -38974,11 +39732,16 @@ type ListAlertEventsRequest struct {
 	MatchingConditions *string `json:"MatchingConditions,omitempty" xml:"MatchingConditions,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
-	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	Page                     *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	ShowNotificationPolicies *bool  `json:"ShowNotificationPolicies,omitempty" xml:"ShowNotificationPolicies,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -39029,6 +39792,11 @@ func (s *ListAlertEventsRequest) SetMatchingConditions(v string) *ListAlertEvent
 
 func (s *ListAlertEventsRequest) SetPage(v int64) *ListAlertEventsRequest {
 	s.Page = &v
+	return s
+}
+
+func (s *ListAlertEventsRequest) SetShowNotificationPolicies(v bool) *ListAlertEventsRequest {
+	s.ShowNotificationPolicies = &v
 	return s
 }
 
@@ -39140,7 +39908,7 @@ type ListAlertEventsResponseBodyPageBeanEvents struct {
 	//
 	// example:
 	//
-	// [{\"Name\":\"annotation-a\",\"Value\":\"annotation a value\"}]
+	// [{\\"Name\\":\\"annotation-a\\",\\"Value\\":\\"annotation a value\\"}]
 	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
 	// The description of the alert event.
 	//
@@ -39182,8 +39950,9 @@ type ListAlertEventsResponseBodyPageBeanEvents struct {
 	//
 	// example:
 	//
-	// [{\"name\":\"severity\",\"value\":\"error\"}]
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// [{\\"name\\":\\"severity\\",\\"value\\":\\"error\\"}]
+	Labels               *string                                                          `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	NotificationPolicies []*ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies `json:"NotificationPolicies,omitempty" xml:"NotificationPolicies,omitempty" type:"Repeated"`
 	// The time when the alert event was received.
 	//
 	// example:
@@ -39223,7 +39992,8 @@ type ListAlertEventsResponseBodyPageBeanEvents struct {
 	// example:
 	//
 	// Active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TriggerCount *int64  `json:"TriggerCount,omitempty" xml:"TriggerCount,omitempty"`
 }
 
 func (s ListAlertEventsResponseBodyPageBeanEvents) String() string {
@@ -39284,6 +40054,11 @@ func (s *ListAlertEventsResponseBodyPageBeanEvents) SetLabels(v string) *ListAle
 	return s
 }
 
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetNotificationPolicies(v []*ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.NotificationPolicies = v
+	return s
+}
+
 func (s *ListAlertEventsResponseBodyPageBeanEvents) SetReceiveTime(v string) *ListAlertEventsResponseBodyPageBeanEvents {
 	s.ReceiveTime = &v
 	return s
@@ -39301,6 +40076,11 @@ func (s *ListAlertEventsResponseBodyPageBeanEvents) SetStartTime(v string) *List
 
 func (s *ListAlertEventsResponseBodyPageBeanEvents) SetStatus(v string) *ListAlertEventsResponseBodyPageBeanEvents {
 	s.Status = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetTriggerCount(v int64) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.TriggerCount = &v
 	return s
 }
 
@@ -39362,6 +40142,29 @@ func (s *ListAlertEventsResponseBodyPageBeanEventsAlarms) SetCreateTime(v string
 
 func (s *ListAlertEventsResponseBodyPageBeanEventsAlarms) SetState(v int32) *ListAlertEventsResponseBodyPageBeanEventsAlarms {
 	s.State = &v
+	return s
+}
+
+type ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies) SetId(v int64) *ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies {
+	s.Id = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies) SetName(v string) *ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies {
+	s.Name = &v
 	return s
 }
 
@@ -39459,6 +40262,8 @@ type ListAlertsRequest struct {
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -39496,6 +40301,8 @@ type ListAlertsRequest struct {
 	// true
 	ShowEvents *bool `json:"ShowEvents,omitempty" xml:"ShowEvents,omitempty"`
 	// The number of alerts to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -39829,19 +40636,19 @@ type ListAlertsResponseBodyPageBeanListAlertsActivities struct {
 	//
 	// example:
 	//
-	// \[Notification policy: Send notifications to DingTalk groups] Host monitoring. Host IP address: 10.76.XX.XX. Average memory usage of the host in the last 1 minute ≥ 1.0%. Current value: 84.7454%.
+	// [Notification policy: Send notifications to DingTalk groups] Host monitoring. Host IP address: 10.76.XX.XX. Average memory usage of the host in the last 1 minute ≥ 1.0%. Current value: 84.7454%.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The description of the activity.
 	//
 	// example:
 	//
-	// \[Alert Claimed] The alert is claimed
+	// [Alert Claimed] The alert is claimed
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the handler.
 	//
 	// example:
 	//
-	// O\&M Engineer A
+	// O\\&M Engineer A
 	HandlerName *string `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
 	// The operation time of the activity.
 	//
@@ -40127,6 +40934,8 @@ func (s *ListAlertsResponse) SetBody(v *ListAlertsResponseBody) *ListAlertsRespo
 type ListClusterFromGrafanaRequest struct {
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -40222,7 +41031,7 @@ type ListClusterFromGrafanaResponseBodyPromClusterList struct {
 	//
 	// example:
 	//
-	// {\"app_id\":\"bbd\",\"task_id\":\"4305ba5bf14942daa6e553ed91f46988\"}
+	// {\\"app_id\\":\\"bbd\\",\\"task_id\\":\\"4305ba5bf14942daa6e553ed91f46988\\"}
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The ID of a database in the cluster.
 	//
@@ -40262,7 +41071,7 @@ type ListClusterFromGrafanaResponseBodyPromClusterList struct {
 	//
 	// example:
 	//
-	// {\"Option\": [\"betaTestApproved\"]}
+	// {\\"Option\\": [\\"betaTestApproved\\"]}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The list of nodejsonar logs.
 	//
@@ -40424,10 +41233,14 @@ func (s *ListClusterFromGrafanaResponse) SetBody(v *ListClusterFromGrafanaRespon
 }
 
 type ListCmsInstancesRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// n9p9o9o3se
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -40552,7 +41365,7 @@ type ListCmsInstancesResponseBodyDataProducts struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// example:
 	//
-	// https://g.console.aliyun.com/d/1098370038733503-35894-565/cms-hologres?orgId\u003d9\u0026refresh\u003d60s
+	// https://g.console.aliyun.com/d/1098370038733503-35894-565/cms-hologres?orgId\\u003d9\\u0026refresh\\u003d60s
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -41381,6 +42194,8 @@ type ListDashboardsByNameRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The ID of the region.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -41529,6 +42344,8 @@ type ListDispatchRuleRequest struct {
 	//
 	// Prod
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -41664,11 +42481,15 @@ type ListEnvCustomJobsRequest struct {
 	EncryptYaml *bool `json:"EncryptYaml,omitempty" xml:"EncryptYaml,omitempty"`
 	// The ID of the environment instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -41950,11 +42771,15 @@ func (s *ListEnvCustomJobsResponse) SetBody(v *ListEnvCustomJobsResponseBody) *L
 type ListEnvPodMonitorsRequest struct {
 	// The environment ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -42257,11 +43082,15 @@ func (s *ListEnvPodMonitorsResponse) SetBody(v *ListEnvPodMonitorsResponseBody) 
 type ListEnvServiceMonitorsRequest struct {
 	// The environment ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -42581,6 +43410,8 @@ type ListEnvironmentDashboardsRequest struct {
 	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
 	// The ID of the environment instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxx
@@ -42825,6 +43656,8 @@ func (s *ListEnvironmentDashboardsResponse) SetBody(v *ListEnvironmentDashboards
 }
 
 type ListEnvironmentFeaturesRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxx
@@ -43844,11 +44677,15 @@ type ListEscalationPoliciesRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -44030,11 +44867,15 @@ type ListEventBridgeIntegrationsRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -44223,6 +45064,8 @@ type ListGrafanaWorkspaceRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -44296,6 +45139,8 @@ type ListGrafanaWorkspaceShrinkRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -44429,6 +45274,8 @@ func (s *ListGrafanaWorkspaceResponse) SetBody(v *ListGrafanaWorkspaceResponseBo
 type ListInsightsEventsRequest struct {
 	// The end of the time range to query. The value is a timestamp.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1480607940000
@@ -44455,11 +45302,15 @@ type ListInsightsEventsRequest struct {
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The start of the time range to query. The value is a timestamp.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -44540,7 +45391,7 @@ type ListInsightsEventsResponseBodyInsightsEvents struct {
 	//
 	// example:
 	//
-	// The overall response time of the \[HTTP] service of the application \[sd] spikes at \[2022-07-27 10:57:00]
+	// The overall response time of the [HTTP] service of the application [sd] spikes at [2022-07-27 10:57:00]
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The severity of the event.
 	//
@@ -44651,6 +45502,8 @@ type ListIntegrationRequest struct {
 	//
 	// 云监控集成
 	IntegrationName *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// CLOUD_MONITOR
@@ -44659,10 +45512,14 @@ type ListIntegrationRequest struct {
 	//
 	// true
 	IsDetail *bool `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -45000,6 +45857,8 @@ type ListNotificationPoliciesRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -45011,6 +45870,8 @@ type ListNotificationPoliciesRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -45557,7 +46418,7 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTempl
 	//
 	//  &gt;  App Name: {{ .commonLabels._aliyun_arms_involvedObject_name }}
 	//
-	//  {{ end }}{{ for .alerts }} &gt;  {{ .annotations.message }} {{if .generatorURL }} [Details]({{.generatorURL}})  {{end}} {{if .annotations._aliyun_arms_insights_analyze_link }}[&lt;font color=\"#ff0000\"&gt;diagnostic analysis&lt;/font&gt;]({{ .annotations._aliyun_arms_insights_analyze_link}}){{ end }}{{if  eq "1" .labels._aliyun_arms_denoise_code }} (Important:{{.labels._aliyun_arms_important_reason }}) {{end}}
+	//  {{ end }}{{ for .alerts }} &gt;  {{ .annotations.message }} {{if .generatorURL }} [Details]({{.generatorURL}})  {{end}} {{if .annotations._aliyun_arms_insights_analyze_link }}[&lt;font color=\\"#ff0000\\"&gt;diagnostic analysis&lt;/font&gt;]({{ .annotations._aliyun_arms_insights_analyze_link}}){{ end }}{{if  eq "1" .labels._aliyun_arms_denoise_code }} (Important:{{.labels._aliyun_arms_important_reason }}) {{end}}
 	//
 	// {{end}}
 	RobotContent *string `json:"RobotContent,omitempty" xml:"RobotContent,omitempty"`
@@ -45722,11 +46583,15 @@ type ListOnCallSchedulesRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -45911,6 +46776,8 @@ func (s *ListOnCallSchedulesResponse) SetBody(v *ListOnCallSchedulesResponseBody
 }
 
 type ListPrometheusAlertRulesRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c0bad479465464e1d8c1e641b0afb****
@@ -45923,6 +46790,8 @@ type ListPrometheusAlertRulesRequest struct {
 	//
 	// Prometheus_Alert
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -46069,7 +46938,7 @@ type ListPrometheusAlertRulesResponseBodyPrometheusAlertRules struct {
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// example:
 	//
-	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \"pod_name\", \"$1\", \"pod\", \"(.*)\")) by (pod_name))>75
+	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \\"pod_name\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (pod_name))>75
 	Expression *string                                                           `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	Labels     []*ListPrometheusAlertRulesResponseBodyPrometheusAlertRulesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	Message    *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -46270,6 +47139,8 @@ type ListPrometheusAlertTemplatesRequest struct {
 	//
 	// c0bad479465464e1d8c1e641b0afb****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -46473,6 +47344,8 @@ func (s *ListPrometheusAlertTemplatesResponse) SetBody(v *ListPrometheusAlertTem
 }
 
 type ListPrometheusGlobalViewRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -46567,6 +47440,8 @@ func (s *ListPrometheusGlobalViewResponse) SetBody(v *ListPrometheusGlobalViewRe
 
 type ListPrometheusInstanceByTagAndResourceGroupIdRequest struct {
 	// The region ID of the Prometheus instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -46834,7 +47709,7 @@ type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInst
 	//
 	// example:
 	//
-	// \[ { "headers": {}, "regionId": "cn-hangzhou", "sourceType": "AlibabaPrometheus", "extras": {}, "clusterId": "c39a1048921e04fceb039db2fb\*\*\*\*", "sourceName": "arms-luyao-test", "dataSource": "", "userId": "167275301789\*\*\*\*" }, { "headers": {}, "regionId": "cn-beijing", "sourceType": "AlibabaPrometheus", "extras": {}, "clusterId": "c6b6485496d5b400abde22cb47b5\*\*\*\*", "sourceName": "agent-321-test", "dataSource": "", "userId": "167275301789\*\*\*\*" }, { "headers": {}, "regionId": "cn-zhangjiakou", "sourceType": "AlibabaPrometheus", "extras": {}, "clusterId": "c261a4f3200c446659133f1ade78\*\*\*\*", "sourceName": "zaifeng-cardinality-01", "dataSource": "", "userId": "167275301789\*\*\*\*" } ]
+	// [ { "headers": {}, "regionId": "cn-hangzhou", "sourceType": "AlibabaPrometheus", "extras": {}, "clusterId": "c39a1048921e04fceb039db2fb\\*\\*\\*\\*", "sourceName": "arms-luyao-test", "dataSource": "", "userId": "167275301789\\*\\*\\*\\*" }, { "headers": {}, "regionId": "cn-beijing", "sourceType": "AlibabaPrometheus", "extras": {}, "clusterId": "c6b6485496d5b400abde22cb47b5\\*\\*\\*\\*", "sourceName": "agent-321-test", "dataSource": "", "userId": "167275301789\\*\\*\\*\\*" }, { "headers": {}, "regionId": "cn-zhangjiakou", "sourceType": "AlibabaPrometheus", "extras": {}, "clusterId": "c261a4f3200c446659133f1ade78\\*\\*\\*\\*", "sourceName": "zaifeng-cardinality-01", "dataSource": "", "userId": "167275301789\\*\\*\\*\\*" } ]
 	SubClustersJson *string `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
 	// The tags.
 	Tags []*ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -47072,6 +47947,8 @@ type ListPrometheusInstancesRequest struct {
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The ID of the region.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -47081,6 +47958,8 @@ type ListPrometheusInstancesRequest struct {
 	// 	- true
 	//
 	// 	- false
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -47198,17 +48077,23 @@ func (s *ListPrometheusInstancesResponse) SetBody(v *ListPrometheusInstancesResp
 type ListPrometheusIntegrationRequest struct {
 	// The ID of the Prometheus instance. Only aliyun-cs and ecs instances are supported.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c77f6f2397ea74672872acf5e31374a27
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The integration type.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// kafka, mysql, redis, snmp, emr, nubela, and tidb
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -47547,17 +48432,24 @@ func (s *ListPrometheusIntegrationResponse) SetBody(v *ListPrometheusIntegration
 type ListPrometheusMonitoringRequest struct {
 	// The ID of the Prometheus instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID. Default value: `cn-hangzhou`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the monitoring configuration. Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, customJob, and probe. Valid values for a Prometheus instance for ECS: customJob and probe.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -47733,11 +48625,15 @@ func (s *ListPrometheusMonitoringResponse) SetBody(v *ListPrometheusMonitoringRe
 type ListPrometheusRemoteWritesRequest struct {
 	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// cc7a37ee31aea4ed1a059eff8034b\*\*\*\	- or vpc-\*\*\*\*
+	// cc7a37ee31aea4ed1a059eff8034b\\*\\*\\*\\	- or vpc-\\*\\*\\*\\*
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -47780,7 +48676,7 @@ type ListPrometheusRemoteWritesResponseBody struct {
 	//
 	//     "name": "TiDBxxx",
 	//
-	//     "yaml": "remote_write:\\n- basic_auth: {password: \"******\", username: xxx}\\n  name: TiDBxxx\\n  write_relabel_configs:\\n  - regex: si-6e2ca86444db4e55a7c1\\n    source_labels: [instance_id]\\n    action: keep\\n    separator: ;\\n    replacement: $1\\n  url: http://xxx:8080/prometheus/xxx/ddd/cn-hangzhou/api/v3/write\\n"
+	//     "yaml": "remote_write:\\\\n- basic_auth: {password: \\"******\\", username: xxx}\\\\n  name: TiDBxxx\\\\n  write_relabel_configs:\\\\n  - regex: si-6e2ca86444db4e55a7c1\\\\n    source_labels: [instance_id]\\\\n    action: keep\\\\n    separator: ;\\\\n    replacement: $1\\\\n  url: http://xxx:8080/prometheus/xxx/ddd/cn-hangzhou/api/v3/write\\\\n"
 	//
 	//   },
 	//
@@ -47788,7 +48684,7 @@ type ListPrometheusRemoteWritesResponseBody struct {
 	//
 	//     "name": "TiDBxxx1",
 	//
-	//     "yaml": "remote_write:\\n- basic_auth: {password: \"******\", username: xxx}\\n  name: TiDBxxx1\\n  write_relabel_configs:\\n  - regex: si-6e2ca86444db4e55a7c1\\n    source_labels: [instance_id]\\n    action: keep\\n    separator: ;\\n    replacement: $1\\n  url: http://xxx:8080/prometheus/xxx/ddd/cn-hangzhou/api/v3/write\\n"
+	//     "yaml": "remote_write:\\\\n- basic_auth: {password: \\"******\\", username: xxx}\\\\n  name: TiDBxxx1\\\\n  write_relabel_configs:\\\\n  - regex: si-6e2ca86444db4e55a7c1\\\\n    source_labels: [instance_id]\\\\n    action: keep\\\\n    separator: ;\\\\n    replacement: $1\\\\n  url: http://xxx:8080/prometheus/xxx/ddd/cn-hangzhou/api/v3/write\\\\n"
 	//
 	//   }
 	//
@@ -47944,6 +48840,8 @@ func (s *ListPrometheusRemoteWritesResponse) SetBody(v *ListPrometheusRemoteWrit
 
 type ListRetcodeAppsRequest struct {
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -48205,11 +49103,15 @@ func (s *ListRetcodeAppsResponse) SetBody(v *ListRetcodeAppsResponseBody) *ListR
 type ListScenarioRequest struct {
 	// The ID of the application.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// b590lhguqs@28f515462******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The name of the business monitoring job.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -48463,6 +49365,8 @@ type ListSilencePoliciesRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -48474,6 +49378,8 @@ type ListSilencePoliciesRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -49901,6 +50807,8 @@ type ListTraceAppsRequest struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -50329,17 +51237,23 @@ func (s *ListTraceAppsResponse) SetBody(v *ListTraceAppsResponseBody) *ListTrace
 type ManageGetRecordingRuleRequest struct {
 	// The cluster ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The user ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 876345234
 	QueryUserId *string `json:"QueryUserId,omitempty" xml:"QueryUserId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -50457,11 +51371,15 @@ func (s *ManageGetRecordingRuleResponse) SetBody(v *ManageGetRecordingRuleRespon
 type ManageRecordingRuleRequest struct {
 	// The cluster ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cf09705f5a82f454db0d50420b6b4e904
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The user ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -50469,15 +51387,19 @@ type ManageRecordingRuleRequest struct {
 	QueryUserId *string `json:"QueryUserId,omitempty" xml:"QueryUserId,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The recording rule.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// groups:\n- interval: 60s\n  name: auto_analyzer_recording_rule_60s\n  rules:\n  - expr: sum(node_cpu_seconds_total)\n    record: sum:node_cpu_seconds_total:recording_rule_hash_f341458c0f7d\n
+	// groups:\\n- interval: 60s\\n  name: auto_analyzer_recording_rule_60s\\n  rules:\\n  - expr: sum(node_cpu_seconds_total)\\n    record: sum:node_cpu_seconds_total:recording_rule_hash_f341458c0f7d\\n
 	RuleYaml *string `json:"RuleYaml,omitempty" xml:"RuleYaml,omitempty"`
 }
 
@@ -50596,6 +51518,8 @@ func (s *ManageRecordingRuleResponse) SetBody(v *ManageRecordingRuleResponseBody
 type OpenArmsDefaultSLRRequest struct {
 	// The ID of the region.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -50680,6 +51604,8 @@ func (s *OpenArmsDefaultSLRResponse) SetBody(v *OpenArmsDefaultSLRResponseBody) 
 type OpenArmsServiceSecondVersionRequest struct {
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -50695,6 +51621,8 @@ type OpenArmsServiceSecondVersionRequest struct {
 	// 	- `prometheus_monitor`: Managed Service for Prometheus
 	//
 	// 	- `synthetic_post`: Synthetic Monitoring
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -50785,6 +51713,8 @@ func (s *OpenArmsServiceSecondVersionResponse) SetBody(v *OpenArmsServiceSecondV
 type OpenVClusterRequest struct {
 	// The type of the cluster. For cloud services, set this parameter to `cloud-product-prometheus`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cloud-product-prometheus
@@ -50808,6 +51738,8 @@ type OpenVClusterRequest struct {
 	// false
 	RecreateSwitch *bool `json:"RecreateSwitch,omitempty" xml:"RecreateSwitch,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -50913,6 +51845,8 @@ func (s *OpenVClusterResponse) SetBody(v *OpenVClusterResponseBody) *OpenVCluste
 type OpenXtraceDefaultSLRRequest struct {
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -51001,11 +51935,15 @@ func (s *OpenXtraceDefaultSLRResponse) SetBody(v *OpenXtraceDefaultSLRResponseBo
 type QueryAppMetadataRequest struct {
 	// The list of metadata IDs. Separate multiple IDs with commas (,).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4c9dd447,3c76c565
 	MetaIds *string `json:"MetaIds,omitempty" xml:"MetaIds,omitempty"`
 	// The metadata type. Valid values: sql: obtains an SQL statement based on sqlId exception: obtains the exception stack based on exceptionId
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -51013,11 +51951,15 @@ type QueryAppMetadataRequest struct {
 	MetaType *string `json:"MetaType,omitempty" xml:"MetaType,omitempty"`
 	// The process identifier (PID) of the application. For more information about how to obtain the PID, see "Obtain the PID of an application."
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ggxw4lnjuz@54364d85b97dc56
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The region ID. Default value: cn-hangzhou.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -51072,7 +52014,7 @@ type QueryAppMetadataResponseBody struct {
 	//
 	// example:
 	//
-	// {\"408d5533\": \"SELECT 	- FROM user_base_info\"}
+	// {\\"408d5533\\": \\"SELECT 	- FROM user_base_info\\"}
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -51181,6 +52123,8 @@ type QueryAppTopologyRequest struct {
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The end of the time range to query. Unit: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1671952708499
@@ -51189,13 +52133,15 @@ type QueryAppTopologyRequest struct {
 	Filters map[string]*string `json:"Filters,omitempty" xml:"Filters,omitempty"`
 	// The ID of the application.
 	//
-	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring*	- > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring*	- > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\\*\\*\\*\\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\\*\\*\\*\\*.
 	//
 	// example:
 	//
 	// atc889zkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -51209,11 +52155,15 @@ type QueryAppTopologyRequest struct {
 	Rpc *string `json:"Rpc,omitempty" xml:"Rpc,omitempty"`
 	// The start of the time range to query. Unit: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1595568910000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The type kind of topology.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -51300,6 +52250,8 @@ type QueryAppTopologyShrinkRequest struct {
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The end of the time range to query. Unit: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1671952708499
@@ -51308,13 +52260,15 @@ type QueryAppTopologyShrinkRequest struct {
 	FiltersShrink *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
 	// The ID of the application.
 	//
-	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring*	- > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring*	- > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\\*\\*\\*\\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\\*\\*\\*\\*.
 	//
 	// example:
 	//
 	// atc889zkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -51328,11 +52282,15 @@ type QueryAppTopologyShrinkRequest struct {
 	Rpc *string `json:"Rpc,omitempty" xml:"Rpc,omitempty"`
 	// The start of the time range to query. Unit: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1595568910000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The type kind of topology.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -51552,6 +52510,8 @@ func (s *QueryAppTopologyResponse) SetBody(v *QueryAppTopologyResponseBody) *Que
 type QueryCommercialUsageRequest struct {
 	AdvancedFilters []*QueryCommercialUsageRequestAdvancedFilters `json:"AdvancedFilters,omitempty" xml:"AdvancedFilters,omitempty" type:"Repeated"`
 	Dimensions      []*string                                     `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1699286400000
@@ -51561,6 +52521,8 @@ type QueryCommercialUsageRequest struct {
 	// 3600
 	IntervalInSec *int32    `json:"IntervalInSec,omitempty" xml:"IntervalInSec,omitempty"`
 	Measures      []*string `json:"Measures,omitempty" xml:"Measures,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// USAGEFEE.STAT
@@ -51573,10 +52535,14 @@ type QueryCommercialUsageRequest struct {
 	//
 	// dataType
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// instantQuery
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1699200000000
@@ -51804,6 +52770,8 @@ type QueryMetricByPageRequest struct {
 	Dimensions []*string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
 	// The end of the time range to query. Unit: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1667546895000
@@ -51823,6 +52791,8 @@ type QueryMetricByPageRequest struct {
 	// pv
 	Measures []*string `json:"Measures,omitempty" xml:"Measures,omitempty" type:"Repeated"`
 	// The metric that you want to query. You cannot specify a custom metric. For more information, see the "Application monitoring metrics that can be queried" section.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -51853,6 +52823,8 @@ type QueryMetricByPageRequest struct {
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The start of the time range to query. Unit: milliseconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -52246,6 +53218,8 @@ func (s *QueryPromInstallStatusResponse) SetBody(v *QueryPromInstallStatusRespon
 }
 
 type QueryReleaseMetricRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// a341a2f2-ed07-4257-aae9-dfb1be******
@@ -52258,6 +53232,8 @@ type QueryReleaseMetricRequest struct {
 	//
 	// SystemContrast
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 8b46d03f-5947-449d-90fd-3a96c2******
@@ -52266,10 +53242,14 @@ type QueryReleaseMetricRequest struct {
 	//
 	// null
 	ProxyUserId *string `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1632798718632
 	ReleaseEndTime *int64 `json:"ReleaseEndTime,omitempty" xml:"ReleaseEndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1632798686692
@@ -52389,11 +53369,15 @@ func (s *QueryReleaseMetricResponse) SetBody(v *QueryReleaseMetricResponseBody) 
 type RemoveAliClusterIdsFromPrometheusGlobalViewRequest struct {
 	// The IDs of clusters. Separate multiple IDs with commas (,).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cd1d55bef19904324a20ed0ebb86caa5c,c5b48729918ab4745a24482ac29d0973a, c00a94896641449098bf24931e4166003, cd174485c09384060ba542bc1be1185a4
 	ClusterIds *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
 	// The ID of the global aggregation instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -52401,11 +53385,15 @@ type RemoveAliClusterIdsFromPrometheusGlobalViewRequest struct {
 	GlobalViewClusterId *string `json:"GlobalViewClusterId,omitempty" xml:"GlobalViewClusterId,omitempty"`
 	// The name of the global aggregation instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// zyGlobalView
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -52568,11 +53556,15 @@ func (s *RemoveAliClusterIdsFromPrometheusGlobalViewResponse) SetBody(v *RemoveA
 type RemoveSourcesFromPrometheusGlobalViewRequest struct {
 	// The ID of the global aggregation instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// global-v2-cn-1478326682034601-vss8pd0i
 	GlobalViewClusterId *string `json:"GlobalViewClusterId,omitempty" xml:"GlobalViewClusterId,omitempty"`
 	// The name of the global aggregation instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -52580,11 +53572,15 @@ type RemoveSourcesFromPrometheusGlobalViewRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The list of custom data sources. You can specify multiple data sources and separate them with commas (,).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -52749,10 +53745,14 @@ func (s *RemoveSourcesFromPrometheusGlobalViewResponse) SetBody(v *RemoveSources
 }
 
 type RestartEnvironmentFeatureRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// metric-agent
@@ -52876,7 +53876,9 @@ func (s *RestartEnvironmentFeatureResponse) SetBody(v *RestartEnvironmentFeature
 type SaveTraceAppConfigRequest struct {
 	// The ID of the application.
 	//
-	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Application Monitoring*	- > **Applications**. On the **Applications*	- page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Application Monitoring*	- > **Applications**. On the **Applications*	- page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\\*\\*\\*\\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\\*\\*\\*\\*.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -53111,6 +54113,8 @@ type SearchAlertContactRequest struct {
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	// The ID of the region. Set the value to `cn-hangzhou`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -53315,7 +54319,7 @@ type SearchAlertContactResponseBodyPageBeanContacts struct {
 	//
 	// example:
 	//
-	// {\"body\":\"{   \\\"msg_type\\\": \\\"text\\\",   \\\"content\\\": {     \\\"text\\\": \\\"$content\\\"   } }\",\"header\":{\"Arms-Content-Type\":\"json\"},\"method\":\"post\",\"params\":{},\"url\":\"https://***",\"userId\":\"1131971649***\"}",
+	// {\\"body\\":\\"{   \\\\\\"msg_type\\\\\\": \\\\\\"text\\\\\\",   \\\\\\"content\\\\\\": {     \\\\\\"text\\\\\\": \\\\\\"$content\\\\\\"   } }\\",\\"header\\":{\\"Arms-Content-Type\\":\\"json\\"},\\"method\\":\\"post\\",\\"params\\":{},\\"url\\":\\"https://***",\\"userId\\":\\"1131971649***\\"}",
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -53429,7 +54433,7 @@ type SearchAlertContactGroupRequest struct {
 	//
 	// TestGroup
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
-	// The ID of the alert contact. You can call the SearchAlertContact operation to query the contact IDs. For more information, see [SearchAlertContact](~~130703~~).
+	// The ID of the alert contact. You can call the SearchAlertContact operation to query the contact IDs. For more information, see [SearchAlertContact](https://help.aliyun.com/document_detail/130703.html).
 	//
 	// example:
 	//
@@ -53448,6 +54452,8 @@ type SearchAlertContactGroupRequest struct {
 	// true
 	IsDetail *bool `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
 	// The ID of the region. Default value: `cn-hangzhou`.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -53739,7 +54745,7 @@ func (s *SearchAlertContactGroupResponse) SetBody(v *SearchAlertContactGroupResp
 }
 
 type SearchAlertHistoriesRequest struct {
-	// The ID of the alert rule. You can call the SearchAlertRules operation and view the `Id` parameter in the response. For more information, see [SearchAlertRules](~~175825~~).
+	// The ID of the alert rule. You can call the SearchAlertRules operation and view the `Id` parameter in the response. For more information, see [SearchAlertRules](https://help.aliyun.com/document_detail/175825.html).
 	//
 	// example:
 	//
@@ -53786,6 +54792,8 @@ type SearchAlertHistoriesRequest struct {
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region. Default value: `cn-hangzhou`.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -53927,7 +54935,7 @@ type SearchAlertHistoriesResponseBodyPageBeanAlarmHistories struct {
 	//
 	// example:
 	//
-	// "Alert name: Alert1\nAlert time: 2020-07-24 12:14:00\nAlert content: A total of four alerts are triggered: \*\*\*\*"
+	// "Alert name: Alert1\\nAlert time: 2020-07-24 12:14:00\\nAlert content: A total of four alerts are triggered: \\*\\*\\*\\*"
 	AlarmContent *string `json:"AlarmContent,omitempty" xml:"AlarmContent,omitempty"`
 	// The response code returned after the alert notification was sent.
 	//
@@ -54135,6 +55143,8 @@ type SearchAlertRulesRequest struct {
 	// atc889zkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The region ID of the alert data. For more information about the mappings between **RegionId*	- and **SystemRegionId**, see the detailed description below the table.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -54445,7 +55455,7 @@ type SearchAlertRulesResponseBodyPageBeanAlertRules struct {
 	//
 	// example:
 	//
-	// {\"continuous\":true,\"dataRevision\":2}
+	// {\\"continuous\\":true,\\"dataRevision\\":2}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The ID of the contact group. Multiple IDs are separated by commas (,).
 	//
@@ -54669,13 +55679,13 @@ type SearchAlertRulesResponseBodyPageBeanAlertRulesAlarmContext struct {
 	//
 	// example:
 	//
-	// Alert name: $Alert name\nFilter condition: $Filter\nAlert time: $Alert time\nAlert content: $Alert content\nNote: The alert persists until a reply email is received. The system will remind you again in 24 hours.
+	// Alert name: $Alert name\\nFilter condition: $Filter\\nAlert time: $Alert time\\nAlert content: $Alert content\\nNote: The alert persists until a reply email is received. The system will remind you again in 24 hours.
 	AlarmContentTemplate *string `json:"AlarmContentTemplate,omitempty" xml:"AlarmContentTemplate,omitempty"`
 	// The content of the alert notification.
 	//
 	// example:
 	//
-	// Alert name: $Alert name\nFilter condition: $Filter\nAlert time: $Alert time\nAlert content: $Alert content\nNote: The alert persists until a reply email is received. The system will remind you again in 24 hours.
+	// Alert name: $Alert name\\nFilter condition: $Filter\\nAlert time: $Alert time\\nAlert content: $Alert content\\nNote: The alert persists until a reply email is received. The system will remind you again in 24 hours.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The sub-title of the alert notification.
 	//
@@ -55060,7 +56070,7 @@ func (s *SearchAlertRulesResponse) SetBody(v *SearchAlertRulesResponseBody) *Sea
 }
 
 type SearchEventsRequest struct {
-	// The ID of the alert rule. You can call the SearchAlertRules operation and view the `Id` parameter in the response. For more information, see [SearchAlertRules](~~175825~~).
+	// The ID of the alert rule. You can call the SearchAlertRules operation and view the `Id` parameter in the response. For more information, see [SearchAlertRules](https://help.aliyun.com/document_detail/175825.html).
 	//
 	// example:
 	//
@@ -55133,6 +56143,8 @@ type SearchEventsRequest struct {
 	// atc889zkcf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -55316,7 +56328,7 @@ type SearchEventsResponseBodyPageBeanEvent struct {
 	//
 	// example:
 	//
-	// {\"operator\":\"&\",\"rules\":[{\"aggregates\":\"AVG\",\"alias\":\"JVM_线程总数\",\"measure\":\"appstat.jvm.ThreadCount\",\"nValue\":1,\"operator\":\"HOH_DOWN\",\"value\":50.0}]}
+	// {\\"operator\\":\\"&\\",\\"rules\\":[{\\"aggregates\\":\\"AVG\\",\\"alias\\":\\"JVM_线程总数\\",\\"measure\\":\\"appstat.jvm.ThreadCount\\",\\"nValue\\":1,\\"operator\\":\\"HOH_DOWN\\",\\"value\\":50.0}]}
 	AlertRule *string `json:"AlertRule,omitempty" xml:"AlertRule,omitempty"`
 	// The type of the alert rule. This parameter is not returned. Valid values:
 	//
@@ -55364,7 +56376,7 @@ type SearchEventsResponseBodyPageBeanEvent struct {
 	//
 	// example:
 	//
-	// unknow紧急报警\nip：172.27.XX.XX\n应用名 = test\nRegion = cn-shenzhen\n异常信息 = {\"timestamp\"：\"1615447972235\"}
+	// unknow紧急报警\\nip：172.27.XX.XX\\n应用名 = test\\nRegion = cn-shenzhen\\n异常信息 = {\\"timestamp\\"：\\"1615447972235\\"}
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -55464,6 +56476,8 @@ type SearchRetcodeAppByPageRequest struct {
 	// 5
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -56190,6 +57204,8 @@ type SearchTraceAppByPageRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -56569,6 +57585,8 @@ func (s *SearchTraceAppByPageResponse) SetBody(v *SearchTraceAppByPageResponseBo
 type SearchTracesRequest struct {
 	// The end of the time range to query. Unit: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1595210400000
@@ -56594,6 +57612,8 @@ type SearchTracesRequest struct {
 	// b590lhguqs@9781be0f44dXXXX
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -56622,6 +57642,8 @@ type SearchTracesRequest struct {
 	// arms-k8s-demo-subcomponent
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -56824,7 +57846,7 @@ type SearchTracesResponseBodyTraceInfos struct {
 	//
 	// example:
 	//
-	// 172.20.**.**
+	// 172.20.\*\*.**
 	ServiceIp *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
 	// The name of the application.
 	//
@@ -56916,6 +57938,8 @@ func (s *SearchTracesResponse) SetBody(v *SearchTracesResponseBody) *SearchTrace
 type SearchTracesByPageRequest struct {
 	// The end of the time range to query. Unit: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1595210400000
@@ -56964,6 +57988,8 @@ type SearchTracesByPageRequest struct {
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -56991,6 +58017,8 @@ type SearchTracesByPageRequest struct {
 	// arms-k8s-demo-subcomponent
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -57353,11 +58381,15 @@ func (s *SearchTracesByPageResponse) SetBody(v *SearchTracesByPageResponseBody) 
 type SendTTSVerifyLinkRequest struct {
 	// The ID of the alert contact.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
 	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
 	// The mobile number of the alert contact.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -57470,6 +58502,8 @@ type SetRetcodeShareStatusRequest struct {
 	//
 	// 	- `false`: Turn off the switch.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// true
@@ -57566,10 +58600,14 @@ func (s *SetRetcodeShareStatusResponse) SetBody(v *SetRetcodeShareStatusResponse
 }
 
 type StartAlertRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1610***
 	AlertId *string `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -57783,11 +58821,15 @@ func (s *StartTimingSyntheticTaskResponse) SetBody(v *StartTimingSyntheticTaskRe
 type StopAlertRequest struct {
 	// The ID of the alert rule.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1610***
 	AlertId *string `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -57887,6 +58929,8 @@ type StopTimingSyntheticTaskRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The task IDs.
+	//
+	// This parameter is required.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }
 
@@ -57916,6 +58960,8 @@ type StopTimingSyntheticTaskShrinkRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The task IDs.
+	//
+	// This parameter is required.
 	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
 }
 
@@ -58108,17 +59154,23 @@ func (s *SwitchSyntheticTaskStatusResponse) SetBody(v *SwitchSyntheticTaskStatus
 type SyncRecordingRulesRequest struct {
 	// The ID of the cluster whose aggregation rule you want to synchronize.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The ID of the region. The destination region can be the same as the source region.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of clusters to which you want to synchronize the aggregation rule.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -58160,7 +59212,7 @@ type SyncRecordingRulesResponseBody struct {
 	//
 	// example:
 	//
-	// { "data":\[ "c06ca68cd16f14f52bb07772eda\*\*\*", "c33dd70a0ac184c1b879d807ab2\*\*\*", "c384cf7e4dcb543e6ac8c7d4dd3\*\*\*", "ce30f833bc4a04a56a06b070319\*\*\*" ], "message":"IDs of Clusters to which the aggregation rule failed to be synchronized", "success":true }
+	// { "data":[ "c06ca68cd16f14f52bb07772eda\\*\\*\\*", "c33dd70a0ac184c1b879d807ab2\\*\\*\\*", "c384cf7e4dcb543e6ac8c7d4dd3\\*\\*\\*", "ce30f833bc4a04a56a06b070319\\*\\*\\*" ], "message":"IDs of Clusters to which the aggregation rule failed to be synchronized", "success":true }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// 返回结果的提示信息。
 	//
@@ -58235,6 +59287,8 @@ func (s *SyncRecordingRulesResponse) SetBody(v *SyncRecordingRulesResponseBody) 
 
 type TagResourcesRequest struct {
 	// The resource IDs. You can specify a maximum of 50 resource IDs.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the ARMS resources for which you want to modify tags. Valid values:
 	//
@@ -58252,11 +59306,15 @@ type TagResourcesRequest struct {
 	//
 	// 	- XTRACEAPP: Managed Service for OpenTelemetry
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// PROMETHEUS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags to add to the resource. You can specify a maximum of 20 tags.
+	//
+	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -58387,11 +59445,15 @@ type UninstallManagedPrometheusRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The type of the monitoring object. Valid values: ask and ecs.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ask
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -58404,6 +59466,9 @@ type UninstallManagedPrometheusRequest struct {
 	// rg-acfmxyexli2****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The virtual private cloud (VPC) where the ASK cluster or ECS instance resides.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -58552,11 +59617,15 @@ type UninstallPromClusterRequest struct {
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The cluster ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c0bad479465464e1d8c1e641b0afb****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID. Default value: cn-hangzhou.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -58685,6 +59754,8 @@ type UntagResourcesRequest struct {
 	// False
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The resource IDs. You can specify a maximum of 50 resource IDs.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the ARMS resources for which you want to modify tags. Valid values:
 	//
@@ -58701,6 +59772,8 @@ type UntagResourcesRequest struct {
 	// 	- PROMETHEUSALERTRULE: Managed Service for Prometheus alert rule
 	//
 	// 	- XTRACEAPP: Managed Service for OpenTelemetry
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -58841,7 +59914,9 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateAlertContactRequest struct {
-	// The ID of the alert contact to be updated. You can call the SearchAlertContact operation to query the contact ID. For more information, see [SearchAlertContact](~~130703~~).
+	// The ID of the alert contact to be updated. You can call the SearchAlertContact operation to query the contact ID. For more information, see [SearchAlertContact](https://help.aliyun.com/document_detail/130703.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -58853,7 +59928,7 @@ type UpdateAlertContactRequest struct {
 	//
 	// John Doe
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// The new webhook URL of the DingTalk chatbot. For more information, see [Configure a DingTalk chatbot to send alert notifications](~~106247~~). You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+	// The new webhook URL of the DingTalk chatbot. For more information, see [Configure a DingTalk chatbot to send alert notifications](https://help.aliyun.com/document_detail/106247.html). You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
 	//
 	// >  If you do not specify this parameter, the original parameter value is deleted. If you specify this parameter, the original parameter value is updated.
 	//
@@ -58878,6 +59953,8 @@ type UpdateAlertContactRequest struct {
 	// 1381111****
 	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
 	// The ID of the region. Set the value to `cn-hangzhou`.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -59007,11 +60084,15 @@ func (s *UpdateAlertContactResponse) SetBody(v *UpdateAlertContactResponseBody) 
 type UpdateAlertContactGroupRequest struct {
 	// The ID of the alert contact group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
 	ContactGroupId *int64 `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
 	// The name of the alert contact group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -59024,6 +60105,8 @@ type UpdateAlertContactGroupRequest struct {
 	// 123 234 345
 	ContactIds *string `json:"ContactIds,omitempty" xml:"ContactIds,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -59128,6 +60211,8 @@ func (s *UpdateAlertContactGroupResponse) SetBody(v *UpdateAlertContactGroupResp
 type UpdateAlertRuleRequest struct {
 	// The ID of the alert rule.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234567
@@ -59150,15 +60235,19 @@ type UpdateAlertRuleRequest struct {
 	IsAutoStart *bool `json:"IsAutoStart,omitempty" xml:"IsAutoStart,omitempty"`
 	// The ID of the region.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The configurations of the alert template based on which you want to create an alert rule. The value must be a JSON string. You must set at least one of the **TemplateAlertId*	- and **TemplageAlertConfig*	- parameters. If you set both parameters, the **TemplateAlertId*	- parameter prevails. For more information about the TemplageAlertConfig parameter, see the following **additional information about the TemplageAlertConfig parameter**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// [ { "contactGroupIds": "381", "alertType": 5, "alarmContext": { "subTitle": "", "content": "Alarm name: $alarm name\nFilter condition: $filter\nAlarm time : $Alarm time\nAlarm content: $Alarm content\nNote: Before the recovery email is received, the alarm is in continuous alarm, and you will be reminded again after 24 hours!" }, "alertLevel": "WARN", " metricParam": { "appId": "70901", "pid": "atc889zkcf@d8deedfa9bf****", "type": "TXN", "dimensions": [ { "type": "STATIC", "value ": "\\/hello_test_api_address\\/test1", "key": "rpc" } ] }, "alertWay": [ "SMS", "MAIL", "DING_ROBOT" ], "alertRule": { "rules" : [ { "measure": "appstat.txn.rt", "alias": "Entry call response time_ms", "aggregates": "AVG", "nValue": 1, "value": 1, "operator ": "CURRENT_GTE" } ], "operator": "|" }, "title": "Alarm template alarm name", "config": "{\"continuous\":false,\"dataRevision\":2, \"ownerId\":\"123412341234\"}", "notice": { "noticeStartTime": 1480521600000, "startTime": 1480521600000, "endTime": 1480607940000, "noticeEndTime": 1480607940000 }, "stat us": "NON " } ]
+	// [ { "contactGroupIds": "381", "alertType": 5, "alarmContext": { "subTitle": "", "content": "Alarm name: $alarm name\\nFilter condition: $filter\\nAlarm time : $Alarm time\\nAlarm content: $Alarm content\\nNote: Before the recovery email is received, the alarm is in continuous alarm, and you will be reminded again after 24 hours!" }, "alertLevel": "WARN", " metricParam": { "appId": "70901", "pid": "atc889zkcf@d8deedfa9bf****", "type": "TXN", "dimensions": [ { "type": "STATIC", "value ": "\\\\/hello_test_api_address\\\\/test1", "key": "rpc" } ] }, "alertWay": [ "SMS", "MAIL", "DING_ROBOT" ], "alertRule": { "rules" : [ { "measure": "appstat.txn.rt", "alias": "Entry call response time_ms", "aggregates": "AVG", "nValue": 1, "value": 1, "operator ": "CURRENT_GTE" } ], "operator": "|" }, "title": "Alarm template alarm name", "config": "{\\"continuous\\":false,\\"dataRevision\\":2, \\"ownerId\\":\\"123412341234\\"}", "notice": { "noticeStartTime": 1480521600000, "startTime": 1480521600000, "endTime": 1480607940000, "noticeEndTime": 1480607940000 }, "stat us": "NON " } ]
 	TemplageAlertConfig *string `json:"TemplageAlertConfig,omitempty" xml:"TemplageAlertConfig,omitempty"`
 }
 
@@ -59393,10 +60482,14 @@ type UpdateDispatchRuleRequest struct {
 	//
 	// 	- `_aliyun_arms_alert_level`: alert severity
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {   "id": 123,     "system": false,   "ruleid": 10282,   "name": "Prometheus Alert",   "labelMatchExpressionGrid": {     "labelMatchExpressionGroups": [       {         "labelMatchExpressions": [           {             "key": "_aliyun_arms_involvedObject_kind",             "value": "app",             "operator": "eq"           }         ]       }     ]   },   "dispatchType": "CREATE_ALERT/DISCARD_ALERT",   "isRecover": true,   "groupRules": [     {       "groupId": 1,       "groupingFields": [         "alertname"       ],       "groupWait": 10,       "groupInterval": 15,       "repeatInterval": 20     }   ],   "notifyRules": [     {       "notifyObjects": [         {           "notifyType": "ARMS_CONTACT",           "name": "JohnDoe",           "notifyObjectId": 1         },         {           "notifyType": "ARMS_CONTACT_GROUP",           "name": "JohnDoe_group",           "notifyObjectId": 2         }       ],       "notifyChannels":["dingTalk","wechat","webhook","email"]     },   ], }
 	DispatchRule *string `json:"DispatchRule,omitempty" xml:"DispatchRule,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -59494,17 +60587,23 @@ type UpdateEnvCustomJobRequest struct {
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
 	// The name of the custom job.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// customJob1
 	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
 	// The environment ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -59649,6 +60748,8 @@ type UpdateEnvPodMonitorRequest struct {
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The YAML configuration string.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Refer to supplementary instructions.
@@ -59661,11 +60762,15 @@ type UpdateEnvPodMonitorRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The environment ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The namespace where the PodMonitor is located.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -59673,11 +60778,15 @@ type UpdateEnvPodMonitorRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The name of the PodMonitor.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// arms-admin-pm1
 	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -59850,6 +60959,8 @@ type UpdateEnvServiceMonitorRequest struct {
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The YAML configuration string.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Refer to supplementary instructions.
@@ -59862,11 +60973,15 @@ type UpdateEnvServiceMonitorRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The environment ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The namespace where the ServiceMonitor is located.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -59874,11 +60989,15 @@ type UpdateEnvServiceMonitorRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the ServiceMonitor.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -60051,6 +61170,8 @@ type UpdateEnvironmentRequest struct {
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The environment ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxxxx
@@ -60072,6 +61193,8 @@ type UpdateEnvironmentRequest struct {
 	// CS_Basic
 	FeePackage *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -60202,6 +61325,8 @@ type UpdateGrafanaWorkspaceRequest struct {
 	// zh
 	AliyunLang  *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// grafana-cn-4xl3g******
@@ -60210,6 +61335,8 @@ type UpdateGrafanaWorkspaceRequest struct {
 	//
 	// testGrafana
 	GrafanaWorkspaceName *string `json:"GrafanaWorkspaceName,omitempty" xml:"GrafanaWorkspaceName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -60350,14 +61477,20 @@ type UpdateGrafanaWorkspaceVersionRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10.0.x
 	GrafanaVersion *string `json:"GrafanaVersion,omitempty" xml:"GrafanaVersion,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// grafana-cn-4xl3g******
 	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -60575,7 +61708,7 @@ type UpdateIntegrationRequest struct {
 	//
 	// example:
 	//
-	// \[ { "redefineType":"EXTRACT", "matchExpression":null, "fieldName":"alertname", "expression":null, "mappingRuleList":\[ ], "name":"Alert name", "integrationId":1234, "jsonPath":"$.alertName", "id":10001, "fieldType":"LABEL" }, { "redefineType":"MAP", "matchExpression":null, "fieldName":"severity", "expression":null, "mappingRuleList":\[ { "mappingValue":"critical", "mappingName":"P1", "mappingType":"MAP", "originValue":"CRITICAL" }, { "mappingValue":"error", "mappingName":"P2", "mappingType":"MAP", "originValue":"WARN" }, { "mappingValue":"warning", "mappingName":"P3", "mappingType":"MAP", "originValue":"INFO" } ], "name":"Alert level", "integrationId":1234, "jsonPath":"$.triggerLevel", "id":10002, "fieldType":"LABEL" }, { "redefineType":"EXTRACT", "matchExpression":null, "fieldName":"message", "expression":"{{$labels.namespace}} / {{$labels.dimensions}} Alert content {{ $labels.alertname }}, Current value {{$value}}.", "mappingRuleList":\[ ], "name":"Alert description", "integrationId":1234, "jsonPath":null, "id":10003, "fieldType":"ANNOTATION" }, { "redefineType":"EXTRACT", "matchExpression":null, "fieldName":"value", "expression":null, "mappingRuleList":\[ ], "name":"Alert sample value", "integrationId":1234, "jsonPath":"$.curValue", "id":10004, "fieldType":"ANNOTATION" }, { "redefineType":"EXTRACT", "matchExpression":null, "fieldName":"source", "expression":null, "mappingRuleList":\[ ], "name":"Source", "integrationId":1234, "jsonPath":null, "id":10007, "fieldType":"LABEL" }, { "redefineType":"ADD", "matchExpression":null, "fieldName":"generatorUrl", "expression":"https://cloudmonitor.console.aliyun.com/index.htm#/alarmInfo/name={{$labels.ruleId}}\&searchValue=\&searchType=name\&searchProduct=/history/all/searchKey:{{$labels.ruleId}},startTime:{{sub $startsAt 300000}},endTime:{{$endsAt}}", "mappingRuleList":\[ ], "name":"Event URL", "integrationId":1234, "jsonPath":"https://cloudmonitor.console.aliyun.com/index.htm#/alarmInfo/name={{$labels.ruleId}}\&searchValue=\&searchType=name\&searchProduct=/history/all/searchKey:{{$labels.ruleId}},startTime:{{sub $startsAt 300000}},endTime:{{$endsAt}}", "id":10012, "fieldType":"GENERATE_URL" } ]
+	// [ { "redefineType":"EXTRACT", "matchExpression":null, "fieldName":"alertname", "expression":null, "mappingRuleList":[ ], "name":"Alert name", "integrationId":1234, "jsonPath":"$.alertName", "id":10001, "fieldType":"LABEL" }, { "redefineType":"MAP", "matchExpression":null, "fieldName":"severity", "expression":null, "mappingRuleList":[ { "mappingValue":"critical", "mappingName":"P1", "mappingType":"MAP", "originValue":"CRITICAL" }, { "mappingValue":"error", "mappingName":"P2", "mappingType":"MAP", "originValue":"WARN" }, { "mappingValue":"warning", "mappingName":"P3", "mappingType":"MAP", "originValue":"INFO" } ], "name":"Alert level", "integrationId":1234, "jsonPath":"$.triggerLevel", "id":10002, "fieldType":"LABEL" }, { "redefineType":"EXTRACT", "matchExpression":null, "fieldName":"message", "expression":"{{$labels.namespace}} / {{$labels.dimensions}} Alert content {{ $labels.alertname }}, Current value {{$value}}.", "mappingRuleList":[ ], "name":"Alert description", "integrationId":1234, "jsonPath":null, "id":10003, "fieldType":"ANNOTATION" }, { "redefineType":"EXTRACT", "matchExpression":null, "fieldName":"value", "expression":null, "mappingRuleList":[ ], "name":"Alert sample value", "integrationId":1234, "jsonPath":"$.curValue", "id":10004, "fieldType":"ANNOTATION" }, { "redefineType":"EXTRACT", "matchExpression":null, "fieldName":"source", "expression":null, "mappingRuleList":[ ], "name":"Source", "integrationId":1234, "jsonPath":null, "id":10007, "fieldType":"LABEL" }, { "redefineType":"ADD", "matchExpression":null, "fieldName":"generatorUrl", "expression":"https://cloudmonitor.console.aliyun.com/index.htm#/alarmInfo/name={{$labels.ruleId}}\\&searchValue=\\&searchType=name\\&searchProduct=/history/all/searchKey:{{$labels.ruleId}},startTime:{{sub $startsAt 300000}},endTime:{{$endsAt}}", "mappingRuleList":[ ], "name":"Event URL", "integrationId":1234, "jsonPath":"https://cloudmonitor.console.aliyun.com/index.htm#/alarmInfo/name={{$labels.ruleId}}\\&searchValue=\\&searchType=name\\&searchProduct=/history/all/searchKey:{{$labels.ruleId}},startTime:{{sub $startsAt 300000}},endTime:{{$endsAt}}", "id":10012, "fieldType":"GENERATE_URL" } ]
 	FieldRedefineRules *string `json:"FieldRedefineRules,omitempty" xml:"FieldRedefineRules,omitempty"`
 	// The field for clearing alert events. The system queries alert events based on the field of alert clearing events and clears the alert events.
 	//
@@ -60595,11 +61728,15 @@ type UpdateIntegrationRequest struct {
 	InitiativeRecoverValue *string `json:"InitiativeRecoverValue,omitempty" xml:"InitiativeRecoverValue,omitempty"`
 	// The ID of the alert integration.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234
 	IntegrationId *int64 `json:"IntegrationId,omitempty" xml:"IntegrationId,omitempty"`
 	// The name of the alert integration.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -60610,6 +61747,8 @@ type UpdateIntegrationRequest struct {
 	// 	- CLOUD_MONITOR: CloudMonitor
 	//
 	// 	- LOG_SERVICE: Log Service
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -61104,10 +62243,14 @@ func (s *UpdateMetricDropResponse) SetBody(v *UpdateMetricDropResponseBody) *Upd
 }
 
 type UpdatePrometheusAlertRuleRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3888704
 	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Prometheus_Alert
@@ -61116,6 +62259,8 @@ type UpdatePrometheusAlertRuleRequest struct {
 	//
 	// [{"Value": "xxx","Name": "description"}]
 	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c0bad479465464e1d8c1e641b0afb****
@@ -61124,23 +62269,30 @@ type UpdatePrometheusAlertRuleRequest struct {
 	//
 	// 10282
 	DispatchRuleId *int64 `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
-	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \"pod_name\", \"$1\", \"pod\", \"(.*)\")) by (pod_name))>75
+	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \\"pod_name\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (pod_name))>75
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// example:
 	//
 	// [{"Value": "critical","Name": "severity"}]
-	Labels  *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// This parameter is required.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
 	// ALERT_MANAGER
 	NotifyType *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -61313,7 +62465,7 @@ type UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule struct {
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// example:
 	//
-	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \"pod_name\", \"$1\", \"pod\", \"(.*)\")) by (pod_name))>75
+	// 100 	- (sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name) / sum(label_replace(kube_pod_container_resource_limits_cpu_cores, \\"pod_name\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (pod_name))>75
 	Expression *string                                                           `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	Labels     []*UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRuleLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	Message    *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -61493,6 +62645,8 @@ type UpdatePrometheusGlobalViewRequest struct {
 	AllSubClustersSuccess *bool `json:"AllSubClustersSuccess,omitempty" xml:"AllSubClustersSuccess,omitempty"`
 	// The ID of the Prometheus instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// global****
@@ -61511,6 +62665,8 @@ type UpdatePrometheusGlobalViewRequest struct {
 	MostRegionId *string `json:"MostRegionId,omitempty" xml:"MostRegionId,omitempty"`
 	// The ID of the region in which the Prometheus instance resides.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-shenzhen
@@ -61522,6 +62678,8 @@ type UpdatePrometheusGlobalViewRequest struct {
 	// rg-acfmxyexli2****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The data sources of the Prometheus instance for GlobalView.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -61749,11 +62907,15 @@ type UpdatePrometheusInstanceRequest struct {
 	ArchiveDuration *int32 `json:"ArchiveDuration,omitempty" xml:"ArchiveDuration,omitempty"`
 	// The ID of the Prometheus instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// vpc-xxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -61893,6 +63055,8 @@ func (s *UpdatePrometheusInstanceResponse) SetBody(v *UpdatePrometheusInstanceRe
 type UpdatePrometheusIntegrationRequest struct {
 	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
@@ -61905,11 +63069,15 @@ type UpdatePrometheusIntegrationRequest struct {
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the integration.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// kafka, mysql, redis, snmp, emr, nubela, and tidb
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The configurations of the exporter. The value is a JSON string.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -61932,6 +63100,8 @@ type UpdatePrometheusIntegrationRequest struct {
 	// }
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -62088,19 +63258,27 @@ func (s *UpdatePrometheusIntegrationResponse) SetBody(v *UpdatePrometheusIntegra
 type UpdatePrometheusMonitoringRequest struct {
 	// The ID of the Prometheus instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The monitoring configuration. Specify a YAML string.
+	//
+	// This parameter is required.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
 	// The name of the monitoring configuration.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// podMonitor1
 	MonitoringName *string `json:"MonitoringName,omitempty" xml:"MonitoringName,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -62111,6 +63289,8 @@ type UpdatePrometheusMonitoringRequest struct {
 	// Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, customJob, and probe.
 	//
 	// Valid values for a Prometheus instance for ECS: customJob and probe.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -62238,11 +63418,15 @@ func (s *UpdatePrometheusMonitoringResponse) SetBody(v *UpdatePrometheusMonitori
 type UpdatePrometheusMonitoringStatusRequest struct {
 	// The ID of the Prometheus instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the monitoring configuration.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -62250,11 +63434,15 @@ type UpdatePrometheusMonitoringStatusRequest struct {
 	MonitoringName *string `json:"MonitoringName,omitempty" xml:"MonitoringName,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The status of the monitoring configuration. Valid values: run and stop.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -62267,6 +63455,8 @@ type UpdatePrometheusMonitoringStatusRequest struct {
 	// Valid value for a Prometheus instance for ECS: customJob.
 	//
 	// The status of probe cannot be modified.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -62394,11 +63584,15 @@ func (s *UpdatePrometheusMonitoringStatusResponse) SetBody(v *UpdatePrometheusMo
 type UpdatePrometheusRemoteWriteRequest struct {
 	// The ID of the Prometheus instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -62406,11 +63600,15 @@ type UpdatePrometheusRemoteWriteRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the remote write configuration item.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// rw1
 	RemoteWriteName *string `json:"RemoteWriteName,omitempty" xml:"RemoteWriteName,omitempty"`
 	// The remote write configuration. Specify the value in the YAML format.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -62578,10 +63776,14 @@ type UpdateRumAppRequest struct {
 	// true
 	IsSubscribe *bool   `json:"IsSubscribe,omitempty" xml:"IsSubscribe,omitempty"`
 	Nickname    *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// b5xxxxs@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -62798,6 +64000,8 @@ type UpdateRumFileStatusRequest struct {
 	//
 	// cf@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -64649,17 +65853,23 @@ func (s *UpdateTimingSyntheticTaskResponse) SetBody(v *UpdateTimingSyntheticTask
 type UpdateWebhookRequest struct {
 	// The notification template that is sent when an alert is triggered. This parameter is required if the **Method*	- parameter is set to **Post**. You can use the $content placeholder to specify the notification content. The content cannot exceed 500 characters in length.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels.\_aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels.\_aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Alert time":"{{ .startTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
+	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Alert time":"{{ .startTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	// The ID of the webhook alert contact. You can call the **SearchAlertContact*	- operation to obtain the ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// 48716
 	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
 	// The name of the webhook alert contact.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -64683,6 +65893,8 @@ type UpdateWebhookRequest struct {
 	//
 	// 	- `Post`
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Post
@@ -64691,15 +65903,19 @@ type UpdateWebhookRequest struct {
 	//
 	// example:
 	//
-	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels.\_aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels.\_aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Recovery time":"{{ .endTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
+	// { "Alert name":"{{ .commonLabels.alertname }}{{if .commonLabels.clustername }}", "Cluster name":"{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}", "Application name":"{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}", "Notification policy":"{{ .dispatchRuleName }}", "Recovery time":"{{ .endTime }}", "Alert content":"{{ for .alerts }} {{ .annotations.message }} {{ end }}" }
 	RecoverBody *string `json:"RecoverBody,omitempty" xml:"RecoverBody,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The URL of the HTTP request method.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -64829,6 +66045,8 @@ func (s *UpdateWebhookResponse) SetBody(v *UpdateWebhookResponseBody) *UpdateWeb
 type UpgradeAddonReleaseRequest struct {
 	// Version of Addon.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0.0.2
@@ -64840,6 +66058,8 @@ type UpgradeAddonReleaseRequest struct {
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Environment ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -64853,11 +66073,15 @@ type UpgradeAddonReleaseRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of Release.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// mysql-1695372983039
 	ReleaseName *string `json:"ReleaseName,omitempty" xml:"ReleaseName,omitempty"`
 	// Metadata information.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -65003,10 +66227,14 @@ type UpgradeEnvironmentFeatureRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// metric-agent
@@ -65162,19 +66390,25 @@ type UploadRequest struct {
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
 	// The name of the SourceMap file.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test.js.map
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The application ID.
 	//
-	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring*	- > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with @ to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring*	- > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\\*\\*\\*\\*, you must replace %40 with @ to obtain eb4zdose6v@9781be0f44d\\*\\*\\*\\*.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// b590lhguqs@8cc3f6354******
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The ID of the region to which the SourceMap file is uploaded.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -65411,6 +66645,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds data sources to a global aggregation instance in Prometheus Service.
+//
+// @param request - AddAliClusterIdsToPrometheusGlobalViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAliClusterIdsToPrometheusGlobalViewResponse
 func (client *Client) AddAliClusterIdsToPrometheusGlobalViewWithOptions(request *AddAliClusterIdsToPrometheusGlobalViewRequest, runtime *util.RuntimeOptions) (_result *AddAliClusterIdsToPrometheusGlobalViewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65456,6 +66699,13 @@ func (client *Client) AddAliClusterIdsToPrometheusGlobalViewWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds data sources to a global aggregation instance in Prometheus Service.
+//
+// @param request - AddAliClusterIdsToPrometheusGlobalViewRequest
+//
+// @return AddAliClusterIdsToPrometheusGlobalViewResponse
 func (client *Client) AddAliClusterIdsToPrometheusGlobalView(request *AddAliClusterIdsToPrometheusGlobalViewRequest) (_result *AddAliClusterIdsToPrometheusGlobalViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddAliClusterIdsToPrometheusGlobalViewResponse{}
@@ -65467,6 +66717,15 @@ func (client *Client) AddAliClusterIdsToPrometheusGlobalView(request *AddAliClus
 	return _result, _err
 }
 
+// Summary:
+//
+// Integrates the dashboard of Prometheus Service.
+//
+// @param request - AddGrafanaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddGrafanaResponse
 func (client *Client) AddGrafanaWithOptions(request *AddGrafanaRequest, runtime *util.RuntimeOptions) (_result *AddGrafanaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65508,6 +66767,13 @@ func (client *Client) AddGrafanaWithOptions(request *AddGrafanaRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Integrates the dashboard of Prometheus Service.
+//
+// @param request - AddGrafanaRequest
+//
+// @return AddGrafanaResponse
 func (client *Client) AddGrafana(request *AddGrafanaRequest) (_result *AddGrafanaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddGrafanaResponse{}
@@ -65519,7 +66785,11 @@ func (client *Client) AddGrafana(request *AddGrafanaRequest) (_result *AddGrafan
 	return _result, _err
 }
 
-// Deprecated: : AddIntegration is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+// Deprecated: OpenAPI AddIntegration is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+//
+// Summary:
+//
+// 接入integration
 //
 // @param request - AddIntegrationRequest
 //
@@ -65568,7 +66838,11 @@ func (client *Client) AddIntegrationWithOptions(request *AddIntegrationRequest, 
 	return _result, _err
 }
 
-// Deprecated: : AddIntegration is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+// Deprecated: OpenAPI AddIntegration is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+//
+// Summary:
+//
+// 接入integration
 //
 // @param request - AddIntegrationRequest
 //
@@ -65585,6 +66859,15 @@ func (client *Client) AddIntegration(request *AddIntegrationRequest) (_result *A
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a global aggregation instance in Prometheus Service.
+//
+// @param request - AddPrometheusGlobalViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddPrometheusGlobalViewResponse
 func (client *Client) AddPrometheusGlobalViewWithOptions(request *AddPrometheusGlobalViewRequest, runtime *util.RuntimeOptions) (_result *AddPrometheusGlobalViewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65634,6 +66917,13 @@ func (client *Client) AddPrometheusGlobalViewWithOptions(request *AddPrometheusG
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a global aggregation instance in Prometheus Service.
+//
+// @param request - AddPrometheusGlobalViewRequest
+//
+// @return AddPrometheusGlobalViewResponse
 func (client *Client) AddPrometheusGlobalView(request *AddPrometheusGlobalViewRequest) (_result *AddPrometheusGlobalViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddPrometheusGlobalViewResponse{}
@@ -65645,6 +66935,15 @@ func (client *Client) AddPrometheusGlobalView(request *AddPrometheusGlobalViewRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a global aggregation instance in Prometheus Service.
+//
+// @param request - AddPrometheusGlobalViewByAliClusterIdsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddPrometheusGlobalViewByAliClusterIdsResponse
 func (client *Client) AddPrometheusGlobalViewByAliClusterIdsWithOptions(request *AddPrometheusGlobalViewByAliClusterIdsRequest, runtime *util.RuntimeOptions) (_result *AddPrometheusGlobalViewByAliClusterIdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65690,6 +66989,13 @@ func (client *Client) AddPrometheusGlobalViewByAliClusterIdsWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a global aggregation instance in Prometheus Service.
+//
+// @param request - AddPrometheusGlobalViewByAliClusterIdsRequest
+//
+// @return AddPrometheusGlobalViewByAliClusterIdsResponse
 func (client *Client) AddPrometheusGlobalViewByAliClusterIds(request *AddPrometheusGlobalViewByAliClusterIdsRequest) (_result *AddPrometheusGlobalViewByAliClusterIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddPrometheusGlobalViewByAliClusterIdsResponse{}
@@ -65701,6 +67007,15 @@ func (client *Client) AddPrometheusGlobalViewByAliClusterIds(request *AddPrometh
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Prometheus instance for Remote Write.
+//
+// @param request - AddPrometheusInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddPrometheusInstanceResponse
 func (client *Client) AddPrometheusInstanceWithOptions(request *AddPrometheusInstanceRequest, runtime *util.RuntimeOptions) (_result *AddPrometheusInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65742,6 +67057,13 @@ func (client *Client) AddPrometheusInstanceWithOptions(request *AddPrometheusIns
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Prometheus instance for Remote Write.
+//
+// @param request - AddPrometheusInstanceRequest
+//
+// @return AddPrometheusInstanceResponse
 func (client *Client) AddPrometheusInstance(request *AddPrometheusInstanceRequest) (_result *AddPrometheusInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddPrometheusInstanceResponse{}
@@ -65753,6 +67075,15 @@ func (client *Client) AddPrometheusInstance(request *AddPrometheusInstanceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an exporter to a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - AddPrometheusIntegrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddPrometheusIntegrationResponse
 func (client *Client) AddPrometheusIntegrationWithOptions(request *AddPrometheusIntegrationRequest, runtime *util.RuntimeOptions) (_result *AddPrometheusIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65798,6 +67129,13 @@ func (client *Client) AddPrometheusIntegrationWithOptions(request *AddPrometheus
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an exporter to a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - AddPrometheusIntegrationRequest
+//
+// @return AddPrometheusIntegrationResponse
 func (client *Client) AddPrometheusIntegration(request *AddPrometheusIntegrationRequest) (_result *AddPrometheusIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddPrometheusIntegrationResponse{}
@@ -65809,6 +67147,15 @@ func (client *Client) AddPrometheusIntegration(request *AddPrometheusIntegration
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a remote write configuration item to a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - AddPrometheusRemoteWriteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddPrometheusRemoteWriteResponse
 func (client *Client) AddPrometheusRemoteWriteWithOptions(request *AddPrometheusRemoteWriteRequest, runtime *util.RuntimeOptions) (_result *AddPrometheusRemoteWriteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65852,6 +67199,13 @@ func (client *Client) AddPrometheusRemoteWriteWithOptions(request *AddPrometheus
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a remote write configuration item to a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - AddPrometheusRemoteWriteRequest
+//
+// @return AddPrometheusRemoteWriteResponse
 func (client *Client) AddPrometheusRemoteWrite(request *AddPrometheusRemoteWriteRequest) (_result *AddPrometheusRemoteWriteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddPrometheusRemoteWriteResponse{}
@@ -65863,6 +67217,15 @@ func (client *Client) AddPrometheusRemoteWrite(request *AddPrometheusRemoteWrite
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or updates a recording rule.
+//
+// @param request - AddRecordingRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddRecordingRuleResponse
 func (client *Client) AddRecordingRuleWithOptions(request *AddRecordingRuleRequest, runtime *util.RuntimeOptions) (_result *AddRecordingRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65904,6 +67267,13 @@ func (client *Client) AddRecordingRuleWithOptions(request *AddRecordingRuleReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or updates a recording rule.
+//
+// @param request - AddRecordingRuleRequest
+//
+// @return AddRecordingRuleResponse
 func (client *Client) AddRecordingRule(request *AddRecordingRuleRequest) (_result *AddRecordingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddRecordingRuleResponse{}
@@ -65915,6 +67285,15 @@ func (client *Client) AddRecordingRule(request *AddRecordingRuleRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Flink集群打标
+//
+// @param request - AddTagToFlinkClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddTagToFlinkClusterResponse
 func (client *Client) AddTagToFlinkClusterWithOptions(request *AddTagToFlinkClusterRequest, runtime *util.RuntimeOptions) (_result *AddTagToFlinkClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65968,6 +67347,13 @@ func (client *Client) AddTagToFlinkClusterWithOptions(request *AddTagToFlinkClus
 	return _result, _err
 }
 
+// Summary:
+//
+// Flink集群打标
+//
+// @param request - AddTagToFlinkClusterRequest
+//
+// @return AddTagToFlinkClusterResponse
 func (client *Client) AddTagToFlinkCluster(request *AddTagToFlinkClusterRequest) (_result *AddTagToFlinkClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddTagToFlinkClusterResponse{}
@@ -65979,6 +67365,15 @@ func (client *Client) AddTagToFlinkCluster(request *AddTagToFlinkClusterRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a data source to a global aggregation instance.
+//
+// @param request - AppendInstancesToPrometheusGlobalViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AppendInstancesToPrometheusGlobalViewResponse
 func (client *Client) AppendInstancesToPrometheusGlobalViewWithOptions(request *AppendInstancesToPrometheusGlobalViewRequest, runtime *util.RuntimeOptions) (_result *AppendInstancesToPrometheusGlobalViewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66024,6 +67419,13 @@ func (client *Client) AppendInstancesToPrometheusGlobalViewWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a data source to a global aggregation instance.
+//
+// @param request - AppendInstancesToPrometheusGlobalViewRequest
+//
+// @return AppendInstancesToPrometheusGlobalViewResponse
 func (client *Client) AppendInstancesToPrometheusGlobalView(request *AppendInstancesToPrometheusGlobalViewRequest) (_result *AppendInstancesToPrometheusGlobalViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AppendInstancesToPrometheusGlobalViewResponse{}
@@ -66035,6 +67437,11 @@ func (client *Client) AppendInstancesToPrometheusGlobalView(request *AppendInsta
 	return _result, _err
 }
 
+// @param tmpReq - ApplyScenarioRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyScenarioResponse
 func (client *Client) ApplyScenarioWithOptions(tmpReq *ApplyScenarioRequest, runtime *util.RuntimeOptions) (_result *ApplyScenarioResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -66114,6 +67521,9 @@ func (client *Client) ApplyScenarioWithOptions(tmpReq *ApplyScenarioRequest, run
 	return _result, _err
 }
 
+// @param request - ApplyScenarioRequest
+//
+// @return ApplyScenarioResponse
 func (client *Client) ApplyScenario(request *ApplyScenarioRequest) (_result *ApplyScenarioResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ApplyScenarioResponse{}
@@ -66125,6 +67535,15 @@ func (client *Client) ApplyScenario(request *ApplyScenarioRequest) (_result *App
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a Grafana workspace to a Prometheus instance.
+//
+// @param request - BindPrometheusGrafanaInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindPrometheusGrafanaInstanceResponse
 func (client *Client) BindPrometheusGrafanaInstanceWithOptions(request *BindPrometheusGrafanaInstanceRequest, runtime *util.RuntimeOptions) (_result *BindPrometheusGrafanaInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66170,6 +67589,13 @@ func (client *Client) BindPrometheusGrafanaInstanceWithOptions(request *BindProm
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a Grafana workspace to a Prometheus instance.
+//
+// @param request - BindPrometheusGrafanaInstanceRequest
+//
+// @return BindPrometheusGrafanaInstanceResponse
 func (client *Client) BindPrometheusGrafanaInstance(request *BindPrometheusGrafanaInstanceRequest) (_result *BindPrometheusGrafanaInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindPrometheusGrafanaInstanceResponse{}
@@ -66181,6 +67607,15 @@ func (client *Client) BindPrometheusGrafanaInstance(request *BindPrometheusGrafa
 	return _result, _err
 }
 
+// Summary:
+//
+// 屏蔽告警通知
+//
+// @param request - BlockAlarmNotificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BlockAlarmNotificationResponse
 func (client *Client) BlockAlarmNotificationWithOptions(request *BlockAlarmNotificationRequest, runtime *util.RuntimeOptions) (_result *BlockAlarmNotificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66226,6 +67661,13 @@ func (client *Client) BlockAlarmNotificationWithOptions(request *BlockAlarmNotif
 	return _result, _err
 }
 
+// Summary:
+//
+// 屏蔽告警通知
+//
+// @param request - BlockAlarmNotificationRequest
+//
+// @return BlockAlarmNotificationResponse
 func (client *Client) BlockAlarmNotification(request *BlockAlarmNotificationRequest) (_result *BlockAlarmNotificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BlockAlarmNotificationResponse{}
@@ -66237,6 +67679,15 @@ func (client *Client) BlockAlarmNotification(request *BlockAlarmNotificationRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改告警等级
+//
+// @param request - ChangeAlarmSeverityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeAlarmSeverityResponse
 func (client *Client) ChangeAlarmSeverityWithOptions(request *ChangeAlarmSeverityRequest, runtime *util.RuntimeOptions) (_result *ChangeAlarmSeverityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66282,6 +67733,13 @@ func (client *Client) ChangeAlarmSeverityWithOptions(request *ChangeAlarmSeverit
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改告警等级
+//
+// @param request - ChangeAlarmSeverityRequest
+//
+// @return ChangeAlarmSeverityResponse
 func (client *Client) ChangeAlarmSeverity(request *ChangeAlarmSeverityRequest) (_result *ChangeAlarmSeverityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeAlarmSeverityResponse{}
@@ -66293,6 +67751,15 @@ func (client *Client) ChangeAlarmSeverity(request *ChangeAlarmSeverityRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the resource group to which a resource belongs.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66338,6 +67805,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the resource group to which a resource belongs.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
@@ -66349,6 +67823,10 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether Application Real-Time Monitoring Service (ARMS) is available for commercial use in a region.
+//
 // Description:
 //
 // You can call this operation to check whether ARMS is available for commercial use in a region.
@@ -66387,6 +67865,10 @@ func (client *Client) CheckCommercialStatusWithOptions(request *CheckCommercialS
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether Application Real-Time Monitoring Service (ARMS) is available for commercial use in a region.
+//
 // Description:
 //
 // You can call this operation to check whether ARMS is available for commercial use in a region.
@@ -66405,6 +67887,15 @@ func (client *Client) CheckCommercialStatus(request *CheckCommercialStatusReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks the status of a service in the current cluster, such as whether the service is activated and whether the payment is overdue.
+//
+// @param request - CheckServiceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckServiceStatusResponse
 func (client *Client) CheckServiceStatusWithOptions(request *CheckServiceStatusRequest, runtime *util.RuntimeOptions) (_result *CheckServiceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66442,6 +67933,13 @@ func (client *Client) CheckServiceStatusWithOptions(request *CheckServiceStatusR
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks the status of a service in the current cluster, such as whether the service is activated and whether the payment is overdue.
+//
+// @param request - CheckServiceStatusRequest
+//
+// @return CheckServiceStatusResponse
 func (client *Client) CheckServiceStatus(request *CheckServiceStatusRequest) (_result *CheckServiceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckServiceStatusResponse{}
@@ -66453,6 +67951,15 @@ func (client *Client) CheckServiceStatus(request *CheckServiceStatusRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 认领告警
+//
+// @param request - ClaimAlarmRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClaimAlarmResponse
 func (client *Client) ClaimAlarmWithOptions(request *ClaimAlarmRequest, runtime *util.RuntimeOptions) (_result *ClaimAlarmResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66494,6 +68001,13 @@ func (client *Client) ClaimAlarmWithOptions(request *ClaimAlarmRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 认领告警
+//
+// @param request - ClaimAlarmRequest
+//
+// @return ClaimAlarmResponse
 func (client *Client) ClaimAlarm(request *ClaimAlarmRequest) (_result *ClaimAlarmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ClaimAlarmResponse{}
@@ -66505,6 +68019,15 @@ func (client *Client) ClaimAlarm(request *ClaimAlarmRequest) (_result *ClaimAlar
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭告警
+//
+// @param request - CloseAlarmRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseAlarmResponse
 func (client *Client) CloseAlarmWithOptions(request *CloseAlarmRequest, runtime *util.RuntimeOptions) (_result *CloseAlarmResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66550,6 +68073,13 @@ func (client *Client) CloseAlarmWithOptions(request *CloseAlarmRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭告警
+//
+// @param request - CloseAlarmRequest
+//
+// @return CloseAlarmResponse
 func (client *Client) CloseAlarm(request *CloseAlarmRequest) (_result *CloseAlarmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseAlarmResponse{}
@@ -66561,9 +68091,13 @@ func (client *Client) CloseAlarm(request *CloseAlarmRequest) (_result *CloseAlar
 	return _result, _err
 }
 
+// Summary:
+//
+// Turns on or off the main switch of an ARMS agent, or queries the status of the main switch.
+//
 // Description:
 //
-// ****
+// ***
 //
 // @param request - ConfigAppRequest
 //
@@ -66615,9 +68149,13 @@ func (client *Client) ConfigAppWithOptions(request *ConfigAppRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Turns on or off the main switch of an ARMS agent, or queries the status of the main switch.
+//
 // Description:
 //
-// ****
+// ***
 //
 // @param request - ConfigAppRequest
 //
@@ -66633,6 +68171,10 @@ func (client *Client) ConfigApp(request *ConfigAppRequest) (_result *ConfigAppRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an alert contact.
+//
 // Description:
 //
 // This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of the Alert Management module.
@@ -66699,6 +68241,10 @@ func (client *Client) CreateAlertContactWithOptions(request *CreateAlertContactR
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an alert contact.
+//
 // Description:
 //
 // This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of the Alert Management module.
@@ -66717,6 +68263,11 @@ func (client *Client) CreateAlertContact(request *CreateAlertContactRequest) (_r
 	return _result, _err
 }
 
+// @param request - CreateAlertContactGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAlertContactGroupResponse
 func (client *Client) CreateAlertContactGroupWithOptions(request *CreateAlertContactGroupRequest, runtime *util.RuntimeOptions) (_result *CreateAlertContactGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66758,6 +68309,9 @@ func (client *Client) CreateAlertContactGroupWithOptions(request *CreateAlertCon
 	return _result, _err
 }
 
+// @param request - CreateAlertContactGroupRequest
+//
+// @return CreateAlertContactGroupResponse
 func (client *Client) CreateAlertContactGroup(request *CreateAlertContactGroupRequest) (_result *CreateAlertContactGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAlertContactGroupResponse{}
@@ -66769,6 +68323,15 @@ func (client *Client) CreateAlertContactGroup(request *CreateAlertContactGroupRe
 	return _result, _err
 }
 
+// Summary:
+//
+// The operation that you want to perform. Set the value to CreateDispatchRule.
+//
+// @param request - CreateDispatchRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDispatchRuleResponse
 func (client *Client) CreateDispatchRuleWithOptions(request *CreateDispatchRuleRequest, runtime *util.RuntimeOptions) (_result *CreateDispatchRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66806,6 +68369,13 @@ func (client *Client) CreateDispatchRuleWithOptions(request *CreateDispatchRuleR
 	return _result, _err
 }
 
+// Summary:
+//
+// The operation that you want to perform. Set the value to CreateDispatchRule.
+//
+// @param request - CreateDispatchRuleRequest
+//
+// @return CreateDispatchRuleResponse
 func (client *Client) CreateDispatchRule(request *CreateDispatchRuleRequest) (_result *CreateDispatchRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDispatchRuleResponse{}
@@ -66817,6 +68387,15 @@ func (client *Client) CreateDispatchRule(request *CreateDispatchRuleRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom job for an environment.
+//
+// @param request - CreateEnvCustomJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEnvCustomJobResponse
 func (client *Client) CreateEnvCustomJobWithOptions(request *CreateEnvCustomJobRequest, runtime *util.RuntimeOptions) (_result *CreateEnvCustomJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66868,6 +68447,13 @@ func (client *Client) CreateEnvCustomJobWithOptions(request *CreateEnvCustomJobR
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom job for an environment.
+//
+// @param request - CreateEnvCustomJobRequest
+//
+// @return CreateEnvCustomJobResponse
 func (client *Client) CreateEnvCustomJob(request *CreateEnvCustomJobRequest) (_result *CreateEnvCustomJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEnvCustomJobResponse{}
@@ -66879,6 +68465,15 @@ func (client *Client) CreateEnvCustomJob(request *CreateEnvCustomJobRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a PodMonitor for an environment.
+//
+// @param request - CreateEnvPodMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEnvPodMonitorResponse
 func (client *Client) CreateEnvPodMonitorWithOptions(request *CreateEnvPodMonitorRequest, runtime *util.RuntimeOptions) (_result *CreateEnvPodMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66930,6 +68525,13 @@ func (client *Client) CreateEnvPodMonitorWithOptions(request *CreateEnvPodMonito
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a PodMonitor for an environment.
+//
+// @param request - CreateEnvPodMonitorRequest
+//
+// @return CreateEnvPodMonitorResponse
 func (client *Client) CreateEnvPodMonitor(request *CreateEnvPodMonitorRequest) (_result *CreateEnvPodMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEnvPodMonitorResponse{}
@@ -66941,6 +68543,15 @@ func (client *Client) CreateEnvPodMonitor(request *CreateEnvPodMonitorRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a ServiceMonitor for an environment.
+//
+// @param request - CreateEnvServiceMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEnvServiceMonitorResponse
 func (client *Client) CreateEnvServiceMonitorWithOptions(request *CreateEnvServiceMonitorRequest, runtime *util.RuntimeOptions) (_result *CreateEnvServiceMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66992,6 +68603,13 @@ func (client *Client) CreateEnvServiceMonitorWithOptions(request *CreateEnvServi
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a ServiceMonitor for an environment.
+//
+// @param request - CreateEnvServiceMonitorRequest
+//
+// @return CreateEnvServiceMonitorResponse
 func (client *Client) CreateEnvServiceMonitor(request *CreateEnvServiceMonitorRequest) (_result *CreateEnvServiceMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEnvServiceMonitorResponse{}
@@ -67003,6 +68621,15 @@ func (client *Client) CreateEnvServiceMonitor(request *CreateEnvServiceMonitorRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an environment instance.
+//
+// @param request - CreateEnvironmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEnvironmentResponse
 func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentRequest, runtime *util.RuntimeOptions) (_result *CreateEnvironmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -67076,6 +68703,13 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an environment instance.
+//
+// @param request - CreateEnvironmentRequest
+//
+// @return CreateEnvironmentResponse
 func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_result *CreateEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEnvironmentResponse{}
@@ -67087,6 +68721,15 @@ func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建工作区
+//
+// @param tmpReq - CreateGrafanaWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGrafanaWorkspaceResponse
 func (client *Client) CreateGrafanaWorkspaceWithOptions(tmpReq *CreateGrafanaWorkspaceRequest, runtime *util.RuntimeOptions) (_result *CreateGrafanaWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67158,6 +68801,13 @@ func (client *Client) CreateGrafanaWorkspaceWithOptions(tmpReq *CreateGrafanaWor
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建工作区
+//
+// @param request - CreateGrafanaWorkspaceRequest
+//
+// @return CreateGrafanaWorkspaceResponse
 func (client *Client) CreateGrafanaWorkspace(request *CreateGrafanaWorkspaceRequest) (_result *CreateGrafanaWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGrafanaWorkspaceResponse{}
@@ -67169,6 +68819,15 @@ func (client *Client) CreateGrafanaWorkspace(request *CreateGrafanaWorkspaceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an alert integration.
+//
+// @param request - CreateIntegrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIntegrationResponse
 func (client *Client) CreateIntegrationWithOptions(request *CreateIntegrationRequest, runtime *util.RuntimeOptions) (_result *CreateIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -67224,6 +68883,13 @@ func (client *Client) CreateIntegrationWithOptions(request *CreateIntegrationReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an alert integration.
+//
+// @param request - CreateIntegrationRequest
+//
+// @return CreateIntegrationResponse
 func (client *Client) CreateIntegration(request *CreateIntegrationRequest) (_result *CreateIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateIntegrationResponse{}
@@ -67235,6 +68901,15 @@ func (client *Client) CreateIntegration(request *CreateIntegrationRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies an alert rule.
+//
+// @param request - CreateOrUpdateAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrUpdateAlertRuleResponse
 func (client *Client) CreateOrUpdateAlertRuleWithOptions(request *CreateOrUpdateAlertRuleRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateAlertRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -67380,6 +69055,13 @@ func (client *Client) CreateOrUpdateAlertRuleWithOptions(request *CreateOrUpdate
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies an alert rule.
+//
+// @param request - CreateOrUpdateAlertRuleRequest
+//
+// @return CreateOrUpdateAlertRuleResponse
 func (client *Client) CreateOrUpdateAlertRule(request *CreateOrUpdateAlertRuleRequest) (_result *CreateOrUpdateAlertRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrUpdateAlertRuleResponse{}
@@ -67391,6 +69073,15 @@ func (client *Client) CreateOrUpdateAlertRule(request *CreateOrUpdateAlertRuleRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies an alert contact.
+//
+// @param request - CreateOrUpdateContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrUpdateContactResponse
 func (client *Client) CreateOrUpdateContactWithOptions(request *CreateOrUpdateContactRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateContactResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -67458,6 +69149,13 @@ func (client *Client) CreateOrUpdateContactWithOptions(request *CreateOrUpdateCo
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies an alert contact.
+//
+// @param request - CreateOrUpdateContactRequest
+//
+// @return CreateOrUpdateContactResponse
 func (client *Client) CreateOrUpdateContact(request *CreateOrUpdateContactRequest) (_result *CreateOrUpdateContactResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrUpdateContactResponse{}
@@ -67469,6 +69167,15 @@ func (client *Client) CreateOrUpdateContact(request *CreateOrUpdateContactReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies an alert contact group.
+//
+// @param request - CreateOrUpdateContactGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrUpdateContactGroupResponse
 func (client *Client) CreateOrUpdateContactGroupWithOptions(request *CreateOrUpdateContactGroupRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateContactGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -67510,6 +69217,13 @@ func (client *Client) CreateOrUpdateContactGroupWithOptions(request *CreateOrUpd
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies an alert contact group.
+//
+// @param request - CreateOrUpdateContactGroupRequest
+//
+// @return CreateOrUpdateContactGroupResponse
 func (client *Client) CreateOrUpdateContactGroup(request *CreateOrUpdateContactGroupRequest) (_result *CreateOrUpdateContactGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrUpdateContactGroupResponse{}
@@ -67521,6 +69235,15 @@ func (client *Client) CreateOrUpdateContactGroup(request *CreateOrUpdateContactG
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies an EventBridge integration that is used to push notifications.
+//
+// @param request - CreateOrUpdateEventBridgeIntegrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrUpdateEventBridgeIntegrationResponse
 func (client *Client) CreateOrUpdateEventBridgeIntegrationWithOptions(request *CreateOrUpdateEventBridgeIntegrationRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateEventBridgeIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -67586,6 +69309,13 @@ func (client *Client) CreateOrUpdateEventBridgeIntegrationWithOptions(request *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies an EventBridge integration that is used to push notifications.
+//
+// @param request - CreateOrUpdateEventBridgeIntegrationRequest
+//
+// @return CreateOrUpdateEventBridgeIntegrationResponse
 func (client *Client) CreateOrUpdateEventBridgeIntegration(request *CreateOrUpdateEventBridgeIntegrationRequest) (_result *CreateOrUpdateEventBridgeIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrUpdateEventBridgeIntegrationResponse{}
@@ -67597,6 +69327,15 @@ func (client *Client) CreateOrUpdateEventBridgeIntegration(request *CreateOrUpda
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or updates an IM chatbot.
+//
+// @param request - CreateOrUpdateIMRobotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrUpdateIMRobotResponse
 func (client *Client) CreateOrUpdateIMRobotWithOptions(request *CreateOrUpdateIMRobotRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateIMRobotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -67666,6 +69405,13 @@ func (client *Client) CreateOrUpdateIMRobotWithOptions(request *CreateOrUpdateIM
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or updates an IM chatbot.
+//
+// @param request - CreateOrUpdateIMRobotRequest
+//
+// @return CreateOrUpdateIMRobotResponse
 func (client *Client) CreateOrUpdateIMRobot(request *CreateOrUpdateIMRobotRequest) (_result *CreateOrUpdateIMRobotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrUpdateIMRobotResponse{}
@@ -67677,6 +69423,15 @@ func (client *Client) CreateOrUpdateIMRobot(request *CreateOrUpdateIMRobotReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies a notification policy.
+//
+// @param request - CreateOrUpdateNotificationPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrUpdateNotificationPolicyResponse
 func (client *Client) CreateOrUpdateNotificationPolicyWithOptions(request *CreateOrUpdateNotificationPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateNotificationPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -67758,6 +69513,13 @@ func (client *Client) CreateOrUpdateNotificationPolicyWithOptions(request *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies a notification policy.
+//
+// @param request - CreateOrUpdateNotificationPolicyRequest
+//
+// @return CreateOrUpdateNotificationPolicyResponse
 func (client *Client) CreateOrUpdateNotificationPolicy(request *CreateOrUpdateNotificationPolicyRequest) (_result *CreateOrUpdateNotificationPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrUpdateNotificationPolicyResponse{}
@@ -67769,6 +69531,15 @@ func (client *Client) CreateOrUpdateNotificationPolicy(request *CreateOrUpdateNo
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies a silence policy.
+//
+// @param request - CreateOrUpdateSilencePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrUpdateSilencePolicyResponse
 func (client *Client) CreateOrUpdateSilencePolicyWithOptions(request *CreateOrUpdateSilencePolicyRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateSilencePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -67814,6 +69585,13 @@ func (client *Client) CreateOrUpdateSilencePolicyWithOptions(request *CreateOrUp
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies a silence policy.
+//
+// @param request - CreateOrUpdateSilencePolicyRequest
+//
+// @return CreateOrUpdateSilencePolicyResponse
 func (client *Client) CreateOrUpdateSilencePolicy(request *CreateOrUpdateSilencePolicyRequest) (_result *CreateOrUpdateSilencePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrUpdateSilencePolicyResponse{}
@@ -67825,6 +69603,15 @@ func (client *Client) CreateOrUpdateSilencePolicy(request *CreateOrUpdateSilence
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies a webhook alert contact.
+//
+// @param request - CreateOrUpdateWebhookContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrUpdateWebhookContactResponse
 func (client *Client) CreateOrUpdateWebhookContactWithOptions(request *CreateOrUpdateWebhookContactRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateWebhookContactResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -67886,6 +69673,13 @@ func (client *Client) CreateOrUpdateWebhookContactWithOptions(request *CreateOrU
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies a webhook alert contact.
+//
+// @param request - CreateOrUpdateWebhookContactRequest
+//
+// @return CreateOrUpdateWebhookContactResponse
 func (client *Client) CreateOrUpdateWebhookContact(request *CreateOrUpdateWebhookContactRequest) (_result *CreateOrUpdateWebhookContactResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrUpdateWebhookContactResponse{}
@@ -67897,6 +69691,15 @@ func (client *Client) CreateOrUpdateWebhookContact(request *CreateOrUpdateWebhoo
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建Prometheus告警规则
+//
+// @param request - CreatePrometheusAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePrometheusAlertRuleResponse
 func (client *Client) CreatePrometheusAlertRuleWithOptions(request *CreatePrometheusAlertRuleRequest, runtime *util.RuntimeOptions) (_result *CreatePrometheusAlertRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -67974,6 +69777,13 @@ func (client *Client) CreatePrometheusAlertRuleWithOptions(request *CreatePromet
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建Prometheus告警规则
+//
+// @param request - CreatePrometheusAlertRuleRequest
+//
+// @return CreatePrometheusAlertRuleResponse
 func (client *Client) CreatePrometheusAlertRule(request *CreatePrometheusAlertRuleRequest) (_result *CreatePrometheusAlertRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePrometheusAlertRuleResponse{}
@@ -67985,6 +69795,15 @@ func (client *Client) CreatePrometheusAlertRule(request *CreatePrometheusAlertRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Prometheus instance.
+//
+// @param request - CreatePrometheusInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePrometheusInstanceResponse
 func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometheusInstanceRequest, runtime *util.RuntimeOptions) (_result *CreatePrometheusInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68070,6 +69889,13 @@ func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometh
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Prometheus instance.
+//
+// @param request - CreatePrometheusInstanceRequest
+//
+// @return CreatePrometheusInstanceResponse
 func (client *Client) CreatePrometheusInstance(request *CreatePrometheusInstanceRequest) (_result *CreatePrometheusInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePrometheusInstanceResponse{}
@@ -68081,6 +69907,15 @@ func (client *Client) CreatePrometheusInstance(request *CreatePrometheusInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a monitoring configuration for a Prometheus instance.
+//
+// @param request - CreatePrometheusMonitoringRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePrometheusMonitoringResponse
 func (client *Client) CreatePrometheusMonitoringWithOptions(request *CreatePrometheusMonitoringRequest, runtime *util.RuntimeOptions) (_result *CreatePrometheusMonitoringResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68132,6 +69967,13 @@ func (client *Client) CreatePrometheusMonitoringWithOptions(request *CreateProme
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a monitoring configuration for a Prometheus instance.
+//
+// @param request - CreatePrometheusMonitoringRequest
+//
+// @return CreatePrometheusMonitoringResponse
 func (client *Client) CreatePrometheusMonitoring(request *CreatePrometheusMonitoringRequest) (_result *CreatePrometheusMonitoringResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePrometheusMonitoringResponse{}
@@ -68143,6 +69985,15 @@ func (client *Client) CreatePrometheusMonitoring(request *CreatePrometheusMonito
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Browser Monitoring task for an application.
+//
+// @param request - CreateRetcodeAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRetcodeAppResponse
 func (client *Client) CreateRetcodeAppWithOptions(request *CreateRetcodeAppRequest, runtime *util.RuntimeOptions) (_result *CreateRetcodeAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68192,6 +70043,13 @@ func (client *Client) CreateRetcodeAppWithOptions(request *CreateRetcodeAppReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Browser Monitoring task for an application.
+//
+// @param request - CreateRetcodeAppRequest
+//
+// @return CreateRetcodeAppResponse
 func (client *Client) CreateRetcodeApp(request *CreateRetcodeAppRequest) (_result *CreateRetcodeAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRetcodeAppResponse{}
@@ -68203,6 +70061,15 @@ func (client *Client) CreateRetcodeApp(request *CreateRetcodeAppRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建前端监控应用
+//
+// @param request - CreateRumAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRumAppResponse
 func (client *Client) CreateRumAppWithOptions(request *CreateRumAppRequest, runtime *util.RuntimeOptions) (_result *CreateRumAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68268,6 +70135,13 @@ func (client *Client) CreateRumAppWithOptions(request *CreateRumAppRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建前端监控应用
+//
+// @param request - CreateRumAppRequest
+//
+// @return CreateRumAppResponse
 func (client *Client) CreateRumApp(request *CreateRumAppRequest) (_result *CreateRumAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRumAppResponse{}
@@ -68279,6 +70153,15 @@ func (client *Client) CreateRumApp(request *CreateRumAppRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建前端监控上传oss的URL
+//
+// @param request - CreateRumUploadFileUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRumUploadFileUrlResponse
 func (client *Client) CreateRumUploadFileUrlWithOptions(request *CreateRumUploadFileUrlRequest, runtime *util.RuntimeOptions) (_result *CreateRumUploadFileUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68340,6 +70223,13 @@ func (client *Client) CreateRumUploadFileUrlWithOptions(request *CreateRumUpload
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建前端监控上传oss的URL
+//
+// @param request - CreateRumUploadFileUrlRequest
+//
+// @return CreateRumUploadFileUrlResponse
 func (client *Client) CreateRumUploadFileUrl(request *CreateRumUploadFileUrlRequest) (_result *CreateRumUploadFileUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRumUploadFileUrlResponse{}
@@ -68351,6 +70241,15 @@ func (client *Client) CreateRumUploadFileUrl(request *CreateRumUploadFileUrlRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建或更新云拨测定时监控任务
+//
+// @param tmpReq - CreateSyntheticTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSyntheticTaskResponse
 func (client *Client) CreateSyntheticTaskWithOptions(tmpReq *CreateSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *CreateSyntheticTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -68470,6 +70369,13 @@ func (client *Client) CreateSyntheticTaskWithOptions(tmpReq *CreateSyntheticTask
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建或更新云拨测定时监控任务
+//
+// @param request - CreateSyntheticTaskRequest
+//
+// @return CreateSyntheticTaskResponse
 func (client *Client) CreateSyntheticTask(request *CreateSyntheticTaskRequest) (_result *CreateSyntheticTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSyntheticTaskResponse{}
@@ -68481,6 +70387,15 @@ func (client *Client) CreateSyntheticTask(request *CreateSyntheticTaskRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建云拨测定时任务
+//
+// @param tmpReq - CreateTimingSyntheticTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTimingSyntheticTaskResponse
 func (client *Client) CreateTimingSyntheticTaskWithOptions(tmpReq *CreateTimingSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *CreateTimingSyntheticTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -68584,6 +70499,13 @@ func (client *Client) CreateTimingSyntheticTaskWithOptions(tmpReq *CreateTimingS
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建云拨测定时任务
+//
+// @param request - CreateTimingSyntheticTaskRequest
+//
+// @return CreateTimingSyntheticTaskResponse
 func (client *Client) CreateTimingSyntheticTask(request *CreateTimingSyntheticTaskRequest) (_result *CreateTimingSyntheticTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTimingSyntheticTaskResponse{}
@@ -68595,6 +70517,15 @@ func (client *Client) CreateTimingSyntheticTask(request *CreateTimingSyntheticTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a contact for webhook alerts.
+//
+// @param request - CreateWebhookRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWebhookResponse
 func (client *Client) CreateWebhookWithOptions(request *CreateWebhookRequest, runtime *util.RuntimeOptions) (_result *CreateWebhookResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68656,6 +70587,13 @@ func (client *Client) CreateWebhookWithOptions(request *CreateWebhookRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a contact for webhook alerts.
+//
+// @param request - CreateWebhookRequest
+//
+// @return CreateWebhookResponse
 func (client *Client) CreateWebhook(request *CreateWebhookRequest) (_result *CreateWebhookResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateWebhookResponse{}
@@ -68667,6 +70605,15 @@ func (client *Client) CreateWebhook(request *CreateWebhookRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables an authentication token.
+//
+// @param request - DelAuthTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DelAuthTokenResponse
 func (client *Client) DelAuthTokenWithOptions(request *DelAuthTokenRequest, runtime *util.RuntimeOptions) (_result *DelAuthTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68704,6 +70651,13 @@ func (client *Client) DelAuthTokenWithOptions(request *DelAuthTokenRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables an authentication token.
+//
+// @param request - DelAuthTokenRequest
+//
+// @return DelAuthTokenResponse
 func (client *Client) DelAuthToken(request *DelAuthTokenRequest) (_result *DelAuthTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DelAuthTokenResponse{}
@@ -68715,6 +70669,15 @@ func (client *Client) DelAuthToken(request *DelAuthTokenRequest) (_result *DelAu
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete AddonRelease data by AddonRelease name.
+//
+// @param request - DeleteAddonReleaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAddonReleaseResponse
 func (client *Client) DeleteAddonReleaseWithOptions(request *DeleteAddonReleaseRequest, runtime *util.RuntimeOptions) (_result *DeleteAddonReleaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68760,6 +70723,13 @@ func (client *Client) DeleteAddonReleaseWithOptions(request *DeleteAddonReleaseR
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete AddonRelease data by AddonRelease name.
+//
+// @param request - DeleteAddonReleaseRequest
+//
+// @return DeleteAddonReleaseResponse
 func (client *Client) DeleteAddonRelease(request *DeleteAddonReleaseRequest) (_result *DeleteAddonReleaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAddonReleaseResponse{}
@@ -68771,9 +70741,13 @@ func (client *Client) DeleteAddonRelease(request *DeleteAddonReleaseRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an DeleteAlertContact contact.
+//
 // Description:
 //
-// ********
+// *******
 //
 // @param request - DeleteAlertContactRequest
 //
@@ -68817,9 +70791,13 @@ func (client *Client) DeleteAlertContactWithOptions(request *DeleteAlertContactR
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an DeleteAlertContact contact.
+//
 // Description:
 //
-// ********
+// *******
 //
 // @param request - DeleteAlertContactRequest
 //
@@ -68835,6 +70813,15 @@ func (client *Client) DeleteAlertContact(request *DeleteAlertContactRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an DeleteAlertContactGroup contact group.
+//
+// @param request - DeleteAlertContactGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAlertContactGroupResponse
 func (client *Client) DeleteAlertContactGroupWithOptions(request *DeleteAlertContactGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteAlertContactGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68872,6 +70859,13 @@ func (client *Client) DeleteAlertContactGroupWithOptions(request *DeleteAlertCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an DeleteAlertContactGroup contact group.
+//
+// @param request - DeleteAlertContactGroupRequest
+//
+// @return DeleteAlertContactGroupResponse
 func (client *Client) DeleteAlertContactGroup(request *DeleteAlertContactGroupRequest) (_result *DeleteAlertContactGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAlertContactGroupResponse{}
@@ -68883,6 +70877,15 @@ func (client *Client) DeleteAlertContactGroup(request *DeleteAlertContactGroupRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an alert rule.
+//
+// @param request - DeleteAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAlertRuleResponse
 func (client *Client) DeleteAlertRuleWithOptions(request *DeleteAlertRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteAlertRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68916,6 +70919,13 @@ func (client *Client) DeleteAlertRuleWithOptions(request *DeleteAlertRuleRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an alert rule.
+//
+// @param request - DeleteAlertRuleRequest
+//
+// @return DeleteAlertRuleResponse
 func (client *Client) DeleteAlertRule(request *DeleteAlertRuleRequest) (_result *DeleteAlertRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAlertRuleResponse{}
@@ -68927,6 +70937,11 @@ func (client *Client) DeleteAlertRule(request *DeleteAlertRuleRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DeleteAlertRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAlertRulesResponse
 func (client *Client) DeleteAlertRulesWithOptions(request *DeleteAlertRulesRequest, runtime *util.RuntimeOptions) (_result *DeleteAlertRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68964,6 +70979,9 @@ func (client *Client) DeleteAlertRulesWithOptions(request *DeleteAlertRulesReque
 	return _result, _err
 }
 
+// @param request - DeleteAlertRulesRequest
+//
+// @return DeleteAlertRulesResponse
 func (client *Client) DeleteAlertRules(request *DeleteAlertRulesRequest) (_result *DeleteAlertRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAlertRulesResponse{}
@@ -68975,6 +70993,15 @@ func (client *Client) DeleteAlertRules(request *DeleteAlertRulesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes multiple applications at a time based on the process IDs (PIDs).
+//
+// @param request - DeleteAppListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppListResponse
 func (client *Client) DeleteAppListWithOptions(request *DeleteAppListRequest, runtime *util.RuntimeOptions) (_result *DeleteAppListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69012,6 +71039,13 @@ func (client *Client) DeleteAppListWithOptions(request *DeleteAppListRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes multiple applications at a time based on the process IDs (PIDs).
+//
+// @param request - DeleteAppListRequest
+//
+// @return DeleteAppListResponse
 func (client *Client) DeleteAppList(request *DeleteAppListRequest) (_result *DeleteAppListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppListResponse{}
@@ -69023,7 +71057,11 @@ func (client *Client) DeleteAppList(request *DeleteAppListRequest) (_result *Del
 	return _result, _err
 }
 
-// Deprecated: : DeleteCmsExporter is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+// Deprecated: OpenAPI DeleteCmsExporter is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+//
+// Summary:
+//
+// Releases a Prometheus instance for Alibaba Cloud services.
 //
 // @param request - DeleteCmsExporterRequest
 //
@@ -69068,7 +71106,11 @@ func (client *Client) DeleteCmsExporterWithOptions(request *DeleteCmsExporterReq
 	return _result, _err
 }
 
-// Deprecated: : DeleteCmsExporter is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+// Deprecated: OpenAPI DeleteCmsExporter is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+//
+// Summary:
+//
+// Releases a Prometheus instance for Alibaba Cloud services.
 //
 // @param request - DeleteCmsExporterRequest
 //
@@ -69085,6 +71127,15 @@ func (client *Client) DeleteCmsExporter(request *DeleteCmsExporterRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the request.
+//
+// @param request - DeleteContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContactResponse
 func (client *Client) DeleteContactWithOptions(request *DeleteContactRequest, runtime *util.RuntimeOptions) (_result *DeleteContactResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69118,6 +71169,13 @@ func (client *Client) DeleteContactWithOptions(request *DeleteContactRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the request.
+//
+// @param request - DeleteContactRequest
+//
+// @return DeleteContactResponse
 func (client *Client) DeleteContact(request *DeleteContactRequest) (_result *DeleteContactResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteContactResponse{}
@@ -69129,6 +71187,15 @@ func (client *Client) DeleteContact(request *DeleteContactRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an alert contact group.
+//
+// @param request - DeleteContactGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContactGroupResponse
 func (client *Client) DeleteContactGroupWithOptions(request *DeleteContactGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteContactGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69162,6 +71229,13 @@ func (client *Client) DeleteContactGroupWithOptions(request *DeleteContactGroupR
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an alert contact group.
+//
+// @param request - DeleteContactGroupRequest
+//
+// @return DeleteContactGroupResponse
 func (client *Client) DeleteContactGroup(request *DeleteContactGroupRequest) (_result *DeleteContactGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteContactGroupResponse{}
@@ -69173,6 +71247,11 @@ func (client *Client) DeleteContactGroup(request *DeleteContactGroupRequest) (_r
 	return _result, _err
 }
 
+// @param request - DeleteDispatchRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDispatchRuleResponse
 func (client *Client) DeleteDispatchRuleWithOptions(request *DeleteDispatchRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteDispatchRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69210,6 +71289,9 @@ func (client *Client) DeleteDispatchRuleWithOptions(request *DeleteDispatchRuleR
 	return _result, _err
 }
 
+// @param request - DeleteDispatchRuleRequest
+//
+// @return DeleteDispatchRuleResponse
 func (client *Client) DeleteDispatchRule(request *DeleteDispatchRuleRequest) (_result *DeleteDispatchRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDispatchRuleResponse{}
@@ -69221,6 +71303,15 @@ func (client *Client) DeleteDispatchRule(request *DeleteDispatchRuleRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete custom jobs for the environment.
+//
+// @param request - DeleteEnvCustomJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEnvCustomJobResponse
 func (client *Client) DeleteEnvCustomJobWithOptions(request *DeleteEnvCustomJobRequest, runtime *util.RuntimeOptions) (_result *DeleteEnvCustomJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69262,6 +71353,13 @@ func (client *Client) DeleteEnvCustomJobWithOptions(request *DeleteEnvCustomJobR
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete custom jobs for the environment.
+//
+// @param request - DeleteEnvCustomJobRequest
+//
+// @return DeleteEnvCustomJobResponse
 func (client *Client) DeleteEnvCustomJob(request *DeleteEnvCustomJobRequest) (_result *DeleteEnvCustomJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEnvCustomJobResponse{}
@@ -69273,6 +71371,15 @@ func (client *Client) DeleteEnvCustomJob(request *DeleteEnvCustomJobRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete the environment PodMonitor.
+//
+// @param request - DeleteEnvPodMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEnvPodMonitorResponse
 func (client *Client) DeleteEnvPodMonitorWithOptions(request *DeleteEnvPodMonitorRequest, runtime *util.RuntimeOptions) (_result *DeleteEnvPodMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69318,6 +71425,13 @@ func (client *Client) DeleteEnvPodMonitorWithOptions(request *DeleteEnvPodMonito
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete the environment PodMonitor.
+//
+// @param request - DeleteEnvPodMonitorRequest
+//
+// @return DeleteEnvPodMonitorResponse
 func (client *Client) DeleteEnvPodMonitor(request *DeleteEnvPodMonitorRequest) (_result *DeleteEnvPodMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEnvPodMonitorResponse{}
@@ -69329,6 +71443,15 @@ func (client *Client) DeleteEnvPodMonitor(request *DeleteEnvPodMonitorRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete the environment ServiceMonitor.
+//
+// @param request - DeleteEnvServiceMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEnvServiceMonitorResponse
 func (client *Client) DeleteEnvServiceMonitorWithOptions(request *DeleteEnvServiceMonitorRequest, runtime *util.RuntimeOptions) (_result *DeleteEnvServiceMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69374,6 +71497,13 @@ func (client *Client) DeleteEnvServiceMonitorWithOptions(request *DeleteEnvServi
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete the environment ServiceMonitor.
+//
+// @param request - DeleteEnvServiceMonitorRequest
+//
+// @return DeleteEnvServiceMonitorResponse
 func (client *Client) DeleteEnvServiceMonitor(request *DeleteEnvServiceMonitorRequest) (_result *DeleteEnvServiceMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEnvServiceMonitorResponse{}
@@ -69385,6 +71515,15 @@ func (client *Client) DeleteEnvServiceMonitor(request *DeleteEnvServiceMonitorRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an environment instance.
+//
+// @param request - DeleteEnvironmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEnvironmentResponse
 func (client *Client) DeleteEnvironmentWithOptions(request *DeleteEnvironmentRequest, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69426,6 +71565,13 @@ func (client *Client) DeleteEnvironmentWithOptions(request *DeleteEnvironmentReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an environment instance.
+//
+// @param request - DeleteEnvironmentRequest
+//
+// @return DeleteEnvironmentResponse
 func (client *Client) DeleteEnvironment(request *DeleteEnvironmentRequest) (_result *DeleteEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEnvironmentResponse{}
@@ -69437,6 +71583,15 @@ func (client *Client) DeleteEnvironment(request *DeleteEnvironmentRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除feature信息
+//
+// @param request - DeleteEnvironmentFeatureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEnvironmentFeatureResponse
 func (client *Client) DeleteEnvironmentFeatureWithOptions(request *DeleteEnvironmentFeatureRequest, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentFeatureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69478,6 +71633,13 @@ func (client *Client) DeleteEnvironmentFeatureWithOptions(request *DeleteEnviron
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除feature信息
+//
+// @param request - DeleteEnvironmentFeatureRequest
+//
+// @return DeleteEnvironmentFeatureResponse
 func (client *Client) DeleteEnvironmentFeature(request *DeleteEnvironmentFeatureRequest) (_result *DeleteEnvironmentFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEnvironmentFeatureResponse{}
@@ -69489,6 +71651,15 @@ func (client *Client) DeleteEnvironmentFeature(request *DeleteEnvironmentFeature
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an EventBridge integration that is used to push notifications.
+//
+// @param request - DeleteEventBridgeIntegrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEventBridgeIntegrationResponse
 func (client *Client) DeleteEventBridgeIntegrationWithOptions(request *DeleteEventBridgeIntegrationRequest, runtime *util.RuntimeOptions) (_result *DeleteEventBridgeIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69522,6 +71693,13 @@ func (client *Client) DeleteEventBridgeIntegrationWithOptions(request *DeleteEve
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an EventBridge integration that is used to push notifications.
+//
+// @param request - DeleteEventBridgeIntegrationRequest
+//
+// @return DeleteEventBridgeIntegrationResponse
 func (client *Client) DeleteEventBridgeIntegration(request *DeleteEventBridgeIntegrationRequest) (_result *DeleteEventBridgeIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEventBridgeIntegrationResponse{}
@@ -69533,6 +71711,15 @@ func (client *Client) DeleteEventBridgeIntegration(request *DeleteEventBridgeInt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes Grafana dashboard resources from a cluster monitored by Prometheus Service.
+//
+// @param request - DeleteGrafanaResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGrafanaResourceResponse
 func (client *Client) DeleteGrafanaResourceWithOptions(request *DeleteGrafanaResourceRequest, runtime *util.RuntimeOptions) (_result *DeleteGrafanaResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69576,6 +71763,13 @@ func (client *Client) DeleteGrafanaResourceWithOptions(request *DeleteGrafanaRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes Grafana dashboard resources from a cluster monitored by Prometheus Service.
+//
+// @param request - DeleteGrafanaResourceRequest
+//
+// @return DeleteGrafanaResourceResponse
 func (client *Client) DeleteGrafanaResource(request *DeleteGrafanaResourceRequest) (_result *DeleteGrafanaResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGrafanaResourceResponse{}
@@ -69587,6 +71781,15 @@ func (client *Client) DeleteGrafanaResource(request *DeleteGrafanaResourceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放工作区
+//
+// @param request - DeleteGrafanaWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGrafanaWorkspaceResponse
 func (client *Client) DeleteGrafanaWorkspaceWithOptions(request *DeleteGrafanaWorkspaceRequest, runtime *util.RuntimeOptions) (_result *DeleteGrafanaWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69624,6 +71827,13 @@ func (client *Client) DeleteGrafanaWorkspaceWithOptions(request *DeleteGrafanaWo
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放工作区
+//
+// @param request - DeleteGrafanaWorkspaceRequest
+//
+// @return DeleteGrafanaWorkspaceResponse
 func (client *Client) DeleteGrafanaWorkspace(request *DeleteGrafanaWorkspaceRequest) (_result *DeleteGrafanaWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGrafanaWorkspaceResponse{}
@@ -69635,6 +71845,15 @@ func (client *Client) DeleteGrafanaWorkspace(request *DeleteGrafanaWorkspaceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an instant messaging (IM) chatbot.
+//
+// @param request - DeleteIMRobotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIMRobotResponse
 func (client *Client) DeleteIMRobotWithOptions(request *DeleteIMRobotRequest, runtime *util.RuntimeOptions) (_result *DeleteIMRobotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69668,6 +71887,13 @@ func (client *Client) DeleteIMRobotWithOptions(request *DeleteIMRobotRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an instant messaging (IM) chatbot.
+//
+// @param request - DeleteIMRobotRequest
+//
+// @return DeleteIMRobotResponse
 func (client *Client) DeleteIMRobot(request *DeleteIMRobotRequest) (_result *DeleteIMRobotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIMRobotResponse{}
@@ -69679,7 +71905,11 @@ func (client *Client) DeleteIMRobot(request *DeleteIMRobotRequest) (_result *Del
 	return _result, _err
 }
 
-// Deprecated: : DeleteIntegration is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+// Deprecated: OpenAPI DeleteIntegration is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+//
+// Summary:
+//
+// Deletes collection rules from an integration.
 //
 // @param request - DeleteIntegrationRequest
 //
@@ -69728,7 +71958,11 @@ func (client *Client) DeleteIntegrationWithOptions(request *DeleteIntegrationReq
 	return _result, _err
 }
 
-// Deprecated: : DeleteIntegration is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+// Deprecated: OpenAPI DeleteIntegration is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
+//
+// Summary:
+//
+// Deletes collection rules from an integration.
 //
 // @param request - DeleteIntegrationRequest
 //
@@ -69745,6 +71979,15 @@ func (client *Client) DeleteIntegration(request *DeleteIntegrationRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an alert integration.
+//
+// @param request - DeleteIntegrationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIntegrationsResponse
 func (client *Client) DeleteIntegrationsWithOptions(request *DeleteIntegrationsRequest, runtime *util.RuntimeOptions) (_result *DeleteIntegrationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69774,6 +72017,13 @@ func (client *Client) DeleteIntegrationsWithOptions(request *DeleteIntegrationsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an alert integration.
+//
+// @param request - DeleteIntegrationsRequest
+//
+// @return DeleteIntegrationsResponse
 func (client *Client) DeleteIntegrations(request *DeleteIntegrationsRequest) (_result *DeleteIntegrationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIntegrationsResponse{}
@@ -69785,6 +72035,19 @@ func (client *Client) DeleteIntegrations(request *DeleteIntegrationsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Indicates whether the notification policy was deleted successfully. Valid values:
+//
+// 	- `true`: The notification policy was deleted successfully.
+//
+// 	- `false`: The notification policy failed to be deleted.
+//
+// @param request - DeleteNotificationPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNotificationPolicyResponse
 func (client *Client) DeleteNotificationPolicyWithOptions(request *DeleteNotificationPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteNotificationPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69818,6 +72081,17 @@ func (client *Client) DeleteNotificationPolicyWithOptions(request *DeleteNotific
 	return _result, _err
 }
 
+// Summary:
+//
+// Indicates whether the notification policy was deleted successfully. Valid values:
+//
+// 	- `true`: The notification policy was deleted successfully.
+//
+// 	- `false`: The notification policy failed to be deleted.
+//
+// @param request - DeleteNotificationPolicyRequest
+//
+// @return DeleteNotificationPolicyResponse
 func (client *Client) DeleteNotificationPolicy(request *DeleteNotificationPolicyRequest) (_result *DeleteNotificationPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNotificationPolicyResponse{}
@@ -69829,6 +72103,15 @@ func (client *Client) DeleteNotificationPolicy(request *DeleteNotificationPolicy
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the alert rule. You can call the ListPrometheusAlertRules operation to query the ID of the alert rule.
+//
+// @param request - DeletePrometheusAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrometheusAlertRuleResponse
 func (client *Client) DeletePrometheusAlertRuleWithOptions(request *DeletePrometheusAlertRuleRequest, runtime *util.RuntimeOptions) (_result *DeletePrometheusAlertRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69866,6 +72149,13 @@ func (client *Client) DeletePrometheusAlertRuleWithOptions(request *DeletePromet
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the alert rule. You can call the ListPrometheusAlertRules operation to query the ID of the alert rule.
+//
+// @param request - DeletePrometheusAlertRuleRequest
+//
+// @return DeletePrometheusAlertRuleResponse
 func (client *Client) DeletePrometheusAlertRule(request *DeletePrometheusAlertRuleRequest) (_result *DeletePrometheusAlertRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePrometheusAlertRuleResponse{}
@@ -69877,6 +72167,15 @@ func (client *Client) DeletePrometheusAlertRule(request *DeletePrometheusAlertRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a global aggregation instance from Prometheus Service.
+//
+// @param request - DeletePrometheusGlobalViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrometheusGlobalViewResponse
 func (client *Client) DeletePrometheusGlobalViewWithOptions(request *DeletePrometheusGlobalViewRequest, runtime *util.RuntimeOptions) (_result *DeletePrometheusGlobalViewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69914,6 +72213,13 @@ func (client *Client) DeletePrometheusGlobalViewWithOptions(request *DeleteProme
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a global aggregation instance from Prometheus Service.
+//
+// @param request - DeletePrometheusGlobalViewRequest
+//
+// @return DeletePrometheusGlobalViewResponse
 func (client *Client) DeletePrometheusGlobalView(request *DeletePrometheusGlobalViewRequest) (_result *DeletePrometheusGlobalViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePrometheusGlobalViewResponse{}
@@ -69925,6 +72231,15 @@ func (client *Client) DeletePrometheusGlobalView(request *DeletePrometheusGlobal
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an exporter from a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - DeletePrometheusIntegrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrometheusIntegrationResponse
 func (client *Client) DeletePrometheusIntegrationWithOptions(request *DeletePrometheusIntegrationRequest, runtime *util.RuntimeOptions) (_result *DeletePrometheusIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69970,6 +72285,13 @@ func (client *Client) DeletePrometheusIntegrationWithOptions(request *DeleteProm
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an exporter from a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - DeletePrometheusIntegrationRequest
+//
+// @return DeletePrometheusIntegrationResponse
 func (client *Client) DeletePrometheusIntegration(request *DeletePrometheusIntegrationRequest) (_result *DeletePrometheusIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePrometheusIntegrationResponse{}
@@ -69981,6 +72303,15 @@ func (client *Client) DeletePrometheusIntegration(request *DeletePrometheusInteg
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the monitoring configuration of a Prometheus instance.
+//
+// @param request - DeletePrometheusMonitoringRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrometheusMonitoringResponse
 func (client *Client) DeletePrometheusMonitoringWithOptions(request *DeletePrometheusMonitoringRequest, runtime *util.RuntimeOptions) (_result *DeletePrometheusMonitoringResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70026,6 +72357,13 @@ func (client *Client) DeletePrometheusMonitoringWithOptions(request *DeleteProme
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the monitoring configuration of a Prometheus instance.
+//
+// @param request - DeletePrometheusMonitoringRequest
+//
+// @return DeletePrometheusMonitoringResponse
 func (client *Client) DeletePrometheusMonitoring(request *DeletePrometheusMonitoringRequest) (_result *DeletePrometheusMonitoringResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePrometheusMonitoringResponse{}
@@ -70037,6 +72375,15 @@ func (client *Client) DeletePrometheusMonitoring(request *DeletePrometheusMonito
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes one or more remote write configuration items from a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - DeletePrometheusRemoteWriteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrometheusRemoteWriteResponse
 func (client *Client) DeletePrometheusRemoteWriteWithOptions(request *DeletePrometheusRemoteWriteRequest, runtime *util.RuntimeOptions) (_result *DeletePrometheusRemoteWriteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70078,6 +72425,13 @@ func (client *Client) DeletePrometheusRemoteWriteWithOptions(request *DeleteProm
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes one or more remote write configuration items from a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - DeletePrometheusRemoteWriteRequest
+//
+// @return DeletePrometheusRemoteWriteResponse
 func (client *Client) DeletePrometheusRemoteWrite(request *DeletePrometheusRemoteWriteRequest) (_result *DeletePrometheusRemoteWriteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePrometheusRemoteWriteResponse{}
@@ -70089,6 +72443,15 @@ func (client *Client) DeletePrometheusRemoteWrite(request *DeletePrometheusRemot
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Browser Monitoring task.
+//
+// @param request - DeleteRetcodeAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRetcodeAppResponse
 func (client *Client) DeleteRetcodeAppWithOptions(request *DeleteRetcodeAppRequest, runtime *util.RuntimeOptions) (_result *DeleteRetcodeAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70134,6 +72497,13 @@ func (client *Client) DeleteRetcodeAppWithOptions(request *DeleteRetcodeAppReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Browser Monitoring task.
+//
+// @param request - DeleteRetcodeAppRequest
+//
+// @return DeleteRetcodeAppResponse
 func (client *Client) DeleteRetcodeApp(request *DeleteRetcodeAppRequest) (_result *DeleteRetcodeAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRetcodeAppResponse{}
@@ -70145,6 +72515,15 @@ func (client *Client) DeleteRetcodeApp(request *DeleteRetcodeAppRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除前端监控应用
+//
+// @param request - DeleteRumAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRumAppResponse
 func (client *Client) DeleteRumAppWithOptions(request *DeleteRumAppRequest, runtime *util.RuntimeOptions) (_result *DeleteRumAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70186,6 +72565,13 @@ func (client *Client) DeleteRumAppWithOptions(request *DeleteRumAppRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除前端监控应用
+//
+// @param request - DeleteRumAppRequest
+//
+// @return DeleteRumAppResponse
 func (client *Client) DeleteRumApp(request *DeleteRumAppRequest) (_result *DeleteRumAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRumAppResponse{}
@@ -70197,6 +72583,15 @@ func (client *Client) DeleteRumApp(request *DeleteRumAppRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除前端监控在oss中的文件
+//
+// @param request - DeleteRumUploadFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRumUploadFileResponse
 func (client *Client) DeleteRumUploadFileWithOptions(request *DeleteRumUploadFileRequest, runtime *util.RuntimeOptions) (_result *DeleteRumUploadFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70246,6 +72641,13 @@ func (client *Client) DeleteRumUploadFileWithOptions(request *DeleteRumUploadFil
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除前端监控在oss中的文件
+//
+// @param request - DeleteRumUploadFileRequest
+//
+// @return DeleteRumUploadFileResponse
 func (client *Client) DeleteRumUploadFile(request *DeleteRumUploadFileRequest) (_result *DeleteRumUploadFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRumUploadFileResponse{}
@@ -70257,6 +72659,11 @@ func (client *Client) DeleteRumUploadFile(request *DeleteRumUploadFileRequest) (
 	return _result, _err
 }
 
+// @param request - DeleteScenarioRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteScenarioResponse
 func (client *Client) DeleteScenarioWithOptions(request *DeleteScenarioRequest, runtime *util.RuntimeOptions) (_result *DeleteScenarioResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70294,6 +72701,9 @@ func (client *Client) DeleteScenarioWithOptions(request *DeleteScenarioRequest, 
 	return _result, _err
 }
 
+// @param request - DeleteScenarioRequest
+//
+// @return DeleteScenarioResponse
 func (client *Client) DeleteScenario(request *DeleteScenarioRequest) (_result *DeleteScenarioResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteScenarioResponse{}
@@ -70305,6 +72715,15 @@ func (client *Client) DeleteScenario(request *DeleteScenarioRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the silence policy.
+//
+// @param request - DeleteSilencePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSilencePolicyResponse
 func (client *Client) DeleteSilencePolicyWithOptions(request *DeleteSilencePolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteSilencePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70338,6 +72757,13 @@ func (client *Client) DeleteSilencePolicyWithOptions(request *DeleteSilencePolic
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the silence policy.
+//
+// @param request - DeleteSilencePolicyRequest
+//
+// @return DeleteSilencePolicyResponse
 func (client *Client) DeleteSilencePolicy(request *DeleteSilencePolicyRequest) (_result *DeleteSilencePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSilencePolicyResponse{}
@@ -70349,6 +72775,15 @@ func (client *Client) DeleteSilencePolicy(request *DeleteSilencePolicyRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除SourceMap
+//
+// @param tmpReq - DeleteSourceMapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSourceMapResponse
 func (client *Client) DeleteSourceMapWithOptions(tmpReq *DeleteSourceMapRequest, runtime *util.RuntimeOptions) (_result *DeleteSourceMapResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -70396,6 +72831,13 @@ func (client *Client) DeleteSourceMapWithOptions(tmpReq *DeleteSourceMapRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除SourceMap
+//
+// @param request - DeleteSourceMapRequest
+//
+// @return DeleteSourceMapResponse
 func (client *Client) DeleteSourceMap(request *DeleteSourceMapRequest) (_result *DeleteSourceMapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSourceMapResponse{}
@@ -70407,6 +72849,15 @@ func (client *Client) DeleteSourceMap(request *DeleteSourceMapRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除云拨测任务
+//
+// @param request - DeleteSyntheticTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSyntheticTaskResponse
 func (client *Client) DeleteSyntheticTaskWithOptions(request *DeleteSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteSyntheticTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70444,6 +72895,13 @@ func (client *Client) DeleteSyntheticTaskWithOptions(request *DeleteSyntheticTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除云拨测任务
+//
+// @param request - DeleteSyntheticTaskRequest
+//
+// @return DeleteSyntheticTaskResponse
 func (client *Client) DeleteSyntheticTask(request *DeleteSyntheticTaskRequest) (_result *DeleteSyntheticTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSyntheticTaskResponse{}
@@ -70455,6 +72913,15 @@ func (client *Client) DeleteSyntheticTask(request *DeleteSyntheticTaskRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a scheduled synthetic monitoring task.
+//
+// @param request - DeleteTimingSyntheticTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTimingSyntheticTaskResponse
 func (client *Client) DeleteTimingSyntheticTaskWithOptions(request *DeleteTimingSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteTimingSyntheticTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70496,6 +72963,13 @@ func (client *Client) DeleteTimingSyntheticTaskWithOptions(request *DeleteTiming
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a scheduled synthetic monitoring task.
+//
+// @param request - DeleteTimingSyntheticTaskRequest
+//
+// @return DeleteTimingSyntheticTaskResponse
 func (client *Client) DeleteTimingSyntheticTask(request *DeleteTimingSyntheticTaskRequest) (_result *DeleteTimingSyntheticTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTimingSyntheticTaskResponse{}
@@ -70507,6 +72981,15 @@ func (client *Client) DeleteTimingSyntheticTask(request *DeleteTimingSyntheticTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an application based on a specified process identifier (PID) and application type.
+//
+// @param tmpReq - DeleteTraceAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTraceAppResponse
 func (client *Client) DeleteTraceAppWithOptions(tmpReq *DeleteTraceAppRequest, runtime *util.RuntimeOptions) (_result *DeleteTraceAppResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -70562,6 +73045,13 @@ func (client *Client) DeleteTraceAppWithOptions(tmpReq *DeleteTraceAppRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an application based on a specified process identifier (PID) and application type.
+//
+// @param request - DeleteTraceAppRequest
+//
+// @return DeleteTraceAppResponse
 func (client *Client) DeleteTraceApp(request *DeleteTraceAppRequest) (_result *DeleteTraceAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTraceAppResponse{}
@@ -70573,6 +73063,15 @@ func (client *Client) DeleteTraceApp(request *DeleteTraceAppRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a webhook alert contact.
+//
+// @param request - DeleteWebhookContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWebhookContactResponse
 func (client *Client) DeleteWebhookContactWithOptions(request *DeleteWebhookContactRequest, runtime *util.RuntimeOptions) (_result *DeleteWebhookContactResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70606,6 +73105,13 @@ func (client *Client) DeleteWebhookContactWithOptions(request *DeleteWebhookCont
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a webhook alert contact.
+//
+// @param request - DeleteWebhookContactRequest
+//
+// @return DeleteWebhookContactResponse
 func (client *Client) DeleteWebhookContact(request *DeleteWebhookContactRequest) (_result *DeleteWebhookContactResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteWebhookContactResponse{}
@@ -70617,6 +73123,15 @@ func (client *Client) DeleteWebhookContact(request *DeleteWebhookContactRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the release information of an add-on by name.
+//
+// @param request - DescribeAddonReleaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAddonReleaseResponse
 func (client *Client) DescribeAddonReleaseWithOptions(request *DescribeAddonReleaseRequest, runtime *util.RuntimeOptions) (_result *DescribeAddonReleaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70658,6 +73173,13 @@ func (client *Client) DescribeAddonReleaseWithOptions(request *DescribeAddonRele
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the release information of an add-on by name.
+//
+// @param request - DescribeAddonReleaseRequest
+//
+// @return DescribeAddonReleaseResponse
 func (client *Client) DescribeAddonRelease(request *DescribeAddonReleaseRequest) (_result *DescribeAddonReleaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAddonReleaseResponse{}
@@ -70669,6 +73191,15 @@ func (client *Client) DescribeAddonRelease(request *DescribeAddonReleaseRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries an alert contact group.
+//
+// @param request - DescribeContactGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeContactGroupsResponse
 func (client *Client) DescribeContactGroupsWithOptions(request *DescribeContactGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeContactGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70722,6 +73253,13 @@ func (client *Client) DescribeContactGroupsWithOptions(request *DescribeContactG
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries an alert contact group.
+//
+// @param request - DescribeContactGroupsRequest
+//
+// @return DescribeContactGroupsResponse
 func (client *Client) DescribeContactGroups(request *DescribeContactGroupsRequest) (_result *DescribeContactGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeContactGroupsResponse{}
@@ -70733,6 +73271,15 @@ func (client *Client) DescribeContactGroups(request *DescribeContactGroupsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert contacts.
+//
+// @param request - DescribeContactsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeContactsResponse
 func (client *Client) DescribeContactsWithOptions(request *DescribeContactsRequest, runtime *util.RuntimeOptions) (_result *DescribeContactsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70794,6 +73341,13 @@ func (client *Client) DescribeContactsWithOptions(request *DescribeContactsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert contacts.
+//
+// @param request - DescribeContactsRequest
+//
+// @return DescribeContactsResponse
 func (client *Client) DescribeContacts(request *DescribeContactsRequest) (_result *DescribeContactsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeContactsResponse{}
@@ -70805,6 +73359,15 @@ func (client *Client) DescribeContacts(request *DescribeContactsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a dispatch policy.
+//
+// @param request - DescribeDispatchRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDispatchRuleResponse
 func (client *Client) DescribeDispatchRuleWithOptions(request *DescribeDispatchRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeDispatchRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70842,6 +73405,13 @@ func (client *Client) DescribeDispatchRuleWithOptions(request *DescribeDispatchR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a dispatch policy.
+//
+// @param request - DescribeDispatchRuleRequest
+//
+// @return DescribeDispatchRuleResponse
 func (client *Client) DescribeDispatchRule(request *DescribeDispatchRuleRequest) (_result *DescribeDispatchRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDispatchRuleResponse{}
@@ -70853,6 +73423,15 @@ func (client *Client) DescribeDispatchRule(request *DescribeDispatchRuleRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a custom job for an environment.
+//
+// @param request - DescribeEnvCustomJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEnvCustomJobResponse
 func (client *Client) DescribeEnvCustomJobWithOptions(request *DescribeEnvCustomJobRequest, runtime *util.RuntimeOptions) (_result *DescribeEnvCustomJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70898,6 +73477,13 @@ func (client *Client) DescribeEnvCustomJobWithOptions(request *DescribeEnvCustom
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a custom job for an environment.
+//
+// @param request - DescribeEnvCustomJobRequest
+//
+// @return DescribeEnvCustomJobResponse
 func (client *Client) DescribeEnvCustomJob(request *DescribeEnvCustomJobRequest) (_result *DescribeEnvCustomJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEnvCustomJobResponse{}
@@ -70909,6 +73495,15 @@ func (client *Client) DescribeEnvCustomJob(request *DescribeEnvCustomJobRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the PodMonitor details of an environment.
+//
+// @param request - DescribeEnvPodMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEnvPodMonitorResponse
 func (client *Client) DescribeEnvPodMonitorWithOptions(request *DescribeEnvPodMonitorRequest, runtime *util.RuntimeOptions) (_result *DescribeEnvPodMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70954,6 +73549,13 @@ func (client *Client) DescribeEnvPodMonitorWithOptions(request *DescribeEnvPodMo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the PodMonitor details of an environment.
+//
+// @param request - DescribeEnvPodMonitorRequest
+//
+// @return DescribeEnvPodMonitorResponse
 func (client *Client) DescribeEnvPodMonitor(request *DescribeEnvPodMonitorRequest) (_result *DescribeEnvPodMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEnvPodMonitorResponse{}
@@ -70965,6 +73567,15 @@ func (client *Client) DescribeEnvPodMonitor(request *DescribeEnvPodMonitorReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ServiceMonitor details of an environment.
+//
+// @param request - DescribeEnvServiceMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEnvServiceMonitorResponse
 func (client *Client) DescribeEnvServiceMonitorWithOptions(request *DescribeEnvServiceMonitorRequest, runtime *util.RuntimeOptions) (_result *DescribeEnvServiceMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71010,6 +73621,13 @@ func (client *Client) DescribeEnvServiceMonitorWithOptions(request *DescribeEnvS
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ServiceMonitor details of an environment.
+//
+// @param request - DescribeEnvServiceMonitorRequest
+//
+// @return DescribeEnvServiceMonitorResponse
 func (client *Client) DescribeEnvServiceMonitor(request *DescribeEnvServiceMonitorRequest) (_result *DescribeEnvServiceMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEnvServiceMonitorResponse{}
@@ -71021,6 +73639,15 @@ func (client *Client) DescribeEnvServiceMonitor(request *DescribeEnvServiceMonit
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an environment.
+//
+// @param request - DescribeEnvironmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEnvironmentResponse
 func (client *Client) DescribeEnvironmentWithOptions(request *DescribeEnvironmentRequest, runtime *util.RuntimeOptions) (_result *DescribeEnvironmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71058,6 +73685,13 @@ func (client *Client) DescribeEnvironmentWithOptions(request *DescribeEnvironmen
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an environment.
+//
+// @param request - DescribeEnvironmentRequest
+//
+// @return DescribeEnvironmentResponse
 func (client *Client) DescribeEnvironment(request *DescribeEnvironmentRequest) (_result *DescribeEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEnvironmentResponse{}
@@ -71069,6 +73703,15 @@ func (client *Client) DescribeEnvironment(request *DescribeEnvironmentRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a feature.
+//
+// @param request - DescribeEnvironmentFeatureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEnvironmentFeatureResponse
 func (client *Client) DescribeEnvironmentFeatureWithOptions(request *DescribeEnvironmentFeatureRequest, runtime *util.RuntimeOptions) (_result *DescribeEnvironmentFeatureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71114,6 +73757,13 @@ func (client *Client) DescribeEnvironmentFeatureWithOptions(request *DescribeEnv
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a feature.
+//
+// @param request - DescribeEnvironmentFeatureRequest
+//
+// @return DescribeEnvironmentFeatureResponse
 func (client *Client) DescribeEnvironmentFeature(request *DescribeEnvironmentFeatureRequest) (_result *DescribeEnvironmentFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEnvironmentFeatureResponse{}
@@ -71125,6 +73775,15 @@ func (client *Client) DescribeEnvironmentFeature(request *DescribeEnvironmentFea
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of IM chatbots.
+//
+// @param request - DescribeIMRobotsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIMRobotsResponse
 func (client *Client) DescribeIMRobotsWithOptions(request *DescribeIMRobotsRequest, runtime *util.RuntimeOptions) (_result *DescribeIMRobotsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71170,6 +73829,13 @@ func (client *Client) DescribeIMRobotsWithOptions(request *DescribeIMRobotsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of IM chatbots.
+//
+// @param request - DescribeIMRobotsRequest
+//
+// @return DescribeIMRobotsResponse
 func (client *Client) DescribeIMRobots(request *DescribeIMRobotsRequest) (_result *DescribeIMRobotsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIMRobotsResponse{}
@@ -71181,6 +73847,15 @@ func (client *Client) DescribeIMRobots(request *DescribeIMRobotsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about an alert rule of Prometheus Service.
+//
+// @param request - DescribePrometheusAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePrometheusAlertRuleResponse
 func (client *Client) DescribePrometheusAlertRuleWithOptions(request *DescribePrometheusAlertRuleRequest, runtime *util.RuntimeOptions) (_result *DescribePrometheusAlertRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71218,6 +73893,13 @@ func (client *Client) DescribePrometheusAlertRuleWithOptions(request *DescribePr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about an alert rule of Prometheus Service.
+//
+// @param request - DescribePrometheusAlertRuleRequest
+//
+// @return DescribePrometheusAlertRuleResponse
 func (client *Client) DescribePrometheusAlertRule(request *DescribePrometheusAlertRuleRequest) (_result *DescribePrometheusAlertRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePrometheusAlertRuleResponse{}
@@ -71229,6 +73911,11 @@ func (client *Client) DescribePrometheusAlertRule(request *DescribePrometheusAle
 	return _result, _err
 }
 
+// @param request - DescribeTraceLicenseKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTraceLicenseKeyResponse
 func (client *Client) DescribeTraceLicenseKeyWithOptions(request *DescribeTraceLicenseKeyRequest, runtime *util.RuntimeOptions) (_result *DescribeTraceLicenseKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71262,6 +73949,9 @@ func (client *Client) DescribeTraceLicenseKeyWithOptions(request *DescribeTraceL
 	return _result, _err
 }
 
+// @param request - DescribeTraceLicenseKeyRequest
+//
+// @return DescribeTraceLicenseKeyResponse
 func (client *Client) DescribeTraceLicenseKey(request *DescribeTraceLicenseKeyRequest) (_result *DescribeTraceLicenseKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTraceLicenseKeyResponse{}
@@ -71273,6 +73963,15 @@ func (client *Client) DescribeTraceLicenseKey(request *DescribeTraceLicenseKeyRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of webhook alert contacts.
+//
+// @param request - DescribeWebhookContactsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebhookContactsResponse
 func (client *Client) DescribeWebhookContactsWithOptions(request *DescribeWebhookContactsRequest, runtime *util.RuntimeOptions) (_result *DescribeWebhookContactsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71302,6 +74001,13 @@ func (client *Client) DescribeWebhookContactsWithOptions(request *DescribeWebhoo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of webhook alert contacts.
+//
+// @param request - DescribeWebhookContactsRequest
+//
+// @return DescribeWebhookContactsResponse
 func (client *Client) DescribeWebhookContacts(request *DescribeWebhookContactsRequest) (_result *DescribeWebhookContactsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebhookContactsResponse{}
@@ -71313,6 +74019,15 @@ func (client *Client) DescribeWebhookContacts(request *DescribeWebhookContactsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启指标
+//
+// @param request - EnableMetricRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableMetricResponse
 func (client *Client) EnableMetricWithOptions(request *EnableMetricRequest, runtime *util.RuntimeOptions) (_result *EnableMetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71354,6 +74069,13 @@ func (client *Client) EnableMetricWithOptions(request *EnableMetricRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启指标
+//
+// @param request - EnableMetricRequest
+//
+// @return EnableMetricResponse
 func (client *Client) EnableMetric(request *EnableMetricRequest) (_result *EnableMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableMetricResponse{}
@@ -71365,6 +74087,15 @@ func (client *Client) EnableMetric(request *EnableMetricRequest) (_result *Enabl
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the download URL of the Application Real-Time Monitoring Service (ARMS) agent.
+//
+// @param request - GetAgentDownloadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentDownloadUrlResponse
 func (client *Client) GetAgentDownloadUrlWithOptions(request *GetAgentDownloadUrlRequest, runtime *util.RuntimeOptions) (_result *GetAgentDownloadUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71394,6 +74125,13 @@ func (client *Client) GetAgentDownloadUrlWithOptions(request *GetAgentDownloadUr
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the download URL of the Application Real-Time Monitoring Service (ARMS) agent.
+//
+// @param request - GetAgentDownloadUrlRequest
+//
+// @return GetAgentDownloadUrlResponse
 func (client *Client) GetAgentDownloadUrl(request *GetAgentDownloadUrlRequest) (_result *GetAgentDownloadUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAgentDownloadUrlResponse{}
@@ -71405,6 +74143,15 @@ func (client *Client) GetAgentDownloadUrl(request *GetAgentDownloadUrlRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert rules.
+//
+// @param request - GetAlertRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAlertRulesResponse
 func (client *Client) GetAlertRulesWithOptions(request *GetAlertRulesRequest, runtime *util.RuntimeOptions) (_result *GetAlertRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71474,6 +74221,13 @@ func (client *Client) GetAlertRulesWithOptions(request *GetAlertRulesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert rules.
+//
+// @param request - GetAlertRulesRequest
+//
+// @return GetAlertRulesResponse
 func (client *Client) GetAlertRules(request *GetAlertRulesRequest) (_result *GetAlertRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAlertRulesResponse{}
@@ -71485,6 +74239,15 @@ func (client *Client) GetAlertRules(request *GetAlertRulesRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the API operations of application monitoring by page.
+//
+// @param request - GetAppApiByPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppApiByPageResponse
 func (client *Client) GetAppApiByPageWithOptions(request *GetAppApiByPageRequest, runtime *util.RuntimeOptions) (_result *GetAppApiByPageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71542,6 +74305,13 @@ func (client *Client) GetAppApiByPageWithOptions(request *GetAppApiByPageRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the API operations of application monitoring by page.
+//
+// @param request - GetAppApiByPageRequest
+//
+// @return GetAppApiByPageResponse
 func (client *Client) GetAppApiByPage(request *GetAppApiByPageRequest) (_result *GetAppApiByPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAppApiByPageResponse{}
@@ -71553,6 +74323,15 @@ func (client *Client) GetAppApiByPage(request *GetAppApiByPageRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用各个实例的JVM配置信息
+//
+// @param request - GetAppJVMConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppJVMConfigResponse
 func (client *Client) GetAppJVMConfigWithOptions(request *GetAppJVMConfigRequest, runtime *util.RuntimeOptions) (_result *GetAppJVMConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71582,6 +74361,13 @@ func (client *Client) GetAppJVMConfigWithOptions(request *GetAppJVMConfigRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用各个实例的JVM配置信息
+//
+// @param request - GetAppJVMConfigRequest
+//
+// @return GetAppJVMConfigResponse
 func (client *Client) GetAppJVMConfig(request *GetAppJVMConfigRequest) (_result *GetAppJVMConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAppJVMConfigResponse{}
@@ -71593,6 +74379,15 @@ func (client *Client) GetAppJVMConfig(request *GetAppJVMConfigRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the authentication token for remote read and write over the Internet.
+//
+// @param request - GetAuthTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAuthTokenResponse
 func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runtime *util.RuntimeOptions) (_result *GetAuthTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71630,6 +74425,13 @@ func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the authentication token for remote read and write over the Internet.
+//
+// @param request - GetAuthTokenRequest
+//
+// @return GetAuthTokenResponse
 func (client *Client) GetAuthToken(request *GetAuthTokenRequest) (_result *GetAuthTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAuthTokenResponse{}
@@ -71641,7 +74443,11 @@ func (client *Client) GetAuthToken(request *GetAuthTokenRequest) (_result *GetAu
 	return _result, _err
 }
 
-// Deprecated: : GetCloudClusterAllUrl is deprecated, please use ARMS::2019-08-08::GetRemoteWriteUrl instead.
+// Deprecated: OpenAPI GetCloudClusterAllUrl is deprecated, please use ARMS::2019-08-08::GetRemoteWriteUrl instead.
+//
+// Summary:
+//
+// Queries the read and write URLs of a CloudMonitor instance, such as Pushgateway and Grafana URLs.
 //
 // @param request - GetCloudClusterAllUrlRequest
 //
@@ -71686,7 +74492,11 @@ func (client *Client) GetCloudClusterAllUrlWithOptions(request *GetCloudClusterA
 	return _result, _err
 }
 
-// Deprecated: : GetCloudClusterAllUrl is deprecated, please use ARMS::2019-08-08::GetRemoteWriteUrl instead.
+// Deprecated: OpenAPI GetCloudClusterAllUrl is deprecated, please use ARMS::2019-08-08::GetRemoteWriteUrl instead.
+//
+// Summary:
+//
+// Queries the read and write URLs of a CloudMonitor instance, such as Pushgateway and Grafana URLs.
 //
 // @param request - GetCloudClusterAllUrlRequest
 //
@@ -71703,6 +74513,15 @@ func (client *Client) GetCloudClusterAllUrl(request *GetCloudClusterAllUrlReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains all the URLs of a cluster, including remote read and write URLs, Pushgateway URLs, and Grafana URLs.
+//
+// @param request - GetClusterAllUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetClusterAllUrlResponse
 func (client *Client) GetClusterAllUrlWithOptions(request *GetClusterAllUrlRequest, runtime *util.RuntimeOptions) (_result *GetClusterAllUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71740,6 +74559,13 @@ func (client *Client) GetClusterAllUrlWithOptions(request *GetClusterAllUrlReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains all the URLs of a cluster, including remote read and write URLs, Pushgateway URLs, and Grafana URLs.
+//
+// @param request - GetClusterAllUrlRequest
+//
+// @return GetClusterAllUrlResponse
 func (client *Client) GetClusterAllUrl(request *GetClusterAllUrlRequest) (_result *GetClusterAllUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetClusterAllUrlResponse{}
@@ -71751,6 +74577,15 @@ func (client *Client) GetClusterAllUrl(request *GetClusterAllUrlRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取商业化状态
+//
+// @param request - GetCommercialStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCommercialStatusResponse
 func (client *Client) GetCommercialStatusWithOptions(request *GetCommercialStatusRequest, runtime *util.RuntimeOptions) (_result *GetCommercialStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71788,6 +74623,13 @@ func (client *Client) GetCommercialStatusWithOptions(request *GetCommercialStatu
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取商业化状态
+//
+// @param request - GetCommercialStatusRequest
+//
+// @return GetCommercialStatusResponse
 func (client *Client) GetCommercialStatus(request *GetCommercialStatusRequest) (_result *GetCommercialStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCommercialStatusResponse{}
@@ -71799,6 +74641,15 @@ func (client *Client) GetCommercialStatus(request *GetCommercialStatusRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the Explore feature of Grafana.
+//
+// @param request - GetExploreUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExploreUrlResponse
 func (client *Client) GetExploreUrlWithOptions(request *GetExploreUrlRequest, runtime *util.RuntimeOptions) (_result *GetExploreUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71844,6 +74695,13 @@ func (client *Client) GetExploreUrlWithOptions(request *GetExploreUrlRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the Explore feature of Grafana.
+//
+// @param request - GetExploreUrlRequest
+//
+// @return GetExploreUrlResponse
 func (client *Client) GetExploreUrl(request *GetExploreUrlRequest) (_result *GetExploreUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetExploreUrlResponse{}
@@ -71855,6 +74713,15 @@ func (client *Client) GetExploreUrl(request *GetExploreUrlRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定工作区
+//
+// @param request - GetGrafanaWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGrafanaWorkspaceResponse
 func (client *Client) GetGrafanaWorkspaceWithOptions(request *GetGrafanaWorkspaceRequest, runtime *util.RuntimeOptions) (_result *GetGrafanaWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71896,6 +74763,13 @@ func (client *Client) GetGrafanaWorkspaceWithOptions(request *GetGrafanaWorkspac
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定工作区
+//
+// @param request - GetGrafanaWorkspaceRequest
+//
+// @return GetGrafanaWorkspaceResponse
 func (client *Client) GetGrafanaWorkspace(request *GetGrafanaWorkspaceRequest) (_result *GetGrafanaWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetGrafanaWorkspaceResponse{}
@@ -71907,7 +74781,11 @@ func (client *Client) GetGrafanaWorkspace(request *GetGrafanaWorkspaceRequest) (
 	return _result, _err
 }
 
-// Deprecated: : GetIntegrationState is deprecated, please use ARMS::2019-08-08::DescribeAddonRelease instead.
+// Deprecated: OpenAPI GetIntegrationState is deprecated, please use ARMS::2019-08-08::DescribeAddonRelease instead.
+//
+// Summary:
+//
+// 获取Prometheus中是否已接入某种Integration类型
 //
 // @param request - GetIntegrationStateRequest
 //
@@ -71956,7 +74834,11 @@ func (client *Client) GetIntegrationStateWithOptions(request *GetIntegrationStat
 	return _result, _err
 }
 
-// Deprecated: : GetIntegrationState is deprecated, please use ARMS::2019-08-08::DescribeAddonRelease instead.
+// Deprecated: OpenAPI GetIntegrationState is deprecated, please use ARMS::2019-08-08::DescribeAddonRelease instead.
+//
+// Summary:
+//
+// 获取Prometheus中是否已接入某种Integration类型
 //
 // @param request - GetIntegrationStateRequest
 //
@@ -71973,6 +74855,15 @@ func (client *Client) GetIntegrationState(request *GetIntegrationStateRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a Prometheus instance of a serverless Kubernetes (ASK) cluster or Elastic Compute Service (ECS) instance.
+//
+// @param request - GetManagedPrometheusStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetManagedPrometheusStatusResponse
 func (client *Client) GetManagedPrometheusStatusWithOptions(request *GetManagedPrometheusStatusRequest, runtime *util.RuntimeOptions) (_result *GetManagedPrometheusStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72022,6 +74913,13 @@ func (client *Client) GetManagedPrometheusStatusWithOptions(request *GetManagedP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a Prometheus instance of a serverless Kubernetes (ASK) cluster or Elastic Compute Service (ECS) instance.
+//
+// @param request - GetManagedPrometheusStatusRequest
+//
+// @return GetManagedPrometheusStatusResponse
 func (client *Client) GetManagedPrometheusStatus(request *GetManagedPrometheusStatusRequest) (_result *GetManagedPrometheusStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetManagedPrometheusStatusResponse{}
@@ -72033,6 +74931,15 @@ func (client *Client) GetManagedPrometheusStatus(request *GetManagedPrometheusSt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of one or more traces.
+//
+// @param request - GetMultipleTraceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMultipleTraceResponse
 func (client *Client) GetMultipleTraceWithOptions(request *GetMultipleTraceRequest, runtime *util.RuntimeOptions) (_result *GetMultipleTraceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72078,6 +74985,13 @@ func (client *Client) GetMultipleTraceWithOptions(request *GetMultipleTraceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of one or more traces.
+//
+// @param request - GetMultipleTraceRequest
+//
+// @return GetMultipleTraceResponse
 func (client *Client) GetMultipleTrace(request *GetMultipleTraceRequest) (_result *GetMultipleTraceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMultipleTraceResponse{}
@@ -72089,6 +75003,15 @@ func (client *Client) GetMultipleTrace(request *GetMultipleTraceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a scheduling policy.
+//
+// @param request - GetOnCallSchedulesDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOnCallSchedulesDetailResponse
 func (client *Client) GetOnCallSchedulesDetailWithOptions(request *GetOnCallSchedulesDetailRequest, runtime *util.RuntimeOptions) (_result *GetOnCallSchedulesDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72118,6 +75041,13 @@ func (client *Client) GetOnCallSchedulesDetailWithOptions(request *GetOnCallSche
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a scheduling policy.
+//
+// @param request - GetOnCallSchedulesDetailRequest
+//
+// @return GetOnCallSchedulesDetailResponse
 func (client *Client) GetOnCallSchedulesDetail(request *GetOnCallSchedulesDetailRequest) (_result *GetOnCallSchedulesDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOnCallSchedulesDetailResponse{}
@@ -72129,6 +75059,10 @@ func (client *Client) GetOnCallSchedulesDetail(request *GetOnCallSchedulesDetail
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the token required for integrating Prometheus Service.
+//
 // Description:
 //
 // None.
@@ -72171,6 +75105,10 @@ func (client *Client) GetPrometheusApiTokenWithOptions(request *GetPrometheusApi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the token required for integrating Prometheus Service.
+//
 // Description:
 //
 // None.
@@ -72189,6 +75127,15 @@ func (client *Client) GetPrometheusApiToken(request *GetPrometheusApiTokenReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a global aggregation instance.
+//
+// @param request - GetPrometheusGlobalViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPrometheusGlobalViewResponse
 func (client *Client) GetPrometheusGlobalViewWithOptions(request *GetPrometheusGlobalViewRequest, runtime *util.RuntimeOptions) (_result *GetPrometheusGlobalViewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72226,6 +75173,13 @@ func (client *Client) GetPrometheusGlobalViewWithOptions(request *GetPrometheusG
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a global aggregation instance.
+//
+// @param request - GetPrometheusGlobalViewRequest
+//
+// @return GetPrometheusGlobalViewResponse
 func (client *Client) GetPrometheusGlobalView(request *GetPrometheusGlobalViewRequest) (_result *GetPrometheusGlobalViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPrometheusGlobalViewResponse{}
@@ -72237,6 +75191,15 @@ func (client *Client) GetPrometheusGlobalView(request *GetPrometheusGlobalViewRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a Prometheus instance.
+//
+// @param request - GetPrometheusInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPrometheusInstanceResponse
 func (client *Client) GetPrometheusInstanceWithOptions(request *GetPrometheusInstanceRequest, runtime *util.RuntimeOptions) (_result *GetPrometheusInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72274,6 +75237,13 @@ func (client *Client) GetPrometheusInstanceWithOptions(request *GetPrometheusIns
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a Prometheus instance.
+//
+// @param request - GetPrometheusInstanceRequest
+//
+// @return GetPrometheusInstanceResponse
 func (client *Client) GetPrometheusInstance(request *GetPrometheusInstanceRequest) (_result *GetPrometheusInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPrometheusInstanceResponse{}
@@ -72285,6 +75255,15 @@ func (client *Client) GetPrometheusInstance(request *GetPrometheusInstanceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - GetPrometheusIntegrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPrometheusIntegrationResponse
 func (client *Client) GetPrometheusIntegrationWithOptions(request *GetPrometheusIntegrationRequest, runtime *util.RuntimeOptions) (_result *GetPrometheusIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72330,6 +75309,13 @@ func (client *Client) GetPrometheusIntegrationWithOptions(request *GetPrometheus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - GetPrometheusIntegrationRequest
+//
+// @return GetPrometheusIntegrationResponse
 func (client *Client) GetPrometheusIntegration(request *GetPrometheusIntegrationRequest) (_result *GetPrometheusIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPrometheusIntegrationResponse{}
@@ -72341,6 +75327,15 @@ func (client *Client) GetPrometheusIntegration(request *GetPrometheusIntegration
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the monitoring configuration of a Prometheus instance.
+//
+// @param request - GetPrometheusMonitoringRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPrometheusMonitoringResponse
 func (client *Client) GetPrometheusMonitoringWithOptions(request *GetPrometheusMonitoringRequest, runtime *util.RuntimeOptions) (_result *GetPrometheusMonitoringResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72386,6 +75381,13 @@ func (client *Client) GetPrometheusMonitoringWithOptions(request *GetPrometheusM
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the monitoring configuration of a Prometheus instance.
+//
+// @param request - GetPrometheusMonitoringRequest
+//
+// @return GetPrometheusMonitoringResponse
 func (client *Client) GetPrometheusMonitoring(request *GetPrometheusMonitoringRequest) (_result *GetPrometheusMonitoringResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPrometheusMonitoringResponse{}
@@ -72397,6 +75399,15 @@ func (client *Client) GetPrometheusMonitoring(request *GetPrometheusMonitoringRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - GetPrometheusRemoteWriteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPrometheusRemoteWriteResponse
 func (client *Client) GetPrometheusRemoteWriteWithOptions(request *GetPrometheusRemoteWriteRequest, runtime *util.RuntimeOptions) (_result *GetPrometheusRemoteWriteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72438,6 +75449,13 @@ func (client *Client) GetPrometheusRemoteWriteWithOptions(request *GetPrometheus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - GetPrometheusRemoteWriteRequest
+//
+// @return GetPrometheusRemoteWriteResponse
 func (client *Client) GetPrometheusRemoteWrite(request *GetPrometheusRemoteWriteRequest) (_result *GetPrometheusRemoteWriteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPrometheusRemoteWriteResponse{}
@@ -72449,6 +75467,15 @@ func (client *Client) GetPrometheusRemoteWrite(request *GetPrometheusRemoteWrite
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the recording rule of a cluster.
+//
+// @param request - GetRecordingRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRecordingRuleResponse
 func (client *Client) GetRecordingRuleWithOptions(request *GetRecordingRuleRequest, runtime *util.RuntimeOptions) (_result *GetRecordingRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72486,6 +75513,13 @@ func (client *Client) GetRecordingRuleWithOptions(request *GetRecordingRuleReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the recording rule of a cluster.
+//
+// @param request - GetRecordingRuleRequest
+//
+// @return GetRecordingRuleResponse
 func (client *Client) GetRecordingRule(request *GetRecordingRuleRequest) (_result *GetRecordingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRecordingRuleResponse{}
@@ -72497,6 +75531,15 @@ func (client *Client) GetRecordingRule(request *GetRecordingRuleRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the objects of a Browser Monitoring application by process identifier (PID).
+//
+// @param request - GetRetcodeAppByPidRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRetcodeAppByPidResponse
 func (client *Client) GetRetcodeAppByPidWithOptions(request *GetRetcodeAppByPidRequest, runtime *util.RuntimeOptions) (_result *GetRetcodeAppByPidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72526,6 +75569,13 @@ func (client *Client) GetRetcodeAppByPidWithOptions(request *GetRetcodeAppByPidR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the objects of a Browser Monitoring application by process identifier (PID).
+//
+// @param request - GetRetcodeAppByPidRequest
+//
+// @return GetRetcodeAppByPidResponse
 func (client *Client) GetRetcodeAppByPid(request *GetRetcodeAppByPidRequest) (_result *GetRetcodeAppByPidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRetcodeAppByPidResponse{}
@@ -72537,6 +75587,15 @@ func (client *Client) GetRetcodeAppByPid(request *GetRetcodeAppByPidRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 传入SLS查询语句，查询出前端监控数据
+//
+// @param request - GetRetcodeDataByQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRetcodeDataByQueryResponse
 func (client *Client) GetRetcodeDataByQueryWithOptions(request *GetRetcodeDataByQueryRequest, runtime *util.RuntimeOptions) (_result *GetRetcodeDataByQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72586,6 +75645,13 @@ func (client *Client) GetRetcodeDataByQueryWithOptions(request *GetRetcodeDataBy
 	return _result, _err
 }
 
+// Summary:
+//
+// 传入SLS查询语句，查询出前端监控数据
+//
+// @param request - GetRetcodeDataByQueryRequest
+//
+// @return GetRetcodeDataByQueryResponse
 func (client *Client) GetRetcodeDataByQuery(request *GetRetcodeDataByQueryRequest) (_result *GetRetcodeDataByQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRetcodeDataByQueryResponse{}
@@ -72597,6 +75663,15 @@ func (client *Client) GetRetcodeDataByQuery(request *GetRetcodeDataByQueryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取前端监控应用SLS存储的详细信息
+//
+// @param request - GetRetcodeLogstoreRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRetcodeLogstoreResponse
 func (client *Client) GetRetcodeLogstoreWithOptions(request *GetRetcodeLogstoreRequest, runtime *util.RuntimeOptions) (_result *GetRetcodeLogstoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72634,6 +75709,13 @@ func (client *Client) GetRetcodeLogstoreWithOptions(request *GetRetcodeLogstoreR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取前端监控应用SLS存储的详细信息
+//
+// @param request - GetRetcodeLogstoreRequest
+//
+// @return GetRetcodeLogstoreResponse
 func (client *Client) GetRetcodeLogstore(request *GetRetcodeLogstoreRequest) (_result *GetRetcodeLogstoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRetcodeLogstoreResponse{}
@@ -72645,6 +75727,15 @@ func (client *Client) GetRetcodeLogstore(request *GetRetcodeLogstoreRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logon-free URL of a Browser Monitoring application.
+//
+// @param request - GetRetcodeShareUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRetcodeShareUrlResponse
 func (client *Client) GetRetcodeShareUrlWithOptions(request *GetRetcodeShareUrlRequest, runtime *util.RuntimeOptions) (_result *GetRetcodeShareUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72678,6 +75769,13 @@ func (client *Client) GetRetcodeShareUrlWithOptions(request *GetRetcodeShareUrlR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logon-free URL of a Browser Monitoring application.
+//
+// @param request - GetRetcodeShareUrlRequest
+//
+// @return GetRetcodeShareUrlResponse
 func (client *Client) GetRetcodeShareUrl(request *GetRetcodeShareUrlRequest) (_result *GetRetcodeShareUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRetcodeShareUrlResponse{}
@@ -72689,6 +75787,15 @@ func (client *Client) GetRetcodeShareUrl(request *GetRetcodeShareUrlRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取前端监控单个应用信息
+//
+// @param request - GetRumAppInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRumAppInfoResponse
 func (client *Client) GetRumAppInfoWithOptions(request *GetRumAppInfoRequest, runtime *util.RuntimeOptions) (_result *GetRumAppInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72730,6 +75837,13 @@ func (client *Client) GetRumAppInfoWithOptions(request *GetRumAppInfoRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取前端监控单个应用信息
+//
+// @param request - GetRumAppInfoRequest
+//
+// @return GetRumAppInfoResponse
 func (client *Client) GetRumAppInfo(request *GetRumAppInfoRequest) (_result *GetRumAppInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRumAppInfoResponse{}
@@ -72741,6 +75855,15 @@ func (client *Client) GetRumAppInfo(request *GetRumAppInfoRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取前端监控应用列表信息
+//
+// @param request - GetRumAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRumAppsResponse
 func (client *Client) GetRumAppsWithOptions(request *GetRumAppsRequest, runtime *util.RuntimeOptions) (_result *GetRumAppsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72794,6 +75917,13 @@ func (client *Client) GetRumAppsWithOptions(request *GetRumAppsRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取前端监控应用列表信息
+//
+// @param request - GetRumAppsRequest
+//
+// @return GetRumAppsResponse
 func (client *Client) GetRumApps(request *GetRumAppsRequest) (_result *GetRumAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRumAppsResponse{}
@@ -72805,6 +75935,15 @@ func (client *Client) GetRumApps(request *GetRumAppsRequest) (_result *GetRumApp
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取前端监控应用sql查询分页结果
+//
+// @param request - GetRumDataForPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRumDataForPageResponse
 func (client *Client) GetRumDataForPageWithOptions(request *GetRumDataForPageRequest, runtime *util.RuntimeOptions) (_result *GetRumDataForPageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72866,6 +76005,13 @@ func (client *Client) GetRumDataForPageWithOptions(request *GetRumDataForPageReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取前端监控应用sql查询分页结果
+//
+// @param request - GetRumDataForPageRequest
+//
+// @return GetRumDataForPageResponse
 func (client *Client) GetRumDataForPage(request *GetRumDataForPageRequest) (_result *GetRumDataForPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRumDataForPageResponse{}
@@ -72877,6 +76023,15 @@ func (client *Client) GetRumDataForPage(request *GetRumDataForPageRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取RUM异常堆栈
+//
+// @param request - GetRumExceptionStackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRumExceptionStackResponse
 func (client *Client) GetRumExceptionStackWithOptions(request *GetRumExceptionStackRequest, runtime *util.RuntimeOptions) (_result *GetRumExceptionStackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72926,6 +76081,13 @@ func (client *Client) GetRumExceptionStackWithOptions(request *GetRumExceptionSt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取RUM异常堆栈
+//
+// @param request - GetRumExceptionStackRequest
+//
+// @return GetRumExceptionStackResponse
 func (client *Client) GetRumExceptionStack(request *GetRumExceptionStackRequest) (_result *GetRumExceptionStackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRumExceptionStackResponse{}
@@ -72937,6 +76099,15 @@ func (client *Client) GetRumExceptionStack(request *GetRumExceptionStackRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取前端监控在oss中文件
+//
+// @param request - GetRumUploadFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRumUploadFilesResponse
 func (client *Client) GetRumUploadFilesWithOptions(request *GetRumUploadFilesRequest, runtime *util.RuntimeOptions) (_result *GetRumUploadFilesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72978,6 +76149,13 @@ func (client *Client) GetRumUploadFilesWithOptions(request *GetRumUploadFilesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取前端监控在oss中文件
+//
+// @param request - GetRumUploadFilesRequest
+//
+// @return GetRumUploadFilesResponse
 func (client *Client) GetRumUploadFiles(request *GetRumUploadFilesRequest) (_result *GetRumUploadFilesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRumUploadFilesResponse{}
@@ -72989,6 +76167,15 @@ func (client *Client) GetRumUploadFiles(request *GetRumUploadFilesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取前端监控上传SourceMap的具体信息
+//
+// @param request - GetSourceMapInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSourceMapInfoResponse
 func (client *Client) GetSourceMapInfoWithOptions(request *GetSourceMapInfoRequest, runtime *util.RuntimeOptions) (_result *GetSourceMapInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73042,6 +76229,13 @@ func (client *Client) GetSourceMapInfoWithOptions(request *GetSourceMapInfoReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取前端监控上传SourceMap的具体信息
+//
+// @param request - GetSourceMapInfoRequest
+//
+// @return GetSourceMapInfoResponse
 func (client *Client) GetSourceMapInfo(request *GetSourceMapInfoRequest) (_result *GetSourceMapInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSourceMapInfoResponse{}
@@ -73053,6 +76247,15 @@ func (client *Client) GetSourceMapInfo(request *GetSourceMapInfoRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a method stack.
+//
+// @param request - GetStackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStackResponse
 func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *util.RuntimeOptions) (_result *GetStackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73106,6 +76309,13 @@ func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a method stack.
+//
+// @param request - GetStackRequest
+//
+// @return GetStackResponse
 func (client *Client) GetStack(request *GetStackRequest) (_result *GetStackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetStackResponse{}
@@ -73117,6 +76327,15 @@ func (client *Client) GetStack(request *GetStackRequest) (_result *GetStackRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains detection points.
+//
+// @param tmpReq - GetSyntheticMonitorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSyntheticMonitorsResponse
 func (client *Client) GetSyntheticMonitorsWithOptions(tmpReq *GetSyntheticMonitorsRequest, runtime *util.RuntimeOptions) (_result *GetSyntheticMonitorsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -73152,6 +76371,13 @@ func (client *Client) GetSyntheticMonitorsWithOptions(tmpReq *GetSyntheticMonito
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains detection points.
+//
+// @param request - GetSyntheticMonitorsRequest
+//
+// @return GetSyntheticMonitorsResponse
 func (client *Client) GetSyntheticMonitors(request *GetSyntheticMonitorsRequest) (_result *GetSyntheticMonitorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSyntheticMonitorsResponse{}
@@ -73163,6 +76389,15 @@ func (client *Client) GetSyntheticMonitors(request *GetSyntheticMonitorsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取单个拨测任务的详情
+//
+// @param request - GetSyntheticTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSyntheticTaskDetailResponse
 func (client *Client) GetSyntheticTaskDetailWithOptions(request *GetSyntheticTaskDetailRequest, runtime *util.RuntimeOptions) (_result *GetSyntheticTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73200,6 +76435,13 @@ func (client *Client) GetSyntheticTaskDetailWithOptions(request *GetSyntheticTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取单个拨测任务的详情
+//
+// @param request - GetSyntheticTaskDetailRequest
+//
+// @return GetSyntheticTaskDetailResponse
 func (client *Client) GetSyntheticTaskDetail(request *GetSyntheticTaskDetailRequest) (_result *GetSyntheticTaskDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSyntheticTaskDetailResponse{}
@@ -73211,6 +76453,15 @@ func (client *Client) GetSyntheticTaskDetail(request *GetSyntheticTaskDetailRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取拨测任务列表
+//
+// @param request - GetSyntheticTaskListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSyntheticTaskListResponse
 func (client *Client) GetSyntheticTaskListWithOptions(request *GetSyntheticTaskListRequest, runtime *util.RuntimeOptions) (_result *GetSyntheticTaskListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73276,6 +76527,13 @@ func (client *Client) GetSyntheticTaskListWithOptions(request *GetSyntheticTaskL
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取拨测任务列表
+//
+// @param request - GetSyntheticTaskListRequest
+//
+// @return GetSyntheticTaskListResponse
 func (client *Client) GetSyntheticTaskList(request *GetSyntheticTaskListRequest) (_result *GetSyntheticTaskListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSyntheticTaskListResponse{}
@@ -73287,6 +76545,15 @@ func (client *Client) GetSyntheticTaskList(request *GetSyntheticTaskListRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取拨测任务的监测点信息
+//
+// @param request - GetSyntheticTaskMonitorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSyntheticTaskMonitorsResponse
 func (client *Client) GetSyntheticTaskMonitorsWithOptions(request *GetSyntheticTaskMonitorsRequest, runtime *util.RuntimeOptions) (_result *GetSyntheticTaskMonitorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73320,6 +76587,13 @@ func (client *Client) GetSyntheticTaskMonitorsWithOptions(request *GetSyntheticT
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取拨测任务的监测点信息
+//
+// @param request - GetSyntheticTaskMonitorsRequest
+//
+// @return GetSyntheticTaskMonitorsResponse
 func (client *Client) GetSyntheticTaskMonitors(request *GetSyntheticTaskMonitorsRequest) (_result *GetSyntheticTaskMonitorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSyntheticTaskMonitorsResponse{}
@@ -73331,6 +76605,15 @@ func (client *Client) GetSyntheticTaskMonitors(request *GetSyntheticTaskMonitors
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the details of a synthetic monitoring task.
+//
+// @param request - GetTimingSyntheticTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTimingSyntheticTaskResponse
 func (client *Client) GetTimingSyntheticTaskWithOptions(request *GetTimingSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *GetTimingSyntheticTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73360,6 +76643,13 @@ func (client *Client) GetTimingSyntheticTaskWithOptions(request *GetTimingSynthe
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the details of a synthetic monitoring task.
+//
+// @param request - GetTimingSyntheticTaskRequest
+//
+// @return GetTimingSyntheticTaskResponse
 func (client *Client) GetTimingSyntheticTask(request *GetTimingSyntheticTaskRequest) (_result *GetTimingSyntheticTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTimingSyntheticTaskResponse{}
@@ -73371,6 +76661,10 @@ func (client *Client) GetTimingSyntheticTask(request *GetTimingSyntheticTaskRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a trace.
+//
 // Description:
 //
 // > You must use Application Real-Time Monitoring Service (ARMS) SDK for Java V2.7.24.
@@ -73425,6 +76719,10 @@ func (client *Client) GetTraceWithOptions(request *GetTraceRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a trace.
+//
 // Description:
 //
 // > You must use Application Real-Time Monitoring Service (ARMS) SDK for Java V2.7.24.
@@ -73443,6 +76741,15 @@ func (client *Client) GetTrace(request *GetTraceRequest) (_result *GetTraceRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an application monitoring task.
+//
+// @param request - GetTraceAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTraceAppResponse
 func (client *Client) GetTraceAppWithOptions(request *GetTraceAppRequest, runtime *util.RuntimeOptions) (_result *GetTraceAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73484,6 +76791,13 @@ func (client *Client) GetTraceAppWithOptions(request *GetTraceAppRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an application monitoring task.
+//
+// @param request - GetTraceAppRequest
+//
+// @return GetTraceAppResponse
 func (client *Client) GetTraceApp(request *GetTraceAppRequest) (_result *GetTraceAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTraceAppResponse{}
@@ -73495,6 +76809,10 @@ func (client *Client) GetTraceApp(request *GetTraceAppRequest) (_result *GetTrac
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an alert rule based on an alert template.
+//
 // Description:
 //
 // >  You can call the **ImportAppAlertRules*	- operation to import only the alert rules that are generated by Application Real-Time Monitoring Service (ARMS) for application monitoring and browser monitoring. This operation cannot be used to import custom alert rules, alert rules for Prometheus monitoring, or default emergency alert rules.
@@ -73561,6 +76879,10 @@ func (client *Client) ImportAppAlertRulesWithOptions(request *ImportAppAlertRule
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an alert rule based on an alert template.
+//
 // Description:
 //
 // >  You can call the **ImportAppAlertRules*	- operation to import only the alert rules that are generated by Application Real-Time Monitoring Service (ARMS) for application monitoring and browser monitoring. This operation cannot be used to import custom alert rules, alert rules for Prometheus monitoring, or default emergency alert rules.
@@ -73579,6 +76901,15 @@ func (client *Client) ImportAppAlertRules(request *ImportAppAlertRulesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Initializes an environment instance.
+//
+// @param request - InitEnvironmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitEnvironmentResponse
 func (client *Client) InitEnvironmentWithOptions(request *InitEnvironmentRequest, runtime *util.RuntimeOptions) (_result *InitEnvironmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73628,6 +76959,13 @@ func (client *Client) InitEnvironmentWithOptions(request *InitEnvironmentRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Initializes an environment instance.
+//
+// @param request - InitEnvironmentRequest
+//
+// @return InitEnvironmentResponse
 func (client *Client) InitEnvironment(request *InitEnvironmentRequest) (_result *InitEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InitEnvironmentResponse{}
@@ -73639,6 +76977,15 @@ func (client *Client) InitEnvironment(request *InitEnvironmentRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Installs an add-on.
+//
+// @param request - InstallAddonRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallAddonResponse
 func (client *Client) InstallAddonWithOptions(request *InstallAddonRequest, runtime *util.RuntimeOptions) (_result *InstallAddonResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73700,6 +77047,13 @@ func (client *Client) InstallAddonWithOptions(request *InstallAddonRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Installs an add-on.
+//
+// @param request - InstallAddonRequest
+//
+// @return InstallAddonResponse
 func (client *Client) InstallAddon(request *InstallAddonRequest) (_result *InstallAddonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallAddonResponse{}
@@ -73711,7 +77065,11 @@ func (client *Client) InstallAddon(request *InstallAddonRequest) (_result *Insta
 	return _result, _err
 }
 
-// Deprecated: : InstallCmsExporter is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+// Deprecated: OpenAPI InstallCmsExporter is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+//
+// Summary:
+//
+// Installs the cms-exporter collector.
 //
 // @param request - InstallCmsExporterRequest
 //
@@ -73768,7 +77126,11 @@ func (client *Client) InstallCmsExporterWithOptions(request *InstallCmsExporterR
 	return _result, _err
 }
 
-// Deprecated: : InstallCmsExporter is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+// Deprecated: OpenAPI InstallCmsExporter is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
+//
+// Summary:
+//
+// Installs the cms-exporter collector.
 //
 // @param request - InstallCmsExporterRequest
 //
@@ -73785,6 +77147,15 @@ func (client *Client) InstallCmsExporter(request *InstallCmsExporterRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Installs a feature.
+//
+// @param request - InstallEnvironmentFeatureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallEnvironmentFeatureResponse
 func (client *Client) InstallEnvironmentFeatureWithOptions(request *InstallEnvironmentFeatureRequest, runtime *util.RuntimeOptions) (_result *InstallEnvironmentFeatureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73842,6 +77213,13 @@ func (client *Client) InstallEnvironmentFeatureWithOptions(request *InstallEnvir
 	return _result, _err
 }
 
+// Summary:
+//
+// Installs a feature.
+//
+// @param request - InstallEnvironmentFeatureRequest
+//
+// @return InstallEnvironmentFeatureResponse
 func (client *Client) InstallEnvironmentFeature(request *InstallEnvironmentFeatureRequest) (_result *InstallEnvironmentFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallEnvironmentFeatureResponse{}
@@ -73853,6 +77231,10 @@ func (client *Client) InstallEnvironmentFeature(request *InstallEnvironmentFeatu
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Prometheus instance to monitor a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) instance.
+//
 // Description:
 //
 // If you call the operation to monitor an ASK cluster or an ECS instance, a Prometheus agent is installed in the ASK cluster or ECS instance. Make sure that the ASK cluster or ECS instance has no Prometheus agent installed in advance.
@@ -73931,6 +77313,10 @@ func (client *Client) InstallManagedPrometheusWithOptions(request *InstallManage
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Prometheus instance to monitor a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) instance.
+//
 // Description:
 //
 // If you call the operation to monitor an ASK cluster or an ECS instance, a Prometheus agent is installed in the ASK cluster or ECS instance. Make sure that the ASK cluster or ECS instance has no Prometheus agent installed in advance.
@@ -73949,6 +77335,15 @@ func (client *Client) InstallManagedPrometheus(request *InstallManagedPrometheus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alerts that have been triggered.
+//
+// @param request - ListActivatedAlertsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListActivatedAlertsResponse
 func (client *Client) ListActivatedAlertsWithOptions(request *ListActivatedAlertsRequest, runtime *util.RuntimeOptions) (_result *ListActivatedAlertsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73994,6 +77389,13 @@ func (client *Client) ListActivatedAlertsWithOptions(request *ListActivatedAlert
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alerts that have been triggered.
+//
+// @param request - ListActivatedAlertsRequest
+//
+// @return ListActivatedAlertsResponse
 func (client *Client) ListActivatedAlerts(request *ListActivatedAlertsRequest) (_result *ListActivatedAlertsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListActivatedAlertsResponse{}
@@ -74005,6 +77407,15 @@ func (client *Client) ListActivatedAlerts(request *ListActivatedAlertsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the Addons installed in the environment.
+//
+// @param request - ListAddonReleasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAddonReleasesResponse
 func (client *Client) ListAddonReleasesWithOptions(request *ListAddonReleasesRequest, runtime *util.RuntimeOptions) (_result *ListAddonReleasesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74046,6 +77457,13 @@ func (client *Client) ListAddonReleasesWithOptions(request *ListAddonReleasesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the Addons installed in the environment.
+//
+// @param request - ListAddonReleasesRequest
+//
+// @return ListAddonReleasesResponse
 func (client *Client) ListAddonReleases(request *ListAddonReleasesRequest) (_result *ListAddonReleasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAddonReleasesResponse{}
@@ -74057,6 +77475,15 @@ func (client *Client) ListAddonReleases(request *ListAddonReleasesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// List of access center products.
+//
+// @param request - ListAddonsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAddonsResponse
 func (client *Client) ListAddonsWithOptions(request *ListAddonsRequest, runtime *util.RuntimeOptions) (_result *ListAddonsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74106,6 +77533,13 @@ func (client *Client) ListAddonsWithOptions(request *ListAddonsRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// List of access center products.
+//
+// @param request - ListAddonsRequest
+//
+// @return ListAddonsResponse
 func (client *Client) ListAddons(request *ListAddonsRequest) (_result *ListAddonsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAddonsResponse{}
@@ -74117,6 +77551,15 @@ func (client *Client) ListAddons(request *ListAddonsRequest) (_result *ListAddon
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries historical alert events.
+//
+// @param request - ListAlertEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAlertEventsResponse
 func (client *Client) ListAlertEventsWithOptions(request *ListAlertEventsRequest, runtime *util.RuntimeOptions) (_result *ListAlertEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74137,6 +77580,10 @@ func (client *Client) ListAlertEventsWithOptions(request *ListAlertEventsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowNotificationPolicies)) {
+		query["ShowNotificationPolicies"] = request.ShowNotificationPolicies
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
@@ -74174,6 +77621,13 @@ func (client *Client) ListAlertEventsWithOptions(request *ListAlertEventsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries historical alert events.
+//
+// @param request - ListAlertEventsRequest
+//
+// @return ListAlertEventsResponse
 func (client *Client) ListAlertEvents(request *ListAlertEventsRequest) (_result *ListAlertEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAlertEventsResponse{}
@@ -74185,6 +77639,15 @@ func (client *Client) ListAlertEvents(request *ListAlertEventsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alert sending history.
+//
+// @param request - ListAlertsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAlertsResponse
 func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, runtime *util.RuntimeOptions) (_result *ListAlertsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74262,6 +77725,13 @@ func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alert sending history.
+//
+// @param request - ListAlertsRequest
+//
+// @return ListAlertsResponse
 func (client *Client) ListAlerts(request *ListAlertsRequest) (_result *ListAlertsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAlertsResponse{}
@@ -74273,6 +77743,15 @@ func (client *Client) ListAlerts(request *ListAlertsRequest) (_result *ListAlert
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all Grafana dashboards in a specified region.
+//
+// @param request - ListClusterFromGrafanaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClusterFromGrafanaResponse
 func (client *Client) ListClusterFromGrafanaWithOptions(request *ListClusterFromGrafanaRequest, runtime *util.RuntimeOptions) (_result *ListClusterFromGrafanaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74306,6 +77785,13 @@ func (client *Client) ListClusterFromGrafanaWithOptions(request *ListClusterFrom
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all Grafana dashboards in a specified region.
+//
+// @param request - ListClusterFromGrafanaRequest
+//
+// @return ListClusterFromGrafanaResponse
 func (client *Client) ListClusterFromGrafana(request *ListClusterFromGrafanaRequest) (_result *ListClusterFromGrafanaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListClusterFromGrafanaResponse{}
@@ -74317,7 +77803,11 @@ func (client *Client) ListClusterFromGrafana(request *ListClusterFromGrafanaRequ
 	return _result, _err
 }
 
-// Deprecated: : ListCmsInstances is deprecated, please use ARMS::2019-08-08::ListEnvironmentAddons instead.
+// Deprecated: OpenAPI ListCmsInstances is deprecated, please use ARMS::2019-08-08::ListEnvironmentAddons instead.
+//
+// Summary:
+//
+// 查询Cms安装信息
 //
 // @param request - ListCmsInstancesRequest
 //
@@ -74366,7 +77856,11 @@ func (client *Client) ListCmsInstancesWithOptions(request *ListCmsInstancesReque
 	return _result, _err
 }
 
-// Deprecated: : ListCmsInstances is deprecated, please use ARMS::2019-08-08::ListEnvironmentAddons instead.
+// Deprecated: OpenAPI ListCmsInstances is deprecated, please use ARMS::2019-08-08::ListEnvironmentAddons instead.
+//
+// Summary:
+//
+// 查询Cms安装信息
 //
 // @param request - ListCmsInstancesRequest
 //
@@ -74383,6 +77877,10 @@ func (client *Client) ListCmsInstances(request *ListCmsInstancesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Grafana dashboards of a Container Service for Kubernetes (ACK) cluster.
+//
 // Description:
 //
 // None.
@@ -74453,6 +77951,10 @@ func (client *Client) ListDashboardsWithOptions(request *ListDashboardsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Grafana dashboards of a Container Service for Kubernetes (ACK) cluster.
+//
 // Description:
 //
 // None.
@@ -74471,6 +77973,15 @@ func (client *Client) ListDashboards(request *ListDashboardsRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Uses Loki data sources and other data sources to create a dashboard in Prometheus Service.
+//
+// @param request - ListDashboardsByNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDashboardsByNameResponse
 func (client *Client) ListDashboardsByNameWithOptions(request *ListDashboardsByNameRequest, runtime *util.RuntimeOptions) (_result *ListDashboardsByNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74536,6 +78047,13 @@ func (client *Client) ListDashboardsByNameWithOptions(request *ListDashboardsByN
 	return _result, _err
 }
 
+// Summary:
+//
+// Uses Loki data sources and other data sources to create a dashboard in Prometheus Service.
+//
+// @param request - ListDashboardsByNameRequest
+//
+// @return ListDashboardsByNameResponse
 func (client *Client) ListDashboardsByName(request *ListDashboardsByNameRequest) (_result *ListDashboardsByNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDashboardsByNameResponse{}
@@ -74547,6 +78065,11 @@ func (client *Client) ListDashboardsByName(request *ListDashboardsByNameRequest)
 	return _result, _err
 }
 
+// @param request - ListDispatchRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDispatchRuleResponse
 func (client *Client) ListDispatchRuleWithOptions(request *ListDispatchRuleRequest, runtime *util.RuntimeOptions) (_result *ListDispatchRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74588,6 +78111,9 @@ func (client *Client) ListDispatchRuleWithOptions(request *ListDispatchRuleReque
 	return _result, _err
 }
 
+// @param request - ListDispatchRuleRequest
+//
+// @return ListDispatchRuleResponse
 func (client *Client) ListDispatchRule(request *ListDispatchRuleRequest) (_result *ListDispatchRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDispatchRuleResponse{}
@@ -74599,6 +78125,15 @@ func (client *Client) ListDispatchRule(request *ListDispatchRuleRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the custom jobs of an environment.
+//
+// @param request - ListEnvCustomJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnvCustomJobsResponse
 func (client *Client) ListEnvCustomJobsWithOptions(request *ListEnvCustomJobsRequest, runtime *util.RuntimeOptions) (_result *ListEnvCustomJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74640,6 +78175,13 @@ func (client *Client) ListEnvCustomJobsWithOptions(request *ListEnvCustomJobsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the custom jobs of an environment.
+//
+// @param request - ListEnvCustomJobsRequest
+//
+// @return ListEnvCustomJobsResponse
 func (client *Client) ListEnvCustomJobs(request *ListEnvCustomJobsRequest) (_result *ListEnvCustomJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnvCustomJobsResponse{}
@@ -74651,6 +78193,15 @@ func (client *Client) ListEnvCustomJobs(request *ListEnvCustomJobsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the PodMonitors of an environment.
+//
+// @param request - ListEnvPodMonitorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnvPodMonitorsResponse
 func (client *Client) ListEnvPodMonitorsWithOptions(request *ListEnvPodMonitorsRequest, runtime *util.RuntimeOptions) (_result *ListEnvPodMonitorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74688,6 +78239,13 @@ func (client *Client) ListEnvPodMonitorsWithOptions(request *ListEnvPodMonitorsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the PodMonitors of an environment.
+//
+// @param request - ListEnvPodMonitorsRequest
+//
+// @return ListEnvPodMonitorsResponse
 func (client *Client) ListEnvPodMonitors(request *ListEnvPodMonitorsRequest) (_result *ListEnvPodMonitorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnvPodMonitorsResponse{}
@@ -74699,6 +78257,15 @@ func (client *Client) ListEnvPodMonitors(request *ListEnvPodMonitorsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ServiceMonitors of an environment.
+//
+// @param request - ListEnvServiceMonitorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnvServiceMonitorsResponse
 func (client *Client) ListEnvServiceMonitorsWithOptions(request *ListEnvServiceMonitorsRequest, runtime *util.RuntimeOptions) (_result *ListEnvServiceMonitorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74736,6 +78303,13 @@ func (client *Client) ListEnvServiceMonitorsWithOptions(request *ListEnvServiceM
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ServiceMonitors of an environment.
+//
+// @param request - ListEnvServiceMonitorsRequest
+//
+// @return ListEnvServiceMonitorsResponse
 func (client *Client) ListEnvServiceMonitors(request *ListEnvServiceMonitorsRequest) (_result *ListEnvServiceMonitorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnvServiceMonitorsResponse{}
@@ -74747,6 +78321,15 @@ func (client *Client) ListEnvServiceMonitors(request *ListEnvServiceMonitorsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a dashboard of an environment instance.
+//
+// @param request - ListEnvironmentDashboardsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnvironmentDashboardsResponse
 func (client *Client) ListEnvironmentDashboardsWithOptions(request *ListEnvironmentDashboardsRequest, runtime *util.RuntimeOptions) (_result *ListEnvironmentDashboardsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74792,6 +78375,13 @@ func (client *Client) ListEnvironmentDashboardsWithOptions(request *ListEnvironm
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a dashboard of an environment instance.
+//
+// @param request - ListEnvironmentDashboardsRequest
+//
+// @return ListEnvironmentDashboardsResponse
 func (client *Client) ListEnvironmentDashboards(request *ListEnvironmentDashboardsRequest) (_result *ListEnvironmentDashboardsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnvironmentDashboardsResponse{}
@@ -74803,6 +78393,15 @@ func (client *Client) ListEnvironmentDashboards(request *ListEnvironmentDashboar
 	return _result, _err
 }
 
+// Summary:
+//
+// 环境的feature列表
+//
+// @param request - ListEnvironmentFeaturesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnvironmentFeaturesResponse
 func (client *Client) ListEnvironmentFeaturesWithOptions(request *ListEnvironmentFeaturesRequest, runtime *util.RuntimeOptions) (_result *ListEnvironmentFeaturesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74840,6 +78439,13 @@ func (client *Client) ListEnvironmentFeaturesWithOptions(request *ListEnvironmen
 	return _result, _err
 }
 
+// Summary:
+//
+// 环境的feature列表
+//
+// @param request - ListEnvironmentFeaturesRequest
+//
+// @return ListEnvironmentFeaturesResponse
 func (client *Client) ListEnvironmentFeatures(request *ListEnvironmentFeaturesRequest) (_result *ListEnvironmentFeaturesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnvironmentFeaturesResponse{}
@@ -74851,6 +78457,15 @@ func (client *Client) ListEnvironmentFeatures(request *ListEnvironmentFeaturesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries environments.
+//
+// @param tmpReq - ListEnvironmentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnvironmentsResponse
 func (client *Client) ListEnvironmentsWithOptions(tmpReq *ListEnvironmentsRequest, runtime *util.RuntimeOptions) (_result *ListEnvironmentsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -74914,6 +78529,13 @@ func (client *Client) ListEnvironmentsWithOptions(tmpReq *ListEnvironmentsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries environments.
+//
+// @param request - ListEnvironmentsRequest
+//
+// @return ListEnvironmentsResponse
 func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_result *ListEnvironmentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnvironmentsResponse{}
@@ -74925,6 +78547,15 @@ func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an escalation policy.
+//
+// @param request - ListEscalationPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEscalationPoliciesResponse
 func (client *Client) ListEscalationPoliciesWithOptions(request *ListEscalationPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListEscalationPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74954,6 +78585,13 @@ func (client *Client) ListEscalationPoliciesWithOptions(request *ListEscalationP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an escalation policy.
+//
+// @param request - ListEscalationPoliciesRequest
+//
+// @return ListEscalationPoliciesResponse
 func (client *Client) ListEscalationPolicies(request *ListEscalationPoliciesRequest) (_result *ListEscalationPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEscalationPoliciesResponse{}
@@ -74965,6 +78603,15 @@ func (client *Client) ListEscalationPolicies(request *ListEscalationPoliciesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries EventBridge integrations that are used to push notifications.
+//
+// @param request - ListEventBridgeIntegrationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEventBridgeIntegrationsResponse
 func (client *Client) ListEventBridgeIntegrationsWithOptions(request *ListEventBridgeIntegrationsRequest, runtime *util.RuntimeOptions) (_result *ListEventBridgeIntegrationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74994,6 +78641,13 @@ func (client *Client) ListEventBridgeIntegrationsWithOptions(request *ListEventB
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries EventBridge integrations that are used to push notifications.
+//
+// @param request - ListEventBridgeIntegrationsRequest
+//
+// @return ListEventBridgeIntegrationsResponse
 func (client *Client) ListEventBridgeIntegrations(request *ListEventBridgeIntegrationsRequest) (_result *ListEventBridgeIntegrationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEventBridgeIntegrationsResponse{}
@@ -75005,6 +78659,15 @@ func (client *Client) ListEventBridgeIntegrations(request *ListEventBridgeIntegr
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定工作区列表
+//
+// @param tmpReq - ListGrafanaWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGrafanaWorkspaceResponse
 func (client *Client) ListGrafanaWorkspaceWithOptions(tmpReq *ListGrafanaWorkspaceRequest, runtime *util.RuntimeOptions) (_result *ListGrafanaWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -75056,6 +78719,13 @@ func (client *Client) ListGrafanaWorkspaceWithOptions(tmpReq *ListGrafanaWorkspa
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定工作区列表
+//
+// @param request - ListGrafanaWorkspaceRequest
+//
+// @return ListGrafanaWorkspaceResponse
 func (client *Client) ListGrafanaWorkspace(request *ListGrafanaWorkspaceRequest) (_result *ListGrafanaWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGrafanaWorkspaceResponse{}
@@ -75067,6 +78737,15 @@ func (client *Client) ListGrafanaWorkspace(request *ListGrafanaWorkspaceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the abnormal Insights events within a specified period of time.
+//
+// @param request - ListInsightsEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInsightsEventsResponse
 func (client *Client) ListInsightsEventsWithOptions(request *ListInsightsEventsRequest, runtime *util.RuntimeOptions) (_result *ListInsightsEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75116,6 +78795,13 @@ func (client *Client) ListInsightsEventsWithOptions(request *ListInsightsEventsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the abnormal Insights events within a specified period of time.
+//
+// @param request - ListInsightsEventsRequest
+//
+// @return ListInsightsEventsResponse
 func (client *Client) ListInsightsEvents(request *ListInsightsEventsRequest) (_result *ListInsightsEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInsightsEventsResponse{}
@@ -75127,6 +78813,15 @@ func (client *Client) ListInsightsEvents(request *ListInsightsEventsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// ListIntegration
+//
+// @param request - ListIntegrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntegrationResponse
 func (client *Client) ListIntegrationWithOptions(request *ListIntegrationRequest, runtime *util.RuntimeOptions) (_result *ListIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75156,6 +78851,13 @@ func (client *Client) ListIntegrationWithOptions(request *ListIntegrationRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// ListIntegration
+//
+// @param request - ListIntegrationRequest
+//
+// @return ListIntegrationResponse
 func (client *Client) ListIntegration(request *ListIntegrationRequest) (_result *ListIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListIntegrationResponse{}
@@ -75167,6 +78869,15 @@ func (client *Client) ListIntegration(request *ListIntegrationRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries notification policies based on specified conditions.
+//
+// @param request - ListNotificationPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNotificationPoliciesResponse
 func (client *Client) ListNotificationPoliciesWithOptions(request *ListNotificationPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListNotificationPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75224,6 +78935,13 @@ func (client *Client) ListNotificationPoliciesWithOptions(request *ListNotificat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries notification policies based on specified conditions.
+//
+// @param request - ListNotificationPoliciesRequest
+//
+// @return ListNotificationPoliciesResponse
 func (client *Client) ListNotificationPolicies(request *ListNotificationPoliciesRequest) (_result *ListNotificationPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNotificationPoliciesResponse{}
@@ -75235,6 +78953,15 @@ func (client *Client) ListNotificationPolicies(request *ListNotificationPolicies
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a scheduling policy.
+//
+// @param request - ListOnCallSchedulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOnCallSchedulesResponse
 func (client *Client) ListOnCallSchedulesWithOptions(request *ListOnCallSchedulesRequest, runtime *util.RuntimeOptions) (_result *ListOnCallSchedulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75264,6 +78991,13 @@ func (client *Client) ListOnCallSchedulesWithOptions(request *ListOnCallSchedule
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a scheduling policy.
+//
+// @param request - ListOnCallSchedulesRequest
+//
+// @return ListOnCallSchedulesResponse
 func (client *Client) ListOnCallSchedules(request *ListOnCallSchedulesRequest) (_result *ListOnCallSchedulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOnCallSchedulesResponse{}
@@ -75275,6 +79009,15 @@ func (client *Client) ListOnCallSchedules(request *ListOnCallSchedulesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// The value of the annotation.
+//
+// @param request - ListPrometheusAlertRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrometheusAlertRulesResponse
 func (client *Client) ListPrometheusAlertRulesWithOptions(request *ListPrometheusAlertRulesRequest, runtime *util.RuntimeOptions) (_result *ListPrometheusAlertRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75332,6 +79075,13 @@ func (client *Client) ListPrometheusAlertRulesWithOptions(request *ListPrometheu
 	return _result, _err
 }
 
+// Summary:
+//
+// The value of the annotation.
+//
+// @param request - ListPrometheusAlertRulesRequest
+//
+// @return ListPrometheusAlertRulesResponse
 func (client *Client) ListPrometheusAlertRules(request *ListPrometheusAlertRulesRequest) (_result *ListPrometheusAlertRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrometheusAlertRulesResponse{}
@@ -75343,6 +79093,15 @@ func (client *Client) ListPrometheusAlertRules(request *ListPrometheusAlertRules
 	return _result, _err
 }
 
+// Summary:
+//
+// The available memory on node {{ $labels.instance }} is less than 10%. Available memory: {{ $value }}%
+//
+// @param request - ListPrometheusAlertTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrometheusAlertTemplatesResponse
 func (client *Client) ListPrometheusAlertTemplatesWithOptions(request *ListPrometheusAlertTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListPrometheusAlertTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75380,6 +79139,13 @@ func (client *Client) ListPrometheusAlertTemplatesWithOptions(request *ListProme
 	return _result, _err
 }
 
+// Summary:
+//
+// The available memory on node {{ $labels.instance }} is less than 10%. Available memory: {{ $value }}%
+//
+// @param request - ListPrometheusAlertTemplatesRequest
+//
+// @return ListPrometheusAlertTemplatesResponse
 func (client *Client) ListPrometheusAlertTemplates(request *ListPrometheusAlertTemplatesRequest) (_result *ListPrometheusAlertTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrometheusAlertTemplatesResponse{}
@@ -75391,6 +79157,15 @@ func (client *Client) ListPrometheusAlertTemplates(request *ListPrometheusAlertT
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取账号下聚合实例列表
+//
+// @param request - ListPrometheusGlobalViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrometheusGlobalViewResponse
 func (client *Client) ListPrometheusGlobalViewWithOptions(request *ListPrometheusGlobalViewRequest, runtime *util.RuntimeOptions) (_result *ListPrometheusGlobalViewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75424,6 +79199,13 @@ func (client *Client) ListPrometheusGlobalViewWithOptions(request *ListPrometheu
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取账号下聚合实例列表
+//
+// @param request - ListPrometheusGlobalViewRequest
+//
+// @return ListPrometheusGlobalViewResponse
 func (client *Client) ListPrometheusGlobalView(request *ListPrometheusGlobalViewRequest) (_result *ListPrometheusGlobalViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrometheusGlobalViewResponse{}
@@ -75435,6 +79217,15 @@ func (client *Client) ListPrometheusGlobalView(request *ListPrometheusGlobalView
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Prometheus instances by tag and resource group.
+//
+// @param request - ListPrometheusInstanceByTagAndResourceGroupIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrometheusInstanceByTagAndResourceGroupIdResponse
 func (client *Client) ListPrometheusInstanceByTagAndResourceGroupIdWithOptions(request *ListPrometheusInstanceByTagAndResourceGroupIdRequest, runtime *util.RuntimeOptions) (_result *ListPrometheusInstanceByTagAndResourceGroupIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75476,6 +79267,13 @@ func (client *Client) ListPrometheusInstanceByTagAndResourceGroupIdWithOptions(r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Prometheus instances by tag and resource group.
+//
+// @param request - ListPrometheusInstanceByTagAndResourceGroupIdRequest
+//
+// @return ListPrometheusInstanceByTagAndResourceGroupIdResponse
 func (client *Client) ListPrometheusInstanceByTagAndResourceGroupId(request *ListPrometheusInstanceByTagAndResourceGroupIdRequest) (_result *ListPrometheusInstanceByTagAndResourceGroupIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrometheusInstanceByTagAndResourceGroupIdResponse{}
@@ -75487,6 +79285,15 @@ func (client *Client) ListPrometheusInstanceByTagAndResourceGroupId(request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all Prometheus instances in a region.
+//
+// @param request - ListPrometheusInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrometheusInstancesResponse
 func (client *Client) ListPrometheusInstancesWithOptions(request *ListPrometheusInstancesRequest, runtime *util.RuntimeOptions) (_result *ListPrometheusInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75528,6 +79335,13 @@ func (client *Client) ListPrometheusInstancesWithOptions(request *ListPrometheus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all Prometheus instances in a region.
+//
+// @param request - ListPrometheusInstancesRequest
+//
+// @return ListPrometheusInstancesResponse
 func (client *Client) ListPrometheusInstances(request *ListPrometheusInstancesRequest) (_result *ListPrometheusInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrometheusInstancesResponse{}
@@ -75539,6 +79353,15 @@ func (client *Client) ListPrometheusInstances(request *ListPrometheusInstancesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of exporters that are integrated into a Prometheus instance. Only aliyun-cs and ecs instances are supported.
+//
+// @param request - ListPrometheusIntegrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrometheusIntegrationResponse
 func (client *Client) ListPrometheusIntegrationWithOptions(request *ListPrometheusIntegrationRequest, runtime *util.RuntimeOptions) (_result *ListPrometheusIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75580,6 +79403,13 @@ func (client *Client) ListPrometheusIntegrationWithOptions(request *ListPromethe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of exporters that are integrated into a Prometheus instance. Only aliyun-cs and ecs instances are supported.
+//
+// @param request - ListPrometheusIntegrationRequest
+//
+// @return ListPrometheusIntegrationResponse
 func (client *Client) ListPrometheusIntegration(request *ListPrometheusIntegrationRequest) (_result *ListPrometheusIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrometheusIntegrationResponse{}
@@ -75591,6 +79421,15 @@ func (client *Client) ListPrometheusIntegration(request *ListPrometheusIntegrati
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the monitoring configuration of a Prometheus instance.
+//
+// @param request - ListPrometheusMonitoringRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrometheusMonitoringResponse
 func (client *Client) ListPrometheusMonitoringWithOptions(request *ListPrometheusMonitoringRequest, runtime *util.RuntimeOptions) (_result *ListPrometheusMonitoringResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75632,6 +79471,13 @@ func (client *Client) ListPrometheusMonitoringWithOptions(request *ListPrometheu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the monitoring configuration of a Prometheus instance.
+//
+// @param request - ListPrometheusMonitoringRequest
+//
+// @return ListPrometheusMonitoringResponse
 func (client *Client) ListPrometheusMonitoring(request *ListPrometheusMonitoringRequest) (_result *ListPrometheusMonitoringResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrometheusMonitoringResponse{}
@@ -75643,6 +79489,15 @@ func (client *Client) ListPrometheusMonitoring(request *ListPrometheusMonitoring
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the remote write configuration items of a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - ListPrometheusRemoteWritesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrometheusRemoteWritesResponse
 func (client *Client) ListPrometheusRemoteWritesWithOptions(request *ListPrometheusRemoteWritesRequest, runtime *util.RuntimeOptions) (_result *ListPrometheusRemoteWritesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75680,6 +79535,13 @@ func (client *Client) ListPrometheusRemoteWritesWithOptions(request *ListPrometh
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the remote write configuration items of a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - ListPrometheusRemoteWritesRequest
+//
+// @return ListPrometheusRemoteWritesResponse
 func (client *Client) ListPrometheusRemoteWrites(request *ListPrometheusRemoteWritesRequest) (_result *ListPrometheusRemoteWritesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrometheusRemoteWritesResponse{}
@@ -75691,9 +79553,13 @@ func (client *Client) ListPrometheusRemoteWrites(request *ListPrometheusRemoteWr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Browser Monitoring tasks in a region.
+//
 // Description:
 //
-// ****
+// ***
 //
 // @param request - ListRetcodeAppsRequest
 //
@@ -75741,9 +79607,13 @@ func (client *Client) ListRetcodeAppsWithOptions(request *ListRetcodeAppsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Browser Monitoring tasks in a region.
+//
 // Description:
 //
-// ****
+// ***
 //
 // @param request - ListRetcodeAppsRequest
 //
@@ -75759,6 +79629,11 @@ func (client *Client) ListRetcodeApps(request *ListRetcodeAppsRequest) (_result 
 	return _result, _err
 }
 
+// @param request - ListScenarioRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListScenarioResponse
 func (client *Client) ListScenarioWithOptions(request *ListScenarioRequest, runtime *util.RuntimeOptions) (_result *ListScenarioResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75808,6 +79683,9 @@ func (client *Client) ListScenarioWithOptions(request *ListScenarioRequest, runt
 	return _result, _err
 }
 
+// @param request - ListScenarioRequest
+//
+// @return ListScenarioResponse
 func (client *Client) ListScenario(request *ListScenarioRequest) (_result *ListScenarioResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListScenarioResponse{}
@@ -75819,6 +79697,15 @@ func (client *Client) ListScenario(request *ListScenarioRequest) (_result *ListS
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a silence policy list.
+//
+// @param request - ListSilencePoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSilencePoliciesResponse
 func (client *Client) ListSilencePoliciesWithOptions(request *ListSilencePoliciesRequest, runtime *util.RuntimeOptions) (_result *ListSilencePoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75868,6 +79755,13 @@ func (client *Client) ListSilencePoliciesWithOptions(request *ListSilencePolicie
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a silence policy list.
+//
+// @param request - ListSilencePoliciesRequest
+//
+// @return ListSilencePoliciesResponse
 func (client *Client) ListSilencePolicies(request *ListSilencePoliciesRequest) (_result *ListSilencePoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSilencePoliciesResponse{}
@@ -75879,6 +79773,15 @@ func (client *Client) ListSilencePolicies(request *ListSilencePoliciesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询拨测明细列表
+//
+// @param tmpReq - ListSyntheticDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSyntheticDetailResponse
 func (client *Client) ListSyntheticDetailWithOptions(tmpReq *ListSyntheticDetailRequest, runtime *util.RuntimeOptions) (_result *ListSyntheticDetailResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -75922,6 +79825,13 @@ func (client *Client) ListSyntheticDetailWithOptions(tmpReq *ListSyntheticDetail
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询拨测明细列表
+//
+// @param request - ListSyntheticDetailRequest
+//
+// @return ListSyntheticDetailResponse
 func (client *Client) ListSyntheticDetail(request *ListSyntheticDetailRequest) (_result *ListSyntheticDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSyntheticDetailResponse{}
@@ -75933,6 +79843,15 @@ func (client *Client) ListSyntheticDetail(request *ListSyntheticDetailRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries scheduled synthetic monitoring tasks.
+//
+// @param tmpReq - ListTimingSyntheticTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTimingSyntheticTasksResponse
 func (client *Client) ListTimingSyntheticTasksWithOptions(tmpReq *ListTimingSyntheticTasksRequest, runtime *util.RuntimeOptions) (_result *ListTimingSyntheticTasksResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -75972,6 +79891,13 @@ func (client *Client) ListTimingSyntheticTasksWithOptions(tmpReq *ListTimingSynt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries scheduled synthetic monitoring tasks.
+//
+// @param request - ListTimingSyntheticTasksRequest
+//
+// @return ListTimingSyntheticTasksResponse
 func (client *Client) ListTimingSyntheticTasks(request *ListTimingSyntheticTasksRequest) (_result *ListTimingSyntheticTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTimingSyntheticTasksResponse{}
@@ -75983,6 +79909,15 @@ func (client *Client) ListTimingSyntheticTasks(request *ListTimingSyntheticTasks
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all Application Monitoring tasks in a specified region.
+//
+// @param request - ListTraceAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTraceAppsResponse
 func (client *Client) ListTraceAppsWithOptions(request *ListTraceAppsRequest, runtime *util.RuntimeOptions) (_result *ListTraceAppsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76032,6 +79967,13 @@ func (client *Client) ListTraceAppsWithOptions(request *ListTraceAppsRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all Application Monitoring tasks in a specified region.
+//
+// @param request - ListTraceAppsRequest
+//
+// @return ListTraceAppsResponse
 func (client *Client) ListTraceApps(request *ListTraceAppsRequest) (_result *ListTraceAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTraceAppsResponse{}
@@ -76043,6 +79985,15 @@ func (client *Client) ListTraceApps(request *ListTraceAppsRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the recording rule of a Prometheus instance.
+//
+// @param request - ManageGetRecordingRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ManageGetRecordingRuleResponse
 func (client *Client) ManageGetRecordingRuleWithOptions(request *ManageGetRecordingRuleRequest, runtime *util.RuntimeOptions) (_result *ManageGetRecordingRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76084,6 +80035,13 @@ func (client *Client) ManageGetRecordingRuleWithOptions(request *ManageGetRecord
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the recording rule of a Prometheus instance.
+//
+// @param request - ManageGetRecordingRuleRequest
+//
+// @return ManageGetRecordingRuleResponse
 func (client *Client) ManageGetRecordingRule(request *ManageGetRecordingRuleRequest) (_result *ManageGetRecordingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ManageGetRecordingRuleResponse{}
@@ -76095,6 +80053,15 @@ func (client *Client) ManageGetRecordingRule(request *ManageGetRecordingRuleRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the recording rule of a Prometheus instance.
+//
+// @param request - ManageRecordingRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ManageRecordingRuleResponse
 func (client *Client) ManageRecordingRuleWithOptions(request *ManageRecordingRuleRequest, runtime *util.RuntimeOptions) (_result *ManageRecordingRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76140,6 +80107,13 @@ func (client *Client) ManageRecordingRuleWithOptions(request *ManageRecordingRul
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the recording rule of a Prometheus instance.
+//
+// @param request - ManageRecordingRuleRequest
+//
+// @return ManageRecordingRuleResponse
 func (client *Client) ManageRecordingRule(request *ManageRecordingRuleRequest) (_result *ManageRecordingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ManageRecordingRuleResponse{}
@@ -76151,6 +80125,15 @@ func (client *Client) ManageRecordingRule(request *ManageRecordingRuleRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Assigns the service-linked role AliyunServiceRoleForARMS to Application Real-Time Monitoring Service (ARMS).
+//
+// @param request - OpenArmsDefaultSLRRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenArmsDefaultSLRResponse
 func (client *Client) OpenArmsDefaultSLRWithOptions(request *OpenArmsDefaultSLRRequest, runtime *util.RuntimeOptions) (_result *OpenArmsDefaultSLRResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76184,6 +80167,13 @@ func (client *Client) OpenArmsDefaultSLRWithOptions(request *OpenArmsDefaultSLRR
 	return _result, _err
 }
 
+// Summary:
+//
+// Assigns the service-linked role AliyunServiceRoleForARMS to Application Real-Time Monitoring Service (ARMS).
+//
+// @param request - OpenArmsDefaultSLRRequest
+//
+// @return OpenArmsDefaultSLRResponse
 func (client *Client) OpenArmsDefaultSLR(request *OpenArmsDefaultSLRRequest) (_result *OpenArmsDefaultSLRResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenArmsDefaultSLRResponse{}
@@ -76195,6 +80185,10 @@ func (client *Client) OpenArmsDefaultSLR(request *OpenArmsDefaultSLRRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates a specified pay-as-you-go sub-service of Application Real-Time Monitoring Service (ARMS).
+//
 // Description:
 //
 // The **OpenArmsServiceSecondVersion*	- operation supports the following sub-service editions:
@@ -76249,6 +80243,10 @@ func (client *Client) OpenArmsServiceSecondVersionWithOptions(request *OpenArmsS
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates a specified pay-as-you-go sub-service of Application Real-Time Monitoring Service (ARMS).
+//
 // Description:
 //
 // The **OpenArmsServiceSecondVersion*	- operation supports the following sub-service editions:
@@ -76275,6 +80273,15 @@ func (client *Client) OpenArmsServiceSecondVersion(request *OpenArmsServiceSecon
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates a virtual cluster.
+//
+// @param request - OpenVClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenVClusterResponse
 func (client *Client) OpenVClusterWithOptions(request *OpenVClusterRequest, runtime *util.RuntimeOptions) (_result *OpenVClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76324,6 +80331,13 @@ func (client *Client) OpenVClusterWithOptions(request *OpenVClusterRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates a virtual cluster.
+//
+// @param request - OpenVClusterRequest
+//
+// @return OpenVClusterResponse
 func (client *Client) OpenVCluster(request *OpenVClusterRequest) (_result *OpenVClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenVClusterResponse{}
@@ -76335,6 +80349,15 @@ func (client *Client) OpenVCluster(request *OpenVClusterRequest) (_result *OpenV
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates the service-linked role AliyunServiceRoleForXtrace for Tracing Analysis.
+//
+// @param request - OpenXtraceDefaultSLRRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenXtraceDefaultSLRResponse
 func (client *Client) OpenXtraceDefaultSLRWithOptions(request *OpenXtraceDefaultSLRRequest, runtime *util.RuntimeOptions) (_result *OpenXtraceDefaultSLRResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76368,6 +80391,13 @@ func (client *Client) OpenXtraceDefaultSLRWithOptions(request *OpenXtraceDefault
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates the service-linked role AliyunServiceRoleForXtrace for Tracing Analysis.
+//
+// @param request - OpenXtraceDefaultSLRRequest
+//
+// @return OpenXtraceDefaultSLRResponse
 func (client *Client) OpenXtraceDefaultSLR(request *OpenXtraceDefaultSLRRequest) (_result *OpenXtraceDefaultSLRResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenXtraceDefaultSLRResponse{}
@@ -76379,6 +80409,15 @@ func (client *Client) OpenXtraceDefaultSLR(request *OpenXtraceDefaultSLRRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the encoding mapping content based on the metadata IDs and metadata type.
+//
+// @param request - QueryAppMetadataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAppMetadataResponse
 func (client *Client) QueryAppMetadataWithOptions(request *QueryAppMetadataRequest, runtime *util.RuntimeOptions) (_result *QueryAppMetadataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76408,6 +80447,13 @@ func (client *Client) QueryAppMetadataWithOptions(request *QueryAppMetadataReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the encoding mapping content based on the metadata IDs and metadata type.
+//
+// @param request - QueryAppMetadataRequest
+//
+// @return QueryAppMetadataResponse
 func (client *Client) QueryAppMetadata(request *QueryAppMetadataRequest) (_result *QueryAppMetadataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAppMetadataResponse{}
@@ -76419,6 +80465,15 @@ func (client *Client) QueryAppMetadata(request *QueryAppMetadataRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询应用拓扑
+//
+// @param tmpReq - QueryAppTopologyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAppTopologyResponse
 func (client *Client) QueryAppTopologyWithOptions(tmpReq *QueryAppTopologyRequest, runtime *util.RuntimeOptions) (_result *QueryAppTopologyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -76494,6 +80549,13 @@ func (client *Client) QueryAppTopologyWithOptions(tmpReq *QueryAppTopologyReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询应用拓扑
+//
+// @param request - QueryAppTopologyRequest
+//
+// @return QueryAppTopologyResponse
 func (client *Client) QueryAppTopology(request *QueryAppTopologyRequest) (_result *QueryAppTopologyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAppTopologyResponse{}
@@ -76505,6 +80567,11 @@ func (client *Client) QueryAppTopology(request *QueryAppTopologyRequest) (_resul
 	return _result, _err
 }
 
+// @param request - QueryCommercialUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCommercialUsageResponse
 func (client *Client) QueryCommercialUsageWithOptions(request *QueryCommercialUsageRequest, runtime *util.RuntimeOptions) (_result *QueryCommercialUsageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76574,6 +80641,9 @@ func (client *Client) QueryCommercialUsageWithOptions(request *QueryCommercialUs
 	return _result, _err
 }
 
+// @param request - QueryCommercialUsageRequest
+//
+// @return QueryCommercialUsageResponse
 func (client *Client) QueryCommercialUsage(request *QueryCommercialUsageRequest) (_result *QueryCommercialUsageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCommercialUsageResponse{}
@@ -76585,6 +80655,15 @@ func (client *Client) QueryCommercialUsage(request *QueryCommercialUsageRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries an Application Monitoring metric or a Browser Monitoring metric.
+//
+// @param request - QueryMetricByPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMetricByPageResponse
 func (client *Client) QueryMetricByPageWithOptions(request *QueryMetricByPageRequest, runtime *util.RuntimeOptions) (_result *QueryMetricByPageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76662,6 +80741,13 @@ func (client *Client) QueryMetricByPageWithOptions(request *QueryMetricByPageReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries an Application Monitoring metric or a Browser Monitoring metric.
+//
+// @param request - QueryMetricByPageRequest
+//
+// @return QueryMetricByPageResponse
 func (client *Client) QueryMetricByPage(request *QueryMetricByPageRequest) (_result *QueryMetricByPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMetricByPageResponse{}
@@ -76673,6 +80759,15 @@ func (client *Client) QueryMetricByPage(request *QueryMetricByPageRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether the Prometheus agent is installed on a cluster.
+//
+// @param request - QueryPromInstallStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPromInstallStatusResponse
 func (client *Client) QueryPromInstallStatusWithOptions(request *QueryPromInstallStatusRequest, runtime *util.RuntimeOptions) (_result *QueryPromInstallStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76710,6 +80805,13 @@ func (client *Client) QueryPromInstallStatusWithOptions(request *QueryPromInstal
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether the Prometheus agent is installed on a cluster.
+//
+// @param request - QueryPromInstallStatusRequest
+//
+// @return QueryPromInstallStatusResponse
 func (client *Client) QueryPromInstallStatus(request *QueryPromInstallStatusRequest) (_result *QueryPromInstallStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPromInstallStatusResponse{}
@@ -76721,6 +80823,15 @@ func (client *Client) QueryPromInstallStatus(request *QueryPromInstallStatusRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// QueryReleaseMetric
+//
+// @param request - QueryReleaseMetricRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryReleaseMetricResponse
 func (client *Client) QueryReleaseMetricWithOptions(request *QueryReleaseMetricRequest, runtime *util.RuntimeOptions) (_result *QueryReleaseMetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76782,6 +80893,13 @@ func (client *Client) QueryReleaseMetricWithOptions(request *QueryReleaseMetricR
 	return _result, _err
 }
 
+// Summary:
+//
+// QueryReleaseMetric
+//
+// @param request - QueryReleaseMetricRequest
+//
+// @return QueryReleaseMetricResponse
 func (client *Client) QueryReleaseMetric(request *QueryReleaseMetricRequest) (_result *QueryReleaseMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryReleaseMetricResponse{}
@@ -76793,6 +80911,15 @@ func (client *Client) QueryReleaseMetric(request *QueryReleaseMetricRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes data sources from a global aggregation instance in Prometheus Service.
+//
+// @param request - RemoveAliClusterIdsFromPrometheusGlobalViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveAliClusterIdsFromPrometheusGlobalViewResponse
 func (client *Client) RemoveAliClusterIdsFromPrometheusGlobalViewWithOptions(request *RemoveAliClusterIdsFromPrometheusGlobalViewRequest, runtime *util.RuntimeOptions) (_result *RemoveAliClusterIdsFromPrometheusGlobalViewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76838,6 +80965,13 @@ func (client *Client) RemoveAliClusterIdsFromPrometheusGlobalViewWithOptions(req
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes data sources from a global aggregation instance in Prometheus Service.
+//
+// @param request - RemoveAliClusterIdsFromPrometheusGlobalViewRequest
+//
+// @return RemoveAliClusterIdsFromPrometheusGlobalViewResponse
 func (client *Client) RemoveAliClusterIdsFromPrometheusGlobalView(request *RemoveAliClusterIdsFromPrometheusGlobalViewRequest) (_result *RemoveAliClusterIdsFromPrometheusGlobalViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveAliClusterIdsFromPrometheusGlobalViewResponse{}
@@ -76849,6 +80983,15 @@ func (client *Client) RemoveAliClusterIdsFromPrometheusGlobalView(request *Remov
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes custom data sources from a global aggregation instance in Prometheus Service.
+//
+// @param request - RemoveSourcesFromPrometheusGlobalViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveSourcesFromPrometheusGlobalViewResponse
 func (client *Client) RemoveSourcesFromPrometheusGlobalViewWithOptions(request *RemoveSourcesFromPrometheusGlobalViewRequest, runtime *util.RuntimeOptions) (_result *RemoveSourcesFromPrometheusGlobalViewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76894,6 +81037,13 @@ func (client *Client) RemoveSourcesFromPrometheusGlobalViewWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes custom data sources from a global aggregation instance in Prometheus Service.
+//
+// @param request - RemoveSourcesFromPrometheusGlobalViewRequest
+//
+// @return RemoveSourcesFromPrometheusGlobalViewResponse
 func (client *Client) RemoveSourcesFromPrometheusGlobalView(request *RemoveSourcesFromPrometheusGlobalViewRequest) (_result *RemoveSourcesFromPrometheusGlobalViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveSourcesFromPrometheusGlobalViewResponse{}
@@ -76905,6 +81055,15 @@ func (client *Client) RemoveSourcesFromPrometheusGlobalView(request *RemoveSourc
 	return _result, _err
 }
 
+// Summary:
+//
+// 重新启动 feature信息
+//
+// @param request - RestartEnvironmentFeatureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartEnvironmentFeatureResponse
 func (client *Client) RestartEnvironmentFeatureWithOptions(request *RestartEnvironmentFeatureRequest, runtime *util.RuntimeOptions) (_result *RestartEnvironmentFeatureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76946,6 +81105,13 @@ func (client *Client) RestartEnvironmentFeatureWithOptions(request *RestartEnvir
 	return _result, _err
 }
 
+// Summary:
+//
+// 重新启动 feature信息
+//
+// @param request - RestartEnvironmentFeatureRequest
+//
+// @return RestartEnvironmentFeatureResponse
 func (client *Client) RestartEnvironmentFeature(request *RestartEnvironmentFeatureRequest) (_result *RestartEnvironmentFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartEnvironmentFeatureResponse{}
@@ -76957,6 +81123,15 @@ func (client *Client) RestartEnvironmentFeature(request *RestartEnvironmentFeatu
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the settings of Application Monitoring, such as trace sampling and agent switch settings.
+//
+// @param request - SaveTraceAppConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveTraceAppConfigResponse
 func (client *Client) SaveTraceAppConfigWithOptions(request *SaveTraceAppConfigRequest, runtime *util.RuntimeOptions) (_result *SaveTraceAppConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76994,6 +81169,13 @@ func (client *Client) SaveTraceAppConfigWithOptions(request *SaveTraceAppConfigR
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the settings of Application Monitoring, such as trace sampling and agent switch settings.
+//
+// @param request - SaveTraceAppConfigRequest
+//
+// @return SaveTraceAppConfigResponse
 func (client *Client) SaveTraceAppConfig(request *SaveTraceAppConfigRequest) (_result *SaveTraceAppConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveTraceAppConfigResponse{}
@@ -77005,6 +81187,10 @@ func (client *Client) SaveTraceAppConfig(request *SaveTraceAppConfigRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert contacts.
+//
 // Description:
 //
 // This operation is no longer maintained. To query alert contacts, call the DescribeContacts operation provided by the new version of Alert Management.
@@ -77071,6 +81257,10 @@ func (client *Client) SearchAlertContactWithOptions(request *SearchAlertContactR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert contacts.
+//
 // Description:
 //
 // This operation is no longer maintained. To query alert contacts, call the DescribeContacts operation provided by the new version of Alert Management.
@@ -77089,6 +81279,10 @@ func (client *Client) SearchAlertContact(request *SearchAlertContactRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert contact groups.
+//
 // Description:
 //
 // The operation is no longer maintained. Call the DescribeContactGroups operation in the alert management module to query alert contact groups.
@@ -77151,6 +81345,10 @@ func (client *Client) SearchAlertContactGroupWithOptions(request *SearchAlertCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert contact groups.
+//
 // Description:
 //
 // The operation is no longer maintained. Call the DescribeContactGroups operation in the alert management module to query alert contact groups.
@@ -77169,6 +81367,10 @@ func (client *Client) SearchAlertContactGroup(request *SearchAlertContactGroupRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alert records of an alert rule.
+//
 // Description:
 //
 // This operation is no longer maintained. To query alert records, call the ListAlerts operation provided by the new version of Alert Management.
@@ -77235,6 +81437,10 @@ func (client *Client) SearchAlertHistoriesWithOptions(request *SearchAlertHistor
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alert records of an alert rule.
+//
 // Description:
 //
 // This operation is no longer maintained. To query alert records, call the ListAlerts operation provided by the new version of Alert Management.
@@ -77253,6 +81459,10 @@ func (client *Client) SearchAlertHistories(request *SearchAlertHistoriesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert rules.
+//
 // Description:
 //
 // The current operation is no longer maintained. You can call the GetAlertRules operation of Alert Management (New) to query existing alert rules.
@@ -77335,6 +81545,10 @@ func (client *Client) SearchAlertRulesWithOptions(request *SearchAlertRulesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert rules.
+//
 // Description:
 //
 // The current operation is no longer maintained. You can call the GetAlertRules operation of Alert Management (New) to query existing alert rules.
@@ -77353,6 +81567,10 @@ func (client *Client) SearchAlertRules(request *SearchAlertRulesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert event records.
+//
 // Description:
 //
 // Alert event records are different from alert notification records. Alert events are recorded every minute after an alert rule filters data. Alert events can be classified based on whether they are triggered or not. If a triggered event is not in the silence period, an alert notification is sent.
@@ -77431,6 +81649,10 @@ func (client *Client) SearchEventsWithOptions(request *SearchEventsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries alert event records.
+//
 // Description:
 //
 // Alert event records are different from alert notification records. Alert events are recorded every minute after an alert rule filters data. Alert events can be classified based on whether they are triggered or not. If a triggered event is not in the silence period, an alert notification is sent.
@@ -77449,6 +81671,15 @@ func (client *Client) SearchEvents(request *SearchEventsRequest) (_result *Searc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Browser Monitoring tasks by page.
+//
+// @param request - SearchRetcodeAppByPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchRetcodeAppByPageResponse
 func (client *Client) SearchRetcodeAppByPageWithOptions(request *SearchRetcodeAppByPageRequest, runtime *util.RuntimeOptions) (_result *SearchRetcodeAppByPageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -77506,6 +81737,13 @@ func (client *Client) SearchRetcodeAppByPageWithOptions(request *SearchRetcodeAp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Browser Monitoring tasks by page.
+//
+// @param request - SearchRetcodeAppByPageRequest
+//
+// @return SearchRetcodeAppByPageResponse
 func (client *Client) SearchRetcodeAppByPage(request *SearchRetcodeAppByPageRequest) (_result *SearchRetcodeAppByPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchRetcodeAppByPageResponse{}
@@ -77517,6 +81755,15 @@ func (client *Client) SearchRetcodeAppByPage(request *SearchRetcodeAppByPageRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Application Monitoring tasks by application name.
+//
+// @param request - SearchTraceAppByNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchTraceAppByNameResponse
 func (client *Client) SearchTraceAppByNameWithOptions(request *SearchTraceAppByNameRequest, runtime *util.RuntimeOptions) (_result *SearchTraceAppByNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -77558,6 +81805,13 @@ func (client *Client) SearchTraceAppByNameWithOptions(request *SearchTraceAppByN
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Application Monitoring tasks by application name.
+//
+// @param request - SearchTraceAppByNameRequest
+//
+// @return SearchTraceAppByNameResponse
 func (client *Client) SearchTraceAppByName(request *SearchTraceAppByNameRequest) (_result *SearchTraceAppByNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchTraceAppByNameResponse{}
@@ -77569,6 +81823,15 @@ func (client *Client) SearchTraceAppByName(request *SearchTraceAppByNameRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Application Monitoring tasks by page.
+//
+// @param request - SearchTraceAppByPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchTraceAppByPageResponse
 func (client *Client) SearchTraceAppByPageWithOptions(request *SearchTraceAppByPageRequest, runtime *util.RuntimeOptions) (_result *SearchTraceAppByPageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -77622,6 +81885,13 @@ func (client *Client) SearchTraceAppByPageWithOptions(request *SearchTraceAppByP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Application Monitoring tasks by page.
+//
+// @param request - SearchTraceAppByPageRequest
+//
+// @return SearchTraceAppByPageResponse
 func (client *Client) SearchTraceAppByPage(request *SearchTraceAppByPageRequest) (_result *SearchTraceAppByPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchTraceAppByPageResponse{}
@@ -77633,9 +81903,13 @@ func (client *Client) SearchTraceAppByPage(request *SearchTraceAppByPageRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries traces by time, application name, IP address, span name, and tag.
+//
 // Description:
 //
-// > A maximum of 100 data entries can be returned each time this operation is called. If you want to query all existing traces, we recommend that you call the SearchTracesByPage operation. For more information, see [SearchTracesByPage](~~175866~~).
+// > A maximum of 100 data entries can be returned each time this operation is called. If you want to query all existing traces, we recommend that you call the SearchTracesByPage operation. For more information, see [SearchTracesByPage](https://help.aliyun.com/document_detail/175866.html).
 //
 // @param request - SearchTracesRequest
 //
@@ -77715,9 +81989,13 @@ func (client *Client) SearchTracesWithOptions(request *SearchTracesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries traces by time, application name, IP address, span name, and tag.
+//
 // Description:
 //
-// > A maximum of 100 data entries can be returned each time this operation is called. If you want to query all existing traces, we recommend that you call the SearchTracesByPage operation. For more information, see [SearchTracesByPage](~~175866~~).
+// > A maximum of 100 data entries can be returned each time this operation is called. If you want to query all existing traces, we recommend that you call the SearchTracesByPage operation. For more information, see [SearchTracesByPage](https://help.aliyun.com/document_detail/175866.html).
 //
 // @param request - SearchTracesRequest
 //
@@ -77733,6 +82011,15 @@ func (client *Client) SearchTraces(request *SearchTracesRequest) (_result *Searc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries traces by page. You can query traces by time range, application name, IP address, span name, or tag.
+//
+// @param request - SearchTracesByPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchTracesByPageResponse
 func (client *Client) SearchTracesByPageWithOptions(request *SearchTracesByPageRequest, runtime *util.RuntimeOptions) (_result *SearchTracesByPageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -77818,6 +82105,13 @@ func (client *Client) SearchTracesByPageWithOptions(request *SearchTracesByPageR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries traces by page. You can query traces by time range, application name, IP address, span name, or tag.
+//
+// @param request - SearchTracesByPageRequest
+//
+// @return SearchTracesByPageResponse
 func (client *Client) SearchTracesByPage(request *SearchTracesByPageRequest) (_result *SearchTracesByPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchTracesByPageResponse{}
@@ -77829,6 +82123,10 @@ func (client *Client) SearchTracesByPage(request *SearchTracesByPageRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends a text message to an alert contact to verify the mobile number of the alert contact.
+//
 // Description:
 //
 // After you receive the text message, verify the mobile number as prompted. Before you can specify a mobile phone number in a notification policy, you must verify the mobile phone number.
@@ -77875,6 +82173,10 @@ func (client *Client) SendTTSVerifyLinkWithOptions(request *SendTTSVerifyLinkReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends a text message to an alert contact to verify the mobile number of the alert contact.
+//
 // Description:
 //
 // After you receive the text message, verify the mobile number as prompted. Before you can specify a mobile phone number in a notification policy, you must verify the mobile phone number.
@@ -77893,6 +82195,15 @@ func (client *Client) SendTTSVerifyLink(request *SendTTSVerifyLinkRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Turns on or turns off logon-free sharing for an application monitored by Browser Monitoring.
+//
+// @param request - SetRetcodeShareStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetRetcodeShareStatusResponse
 func (client *Client) SetRetcodeShareStatusWithOptions(request *SetRetcodeShareStatusRequest, runtime *util.RuntimeOptions) (_result *SetRetcodeShareStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -77934,6 +82245,13 @@ func (client *Client) SetRetcodeShareStatusWithOptions(request *SetRetcodeShareS
 	return _result, _err
 }
 
+// Summary:
+//
+// Turns on or turns off logon-free sharing for an application monitored by Browser Monitoring.
+//
+// @param request - SetRetcodeShareStatusRequest
+//
+// @return SetRetcodeShareStatusResponse
 func (client *Client) SetRetcodeShareStatus(request *SetRetcodeShareStatusRequest) (_result *SetRetcodeShareStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetRetcodeShareStatusResponse{}
@@ -77945,6 +82263,11 @@ func (client *Client) SetRetcodeShareStatus(request *SetRetcodeShareStatusReques
 	return _result, _err
 }
 
+// @param request - StartAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartAlertResponse
 func (client *Client) StartAlertWithOptions(request *StartAlertRequest, runtime *util.RuntimeOptions) (_result *StartAlertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -77982,6 +82305,9 @@ func (client *Client) StartAlertWithOptions(request *StartAlertRequest, runtime 
 	return _result, _err
 }
 
+// @param request - StartAlertRequest
+//
+// @return StartAlertResponse
 func (client *Client) StartAlert(request *StartAlertRequest) (_result *StartAlertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartAlertResponse{}
@@ -77993,6 +82319,15 @@ func (client *Client) StartAlert(request *StartAlertRequest) (_result *StartAler
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动定时拨测任务
+//
+// @param tmpReq - StartTimingSyntheticTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartTimingSyntheticTaskResponse
 func (client *Client) StartTimingSyntheticTaskWithOptions(tmpReq *StartTimingSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *StartTimingSyntheticTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -78036,6 +82371,13 @@ func (client *Client) StartTimingSyntheticTaskWithOptions(tmpReq *StartTimingSyn
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动定时拨测任务
+//
+// @param request - StartTimingSyntheticTaskRequest
+//
+// @return StartTimingSyntheticTaskResponse
 func (client *Client) StartTimingSyntheticTask(request *StartTimingSyntheticTaskRequest) (_result *StartTimingSyntheticTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartTimingSyntheticTaskResponse{}
@@ -78047,6 +82389,15 @@ func (client *Client) StartTimingSyntheticTask(request *StartTimingSyntheticTask
 	return _result, _err
 }
 
+// Summary:
+//
+// Call StartAlert to stop an alert rule.
+//
+// @param request - StopAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAlertResponse
 func (client *Client) StopAlertWithOptions(request *StopAlertRequest, runtime *util.RuntimeOptions) (_result *StopAlertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78084,6 +82435,13 @@ func (client *Client) StopAlertWithOptions(request *StopAlertRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Call StartAlert to stop an alert rule.
+//
+// @param request - StopAlertRequest
+//
+// @return StopAlertResponse
 func (client *Client) StopAlert(request *StopAlertRequest) (_result *StopAlertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopAlertResponse{}
@@ -78095,6 +82453,15 @@ func (client *Client) StopAlert(request *StopAlertRequest) (_result *StopAlertRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops scheduled synthetic monitoring tasks.
+//
+// @param tmpReq - StopTimingSyntheticTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopTimingSyntheticTaskResponse
 func (client *Client) StopTimingSyntheticTaskWithOptions(tmpReq *StopTimingSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *StopTimingSyntheticTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -78138,6 +82505,13 @@ func (client *Client) StopTimingSyntheticTaskWithOptions(tmpReq *StopTimingSynth
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops scheduled synthetic monitoring tasks.
+//
+// @param request - StopTimingSyntheticTaskRequest
+//
+// @return StopTimingSyntheticTaskResponse
 func (client *Client) StopTimingSyntheticTask(request *StopTimingSyntheticTaskRequest) (_result *StopTimingSyntheticTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopTimingSyntheticTaskResponse{}
@@ -78149,6 +82523,15 @@ func (client *Client) StopTimingSyntheticTask(request *StopTimingSyntheticTaskRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动或者禁用云拨测的任务
+//
+// @param request - SwitchSyntheticTaskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchSyntheticTaskStatusResponse
 func (client *Client) SwitchSyntheticTaskStatusWithOptions(request *SwitchSyntheticTaskStatusRequest, runtime *util.RuntimeOptions) (_result *SwitchSyntheticTaskStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78186,6 +82569,13 @@ func (client *Client) SwitchSyntheticTaskStatusWithOptions(request *SwitchSynthe
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动或者禁用云拨测的任务
+//
+// @param request - SwitchSyntheticTaskStatusRequest
+//
+// @return SwitchSyntheticTaskStatusResponse
 func (client *Client) SwitchSyntheticTaskStatus(request *SwitchSyntheticTaskStatusRequest) (_result *SwitchSyntheticTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchSyntheticTaskStatusResponse{}
@@ -78197,6 +82587,15 @@ func (client *Client) SwitchSyntheticTaskStatus(request *SwitchSyntheticTaskStat
 	return _result, _err
 }
 
+// Summary:
+//
+// Synchronizes the aggregation rule of a cluster to other clusters in a region.
+//
+// @param request - SyncRecordingRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncRecordingRulesResponse
 func (client *Client) SyncRecordingRulesWithOptions(request *SyncRecordingRulesRequest, runtime *util.RuntimeOptions) (_result *SyncRecordingRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78238,6 +82637,13 @@ func (client *Client) SyncRecordingRulesWithOptions(request *SyncRecordingRulesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Synchronizes the aggregation rule of a cluster to other clusters in a region.
+//
+// @param request - SyncRecordingRulesRequest
+//
+// @return SyncRecordingRulesResponse
 func (client *Client) SyncRecordingRules(request *SyncRecordingRulesRequest) (_result *SyncRecordingRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SyncRecordingRulesResponse{}
@@ -78249,6 +82655,15 @@ func (client *Client) SyncRecordingRules(request *SyncRecordingRulesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to ARMS resources.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78290,6 +82705,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to ARMS resources.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -78301,6 +82723,10 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a Prometheus instance from a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) instance.
+//
 // Description:
 //
 // Make sure that the ASK cluster or ECS instance is monitored in Managed Service for Prometheus.
@@ -78359,6 +82785,10 @@ func (client *Client) UninstallManagedPrometheusWithOptions(request *UninstallMa
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a Prometheus instance from a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) instance.
+//
 // Description:
 //
 // Make sure that the ASK cluster or ECS instance is monitored in Managed Service for Prometheus.
@@ -78377,6 +82807,15 @@ func (client *Client) UninstallManagedPrometheus(request *UninstallManagedPromet
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a Prometheus instance.
+//
+// @param request - UninstallPromClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UninstallPromClusterResponse
 func (client *Client) UninstallPromClusterWithOptions(request *UninstallPromClusterRequest, runtime *util.RuntimeOptions) (_result *UninstallPromClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78418,6 +82857,13 @@ func (client *Client) UninstallPromClusterWithOptions(request *UninstallPromClus
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a Prometheus instance.
+//
+// @param request - UninstallPromClusterRequest
+//
+// @return UninstallPromClusterResponse
 func (client *Client) UninstallPromCluster(request *UninstallPromClusterRequest) (_result *UninstallPromClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UninstallPromClusterResponse{}
@@ -78429,6 +82875,15 @@ func (client *Client) UninstallPromCluster(request *UninstallPromClusterRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from ARMS resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78478,6 +82933,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from ARMS resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
@@ -78489,6 +82951,10 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an alert contact.
+//
 // Description:
 //
 // This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of Alert Management.
@@ -78555,6 +83021,10 @@ func (client *Client) UpdateAlertContactWithOptions(request *UpdateAlertContactR
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an alert contact.
+//
 // Description:
 //
 // This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of Alert Management.
@@ -78573,6 +83043,15 @@ func (client *Client) UpdateAlertContact(request *UpdateAlertContactRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates UpdateAlertContactGroup alarm contact group.
+//
+// @param request - UpdateAlertContactGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAlertContactGroupResponse
 func (client *Client) UpdateAlertContactGroupWithOptions(request *UpdateAlertContactGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateAlertContactGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78618,6 +83097,13 @@ func (client *Client) UpdateAlertContactGroupWithOptions(request *UpdateAlertCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates UpdateAlertContactGroup alarm contact group.
+//
+// @param request - UpdateAlertContactGroupRequest
+//
+// @return UpdateAlertContactGroupResponse
 func (client *Client) UpdateAlertContactGroup(request *UpdateAlertContactGroupRequest) (_result *UpdateAlertContactGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAlertContactGroupResponse{}
@@ -78629,6 +83115,11 @@ func (client *Client) UpdateAlertContactGroup(request *UpdateAlertContactGroupRe
 	return _result, _err
 }
 
+// @param request - UpdateAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAlertRuleResponse
 func (client *Client) UpdateAlertRuleWithOptions(request *UpdateAlertRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateAlertRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78678,6 +83169,9 @@ func (client *Client) UpdateAlertRuleWithOptions(request *UpdateAlertRuleRequest
 	return _result, _err
 }
 
+// @param request - UpdateAlertRuleRequest
+//
+// @return UpdateAlertRuleResponse
 func (client *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (_result *UpdateAlertRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAlertRuleResponse{}
@@ -78689,6 +83183,15 @@ func (client *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the request.
+//
+// @param request - UpdateDispatchRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDispatchRuleResponse
 func (client *Client) UpdateDispatchRuleWithOptions(request *UpdateDispatchRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateDispatchRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78726,6 +83229,13 @@ func (client *Client) UpdateDispatchRuleWithOptions(request *UpdateDispatchRuleR
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the request.
+//
+// @param request - UpdateDispatchRuleRequest
+//
+// @return UpdateDispatchRuleResponse
 func (client *Client) UpdateDispatchRule(request *UpdateDispatchRuleRequest) (_result *UpdateDispatchRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDispatchRuleResponse{}
@@ -78737,6 +83247,15 @@ func (client *Client) UpdateDispatchRule(request *UpdateDispatchRuleRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a custom job for an environment.
+//
+// @param request - UpdateEnvCustomJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEnvCustomJobResponse
 func (client *Client) UpdateEnvCustomJobWithOptions(request *UpdateEnvCustomJobRequest, runtime *util.RuntimeOptions) (_result *UpdateEnvCustomJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78792,6 +83311,13 @@ func (client *Client) UpdateEnvCustomJobWithOptions(request *UpdateEnvCustomJobR
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a custom job for an environment.
+//
+// @param request - UpdateEnvCustomJobRequest
+//
+// @return UpdateEnvCustomJobResponse
 func (client *Client) UpdateEnvCustomJob(request *UpdateEnvCustomJobRequest) (_result *UpdateEnvCustomJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateEnvCustomJobResponse{}
@@ -78803,6 +83329,15 @@ func (client *Client) UpdateEnvCustomJob(request *UpdateEnvCustomJobRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the PodMonitor of an environment.
+//
+// @param request - UpdateEnvPodMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEnvPodMonitorResponse
 func (client *Client) UpdateEnvPodMonitorWithOptions(request *UpdateEnvPodMonitorRequest, runtime *util.RuntimeOptions) (_result *UpdateEnvPodMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78862,6 +83397,13 @@ func (client *Client) UpdateEnvPodMonitorWithOptions(request *UpdateEnvPodMonito
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the PodMonitor of an environment.
+//
+// @param request - UpdateEnvPodMonitorRequest
+//
+// @return UpdateEnvPodMonitorResponse
 func (client *Client) UpdateEnvPodMonitor(request *UpdateEnvPodMonitorRequest) (_result *UpdateEnvPodMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateEnvPodMonitorResponse{}
@@ -78873,6 +83415,15 @@ func (client *Client) UpdateEnvPodMonitor(request *UpdateEnvPodMonitorRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the ServiceMonitor of an environment.
+//
+// @param request - UpdateEnvServiceMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEnvServiceMonitorResponse
 func (client *Client) UpdateEnvServiceMonitorWithOptions(request *UpdateEnvServiceMonitorRequest, runtime *util.RuntimeOptions) (_result *UpdateEnvServiceMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78932,6 +83483,13 @@ func (client *Client) UpdateEnvServiceMonitorWithOptions(request *UpdateEnvServi
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the ServiceMonitor of an environment.
+//
+// @param request - UpdateEnvServiceMonitorRequest
+//
+// @return UpdateEnvServiceMonitorResponse
 func (client *Client) UpdateEnvServiceMonitor(request *UpdateEnvServiceMonitorRequest) (_result *UpdateEnvServiceMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateEnvServiceMonitorResponse{}
@@ -78943,6 +83501,15 @@ func (client *Client) UpdateEnvServiceMonitor(request *UpdateEnvServiceMonitorRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the configuration of an environment.
+//
+// @param request - UpdateEnvironmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEnvironmentResponse
 func (client *Client) UpdateEnvironmentWithOptions(request *UpdateEnvironmentRequest, runtime *util.RuntimeOptions) (_result *UpdateEnvironmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -78992,6 +83559,13 @@ func (client *Client) UpdateEnvironmentWithOptions(request *UpdateEnvironmentReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the configuration of an environment.
+//
+// @param request - UpdateEnvironmentRequest
+//
+// @return UpdateEnvironmentResponse
 func (client *Client) UpdateEnvironment(request *UpdateEnvironmentRequest) (_result *UpdateEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateEnvironmentResponse{}
@@ -79003,6 +83577,15 @@ func (client *Client) UpdateEnvironment(request *UpdateEnvironmentRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 编辑工作区
+//
+// @param request - UpdateGrafanaWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGrafanaWorkspaceResponse
 func (client *Client) UpdateGrafanaWorkspaceWithOptions(request *UpdateGrafanaWorkspaceRequest, runtime *util.RuntimeOptions) (_result *UpdateGrafanaWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79052,6 +83635,13 @@ func (client *Client) UpdateGrafanaWorkspaceWithOptions(request *UpdateGrafanaWo
 	return _result, _err
 }
 
+// Summary:
+//
+// 编辑工作区
+//
+// @param request - UpdateGrafanaWorkspaceRequest
+//
+// @return UpdateGrafanaWorkspaceResponse
 func (client *Client) UpdateGrafanaWorkspace(request *UpdateGrafanaWorkspaceRequest) (_result *UpdateGrafanaWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGrafanaWorkspaceResponse{}
@@ -79063,6 +83653,15 @@ func (client *Client) UpdateGrafanaWorkspace(request *UpdateGrafanaWorkspaceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 升级指定工作区版本
+//
+// @param request - UpdateGrafanaWorkspaceVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGrafanaWorkspaceVersionResponse
 func (client *Client) UpdateGrafanaWorkspaceVersionWithOptions(request *UpdateGrafanaWorkspaceVersionRequest, runtime *util.RuntimeOptions) (_result *UpdateGrafanaWorkspaceVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79108,6 +83707,13 @@ func (client *Client) UpdateGrafanaWorkspaceVersionWithOptions(request *UpdateGr
 	return _result, _err
 }
 
+// Summary:
+//
+// 升级指定工作区版本
+//
+// @param request - UpdateGrafanaWorkspaceVersionRequest
+//
+// @return UpdateGrafanaWorkspaceVersionResponse
 func (client *Client) UpdateGrafanaWorkspaceVersion(request *UpdateGrafanaWorkspaceVersionRequest) (_result *UpdateGrafanaWorkspaceVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGrafanaWorkspaceVersionResponse{}
@@ -79119,6 +83725,15 @@ func (client *Client) UpdateGrafanaWorkspaceVersion(request *UpdateGrafanaWorksp
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about an integration.
+//
+// @param request - UpdateIntegrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIntegrationResponse
 func (client *Client) UpdateIntegrationWithOptions(request *UpdateIntegrationRequest, runtime *util.RuntimeOptions) (_result *UpdateIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79204,6 +83819,13 @@ func (client *Client) UpdateIntegrationWithOptions(request *UpdateIntegrationReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about an integration.
+//
+// @param request - UpdateIntegrationRequest
+//
+// @return UpdateIntegrationResponse
 func (client *Client) UpdateIntegration(request *UpdateIntegrationRequest) (_result *UpdateIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateIntegrationResponse{}
@@ -79215,6 +83837,15 @@ func (client *Client) UpdateIntegration(request *UpdateIntegrationRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新删除的metric
+//
+// @param request - UpdateMetricDropRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMetricDropResponse
 func (client *Client) UpdateMetricDropWithOptions(request *UpdateMetricDropRequest, runtime *util.RuntimeOptions) (_result *UpdateMetricDropResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79256,6 +83887,13 @@ func (client *Client) UpdateMetricDropWithOptions(request *UpdateMetricDropReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新删除的metric
+//
+// @param request - UpdateMetricDropRequest
+//
+// @return UpdateMetricDropResponse
 func (client *Client) UpdateMetricDrop(request *UpdateMetricDropRequest) (_result *UpdateMetricDropResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMetricDropResponse{}
@@ -79267,6 +83905,15 @@ func (client *Client) UpdateMetricDrop(request *UpdateMetricDropRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新Prometheus告警规则
+//
+// @param request - UpdatePrometheusAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrometheusAlertRuleResponse
 func (client *Client) UpdatePrometheusAlertRuleWithOptions(request *UpdatePrometheusAlertRuleRequest, runtime *util.RuntimeOptions) (_result *UpdatePrometheusAlertRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79348,6 +83995,13 @@ func (client *Client) UpdatePrometheusAlertRuleWithOptions(request *UpdatePromet
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新Prometheus告警规则
+//
+// @param request - UpdatePrometheusAlertRuleRequest
+//
+// @return UpdatePrometheusAlertRuleResponse
 func (client *Client) UpdatePrometheusAlertRule(request *UpdatePrometheusAlertRuleRequest) (_result *UpdatePrometheusAlertRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePrometheusAlertRuleResponse{}
@@ -79359,6 +84013,15 @@ func (client *Client) UpdatePrometheusAlertRule(request *UpdatePrometheusAlertRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the data sources of Prometheus instance for GlobalView.
+//
+// @param request - UpdatePrometheusGlobalViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrometheusGlobalViewResponse
 func (client *Client) UpdatePrometheusGlobalViewWithOptions(request *UpdatePrometheusGlobalViewRequest, runtime *util.RuntimeOptions) (_result *UpdatePrometheusGlobalViewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79416,6 +84079,13 @@ func (client *Client) UpdatePrometheusGlobalViewWithOptions(request *UpdateProme
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the data sources of Prometheus instance for GlobalView.
+//
+// @param request - UpdatePrometheusGlobalViewRequest
+//
+// @return UpdatePrometheusGlobalViewResponse
 func (client *Client) UpdatePrometheusGlobalView(request *UpdatePrometheusGlobalViewRequest) (_result *UpdatePrometheusGlobalViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePrometheusGlobalViewResponse{}
@@ -79427,6 +84097,15 @@ func (client *Client) UpdatePrometheusGlobalView(request *UpdatePrometheusGlobal
 	return _result, _err
 }
 
+// Summary:
+//
+// Update Prometheus instance config.
+//
+// @param request - UpdatePrometheusInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrometheusInstanceResponse
 func (client *Client) UpdatePrometheusInstanceWithOptions(request *UpdatePrometheusInstanceRequest, runtime *util.RuntimeOptions) (_result *UpdatePrometheusInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79476,6 +84155,13 @@ func (client *Client) UpdatePrometheusInstanceWithOptions(request *UpdatePrometh
 	return _result, _err
 }
 
+// Summary:
+//
+// Update Prometheus instance config.
+//
+// @param request - UpdatePrometheusInstanceRequest
+//
+// @return UpdatePrometheusInstanceResponse
 func (client *Client) UpdatePrometheusInstance(request *UpdatePrometheusInstanceRequest) (_result *UpdatePrometheusInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePrometheusInstanceResponse{}
@@ -79487,6 +84173,15 @@ func (client *Client) UpdatePrometheusInstance(request *UpdatePrometheusInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - UpdatePrometheusIntegrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrometheusIntegrationResponse
 func (client *Client) UpdatePrometheusIntegrationWithOptions(request *UpdatePrometheusIntegrationRequest, runtime *util.RuntimeOptions) (_result *UpdatePrometheusIntegrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79536,6 +84231,13 @@ func (client *Client) UpdatePrometheusIntegrationWithOptions(request *UpdateProm
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - UpdatePrometheusIntegrationRequest
+//
+// @return UpdatePrometheusIntegrationResponse
 func (client *Client) UpdatePrometheusIntegration(request *UpdatePrometheusIntegrationRequest) (_result *UpdatePrometheusIntegrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePrometheusIntegrationResponse{}
@@ -79547,6 +84249,15 @@ func (client *Client) UpdatePrometheusIntegration(request *UpdatePrometheusInteg
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the monitoring configuration of a Prometheus instance.
+//
+// @param request - UpdatePrometheusMonitoringRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrometheusMonitoringResponse
 func (client *Client) UpdatePrometheusMonitoringWithOptions(request *UpdatePrometheusMonitoringRequest, runtime *util.RuntimeOptions) (_result *UpdatePrometheusMonitoringResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79598,6 +84309,13 @@ func (client *Client) UpdatePrometheusMonitoringWithOptions(request *UpdateProme
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the monitoring configuration of a Prometheus instance.
+//
+// @param request - UpdatePrometheusMonitoringRequest
+//
+// @return UpdatePrometheusMonitoringResponse
 func (client *Client) UpdatePrometheusMonitoring(request *UpdatePrometheusMonitoringRequest) (_result *UpdatePrometheusMonitoringResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePrometheusMonitoringResponse{}
@@ -79609,6 +84327,15 @@ func (client *Client) UpdatePrometheusMonitoring(request *UpdatePrometheusMonito
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the status of the monitoring configuration of a Prometheus instance.
+//
+// @param request - UpdatePrometheusMonitoringStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrometheusMonitoringStatusResponse
 func (client *Client) UpdatePrometheusMonitoringStatusWithOptions(request *UpdatePrometheusMonitoringStatusRequest, runtime *util.RuntimeOptions) (_result *UpdatePrometheusMonitoringStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79658,6 +84385,13 @@ func (client *Client) UpdatePrometheusMonitoringStatusWithOptions(request *Updat
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the status of the monitoring configuration of a Prometheus instance.
+//
+// @param request - UpdatePrometheusMonitoringStatusRequest
+//
+// @return UpdatePrometheusMonitoringStatusResponse
 func (client *Client) UpdatePrometheusMonitoringStatus(request *UpdatePrometheusMonitoringStatusRequest) (_result *UpdatePrometheusMonitoringStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePrometheusMonitoringStatusResponse{}
@@ -79669,6 +84403,15 @@ func (client *Client) UpdatePrometheusMonitoringStatus(request *UpdatePrometheus
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - UpdatePrometheusRemoteWriteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrometheusRemoteWriteResponse
 func (client *Client) UpdatePrometheusRemoteWriteWithOptions(request *UpdatePrometheusRemoteWriteRequest, runtime *util.RuntimeOptions) (_result *UpdatePrometheusRemoteWriteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79716,6 +84459,13 @@ func (client *Client) UpdatePrometheusRemoteWriteWithOptions(request *UpdateProm
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
+//
+// @param request - UpdatePrometheusRemoteWriteRequest
+//
+// @return UpdatePrometheusRemoteWriteResponse
 func (client *Client) UpdatePrometheusRemoteWrite(request *UpdatePrometheusRemoteWriteRequest) (_result *UpdatePrometheusRemoteWriteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePrometheusRemoteWriteResponse{}
@@ -79727,6 +84477,15 @@ func (client *Client) UpdatePrometheusRemoteWrite(request *UpdatePrometheusRemot
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新前端监控应用信息
+//
+// @param request - UpdateRumAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRumAppResponse
 func (client *Client) UpdateRumAppWithOptions(request *UpdateRumAppRequest, runtime *util.RuntimeOptions) (_result *UpdateRumAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79792,6 +84551,13 @@ func (client *Client) UpdateRumAppWithOptions(request *UpdateRumAppRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新前端监控应用信息
+//
+// @param request - UpdateRumAppRequest
+//
+// @return UpdateRumAppResponse
 func (client *Client) UpdateRumApp(request *UpdateRumAppRequest) (_result *UpdateRumAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRumAppResponse{}
@@ -79803,6 +84569,15 @@ func (client *Client) UpdateRumApp(request *UpdateRumAppRequest) (_result *Updat
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新Sourcemap文件状态
+//
+// @param request - UpdateRumFileStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRumFileStatusResponse
 func (client *Client) UpdateRumFileStatusWithOptions(request *UpdateRumFileStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateRumFileStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -79860,6 +84635,13 @@ func (client *Client) UpdateRumFileStatusWithOptions(request *UpdateRumFileStatu
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新Sourcemap文件状态
+//
+// @param request - UpdateRumFileStatusRequest
+//
+// @return UpdateRumFileStatusResponse
 func (client *Client) UpdateRumFileStatus(request *UpdateRumFileStatusRequest) (_result *UpdateRumFileStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRumFileStatusResponse{}
@@ -79871,6 +84653,15 @@ func (client *Client) UpdateRumFileStatus(request *UpdateRumFileStatusRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新定时拨测任务
+//
+// @param tmpReq - UpdateTimingSyntheticTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTimingSyntheticTaskResponse
 func (client *Client) UpdateTimingSyntheticTaskWithOptions(tmpReq *UpdateTimingSyntheticTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateTimingSyntheticTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -79970,6 +84761,13 @@ func (client *Client) UpdateTimingSyntheticTaskWithOptions(tmpReq *UpdateTimingS
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新定时拨测任务
+//
+// @param request - UpdateTimingSyntheticTaskRequest
+//
+// @return UpdateTimingSyntheticTaskResponse
 func (client *Client) UpdateTimingSyntheticTask(request *UpdateTimingSyntheticTaskRequest) (_result *UpdateTimingSyntheticTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateTimingSyntheticTaskResponse{}
@@ -79981,6 +84779,10 @@ func (client *Client) UpdateTimingSyntheticTask(request *UpdateTimingSyntheticTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about a webhook alert contact.
+//
 // Description:
 //
 // This operation is no longer maintained. Call the CreateOrUpdateWebhookContact operation in the new alter management module to create or modify a webhook alert contact.
@@ -80055,6 +84857,10 @@ func (client *Client) UpdateWebhookWithOptions(request *UpdateWebhookRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about a webhook alert contact.
+//
 // Description:
 //
 // This operation is no longer maintained. Call the CreateOrUpdateWebhookContact operation in the new alter management module to create or modify a webhook alert contact.
@@ -80073,6 +84879,15 @@ func (client *Client) UpdateWebhook(request *UpdateWebhookRequest) (_result *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// Update the AddonRelease information.
+//
+// @param request - UpgradeAddonReleaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeAddonReleaseResponse
 func (client *Client) UpgradeAddonReleaseWithOptions(request *UpgradeAddonReleaseRequest, runtime *util.RuntimeOptions) (_result *UpgradeAddonReleaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -80126,6 +84941,13 @@ func (client *Client) UpgradeAddonReleaseWithOptions(request *UpgradeAddonReleas
 	return _result, _err
 }
 
+// Summary:
+//
+// Update the AddonRelease information.
+//
+// @param request - UpgradeAddonReleaseRequest
+//
+// @return UpgradeAddonReleaseResponse
 func (client *Client) UpgradeAddonRelease(request *UpgradeAddonReleaseRequest) (_result *UpgradeAddonReleaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeAddonReleaseResponse{}
@@ -80137,6 +84959,15 @@ func (client *Client) UpgradeAddonRelease(request *UpgradeAddonReleaseRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新 feature信息
+//
+// @param request - UpgradeEnvironmentFeatureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeEnvironmentFeatureResponse
 func (client *Client) UpgradeEnvironmentFeatureWithOptions(request *UpgradeEnvironmentFeatureRequest, runtime *util.RuntimeOptions) (_result *UpgradeEnvironmentFeatureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -80190,6 +85021,13 @@ func (client *Client) UpgradeEnvironmentFeatureWithOptions(request *UpgradeEnvir
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新 feature信息
+//
+// @param request - UpgradeEnvironmentFeatureRequest
+//
+// @return UpgradeEnvironmentFeatureResponse
 func (client *Client) UpgradeEnvironmentFeature(request *UpgradeEnvironmentFeatureRequest) (_result *UpgradeEnvironmentFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeEnvironmentFeatureResponse{}
@@ -80201,6 +85039,15 @@ func (client *Client) UpgradeEnvironmentFeature(request *UpgradeEnvironmentFeatu
 	return _result, _err
 }
 
+// Summary:
+//
+// Uploads a SourceMap file to ARMS Browser Monitoring.
+//
+// @param request - UploadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadResponse
 func (client *Client) UploadWithOptions(request *UploadRequest, runtime *util.RuntimeOptions) (_result *UploadResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -80256,6 +85103,13 @@ func (client *Client) UploadWithOptions(request *UploadRequest, runtime *util.Ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Uploads a SourceMap file to ARMS Browser Monitoring.
+//
+// @param request - UploadRequest
+//
+// @return UploadResponse
 func (client *Client) Upload(request *UploadRequest) (_result *UploadResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UploadResponse{}
