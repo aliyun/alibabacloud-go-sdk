@@ -1159,8 +1159,6 @@ type CreateDBInstanceRequest struct {
 	//
 	// A value of 127.0.0.1 specifies that no IP address is allowed for external access. You can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist after you create an instance.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 127.0.0.1
