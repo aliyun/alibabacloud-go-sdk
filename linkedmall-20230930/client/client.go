@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,13 +11,34 @@ import (
 
 type AddressInfo struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 陕西省西安市新城区xxx大厦xx室
 	AddressDetail *string `json:"addressDetail,omitempty" xml:"addressDetail,omitempty"`
-	AddressId     *int64  `json:"addressId,omitempty" xml:"addressId,omitempty"`
-	DivisionCode  *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// example:
+	//
+	// 0
+	AddressId *int64 `json:"addressId,omitempty" xml:"addressId,omitempty"`
+	// example:
+	//
+	// 610102
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 任先生
 	Receiver *string `json:"receiver,omitempty" xml:"receiver,omitempty"`
 	// This parameter is required.
-	ReceiverPhone    *string `json:"receiverPhone,omitempty" xml:"receiverPhone,omitempty"`
+	//
+	// example:
+	//
+	// 182***5674
+	ReceiverPhone *string `json:"receiverPhone,omitempty" xml:"receiverPhone,omitempty"`
+	// example:
+	//
+	// 61010212
 	TownDivisionCode *string `json:"townDivisionCode,omitempty" xml:"townDivisionCode,omitempty"`
 }
 
@@ -63,8 +81,14 @@ func (s *AddressInfo) SetTownDivisionCode(v string) *AddressInfo {
 }
 
 type ApplyReason struct {
-	ReasonTextId *int64  `json:"reasonTextId,omitempty" xml:"reasonTextId,omitempty"`
-	ReasonTips   *string `json:"reasonTips,omitempty" xml:"reasonTips,omitempty"`
+	// example:
+	//
+	// 403769
+	ReasonTextId *int64 `json:"reasonTextId,omitempty" xml:"reasonTextId,omitempty"`
+	// example:
+	//
+	// 不想要了
+	ReasonTips *string `json:"reasonTips,omitempty" xml:"reasonTips,omitempty"`
 }
 
 func (s ApplyReason) String() string {
@@ -86,11 +110,26 @@ func (s *ApplyReason) SetReasonTips(v string) *ApplyReason {
 }
 
 type Category struct {
-	CategoryId *int64  `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
-	IsLeaf     *bool   `json:"isLeaf,omitempty" xml:"isLeaf,omitempty"`
-	Level      *int32  `json:"level,omitempty" xml:"level,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	ParentId   *int64  `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// example:
+	//
+	// 201792301
+	CategoryId *int64 `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
+	// example:
+	//
+	// false
+	IsLeaf *bool `json:"isLeaf,omitempty" xml:"isLeaf,omitempty"`
+	// example:
+	//
+	// 2
+	Level *int32 `json:"level,omitempty" xml:"level,omitempty"`
+	// example:
+	//
+	// 方便面/拉面/挂面/轻食面速食
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 50016422
+	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
 }
 
 func (s Category) String() string {
@@ -127,8 +166,11 @@ func (s *Category) SetParentId(v int64) *Category {
 }
 
 type CategoryListQuery struct {
-	CategoryIds      []*int64 `json:"categoryIds,omitempty" xml:"categoryIds,omitempty" type:"Repeated"`
-	ParentCategoryId *int64   `json:"parentCategoryId,omitempty" xml:"parentCategoryId,omitempty"`
+	CategoryIds []*int64 `json:"categoryIds,omitempty" xml:"categoryIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5200001
+	ParentCategoryId *int64 `json:"parentCategoryId,omitempty" xml:"parentCategoryId,omitempty"`
 }
 
 func (s CategoryListQuery) String() string {
@@ -173,7 +215,13 @@ func (s *CategoryListResult) SetRequestId(v string) *CategoryListResult {
 }
 
 type ConfirmDisburseCmd struct {
-	OrderId         *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// example:
+	//
+	// 6692****5457
+	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// example:
+	//
+	// 6692****5696
 	PurchaseOrderId *string `json:"purchaseOrderId,omitempty" xml:"purchaseOrderId,omitempty"`
 }
 
@@ -196,8 +244,14 @@ func (s *ConfirmDisburseCmd) SetPurchaseOrderId(v string) *ConfirmDisburseCmd {
 }
 
 type ConfirmDisburseResult struct {
+	// example:
+	//
+	// 3239281273464326823
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *string `json:"result,omitempty" xml:"result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s ConfirmDisburseResult) String() string {
@@ -248,10 +302,22 @@ func (s *CooperationShop) SetShopId(v string) *CooperationShop {
 }
 
 type DeliveryInfo struct {
+	// example:
+	//
+	// 快递 免邮
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Id          *string `json:"id,omitempty" xml:"id,omitempty"`
-	PostFee     *int64  `json:"postFee,omitempty" xml:"postFee,omitempty"`
-	ServiceType *int64  `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// example:
+	//
+	// 20
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 0
+	PostFee *int64 `json:"postFee,omitempty" xml:"postFee,omitempty"`
+	// example:
+	//
+	// -4
+	ServiceType *int64 `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
 }
 
 func (s DeliveryInfo) String() string {
@@ -283,7 +349,13 @@ func (s *DeliveryInfo) SetServiceType(v int64) *DeliveryInfo {
 }
 
 type DistributionMaxRefundFee struct {
+	// example:
+	//
+	// 100
 	MaxRefundFee *int64 `json:"maxRefundFee,omitempty" xml:"maxRefundFee,omitempty"`
+	// example:
+	//
+	// 1
 	MinRefundFee *int64 `json:"minRefundFee,omitempty" xml:"minRefundFee,omitempty"`
 }
 
@@ -306,11 +378,26 @@ func (s *DistributionMaxRefundFee) SetMinRefundFee(v int64) *DistributionMaxRefu
 }
 
 type Division struct {
-	DivisionCode  *int64  `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	DivisionLevel *int64  `json:"divisionLevel,omitempty" xml:"divisionLevel,omitempty"`
-	DivisionName  *string `json:"divisionName,omitempty" xml:"divisionName,omitempty"`
-	ParentId      *int64  `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	Pinyin        *string `json:"pinyin,omitempty" xml:"pinyin,omitempty"`
+	// example:
+	//
+	// 310000
+	DivisionCode *int64 `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// example:
+	//
+	// 2
+	DivisionLevel *int64 `json:"divisionLevel,omitempty" xml:"divisionLevel,omitempty"`
+	// example:
+	//
+	// 上海
+	DivisionName *string `json:"divisionName,omitempty" xml:"divisionName,omitempty"`
+	// example:
+	//
+	// 1
+	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// example:
+	//
+	// shang hai
+	Pinyin *string `json:"pinyin,omitempty" xml:"pinyin,omitempty"`
 }
 
 func (s Division) String() string {
@@ -348,7 +435,10 @@ func (s *Division) SetPinyin(v string) *Division {
 
 type DivisionPageResult struct {
 	DivisionList []*Division `json:"divisionList,omitempty" xml:"divisionList,omitempty" type:"Repeated"`
-	RequestId    *string     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s DivisionPageResult) String() string {
@@ -371,6 +461,10 @@ func (s *DivisionPageResult) SetRequestId(v string) *DivisionPageResult {
 
 type DivisionQuery struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 }
 
@@ -533,8 +627,14 @@ type GeneralBillPageResult struct {
 	GeneralBills []*GeneralBill `json:"generalBills,omitempty" xml:"generalBills,omitempty" type:"Repeated"`
 	PageNumber   *int32         `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize     *int32         `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId    *string        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Total        *int32         `json:"total,omitempty" xml:"total,omitempty"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 24
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s GeneralBillPageResult) String() string {
@@ -571,9 +671,18 @@ func (s *GeneralBillPageResult) SetTotal(v int32) *GeneralBillPageResult {
 }
 
 type Good struct {
-	GoodName  *string `json:"goodName,omitempty" xml:"goodName,omitempty"`
+	// example:
+	//
+	// 儿童学习桌
+	GoodName *string `json:"goodName,omitempty" xml:"goodName,omitempty"`
+	// example:
+	//
+	// 6600****6736
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	Quantity  *int32  `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// example:
+	//
+	// 1
+	Quantity *int32 `json:"quantity,omitempty" xml:"quantity,omitempty"`
 }
 
 func (s Good) String() string {
@@ -601,10 +710,22 @@ func (s *Good) SetQuantity(v int32) *Good {
 
 type GoodsShippingNoticeCreateCmd struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// OTHER-其他 POST-中国邮政 EMS-EMS EYB-EMS快递包裹 POSTB-邮政快递包裹 STO-申通快递 YTO-圆通快递 YUNDA-韵达快递 ZJS-宅急送 FEDEX-联邦快递 DBKD-德邦物流 SHQ-华强物流 TN-特能 TAOBAO-淘宝物流 ZTO-中通快递 HTKY-百世快递 TTKDEX-天天快递 SF-顺丰速运 ZTKY-中铁物流 QFKD-全峰快递 JT-极兔物流
 	CpCode *string `json:"cpCode,omitempty" xml:"cpCode,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 6693****4352
 	DisputeId *string `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// SF145****4351
 	LogisticsNo *string `json:"logisticsNo,omitempty" xml:"logisticsNo,omitempty"`
 }
 
@@ -632,8 +753,14 @@ func (s *GoodsShippingNoticeCreateCmd) SetLogisticsNo(v string) *GoodsShippingNo
 }
 
 type GoodsShippingNoticeCreateResult struct {
+	// example:
+	//
+	// 3239281273464326823
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *string `json:"result,omitempty" xml:"result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s GoodsShippingNoticeCreateResult) String() string {
@@ -655,7 +782,13 @@ func (s *GoodsShippingNoticeCreateResult) SetResult(v string) *GoodsShippingNoti
 }
 
 type LeavePictureList struct {
-	Desc    *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// example:
+	//
+	// 退款凭证
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// example:
+	//
+	// https://
 	Picture *string `json:"picture,omitempty" xml:"picture,omitempty"`
 }
 
@@ -678,7 +811,13 @@ func (s *LeavePictureList) SetPicture(v string) *LeavePictureList {
 }
 
 type LogisticsDetail struct {
+	// example:
+	//
+	// 2023-09-01 00:00:00
 	OcurrTimeStr *string `json:"ocurrTimeStr,omitempty" xml:"ocurrTimeStr,omitempty"`
+	// example:
+	//
+	// 已签收
 	StanderdDesc *string `json:"standerdDesc,omitempty" xml:"standerdDesc,omitempty"`
 }
 
@@ -702,7 +841,10 @@ func (s *LogisticsDetail) SetStanderdDesc(v string) *LogisticsDetail {
 
 type LogisticsOrderListResult struct {
 	LogisticsOrderList []*LogisticsOrderResult `json:"logisticsOrderList,omitempty" xml:"logisticsOrderList,omitempty" type:"Repeated"`
-	RequestId          *string                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s LogisticsOrderListResult) String() string {
@@ -724,13 +866,28 @@ func (s *LogisticsOrderListResult) SetRequestId(v string) *LogisticsOrderListRes
 }
 
 type LogisticsOrderResult struct {
-	DataProvider         *string            `json:"dataProvider,omitempty" xml:"dataProvider,omitempty"`
-	DataProviderTitle    *string            `json:"dataProviderTitle,omitempty" xml:"dataProviderTitle,omitempty"`
-	Goods                []*Good            `json:"goods,omitempty" xml:"goods,omitempty" type:"Repeated"`
-	LogisticsCompanyCode *string            `json:"logisticsCompanyCode,omitempty" xml:"logisticsCompanyCode,omitempty"`
+	// example:
+	//
+	// 菜鸟
+	DataProvider *string `json:"dataProvider,omitempty" xml:"dataProvider,omitempty"`
+	// example:
+	//
+	// 菜鸟裹裹
+	DataProviderTitle *string `json:"dataProviderTitle,omitempty" xml:"dataProviderTitle,omitempty"`
+	Goods             []*Good `json:"goods,omitempty" xml:"goods,omitempty" type:"Repeated"`
+	// example:
+	//
+	// SF （OTHER-其他 POST-中国邮政 EMS-EMS EYB-EMS快递包裹 POSTB-邮政快递包裹 STO-申通快递 YTO-圆通快递 YUNDA-韵达快递 ZJS-宅急送 FEDEX-联邦快递 DBKD-德邦物流 SHQ-华强物流 TN-特能 TAOBAO-淘宝物流 ZTO-中通快递 HTKY-百世快递 TTKDEX-天天快递 SF-顺丰速运 ZTKY-中铁物流 QFKD-全峰快递 JT-极兔物流）
+	LogisticsCompanyCode *string `json:"logisticsCompanyCode,omitempty" xml:"logisticsCompanyCode,omitempty"`
+	// example:
+	//
+	// 顺丰
 	LogisticsCompanyName *string            `json:"logisticsCompanyName,omitempty" xml:"logisticsCompanyName,omitempty"`
 	LogisticsDetailList  []*LogisticsDetail `json:"logisticsDetailList,omitempty" xml:"logisticsDetailList,omitempty" type:"Repeated"`
-	MailNo               *string            `json:"mailNo,omitempty" xml:"mailNo,omitempty"`
+	// example:
+	//
+	// SF234***2345
+	MailNo *string `json:"mailNo,omitempty" xml:"mailNo,omitempty"`
 }
 
 func (s LogisticsOrderResult) String() string {
@@ -871,17 +1028,50 @@ func (s *MoneyCurrency) SetSymbol(v string) *MoneyCurrency {
 }
 
 type OrderLineResult struct {
+	// example:
+	//
+	// 1
 	LogisticsStatus *string `json:"logisticsStatus,omitempty" xml:"logisticsStatus,omitempty"`
-	Number          *string `json:"number,omitempty" xml:"number,omitempty"`
-	OrderId         *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
-	OrderLineId     *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
+	// example:
+	//
+	// 1
+	Number *string `json:"number,omitempty" xml:"number,omitempty"`
+	// example:
+	//
+	// 6692****5457
+	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// example:
+	//
+	// 6692****5458
+	OrderLineId *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
+	// example:
+	//
+	// 1
 	OrderLineStatus *string `json:"orderLineStatus,omitempty" xml:"orderLineStatus,omitempty"`
-	PayFee          *int64  `json:"payFee,omitempty" xml:"payFee,omitempty"`
-	ProductId       *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	ProductPic      *string `json:"productPic,omitempty" xml:"productPic,omitempty"`
-	ProductTitle    *string `json:"productTitle,omitempty" xml:"productTitle,omitempty"`
-	SkuId           *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
-	SkuTitle        *string `json:"skuTitle,omitempty" xml:"skuTitle,omitempty"`
+	// example:
+	//
+	// 100
+	PayFee *int64 `json:"payFee,omitempty" xml:"payFee,omitempty"`
+	// example:
+	//
+	// 6600****6736
+	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// example:
+	//
+	// //img.alicdn.com/imgextra/i4/2216003305543/O1CN01bip3Un1qokG0
+	ProductPic *string `json:"productPic,omitempty" xml:"productPic,omitempty"`
+	// example:
+	//
+	// 儿童学习桌
+	ProductTitle *string `json:"productTitle,omitempty" xml:"productTitle,omitempty"`
+	// example:
+	//
+	// 6600****6737
+	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	// example:
+	//
+	// 浅绿色
+	SkuTitle *string `json:"skuTitle,omitempty" xml:"skuTitle,omitempty"`
 }
 
 func (s OrderLineResult) String() string {
@@ -949,8 +1139,14 @@ func (s *OrderLineResult) SetSkuTitle(v string) *OrderLineResult {
 
 type OrderListResult struct {
 	OrderList []*OrderResult `json:"orderList,omitempty" xml:"orderList,omitempty" type:"Repeated"`
-	RequestId *string        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Total     *int32         `json:"total,omitempty" xml:"total,omitempty"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 24
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s OrderListResult) String() string {
@@ -979,9 +1175,20 @@ func (s *OrderListResult) SetTotal(v int32) *OrderListResult {
 type OrderPageQuery struct {
 	OrderIdList []*string `json:"orderIdList,omitempty" xml:"orderIdList,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// This parameter is required.
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 6692****5696
 	PurchaseOrderId *string `json:"purchaseOrderId,omitempty" xml:"purchaseOrderId,omitempty"`
 }
 
@@ -1014,17 +1221,47 @@ func (s *OrderPageQuery) SetPurchaseOrderId(v string) *OrderPageQuery {
 }
 
 type OrderProductResult struct {
-	CanSell       *bool                  `json:"canSell,omitempty" xml:"canSell,omitempty"`
-	Features      map[string]interface{} `json:"features,omitempty" xml:"features,omitempty"`
-	Message       *string                `json:"message,omitempty" xml:"message,omitempty"`
-	Price         *int64                 `json:"price,omitempty" xml:"price,omitempty"`
-	ProductId     *string                `json:"productId,omitempty" xml:"productId,omitempty"`
-	ProductPicUrl *string                `json:"productPicUrl,omitempty" xml:"productPicUrl,omitempty"`
-	ProductTitle  *string                `json:"productTitle,omitempty" xml:"productTitle,omitempty"`
-	PurchaserId   *string                `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
-	Quantity      *int32                 `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	SkuId         *string                `json:"skuId,omitempty" xml:"skuId,omitempty"`
-	SkuTitle      *string                `json:"skuTitle,omitempty" xml:"skuTitle,omitempty"`
+	// example:
+	//
+	// true
+	CanSell  *bool                  `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	Features map[string]interface{} `json:"features,omitempty" xml:"features,omitempty"`
+	// example:
+	//
+	// 库存为0
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 100
+	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 6600****6736
+	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// example:
+	//
+	// //img.alicdn.com/imgextra/i4/2216003305543/O1CN01bip3Un1qokG0
+	ProductPicUrl *string `json:"productPicUrl,omitempty" xml:"productPicUrl,omitempty"`
+	// example:
+	//
+	// 儿童学习桌
+	ProductTitle *string `json:"productTitle,omitempty" xml:"productTitle,omitempty"`
+	// example:
+	//
+	// 56****2304
+	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// example:
+	//
+	// 1
+	Quantity *int32 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// example:
+	//
+	// 6600****6737
+	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	// example:
+	//
+	// 浅绿色
+	SkuTitle *string `json:"skuTitle,omitempty" xml:"skuTitle,omitempty"`
 }
 
 func (s OrderProductResult) String() string {
@@ -1092,12 +1329,28 @@ func (s *OrderProductResult) SetSkuTitle(v string) *OrderProductResult {
 
 type OrderRenderProductDTO struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 6600****6736
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 56****2304
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Quantity *int32 `json:"quantity,omitempty" xml:"quantity,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 6600****6737
 	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
 }
 
@@ -1130,11 +1383,17 @@ func (s *OrderRenderProductDTO) SetSkuId(v string) *OrderRenderProductDTO {
 }
 
 type OrderRenderResult struct {
+	// example:
+	//
+	// true
 	CanSell          *bool                  `json:"canSell,omitempty" xml:"canSell,omitempty"`
 	DeliveryInfoList []*DeliveryInfo        `json:"deliveryInfoList,omitempty" xml:"deliveryInfoList,omitempty" type:"Repeated"`
 	ExtInfo          map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	Message          *string                `json:"message,omitempty" xml:"message,omitempty"`
-	ProductList      []*OrderProductResult  `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 库存为0
+	Message     *string               `json:"message,omitempty" xml:"message,omitempty"`
+	ProductList []*OrderProductResult `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`
 }
 
 func (s OrderRenderResult) String() string {
@@ -1171,14 +1430,35 @@ func (s *OrderRenderResult) SetProductList(v []*OrderProductResult) *OrderRender
 }
 
 type OrderResult struct {
-	CreateDate      *string            `json:"createDate,omitempty" xml:"createDate,omitempty"`
-	DistributorId   *string            `json:"distributorId,omitempty" xml:"distributorId,omitempty"`
-	LogisticsStatus *string            `json:"logisticsStatus,omitempty" xml:"logisticsStatus,omitempty"`
-	OrderAmount     *int64             `json:"orderAmount,omitempty" xml:"orderAmount,omitempty"`
-	OrderId         *string            `json:"orderId,omitempty" xml:"orderId,omitempty"`
-	OrderLineList   []*OrderLineResult `json:"orderLineList,omitempty" xml:"orderLineList,omitempty" type:"Repeated"`
-	OrderStatus     *string            `json:"orderStatus,omitempty" xml:"orderStatus,omitempty"`
-	RequestId       *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 2023-09-11T12:22:24.000+08:00
+	CreateDate *string `json:"createDate,omitempty" xml:"createDate,omitempty"`
+	// example:
+	//
+	// 12****01
+	DistributorId *string `json:"distributorId,omitempty" xml:"distributorId,omitempty"`
+	// example:
+	//
+	// 1
+	LogisticsStatus *string `json:"logisticsStatus,omitempty" xml:"logisticsStatus,omitempty"`
+	// example:
+	//
+	// 100
+	OrderAmount *int64 `json:"orderAmount,omitempty" xml:"orderAmount,omitempty"`
+	// example:
+	//
+	// 6692****5457
+	OrderId       *string            `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	OrderLineList []*OrderLineResult `json:"orderLineList,omitempty" xml:"orderLineList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	OrderStatus *string `json:"orderStatus,omitempty" xml:"orderStatus,omitempty"`
+	// example:
+	//
+	// 841471F6-5D61-1331-8C38-2****B55
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s OrderResult) String() string {
@@ -1230,28 +1510,80 @@ func (s *OrderResult) SetRequestId(v string) *OrderResult {
 }
 
 type Product struct {
-	BrandName      *string            `json:"brandName,omitempty" xml:"brandName,omitempty"`
-	CanSell        *bool              `json:"canSell,omitempty" xml:"canSell,omitempty"`
-	CategoryChain  []*Category        `json:"categoryChain,omitempty" xml:"categoryChain,omitempty" type:"Repeated"`
-	CategoryLeafId *int64             `json:"categoryLeafId,omitempty" xml:"categoryLeafId,omitempty"`
-	DescPath       *string            `json:"descPath,omitempty" xml:"descPath,omitempty"`
-	DivisionCode   *string            `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	FuzzyQuantity  *string            `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
-	Images         []*string          `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	PicUrl         *string            `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
-	ProductId      *string            `json:"productId,omitempty" xml:"productId,omitempty"`
-	ProductSpecs   []*ProductSpec     `json:"productSpecs,omitempty" xml:"productSpecs,omitempty" type:"Repeated"`
-	ProductStatus  *string            `json:"productStatus,omitempty" xml:"productStatus,omitempty"`
-	ProductType    *string            `json:"productType,omitempty" xml:"productType,omitempty"`
-	Properties     []*ProductProperty `json:"properties,omitempty" xml:"properties,omitempty" type:"Repeated"`
-	Quantity       *int64             `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	RequestId      *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ShopId         *string            `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	Skus           []*Sku             `json:"skus,omitempty" xml:"skus,omitempty" type:"Repeated"`
-	SoldQuantity   *string            `json:"soldQuantity,omitempty" xml:"soldQuantity,omitempty"`
-	TaxCode        *string            `json:"taxCode,omitempty" xml:"taxCode,omitempty"`
-	TaxRate        *int32             `json:"taxRate,omitempty" xml:"taxRate,omitempty"`
-	Title          *string            `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// Apple/苹果
+	BrandName *string `json:"brandName,omitempty" xml:"brandName,omitempty"`
+	// example:
+	//
+	// true
+	CanSell       *bool       `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	CategoryChain []*Category `json:"categoryChain,omitempty" xml:"categoryChain,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 201856501
+	CategoryLeafId *int64 `json:"categoryLeafId,omitempty" xml:"categoryLeafId,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/descpath/O1CN01wciRDp22AEU14435dsf34
+	DescPath *string `json:"descPath,omitempty" xml:"descPath,omitempty"`
+	// example:
+	//
+	// 110000
+	DivisionCode     *string                  `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	ExtendProperties []*ProductExtendProperty `json:"extendProperties,omitempty" xml:"extendProperties,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100+
+	FuzzyQuantity *string   `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
+	Images        []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i3/2214281521988/O1CN01w4vomR1QYYEx6nyr5_!!2214281521988.jpg
+	PicUrl *string `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
+	// example:
+	//
+	// 660460842235822080
+	ProductId    *string        `json:"productId,omitempty" xml:"productId,omitempty"`
+	ProductSpecs []*ProductSpec `json:"productSpecs,omitempty" xml:"productSpecs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Online
+	ProductStatus *string `json:"productStatus,omitempty" xml:"productStatus,omitempty"`
+	// example:
+	//
+	// Normal
+	ProductType *string            `json:"productType,omitempty" xml:"productType,omitempty"`
+	Properties  []*ProductProperty `json:"properties,omitempty" xml:"properties,omitempty" type:"Repeated"`
+	// example:
+	//
+	// -1
+	Quantity *int64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 21000017
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	Skus   []*Sku  `json:"skus,omitempty" xml:"skus,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100+
+	SoldQuantity *string `json:"soldQuantity,omitempty" xml:"soldQuantity,omitempty"`
+	// example:
+	//
+	// 3040203000000000000
+	TaxCode *string `json:"taxCode,omitempty" xml:"taxCode,omitempty"`
+	// example:
+	//
+	// 600
+	TaxRate *int32 `json:"taxRate,omitempty" xml:"taxRate,omitempty"`
+	// example:
+	//
+	// 发财树
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s Product) String() string {
@@ -1289,6 +1621,11 @@ func (s *Product) SetDescPath(v string) *Product {
 
 func (s *Product) SetDivisionCode(v string) *Product {
 	s.DivisionCode = &v
+	return s
+}
+
+func (s *Product) SetExtendProperties(v []*ProductExtendProperty) *Product {
+	s.ExtendProperties = v
 	return s
 }
 
@@ -1373,14 +1710,33 @@ func (s *Product) SetTitle(v string) *Product {
 }
 
 type ProductDTO struct {
+	// example:
+	//
+	// 100
 	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 6600****6736
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 56****2304
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Quantity *int32 `json:"quantity,omitempty" xml:"quantity,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 6600****6737
 	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
 }
 
@@ -1417,14 +1773,58 @@ func (s *ProductDTO) SetSkuId(v string) *ProductDTO {
 	return s
 }
 
+type ProductExtendProperty struct {
+	// example:
+	//
+	// ss_picture_scene
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// 场景图
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ProductExtendProperty) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProductExtendProperty) GoString() string {
+	return s.String()
+}
+
+func (s *ProductExtendProperty) SetKey(v string) *ProductExtendProperty {
+	s.Key = &v
+	return s
+}
+
+func (s *ProductExtendProperty) SetValue(v string) *ProductExtendProperty {
+	s.Value = &v
+	return s
+}
+
 type ProductPageResult struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// This parameter is required.
-	PageSize  *int32     `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Products  []*Product `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
-	RequestId *string    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32     `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Products []*Product `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 24
 	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
@@ -1462,6 +1862,9 @@ func (s *ProductPageResult) SetTotal(v int32) *ProductPageResult {
 }
 
 type ProductPrice struct {
+	// example:
+	//
+	// 120
 	FundAmountMoney *string `json:"fundAmountMoney,omitempty" xml:"fundAmountMoney,omitempty"`
 }
 
@@ -1479,6 +1882,9 @@ func (s *ProductPrice) SetFundAmountMoney(v string) *ProductPrice {
 }
 
 type ProductProperty struct {
+	// example:
+	//
+	// 颜色
 	Text   *string   `json:"text,omitempty" xml:"text,omitempty"`
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
@@ -1503,8 +1909,15 @@ func (s *ProductProperty) SetValues(v []*string) *ProductProperty {
 
 type ProductQuery struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 22000009
 	DistributorShopId *string `json:"distributorShopId,omitempty" xml:"distributorShopId,omitempty"`
-	DivisionCode      *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// example:
+	//
+	// 110000
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 }
 
 func (s ProductQuery) String() string {
@@ -1526,16 +1939,43 @@ func (s *ProductQuery) SetDivisionCode(v string) *ProductQuery {
 }
 
 type ProductSaleInfo struct {
-	CanSell       *bool          `json:"canSell,omitempty" xml:"canSell,omitempty"`
-	DivisionCode  *string        `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	FuzzyQuantity *string        `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
-	ProductId     *string        `json:"productId,omitempty" xml:"productId,omitempty"`
-	ProductStatus *string        `json:"productStatus,omitempty" xml:"productStatus,omitempty"`
-	Quantity      *int64         `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	RequestId     *string        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ShopId        *string        `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	Skus          []*SkuSaleInfo `json:"skus,omitempty" xml:"skus,omitempty" type:"Repeated"`
-	Title         *string        `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// true
+	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	// example:
+	//
+	// 110000
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// example:
+	//
+	// 有货
+	FuzzyQuantity *string `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
+	// example:
+	//
+	// 660460842235822080
+	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// example:
+	//
+	// Online
+	ProductStatus *string `json:"productStatus,omitempty" xml:"productStatus,omitempty"`
+	// example:
+	//
+	// 10
+	Quantity *int64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 21000017
+	ShopId *string        `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	Skus   []*SkuSaleInfo `json:"skus,omitempty" xml:"skus,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 发财树
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ProductSaleInfo) String() string {
@@ -1597,10 +2037,17 @@ func (s *ProductSaleInfo) SetTitle(v string) *ProductSaleInfo {
 }
 
 type ProductSaleInfoListQuery struct {
+	// example:
+	//
+	// 110000
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 	// This parameter is required.
 	ProductIds []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 22000009
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 }
 
@@ -1629,7 +2076,10 @@ func (s *ProductSaleInfoListQuery) SetPurchaserId(v string) *ProductSaleInfoList
 
 type ProductSaleInfoListResult struct {
 	ProductSaleInfos []*ProductSaleInfo `json:"productSaleInfos,omitempty" xml:"productSaleInfos,omitempty" type:"Repeated"`
-	RequestId        *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ProductSaleInfoListResult) String() string {
@@ -1652,8 +2102,15 @@ func (s *ProductSaleInfoListResult) SetRequestId(v string) *ProductSaleInfoListR
 
 type ProductSaleInfoQuery struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 22000009
 	DistributorShopId *string `json:"distributorShopId,omitempty" xml:"distributorShopId,omitempty"`
-	DivisionCode      *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// example:
+	//
+	// 110000
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 }
 
 func (s ProductSaleInfoQuery) String() string {
@@ -1675,7 +2132,13 @@ func (s *ProductSaleInfoQuery) SetDivisionCode(v string) *ProductSaleInfoQuery {
 }
 
 type ProductSpec struct {
-	Key    *string             `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// 颜色分类
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// 1000
 	KeyId  *int64              `json:"keyId,omitempty" xml:"keyId,omitempty"`
 	Values []*ProductSpecValue `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
@@ -1704,8 +2167,14 @@ func (s *ProductSpec) SetValues(v []*ProductSpecValue) *ProductSpec {
 }
 
 type ProductSpecValue struct {
-	Value   *string `json:"value,omitempty" xml:"value,omitempty"`
-	ValueId *int64  `json:"valueId,omitempty" xml:"valueId,omitempty"`
+	// example:
+	//
+	// 白色
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// example:
+	//
+	// 1000
+	ValueId *int64 `json:"valueId,omitempty" xml:"valueId,omitempty"`
 }
 
 func (s ProductSpecValue) String() string {
@@ -1728,11 +2197,19 @@ func (s *ProductSpecValue) SetValueId(v int64) *ProductSpecValue {
 
 type PurchaseOrderCreateCmd struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// buyer2138237
 	BuyerId *string `json:"buyerId,omitempty" xml:"buyerId,omitempty"`
 	// This parameter is required.
 	DeliveryAddress *AddressInfo           `json:"deliveryAddress,omitempty" xml:"deliveryAddress,omitempty"`
 	ExtInfo         map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// outer123456
 	OuterPurchaseOrderId *string `json:"outerPurchaseOrderId,omitempty" xml:"outerPurchaseOrderId,omitempty"`
 	// This parameter is required.
 	ProductList []*ProductDTO `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`
@@ -1772,8 +2249,14 @@ func (s *PurchaseOrderCreateCmd) SetProductList(v []*ProductDTO) *PurchaseOrderC
 }
 
 type PurchaseOrderCreateResult struct {
+	// example:
+	//
+	// 6692****5696
 	PurchaseOrderId *string `json:"purchaseOrderId,omitempty" xml:"purchaseOrderId,omitempty"`
-	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s PurchaseOrderCreateResult) String() string {
@@ -1796,10 +2279,17 @@ func (s *PurchaseOrderCreateResult) SetRequestId(v string) *PurchaseOrderCreateR
 
 type PurchaseOrderRenderQuery struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test1234567
 	BuyerId *string `json:"buyerId,omitempty" xml:"buyerId,omitempty"`
 	// This parameter is required.
-	DeliveryAddress *AddressInfo           `json:"deliveryAddress,omitempty" xml:"deliveryAddress,omitempty"`
-	ExtInfo         map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	DeliveryAddress *AddressInfo `json:"deliveryAddress,omitempty" xml:"deliveryAddress,omitempty"`
+	// example:
+	//
+	// {}
+	ExtInfo map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
 	// This parameter is required.
 	ProductList []*OrderRenderProductDTO `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`
 }
@@ -1833,13 +2323,22 @@ func (s *PurchaseOrderRenderQuery) SetProductList(v []*OrderRenderProductDTO) *P
 }
 
 type PurchaseOrderRenderResult struct {
-	AddressList         []*AddressInfo         `json:"addressList,omitempty" xml:"addressList,omitempty" type:"Repeated"`
-	CanSell             *bool                  `json:"canSell,omitempty" xml:"canSell,omitempty"`
-	ExtInfo             map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	Message             *string                `json:"message,omitempty" xml:"message,omitempty"`
-	OrderList           []*OrderRenderResult   `json:"orderList,omitempty" xml:"orderList,omitempty" type:"Repeated"`
-	RequestId           *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	UnsellableOrderList []*OrderRenderResult   `json:"unsellableOrderList,omitempty" xml:"unsellableOrderList,omitempty" type:"Repeated"`
+	AddressList []*AddressInfo `json:"addressList,omitempty" xml:"addressList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	CanSell *bool                  `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	ExtInfo map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	// example:
+	//
+	// 库存为0
+	Message   *string              `json:"message,omitempty" xml:"message,omitempty"`
+	OrderList []*OrderRenderResult `json:"orderList,omitempty" xml:"orderList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId           *string              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	UnsellableOrderList []*OrderRenderResult `json:"unsellableOrderList,omitempty" xml:"unsellableOrderList,omitempty" type:"Repeated"`
 }
 
 func (s PurchaseOrderRenderResult) String() string {
@@ -1886,8 +2385,14 @@ func (s *PurchaseOrderRenderResult) SetUnsellableOrderList(v []*OrderRenderResul
 }
 
 type PurchaseOrderStatusResult struct {
+	// example:
+	//
+	// 3239281273464326823
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 10
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s PurchaseOrderStatusResult) String() string {
@@ -1909,7 +2414,13 @@ func (s *PurchaseOrderStatusResult) SetStatus(v string) *PurchaseOrderStatusResu
 }
 
 type RefundFeeData struct {
+	// example:
+	//
+	// 100
 	MaxRefundFee *int64 `json:"maxRefundFee,omitempty" xml:"maxRefundFee,omitempty"`
+	// example:
+	//
+	// 1
 	MinRefundFee *int64 `json:"minRefundFee,omitempty" xml:"minRefundFee,omitempty"`
 }
 
@@ -1933,19 +2444,49 @@ func (s *RefundFeeData) SetMinRefundFee(v int64) *RefundFeeData {
 
 type RefundOrderCmd struct {
 	// This parameter is required.
-	ApplyReasonTextId *int64  `json:"applyReasonTextId,omitempty" xml:"applyReasonTextId,omitempty"`
-	ApplyReasonTips   *string `json:"applyReasonTips,omitempty" xml:"applyReasonTips,omitempty"`
+	//
+	// example:
+	//
+	// 47821
+	ApplyReasonTextId *int64 `json:"applyReasonTextId,omitempty" xml:"applyReasonTextId,omitempty"`
+	// example:
+	//
+	// 不想要了
+	ApplyReasonTips *string `json:"applyReasonTips,omitempty" xml:"applyReasonTips,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	ApplyRefundCount *int32 `json:"applyRefundCount,omitempty" xml:"applyRefundCount,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	ApplyRefundFee *int64 `json:"applyRefundFee,omitempty" xml:"applyRefundFee,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	BizClaimType *int32 `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
 	// This parameter is required.
-	GoodsStatus       *int32              `json:"goodsStatus,omitempty" xml:"goodsStatus,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	GoodsStatus *int32 `json:"goodsStatus,omitempty" xml:"goodsStatus,omitempty"`
+	// example:
+	//
+	// 不想要了
 	LeaveMessage      *string             `json:"leaveMessage,omitempty" xml:"leaveMessage,omitempty"`
 	LeavePictureLists []*LeavePictureList `json:"leavePictureLists,omitempty" xml:"leavePictureLists,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 6692****5458
 	OrderLineId *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
 }
 
@@ -2003,10 +2544,22 @@ func (s *RefundOrderCmd) SetOrderLineId(v string) *RefundOrderCmd {
 }
 
 type RefundOrderResult struct {
-	DisputeId     *string `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
-	DisputeStatus *int32  `json:"disputeStatus,omitempty" xml:"disputeStatus,omitempty"`
-	OrderLineId   *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
-	RequestId     *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 6693****4352
+	DisputeId *string `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
+	// example:
+	//
+	// 1
+	DisputeStatus *int32 `json:"disputeStatus,omitempty" xml:"disputeStatus,omitempty"`
+	// example:
+	//
+	// 6692****5458
+	OrderLineId *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s RefundOrderResult) String() string {
@@ -2038,10 +2591,22 @@ func (s *RefundOrderResult) SetRequestId(v string) *RefundOrderResult {
 }
 
 type RefundReason struct {
-	ProofRequired      *bool   `json:"proofRequired,omitempty" xml:"proofRequired,omitempty"`
-	ReasonTextId       *string `json:"reasonTextId,omitempty" xml:"reasonTextId,omitempty"`
-	ReasonTips         *string `json:"reasonTips,omitempty" xml:"reasonTips,omitempty"`
-	RefundDescRequired *bool   `json:"refundDescRequired,omitempty" xml:"refundDescRequired,omitempty"`
+	// example:
+	//
+	// true
+	ProofRequired *bool `json:"proofRequired,omitempty" xml:"proofRequired,omitempty"`
+	// example:
+	//
+	// 47683
+	ReasonTextId *string `json:"reasonTextId,omitempty" xml:"reasonTextId,omitempty"`
+	// example:
+	//
+	// 不想要了
+	ReasonTips *string `json:"reasonTips,omitempty" xml:"reasonTips,omitempty"`
+	// example:
+	//
+	// true
+	RefundDescRequired *bool `json:"refundDescRequired,omitempty" xml:"refundDescRequired,omitempty"`
 }
 
 func (s RefundReason) String() string {
@@ -2074,10 +2639,22 @@ func (s *RefundReason) SetRefundDescRequired(v bool) *RefundReason {
 
 type RefundRenderCmd struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	BizClaimType *int32 `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
 	GoodsStatus *int32 `json:"goodsStatus,omitempty" xml:"goodsStatus,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 6692****5458
 	OrderLineId *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
 }
 
@@ -2105,11 +2682,20 @@ func (s *RefundRenderCmd) SetOrderLineId(v string) *RefundRenderCmd {
 }
 
 type RefundRenderResult struct {
+	// example:
+	//
+	// 1
 	BizClaimType     *int32                    `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
 	MaxRefundFeeData *DistributionMaxRefundFee `json:"maxRefundFeeData,omitempty" xml:"maxRefundFeeData,omitempty"`
-	OrderLineId      *string                   `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
-	RefundReasonList []*RefundReason           `json:"refundReasonList,omitempty" xml:"refundReasonList,omitempty" type:"Repeated"`
-	RequestId        *string                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 6692****5458
+	OrderLineId      *string         `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
+	RefundReasonList []*RefundReason `json:"refundReasonList,omitempty" xml:"refundReasonList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s RefundRenderResult) String() string {
@@ -2146,28 +2732,88 @@ func (s *RefundRenderResult) SetRequestId(v string) *RefundRenderResult {
 }
 
 type RefundResult struct {
-	ApplyDisputeDesc             *string        `json:"applyDisputeDesc,omitempty" xml:"applyDisputeDesc,omitempty"`
-	ApplyReason                  *ApplyReason   `json:"applyReason,omitempty" xml:"applyReason,omitempty"`
-	BizClaimType                 *int32         `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
-	DisputeCreateTime            *string        `json:"disputeCreateTime,omitempty" xml:"disputeCreateTime,omitempty"`
-	DisputeDesc                  *string        `json:"disputeDesc,omitempty" xml:"disputeDesc,omitempty"`
-	DisputeEndTime               *string        `json:"disputeEndTime,omitempty" xml:"disputeEndTime,omitempty"`
-	DisputeId                    *string        `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
-	DisputeStatus                *int32         `json:"disputeStatus,omitempty" xml:"disputeStatus,omitempty"`
-	OrderId                      *string        `json:"orderId,omitempty" xml:"orderId,omitempty"`
-	OrderLineId                  *string        `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
-	OrderLogisticsStatus         *int32         `json:"orderLogisticsStatus,omitempty" xml:"orderLogisticsStatus,omitempty"`
-	RefundFee                    *int64         `json:"refundFee,omitempty" xml:"refundFee,omitempty"`
-	RefundFeeData                *RefundFeeData `json:"refundFeeData,omitempty" xml:"refundFeeData,omitempty"`
-	RefunderAddress              *string        `json:"refunderAddress,omitempty" xml:"refunderAddress,omitempty"`
-	RefunderName                 *string        `json:"refunderName,omitempty" xml:"refunderName,omitempty"`
-	RefunderTel                  *string        `json:"refunderTel,omitempty" xml:"refunderTel,omitempty"`
-	RefunderZipCode              *string        `json:"refunderZipCode,omitempty" xml:"refunderZipCode,omitempty"`
-	RequestId                    *string        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ReturnGoodLogisticsStatus    *int32         `json:"returnGoodLogisticsStatus,omitempty" xml:"returnGoodLogisticsStatus,omitempty"`
-	SellerAgreeMsg               *string        `json:"sellerAgreeMsg,omitempty" xml:"sellerAgreeMsg,omitempty"`
-	SellerRefuseAgreementMessage *string        `json:"sellerRefuseAgreementMessage,omitempty" xml:"sellerRefuseAgreementMessage,omitempty"`
-	SellerRefuseReason           *string        `json:"sellerRefuseReason,omitempty" xml:"sellerRefuseReason,omitempty"`
+	// example:
+	//
+	// 多拍不想要
+	ApplyDisputeDesc *string      `json:"applyDisputeDesc,omitempty" xml:"applyDisputeDesc,omitempty"`
+	ApplyReason      *ApplyReason `json:"applyReason,omitempty" xml:"applyReason,omitempty"`
+	// example:
+	//
+	// 1
+	BizClaimType *int32 `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
+	// example:
+	//
+	// 2023-09-02T00:00:00.000Z
+	DisputeCreateTime *string `json:"disputeCreateTime,omitempty" xml:"disputeCreateTime,omitempty"`
+	// example:
+	//
+	// 多拍不想要
+	DisputeDesc *string `json:"disputeDesc,omitempty" xml:"disputeDesc,omitempty"`
+	// example:
+	//
+	// 2023-09-02T12:00:00.000Z
+	DisputeEndTime *string `json:"disputeEndTime,omitempty" xml:"disputeEndTime,omitempty"`
+	// example:
+	//
+	// 6693****4352
+	DisputeId *string `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
+	// example:
+	//
+	// 1
+	DisputeStatus *int32 `json:"disputeStatus,omitempty" xml:"disputeStatus,omitempty"`
+	// example:
+	//
+	// 6692****5457
+	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// example:
+	//
+	// 6692****5458
+	OrderLineId *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
+	// example:
+	//
+	// 1
+	OrderLogisticsStatus *int32 `json:"orderLogisticsStatus,omitempty" xml:"orderLogisticsStatus,omitempty"`
+	// example:
+	//
+	// 1
+	RefundFee     *int64         `json:"refundFee,omitempty" xml:"refundFee,omitempty"`
+	RefundFeeData *RefundFeeData `json:"refundFeeData,omitempty" xml:"refundFeeData,omitempty"`
+	// example:
+	//
+	// 阿里云云谷
+	RefunderAddress *string `json:"refunderAddress,omitempty" xml:"refunderAddress,omitempty"`
+	// example:
+	//
+	// 赵先生
+	RefunderName *string `json:"refunderName,omitempty" xml:"refunderName,omitempty"`
+	// example:
+	//
+	// 182****1334
+	RefunderTel *string `json:"refunderTel,omitempty" xml:"refunderTel,omitempty"`
+	// example:
+	//
+	// 331001
+	RefunderZipCode *string `json:"refunderZipCode,omitempty" xml:"refunderZipCode,omitempty"`
+	// example:
+	//
+	// 841471F6-5D61-1331-8C38-2****B55
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0
+	ReturnGoodLogisticsStatus *int32 `json:"returnGoodLogisticsStatus,omitempty" xml:"returnGoodLogisticsStatus,omitempty"`
+	// example:
+	//
+	// 同意退款
+	SellerAgreeMsg *string `json:"sellerAgreeMsg,omitempty" xml:"sellerAgreeMsg,omitempty"`
+	// example:
+	//
+	// 不同意退款
+	SellerRefuseAgreementMessage *string `json:"sellerRefuseAgreementMessage,omitempty" xml:"sellerRefuseAgreementMessage,omitempty"`
+	// example:
+	//
+	// 商品没问题，买家举证无效
+	SellerRefuseReason *string `json:"sellerRefuseReason,omitempty" xml:"sellerRefuseReason,omitempty"`
 }
 
 func (s RefundResult) String() string {
@@ -2289,16 +2935,46 @@ func (s *RefundResult) SetSellerRefuseReason(v string) *RefundResult {
 }
 
 type Shop struct {
+	// example:
+	//
+	// 12***01
 	CooperationShops []*CooperationShop `json:"cooperationShops,omitempty" xml:"cooperationShops,omitempty" type:"Repeated"`
-	DistributorId    *string            `json:"distributorId,omitempty" xml:"distributorId,omitempty"`
-	EndDate          *string            `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	PurchaserId      *string            `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
-	RequestId        *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ShopId           *string            `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	ShopName         *string            `json:"shopName,omitempty" xml:"shopName,omitempty"`
-	ShopType         *string            `json:"shopType,omitempty" xml:"shopType,omitempty"`
-	StartDate        *string            `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	Status           *string            `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 12****09
+	DistributorId *string `json:"distributorId,omitempty" xml:"distributorId,omitempty"`
+	// example:
+	//
+	// 2024-09-09 00:00:00
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// example:
+	//
+	// PID56****2304
+	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// example:
+	//
+	// 48A34399-A72C-1E23-8388-7E63****E927
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 22****09
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	// example:
+	//
+	// 儿童分销店铺
+	ShopName *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
+	// example:
+	//
+	// DistributorQYG
+	ShopType *string `json:"shopType,omitempty" xml:"shopType,omitempty"`
+	// example:
+	//
+	// 2023-09-09 00:00:00
+	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// example:
+	//
+	// Working
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s Shop) String() string {
@@ -2360,14 +3036,38 @@ func (s *Shop) SetStatus(v string) *Shop {
 }
 
 type ShopPageDataResult struct {
+	// example:
+	//
+	// 12****01
 	CooperationShops []*CooperationShop `json:"cooperationShops,omitempty" xml:"cooperationShops,omitempty" type:"Repeated"`
-	EndDate          *string            `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	PurchaserId      *string            `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
-	ShopId           *string            `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	ShopName         *string            `json:"shopName,omitempty" xml:"shopName,omitempty"`
-	ShopType         *string            `json:"shopType,omitempty" xml:"shopType,omitempty"`
-	StartDate        *string            `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	Status           *string            `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 2023-09-01 00:00:00
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// example:
+	//
+	// PID56****2304
+	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// example:
+	//
+	// 22****09
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	// example:
+	//
+	// 儿童座椅分销店铺
+	ShopName *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
+	// example:
+	//
+	// DistributorQYG
+	ShopType *string `json:"shopType,omitempty" xml:"shopType,omitempty"`
+	// example:
+	//
+	// 2023-09-01 00:00:00
+	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// example:
+	//
+	// Working
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ShopPageDataResult) String() string {
@@ -2419,9 +3119,15 @@ func (s *ShopPageDataResult) SetStatus(v string) *ShopPageDataResult {
 }
 
 type ShopPageResult struct {
+	// example:
+	//
+	// 3239281273464326823
 	RequestId *string               `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	ShopList  []*ShopPageDataResult `json:"shopList,omitempty" xml:"shopList,omitempty" type:"Repeated"`
-	Total     *int32                `json:"total,omitempty" xml:"total,omitempty"`
+	// example:
+	//
+	// 24
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ShopPageResult) String() string {
@@ -2448,23 +3154,71 @@ func (s *ShopPageResult) SetTotal(v int32) *ShopPageResult {
 }
 
 type Sku struct {
-	Barcode       *string    `json:"barcode,omitempty" xml:"barcode,omitempty"`
-	CanSell       *bool      `json:"canSell,omitempty" xml:"canSell,omitempty"`
-	DivisionCode  *string    `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	FuzzyQuantity *string    `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
-	MarkPrice     *int64     `json:"markPrice,omitempty" xml:"markPrice,omitempty"`
-	PicUrl        *string    `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
-	PlatformPrice *int64     `json:"platformPrice,omitempty" xml:"platformPrice,omitempty"`
-	Price         *int64     `json:"price,omitempty" xml:"price,omitempty"`
-	ProductId     *string    `json:"productId,omitempty" xml:"productId,omitempty"`
-	Quantity      *int64     `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	RankValue     *int64     `json:"rankValue,omitempty" xml:"rankValue,omitempty"`
-	ShopId        *string    `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	SkuId         *string    `json:"skuId,omitempty" xml:"skuId,omitempty"`
-	SkuSpecs      []*SkuSpec `json:"skuSpecs,omitempty" xml:"skuSpecs,omitempty" type:"Repeated"`
-	SkuSpecsCode  *string    `json:"skuSpecsCode,omitempty" xml:"skuSpecsCode,omitempty"`
-	SkuStatus     *string    `json:"skuStatus,omitempty" xml:"skuStatus,omitempty"`
-	Title         *string    `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 6922454329176
+	Barcode *string `json:"barcode,omitempty" xml:"barcode,omitempty"`
+	// example:
+	//
+	// true
+	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	// example:
+	//
+	// 110000
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// example:
+	//
+	// 有货
+	FuzzyQuantity *string `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
+	// example:
+	//
+	// 999900
+	MarkPrice *int64 `json:"markPrice,omitempty" xml:"markPrice,omitempty"`
+	// example:
+	//
+	// https:////img.alicdn.com/imgextra///img.alicdn.com/imgextra/i2/2216003305543/O1CN010DEQCX1qokFYGRfPE_!!2216003305543.png
+	PicUrl *string `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
+	// example:
+	//
+	// 999900
+	PlatformPrice *int64 `json:"platformPrice,omitempty" xml:"platformPrice,omitempty"`
+	// example:
+	//
+	// 19800
+	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 660460842235822080
+	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// example:
+	//
+	// -1
+	Quantity *int64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// example:
+	//
+	// 3
+	RankValue *int64 `json:"rankValue,omitempty" xml:"rankValue,omitempty"`
+	// example:
+	//
+	// 21000017
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	// example:
+	//
+	// 660460842235822081
+	SkuId    *string    `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	SkuSpecs []*SkuSpec `json:"skuSpecs,omitempty" xml:"skuSpecs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 颜色分类:天蓝色
+	SkuSpecsCode *string `json:"skuSpecsCode,omitempty" xml:"skuSpecsCode,omitempty"`
+	// example:
+	//
+	// Online
+	SkuStatus *string `json:"skuStatus,omitempty" xml:"skuStatus,omitempty"`
+	// example:
+	//
+	// 天蓝色
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s Sku) String() string {
@@ -2562,8 +3316,16 @@ func (s *Sku) SetTitle(v string) *Sku {
 
 type SkuQueryParam struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 660460842235822080
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 660460842235822081
 	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
 }
 
@@ -2586,17 +3348,50 @@ func (s *SkuQueryParam) SetSkuId(v string) *SkuQueryParam {
 }
 
 type SkuSaleInfo struct {
-	CanSell       *bool   `json:"canSell,omitempty" xml:"canSell,omitempty"`
-	DivisionCode  *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// example:
+	//
+	// true
+	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	// example:
+	//
+	// 110000
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// example:
+	//
+	// 有货
 	FuzzyQuantity *string `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
-	MarkPrice     *int64  `json:"markPrice,omitempty" xml:"markPrice,omitempty"`
-	Price         *int64  `json:"price,omitempty" xml:"price,omitempty"`
-	ProductId     *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	Quantity      *int64  `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	ShopId        *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	SkuId         *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
-	SkuStatus     *string `json:"skuStatus,omitempty" xml:"skuStatus,omitempty"`
-	Title         *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// 999900
+	MarkPrice *int64 `json:"markPrice,omitempty" xml:"markPrice,omitempty"`
+	// example:
+	//
+	// 19800
+	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 660460842235822080
+	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// example:
+	//
+	// -1
+	Quantity *int64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// example:
+	//
+	// 21000017
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	// example:
+	//
+	// 660460842235822081
+	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	// example:
+	//
+	// Online
+	SkuStatus *string `json:"skuStatus,omitempty" xml:"skuStatus,omitempty"`
+	// example:
+	//
+	// 天蓝色
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s SkuSaleInfo) String() string {
@@ -2663,8 +3458,15 @@ func (s *SkuSaleInfo) SetTitle(v string) *SkuSaleInfo {
 }
 
 type SkuSaleInfoListQuery struct {
+	// example:
+	//
+	// 110000
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 21000017
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 	// This parameter is required.
 	SkuQueryParams []*SkuQueryParam `json:"skuQueryParams,omitempty" xml:"skuQueryParams,omitempty" type:"Repeated"`
@@ -2694,6 +3496,9 @@ func (s *SkuSaleInfoListQuery) SetSkuQueryParams(v []*SkuQueryParam) *SkuSaleInf
 }
 
 type SkuSaleInfoListResult struct {
+	// example:
+	//
+	// 3239281273464326823
 	RequestId    *string        `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	SkuSaleInfos []*SkuSaleInfo `json:"skuSaleInfos,omitempty" xml:"skuSaleInfos,omitempty" type:"Repeated"`
 }
@@ -2717,10 +3522,22 @@ func (s *SkuSaleInfoListResult) SetSkuSaleInfos(v []*SkuSaleInfo) *SkuSaleInfoLi
 }
 
 type SkuSpec struct {
-	Key     *string `json:"key,omitempty" xml:"key,omitempty"`
-	KeyId   *int64  `json:"keyId,omitempty" xml:"keyId,omitempty"`
-	Value   *string `json:"value,omitempty" xml:"value,omitempty"`
-	ValueId *int64  `json:"valueId,omitempty" xml:"valueId,omitempty"`
+	// example:
+	//
+	// 颜色分类
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// 1000
+	KeyId *int64 `json:"keyId,omitempty" xml:"keyId,omitempty"`
+	// example:
+	//
+	// 天蓝色
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// example:
+	//
+	// 1000
+	ValueId *int64 `json:"valueId,omitempty" xml:"valueId,omitempty"`
 }
 
 func (s SkuSpec) String() string {
@@ -3085,8 +3902,15 @@ func (s *GetRefundOrderResponse) SetBody(v *RefundResult) *GetRefundOrderRespons
 }
 
 type GetSelectionProductRequest struct {
+	// example:
+	//
+	// 110000
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 56****2304
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 }
 
@@ -3138,8 +3962,15 @@ func (s *GetSelectionProductResponse) SetBody(v *Product) *GetSelectionProductRe
 }
 
 type GetSelectionProductSaleInfoRequest struct {
+	// example:
+	//
+	// 110000
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 56****2304
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 }
 
@@ -3266,8 +4097,14 @@ func (s *ListLogisticsOrdersResponse) SetBody(v *LogisticsOrderListResult) *List
 }
 
 type ListPurchaserShopsRequest struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListPurchaserShopsRequest) String() string {
@@ -3366,10 +4203,22 @@ func (s *ListSelectionProductSaleInfosResponse) SetBody(v *ProductSaleInfoListRe
 
 type ListSelectionProductsRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 56****2304
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 }
 
@@ -3809,13 +4658,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * @summary 取消逆向单
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CancelRefundOrderResponse
- */
+// Summary:
+//
+// 取消逆向单
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelRefundOrderResponse
 func (client *Client) CancelRefundOrderWithOptions(disputeId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelRefundOrderResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3840,11 +4691,11 @@ func (client *Client) CancelRefundOrderWithOptions(disputeId *string, headers ma
 	return _result, _err
 }
 
-/**
- * @summary 取消逆向单
- *
- * @return CancelRefundOrderResponse
- */
+// Summary:
+//
+// 取消逆向单
+//
+// @return CancelRefundOrderResponse
 func (client *Client) CancelRefundOrder(disputeId *string) (_result *CancelRefundOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3857,14 +4708,17 @@ func (client *Client) CancelRefundOrder(disputeId *string) (_result *CancelRefun
 	return _result, _err
 }
 
-/**
- * @summary 确认收货（订单）
- *
- * @param request ConfirmDisburseRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ConfirmDisburseResponse
- */
+// Summary:
+//
+// 确认收货（订单）
+//
+// @param request - ConfirmDisburseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfirmDisburseResponse
 func (client *Client) ConfirmDisburseWithOptions(request *ConfirmDisburseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ConfirmDisburseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3894,12 +4748,13 @@ func (client *Client) ConfirmDisburseWithOptions(request *ConfirmDisburseRequest
 	return _result, _err
 }
 
-/**
- * @summary 确认收货（订单）
- *
- * @param request ConfirmDisburseRequest
- * @return ConfirmDisburseResponse
- */
+// Summary:
+//
+// 确认收货（订单）
+//
+// @param request - ConfirmDisburseRequest
+//
+// @return ConfirmDisburseResponse
 func (client *Client) ConfirmDisburse(request *ConfirmDisburseRequest) (_result *ConfirmDisburseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3912,14 +4767,17 @@ func (client *Client) ConfirmDisburse(request *ConfirmDisburseRequest) (_result 
 	return _result, _err
 }
 
-/**
- * @summary 提交运单信息
- *
- * @param request CreateGoodsShippingNoticeRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateGoodsShippingNoticeResponse
- */
+// Summary:
+//
+// 提交运单信息
+//
+// @param request - CreateGoodsShippingNoticeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGoodsShippingNoticeResponse
 func (client *Client) CreateGoodsShippingNoticeWithOptions(request *CreateGoodsShippingNoticeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateGoodsShippingNoticeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3949,12 +4807,13 @@ func (client *Client) CreateGoodsShippingNoticeWithOptions(request *CreateGoodsS
 	return _result, _err
 }
 
-/**
- * @summary 提交运单信息
- *
- * @param request CreateGoodsShippingNoticeRequest
- * @return CreateGoodsShippingNoticeResponse
- */
+// Summary:
+//
+// 提交运单信息
+//
+// @param request - CreateGoodsShippingNoticeRequest
+//
+// @return CreateGoodsShippingNoticeResponse
 func (client *Client) CreateGoodsShippingNotice(request *CreateGoodsShippingNoticeRequest) (_result *CreateGoodsShippingNoticeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3967,14 +4826,17 @@ func (client *Client) CreateGoodsShippingNotice(request *CreateGoodsShippingNoti
 	return _result, _err
 }
 
-/**
- * @summary 创建采购单
- *
- * @param request CreatePurchaseOrderRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreatePurchaseOrderResponse
- */
+// Summary:
+//
+// 创建采购单
+//
+// @param request - CreatePurchaseOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePurchaseOrderResponse
 func (client *Client) CreatePurchaseOrderWithOptions(request *CreatePurchaseOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePurchaseOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4004,12 +4866,13 @@ func (client *Client) CreatePurchaseOrderWithOptions(request *CreatePurchaseOrde
 	return _result, _err
 }
 
-/**
- * @summary 创建采购单
- *
- * @param request CreatePurchaseOrderRequest
- * @return CreatePurchaseOrderResponse
- */
+// Summary:
+//
+// 创建采购单
+//
+// @param request - CreatePurchaseOrderRequest
+//
+// @return CreatePurchaseOrderResponse
 func (client *Client) CreatePurchaseOrder(request *CreatePurchaseOrderRequest) (_result *CreatePurchaseOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4022,14 +4885,17 @@ func (client *Client) CreatePurchaseOrder(request *CreatePurchaseOrderRequest) (
 	return _result, _err
 }
 
-/**
- * @summary 创建逆向单
- *
- * @param request CreateRefundOrderRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateRefundOrderResponse
- */
+// Summary:
+//
+// 创建逆向单
+//
+// @param request - CreateRefundOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRefundOrderResponse
 func (client *Client) CreateRefundOrderWithOptions(request *CreateRefundOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRefundOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4059,12 +4925,13 @@ func (client *Client) CreateRefundOrderWithOptions(request *CreateRefundOrderReq
 	return _result, _err
 }
 
-/**
- * @summary 创建逆向单
- *
- * @param request CreateRefundOrderRequest
- * @return CreateRefundOrderResponse
- */
+// Summary:
+//
+// 创建逆向单
+//
+// @param request - CreateRefundOrderRequest
+//
+// @return CreateRefundOrderResponse
 func (client *Client) CreateRefundOrder(request *CreateRefundOrderRequest) (_result *CreateRefundOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4077,13 +4944,15 @@ func (client *Client) CreateRefundOrder(request *CreateRefundOrderRequest) (_res
 	return _result, _err
 }
 
-/**
- * @summary 查询主单详情
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetOrderResponse
- */
+// Summary:
+//
+// 查询主单详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOrderResponse
 func (client *Client) GetOrderWithOptions(orderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetOrderResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -4108,11 +4977,11 @@ func (client *Client) GetOrderWithOptions(orderId *string, headers map[string]*s
 	return _result, _err
 }
 
-/**
- * @summary 查询主单详情
- *
- * @return GetOrderResponse
- */
+// Summary:
+//
+// 查询主单详情
+//
+// @return GetOrderResponse
 func (client *Client) GetOrder(orderId *string) (_result *GetOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4125,13 +4994,15 @@ func (client *Client) GetOrder(orderId *string) (_result *GetOrderResponse, _err
 	return _result, _err
 }
 
-/**
- * @summary 查询采购单状态
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetPurchaseOrderStatusResponse
- */
+// Summary:
+//
+// 查询采购单状态
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPurchaseOrderStatusResponse
 func (client *Client) GetPurchaseOrderStatusWithOptions(purchaseOrderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPurchaseOrderStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -4156,11 +5027,11 @@ func (client *Client) GetPurchaseOrderStatusWithOptions(purchaseOrderId *string,
 	return _result, _err
 }
 
-/**
- * @summary 查询采购单状态
- *
- * @return GetPurchaseOrderStatusResponse
- */
+// Summary:
+//
+// 查询采购单状态
+//
+// @return GetPurchaseOrderStatusResponse
 func (client *Client) GetPurchaseOrderStatus(purchaseOrderId *string) (_result *GetPurchaseOrderStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4173,13 +5044,15 @@ func (client *Client) GetPurchaseOrderStatus(purchaseOrderId *string) (_result *
 	return _result, _err
 }
 
-/**
- * @summary 查询分销商店铺
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetPurchaserShopResponse
- */
+// Summary:
+//
+// 查询分销商店铺
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPurchaserShopResponse
 func (client *Client) GetPurchaserShopWithOptions(purchaserId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPurchaserShopResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -4204,11 +5077,11 @@ func (client *Client) GetPurchaserShopWithOptions(purchaserId *string, headers m
 	return _result, _err
 }
 
-/**
- * @summary 查询分销商店铺
- *
- * @return GetPurchaserShopResponse
- */
+// Summary:
+//
+// 查询分销商店铺
+//
+// @return GetPurchaserShopResponse
 func (client *Client) GetPurchaserShop(purchaserId *string) (_result *GetPurchaserShopResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4221,13 +5094,15 @@ func (client *Client) GetPurchaserShop(purchaserId *string) (_result *GetPurchas
 	return _result, _err
 }
 
-/**
- * @summary 查询逆向单详情
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetRefundOrderResponse
- */
+// Summary:
+//
+// 查询逆向单详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRefundOrderResponse
 func (client *Client) GetRefundOrderWithOptions(disputeId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRefundOrderResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -4252,11 +5127,11 @@ func (client *Client) GetRefundOrderWithOptions(disputeId *string, headers map[s
 	return _result, _err
 }
 
-/**
- * @summary 查询逆向单详情
- *
- * @return GetRefundOrderResponse
- */
+// Summary:
+//
+// 查询逆向单详情
+//
+// @return GetRefundOrderResponse
 func (client *Client) GetRefundOrder(disputeId *string) (_result *GetRefundOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4269,14 +5144,17 @@ func (client *Client) GetRefundOrder(disputeId *string) (_result *GetRefundOrder
 	return _result, _err
 }
 
-/**
- * @summary 查询选品池商品详情
- *
- * @param request GetSelectionProductRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetSelectionProductResponse
- */
+// Summary:
+//
+// 查询选品池商品详情
+//
+// @param request - GetSelectionProductRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSelectionProductResponse
 func (client *Client) GetSelectionProductWithOptions(productId *string, request *GetSelectionProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSelectionProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4315,12 +5193,13 @@ func (client *Client) GetSelectionProductWithOptions(productId *string, request 
 	return _result, _err
 }
 
-/**
- * @summary 查询选品池商品详情
- *
- * @param request GetSelectionProductRequest
- * @return GetSelectionProductResponse
- */
+// Summary:
+//
+// 查询选品池商品详情
+//
+// @param request - GetSelectionProductRequest
+//
+// @return GetSelectionProductResponse
 func (client *Client) GetSelectionProduct(productId *string, request *GetSelectionProductRequest) (_result *GetSelectionProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4333,14 +5212,17 @@ func (client *Client) GetSelectionProduct(productId *string, request *GetSelecti
 	return _result, _err
 }
 
-/**
- * @summary 查询选品池商品库存
- *
- * @param request GetSelectionProductSaleInfoRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetSelectionProductSaleInfoResponse
- */
+// Summary:
+//
+// 查询选品池商品库存
+//
+// @param request - GetSelectionProductSaleInfoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSelectionProductSaleInfoResponse
 func (client *Client) GetSelectionProductSaleInfoWithOptions(productId *string, request *GetSelectionProductSaleInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSelectionProductSaleInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4379,12 +5261,13 @@ func (client *Client) GetSelectionProductSaleInfoWithOptions(productId *string, 
 	return _result, _err
 }
 
-/**
- * @summary 查询选品池商品库存
- *
- * @param request GetSelectionProductSaleInfoRequest
- * @return GetSelectionProductSaleInfoResponse
- */
+// Summary:
+//
+// 查询选品池商品库存
+//
+// @param request - GetSelectionProductSaleInfoRequest
+//
+// @return GetSelectionProductSaleInfoResponse
 func (client *Client) GetSelectionProductSaleInfo(productId *string, request *GetSelectionProductSaleInfoRequest) (_result *GetSelectionProductSaleInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4397,14 +5280,17 @@ func (client *Client) GetSelectionProductSaleInfo(productId *string, request *Ge
 	return _result, _err
 }
 
-/**
- * @summary 查询类目
- *
- * @param request ListCategoriesRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListCategoriesResponse
- */
+// Summary:
+//
+// 查询类目
+//
+// @param request - ListCategoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCategoriesResponse
 func (client *Client) ListCategoriesWithOptions(request *ListCategoriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCategoriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4434,12 +5320,13 @@ func (client *Client) ListCategoriesWithOptions(request *ListCategoriesRequest, 
 	return _result, _err
 }
 
-/**
- * @summary 查询类目
- *
- * @param request ListCategoriesRequest
- * @return ListCategoriesResponse
- */
+// Summary:
+//
+// 查询类目
+//
+// @param request - ListCategoriesRequest
+//
+// @return ListCategoriesResponse
 func (client *Client) ListCategories(request *ListCategoriesRequest) (_result *ListCategoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4452,13 +5339,15 @@ func (client *Client) ListCategories(request *ListCategoriesRequest) (_result *L
 	return _result, _err
 }
 
-/**
- * @summary 查询物流信息（订单）
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListLogisticsOrdersResponse
- */
+// Summary:
+//
+// 查询物流信息（订单）
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLogisticsOrdersResponse
 func (client *Client) ListLogisticsOrdersWithOptions(orderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLogisticsOrdersResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -4483,11 +5372,11 @@ func (client *Client) ListLogisticsOrdersWithOptions(orderId *string, headers ma
 	return _result, _err
 }
 
-/**
- * @summary 查询物流信息（订单）
- *
- * @return ListLogisticsOrdersResponse
- */
+// Summary:
+//
+// 查询物流信息（订单）
+//
+// @return ListLogisticsOrdersResponse
 func (client *Client) ListLogisticsOrders(orderId *string) (_result *ListLogisticsOrdersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4500,14 +5389,17 @@ func (client *Client) ListLogisticsOrders(orderId *string) (_result *ListLogisti
 	return _result, _err
 }
 
-/**
- * @summary 采购方店铺列表查询
- *
- * @param request ListPurchaserShopsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListPurchaserShopsResponse
- */
+// Summary:
+//
+// 采购方店铺列表查询
+//
+// @param request - ListPurchaserShopsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPurchaserShopsResponse
 func (client *Client) ListPurchaserShopsWithOptions(request *ListPurchaserShopsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPurchaserShopsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4546,12 +5438,13 @@ func (client *Client) ListPurchaserShopsWithOptions(request *ListPurchaserShopsR
 	return _result, _err
 }
 
-/**
- * @summary 采购方店铺列表查询
- *
- * @param request ListPurchaserShopsRequest
- * @return ListPurchaserShopsResponse
- */
+// Summary:
+//
+// 采购方店铺列表查询
+//
+// @param request - ListPurchaserShopsRequest
+//
+// @return ListPurchaserShopsResponse
 func (client *Client) ListPurchaserShops(request *ListPurchaserShopsRequest) (_result *ListPurchaserShopsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4564,14 +5457,17 @@ func (client *Client) ListPurchaserShops(request *ListPurchaserShopsRequest) (_r
 	return _result, _err
 }
 
-/**
- * @summary 批量查询选品池商品库存
- *
- * @param request ListSelectionProductSaleInfosRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListSelectionProductSaleInfosResponse
- */
+// Summary:
+//
+// 批量查询选品池商品库存
+//
+// @param request - ListSelectionProductSaleInfosRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSelectionProductSaleInfosResponse
 func (client *Client) ListSelectionProductSaleInfosWithOptions(request *ListSelectionProductSaleInfosRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSelectionProductSaleInfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4601,12 +5497,13 @@ func (client *Client) ListSelectionProductSaleInfosWithOptions(request *ListSele
 	return _result, _err
 }
 
-/**
- * @summary 批量查询选品池商品库存
- *
- * @param request ListSelectionProductSaleInfosRequest
- * @return ListSelectionProductSaleInfosResponse
- */
+// Summary:
+//
+// 批量查询选品池商品库存
+//
+// @param request - ListSelectionProductSaleInfosRequest
+//
+// @return ListSelectionProductSaleInfosResponse
 func (client *Client) ListSelectionProductSaleInfos(request *ListSelectionProductSaleInfosRequest) (_result *ListSelectionProductSaleInfosResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4619,14 +5516,17 @@ func (client *Client) ListSelectionProductSaleInfos(request *ListSelectionProduc
 	return _result, _err
 }
 
-/**
- * @summary 查询商品列表
- *
- * @param request ListSelectionProductsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListSelectionProductsResponse
- */
+// Summary:
+//
+// 查询商品列表
+//
+// @param request - ListSelectionProductsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSelectionProductsResponse
 func (client *Client) ListSelectionProductsWithOptions(request *ListSelectionProductsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSelectionProductsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4669,12 +5569,13 @@ func (client *Client) ListSelectionProductsWithOptions(request *ListSelectionPro
 	return _result, _err
 }
 
-/**
- * @summary 查询商品列表
- *
- * @param request ListSelectionProductsRequest
- * @return ListSelectionProductsResponse
- */
+// Summary:
+//
+// 查询商品列表
+//
+// @param request - ListSelectionProductsRequest
+//
+// @return ListSelectionProductsResponse
 func (client *Client) ListSelectionProducts(request *ListSelectionProductsRequest) (_result *ListSelectionProductsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4687,14 +5588,17 @@ func (client *Client) ListSelectionProducts(request *ListSelectionProductsReques
 	return _result, _err
 }
 
-/**
- * @summary 批量查询选品池商品SKU库存
- *
- * @param request ListSelectionSkuSaleInfosRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListSelectionSkuSaleInfosResponse
- */
+// Summary:
+//
+// 批量查询选品池商品SKU库存
+//
+// @param request - ListSelectionSkuSaleInfosRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSelectionSkuSaleInfosResponse
 func (client *Client) ListSelectionSkuSaleInfosWithOptions(request *ListSelectionSkuSaleInfosRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSelectionSkuSaleInfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4724,12 +5628,13 @@ func (client *Client) ListSelectionSkuSaleInfosWithOptions(request *ListSelectio
 	return _result, _err
 }
 
-/**
- * @summary 批量查询选品池商品SKU库存
- *
- * @param request ListSelectionSkuSaleInfosRequest
- * @return ListSelectionSkuSaleInfosResponse
- */
+// Summary:
+//
+// 批量查询选品池商品SKU库存
+//
+// @param request - ListSelectionSkuSaleInfosRequest
+//
+// @return ListSelectionSkuSaleInfosResponse
 func (client *Client) ListSelectionSkuSaleInfos(request *ListSelectionSkuSaleInfosRequest) (_result *ListSelectionSkuSaleInfosResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4742,14 +5647,17 @@ func (client *Client) ListSelectionSkuSaleInfos(request *ListSelectionSkuSaleInf
 	return _result, _err
 }
 
-/**
- * @summary 查询地址divisionCode
- *
- * @param request QueryChildDivisionCodeRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryChildDivisionCodeResponse
- */
+// Summary:
+//
+// 查询地址divisionCode
+//
+// @param request - QueryChildDivisionCodeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryChildDivisionCodeResponse
 func (client *Client) QueryChildDivisionCodeWithOptions(request *QueryChildDivisionCodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryChildDivisionCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4779,12 +5687,13 @@ func (client *Client) QueryChildDivisionCodeWithOptions(request *QueryChildDivis
 	return _result, _err
 }
 
-/**
- * @summary 查询地址divisionCode
- *
- * @param request QueryChildDivisionCodeRequest
- * @return QueryChildDivisionCodeResponse
- */
+// Summary:
+//
+// 查询地址divisionCode
+//
+// @param request - QueryChildDivisionCodeRequest
+//
+// @return QueryChildDivisionCodeResponse
 func (client *Client) QueryChildDivisionCode(request *QueryChildDivisionCodeRequest) (_result *QueryChildDivisionCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4797,14 +5706,17 @@ func (client *Client) QueryChildDivisionCode(request *QueryChildDivisionCodeRequ
 	return _result, _err
 }
 
-/**
- * @summary 查询主单列表
- *
- * @param request QueryOrdersRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryOrdersResponse
- */
+// Summary:
+//
+// 查询主单列表
+//
+// @param request - QueryOrdersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryOrdersResponse
 func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryOrdersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4834,12 +5746,13 @@ func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, header
 	return _result, _err
 }
 
-/**
- * @summary 查询主单列表
- *
- * @param request QueryOrdersRequest
- * @return QueryOrdersResponse
- */
+// Summary:
+//
+// 查询主单列表
+//
+// @param request - QueryOrdersRequest
+//
+// @return QueryOrdersResponse
 func (client *Client) QueryOrders(request *QueryOrdersRequest) (_result *QueryOrdersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4852,14 +5765,17 @@ func (client *Client) QueryOrders(request *QueryOrdersRequest) (_result *QueryOr
 	return _result, _err
 }
 
-/**
- * @summary 渲染采购单
- *
- * @param request RenderPurchaseOrderRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return RenderPurchaseOrderResponse
- */
+// Summary:
+//
+// 渲染采购单
+//
+// @param request - RenderPurchaseOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenderPurchaseOrderResponse
 func (client *Client) RenderPurchaseOrderWithOptions(request *RenderPurchaseOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenderPurchaseOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4889,12 +5805,13 @@ func (client *Client) RenderPurchaseOrderWithOptions(request *RenderPurchaseOrde
 	return _result, _err
 }
 
-/**
- * @summary 渲染采购单
- *
- * @param request RenderPurchaseOrderRequest
- * @return RenderPurchaseOrderResponse
- */
+// Summary:
+//
+// 渲染采购单
+//
+// @param request - RenderPurchaseOrderRequest
+//
+// @return RenderPurchaseOrderResponse
 func (client *Client) RenderPurchaseOrder(request *RenderPurchaseOrderRequest) (_result *RenderPurchaseOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4907,14 +5824,17 @@ func (client *Client) RenderPurchaseOrder(request *RenderPurchaseOrderRequest) (
 	return _result, _err
 }
 
-/**
- * @summary 逆向单渲染
- *
- * @param request RenderRefundOrderRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return RenderRefundOrderResponse
- */
+// Summary:
+//
+// 逆向单渲染
+//
+// @param request - RenderRefundOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenderRefundOrderResponse
 func (client *Client) RenderRefundOrderWithOptions(request *RenderRefundOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenderRefundOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4944,12 +5864,13 @@ func (client *Client) RenderRefundOrderWithOptions(request *RenderRefundOrderReq
 	return _result, _err
 }
 
-/**
- * @summary 逆向单渲染
- *
- * @param request RenderRefundOrderRequest
- * @return RenderRefundOrderResponse
- */
+// Summary:
+//
+// 逆向单渲染
+//
+// @param request - RenderRefundOrderRequest
+//
+// @return RenderRefundOrderResponse
 func (client *Client) RenderRefundOrder(request *RenderRefundOrderRequest) (_result *RenderRefundOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4962,14 +5883,17 @@ func (client *Client) RenderRefundOrder(request *RenderRefundOrderRequest) (_res
 	return _result, _err
 }
 
-/**
- * @summary 渲染拆分采购单
- *
- * @param request SplitPurchaseOrderRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return SplitPurchaseOrderResponse
- */
+// Summary:
+//
+// 渲染拆分采购单
+//
+// @param request - SplitPurchaseOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SplitPurchaseOrderResponse
 func (client *Client) SplitPurchaseOrderWithOptions(request *SplitPurchaseOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SplitPurchaseOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4999,12 +5923,13 @@ func (client *Client) SplitPurchaseOrderWithOptions(request *SplitPurchaseOrderR
 	return _result, _err
 }
 
-/**
- * @summary 渲染拆分采购单
- *
- * @param request SplitPurchaseOrderRequest
- * @return SplitPurchaseOrderResponse
- */
+// Summary:
+//
+// 渲染拆分采购单
+//
+// @param request - SplitPurchaseOrderRequest
+//
+// @return SplitPurchaseOrderResponse
 func (client *Client) SplitPurchaseOrder(request *SplitPurchaseOrderRequest) (_result *SplitPurchaseOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
