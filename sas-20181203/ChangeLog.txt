@@ -1,3 +1,7 @@
+2024-05-13 Version: v2.26.1
+- Update API DescribeSuspEvents: add param StrictMode.
+
+
 2024-05-10 Version: v2.26.0
 - Support API ListCompressFileDetectResult.
 - Update API AddSasModuleTrial: update response param.
