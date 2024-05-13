@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -12,12 +9,57 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type Tag struct {
+	// example:
+	//
+	// env
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// prod
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s Tag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Tag) GoString() string {
+	return s.String()
+}
+
+func (s *Tag) SetKey(v string) *Tag {
+	s.Key = &v
+	return s
+}
+
+func (s *Tag) SetValue(v string) *Tag {
+	s.Value = &v
+	return s
+}
+
 type AttachClusterToHubRequest struct {
 	// The operation that you want to perform. Set the value to **AttachClusterToHub**.
+	//
+	// example:
+	//
+	// true
 	AttachToMesh *bool `json:"AttachToMesh,omitempty" xml:"AttachToMesh,omitempty"`
 	// The ID of the task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cd08d62e6506a4fa5a8c44c19d0fc****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The ID of the request.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["cdea10134be464ba4acb36cc831a6****"]
 	ClusterIds *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
 }
 
@@ -46,12 +88,23 @@ func (s *AttachClusterToHubRequest) SetClusterIds(v string) *AttachClusterToHubR
 
 type AttachClusterToHubResponseBody struct {
 	// You can call the AttachClusterToHub operation to associate an Container Service for Kubernetes (ACK) cluster with a master instance of ACK One.
+	//
+	// example:
+	//
+	// c8e28143817db4b039b8548d7c899****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Zhishi
 	ManagedClusterIds []*string `json:"ManagedClusterIds,omitempty" xml:"ManagedClusterIds,omitempty" type:"Repeated"`
 	// Example 1
+	//
+	// example:
+	//
+	// EA06613B-37A3-549E-BAE0-E4AD8A6E93D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// T-623a96b7bbeaac074b00****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s AttachClusterToHubResponseBody) String() string {
@@ -111,47 +164,206 @@ func (s *AttachClusterToHubResponse) SetBody(v *AttachClusterToHubResponseBody) 
 	return s
 }
 
+type ChangeResourceGroupRequest struct {
+	// The ID of the new resource group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-aekzlvgbhaca***
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// The resource ID. If ResourceType=cluster, the resource ID is ClusterId.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c9603ee23a84a41d6a1424619cb80****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource. Only cluster are supported. Set the value to cluster.
+	//
+	// example:
+	//
+	// cluster
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ChangeResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupRequest) SetNewResourceGroupId(v string) *ChangeResourceGroupRequest {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ChangeResourceGroupResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 5BE4C329-DCC2-5B61-8F66-112B7D7FC712
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeResourceGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChangeResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody) *ChangeResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateHubClusterRequest struct {
 	// Specifies whether to expose the API server to the Internet. Valid values:
 	//
-	// *   true: exposes the API server to the Internet.
-	// *   false: exposes the API server to the internal network.
+	// 	- true: exposes the API server to the Internet.
+	//
+	// 	- false: exposes the API server to the internal network.
+	//
+	// example:
+	//
+	// true
 	ApiServerPublicEip *bool `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
 	// Specifies whether to enable the workflow instance UI. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	ArgoServerEnabled *bool `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
 	// Specifies whether to enable the audit log feature. Valid values:
 	//
-	// *   true: enables the audit log feature.
-	// *   false: disables the audit log feature.
+	// 	- true: enables the audit log feature.
+	//
+	// 	- false: disables the audit log feature.
+	//
+	// example:
+	//
+	// false
 	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
 	// Specifies whether to use an advanced security group.
+	//
+	// example:
+	//
+	// false
 	IsEnterpriseSecurityGroup *bool `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
 	// The name of the master instance.
+	//
+	// example:
+	//
+	// ack-demo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
+	//
+	// example:
+	//
+	// 0.08
 	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 	// The type of scenario for which the master instance is suitable. Valid values:
 	//
-	// *   `Default`: The master instance is suitable for standard scenarios.
-	// *   `XFlow`: The master instance is suitable for workflow scenarios.
+	// 	- `Default`: The master instance is suitable for standard scenarios.
+	//
+	// 	- `XFlow`: The master instance is suitable for workflow scenarios.
 	//
 	// Default value: `Default`.
+	//
+	// example:
+	//
+	// Default
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The ID of the region. You can call the DescribeRegions operation to query available regions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The Resource Group ID.
+	//
+	// example:
+	//
+	// rg-1exm6tg2h48***
 	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	Tag             []*Tag  `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["vsw-2zeaijsas4zkzz81xm***"]
 	VSwitches *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
 	// The ID of the virtual private cloud (VPC) to which the master instance belongs. You can call the DescribeVpcs operation to query available VPCs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-f8zin0jscsr84s96tg***
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The scheduling mode of the workflow. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
-	// *   cost-optimized: cost-prioritized scheduling mode.
-	// *   stock-optimized: inventory-prioritized scheduling mode.
+	// 	- cost-optimized: cost-prioritized scheduling mode.
+	//
+	// 	- stock-optimized: inventory-prioritized scheduling mode.
+	//
+	// example:
+	//
+	// cost-optimized
 	WorkflowScheduleMode *string `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
 }
 
@@ -208,6 +420,11 @@ func (s *CreateHubClusterRequest) SetResourceGroupID(v string) *CreateHubCluster
 	return s
 }
 
+func (s *CreateHubClusterRequest) SetTag(v []*Tag) *CreateHubClusterRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateHubClusterRequest) SetVSwitches(v string) *CreateHubClusterRequest {
 	s.VSwitches = &v
 	return s
@@ -223,12 +440,201 @@ func (s *CreateHubClusterRequest) SetWorkflowScheduleMode(v string) *CreateHubCl
 	return s
 }
 
+type CreateHubClusterShrinkRequest struct {
+	// Specifies whether to expose the API server to the Internet. Valid values:
+	//
+	// 	- true: exposes the API server to the Internet.
+	//
+	// 	- false: exposes the API server to the internal network.
+	//
+	// example:
+	//
+	// true
+	ApiServerPublicEip *bool `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
+	// Specifies whether to enable the workflow instance UI. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	ArgoServerEnabled *bool `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
+	// Specifies whether to enable the audit log feature. Valid values:
+	//
+	// 	- true: enables the audit log feature.
+	//
+	// 	- false: disables the audit log feature.
+	//
+	// example:
+	//
+	// false
+	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
+	// Specifies whether to use an advanced security group.
+	//
+	// example:
+	//
+	// false
+	IsEnterpriseSecurityGroup *bool `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
+	// The name of the master instance.
+	//
+	// example:
+	//
+	// ack-demo
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
+	//
+	// example:
+	//
+	// 0.08
+	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
+	// The type of scenario for which the master instance is suitable. Valid values:
+	//
+	// 	- `Default`: The master instance is suitable for standard scenarios.
+	//
+	// 	- `XFlow`: The master instance is suitable for workflow scenarios.
+	//
+	// Default value: `Default`.
+	//
+	// example:
+	//
+	// Default
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The ID of the region. You can call the DescribeRegions operation to query available regions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Resource Group ID.
+	//
+	// example:
+	//
+	// rg-1exm6tg2h48***
+	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	TagShrink       *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The ID of the vSwitch.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["vsw-2zeaijsas4zkzz81xm***"]
+	VSwitches *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
+	// The ID of the virtual private cloud (VPC) to which the master instance belongs. You can call the DescribeVpcs operation to query available VPCs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-f8zin0jscsr84s96tg***
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The scheduling mode of the workflow. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// 	- cost-optimized: cost-prioritized scheduling mode.
+	//
+	// 	- stock-optimized: inventory-prioritized scheduling mode.
+	//
+	// example:
+	//
+	// cost-optimized
+	WorkflowScheduleMode *string `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
+}
+
+func (s CreateHubClusterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHubClusterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHubClusterShrinkRequest) SetApiServerPublicEip(v bool) *CreateHubClusterShrinkRequest {
+	s.ApiServerPublicEip = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetArgoServerEnabled(v bool) *CreateHubClusterShrinkRequest {
+	s.ArgoServerEnabled = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetAuditLogEnabled(v bool) *CreateHubClusterShrinkRequest {
+	s.AuditLogEnabled = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetIsEnterpriseSecurityGroup(v bool) *CreateHubClusterShrinkRequest {
+	s.IsEnterpriseSecurityGroup = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetName(v string) *CreateHubClusterShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetPriceLimit(v string) *CreateHubClusterShrinkRequest {
+	s.PriceLimit = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetProfile(v string) *CreateHubClusterShrinkRequest {
+	s.Profile = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetRegionId(v string) *CreateHubClusterShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetResourceGroupID(v string) *CreateHubClusterShrinkRequest {
+	s.ResourceGroupID = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetTagShrink(v string) *CreateHubClusterShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetVSwitches(v string) *CreateHubClusterShrinkRequest {
+	s.VSwitches = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetVpcId(v string) *CreateHubClusterShrinkRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateHubClusterShrinkRequest) SetWorkflowScheduleMode(v string) *CreateHubClusterShrinkRequest {
+	s.WorkflowScheduleMode = &v
+	return s
+}
+
 type CreateHubClusterResponseBody struct {
 	// The ID of the master instance.
+	//
+	// example:
+	//
+	// c09946603cd764dac96135f51d1ba****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 62F5AA2B-A2C9-5135-BCE2-C2167099****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the task.
+	//
+	// example:
+	//
+	// T-62523eda841eca071400****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -286,13 +692,24 @@ func (s *CreateHubClusterResponse) SetBody(v *CreateHubClusterResponseBody) *Cre
 
 type DeleteHubClusterRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cd90dd24a86fd42f895a1b77df620****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Specifies whether to forcefully delete the master instance in ACK One. Valid values:
 	//
-	// *   true: forcefully deletes the master instance in ACK One.
-	// *   false: does not forcibly delete the master instance in ACK One.
+	// 	- true: forcefully deletes the master instance in ACK One.
+	//
+	// 	- false: does not forcibly delete the master instance in ACK One.
 	//
 	// Default value: false.
+	//
+	// example:
+	//
+	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The list of resources to retain.
 	RetainResources []*string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty" type:"Repeated"`
@@ -323,13 +740,24 @@ func (s *DeleteHubClusterRequest) SetRetainResources(v []*string) *DeleteHubClus
 
 type DeleteHubClusterShrinkRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cd90dd24a86fd42f895a1b77df620****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Specifies whether to forcefully delete the master instance in ACK One. Valid values:
 	//
-	// *   true: forcefully deletes the master instance in ACK One.
-	// *   false: does not forcibly delete the master instance in ACK One.
+	// 	- true: forcefully deletes the master instance in ACK One.
+	//
+	// 	- false: does not forcibly delete the master instance in ACK One.
 	//
 	// Default value: false.
+	//
+	// example:
+	//
+	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The list of resources to retain.
 	RetainResourcesShrink *string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty"`
@@ -360,10 +788,22 @@ func (s *DeleteHubClusterShrinkRequest) SetRetainResourcesShrink(v string) *Dele
 
 type DeleteHubClusterResponseBody struct {
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// cb09fda0dc2f94a8397c76638c7ec****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7A827E32-6D24-5757-B3FD-D9396495FBDC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the job.
+	//
+	// example:
+	//
+	// T-623a96b7bbeaac074b00****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -421,10 +861,22 @@ func (s *DeleteHubClusterResponse) SetBody(v *DeleteHubClusterResponseBody) *Del
 
 type DeletePolicyInstanceRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c09946603cd764dac96135f51d1ba****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// A array of JSON strings. The JSON strings in the array indicate the IDs of the associated clusters for which the policy is deleted.
 	ClusterIds []*string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty" type:"Repeated"`
 	// The name of the policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACKNoEnvVarSecrets
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -453,10 +905,22 @@ func (s *DeletePolicyInstanceRequest) SetPolicyName(v string) *DeletePolicyInsta
 
 type DeletePolicyInstanceShrinkRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c09946603cd764dac96135f51d1ba****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// A array of JSON strings. The JSON strings in the array indicate the IDs of the associated clusters for which the policy is deleted.
 	ClusterIdsShrink *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
 	// The name of the policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACKNoEnvVarSecrets
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -485,6 +949,10 @@ func (s *DeletePolicyInstanceShrinkRequest) SetPolicyName(v string) *DeletePolic
 
 type DeletePolicyInstanceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// EA06613B-37A3-549E-BAE0-E4AD8A6E93D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -532,8 +1000,20 @@ func (s *DeletePolicyInstanceResponse) SetBody(v *DeletePolicyInstanceResponseBo
 
 type DeleteUserPermissionRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c09946603cd764dac96135f51d1ba****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The ID of the RAM user.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2176****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -557,6 +1037,10 @@ func (s *DeleteUserPermissionRequest) SetUserId(v string) *DeleteUserPermissionR
 
 type DeleteUserPermissionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2D676EFC-8C04-5CCE-A08E-BB97D24B47E8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -604,17 +1088,38 @@ func (s *DeleteUserPermissionResponse) SetBody(v *DeleteUserPermissionResponseBo
 
 type DeployPolicyInstanceRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c102fe5f1ee5d4c87a68121a77d8b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// An array of JSON strings. The JSON strings in the array indicate the IDs of the associated clusters in which the policy instance is deployed.
+	//
+	// This parameter is required.
 	ClusterIds []*string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty" type:"Repeated"`
 	// A list of namespaces.
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 	// The action of the policy. Valid values:
 	//
-	// *   deny: blocks deployments that match the policy.
-	// *   warn: generates alerts for deployments that match the policy.
+	// 	- deny: blocks deployments that match the policy.
+	//
+	// 	- warn: generates alerts for deployments that match the policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// warn
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
 	// The name of the policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACKNoEnvVarSecrets
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -653,17 +1158,38 @@ func (s *DeployPolicyInstanceRequest) SetPolicyName(v string) *DeployPolicyInsta
 
 type DeployPolicyInstanceShrinkRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c102fe5f1ee5d4c87a68121a77d8b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// An array of JSON strings. The JSON strings in the array indicate the IDs of the associated clusters in which the policy instance is deployed.
+	//
+	// This parameter is required.
 	ClusterIdsShrink *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
 	// A list of namespaces.
 	NamespacesShrink *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
 	// The action of the policy. Valid values:
 	//
-	// *   deny: blocks deployments that match the policy.
-	// *   warn: generates alerts for deployments that match the policy.
+	// 	- deny: blocks deployments that match the policy.
+	//
+	// 	- warn: generates alerts for deployments that match the policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// warn
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
 	// The name of the policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACKNoEnvVarSecrets
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -702,6 +1228,10 @@ func (s *DeployPolicyInstanceShrinkRequest) SetPolicyName(v string) *DeployPolic
 
 type DeployPolicyInstanceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 2D676EFC-8C04-5CCE-A08E-BB97D24B47E8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -749,6 +1279,12 @@ func (s *DeployPolicyInstanceResponse) SetBody(v *DeployPolicyInstanceResponseBo
 
 type DescribeHubClusterDetailsRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c676decda7b8148d69a9aba751877****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -769,6 +1305,10 @@ type DescribeHubClusterDetailsResponseBody struct {
 	// The details of the master instance.
 	Cluster *DescribeHubClusterDetailsResponseBodyCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 52C1B7DF-96C1-5214-97B6-1B0859FEAFE5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -859,13 +1399,26 @@ func (s *DescribeHubClusterDetailsResponseBodyCluster) SetWorkflowConfig(v *Desc
 
 type DescribeHubClusterDetailsResponseBodyClusterApiServer struct {
 	// The ID of the elastic IP address (EIP).
+	//
+	// example:
+	//
+	// eip-abc****
 	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	// Indicates whether the API server is accessible over the Internet. Valid values:
 	//
-	// *   true: The API server is accessible over the Internet.
-	// *   false: The API server is inaccessible over the Internet.
+	// 	- true: The API server is accessible over the Internet.
+	//
+	// 	- false: The API server is inaccessible over the Internet.
+	//
+	// example:
+	//
+	// true
 	EnabledPublic *bool `json:"EnabledPublic,omitempty" xml:"EnabledPublic,omitempty"`
 	// The ID of the Server Load Balancer (SLB) instance.
+	//
+	// example:
+	//
+	// lb-hp3ioqbfeq37h13rwe***
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -894,38 +1447,89 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterApiServer) SetLoadBalancerI
 
 type DescribeHubClusterDetailsResponseBodyClusterClusterInfo struct {
 	// The ID of the master instance.
+	//
+	// example:
+	//
+	// cb09fda0dc2f94a8397c76638c7ecf***
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The specification of the master instance. Valid value:
 	//
-	// *   ack.pro.small: ACK Pro cluster
+	// 	- ack.pro.small: ACK Pro cluster
+	//
+	// example:
+	//
+	// ack.pro.small
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	// The time when the master instance was created.
+	//
+	// example:
+	//
+	// 2022-03-23T06:22:28Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The error message returned when the master instance failed to be created.
+	//
+	// example:
+	//
+	// The specified product does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The cluster metadata.
 	MetaData *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaData `json:"MetaData,omitempty" xml:"MetaData,omitempty" type:"Struct"`
 	// The name of the master instance.
+	//
+	// example:
+	//
+	// ackone-heyuan
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The configurations of the master instance.
+	//
+	// example:
+	//
+	// Default
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The ID of the region in which the master instance resides.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of Resource Group.
+	//
+	// example:
+	//
+	// rg-1w4vdvo6p51***
 	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
 	// The status of the master instance. Valid values:
 	//
-	// *   initial: The master instance is being initialized.
-	// *   failed: The master instance failed to be created.
-	// *   running: The master instance is running
-	// *   inactive: The master instance is pending.
-	// *   deleting: The master instance is being deleted.
-	// *   delete_failed: The master instance failed to be deleted.
-	// *   deleted: The master instance is deleted.
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// 	- initial: The master instance is being initialized.
+	//
+	// 	- failed: The master instance failed to be created.
+	//
+	// 	- running: The master instance is running
+	//
+	// 	- inactive: The master instance is pending.
+	//
+	// 	- deleting: The master instance is being deleted.
+	//
+	// 	- delete_failed: The master instance failed to be deleted.
+	//
+	// 	- deleted: The master instance is deleted.
+	//
+	// example:
+	//
+	// running
+	State *string                                                        `json:"State,omitempty" xml:"State,omitempty"`
+	Tags  []*DescribeHubClusterDetailsResponseBodyClusterClusterInfoTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The time when the master instance was updated.
+	//
+	// example:
+	//
+	// 2022-03-21T02:51:35.542Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The version of the master instance.
+	//
+	// example:
+	//
+	// 1.22.3-aliyun.1
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -987,6 +1591,11 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetState(v str
 	return s
 }
 
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetTags(v []*DescribeHubClusterDetailsResponseBodyClusterClusterInfoTags) *DescribeHubClusterDetailsResponseBodyClusterClusterInfo {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetUpdateTime(v string) *DescribeHubClusterDetailsResponseBodyClusterClusterInfo {
 	s.UpdateTime = &v
 	return s
@@ -1045,18 +1654,33 @@ type DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps
 	AccessControlList []*string `json:"AccessControlList,omitempty" xml:"AccessControlList,omitempty" type:"Repeated"`
 	// Indicates whether GitOps is enabled. Valid values:
 	//
-	// *   true: GitOps is enabled.
-	// *   false: GitOps is disabled.
+	// 	- true: GitOps is enabled.
+	//
+	// 	- false: GitOps is disabled.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// Indicates whether GitOps High Availability is enabled. Valid values:
 	//
-	// *   true:  GitOps High Availability is enabled.
-	// *   false:  GitOps High Availability is disabled.
+	// 	- true:  GitOps High Availability is enabled.
+	//
+	// 	- false:  GitOps High Availability is disabled.
+	//
+	// example:
+	//
+	// true
 	HAEnabled *bool `json:"HAEnabled,omitempty" xml:"HAEnabled,omitempty"`
 	// Specifies whether to enable public domain name resolution in the Argo CD or Argo Workflow console. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" xml:"PublicAccessEnabled,omitempty"`
 }
 
@@ -1111,18 +1735,33 @@ type DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFl
 	AccessControlList []*string `json:"AccessControlList,omitempty" xml:"AccessControlList,omitempty" type:"Repeated"`
 	// Specifies whether to enable the argo workflow. Valid values:
 	//
-	// *   **false** (default)
-	// *   **true**
+	// 	- **false*	- (default)
+	//
+	// 	- **true**
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// Specifies whether to enable public domain name resolution in the Argo CD or Argo Workflow console. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" xml:"PublicAccessEnabled,omitempty"`
 	// Specifies whether to enable the argo workflow. UI Valid values:
 	//
-	// *   **false** (default)
-	// *   **true**
+	// 	- **false*	- (default)
+	//
+	// 	- **true**
+	//
+	// example:
+	//
+	// true
 	ServerEnabled *string `json:"ServerEnabled,omitempty" xml:"ServerEnabled,omitempty"`
 }
 
@@ -1154,18 +1793,59 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWo
 	return s
 }
 
+type DescribeHubClusterDetailsResponseBodyClusterClusterInfoTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterClusterInfoTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterClusterInfoTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoTags) SetKey(v string) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoTags) SetValue(v string) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoTags {
+	s.Value = &v
+	return s
+}
+
 type DescribeHubClusterDetailsResponseBodyClusterConditions struct {
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The reason for the deletion condition.
+	//
+	// example:
+	//
+	// Successful
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The status of the master instance that the deletion condition indicates. Valid values:
 	//
-	// *   True: The master instance cannot be deleted.
-	// *   False: The master instance can be deleted.
-	// *   Unknow: Whether the master instance can be deleted is unknown.
+	// 	- True: The master instance cannot be deleted.
+	//
+	// 	- False: The master instance can be deleted.
+	//
+	// 	- Unknow: Whether the master instance can be deleted is unknown.
+	//
+	// example:
+	//
+	// True
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of deletion condition.
+	//
+	// example:
+	//
+	// DeletionProtection
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1199,8 +1879,16 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterConditions) SetType(v strin
 
 type DescribeHubClusterDetailsResponseBodyClusterEndpoints struct {
 	// The endpoint that is used to access the API server over the internal network.
+	//
+	// example:
+	//
+	// https://172.16.6.**:6443
 	IntranetApiServerEndpoint *string `json:"IntranetApiServerEndpoint,omitempty" xml:"IntranetApiServerEndpoint,omitempty"`
 	// The endpoint that is used to access the API server over the Internet.
+	//
+	// example:
+	//
+	// https://123.57.21.***:6443
 	PublicApiServerEndpoint *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
 }
 
@@ -1225,12 +1913,25 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterEndpoints) SetPublicApiServ
 type DescribeHubClusterDetailsResponseBodyClusterLogConfig struct {
 	// Indicates whether the audit logging feature is enabled. Valid values:
 	//
-	// *   true: Audit logging is enabled.
-	// *   false: Audit logging is disabled.
+	// 	- true: Audit logging is enabled.
+	//
+	// 	- false: Audit logging is disabled.
+	//
+	// example:
+	//
+	// false
 	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
 	// The name of the project of Log Service.
+	//
+	// example:
+	//
+	// k8s-log-abc
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
 	// The number of days that logs are retained by Log Service.
+	//
+	// example:
+	//
+	// 7
 	LogStoreTTL *string `json:"LogStoreTTL,omitempty" xml:"LogStoreTTL,omitempty"`
 }
 
@@ -1260,10 +1961,19 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterLogConfig) SetLogStoreTTL(v
 type DescribeHubClusterDetailsResponseBodyClusterMeshConfig struct {
 	// Indicates whether ASM is enabled. Valid values:
 	//
-	// *   true: ASM is enabled.
-	// *   false: ASM is disabled.
+	// 	- true: ASM is enabled.
+	//
+	// 	- false: ASM is disabled.
+	//
+	// example:
+	//
+	// false
 	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
 	// service mesh (ASM) instance ID
+	//
+	// example:
+	//
+	// cb09fda0dc2f94a8397c76638c7ecf***
 	MeshId *string `json:"MeshId,omitempty" xml:"MeshId,omitempty"`
 }
 
@@ -1287,18 +1997,32 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterMeshConfig) SetMeshId(v str
 
 type DescribeHubClusterDetailsResponseBodyClusterNetwork struct {
 	// The domain name of the master instance.
+	//
+	// example:
+	//
+	// cluster.local
 	ClusterDomain *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
 	// The IP version that is supported by the master instance. Valid values:
 	//
-	// *   ipv4: IPv4.
-	// *   ipv6: IPv6.
-	// *   dual: IPv4 and IPv6.
+	// 	- ipv4: IPv4.
+	//
+	// 	- ipv6: IPv6.
+	//
+	// 	- dual: IPv4 and IPv6.
+	//
+	// example:
+	//
+	// ipv4
 	IPStack *string `json:"IPStack,omitempty" xml:"IPStack,omitempty"`
 	// The IDs of the associated security groups.
 	SecurityGroupIDs []*string `json:"SecurityGroupIDs,omitempty" xml:"SecurityGroupIDs,omitempty" type:"Repeated"`
 	// The details of the vSwitches.
 	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) in which the master instance resides.
+	//
+	// example:
+	//
+	// vpc-f8ziib1019r9o0hdv2***
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -1338,15 +2062,29 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterNetwork) SetVpcId(v string)
 type DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig struct {
 	// Specifies whether to enable the workflow instance UI. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	ArgoServerEnabled *bool `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
 	// The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
+	//
+	// example:
+	//
+	// 0.08
 	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 	// The scheduling mode of the workflow. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
-	// *   cost-optimized: cost-prioritized scheduling mode.
-	// *   stock-optimized: inventory-prioritized scheduling mode.
+	// 	- cost-optimized: cost-prioritized scheduling mode.
+	//
+	// 	- stock-optimized: inventory-prioritized scheduling mode.
+	//
+	// example:
+	//
+	// cost-optimized
 	WorkflowScheduleMode *string `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
 	// The Argo workflow regions  configuration.
 	WorkflowUnits []*DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits `json:"WorkflowUnits,omitempty" xml:"WorkflowUnits,omitempty" type:"Repeated"`
@@ -1383,11 +2121,19 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig) SetWorkflow
 type DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits struct {
 	// The region ID of the cluster.
 	//
-	// >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The vSwitches.
 	VSwitches []*DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// The ID of the VPC.
+	//
+	// example:
+	//
+	// vpc-f8zukabbkv5aw7zkm****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -1416,10 +2162,18 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits
 
 type DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches struct {
 	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-wz9sf0hsuizl7bxnj****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 	// The zone ID of the cluster.
 	//
-	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent zone list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent zone list.
+	//
+	// example:
+	//
+	// cn-hangzhou-e
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1472,13 +2226,24 @@ func (s *DescribeHubClusterDetailsResponse) SetBody(v *DescribeHubClusterDetails
 
 type DescribeHubClusterKubeconfigRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c102fe5f1ee5d4c87a68121a77d8b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Specifies whether to obtain the kubeconfig file that is used to connect to the cluster over the internal network. Valid values:
 	//
-	// *   `true`: obtains the kubeconfig file that is used to connect to the master instance over the internal network.
-	// *   `false`: obtains the kubeconfig file that is used to connect to the master instance over the Internet.
+	// 	- `true`: obtains the kubeconfig file that is used to connect to the master instance over the internal network.
+	//
+	// 	- `false`: obtains the kubeconfig file that is used to connect to the master instance over the Internet.
 	//
 	// Default value: `false`
+	//
+	// example:
+	//
+	// false
 	PrivateIpAddress *bool `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 }
 
@@ -1502,8 +2267,16 @@ func (s *DescribeHubClusterKubeconfigRequest) SetPrivateIpAddress(v bool) *Descr
 
 type DescribeHubClusterKubeconfigResponseBody struct {
 	// The content of the kubeconfig file.
+	//
+	// example:
+	//
+	// "\\napiVersion: v1\\nclusters:\\n- cluster:\\n    server: https://172.16.11.***:6443\\n    certificate-authority-data: LS0tLS1CRU=...\\n  name: kubernetes\\ncontexts:\\n- context:\\n    cluster: kubernetes\\n    user: \\"kubernetes-a****\\"\\n  name: kubernetes-admin-cc2cbf5802bec4bfa9fae4014d8c****\\ncurrent-context: kubernetes-admin-cc2cbf5802bec4bfa9fae4014d8c9****\\nkind: Config\\npreferences: {}\\nusers:\\n- name: \\"kubernetes-admin\\"\\n  user:\\n    client-certificate-data: LS0tLS1CRU...\\n    client-key-data: LS0tCg==...\\n"
 	Kubeconfig *string `json:"Kubeconfig,omitempty" xml:"Kubeconfig,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5BE4C329-DCC2-5B61-8F66-112B7D7FC712
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1556,6 +2329,12 @@ func (s *DescribeHubClusterKubeconfigResponse) SetBody(v *DescribeHubClusterKube
 
 type DescribeHubClusterLogsRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c9cb1d933b2ab47ff9cd25571477dc8f2
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -1576,6 +2355,10 @@ type DescribeHubClusterLogsResponseBody struct {
 	// Brief information about operation logs.
 	Logs []*DescribeHubClusterLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 661192D7-25A6-54C2-B643-1129CB7D2768
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1599,12 +2382,28 @@ func (s *DescribeHubClusterLogsResponseBody) SetRequestId(v string) *DescribeHub
 
 type DescribeHubClusterLogsResponseBodyLogs struct {
 	// The ID of the master instance.
+	//
+	// example:
+	//
+	// c102fe5f1ee5d4c87a68121a77d8b0f38
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// A log of the master instance.
+	//
+	// example:
+	//
+	// Cluster Created
 	ClusterLog *string `json:"ClusterLog,omitempty" xml:"ClusterLog,omitempty"`
 	// The time when the log was created. Format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC time).
+	//
+	// example:
+	//
+	// 2021-12-02T11:48:15+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The severity level of the log. Valid values: - error: errors. - warn: warnings. - info: information.
+	//
+	// example:
+	//
+	// INFO
 	LogLevel *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
 }
 
@@ -1667,9 +2466,18 @@ func (s *DescribeHubClusterLogsResponse) SetBody(v *DescribeHubClusterLogsRespon
 
 type DescribeHubClustersRequest struct {
 	// The configurations of the cluster.
+	//
+	// example:
+	//
+	// Default
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aekz77rhypeu***
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*Tag  `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeHubClustersRequest) String() string {
@@ -1690,10 +2498,58 @@ func (s *DescribeHubClustersRequest) SetResourceGroupId(v string) *DescribeHubCl
 	return s
 }
 
+func (s *DescribeHubClustersRequest) SetTag(v []*Tag) *DescribeHubClustersRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeHubClustersShrinkRequest struct {
+	// The configurations of the cluster.
+	//
+	// example:
+	//
+	// Default
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aekz77rhypeu***
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TagShrink       *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s DescribeHubClustersShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClustersShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClustersShrinkRequest) SetProfile(v string) *DescribeHubClustersShrinkRequest {
+	s.Profile = &v
+	return s
+}
+
+func (s *DescribeHubClustersShrinkRequest) SetResourceGroupId(v string) *DescribeHubClustersShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeHubClustersShrinkRequest) SetTagShrink(v string) *DescribeHubClustersShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
 type DescribeHubClustersResponseBody struct {
 	// The information about clusters.
 	Clusters []*DescribeHubClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2D676EFC-8C04-5CCE-A08E-BB97D24B47E8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1777,13 +2633,26 @@ func (s *DescribeHubClustersResponseBodyClusters) SetNetwork(v *DescribeHubClust
 
 type DescribeHubClustersResponseBodyClustersApiServer struct {
 	// The elastic IP address (EIP) ID.
+	//
+	// example:
+	//
+	// eip-xxx
 	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	// Indicates whether public endpoint is enabled for the API server. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	EnabledPublic *bool `json:"EnabledPublic,omitempty" xml:"EnabledPublic,omitempty"`
 	// The ID of the Server Load Balancer (SLB) instance that is associated with the cluster.
+	//
+	// example:
+	//
+	// lb-bp1qyp4l6bscqxw69****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -1812,36 +2681,87 @@ func (s *DescribeHubClustersResponseBodyClustersApiServer) SetLoadBalancerId(v s
 
 type DescribeHubClustersResponseBodyClustersClusterInfo struct {
 	// The cluster ID.
+	//
+	// example:
+	//
+	// c2d3e0121ea214b438010502a8019****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The specification of the cluster.
 	//
-	// *   Only ack.pro.small is returned.
+	// 	- Only ack.pro.small is returned.
+	//
+	// example:
+	//
+	// ack.pro.small
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	// The time when the cluster was created.
+	//
+	// example:
+	//
+	// 2021-11-05T10:25:48Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The error message that is returned if the cluster failed to be created.
+	//
+	// example:
+	//
+	// Success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The name of the cluster.
+	//
+	// example:
+	//
+	// ackone-heyuan
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The configurations of the cluster.
+	//
+	// example:
+	//
+	// Default
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of Resource Group.
+	//
+	// example:
+	//
+	// rg-qh2zgjsdv52***
 	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
 	// The status of the cluster. Valid values:
 	//
-	// *   initial: The cluster is being initialized.
-	// *   failed: The cluster failed to be created.
-	// *   running: The cluster is running
-	// *   inactive: The cluster is pending.
-	// *   deleting: The cluster is being deleted.
-	// *   delete_failed: The cluster failed to be deleted.
-	// *   deleted: The cluster is deleted.
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// 	- initial: The cluster is being initialized.
+	//
+	// 	- failed: The cluster failed to be created.
+	//
+	// 	- running: The cluster is running
+	//
+	// 	- inactive: The cluster is pending.
+	//
+	// 	- deleting: The cluster is being deleted.
+	//
+	// 	- delete_failed: The cluster failed to be deleted.
+	//
+	// 	- deleted: The cluster is deleted.
+	//
+	// example:
+	//
+	// running
+	State *string                                                   `json:"State,omitempty" xml:"State,omitempty"`
+	Tags  []*DescribeHubClustersResponseBodyClustersClusterInfoTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The time when the cluster was last updated.
+	//
+	// example:
+	//
+	// 2021-09-02T13:39:50Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The Kubernetes version of the cluster.
+	//
+	// example:
+	//
+	// 1.22.3-aliyun.1
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -1898,6 +2818,11 @@ func (s *DescribeHubClustersResponseBodyClustersClusterInfo) SetState(v string) 
 	return s
 }
 
+func (s *DescribeHubClustersResponseBodyClustersClusterInfo) SetTags(v []*DescribeHubClustersResponseBodyClustersClusterInfoTags) *DescribeHubClustersResponseBodyClustersClusterInfo {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeHubClustersResponseBodyClustersClusterInfo) SetUpdateTime(v string) *DescribeHubClustersResponseBodyClustersClusterInfo {
 	s.UpdateTime = &v
 	return s
@@ -1908,18 +2833,59 @@ func (s *DescribeHubClustersResponseBodyClustersClusterInfo) SetVersion(v string
 	return s
 }
 
+type DescribeHubClustersResponseBodyClustersClusterInfoTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHubClustersResponseBodyClustersClusterInfoTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClustersResponseBodyClustersClusterInfoTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClustersResponseBodyClustersClusterInfoTags) SetKey(v string) *DescribeHubClustersResponseBodyClustersClusterInfoTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeHubClustersResponseBodyClustersClusterInfoTags) SetValue(v string) *DescribeHubClustersResponseBodyClustersClusterInfoTags {
+	s.Value = &v
+	return s
+}
+
 type DescribeHubClustersResponseBodyClustersConditions struct {
 	// The error message that is returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The reason for the deletion condition.
+	//
+	// example:
+	//
+	// Successful
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The status of the cluster that the deletion condition indicates. Valid values:
 	//
-	// *   True: The cluster cannot be deleted.
-	// *   False: The cluster can be deleted.
-	// *   Unknow: Whether the cluster can be deleted is unknown.
+	// 	- True: The cluster cannot be deleted.
+	//
+	// 	- False: The cluster can be deleted.
+	//
+	// 	- Unknow: Whether the cluster can be deleted is unknown.
+	//
+	// example:
+	//
+	// True
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of deletion condition.
+	//
+	// example:
+	//
+	// DeletionProtection
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1953,8 +2919,16 @@ func (s *DescribeHubClustersResponseBodyClustersConditions) SetType(v string) *D
 
 type DescribeHubClustersResponseBodyClustersEndpoints struct {
 	// The internal endpoint of the API server.
+	//
+	// example:
+	//
+	// https://172.16.6.**:6443
 	IntranetApiServerEndpoint *string `json:"IntranetApiServerEndpoint,omitempty" xml:"IntranetApiServerEndpoint,omitempty"`
 	// The public endpoint of the API server.
+	//
+	// example:
+	//
+	// https://123.57.21.***:6443
 	PublicApiServerEndpoint *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
 }
 
@@ -1979,12 +2953,25 @@ func (s *DescribeHubClustersResponseBodyClustersEndpoints) SetPublicApiServerEnd
 type DescribeHubClustersResponseBodyClustersLogConfig struct {
 	// Indicates whether the audit logging feature is enabled. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
 	// The name of the project in Simple Log Service.
+	//
+	// example:
+	//
+	// audit-log-abc
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
 	// The number of days that logs are retained by Simple Log Service.
+	//
+	// example:
+	//
+	// 7
 	LogStoreTTL *string `json:"LogStoreTTL,omitempty" xml:"LogStoreTTL,omitempty"`
 }
 
@@ -2014,10 +3001,19 @@ func (s *DescribeHubClustersResponseBodyClustersLogConfig) SetLogStoreTTL(v stri
 type DescribeHubClustersResponseBodyClustersMeshConfig struct {
 	// Indicates whether ASM is enabled. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
 	// The ASM instance ID.
+	//
+	// example:
+	//
+	// c2d3e0121ea214b438010502a8019****
 	MeshId *string `json:"MeshId,omitempty" xml:"MeshId,omitempty"`
 }
 
@@ -2041,12 +3037,20 @@ func (s *DescribeHubClustersResponseBodyClustersMeshConfig) SetMeshId(v string) 
 
 type DescribeHubClustersResponseBodyClustersNetwork struct {
 	// The domain name of the cluster.
+	//
+	// example:
+	//
+	// cluster.local
 	ClusterDomain *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
 	// The security group IDs.
 	SecurityGroupIDs []*string `json:"SecurityGroupIDs,omitempty" xml:"SecurityGroupIDs,omitempty" type:"Repeated"`
 	// The IDs of vSwitches to which the cluster belongs.
 	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) to which the cluster belongs.
+	//
+	// example:
+	//
+	// vpc-2zeusrwi7c2mlww4a****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -2109,6 +3113,12 @@ func (s *DescribeHubClustersResponse) SetBody(v *DescribeHubClustersResponseBody
 
 type DescribeManagedClustersRequest struct {
 	// The status of the association between the clusters and Service Mesh (ASM).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c2f41fd4599454a9c9ad8b3daafe873ad
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -2129,6 +3139,10 @@ type DescribeManagedClustersResponseBody struct {
 	// The status of the associated clusters. Valid values: - initial: The associated clusters are being initialized. - failed: The associated clustersfailed to be created. - running: The associated clusters are running. - inactive: The associated clusters are inactive. - deleting: The associated clusters are being deleted. - deleted: The associated clusters are deleted.
 	Clusters []*DescribeManagedClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
 	// VPC ID
+	//
+	// example:
+	//
+	// BDA85C7A-FC81-56C4-9BC2-9112EE970059
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2184,32 +3198,88 @@ func (s *DescribeManagedClustersResponseBodyClusters) SetStatus(v *DescribeManag
 
 type DescribeManagedClustersResponseBodyClustersCluster struct {
 	// Information about the master instance.
+	//
+	// example:
+	//
+	// c2f41fd4599454a9c9ad8b3daafe873ad
 	ClusterID *string `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
 	// The ID of the master instance.
+	//
+	// example:
+	//
+	// ack.pro.small
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	// The time when the master instance was created.
+	//
+	// example:
+	//
+	// One
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The ID of the master instance.
+	//
+	// example:
+	//
+	// 2022-03-23T06:22:28Z
 	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
 	// The name of the master instance.
+	//
+	// example:
+	//
+	// 1.22.3-aliyun.1
 	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
 	// The specification of the master instance. Valid values: - ack.pro.small: ACK Pro.
+	//
+	// example:
+	//
+	// 1.20.4-aliyun.1
 	InitVersion *string `json:"InitVersion,omitempty" xml:"InitVersion,omitempty"`
 	// The status information.
+	//
+	// example:
+	//
+	// ackone-heyuan
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// Default
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The ID of the master instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The name of the master instance.
+	//
+	// example:
+	//
+	// rg-acfmx7o7ewyqcby
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The current Kubernetes version of the master instance.
+	//
+	// example:
+	//
+	// running
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// 2022-03-23T06:22:28Z
 	Updated *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
 	// The original Kubernetes version of the master instance.
+	//
+	// example:
+	//
+	// vsw-m5e0pbkgmhvzecf7enfym
 	VSwitchID *string `json:"VSwitchID,omitempty" xml:"VSwitchID,omitempty"`
 	// The status of the association between the clusters and the master instance. Valid values: - Installing: The clusters are being associated with the master instance. - Successed: The clusters are associated with the master instance. - Failed: The clusters failed to be associated with the master instance. - Deleting: The clusters are being disassociated from the master instance. - Deleted: The clusters are disassociated from the master instance.
+	//
+	// example:
+	//
+	// vpc-bp1fhizs9fxuvit06zeb9
 	VpcID *string `json:"VpcID,omitempty" xml:"VpcID,omitempty"`
 }
 
@@ -2292,6 +3362,9 @@ func (s *DescribeManagedClustersResponseBodyClustersCluster) SetVpcID(v string) 
 }
 
 type DescribeManagedClustersResponseBodyClustersMeshStatus struct {
+	// example:
+	//
+	// true
 	InMesh *bool `json:"InMesh,omitempty" xml:"InMesh,omitempty"`
 }
 
@@ -2310,8 +3383,16 @@ func (s *DescribeManagedClustersResponseBodyClustersMeshStatus) SetInMesh(v bool
 
 type DescribeManagedClustersResponseBodyClustersStatus struct {
 	// Query the clusters that are associated with a master instance.
+	//
+	// example:
+	//
+	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// You can call the DescribeManagedClusters operation to query the clusters that are associated with a master instance.
+	//
+	// example:
+	//
+	// Successed
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -2366,6 +3447,10 @@ type DescribePoliciesResponseBody struct {
 	// A list of policies.
 	Policies []*DescribePoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9439169C-64C1-5849-9F7C-E3E60BDDEF7A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2389,6 +3474,10 @@ func (s *DescribePoliciesResponseBody) SetRequestId(v string) *DescribePoliciesR
 
 type DescribePoliciesResponseBodyPolicies struct {
 	// The policy type.
+	//
+	// example:
+	//
+	// psp
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The names of the policies of each policy type.
 	Names []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
@@ -2443,6 +3532,10 @@ func (s *DescribePoliciesResponse) SetBody(v *DescribePoliciesResponseBody) *Des
 
 type DescribePolicyDetailsRequest struct {
 	// The policy name.
+	//
+	// example:
+	//
+	// ACKAllowedRepos
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -2463,6 +3556,10 @@ type DescribePolicyDetailsResponseBody struct {
 	// The policies.
 	Policy *DescribePolicyDetailsResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 2D676EFC-8C04-5CCE-A08E-BB97D24B47E8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2487,27 +3584,65 @@ func (s *DescribePolicyDetailsResponseBody) SetRequestId(v string) *DescribePoli
 type DescribePolicyDetailsResponseBodyPolicy struct {
 	// The action of the policy. Valid values:
 	//
-	// *   enforce: blocks deployments that match the policy.
-	// *   inform: generates alerts for deployments that match the policy.
+	// 	- enforce: blocks deployments that match the policy.
+	//
+	// 	- inform: generates alerts for deployments that match the policy.
+	//
+	// example:
+	//
+	// enforce
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The type of the policy.
+	//
+	// example:
+	//
+	// k8s-general
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The time when the policy was created.
+	//
+	// example:
+	//
+	// 2021-11-18T10:52:17+08:00
 	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
 	// The description of the policy.
+	//
+	// example:
+	//
+	// Requires container images to begin with a repo string from a specified list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the policy.
+	//
+	// example:
+	//
+	// ACKAllowedRepos
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Indicates whether parameters are required. Valid values:
 	//
-	// *   0: Parameters are required.
-	// *   1: Parameters are not required.
+	// 	- 0: Parameters are required.
+	//
+	// 	- 1: Parameters are not required.
+	//
+	// example:
+	//
+	// 0
 	NoConfig *int32 `json:"NoConfig,omitempty" xml:"NoConfig,omitempty"`
 	// The severity level of the policy.
+	//
+	// example:
+	//
+	// high
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The content of the policy.
+	//
+	// example:
+	//
 	// The content of the policy.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The time when the policy was last updated.
+	//
+	// example:
+	//
+	// 2021-11-18T10:52:17+08:00
 	Updated *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
 }
 
@@ -2595,6 +3730,12 @@ func (s *DescribePolicyDetailsResponse) SetBody(v *DescribePolicyDetailsResponse
 
 type DescribePolicyGovernanceInClusterRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c09946603cd764dac96135f51d1ba****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -2615,6 +3756,10 @@ type DescribePolicyGovernanceInClusterResponseBody struct {
 	// The detailed information about the policies.
 	PolicyGovernances []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances `json:"PolicyGovernances,omitempty" xml:"PolicyGovernances,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 96C6A284-0EC3-5486-9A97-E8E9EE27E9EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2663,18 +3808,46 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances) SetPoli
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster struct {
 	// The ID of the associated cluster.
+	//
+	// example:
+	//
+	// ca5cf1b5edb5c4736a6ea0dfb4061****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The specifications of the associated cluster.
+	//
+	// example:
+	//
+	// ack.pro.small
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	// The type of the associated cluster.
+	//
+	// example:
+	//
+	// ManagedKubernetes
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The name of the associated cluster.
+	//
+	// example:
+	//
+	// ack-001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The identifier of the associated cluster.
+	//
+	// example:
+	//
+	// Default
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The region ID of the associated cluster.
+	//
+	// example:
+	//
+	// cn-heyuan
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The status of the associated cluster.
+	//
+	// example:
+	//
+	// running
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -2755,17 +3928,34 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog struct {
 	// The number of log entries in the query result.
+	//
+	// example:
+	//
+	// 100
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The name of the Log Service project.
+	//
+	// example:
+	//
+	// demo
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
 	// The name of the Logstore.
+	//
+	// example:
+	//
+	// demo
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 	// The content of the audit log.
 	Logs []map[string]*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// The status of the query. Valid values:
 	//
-	// *   Complete: The query is successful, and the complete result is returned.
-	// *   Incomplete: The query is successful, but the query result is incomplete. To obtain the complete result, you must call the operation again.
+	// 	- Complete: The query is successful, and the complete result is returned.
+	//
+	// 	- Incomplete: The query is successful, but the query result is incomplete. To obtain the complete result, you must call the operation again.
+	//
+	// example:
+	//
+	// Complete
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 }
 
@@ -2804,10 +3994,22 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState struct {
 	// The types of policies that are enabled in the associated cluster.
+	//
+	// example:
+	//
+	// 2
 	EnabledCount *int64 `json:"EnabledCount,omitempty" xml:"EnabledCount,omitempty"`
 	// The severity level.
+	//
+	// example:
+	//
+	// low
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The types of policies of each severity level.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2886,8 +4088,16 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsDeny struct {
 	// The severity level.
+	//
+	// example:
+	//
+	// low
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The number of deployments that are blocked.
+	//
+	// example:
+	//
+	// 2
 	Violations *int64 `json:"Violations,omitempty" xml:"Violations,omitempty"`
 }
 
@@ -2911,8 +4121,16 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsWarn struct {
 	// The severity level.
+	//
+	// example:
+	//
+	// low
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The number of deployments that have triggered alerting.
+	//
+	// example:
+	//
+	// 2
 	Violations *string `json:"Violations,omitempty" xml:"Violations,omitempty"`
 }
 
@@ -2961,12 +4179,28 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny struct {
 	// The description of the policy.
+	//
+	// example:
+	//
+	// Restricts secrets used in pod envs
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
 	// The name of the policy.
+	//
+	// example:
+	//
+	// ACKPSPCapabilities
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The severity level of the policy.
+	//
+	// example:
+	//
+	// low
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The number of times that the policy blocks deployments.
+	//
+	// example:
+	//
+	// 2
 	Violations *int64 `json:"Violations,omitempty" xml:"Violations,omitempty"`
 }
 
@@ -3000,12 +4234,28 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn struct {
 	// The description of the policy.
+	//
+	// example:
+	//
+	// Restricts secrets used in pod envs
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
 	// The name of the policy.
+	//
+	// example:
+	//
+	// ACKPSPCapabilities
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The severity level of the policy.
+	//
+	// example:
+	//
+	// low
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The number of times that the policy generates alerts.
+	//
+	// example:
+	//
+	// 2
 	Violations *int64 `json:"Violations,omitempty" xml:"Violations,omitempty"`
 }
 
@@ -3068,8 +4318,20 @@ func (s *DescribePolicyGovernanceInClusterResponse) SetBody(v *DescribePolicyGov
 
 type DescribePolicyInstancesRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c102fe5f1ee5d4c87a68121a77d8b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACKNoEnvVarSecrets
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -3095,6 +4357,10 @@ type DescribePolicyInstancesResponseBody struct {
 	// A list of policy instances.
 	Policies []*DescribePolicyInstancesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 5BE4C329-DCC2-5B61-8F66-112B7D7FC712
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3118,31 +4384,68 @@ func (s *DescribePolicyInstancesResponseBody) SetRequestId(v string) *DescribePo
 
 type DescribePolicyInstancesResponseBodyPolicies struct {
 	// The ID of the associated cluster.
+	//
+	// example:
+	//
+	// cd0e6882394f7496589837cac3585****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the policy instance.
+	//
+	// example:
+	//
+	// no-env-var-secrets-****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The action of the policy. Valid values:
 	//
-	// *   deny: blocks deployments that match the policy.
-	// *   warn: generates alerts for deployments that match the policy.
+	// 	- deny: blocks deployments that match the policy.
+	//
+	// 	- warn: generates alerts for deployments that match the policy.
+	//
+	// example:
+	//
+	// warn
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
 	// The type of the policy.
+	//
+	// example:
+	//
+	// k8s-general
 	PolicyCategory *string `json:"PolicyCategory,omitempty" xml:"PolicyCategory,omitempty"`
 	// The description of the policy.
+	//
+	// example:
+	//
+	// Restricts secrets used in pod envs
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
 	// The name of the policy.
+	//
+	// example:
+	//
+	// ACKPSPCapabilities
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The parameters of the policy instance.
 	PolicyParameters map[string]*string `json:"PolicyParameters,omitempty" xml:"PolicyParameters,omitempty"`
 	// The applicable scope of the policy instance.
 	//
-	// A value of \* indicates all namespaces. This is the default value.
+	// A value of \\	- indicates all namespaces. This is the default value.
 	//
 	// Multiple namespaces are separated by commas (,).
+	//
+	// example:
+	//
+	// *
 	PolicyScope *string `json:"PolicyScope,omitempty" xml:"PolicyScope,omitempty"`
 	// The severity level of the policy.
+	//
+	// example:
+	//
+	// low
 	PolicySeverity *string `json:"PolicySeverity,omitempty" xml:"PolicySeverity,omitempty"`
 	// The total number of deployments that match the policy in the associated cluster, including the deployments that are blocked and the deployments that have triggered alerting.
+	//
+	// example:
+	//
+	// 2
 	TotalViolations *int64 `json:"TotalViolations,omitempty" xml:"TotalViolations,omitempty"`
 }
 
@@ -3235,6 +4538,12 @@ func (s *DescribePolicyInstancesResponse) SetBody(v *DescribePolicyInstancesResp
 
 type DescribePolicyInstancesStatusRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c676decda7b8148d69a9aba751877****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -3255,6 +4564,10 @@ type DescribePolicyInstancesStatusResponseBody struct {
 	// The number of policy instances of each policy type.
 	Policies *DescribePolicyInstancesStatusResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 5D89C59A-A7EB-5BF8-B094-6479175346CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3303,16 +4616,36 @@ func (s *DescribePolicyInstancesStatusResponseBodyPolicies) SetSeverityInfo(v []
 
 type DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances struct {
 	// The type of the policy.
+	//
+	// example:
+	//
+	// compliance
 	PolicyCategory *string `json:"PolicyCategory,omitempty" xml:"PolicyCategory,omitempty"`
 	// The associated clusters in which the policy instances are deployed.
 	PolicyClusters []*DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters `json:"PolicyClusters,omitempty" xml:"PolicyClusters,omitempty" type:"Repeated"`
 	// The description of the policy.
+	//
+	// example:
+	//
+	// Restricts use of the cluster-admin role.
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
 	// The number of policy instances that are deployed. If this parameter is empty, no policy instance is deployed.
+	//
+	// example:
+	//
+	// 2
 	PolicyInstancesCount *int64 `json:"PolicyInstancesCount,omitempty" xml:"PolicyInstancesCount,omitempty"`
 	// The name of the policy.
+	//
+	// example:
+	//
+	// ACKRestrictRoleBindings
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The severity level of the policy.
+	//
+	// example:
+	//
+	// low
 	PolicySeverity *string `json:"PolicySeverity,omitempty" xml:"PolicySeverity,omitempty"`
 }
 
@@ -3356,8 +4689,16 @@ func (s *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances) SetPo
 
 type DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters struct {
 	// The ID of the associated cluster.
+	//
+	// example:
+	//
+	// c639e5310e73e4a29ab18d6330a633****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The status of the deployment.
+	//
+	// example:
+	//
+	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3381,8 +4722,16 @@ func (s *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyC
 
 type DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo struct {
 	// The number of policy instances.
+	//
+	// example:
+	//
+	// 2
 	SeverityCount *string `json:"SeverityCount,omitempty" xml:"SeverityCount,omitempty"`
 	// The severity level.
+	//
+	// example:
+	//
+	// low
 	SeverityType *string `json:"SeverityType,omitempty" xml:"SeverityType,omitempty"`
 }
 
@@ -3435,6 +4784,10 @@ func (s *DescribePolicyInstancesStatusResponse) SetBody(v *DescribePolicyInstanc
 
 type DescribeRegionsRequest struct {
 	// The language. Valid values: zh and en.
+	//
+	// example:
+	//
+	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 }
 
@@ -3455,6 +4808,10 @@ type DescribeRegionsResponseBody struct {
 	// A list of available regions that are returned.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C0EE05F4-6C1D-5993-B028-B569F9ED6B51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3478,8 +4835,16 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 
 type DescribeRegionsResponseBodyRegions struct {
 	// The name of the region.
+	//
+	// example:
+	//
+	// China (Beijing)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3532,6 +4897,15 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 
 type DescribeUserPermissionsRequest struct {
 	// The ID of the RAM user that you want to query.
+	//
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// 21175****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -3552,6 +4926,10 @@ type DescribeUserPermissionsResponseBody struct {
 	// The details about the permissions of the RAM user.
 	Permissions []*DescribeUserPermissionsResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// EA06613B-37A3-549E-BAE0-E4AD8A6E93D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3576,21 +4954,41 @@ func (s *DescribeUserPermissionsResponseBody) SetRequestId(v string) *DescribeUs
 type DescribeUserPermissionsResponseBodyPermissions struct {
 	// The authorization setting. Valid values:
 	//
-	// *   {cluster_id} is returned if the permissions are scoped to a cluster.
-	// *   {cluster_id}/{namespace} is returned if the permissions are scoped to a namespace of a cluster.
-	// *   all-clusters is returned if the permissions are scoped to all clusters.
+	// 	- {cluster_id} is returned if the permissions are scoped to a cluster.
+	//
+	// 	- {cluster_id}/{namespace} is returned if the permissions are scoped to a namespace of a cluster.
+	//
+	// 	- all-clusters is returned if the permissions are scoped to all clusters.
+	//
+	// example:
+	//
+	// cffef3c9c7ba145b083292942a2c3****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The authorization type. Valid values:
 	//
-	// *   cluster: indicates that the permissions are scoped to a cluster.
-	// *   namespace: indicates that the permissions are scoped to a namespace of a cluster.
+	// 	- cluster: indicates that the permissions are scoped to a cluster.
+	//
+	// 	- namespace: indicates that the permissions are scoped to a namespace of a cluster.
+	//
+	// example:
+	//
+	// cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The name of the custom role. If a custom role is assigned, the value is the name of the assigned custom role.
+	//
+	// example:
+	//
+	// view
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	// The type of predefined role. Valid values:
 	//
-	// *   admin: administrator
-	// *   dev: developer
+	// 	- admin: administrator
+	//
+	// 	- dev: developer
+	//
+	// example:
+	//
+	// dev
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
@@ -3653,10 +5051,26 @@ func (s *DescribeUserPermissionsResponse) SetBody(v *DescribeUserPermissionsResp
 
 type DetachClusterFromHubRequest struct {
 	// The ID of the request.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cb09fda0dc2f94a8397c76638c7ec****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The operation that you want to perform. Set the value to **DetachClusterFromHub**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["c1c731554c1ec4a1ca9bb690ff9ed****"]
 	ClusterIds *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
 	// Example 1
+	//
+	// example:
+	//
+	// false
 	DetachFromMesh *bool `json:"DetachFromMesh,omitempty" xml:"DetachFromMesh,omitempty"`
 }
 
@@ -3685,11 +5099,22 @@ func (s *DetachClusterFromHubRequest) SetDetachFromMesh(v bool) *DetachClusterFr
 
 type DetachClusterFromHubResponseBody struct {
 	// Zhishi
+	//
+	// example:
+	//
+	// cc490b1e67ccc43a784727f29f33e****
 	ClusterId         *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ManagedClusterIds []*string `json:"ManagedClusterIds,omitempty" xml:"ManagedClusterIds,omitempty" type:"Repeated"`
 	// You can call the DetachClusterFromHub operation to disassociate clusters from a master instance.
+	//
+	// example:
+	//
+	// 4412F213-DBCD-5D1B-A9A1-F6C26C6C19D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// T-623a96b7bbeaac074b00****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DetachClusterFromHubResponseBody) String() string {
@@ -3751,22 +5176,56 @@ func (s *DetachClusterFromHubResponse) SetBody(v *DetachClusterFromHubResponseBo
 
 type GrantUserPermissionRequest struct {
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c102fe5f1ee5d4c87a68121a77d8b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The entity to which the permissions are granted. A value of `true` indicates that the permissions are granted to a RAM user. A value of `false` indicates that the permissions are granted to a RAM role.
+	//
+	// example:
+	//
+	// false
 	IsRamRole *bool `json:"IsRamRole,omitempty" xml:"IsRamRole,omitempty"`
 	// The namespace to which the permissions are scoped. By default, this parameter is empty when you set RoleType to cluster.
+	//
+	// example:
+	//
+	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The predefined role that you want to assign. Valid values:
 	//
-	// *   admin: the administrator role.
-	// *   dev: the developer role.
+	// 	- admin: the administrator role.
+	//
+	// 	- dev: the developer role.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	// The authorization type. Valid values:
 	//
-	// *   cluster: specifies that the permissions are scoped to a master instance.
-	// *   namespace: specifies that the permissions are scoped to a namespace of a cluster.
+	// 	- cluster: specifies that the permissions are scoped to a master instance.
+	//
+	// 	- namespace: specifies that the permissions are scoped to a namespace of a cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cluster
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The ID of the RAM user or RAM role.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2176****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -3810,6 +5269,10 @@ func (s *GrantUserPermissionRequest) SetUserId(v string) *GrantUserPermissionReq
 
 type GrantUserPermissionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2D676EFC-8C04-5CCE-A08E-BB97D24B47E8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3859,6 +5322,12 @@ type GrantUserPermissionsRequest struct {
 	// The list of permissions that you want to grant to the RAM user.
 	Permissions []*GrantUserPermissionsRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 	// The ID of the RAM user.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2367****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -3883,22 +5352,49 @@ func (s *GrantUserPermissionsRequest) SetUserId(v string) *GrantUserPermissionsR
 type GrantUserPermissionsRequestPermissions struct {
 	// The master instance ID.
 	//
-	// *   When the role_type parameter is set to all-clusters, set the parameter to an empty string.
+	// 	- When the role_type parameter is set to all-clusters, set the parameter to an empty string.
+	//
+	// example:
+	//
+	// cf67bdb0ffcb349ecabc1ca70da78****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The entity to which the permissions are granted. A value of `true` indicates that the permissions are granted to a RAM user. A value of `false` indicates that the permissions are granted to a RAM role.
+	//
+	// example:
+	//
+	// true
 	IsRamRole *bool `json:"IsRamRole,omitempty" xml:"IsRamRole,omitempty"`
 	// The namespace to which the permissions are scoped. By default, this parameter is empty when you set RoleType to cluster.
+	//
+	// example:
+	//
+	// test
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The predefined role that you want to assign. Valid values:
 	//
-	// *   admin: the administrator role.
-	// *   dev: the developer role.
+	// 	- admin: the administrator role.
+	//
+	// 	- dev: the developer role.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dev
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	// The authorization type. Valid values:
 	//
-	// *   cluster: specifies that the permissions are scoped to a master instance.
-	// *   namespace: specifies that the permissions are scoped to a namespace of a cluster.
-	// *   all-clusters: specifies that the permissions are scoped to all master instances.
+	// 	- cluster: specifies that the permissions are scoped to a master instance.
+	//
+	// 	- namespace: specifies that the permissions are scoped to a namespace of a cluster.
+	//
+	// 	- all-clusters: specifies that the permissions are scoped to all master instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cluster
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
@@ -3939,6 +5435,12 @@ type GrantUserPermissionsShrinkRequest struct {
 	// The list of permissions that you want to grant to the RAM user.
 	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 	// The ID of the RAM user.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2367****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -3962,6 +5464,10 @@ func (s *GrantUserPermissionsShrinkRequest) SetUserId(v string) *GrantUserPermis
 
 type GrantUserPermissionsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 4412F213-DBCD-5D1B-A9A1-F6C26C6C19D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4011,75 +5517,154 @@ type UpdateHubClusterFeatureRequest struct {
 	// The Internet access control list (ACL). This parameter takes effect only if PublicAccessEnabled is set to true.
 	AccessControlList []*string `json:"AccessControlList,omitempty" xml:"AccessControlList,omitempty" type:"Repeated"`
 	// The ID of the EIP.
+	//
+	// example:
+	//
+	// eip-xxx
 	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	// Specifies whether to enable Argo CD. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	ArgoCDEnabled *bool `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
 	// Specifies whether to enable high availability for Argo CD. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	ArgoCDHAEnabled *bool `json:"ArgoCDHAEnabled,omitempty" xml:"ArgoCDHAEnabled,omitempty"`
 	// Specifies whether to enable ArgoEvents. Valid values:
 	//
 	// - true
+	//
 	// - false
+	//
+	// example:
+	//
+	// true
 	ArgoEventsEnabled *bool `json:"ArgoEventsEnabled,omitempty" xml:"ArgoEventsEnabled,omitempty"`
 	// Specifies whether to enable the workflow instance UI. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	ArgoServerEnabled *bool `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
 	// Specifies whether to enable the audit logging feature. Valid values:
 	//
-	// *   true: enables the audit logging feature.
-	// *   false: disables the audit logging feature.
+	// 	- true: enables the audit logging feature.
+	//
+	// 	- false: disables the audit logging feature.
+	//
+	// example:
+	//
+	// true
 	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c46979b1075f04d99b5f2b710393e5****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Specifies whether to enable the deletion protection feature for the cluster. After you enable the deletion protection feature for the cluster, you cannot delete the cluster in the console or by calling the DeleteHubCluster operation. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
 	//
 	// Default value: false.
+	//
+	// example:
+	//
+	// true
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// Specifies whether to enable Service Mesh (ASM). Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
 	// Specifies whether to enable Gateway. Valid values:
+	//
 	// - true
+	//
 	// - false
+	//
+	// example:
+	//
+	// true
 	GatewayEnabled *bool `json:"GatewayEnabled,omitempty" xml:"GatewayEnabled,omitempty"`
 	// Specifies whether to enable the monitoring dashboard feature for the workflow instance. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	MonitorEnabled *bool `json:"MonitorEnabled,omitempty" xml:"MonitorEnabled,omitempty"`
-	// The name of the master instance. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
+	// The name of the master instance. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// ack-demo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
+	//
+	// example:
+	//
+	// 0.08
 	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 	// Specifies whether to enable public domain name resolution in the Argo CD or Argo Workflow console. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" xml:"PublicAccessEnabled,omitempty"`
 	// Specifies whether to associate an elastic IP address (EIP) with the API server. Valid values:
 	//
-	// *   true: associates an EIP with the API server. You can specify ApiServerEipId. If you do not specify ApiServerEipId, the system automatically creates an EIP.
-	// *   false: disassociates an EIP from the API server.
+	// 	- true: associates an EIP with the API server. You can specify ApiServerEipId. If you do not specify ApiServerEipId, the system automatically creates an EIP.
+	//
+	// 	- false: disassociates an EIP from the API server.
+	//
+	// example:
+	//
+	// true
 	PublicApiServerEnabled *bool `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
 	// The vSwitches.
 	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// The scheduling mode of the workflow. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
-	// *   cost-optimized: cost-prioritized scheduling mode.
-	// *   stock-optimized: inventory-prioritized scheduling mode.
+	// 	- cost-optimized: cost-prioritized scheduling mode.
+	//
+	// 	- stock-optimized: inventory-prioritized scheduling mode.
+	//
+	// example:
+	//
+	// cost-optimized
 	WorkflowScheduleMode *string `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
 }
 
@@ -4185,75 +5770,154 @@ type UpdateHubClusterFeatureShrinkRequest struct {
 	// The Internet access control list (ACL). This parameter takes effect only if PublicAccessEnabled is set to true.
 	AccessControlListShrink *string `json:"AccessControlList,omitempty" xml:"AccessControlList,omitempty"`
 	// The ID of the EIP.
+	//
+	// example:
+	//
+	// eip-xxx
 	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	// Specifies whether to enable Argo CD. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	ArgoCDEnabled *bool `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
 	// Specifies whether to enable high availability for Argo CD. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	ArgoCDHAEnabled *bool `json:"ArgoCDHAEnabled,omitempty" xml:"ArgoCDHAEnabled,omitempty"`
 	// Specifies whether to enable ArgoEvents. Valid values:
 	//
 	// - true
+	//
 	// - false
+	//
+	// example:
+	//
+	// true
 	ArgoEventsEnabled *bool `json:"ArgoEventsEnabled,omitempty" xml:"ArgoEventsEnabled,omitempty"`
 	// Specifies whether to enable the workflow instance UI. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	ArgoServerEnabled *bool `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
 	// Specifies whether to enable the audit logging feature. Valid values:
 	//
-	// *   true: enables the audit logging feature.
-	// *   false: disables the audit logging feature.
+	// 	- true: enables the audit logging feature.
+	//
+	// 	- false: disables the audit logging feature.
+	//
+	// example:
+	//
+	// true
 	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c46979b1075f04d99b5f2b710393e5****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Specifies whether to enable the deletion protection feature for the cluster. After you enable the deletion protection feature for the cluster, you cannot delete the cluster in the console or by calling the DeleteHubCluster operation. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
 	//
 	// Default value: false.
+	//
+	// example:
+	//
+	// true
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// Specifies whether to enable Service Mesh (ASM). Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
 	// Specifies whether to enable Gateway. Valid values:
+	//
 	// - true
+	//
 	// - false
+	//
+	// example:
+	//
+	// true
 	GatewayEnabled *bool `json:"GatewayEnabled,omitempty" xml:"GatewayEnabled,omitempty"`
 	// Specifies whether to enable the monitoring dashboard feature for the workflow instance. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	MonitorEnabled *bool `json:"MonitorEnabled,omitempty" xml:"MonitorEnabled,omitempty"`
-	// The name of the master instance. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
+	// The name of the master instance. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// ack-demo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
+	//
+	// example:
+	//
+	// 0.08
 	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 	// Specifies whether to enable public domain name resolution in the Argo CD or Argo Workflow console. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" xml:"PublicAccessEnabled,omitempty"`
 	// Specifies whether to associate an elastic IP address (EIP) with the API server. Valid values:
 	//
-	// *   true: associates an EIP with the API server. You can specify ApiServerEipId. If you do not specify ApiServerEipId, the system automatically creates an EIP.
-	// *   false: disassociates an EIP from the API server.
+	// 	- true: associates an EIP with the API server. You can specify ApiServerEipId. If you do not specify ApiServerEipId, the system automatically creates an EIP.
+	//
+	// 	- false: disassociates an EIP from the API server.
+	//
+	// example:
+	//
+	// true
 	PublicApiServerEnabled *bool `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
 	// The vSwitches.
 	VSwitchesShrink *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
 	// The scheduling mode of the workflow. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
-	// *   cost-optimized: cost-prioritized scheduling mode.
-	// *   stock-optimized: inventory-prioritized scheduling mode.
+	// 	- cost-optimized: cost-prioritized scheduling mode.
+	//
+	// 	- stock-optimized: inventory-prioritized scheduling mode.
+	//
+	// example:
+	//
+	// cost-optimized
 	WorkflowScheduleMode *string `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
 }
 
@@ -4357,6 +6021,10 @@ func (s *UpdateHubClusterFeatureShrinkRequest) SetWorkflowScheduleMode(v string)
 
 type UpdateHubClusterFeatureResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 52C1B7DF-96C1-5214-97B6-1B0859FEAFE5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4404,20 +6072,50 @@ func (s *UpdateHubClusterFeatureResponse) SetBody(v *UpdateHubClusterFeatureResp
 
 type UpdateUserPermissionRequest struct {
 	// The ID of the master instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c8e28143817db4b039b8548d7c899****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The namespace to which the permissions are scoped. By default, this parameter is empty when you set RoleType to cluster.
+	//
+	// example:
+	//
+	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// Specifies the predefined role that you want to assign. Valid values:
 	//
-	// *   admin: the administrator role.
-	// *   dev: the developer role.
+	// 	- admin: the administrator role.
+	//
+	// 	- dev: the developer role.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	// The authorization type. Valid values:
 	//
-	// *   cluster: specifies that the permissions are scoped to a master instance.
-	// *   namespace: specifies that the permissions are scoped to a namespace of a cluster.
+	// 	- cluster: specifies that the permissions are scoped to a master instance.
+	//
+	// 	- namespace: specifies that the permissions are scoped to a namespace of a cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cluster
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The ID of the RAM user.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2176****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -4456,6 +6154,10 @@ func (s *UpdateUserPermissionRequest) SetUserId(v string) *UpdateUserPermissionR
 
 type UpdateUserPermissionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 62F5AA2B-A2C9-5135-BCE2-C2167099****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4573,6 +6275,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// You can search for API operations, call and debug API operations online, and dynamically generate executable sample code for SDKs.
+//
+// @param request - AttachClusterToHubRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachClusterToHubResponse
 func (client *Client) AttachClusterToHubWithOptions(request *AttachClusterToHubRequest, runtime *util.RuntimeOptions) (_result *AttachClusterToHubResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4616,6 +6327,13 @@ func (client *Client) AttachClusterToHubWithOptions(request *AttachClusterToHubR
 	return _result, _err
 }
 
+// Summary:
+//
+// You can search for API operations, call and debug API operations online, and dynamically generate executable sample code for SDKs.
+//
+// @param request - AttachClusterToHubRequest
+//
+// @return AttachClusterToHubResponse
 func (client *Client) AttachClusterToHub(request *AttachClusterToHubRequest) (_result *AttachClusterToHubResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachClusterToHubResponse{}
@@ -4627,11 +6345,99 @@ func (client *Client) AttachClusterToHub(request *AttachClusterToHubRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) CreateHubClusterWithOptions(request *CreateHubClusterRequest, runtime *util.RuntimeOptions) (_result *CreateHubClusterResponse, _err error) {
+// Summary:
+//
+// 更新资源组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		query["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResourceGroup"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新资源组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a master instance in Alibaba Cloud Distributed Cloud Container Platform (ACK One).
+//
+// @param tmpReq - CreateHubClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHubClusterResponse
+func (client *Client) CreateHubClusterWithOptions(tmpReq *CreateHubClusterRequest, runtime *util.RuntimeOptions) (_result *CreateHubClusterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateHubClusterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApiServerPublicEip)) {
 		body["ApiServerPublicEip"] = request.ApiServerPublicEip
@@ -4682,7 +6488,8 @@ func (client *Client) CreateHubClusterWithOptions(request *CreateHubClusterReque
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateHubCluster"),
@@ -4704,6 +6511,13 @@ func (client *Client) CreateHubClusterWithOptions(request *CreateHubClusterReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a master instance in Alibaba Cloud Distributed Cloud Container Platform (ACK One).
+//
+// @param request - CreateHubClusterRequest
+//
+// @return CreateHubClusterResponse
 func (client *Client) CreateHubCluster(request *CreateHubClusterRequest) (_result *CreateHubClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateHubClusterResponse{}
@@ -4715,6 +6529,15 @@ func (client *Client) CreateHubCluster(request *CreateHubClusterRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a master cluster in Alibaba Cloud Distributed Cloud Container Platform (ACK One).
+//
+// @param tmpReq - DeleteHubClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHubClusterResponse
 func (client *Client) DeleteHubClusterWithOptions(tmpReq *DeleteHubClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteHubClusterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4762,6 +6585,13 @@ func (client *Client) DeleteHubClusterWithOptions(tmpReq *DeleteHubClusterReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a master cluster in Alibaba Cloud Distributed Cloud Container Platform (ACK One).
+//
+// @param request - DeleteHubClusterRequest
+//
+// @return DeleteHubClusterResponse
 func (client *Client) DeleteHubCluster(request *DeleteHubClusterRequest) (_result *DeleteHubClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteHubClusterResponse{}
@@ -4773,6 +6603,15 @@ func (client *Client) DeleteHubCluster(request *DeleteHubClusterRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a policy for associated clusters.
+//
+// @param tmpReq - DeletePolicyInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolicyInstanceResponse
 func (client *Client) DeletePolicyInstanceWithOptions(tmpReq *DeletePolicyInstanceRequest, runtime *util.RuntimeOptions) (_result *DeletePolicyInstanceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4820,6 +6659,13 @@ func (client *Client) DeletePolicyInstanceWithOptions(tmpReq *DeletePolicyInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a policy for associated clusters.
+//
+// @param request - DeletePolicyInstanceRequest
+//
+// @return DeletePolicyInstanceResponse
 func (client *Client) DeletePolicyInstance(request *DeletePolicyInstanceRequest) (_result *DeletePolicyInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePolicyInstanceResponse{}
@@ -4831,6 +6677,15 @@ func (client *Client) DeletePolicyInstance(request *DeletePolicyInstanceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the role-based access control (RBAC) permissions of a RAM user.
+//
+// @param request - DeleteUserPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserPermissionResponse
 func (client *Client) DeleteUserPermissionWithOptions(request *DeleteUserPermissionRequest, runtime *util.RuntimeOptions) (_result *DeleteUserPermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4868,6 +6723,13 @@ func (client *Client) DeleteUserPermissionWithOptions(request *DeleteUserPermiss
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the role-based access control (RBAC) permissions of a RAM user.
+//
+// @param request - DeleteUserPermissionRequest
+//
+// @return DeleteUserPermissionResponse
 func (client *Client) DeleteUserPermission(request *DeleteUserPermissionRequest) (_result *DeleteUserPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserPermissionResponse{}
@@ -4879,6 +6741,15 @@ func (client *Client) DeleteUserPermission(request *DeleteUserPermissionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deploys a policy instance in the clusters that are associated with a master instance.
+//
+// @param tmpReq - DeployPolicyInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployPolicyInstanceResponse
 func (client *Client) DeployPolicyInstanceWithOptions(tmpReq *DeployPolicyInstanceRequest, runtime *util.RuntimeOptions) (_result *DeployPolicyInstanceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4938,6 +6809,13 @@ func (client *Client) DeployPolicyInstanceWithOptions(tmpReq *DeployPolicyInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Deploys a policy instance in the clusters that are associated with a master instance.
+//
+// @param request - DeployPolicyInstanceRequest
+//
+// @return DeployPolicyInstanceResponse
 func (client *Client) DeployPolicyInstance(request *DeployPolicyInstanceRequest) (_result *DeployPolicyInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeployPolicyInstanceResponse{}
@@ -4949,6 +6827,15 @@ func (client *Client) DeployPolicyInstance(request *DeployPolicyInstanceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a master instance in Alibaba Cloud Distributed Cloud Container Platform (ACK One).
+//
+// @param request - DescribeHubClusterDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHubClusterDetailsResponse
 func (client *Client) DescribeHubClusterDetailsWithOptions(request *DescribeHubClusterDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeHubClusterDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4982,6 +6869,13 @@ func (client *Client) DescribeHubClusterDetailsWithOptions(request *DescribeHubC
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a master instance in Alibaba Cloud Distributed Cloud Container Platform (ACK One).
+//
+// @param request - DescribeHubClusterDetailsRequest
+//
+// @return DescribeHubClusterDetailsResponse
 func (client *Client) DescribeHubClusterDetails(request *DescribeHubClusterDetailsRequest) (_result *DescribeHubClusterDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHubClusterDetailsResponse{}
@@ -4993,6 +6887,15 @@ func (client *Client) DescribeHubClusterDetails(request *DescribeHubClusterDetai
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the kubeconfig file of a master instance.
+//
+// @param request - DescribeHubClusterKubeconfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHubClusterKubeconfigResponse
 func (client *Client) DescribeHubClusterKubeconfigWithOptions(request *DescribeHubClusterKubeconfigRequest, runtime *util.RuntimeOptions) (_result *DescribeHubClusterKubeconfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5030,6 +6933,13 @@ func (client *Client) DescribeHubClusterKubeconfigWithOptions(request *DescribeH
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the kubeconfig file of a master instance.
+//
+// @param request - DescribeHubClusterKubeconfigRequest
+//
+// @return DescribeHubClusterKubeconfigResponse
 func (client *Client) DescribeHubClusterKubeconfig(request *DescribeHubClusterKubeconfigRequest) (_result *DescribeHubClusterKubeconfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHubClusterKubeconfigResponse{}
@@ -5041,6 +6951,15 @@ func (client *Client) DescribeHubClusterKubeconfig(request *DescribeHubClusterKu
 	return _result, _err
 }
 
+// Summary:
+//
+// 查查HUB集群日志
+//
+// @param request - DescribeHubClusterLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHubClusterLogsResponse
 func (client *Client) DescribeHubClusterLogsWithOptions(request *DescribeHubClusterLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeHubClusterLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5074,6 +6993,13 @@ func (client *Client) DescribeHubClusterLogsWithOptions(request *DescribeHubClus
 	return _result, _err
 }
 
+// Summary:
+//
+// 查查HUB集群日志
+//
+// @param request - DescribeHubClusterLogsRequest
+//
+// @return DescribeHubClusterLogsResponse
 func (client *Client) DescribeHubClusterLogs(request *DescribeHubClusterLogsRequest) (_result *DescribeHubClusterLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHubClusterLogsResponse{}
@@ -5085,11 +7011,26 @@ func (client *Client) DescribeHubClusterLogs(request *DescribeHubClusterLogsRequ
 	return _result, _err
 }
 
-func (client *Client) DescribeHubClustersWithOptions(request *DescribeHubClustersRequest, runtime *util.RuntimeOptions) (_result *DescribeHubClustersResponse, _err error) {
-	_err = util.ValidateModel(request)
+// Summary:
+//
+// Queries the Distributed Cloud Container Platform for Kubernetes (ACK One) clusters that are created by the current user.
+//
+// @param tmpReq - DescribeHubClustersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHubClustersResponse
+func (client *Client) DescribeHubClustersWithOptions(tmpReq *DescribeHubClustersRequest, runtime *util.RuntimeOptions) (_result *DescribeHubClustersResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DescribeHubClustersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Profile)) {
 		query["Profile"] = request.Profile
@@ -5097,6 +7038,10 @@ func (client *Client) DescribeHubClustersWithOptions(request *DescribeHubCluster
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5122,6 +7067,13 @@ func (client *Client) DescribeHubClustersWithOptions(request *DescribeHubCluster
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Distributed Cloud Container Platform for Kubernetes (ACK One) clusters that are created by the current user.
+//
+// @param request - DescribeHubClustersRequest
+//
+// @return DescribeHubClustersResponse
 func (client *Client) DescribeHubClusters(request *DescribeHubClustersRequest) (_result *DescribeHubClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHubClustersResponse{}
@@ -5133,6 +7085,15 @@ func (client *Client) DescribeHubClusters(request *DescribeHubClustersRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Alibaba Cloud CLI allows you to search for API operations, call and debug API operations online, and dynamically generate executable sample code for SDKs.
+//
+// @param request - DescribeManagedClustersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeManagedClustersResponse
 func (client *Client) DescribeManagedClustersWithOptions(request *DescribeManagedClustersRequest, runtime *util.RuntimeOptions) (_result *DescribeManagedClustersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5166,6 +7127,13 @@ func (client *Client) DescribeManagedClustersWithOptions(request *DescribeManage
 	return _result, _err
 }
 
+// Summary:
+//
+// Alibaba Cloud CLI allows you to search for API operations, call and debug API operations online, and dynamically generate executable sample code for SDKs.
+//
+// @param request - DescribeManagedClustersRequest
+//
+// @return DescribeManagedClustersResponse
 func (client *Client) DescribeManagedClusters(request *DescribeManagedClustersRequest) (_result *DescribeManagedClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeManagedClustersResponse{}
@@ -5177,6 +7145,15 @@ func (client *Client) DescribeManagedClusters(request *DescribeManagedClustersRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of policies.
+//
+// @param request - DescribePoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePoliciesResponse
 func (client *Client) DescribePoliciesWithOptions(runtime *util.RuntimeOptions) (_result *DescribePoliciesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -5199,6 +7176,11 @@ func (client *Client) DescribePoliciesWithOptions(runtime *util.RuntimeOptions) 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of policies.
+//
+// @return DescribePoliciesResponse
 func (client *Client) DescribePolicies() (_result *DescribePoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePoliciesResponse{}
@@ -5210,6 +7192,15 @@ func (client *Client) DescribePolicies() (_result *DescribePoliciesResponse, _er
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries detailed information about a policy.
+//
+// @param request - DescribePolicyDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolicyDetailsResponse
 func (client *Client) DescribePolicyDetailsWithOptions(request *DescribePolicyDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5243,6 +7234,13 @@ func (client *Client) DescribePolicyDetailsWithOptions(request *DescribePolicyDe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries detailed information about a policy.
+//
+// @param request - DescribePolicyDetailsRequest
+//
+// @return DescribePolicyDetailsResponse
 func (client *Client) DescribePolicyDetails(request *DescribePolicyDetailsRequest) (_result *DescribePolicyDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePolicyDetailsResponse{}
@@ -5254,6 +7252,15 @@ func (client *Client) DescribePolicyDetails(request *DescribePolicyDetailsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries detailed information about the policies used by the clusters that are associated with a master instance.
+//
+// @param request - DescribePolicyGovernanceInClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolicyGovernanceInClusterResponse
 func (client *Client) DescribePolicyGovernanceInClusterWithOptions(request *DescribePolicyGovernanceInClusterRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyGovernanceInClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5287,6 +7294,13 @@ func (client *Client) DescribePolicyGovernanceInClusterWithOptions(request *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries detailed information about the policies used by the clusters that are associated with a master instance.
+//
+// @param request - DescribePolicyGovernanceInClusterRequest
+//
+// @return DescribePolicyGovernanceInClusterResponse
 func (client *Client) DescribePolicyGovernanceInCluster(request *DescribePolicyGovernanceInClusterRequest) (_result *DescribePolicyGovernanceInClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePolicyGovernanceInClusterResponse{}
@@ -5298,6 +7312,15 @@ func (client *Client) DescribePolicyGovernanceInCluster(request *DescribePolicyG
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries policy instances that are deployed in the clusters associated with a master instance.
+//
+// @param request - DescribePolicyInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolicyInstancesResponse
 func (client *Client) DescribePolicyInstancesWithOptions(request *DescribePolicyInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5335,6 +7358,13 @@ func (client *Client) DescribePolicyInstancesWithOptions(request *DescribePolicy
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries policy instances that are deployed in the clusters associated with a master instance.
+//
+// @param request - DescribePolicyInstancesRequest
+//
+// @return DescribePolicyInstancesResponse
 func (client *Client) DescribePolicyInstances(request *DescribePolicyInstancesRequest) (_result *DescribePolicyInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePolicyInstancesResponse{}
@@ -5346,6 +7376,15 @@ func (client *Client) DescribePolicyInstances(request *DescribePolicyInstancesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries detailed information about policy instances that are deployed in the clusters associated with a master instance.
+//
+// @param request - DescribePolicyInstancesStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolicyInstancesStatusResponse
 func (client *Client) DescribePolicyInstancesStatusWithOptions(request *DescribePolicyInstancesStatusRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyInstancesStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5379,6 +7418,13 @@ func (client *Client) DescribePolicyInstancesStatusWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries detailed information about policy instances that are deployed in the clusters associated with a master instance.
+//
+// @param request - DescribePolicyInstancesStatusRequest
+//
+// @return DescribePolicyInstancesStatusResponse
 func (client *Client) DescribePolicyInstancesStatus(request *DescribePolicyInstancesStatusRequest) (_result *DescribePolicyInstancesStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePolicyInstancesStatusResponse{}
@@ -5390,6 +7436,15 @@ func (client *Client) DescribePolicyInstancesStatus(request *DescribePolicyInsta
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询地域列表
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5419,6 +7474,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询地域列表
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -5430,6 +7492,15 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the permissions of a Resource Access Management (RAM) user.
+//
+// @param request - DescribeUserPermissionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserPermissionsResponse
 func (client *Client) DescribeUserPermissionsWithOptions(request *DescribeUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *DescribeUserPermissionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5463,6 +7534,13 @@ func (client *Client) DescribeUserPermissionsWithOptions(request *DescribeUserPe
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the permissions of a Resource Access Management (RAM) user.
+//
+// @param request - DescribeUserPermissionsRequest
+//
+// @return DescribeUserPermissionsResponse
 func (client *Client) DescribeUserPermissions(request *DescribeUserPermissionsRequest) (_result *DescribeUserPermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserPermissionsResponse{}
@@ -5474,6 +7552,15 @@ func (client *Client) DescribeUserPermissions(request *DescribeUserPermissionsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Alibaba Cloud CLI allows you to search for API operations, call and debug API operations online, and dynamically generate executable sample code for SDKs.
+//
+// @param request - DetachClusterFromHubRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachClusterFromHubResponse
 func (client *Client) DetachClusterFromHubWithOptions(request *DetachClusterFromHubRequest, runtime *util.RuntimeOptions) (_result *DetachClusterFromHubResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5517,6 +7604,13 @@ func (client *Client) DetachClusterFromHubWithOptions(request *DetachClusterFrom
 	return _result, _err
 }
 
+// Summary:
+//
+// Alibaba Cloud CLI allows you to search for API operations, call and debug API operations online, and dynamically generate executable sample code for SDKs.
+//
+// @param request - DetachClusterFromHubRequest
+//
+// @return DetachClusterFromHubResponse
 func (client *Client) DetachClusterFromHub(request *DetachClusterFromHubRequest) (_result *DetachClusterFromHubResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachClusterFromHubResponse{}
@@ -5528,6 +7622,15 @@ func (client *Client) DetachClusterFromHub(request *DetachClusterFromHubRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Schema of Response
+//
+// @param request - GrantUserPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantUserPermissionResponse
 func (client *Client) GrantUserPermissionWithOptions(request *GrantUserPermissionRequest, runtime *util.RuntimeOptions) (_result *GrantUserPermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5581,6 +7684,13 @@ func (client *Client) GrantUserPermissionWithOptions(request *GrantUserPermissio
 	return _result, _err
 }
 
+// Summary:
+//
+// Schema of Response
+//
+// @param request - GrantUserPermissionRequest
+//
+// @return GrantUserPermissionResponse
 func (client *Client) GrantUserPermission(request *GrantUserPermissionRequest) (_result *GrantUserPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GrantUserPermissionResponse{}
@@ -5592,13 +7702,17 @@ func (client *Client) GrantUserPermission(request *GrantUserPermissionRequest) (
 	return _result, _err
 }
 
-/**
- * @deprecated : GrantUserPermissions is deprecated, please use adcp::2022-01-01::GrantUserPermission instead.
- *
- * @param tmpReq GrantUserPermissionsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GrantUserPermissionsResponse
- */
+// Deprecated: OpenAPI GrantUserPermissions is deprecated, please use adcp::2022-01-01::GrantUserPermission instead.
+//
+// Summary:
+//
+// Grant permissions to a Resource Access Management (RAM) user.
+//
+// @param tmpReq - GrantUserPermissionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantUserPermissionsResponse
 // Deprecated
 func (client *Client) GrantUserPermissionsWithOptions(tmpReq *GrantUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *GrantUserPermissionsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
@@ -5643,12 +7757,15 @@ func (client *Client) GrantUserPermissionsWithOptions(tmpReq *GrantUserPermissio
 	return _result, _err
 }
 
-/**
- * @deprecated : GrantUserPermissions is deprecated, please use adcp::2022-01-01::GrantUserPermission instead.
- *
- * @param request GrantUserPermissionsRequest
- * @return GrantUserPermissionsResponse
- */
+// Deprecated: OpenAPI GrantUserPermissions is deprecated, please use adcp::2022-01-01::GrantUserPermission instead.
+//
+// Summary:
+//
+// Grant permissions to a Resource Access Management (RAM) user.
+//
+// @param request - GrantUserPermissionsRequest
+//
+// @return GrantUserPermissionsResponse
 // Deprecated
 func (client *Client) GrantUserPermissions(request *GrantUserPermissionsRequest) (_result *GrantUserPermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -5661,6 +7778,15 @@ func (client *Client) GrantUserPermissions(request *GrantUserPermissionsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the configurations of a Container Service for Kubernetes (ACK) cluster that serves as a master instance.
+//
+// @param tmpReq - UpdateHubClusterFeatureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHubClusterFeatureResponse
 func (client *Client) UpdateHubClusterFeatureWithOptions(tmpReq *UpdateHubClusterFeatureRequest, runtime *util.RuntimeOptions) (_result *UpdateHubClusterFeatureResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5772,6 +7898,13 @@ func (client *Client) UpdateHubClusterFeatureWithOptions(tmpReq *UpdateHubCluste
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the configurations of a Container Service for Kubernetes (ACK) cluster that serves as a master instance.
+//
+// @param request - UpdateHubClusterFeatureRequest
+//
+// @return UpdateHubClusterFeatureResponse
 func (client *Client) UpdateHubClusterFeature(request *UpdateHubClusterFeatureRequest) (_result *UpdateHubClusterFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateHubClusterFeatureResponse{}
@@ -5783,6 +7916,15 @@ func (client *Client) UpdateHubClusterFeature(request *UpdateHubClusterFeatureRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the role-based access control (RBAC) permissions of a RAM user.
+//
+// @param request - UpdateUserPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserPermissionResponse
 func (client *Client) UpdateUserPermissionWithOptions(request *UpdateUserPermissionRequest, runtime *util.RuntimeOptions) (_result *UpdateUserPermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5832,6 +7974,13 @@ func (client *Client) UpdateUserPermissionWithOptions(request *UpdateUserPermiss
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the role-based access control (RBAC) permissions of a RAM user.
+//
+// @param request - UpdateUserPermissionRequest
+//
+// @return UpdateUserPermissionResponse
 func (client *Client) UpdateUserPermission(request *UpdateUserPermissionRequest) (_result *UpdateUserPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserPermissionResponse{}
