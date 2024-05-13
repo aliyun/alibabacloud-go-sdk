@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -15,11 +12,23 @@ import (
 type DescribeBgpPackByIpRequest struct {
 	// The region ID of the asset to query.
 	//
-	// > You can call the [DescribeRegions](~~353250~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The IP address of the asset to query.
 	//
-	// > You can call the [DescribeInstance](~~354191~~) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 118.31.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
@@ -44,16 +53,29 @@ func (s *DescribeBgpPackByIpRequest) SetIp(v string) *DescribeBgpPackByIpRequest
 type DescribeBgpPackByIpResponseBody struct {
 	// The HTTP status code of the request.
 	//
-	// For more information about status codes, see [Common parameters](~~118841~~).
+	// For more information about status codes, see [Common parameters](https://help.aliyun.com/document_detail/118841.html).
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The configurations of the instance that is associated with the asset.
 	DdosbgpInfo *DescribeBgpPackByIpResponseBodyDdosbgpInfo `json:"DdosbgpInfo,omitempty" xml:"DdosbgpInfo,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E46A08E4-A1CD-5BE9-B580-C4D6E9BC5484
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -87,14 +109,34 @@ func (s *DescribeBgpPackByIpResponseBody) SetSuccess(v bool) *DescribeBgpPackByI
 
 type DescribeBgpPackByIpResponseBodyDdosbgpInfo struct {
 	// The basic protection threshold of the instance. Unit: Gbit/s.
+	//
+	// example:
+	//
+	// 20
 	BaseThreshold *int32 `json:"BaseThreshold,omitempty" xml:"BaseThreshold,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddosbgp-cn-n6w1r7nz****
 	DdosbgpInstanceId *string `json:"DdosbgpInstanceId,omitempty" xml:"DdosbgpInstanceId,omitempty"`
 	// The burstable protection threshold of the instance. Unit: Gbit/s.
+	//
+	// example:
+	//
+	// 301
 	ElasticThreshold *int32 `json:"ElasticThreshold,omitempty" xml:"ElasticThreshold,omitempty"`
 	// The expiration time of the instance. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1640448000000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The IP address of the asset.
+	//
+	// example:
+	//
+	// 118.31.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
@@ -132,9 +174,9 @@ func (s *DescribeBgpPackByIpResponseBodyDdosbgpInfo) SetIp(v string) *DescribeBg
 }
 
 type DescribeBgpPackByIpResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeBgpPackByIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBgpPackByIpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeBgpPackByIpResponse) String() string {
@@ -163,23 +205,53 @@ func (s *DescribeBgpPackByIpResponse) SetBody(v *DescribeBgpPackByIpResponseBody
 type DescribeCapRequest struct {
 	// The start time of the DDoS attack event. The value is a UNIX timestamp. Unit: milliseconds.
 	//
-	// > You can call the [DescribeDdosEventList](~~354236~~) operation to query the start time of each DDoS attack event that occurred on an asset.
+	// > You can call the [DescribeDdosEventList](https://help.aliyun.com/document_detail/354236.html) operation to query the start time of each DDoS attack event that occurred on an asset.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1637812279000
 	BegTime *int64 `json:"BegTime,omitempty" xml:"BegTime,omitempty"`
 	// The region ID of the asset that is under DDoS attacks. The asset is assigned a public IP address.
 	//
-	// > You can call the [DescribeRegions](~~353250~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The ID of the asset that is under DDoS attacks.
 	//
-	// > You can call the [DescribeInstance](~~354191~~) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp10bclrt56fblts****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the asset that is under DDoS attacks. Valid values:
 	//
-	// *   **ecs**: ECS instance
-	// *   **slb**: SLB instance
-	// *   **eip**: EIP
+	// 	- **ecs**: ECS instance
+	//
+	// 	- **slb**: SLB instance
+	//
+	// 	- **eip**: EIP
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The public IP address of the asset that is under DDoS attacks.
+	//
+	// example:
+	//
+	// 121.199.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 }
 
@@ -220,6 +292,10 @@ type DescribeCapResponseBody struct {
 	// The download link to the traffic data that is captured when a DDoS attack event occurs.
 	CapUrl *DescribeCapResponseBodyCapUrl `json:"CapUrl,omitempty" xml:"CapUrl,omitempty" type:"Struct"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// C728D7E9-9A39-52E0-966B-5C33118BDBB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -243,6 +319,10 @@ func (s *DescribeCapResponseBody) SetRequestId(v string) *DescribeCapResponseBod
 
 type DescribeCapResponseBodyCapUrl struct {
 	// The download link to the traffic data.
+	//
+	// example:
+	//
+	// http://beaver-pack****.oss-cn-hangzhou.aliyuncs.com/ddos-2021112511-121.89.XX.XX.cap?Expires=1637824408&OSSAccessKeyId=LTAIXu2lJhw3****&Signature=KKSzOMSUajtwcqfqxkU1nK69d4****
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -260,9 +340,9 @@ func (s *DescribeCapResponseBodyCapUrl) SetUrl(v string) *DescribeCapResponseBod
 }
 
 type DescribeCapResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCapResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCapResponse) String() string {
@@ -291,13 +371,27 @@ func (s *DescribeCapResponse) SetBody(v *DescribeCapResponseBody) *DescribeCapRe
 type DescribeDdosCountRequest struct {
 	// The region ID of the asset to query.
 	//
-	// > You can call the [DescribeRegions](~~353250~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The type of the asset to query. Valid values:
 	//
-	// *   **ecs**: ECS instance
-	// *   **slb**: SLB instance
-	// *   **eip**: EIP
+	// 	- **ecs**: ECS instance
+	//
+	// 	- **slb**: SLB instance
+	//
+	// 	- **eip**: EIP
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
@@ -323,6 +417,10 @@ type DescribeDdosCountResponseBody struct {
 	// The number of assets that are under DDoS attacks.
 	DdosCount *DescribeDdosCountResponseBodyDdosCount `json:"DdosCount,omitempty" xml:"DdosCount,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7D66C762-324E-51CE-B461-2007996087B2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -346,10 +444,22 @@ func (s *DescribeDdosCountResponseBody) SetRequestId(v string) *DescribeDdosCoun
 
 type DescribeDdosCountResponseBodyDdosCount struct {
 	// The number of assets for which blackhole filtering is triggered.
+	//
+	// example:
+	//
+	// 0
 	BlackholeCount *int32 `json:"BlackholeCount,omitempty" xml:"BlackholeCount,omitempty"`
 	// The number of assets for which traffic scrubbing is triggered.
+	//
+	// example:
+	//
+	// 4
 	DefenseCount *int32 `json:"DefenseCount,omitempty" xml:"DefenseCount,omitempty"`
 	// The total number of assets.
+	//
+	// example:
+	//
+	// 0
 	InstacenCount *int32 `json:"InstacenCount,omitempty" xml:"InstacenCount,omitempty"`
 }
 
@@ -377,9 +487,9 @@ func (s *DescribeDdosCountResponseBodyDdosCount) SetInstacenCount(v int32) *Desc
 }
 
 type DescribeDdosCountResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDdosCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDdosCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDdosCountResponse) String() string {
@@ -408,7 +518,13 @@ func (s *DescribeDdosCountResponse) SetBody(v *DescribeDdosCountResponseBody) *D
 type DescribeDdosCreditRequest struct {
 	// The ID of the region.
 	//
-	// > You can call the [DescribeRegions](~~353250~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 }
 
@@ -429,11 +545,20 @@ type DescribeDdosCreditResponseBody struct {
 	// The details of the security credit score of the current Alibaba Cloud account in the specified region.
 	DdosCredit *DescribeDdosCreditResponseBodyDdosCredit `json:"DdosCredit,omitempty" xml:"DdosCredit,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E1F7BD73-8E9D-58D9-8658-CFC97112C641
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -462,17 +587,34 @@ func (s *DescribeDdosCreditResponseBody) SetSuccess(v bool) *DescribeDdosCreditR
 
 type DescribeDdosCreditResponseBodyDdosCredit struct {
 	// The time period after which blackhole filtering is automatically deactivated in the specified region. Unit: minutes.
+	//
+	// example:
+	//
+	// 150
 	BlackholeTime *int32 `json:"BlackholeTime,omitempty" xml:"BlackholeTime,omitempty"`
 	// The security credit score. The full score is **1000**.
+	//
+	// example:
+	//
+	// 550
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The security credit level. Valid values:
 	//
-	// *   **A**: outstanding
-	// *   **B**: excellent
-	// *   **C**: good
-	// *   **D**: average
-	// *   **E**: poor
-	// *   **F**: poorer
+	// 	- **A**: outstanding
+	//
+	// 	- **B**: excellent
+	//
+	// 	- **C**: good
+	//
+	// 	- **D**: average
+	//
+	// 	- **E**: poor
+	//
+	// 	- **F**: poorer
+	//
+	// example:
+	//
+	// D
 	ScoreLevel *string `json:"ScoreLevel,omitempty" xml:"ScoreLevel,omitempty"`
 }
 
@@ -500,9 +642,9 @@ func (s *DescribeDdosCreditResponseBodyDdosCredit) SetScoreLevel(v string) *Desc
 }
 
 type DescribeDdosCreditResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDdosCreditResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDdosCreditResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDdosCreditResponse) String() string {
@@ -530,24 +672,56 @@ func (s *DescribeDdosCreditResponse) SetBody(v *DescribeDdosCreditResponseBody) 
 
 type DescribeDdosEventListRequest struct {
 	// The number of the page to return. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The region ID of the asset to query.
 	//
-	// > You can call the [DescribeRegions](~~353250~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The ID of asset to query.
 	//
-	// > You can call the [DescribeInstance](~~354191~~) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp10bclrt56fblts****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the asset to query. Valid values:
 	//
-	// *   **ecs**: ECS instance
-	// *   **slb**: SLB instance
-	// *   **eip**: EIP
+	// 	- **ecs**: ECS instance
+	//
+	// 	- **slb**: SLB instance
+	//
+	// 	- **eip**: EIP
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The IP address of the asset to query.
+	//
+	// example:
+	//
+	// 121.199.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -593,8 +767,16 @@ type DescribeDdosEventListResponseBody struct {
 	// An array that consists of the details of a DDoS attack event.
 	DdosEventList *DescribeDdosEventListResponseBodyDdosEventList `json:"DdosEventList,omitempty" xml:"DdosEventList,omitempty" type:"Struct"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// BC0907F8-A9F3-5E11-977B-D59CD98C64ED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of DDoS attack events.
+	//
+	// example:
+	//
+	// 1
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -641,26 +823,53 @@ func (s *DescribeDdosEventListResponseBodyDdosEventList) SetDdosEvent(v []*Descr
 type DescribeDdosEventListResponseBodyDdosEventListDdosEvent struct {
 	// The status of the DDoS attack event. Valid values:
 	//
-	// *   **mitigating**: indicates that traffic scrubbing is in progress.
-	// *   **blackholed**: indicates that blackhole filtering is triggered for the asset.
-	// *   **normal**: indicates that the DDoS attack event ends.
+	// 	- **mitigating**: indicates that traffic scrubbing is in progress.
+	//
+	// 	- **blackholed**: indicates that blackhole filtering is triggered for the asset.
+	//
+	// 	- **normal**: indicates that the DDoS attack event ends.
+	//
+	// example:
+	//
+	// normal
 	DdosStatus *string `json:"DdosStatus,omitempty" xml:"DdosStatus,omitempty"`
 	// The type of the DDoS attack event. Valid values:
 	//
-	// *   **defense**: an attack event that triggers traffic scrubbing
-	// *   **blackhole**: an attack event that triggers blackhole filtering
+	// 	- **defense**: an attack event that triggers traffic scrubbing
+	//
+	// 	- **blackhole**: an attack event that triggers blackhole filtering
+	//
+	// example:
+	//
+	// blackhole
 	DdosType *string `json:"DdosType,omitempty" xml:"DdosType,omitempty"`
 	// The time of the last attack. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// > This parameter is returned only when the asset is attacked multiple times within a DDoS attack event.
+	//
+	// example:
+	//
+	// 1637817679000
 	DelayTime *int64 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
 	// The end time of the DDoS attack event. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1637817679000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The start time of the DDoS attack event. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1637812279000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The time when blackhole filtering is deactivated. The value is a UNIX timestamp. Unit: milliseconds.
 	//
-	// > This parameter is returned only when the value of the **DdosType** parameter is **blackhole**.
+	// > This parameter is returned only when the value of the **DdosType*	- parameter is **blackhole**.
+	//
+	// example:
+	//
+	// 1637814079000
 	UnBlackholeTime *int64 `json:"UnBlackholeTime,omitempty" xml:"UnBlackholeTime,omitempty"`
 }
 
@@ -703,9 +912,9 @@ func (s *DescribeDdosEventListResponseBodyDdosEventListDdosEvent) SetUnBlackhole
 }
 
 type DescribeDdosEventListResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDdosEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDdosEventListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDdosEventListResponse) String() string {
@@ -734,20 +943,43 @@ func (s *DescribeDdosEventListResponse) SetBody(v *DescribeDdosEventListResponse
 type DescribeDdosThresholdRequest struct {
 	// The region ID of the asset.
 	//
-	// > You can call the [DescribeRegions](~~353250~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The type of the threshold. Valid values:
 	//
-	// *   **defense**: traffic scrubbing threshold
-	// *   **blackhole**: DDoS mitigation threshold
+	// 	- **defense**: traffic scrubbing threshold
+	//
+	// 	- **blackhole**: DDoS mitigation threshold
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// defense
 	DdosType *string `json:"DdosType,omitempty" xml:"DdosType,omitempty"`
 	// The ID of asset N to query.
+	//
+	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The type of the asset. Valid values:
 	//
-	// *   **ecs**: ECS instance
-	// *   **slb**: SLB instance
-	// *   **eip**: EIP
+	// 	- **ecs**: ECS instance
+	//
+	// 	- **slb**: SLB instance
+	//
+	// 	- **eip**: EIP
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
@@ -781,6 +1013,10 @@ func (s *DescribeDdosThresholdRequest) SetInstanceType(v string) *DescribeDdosTh
 
 type DescribeDdosThresholdResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// E9B3C090-55AD-59C6-979E-FCFD81E7D9E7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array that consists of the details of the threshold.
 	Thresholds *DescribeDdosThresholdResponseBodyThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
@@ -822,35 +1058,73 @@ func (s *DescribeDdosThresholdResponseBodyThresholds) SetThreshold(v []*Describe
 }
 
 type DescribeDdosThresholdResponseBodyThresholdsThreshold struct {
-	// If the value of the **DdosType** parameter is **defense**, the Bps parameter indicates the current traffic scrubbing threshold. Unit: Mbit/s.
+	// If the value of the **DdosType*	- parameter is **defense**, the Bps parameter indicates the current traffic scrubbing threshold. Unit: Mbit/s.
 	//
-	// If the value of the **DdosType** parameter is **blackhole**, the Bps parameter indicates the basic protection threshold. Unit: Mbit/s.
+	// If the value of the **DdosType*	- parameter is **blackhole**, the Bps parameter indicates the basic protection threshold. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 500
 	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	// The type of the threshold. Valid values:
 	//
-	// *   **defense**: traffic scrubbing threshold
-	// *   **blackhole**: DDoS mitigation threshold
+	// 	- **defense**: traffic scrubbing threshold
+	//
+	// 	- **blackhole**: DDoS mitigation threshold
+	//
+	// example:
+	//
+	// defense
 	DdosType *string `json:"DdosType,omitempty" xml:"DdosType,omitempty"`
 	// The burstable protection threshold (the maximum DDoS mitigation threshold). Unit: Mbit/s.
 	//
-	// > This parameter is returned only when the value of the **DdosType** parameter is **blackhole**.
+	// > This parameter is returned only when the value of the **DdosType*	- parameter is **blackhole**.
+	//
+	// example:
+	//
+	// 12310
 	ElasticBps *int32 `json:"ElasticBps,omitempty" xml:"ElasticBps,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-bp10bclrt56fblts****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IP address of the asset.
+	//
+	// example:
+	//
+	// 192.0.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// Indicates whether the threshold is automatically adjusted. Valid values:
 	//
-	// *   **true**: The scrubbing thresholds are automatically adjusted based on the traffic load on the asset.
-	// *   **false**: The scrubbing thresholds are not automatically adjusted. You must manually specify the scrubbing thresholds.
+	// 	- **true**: The scrubbing thresholds are automatically adjusted based on the traffic load on the asset.
+	//
+	// 	- **false**: The scrubbing thresholds are not automatically adjusted. You must manually specify the scrubbing thresholds.
+	//
+	// example:
+	//
+	// false
 	IsAuto *bool `json:"IsAuto,omitempty" xml:"IsAuto,omitempty"`
 	// The maximum traffic scrubbing threshold. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 1024
 	MaxBps *int32 `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
 	// The maximum packet scrubbing threshold. Unit: pps.
+	//
+	// example:
+	//
+	// 150000
 	MaxPps *int32 `json:"MaxPps,omitempty" xml:"MaxPps,omitempty"`
 	// The packet scrubbing threshold. Unit: pps.
 	//
-	// > This parameter is returned only when the value of the **DdosType** parameter is **defense**.
+	// > This parameter is returned only when the value of the **DdosType*	- parameter is **defense**.
+	//
+	// example:
+	//
+	// 150000
 	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 }
 
@@ -908,9 +1182,9 @@ func (s *DescribeDdosThresholdResponseBodyThresholdsThreshold) SetPps(v int32) *
 }
 
 type DescribeDdosThresholdResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDdosThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDdosThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDdosThresholdResponse) String() string {
@@ -938,34 +1212,76 @@ func (s *DescribeDdosThresholdResponse) SetBody(v *DescribeDdosThresholdResponse
 
 type DescribeInstanceRequest struct {
 	// The number of the page to return. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The region ID of the asset.
 	//
-	// > You can call the [DescribeRegions](~~353250~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The DDoS mitigation status of the asset. Valid values:
 	//
-	// *   **mitigating**: queries assets for which traffic scrubbing is triggered.
-	// *   **blackholed**: queries assets for which blackhole filtering is triggered.
-	// *   **normal**: queries assets that are not under DDoS attacks.
+	// 	- **mitigating**: queries assets for which traffic scrubbing is triggered.
+	//
+	// 	- **blackholed**: queries assets for which blackhole filtering is triggered.
+	//
+	// 	- **normal**: queries assets that are not under DDoS attacks.
+	//
+	// example:
+	//
+	// blackholed
 	DdosStatus *string `json:"DdosStatus,omitempty" xml:"DdosStatus,omitempty"`
 	// The ID of the asset. The formats of asset IDs vary based on the value of the **InstanceType**. parameter.
 	//
-	// *   If you set **InstanceType** to **ecs**, specify the ID of the ECS instance. For example, you can specify i-bp1cb6x80tfgocid\*\*\*\*.
-	// *   If you set **InstanceType** to **slb**, specify the ID of the SLB instance. For example, you can specify alb-vn2dqg3v31y2vd\*\*\*\*.
-	// *   If you set **InstanceType** to **eip**, specify the ID of the EIP. For example, you can specify eip-j6ce6dcx9epi7rs46\*\*\*\*.
+	// 	- If you set **InstanceType*	- to **ecs**, specify the ID of the ECS instance. For example, you can specify i-bp1cb6x80tfgocid\\*\\*\\*\\*.
+	//
+	// 	- If you set **InstanceType*	- to **slb**, specify the ID of the SLB instance. For example, you can specify alb-vn2dqg3v31y2vd\\*\\*\\*\\*.
+	//
+	// 	- If you set **InstanceType*	- to **eip**, specify the ID of the EIP. For example, you can specify eip-j6ce6dcx9epi7rs46\\*\\*\\*\\*.
+	//
+	// example:
+	//
+	// i-bp1cb6x80tfgocid****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IP address of the asset.
+	//
+	// example:
+	//
+	// 121.199.XX.XX
 	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
 	// The name of the asset.
+	//
+	// example:
+	//
+	// launch-advisor-2022****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   **ecs**: ECS instance
-	// *   **slb**: SLB instance
-	// *   **eip**: EIP
+	// 	- **ecs**: ECS instance
+	//
+	// 	- **slb**: SLB instance
+	//
+	// 	- **eip**: EIP
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -1021,8 +1337,16 @@ type DescribeInstanceResponseBody struct {
 	// An array that consists of the details of the asset.
 	InstanceList *DescribeInstanceResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C728D7E9-9A39-52E0-966B-5C33118BDBB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of the assets.
+	//
+	// example:
+	//
+	// 1
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -1068,40 +1392,90 @@ func (s *DescribeInstanceResponseBodyInstanceList) SetInstance(v []*DescribeInst
 
 type DescribeInstanceResponseBodyInstanceListInstance struct {
 	// The basic protection threshold for the asset. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 5200
 	BlackholeThreshold *int32 `json:"BlackholeThreshold,omitempty" xml:"BlackholeThreshold,omitempty"`
 	// The traffic scrubbing threshold for the asset. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 300
 	DefenseBpsThreshold *int32 `json:"DefenseBpsThreshold,omitempty" xml:"DefenseBpsThreshold,omitempty"`
 	// The packet scrubbing threshold for the asset. Unit: packets per second (pps).
+	//
+	// example:
+	//
+	// 70000
 	DefensePpsThreshold *int32 `json:"DefensePpsThreshold,omitempty" xml:"DefensePpsThreshold,omitempty"`
 	// The burstable protection threshold for the asset. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 12310
 	ElasticThreshold *int32 `json:"ElasticThreshold,omitempty" xml:"ElasticThreshold,omitempty"`
 	// The ID of the asset.
+	//
+	// example:
+	//
+	// i-bp1cb6x80tfgocid****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IP address of the asset.
+	//
+	// example:
+	//
+	// 121.199.XX.XX
 	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
 	// The name of the asset.
+	//
+	// example:
+	//
+	// launch-advisor-2021****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The DDoS mitigation status of the asset. Valid values:
 	//
-	// *   **mitigating**: indicates that traffic scrubbing is triggered for the asset.
-	// *   **blackholed**: indicates that blackhole filtering is triggered for the asset.
-	// *   **normal**: indicates that the instance is normal.
+	// 	- **mitigating**: indicates that traffic scrubbing is triggered for the asset.
+	//
+	// 	- **blackholed**: indicates that blackhole filtering is triggered for the asset.
+	//
+	// 	- **normal**: indicates that the instance is normal.
+	//
+	// example:
+	//
+	// normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   **ecs**: ECS instance
-	// *   **slb**: SLB instance
-	// *   **eip**: EIP
+	// 	- **ecs**: ECS instance
+	//
+	// 	- **slb**: SLB instance
+	//
+	// 	- **eip**: EIP
+	//
+	// example:
+	//
+	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The IP protocol that is supported by the asset. Valid values:
 	//
-	// *   **v4**: IPv4
-	// *   **v6**: IPv6
+	// 	- **v4**: IPv4
+	//
+	// 	- **v6**: IPv6
+	//
+	// example:
+	//
+	// v4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// Indicates whether the asset is associated with an Anti-DDoS Origin Basic instance. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// false
 	IsBgppack *bool `json:"IsBgppack,omitempty" xml:"IsBgppack,omitempty"`
 }
 
@@ -1169,9 +1543,9 @@ func (s *DescribeInstanceResponseBodyInstanceListInstance) SetIsBgppack(v bool) 
 }
 
 type DescribeInstanceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceResponse) String() string {
@@ -1199,29 +1573,68 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 
 type DescribeInstanceIpAddressRequest struct {
 	// The number of the page to return. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The region ID of the asset.
 	//
-	// > You can call the [DescribeRegions](~~353250~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The DDoS mitigation status of the asset. Valid values:
 	//
-	// *   **defense**: queries assets for which traffic scrubbing is performed.
-	// *   **blackhole**: queries assets for which blackhole filtering is triggered.
+	// 	- **defense**: queries assets for which traffic scrubbing is performed.
+	//
+	// 	- **blackhole**: queries assets for which blackhole filtering is triggered.
+	//
+	// example:
+	//
+	// normal
 	DdosStatus *string `json:"DdosStatus,omitempty" xml:"DdosStatus,omitempty"`
 	// The ID of the instance to which the asset is added.
+	//
+	// example:
+	//
+	// i-bp1cb6x80tfgocid****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IP address of the asset.
+	//
+	// example:
+	//
+	// 192.0.XX.XX
 	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
 	// The name of the asset.
+	//
+	// example:
+	//
+	// launch-advisor-2021****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   **ecs**: ECS instance
-	// *   **slb**: SLB instance
-	// *   **eip**: EIP
+	// 	- **ecs**: ECS instance
+	//
+	// 	- **slb**: SLB instance
+	//
+	// 	- **eip**: EIP
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -1277,8 +1690,16 @@ type DescribeInstanceIpAddressResponseBody struct {
 	// An array that consists of details of the instance.
 	InstanceList []*DescribeInstanceIpAddressResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// BC0907F8-A9F3-5E11-977B-D59CD98C64ED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of the assets.
+	//
+	// example:
+	//
+	// 1
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -1307,19 +1728,38 @@ func (s *DescribeInstanceIpAddressResponseBody) SetTotal(v int32) *DescribeInsta
 
 type DescribeInstanceIpAddressResponseBodyInstanceList struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-bp1cb6x80tfgocid****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// launch-advisor-2021****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The DDoS mitigation status of the instance. Valid values:
 	//
-	// *   **normal**: normal
-	// *   **abnormal**: under DDoS attacks
+	// 	- **normal**: normal
+	//
+	// 	- **abnormal**: under DDoS attacks
+	//
+	// example:
+	//
+	// normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   **ecs**: ECS instance
-	// *   **slb**: SLB instance
-	// *   **eip**: EIP
+	// 	- **ecs**: ECS instance
+	//
+	// 	- **slb**: SLB instance
+	//
+	// 	- **eip**: EIP
+	//
+	// example:
+	//
+	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// An array that consists of the details of the asset.
 	IpAddressConfig []*DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig `json:"IpAddressConfig,omitempty" xml:"IpAddressConfig,omitempty" type:"Repeated"`
@@ -1360,33 +1800,73 @@ func (s *DescribeInstanceIpAddressResponseBodyInstanceList) SetIpAddressConfig(v
 
 type DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig struct {
 	// The basic protection threshold for the asset. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 5200
 	BlackholeThreshold *int32 `json:"BlackholeThreshold,omitempty" xml:"BlackholeThreshold,omitempty"`
 	// The traffic scrubbing threshold for the asset. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 300
 	DefenseBpsThreshold *int32 `json:"DefenseBpsThreshold,omitempty" xml:"DefenseBpsThreshold,omitempty"`
 	// The packet scrubbing threshold for the asset. Unit: packets per second (pps).
+	//
+	// example:
+	//
+	// 70000
 	DefensePpsThreshold *int32 `json:"DefensePpsThreshold,omitempty" xml:"DefensePpsThreshold,omitempty"`
 	// The burstable protection threshold for the asset. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 12310
 	ElasticThreshold *int32 `json:"ElasticThreshold,omitempty" xml:"ElasticThreshold,omitempty"`
 	// The IP address of the asset.
+	//
+	// example:
+	//
+	// 192.0.XX.XX
 	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
 	// The DDoS mitigation status of the asset. Valid values:
 	//
-	// *   **defense**: indicates that traffic scrubbing is performed on the asset.
-	// *   **blackhole**: indicates that blackhole filtering is triggered for the asset.
-	// *   **normal**: indicates that no DDoS attacks are launched against the asset.
+	// 	- **defense**: indicates that traffic scrubbing is performed on the asset.
+	//
+	// 	- **blackhole**: indicates that blackhole filtering is triggered for the asset.
+	//
+	// 	- **normal**: indicates that no DDoS attacks are launched against the asset.
+	//
+	// example:
+	//
+	// normal
 	IpStatus *string `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
 	// The IP protocol that is supported by the asset. Valid values:
 	//
-	// *   **v4**: IPv4
-	// *   **v6**: IPv6
+	// 	- **v4**: IPv4
+	//
+	// 	- **v6**: IPv6
+	//
+	// example:
+	//
+	// v4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// Indicates whether the asset is added to the instance. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	IsBgppack        *bool  `json:"IsBgppack,omitempty" xml:"IsBgppack,omitempty"`
 	IsFullProtection *int32 `json:"IsFullProtection,omitempty" xml:"IsFullProtection,omitempty"`
 	// The region code of the asset.
+	//
+	// example:
+	//
+	// cn-hangzhou-dg-a01
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1449,9 +1929,9 @@ func (s *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig) SetRe
 }
 
 type DescribeInstanceIpAddressResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceIpAddressResponse) String() string {
@@ -1480,24 +1960,57 @@ func (s *DescribeInstanceIpAddressResponse) SetBody(v *DescribeInstanceIpAddress
 type DescribeIpDdosThresholdRequest struct {
 	// The region ID of the asset.
 	//
-	// > You can call the [DescribeRegions](~~353250~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The type of the threshold. Valid values:
 	//
-	// *   **defense**: traffic scrubbing threshold
-	// *   **blackhole**: DDoS mitigation threshold
+	// 	- **defense**: traffic scrubbing threshold
+	//
+	// 	- **blackhole**: DDoS mitigation threshold
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// defense
 	DdosType *string `json:"DdosType,omitempty" xml:"DdosType,omitempty"`
 	// The ID of the asset.
 	//
-	// > You can call the [DescribeInstanceIpAddress](~~429562~~) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	// > You can call the [DescribeInstanceIpAddress](https://help.aliyun.com/document_detail/429562.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp1i88rqjza51s****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   **ecs**: ECS instance
-	// *   **slb**: SLB instance
-	// *   **eip**: EIP
+	// 	- **ecs**: ECS instance
+	//
+	// 	- **slb**: SLB instance
+	//
+	// 	- **eip**: EIP
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The IP address of the asset.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 192.0.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 }
 
@@ -1536,6 +2049,10 @@ func (s *DescribeIpDdosThresholdRequest) SetInternetIp(v string) *DescribeIpDdos
 
 type DescribeIpDdosThresholdResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 025F1688-680B-551A-9A8E-1A0D796315CF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array that consists of the details of the threshold.
 	Threshold *DescribeIpDdosThresholdResponseBodyThreshold `json:"Threshold,omitempty" xml:"Threshold,omitempty" type:"Struct"`
@@ -1560,35 +2077,73 @@ func (s *DescribeIpDdosThresholdResponseBody) SetThreshold(v *DescribeIpDdosThre
 }
 
 type DescribeIpDdosThresholdResponseBodyThreshold struct {
-	// If the value of the **DdosType** parameter is **defense**, the Bps parameter indicates the current traffic scrubbing threshold. Unit: Mbit/s.
+	// If the value of the **DdosType*	- parameter is **defense**, the Bps parameter indicates the current traffic scrubbing threshold. Unit: Mbit/s.
 	//
-	// If the value of the **DdosType** parameter is **blackhole**, the Bps parameter indicates the basic protection threshold. Unit: Mbit/s.
+	// If the value of the **DdosType*	- parameter is **blackhole**, the Bps parameter indicates the basic protection threshold. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 7500
 	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	// The type of the threshold. Valid values:
 	//
-	// *   **defense**: traffic scrubbing threshold
-	// *   **blackhole**: DDoS mitigation threshold
+	// 	- **defense**: traffic scrubbing threshold
+	//
+	// 	- **blackhole**: DDoS mitigation threshold
+	//
+	// example:
+	//
+	// defense
 	DdosType *string `json:"DdosType,omitempty" xml:"DdosType,omitempty"`
 	// The burstable protection threshold (the maximum DDoS mitigation threshold). Unit: Mbit/s.
 	//
-	// > This parameter is returned only when the value of the **DdosType** parameter is **blackhole**.
+	// > This parameter is returned only when the value of the **DdosType*	- parameter is **blackhole**.
+	//
+	// example:
+	//
+	// 12310
 	ElasticBps *int32 `json:"ElasticBps,omitempty" xml:"ElasticBps,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-bp1i88rqjza51s****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IP address of the asset.
+	//
+	// example:
+	//
+	// 192.0.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// Indicates whether the threshold is automatically adjusted. Valid values:
 	//
-	// *   **true**: The scrubbing thresholds are automatically adjusted based on the traffic load on the asset.
-	// *   **false**: The scrubbing thresholds are not automatically adjusted. You must manually specify the scrubbing thresholds.
+	// 	- **true**: The scrubbing thresholds are automatically adjusted based on the traffic load on the asset.
+	//
+	// 	- **false**: The scrubbing thresholds are not automatically adjusted. You must manually specify the scrubbing thresholds.
+	//
+	// example:
+	//
+	// false
 	IsAuto *bool `json:"IsAuto,omitempty" xml:"IsAuto,omitempty"`
 	// The maximum traffic scrubbing threshold. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 7500
 	MaxBps *int32 `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
 	// The maximum packet scrubbing threshold. Unit: pps.
+	//
+	// example:
+	//
+	// 5000000
 	MaxPps *int32 `json:"MaxPps,omitempty" xml:"MaxPps,omitempty"`
 	// The packet scrubbing threshold. Unit: packets per second (pps).
 	//
-	// > This parameter is returned only when the value of the **DdosType** parameter is **defense**.
+	// > This parameter is returned only when the value of the **DdosType*	- parameter is **defense**.
+	//
+	// example:
+	//
+	// 5000000
 	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 }
 
@@ -1646,9 +2201,9 @@ func (s *DescribeIpDdosThresholdResponseBodyThreshold) SetPps(v int32) *Describe
 }
 
 type DescribeIpDdosThresholdResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeIpDdosThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeIpDdosThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeIpDdosThresholdResponse) String() string {
@@ -1676,6 +2231,12 @@ func (s *DescribeIpDdosThresholdResponse) SetBody(v *DescribeIpDdosThresholdResp
 
 type DescribeIpLocationServiceRequest struct {
 	// The IP address of the asset to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 121.199.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 }
 
@@ -1696,6 +2257,10 @@ type DescribeIpLocationServiceResponseBody struct {
 	// The details of the asset.
 	Instance *DescribeIpLocationServiceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// C728D7E9-9A39-52E0-966B-5C33118BDBB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1719,18 +2284,40 @@ func (s *DescribeIpLocationServiceResponseBody) SetRequestId(v string) *Describe
 
 type DescribeIpLocationServiceResponseBodyInstance struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-bp1cb6x80tfgocid****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// launch-advisor-2021****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   ecs: ECS instance
-	// *   slb: SLB instance
-	// *   EIP: EIP
+	// 	- ecs: ECS instance
+	//
+	// 	- slb: SLB instance
+	//
+	// 	- EIP: EIP
+	//
+	// example:
+	//
+	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The IP address of the asset.
+	//
+	// example:
+	//
+	// 121.199.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// The region to which the public IP address of the asset belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
@@ -1768,9 +2355,9 @@ func (s *DescribeIpLocationServiceResponseBodyInstance) SetRegion(v string) *Des
 }
 
 type DescribeIpLocationServiceResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeIpLocationServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeIpLocationServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeIpLocationServiceResponse) String() string {
@@ -1800,6 +2387,10 @@ type DescribeRegionsResponseBody struct {
 	// An array consisting of regions in which Anti-DDoS Origin Basic is available.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5093C7EE-8E27-5FC9-9B88-40626BA540C0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1840,12 +2431,28 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
 	// The English name of the region.
+	//
+	// example:
+	//
+	// East China 1
 	RegionEnName *string `json:"RegionEnName,omitempty" xml:"RegionEnName,omitempty"`
 	// The Chinese name of the region.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 	// The code of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou-dg-a01
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionNoAlias *string `json:"RegionNoAlias,omitempty" xml:"RegionNoAlias,omitempty"`
 }
 
@@ -1878,9 +2485,9 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionNoAlias(v string) *D
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -1911,38 +2518,77 @@ type ModifyDefenseThresholdRequest struct {
 	//
 	// You can use the monitoring tool that is provided by the asset to query the Internet traffic of the asset:
 	//
-	// *   For more information about how to query the Internet traffic of an ECS instance, see [Query monitoring information of an instance](~~25482~~).
-	// *   For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](~~85982~~).
+	// 	- For more information about how to query the Internet traffic of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
+	//
+	// 	- For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+	//
+	// example:
+	//
+	// 100
 	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	// The region ID of the asset for which you want to change the scrubbing thresholds.
 	//
-	// > You can call the [DescribeRegions](~~353250~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The ID of the asset.
 	//
-	// > You can call the [DescribeInstance](~~354191~~) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-uf6idy3c57psf7vu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   **ecs**: ECS instance
-	// *   **slb**: SLB instance
-	// *   **eip**: EIP
+	// 	- **ecs**: ECS instance
+	//
+	// 	- **slb**: SLB instance
+	//
+	// 	- **eip**: EIP
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The IP address of the asset.
+	//
+	// example:
+	//
+	// 192.0.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// Specifies whether to automatically adjust the scrubbing threshold based on the traffic load on the asset. Valid values:
 	//
-	// *   **true**: automatically adjusts the scrubbing thresholds. You do not need to configure the **Bps** and **Pps** parameters.
-	// *   **false**: The scrubbing threshold is not automatically adjusted. You must configure the **Bps** and **Pps** parameters.
+	// 	- **true**: automatically adjusts the scrubbing thresholds. You do not need to configure the **Bps*	- and **Pps*	- parameters.
+	//
+	// 	- **false**: The scrubbing threshold is not automatically adjusted. You must configure the **Bps*	- and **Pps*	- parameters.
 	//
 	// Default value: false.
+	//
+	// example:
+	//
+	// false
 	IsAuto *bool `json:"IsAuto,omitempty" xml:"IsAuto,omitempty"`
 	// Specifies the packet scrubbing threshold. Unit: packets per second (pps).
 	//
 	// The packet scrubbing threshold cannot exceed the peak number of inbound or outbound packets, whichever is larger, of the asset. You can use the monitoring tool that is provided by the asset to query the number of packets of the asset:
 	//
-	// *   For more information about how to query the number of packets of an ECS instance, see [Query monitoring information of an instance](~~25482~~).
-	// *   For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](~~85982~~).
+	// 	- For more information about how to query the number of packets of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
+	//
+	// 	- For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+	//
+	// example:
+	//
+	// 70000
 	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 }
 
@@ -1991,6 +2637,10 @@ func (s *ModifyDefenseThresholdRequest) SetPps(v int32) *ModifyDefenseThresholdR
 
 type ModifyDefenseThresholdResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// BC0607F8-A9F3-5E11-977B-D59CD58C64ED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2008,9 +2658,9 @@ func (s *ModifyDefenseThresholdResponseBody) SetRequestId(v string) *ModifyDefen
 }
 
 type ModifyDefenseThresholdResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDefenseThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDefenseThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDefenseThresholdResponse) String() string {
@@ -2041,36 +2691,77 @@ type ModifyIpDefenseThresholdRequest struct {
 	//
 	// You can use the monitoring tool that is provided by the asset to query the Internet traffic of the asset:
 	//
-	// *   For more information about how to query the Internet traffic of an ECS instance, see [Query monitoring information of an instance](~~25482~~).
-	// *   For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](~~85982~~).
+	// 	- For more information about how to query the Internet traffic of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
+	//
+	// 	- For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+	//
+	// example:
+	//
+	// 100
 	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	// The region ID of the asset.
 	//
-	// > You can call the [DescribeRegions](~~353250~~) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The ID of the asset.
 	//
-	// > You can call the [DescribeInstance](~~354191~~) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-uf6idy3c57psf7vu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   **ecs**: ECS instance
-	// *   **slb**: SLB instance
-	// *   **eip**: EIP
+	// 	- **ecs**: ECS instance
+	//
+	// 	- **slb**: SLB instance
+	//
+	// 	- **eip**: EIP
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The IP address of the asset.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 192.0.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	// Specifies whether to automatically adjust the scrubbing threshold based on the traffic load on the asset. Valid values:
 	//
-	// *   **true**: automatically adjusts the scrubbing threshold. You do not need to configure the **Bps** and **Pps** parameters.
-	// *   **false**: The scrubbing threshold is not automatically adjusted. You must configure the **Bps** and **Pps** parameters. This is the default value.
+	// 	- **true**: automatically adjusts the scrubbing threshold. You do not need to configure the **Bps*	- and **Pps*	- parameters.
+	//
+	// 	- **false**: The scrubbing threshold is not automatically adjusted. You must configure the **Bps*	- and **Pps*	- parameters. This is the default value.
+	//
+	// example:
+	//
+	// false
 	IsAuto *bool `json:"IsAuto,omitempty" xml:"IsAuto,omitempty"`
 	// Specifies the packet scrubbing threshold. Unit: packets per second (pps).
 	//
 	// The packet scrubbing threshold cannot exceed the peak number of inbound or outbound packets, whichever is larger, of the asset. You can use the monitoring tool that is provided by the asset to query the number of packets of the asset:
 	//
-	// *   For more information about how to query the number of packets of an ECS instance, see [Query monitoring information of an instance](~~25482~~).
-	// *   For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](~~85982~~).
+	// 	- For more information about how to query the number of packets of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
+	//
+	// 	- For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+	//
+	// example:
+	//
+	// 70000
 	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 }
 
@@ -2119,6 +2810,10 @@ func (s *ModifyIpDefenseThresholdRequest) SetPps(v int32) *ModifyIpDefenseThresh
 
 type ModifyIpDefenseThresholdResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// BC0607F8-A9F3-5E11-977B-D59CD58C64ED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2136,9 +2831,9 @@ func (s *ModifyIpDefenseThresholdResponseBody) SetRequestId(v string) *ModifyIpD
 }
 
 type ModifyIpDefenseThresholdResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyIpDefenseThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyIpDefenseThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyIpDefenseThresholdResponse) String() string {
@@ -2186,8 +2881,8 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"ap-south-1":                  tea.String("antiddos-openapi.ap-south-1.aliyuncs.com"),
 		"ap-southeast-1":              tea.String("antiddos.aliyuncs.com"),
 		"ap-southeast-2":              tea.String("antiddos-openapi.ap-southeast-2.aliyuncs.com"),
-		"ap-southeast-3":              tea.String("antiddos.aliyuncs.com"),
-		"ap-southeast-5":              tea.String("antiddos-openapi.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":              tea.String("antiddos-openapi.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-5":              tea.String("antiddos-openapi-vpc.ap-southeast-5.aliyuncs.com"),
 		"cn-beijing":                  tea.String("antiddos-openapi-vpc.cn-beijing.aliyuncs.com"),
 		"cn-beijing-finance-1":        tea.String("antiddos.aliyuncs.com"),
 		"cn-beijing-finance-pop":      tea.String("antiddos.aliyuncs.com"),
@@ -2270,15 +2965,23 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * You can call the DescribeBgpPackByIp operation to query the configurations of the Anti-DDoS Origin instance that is associated with an asset. The configurations include the basic protection threshold, burstable protection threshold, and expiration time.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeBgpPackByIpRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeBgpPackByIpResponse
- */
+// Summary:
+//
+// Queries the configurations of the Anti-DDoS Origin Basic instance that is associated with an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+//
+// Description:
+//
+// You can call the DescribeBgpPackByIp operation to query the configurations of the Anti-DDoS Origin instance that is associated with an asset. The configurations include the basic protection threshold, burstable protection threshold, and expiration time.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeBgpPackByIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBgpPackByIpResponse
 func (client *Client) DescribeBgpPackByIpWithOptions(request *DescribeBgpPackByIpRequest, runtime *util.RuntimeOptions) (_result *DescribeBgpPackByIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2316,14 +3019,21 @@ func (client *Client) DescribeBgpPackByIpWithOptions(request *DescribeBgpPackByI
 	return _result, _err
 }
 
-/**
- * You can call the DescribeBgpPackByIp operation to query the configurations of the Anti-DDoS Origin instance that is associated with an asset. The configurations include the basic protection threshold, burstable protection threshold, and expiration time.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeBgpPackByIpRequest
- * @return DescribeBgpPackByIpResponse
- */
+// Summary:
+//
+// Queries the configurations of the Anti-DDoS Origin Basic instance that is associated with an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+//
+// Description:
+//
+// You can call the DescribeBgpPackByIp operation to query the configurations of the Anti-DDoS Origin instance that is associated with an asset. The configurations include the basic protection threshold, burstable protection threshold, and expiration time.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeBgpPackByIpRequest
+//
+// @return DescribeBgpPackByIpResponse
 func (client *Client) DescribeBgpPackByIp(request *DescribeBgpPackByIpRequest) (_result *DescribeBgpPackByIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBgpPackByIpResponse{}
@@ -2335,15 +3045,23 @@ func (client *Client) DescribeBgpPackByIp(request *DescribeBgpPackByIpRequest) (
 	return _result, _err
 }
 
-/**
- * You can call the DescribeCap operation to query the download link to the traffic data that is captured when a DDoS attack event occurs. You can download the traffic data from the download link and use the data as evidence.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeCapRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeCapResponse
- */
+// Summary:
+//
+// Queries the download link to the traffic data that is captured when a DDoS attack event occurs.
+//
+// Description:
+//
+// You can call the DescribeCap operation to query the download link to the traffic data that is captured when a DDoS attack event occurs. You can download the traffic data from the download link and use the data as evidence.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeCapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCapResponse
 func (client *Client) DescribeCapWithOptions(request *DescribeCapRequest, runtime *util.RuntimeOptions) (_result *DescribeCapResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2393,14 +3111,21 @@ func (client *Client) DescribeCapWithOptions(request *DescribeCapRequest, runtim
 	return _result, _err
 }
 
-/**
- * You can call the DescribeCap operation to query the download link to the traffic data that is captured when a DDoS attack event occurs. You can download the traffic data from the download link and use the data as evidence.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeCapRequest
- * @return DescribeCapResponse
- */
+// Summary:
+//
+// Queries the download link to the traffic data that is captured when a DDoS attack event occurs.
+//
+// Description:
+//
+// You can call the DescribeCap operation to query the download link to the traffic data that is captured when a DDoS attack event occurs. You can download the traffic data from the download link and use the data as evidence.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeCapRequest
+//
+// @return DescribeCapResponse
 func (client *Client) DescribeCap(request *DescribeCapRequest) (_result *DescribeCapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCapResponse{}
@@ -2412,15 +3137,23 @@ func (client *Client) DescribeCap(request *DescribeCapRequest) (_result *Describ
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDdosCount operation to query the number of assets that are under DDoS attacks in a specific region.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDdosCountRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDdosCountResponse
- */
+// Summary:
+//
+// Queries the number of assets that are under DDoS attacks in a specific region. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+//
+// Description:
+//
+// You can call the DescribeDdosCount operation to query the number of assets that are under DDoS attacks in a specific region.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDdosCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDdosCountResponse
 func (client *Client) DescribeDdosCountWithOptions(request *DescribeDdosCountRequest, runtime *util.RuntimeOptions) (_result *DescribeDdosCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2458,14 +3191,21 @@ func (client *Client) DescribeDdosCountWithOptions(request *DescribeDdosCountReq
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDdosCount operation to query the number of assets that are under DDoS attacks in a specific region.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDdosCountRequest
- * @return DescribeDdosCountResponse
- */
+// Summary:
+//
+// Queries the number of assets that are under DDoS attacks in a specific region. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+//
+// Description:
+//
+// You can call the DescribeDdosCount operation to query the number of assets that are under DDoS attacks in a specific region.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDdosCountRequest
+//
+// @return DescribeDdosCountResponse
 func (client *Client) DescribeDdosCount(request *DescribeDdosCountRequest) (_result *DescribeDdosCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDdosCountResponse{}
@@ -2477,15 +3217,23 @@ func (client *Client) DescribeDdosCount(request *DescribeDdosCountRequest) (_res
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDdosCredit operation to query the details of the security credit score of the current Alibaba Cloud account in a specific region. The details include the security credit score, security credit level, and the time period after which blackhole filtering is automatically deactivated.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDdosCreditRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDdosCreditResponse
- */
+// Summary:
+//
+// Queries the details of the security credit score of the current Alibaba Cloud account in a specific region.
+//
+// Description:
+//
+// You can call the DescribeDdosCredit operation to query the details of the security credit score of the current Alibaba Cloud account in a specific region. The details include the security credit score, security credit level, and the time period after which blackhole filtering is automatically deactivated.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDdosCreditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDdosCreditResponse
 func (client *Client) DescribeDdosCreditWithOptions(request *DescribeDdosCreditRequest, runtime *util.RuntimeOptions) (_result *DescribeDdosCreditResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2519,14 +3267,21 @@ func (client *Client) DescribeDdosCreditWithOptions(request *DescribeDdosCreditR
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDdosCredit operation to query the details of the security credit score of the current Alibaba Cloud account in a specific region. The details include the security credit score, security credit level, and the time period after which blackhole filtering is automatically deactivated.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDdosCreditRequest
- * @return DescribeDdosCreditResponse
- */
+// Summary:
+//
+// Queries the details of the security credit score of the current Alibaba Cloud account in a specific region.
+//
+// Description:
+//
+// You can call the DescribeDdosCredit operation to query the details of the security credit score of the current Alibaba Cloud account in a specific region. The details include the security credit score, security credit level, and the time period after which blackhole filtering is automatically deactivated.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDdosCreditRequest
+//
+// @return DescribeDdosCreditResponse
 func (client *Client) DescribeDdosCredit(request *DescribeDdosCreditRequest) (_result *DescribeDdosCreditResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDdosCreditResponse{}
@@ -2538,15 +3293,23 @@ func (client *Client) DescribeDdosCredit(request *DescribeDdosCreditRequest) (_r
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDdosEventList operation to query the details of the DDoS attack events that occur on an asset by page. The details include the start time, end time, and status of each DDoS attack event.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDdosEventListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDdosEventListResponse
- */
+// Summary:
+//
+// Queries the details of the DDoS attack events that occur on an asset. The asset can be an Elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+//
+// Description:
+//
+// You can call the DescribeDdosEventList operation to query the details of the DDoS attack events that occur on an asset by page. The details include the start time, end time, and status of each DDoS attack event.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDdosEventListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDdosEventListResponse
 func (client *Client) DescribeDdosEventListWithOptions(request *DescribeDdosEventListRequest, runtime *util.RuntimeOptions) (_result *DescribeDdosEventListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2600,14 +3363,21 @@ func (client *Client) DescribeDdosEventListWithOptions(request *DescribeDdosEven
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDdosEventList operation to query the details of the DDoS attack events that occur on an asset by page. The details include the start time, end time, and status of each DDoS attack event.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDdosEventListRequest
- * @return DescribeDdosEventListResponse
- */
+// Summary:
+//
+// Queries the details of the DDoS attack events that occur on an asset. The asset can be an Elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+//
+// Description:
+//
+// You can call the DescribeDdosEventList operation to query the details of the DDoS attack events that occur on an asset by page. The details include the start time, end time, and status of each DDoS attack event.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDdosEventListRequest
+//
+// @return DescribeDdosEventListResponse
 func (client *Client) DescribeDdosEventList(request *DescribeDdosEventListRequest) (_result *DescribeDdosEventListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDdosEventListResponse{}
@@ -2619,15 +3389,23 @@ func (client *Client) DescribeDdosEventList(request *DescribeDdosEventListReques
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDdosThreshold operation to query the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The details include the current traffic scrubbing threshold, maximum traffic scrubbing threshold, current DDoS mitigation threshold, and maximum DDoS mitigation threshold.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDdosThresholdRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDdosThresholdResponse
- */
+// Summary:
+//
+// Queries the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+//
+// Description:
+//
+// You can call the DescribeDdosThreshold operation to query the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The details include the current traffic scrubbing threshold, maximum traffic scrubbing threshold, current DDoS mitigation threshold, and maximum DDoS mitigation threshold.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDdosThresholdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDdosThresholdResponse
 func (client *Client) DescribeDdosThresholdWithOptions(request *DescribeDdosThresholdRequest, runtime *util.RuntimeOptions) (_result *DescribeDdosThresholdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2673,14 +3451,21 @@ func (client *Client) DescribeDdosThresholdWithOptions(request *DescribeDdosThre
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDdosThreshold operation to query the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The details include the current traffic scrubbing threshold, maximum traffic scrubbing threshold, current DDoS mitigation threshold, and maximum DDoS mitigation threshold.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDdosThresholdRequest
- * @return DescribeDdosThresholdResponse
- */
+// Summary:
+//
+// Queries the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+//
+// Description:
+//
+// You can call the DescribeDdosThreshold operation to query the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The details include the current traffic scrubbing threshold, maximum traffic scrubbing threshold, current DDoS mitigation threshold, and maximum DDoS mitigation threshold.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDdosThresholdRequest
+//
+// @return DescribeDdosThresholdResponse
 func (client *Client) DescribeDdosThreshold(request *DescribeDdosThresholdRequest) (_result *DescribeDdosThresholdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDdosThresholdResponse{}
@@ -2692,15 +3477,23 @@ func (client *Client) DescribeDdosThreshold(request *DescribeDdosThresholdReques
 	return _result, _err
 }
 
-/**
- * You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin Basic, and whether the assets are associated with Anti-DDoS Origin Basic instances.
- * ### Limits
- * You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeInstanceResponse
- */
+// Summary:
+//
+// Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+//
+// Description:
+//
+// You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin Basic, and whether the assets are associated with Anti-DDoS Origin Basic instances.
+//
+// ### Limits
+//
+// You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceResponse
 func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2762,14 +3555,21 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	return _result, _err
 }
 
-/**
- * You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin Basic, and whether the assets are associated with Anti-DDoS Origin Basic instances.
- * ### Limits
- * You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeInstanceRequest
- * @return DescribeInstanceResponse
- */
+// Summary:
+//
+// Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+//
+// Description:
+//
+// You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin Basic, and whether the assets are associated with Anti-DDoS Origin Basic instances.
+//
+// ### Limits
+//
+// You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeInstanceRequest
+//
+// @return DescribeInstanceResponse
 func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_result *DescribeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceResponse{}
@@ -2781,15 +3581,23 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 	return _result, _err
 }
 
-/**
- * If one or more assets of the current Alibaba Cloud account are added to an Anti-DDoS Origin instance, you can call the DescribeInstanceIpAddress operation to query the DDoS mitigation information and the details of the Anti-DDoS Origin instance. The information and the details include the basic protection threshold and traffic scrubbing threshold for the assets, DDoS mitigation status of the assets, ID of the instance, and the mitigation status of the instance.
- * ## Limits
- * You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeInstanceIpAddressRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeInstanceIpAddressResponse
- */
+// Summary:
+//
+// Queries the details of the assets within the current Alibaba Cloud account and the details of the Anti-DDoS Origin instance to which the assets belong. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+//
+// Description:
+//
+// If one or more assets of the current Alibaba Cloud account are added to an Anti-DDoS Origin instance, you can call the DescribeInstanceIpAddress operation to query the DDoS mitigation information and the details of the Anti-DDoS Origin instance. The information and the details include the basic protection threshold and traffic scrubbing threshold for the assets, DDoS mitigation status of the assets, ID of the instance, and the mitigation status of the instance.
+//
+// ## Limits
+//
+// You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeInstanceIpAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceIpAddressResponse
 func (client *Client) DescribeInstanceIpAddressWithOptions(request *DescribeInstanceIpAddressRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceIpAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2851,14 +3659,21 @@ func (client *Client) DescribeInstanceIpAddressWithOptions(request *DescribeInst
 	return _result, _err
 }
 
-/**
- * If one or more assets of the current Alibaba Cloud account are added to an Anti-DDoS Origin instance, you can call the DescribeInstanceIpAddress operation to query the DDoS mitigation information and the details of the Anti-DDoS Origin instance. The information and the details include the basic protection threshold and traffic scrubbing threshold for the assets, DDoS mitigation status of the assets, ID of the instance, and the mitigation status of the instance.
- * ## Limits
- * You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeInstanceIpAddressRequest
- * @return DescribeInstanceIpAddressResponse
- */
+// Summary:
+//
+// Queries the details of the assets within the current Alibaba Cloud account and the details of the Anti-DDoS Origin instance to which the assets belong. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+//
+// Description:
+//
+// If one or more assets of the current Alibaba Cloud account are added to an Anti-DDoS Origin instance, you can call the DescribeInstanceIpAddress operation to query the DDoS mitigation information and the details of the Anti-DDoS Origin instance. The information and the details include the basic protection threshold and traffic scrubbing threshold for the assets, DDoS mitigation status of the assets, ID of the instance, and the mitigation status of the instance.
+//
+// ## Limits
+//
+// You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeInstanceIpAddressRequest
+//
+// @return DescribeInstanceIpAddressResponse
 func (client *Client) DescribeInstanceIpAddress(request *DescribeInstanceIpAddressRequest) (_result *DescribeInstanceIpAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceIpAddressResponse{}
@@ -2870,15 +3685,23 @@ func (client *Client) DescribeInstanceIpAddress(request *DescribeInstanceIpAddre
 	return _result, _err
 }
 
-/**
- * If one or more assets of the current Alibaba Cloud account are added to an Anti-DDoS Origin instance, you can call the DescribeIpDdosThreshold operation to query the details of the DDoS mitigation threshold or traffic scrubbing threshold for a specific asset. The details include the current traffic scrubbing threshold, maximum scrubbing threshold, current DDoS mitigation threshold, and maximum DDoS mitigation threshold.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeIpDdosThresholdRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeIpDdosThresholdResponse
- */
+// Summary:
+//
+// Queries the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+//
+// Description:
+//
+// If one or more assets of the current Alibaba Cloud account are added to an Anti-DDoS Origin instance, you can call the DescribeIpDdosThreshold operation to query the details of the DDoS mitigation threshold or traffic scrubbing threshold for a specific asset. The details include the current traffic scrubbing threshold, maximum scrubbing threshold, current DDoS mitigation threshold, and maximum DDoS mitigation threshold.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeIpDdosThresholdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIpDdosThresholdResponse
 func (client *Client) DescribeIpDdosThresholdWithOptions(request *DescribeIpDdosThresholdRequest, runtime *util.RuntimeOptions) (_result *DescribeIpDdosThresholdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2928,14 +3751,21 @@ func (client *Client) DescribeIpDdosThresholdWithOptions(request *DescribeIpDdos
 	return _result, _err
 }
 
-/**
- * If one or more assets of the current Alibaba Cloud account are added to an Anti-DDoS Origin instance, you can call the DescribeIpDdosThreshold operation to query the details of the DDoS mitigation threshold or traffic scrubbing threshold for a specific asset. The details include the current traffic scrubbing threshold, maximum scrubbing threshold, current DDoS mitigation threshold, and maximum DDoS mitigation threshold.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeIpDdosThresholdRequest
- * @return DescribeIpDdosThresholdResponse
- */
+// Summary:
+//
+// Queries the details of the DDoS mitigation thresholds or traffic scrubbing thresholds for specified assets. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+//
+// Description:
+//
+// If one or more assets of the current Alibaba Cloud account are added to an Anti-DDoS Origin instance, you can call the DescribeIpDdosThreshold operation to query the details of the DDoS mitigation threshold or traffic scrubbing threshold for a specific asset. The details include the current traffic scrubbing threshold, maximum scrubbing threshold, current DDoS mitigation threshold, and maximum DDoS mitigation threshold.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeIpDdosThresholdRequest
+//
+// @return DescribeIpDdosThresholdResponse
 func (client *Client) DescribeIpDdosThreshold(request *DescribeIpDdosThresholdRequest) (_result *DescribeIpDdosThresholdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIpDdosThresholdResponse{}
@@ -2947,15 +3777,23 @@ func (client *Client) DescribeIpDdosThreshold(request *DescribeIpDdosThresholdRe
 	return _result, _err
 }
 
-/**
- * You can call the DescribeIpLocationService operation to query the region of the public IP address for a specified asset that is within the current Alibaba Cloud account. You can also query the details of the Anti-DDoS Origin instance to which the asset is added. The details include the ID and name.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeIpLocationServiceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeIpLocationServiceResponse
- */
+// Summary:
+//
+// Queries the region in which an asset within the current Alibaba Cloud account resides. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+//
+// Description:
+//
+// You can call the DescribeIpLocationService operation to query the region of the public IP address for a specified asset that is within the current Alibaba Cloud account. You can also query the details of the Anti-DDoS Origin instance to which the asset is added. The details include the ID and name.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeIpLocationServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIpLocationServiceResponse
 func (client *Client) DescribeIpLocationServiceWithOptions(request *DescribeIpLocationServiceRequest, runtime *util.RuntimeOptions) (_result *DescribeIpLocationServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2989,14 +3827,21 @@ func (client *Client) DescribeIpLocationServiceWithOptions(request *DescribeIpLo
 	return _result, _err
 }
 
-/**
- * You can call the DescribeIpLocationService operation to query the region of the public IP address for a specified asset that is within the current Alibaba Cloud account. You can also query the details of the Anti-DDoS Origin instance to which the asset is added. The details include the ID and name.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeIpLocationServiceRequest
- * @return DescribeIpLocationServiceResponse
- */
+// Summary:
+//
+// Queries the region in which an asset within the current Alibaba Cloud account resides. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+//
+// Description:
+//
+// You can call the DescribeIpLocationService operation to query the region of the public IP address for a specified asset that is within the current Alibaba Cloud account. You can also query the details of the Anti-DDoS Origin instance to which the asset is added. The details include the ID and name.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeIpLocationServiceRequest
+//
+// @return DescribeIpLocationServiceResponse
 func (client *Client) DescribeIpLocationService(request *DescribeIpLocationServiceRequest) (_result *DescribeIpLocationServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIpLocationServiceResponse{}
@@ -3008,15 +3853,23 @@ func (client *Client) DescribeIpLocationService(request *DescribeIpLocationServi
 	return _result, _err
 }
 
-/**
- * You can call this operation to query information about the regions in which Anti-DDoS Origin Basic is available. The information includes the region ID, region name, and code.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeRegionsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeRegionsResponse
- */
+// Summary:
+//
+// Queries the regions in which Anti-DDoS Origin Basic is available.
+//
+// Description:
+//
+// You can call this operation to query information about the regions in which Anti-DDoS Origin Basic is available. The information includes the region ID, region name, and code.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -3039,13 +3892,19 @@ func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
-/**
- * You can call this operation to query information about the regions in which Anti-DDoS Origin Basic is available. The information includes the region ID, region name, and code.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @return DescribeRegionsResponse
- */
+// Summary:
+//
+// Queries the regions in which Anti-DDoS Origin Basic is available.
+//
+// Description:
+//
+// You can call this operation to query information about the regions in which Anti-DDoS Origin Basic is available. The information includes the region ID, region name, and code.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -3057,15 +3916,23 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 	return _result, _err
 }
 
-/**
- * You can call the ModifyDefenseThreshold operation to change the scrubbing thresholds for an asset.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyDefenseThresholdRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyDefenseThresholdResponse
- */
+// Summary:
+//
+// Changes the scrubbing thresholds for an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+//
+// Description:
+//
+// You can call the ModifyDefenseThreshold operation to change the scrubbing thresholds for an asset.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyDefenseThresholdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDefenseThresholdResponse
 func (client *Client) ModifyDefenseThresholdWithOptions(request *ModifyDefenseThresholdRequest, runtime *util.RuntimeOptions) (_result *ModifyDefenseThresholdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3123,14 +3990,21 @@ func (client *Client) ModifyDefenseThresholdWithOptions(request *ModifyDefenseTh
 	return _result, _err
 }
 
-/**
- * You can call the ModifyDefenseThreshold operation to change the scrubbing thresholds for an asset.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyDefenseThresholdRequest
- * @return ModifyDefenseThresholdResponse
- */
+// Summary:
+//
+// Changes the scrubbing thresholds for an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+//
+// Description:
+//
+// You can call the ModifyDefenseThreshold operation to change the scrubbing thresholds for an asset.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyDefenseThresholdRequest
+//
+// @return ModifyDefenseThresholdResponse
 func (client *Client) ModifyDefenseThreshold(request *ModifyDefenseThresholdRequest) (_result *ModifyDefenseThresholdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDefenseThresholdResponse{}
@@ -3142,14 +4016,21 @@ func (client *Client) ModifyDefenseThreshold(request *ModifyDefenseThresholdRequ
 	return _result, _err
 }
 
-/**
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyIpDefenseThresholdRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyIpDefenseThresholdResponse
- */
+// Summary:
+//
+// Changes the traffic scrubbing thresholds for an asset. The asset can be an elastic IP addresses (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+//
+// Description:
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyIpDefenseThresholdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyIpDefenseThresholdResponse
 func (client *Client) ModifyIpDefenseThresholdWithOptions(request *ModifyIpDefenseThresholdRequest, runtime *util.RuntimeOptions) (_result *ModifyIpDefenseThresholdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3207,13 +4088,19 @@ func (client *Client) ModifyIpDefenseThresholdWithOptions(request *ModifyIpDefen
 	return _result, _err
 }
 
-/**
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyIpDefenseThresholdRequest
- * @return ModifyIpDefenseThresholdResponse
- */
+// Summary:
+//
+// Changes the traffic scrubbing thresholds for an asset. The asset can be an elastic IP addresses (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+//
+// Description:
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyIpDefenseThresholdRequest
+//
+// @return ModifyIpDefenseThresholdResponse
 func (client *Client) ModifyIpDefenseThreshold(request *ModifyIpDefenseThresholdRequest) (_result *ModifyIpDefenseThresholdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyIpDefenseThresholdResponse{}

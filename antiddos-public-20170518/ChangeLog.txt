@@ -1,3 +1,6 @@
+2024-05-13 Version: v3.0.1
+- Generated golang 2017-05-18 for antiddos-public.
+
 2023-12-22 Version: v3.0.0
 - Fixed endpoint auto generate.
 
