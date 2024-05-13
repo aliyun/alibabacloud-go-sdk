@@ -91129,8 +91129,8 @@ type TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo struct {
 	// example:
 	//
 	// acs
-	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectName *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	ProjectCode  *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
 }
 
 func (s TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo) String() string {
@@ -91186,8 +91186,8 @@ func (s *TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo) SetProjectCode
 	return s
 }
 
-func (s *TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo) SetProjectName(v string) *TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo {
-	s.ProjectName = &v
+func (s *TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo) SetProjectTitle(v string) *TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo {
+	s.ProjectTitle = &v
 	return s
 }
 
