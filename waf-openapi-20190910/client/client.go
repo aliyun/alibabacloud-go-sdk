@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,11 +10,34 @@ import (
 )
 
 type CreateCertificateRequest struct {
-	Certificate     *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// example:
+	//
+	// -----BEGIN CERTIFICATE----- 62EcYPWd2Oy1vs6MTXcJSfN9Z7rZ9fmxWr2BFN2XbahgnsSXM48ixZJ4krc+1M+j2kcubVpsE2cgHdj4v8H6jUz9Ji4mr7vMNS6dXv8PUkl/qoDeNGCNdyTS5NIL5ir+g92cL8IGOkjgvhlqt9vc65Cgb4mL+n5+DV9uOyTZTW/MojmlgfUekC2xiXa54nxJf17Y1TADGSbyJbsC0Q9nIrHsPl8YKkvRWvIAqYxXZ7wRwWWmv4TMxFhWRiNY7yZIo2ZUhl02SIDNggIEeg== -----END CERTIFICATE-----
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CertName
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -----BEGIN RSA PRIVATE KEY----- DADTPZoOHd9WtZ3UKHJTRgNQmioPQn2bqdKHop+B/dn/4VZL7Jt8zSDGM9sTMThLyvsmLQKBgQCr+ujntC1kN6pGBj2Fw2l/EA/W3rYEce2tyhjgmG7rZ+A/jVE9fld5sQra6ZdwBcQJaiygoIYoaMF2EjRwc0qwHaluq0C15f6ujSoHh2e+D5zdmkTg/3NKNjqNv6xA2gYpinVDzFdZ9Zujxvuh9o4Vqf0YF8bv5UK5G04RtKadOw== -----END RSA PRIVATE KEY-----
 	PrivateKey      *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateCertificateRequest) String() string {
@@ -53,9 +73,25 @@ func (s *CreateCertificateRequest) SetPrivateKey(v string) *CreateCertificateReq
 	return s
 }
 
+func (s *CreateCertificateRequest) SetRegionId(v string) *CreateCertificateRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateCertificateRequest) SetResourceGroupId(v string) *CreateCertificateRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type CreateCertificateResponseBody struct {
-	CertificateId *int64  `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2329260
+	CertificateId *int64 `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCertificateResponseBody) String() string {
@@ -77,9 +113,9 @@ func (s *CreateCertificateResponseBody) SetRequestId(v string) *CreateCertificat
 }
 
 type CreateCertificateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCertificateResponse) String() string {
@@ -106,9 +142,26 @@ func (s *CreateCertificateResponse) SetBody(v *CreateCertificateResponseBody) *C
 }
 
 type CreateCertificateByCertificateIdRequest struct {
-	CertificateId *int64  `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	Domain        *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3384669
+	CertificateId *int64 `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-zz11sr5****
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateCertificateByCertificateIdRequest) String() string {
@@ -134,9 +187,25 @@ func (s *CreateCertificateByCertificateIdRequest) SetInstanceId(v string) *Creat
 	return s
 }
 
+func (s *CreateCertificateByCertificateIdRequest) SetRegionId(v string) *CreateCertificateByCertificateIdRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateCertificateByCertificateIdRequest) SetResourceGroupId(v string) *CreateCertificateByCertificateIdRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type CreateCertificateByCertificateIdResponseBody struct {
-	CertificateId *int64  `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3384669
+	CertificateId *int64 `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCertificateByCertificateIdResponseBody) String() string {
@@ -158,9 +227,9 @@ func (s *CreateCertificateByCertificateIdResponseBody) SetRequestId(v string) *C
 }
 
 type CreateCertificateByCertificateIdResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCertificateByCertificateIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCertificateByCertificateIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCertificateByCertificateIdResponse) String() string {
@@ -187,29 +256,109 @@ func (s *CreateCertificateByCertificateIdResponse) SetBody(v *CreateCertificateB
 }
 
 type CreateDomainRequest struct {
-	AccessHeaderMode     *int32  `json:"AccessHeaderMode,omitempty" xml:"AccessHeaderMode,omitempty"`
-	AccessHeaders        *string `json:"AccessHeaders,omitempty" xml:"AccessHeaders,omitempty"`
-	AccessType           *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// example:
+	//
+	// 0
+	AccessHeaderMode *int32 `json:"AccessHeaderMode,omitempty" xml:"AccessHeaderMode,omitempty"`
+	// example:
+	//
+	// ["X-Client-IP"]
+	AccessHeaders *string `json:"AccessHeaders,omitempty" xml:"AccessHeaders,omitempty"`
+	// example:
+	//
+	// waf-cloud-dns
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// example:
+	//
+	// [{"ProtocolPortConfigs":[{"Ports":[80],"Protocol":"http"}],"RedirectionTypeName":"ALB","InstanceId":"alb-s65nua68wdedsp****","IPAddressList":["182.XX.XX.113"],"CloudNativeProductName":"ALB"}]
 	CloudNativeInstances *string `json:"CloudNativeInstances,omitempty" xml:"CloudNativeInstances,omitempty"`
-	ClusterType          *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	ConnectionTime       *int32  `json:"ConnectionTime,omitempty" xml:"ConnectionTime,omitempty"`
-	Domain               *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Http2Port            *string `json:"Http2Port,omitempty" xml:"Http2Port,omitempty"`
-	HttpPort             *string `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
-	HttpToUserIp         *int32  `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
-	HttpsPort            *string `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
-	HttpsRedirect        *int32  `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpFollowStatus       *int32  `json:"IpFollowStatus,omitempty" xml:"IpFollowStatus,omitempty"`
-	IsAccessProduct      *int32  `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
-	LoadBalancing        *int32  `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
-	LogHeaders           *string `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty"`
-	ReadTime             *int32  `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SniHost              *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
-	SniStatus            *int32  `json:"SniStatus,omitempty" xml:"SniStatus,omitempty"`
-	SourceIps            *string `json:"SourceIps,omitempty" xml:"SourceIps,omitempty"`
-	WriteTime            *int32  `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
+	// example:
+	//
+	// 0
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// example:
+	//
+	// 5
+	ConnectionTime *int32 `json:"ConnectionTime,omitempty" xml:"ConnectionTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// [443]
+	Http2Port *string `json:"Http2Port,omitempty" xml:"Http2Port,omitempty"`
+	// example:
+	//
+	// [80]
+	HttpPort *string `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
+	// example:
+	//
+	// 0
+	HttpToUserIp *int32 `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
+	// example:
+	//
+	// [443]
+	HttpsPort *string `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
+	// example:
+	//
+	// 0
+	HttpsRedirect *int32 `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-7pp26f1****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	IpFollowStatus *int32 `json:"IpFollowStatus,omitempty" xml:"IpFollowStatus,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	IsAccessProduct   *int32 `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
+	Keepalive         *bool  `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	KeepaliveTimeout  *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	// example:
+	//
+	// 0
+	LoadBalancing *int32 `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
+	// example:
+	//
+	// [{"k":"ALIWAF-TAG","v":"Yes"}]
+	LogHeaders *string `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty"`
+	// example:
+	//
+	// 120
+	ReadTime *int32  `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-atstuj3rtop****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Retry           *bool   `json:"Retry,omitempty" xml:"Retry,omitempty"`
+	// example:
+	//
+	// waf.example.com
+	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	// example:
+	//
+	// 1
+	SniStatus *int32 `json:"SniStatus,omitempty" xml:"SniStatus,omitempty"`
+	// example:
+	//
+	// ["39.XX.XX.197"]
+	SourceIps *string `json:"SourceIps,omitempty" xml:"SourceIps,omitempty"`
+	// example:
+	//
+	// 120
+	WriteTime *int32 `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
 }
 
 func (s CreateDomainRequest) String() string {
@@ -295,6 +444,21 @@ func (s *CreateDomainRequest) SetIsAccessProduct(v int32) *CreateDomainRequest {
 	return s
 }
 
+func (s *CreateDomainRequest) SetKeepalive(v bool) *CreateDomainRequest {
+	s.Keepalive = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetKeepaliveRequests(v int32) *CreateDomainRequest {
+	s.KeepaliveRequests = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetKeepaliveTimeout(v int32) *CreateDomainRequest {
+	s.KeepaliveTimeout = &v
+	return s
+}
+
 func (s *CreateDomainRequest) SetLoadBalancing(v int32) *CreateDomainRequest {
 	s.LoadBalancing = &v
 	return s
@@ -310,8 +474,18 @@ func (s *CreateDomainRequest) SetReadTime(v int32) *CreateDomainRequest {
 	return s
 }
 
+func (s *CreateDomainRequest) SetRegionId(v string) *CreateDomainRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *CreateDomainRequest) SetResourceGroupId(v string) *CreateDomainRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetRetry(v bool) *CreateDomainRequest {
+	s.Retry = &v
 	return s
 }
 
@@ -336,7 +510,13 @@ func (s *CreateDomainRequest) SetWriteTime(v int32) *CreateDomainRequest {
 }
 
 type CreateDomainResponseBody struct {
-	Cname     *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// example:
+	//
+	// mmspx7qhfvnfzggheh1g2wnbhog66vcv.****.com
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -359,9 +539,9 @@ func (s *CreateDomainResponseBody) SetRequestId(v string) *CreateDomainResponseB
 }
 
 type CreateDomainResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDomainResponse) String() string {
@@ -388,10 +568,32 @@ func (s *CreateDomainResponse) SetBody(v *CreateDomainResponseBody) *CreateDomai
 }
 
 type CreateProtectionModuleRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac_custom
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-0xldbqt****
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"action":"monitor","name":"test","scene":"custom_acl","conditions":[{"opCode":1,"key":"URL","values":"/example"}]}
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
 }
 
 func (s CreateProtectionModuleRuleRequest) String() string {
@@ -417,12 +619,25 @@ func (s *CreateProtectionModuleRuleRequest) SetInstanceId(v string) *CreateProte
 	return s
 }
 
+func (s *CreateProtectionModuleRuleRequest) SetRegionId(v string) *CreateProtectionModuleRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateProtectionModuleRuleRequest) SetResourceGroupId(v string) *CreateProtectionModuleRuleRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateProtectionModuleRuleRequest) SetRule(v string) *CreateProtectionModuleRuleRequest {
 	s.Rule = &v
 	return s
 }
 
 type CreateProtectionModuleRuleResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -440,9 +655,9 @@ func (s *CreateProtectionModuleRuleResponseBody) SetRequestId(v string) *CreateP
 }
 
 type CreateProtectionModuleRuleResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateProtectionModuleRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProtectionModuleRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateProtectionModuleRuleResponse) String() string {
@@ -469,8 +684,20 @@ func (s *CreateProtectionModuleRuleResponse) SetBody(v *CreateProtectionModuleRu
 }
 
 type DeleteDomainRequest struct {
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DeleteDomainRequest) String() string {
@@ -491,7 +718,20 @@ func (s *DeleteDomainRequest) SetInstanceId(v string) *DeleteDomainRequest {
 	return s
 }
 
+func (s *DeleteDomainRequest) SetRegionId(v string) *DeleteDomainRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteDomainRequest) SetResourceGroupId(v string) *DeleteDomainRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type DeleteDomainResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -509,9 +749,9 @@ func (s *DeleteDomainResponseBody) SetRequestId(v string) *DeleteDomainResponseB
 }
 
 type DeleteDomainResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDomainResponse) String() string {
@@ -538,7 +778,16 @@ func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomai
 }
 
 type DeleteInstanceRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -555,12 +804,20 @@ func (s *DeleteInstanceRequest) SetInstanceId(v string) *DeleteInstanceRequest {
 	return s
 }
 
+func (s *DeleteInstanceRequest) SetRegionId(v string) *DeleteInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DeleteInstanceRequest) SetResourceGroupId(v string) *DeleteInstanceRequest {
 	s.ResourceGroupId = &v
 	return s
 }
 
 type DeleteInstanceResponseBody struct {
+	// example:
+	//
+	// F35F45B0-5D6B-4238-BE02-A62D0760E840
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -578,9 +835,9 @@ func (s *DeleteInstanceResponseBody) SetRequestId(v string) *DeleteInstanceRespo
 }
 
 type DeleteInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteInstanceResponse) String() string {
@@ -607,10 +864,32 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteProtectionModuleRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac_custom
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-mp9153****
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 42754
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DeleteProtectionModuleRuleRequest) String() string {
@@ -636,12 +915,25 @@ func (s *DeleteProtectionModuleRuleRequest) SetInstanceId(v string) *DeleteProte
 	return s
 }
 
+func (s *DeleteProtectionModuleRuleRequest) SetRegionId(v string) *DeleteProtectionModuleRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteProtectionModuleRuleRequest) SetResourceGroupId(v string) *DeleteProtectionModuleRuleRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DeleteProtectionModuleRuleRequest) SetRuleId(v int64) *DeleteProtectionModuleRuleRequest {
 	s.RuleId = &v
 	return s
 }
 
 type DeleteProtectionModuleRuleResponseBody struct {
+	// example:
+	//
+	// 1557B42F-B889-460A-B17F-1DE5C5AD7FF2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -659,9 +951,9 @@ func (s *DeleteProtectionModuleRuleResponseBody) SetRequestId(v string) *DeleteP
 }
 
 type DeleteProtectionModuleRuleResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteProtectionModuleRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteProtectionModuleRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteProtectionModuleRuleResponse) String() string {
@@ -688,10 +980,32 @@ func (s *DeleteProtectionModuleRuleResponse) SetBody(v *DeleteProtectionModuleRu
 }
 
 type DescribeCertMatchStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE----- 62EcYPWd2Oy1vs6MTXcJSfN9Z7rZ9fmxWr2BFN2XbahgnsSXM48ixZJ4krc+1M+j2kcubVpsE2cgHdj4v8H6jUz9Ji4mr7vMNS6dXv8PUkl/qoDeNGCNdyTS5NIL5ir+g92cL8IGOkjgvhlqt9vc65Cgb4mL+n5+DV9uOyTZTW/MojmlgfUekC2xiXa54nxJf17Y1TADGSbyJbsC0Q9nIrHsPl8YKkvRWvIAqYxXZ7wRwWWmv4TMxFhWRiNY7yZIo2ZUhl02SIDNggIEeg== -----END CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PrivateKey  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -----BEGIN RSA PRIVATE KEY----- DADTPZoOHd9WtZ3UKHJTRgNQmioPQn2bqdKHop+B/dn/4VZL7Jt8zSDGM9sTMThLyvsmLQKBgQCr+ujntC1kN6pGBj2Fw2l/EA/W3rYEce2tyhjgmG7rZ+A/jVE9fld5sQra6ZdwBcQJaiygoIYoaMF2EjRwc0qwHaluq0C15f6ujSoHh2e+D5zdmkTg/3NKNjqNv6xA2gYpinVDzFdZ9Zujxvuh9o4Vqf0YF8bv5UK5G04RtKadOw== -----END RSA PRIVATE KEY-----
+	PrivateKey      *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeCertMatchStatusRequest) String() string {
@@ -722,9 +1036,25 @@ func (s *DescribeCertMatchStatusRequest) SetPrivateKey(v string) *DescribeCertMa
 	return s
 }
 
+func (s *DescribeCertMatchStatusRequest) SetRegionId(v string) *DescribeCertMatchStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCertMatchStatusRequest) SetResourceGroupId(v string) *DescribeCertMatchStatusRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type DescribeCertMatchStatusResponseBody struct {
-	MatchStatus *bool   `json:"MatchStatus,omitempty" xml:"MatchStatus,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// false
+	MatchStatus *bool `json:"MatchStatus,omitempty" xml:"MatchStatus,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCertMatchStatusResponseBody) String() string {
@@ -746,9 +1076,9 @@ func (s *DescribeCertMatchStatusResponseBody) SetRequestId(v string) *DescribeCe
 }
 
 type DescribeCertMatchStatusResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCertMatchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCertMatchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCertMatchStatusResponse) String() string {
@@ -775,8 +1105,18 @@ func (s *DescribeCertMatchStatusResponse) SetBody(v *DescribeCertMatchStatusResp
 }
 
 type DescribeCertificatesRequest struct {
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// www.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-zz11sr5****
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeCertificatesRequest) String() string {
@@ -797,9 +1137,22 @@ func (s *DescribeCertificatesRequest) SetInstanceId(v string) *DescribeCertifica
 	return s
 }
 
+func (s *DescribeCertificatesRequest) SetRegionId(v string) *DescribeCertificatesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCertificatesRequest) SetResourceGroupId(v string) *DescribeCertificatesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type DescribeCertificatesResponseBody struct {
 	Certificates []*DescribeCertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ECF65091-3704-55D5-BC88-EC208B0E238C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCertificatesResponseBody) String() string {
@@ -821,11 +1174,24 @@ func (s *DescribeCertificatesResponseBody) SetRequestId(v string) *DescribeCerti
 }
 
 type DescribeCertificatesResponseBodyCertificates struct {
-	CertificateId   *int64    `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	CertificateName *string   `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	CommonName      *string   `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	IsUsing         *bool     `json:"IsUsing,omitempty" xml:"IsUsing,omitempty"`
-	Sans            []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2329260
+	CertificateId *int64 `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// example:
+	//
+	// *.aliyundoc.com
+	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	// example:
+	//
+	// *.aliyundoc.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// false
+	IsUsing *bool     `json:"IsUsing,omitempty" xml:"IsUsing,omitempty"`
+	Sans    []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCertificatesResponseBodyCertificates) String() string {
@@ -851,6 +1217,11 @@ func (s *DescribeCertificatesResponseBodyCertificates) SetCommonName(v string) *
 	return s
 }
 
+func (s *DescribeCertificatesResponseBodyCertificates) SetEndTime(v int64) *DescribeCertificatesResponseBodyCertificates {
+	s.EndTime = &v
+	return s
+}
+
 func (s *DescribeCertificatesResponseBodyCertificates) SetIsUsing(v bool) *DescribeCertificatesResponseBodyCertificates {
 	s.IsUsing = &v
 	return s
@@ -862,9 +1233,9 @@ func (s *DescribeCertificatesResponseBodyCertificates) SetSans(v []*string) *Des
 }
 
 type DescribeCertificatesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCertificatesResponse) String() string {
@@ -891,8 +1262,20 @@ func (s *DescribeCertificatesResponse) SetBody(v *DescribeCertificatesResponseBo
 }
 
 type DescribeDomainRequest struct {
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-7pp26f1****
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeDomainRequest) String() string {
@@ -913,9 +1296,22 @@ func (s *DescribeDomainRequest) SetInstanceId(v string) *DescribeDomainRequest {
 	return s
 }
 
+func (s *DescribeDomainRequest) SetRegionId(v string) *DescribeDomainRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDomainRequest) SetResourceGroupId(v string) *DescribeDomainRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type DescribeDomainResponseBody struct {
-	Domain    *DescribeDomainResponseBodyDomain `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Domain *DescribeDomainResponseBodyDomain `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Struct"`
+	// example:
+	//
+	// D827FCFE-90A7-4330-9326-D33C8B4C7726
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDomainResponseBody) String() string {
@@ -937,29 +1333,81 @@ func (s *DescribeDomainResponseBody) SetRequestId(v string) *DescribeDomainRespo
 }
 
 type DescribeDomainResponseBodyDomain struct {
-	AccessHeaderMode     *int32                                                  `json:"AccessHeaderMode,omitempty" xml:"AccessHeaderMode,omitempty"`
-	AccessHeaders        []*string                                               `json:"AccessHeaders,omitempty" xml:"AccessHeaders,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	AccessHeaderMode *int32    `json:"AccessHeaderMode,omitempty" xml:"AccessHeaderMode,omitempty"`
+	AccessHeaders    []*string `json:"AccessHeaders,omitempty" xml:"AccessHeaders,omitempty" type:"Repeated"`
+	// example:
+	//
+	// waf-cloud-dns
 	AccessType           *string                                                 `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	CloudNativeInstances []*DescribeDomainResponseBodyDomainCloudNativeInstances `json:"CloudNativeInstances,omitempty" xml:"CloudNativeInstances,omitempty" type:"Repeated"`
-	ClusterType          *int32                                                  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Cname                *string                                                 `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	ConnectionTime       *int32                                                  `json:"ConnectionTime,omitempty" xml:"ConnectionTime,omitempty"`
-	Http2Port            []*string                                               `json:"Http2Port,omitempty" xml:"Http2Port,omitempty" type:"Repeated"`
-	HttpPort             []*string                                               `json:"HttpPort,omitempty" xml:"HttpPort,omitempty" type:"Repeated"`
-	HttpToUserIp         *int32                                                  `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
-	HttpsPort            []*string                                               `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty" type:"Repeated"`
-	HttpsRedirect        *int32                                                  `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
-	IpFollowStatus       *int32                                                  `json:"IpFollowStatus,omitempty" xml:"IpFollowStatus,omitempty"`
-	IsAccessProduct      *int32                                                  `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
-	LoadBalancing        *int32                                                  `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
-	LogHeaders           []*DescribeDomainResponseBodyDomainLogHeaders           `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty" type:"Repeated"`
-	ReadTime             *int32                                                  `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
-	ResourceGroupId      *string                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SniHost              *string                                                 `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
-	SniStatus            *int32                                                  `json:"SniStatus,omitempty" xml:"SniStatus,omitempty"`
-	SourceIps            []*string                                               `json:"SourceIps,omitempty" xml:"SourceIps,omitempty" type:"Repeated"`
-	Version              *int64                                                  `json:"Version,omitempty" xml:"Version,omitempty"`
-	WriteTime            *int32                                                  `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
+	// example:
+	//
+	// 0
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// example:
+	//
+	// kdmqyi3ck7xogegxpiyfpb0fj21mgkxn.****.com
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// example:
+	//
+	// 5
+	ConnectionTime *int32   `json:"ConnectionTime,omitempty" xml:"ConnectionTime,omitempty"`
+	Http2Port      []*int32 `json:"Http2Port,omitempty" xml:"Http2Port,omitempty" type:"Repeated"`
+	HttpPort       []*int32 `json:"HttpPort,omitempty" xml:"HttpPort,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	HttpToUserIp *int32   `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
+	HttpsPort    []*int32 `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	HttpsRedirect *int32 `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
+	// example:
+	//
+	// 1
+	IpFollowStatus *int32 `json:"IpFollowStatus,omitempty" xml:"IpFollowStatus,omitempty"`
+	// example:
+	//
+	// 1
+	IsAccessProduct   *int32 `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
+	Keepalive         *bool  `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	KeepaliveTimeout  *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	// example:
+	//
+	// 2
+	LoadBalancing *int32                                        `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
+	LogHeaders    []*DescribeDomainResponseBodyDomainLogHeaders `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 120
+	ReadTime *int32 `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
+	// example:
+	//
+	// rg-acfm2mkrunv****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Retry           *bool   `json:"Retry,omitempty" xml:"Retry,omitempty"`
+	// example:
+	//
+	// waf.example.com
+	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	// example:
+	//
+	// 1
+	SniStatus *int32    `json:"SniStatus,omitempty" xml:"SniStatus,omitempty"`
+	SourceIps []*string `json:"SourceIps,omitempty" xml:"SourceIps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 40
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 120
+	WriteTime *int32 `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
 }
 
 func (s DescribeDomainResponseBodyDomain) String() string {
@@ -1005,12 +1453,12 @@ func (s *DescribeDomainResponseBodyDomain) SetConnectionTime(v int32) *DescribeD
 	return s
 }
 
-func (s *DescribeDomainResponseBodyDomain) SetHttp2Port(v []*string) *DescribeDomainResponseBodyDomain {
+func (s *DescribeDomainResponseBodyDomain) SetHttp2Port(v []*int32) *DescribeDomainResponseBodyDomain {
 	s.Http2Port = v
 	return s
 }
 
-func (s *DescribeDomainResponseBodyDomain) SetHttpPort(v []*string) *DescribeDomainResponseBodyDomain {
+func (s *DescribeDomainResponseBodyDomain) SetHttpPort(v []*int32) *DescribeDomainResponseBodyDomain {
 	s.HttpPort = v
 	return s
 }
@@ -1020,7 +1468,7 @@ func (s *DescribeDomainResponseBodyDomain) SetHttpToUserIp(v int32) *DescribeDom
 	return s
 }
 
-func (s *DescribeDomainResponseBodyDomain) SetHttpsPort(v []*string) *DescribeDomainResponseBodyDomain {
+func (s *DescribeDomainResponseBodyDomain) SetHttpsPort(v []*int32) *DescribeDomainResponseBodyDomain {
 	s.HttpsPort = v
 	return s
 }
@@ -1037,6 +1485,21 @@ func (s *DescribeDomainResponseBodyDomain) SetIpFollowStatus(v int32) *DescribeD
 
 func (s *DescribeDomainResponseBodyDomain) SetIsAccessProduct(v int32) *DescribeDomainResponseBodyDomain {
 	s.IsAccessProduct = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetKeepalive(v bool) *DescribeDomainResponseBodyDomain {
+	s.Keepalive = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetKeepaliveRequests(v int32) *DescribeDomainResponseBodyDomain {
+	s.KeepaliveRequests = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetKeepaliveTimeout(v int32) *DescribeDomainResponseBodyDomain {
+	s.KeepaliveTimeout = &v
 	return s
 }
 
@@ -1057,6 +1520,11 @@ func (s *DescribeDomainResponseBodyDomain) SetReadTime(v int32) *DescribeDomainR
 
 func (s *DescribeDomainResponseBodyDomain) SetResourceGroupId(v string) *DescribeDomainResponseBodyDomain {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetRetry(v bool) *DescribeDomainResponseBodyDomain {
+	s.Retry = &v
 	return s
 }
 
@@ -1086,11 +1554,23 @@ func (s *DescribeDomainResponseBodyDomain) SetWriteTime(v int32) *DescribeDomain
 }
 
 type DescribeDomainResponseBodyDomainCloudNativeInstances struct {
-	CloudNativeProductName *string                                                                    `json:"CloudNativeProductName,omitempty" xml:"CloudNativeProductName,omitempty"`
-	IPAddressList          *string                                                                    `json:"IPAddressList,omitempty" xml:"IPAddressList,omitempty"`
-	InstanceId             *string                                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ProtocolPortConfigs    []*DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs `json:"ProtocolPortConfigs,omitempty" xml:"ProtocolPortConfigs,omitempty" type:"Repeated"`
-	RedirectionTypeName    *string                                                                    `json:"RedirectionTypeName,omitempty" xml:"RedirectionTypeName,omitempty"`
+	// example:
+	//
+	// ALB
+	CloudNativeProductName *string `json:"CloudNativeProductName,omitempty" xml:"CloudNativeProductName,omitempty"`
+	// example:
+	//
+	// ["39.XX.XX.197"]
+	IPAddressList []*string `json:"IPAddressList,omitempty" xml:"IPAddressList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// alb-s65nua68wdedsp****
+	InstanceId          *string                                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProtocolPortConfigs []*DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs `json:"ProtocolPortConfigs,omitempty" xml:"ProtocolPortConfigs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ALB
+	RedirectionTypeName *string `json:"RedirectionTypeName,omitempty" xml:"RedirectionTypeName,omitempty"`
 }
 
 func (s DescribeDomainResponseBodyDomainCloudNativeInstances) String() string {
@@ -1106,8 +1586,8 @@ func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetCloudNativePro
 	return s
 }
 
-func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetIPAddressList(v string) *DescribeDomainResponseBodyDomainCloudNativeInstances {
-	s.IPAddressList = &v
+func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetIPAddressList(v []*string) *DescribeDomainResponseBodyDomainCloudNativeInstances {
+	s.IPAddressList = v
 	return s
 }
 
@@ -1127,7 +1607,13 @@ func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetRedirectionTyp
 }
 
 type DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs struct {
-	Ports    *string `json:"Ports,omitempty" xml:"Ports,omitempty"`
+	// example:
+	//
+	// [80]
+	Ports []*int32 `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -1139,8 +1625,8 @@ func (s DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs)
 	return s.String()
 }
 
-func (s *DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs) SetPorts(v string) *DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs {
-	s.Ports = &v
+func (s *DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs) SetPorts(v []*int32) *DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs {
+	s.Ports = v
 	return s
 }
 
@@ -1150,7 +1636,13 @@ func (s *DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs
 }
 
 type DescribeDomainResponseBodyDomainLogHeaders struct {
+	// example:
+	//
+	// ALIWAF-TAG
 	K *string `json:"k,omitempty" xml:"k,omitempty"`
+	// example:
+	//
+	// Yes
 	V *string `json:"v,omitempty" xml:"v,omitempty"`
 }
 
@@ -1173,9 +1665,9 @@ func (s *DescribeDomainResponseBodyDomainLogHeaders) SetV(v string) *DescribeDom
 }
 
 type DescribeDomainResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDomainResponse) String() string {
@@ -1202,8 +1694,22 @@ func (s *DescribeDomainResponse) SetBody(v *DescribeDomainResponseBody) *Describ
 }
 
 type DescribeDomainAdvanceConfigsRequest struct {
-	DomainList      *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
+	DomainList *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-2r427ng****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1225,6 +1731,11 @@ func (s *DescribeDomainAdvanceConfigsRequest) SetInstanceId(v string) *DescribeD
 	return s
 }
 
+func (s *DescribeDomainAdvanceConfigsRequest) SetRegionId(v string) *DescribeDomainAdvanceConfigsRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeDomainAdvanceConfigsRequest) SetResourceGroupId(v string) *DescribeDomainAdvanceConfigsRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -1232,7 +1743,10 @@ func (s *DescribeDomainAdvanceConfigsRequest) SetResourceGroupId(v string) *Desc
 
 type DescribeDomainAdvanceConfigsResponseBody struct {
 	DomainConfigs []*DescribeDomainAdvanceConfigsResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Repeated"`
-	RequestId     *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDomainAdvanceConfigsResponseBody) String() string {
@@ -1254,6 +1768,9 @@ func (s *DescribeDomainAdvanceConfigsResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeDomainAdvanceConfigsResponseBodyDomainConfigs struct {
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain  *string                                                       `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Profile *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
 }
@@ -1277,18 +1794,45 @@ func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigs) SetProfile(v *De
 }
 
 type DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile struct {
-	CertStatus         *int32    `json:"CertStatus,omitempty" xml:"CertStatus,omitempty"`
-	ClusterType        *int32    `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Cname              *string   `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	ExclusiveVipStatus *int32    `json:"ExclusiveVipStatus,omitempty" xml:"ExclusiveVipStatus,omitempty"`
-	GSLBStatus         *string   `json:"GSLBStatus,omitempty" xml:"GSLBStatus,omitempty"`
-	Http2Port          []*int32  `json:"Http2Port,omitempty" xml:"Http2Port,omitempty" type:"Repeated"`
-	HttpPort           []*int32  `json:"HttpPort,omitempty" xml:"HttpPort,omitempty" type:"Repeated"`
-	HttpsPort          []*int32  `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty" type:"Repeated"`
-	Ipv6Status         *int32    `json:"Ipv6Status,omitempty" xml:"Ipv6Status,omitempty"`
-	ResolvedType       *int32    `json:"ResolvedType,omitempty" xml:"ResolvedType,omitempty"`
-	Rs                 []*string `json:"Rs,omitempty" xml:"Rs,omitempty" type:"Repeated"`
-	VipServiceStatus   *int32    `json:"VipServiceStatus,omitempty" xml:"VipServiceStatus,omitempty"`
+	// example:
+	//
+	// 1
+	CertStatus *int32 `json:"CertStatus,omitempty" xml:"CertStatus,omitempty"`
+	// example:
+	//
+	// 0
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// example:
+	//
+	// ****dsbpkt75zeiok5mta2j5l7hggcrm.****.com
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// example:
+	//
+	// 0
+	ExclusiveVipStatus *int32 `json:"ExclusiveVipStatus,omitempty" xml:"ExclusiveVipStatus,omitempty"`
+	// example:
+	//
+	// on
+	GSLBStatus *string  `json:"GSLBStatus,omitempty" xml:"GSLBStatus,omitempty"`
+	Http2Port  []*int32 `json:"Http2Port,omitempty" xml:"Http2Port,omitempty" type:"Repeated"`
+	HttpPort   []*int32 `json:"HttpPort,omitempty" xml:"HttpPort,omitempty" type:"Repeated"`
+	HttpsPort  []*int32 `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Ipv6Status *int32 `json:"Ipv6Status,omitempty" xml:"Ipv6Status,omitempty"`
+	// example:
+	//
+	// 0
+	ResolvedType *int32 `json:"ResolvedType,omitempty" xml:"ResolvedType,omitempty"`
+	// example:
+	//
+	// ["39.XX.XX.197"]
+	Rs []*string `json:"Rs,omitempty" xml:"Rs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	VipServiceStatus *int32 `json:"VipServiceStatus,omitempty" xml:"VipServiceStatus,omitempty"`
 }
 
 func (s DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) String() string {
@@ -1360,9 +1904,9 @@ func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetVipSer
 }
 
 type DescribeDomainAdvanceConfigsResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainAdvanceConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainAdvanceConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDomainAdvanceConfigsResponse) String() string {
@@ -1389,13 +1933,37 @@ func (s *DescribeDomainAdvanceConfigsResponse) SetBody(v *DescribeDomainAdvanceC
 }
 
 type DescribeDomainBasicConfigsRequest struct {
-	AccessType           *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	CloudNativeProductId *int32  `json:"CloudNativeProductId,omitempty" xml:"CloudNativeProductId,omitempty"`
-	DomainKey            *string `json:"DomainKey,omitempty" xml:"DomainKey,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// waf-cloud-dns
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// example:
+	//
+	// 0
+	CloudNativeProductId *int32 `json:"CloudNativeProductId,omitempty" xml:"CloudNativeProductId,omitempty"`
+	// example:
+	//
+	// aliyundoc
+	DomainKey *string `json:"DomainKey,omitempty" xml:"DomainKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm2pz25js****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeDomainBasicConfigsRequest) String() string {
@@ -1436,6 +2004,11 @@ func (s *DescribeDomainBasicConfigsRequest) SetPageSize(v int32) *DescribeDomain
 	return s
 }
 
+func (s *DescribeDomainBasicConfigsRequest) SetRegionId(v string) *DescribeDomainBasicConfigsRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeDomainBasicConfigsRequest) SetResourceGroupId(v string) *DescribeDomainBasicConfigsRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -1443,8 +2016,14 @@ func (s *DescribeDomainBasicConfigsRequest) SetResourceGroupId(v string) *Descri
 
 type DescribeDomainBasicConfigsResponseBody struct {
 	DomainConfigs []*DescribeDomainBasicConfigsResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Repeated"`
-	RequestId     *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDomainBasicConfigsResponseBody) String() string {
@@ -1471,16 +2050,46 @@ func (s *DescribeDomainBasicConfigsResponseBody) SetTotalCount(v int32) *Describ
 }
 
 type DescribeDomainBasicConfigsResponseBodyDomainConfigs struct {
+	// example:
+	//
+	// waf-cloud-dns
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	AclStatus  *int32  `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	CcMode     *int32  `json:"CcMode,omitempty" xml:"CcMode,omitempty"`
-	CcStatus   *int32  `json:"CcStatus,omitempty" xml:"CcStatus,omitempty"`
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Owner      *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Version    *int64  `json:"Version,omitempty" xml:"Version,omitempty"`
-	WafMode    *int32  `json:"WafMode,omitempty" xml:"WafMode,omitempty"`
-	WafStatus  *int32  `json:"WafStatus,omitempty" xml:"WafStatus,omitempty"`
+	// example:
+	//
+	// 1
+	AclStatus *int32 `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// example:
+	//
+	// 0
+	CcMode *int32 `json:"CcMode,omitempty" xml:"CcMode,omitempty"`
+	// example:
+	//
+	// 1
+	CcStatus *int32 `json:"CcStatus,omitempty" xml:"CcStatus,omitempty"`
+	// example:
+	//
+	// www.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// WAF
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 0
+	WafMode *int32 `json:"WafMode,omitempty" xml:"WafMode,omitempty"`
+	// example:
+	//
+	// 1
+	WafStatus *int32 `json:"WafStatus,omitempty" xml:"WafStatus,omitempty"`
 }
 
 func (s DescribeDomainBasicConfigsResponseBodyDomainConfigs) String() string {
@@ -1542,9 +2151,9 @@ func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetWafStatus(v int
 }
 
 type DescribeDomainBasicConfigsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainBasicConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainBasicConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDomainBasicConfigsResponse) String() string {
@@ -1571,13 +2180,37 @@ func (s *DescribeDomainBasicConfigsResponse) SetBody(v *DescribeDomainBasicConfi
 }
 
 type DescribeDomainListRequest struct {
-	DomainName      *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainNames     []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
-	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsSub           *int32    `json:"IsSub,omitempty" xml:"IsSub,omitempty"`
-	PageNumber      *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainNames []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-7pp26f1****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 0
+	IsSub *int32 `json:"IsSub,omitempty" xml:"IsSub,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm2pz25js****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeDomainListRequest) String() string {
@@ -1618,6 +2251,11 @@ func (s *DescribeDomainListRequest) SetPageSize(v int32) *DescribeDomainListRequ
 	return s
 }
 
+func (s *DescribeDomainListRequest) SetRegionId(v string) *DescribeDomainListRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeDomainListRequest) SetResourceGroupId(v string) *DescribeDomainListRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -1625,8 +2263,14 @@ func (s *DescribeDomainListRequest) SetResourceGroupId(v string) *DescribeDomain
 
 type DescribeDomainListResponseBody struct {
 	DomainNames []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 592E866F-6C05-4E7C-81DE-B4D8E86B91EF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDomainListResponseBody) String() string {
@@ -1653,9 +2297,9 @@ func (s *DescribeDomainListResponseBody) SetTotalCount(v int32) *DescribeDomainL
 }
 
 type DescribeDomainListResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDomainListResponse) String() string {
@@ -1682,7 +2326,16 @@ func (s *DescribeDomainListResponse) SetBody(v *DescribeDomainListResponseBody) 
 }
 
 type DescribeDomainNamesRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1699,6 +2352,11 @@ func (s *DescribeDomainNamesRequest) SetInstanceId(v string) *DescribeDomainName
 	return s
 }
 
+func (s *DescribeDomainNamesRequest) SetRegionId(v string) *DescribeDomainNamesRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeDomainNamesRequest) SetResourceGroupId(v string) *DescribeDomainNamesRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -1706,7 +2364,10 @@ func (s *DescribeDomainNamesRequest) SetResourceGroupId(v string) *DescribeDomai
 
 type DescribeDomainNamesResponseBody struct {
 	DomainNames []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDomainNamesResponseBody) String() string {
@@ -1728,9 +2389,9 @@ func (s *DescribeDomainNamesResponseBody) SetRequestId(v string) *DescribeDomain
 }
 
 type DescribeDomainNamesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainNamesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainNamesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDomainNamesResponse) String() string {
@@ -1757,8 +2418,20 @@ func (s *DescribeDomainNamesResponse) SetBody(v *DescribeDomainNamesResponseBody
 }
 
 type DescribeDomainRuleGroupRequest struct {
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeDomainRuleGroupRequest) String() string {
@@ -1779,10 +2452,29 @@ func (s *DescribeDomainRuleGroupRequest) SetInstanceId(v string) *DescribeDomain
 	return s
 }
 
+func (s *DescribeDomainRuleGroupRequest) SetRegionId(v string) *DescribeDomainRuleGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDomainRuleGroupRequest) SetResourceGroupId(v string) *DescribeDomainRuleGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type DescribeDomainRuleGroupResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleGroupId *int64  `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
-	WafAiStatus *int32  `json:"WafAiStatus,omitempty" xml:"WafAiStatus,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1012
+	RuleGroupId *int64 `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
+	// example:
+	//
+	// 1
+	WafAiStatus *int32 `json:"WafAiStatus,omitempty" xml:"WafAiStatus,omitempty"`
 }
 
 func (s DescribeDomainRuleGroupResponseBody) String() string {
@@ -1809,9 +2501,9 @@ func (s *DescribeDomainRuleGroupResponseBody) SetWafAiStatus(v int32) *DescribeD
 }
 
 type DescribeDomainRuleGroupResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainRuleGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainRuleGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDomainRuleGroupResponse) String() string {
@@ -1838,7 +2530,14 @@ func (s *DescribeDomainRuleGroupResponse) SetBody(v *DescribeDomainRuleGroupResp
 }
 
 type DescribeInstanceInfoRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1855,6 +2554,11 @@ func (s *DescribeInstanceInfoRequest) SetInstanceId(v string) *DescribeInstanceI
 	return s
 }
 
+func (s *DescribeInstanceInfoRequest) SetRegionId(v string) *DescribeInstanceInfoRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeInstanceInfoRequest) SetResourceGroupId(v string) *DescribeInstanceInfoRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -1862,7 +2566,10 @@ func (s *DescribeInstanceInfoRequest) SetResourceGroupId(v string) *DescribeInst
 
 type DescribeInstanceInfoResponseBody struct {
 	InstanceInfo *DescribeInstanceInfoResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Struct"`
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceInfoResponseBody) String() string {
@@ -1884,16 +2591,46 @@ func (s *DescribeInstanceInfoResponseBody) SetRequestId(v string) *DescribeInsta
 }
 
 type DescribeInstanceInfoResponseBodyInstanceInfo struct {
-	EndDate          *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	InDebt           *int32  `json:"InDebt,omitempty" xml:"InDebt,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PayType          *int32  `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RemainDay        *int32  `json:"RemainDay,omitempty" xml:"RemainDay,omitempty"`
-	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1512921600
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// 1
+	InDebt *int32 `json:"InDebt,omitempty" xml:"InDebt,omitempty"`
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PayType *int32 `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 1
+	RemainDay *int32 `json:"RemainDay,omitempty" xml:"RemainDay,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	Trial            *int32  `json:"Trial,omitempty" xml:"Trial,omitempty"`
-	Version          *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 1
+	Trial *int32 `json:"Trial,omitempty" xml:"Trial,omitempty"`
+	// example:
+	//
+	// version_3
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeInstanceInfoResponseBodyInstanceInfo) String() string {
@@ -1955,9 +2692,9 @@ func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetVersion(v string) *Des
 }
 
 type DescribeInstanceInfoResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceInfoResponse) String() string {
@@ -1984,7 +2721,14 @@ func (s *DescribeInstanceInfoResponse) SetBody(v *DescribeInstanceInfoResponseBo
 }
 
 type DescribeInstanceSpecInfoRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// waf-cn-st2225l****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2001,17 +2745,31 @@ func (s *DescribeInstanceSpecInfoRequest) SetInstanceId(v string) *DescribeInsta
 	return s
 }
 
+func (s *DescribeInstanceSpecInfoRequest) SetRegionId(v string) *DescribeInstanceSpecInfoRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeInstanceSpecInfoRequest) SetResourceGroupId(v string) *DescribeInstanceSpecInfoRequest {
 	s.ResourceGroupId = &v
 	return s
 }
 
 type DescribeInstanceSpecInfoResponseBody struct {
-	ExpireTime        *int64                                                   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 1677168000000
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// waf-cn-st2225l****
 	InstanceId        *string                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceSpecInfos []*DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos `json:"InstanceSpecInfos,omitempty" xml:"InstanceSpecInfos,omitempty" type:"Repeated"`
-	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Version           *string                                                  `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// E906513E-F6B5-495E-98DC-7BA888671D76
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeInstanceSpecInfoResponseBody) String() string {
@@ -2048,6 +2806,9 @@ func (s *DescribeInstanceSpecInfoResponseBody) SetVersion(v string) *DescribeIns
 }
 
 type DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos struct {
+	// example:
+	//
+	// 103
 	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -2071,9 +2832,9 @@ func (s *DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos) SetValue(v strin
 }
 
 type DescribeInstanceSpecInfoResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceSpecInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceSpecInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceSpecInfoResponse) String() string {
@@ -2100,12 +2861,33 @@ func (s *DescribeInstanceSpecInfoResponse) SetBody(v *DescribeInstanceSpecInfoRe
 }
 
 type DescribeLogServiceStatusRequest struct {
-	DomainNames     []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
-	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber      *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Region          *string   `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	DomainNames []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-zz11sr5****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm2pz25js****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeLogServiceStatusRequest) String() string {
@@ -2141,6 +2923,11 @@ func (s *DescribeLogServiceStatusRequest) SetRegion(v string) *DescribeLogServic
 	return s
 }
 
+func (s *DescribeLogServiceStatusRequest) SetRegionId(v string) *DescribeLogServiceStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeLogServiceStatusRequest) SetResourceGroupId(v string) *DescribeLogServiceStatusRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -2148,8 +2935,14 @@ func (s *DescribeLogServiceStatusRequest) SetResourceGroupId(v string) *Describe
 
 type DescribeLogServiceStatusResponseBody struct {
 	DomainStatus []*DescribeLogServiceStatusResponseBodyDomainStatus `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty" type:"Repeated"`
-	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// C2E97B3F-1623-4CDF-A7E2-FD9D4CF1027A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeLogServiceStatusResponseBody) String() string {
@@ -2176,8 +2969,14 @@ func (s *DescribeLogServiceStatusResponseBody) SetTotalCount(v int32) *DescribeL
 }
 
 type DescribeLogServiceStatusResponseBodyDomainStatus struct {
-	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	SlsLogActive *int32  `json:"SlsLogActive,omitempty" xml:"SlsLogActive,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1
+	SlsLogActive *int32 `json:"SlsLogActive,omitempty" xml:"SlsLogActive,omitempty"`
 }
 
 func (s DescribeLogServiceStatusResponseBodyDomainStatus) String() string {
@@ -2199,9 +2998,9 @@ func (s *DescribeLogServiceStatusResponseBodyDomainStatus) SetSlsLogActive(v int
 }
 
 type DescribeLogServiceStatusResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLogServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLogServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeLogServiceStatusResponse) String() string {
@@ -2228,9 +3027,22 @@ func (s *DescribeLogServiceStatusResponse) SetBody(v *DescribeLogServiceStatusRe
 }
 
 type DescribeProtectionModuleCodeConfigRequest struct {
-	CodeType        *int32  `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
-	CodeValue       *int32  `json:"CodeValue,omitempty" xml:"CodeValue,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 14
+	CodeType *int32 `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	// example:
+	//
+	// 0
+	CodeValue *int32 `json:"CodeValue,omitempty" xml:"CodeValue,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2257,14 +3069,25 @@ func (s *DescribeProtectionModuleCodeConfigRequest) SetInstanceId(v string) *Des
 	return s
 }
 
+func (s *DescribeProtectionModuleCodeConfigRequest) SetRegionId(v string) *DescribeProtectionModuleCodeConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeProtectionModuleCodeConfigRequest) SetResourceGroupId(v string) *DescribeProtectionModuleCodeConfigRequest {
 	s.ResourceGroupId = &v
 	return s
 }
 
 type DescribeProtectionModuleCodeConfigResponseBody struct {
+	// example:
+	//
+	// [{"code":0,"name":"310000,530000,150000,110000,TW_01,220000,510000,120000,640000,340000,370000,140000,440000,450000,650000,320000,360000,130000,410000,330000,460000,420000,430000,MO_01,620000,350000,540000,520000,210000,500000,610000,630000,HK_01,230000","env":"online"}]
 	CodeConfigs *string `json:"CodeConfigs,omitempty" xml:"CodeConfigs,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// BE3911B8-9D96-5B39-8875-503BBC9DA4BF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeProtectionModuleCodeConfigResponseBody) String() string {
@@ -2286,9 +3109,9 @@ func (s *DescribeProtectionModuleCodeConfigResponseBody) SetRequestId(v string) 
 }
 
 type DescribeProtectionModuleCodeConfigResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeProtectionModuleCodeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProtectionModuleCodeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeProtectionModuleCodeConfigResponse) String() string {
@@ -2314,14 +3137,160 @@ func (s *DescribeProtectionModuleCodeConfigResponse) SetBody(v *DescribeProtecti
 	return s
 }
 
+type DescribeProtectionModuleModeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf
+	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-atstuj3rtop****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s DescribeProtectionModuleModeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProtectionModuleModeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProtectionModuleModeRequest) SetDefenseType(v string) *DescribeProtectionModuleModeRequest {
+	s.DefenseType = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleModeRequest) SetDomain(v string) *DescribeProtectionModuleModeRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleModeRequest) SetInstanceId(v string) *DescribeProtectionModuleModeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleModeRequest) SetRegionId(v string) *DescribeProtectionModuleModeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleModeRequest) SetResourceGroupId(v string) *DescribeProtectionModuleModeRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type DescribeProtectionModuleModeResponseBody struct {
+	// example:
+	//
+	// 1
+	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeProtectionModuleModeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProtectionModuleModeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProtectionModuleModeResponseBody) SetMode(v int32) *DescribeProtectionModuleModeResponseBody {
+	s.Mode = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleModeResponseBody) SetRequestId(v string) *DescribeProtectionModuleModeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeProtectionModuleModeResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProtectionModuleModeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeProtectionModuleModeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProtectionModuleModeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProtectionModuleModeResponse) SetHeaders(v map[string]*string) *DescribeProtectionModuleModeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeProtectionModuleModeResponse) SetStatusCode(v int32) *DescribeProtectionModuleModeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleModeResponse) SetBody(v *DescribeProtectionModuleModeResponseBody) *DescribeProtectionModuleModeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeProtectionModuleRulesRequest struct {
-	DefenseType     *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Query           *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac_highfreq
+	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	// example:
+	//
+	// www.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// e2ZpbHRlcjp7InJ1bGVJZCI6NDI3NTV9LG9yZGVyQnk6ImdtdF9tb2RpZmllZCIsZGVzYzp0cnVlfQ==
+	Query    *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2368,15 +3337,26 @@ func (s *DescribeProtectionModuleRulesRequest) SetQuery(v string) *DescribeProte
 	return s
 }
 
+func (s *DescribeProtectionModuleRulesRequest) SetRegionId(v string) *DescribeProtectionModuleRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeProtectionModuleRulesRequest) SetResourceGroupId(v string) *DescribeProtectionModuleRulesRequest {
 	s.ResourceGroupId = &v
 	return s
 }
 
 type DescribeProtectionModuleRulesResponseBody struct {
-	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules      []*DescribeProtectionModuleRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules     []*DescribeProtectionModuleRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeProtectionModuleRulesResponseBody) String() string {
@@ -2403,11 +3383,26 @@ func (s *DescribeProtectionModuleRulesResponseBody) SetTotalCount(v int32) *Desc
 }
 
 type DescribeProtectionModuleRulesResponseBodyRules struct {
+	// example:
+	//
+	// {"count":60,"interval":60,"ttl":300}
 	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	RuleId  *int64                 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	Status  *int64                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Time    *int64                 `json:"Time,omitempty" xml:"Time,omitempty"`
-	Version *int64                 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 42755
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1570700044
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 2
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeProtectionModuleRulesResponseBodyRules) String() string {
@@ -2444,9 +3439,9 @@ func (s *DescribeProtectionModuleRulesResponseBodyRules) SetVersion(v int64) *De
 }
 
 type DescribeProtectionModuleRulesResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeProtectionModuleRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProtectionModuleRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeProtectionModuleRulesResponse) String() string {
@@ -2473,9 +3468,26 @@ func (s *DescribeProtectionModuleRulesResponse) SetBody(v *DescribeProtectionMod
 }
 
 type DescribeProtectionModuleStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-zz11sr5****
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeProtectionModuleStatusRequest) String() string {
@@ -2501,9 +3513,25 @@ func (s *DescribeProtectionModuleStatusRequest) SetInstanceId(v string) *Describ
 	return s
 }
 
+func (s *DescribeProtectionModuleStatusRequest) SetRegionId(v string) *DescribeProtectionModuleStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleStatusRequest) SetResourceGroupId(v string) *DescribeProtectionModuleStatusRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type DescribeProtectionModuleStatusResponseBody struct {
-	ModuleStatus *int32  `json:"ModuleStatus,omitempty" xml:"ModuleStatus,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	ModuleStatus *int32 `json:"ModuleStatus,omitempty" xml:"ModuleStatus,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeProtectionModuleStatusResponseBody) String() string {
@@ -2525,9 +3553,9 @@ func (s *DescribeProtectionModuleStatusResponseBody) SetRequestId(v string) *Des
 }
 
 type DescribeProtectionModuleStatusResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeProtectionModuleStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProtectionModuleStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeProtectionModuleStatusResponse) String() string {
@@ -2553,8 +3581,638 @@ func (s *DescribeProtectionModuleStatusResponse) SetBody(v *DescribeProtectionMo
 	return s
 }
 
+type DescribeRuleGroupsRequest struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1011
+	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-aek23puu7m3kmea
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 60.208.111.213
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 10
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// ZH
+	WafLang *string `json:"WafLang,omitempty" xml:"WafLang,omitempty"`
+}
+
+func (s DescribeRuleGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRuleGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRuleGroupsRequest) SetCurrentPage(v int32) *DescribeRuleGroupsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsRequest) SetInstanceId(v string) *DescribeRuleGroupsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsRequest) SetLang(v string) *DescribeRuleGroupsRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsRequest) SetPageSize(v int32) *DescribeRuleGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsRequest) SetPolicyId(v int64) *DescribeRuleGroupsRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsRequest) SetRegion(v string) *DescribeRuleGroupsRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsRequest) SetRegionId(v string) *DescribeRuleGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsRequest) SetResourceGroupId(v string) *DescribeRuleGroupsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsRequest) SetSourceIp(v string) *DescribeRuleGroupsRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsRequest) SetType(v int32) *DescribeRuleGroupsRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsRequest) SetWafLang(v string) *DescribeRuleGroupsRequest {
+	s.WafLang = &v
+	return s
+}
+
+type DescribeRuleGroupsResponseBody struct {
+	// example:
+	//
+	// 02E9A4B8-90FB-5F41-A049-C82277EB82FB
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleGroups []*DescribeRuleGroupsResponseBodyRuleGroups `json:"RuleGroups,omitempty" xml:"RuleGroups,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 123
+	WafTaskId *string `json:"WafTaskId,omitempty" xml:"WafTaskId,omitempty"`
+}
+
+func (s DescribeRuleGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRuleGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRuleGroupsResponseBody) SetRequestId(v string) *DescribeRuleGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBody) SetRuleGroups(v []*DescribeRuleGroupsResponseBodyRuleGroups) *DescribeRuleGroupsResponseBody {
+	s.RuleGroups = v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBody) SetTaskStatus(v int32) *DescribeRuleGroupsResponseBody {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBody) SetTotal(v int32) *DescribeRuleGroupsResponseBody {
+	s.Total = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBody) SetWafTaskId(v string) *DescribeRuleGroupsResponseBody {
+	s.WafTaskId = &v
+	return s
+}
+
+type DescribeRuleGroupsResponseBodyRuleGroups struct {
+	// example:
+	//
+	// desc
+	Desc       *string   `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	DomainList []*string `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rule_group_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 116562
+	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	RuleCnt *int32 `json:"RuleCnt,omitempty" xml:"RuleCnt,omitempty"`
+	// example:
+	//
+	// rule_group_test
+	RuleGroupTemplateName *string `json:"RuleGroupTemplateName,omitempty" xml:"RuleGroupTemplateName,omitempty"`
+	// example:
+	//
+	// 1711445265
+	RuleGroupUpdateTime *int64 `json:"RuleGroupUpdateTime,omitempty" xml:"RuleGroupUpdateTime,omitempty"`
+	// example:
+	//
+	// 1102
+	TemplatePolicyId *int64 `json:"TemplatePolicyId,omitempty" xml:"TemplatePolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 11
+	WafVersion *int64 `json:"WafVersion,omitempty" xml:"WafVersion,omitempty"`
+}
+
+func (s DescribeRuleGroupsResponseBodyRuleGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRuleGroupsResponseBodyRuleGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRuleGroupsResponseBodyRuleGroups) SetDesc(v string) *DescribeRuleGroupsResponseBodyRuleGroups {
+	s.Desc = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBodyRuleGroups) SetDomainList(v []*string) *DescribeRuleGroupsResponseBodyRuleGroups {
+	s.DomainList = v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBodyRuleGroups) SetName(v string) *DescribeRuleGroupsResponseBodyRuleGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBodyRuleGroups) SetPolicyId(v int64) *DescribeRuleGroupsResponseBodyRuleGroups {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBodyRuleGroups) SetRuleCnt(v int32) *DescribeRuleGroupsResponseBodyRuleGroups {
+	s.RuleCnt = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBodyRuleGroups) SetRuleGroupTemplateName(v string) *DescribeRuleGroupsResponseBodyRuleGroups {
+	s.RuleGroupTemplateName = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBodyRuleGroups) SetRuleGroupUpdateTime(v int64) *DescribeRuleGroupsResponseBodyRuleGroups {
+	s.RuleGroupUpdateTime = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBodyRuleGroups) SetTemplatePolicyId(v int64) *DescribeRuleGroupsResponseBodyRuleGroups {
+	s.TemplatePolicyId = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBodyRuleGroups) SetType(v int32) *DescribeRuleGroupsResponseBodyRuleGroups {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBodyRuleGroups) SetWafVersion(v int64) *DescribeRuleGroupsResponseBodyRuleGroups {
+	s.WafVersion = &v
+	return s
+}
+
+type DescribeRuleGroupsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRuleGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRuleGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRuleGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRuleGroupsResponse) SetHeaders(v map[string]*string) *DescribeRuleGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponse) SetStatusCode(v int32) *DescribeRuleGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponse) SetBody(v *DescribeRuleGroupsResponseBody) *DescribeRuleGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRulesRequest struct {
+	// example:
+	//
+	// 0
+	ApplicationType *int32 `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// CVE ID
+	//
+	// example:
+	//
+	// CVE-*-*5
+	CveIdKey *string `json:"CveIdKey,omitempty" xml:"CveIdKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-*
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 11
+	ProtectionType *int32 `json:"ProtectionType,omitempty" xml:"ProtectionType,omitempty"`
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-*
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 0
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// example:
+	//
+	// 1012
+	RuleGroupId *int64 `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
+	// example:
+	//
+	// 1131*0
+	RuleIdKey *string `json:"RuleIdKey,omitempty" xml:"RuleIdKey,omitempty"`
+	// example:
+	//
+	// 42.84.*.*
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s DescribeRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRulesRequest) SetApplicationType(v int32) *DescribeRulesRequest {
+	s.ApplicationType = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetCveIdKey(v string) *DescribeRulesRequest {
+	s.CveIdKey = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetInstanceId(v string) *DescribeRulesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetLang(v string) *DescribeRulesRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetPageNumber(v int32) *DescribeRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetPageSize(v int32) *DescribeRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetProtectionType(v int32) *DescribeRulesRequest {
+	s.ProtectionType = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetRegion(v string) *DescribeRulesRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetRegionId(v string) *DescribeRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetResourceGroupId(v string) *DescribeRulesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetRiskLevel(v int32) *DescribeRulesRequest {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetRuleGroupId(v int64) *DescribeRulesRequest {
+	s.RuleGroupId = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetRuleIdKey(v string) *DescribeRulesRequest {
+	s.RuleIdKey = &v
+	return s
+}
+
+func (s *DescribeRulesRequest) SetSourceIp(v string) *DescribeRulesRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type DescribeRulesResponseBody struct {
+	// example:
+	//
+	// 1
+	IsSubscribe *int64 `json:"IsSubscribe,omitempty" xml:"IsSubscribe,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-*
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// test111
+	RuleGroupName *string `json:"RuleGroupName,omitempty" xml:"RuleGroupName,omitempty"`
+	// example:
+	//
+	// 1012
+	RuleGroupTemplateId *string `json:"RuleGroupTemplateId,omitempty" xml:"RuleGroupTemplateId,omitempty"`
+	// example:
+	//
+	// rule_group_test
+	RuleGroupTemplateName *string                           `json:"RuleGroupTemplateName,omitempty" xml:"RuleGroupTemplateName,omitempty"`
+	Rules                 []*DescribeRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRulesResponseBody) SetIsSubscribe(v int64) *DescribeRulesResponseBody {
+	s.IsSubscribe = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBody) SetRequestId(v string) *DescribeRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBody) SetRuleGroupName(v string) *DescribeRulesResponseBody {
+	s.RuleGroupName = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBody) SetRuleGroupTemplateId(v string) *DescribeRulesResponseBody {
+	s.RuleGroupTemplateId = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBody) SetRuleGroupTemplateName(v string) *DescribeRulesResponseBody {
+	s.RuleGroupTemplateName = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBody) SetRules(v []*DescribeRulesResponseBodyRules) *DescribeRulesResponseBody {
+	s.Rules = v
+	return s
+}
+
+func (s *DescribeRulesResponseBody) SetTotalCount(v int32) *DescribeRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeRulesResponseBodyRules struct {
+	// example:
+	//
+	// 15
+	ApplicationType *int32 `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// CVE ID。
+	//
+	// example:
+	//
+	// CVE-2021-*
+	CveId       *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
+	CveUrl      *string `json:"CveUrl,omitempty" xml:"CveUrl,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 11
+	ProtectionType *int32 `json:"ProtectionType,omitempty" xml:"ProtectionType,omitempty"`
+	// example:
+	//
+	// 0
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// example:
+	//
+	// 42755
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// rules_41
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1684120148.0
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeRulesResponseBodyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRulesResponseBodyRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRulesResponseBodyRules) SetApplicationType(v int32) *DescribeRulesResponseBodyRules {
+	s.ApplicationType = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyRules) SetCveId(v string) *DescribeRulesResponseBodyRules {
+	s.CveId = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyRules) SetCveUrl(v string) *DescribeRulesResponseBodyRules {
+	s.CveUrl = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyRules) SetDescription(v string) *DescribeRulesResponseBodyRules {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyRules) SetProtectionType(v int32) *DescribeRulesResponseBodyRules {
+	s.ProtectionType = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyRules) SetRiskLevel(v int32) *DescribeRulesResponseBodyRules {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyRules) SetRuleId(v int64) *DescribeRulesResponseBodyRules {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyRules) SetRuleName(v string) *DescribeRulesResponseBodyRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *DescribeRulesResponseBodyRules) SetUpdateTime(v int64) *DescribeRulesResponseBodyRules {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeRulesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRulesResponse) SetHeaders(v map[string]*string) *DescribeRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRulesResponse) SetStatusCode(v int32) *DescribeRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRulesResponse) SetBody(v *DescribeRulesResponseBody) *DescribeRulesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeWafSourceIpSegmentRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-zz11sr5****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2571,14 +4229,28 @@ func (s *DescribeWafSourceIpSegmentRequest) SetInstanceId(v string) *DescribeWaf
 	return s
 }
 
+func (s *DescribeWafSourceIpSegmentRequest) SetRegionId(v string) *DescribeWafSourceIpSegmentRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeWafSourceIpSegmentRequest) SetResourceGroupId(v string) *DescribeWafSourceIpSegmentRequest {
 	s.ResourceGroupId = &v
 	return s
 }
 
 type DescribeWafSourceIpSegmentResponseBody struct {
-	IpV6s     *string `json:"IpV6s,omitempty" xml:"IpV6s,omitempty"`
-	Ips       *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
+	// example:
+	//
+	// 39.XXX.XXX.0/24,……,2408:400a:XXXX:XXXX::/56
+	IpV6s *string `json:"IpV6s,omitempty" xml:"IpV6s,omitempty"`
+	// example:
+	//
+	// 47.XXX.XXX.192/26,……,47.XXX.XXX.0/24
+	Ips *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
+	// example:
+	//
+	// AB2F5E31-EE96-4FD7-9560-45FF5D5377FF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2606,9 +4278,9 @@ func (s *DescribeWafSourceIpSegmentResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeWafSourceIpSegmentResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeWafSourceIpSegmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeWafSourceIpSegmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeWafSourceIpSegmentResponse) String() string {
@@ -2635,28 +4307,278 @@ func (s *DescribeWafSourceIpSegmentResponse) SetBody(v *DescribeWafSourceIpSegme
 }
 
 type ModifyDomainRequest struct {
-	AccessHeaderMode     *int32  `json:"AccessHeaderMode,omitempty" xml:"AccessHeaderMode,omitempty"`
-	AccessHeaders        *string `json:"AccessHeaders,omitempty" xml:"AccessHeaders,omitempty"`
-	AccessType           *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The method that WAF uses to obtain the actual IP address of a client. Valid values:
+	//
+	// 	- **0**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client. This is the default value.
+	//
+	// 	- **1**: WAF reads the value of a custom header field as the actual IP address of the client.
+	//
+	// >  You need to specify the parameter only when the **IsAccessProduct*	- parameter is set to **1**.
+	//
+	// example:
+	//
+	// 0
+	AccessHeaderMode *int32 `json:"AccessHeaderMode,omitempty" xml:"AccessHeaderMode,omitempty"`
+	// The custom header fields that are used to obtain the actual IP address of a client. Specify the value in the `["header1","header2",...]` format.
+	//
+	// >  You need to specify the parameter only when the **AccessHeaderMode*	- parameter is set to **1**.
+	//
+	// example:
+	//
+	// ["X-Client-IP"]
+	AccessHeaders *string `json:"AccessHeaders,omitempty" xml:"AccessHeaders,omitempty"`
+	// The mode that is used to add the domain name. Valid values:
+	//
+	// 	- **waf-cloud-dns**: CNAME record mode. This is the default value.
+	//
+	// 	- **waf-cloud-native**: transparent proxy mode.
+	//
+	// example:
+	//
+	// waf-cloud-dns
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The list of server and port configurations for the transparent proxy mode. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+	//
+	// 	- **ProtocolPortConfigs**: the list of protocol and port configurations. This field is required. Data type: array. Each element in a JSON array is a JSON struct that contains the following fields:
+	//
+	//     	- **Ports**: the list of ports. This field is required. Data type: array. The value is in the `[port1,port2,……]` format.
+	//
+	//     	- **Protocol**: the protocol. This field is required. Data type: string. Valid values: **http*	- and **https**.
+	//
+	// 	- **CloudNativeProductName**: the type of the cloud service instance. This field is required. Data type: string. Valid values: **ECS**, **SLB**, and **ALB**.
+	//
+	// 	- **RedirectionTypeName**: the type of traffic redirection port. This field is required. Data type: string. Valid values: **ECS**, **SLB-L4**, **SLB-L7**, and **ALB**.
+	//
+	// 	- **InstanceId**: the ID of the cloud service instance. This field is required. Data type: string.
+	//
+	// 	- **IPAddressList**: the list of public IP addresses of the cloud service instance. This field is required. Data type: array. The value is in the `["ip1","ip2",...]` format.
+	//
+	// >  You need to specify the parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-native**.
+	//
+	// example:
+	//
+	// [{"ProtocolPortConfigs":[{"Ports":[80],"Protocol":"http"}],"RedirectionTypeName":"ALB","InstanceId":"alb-s65nua68wdedsp****","IPAddressList":["182.XX.XX.113"],"CloudNativeProductName":"ALB"}]
 	CloudNativeInstances *string `json:"CloudNativeInstances,omitempty" xml:"CloudNativeInstances,omitempty"`
-	ClusterType          *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	ConnectionTime       *int32  `json:"ConnectionTime,omitempty" xml:"ConnectionTime,omitempty"`
-	Domain               *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Http2Port            *string `json:"Http2Port,omitempty" xml:"Http2Port,omitempty"`
-	HttpPort             *string `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
-	HttpToUserIp         *int32  `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
-	HttpsPort            *string `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
-	HttpsRedirect        *int32  `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpFollowStatus       *int32  `json:"IpFollowStatus,omitempty" xml:"IpFollowStatus,omitempty"`
-	IsAccessProduct      *int32  `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
-	LoadBalancing        *int32  `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
-	LogHeaders           *string `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty"`
-	ReadTime             *int32  `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
-	SniHost              *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
-	SniStatus            *int32  `json:"SniStatus,omitempty" xml:"SniStatus,omitempty"`
-	SourceIps            *string `json:"SourceIps,omitempty" xml:"SourceIps,omitempty"`
-	WriteTime            *int32  `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
+	// The type of WAF protection cluster. Valid values:
+	//
+	// 	- **0**: shared cluster. This is the default value.
+	//
+	// 	- **1**: exclusive cluster.
+	//
+	// >  You need to specify the parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-dns**.
+	//
+	// example:
+	//
+	// 0
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The timeout period for connections of WAF exclusive clusters. Unit: seconds.
+	//
+	// >  You need to specify the parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-dns*	- and the value of the **ClusterType*	- parameter is set to **1**.
+	//
+	// example:
+	//
+	// 5
+	ConnectionTime *int32 `json:"ConnectionTime,omitempty" xml:"ConnectionTime,omitempty"`
+	// The domain name whose configurations you want to modify.
+	//
+	// >  You can call the [DescribeDomainNames](https://help.aliyun.com/document_detail/86373.html) operation to query the domain names that are added to Web Application Firewall (WAF).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The HTTP/2 ports. Specify the value in the `["port1","port2",...]` format.
+	//
+	// >  You need to specify this parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-dns*	- and the **HttpsPort*	- parameter is not empty. If the HttpsPort parameter is not empty, your website uses HTTPS.
+	//
+	// example:
+	//
+	// [443]
+	Http2Port *string `json:"Http2Port,omitempty" xml:"Http2Port,omitempty"`
+	// The HTTP ports. Specify the value in the `["port1","port2",...]` format.
+	//
+	// >  You need to specify the parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-dns**. If you specify this parameter, your website uses HTTP. You must specify at least one of the **HttpPort*	- and **HttpsPort*	- parameters.
+	//
+	// example:
+	//
+	// [80]
+	HttpPort *string `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
+	// Specifies whether to enable the feature of redirecting HTTPS requests to HTTP requests. If you enable the feature, HTTPS requests are redirected to HTTP requests on port 80, which is used by default. Valid values:
+	//
+	// 	- **0**: disables the feature. This is the default value.
+	//
+	// 	- **1**: enables the feature.
+	//
+	// >  You need to specify this parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-dns*	- and the **HttpsPort*	- parameter is not empty. If the HttpsPort parameter is not empty, your website uses HTTPS.
+	//
+	// example:
+	//
+	// 0
+	HttpToUserIp *int32 `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
+	// The HTTPS ports. Specify the value in the `["port1","port2",...]` format.
+	//
+	// >  You need to specify the parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-dns**. If you specify this parameter, your website uses HTTPS. You must specify at least one of the **HttpPort*	- and **HttpsPort*	- parameters.
+	//
+	// example:
+	//
+	// [443]
+	HttpsPort *string `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
+	// Specifies whether to enable the feature of redirecting HTTP requests to HTTPS requests. If you enable the feature, HTTP requests are redirected to HTTPS requests on port 443, which is used by default. Valid values:
+	//
+	// 	- **0**: disables the feature. This is the default value.
+	//
+	// 	- **1**: enables the feature.
+	//
+	// >  You need to specify this parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-dns*	- and the **HttpsPort*	- parameter is not empty. If the HttpsPort parameter is not empty, your website uses HTTPS.
+	//
+	// example:
+	//
+	// 0
+	HttpsRedirect *int32 `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-7pp26f1****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to enable the feature of forwarding requests to the origin servers that use the IP address type specified in the requests. If you enable the feature, WAF forwards requests from IPv4 addresses to origin servers that use IPv4 addresses and requests from IPv6 addresses to origin servers that use IPv6 addresses. Valid values:
+	//
+	// 	- **0**: disables the feature. This is the default value.
+	//
+	// 	- **1**: enables the feature.
+	//
+	// >  You need to specify the parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-dns**.
+	//
+	// example:
+	//
+	// 0
+	IpFollowStatus *int32 `json:"IpFollowStatus,omitempty" xml:"IpFollowStatus,omitempty"`
+	// Specifies whether to deploy a Layer 7 proxy, which is used to filter inbound traffic before the traffic reaches the WAF instance. The supported Layer 7 proxies include Anti-DDoS Pro, Anti-DDoS Premium, and Alibaba Cloud CDN. Valid values:
+	//
+	// 	- **0**: does not configure a Layer 7 proxy
+	//
+	// 	- **1**: configures a Layer 7 proxy
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	IsAccessProduct *int32 `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
+	// example:
+	//
+	// true
+	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	// example:
+	//
+	// 1000
+	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	// example:
+	//
+	// 60
+	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	// The load balancing algorithm that is used when WAF forwards requests to the origin server. Valid values:
+	//
+	// 	- **0**: IP hash
+	//
+	// 	- **1**: round-robin
+	//
+	// 	- **2**: least time
+	//
+	// >  You need to specify the parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-dns**.
+	//
+	// example:
+	//
+	// 0
+	LoadBalancing *int32 `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
+	// The key-value pair that is used to mark the requests that pass through the WAF instance.
+	//
+	// Specify the key-value pair in the `[{"k":"_key_","v":"_value_"}]` format. `_key_` specifies a header field in a custom request. `_value_` specifies the value of the field.
+	//
+	// WAF automatically adds the key-value pair to the headers of requests. This way, the requests that pass through WAF are identified.
+	//
+	// >  If requests contain the custom header field, WAF overwrites the original value of the field with the specified value.
+	//
+	// example:
+	//
+	// [{"k":"ALIWAF-TAG","v":"Yes"}]
+	LogHeaders *string `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty"`
+	// The timeout period for read connections of WAF exclusive clusters. Unit: seconds.
+	//
+	// >  You need to specify the parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-dns*	- and the value of the **ClusterType*	- parameter is set to **1**.
+	//
+	// example:
+	//
+	// 120
+	ReadTime *int32 `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-atstuj3rtop****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// true
+	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
+	// The value of the custom SNI field. If this parameter is not specified, the value of the **Host*	- field in the request header is automatically used as the value of the SNI field.
+	//
+	// If you want WAF to use an SNI field whose value is different from the value of the Host field, you can specify a custom value for the SNI field.
+	//
+	// >  This parameter needs to be set only when the value of the **SniStatus*	- parameter is set to **1**.
+	//
+	// example:
+	//
+	// waf.example.com
+	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	// Specifies whether to enable origin SNI. Origin Server Name Indication (SNI) specifies the domain name to which an HTTPS connection needs to be established at the start of the TLS handshaking process when WAF forwards requests to the origin server. If the origin server hosts multiple domain names, you must enable this feature. Valid values:
+	//
+	// 	- **0**: disables origin SNI.
+	//
+	// 	- **1**: enables origin SNI.
+	//
+	// By default, origin SNI is disabled for WAF instances in the Chinese mainland and enabled for WAF instances outside the Chinese mainland.
+	//
+	// >  You need to specify this parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-dns*	- and the **HttpsPort*	- parameter is not empty. If the HttpsPort parameter is not empty, your website uses HTTPS.
+	//
+	// example:
+	//
+	// 1
+	SniStatus *int32 `json:"SniStatus,omitempty" xml:"SniStatus,omitempty"`
+	// The address type of the origin server. The address can be an IP address or a domain name. You can specify only one type of address.
+	//
+	// 	- If you use the IP address type, specify the value in the `["ip1","ip2",...]` format. You can add up to 20 IP addresses.
+	//
+	// 	- If you use the domain name type, specify the value in the `["domain"]` format. You can enter only one domain name.
+	//
+	// >  You need to specify the parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-dns**.
+	//
+	// example:
+	//
+	// ["39.XX.XX.197"]
+	SourceIps *string `json:"SourceIps,omitempty" xml:"SourceIps,omitempty"`
+	// The timeout period for write connections of WAF exclusive clusters. Unit: seconds.
+	//
+	// >  You need to specify the parameter only when the value of the **AccessType*	- parameter is set to **waf-cloud-dns*	- and the value of the **ClusterType*	- parameter is set to **1**.
+	//
+	// example:
+	//
+	// 120
+	WriteTime *int32 `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
 }
 
 func (s ModifyDomainRequest) String() string {
@@ -2742,6 +4664,21 @@ func (s *ModifyDomainRequest) SetIsAccessProduct(v int32) *ModifyDomainRequest {
 	return s
 }
 
+func (s *ModifyDomainRequest) SetKeepalive(v bool) *ModifyDomainRequest {
+	s.Keepalive = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetKeepaliveRequests(v int32) *ModifyDomainRequest {
+	s.KeepaliveRequests = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetKeepaliveTimeout(v int32) *ModifyDomainRequest {
+	s.KeepaliveTimeout = &v
+	return s
+}
+
 func (s *ModifyDomainRequest) SetLoadBalancing(v int32) *ModifyDomainRequest {
 	s.LoadBalancing = &v
 	return s
@@ -2754,6 +4691,21 @@ func (s *ModifyDomainRequest) SetLogHeaders(v string) *ModifyDomainRequest {
 
 func (s *ModifyDomainRequest) SetReadTime(v int32) *ModifyDomainRequest {
 	s.ReadTime = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetRegionId(v string) *ModifyDomainRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetResourceGroupId(v string) *ModifyDomainRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetRetry(v bool) *ModifyDomainRequest {
+	s.Retry = &v
 	return s
 }
 
@@ -2778,6 +4730,11 @@ func (s *ModifyDomainRequest) SetWriteTime(v int32) *ModifyDomainRequest {
 }
 
 type ModifyDomainResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2795,9 +4752,9 @@ func (s *ModifyDomainResponseBody) SetRequestId(v string) *ModifyDomainResponseB
 }
 
 type ModifyDomainResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDomainResponse) String() string {
@@ -2824,9 +4781,26 @@ func (s *ModifyDomainResponse) SetBody(v *ModifyDomainResponseBody) *ModifyDomai
 }
 
 type ModifyDomainIpv6StatusRequest struct {
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Enabled    *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-mp9153****
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyDomainIpv6StatusRequest) String() string {
@@ -2852,7 +4826,20 @@ func (s *ModifyDomainIpv6StatusRequest) SetInstanceId(v string) *ModifyDomainIpv
 	return s
 }
 
+func (s *ModifyDomainIpv6StatusRequest) SetRegionId(v string) *ModifyDomainIpv6StatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDomainIpv6StatusRequest) SetResourceGroupId(v string) *ModifyDomainIpv6StatusRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type ModifyDomainIpv6StatusResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2870,9 +4857,9 @@ func (s *ModifyDomainIpv6StatusResponseBody) SetRequestId(v string) *ModifyDomai
 }
 
 type ModifyDomainIpv6StatusResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDomainIpv6StatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDomainIpv6StatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDomainIpv6StatusResponse) String() string {
@@ -2899,9 +4886,26 @@ func (s *ModifyDomainIpv6StatusResponse) SetBody(v *ModifyDomainIpv6StatusRespon
 }
 
 type ModifyLogRetrievalStatusRequest struct {
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Enabled    *int32  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyLogRetrievalStatusRequest) String() string {
@@ -2927,7 +4931,20 @@ func (s *ModifyLogRetrievalStatusRequest) SetInstanceId(v string) *ModifyLogRetr
 	return s
 }
 
+func (s *ModifyLogRetrievalStatusRequest) SetRegionId(v string) *ModifyLogRetrievalStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyLogRetrievalStatusRequest) SetResourceGroupId(v string) *ModifyLogRetrievalStatusRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type ModifyLogRetrievalStatusResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2945,9 +4962,9 @@ func (s *ModifyLogRetrievalStatusResponseBody) SetRequestId(v string) *ModifyLog
 }
 
 type ModifyLogRetrievalStatusResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyLogRetrievalStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyLogRetrievalStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyLogRetrievalStatusResponse) String() string {
@@ -2974,9 +4991,26 @@ func (s *ModifyLogRetrievalStatusResponse) SetBody(v *ModifyLogRetrievalStatusRe
 }
 
 type ModifyLogServiceStatusRequest struct {
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Enabled    *int32  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyLogServiceStatusRequest) String() string {
@@ -3002,7 +5036,20 @@ func (s *ModifyLogServiceStatusRequest) SetInstanceId(v string) *ModifyLogServic
 	return s
 }
 
+func (s *ModifyLogServiceStatusRequest) SetRegionId(v string) *ModifyLogServiceStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyLogServiceStatusRequest) SetResourceGroupId(v string) *ModifyLogServiceStatusRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type ModifyLogServiceStatusResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3020,9 +5067,9 @@ func (s *ModifyLogServiceStatusResponseBody) SetRequestId(v string) *ModifyLogSe
 }
 
 type ModifyLogServiceStatusResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyLogServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyLogServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyLogServiceStatusResponse) String() string {
@@ -3049,10 +5096,32 @@ func (s *ModifyLogServiceStatusResponse) SetBody(v *ModifyLogServiceStatusRespon
 }
 
 type ModifyProtectionModuleModeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Mode        *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Mode            *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyProtectionModuleModeRequest) String() string {
@@ -3083,7 +5152,20 @@ func (s *ModifyProtectionModuleModeRequest) SetMode(v int32) *ModifyProtectionMo
 	return s
 }
 
+func (s *ModifyProtectionModuleModeRequest) SetRegionId(v string) *ModifyProtectionModuleModeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyProtectionModuleModeRequest) SetResourceGroupId(v string) *ModifyProtectionModuleModeRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type ModifyProtectionModuleModeResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3101,9 +5183,9 @@ func (s *ModifyProtectionModuleModeResponseBody) SetRequestId(v string) *ModifyP
 }
 
 type ModifyProtectionModuleModeResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyProtectionModuleModeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyProtectionModuleModeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyProtectionModuleModeResponse) String() string {
@@ -3130,12 +5212,44 @@ func (s *ModifyProtectionModuleModeResponse) SetBody(v *ModifyProtectionModuleMo
 }
 
 type ModifyProtectionModuleRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac_custom
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LockVersion *int64  `json:"LockVersion,omitempty" xml:"LockVersion,omitempty"`
-	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	LockVersion     *int64  `json:"LockVersion,omitempty" xml:"LockVersion,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"action":"monitor","name":"test","scene":"custom_acl","conditions":[{"opCode":1,"key":"URL","values":"/example"}]}
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 369998
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s ModifyProtectionModuleRuleRequest) String() string {
@@ -3166,6 +5280,16 @@ func (s *ModifyProtectionModuleRuleRequest) SetLockVersion(v int64) *ModifyProte
 	return s
 }
 
+func (s *ModifyProtectionModuleRuleRequest) SetRegionId(v string) *ModifyProtectionModuleRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyProtectionModuleRuleRequest) SetResourceGroupId(v string) *ModifyProtectionModuleRuleRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ModifyProtectionModuleRuleRequest) SetRule(v string) *ModifyProtectionModuleRuleRequest {
 	s.Rule = &v
 	return s
@@ -3177,6 +5301,9 @@ func (s *ModifyProtectionModuleRuleRequest) SetRuleId(v int64) *ModifyProtection
 }
 
 type ModifyProtectionModuleRuleResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3194,9 +5321,9 @@ func (s *ModifyProtectionModuleRuleResponseBody) SetRequestId(v string) *ModifyP
 }
 
 type ModifyProtectionModuleRuleResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyProtectionModuleRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyProtectionModuleRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyProtectionModuleRuleResponse) String() string {
@@ -3223,10 +5350,32 @@ func (s *ModifyProtectionModuleRuleResponse) SetBody(v *ModifyProtectionModuleRu
 }
 
 type ModifyProtectionModuleStatusRequest struct {
-	DefenseType  *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModuleStatus *int32  `json:"ModuleStatus,omitempty" xml:"ModuleStatus,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf
+	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-zz11sr5****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ModuleStatus    *int32  `json:"ModuleStatus,omitempty" xml:"ModuleStatus,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyProtectionModuleStatusRequest) String() string {
@@ -3257,7 +5406,20 @@ func (s *ModifyProtectionModuleStatusRequest) SetModuleStatus(v int32) *ModifyPr
 	return s
 }
 
+func (s *ModifyProtectionModuleStatusRequest) SetRegionId(v string) *ModifyProtectionModuleStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyProtectionModuleStatusRequest) SetResourceGroupId(v string) *ModifyProtectionModuleStatusRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type ModifyProtectionModuleStatusResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3275,9 +5437,9 @@ func (s *ModifyProtectionModuleStatusResponseBody) SetRequestId(v string) *Modif
 }
 
 type ModifyProtectionModuleStatusResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyProtectionModuleStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyProtectionModuleStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyProtectionModuleStatusResponse) String() string {
@@ -3304,10 +5466,32 @@ func (s *ModifyProtectionModuleStatusResponse) SetBody(v *ModifyProtectionModule
 }
 
 type ModifyProtectionRuleCacheStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tamperproof
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 42755
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s ModifyProtectionRuleCacheStatusRequest) String() string {
@@ -3333,12 +5517,25 @@ func (s *ModifyProtectionRuleCacheStatusRequest) SetInstanceId(v string) *Modify
 	return s
 }
 
+func (s *ModifyProtectionRuleCacheStatusRequest) SetRegionId(v string) *ModifyProtectionRuleCacheStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyProtectionRuleCacheStatusRequest) SetResourceGroupId(v string) *ModifyProtectionRuleCacheStatusRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ModifyProtectionRuleCacheStatusRequest) SetRuleId(v int64) *ModifyProtectionRuleCacheStatusRequest {
 	s.RuleId = &v
 	return s
 }
 
 type ModifyProtectionRuleCacheStatusResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3356,9 +5553,9 @@ func (s *ModifyProtectionRuleCacheStatusResponseBody) SetRequestId(v string) *Mo
 }
 
 type ModifyProtectionRuleCacheStatusResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyProtectionRuleCacheStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyProtectionRuleCacheStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyProtectionRuleCacheStatusResponse) String() string {
@@ -3385,12 +5582,44 @@ func (s *ModifyProtectionRuleCacheStatusResponse) SetBody(v *ModifyProtectionRul
 }
 
 type ModifyProtectionRuleStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tamperproof
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LockVersion *int64  `json:"LockVersion,omitempty" xml:"LockVersion,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleStatus  *int32  `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	LockVersion     *int64  `json:"LockVersion,omitempty" xml:"LockVersion,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 42755
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RuleStatus *int32 `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
 }
 
 func (s ModifyProtectionRuleStatusRequest) String() string {
@@ -3421,6 +5650,16 @@ func (s *ModifyProtectionRuleStatusRequest) SetLockVersion(v int64) *ModifyProte
 	return s
 }
 
+func (s *ModifyProtectionRuleStatusRequest) SetRegionId(v string) *ModifyProtectionRuleStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyProtectionRuleStatusRequest) SetResourceGroupId(v string) *ModifyProtectionRuleStatusRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ModifyProtectionRuleStatusRequest) SetRuleId(v int64) *ModifyProtectionRuleStatusRequest {
 	s.RuleId = &v
 	return s
@@ -3432,6 +5671,9 @@ func (s *ModifyProtectionRuleStatusRequest) SetRuleStatus(v int32) *ModifyProtec
 }
 
 type ModifyProtectionRuleStatusResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3449,9 +5691,9 @@ func (s *ModifyProtectionRuleStatusResponseBody) SetRequestId(v string) *ModifyP
 }
 
 type ModifyProtectionRuleStatusResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyProtectionRuleStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyProtectionRuleStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyProtectionRuleStatusResponse) String() string {
@@ -3478,9 +5720,25 @@ func (s *ModifyProtectionRuleStatusResponse) SetBody(v *ModifyProtectionRuleStat
 }
 
 type MoveResourceGroupRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-09k1rd5****~www.example.com
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// domain
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s MoveResourceGroupRequest) String() string {
@@ -3489,6 +5747,11 @@ func (s MoveResourceGroupRequest) String() string {
 
 func (s MoveResourceGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *MoveResourceGroupRequest) SetRegionId(v string) *MoveResourceGroupRequest {
+	s.RegionId = &v
+	return s
 }
 
 func (s *MoveResourceGroupRequest) SetResourceGroupId(v string) *MoveResourceGroupRequest {
@@ -3507,6 +5770,9 @@ func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupR
 }
 
 type MoveResourceGroupResponseBody struct {
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3524,9 +5790,9 @@ func (s *MoveResourceGroupResponseBody) SetRequestId(v string) *MoveResourceGrou
 }
 
 type MoveResourceGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MoveResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MoveResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MoveResourceGroupResponse) String() string {
@@ -3553,12 +5819,37 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type SetDomainRuleGroupRequest struct {
-	Domains         *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["www.aliyundoc.com"]
+	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RuleGroupId     *int64  `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
-	WafAiStatus     *int32  `json:"WafAiStatus,omitempty" xml:"WafAiStatus,omitempty"`
-	WafVersion      *int64  `json:"WafVersion,omitempty" xml:"WafVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1012
+	RuleGroupId *int64 `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
+	// example:
+	//
+	// 1
+	WafAiStatus *int32 `json:"WafAiStatus,omitempty" xml:"WafAiStatus,omitempty"`
+	// example:
+	//
+	// 1
+	WafVersion *int64 `json:"WafVersion,omitempty" xml:"WafVersion,omitempty"`
 }
 
 func (s SetDomainRuleGroupRequest) String() string {
@@ -3576,6 +5867,11 @@ func (s *SetDomainRuleGroupRequest) SetDomains(v string) *SetDomainRuleGroupRequ
 
 func (s *SetDomainRuleGroupRequest) SetInstanceId(v string) *SetDomainRuleGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *SetDomainRuleGroupRequest) SetRegionId(v string) *SetDomainRuleGroupRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3600,6 +5896,9 @@ func (s *SetDomainRuleGroupRequest) SetWafVersion(v int64) *SetDomainRuleGroupRe
 }
 
 type SetDomainRuleGroupResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3617,9 +5916,9 @@ func (s *SetDomainRuleGroupResponseBody) SetRequestId(v string) *SetDomainRuleGr
 }
 
 type SetDomainRuleGroupResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetDomainRuleGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetDomainRuleGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetDomainRuleGroupResponse) String() string {
@@ -3718,6 +6017,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - CreateCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCertificateResponse
 func (client *Client) CreateCertificateWithOptions(request *CreateCertificateRequest, runtime *util.RuntimeOptions) (_result *CreateCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3744,6 +6048,14 @@ func (client *Client) CreateCertificateWithOptions(request *CreateCertificateReq
 		query["PrivateKey"] = request.PrivateKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3767,6 +6079,9 @@ func (client *Client) CreateCertificateWithOptions(request *CreateCertificateReq
 	return _result, _err
 }
 
+// @param request - CreateCertificateRequest
+//
+// @return CreateCertificateResponse
 func (client *Client) CreateCertificate(request *CreateCertificateRequest) (_result *CreateCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCertificateResponse{}
@@ -3778,6 +6093,11 @@ func (client *Client) CreateCertificate(request *CreateCertificateRequest) (_res
 	return _result, _err
 }
 
+// @param request - CreateCertificateByCertificateIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCertificateByCertificateIdResponse
 func (client *Client) CreateCertificateByCertificateIdWithOptions(request *CreateCertificateByCertificateIdRequest, runtime *util.RuntimeOptions) (_result *CreateCertificateByCertificateIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3794,6 +6114,14 @@ func (client *Client) CreateCertificateByCertificateIdWithOptions(request *Creat
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3819,6 +6147,9 @@ func (client *Client) CreateCertificateByCertificateIdWithOptions(request *Creat
 	return _result, _err
 }
 
+// @param request - CreateCertificateByCertificateIdRequest
+//
+// @return CreateCertificateByCertificateIdResponse
 func (client *Client) CreateCertificateByCertificateId(request *CreateCertificateByCertificateIdRequest) (_result *CreateCertificateByCertificateIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCertificateByCertificateIdResponse{}
@@ -3830,6 +6161,11 @@ func (client *Client) CreateCertificateByCertificateId(request *CreateCertificat
 	return _result, _err
 }
 
+// @param request - CreateDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDomainResponse
 func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runtime *util.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3896,6 +6232,18 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runt
 		query["IsAccessProduct"] = request.IsAccessProduct
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Keepalive)) {
+		query["Keepalive"] = request.Keepalive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepaliveRequests)) {
+		query["KeepaliveRequests"] = request.KeepaliveRequests
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepaliveTimeout)) {
+		query["KeepaliveTimeout"] = request.KeepaliveTimeout
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LoadBalancing)) {
 		query["LoadBalancing"] = request.LoadBalancing
 	}
@@ -3908,8 +6256,16 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runt
 		query["ReadTime"] = request.ReadTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Retry)) {
+		query["Retry"] = request.Retry
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SniHost)) {
@@ -3951,6 +6307,9 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runt
 	return _result, _err
 }
 
+// @param request - CreateDomainRequest
+//
+// @return CreateDomainResponse
 func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *CreateDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDomainResponse{}
@@ -3962,6 +6321,11 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 	return _result, _err
 }
 
+// @param request - CreateProtectionModuleRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProtectionModuleRuleResponse
 func (client *Client) CreateProtectionModuleRuleWithOptions(request *CreateProtectionModuleRuleRequest, runtime *util.RuntimeOptions) (_result *CreateProtectionModuleRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3978,6 +6342,14 @@ func (client *Client) CreateProtectionModuleRuleWithOptions(request *CreateProte
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Rule)) {
@@ -4007,6 +6379,9 @@ func (client *Client) CreateProtectionModuleRuleWithOptions(request *CreateProte
 	return _result, _err
 }
 
+// @param request - CreateProtectionModuleRuleRequest
+//
+// @return CreateProtectionModuleRuleResponse
 func (client *Client) CreateProtectionModuleRule(request *CreateProtectionModuleRuleRequest) (_result *CreateProtectionModuleRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateProtectionModuleRuleResponse{}
@@ -4018,6 +6393,11 @@ func (client *Client) CreateProtectionModuleRule(request *CreateProtectionModule
 	return _result, _err
 }
 
+// @param request - DeleteDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDomainResponse
 func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4030,6 +6410,14 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4055,6 +6443,9 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 	return _result, _err
 }
 
+// @param request - DeleteDomainRequest
+//
+// @return DeleteDomainResponse
 func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *DeleteDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDomainResponse{}
@@ -4066,6 +6457,11 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 	return _result, _err
 }
 
+// @param request - DeleteInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4074,6 +6470,10 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -4103,6 +6503,9 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
+// @param request - DeleteInstanceRequest
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteInstanceResponse{}
@@ -4114,6 +6517,11 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DeleteProtectionModuleRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProtectionModuleRuleResponse
 func (client *Client) DeleteProtectionModuleRuleWithOptions(request *DeleteProtectionModuleRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteProtectionModuleRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4130,6 +6538,14 @@ func (client *Client) DeleteProtectionModuleRuleWithOptions(request *DeleteProte
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
@@ -4159,6 +6575,9 @@ func (client *Client) DeleteProtectionModuleRuleWithOptions(request *DeleteProte
 	return _result, _err
 }
 
+// @param request - DeleteProtectionModuleRuleRequest
+//
+// @return DeleteProtectionModuleRuleResponse
 func (client *Client) DeleteProtectionModuleRule(request *DeleteProtectionModuleRuleRequest) (_result *DeleteProtectionModuleRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteProtectionModuleRuleResponse{}
@@ -4170,6 +6589,11 @@ func (client *Client) DeleteProtectionModuleRule(request *DeleteProtectionModule
 	return _result, _err
 }
 
+// @param request - DescribeCertMatchStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCertMatchStatusResponse
 func (client *Client) DescribeCertMatchStatusWithOptions(request *DescribeCertMatchStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeCertMatchStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4190,6 +6614,14 @@ func (client *Client) DescribeCertMatchStatusWithOptions(request *DescribeCertMa
 
 	if !tea.BoolValue(util.IsUnset(request.PrivateKey)) {
 		query["PrivateKey"] = request.PrivateKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4215,6 +6647,9 @@ func (client *Client) DescribeCertMatchStatusWithOptions(request *DescribeCertMa
 	return _result, _err
 }
 
+// @param request - DescribeCertMatchStatusRequest
+//
+// @return DescribeCertMatchStatusResponse
 func (client *Client) DescribeCertMatchStatus(request *DescribeCertMatchStatusRequest) (_result *DescribeCertMatchStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCertMatchStatusResponse{}
@@ -4226,6 +6661,11 @@ func (client *Client) DescribeCertMatchStatus(request *DescribeCertMatchStatusRe
 	return _result, _err
 }
 
+// @param request - DescribeCertificatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCertificatesResponse
 func (client *Client) DescribeCertificatesWithOptions(request *DescribeCertificatesRequest, runtime *util.RuntimeOptions) (_result *DescribeCertificatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4238,6 +6678,14 @@ func (client *Client) DescribeCertificatesWithOptions(request *DescribeCertifica
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4263,6 +6711,9 @@ func (client *Client) DescribeCertificatesWithOptions(request *DescribeCertifica
 	return _result, _err
 }
 
+// @param request - DescribeCertificatesRequest
+//
+// @return DescribeCertificatesResponse
 func (client *Client) DescribeCertificates(request *DescribeCertificatesRequest) (_result *DescribeCertificatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCertificatesResponse{}
@@ -4274,6 +6725,11 @@ func (client *Client) DescribeCertificates(request *DescribeCertificatesRequest)
 	return _result, _err
 }
 
+// @param request - DescribeDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainResponse
 func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4286,6 +6742,14 @@ func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4311,6 +6775,9 @@ func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, 
 	return _result, _err
 }
 
+// @param request - DescribeDomainRequest
+//
+// @return DescribeDomainResponse
 func (client *Client) DescribeDomain(request *DescribeDomainRequest) (_result *DescribeDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainResponse{}
@@ -4322,6 +6789,11 @@ func (client *Client) DescribeDomain(request *DescribeDomainRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DescribeDomainAdvanceConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainAdvanceConfigsResponse
 func (client *Client) DescribeDomainAdvanceConfigsWithOptions(request *DescribeDomainAdvanceConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainAdvanceConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4334,6 +6806,10 @@ func (client *Client) DescribeDomainAdvanceConfigsWithOptions(request *DescribeD
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -4363,6 +6839,9 @@ func (client *Client) DescribeDomainAdvanceConfigsWithOptions(request *DescribeD
 	return _result, _err
 }
 
+// @param request - DescribeDomainAdvanceConfigsRequest
+//
+// @return DescribeDomainAdvanceConfigsResponse
 func (client *Client) DescribeDomainAdvanceConfigs(request *DescribeDomainAdvanceConfigsRequest) (_result *DescribeDomainAdvanceConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainAdvanceConfigsResponse{}
@@ -4374,6 +6853,11 @@ func (client *Client) DescribeDomainAdvanceConfigs(request *DescribeDomainAdvanc
 	return _result, _err
 }
 
+// @param request - DescribeDomainBasicConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainBasicConfigsResponse
 func (client *Client) DescribeDomainBasicConfigsWithOptions(request *DescribeDomainBasicConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainBasicConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4404,6 +6888,10 @@ func (client *Client) DescribeDomainBasicConfigsWithOptions(request *DescribeDom
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -4431,6 +6919,9 @@ func (client *Client) DescribeDomainBasicConfigsWithOptions(request *DescribeDom
 	return _result, _err
 }
 
+// @param request - DescribeDomainBasicConfigsRequest
+//
+// @return DescribeDomainBasicConfigsResponse
 func (client *Client) DescribeDomainBasicConfigs(request *DescribeDomainBasicConfigsRequest) (_result *DescribeDomainBasicConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainBasicConfigsResponse{}
@@ -4442,6 +6933,11 @@ func (client *Client) DescribeDomainBasicConfigs(request *DescribeDomainBasicCon
 	return _result, _err
 }
 
+// @param request - DescribeDomainListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainListResponse
 func (client *Client) DescribeDomainListWithOptions(request *DescribeDomainListRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4472,6 +6968,10 @@ func (client *Client) DescribeDomainListWithOptions(request *DescribeDomainListR
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -4499,6 +6999,9 @@ func (client *Client) DescribeDomainListWithOptions(request *DescribeDomainListR
 	return _result, _err
 }
 
+// @param request - DescribeDomainListRequest
+//
+// @return DescribeDomainListResponse
 func (client *Client) DescribeDomainList(request *DescribeDomainListRequest) (_result *DescribeDomainListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainListResponse{}
@@ -4510,6 +7013,11 @@ func (client *Client) DescribeDomainList(request *DescribeDomainListRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribeDomainNamesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainNamesResponse
 func (client *Client) DescribeDomainNamesWithOptions(request *DescribeDomainNamesRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainNamesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4518,6 +7026,10 @@ func (client *Client) DescribeDomainNamesWithOptions(request *DescribeDomainName
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -4547,6 +7059,9 @@ func (client *Client) DescribeDomainNamesWithOptions(request *DescribeDomainName
 	return _result, _err
 }
 
+// @param request - DescribeDomainNamesRequest
+//
+// @return DescribeDomainNamesResponse
 func (client *Client) DescribeDomainNames(request *DescribeDomainNamesRequest) (_result *DescribeDomainNamesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainNamesResponse{}
@@ -4558,6 +7073,11 @@ func (client *Client) DescribeDomainNames(request *DescribeDomainNamesRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeDomainRuleGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainRuleGroupResponse
 func (client *Client) DescribeDomainRuleGroupWithOptions(request *DescribeDomainRuleGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainRuleGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4570,6 +7090,14 @@ func (client *Client) DescribeDomainRuleGroupWithOptions(request *DescribeDomain
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4595,6 +7123,9 @@ func (client *Client) DescribeDomainRuleGroupWithOptions(request *DescribeDomain
 	return _result, _err
 }
 
+// @param request - DescribeDomainRuleGroupRequest
+//
+// @return DescribeDomainRuleGroupResponse
 func (client *Client) DescribeDomainRuleGroup(request *DescribeDomainRuleGroupRequest) (_result *DescribeDomainRuleGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainRuleGroupResponse{}
@@ -4606,6 +7137,11 @@ func (client *Client) DescribeDomainRuleGroup(request *DescribeDomainRuleGroupRe
 	return _result, _err
 }
 
+// @param request - DescribeInstanceInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceInfoResponse
 func (client *Client) DescribeInstanceInfoWithOptions(request *DescribeInstanceInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4614,6 +7150,10 @@ func (client *Client) DescribeInstanceInfoWithOptions(request *DescribeInstanceI
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -4643,6 +7183,9 @@ func (client *Client) DescribeInstanceInfoWithOptions(request *DescribeInstanceI
 	return _result, _err
 }
 
+// @param request - DescribeInstanceInfoRequest
+//
+// @return DescribeInstanceInfoResponse
 func (client *Client) DescribeInstanceInfo(request *DescribeInstanceInfoRequest) (_result *DescribeInstanceInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceInfoResponse{}
@@ -4654,6 +7197,11 @@ func (client *Client) DescribeInstanceInfo(request *DescribeInstanceInfoRequest)
 	return _result, _err
 }
 
+// @param request - DescribeInstanceSpecInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceSpecInfoResponse
 func (client *Client) DescribeInstanceSpecInfoWithOptions(request *DescribeInstanceSpecInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSpecInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4662,6 +7210,10 @@ func (client *Client) DescribeInstanceSpecInfoWithOptions(request *DescribeInsta
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -4691,6 +7243,9 @@ func (client *Client) DescribeInstanceSpecInfoWithOptions(request *DescribeInsta
 	return _result, _err
 }
 
+// @param request - DescribeInstanceSpecInfoRequest
+//
+// @return DescribeInstanceSpecInfoResponse
 func (client *Client) DescribeInstanceSpecInfo(request *DescribeInstanceSpecInfoRequest) (_result *DescribeInstanceSpecInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceSpecInfoResponse{}
@@ -4702,6 +7257,11 @@ func (client *Client) DescribeInstanceSpecInfo(request *DescribeInstanceSpecInfo
 	return _result, _err
 }
 
+// @param request - DescribeLogServiceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLogServiceStatusResponse
 func (client *Client) DescribeLogServiceStatusWithOptions(request *DescribeLogServiceStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeLogServiceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4726,6 +7286,10 @@ func (client *Client) DescribeLogServiceStatusWithOptions(request *DescribeLogSe
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
 		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -4755,6 +7319,9 @@ func (client *Client) DescribeLogServiceStatusWithOptions(request *DescribeLogSe
 	return _result, _err
 }
 
+// @param request - DescribeLogServiceStatusRequest
+//
+// @return DescribeLogServiceStatusResponse
 func (client *Client) DescribeLogServiceStatus(request *DescribeLogServiceStatusRequest) (_result *DescribeLogServiceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLogServiceStatusResponse{}
@@ -4766,6 +7333,11 @@ func (client *Client) DescribeLogServiceStatus(request *DescribeLogServiceStatus
 	return _result, _err
 }
 
+// @param request - DescribeProtectionModuleCodeConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProtectionModuleCodeConfigResponse
 func (client *Client) DescribeProtectionModuleCodeConfigWithOptions(request *DescribeProtectionModuleCodeConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeProtectionModuleCodeConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4782,6 +7354,10 @@ func (client *Client) DescribeProtectionModuleCodeConfigWithOptions(request *Des
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -4811,6 +7387,9 @@ func (client *Client) DescribeProtectionModuleCodeConfigWithOptions(request *Des
 	return _result, _err
 }
 
+// @param request - DescribeProtectionModuleCodeConfigRequest
+//
+// @return DescribeProtectionModuleCodeConfigResponse
 func (client *Client) DescribeProtectionModuleCodeConfig(request *DescribeProtectionModuleCodeConfigRequest) (_result *DescribeProtectionModuleCodeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProtectionModuleCodeConfigResponse{}
@@ -4822,6 +7401,79 @@ func (client *Client) DescribeProtectionModuleCodeConfig(request *DescribeProtec
 	return _result, _err
 }
 
+// @param request - DescribeProtectionModuleModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProtectionModuleModeResponse
+func (client *Client) DescribeProtectionModuleModeWithOptions(request *DescribeProtectionModuleModeRequest, runtime *util.RuntimeOptions) (_result *DescribeProtectionModuleModeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeProtectionModuleMode"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeProtectionModuleModeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeProtectionModuleModeRequest
+//
+// @return DescribeProtectionModuleModeResponse
+func (client *Client) DescribeProtectionModuleMode(request *DescribeProtectionModuleModeRequest) (_result *DescribeProtectionModuleModeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeProtectionModuleModeResponse{}
+	_body, _err := client.DescribeProtectionModuleModeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeProtectionModuleRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProtectionModuleRulesResponse
 func (client *Client) DescribeProtectionModuleRulesWithOptions(request *DescribeProtectionModuleRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeProtectionModuleRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4856,6 +7508,10 @@ func (client *Client) DescribeProtectionModuleRulesWithOptions(request *Describe
 		query["Query"] = request.Query
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -4883,6 +7539,9 @@ func (client *Client) DescribeProtectionModuleRulesWithOptions(request *Describe
 	return _result, _err
 }
 
+// @param request - DescribeProtectionModuleRulesRequest
+//
+// @return DescribeProtectionModuleRulesResponse
 func (client *Client) DescribeProtectionModuleRules(request *DescribeProtectionModuleRulesRequest) (_result *DescribeProtectionModuleRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProtectionModuleRulesResponse{}
@@ -4894,6 +7553,11 @@ func (client *Client) DescribeProtectionModuleRules(request *DescribeProtectionM
 	return _result, _err
 }
 
+// @param request - DescribeProtectionModuleStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProtectionModuleStatusResponse
 func (client *Client) DescribeProtectionModuleStatusWithOptions(request *DescribeProtectionModuleStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeProtectionModuleStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4910,6 +7574,14 @@ func (client *Client) DescribeProtectionModuleStatusWithOptions(request *Describ
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4935,6 +7607,9 @@ func (client *Client) DescribeProtectionModuleStatusWithOptions(request *Describ
 	return _result, _err
 }
 
+// @param request - DescribeProtectionModuleStatusRequest
+//
+// @return DescribeProtectionModuleStatusResponse
 func (client *Client) DescribeProtectionModuleStatus(request *DescribeProtectionModuleStatusRequest) (_result *DescribeProtectionModuleStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProtectionModuleStatusResponse{}
@@ -4946,6 +7621,207 @@ func (client *Client) DescribeProtectionModuleStatus(request *DescribeProtection
 	return _result, _err
 }
 
+// @param request - DescribeRuleGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRuleGroupsResponse
+func (client *Client) DescribeRuleGroupsWithOptions(request *DescribeRuleGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeRuleGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WafLang)) {
+		query["WafLang"] = request.WafLang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRuleGroups"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRuleGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeRuleGroupsRequest
+//
+// @return DescribeRuleGroupsResponse
+func (client *Client) DescribeRuleGroups(request *DescribeRuleGroupsRequest) (_result *DescribeRuleGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRuleGroupsResponse{}
+	_body, _err := client.DescribeRuleGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRulesResponse
+func (client *Client) DescribeRulesWithOptions(request *DescribeRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationType)) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CveIdKey)) {
+		query["CveIdKey"] = request.CveIdKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProtectionType)) {
+		query["ProtectionType"] = request.ProtectionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleGroupId)) {
+		query["RuleGroupId"] = request.RuleGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleIdKey)) {
+		query["RuleIdKey"] = request.RuleIdKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRules"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeRulesRequest
+//
+// @return DescribeRulesResponse
+func (client *Client) DescribeRules(request *DescribeRulesRequest) (_result *DescribeRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRulesResponse{}
+	_body, _err := client.DescribeRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeWafSourceIpSegmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWafSourceIpSegmentResponse
 func (client *Client) DescribeWafSourceIpSegmentWithOptions(request *DescribeWafSourceIpSegmentRequest, runtime *util.RuntimeOptions) (_result *DescribeWafSourceIpSegmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4954,6 +7830,10 @@ func (client *Client) DescribeWafSourceIpSegmentWithOptions(request *DescribeWaf
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -4983,6 +7863,9 @@ func (client *Client) DescribeWafSourceIpSegmentWithOptions(request *DescribeWaf
 	return _result, _err
 }
 
+// @param request - DescribeWafSourceIpSegmentRequest
+//
+// @return DescribeWafSourceIpSegmentResponse
 func (client *Client) DescribeWafSourceIpSegment(request *DescribeWafSourceIpSegmentRequest) (_result *DescribeWafSourceIpSegmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWafSourceIpSegmentResponse{}
@@ -4994,6 +7877,15 @@ func (client *Client) DescribeWafSourceIpSegment(request *DescribeWafSourceIpSeg
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a domain name.
+//
+// @param request - ModifyDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDomainResponse
 func (client *Client) ModifyDomainWithOptions(request *ModifyDomainRequest, runtime *util.RuntimeOptions) (_result *ModifyDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5064,6 +7956,18 @@ func (client *Client) ModifyDomainWithOptions(request *ModifyDomainRequest, runt
 		query["IsAccessProduct"] = request.IsAccessProduct
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Keepalive)) {
+		query["Keepalive"] = request.Keepalive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepaliveRequests)) {
+		query["KeepaliveRequests"] = request.KeepaliveRequests
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepaliveTimeout)) {
+		query["KeepaliveTimeout"] = request.KeepaliveTimeout
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LoadBalancing)) {
 		query["LoadBalancing"] = request.LoadBalancing
 	}
@@ -5074,6 +7978,18 @@ func (client *Client) ModifyDomainWithOptions(request *ModifyDomainRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.ReadTime)) {
 		query["ReadTime"] = request.ReadTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Retry)) {
+		query["Retry"] = request.Retry
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SniHost)) {
@@ -5115,6 +8031,13 @@ func (client *Client) ModifyDomainWithOptions(request *ModifyDomainRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a domain name.
+//
+// @param request - ModifyDomainRequest
+//
+// @return ModifyDomainResponse
 func (client *Client) ModifyDomain(request *ModifyDomainRequest) (_result *ModifyDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDomainResponse{}
@@ -5126,6 +8049,11 @@ func (client *Client) ModifyDomain(request *ModifyDomainRequest) (_result *Modif
 	return _result, _err
 }
 
+// @param request - ModifyDomainIpv6StatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDomainIpv6StatusResponse
 func (client *Client) ModifyDomainIpv6StatusWithOptions(request *ModifyDomainIpv6StatusRequest, runtime *util.RuntimeOptions) (_result *ModifyDomainIpv6StatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5142,6 +8070,14 @@ func (client *Client) ModifyDomainIpv6StatusWithOptions(request *ModifyDomainIpv
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5167,6 +8103,9 @@ func (client *Client) ModifyDomainIpv6StatusWithOptions(request *ModifyDomainIpv
 	return _result, _err
 }
 
+// @param request - ModifyDomainIpv6StatusRequest
+//
+// @return ModifyDomainIpv6StatusResponse
 func (client *Client) ModifyDomainIpv6Status(request *ModifyDomainIpv6StatusRequest) (_result *ModifyDomainIpv6StatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDomainIpv6StatusResponse{}
@@ -5178,6 +8117,11 @@ func (client *Client) ModifyDomainIpv6Status(request *ModifyDomainIpv6StatusRequ
 	return _result, _err
 }
 
+// @param request - ModifyLogRetrievalStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLogRetrievalStatusResponse
 func (client *Client) ModifyLogRetrievalStatusWithOptions(request *ModifyLogRetrievalStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyLogRetrievalStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5194,6 +8138,14 @@ func (client *Client) ModifyLogRetrievalStatusWithOptions(request *ModifyLogRetr
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5219,6 +8171,9 @@ func (client *Client) ModifyLogRetrievalStatusWithOptions(request *ModifyLogRetr
 	return _result, _err
 }
 
+// @param request - ModifyLogRetrievalStatusRequest
+//
+// @return ModifyLogRetrievalStatusResponse
 func (client *Client) ModifyLogRetrievalStatus(request *ModifyLogRetrievalStatusRequest) (_result *ModifyLogRetrievalStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyLogRetrievalStatusResponse{}
@@ -5230,6 +8185,11 @@ func (client *Client) ModifyLogRetrievalStatus(request *ModifyLogRetrievalStatus
 	return _result, _err
 }
 
+// @param request - ModifyLogServiceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLogServiceStatusResponse
 func (client *Client) ModifyLogServiceStatusWithOptions(request *ModifyLogServiceStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyLogServiceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5246,6 +8206,14 @@ func (client *Client) ModifyLogServiceStatusWithOptions(request *ModifyLogServic
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5271,6 +8239,9 @@ func (client *Client) ModifyLogServiceStatusWithOptions(request *ModifyLogServic
 	return _result, _err
 }
 
+// @param request - ModifyLogServiceStatusRequest
+//
+// @return ModifyLogServiceStatusResponse
 func (client *Client) ModifyLogServiceStatus(request *ModifyLogServiceStatusRequest) (_result *ModifyLogServiceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyLogServiceStatusResponse{}
@@ -5282,6 +8253,11 @@ func (client *Client) ModifyLogServiceStatus(request *ModifyLogServiceStatusRequ
 	return _result, _err
 }
 
+// @param request - ModifyProtectionModuleModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyProtectionModuleModeResponse
 func (client *Client) ModifyProtectionModuleModeWithOptions(request *ModifyProtectionModuleModeRequest, runtime *util.RuntimeOptions) (_result *ModifyProtectionModuleModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5302,6 +8278,14 @@ func (client *Client) ModifyProtectionModuleModeWithOptions(request *ModifyProte
 
 	if !tea.BoolValue(util.IsUnset(request.Mode)) {
 		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5327,6 +8311,9 @@ func (client *Client) ModifyProtectionModuleModeWithOptions(request *ModifyProte
 	return _result, _err
 }
 
+// @param request - ModifyProtectionModuleModeRequest
+//
+// @return ModifyProtectionModuleModeResponse
 func (client *Client) ModifyProtectionModuleMode(request *ModifyProtectionModuleModeRequest) (_result *ModifyProtectionModuleModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyProtectionModuleModeResponse{}
@@ -5338,6 +8325,11 @@ func (client *Client) ModifyProtectionModuleMode(request *ModifyProtectionModule
 	return _result, _err
 }
 
+// @param request - ModifyProtectionModuleRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyProtectionModuleRuleResponse
 func (client *Client) ModifyProtectionModuleRuleWithOptions(request *ModifyProtectionModuleRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyProtectionModuleRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5358,6 +8350,14 @@ func (client *Client) ModifyProtectionModuleRuleWithOptions(request *ModifyProte
 
 	if !tea.BoolValue(util.IsUnset(request.LockVersion)) {
 		query["LockVersion"] = request.LockVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Rule)) {
@@ -5391,6 +8391,9 @@ func (client *Client) ModifyProtectionModuleRuleWithOptions(request *ModifyProte
 	return _result, _err
 }
 
+// @param request - ModifyProtectionModuleRuleRequest
+//
+// @return ModifyProtectionModuleRuleResponse
 func (client *Client) ModifyProtectionModuleRule(request *ModifyProtectionModuleRuleRequest) (_result *ModifyProtectionModuleRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyProtectionModuleRuleResponse{}
@@ -5402,6 +8405,11 @@ func (client *Client) ModifyProtectionModuleRule(request *ModifyProtectionModule
 	return _result, _err
 }
 
+// @param request - ModifyProtectionModuleStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyProtectionModuleStatusResponse
 func (client *Client) ModifyProtectionModuleStatusWithOptions(request *ModifyProtectionModuleStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyProtectionModuleStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5422,6 +8430,14 @@ func (client *Client) ModifyProtectionModuleStatusWithOptions(request *ModifyPro
 
 	if !tea.BoolValue(util.IsUnset(request.ModuleStatus)) {
 		query["ModuleStatus"] = request.ModuleStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5447,6 +8463,9 @@ func (client *Client) ModifyProtectionModuleStatusWithOptions(request *ModifyPro
 	return _result, _err
 }
 
+// @param request - ModifyProtectionModuleStatusRequest
+//
+// @return ModifyProtectionModuleStatusResponse
 func (client *Client) ModifyProtectionModuleStatus(request *ModifyProtectionModuleStatusRequest) (_result *ModifyProtectionModuleStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyProtectionModuleStatusResponse{}
@@ -5458,6 +8477,11 @@ func (client *Client) ModifyProtectionModuleStatus(request *ModifyProtectionModu
 	return _result, _err
 }
 
+// @param request - ModifyProtectionRuleCacheStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyProtectionRuleCacheStatusResponse
 func (client *Client) ModifyProtectionRuleCacheStatusWithOptions(request *ModifyProtectionRuleCacheStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyProtectionRuleCacheStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5474,6 +8498,14 @@ func (client *Client) ModifyProtectionRuleCacheStatusWithOptions(request *Modify
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
@@ -5503,6 +8535,9 @@ func (client *Client) ModifyProtectionRuleCacheStatusWithOptions(request *Modify
 	return _result, _err
 }
 
+// @param request - ModifyProtectionRuleCacheStatusRequest
+//
+// @return ModifyProtectionRuleCacheStatusResponse
 func (client *Client) ModifyProtectionRuleCacheStatus(request *ModifyProtectionRuleCacheStatusRequest) (_result *ModifyProtectionRuleCacheStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyProtectionRuleCacheStatusResponse{}
@@ -5514,6 +8549,11 @@ func (client *Client) ModifyProtectionRuleCacheStatus(request *ModifyProtectionR
 	return _result, _err
 }
 
+// @param request - ModifyProtectionRuleStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyProtectionRuleStatusResponse
 func (client *Client) ModifyProtectionRuleStatusWithOptions(request *ModifyProtectionRuleStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyProtectionRuleStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5534,6 +8574,14 @@ func (client *Client) ModifyProtectionRuleStatusWithOptions(request *ModifyProte
 
 	if !tea.BoolValue(util.IsUnset(request.LockVersion)) {
 		query["LockVersion"] = request.LockVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
@@ -5567,6 +8615,9 @@ func (client *Client) ModifyProtectionRuleStatusWithOptions(request *ModifyProte
 	return _result, _err
 }
 
+// @param request - ModifyProtectionRuleStatusRequest
+//
+// @return ModifyProtectionRuleStatusResponse
 func (client *Client) ModifyProtectionRuleStatus(request *ModifyProtectionRuleStatusRequest) (_result *ModifyProtectionRuleStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyProtectionRuleStatusResponse{}
@@ -5578,12 +8629,21 @@ func (client *Client) ModifyProtectionRuleStatus(request *ModifyProtectionRuleSt
 	return _result, _err
 }
 
+// @param request - MoveResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *util.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -5619,6 +8679,9 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 	return _result, _err
 }
 
+// @param request - MoveResourceGroupRequest
+//
+// @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MoveResourceGroupResponse{}
@@ -5630,6 +8693,11 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 	return _result, _err
 }
 
+// @param request - SetDomainRuleGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetDomainRuleGroupResponse
 func (client *Client) SetDomainRuleGroupWithOptions(request *SetDomainRuleGroupRequest, runtime *util.RuntimeOptions) (_result *SetDomainRuleGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5642,6 +8710,10 @@ func (client *Client) SetDomainRuleGroupWithOptions(request *SetDomainRuleGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -5683,6 +8755,9 @@ func (client *Client) SetDomainRuleGroupWithOptions(request *SetDomainRuleGroupR
 	return _result, _err
 }
 
+// @param request - SetDomainRuleGroupRequest
+//
+// @return SetDomainRuleGroupResponse
 func (client *Client) SetDomainRuleGroup(request *SetDomainRuleGroupRequest) (_result *SetDomainRuleGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDomainRuleGroupResponse{}
