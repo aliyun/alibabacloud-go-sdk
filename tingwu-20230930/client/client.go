@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,11 +10,22 @@ import (
 )
 
 type CreateTaskRequest struct {
+	// example:
+	//
+	// JV1sRTisRMi****
 	AppKey     *string                      `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	Input      *CreateTaskRequestInput      `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 	Parameters *CreateTaskRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
-	Operation  *string                      `json:"operation,omitempty" xml:"operation,omitempty"`
-	Type       *string                      `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// stop
+	Operation *string `json:"operation,omitempty" xml:"operation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// offline
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateTaskRequest) String() string {
@@ -54,14 +62,31 @@ func (s *CreateTaskRequest) SetType(v string) *CreateTaskRequest {
 }
 
 type CreateTaskRequestInput struct {
-	FileUrl                     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// http://xxx.com/zzz/1.wav
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// pcm
 	Format                      *string `json:"Format,omitempty" xml:"Format,omitempty"`
 	MultipleStreamsEnabled      *bool   `json:"MultipleStreamsEnabled,omitempty" xml:"MultipleStreamsEnabled,omitempty"`
 	ProgressiveCallbacksEnabled *bool   `json:"ProgressiveCallbacksEnabled,omitempty" xml:"ProgressiveCallbacksEnabled,omitempty"`
-	SampleRate                  *int32  `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	SourceLanguage              *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	TaskId                      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskKey                     *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
+	// example:
+	//
+	// 16000
+	SampleRate *int32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn
+	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// task_tingwu_123
+	TaskKey *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
 }
 
 func (s CreateTaskRequestInput) String() string {
@@ -113,18 +138,32 @@ func (s *CreateTaskRequestInput) SetTaskKey(v string) *CreateTaskRequestInput {
 }
 
 type CreateTaskRequestParameters struct {
-	AutoChaptersEnabled      *bool                                         `json:"AutoChaptersEnabled,omitempty" xml:"AutoChaptersEnabled,omitempty"`
-	ExtraParams              *CreateTaskRequestParametersExtraParams       `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty" type:"Struct"`
-	MeetingAssistance        *CreateTaskRequestParametersMeetingAssistance `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty" type:"Struct"`
-	MeetingAssistanceEnabled *bool                                         `json:"MeetingAssistanceEnabled,omitempty" xml:"MeetingAssistanceEnabled,omitempty"`
-	PptExtractionEnabled     *bool                                         `json:"PptExtractionEnabled,omitempty" xml:"PptExtractionEnabled,omitempty"`
-	Summarization            *CreateTaskRequestParametersSummarization     `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Struct"`
-	SummarizationEnabled     *bool                                         `json:"SummarizationEnabled,omitempty" xml:"SummarizationEnabled,omitempty"`
-	TextPolishEnabled        *bool                                         `json:"TextPolishEnabled,omitempty" xml:"TextPolishEnabled,omitempty"`
-	Transcoding              *CreateTaskRequestParametersTranscoding       `json:"Transcoding,omitempty" xml:"Transcoding,omitempty" type:"Struct"`
-	Transcription            *CreateTaskRequestParametersTranscription     `json:"Transcription,omitempty" xml:"Transcription,omitempty" type:"Struct"`
-	Translation              *CreateTaskRequestParametersTranslation       `json:"Translation,omitempty" xml:"Translation,omitempty" type:"Struct"`
-	TranslationEnabled       *bool                                         `json:"TranslationEnabled,omitempty" xml:"TranslationEnabled,omitempty"`
+	// example:
+	//
+	// true
+	AutoChaptersEnabled *bool                                         `json:"AutoChaptersEnabled,omitempty" xml:"AutoChaptersEnabled,omitempty"`
+	CustomPrompt        *CreateTaskRequestParametersCustomPrompt      `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty" type:"Struct"`
+	CustomPromptEnabled *bool                                         `json:"CustomPromptEnabled,omitempty" xml:"CustomPromptEnabled,omitempty"`
+	ExtraParams         *CreateTaskRequestParametersExtraParams       `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty" type:"Struct"`
+	MeetingAssistance   *CreateTaskRequestParametersMeetingAssistance `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	MeetingAssistanceEnabled *bool                                     `json:"MeetingAssistanceEnabled,omitempty" xml:"MeetingAssistanceEnabled,omitempty"`
+	PptExtractionEnabled     *bool                                     `json:"PptExtractionEnabled,omitempty" xml:"PptExtractionEnabled,omitempty"`
+	Summarization            *CreateTaskRequestParametersSummarization `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	SummarizationEnabled *bool                                     `json:"SummarizationEnabled,omitempty" xml:"SummarizationEnabled,omitempty"`
+	TextPolishEnabled    *bool                                     `json:"TextPolishEnabled,omitempty" xml:"TextPolishEnabled,omitempty"`
+	Transcoding          *CreateTaskRequestParametersTranscoding   `json:"Transcoding,omitempty" xml:"Transcoding,omitempty" type:"Struct"`
+	Transcription        *CreateTaskRequestParametersTranscription `json:"Transcription,omitempty" xml:"Transcription,omitempty" type:"Struct"`
+	Translation          *CreateTaskRequestParametersTranslation   `json:"Translation,omitempty" xml:"Translation,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	TranslationEnabled *bool `json:"TranslationEnabled,omitempty" xml:"TranslationEnabled,omitempty"`
 }
 
 func (s CreateTaskRequestParameters) String() string {
@@ -137,6 +176,16 @@ func (s CreateTaskRequestParameters) GoString() string {
 
 func (s *CreateTaskRequestParameters) SetAutoChaptersEnabled(v bool) *CreateTaskRequestParameters {
 	s.AutoChaptersEnabled = &v
+	return s
+}
+
+func (s *CreateTaskRequestParameters) SetCustomPrompt(v *CreateTaskRequestParametersCustomPrompt) *CreateTaskRequestParameters {
+	s.CustomPrompt = v
+	return s
+}
+
+func (s *CreateTaskRequestParameters) SetCustomPromptEnabled(v bool) *CreateTaskRequestParameters {
+	s.CustomPromptEnabled = &v
 	return s
 }
 
@@ -195,6 +244,60 @@ func (s *CreateTaskRequestParameters) SetTranslationEnabled(v bool) *CreateTaskR
 	return s
 }
 
+type CreateTaskRequestParametersCustomPrompt struct {
+	Contents []*CreateTaskRequestParametersCustomPromptContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+}
+
+func (s CreateTaskRequestParametersCustomPrompt) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestParametersCustomPrompt) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestParametersCustomPrompt) SetContents(v []*CreateTaskRequestParametersCustomPromptContents) *CreateTaskRequestParametersCustomPrompt {
+	s.Contents = v
+	return s
+}
+
+type CreateTaskRequestParametersCustomPromptContents struct {
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	Prompt    *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	TransType *string `json:"TransType,omitempty" xml:"TransType,omitempty"`
+}
+
+func (s CreateTaskRequestParametersCustomPromptContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestParametersCustomPromptContents) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestParametersCustomPromptContents) SetModel(v string) *CreateTaskRequestParametersCustomPromptContents {
+	s.Model = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersCustomPromptContents) SetName(v string) *CreateTaskRequestParametersCustomPromptContents {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersCustomPromptContents) SetPrompt(v string) *CreateTaskRequestParametersCustomPromptContents {
+	s.Prompt = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersCustomPromptContents) SetTransType(v string) *CreateTaskRequestParametersCustomPromptContents {
+	s.TransType = &v
+	return s
+}
+
 type CreateTaskRequestParametersExtraParams struct {
 	NfixEnabled *bool `json:"NfixEnabled,omitempty" xml:"NfixEnabled,omitempty"`
 }
@@ -230,6 +333,9 @@ func (s *CreateTaskRequestParametersMeetingAssistance) SetTypes(v []*string) *Cr
 }
 
 type CreateTaskRequestParametersSummarization struct {
+	// example:
+	//
+	// Paragraph
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
@@ -247,10 +353,22 @@ func (s *CreateTaskRequestParametersSummarization) SetTypes(v []*string) *Create
 }
 
 type CreateTaskRequestParametersTranscoding struct {
-	SpectrumEnabled       *bool   `json:"SpectrumEnabled,omitempty" xml:"SpectrumEnabled,omitempty"`
-	TargetAudioFormat     *string `json:"TargetAudioFormat,omitempty" xml:"TargetAudioFormat,omitempty"`
-	TargetVideoFormat     *string `json:"TargetVideoFormat,omitempty" xml:"TargetVideoFormat,omitempty"`
-	VideoThumbnailEnabled *bool   `json:"VideoThumbnailEnabled,omitempty" xml:"VideoThumbnailEnabled,omitempty"`
+	// example:
+	//
+	// false
+	SpectrumEnabled *bool `json:"SpectrumEnabled,omitempty" xml:"SpectrumEnabled,omitempty"`
+	// example:
+	//
+	// mp3
+	TargetAudioFormat *string `json:"TargetAudioFormat,omitempty" xml:"TargetAudioFormat,omitempty"`
+	// example:
+	//
+	// mp4
+	TargetVideoFormat *string `json:"TargetVideoFormat,omitempty" xml:"TargetVideoFormat,omitempty"`
+	// example:
+	//
+	// false
+	VideoThumbnailEnabled *bool `json:"VideoThumbnailEnabled,omitempty" xml:"VideoThumbnailEnabled,omitempty"`
 }
 
 func (s CreateTaskRequestParametersTranscoding) String() string {
@@ -282,12 +400,18 @@ func (s *CreateTaskRequestParametersTranscoding) SetVideoThumbnailEnabled(v bool
 }
 
 type CreateTaskRequestParametersTranscription struct {
-	AdditionalStreamOutputLevel *int32                                               `json:"AdditionalStreamOutputLevel,omitempty" xml:"AdditionalStreamOutputLevel,omitempty"`
-	AudioEventDetectionEnabled  *bool                                                `json:"AudioEventDetectionEnabled,omitempty" xml:"AudioEventDetectionEnabled,omitempty"`
-	Diarization                 *CreateTaskRequestParametersTranscriptionDiarization `json:"Diarization,omitempty" xml:"Diarization,omitempty" type:"Struct"`
-	DiarizationEnabled          *bool                                                `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
-	OutputLevel                 *int32                                               `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
-	PhraseId                    *string                                              `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	AdditionalStreamOutputLevel *int32 `json:"AdditionalStreamOutputLevel,omitempty" xml:"AdditionalStreamOutputLevel,omitempty"`
+	// example:
+	//
+	// false
+	AudioEventDetectionEnabled *bool                                                `json:"AudioEventDetectionEnabled,omitempty" xml:"AudioEventDetectionEnabled,omitempty"`
+	Diarization                *CreateTaskRequestParametersTranscriptionDiarization `json:"Diarization,omitempty" xml:"Diarization,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	DiarizationEnabled *bool   `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
+	OutputLevel        *int32  `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
+	PhraseId           *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
 }
 
 func (s CreateTaskRequestParametersTranscription) String() string {
@@ -329,6 +453,9 @@ func (s *CreateTaskRequestParametersTranscription) SetPhraseId(v string) *Create
 }
 
 type CreateTaskRequestParametersTranscriptionDiarization struct {
+	// example:
+	//
+	// 2
 	SpeakerCount *int32 `json:"SpeakerCount,omitempty" xml:"SpeakerCount,omitempty"`
 }
 
@@ -375,10 +502,19 @@ func (s *CreateTaskRequestParametersTranslation) SetTargetLanguages(v []*string)
 }
 
 type CreateTaskResponseBody struct {
-	Code      *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 35124E1C-AE99-5D6C-A52E-BD689D8D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateTaskResponseBody) String() string {
@@ -411,9 +547,15 @@ func (s *CreateTaskResponseBody) SetRequestId(v string) *CreateTaskResponseBody 
 
 type CreateTaskResponseBodyData struct {
 	MeetingJoinUrl *string `json:"MeetingJoinUrl,omitempty" xml:"MeetingJoinUrl,omitempty"`
-	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskKey        *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
-	TaskStatus     *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// c5394c6ee0fb474899d42215a3925c7e
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// task_tingwu_123
+	TaskKey    *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s CreateTaskResponseBodyData) String() string {
@@ -474,8 +616,21 @@ func (s *CreateTaskResponse) SetBody(v *CreateTaskResponseBody) *CreateTaskRespo
 }
 
 type CreateTranscriptionPhrasesRequest struct {
+	// example:
+	//
+	// custom fruit phrases list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fruit_phrase
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"苹果":3,"西瓜":3}
 	WordWeights *string `json:"WordWeights,omitempty" xml:"WordWeights,omitempty"`
 }
 
@@ -503,10 +658,20 @@ func (s *CreateTranscriptionPhrasesRequest) SetWordWeights(v string) *CreateTran
 }
 
 type CreateTranscriptionPhrasesResponseBody struct {
-	Code    *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *CreateTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 35124E1C-AE99-5D6C-A52E-BD689D8D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -539,10 +704,22 @@ func (s *CreateTranscriptionPhrasesResponseBody) SetRequestId(v string) *CreateT
 }
 
 type CreateTranscriptionPhrasesResponseBodyData struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 0
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	PhraseId     *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// a93b91141c0f422fa114af203f8b****
+	PhraseId *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateTranscriptionPhrasesResponseBodyData) String() string {
@@ -603,9 +780,18 @@ func (s *CreateTranscriptionPhrasesResponse) SetBody(v *CreateTranscriptionPhras
 }
 
 type DeleteTranscriptionPhrasesResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 0
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteTranscriptionPhrasesResponseBody) String() string {
@@ -661,10 +847,19 @@ func (s *DeleteTranscriptionPhrasesResponse) SetBody(v *DeleteTranscriptionPhras
 }
 
 type GetTaskInfoResponseBody struct {
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 35124E1C-AE99-5D6C-A52E-BD689D8D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTaskInfoResponseBody) String() string {
@@ -703,9 +898,18 @@ type GetTaskInfoResponseBodyData struct {
 	OutputSpectrumPath  *string                            `json:"OutputSpectrumPath,omitempty" xml:"OutputSpectrumPath,omitempty"`
 	OutputThumbnailPath *string                            `json:"OutputThumbnailPath,omitempty" xml:"OutputThumbnailPath,omitempty"`
 	Result              *GetTaskInfoResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	TaskId              *string                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskKey             *string                            `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
-	TaskStatus          *string                            `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// c5394c6ee0fb474899d42215a3925c7e
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// task_tingwu_123
+	TaskKey *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
+	// example:
+	//
+	// COMPLETE
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s GetTaskInfoResponseBodyData) String() string {
@@ -849,10 +1053,20 @@ func (s *GetTaskInfoResponse) SetBody(v *GetTaskInfoResponseBody) *GetTaskInfoRe
 }
 
 type GetTranscriptionPhrasesResponseBody struct {
-	Code    *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 35124E1C-AE99-5D6C-A52E-BD689D8D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -885,10 +1099,19 @@ func (s *GetTranscriptionPhrasesResponseBody) SetRequestId(v string) *GetTranscr
 }
 
 type GetTranscriptionPhrasesResponseBodyData struct {
-	ErrorCode    *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 0
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
 	ErrorMessage *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Phrases      []*GetTranscriptionPhrasesResponseBodyDataPhrases `json:"Phrases,omitempty" xml:"Phrases,omitempty" type:"Repeated"`
-	Status       *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetTranscriptionPhrasesResponseBodyData) String() string {
@@ -920,9 +1143,21 @@ func (s *GetTranscriptionPhrasesResponseBodyData) SetStatus(v string) *GetTransc
 }
 
 type GetTranscriptionPhrasesResponseBodyDataPhrases struct {
+	// example:
+	//
+	// custom fruit phrases list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PhraseId    *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	// example:
+	//
+	// fruit_phrase
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// a93b91141c0f422fa114af203f8b****
+	PhraseId *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	// example:
+	//
+	// {"苹果":3,"西瓜":3}
 	WordWeights *string `json:"WordWeights,omitempty" xml:"WordWeights,omitempty"`
 }
 
@@ -984,10 +1219,20 @@ func (s *GetTranscriptionPhrasesResponse) SetBody(v *GetTranscriptionPhrasesResp
 }
 
 type ListTranscriptionPhrasesResponseBody struct {
-	Code    *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *ListTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 35124E1C-AE99-5D6C-A52E-BD689D8D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1020,10 +1265,19 @@ func (s *ListTranscriptionPhrasesResponseBody) SetRequestId(v string) *ListTrans
 }
 
 type ListTranscriptionPhrasesResponseBodyData struct {
-	ErrorCode    *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// PHS.Exceed
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The num of the phrase exceeds the upper limit.
 	ErrorMessage *string                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Phrases      []*ListTranscriptionPhrasesResponseBodyDataPhrases `json:"Phrases,omitempty" xml:"Phrases,omitempty" type:"Repeated"`
-	Status       *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListTranscriptionPhrasesResponseBodyData) String() string {
@@ -1055,9 +1309,18 @@ func (s *ListTranscriptionPhrasesResponseBodyData) SetStatus(v string) *ListTran
 }
 
 type ListTranscriptionPhrasesResponseBodyDataPhrases struct {
+	// example:
+	//
+	// custom fruit phrases list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PhraseId    *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	// example:
+	//
+	// fruit_phrase
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// a93b91141c0f422fa114af203f8b****
+	PhraseId *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
 }
 
 func (s ListTranscriptionPhrasesResponseBodyDataPhrases) String() string {
@@ -1113,8 +1376,21 @@ func (s *ListTranscriptionPhrasesResponse) SetBody(v *ListTranscriptionPhrasesRe
 }
 
 type UpdateTranscriptionPhrasesRequest struct {
+	// example:
+	//
+	// custom fruit phrases list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fruit_phrase
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"苹果":3,"西瓜":3}
 	WordWeights *string `json:"WordWeights,omitempty" xml:"WordWeights,omitempty"`
 }
 
@@ -1142,10 +1418,20 @@ func (s *UpdateTranscriptionPhrasesRequest) SetWordWeights(v string) *UpdateTran
 }
 
 type UpdateTranscriptionPhrasesResponseBody struct {
-	Code    *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *UpdateTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UpdateTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 35124E1C-AE99-5D6C-A52E-BD689D8D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1178,9 +1464,18 @@ func (s *UpdateTranscriptionPhrasesResponseBody) SetRequestId(v string) *UpdateT
 }
 
 type UpdateTranscriptionPhrasesResponseBodyData struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 0
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateTranscriptionPhrasesResponseBodyData) String() string {
@@ -1282,6 +1577,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建听悟任务
+//
+// @param request - CreateTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTaskResponse
 func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1334,6 +1640,13 @@ func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建听悟任务
+//
+// @param request - CreateTaskRequest
+//
+// @return CreateTaskResponse
 func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1346,6 +1659,17 @@ func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建热词词表
+//
+// @param request - CreateTranscriptionPhrasesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTranscriptionPhrasesResponse
 func (client *Client) CreateTranscriptionPhrasesWithOptions(request *CreateTranscriptionPhrasesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTranscriptionPhrasesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1388,6 +1712,13 @@ func (client *Client) CreateTranscriptionPhrasesWithOptions(request *CreateTrans
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建热词词表
+//
+// @param request - CreateTranscriptionPhrasesRequest
+//
+// @return CreateTranscriptionPhrasesResponse
 func (client *Client) CreateTranscriptionPhrases(request *CreateTranscriptionPhrasesRequest) (_result *CreateTranscriptionPhrasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1400,6 +1731,15 @@ func (client *Client) CreateTranscriptionPhrases(request *CreateTranscriptionPhr
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除词表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTranscriptionPhrasesResponse
 func (client *Client) DeleteTranscriptionPhrasesWithOptions(PhraseId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTranscriptionPhrasesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -1424,6 +1764,11 @@ func (client *Client) DeleteTranscriptionPhrasesWithOptions(PhraseId *string, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除词表
+//
+// @return DeleteTranscriptionPhrasesResponse
 func (client *Client) DeleteTranscriptionPhrases(PhraseId *string) (_result *DeleteTranscriptionPhrasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1436,6 +1781,15 @@ func (client *Client) DeleteTranscriptionPhrases(PhraseId *string) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询听悟任务信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskInfoResponse
 func (client *Client) GetTaskInfoWithOptions(TaskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskInfoResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -1460,6 +1814,11 @@ func (client *Client) GetTaskInfoWithOptions(TaskId *string, headers map[string]
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询听悟任务信息
+//
+// @return GetTaskInfoResponse
 func (client *Client) GetTaskInfo(TaskId *string) (_result *GetTaskInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1472,6 +1831,15 @@ func (client *Client) GetTaskInfo(TaskId *string) (_result *GetTaskInfoResponse,
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询热词词表信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTranscriptionPhrasesResponse
 func (client *Client) GetTranscriptionPhrasesWithOptions(PhraseId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTranscriptionPhrasesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -1496,6 +1864,11 @@ func (client *Client) GetTranscriptionPhrasesWithOptions(PhraseId *string, heade
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询热词词表信息
+//
+// @return GetTranscriptionPhrasesResponse
 func (client *Client) GetTranscriptionPhrases(PhraseId *string) (_result *GetTranscriptionPhrasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1508,6 +1881,15 @@ func (client *Client) GetTranscriptionPhrases(PhraseId *string) (_result *GetTra
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举用户所有热词词表信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTranscriptionPhrasesResponse
 func (client *Client) ListTranscriptionPhrasesWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTranscriptionPhrasesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -1532,6 +1914,11 @@ func (client *Client) ListTranscriptionPhrasesWithOptions(headers map[string]*st
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举用户所有热词词表信息
+//
+// @return ListTranscriptionPhrasesResponse
 func (client *Client) ListTranscriptionPhrases() (_result *ListTranscriptionPhrasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1544,6 +1931,17 @@ func (client *Client) ListTranscriptionPhrases() (_result *ListTranscriptionPhra
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新热词词表
+//
+// @param request - UpdateTranscriptionPhrasesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTranscriptionPhrasesResponse
 func (client *Client) UpdateTranscriptionPhrasesWithOptions(PhraseId *string, request *UpdateTranscriptionPhrasesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTranscriptionPhrasesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1586,6 +1984,13 @@ func (client *Client) UpdateTranscriptionPhrasesWithOptions(PhraseId *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新热词词表
+//
+// @param request - UpdateTranscriptionPhrasesRequest
+//
+// @return UpdateTranscriptionPhrasesResponse
 func (client *Client) UpdateTranscriptionPhrases(PhraseId *string, request *UpdateTranscriptionPhrasesRequest) (_result *UpdateTranscriptionPhrasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
