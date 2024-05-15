@@ -15346,7 +15346,8 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	// example:
 	//
 	// Default
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Profile                *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	QueryUpgradableVersion *bool   `json:"QueryUpgradableVersion,omitempty" xml:"QueryUpgradableVersion,omitempty"`
 	// The region ID of the cluster.
 	//
 	// This parameter is required.
@@ -15398,6 +15399,11 @@ func (s *DescribeKubernetesVersionMetadataRequest) SetMode(v string) *DescribeKu
 
 func (s *DescribeKubernetesVersionMetadataRequest) SetProfile(v string) *DescribeKubernetesVersionMetadataRequest {
 	s.Profile = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataRequest) SetQueryUpgradableVersion(v bool) *DescribeKubernetesVersionMetadataRequest {
+	s.QueryUpgradableVersion = &v
 	return s
 }
 
@@ -15472,7 +15478,8 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	// example:
 	//
 	// true
-	Creatable *bool `json:"creatable,omitempty" xml:"creatable,omitempty"`
+	Creatable          *bool     `json:"creatable,omitempty" xml:"creatable,omitempty"`
+	UpgradableVersions []*string `json:"upgradable_versions,omitempty" xml:"upgradable_versions,omitempty" type:"Repeated"`
 }
 
 func (s DescribeKubernetesVersionMetadataResponseBody) String() string {
@@ -15520,6 +15527,11 @@ func (s *DescribeKubernetesVersionMetadataResponseBody) SetExpirationDate(v stri
 
 func (s *DescribeKubernetesVersionMetadataResponseBody) SetCreatable(v bool) *DescribeKubernetesVersionMetadataResponseBody {
 	s.Creatable = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataResponseBody) SetUpgradableVersions(v []*string) *DescribeKubernetesVersionMetadataResponseBody {
+	s.UpgradableVersions = v
 	return s
 }
 
@@ -29946,6 +29958,10 @@ func (client *Client) DescribeKubernetesVersionMetadataWithOptions(request *Desc
 
 	if !tea.BoolValue(util.IsUnset(request.Profile)) {
 		query["Profile"] = request.Profile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryUpgradableVersion)) {
+		query["QueryUpgradableVersion"] = request.QueryUpgradableVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
