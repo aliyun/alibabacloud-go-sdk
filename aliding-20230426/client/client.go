@@ -361,6 +361,259 @@ func (s *AddAttendeeResponse) SetBody(v *AddAttendeeResponseBody) *AddAttendeeRe
 	return s
 }
 
+type AddDriveSpaceHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	AccountContext *AddDriveSpaceHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s AddDriveSpaceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDriveSpaceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddDriveSpaceHeaders) SetCommonHeaders(v map[string]*string) *AddDriveSpaceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddDriveSpaceHeaders) SetAccountContext(v *AddDriveSpaceHeadersAccountContext) *AddDriveSpaceHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type AddDriveSpaceHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s AddDriveSpaceHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDriveSpaceHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *AddDriveSpaceHeadersAccountContext) SetAccountId(v string) *AddDriveSpaceHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type AddDriveSpaceShrinkHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	AccountContextShrink *string `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s AddDriveSpaceShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDriveSpaceShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddDriveSpaceShrinkHeaders) SetCommonHeaders(v map[string]*string) *AddDriveSpaceShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddDriveSpaceShrinkHeaders) SetAccountContextShrink(v string) *AddDriveSpaceShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type AddDriveSpaceRequest struct {
+	// This parameter is required.
+	Name          *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	TenantContext *AddDriveSpaceRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s AddDriveSpaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDriveSpaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDriveSpaceRequest) SetName(v string) *AddDriveSpaceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddDriveSpaceRequest) SetTenantContext(v *AddDriveSpaceRequestTenantContext) *AddDriveSpaceRequest {
+	s.TenantContext = v
+	return s
+}
+
+type AddDriveSpaceRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s AddDriveSpaceRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDriveSpaceRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *AddDriveSpaceRequestTenantContext) SetTenantId(v string) *AddDriveSpaceRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type AddDriveSpaceShrinkRequest struct {
+	// This parameter is required.
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s AddDriveSpaceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDriveSpaceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDriveSpaceShrinkRequest) SetName(v string) *AddDriveSpaceShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddDriveSpaceShrinkRequest) SetTenantContextShrink(v string) *AddDriveSpaceShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type AddDriveSpaceResponseBody struct {
+	CreateTime     *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	ModifyTime     *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
+	PermissionMode *string `json:"permissionMode,omitempty" xml:"permissionMode,omitempty"`
+	Quota          *int64  `json:"quota,omitempty" xml:"quota,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SpaceId   *string `json:"spaceId,omitempty" xml:"spaceId,omitempty"`
+	SpaceName *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
+	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	UsedQuota *int64  `json:"usedQuota,omitempty" xml:"usedQuota,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s AddDriveSpaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDriveSpaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDriveSpaceResponseBody) SetCreateTime(v string) *AddDriveSpaceResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *AddDriveSpaceResponseBody) SetModifyTime(v string) *AddDriveSpaceResponseBody {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *AddDriveSpaceResponseBody) SetPermissionMode(v string) *AddDriveSpaceResponseBody {
+	s.PermissionMode = &v
+	return s
+}
+
+func (s *AddDriveSpaceResponseBody) SetQuota(v int64) *AddDriveSpaceResponseBody {
+	s.Quota = &v
+	return s
+}
+
+func (s *AddDriveSpaceResponseBody) SetRequestId(v string) *AddDriveSpaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddDriveSpaceResponseBody) SetSpaceId(v string) *AddDriveSpaceResponseBody {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *AddDriveSpaceResponseBody) SetSpaceName(v string) *AddDriveSpaceResponseBody {
+	s.SpaceName = &v
+	return s
+}
+
+func (s *AddDriveSpaceResponseBody) SetSpaceType(v string) *AddDriveSpaceResponseBody {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *AddDriveSpaceResponseBody) SetUsedQuota(v int64) *AddDriveSpaceResponseBody {
+	s.UsedQuota = &v
+	return s
+}
+
+func (s *AddDriveSpaceResponseBody) SetVendorRequestId(v string) *AddDriveSpaceResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *AddDriveSpaceResponseBody) SetVendorType(v string) *AddDriveSpaceResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type AddDriveSpaceResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddDriveSpaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddDriveSpaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDriveSpaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDriveSpaceResponse) SetHeaders(v map[string]*string) *AddDriveSpaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDriveSpaceResponse) SetStatusCode(v int32) *AddDriveSpaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddDriveSpaceResponse) SetBody(v *AddDriveSpaceResponseBody) *AddDriveSpaceResponse {
+	s.Body = v
+	return s
+}
+
 type AddMeetingRoomsHeaders struct {
 	CommonHeaders  map[string]*string                    `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *AddMeetingRoomsHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -4842,6 +5095,361 @@ func (s *CreateDeliveryPlanResponse) SetBody(v *CreateDeliveryPlanResponseBody) 
 	return s
 }
 
+type CreateDingtalkPersonalTodoTaskHeaders struct {
+	CommonHeaders  map[string]*string                                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *CreateDingtalkPersonalTodoTaskHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s CreateDingtalkPersonalTodoTaskHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDingtalkPersonalTodoTaskHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDingtalkPersonalTodoTaskHeaders) SetCommonHeaders(v map[string]*string) *CreateDingtalkPersonalTodoTaskHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskHeaders) SetAccountContext(v *CreateDingtalkPersonalTodoTaskHeadersAccountContext) *CreateDingtalkPersonalTodoTaskHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type CreateDingtalkPersonalTodoTaskHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s CreateDingtalkPersonalTodoTaskHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDingtalkPersonalTodoTaskHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDingtalkPersonalTodoTaskHeadersAccountContext) SetAccountId(v string) *CreateDingtalkPersonalTodoTaskHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type CreateDingtalkPersonalTodoTaskShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s CreateDingtalkPersonalTodoTaskShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDingtalkPersonalTodoTaskShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDingtalkPersonalTodoTaskShrinkHeaders) SetCommonHeaders(v map[string]*string) *CreateDingtalkPersonalTodoTaskShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskShrinkHeaders) SetAccountContextShrink(v string) *CreateDingtalkPersonalTodoTaskShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type CreateDingtalkPersonalTodoTaskRequest struct {
+	// example:
+	//
+	// 待办备注信息
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1703750708595
+	DueTime *int64 `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [ "012345" ]
+	ExecutorIds   []*string                                           `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
+	NotifyConfigs *CreateDingtalkPersonalTodoTaskRequestNotifyConfigs `json:"NotifyConfigs,omitempty" xml:"NotifyConfigs,omitempty" type:"Struct"`
+	// example:
+	//
+	// [ "012345" ]
+	ParticipantIds []*string `json:"ParticipantIds,omitempty" xml:"ParticipantIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 待办标题
+	Subject       *string                                             `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	TenantContext *CreateDingtalkPersonalTodoTaskRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// example:
+	//
+	// 用户token
+	UserToken *string `json:"UserToken,omitempty" xml:"UserToken,omitempty"`
+}
+
+func (s CreateDingtalkPersonalTodoTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDingtalkPersonalTodoTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDingtalkPersonalTodoTaskRequest) SetDescription(v string) *CreateDingtalkPersonalTodoTaskRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskRequest) SetDueTime(v int64) *CreateDingtalkPersonalTodoTaskRequest {
+	s.DueTime = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskRequest) SetExecutorIds(v []*string) *CreateDingtalkPersonalTodoTaskRequest {
+	s.ExecutorIds = v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskRequest) SetNotifyConfigs(v *CreateDingtalkPersonalTodoTaskRequestNotifyConfigs) *CreateDingtalkPersonalTodoTaskRequest {
+	s.NotifyConfigs = v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskRequest) SetParticipantIds(v []*string) *CreateDingtalkPersonalTodoTaskRequest {
+	s.ParticipantIds = v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskRequest) SetSubject(v string) *CreateDingtalkPersonalTodoTaskRequest {
+	s.Subject = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskRequest) SetTenantContext(v *CreateDingtalkPersonalTodoTaskRequestTenantContext) *CreateDingtalkPersonalTodoTaskRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskRequest) SetUserToken(v string) *CreateDingtalkPersonalTodoTaskRequest {
+	s.UserToken = &v
+	return s
+}
+
+type CreateDingtalkPersonalTodoTaskRequestNotifyConfigs struct {
+	// example:
+	//
+	// 1
+	DingNotify *string `json:"DingNotify,omitempty" xml:"DingNotify,omitempty"`
+}
+
+func (s CreateDingtalkPersonalTodoTaskRequestNotifyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDingtalkPersonalTodoTaskRequestNotifyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDingtalkPersonalTodoTaskRequestNotifyConfigs) SetDingNotify(v string) *CreateDingtalkPersonalTodoTaskRequestNotifyConfigs {
+	s.DingNotify = &v
+	return s
+}
+
+type CreateDingtalkPersonalTodoTaskRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s CreateDingtalkPersonalTodoTaskRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDingtalkPersonalTodoTaskRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDingtalkPersonalTodoTaskRequestTenantContext) SetTenantId(v string) *CreateDingtalkPersonalTodoTaskRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type CreateDingtalkPersonalTodoTaskShrinkRequest struct {
+	// example:
+	//
+	// 待办备注信息
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1703750708595
+	DueTime *int64 `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [ "012345" ]
+	ExecutorIdsShrink   *string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty"`
+	NotifyConfigsShrink *string `json:"NotifyConfigs,omitempty" xml:"NotifyConfigs,omitempty"`
+	// example:
+	//
+	// [ "012345" ]
+	ParticipantIdsShrink *string `json:"ParticipantIds,omitempty" xml:"ParticipantIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 待办标题
+	Subject             *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// example:
+	//
+	// 用户token
+	UserToken *string `json:"UserToken,omitempty" xml:"UserToken,omitempty"`
+}
+
+func (s CreateDingtalkPersonalTodoTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDingtalkPersonalTodoTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDingtalkPersonalTodoTaskShrinkRequest) SetDescription(v string) *CreateDingtalkPersonalTodoTaskShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskShrinkRequest) SetDueTime(v int64) *CreateDingtalkPersonalTodoTaskShrinkRequest {
+	s.DueTime = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskShrinkRequest) SetExecutorIdsShrink(v string) *CreateDingtalkPersonalTodoTaskShrinkRequest {
+	s.ExecutorIdsShrink = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskShrinkRequest) SetNotifyConfigsShrink(v string) *CreateDingtalkPersonalTodoTaskShrinkRequest {
+	s.NotifyConfigsShrink = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskShrinkRequest) SetParticipantIdsShrink(v string) *CreateDingtalkPersonalTodoTaskShrinkRequest {
+	s.ParticipantIdsShrink = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskShrinkRequest) SetSubject(v string) *CreateDingtalkPersonalTodoTaskShrinkRequest {
+	s.Subject = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskShrinkRequest) SetTenantContextShrink(v string) *CreateDingtalkPersonalTodoTaskShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskShrinkRequest) SetUserToken(v string) *CreateDingtalkPersonalTodoTaskShrinkRequest {
+	s.UserToken = &v
+	return s
+}
+
+type CreateDingtalkPersonalTodoTaskResponseBody struct {
+	// example:
+	//
+	// 1703750708595
+	CreatedTime *int64 `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// task123abc
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s CreateDingtalkPersonalTodoTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDingtalkPersonalTodoTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDingtalkPersonalTodoTaskResponseBody) SetCreatedTime(v int64) *CreateDingtalkPersonalTodoTaskResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskResponseBody) SetRequestId(v string) *CreateDingtalkPersonalTodoTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskResponseBody) SetTaskId(v string) *CreateDingtalkPersonalTodoTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskResponseBody) SetVendorRequestId(v string) *CreateDingtalkPersonalTodoTaskResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskResponseBody) SetVendorType(v string) *CreateDingtalkPersonalTodoTaskResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type CreateDingtalkPersonalTodoTaskResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDingtalkPersonalTodoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDingtalkPersonalTodoTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDingtalkPersonalTodoTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDingtalkPersonalTodoTaskResponse) SetHeaders(v map[string]*string) *CreateDingtalkPersonalTodoTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskResponse) SetStatusCode(v int32) *CreateDingtalkPersonalTodoTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDingtalkPersonalTodoTaskResponse) SetBody(v *CreateDingtalkPersonalTodoTaskResponseBody) *CreateDingtalkPersonalTodoTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateEventHeaders struct {
 	CommonHeaders  map[string]*string                `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *CreateEventHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -4918,10 +5526,12 @@ type CreateEventRequest struct {
 	// example:
 	//
 	// true
-	IsAllDay            *bool                                  `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
-	Location            *CreateEventRequestLocation            `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	OnlineMeetingInfo   *CreateEventRequestOnlineMeetingInfo   `json:"OnlineMeetingInfo,omitempty" xml:"OnlineMeetingInfo,omitempty" type:"Struct"`
-	Recurrence          *CreateEventRequestRecurrence          `json:"Recurrence,omitempty" xml:"Recurrence,omitempty" type:"Struct"`
+	IsAllDay          *bool                                `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
+	Location          *CreateEventRequestLocation          `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	OnlineMeetingInfo *CreateEventRequestOnlineMeetingInfo `json:"OnlineMeetingInfo,omitempty" xml:"OnlineMeetingInfo,omitempty" type:"Struct"`
+	Recurrence        *CreateEventRequestRecurrence        `json:"Recurrence,omitempty" xml:"Recurrence,omitempty" type:"Struct"`
+	// if can be null:
+	// false
 	Reminders           []*CreateEventRequestReminders         `json:"Reminders,omitempty" xml:"Reminders,omitempty" type:"Repeated"`
 	RichTextDescription *CreateEventRequestRichTextDescription `json:"RichTextDescription,omitempty" xml:"RichTextDescription,omitempty" type:"Struct"`
 	// This parameter is required.
@@ -5357,10 +5967,12 @@ type CreateEventShrinkRequest struct {
 	// example:
 	//
 	// true
-	IsAllDay                  *bool   `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
-	LocationShrink            *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	OnlineMeetingInfoShrink   *string `json:"OnlineMeetingInfo,omitempty" xml:"OnlineMeetingInfo,omitempty"`
-	RecurrenceShrink          *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	IsAllDay                *bool   `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
+	LocationShrink          *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	OnlineMeetingInfoShrink *string `json:"OnlineMeetingInfo,omitempty" xml:"OnlineMeetingInfo,omitempty"`
+	RecurrenceShrink        *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// if can be null:
+	// false
 	RemindersShrink           *string `json:"Reminders,omitempty" xml:"Reminders,omitempty"`
 	RichTextDescriptionShrink *string `json:"RichTextDescription,omitempty" xml:"RichTextDescription,omitempty"`
 	// This parameter is required.
@@ -11630,6 +12242,219 @@ func (s *DeleteColumnsResponse) SetStatusCode(v int32) *DeleteColumnsResponse {
 }
 
 func (s *DeleteColumnsResponse) SetBody(v *DeleteColumnsResponseBody) *DeleteColumnsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDriveSpaceHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	AccountContext *DeleteDriveSpaceHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s DeleteDriveSpaceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveSpaceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveSpaceHeaders) SetCommonHeaders(v map[string]*string) *DeleteDriveSpaceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteDriveSpaceHeaders) SetAccountContext(v *DeleteDriveSpaceHeadersAccountContext) *DeleteDriveSpaceHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type DeleteDriveSpaceHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s DeleteDriveSpaceHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveSpaceHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveSpaceHeadersAccountContext) SetAccountId(v string) *DeleteDriveSpaceHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type DeleteDriveSpaceShrinkHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	AccountContextShrink *string `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s DeleteDriveSpaceShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveSpaceShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveSpaceShrinkHeaders) SetCommonHeaders(v map[string]*string) *DeleteDriveSpaceShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteDriveSpaceShrinkHeaders) SetAccountContextShrink(v string) *DeleteDriveSpaceShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type DeleteDriveSpaceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	SpaceId       *string                               `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	TenantContext *DeleteDriveSpaceRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s DeleteDriveSpaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveSpaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveSpaceRequest) SetSpaceId(v string) *DeleteDriveSpaceRequest {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *DeleteDriveSpaceRequest) SetTenantContext(v *DeleteDriveSpaceRequestTenantContext) *DeleteDriveSpaceRequest {
+	s.TenantContext = v
+	return s
+}
+
+type DeleteDriveSpaceRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s DeleteDriveSpaceRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveSpaceRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveSpaceRequestTenantContext) SetTenantId(v string) *DeleteDriveSpaceRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type DeleteDriveSpaceShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	SpaceId             *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s DeleteDriveSpaceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveSpaceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveSpaceShrinkRequest) SetSpaceId(v string) *DeleteDriveSpaceShrinkRequest {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *DeleteDriveSpaceShrinkRequest) SetTenantContextShrink(v string) *DeleteDriveSpaceShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type DeleteDriveSpaceResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s DeleteDriveSpaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveSpaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveSpaceResponseBody) SetRequestId(v string) *DeleteDriveSpaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDriveSpaceResponseBody) SetVendorRequestId(v string) *DeleteDriveSpaceResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *DeleteDriveSpaceResponseBody) SetVendorType(v string) *DeleteDriveSpaceResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type DeleteDriveSpaceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDriveSpaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDriveSpaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveSpaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveSpaceResponse) SetHeaders(v map[string]*string) *DeleteDriveSpaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDriveSpaceResponse) SetStatusCode(v int32) *DeleteDriveSpaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDriveSpaceResponse) SetBody(v *DeleteDriveSpaceResponseBody) *DeleteDriveSpaceResponse {
 	s.Body = v
 	return s
 }
@@ -34239,6 +35064,354 @@ func (s *ListDentriesResponse) SetStatusCode(v int32) *ListDentriesResponse {
 }
 
 func (s *ListDentriesResponse) SetBody(v *ListDentriesResponseBody) *ListDentriesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDriveSpacesHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	AccountContext *ListDriveSpacesHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s ListDriveSpacesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDriveSpacesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListDriveSpacesHeaders) SetCommonHeaders(v map[string]*string) *ListDriveSpacesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListDriveSpacesHeaders) SetAccountContext(v *ListDriveSpacesHeadersAccountContext) *ListDriveSpacesHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type ListDriveSpacesHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s ListDriveSpacesHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDriveSpacesHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListDriveSpacesHeadersAccountContext) SetAccountId(v string) *ListDriveSpacesHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type ListDriveSpacesShrinkHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	AccountContextShrink *string `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s ListDriveSpacesShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDriveSpacesShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListDriveSpacesShrinkHeaders) SetCommonHeaders(v map[string]*string) *ListDriveSpacesShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListDriveSpacesShrinkHeaders) SetAccountContextShrink(v string) *ListDriveSpacesShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type ListDriveSpacesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// fekaf
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// org
+	SpaceType     *string                              `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	TenantContext *ListDriveSpacesRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s ListDriveSpacesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDriveSpacesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDriveSpacesRequest) SetMaxResults(v int32) *ListDriveSpacesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDriveSpacesRequest) SetNextToken(v string) *ListDriveSpacesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDriveSpacesRequest) SetSpaceType(v string) *ListDriveSpacesRequest {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *ListDriveSpacesRequest) SetTenantContext(v *ListDriveSpacesRequestTenantContext) *ListDriveSpacesRequest {
+	s.TenantContext = v
+	return s
+}
+
+type ListDriveSpacesRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s ListDriveSpacesRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDriveSpacesRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListDriveSpacesRequestTenantContext) SetTenantId(v string) *ListDriveSpacesRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type ListDriveSpacesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// fekaf
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// org
+	SpaceType           *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s ListDriveSpacesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDriveSpacesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDriveSpacesShrinkRequest) SetMaxResults(v int32) *ListDriveSpacesShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDriveSpacesShrinkRequest) SetNextToken(v string) *ListDriveSpacesShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDriveSpacesShrinkRequest) SetSpaceType(v string) *ListDriveSpacesShrinkRequest {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *ListDriveSpacesShrinkRequest) SetTenantContextShrink(v string) *ListDriveSpacesShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type ListDriveSpacesResponseBody struct {
+	// example:
+	//
+	// fekaf
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Spaces    []*ListDriveSpacesResponseBodySpaces `json:"spaces,omitempty" xml:"spaces,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s ListDriveSpacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDriveSpacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDriveSpacesResponseBody) SetNextToken(v string) *ListDriveSpacesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDriveSpacesResponseBody) SetRequestId(v string) *ListDriveSpacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDriveSpacesResponseBody) SetSpaces(v []*ListDriveSpacesResponseBodySpaces) *ListDriveSpacesResponseBody {
+	s.Spaces = v
+	return s
+}
+
+func (s *ListDriveSpacesResponseBody) SetVendorRequestId(v string) *ListDriveSpacesResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *ListDriveSpacesResponseBody) SetVendorType(v string) *ListDriveSpacesResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type ListDriveSpacesResponseBodySpaces struct {
+	// example:
+	//
+	// 2016-02-28T10:47:08Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2016-02-28T10:47:08Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// acl
+	PermissionMode *string `json:"PermissionMode,omitempty" xml:"PermissionMode,omitempty"`
+	// example:
+	//
+	// 2147483648
+	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// example:
+	//
+	// 123456789
+	SpaceId   *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	SpaceName *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
+	// example:
+	//
+	// org
+	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	// example:
+	//
+	// 640445953
+	UsedQuota *int64 `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
+}
+
+func (s ListDriveSpacesResponseBodySpaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDriveSpacesResponseBodySpaces) GoString() string {
+	return s.String()
+}
+
+func (s *ListDriveSpacesResponseBodySpaces) SetCreateTime(v string) *ListDriveSpacesResponseBodySpaces {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDriveSpacesResponseBodySpaces) SetModifyTime(v string) *ListDriveSpacesResponseBodySpaces {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListDriveSpacesResponseBodySpaces) SetPermissionMode(v string) *ListDriveSpacesResponseBodySpaces {
+	s.PermissionMode = &v
+	return s
+}
+
+func (s *ListDriveSpacesResponseBodySpaces) SetQuota(v int64) *ListDriveSpacesResponseBodySpaces {
+	s.Quota = &v
+	return s
+}
+
+func (s *ListDriveSpacesResponseBodySpaces) SetSpaceId(v string) *ListDriveSpacesResponseBodySpaces {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *ListDriveSpacesResponseBodySpaces) SetSpaceName(v string) *ListDriveSpacesResponseBodySpaces {
+	s.SpaceName = &v
+	return s
+}
+
+func (s *ListDriveSpacesResponseBodySpaces) SetSpaceType(v string) *ListDriveSpacesResponseBodySpaces {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *ListDriveSpacesResponseBodySpaces) SetUsedQuota(v int64) *ListDriveSpacesResponseBodySpaces {
+	s.UsedQuota = &v
+	return s
+}
+
+type ListDriveSpacesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDriveSpacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDriveSpacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDriveSpacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDriveSpacesResponse) SetHeaders(v map[string]*string) *ListDriveSpacesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDriveSpacesResponse) SetStatusCode(v int32) *ListDriveSpacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDriveSpacesResponse) SetBody(v *ListDriveSpacesResponseBody) *ListDriveSpacesResponse {
 	s.Body = v
 	return s
 }
@@ -58752,6 +59925,95 @@ func (client *Client) AddAttendee(request *AddAttendeeRequest) (_result *AddAtte
 
 // Summary:
 //
+// 新建钉盘空间
+//
+// @param tmpReq - AddDriveSpaceRequest
+//
+// @param tmpHeader - AddDriveSpaceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDriveSpaceResponse
+func (client *Client) AddDriveSpaceWithOptions(tmpReq *AddDriveSpaceRequest, tmpHeader *AddDriveSpaceHeaders, runtime *util.RuntimeOptions) (_result *AddDriveSpaceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddDriveSpaceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &AddDriveSpaceShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddDriveSpace"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/documents/addDriveSpace"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddDriveSpaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建钉盘空间
+//
+// @param request - AddDriveSpaceRequest
+//
+// @return AddDriveSpaceResponse
+func (client *Client) AddDriveSpace(request *AddDriveSpaceRequest) (_result *AddDriveSpaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddDriveSpaceHeaders{}
+	_result = &AddDriveSpaceResponse{}
+	_body, _err := client.AddDriveSpaceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 预定会议室
 //
 // @param tmpReq - AddMeetingRoomsRequest
@@ -60331,6 +61593,131 @@ func (client *Client) CreateDeliveryPlan(request *CreateDeliveryPlanRequest) (_r
 	headers := &CreateDeliveryPlanHeaders{}
 	_result = &CreateDeliveryPlanResponse{}
 	_body, _err := client.CreateDeliveryPlanWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 委托权限创建钉钉个人待办
+//
+// @param tmpReq - CreateDingtalkPersonalTodoTaskRequest
+//
+// @param tmpHeader - CreateDingtalkPersonalTodoTaskHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDingtalkPersonalTodoTaskResponse
+func (client *Client) CreateDingtalkPersonalTodoTaskWithOptions(tmpReq *CreateDingtalkPersonalTodoTaskRequest, tmpHeader *CreateDingtalkPersonalTodoTaskHeaders, runtime *util.RuntimeOptions) (_result *CreateDingtalkPersonalTodoTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDingtalkPersonalTodoTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &CreateDingtalkPersonalTodoTaskShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExecutorIds)) {
+		request.ExecutorIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExecutorIds, tea.String("ExecutorIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.NotifyConfigs)) {
+		request.NotifyConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NotifyConfigs, tea.String("NotifyConfigs"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ParticipantIds)) {
+		request.ParticipantIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ParticipantIds, tea.String("ParticipantIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DueTime)) {
+		body["DueTime"] = request.DueTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutorIdsShrink)) {
+		body["ExecutorIds"] = request.ExecutorIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfigsShrink)) {
+		body["NotifyConfigs"] = request.NotifyConfigsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParticipantIdsShrink)) {
+		body["ParticipantIds"] = request.ParticipantIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		body["Subject"] = request.Subject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserToken)) {
+		body["UserToken"] = request.UserToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDingtalkPersonalTodoTask"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/task/createDingtalkPersonalTodoTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDingtalkPersonalTodoTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 委托权限创建钉钉个人待办
+//
+// @param request - CreateDingtalkPersonalTodoTaskRequest
+//
+// @return CreateDingtalkPersonalTodoTaskResponse
+func (client *Client) CreateDingtalkPersonalTodoTask(request *CreateDingtalkPersonalTodoTaskRequest) (_result *CreateDingtalkPersonalTodoTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateDingtalkPersonalTodoTaskHeaders{}
+	_result = &CreateDingtalkPersonalTodoTaskResponse{}
+	_body, _err := client.CreateDingtalkPersonalTodoTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62520,6 +63907,95 @@ func (client *Client) DeleteColumns(request *DeleteColumnsRequest) (_result *Del
 	headers := &DeleteColumnsHeaders{}
 	_result = &DeleteColumnsResponse{}
 	_body, _err := client.DeleteColumnsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除钉盘空间
+//
+// @param tmpReq - DeleteDriveSpaceRequest
+//
+// @param tmpHeader - DeleteDriveSpaceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDriveSpaceResponse
+func (client *Client) DeleteDriveSpaceWithOptions(tmpReq *DeleteDriveSpaceRequest, tmpHeader *DeleteDriveSpaceHeaders, runtime *util.RuntimeOptions) (_result *DeleteDriveSpaceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteDriveSpaceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &DeleteDriveSpaceShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SpaceId)) {
+		body["SpaceId"] = request.SpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDriveSpace"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/documents/deleteDriveSpace"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDriveSpaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除钉盘空间
+//
+// @param request - DeleteDriveSpaceRequest
+//
+// @return DeleteDriveSpaceResponse
+func (client *Client) DeleteDriveSpace(request *DeleteDriveSpaceRequest) (_result *DeleteDriveSpaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteDriveSpaceHeaders{}
+	_result = &DeleteDriveSpaceResponse{}
+	_body, _err := client.DeleteDriveSpaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -69126,6 +70602,103 @@ func (client *Client) ListDentries(request *ListDentriesRequest) (_result *ListD
 	headers := &ListDentriesHeaders{}
 	_result = &ListDentriesResponse{}
 	_body, _err := client.ListDentriesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉盘空间列表
+//
+// @param tmpReq - ListDriveSpacesRequest
+//
+// @param tmpHeader - ListDriveSpacesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDriveSpacesResponse
+func (client *Client) ListDriveSpacesWithOptions(tmpReq *ListDriveSpacesRequest, tmpHeader *ListDriveSpacesHeaders, runtime *util.RuntimeOptions) (_result *ListDriveSpacesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListDriveSpacesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &ListDriveSpacesShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceType)) {
+		body["SpaceType"] = request.SpaceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDriveSpaces"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/documents/listDriveSpaces"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDriveSpacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取钉盘空间列表
+//
+// @param request - ListDriveSpacesRequest
+//
+// @return ListDriveSpacesResponse
+func (client *Client) ListDriveSpaces(request *ListDriveSpacesRequest) (_result *ListDriveSpacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListDriveSpacesHeaders{}
+	_result = &ListDriveSpacesResponse{}
+	_body, _err := client.ListDriveSpacesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
