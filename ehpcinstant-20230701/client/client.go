@@ -595,6 +595,7 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutor) SetVM(v *CreateJobRequestTas
 }
 
 type CreateJobRequestTasksTaskSpecTaskExecutorContainer struct {
+	AppId           *string                                                              `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Command         []*string                                                            `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
 	EnvironmentVars []*CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -615,6 +616,11 @@ func (s CreateJobRequestTasksTaskSpecTaskExecutorContainer) String() string {
 
 func (s CreateJobRequestTasksTaskSpecTaskExecutorContainer) GoString() string {
 	return s.String()
+}
+
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetAppId(v string) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
+	s.AppId = &v
+	return s
 }
 
 func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetCommand(v []*string) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
@@ -667,6 +673,7 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars) SetV
 }
 
 type CreateJobRequestTasksTaskSpecTaskExecutorVM struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -689,6 +696,11 @@ func (s CreateJobRequestTasksTaskSpecTaskExecutorVM) String() string {
 
 func (s CreateJobRequestTasksTaskSpecTaskExecutorVM) GoString() string {
 	return s.String()
+}
+
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorVM) SetAppId(v string) *CreateJobRequestTasksTaskSpecTaskExecutorVM {
+	s.AppId = &v
+	return s
 }
 
 func (s *CreateJobRequestTasksTaskSpecTaskExecutorVM) SetImage(v string) *CreateJobRequestTasksTaskSpecTaskExecutorVM {
@@ -1332,12 +1344,14 @@ func (s *DescribeJobMetricLastResponse) SetBody(v *DescribeJobMetricLastResponse
 }
 
 type GetImageRequest struct {
+	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// m-2ze74g5mvy4pjg*****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 }
 
 func (s GetImageRequest) String() string {
@@ -1348,8 +1362,18 @@ func (s GetImageRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetImageRequest) SetImageCategory(v string) *GetImageRequest {
+	s.ImageCategory = &v
+	return s
+}
+
 func (s *GetImageRequest) SetImageId(v string) *GetImageRequest {
 	s.ImageId = &v
+	return s
+}
+
+func (s *GetImageRequest) SetImageType(v string) *GetImageRequest {
+	s.ImageType = &v
 	return s
 }
 
@@ -1398,6 +1422,7 @@ func (s *GetImageResponseBody) SetTotalCount(v int32) *GetImageResponseBody {
 }
 
 type GetImageResponseBodyImage struct {
+	AppId              *string                                      `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ContainerImageSpec *GetImageResponseBodyImageContainerImageSpec `json:"ContainerImageSpec,omitempty" xml:"ContainerImageSpec,omitempty" type:"Struct"`
 	// example:
 	//
@@ -1418,6 +1443,7 @@ type GetImageResponseBodyImage struct {
 	//
 	// 40 GiB
 	Size        *string                               `json:"Size,omitempty" xml:"Size,omitempty"`
+	Status      *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
 	VMImageSpec *GetImageResponseBodyImageVMImageSpec `json:"VMImageSpec,omitempty" xml:"VMImageSpec,omitempty" type:"Struct"`
 	// example:
 	//
@@ -1431,6 +1457,11 @@ func (s GetImageResponseBodyImage) String() string {
 
 func (s GetImageResponseBodyImage) GoString() string {
 	return s.String()
+}
+
+func (s *GetImageResponseBodyImage) SetAppId(v string) *GetImageResponseBodyImage {
+	s.AppId = &v
+	return s
 }
 
 func (s *GetImageResponseBodyImage) SetContainerImageSpec(v *GetImageResponseBodyImageContainerImageSpec) *GetImageResponseBodyImage {
@@ -1460,6 +1491,11 @@ func (s *GetImageResponseBodyImage) SetName(v string) *GetImageResponseBodyImage
 
 func (s *GetImageResponseBodyImage) SetSize(v string) *GetImageResponseBodyImage {
 	s.Size = &v
+	return s
+}
+
+func (s *GetImageResponseBodyImage) SetStatus(v string) *GetImageResponseBodyImage {
+	s.Status = &v
 	return s
 }
 
@@ -2469,8 +2505,10 @@ func (s *ListExecutorsResponse) SetBody(v *ListExecutorsResponseBody) *ListExecu
 }
 
 type ListImagesRequest struct {
-	ImageIds   []*string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty" type:"Repeated"`
-	ImageNames []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
+	ImageCategory *string   `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	ImageIds      []*string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty" type:"Repeated"`
+	ImageNames    []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
+	ImageType     *string   `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	// example:
 	//
 	// 1
@@ -2489,6 +2527,11 @@ func (s ListImagesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListImagesRequest) SetImageCategory(v string) *ListImagesRequest {
+	s.ImageCategory = &v
+	return s
+}
+
 func (s *ListImagesRequest) SetImageIds(v []*string) *ListImagesRequest {
 	s.ImageIds = v
 	return s
@@ -2496,6 +2539,11 @@ func (s *ListImagesRequest) SetImageIds(v []*string) *ListImagesRequest {
 
 func (s *ListImagesRequest) SetImageNames(v []*string) *ListImagesRequest {
 	s.ImageNames = v
+	return s
+}
+
+func (s *ListImagesRequest) SetImageType(v string) *ListImagesRequest {
+	s.ImageType = &v
 	return s
 }
 
@@ -2510,8 +2558,10 @@ func (s *ListImagesRequest) SetPageSize(v int64) *ListImagesRequest {
 }
 
 type ListImagesShrinkRequest struct {
+	ImageCategory    *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
 	ImageIdsShrink   *string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty"`
 	ImageNamesShrink *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
+	ImageType        *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	// example:
 	//
 	// 1
@@ -2530,6 +2580,11 @@ func (s ListImagesShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListImagesShrinkRequest) SetImageCategory(v string) *ListImagesShrinkRequest {
+	s.ImageCategory = &v
+	return s
+}
+
 func (s *ListImagesShrinkRequest) SetImageIdsShrink(v string) *ListImagesShrinkRequest {
 	s.ImageIdsShrink = &v
 	return s
@@ -2537,6 +2592,11 @@ func (s *ListImagesShrinkRequest) SetImageIdsShrink(v string) *ListImagesShrinkR
 
 func (s *ListImagesShrinkRequest) SetImageNamesShrink(v string) *ListImagesShrinkRequest {
 	s.ImageNamesShrink = &v
+	return s
+}
+
+func (s *ListImagesShrinkRequest) SetImageType(v string) *ListImagesShrinkRequest {
+	s.ImageType = &v
 	return s
 }
 
@@ -2613,6 +2673,8 @@ func (s *ListImagesResponseBody) SetTotalCount(v int32) *ListImagesResponseBody 
 }
 
 type ListImagesResponseBodyImages struct {
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// example:
 	//
 	// 2022-12-09T07:06:34Z
@@ -2646,6 +2708,11 @@ func (s ListImagesResponseBodyImages) String() string {
 
 func (s ListImagesResponseBodyImages) GoString() string {
 	return s.String()
+}
+
+func (s *ListImagesResponseBodyImages) SetAppId(v string) *ListImagesResponseBodyImages {
+	s.AppId = &v
+	return s
 }
 
 func (s *ListImagesResponseBodyImages) SetCreateTime(v string) *ListImagesResponseBodyImages {
@@ -3817,8 +3884,16 @@ func (client *Client) GetImageWithOptions(request *GetImageRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageCategory)) {
+		query["ImageCategory"] = request.ImageCategory
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
 		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageType)) {
+		query["ImageType"] = request.ImageType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4021,12 +4096,20 @@ func (client *Client) ListImagesWithOptions(tmpReq *ListImagesRequest, runtime *
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageCategory)) {
+		query["ImageCategory"] = request.ImageCategory
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageIdsShrink)) {
 		query["ImageIds"] = request.ImageIdsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageNamesShrink)) {
 		query["ImageNames"] = request.ImageNamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageType)) {
+		query["ImageType"] = request.ImageType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
