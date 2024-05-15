@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -15,21 +12,41 @@ import (
 type AddIpRequest struct {
 	// The ID of the Anti-DDoS Origin Enterprise instance.
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-npk1z7t9****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The list of IP addresses that you want to add to the Anti-DDoS Origin Enterprise instance. This parameter is a string consisting of JSON arrays. Each element in a JSON array is a JSON struct that includes the following field:
 	//
-	// *   **ip**: required. The IP address that you want to add. Data type: string.
+	// 	- **ip**: required. The IP address that you want to add. Data type: string.
 	//
 	//     > The IP address must be the IP address of an asset that belongs to the current Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"ip":"1.XX.XX.1"},{"ip":"2.XX.XX.2"}]
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
 	// The region ID of the Anti-DDoS Origin Enterprise instance.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -63,6 +80,10 @@ func (s *AddIpRequest) SetResourceGroupId(v string) *AddIpRequest {
 
 type AddIpResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -109,6 +130,7 @@ func (s *AddIpResponse) SetBody(v *AddIpResponseBody) *AddIpResponse {
 }
 
 type AddRdMemberListRequest struct {
+	// This parameter is required.
 	MemberList []*AddRdMemberListRequestMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
 }
 
@@ -126,6 +148,9 @@ func (s *AddRdMemberListRequest) SetMemberList(v []*AddRdMemberListRequestMember
 }
 
 type AddRdMemberListRequestMemberList struct {
+	// example:
+	//
+	// 19510843762****
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -143,6 +168,7 @@ func (s *AddRdMemberListRequestMemberList) SetUid(v string) *AddRdMemberListRequ
 }
 
 type AddRdMemberListShrinkRequest struct {
+	// This parameter is required.
 	MemberListShrink *string `json:"MemberList,omitempty" xml:"MemberList,omitempty"`
 }
 
@@ -160,6 +186,9 @@ func (s *AddRdMemberListShrinkRequest) SetMemberListShrink(v string) *AddRdMembe
 }
 
 type AddRdMemberListResponseBody struct {
+	// example:
+	//
+	// 4C467B38-3910-447D-87BC-AC049166F216
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -207,16 +236,32 @@ func (s *AddRdMemberListResponse) SetBody(v *AddRdMemberListResponseBody) *AddRd
 
 type AttachAssetGroupToInstanceRequest struct {
 	// The information about the asset to be associated.
+	//
+	// This parameter is required.
 	AssetGroupList []*AttachAssetGroupToInstanceRequestAssetGroupList `json:"AssetGroupList,omitempty" xml:"AssetGroupList,omitempty" type:"Repeated"`
 	// The ID of the instance to query.
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-n6w1r7nz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the region in which the instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The source IP address of the request. The system specifies this parameter.
+	//
+	// example:
+	//
+	// 180.169.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -250,12 +295,34 @@ func (s *AttachAssetGroupToInstanceRequest) SetSourceIp(v string) *AttachAssetGr
 
 type AttachAssetGroupToInstanceRequestAssetGroupList struct {
 	// The UID of the member to which the asset belongs.
+	//
+	// example:
+	//
+	// 1743970208320***
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The ID of the asset that you want to add. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-test-001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID of the asset.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The type of the asset.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -289,16 +356,32 @@ func (s *AttachAssetGroupToInstanceRequestAssetGroupList) SetType(v string) *Att
 
 type AttachAssetGroupToInstanceShrinkRequest struct {
 	// The information about the asset to be associated.
+	//
+	// This parameter is required.
 	AssetGroupListShrink *string `json:"AssetGroupList,omitempty" xml:"AssetGroupList,omitempty"`
 	// The ID of the instance to query.
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-n6w1r7nz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the region in which the instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The source IP address of the request. The system specifies this parameter.
+	//
+	// example:
+	//
+	// 180.169.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -332,6 +415,10 @@ func (s *AttachAssetGroupToInstanceShrinkRequest) SetSourceIp(v string) *AttachA
 
 type AttachAssetGroupToInstanceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 52B49F64-5A36-5CE0-BD00-765792C26AA9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -380,11 +467,19 @@ func (s *AttachAssetGroupToInstanceResponse) SetBody(v *AttachAssetGroupToInstan
 type CheckAccessLogAuthRequest struct {
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
-	// For more information about the valid values of this parameter, see [Regions and zones](~~188196~~).
+	// For more information about the valid values of this parameter, see [Regions and zones](https://help.aliyun.com/document_detail/188196.html).
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -409,10 +504,19 @@ func (s *CheckAccessLogAuthRequest) SetResourceGroupId(v string) *CheckAccessLog
 type CheckAccessLogAuthResponseBody struct {
 	// Indicates whether Anti-DDoS Origin was authorized to access Log Service. Valid values:
 	//
-	// *   **true**: Anti-DDoS Origin was authorized.
-	// *   **false**: Anti-DDoS Origin was not authorized.
+	// 	- **true**: Anti-DDoS Origin was authorized.
+	//
+	// 	- **false**: Anti-DDoS Origin was not authorized.
+	//
+	// example:
+	//
+	// true
 	AccessLogAuth *bool `json:"AccessLogAuth,omitempty" xml:"AccessLogAuth,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 864FE2F4-CB2E-4024-B9EF-D59FD08ABD41
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -466,16 +570,29 @@ func (s *CheckAccessLogAuthResponse) SetBody(v *CheckAccessLogAuthResponseBody) 
 type CheckGrantRequest struct {
 	// Specifies whether to allow Anti-DDoS Origin to check the service-linked role. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsSlr *bool `json:"IsSlr,omitempty" xml:"IsSlr,omitempty"`
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
 	// If you do not specify this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -504,11 +621,20 @@ func (s *CheckGrantRequest) SetResourceGroupId(v string) *CheckGrantRequest {
 
 type CheckGrantResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DB002CE5-5E6C-5F11-AE15-B525299A40F6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account. Valid values:
 	//
-	// *   **1**: Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
-	// *   **0**: Anti-DDoS Origin is not authorized to obtain information about the assets within the current Alibaba Cloud account.
+	// 	- **1**: Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
+	//
+	// 	- **0**: Anti-DDoS Origin is not authorized to obtain information about the assets within the current Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -562,49 +688,119 @@ func (s *CheckGrantResponse) SetBody(v *CheckGrantResponseBody) *CheckGrantRespo
 type ConfigSchedruleOnDemandRequest struct {
 	// The ID of the on-demand instance.
 	//
-	// >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+	// >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-z2q1qzxb****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the on-demand instance.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+	//
+	// example:
+	//
+	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// declare
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
 	// If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
 	//
 	// >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	RuleConditionCnt *string `json:"RuleConditionCnt,omitempty" xml:"RuleConditionCnt,omitempty"`
 	// The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	RuleConditionKpps *string `json:"RuleConditionKpps,omitempty" xml:"RuleConditionKpps,omitempty"`
 	// The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	RuleConditionMbps *string `json:"RuleConditionMbps,omitempty" xml:"RuleConditionMbps,omitempty"`
 	// The name of the scheduling rule.
 	//
-	// The name can contain lowercase letters, digits, hyphens (-), and underscores (\_). The name can be up to 32 characters in length. We recommend that you use the ID of the on-demand instance as the name. Example: `ddosbgp-cn-z2q1qzxb****`.
+	// The name can contain lowercase letters, digits, hyphens (-), and underscores (_). The name can be up to 32 characters in length. We recommend that you use the ID of the on-demand instance as the name. Example: `ddosbgp-cn-z2q1qzxb****`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-z2q1qzxb****
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// Specifies whether the scheduling rule is enabled. Valid values:
 	//
-	// *   **on**: enabled
-	// *   **off**: disabled
+	// 	- **on**: enabled
+	//
+	// 	- **off**: disabled
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// on
 	RuleSwitch *string `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
 	// The start time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
 	//
 	// If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
 	//
-	// >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+	// >  This parameter takes effect only when the **RuleUndoMode*	- parameter is set to **auto**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 03:00
 	RuleUndoBeginTime *string `json:"RuleUndoBeginTime,omitempty" xml:"RuleUndoBeginTime,omitempty"`
 	// The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
+	//
+	// example:
+	//
+	// 03:05
 	RuleUndoEndTime *string `json:"RuleUndoEndTime,omitempty" xml:"RuleUndoEndTime,omitempty"`
 	// The stop method of the scheduling rule. Valid values:
 	//
-	// *   **auto**: The scheduling rule automatically stops.
-	// *   **manual**: The scheduling rule is manually stopped.
+	// 	- **auto**: The scheduling rule automatically stops.
+	//
+	// 	- **manual**: The scheduling rule is manually stopped.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// manual
 	RuleUndoMode *string `json:"RuleUndoMode,omitempty" xml:"RuleUndoMode,omitempty"`
 	// The time zone of the time when the scheduling rule automatically stops. The time zone must be in the `GMT-hh:mm` format.
 	//
 	// For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
 	//
-	// >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+	// >  This parameter takes effect only when the **RuleUndoMode*	- parameter is set to **auto**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GMT-08:00
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
@@ -678,6 +874,10 @@ func (s *ConfigSchedruleOnDemandRequest) SetTimeZone(v string) *ConfigSchedruleO
 
 type ConfigSchedruleOnDemandResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BD06F539-2FBE-450D-9391-7EFF787128F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -726,49 +926,119 @@ func (s *ConfigSchedruleOnDemandResponse) SetBody(v *ConfigSchedruleOnDemandResp
 type CreateSchedruleOnDemandRequest struct {
 	// The ID of the on-demand instance.
 	//
-	// >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+	// >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-z2q1qzxb****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the on-demand instance.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+	//
+	// example:
+	//
+	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// declare
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
 	// If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
 	//
 	// >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	RuleConditionCnt *string `json:"RuleConditionCnt,omitempty" xml:"RuleConditionCnt,omitempty"`
 	// The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	RuleConditionKpps *string `json:"RuleConditionKpps,omitempty" xml:"RuleConditionKpps,omitempty"`
 	// The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	RuleConditionMbps *string `json:"RuleConditionMbps,omitempty" xml:"RuleConditionMbps,omitempty"`
 	// The name of the scheduling rule.
 	//
-	// The name can contain lowercase letters, digits, hyphens (-), and underscores (\_). The name can be up to 32 characters in length. We recommend that you use the ID of the on-demand instance as the name. Example: `ddosbgp-cn-z2q1qzxb****`.
+	// The name can contain lowercase letters, digits, hyphens (-), and underscores (_). The name can be up to 32 characters in length. We recommend that you use the ID of the on-demand instance as the name. Example: `ddosbgp-cn-z2q1qzxb****`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-z2q1qzxb****
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// Specifies whether the scheduling rule is enabled. Valid values:
 	//
-	// *   **on**: enabled
-	// *   **off**: disabled
+	// 	- **on**: enabled
+	//
+	// 	- **off**: disabled
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// on
 	RuleSwitch *string `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
 	// The start time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
 	//
 	// If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
 	//
-	// >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+	// >  This parameter takes effect only when the **RuleUndoMode*	- parameter is set to **auto**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 03:00
 	RuleUndoBeginTime *string `json:"RuleUndoBeginTime,omitempty" xml:"RuleUndoBeginTime,omitempty"`
 	// The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
+	//
+	// example:
+	//
+	// 03:05
 	RuleUndoEndTime *string `json:"RuleUndoEndTime,omitempty" xml:"RuleUndoEndTime,omitempty"`
 	// The stop method of the scheduling rule. Valid values:
 	//
-	// *   **auto**: The scheduling rule automatically stops.
-	// *   **manual**: The scheduling rule is manually stopped.
+	// 	- **auto**: The scheduling rule automatically stops.
+	//
+	// 	- **manual**: The scheduling rule is manually stopped.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// auto
 	RuleUndoMode *string `json:"RuleUndoMode,omitempty" xml:"RuleUndoMode,omitempty"`
 	// The time zone of the time when the scheduling rule automatically stops. The time zone must be in the `GMT-hh:mm` format.
 	//
 	// For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
 	//
-	// >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+	// >  This parameter takes effect only when the **RuleUndoMode*	- parameter is set to **auto**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GMT-08:00
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
@@ -842,6 +1112,10 @@ func (s *CreateSchedruleOnDemandRequest) SetTimeZone(v string) *CreateSchedruleO
 
 type CreateSchedruleOnDemandResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BD06F539-2FBE-450D-9391-7EFF787128F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -890,19 +1164,39 @@ func (s *CreateSchedruleOnDemandResponse) SetBody(v *CreateSchedruleOnDemandResp
 type DeleteBlackholeRequest struct {
 	// The ID of the Anti-DDoS Origin instance.
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-n6w1r7nz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IP address for which you want to deactivate blackhole filtering.
 	//
-	// >  You can call the [DescribePackIpList](~~118701~~) operation to query all the IP addresses that are protected by the Anti-DDoS Origin instance and the protection status of the IP addresses. For example, you can query whether blackhole filtering is triggered for an IP address.
+	// >  You can call the [DescribePackIpList](https://help.aliyun.com/document_detail/118701.html) operation to query all the IP addresses that are protected by the Anti-DDoS Origin instance and the protection status of the IP addresses. For example, you can query whether blackhole filtering is triggered for an IP address.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 47.89.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
 	// If you do not specify this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -936,6 +1230,10 @@ func (s *DeleteBlackholeRequest) SetResourceGroupId(v string) *DeleteBlackholeRe
 
 type DeleteBlackholeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -984,21 +1282,41 @@ func (s *DeleteBlackholeResponse) SetBody(v *DeleteBlackholeResponseBody) *Delet
 type DeleteIpRequest struct {
 	// The ID of the Anti-DDoS Origin Enterprise instance.
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-npk1z7t9****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The list of IP addresses that you want to remove from the Anti-DDoS Origin Enterprise instance. This parameter is a string consisting of JSON arrays. Each element in a JSON array is a JSON struct that includes the following field:
 	//
-	// *   **ip**: required. The IP address that you want to remove. Data type: string.
+	// 	- **ip**: required. The IP address that you want to remove. Data type: string.
 	//
 	//     > The IP addresses that you want to remove must be protected by the Anti-DDoS Origin Enterprise instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"ip":"1.XX.XX.1"},{"ip":"2.XX.XX.2"}]
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
 	// The region ID of the Anti-DDoS Origin Enterprise instance.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1032,6 +1350,10 @@ func (s *DeleteIpRequest) SetResourceGroupId(v string) *DeleteIpRequest {
 
 type DeleteIpResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1078,6 +1400,7 @@ func (s *DeleteIpResponse) SetBody(v *DeleteIpResponseBody) *DeleteIpResponse {
 }
 
 type DeleteRdMemberListRequest struct {
+	// This parameter is required.
 	MemberList []*DeleteRdMemberListRequestMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
 }
 
@@ -1095,6 +1418,9 @@ func (s *DeleteRdMemberListRequest) SetMemberList(v []*DeleteRdMemberListRequest
 }
 
 type DeleteRdMemberListRequestMemberList struct {
+	// example:
+	//
+	// 136548010379****
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -1112,6 +1438,7 @@ func (s *DeleteRdMemberListRequestMemberList) SetUid(v string) *DeleteRdMemberLi
 }
 
 type DeleteRdMemberListShrinkRequest struct {
+	// This parameter is required.
 	MemberListShrink *string `json:"MemberList,omitempty" xml:"MemberList,omitempty"`
 }
 
@@ -1129,6 +1456,9 @@ func (s *DeleteRdMemberListShrinkRequest) SetMemberListShrink(v string) *DeleteR
 }
 
 type DeleteRdMemberListResponseBody struct {
+	// example:
+	//
+	// A2D6D5FB-FA07-41A8-B093-A2B7B26E72F2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1177,13 +1507,29 @@ func (s *DeleteRdMemberListResponse) SetBody(v *DeleteRdMemberListResponseBody) 
 type DeleteSchedruleOnDemandRequest struct {
 	// The ID of the on-demand instance.
 	//
-	// >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+	// >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-z2q1qzxb****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the on-demand instance.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+	//
+	// example:
+	//
+	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the scheduling rule that you want to delete.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testrule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -1212,6 +1558,10 @@ func (s *DeleteSchedruleOnDemandRequest) SetRuleName(v string) *DeleteSchedruleO
 
 type DeleteSchedruleOnDemandResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BD06F539-2FBE-450D-9391-7EFF787128F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1259,19 +1609,44 @@ func (s *DeleteSchedruleOnDemandResponse) SetBody(v *DeleteSchedruleOnDemandResp
 
 type DescribeAssetGroupRequest struct {
 	// The ID of the asset. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-lbj382l****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID of the asset.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The ID of the region in which the instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The source IP address of the request. The system specifies this parameter.
+	//
+	// example:
+	//
+	// 180.169.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   **waf**: WAF instance
-	// *   **ga**: Global Accelerator (GA) instance
+	// 	- **waf**: WAF instance
+	//
+	// 	- **ga**: Global Accelerator (GA) instance
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1312,8 +1687,16 @@ type DescribeAssetGroupResponseBody struct {
 	// The information about the asset.
 	AssetGroupList []*DescribeAssetGroupResponseBodyAssetGroupList `json:"AssetGroupList,omitempty" xml:"AssetGroupList,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 487EC0F7-8D14-504E-914E-3A1BC314B581
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -1342,10 +1725,22 @@ func (s *DescribeAssetGroupResponseBody) SetTotal(v int64) *DescribeAssetGroupRe
 
 type DescribeAssetGroupResponseBodyAssetGroupList struct {
 	// The ID of the asset.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-lbj382l****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region to which the asset belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The type of the asset.
+	//
+	// example:
+	//
+	// waf
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1404,24 +1799,53 @@ func (s *DescribeAssetGroupResponse) SetBody(v *DescribeAssetGroupResponseBody) 
 type DescribeAssetGroupToInstanceRequest struct {
 	// The ID of the instance to query.
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	//
+	// example:
+	//
+	// ddosbgp-cn-7212zaa5v***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The UID of the member to which the asset belongs.
+	//
+	// example:
+	//
+	// 170858869679****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The ID of the asset. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-lbj382l****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID of the asset.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The ID of the region in which the instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The source IP address of the request. The system specifies this parameter.
+	//
+	// example:
+	//
+	// 115.238.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   **waf**: WAF instance
-	// *   **ga**: Global Accelerator (GA) instance
+	// 	- **waf**: WAF instance
+	//
+	// 	- **ga**: Global Accelerator (GA) instance
+	//
+	// example:
+	//
+	// waf
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1472,8 +1896,16 @@ type DescribeAssetGroupToInstanceResponseBody struct {
 	// The response parameters.
 	DataList []*DescribeAssetGroupToInstanceResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// C73C59B9-9F5C-57FF-A394-13EC8FC3B2FF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -1502,14 +1934,34 @@ func (s *DescribeAssetGroupToInstanceResponseBody) SetTotal(v int64) *DescribeAs
 
 type DescribeAssetGroupToInstanceResponseBodyDataList struct {
 	// The ID of the Anti-DDoS Origin instance of a paid edition.
+	//
+	// example:
+	//
+	// ddosbgp-cn-7212zaa5v***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The UID of the member to which the asset belongs.
+	//
+	// example:
+	//
+	// 170858869679****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The ID of the asset.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-lbj382l****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID of the asset.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The type of the asset.
+	//
+	// example:
+	//
+	// waf
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1577,26 +2029,68 @@ func (s *DescribeAssetGroupToInstanceResponse) SetBody(v *DescribeAssetGroupToIn
 
 type DescribeDdosEventRequest struct {
 	// The end time of the DDoS attack event to query. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1638288000
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the Anti-DDoS Origin instance to query.
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-n6w1r7nz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The attacked IP address to query.
+	//
+	// example:
+	//
+	// 47.89.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The number of the page to return.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
 	// If you do not specify this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The start time of the DDoS attack event to query. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1633017600
 	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -1652,8 +2146,16 @@ type DescribeDdosEventResponseBody struct {
 	// The details about the DDoS attack event.
 	Events []*DescribeDdosEventResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F3B6C3F9-6B21-519D-B976-A1E14166F909
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of DDoS attack events.
+	//
+	// example:
+	//
+	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -1682,21 +2184,48 @@ func (s *DescribeDdosEventResponseBody) SetTotal(v int64) *DescribeDdosEventResp
 
 type DescribeDdosEventResponseBodyEvents struct {
 	// The time when the DDoS attack stopped. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1637554335
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The attacked IP address.
+	//
+	// example:
+	//
+	// 47.89.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The volume of the request traffic at the start of the DDoS attack. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 0
 	Mbps *int32 `json:"Mbps,omitempty" xml:"Mbps,omitempty"`
 	// The number of packets at the start of the DDoS attack. Unit: packets per second (PPS).
+	//
+	// example:
+	//
+	// 456
 	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 	// The time when the DDoS attack started. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1637554034
 	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the DDoS attack event. Valid values:
 	//
-	// *   **hole_begin**: indicates that blackhole filtering is triggered for the attacked IP address.
-	// *   **hole_end**: indicates that blackhole filtering is deactivated for the attacked IP address.
-	// *   **defense_begin**: indicates that attack traffic is being scrubbed.
-	// *   **defense_end**: indicates that attack traffic is scrubbed.
+	// 	- **hole_begin**: indicates that blackhole filtering is triggered for the attacked IP address.
+	//
+	// 	- **hole_end**: indicates that blackhole filtering is deactivated for the attacked IP address.
+	//
+	// 	- **defense_begin**: indicates that attack traffic is being scrubbed.
+	//
+	// 	- **defense_end**: indicates that attack traffic is scrubbed.
+	//
+	// example:
+	//
+	// defense_end
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1768,10 +2297,22 @@ func (s *DescribeDdosEventResponse) SetBody(v *DescribeDdosEventResponseBody) *D
 }
 
 type DescribeDdosOriginInstanceBillRequest struct {
-	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	IsShowList *bool   `json:"IsShowList,omitempty" xml:"IsShowList,omitempty"`
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1711382399410
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// false
+	IsShowList *bool `json:"IsShowList,omitempty" xml:"IsShowList,omitempty"`
+	// example:
+	//
+	// 1711209600410
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// function
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDdosOriginInstanceBillRequest) String() string {
@@ -1803,21 +2344,57 @@ func (s *DescribeDdosOriginInstanceBillRequest) SetType(v string) *DescribeDdosO
 }
 
 type DescribeDdosOriginInstanceBillResponseBody struct {
-	DebtStatus                *int64                                                              `json:"DebtStatus,omitempty" xml:"DebtStatus,omitempty"`
-	FlowList                  []*DescribeDdosOriginInstanceBillResponseBodyFlowList               `json:"FlowList,omitempty" xml:"FlowList,omitempty" type:"Repeated"`
-	FlowRegion                map[string]interface{}                                              `json:"FlowRegion,omitempty" xml:"FlowRegion,omitempty"`
-	InstanceId                *string                                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpCount                   *int64                                                              `json:"IpCount,omitempty" xml:"IpCount,omitempty"`
-	IpCountOrFunctionList     []*DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList  `json:"IpCountOrFunctionList,omitempty" xml:"IpCountOrFunctionList,omitempty" type:"Repeated"`
-	IpInfo                    *string                                                             `json:"IpInfo,omitempty" xml:"IpInfo,omitempty"`
-	RequestId                 *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StandardAssetsFlowList    []*DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList `json:"StandardAssetsFlowList,omitempty" xml:"StandardAssetsFlowList,omitempty" type:"Repeated"`
-	StandardAssetsFlowRegion  map[string]interface{}                                              `json:"StandardAssetsFlowRegion,omitempty" xml:"StandardAssetsFlowRegion,omitempty"`
-	StandardAssetsTotalFlowCn *int64                                                              `json:"StandardAssetsTotalFlowCn,omitempty" xml:"StandardAssetsTotalFlowCn,omitempty"`
-	StandardAssetsTotalFlowOv *int64                                                              `json:"StandardAssetsTotalFlowOv,omitempty" xml:"StandardAssetsTotalFlowOv,omitempty"`
-	Status                    *int64                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalFlowCn               *int64                                                              `json:"TotalFlowCn,omitempty" xml:"TotalFlowCn,omitempty"`
-	TotalFlowOv               *int64                                                              `json:"TotalFlowOv,omitempty" xml:"TotalFlowOv,omitempty"`
+	// example:
+	//
+	// 0
+	DebtStatus *int64                                                `json:"DebtStatus,omitempty" xml:"DebtStatus,omitempty"`
+	FlowList   []*DescribeDdosOriginInstanceBillResponseBodyFlowList `json:"FlowList,omitempty" xml:"FlowList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {\\"cn-hongkong\\": 166491566}
+	FlowRegion map[string]interface{} `json:"FlowRegion,omitempty" xml:"FlowRegion,omitempty"`
+	// example:
+	//
+	// ddosorigin_cn-u7c3lcr9r02
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 15
+	IpCount               *int64                                                             `json:"IpCount,omitempty" xml:"IpCount,omitempty"`
+	IpCountOrFunctionList []*DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList `json:"IpCountOrFunctionList,omitempty" xml:"IpCountOrFunctionList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {\\"eipCnIpCount\\":6,\\"eipOvIpCount\\":17,\\"standardAssetsCnIpCount\\":2,\\"standardAssetsOvIpCount\\":0}
+	IpInfo *string `json:"IpInfo,omitempty" xml:"IpInfo,omitempty"`
+	// example:
+	//
+	// 72155560-F343-55C8-82FE-ED4D7E4AA97E
+	RequestId              *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StandardAssetsFlowList []*DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList `json:"StandardAssetsFlowList,omitempty" xml:"StandardAssetsFlowList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {\\"cn-hongkong\\": 166491566}
+	StandardAssetsFlowRegion map[string]interface{} `json:"StandardAssetsFlowRegion,omitempty" xml:"StandardAssetsFlowRegion,omitempty"`
+	// example:
+	//
+	// 0
+	StandardAssetsTotalFlowCn *int64 `json:"StandardAssetsTotalFlowCn,omitempty" xml:"StandardAssetsTotalFlowCn,omitempty"`
+	// example:
+	//
+	// 0
+	StandardAssetsTotalFlowOv *int64 `json:"StandardAssetsTotalFlowOv,omitempty" xml:"StandardAssetsTotalFlowOv,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 6302081067
+	TotalFlowCn *int64 `json:"TotalFlowCn,omitempty" xml:"TotalFlowCn,omitempty"`
+	// example:
+	//
+	// 6204918019
+	TotalFlowOv *int64 `json:"TotalFlowOv,omitempty" xml:"TotalFlowOv,omitempty"`
 }
 
 func (s DescribeDdosOriginInstanceBillResponseBody) String() string {
@@ -1904,10 +2481,22 @@ func (s *DescribeDdosOriginInstanceBillResponseBody) SetTotalFlowOv(v int64) *De
 }
 
 type DescribeDdosOriginInstanceBillResponseBodyFlowList struct {
+	// example:
+	//
+	// [{\\"bytes\\":79282719,\\"memberUid\\":\\"\\",\\"regionFlows\\":{\\"cn-hangzhou\\":[{\\"bytes\\":79282719,\\"instanceId\\":\\"ddosorigin_cn-u7c3lcr9r02\\",\\"ip\\":\\"47.118.168.57\\",\\"region\\":\\"cn-hangzhou\\"}]}}]
 	MemberFlow *string `json:"MemberFlow,omitempty" xml:"MemberFlow,omitempty"`
+	// example:
+	//
+	// {\\"cn-hangzhou\\":[{\\"bytes\\":0,\\"instanceId\\":\\"ddosorigin_cn-u7c3lcr9r02\\",\\"ip\\":\\"47.118.168.124\\",\\"region\\":\\"cn-hangzhou\\"}]}
 	RegionFlow *string `json:"RegionFlow,omitempty" xml:"RegionFlow,omitempty"`
-	Time       *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
-	TotalFlow  *int64  `json:"TotalFlow,omitempty" xml:"TotalFlow,omitempty"`
+	// example:
+	//
+	// 1620951900
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 6302081067
+	TotalFlow *int64 `json:"TotalFlow,omitempty" xml:"TotalFlow,omitempty"`
 }
 
 func (s DescribeDdosOriginInstanceBillResponseBodyFlowList) String() string {
@@ -1939,11 +2528,26 @@ func (s *DescribeDdosOriginInstanceBillResponseBodyFlowList) SetTotalFlow(v int6
 }
 
 type DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList struct {
-	Coverage    *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	IpCntCn     *int64  `json:"IpCntCn,omitempty" xml:"IpCntCn,omitempty"`
-	IpCntOv     *int64  `json:"IpCntOv,omitempty" xml:"IpCntOv,omitempty"`
+	// example:
+	//
+	// global
+	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// example:
+	//
+	// 5
+	IpCntCn *int64 `json:"IpCntCn,omitempty" xml:"IpCntCn,omitempty"`
+	// example:
+	//
+	// 5
+	IpCntOv *int64 `json:"IpCntOv,omitempty" xml:"IpCntOv,omitempty"`
+	// example:
+	//
+	// [{\\"eipCnIpCount\\":3,\\"eipOvIpCount\\":18,\\"memberUid\\":\\"\\",\\"standardAssetsCnIpCount\\":2,\\"standardAssetsOvIpCount\\":0},{\\"eipCnIpCount\\":3,\\"eipOvIpCount\\":0,\\"memberUid\\":\\"1776997906319249\\",\\"standardAssetsCnIpCount\\":0,\\"standardAssetsOvIpCount\\":0}]
 	MemberIpCnt *string `json:"MemberIpCnt,omitempty" xml:"MemberIpCnt,omitempty"`
-	Time        *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 1680278400000
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList) String() string {
@@ -1980,10 +2584,22 @@ func (s *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList) SetTim
 }
 
 type DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList struct {
+	// example:
+	//
+	// [{\\"bytes\\":79282719,\\"memberUid\\":\\"\\",\\"regionFlows\\":{\\"cn-hangzhou\\":[{\\"bytes\\":79282719,\\"instanceId\\":\\"ddosorigin_cn-u7c3lcr9r02\\",\\"ip\\":\\"47.118.168.57\\",\\"region\\":\\"cn-hangzhou\\"}]}}]
 	MemberFlow *string `json:"MemberFlow,omitempty" xml:"MemberFlow,omitempty"`
+	// example:
+	//
+	// {\\"cn-hangzhou\\":[{\\"bytes\\":0,\\"instanceId\\":\\"ddosorigin_cn-u7c3lcr9r02\\",\\"ip\\":\\"47.118.168.124\\",\\"region\\":\\"cn-hangzhou\\"}]}
 	RegionFlow *string `json:"RegionFlow,omitempty" xml:"RegionFlow,omitempty"`
-	Time       *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
-	TotalFlow  *int64  `json:"TotalFlow,omitempty" xml:"TotalFlow,omitempty"`
+	// example:
+	//
+	// 1679846400000
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 6302081067
+	TotalFlow *int64 `json:"TotalFlow,omitempty" xml:"TotalFlow,omitempty"`
 }
 
 func (s DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList) String() string {
@@ -2046,11 +2662,19 @@ func (s *DescribeDdosOriginInstanceBillResponse) SetBody(v *DescribeDdosOriginIn
 type DescribeExcpetionCountRequest struct {
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
 	// If you do not specify this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2074,10 +2698,22 @@ func (s *DescribeExcpetionCountRequest) SetResourceGroupId(v string) *DescribeEx
 
 type DescribeExcpetionCountResponseBody struct {
 	// The number of assets that are in an abnormal state.
+	//
+	// example:
+	//
+	// 0
 	ExceptionIpCount *int32 `json:"ExceptionIpCount,omitempty" xml:"ExceptionIpCount,omitempty"`
 	// The number of Anti-DDoS Origin instances that are about to expire.
+	//
+	// example:
+	//
+	// 1
 	ExpireTimeCount *int32 `json:"ExpireTimeCount,omitempty" xml:"ExpireTimeCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4B45279A-B1BE-5EEE-87CA-58AF4183EA58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2135,42 +2771,93 @@ func (s *DescribeExcpetionCountResponse) SetBody(v *DescribeExcpetionCountRespon
 
 type DescribeInstanceListRequest struct {
 	// The IDs of the Anti-DDoS Origin instances to query. Specify the value is in the `["<Instance ID 1>","<Instance ID 2>",……]` format.
+	//
+	// example:
+	//
+	// ["ddosbgp-cn-oew1pjrk****"]
 	InstanceIdList *string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty"`
 	// The mitigation plan of the Anti-DDoS Origin instance to query. Valid values:
 	//
-	// *   **0**: the Professional mitigation plan
-	// *   **1**: the Enterprise mitigation plan
+	// 	- **0**: the Professional mitigation plan
+	//
+	// 	- **1**: the Enterprise mitigation plan
+	//
+	// example:
+	//
+	// 0
 	InstanceType     *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	InstanceTypeList []*string `json:"InstanceTypeList,omitempty" xml:"InstanceTypeList,omitempty" type:"Repeated"`
 	// The IP address of the object that is protected by the Anti-DDoS Origin instance to query.
+	//
+	// example:
+	//
+	// 47.89.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The protocol type of the IP address asset that is protected by the Anti-DDoS Origin instance to query. Valid values:
 	//
-	// *   **Ipv4**: IPv4
-	// *   **Ipv6**: IPv6
+	// 	- **Ipv4**: IPv4
+	//
+	// 	- **Ipv6**: IPv6
+	//
+	// example:
+	//
+	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The field that is used to sort the Anti-DDoS Origin instances. Set the value to **expireTime**, which indicates that the instances are sorted based on the expiration time.
 	//
-	// You can set the **Orderdire** parameter to specify the sorting method.
+	// You can set the **Orderdire*	- parameter to specify the sorting method.
+	//
+	// example:
+	//
+	// expireTime
 	Orderby *string `json:"Orderby,omitempty" xml:"Orderby,omitempty"`
 	// The sorting method. Valid values:
 	//
-	// *   **desc**: the descending order. This is the default value.
-	// *   **asc**: the ascending order.
+	// 	- **desc**: the descending order. This is the default value.
+	//
+	// 	- **asc**: the ascending order.
+	//
+	// example:
+	//
+	// desc
 	Orderdire *string `json:"Orderdire,omitempty" xml:"Orderdire,omitempty"`
 	// The number of the page to return.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region where the Anti-DDoS Origin instance to query resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The remarks of the Anti-DDoS Origin instance to query. Fuzzy match is supported.
+	//
+	// example:
+	//
+	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
 	// If you do not specify this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tag             []*DescribeInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -2250,8 +2937,16 @@ func (s *DescribeInstanceListRequest) SetTag(v []*DescribeInstanceListRequestTag
 
 type DescribeInstanceListRequestTag struct {
 	// The key of the tag that is added to the Anti-DDoS Origin instance to query.
+	//
+	// example:
+	//
+	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag that is added to the Anti-DDoS Origin instance to query.
+	//
+	// example:
+	//
+	// test-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2277,8 +2972,16 @@ type DescribeInstanceListResponseBody struct {
 	// The details about the Anti-DDoS Origin instance.
 	InstanceList []*DescribeInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 381D5D33-BB8F-395F-8EE4-AE3BB4B523C4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of Anti-DDoS Origin instances.
+	//
+	// example:
+	//
+	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -2309,45 +3012,91 @@ type DescribeInstanceListResponseBodyInstanceList struct {
 	AutoProtectCondition *DescribeInstanceListResponseBodyInstanceListAutoProtectCondition `json:"AutoProtectCondition,omitempty" xml:"AutoProtectCondition,omitempty" type:"Struct"`
 	// Indicates whether auto-renewal is enabled for the instance. Valid values:
 	//
-	// *   **true**: enabled
-	// *   **false**: disabled
+	// 	- **true**: enabled
+	//
+	// 	- **false**: disabled
+	//
+	// example:
+	//
+	// false
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	// The number of protected public IP addresses for which blackhole filtering is triggered.
 	//
-	// >  You can call the [DeleteBlackhole](~~118692~~) operation to deactivate blackhole filtering for a protected IP address.
+	// >  You can call the [DeleteBlackhole](https://help.aliyun.com/document_detail/118692.html) operation to deactivate blackhole filtering for a protected IP address.
+	//
+	// example:
+	//
+	// 0
 	BlackholdingCount *string `json:"BlackholdingCount,omitempty" xml:"BlackholdingCount,omitempty"`
 	CommodityType     *string `json:"CommodityType,omitempty" xml:"CommodityType,omitempty"`
 	CoverageType      *int32  `json:"CoverageType,omitempty" xml:"CoverageType,omitempty"`
 	// The time when the instance expires. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1640275200000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The time when the instance was purchased. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1592886047000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddosbgp-cn-oew1pjrk****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The mitigation plan of the instance. Valid values:
 	//
-	// *   **0**: the Professional mitigation plan
-	// *   **1**: the Enterprise mitigation plan
+	// 	- **0**: the Professional mitigation plan
+	//
+	// 	- **1**: the Enterprise mitigation plan
+	//
+	// example:
+	//
+	// 1
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The protocol type of the IP address asset that is protected by the instance. Valid values:
 	//
-	// *   **Ipv4**: IPv4
-	// *   **Ipv6**: IPv6
+	// 	- **Ipv4**: IPv4
+	//
+	// 	- **Ipv6**: IPv6
+	//
+	// example:
+	//
+	// IPv4
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
 	// The type of the cloud service that is associated with the Anti-DDoS Origin instance. By default, this parameter is not returned. If the Anti-DDoS Origin instance is created by using a different cloud service, the code of the cloud service is returned.
 	//
 	// Valid values:
 	//
-	// *   **gamebox**: The Anti-DDoS Origin instance is created by using Game Security Box.
-	// *   **eip**: The Anti-DDoS Origin instance is created by using an elastic IP address (EIP) for which Anti-DDoS (Enhanced Edition) is enabled.
+	// 	- **gamebox**: The Anti-DDoS Origin instance is created by using Game Security Box.
+	//
+	// 	- **eip**: The Anti-DDoS Origin instance is created by using an elastic IP address (EIP) for which Anti-DDoS (Enhanced Edition) is enabled.
+	//
+	// example:
+	//
+	// gamebox
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	// The remarks of the instance.
+	//
+	// example:
+	//
+	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// *   **1**: normal
-	// *   **2**: expired
-	// *   **3**: released
+	// 	- **1**: normal
+	//
+	// 	- **2**: expired
+	//
+	// 	- **3**: released
+	//
+	// example:
+	//
+	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2473,15 +3222,29 @@ func (s *DescribeInstanceListResponse) SetBody(v *DescribeInstanceListResponseBo
 type DescribeInstanceSpecsRequest struct {
 	// The ID of the Anti-DDoS Origin Enterprise instance. This parameter value is a string consisting of JSON arrays. Each element in a JSON array indicates an instance ID. If you want to query more than one instance, separate instance IDs with commas (,).
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin Enterprise instances in a specific region.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin Enterprise instances in a specific region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["ddosbgp-cn-n6w1r7nz****"]
 	InstanceIdList *string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty"`
 	// The region ID of the Anti-DDoS Origin Enterprise instance. Default value: **cn-hangzhou**, which indicates the China (Hangzhou) region.
 	//
-	// >  If your instance does not reside in the China (Hangzhou) region, you must specify this parameter to the region ID of your instance. You can call the [DescribeRegions](~~118703~~) operation to query the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+	// >  If your instance does not reside in the China (Hangzhou) region, you must specify this parameter to the region ID of your instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin Enterprise instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2512,6 +3275,10 @@ type DescribeInstanceSpecsResponseBody struct {
 	// The specifications of the Anti-DDoS Origin Enterprise instance, including whether the unlimited protection feature is enabled, and the numbers of times that the unlimited protection feature can be enabled and has been enabled.
 	InstanceSpecs []*DescribeInstanceSpecsResponseBodyInstanceSpecs `json:"InstanceSpecs,omitempty" xml:"InstanceSpecs,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5840AB9F-1419-4620-807D-5EA476090247
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2535,24 +3302,49 @@ func (s *DescribeInstanceSpecsResponseBody) SetRequestId(v string) *DescribeInst
 
 type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
 	// The number of times that the unlimited protection feature can be enabled.
+	//
+	// example:
+	//
+	// 2
 	AvailableDefenseTimes *int32 `json:"AvailableDefenseTimes,omitempty" xml:"AvailableDefenseTimes,omitempty"`
 	// The number of times that blackhole filtering can be deactivated.
+	//
+	// example:
+	//
+	// 100
 	AvailableDeleteBlackholeCount *string `json:"AvailableDeleteBlackholeCount,omitempty" xml:"AvailableDeleteBlackholeCount,omitempty"`
 	DefenseTimesPercent           *int32  `json:"DefenseTimesPercent,omitempty" xml:"DefenseTimesPercent,omitempty"`
 	// The ID of the Anti-DDoS Origin Enterprise instance.
+	//
+	// example:
+	//
+	// ddosbgp-cn-n6w1r7nz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the unlimited protection feature is enabled. Valid values:
 	//
-	// *   **0**: The unlimited protection feature is disabled.
-	// *   **1**: The unlimited protection feature is enabled.
+	// 	- **0**: The unlimited protection feature is disabled.
+	//
+	// 	- **1**: The unlimited protection feature is enabled.
+	//
+	// example:
+	//
+	// 1
 	IsFullDefenseMode *int32 `json:"IsFullDefenseMode,omitempty" xml:"IsFullDefenseMode,omitempty"`
 	// The configurations of the Anti-DDoS Origin Enterprise instance, including the number of protected IP addresses and protection bandwidth.
 	PackConfig *DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig `json:"PackConfig,omitempty" xml:"PackConfig,omitempty" type:"Struct"`
 	// The region ID of the Anti-DDoS Origin Enterprise instance.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the name of the region.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the name of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The number of times that the unlimited protection feature can be enabled.
+	//
+	// example:
+	//
+	// 2
 	TotalDefenseTimes *int32 `json:"TotalDefenseTimes,omitempty" xml:"TotalDefenseTimes,omitempty"`
 }
 
@@ -2606,20 +3398,52 @@ func (s *DescribeInstanceSpecsResponseBodyInstanceSpecs) SetTotalDefenseTimes(v 
 
 type DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig struct {
 	// The bandwidth of the package configuration.
+	//
+	// example:
+	//
+	// 2
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The number of IP addresses that are protected by the Anti-DDoS Origin Enterprise instance.
+	//
+	// example:
+	//
+	// 0
 	BindIpCount *int32 `json:"BindIpCount,omitempty" xml:"BindIpCount,omitempty"`
 	// The burstable bandwidth of each protected IP address. Unit: Gbit/s.
+	//
+	// example:
+	//
+	// 300
 	IpAdvanceThre *int32 `json:"IpAdvanceThre,omitempty" xml:"IpAdvanceThre,omitempty"`
 	// The basic bandwidth of each protected IP address. Unit: Gbit/s.
+	//
+	// example:
+	//
+	// 20
 	IpBasicThre *int32 `json:"IpBasicThre,omitempty" xml:"IpBasicThre,omitempty"`
 	// The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
+	//
+	// example:
+	//
+	// 100
 	IpSpec *int32 `json:"IpSpec,omitempty" xml:"IpSpec,omitempty"`
 	// The normal clean bandwidth. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 200
 	NormalBandwidth *int32 `json:"NormalBandwidth,omitempty" xml:"NormalBandwidth,omitempty"`
 	// The burstable protection bandwidth of the Anti-DDoS Origin Enterprise instance. Unit: Gbit/s.
+	//
+	// example:
+	//
+	// 300
 	PackAdvThre *int32 `json:"PackAdvThre,omitempty" xml:"PackAdvThre,omitempty"`
 	// The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Unit: Gbit/s.
+	//
+	// example:
+	//
+	// 20
 	PackBasicThre *int32 `json:"PackBasicThre,omitempty" xml:"PackBasicThre,omitempty"`
 }
 
@@ -2702,19 +3526,60 @@ func (s *DescribeInstanceSpecsResponse) SetBody(v *DescribeInstanceSpecsResponse
 
 type DescribeOnDemandDdosEventRequest struct {
 	// The timestamp that specifies the end of the time range to query. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1557909844
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the on-demand instance to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-n6w1r7nz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IP address of the protection target.
+	//
+	// example:
+	//
+	// 192.XX.XX.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The number of the page to return. Default value: **1**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page. The maximum value is **50**. The default value is **10**.
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The timestamp that specifies the beginning of the time range to query. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1557305044
 	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2770,8 +3635,16 @@ type DescribeOnDemandDdosEventResponseBody struct {
 	// The list of DDoS events and the details of each event.
 	Events []*DescribeOnDemandDdosEventResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6A507DC8-F657-4C13-84E2-D1D1B9400753
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of DDoS events.
+	//
+	// example:
+	//
+	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -2800,21 +3673,48 @@ func (s *DescribeOnDemandDdosEventResponseBody) SetTotal(v int64) *DescribeOnDem
 
 type DescribeOnDemandDdosEventResponseBodyEvents struct {
 	// The timestamp that indicates the end time of the attack. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+	//
+	// example:
+	//
+	// 1557891306
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP address of the protection target that encounters the DDoS attack.
+	//
+	// example:
+	//
+	// 192.XX.XX.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The throughput of the DDoS attack. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 110000
 	Mbps *int32 `json:"Mbps,omitempty" xml:"Mbps,omitempty"`
 	// The packet forwarding rate of the DDoS attack. Unit: packets per second (PPS).
+	//
+	// example:
+	//
+	// 0
 	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 	// The timestamp that indicates the start time of the attack. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+	//
+	// example:
+	//
+	// 1557889506
 	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// *   **hole_begin **: indicates that the event is in the blackhole state.
-	// *   **hole_end **: indicates that blackhole ends.
-	// *   **defense_begin **: indicates that the event is in the cleaning state.
-	// *   **defense_end **: indicates that cleaning ends.
+	// 	- **hole_begin **: indicates that the event is in the blackhole state.
+	//
+	// 	- **hole_end **: indicates that blackhole ends.
+	//
+	// 	- **defense_begin **: indicates that the event is in the cleaning state.
+	//
+	// 	- **defense_end **: indicates that cleaning ends.
+	//
+	// example:
+	//
+	// defense_end
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2888,11 +3788,21 @@ func (s *DescribeOnDemandDdosEventResponse) SetBody(v *DescribeOnDemandDdosEvent
 type DescribeOnDemandInstanceStatusRequest struct {
 	// The IDs of on-demand instances.
 	//
-	// >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+	// >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-z2q1qzxb****
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
 	// The region ID of the on-demand instance.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+	//
+	// example:
+	//
+	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2918,6 +3828,10 @@ type DescribeOnDemandInstanceStatusResponseBody struct {
 	// The details of the on-demand instance.
 	Instances []*DescribeOnDemandInstanceStatusResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CC49FF51-612F-429B-AB1E-374B3F115396
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2942,27 +3856,57 @@ func (s *DescribeOnDemandInstanceStatusResponseBody) SetRequestId(v string) *Des
 type DescribeOnDemandInstanceStatusResponseBodyInstances struct {
 	// The details of route advertisement for data centers outside the Chinese mainland. This parameter is a JSON string. The following fields are included in the value:
 	//
-	// *   **region**: The code of the data center outside the Chinese mainland. The value is of the STRING type. For more information, see **Codes of data centers outside the Chinese mainland**.
-	// *   **declared**: indicates whether the data center advertised the route. The value is of the STRING type. Valid values: **0** and **1**. The value of 0 indicates that the data center did not advertise the route. The value of 1 indicates that the data center advertised the route.
+	// 	- **region**: The code of the data center outside the Chinese mainland. The value is of the STRING type. For more information, see **Codes of data centers outside the Chinese mainland**.
+	//
+	// 	- **declared**: indicates whether the data center advertised the route. The value is of the STRING type. Valid values: **0*	- and **1**. The value of 0 indicates that the data center did not advertise the route. The value of 1 indicates that the data center advertised the route.
+	//
+	// example:
+	//
+	// [{\\"region\\":\\"oe24\\",\\"declared\\":0},{\\"region\\":\\"oe26\\",\\"declared\\":0},{\\"region\\":\\"oe28\\",\\"declared\\":0},{\\"region\\":\\"oi39\\",\\"declared\\":0},{\\"region\\":\\"us50\\",\\"declared\\":0},{\\"region\\":\\"jp141\\",\\"declared\\":0}]
 	Declared *string `json:"Declared,omitempty" xml:"Declared,omitempty"`
 	// The description of the on-demand instance.
 	//
 	// >  The value of this parameter is returned only when the information about multiple on-demand instances is returned. The value of this parameter is not returned because the information about only one on-demand instance is returned.
+	//
+	// example:
+	//
+	// test
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The ID of the on-demand instance.
 	//
 	// >  The value of this parameter is returned only when the information about multiple on-demand instances is returned. The value of this parameter is not returned because the information about only one on-demand instance is returned.
+	//
+	// example:
+	//
+	// ddosbgp-cn-z2q1qzxb****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The mode used to start the on-demand instance. Valid values:
 	//
-	// *   **manual**: The instance is manually started.
-	// *   **netflow-auto**: The instance is automatically started by using NetFlow that monitors network traffic.
+	// 	- **manual**: The instance is manually started.
+	//
+	// 	- **netflow-auto**: The instance is automatically started by using NetFlow that monitors network traffic.
+	//
+	// example:
+	//
+	// netflow-auto
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The CIDR block of the on-demand instance.
+	//
+	// example:
+	//
+	// 47.***.***.0/24
 	Net *string `json:"Net,omitempty" xml:"Net,omitempty"`
 	// The number of the autonomous system (AS). Set the value to **0**, which indicates that AS is disabled.
+	//
+	// example:
+	//
+	// 0
 	RegistedAs *string `json:"RegistedAs,omitempty" xml:"RegistedAs,omitempty"`
 	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 171986973287****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -3040,56 +3984,104 @@ func (s *DescribeOnDemandInstanceStatusResponse) SetBody(v *DescribeOnDemandInst
 
 type DescribeOpEntitiesRequest struct {
 	// The operation that you want to perform. Set the value to **DescribeOpEntities**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The details of the operation log.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1640880000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// ddosbgp-cn-n6w1r7nz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The sort order of operation logs. Valid values:
 	//
-	// *   **ASC**: the ascending order.
-	// *   **DESC**: the descending order.
+	// 	- **ASC**: the ascending order.
+	//
+	// 	- **DESC**: the descending order.
+	//
+	// example:
+	//
+	// opdate
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// ASC
 	OrderDir *string `json:"OrderDir,omitempty" xml:"OrderDir,omitempty"`
 	// The type of the operation object. The value is fixed as **1**, which indicates Anti-DDoS Origin instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the Alibaba Cloud account that performs the operation.
 	//
 	// >  If the value is **system**, the operation is performed by Anti-DDoS Origin.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The details about the operation. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
 	//
-	// *   **entity**: the operation object. Data type: object. The fields that are included in the value of the **entity** parameter vary based on the value of the **OpAction** parameter. Take note of the following items:
+	// 	- **entity**: the operation object. Data type: object. The fields that are included in the value of the **entity*	- parameter vary based on the value of the **OpAction*	- parameter. Take note of the following items:
 	//
-	//     *   If the value of the **OpAction** parameter is **3**, the value of the **entity** parameter consists of the following field:
+	//     	- If the value of the **OpAction*	- parameter is **3**, the value of the **entity*	- parameter consists of the following field:
 	//
-	//         *   **ips**: the public IP addresses that are protected by the Anti-DDoS Origin instance. Data type: array
+	//         	- **ips**: the public IP addresses that are protected by the Anti-DDoS Origin instance. Data type: array
 	//
-	//     *   If the value of the **OpAction** parameter is **4**, the value of the **entity** parameter consists of the following field:
+	//     	- If the value of the **OpAction*	- parameter is **4**, the value of the **entity*	- parameter consists of the following field:
 	//
-	//         *   **ips**: the public IP addresses that are no longer protected by the Anti-DDoS Origin instance. Data type: array.
+	//         	- **ips**: the public IP addresses that are no longer protected by the Anti-DDoS Origin instance. Data type: array.
 	//
-	//     *   If the value of the **OpAction** parameter is **5**, the value of the **entity** parameter consists of the following fields:
+	//     	- If the value of the **OpAction*	- parameter is **5**, the value of the **entity*	- parameter consists of the following fields:
 	//
-	//         *   **baseBandwidth**: the basic protection bandwidth. Unit: Gbit/s. Data type: integer.
-	//         *   **elasticBandwidth**: the burstable protection bandwidth. Unit: Gbit/s. Data type: integer.
-	//         *   **opSource**: the source of the operation. The value is fixed as **1**, indicating that the operation is performed by Anti-DDoS Origin. Data type: integer.
+	//         	- **baseBandwidth**: the basic protection bandwidth. Unit: Gbit/s. Data type: integer.
 	//
-	//     *   If the value of the **OpAction** parameter is **6**, the value of the **entity** parameter consists of the following field:
+	//         	- **elasticBandwidth**: the burstable protection bandwidth. Unit: Gbit/s. Data type: integer.
 	//
-	//         *   **ips**: the public IP addresses for which to deactivate blackhole filtering. Data type: array.
+	//         	- **opSource**: the source of the operation. The value is fixed as **1**, indicating that the operation is performed by Anti-DDoS Origin. Data type: integer.
 	//
-	//     *   If the value of the **OpAction** parameter is **7**, the **entity** parameter is not returned.
+	//     	- If the value of the **OpAction*	- parameter is **6**, the value of the **entity*	- parameter consists of the following field:
 	//
-	//     *   If the value of the **OpAction** parameter is **8**, the value of the **entity** parameter consists of the following fields:
+	//         	- **ips**: the public IP addresses for which to deactivate blackhole filtering. Data type: array.
 	//
-	//         *   **baseBandwidth**: the basic protection bandwidth. Unit: Gbit/s. Data type: integer.
-	//         *   **elasticBandwidth**: the burstable protection bandwidth. Unit: Gbit/s. Data type: integer.
+	//     	- If the value of the **OpAction*	- parameter is **7**, the **entity*	- parameter is not returned.
+	//
+	//     	- If the value of the **OpAction*	- parameter is **8**, the value of the **entity*	- parameter consists of the following fields:
+	//
+	//         	- **baseBandwidth**: the basic protection bandwidth. Unit: Gbit/s. Data type: integer.
+	//
+	//         	- **elasticBandwidth**: the burstable protection bandwidth. Unit: Gbit/s. Data type: integer.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The sorting method of operation logs. Set the value to **opdate**, which indicates sorting based on the operation time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1609430400000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -3149,9 +4141,17 @@ func (s *DescribeOpEntitiesRequest) SetStartTime(v int64) *DescribeOpEntitiesReq
 type DescribeOpEntitiesResponseBody struct {
 	// The ID of the request.
 	OpEntities []*DescribeOpEntitiesResponseBodyOpEntities `json:"OpEntities,omitempty" xml:"OpEntities,omitempty" type:"Repeated"`
-	// The end time. Operation logs that were generated before this time are queried.**** This value is a UNIX timestamp. Unit: milliseconds.
+	// The end time. Operation logs that were generated before this time are queried.***	- This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 52C8ECB0-0B1A-4E66-A31C-B6A855120E82
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The time when the log was generated. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3180,17 +4180,39 @@ func (s *DescribeOpEntitiesResponseBody) SetTotalCount(v int32) *DescribeOpEntit
 
 type DescribeOpEntitiesResponseBodyOpEntities struct {
 	// Queries the operation logs of an Anti-DDoS Origin instance.
-	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
-	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
 	//
-	// For more information about sample requests, see the **"Examples"** section of this topic.
+	// example:
+	//
+	// ddosbgp-cn-n6w1r7nz****
+	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](https://help.aliyun.com/document_detail/118841.html).
+	//
+	// For more information about sample requests, see the **"Examples"*	- section of this topic.
+	//
+	// example:
+	//
+	// 1
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// WB01342967
-	GmtCreate *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	//
+	// example:
+	//
+	// 1635818114000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 171986973287****
 	OpAccount *string `json:"OpAccount,omitempty" xml:"OpAccount,omitempty"`
 	// DescribeOpEntities
-	OpAction *int32  `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
-	OpDesc   *string `json:"OpDesc,omitempty" xml:"OpDesc,omitempty"`
+	//
+	// example:
+	//
+	// 8
+	OpAction *int32 `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
+	// example:
+	//
+	// {"entity":{"baseBandwidth":20,"elasticBandwidth":20}}
+	OpDesc *string `json:"OpDesc,omitempty" xml:"OpDesc,omitempty"`
 }
 
 func (s DescribeOpEntitiesResponseBodyOpEntities) String() string {
@@ -3263,30 +4285,71 @@ func (s *DescribeOpEntitiesResponse) SetBody(v *DescribeOpEntitiesResponseBody) 
 type DescribePackIpListRequest struct {
 	// The ID of the Anti-DDoS Origin instance to query.
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-n6w1r7nz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The protected IP address to query.
+	//
+	// example:
+	//
+	// 47.98.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The ID of the member.
+	//
+	// example:
+	//
+	// 170858869679****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The number of the page to return.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the cloud asset to which the protected IP address to query belongs. Valid values:
 	//
-	// *   **ECS**: an Elastic Compute Service (ECS) instance.
-	// *   **SLB**: a Classic Load Balancer (CLB) instance, originally called a Server Load Balancer (SLB) instance.
-	// *   **EIP**: an elastic IP address (EIP). An Internet-facing Application Load Balancer (ALB) instance uses an EIP. If the IP address belongs to the Internet-facing ALB instance, set this parameter to EIP.
-	// *   **WAF**: a Web Application Firewall (WAF) instance.
+	// 	- **ECS**: an Elastic Compute Service (ECS) instance.
+	//
+	// 	- **SLB**: a Classic Load Balancer (CLB) instance, originally called a Server Load Balancer (SLB) instance.
+	//
+	// 	- **EIP**: an elastic IP address (EIP). An Internet-facing Application Load Balancer (ALB) instance uses an EIP. If the IP address belongs to the Internet-facing ALB instance, set this parameter to EIP.
+	//
+	// 	- **WAF**: a Web Application Firewall (WAF) instance.
+	//
+	// example:
+	//
+	// ECS
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
 	// If you do not specify this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3341,18 +4404,35 @@ func (s *DescribePackIpListRequest) SetResourceGroupId(v string) *DescribePackIp
 type DescribePackIpListResponseBody struct {
 	// The HTTP status code of the request.
 	//
-	// For more information about status codes, see [Common parameters](~~118841~~).
+	// For more information about status codes, see [Common parameters](https://help.aliyun.com/document_detail/118841.html).
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The IP addresses that are protected by the instance.
 	IpList []*DescribePackIpListResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4FD1578A-BD77-50B7-A969-45A374A7ED22
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   **true**: The call is successful.
-	// *   **false**: The call fails.
+	// 	- **true**: The call is successful.
+	//
+	// 	- **false**: The call fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The number of protected IP addresses.
+	//
+	// example:
+	//
+	// 1
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -3391,29 +4471,59 @@ func (s *DescribePackIpListResponseBody) SetTotal(v int32) *DescribePackIpListRe
 
 type DescribePackIpListResponseBodyIpList struct {
 	// The IP address.
+	//
+	// example:
+	//
+	// 47.98.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The ID of the member.
-	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	NsmStatus *int32  `json:"NsmStatus,omitempty" xml:"NsmStatus,omitempty"`
+	//
+	// example:
+	//
+	// 170858869679****
+	MemberUid   *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	NsmExpireAt *int64  `json:"NsmExpireAt,omitempty" xml:"NsmExpireAt,omitempty"`
+	NsmStartAt  *int64  `json:"NsmStartAt,omitempty" xml:"NsmStartAt,omitempty"`
+	NsmStatus   *int32  `json:"NsmStatus,omitempty" xml:"NsmStatus,omitempty"`
 	// The type of the cloud asset to which the IP address belongs. Valid values:
 	//
-	// *   **ECS**: an ECS instance.
-	// *   **SLB**: a CLB instance, originally called an SLB instance.
-	// *   **EIP**: an EIP. If the IP address belongs to an ALB instance, the value EIP is returned.
-	// *   **WAF**: a WAF instance.
+	// 	- **ECS**: an ECS instance.
+	//
+	// 	- **SLB**: a CLB instance, originally called an SLB instance.
+	//
+	// 	- **EIP**: an EIP. If the IP address belongs to an ALB instance, the value EIP is returned.
+	//
+	// 	- **WAF**: a WAF instance.
+	//
+	// example:
+	//
+	// ECS
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	// The region to which the protected IP address belongs.
 	//
 	// >  If the protected IP address is in the same region as the instance, this parameter is not returned.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The description of the cloud asset to which the IP address belongs. The asset can be an ECS instance or an SLB instance.
 	//
 	// >  If no descriptions are provided for the asset, this parameter is not returned.
+	//
+	// example:
+	//
+	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The status of the IP address. Valid values:
 	//
-	// *   **normal**: The IP address is in the normal state, which indicates that the IP address is not under attack.
-	// *   **hole_begin**: Blackhole filtering is triggered for the IP address.
+	// 	- **normal**: The IP address is in the normal state, which indicates that the IP address is not under attack.
+	//
+	// 	- **hole_begin**: Blackhole filtering is triggered for the IP address.
+	//
+	// example:
+	//
+	// normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3432,6 +4542,16 @@ func (s *DescribePackIpListResponseBodyIpList) SetIp(v string) *DescribePackIpLi
 
 func (s *DescribePackIpListResponseBodyIpList) SetMemberUid(v string) *DescribePackIpListResponseBodyIpList {
 	s.MemberUid = &v
+	return s
+}
+
+func (s *DescribePackIpListResponseBodyIpList) SetNsmExpireAt(v int64) *DescribePackIpListResponseBodyIpList {
+	s.NsmExpireAt = &v
+	return s
+}
+
+func (s *DescribePackIpListResponseBodyIpList) SetNsmStartAt(v int64) *DescribePackIpListResponseBodyIpList {
+	s.NsmStartAt = &v
 	return s
 }
 
@@ -3490,8 +4610,17 @@ func (s *DescribePackIpListResponse) SetBody(v *DescribePackIpListResponseBody) 
 }
 
 type DescribeRdMemberListRequest struct {
-	PageNo              *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// rd-x9bLhd
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
 }
 
@@ -3520,8 +4649,14 @@ func (s *DescribeRdMemberListRequest) SetResourceDirectoryId(v string) *Describe
 
 type DescribeRdMemberListResponseBody struct {
 	MemberList []*DescribeRdMemberListResponseBodyMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total      *int64                                        `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// DC245DEE-9800-5579-BF99-189D6A5BA9FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeRdMemberListResponseBody) String() string {
@@ -3548,9 +4683,18 @@ func (s *DescribeRdMemberListResponseBody) SetTotal(v int64) *DescribeRdMemberLi
 }
 
 type DescribeRdMemberListResponseBodyMemberList struct {
-	GmtCreate *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Uid       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// example:
+	//
+	// 1624954942000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// test1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1960279802016267
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DescribeRdMemberListResponseBodyMemberList) String() string {
@@ -3606,15 +4750,42 @@ func (s *DescribeRdMemberListResponse) SetBody(v *DescribeRdMemberListResponseBo
 }
 
 type DescribeRdStatusResponseBody struct {
-	CurrentUid              *string `json:"CurrentUid,omitempty" xml:"CurrentUid,omitempty"`
-	CurrentUidType          *string `json:"CurrentUidType,omitempty" xml:"CurrentUidType,omitempty"`
-	Enabled                 *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	LocalEnable             *bool   `json:"LocalEnable,omitempty" xml:"LocalEnable,omitempty"`
-	MasterUid               *string `json:"MasterUid,omitempty" xml:"MasterUid,omitempty"`
-	RemoteEnable            *bool   `json:"RemoteEnable,omitempty" xml:"RemoteEnable,omitempty"`
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RootUid                 *string `json:"RootUid,omitempty" xml:"RootUid,omitempty"`
-	ServicePrincipalEnabled *bool   `json:"ServicePrincipalEnabled,omitempty" xml:"ServicePrincipalEnabled,omitempty"`
+	// example:
+	//
+	// 125085778340****
+	CurrentUid *string `json:"CurrentUid,omitempty" xml:"CurrentUid,omitempty"`
+	// example:
+	//
+	// MemberAccount
+	CurrentUidType *string `json:"CurrentUidType,omitempty" xml:"CurrentUidType,omitempty"`
+	// example:
+	//
+	// false
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// false
+	LocalEnable *bool `json:"LocalEnable,omitempty" xml:"LocalEnable,omitempty"`
+	// example:
+	//
+	// 125085778340****
+	MasterUid *string `json:"MasterUid,omitempty" xml:"MasterUid,omitempty"`
+	// example:
+	//
+	// false
+	RemoteEnable *bool `json:"RemoteEnable,omitempty" xml:"RemoteEnable,omitempty"`
+	// example:
+	//
+	// 1B0F7EC6-51D7-4D70-B0EC-CD8A9E998D86
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 125085778340****
+	RootUid *string `json:"RootUid,omitempty" xml:"RootUid,omitempty"`
+	// example:
+	//
+	// false
+	ServicePrincipalEnabled *bool `json:"ServicePrincipalEnabled,omitempty" xml:"ServicePrincipalEnabled,omitempty"`
 }
 
 func (s DescribeRdStatusResponseBody) String() string {
@@ -3702,11 +4873,19 @@ func (s *DescribeRdStatusResponse) SetBody(v *DescribeRdStatusResponseBody) *Des
 type DescribeRegionsRequest struct {
 	// The region ID to query. The default value is **cn-hangzhou**, which indicates that the regions of cloud assets that are supported by an Anti-DDoS Origin instance in the China (Hangzhou) region are queried.
 	//
-	// For more information about the IDs of other regions, see [Regions and zones](~~40654~~).
+	// For more information about the IDs of other regions, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3730,15 +4909,28 @@ func (s *DescribeRegionsRequest) SetResourceGroupId(v string) *DescribeRegionsRe
 
 type DescribeRegionsResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about regions of the cloud assets that are supported by the Anti-DDoS Origin instance. The information includes region IDs and names.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F7CA8B4E-FB15-4336-A351-8DC29D66EA82
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   **true**: The request is successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request is successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3772,8 +4964,16 @@ func (s *DescribeRegionsResponseBody) SetSuccess(v bool) *DescribeRegionsRespons
 
 type DescribeRegionsResponseBodyRegions struct {
 	// The English name of the region where the cloud assets reside.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	RegionEnName *string `json:"RegionEnName,omitempty" xml:"RegionEnName,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the region where the cloud assets reside.
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
@@ -3835,35 +5035,74 @@ type DescribeTrafficRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// If you do not specify this parameter, the current system time is used as the end time.
+	//
+	// example:
+	//
+	// 1563445054
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the traffic statistics to query. Valid values:
 	//
-	// *   **max**: the peak traffic within the specified interval
-	// *   **avg**: the average traffic within the specified interval
+	// 	- **max**: the peak traffic within the specified interval
+	//
+	// 	- **avg**: the average traffic within the specified interval
+	//
+	// example:
+	//
+	// max
 	FlowType *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
 	// The ID of the Anti-DDoS Origin instance to query.
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
 	//
-	// If you specify an on-demand instance, you must configure the **Interval** parameter.
+	// If you specify an on-demand instance, you must configure the **Interval*	- parameter.
+	//
+	// example:
+	//
+	// ddosbgp-cn-n6w203qg****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The interval at which the traffic statistics are calculated. Unit: seconds. Default value: **5**.
+	//
+	// example:
+	//
+	// 5
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The public IP address of the asset to query. If you do not specify this parameter, the traffic statistics of all public IP addresses that are protected by the Anti-DDoS Origin instance are queried.
 	//
-	// >  The public IP address must be a protected object of the Anti-DDoS Origin instance. You can call the [DescribePackIpList](~~118701~~) operation to query all protected objects of the Anti-DDoS Origin instance.
+	// >  The public IP address must be a protected object of the Anti-DDoS Origin instance. You can call the [DescribePackIpList](https://help.aliyun.com/document_detail/118701.html) operation to query all protected objects of the Anti-DDoS Origin instance.
+	//
+	// example:
+	//
+	// 39.XX.XX.96
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The Classless Inter-Domain Routing (CIDR) block of the on-demand instance that you want to query.
+	//
+	// example:
+	//
+	// 111.XX.XX.0/24
 	Ipnet *string `json:"Ipnet,omitempty" xml:"Ipnet,omitempty"`
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
 	// If you do not specify this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1619798400
 	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -3924,6 +5163,10 @@ type DescribeTrafficResponseBody struct {
 	// The queried traffic statistics.
 	FlowList []*DescribeTrafficResponseBodyFlowList `json:"FlowList,omitempty" xml:"FlowList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6A507DC8-F657-4C13-84E2-D1D1B9400753
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3949,23 +5192,52 @@ type DescribeTrafficResponseBodyFlowList struct {
 	// The bandwidth of attack traffic. Unit: bit/s.
 	//
 	// >  This parameter is returned only if attack traffic exists.
+	//
+	// example:
+	//
+	// 0
 	AttackBps *int64 `json:"AttackBps,omitempty" xml:"AttackBps,omitempty"`
 	// The packet forwarding rate of attack traffic. Unit: packets per second.
 	//
 	// >  This parameter is returned only if attack traffic exists.
+	//
+	// example:
+	//
+	// 0
 	AttackPps *int64 `json:"AttackPps,omitempty" xml:"AttackPps,omitempty"`
 	// The type of the traffic statistics. Valid values:
 	//
-	// *   **max**: the peak traffic within the specified interval
-	// *   **avg**: the average traffic within the specified interval
+	// 	- **max**: the peak traffic within the specified interval
+	//
+	// 	- **avg**: the average traffic within the specified interval
+	//
+	// example:
+	//
+	// max
 	FlowType *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
 	// The bandwidth of the total traffic. Unit: Kbit/s.
+	//
+	// example:
+	//
+	// 417
 	Kbps *int32 `json:"Kbps,omitempty" xml:"Kbps,omitempty"`
 	// The ID of the traffic statistics.
+	//
+	// example:
+	//
+	// 8e33f19e-5644-11eb-b5c1-d89d67182200
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The packet forwarding rate of the total traffic. Unit: packets per second.
+	//
+	// example:
+	//
+	// 274
 	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 	// The time when the traffic statistics are calculated. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1620951900
 	Time *int32 `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
@@ -4043,16 +5315,32 @@ func (s *DescribeTrafficResponse) SetBody(v *DescribeTrafficResponseBody) *Descr
 
 type DettachAssetGroupToInstanceRequest struct {
 	// The information about the asset that you want to dissociate.
+	//
+	// This parameter is required.
 	AssetGroupList []*DettachAssetGroupToInstanceRequestAssetGroupList `json:"AssetGroupList,omitempty" xml:"AssetGroupList,omitempty" type:"Repeated"`
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the region in which the instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The source IP address of the request. The system specifies this parameter.
+	//
+	// example:
+	//
+	// 115.238.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -4086,13 +5374,32 @@ func (s *DettachAssetGroupToInstanceRequest) SetSourceIp(v string) *DettachAsset
 
 type DettachAssetGroupToInstanceRequestAssetGroupList struct {
 	// The ID of the asset. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-lbj382l****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID of the asset.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// *   **waf**: WAF instance
-	// *   **ga**: Global Accelerator (GA) instance
+	// 	- **waf**: WAF instance
+	//
+	// 	- **ga**: Global Accelerator (GA) instance
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -4121,16 +5428,32 @@ func (s *DettachAssetGroupToInstanceRequestAssetGroupList) SetType(v string) *De
 
 type DettachAssetGroupToInstanceShrinkRequest struct {
 	// The information about the asset that you want to dissociate.
+	//
+	// This parameter is required.
 	AssetGroupListShrink *string `json:"AssetGroupList,omitempty" xml:"AssetGroupList,omitempty"`
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the region in which the instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The source IP address of the request. The system specifies this parameter.
+	//
+	// example:
+	//
+	// 115.238.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -4164,6 +5487,10 @@ func (s *DettachAssetGroupToInstanceShrinkRequest) SetSourceIp(v string) *Dettac
 
 type DettachAssetGroupToInstanceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// E54BA258-9DE8-59BE-B7A8-DAD28E6E8DAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4212,11 +5539,19 @@ func (s *DettachAssetGroupToInstanceResponse) SetBody(v *DettachAssetGroupToInst
 type GetSlsOpenStatusRequest struct {
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
-	// For more information about the valid values of this parameter, see [Regions and zones](~~188196~~).
+	// For more information about the valid values of this parameter, see [Regions and zones](https://help.aliyun.com/document_detail/188196.html).
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -4240,11 +5575,20 @@ func (s *GetSlsOpenStatusRequest) SetResourceGroupId(v string) *GetSlsOpenStatus
 
 type GetSlsOpenStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D01666F5-541B-4C78-98A6-D29E02DAAC7C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether Log Service was activated. Valid values:
 	//
-	// *   **true**: Log Service was activated.
-	// *   **false**: Log Service was not activated.
+	// 	- **true**: Log Service was activated.
+	//
+	// 	- **false**: Log Service was not activated.
+	//
+	// example:
+	//
+	// true
 	SlsOpenStatus *bool `json:"SlsOpenStatus,omitempty" xml:"SlsOpenStatus,omitempty"`
 }
 
@@ -4297,12 +5641,24 @@ func (s *GetSlsOpenStatusResponse) SetBody(v *GetSlsOpenStatusResponseBody) *Get
 
 type ListOpenedAccessLogInstancesRequest struct {
 	// The number of the page to return. Pages start from page 1. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -4331,10 +5687,18 @@ func (s *ListOpenedAccessLogInstancesRequest) SetResourceGroupId(v string) *List
 
 type ListOpenedAccessLogInstancesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4DB64811-70A1-41C9-A0CE-CD8B260ED551
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The configuration of log analysis for the Anti-DDoS Origin instance.
 	SlsConfigStatus []*ListOpenedAccessLogInstancesResponseBodySlsConfigStatus `json:"SlsConfigStatus,omitempty" xml:"SlsConfigStatus,omitempty" type:"Repeated"`
 	// The number of the Anti-DDoS Origin instances for which log analysis was enabled.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4364,10 +5728,19 @@ func (s *ListOpenedAccessLogInstancesResponseBody) SetTotalCount(v int32) *ListO
 type ListOpenedAccessLogInstancesResponseBodySlsConfigStatus struct {
 	// Indicates whether log analysis was enabled for the Anti-DDoS Origin instance. Valid values:
 	//
-	// *   **true**: Log analysis was enabled.
-	// *   **false**: Log analysis was disabled.
+	// 	- **true**: Log analysis was enabled.
+	//
+	// 	- **false**: Log analysis was disabled.
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The ID of the Anti-DDoS Origin instance.
+	//
+	// example:
+	//
+	// ddosbgp-cn-m7r1zce2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4420,14 +5793,38 @@ func (s *ListOpenedAccessLogInstancesResponse) SetBody(v *ListOpenedAccessLogIns
 
 type ListTagKeysRequest struct {
 	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries to return on each page. Valid values: 1 to **50**. Default value: **10**.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the resource. Valid value: **INSTANCE**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -4466,14 +5863,30 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 
 type ListTagKeysResponseBody struct {
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 97935DF1-0289-4AA2-9DD1-72377838B16B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of tags and the details of each tag.
 	TagKeys []*ListTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 	// The total number of tags.
+	//
+	// example:
+	//
+	// 6
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4512,8 +5925,16 @@ func (s *ListTagKeysResponseBody) SetTotalCount(v int32) *ListTagKeysResponseBod
 
 type ListTagKeysResponseBodyTagKeys struct {
 	// The total number of tag values that correspond to each key.
+	//
+	// example:
+	//
+	// 1
 	TagCount *int32 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
 	// The key of each tag.
+	//
+	// example:
+	//
+	// a
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
@@ -4565,21 +5986,45 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagResourcesRequest struct {
-	// The query token. Set the value to the **NextToken** value that is returned in the last call to the ListTagResources operation. Leave this parameter empty the first time you call this operation.
+	// The query token. Set the value to the **NextToken*	- value that is returned in the last call to the ListTagResources operation. Leave this parameter empty the first time you call this operation.
+	//
+	// example:
+	//
+	// RGuYpqDdKhzXb8C3.D1BwQgc1tMBsoxdGiEKHHUUCf****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
 	// If you do not specify this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The IDs of Anti-DDoS Origin Instances to query.
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+	//
+	// example:
+	//
+	// ddosbgp-cn-v0h1fmwbc024
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource to query. Set the value to **INSTANCE**, which indicates instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags to query.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -4626,11 +6071,19 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 type ListTagResourcesRequestTag struct {
 	// The key of the tag to query.
 	//
-	// >  The **ResourceIds.N** parameter and the key-value pair (Tag.N.Key and Tag.N.Value) cannot be left empty at the same time.
+	// >  The **ResourceIds.N*	- parameter and the key-value pair (Tag.N.Key and Tag.N.Value) cannot be left empty at the same time.
+	//
+	// example:
+	//
+	// testKey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag to query.
 	//
-	// >  The **ResourceIds.N** parameter and the key-value pair (Tag.N.Key and Tag.N.Value) cannot be left empty at the same time.
+	// >  The **ResourceIds.N*	- parameter and the key-value pair (Tag.N.Key and Tag.N.Value) cannot be left empty at the same time.
+	//
+	// example:
+	//
+	// testValue1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4654,8 +6107,16 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 
 type ListTagResourcesResponseBody struct {
 	// The query token that is returned in this call.
+	//
+	// example:
+	//
+	// RGuYpqDdKhzXb8C3.D1BwQgc1tMBsoxdGiEKHHUUCf****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C3F7E6AE-43B2-4730-B6A3-FD17552B8F65
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of tags that are added to the Anti-DDoS Origin instance.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
@@ -4703,12 +6164,28 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
 	// The ID of the Anti-DDoS Origin instance.
+	//
+	// example:
+	//
+	// ddosbgp-cn-n6w1r7nz****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. The value is fixed as **INSTANCE**, which indicates instances.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The key of the tag that is added to the instance.
+	//
+	// example:
+	//
+	// testKey1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of the tag that is added to the instance.
+	//
+	// example:
+	//
+	// testValue1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -4772,17 +6249,37 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 type ModifyRemarkRequest struct {
 	// The ID of the Anti-DDoS Origin instance for which you want to add remarks.
 	//
-	// >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+	// >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-n6w1r7nz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The remarks for the Anti-DDoS Origin instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-remark
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
 	// If you do not specify this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -4816,6 +6313,10 @@ func (s *ModifyRemarkRequest) SetResourceGroupId(v string) *ModifyRemarkRequest 
 
 type ModifyRemarkResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6AC3597B-7FD5-5E68-97C3-E11F4D010732
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4864,11 +6365,21 @@ func (s *ModifyRemarkResponse) SetBody(v *ModifyRemarkResponseBody) *ModifyRemar
 type QuerySchedruleOnDemandRequest struct {
 	// The ID of the on-demand instance.
 	//
-	// >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+	// >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-z2q1qzxb****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the on-demand instance.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+	//
+	// example:
+	//
+	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4892,14 +6403,26 @@ func (s *QuerySchedruleOnDemandRequest) SetRegionId(v string) *QuerySchedruleOnD
 
 type QuerySchedruleOnDemandResponseBody struct {
 	// The ID of the on-demand instance.
+	//
+	// example:
+	//
+	// ddosbgp-cn-z2q1qzxb****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4A8F9980-5ACB-497F-9F15-48E9D6B29028
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The configurations of the scheduling rule.
 	RuleConfig []*QuerySchedruleOnDemandResponseBodyRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Repeated"`
 	// The status of the scheduling rule.
 	RuleStatus []*QuerySchedruleOnDemandResponseBodyRuleStatus `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty" type:"Repeated"`
 	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 171986973287****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -4938,40 +6461,82 @@ func (s *QuerySchedruleOnDemandResponseBody) SetUserId(v string) *QuerySchedrule
 
 type QuerySchedruleOnDemandResponseBodyRuleConfig struct {
 	// The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
+	//
+	// example:
+	//
+	// declare
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
 	// If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
 	//
 	// >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
+	//
+	// example:
+	//
+	// 3
 	RuleConditionCnt *string `json:"RuleConditionCnt,omitempty" xml:"RuleConditionCnt,omitempty"`
 	// The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
+	//
+	// example:
+	//
+	// 10
 	RuleConditionKpps *string `json:"RuleConditionKpps,omitempty" xml:"RuleConditionKpps,omitempty"`
 	// The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
+	//
+	// example:
+	//
+	// 100
 	RuleConditionMbps *string `json:"RuleConditionMbps,omitempty" xml:"RuleConditionMbps,omitempty"`
 	// The name of the scheduling rule.
+	//
+	// example:
+	//
+	// ddosbgp-cn-z2q1qzxb****
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// Indicates whether the scheduling rule is enabled. Valid values:
 	//
-	// *   **on**: enabled
-	// *   **off**: disabled
+	// 	- **on**: enabled
+	//
+	// 	- **off**: disabled
+	//
+	// example:
+	//
+	// on
 	RuleSwitch *string `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
 	// The start time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
 	//
 	// If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
 	//
-	// >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+	// >  This parameter takes effect only when the **RuleUndoMode*	- parameter is set to **auto**.
+	//
+	// example:
+	//
+	// 03:00
 	RuleUndoBeginTime *string `json:"RuleUndoBeginTime,omitempty" xml:"RuleUndoBeginTime,omitempty"`
 	// The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
+	//
+	// example:
+	//
+	// 03:05
 	RuleUndoEndTime *string `json:"RuleUndoEndTime,omitempty" xml:"RuleUndoEndTime,omitempty"`
 	// The stop method of the scheduling rule. Valid values:
 	//
-	// *   **auto**: The scheduling rule automatically stops.
-	// *   **manual**: The scheduling rule is manually stopped.
+	// 	- **auto**: The scheduling rule automatically stops.
+	//
+	// 	- **manual**: The scheduling rule is manually stopped.
+	//
+	// example:
+	//
+	// auto
 	RuleUndoMode *string `json:"RuleUndoMode,omitempty" xml:"RuleUndoMode,omitempty"`
 	// The time zone of the time when the scheduling rule automatically stops. The time zone must be in the `GMT-hh:mm` format.
 	//
 	// For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
 	//
-	// >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+	// >  This parameter takes effect only when the **RuleUndoMode*	- parameter is set to **auto**.
+	//
+	// example:
+	//
+	// GMT-08:00
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
@@ -5035,11 +6600,20 @@ func (s *QuerySchedruleOnDemandResponseBodyRuleConfig) SetTimeZone(v string) *Qu
 
 type QuerySchedruleOnDemandResponseBodyRuleStatus struct {
 	// The CIDR block of the on-demand instance.
+	//
+	// example:
+	//
+	// 47.***.***.0/24
 	Net *string `json:"Net,omitempty" xml:"Net,omitempty"`
 	// The scheduling status. Valid values:
 	//
-	// *   **scheduled**
-	// *   **unscheduled**
+	// 	- **scheduled**
+	//
+	// 	- **unscheduled**
+	//
+	// example:
+	//
+	// unscheduled
 	RuleSchedStatus *string `json:"RuleSchedStatus,omitempty" xml:"RuleSchedStatus,omitempty"`
 }
 
@@ -5091,6 +6665,11 @@ func (s *QuerySchedruleOnDemandResponse) SetBody(v *QuerySchedruleOnDemandRespon
 }
 
 type ReleaseDdosOriginInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosorigin_cn-pe335v7gs01
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5108,6 +6687,9 @@ func (s *ReleaseDdosOriginInstanceRequest) SetInstanceId(v string) *ReleaseDdosO
 }
 
 type ReleaseDdosOriginInstanceResponseBody struct {
+	// example:
+	//
+	// B4B379C2-9319-4C6B-B579-FE36831B09F4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5156,16 +6738,33 @@ func (s *ReleaseDdosOriginInstanceResponse) SetBody(v *ReleaseDdosOriginInstance
 type SetInstanceModeOnDemandRequest struct {
 	// The IDs of on-demand instances.
 	//
-	// >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+	// >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-z2q1qzxb****
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
 	// The scheduling mode of the on-demand instance. Valid values:
 	//
-	// *   **manual**: manual scheduling
-	// *   **netflow-auto**: automatic scheduling
+	// 	- **manual**: manual scheduling
+	//
+	// 	- **netflow-auto**: automatic scheduling
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// netflow-auto
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The region ID of the on-demand instance.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+	//
+	// example:
+	//
+	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5194,6 +6793,10 @@ func (s *SetInstanceModeOnDemandRequest) SetRegionId(v string) *SetInstanceModeO
 
 type SetInstanceModeOnDemandResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BD06F539-2FBE-450D-9391-7EFF787128F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5242,14 +6845,35 @@ func (s *SetInstanceModeOnDemandResponse) SetBody(v *SetInstanceModeOnDemandResp
 type TagResourcesRequest struct {
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
-	// >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
 	// If you do not specify this parameter, the instance belongs to the default resource group.
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-v0h1fmwb****
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource to which you want to add tags. Set the value to **INSTANCE**, which indicates instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -5291,10 +6915,18 @@ type TagResourcesRequestTag struct {
 	// The key of the tag to add.
 	//
 	// >  If the specified key does not exist, a key is created.
+	//
+	// example:
+	//
+	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag to add.
 	//
 	// >  If the specified value does not exist, a value is created.
+	//
+	// example:
+	//
+	// test-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5318,6 +6950,10 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7078CD1E-F609-47A4-9C39-B288CC27C686
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5365,15 +7001,43 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the specified Anti-DDoS Origin Enterprise instances.
+	//
+	// example:
+	//
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The ID of the region where the Anti-DDoS Origin Enterprise instances reside.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// test
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddosbgp-cn-v0h1fmwbc024
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the specified resource. Set the value to **INSTANCE**.
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// testKey1
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -5416,6 +7080,10 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 
 type UntagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F2D86AED-BA27-4584-BADC-B43BDA7EEBCA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5530,6 +7198,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds IP addresses to an Anti-DDoS Origin Enterprise instance.
+//
+// @param request - AddIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddIpResponse
 func (client *Client) AddIpWithOptions(request *AddIpRequest, runtime *util.RuntimeOptions) (_result *AddIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5575,6 +7252,13 @@ func (client *Client) AddIpWithOptions(request *AddIpRequest, runtime *util.Runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds IP addresses to an Anti-DDoS Origin Enterprise instance.
+//
+// @param request - AddIpRequest
+//
+// @return AddIpResponse
 func (client *Client) AddIp(request *AddIpRequest) (_result *AddIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddIpResponse{}
@@ -5586,6 +7270,15 @@ func (client *Client) AddIp(request *AddIpRequest) (_result *AddIpResponse, _err
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加资源目录成员账号列表
+//
+// @param tmpReq - AddRdMemberListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddRdMemberListResponse
 func (client *Client) AddRdMemberListWithOptions(tmpReq *AddRdMemberListRequest, runtime *util.RuntimeOptions) (_result *AddRdMemberListResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5625,6 +7318,13 @@ func (client *Client) AddRdMemberListWithOptions(tmpReq *AddRdMemberListRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加资源目录成员账号列表
+//
+// @param request - AddRdMemberListRequest
+//
+// @return AddRdMemberListResponse
 func (client *Client) AddRdMemberList(request *AddRdMemberListRequest) (_result *AddRdMemberListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddRdMemberListResponse{}
@@ -5636,6 +7336,15 @@ func (client *Client) AddRdMemberList(request *AddRdMemberListRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates an asset with an Anti-DDoS Origin instance of a paid edition.
+//
+// @param tmpReq - AttachAssetGroupToInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachAssetGroupToInstanceResponse
 func (client *Client) AttachAssetGroupToInstanceWithOptions(tmpReq *AttachAssetGroupToInstanceRequest, runtime *util.RuntimeOptions) (_result *AttachAssetGroupToInstanceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5687,6 +7396,13 @@ func (client *Client) AttachAssetGroupToInstanceWithOptions(tmpReq *AttachAssetG
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates an asset with an Anti-DDoS Origin instance of a paid edition.
+//
+// @param request - AttachAssetGroupToInstanceRequest
+//
+// @return AttachAssetGroupToInstanceResponse
 func (client *Client) AttachAssetGroupToInstance(request *AttachAssetGroupToInstanceRequest) (_result *AttachAssetGroupToInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachAssetGroupToInstanceResponse{}
@@ -5698,6 +7414,15 @@ func (client *Client) AttachAssetGroupToInstance(request *AttachAssetGroupToInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether Anti-DDoS Origin is authorized to access Log Service.
+//
+// @param request - CheckAccessLogAuthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckAccessLogAuthResponse
 func (client *Client) CheckAccessLogAuthWithOptions(request *CheckAccessLogAuthRequest, runtime *util.RuntimeOptions) (_result *CheckAccessLogAuthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5735,6 +7460,13 @@ func (client *Client) CheckAccessLogAuthWithOptions(request *CheckAccessLogAuthR
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether Anti-DDoS Origin is authorized to access Log Service.
+//
+// @param request - CheckAccessLogAuthRequest
+//
+// @return CheckAccessLogAuthResponse
 func (client *Client) CheckAccessLogAuth(request *CheckAccessLogAuthRequest) (_result *CheckAccessLogAuthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckAccessLogAuthResponse{}
@@ -5746,15 +7478,23 @@ func (client *Client) CheckAccessLogAuth(request *CheckAccessLogAuthRequest) (_r
 	return _result, _err
 }
 
-/**
- * You can call the CheckGrant operation to query whether Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request CheckGrantRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CheckGrantResponse
- */
+// Summary:
+//
+// Queries whether Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
+//
+// Description:
+//
+// You can call the CheckGrant operation to query whether Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CheckGrantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckGrantResponse
 func (client *Client) CheckGrantWithOptions(request *CheckGrantRequest, runtime *util.RuntimeOptions) (_result *CheckGrantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5784,14 +7524,21 @@ func (client *Client) CheckGrantWithOptions(request *CheckGrantRequest, runtime 
 	return _result, _err
 }
 
-/**
- * You can call the CheckGrant operation to query whether Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request CheckGrantRequest
- * @return CheckGrantResponse
- */
+// Summary:
+//
+// Queries whether Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
+//
+// Description:
+//
+// You can call the CheckGrant operation to query whether Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CheckGrantRequest
+//
+// @return CheckGrantResponse
 func (client *Client) CheckGrant(request *CheckGrantRequest) (_result *CheckGrantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckGrantResponse{}
@@ -5803,6 +7550,11 @@ func (client *Client) CheckGrant(request *CheckGrantRequest) (_result *CheckGran
 	return _result, _err
 }
 
+// @param request - ConfigSchedruleOnDemandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigSchedruleOnDemandResponse
 func (client *Client) ConfigSchedruleOnDemandWithOptions(request *ConfigSchedruleOnDemandRequest, runtime *util.RuntimeOptions) (_result *ConfigSchedruleOnDemandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5880,6 +7632,9 @@ func (client *Client) ConfigSchedruleOnDemandWithOptions(request *ConfigSchedrul
 	return _result, _err
 }
 
+// @param request - ConfigSchedruleOnDemandRequest
+//
+// @return ConfigSchedruleOnDemandResponse
 func (client *Client) ConfigSchedruleOnDemand(request *ConfigSchedruleOnDemandRequest) (_result *ConfigSchedruleOnDemandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigSchedruleOnDemandResponse{}
@@ -5891,6 +7646,15 @@ func (client *Client) ConfigSchedruleOnDemand(request *ConfigSchedruleOnDemandRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a scheduling rule for an on-demand instance.
+//
+// @param request - CreateSchedruleOnDemandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSchedruleOnDemandResponse
 func (client *Client) CreateSchedruleOnDemandWithOptions(request *CreateSchedruleOnDemandRequest, runtime *util.RuntimeOptions) (_result *CreateSchedruleOnDemandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5968,6 +7732,13 @@ func (client *Client) CreateSchedruleOnDemandWithOptions(request *CreateSchedrul
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a scheduling rule for an on-demand instance.
+//
+// @param request - CreateSchedruleOnDemandRequest
+//
+// @return CreateSchedruleOnDemandResponse
 func (client *Client) CreateSchedruleOnDemand(request *CreateSchedruleOnDemandRequest) (_result *CreateSchedruleOnDemandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSchedruleOnDemandResponse{}
@@ -5979,16 +7750,25 @@ func (client *Client) CreateSchedruleOnDemand(request *CreateSchedruleOnDemandRe
 	return _result, _err
 }
 
-/**
- * You can call the DeleteBlackhole operation to deactivate blackhole filtering for a protected IP address.
- * Before you call this operation, you can call the [DescribePackIpList](~~118701~~) operation to query the protection status of the IP addresses that are protected by your Anti-DDoS Origin instance. For example, you can query whether blackhole filtering is triggered for an IP address.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DeleteBlackholeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteBlackholeResponse
- */
+// Summary:
+//
+// Deactivates blackhole filtering for a protected IP address.
+//
+// Description:
+//
+// You can call the DeleteBlackhole operation to deactivate blackhole filtering for a protected IP address.
+//
+// Before you call this operation, you can call the [DescribePackIpList](https://help.aliyun.com/document_detail/118701.html) operation to query the protection status of the IP addresses that are protected by your Anti-DDoS Origin instance. For example, you can query whether blackhole filtering is triggered for an IP address.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteBlackholeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBlackholeResponse
 func (client *Client) DeleteBlackholeWithOptions(request *DeleteBlackholeRequest, runtime *util.RuntimeOptions) (_result *DeleteBlackholeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6034,15 +7814,23 @@ func (client *Client) DeleteBlackholeWithOptions(request *DeleteBlackholeRequest
 	return _result, _err
 }
 
-/**
- * You can call the DeleteBlackhole operation to deactivate blackhole filtering for a protected IP address.
- * Before you call this operation, you can call the [DescribePackIpList](~~118701~~) operation to query the protection status of the IP addresses that are protected by your Anti-DDoS Origin instance. For example, you can query whether blackhole filtering is triggered for an IP address.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DeleteBlackholeRequest
- * @return DeleteBlackholeResponse
- */
+// Summary:
+//
+// Deactivates blackhole filtering for a protected IP address.
+//
+// Description:
+//
+// You can call the DeleteBlackhole operation to deactivate blackhole filtering for a protected IP address.
+//
+// Before you call this operation, you can call the [DescribePackIpList](https://help.aliyun.com/document_detail/118701.html) operation to query the protection status of the IP addresses that are protected by your Anti-DDoS Origin instance. For example, you can query whether blackhole filtering is triggered for an IP address.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteBlackholeRequest
+//
+// @return DeleteBlackholeResponse
 func (client *Client) DeleteBlackhole(request *DeleteBlackholeRequest) (_result *DeleteBlackholeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBlackholeResponse{}
@@ -6054,13 +7842,19 @@ func (client *Client) DeleteBlackhole(request *DeleteBlackholeRequest) (_result 
 	return _result, _err
 }
 
-/**
- * The Anti-DDoS Origin Enterprise instance no longer protects the IP addresses that are removed.
- *
- * @param request DeleteIpRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteIpResponse
- */
+// Summary:
+//
+// Removes specific IP addresses from an Anti-DDoS Origin Enterprise instance.
+//
+// Description:
+//
+// The Anti-DDoS Origin Enterprise instance no longer protects the IP addresses that are removed.
+//
+// @param request - DeleteIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIpResponse
 func (client *Client) DeleteIpWithOptions(request *DeleteIpRequest, runtime *util.RuntimeOptions) (_result *DeleteIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6106,12 +7900,17 @@ func (client *Client) DeleteIpWithOptions(request *DeleteIpRequest, runtime *uti
 	return _result, _err
 }
 
-/**
- * The Anti-DDoS Origin Enterprise instance no longer protects the IP addresses that are removed.
- *
- * @param request DeleteIpRequest
- * @return DeleteIpResponse
- */
+// Summary:
+//
+// Removes specific IP addresses from an Anti-DDoS Origin Enterprise instance.
+//
+// Description:
+//
+// The Anti-DDoS Origin Enterprise instance no longer protects the IP addresses that are removed.
+//
+// @param request - DeleteIpRequest
+//
+// @return DeleteIpResponse
 func (client *Client) DeleteIp(request *DeleteIpRequest) (_result *DeleteIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIpResponse{}
@@ -6123,6 +7922,15 @@ func (client *Client) DeleteIp(request *DeleteIpRequest) (_result *DeleteIpRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除资源目录成员账号列表
+//
+// @param tmpReq - DeleteRdMemberListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRdMemberListResponse
 func (client *Client) DeleteRdMemberListWithOptions(tmpReq *DeleteRdMemberListRequest, runtime *util.RuntimeOptions) (_result *DeleteRdMemberListResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6162,6 +7970,13 @@ func (client *Client) DeleteRdMemberListWithOptions(tmpReq *DeleteRdMemberListRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除资源目录成员账号列表
+//
+// @param request - DeleteRdMemberListRequest
+//
+// @return DeleteRdMemberListResponse
 func (client *Client) DeleteRdMemberList(request *DeleteRdMemberListRequest) (_result *DeleteRdMemberListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRdMemberListResponse{}
@@ -6173,6 +7988,11 @@ func (client *Client) DeleteRdMemberList(request *DeleteRdMemberListRequest) (_r
 	return _result, _err
 }
 
+// @param request - DeleteSchedruleOnDemandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSchedruleOnDemandResponse
 func (client *Client) DeleteSchedruleOnDemandWithOptions(request *DeleteSchedruleOnDemandRequest, runtime *util.RuntimeOptions) (_result *DeleteSchedruleOnDemandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6214,6 +8034,9 @@ func (client *Client) DeleteSchedruleOnDemandWithOptions(request *DeleteSchedrul
 	return _result, _err
 }
 
+// @param request - DeleteSchedruleOnDemandRequest
+//
+// @return DeleteSchedruleOnDemandResponse
 func (client *Client) DeleteSchedruleOnDemand(request *DeleteSchedruleOnDemandRequest) (_result *DeleteSchedruleOnDemandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSchedruleOnDemandResponse{}
@@ -6225,6 +8048,15 @@ func (client *Client) DeleteSchedruleOnDemand(request *DeleteSchedruleOnDemandRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the association between an asset and an Anti-DDoS Origin instance of a paid edition.
+//
+// @param request - DescribeAssetGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAssetGroupResponse
 func (client *Client) DescribeAssetGroupWithOptions(request *DescribeAssetGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeAssetGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6274,6 +8106,13 @@ func (client *Client) DescribeAssetGroupWithOptions(request *DescribeAssetGroupR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the association between an asset and an Anti-DDoS Origin instance of a paid edition.
+//
+// @param request - DescribeAssetGroupRequest
+//
+// @return DescribeAssetGroupResponse
 func (client *Client) DescribeAssetGroup(request *DescribeAssetGroupRequest) (_result *DescribeAssetGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAssetGroupResponse{}
@@ -6285,6 +8124,15 @@ func (client *Client) DescribeAssetGroup(request *DescribeAssetGroupRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the association between an asset and an Anti-DDoS Origin instance of a paid edition.
+//
+// @param request - DescribeAssetGroupToInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAssetGroupToInstanceResponse
 func (client *Client) DescribeAssetGroupToInstanceWithOptions(request *DescribeAssetGroupToInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeAssetGroupToInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6342,6 +8190,13 @@ func (client *Client) DescribeAssetGroupToInstanceWithOptions(request *DescribeA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the association between an asset and an Anti-DDoS Origin instance of a paid edition.
+//
+// @param request - DescribeAssetGroupToInstanceRequest
+//
+// @return DescribeAssetGroupToInstanceResponse
 func (client *Client) DescribeAssetGroupToInstance(request *DescribeAssetGroupToInstanceRequest) (_result *DescribeAssetGroupToInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAssetGroupToInstanceResponse{}
@@ -6353,15 +8208,23 @@ func (client *Client) DescribeAssetGroupToInstance(request *DescribeAssetGroupTo
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDdosEvent operation to query the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance by page. The details include the start time, end time, attacked IP address, and status of each event.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDdosEventRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDdosEventResponse
- */
+// Summary:
+//
+// Queries the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance.
+//
+// Description:
+//
+// You can call the DescribeDdosEvent operation to query the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance by page. The details include the start time, end time, attacked IP address, and status of each event.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDdosEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDdosEventResponse
 func (client *Client) DescribeDdosEventWithOptions(request *DescribeDdosEventRequest, runtime *util.RuntimeOptions) (_result *DescribeDdosEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6423,14 +8286,21 @@ func (client *Client) DescribeDdosEventWithOptions(request *DescribeDdosEventReq
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDdosEvent operation to query the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance by page. The details include the start time, end time, attacked IP address, and status of each event.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDdosEventRequest
- * @return DescribeDdosEventResponse
- */
+// Summary:
+//
+// Queries the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance.
+//
+// Description:
+//
+// You can call the DescribeDdosEvent operation to query the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance by page. The details include the start time, end time, attacked IP address, and status of each event.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDdosEventRequest
+//
+// @return DescribeDdosEventResponse
 func (client *Client) DescribeDdosEvent(request *DescribeDdosEventRequest) (_result *DescribeDdosEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDdosEventResponse{}
@@ -6442,6 +8312,15 @@ func (client *Client) DescribeDdosEvent(request *DescribeDdosEventRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询账单
+//
+// @param request - DescribeDdosOriginInstanceBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDdosOriginInstanceBillResponse
 func (client *Client) DescribeDdosOriginInstanceBillWithOptions(request *DescribeDdosOriginInstanceBillRequest, runtime *util.RuntimeOptions) (_result *DescribeDdosOriginInstanceBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6487,6 +8366,13 @@ func (client *Client) DescribeDdosOriginInstanceBillWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询账单
+//
+// @param request - DescribeDdosOriginInstanceBillRequest
+//
+// @return DescribeDdosOriginInstanceBillResponse
 func (client *Client) DescribeDdosOriginInstanceBill(request *DescribeDdosOriginInstanceBillRequest) (_result *DescribeDdosOriginInstanceBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDdosOriginInstanceBillResponse{}
@@ -6498,14 +8384,27 @@ func (client *Client) DescribeDdosOriginInstanceBill(request *DescribeDdosOrigin
 	return _result, _err
 }
 
-/**
- * ## Usage notes
- * You can call the DescribeExcpetionCount operation to query the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire in a specific region. For example, if blackhole filtering is triggered for an IP address, the IP address is in an abnormal state. An instance whose remaining validity period is less than seven days is considered as an instance that is about to expire.
- *
- * @param request DescribeExcpetionCountRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeExcpetionCountResponse
- */
+// Summary:
+//
+// Queries the number of assets that are in an abnormal state and the number of Anti-DDoS
+//
+//                   Origin instances that are about to expire in a specific region. The assets can be
+//
+//                   elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS)
+//
+//                   instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+//
+// Description:
+//
+// ## Usage notes
+//
+// You can call the DescribeExcpetionCount operation to query the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire in a specific region. For example, if blackhole filtering is triggered for an IP address, the IP address is in an abnormal state. An instance whose remaining validity period is less than seven days is considered as an instance that is about to expire.
+//
+// @param request - DescribeExcpetionCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExcpetionCountResponse
 func (client *Client) DescribeExcpetionCountWithOptions(request *DescribeExcpetionCountRequest, runtime *util.RuntimeOptions) (_result *DescribeExcpetionCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6543,13 +8442,25 @@ func (client *Client) DescribeExcpetionCountWithOptions(request *DescribeExcpeti
 	return _result, _err
 }
 
-/**
- * ## Usage notes
- * You can call the DescribeExcpetionCount operation to query the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire in a specific region. For example, if blackhole filtering is triggered for an IP address, the IP address is in an abnormal state. An instance whose remaining validity period is less than seven days is considered as an instance that is about to expire.
- *
- * @param request DescribeExcpetionCountRequest
- * @return DescribeExcpetionCountResponse
- */
+// Summary:
+//
+// Queries the number of assets that are in an abnormal state and the number of Anti-DDoS
+//
+//                   Origin instances that are about to expire in a specific region. The assets can be
+//
+//                   elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS)
+//
+//                   instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+//
+// Description:
+//
+// ## Usage notes
+//
+// You can call the DescribeExcpetionCount operation to query the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire in a specific region. For example, if blackhole filtering is triggered for an IP address, the IP address is in an abnormal state. An instance whose remaining validity period is less than seven days is considered as an instance that is about to expire.
+//
+// @param request - DescribeExcpetionCountRequest
+//
+// @return DescribeExcpetionCountResponse
 func (client *Client) DescribeExcpetionCount(request *DescribeExcpetionCountRequest) (_result *DescribeExcpetionCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExcpetionCountResponse{}
@@ -6561,15 +8472,23 @@ func (client *Client) DescribeExcpetionCount(request *DescribeExcpetionCountRequ
 	return _result, _err
 }
 
-/**
- * You can call the DescribeInstanceList operation to query the details of all Anti-DDoS Origin instances within your Alibaba Cloud account by page. The details include the ID, validity period, and status of each instance.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeInstanceListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeInstanceListResponse
- */
+// Summary:
+//
+// Queries the details of all Anti-DDoS Origin instances.
+//
+// Description:
+//
+// You can call the DescribeInstanceList operation to query the details of all Anti-DDoS Origin instances within your Alibaba Cloud account by page. The details include the ID, validity period, and status of each instance.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeInstanceListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceListResponse
 func (client *Client) DescribeInstanceListWithOptions(request *DescribeInstanceListRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6651,14 +8570,21 @@ func (client *Client) DescribeInstanceListWithOptions(request *DescribeInstanceL
 	return _result, _err
 }
 
-/**
- * You can call the DescribeInstanceList operation to query the details of all Anti-DDoS Origin instances within your Alibaba Cloud account by page. The details include the ID, validity period, and status of each instance.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeInstanceListRequest
- * @return DescribeInstanceListResponse
- */
+// Summary:
+//
+// Queries the details of all Anti-DDoS Origin instances.
+//
+// Description:
+//
+// You can call the DescribeInstanceList operation to query the details of all Anti-DDoS Origin instances within your Alibaba Cloud account by page. The details include the ID, validity period, and status of each instance.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeInstanceListRequest
+//
+// @return DescribeInstanceListResponse
 func (client *Client) DescribeInstanceList(request *DescribeInstanceListRequest) (_result *DescribeInstanceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceListResponse{}
@@ -6670,6 +8596,11 @@ func (client *Client) DescribeInstanceList(request *DescribeInstanceListRequest)
 	return _result, _err
 }
 
+// @param request - DescribeInstanceSpecsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceSpecsResponse
 func (client *Client) DescribeInstanceSpecsWithOptions(request *DescribeInstanceSpecsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSpecsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6711,6 +8642,9 @@ func (client *Client) DescribeInstanceSpecsWithOptions(request *DescribeInstance
 	return _result, _err
 }
 
+// @param request - DescribeInstanceSpecsRequest
+//
+// @return DescribeInstanceSpecsResponse
 func (client *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsRequest) (_result *DescribeInstanceSpecsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceSpecsResponse{}
@@ -6722,13 +8656,19 @@ func (client *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsReques
 	return _result, _err
 }
 
-/**
- * >  Anti-DDoS Origin API operations are available for only Anti-DDoS Origin Enterprise users.
- *
- * @param request DescribeOnDemandDdosEventRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeOnDemandDdosEventResponse
- */
+// Summary:
+//
+// Call the DescribeOnDemandDdosEvent operation to query the DDoS events recorded for the IP address of the Anti-DDoS on-demand instance.
+//
+// Description:
+//
+// >  Anti-DDoS Origin API operations are available for only Anti-DDoS Origin Enterprise users.
+//
+// @param request - DescribeOnDemandDdosEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOnDemandDdosEventResponse
 func (client *Client) DescribeOnDemandDdosEventWithOptions(request *DescribeOnDemandDdosEventRequest, runtime *util.RuntimeOptions) (_result *DescribeOnDemandDdosEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6790,12 +8730,17 @@ func (client *Client) DescribeOnDemandDdosEventWithOptions(request *DescribeOnDe
 	return _result, _err
 }
 
-/**
- * >  Anti-DDoS Origin API operations are available for only Anti-DDoS Origin Enterprise users.
- *
- * @param request DescribeOnDemandDdosEventRequest
- * @return DescribeOnDemandDdosEventResponse
- */
+// Summary:
+//
+// Call the DescribeOnDemandDdosEvent operation to query the DDoS events recorded for the IP address of the Anti-DDoS on-demand instance.
+//
+// Description:
+//
+// >  Anti-DDoS Origin API operations are available for only Anti-DDoS Origin Enterprise users.
+//
+// @param request - DescribeOnDemandDdosEventRequest
+//
+// @return DescribeOnDemandDdosEventResponse
 func (client *Client) DescribeOnDemandDdosEvent(request *DescribeOnDemandDdosEventRequest) (_result *DescribeOnDemandDdosEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOnDemandDdosEventResponse{}
@@ -6807,6 +8752,11 @@ func (client *Client) DescribeOnDemandDdosEvent(request *DescribeOnDemandDdosEve
 	return _result, _err
 }
 
+// @param request - DescribeOnDemandInstanceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOnDemandInstanceStatusResponse
 func (client *Client) DescribeOnDemandInstanceStatusWithOptions(request *DescribeOnDemandInstanceStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeOnDemandInstanceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6844,6 +8794,9 @@ func (client *Client) DescribeOnDemandInstanceStatusWithOptions(request *Describ
 	return _result, _err
 }
 
+// @param request - DescribeOnDemandInstanceStatusRequest
+//
+// @return DescribeOnDemandInstanceStatusResponse
 func (client *Client) DescribeOnDemandInstanceStatus(request *DescribeOnDemandInstanceStatusRequest) (_result *DescribeOnDemandInstanceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOnDemandInstanceStatusResponse{}
@@ -6855,13 +8808,19 @@ func (client *Client) DescribeOnDemandInstanceStatus(request *DescribeOnDemandIn
 	return _result, _err
 }
 
-/**
- * The start time. Operation logs that were generated after this time are queried.**** This value is a UNIX timestamp. Unit: milliseconds.
- *
- * @param request DescribeOpEntitiesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeOpEntitiesResponse
- */
+// Summary:
+//
+// The number of entries to return on each page.
+//
+// Description:
+//
+// The start time. Operation logs that were generated after this time are queried.***	- This value is a UNIX timestamp. Unit: milliseconds.
+//
+// @param request - DescribeOpEntitiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOpEntitiesResponse
 func (client *Client) DescribeOpEntitiesWithOptions(request *DescribeOpEntitiesRequest, runtime *util.RuntimeOptions) (_result *DescribeOpEntitiesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6927,12 +8886,17 @@ func (client *Client) DescribeOpEntitiesWithOptions(request *DescribeOpEntitiesR
 	return _result, _err
 }
 
-/**
- * The start time. Operation logs that were generated after this time are queried.**** This value is a UNIX timestamp. Unit: milliseconds.
- *
- * @param request DescribeOpEntitiesRequest
- * @return DescribeOpEntitiesResponse
- */
+// Summary:
+//
+// The number of entries to return on each page.
+//
+// Description:
+//
+// The start time. Operation logs that were generated after this time are queried.***	- This value is a UNIX timestamp. Unit: milliseconds.
+//
+// @param request - DescribeOpEntitiesRequest
+//
+// @return DescribeOpEntitiesResponse
 func (client *Client) DescribeOpEntities(request *DescribeOpEntitiesRequest) (_result *DescribeOpEntitiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOpEntitiesResponse{}
@@ -6944,15 +8908,23 @@ func (client *Client) DescribeOpEntities(request *DescribeOpEntitiesRequest) (_r
 	return _result, _err
 }
 
-/**
- * You can call the DescribePackIpList operation to query the details about each IP address that is protected by a specific Anti-DDoS Origin instance by page. The details include the IP address and the type of the cloud asset to which the IP address belongs. The details also include the status of the IP address, such as whether blackhole filtering is triggered for the IP address.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribePackIpListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribePackIpListResponse
- */
+// Summary:
+//
+// Queries the IP addresses that are protected by a specific Anti-DDoS Origin instance.
+//
+// Description:
+//
+// You can call the DescribePackIpList operation to query the details about each IP address that is protected by a specific Anti-DDoS Origin instance by page. The details include the IP address and the type of the cloud asset to which the IP address belongs. The details also include the status of the IP address, such as whether blackhole filtering is triggered for the IP address.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribePackIpListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePackIpListResponse
 func (client *Client) DescribePackIpListWithOptions(request *DescribePackIpListRequest, runtime *util.RuntimeOptions) (_result *DescribePackIpListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7014,14 +8986,21 @@ func (client *Client) DescribePackIpListWithOptions(request *DescribePackIpListR
 	return _result, _err
 }
 
-/**
- * You can call the DescribePackIpList operation to query the details about each IP address that is protected by a specific Anti-DDoS Origin instance by page. The details include the IP address and the type of the cloud asset to which the IP address belongs. The details also include the status of the IP address, such as whether blackhole filtering is triggered for the IP address.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribePackIpListRequest
- * @return DescribePackIpListResponse
- */
+// Summary:
+//
+// Queries the IP addresses that are protected by a specific Anti-DDoS Origin instance.
+//
+// Description:
+//
+// You can call the DescribePackIpList operation to query the details about each IP address that is protected by a specific Anti-DDoS Origin instance by page. The details include the IP address and the type of the cloud asset to which the IP address belongs. The details also include the status of the IP address, such as whether blackhole filtering is triggered for the IP address.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribePackIpListRequest
+//
+// @return DescribePackIpListResponse
 func (client *Client) DescribePackIpList(request *DescribePackIpListRequest) (_result *DescribePackIpListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePackIpListResponse{}
@@ -7033,6 +9012,15 @@ func (client *Client) DescribePackIpList(request *DescribePackIpListRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询资源目录成员账号列表
+//
+// @param request - DescribeRdMemberListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRdMemberListResponse
 func (client *Client) DescribeRdMemberListWithOptions(request *DescribeRdMemberListRequest, runtime *util.RuntimeOptions) (_result *DescribeRdMemberListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7074,6 +9062,13 @@ func (client *Client) DescribeRdMemberListWithOptions(request *DescribeRdMemberL
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询资源目录成员账号列表
+//
+// @param request - DescribeRdMemberListRequest
+//
+// @return DescribeRdMemberListResponse
 func (client *Client) DescribeRdMemberList(request *DescribeRdMemberListRequest) (_result *DescribeRdMemberListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRdMemberListResponse{}
@@ -7085,6 +9080,15 @@ func (client *Client) DescribeRdMemberList(request *DescribeRdMemberListRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询RD状态
+//
+// @param request - DescribeRdStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRdStatusResponse
 func (client *Client) DescribeRdStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRdStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -7107,6 +9111,11 @@ func (client *Client) DescribeRdStatusWithOptions(runtime *util.RuntimeOptions) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询RD状态
+//
+// @return DescribeRdStatusResponse
 func (client *Client) DescribeRdStatus() (_result *DescribeRdStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRdStatusResponse{}
@@ -7118,6 +9127,15 @@ func (client *Client) DescribeRdStatus() (_result *DescribeRdStatusResponse, _er
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7155,6 +9173,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -7166,16 +9191,25 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
-/**
- * You can call the DescribeTraffic operation to query traffic statistics of an Anti-DDoS Origin instance within a specific time period.
- * >  When you call this operation, you must configure the **InstanceId** parameter to specify the Anti-DDoS Origin instance whose traffic statistics you want to query.
- * ## Limits
- * You can call this operation once per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeTrafficRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeTrafficResponse
- */
+// Summary:
+//
+// Queries traffic statistics of an Anti-DDoS Origin instance within a specific time period.
+//
+// Description:
+//
+// You can call the DescribeTraffic operation to query traffic statistics of an Anti-DDoS Origin instance within a specific time period.
+//
+// >  When you call this operation, you must configure the **InstanceId*	- parameter to specify the Anti-DDoS Origin instance whose traffic statistics you want to query.
+//
+// ## Limits
+//
+// You can call this operation once per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeTrafficRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTrafficResponse
 func (client *Client) DescribeTrafficWithOptions(request *DescribeTrafficRequest, runtime *util.RuntimeOptions) (_result *DescribeTrafficResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7241,15 +9275,23 @@ func (client *Client) DescribeTrafficWithOptions(request *DescribeTrafficRequest
 	return _result, _err
 }
 
-/**
- * You can call the DescribeTraffic operation to query traffic statistics of an Anti-DDoS Origin instance within a specific time period.
- * >  When you call this operation, you must configure the **InstanceId** parameter to specify the Anti-DDoS Origin instance whose traffic statistics you want to query.
- * ## Limits
- * You can call this operation once per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeTrafficRequest
- * @return DescribeTrafficResponse
- */
+// Summary:
+//
+// Queries traffic statistics of an Anti-DDoS Origin instance within a specific time period.
+//
+// Description:
+//
+// You can call the DescribeTraffic operation to query traffic statistics of an Anti-DDoS Origin instance within a specific time period.
+//
+// >  When you call this operation, you must configure the **InstanceId*	- parameter to specify the Anti-DDoS Origin instance whose traffic statistics you want to query.
+//
+// ## Limits
+//
+// You can call this operation once per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeTrafficRequest
+//
+// @return DescribeTrafficResponse
 func (client *Client) DescribeTraffic(request *DescribeTrafficRequest) (_result *DescribeTrafficResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTrafficResponse{}
@@ -7261,6 +9303,15 @@ func (client *Client) DescribeTraffic(request *DescribeTrafficRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Dissociates an asset from an Anti-DDoS Origin instance of a paid edition.
+//
+// @param tmpReq - DettachAssetGroupToInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DettachAssetGroupToInstanceResponse
 func (client *Client) DettachAssetGroupToInstanceWithOptions(tmpReq *DettachAssetGroupToInstanceRequest, runtime *util.RuntimeOptions) (_result *DettachAssetGroupToInstanceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -7312,6 +9363,13 @@ func (client *Client) DettachAssetGroupToInstanceWithOptions(tmpReq *DettachAsse
 	return _result, _err
 }
 
+// Summary:
+//
+// Dissociates an asset from an Anti-DDoS Origin instance of a paid edition.
+//
+// @param request - DettachAssetGroupToInstanceRequest
+//
+// @return DettachAssetGroupToInstanceResponse
 func (client *Client) DettachAssetGroupToInstance(request *DettachAssetGroupToInstanceRequest) (_result *DettachAssetGroupToInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DettachAssetGroupToInstanceResponse{}
@@ -7323,6 +9381,15 @@ func (client *Client) DettachAssetGroupToInstance(request *DettachAssetGroupToIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether Log Service is activated.
+//
+// @param request - GetSlsOpenStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSlsOpenStatusResponse
 func (client *Client) GetSlsOpenStatusWithOptions(request *GetSlsOpenStatusRequest, runtime *util.RuntimeOptions) (_result *GetSlsOpenStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7360,6 +9427,13 @@ func (client *Client) GetSlsOpenStatusWithOptions(request *GetSlsOpenStatusReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether Log Service is activated.
+//
+// @param request - GetSlsOpenStatusRequest
+//
+// @return GetSlsOpenStatusResponse
 func (client *Client) GetSlsOpenStatus(request *GetSlsOpenStatusRequest) (_result *GetSlsOpenStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSlsOpenStatusResponse{}
@@ -7371,6 +9445,15 @@ func (client *Client) GetSlsOpenStatus(request *GetSlsOpenStatusRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Anti-DDoS Origin instances for which log analysis is enabled.
+//
+// @param request - ListOpenedAccessLogInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOpenedAccessLogInstancesResponse
 func (client *Client) ListOpenedAccessLogInstancesWithOptions(request *ListOpenedAccessLogInstancesRequest, runtime *util.RuntimeOptions) (_result *ListOpenedAccessLogInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7412,6 +9495,13 @@ func (client *Client) ListOpenedAccessLogInstancesWithOptions(request *ListOpene
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Anti-DDoS Origin instances for which log analysis is enabled.
+//
+// @param request - ListOpenedAccessLogInstancesRequest
+//
+// @return ListOpenedAccessLogInstancesResponse
 func (client *Client) ListOpenedAccessLogInstances(request *ListOpenedAccessLogInstancesRequest) (_result *ListOpenedAccessLogInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOpenedAccessLogInstancesResponse{}
@@ -7423,6 +9513,15 @@ func (client *Client) ListOpenedAccessLogInstances(request *ListOpenedAccessLogI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all tags.
+//
+// @param request - ListTagKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *util.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7472,6 +9571,13 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all tags.
+//
+// @param request - ListTagKeysRequest
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTagKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagKeysResponse{}
@@ -7483,13 +9589,15 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 	return _result, _err
 }
 
-/**
- * You can call the ListTagResources operation to query the tags that are added to Anti-DDoS Origin instances at a time.
- *
- * @param request ListTagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTagResourcesResponse
- */
+// Description:
+//
+// You can call the ListTagResources operation to query the tags that are added to Anti-DDoS Origin instances at a time.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7543,12 +9651,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
-/**
- * You can call the ListTagResources operation to query the tags that are added to Anti-DDoS Origin instances at a time.
- *
- * @param request ListTagResourcesRequest
- * @return ListTagResourcesResponse
- */
+// Description:
+//
+// You can call the ListTagResources operation to query the tags that are added to Anti-DDoS Origin instances at a time.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -7560,15 +9669,23 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
-/**
- * You can call the ModifyRemark operation to add remarks for a single Anti-DDoS Origin instance.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyRemarkRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyRemarkResponse
- */
+// Summary:
+//
+// Adds remarks for a specific Anti-DDoS Origin instance.
+//
+// Description:
+//
+// You can call the ModifyRemark operation to add remarks for a single Anti-DDoS Origin instance.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyRemarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyRemarkResponse
 func (client *Client) ModifyRemarkWithOptions(request *ModifyRemarkRequest, runtime *util.RuntimeOptions) (_result *ModifyRemarkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7614,14 +9731,21 @@ func (client *Client) ModifyRemarkWithOptions(request *ModifyRemarkRequest, runt
 	return _result, _err
 }
 
-/**
- * You can call the ModifyRemark operation to add remarks for a single Anti-DDoS Origin instance.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyRemarkRequest
- * @return ModifyRemarkResponse
- */
+// Summary:
+//
+// Adds remarks for a specific Anti-DDoS Origin instance.
+//
+// Description:
+//
+// You can call the ModifyRemark operation to add remarks for a single Anti-DDoS Origin instance.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyRemarkRequest
+//
+// @return ModifyRemarkResponse
 func (client *Client) ModifyRemark(request *ModifyRemarkRequest) (_result *ModifyRemarkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyRemarkResponse{}
@@ -7633,6 +9757,15 @@ func (client *Client) ModifyRemark(request *ModifyRemarkRequest) (_result *Modif
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the scheduling rule of an on-demand instance.
+//
+// @param request - QuerySchedruleOnDemandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySchedruleOnDemandResponse
 func (client *Client) QuerySchedruleOnDemandWithOptions(request *QuerySchedruleOnDemandRequest, runtime *util.RuntimeOptions) (_result *QuerySchedruleOnDemandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7670,6 +9803,13 @@ func (client *Client) QuerySchedruleOnDemandWithOptions(request *QuerySchedruleO
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the scheduling rule of an on-demand instance.
+//
+// @param request - QuerySchedruleOnDemandRequest
+//
+// @return QuerySchedruleOnDemandResponse
 func (client *Client) QuerySchedruleOnDemand(request *QuerySchedruleOnDemandRequest) (_result *QuerySchedruleOnDemandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySchedruleOnDemandResponse{}
@@ -7681,6 +9821,15 @@ func (client *Client) QuerySchedruleOnDemand(request *QuerySchedruleOnDemandRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放原生防护全局实例
+//
+// @param request - ReleaseDdosOriginInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseDdosOriginInstanceResponse
 func (client *Client) ReleaseDdosOriginInstanceWithOptions(request *ReleaseDdosOriginInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseDdosOriginInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7714,6 +9863,13 @@ func (client *Client) ReleaseDdosOriginInstanceWithOptions(request *ReleaseDdosO
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放原生防护全局实例
+//
+// @param request - ReleaseDdosOriginInstanceRequest
+//
+// @return ReleaseDdosOriginInstanceResponse
 func (client *Client) ReleaseDdosOriginInstance(request *ReleaseDdosOriginInstanceRequest) (_result *ReleaseDdosOriginInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseDdosOriginInstanceResponse{}
@@ -7725,6 +9881,11 @@ func (client *Client) ReleaseDdosOriginInstance(request *ReleaseDdosOriginInstan
 	return _result, _err
 }
 
+// @param request - SetInstanceModeOnDemandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetInstanceModeOnDemandResponse
 func (client *Client) SetInstanceModeOnDemandWithOptions(request *SetInstanceModeOnDemandRequest, runtime *util.RuntimeOptions) (_result *SetInstanceModeOnDemandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7766,6 +9927,9 @@ func (client *Client) SetInstanceModeOnDemandWithOptions(request *SetInstanceMod
 	return _result, _err
 }
 
+// @param request - SetInstanceModeOnDemandRequest
+//
+// @return SetInstanceModeOnDemandResponse
 func (client *Client) SetInstanceModeOnDemand(request *SetInstanceModeOnDemandRequest) (_result *SetInstanceModeOnDemandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetInstanceModeOnDemandResponse{}
@@ -7777,15 +9941,23 @@ func (client *Client) SetInstanceModeOnDemand(request *SetInstanceModeOnDemandRe
 	return _result, _err
 }
 
-/**
- * You can call the TagResources operation to add tags to Anti-DDoS Origin instances.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request TagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return TagResourcesResponse
- */
+// Summary:
+//
+// Adds tags to Anti-DDoS Origin instances.
+//
+// Description:
+//
+// You can call the TagResources operation to add tags to Anti-DDoS Origin instances.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7835,14 +10007,21 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
-/**
- * You can call the TagResources operation to add tags to Anti-DDoS Origin instances.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request TagResourcesRequest
- * @return TagResourcesResponse
- */
+// Summary:
+//
+// Adds tags to Anti-DDoS Origin instances.
+//
+// Description:
+//
+// You can call the TagResources operation to add tags to Anti-DDoS Origin instances.
+//
+// ## Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -7854,6 +10033,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from Anti-DDoS Origin Enterprise instances.
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7907,6 +10095,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from Anti-DDoS Origin Enterprise instances.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
