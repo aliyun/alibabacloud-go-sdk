@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,18 +10,24 @@ import (
 )
 
 type CreateTaskDetail struct {
-	Admins                *CreateTaskDetailAdmins              `json:"Admins,omitempty" xml:"Admins,omitempty" type:"Struct"`
-	AllowAppendData       *bool                                `json:"AllowAppendData,omitempty" xml:"AllowAppendData,omitempty"`
-	AssignConfig          *TaskAssginConfig                    `json:"AssignConfig,omitempty" xml:"AssignConfig,omitempty"`
-	DatasetProxyRelations []*DatasetProxyConfig                `json:"DatasetProxyRelations,omitempty" xml:"DatasetProxyRelations,omitempty" type:"Repeated"`
-	Exif                  map[string]interface{}               `json:"Exif,omitempty" xml:"Exif,omitempty"`
-	Tags                  []*string                            `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TaskName              *string                              `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskTemplateConfig    *TaskTemplateConfig                  `json:"TaskTemplateConfig,omitempty" xml:"TaskTemplateConfig,omitempty"`
-	TaskWorkflow          []*CreateTaskDetailTaskWorkflow      `json:"TaskWorkflow,omitempty" xml:"TaskWorkflow,omitempty" type:"Repeated"`
-	TemplateId            *string                              `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UUID                  *string                              `json:"UUID,omitempty" xml:"UUID,omitempty"`
-	VoteConfigs           map[string]*CreateTaskDetailVoteInfo `json:"VoteConfigs,omitempty" xml:"VoteConfigs,omitempty"`
+	Admins          *CreateTaskDetailAdmins `json:"Admins,omitempty" xml:"Admins,omitempty" type:"Struct"`
+	AllowAppendData *bool                   `json:"AllowAppendData,omitempty" xml:"AllowAppendData,omitempty"`
+	// This parameter is required.
+	AssignConfig *TaskAssginConfig `json:"AssignConfig,omitempty" xml:"AssignConfig,omitempty"`
+	// This parameter is required.
+	DatasetProxyRelations []*DatasetProxyConfig  `json:"DatasetProxyRelations,omitempty" xml:"DatasetProxyRelations,omitempty" type:"Repeated"`
+	Exif                  map[string]interface{} `json:"Exif,omitempty" xml:"Exif,omitempty"`
+	Tags                  []*string              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// This parameter is required.
+	TaskName           *string             `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskTemplateConfig *TaskTemplateConfig `json:"TaskTemplateConfig,omitempty" xml:"TaskTemplateConfig,omitempty"`
+	// This parameter is required.
+	TaskWorkflow []*CreateTaskDetailTaskWorkflow `json:"TaskWorkflow,omitempty" xml:"TaskWorkflow,omitempty" type:"Repeated"`
+	// This parameter is required.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// This parameter is required.
+	UUID        *string                              `json:"UUID,omitempty" xml:"UUID,omitempty"`
+	VoteConfigs map[string]*CreateTaskDetailVoteInfo `json:"VoteConfigs,omitempty" xml:"VoteConfigs,omitempty"`
 }
 
 func (s CreateTaskDetail) String() string {
@@ -130,7 +133,13 @@ func (s *CreateTaskDetailTaskWorkflow) SetNodeName(v string) *CreateTaskDetailTa
 }
 
 type CreateTaskDetailVoteInfo struct {
+	// example:
+	//
+	// 3
 	MinVote *int64 `json:"MinVote,omitempty" xml:"MinVote,omitempty"`
+	// example:
+	//
+	// 3
 	VoteNum *int64 `json:"VoteNum,omitempty" xml:"VoteNum,omitempty"`
 }
 
@@ -153,8 +162,15 @@ func (s *CreateTaskDetailVoteInfo) SetVoteNum(v int64) *CreateTaskDetailVoteInfo
 }
 
 type DatasetProxyConfig struct {
-	DatasetType     *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
-	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// LABEL
+	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// example:
+	//
+	// PAI
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// This parameter is required.
 	SourceDatasetId *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
 }
 
@@ -299,16 +315,46 @@ func (s *JobJobResult) SetResultLink(v string) *JobJobResult {
 }
 
 type MarkResult struct {
-	IsNeedVoteJudge  *bool   `json:"IsNeedVoteJudge,omitempty" xml:"IsNeedVoteJudge,omitempty"`
-	MarkResult       *string `json:"MarkResult,omitempty" xml:"MarkResult,omitempty"`
-	MarkResultId     *string `json:"MarkResultId,omitempty" xml:"MarkResultId,omitempty"`
-	MarkTime         *string `json:"MarkTime,omitempty" xml:"MarkTime,omitempty"`
-	MarkTitle        *string `json:"MarkTitle,omitempty" xml:"MarkTitle,omitempty"`
-	Progress         *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	QuestionId       *string `json:"QuestionId,omitempty" xml:"QuestionId,omitempty"`
-	ResultType       *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	// example:
+	//
+	// False
+	IsNeedVoteJudge *bool `json:"IsNeedVoteJudge,omitempty" xml:"IsNeedVoteJudge,omitempty"`
+	// example:
+	//
+	// b
+	MarkResult *string `json:"MarkResult,omitempty" xml:"MarkResult,omitempty"`
+	// example:
+	//
+	// 1500758849089597440
+	MarkResultId *string `json:"MarkResultId,omitempty" xml:"MarkResultId,omitempty"`
+	// example:
+	//
+	// Mon Mar 07 17:02:48 CST 2022
+	MarkTime *string `json:"MarkTime,omitempty" xml:"MarkTime,omitempty"`
+	// example:
+	//
+	// 单选
+	MarkTitle *string `json:"MarkTitle,omitempty" xml:"MarkTitle,omitempty"`
+	// example:
+	//
+	// None
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// 1
+	QuestionId *string `json:"QuestionId,omitempty" xml:"QuestionId,omitempty"`
+	// example:
+	//
+	// RADIO
+	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	// example:
+	//
+	// 1500758849358032896
 	UserMarkResultId *string `json:"UserMarkResultId,omitempty" xml:"UserMarkResultId,omitempty"`
-	Version          *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 1646643768468
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s MarkResult) String() string {
@@ -407,10 +453,12 @@ func (s *OpenDatasetProxyAppendDataRequest) SetUUID(v string) *OpenDatasetProxyA
 type QuestionOption struct {
 	Children []*QuestionOption `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
 	Color    *string           `json:"Color,omitempty" xml:"Color,omitempty"`
-	Key      *string           `json:"Key,omitempty" xml:"Key,omitempty"`
-	Label    *string           `json:"Label,omitempty" xml:"Label,omitempty"`
-	Remark   *string           `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Shortcut *string           `json:"Shortcut,omitempty" xml:"Shortcut,omitempty"`
+	// This parameter is required.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	Label    *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Shortcut *string `json:"Shortcut,omitempty" xml:"Shortcut,omitempty"`
 }
 
 func (s QuestionOption) String() string {
@@ -452,22 +500,65 @@ func (s *QuestionOption) SetShortcut(v string) *QuestionOption {
 }
 
 type QuestionPlugin struct {
-	CanSelect      *bool                  `json:"CanSelect,omitempty" xml:"CanSelect,omitempty"`
-	Children       []*QuestionPlugin      `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	DefaultResult  *string                `json:"DefaultResult,omitempty" xml:"DefaultResult,omitempty"`
-	Display        *bool                  `json:"Display,omitempty" xml:"Display,omitempty"`
-	Exif           map[string]interface{} `json:"Exif,omitempty" xml:"Exif,omitempty"`
-	HotKeyMap      *string                `json:"HotKeyMap,omitempty" xml:"HotKeyMap,omitempty"`
-	MarkTitle      *string                `json:"MarkTitle,omitempty" xml:"MarkTitle,omitempty"`
-	MarkTitleAlias *string                `json:"MarkTitleAlias,omitempty" xml:"MarkTitleAlias,omitempty"`
-	MustFill       *bool                  `json:"MustFill,omitempty" xml:"MustFill,omitempty"`
-	Options        []*QuestionOption      `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
-	PreOptions     []*string              `json:"PreOptions,omitempty" xml:"PreOptions,omitempty" type:"Repeated"`
-	QuestionId     *string                `json:"QuestionId,omitempty" xml:"QuestionId,omitempty"`
-	Rule           *string                `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	SelectGroup    *string                `json:"SelectGroup,omitempty" xml:"SelectGroup,omitempty"`
-	Selected       *bool                  `json:"Selected,omitempty" xml:"Selected,omitempty"`
-	Type           *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// False
+	CanSelect *bool             `json:"CanSelect,omitempty" xml:"CanSelect,omitempty"`
+	Children  []*QuestionPlugin `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	// example:
+	//
+	// None
+	DefaultResult *string `json:"DefaultResult,omitempty" xml:"DefaultResult,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// True
+	Display *bool                  `json:"Display,omitempty" xml:"Display,omitempty"`
+	Exif    map[string]interface{} `json:"Exif,omitempty" xml:"Exif,omitempty"`
+	// example:
+	//
+	// None
+	HotKeyMap *string `json:"HotKeyMap,omitempty" xml:"HotKeyMap,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 内部单选
+	MarkTitle *string `json:"MarkTitle,omitempty" xml:"MarkTitle,omitempty"`
+	// example:
+	//
+	// None
+	MarkTitleAlias *string `json:"MarkTitleAlias,omitempty" xml:"MarkTitleAlias,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// False
+	MustFill *bool `json:"MustFill,omitempty" xml:"MustFill,omitempty"`
+	// This parameter is required.
+	Options    []*QuestionOption `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
+	PreOptions []*string         `json:"PreOptions,omitempty" xml:"PreOptions,omitempty" type:"Repeated"`
+	// This parameter is required.
+	QuestionId *string `json:"QuestionId,omitempty" xml:"QuestionId,omitempty"`
+	// example:
+	//
+	// None
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// None
+	SelectGroup *string `json:"SelectGroup,omitempty" xml:"SelectGroup,omitempty"`
+	// example:
+	//
+	// False
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RADIO
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QuestionPlugin) String() string {
@@ -559,9 +650,15 @@ func (s *QuestionPlugin) SetType(v string) *QuestionPlugin {
 }
 
 type SimpleSubtask struct {
-	Items     []*SimpleSubtaskItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	Status    *string               `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubtaskId *int64                `json:"SubtaskId,omitempty" xml:"SubtaskId,omitempty"`
+	Items []*SimpleSubtaskItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// FINISHED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1500682457270333440
+	SubtaskId *int64 `json:"SubtaskId,omitempty" xml:"SubtaskId,omitempty"`
 }
 
 func (s SimpleSubtask) String() string {
@@ -588,17 +685,49 @@ func (s *SimpleSubtask) SetSubtaskId(v int64) *SimpleSubtask {
 }
 
 type SimpleSubtaskItems struct {
-	AbandonFlag    *bool   `json:"AbandonFlag,omitempty" xml:"AbandonFlag,omitempty"`
-	AbandonRemark  *string `json:"AbandonRemark,omitempty" xml:"AbandonRemark,omitempty"`
-	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	FeedbackFlag   *bool   `json:"FeedbackFlag,omitempty" xml:"FeedbackFlag,omitempty"`
+	// example:
+	//
+	// False
+	AbandonFlag *bool `json:"AbandonFlag,omitempty" xml:"AbandonFlag,omitempty"`
+	// example:
+	//
+	// None
+	AbandonRemark *string `json:"AbandonRemark,omitempty" xml:"AbandonRemark,omitempty"`
+	// example:
+	//
+	// 1957578084
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// example:
+	//
+	// False
+	FeedbackFlag *bool `json:"FeedbackFlag,omitempty" xml:"FeedbackFlag,omitempty"`
+	// example:
+	//
+	// None
 	FeedbackRemark *string `json:"FeedbackRemark,omitempty" xml:"FeedbackRemark,omitempty"`
-	FixedFlag      *bool   `json:"FixedFlag,omitempty" xml:"FixedFlag,omitempty"`
-	ItemId         *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	Mine           *int64  `json:"Mine,omitempty" xml:"Mine,omitempty"`
-	RejectFlag     *bool   `json:"RejectFlag,omitempty" xml:"RejectFlag,omitempty"`
-	State          *string `json:"State,omitempty" xml:"State,omitempty"`
-	Weight         *int64  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// example:
+	//
+	// False
+	FixedFlag *bool `json:"FixedFlag,omitempty" xml:"FixedFlag,omitempty"`
+	// if can be null:
+	// true
+	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// example:
+	//
+	// 0
+	Mine *int64 `json:"Mine,omitempty" xml:"Mine,omitempty"`
+	// example:
+	//
+	// False
+	RejectFlag *bool `json:"RejectFlag,omitempty" xml:"RejectFlag,omitempty"`
+	// example:
+	//
+	// HANDLING
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 311011
+	Weight *int64 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s SimpleSubtaskItems) String() string {
@@ -665,7 +794,9 @@ func (s *SimpleSubtaskItems) SetWeight(v int64) *SimpleSubtaskItems {
 }
 
 type SimpleTask struct {
-	Archived        *bool       `json:"Archived,omitempty" xml:"Archived,omitempty"`
+	Archived *bool `json:"Archived,omitempty" xml:"Archived,omitempty"`
+	// if can be null:
+	// true
 	ArchivedInfos   *string     `json:"ArchivedInfos,omitempty" xml:"ArchivedInfos,omitempty"`
 	Creator         *SimpleUser `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	GmtCreateTime   *string     `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
@@ -673,17 +804,23 @@ type SimpleTask struct {
 	LabelStyle      *string     `json:"LabelStyle,omitempty" xml:"LabelStyle,omitempty"`
 	Modifier        *SimpleUser `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
 	RefTaskId       *string     `json:"RefTaskId,omitempty" xml:"RefTaskId,omitempty"`
-	Remark          *string     `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Stage           *string     `json:"Stage,omitempty" xml:"Stage,omitempty"`
-	Status          *string     `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags            []*string   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TaskId          *string     `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName        *string     `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskType        *string     `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TemplateId      *string     `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TenantId        *string     `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UUID            *string     `json:"UUID,omitempty" xml:"UUID,omitempty"`
-	WorkflowNodes   []*string   `json:"WorkflowNodes,omitempty" xml:"WorkflowNodes,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Stage  *string `json:"Stage,omitempty" xml:"Stage,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// if can be null:
+	// true
+	Tags     []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TaskId   *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName *string   `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType *string   `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// if can be null:
+	// true
+	TemplateId    *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TenantId      *string   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UUID          *string   `json:"UUID,omitempty" xml:"UUID,omitempty"`
+	WorkflowNodes []*string `json:"WorkflowNodes,omitempty" xml:"WorkflowNodes,omitempty" type:"Repeated"`
 }
 
 func (s SimpleTask) String() string {
@@ -790,17 +927,44 @@ func (s *SimpleTask) SetWorkflowNodes(v []*string) *SimpleTask {
 }
 
 type SimpleTemplate struct {
-	AbandonReasons  *string   `json:"AbandonReasons,omitempty" xml:"AbandonReasons,omitempty"`
-	Description     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreateTime   *string   `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string   `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	SharedMode      *string   `json:"SharedMode,omitempty" xml:"SharedMode,omitempty"`
-	Status          *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags            []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateId      *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName    *string   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TenantId        *string   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Type            *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// None
+	AbandonReasons *string `json:"AbandonReasons,omitempty" xml:"AbandonReasons,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2022-07-12 14:21:08
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2022-07-12 14:21:08
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// None
+	SharedMode *string `json:"SharedMode,omitempty" xml:"SharedMode,omitempty"`
+	// example:
+	//
+	// DRAFT
+	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1546741431673270272
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 图片分割组合77aa
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// GARDAW134
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// CUSTOM
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SimpleTemplate) String() string {
@@ -932,11 +1096,16 @@ func (s *SimpleTenant) SetUUID(v string) *SimpleTenant {
 }
 
 type SimpleUser struct {
-	AccountNo   *string `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
+	AccountNo *string `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
+	// example:
+	//
+	// BUC
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	UserId      *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// if can be null:
+	// true
+	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	UserId   *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s SimpleUser) String() string {
@@ -1037,18 +1206,32 @@ func (s *SingleTenant) SetUUID(v string) *SingleTenant {
 }
 
 type SubtaskDetail struct {
-	CanDiscard      *bool                 `json:"CanDiscard,omitempty" xml:"CanDiscard,omitempty"`
-	CanReassign     *bool                 `json:"CanReassign,omitempty" xml:"CanReassign,omitempty"`
-	CanRelease      *bool                 `json:"CanRelease,omitempty" xml:"CanRelease,omitempty"`
-	CurrentWorkNode *string               `json:"CurrentWorkNode,omitempty" xml:"CurrentWorkNode,omitempty"`
-	ExtConfigs      *string               `json:"ExtConfigs,omitempty" xml:"ExtConfigs,omitempty"`
-	Items           []*SubtaskDetailItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	Status          *string               `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubtaskId       *string               `json:"SubtaskId,omitempty" xml:"SubtaskId,omitempty"`
-	TaskId          *string               `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Weight          *int64                `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	WorkNodeState   *string               `json:"WorkNodeState,omitempty" xml:"WorkNodeState,omitempty"`
-	Workforce       []*Workforce          `json:"Workforce,omitempty" xml:"Workforce,omitempty" type:"Repeated"`
+	CanDiscard  *bool `json:"CanDiscard,omitempty" xml:"CanDiscard,omitempty"`
+	CanReassign *bool `json:"CanReassign,omitempty" xml:"CanReassign,omitempty"`
+	CanRelease  *bool `json:"CanRelease,omitempty" xml:"CanRelease,omitempty"`
+	// example:
+	//
+	// MARK
+	CurrentWorkNode *string `json:"CurrentWorkNode,omitempty" xml:"CurrentWorkNode,omitempty"`
+	// if can be null:
+	// true
+	ExtConfigs *string               `json:"ExtConfigs,omitempty" xml:"ExtConfigs,omitempty"`
+	Items      []*SubtaskDetailItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// FINISHED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1500682457270333440
+	SubtaskId *string `json:"SubtaskId,omitempty" xml:"SubtaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Weight    *int64  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// example:
+	//
+	// FINISHED
+	WorkNodeState *string      `json:"WorkNodeState,omitempty" xml:"WorkNodeState,omitempty"`
+	Workforce     []*Workforce `json:"Workforce,omitempty" xml:"Workforce,omitempty" type:"Repeated"`
 }
 
 func (s SubtaskDetail) String() string {
@@ -1120,16 +1303,46 @@ func (s *SubtaskDetail) SetWorkforce(v []*Workforce) *SubtaskDetail {
 }
 
 type SubtaskDetailItems struct {
-	AbandonFlag    *bool   `json:"AbandonFlag,omitempty" xml:"AbandonFlag,omitempty"`
-	AbandonRemark  *string `json:"AbandonRemark,omitempty" xml:"AbandonRemark,omitempty"`
-	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	FeedbackFlag   *bool   `json:"FeedbackFlag,omitempty" xml:"FeedbackFlag,omitempty"`
+	// example:
+	//
+	// False
+	AbandonFlag *bool `json:"AbandonFlag,omitempty" xml:"AbandonFlag,omitempty"`
+	// example:
+	//
+	// None
+	AbandonRemark *string `json:"AbandonRemark,omitempty" xml:"AbandonRemark,omitempty"`
+	// example:
+	//
+	// 1957578084
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// example:
+	//
+	// False
+	FeedbackFlag *bool `json:"FeedbackFlag,omitempty" xml:"FeedbackFlag,omitempty"`
+	// example:
+	//
+	// None
 	FeedbackRemark *string `json:"FeedbackRemark,omitempty" xml:"FeedbackRemark,omitempty"`
-	FixedFlag      *bool   `json:"FixedFlag,omitempty" xml:"FixedFlag,omitempty"`
-	Mine           *int64  `json:"Mine,omitempty" xml:"Mine,omitempty"`
-	RejectFlag     *bool   `json:"RejectFlag,omitempty" xml:"RejectFlag,omitempty"`
-	State          *string `json:"State,omitempty" xml:"State,omitempty"`
-	Weight         *int64  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// example:
+	//
+	// False
+	FixedFlag *bool `json:"FixedFlag,omitempty" xml:"FixedFlag,omitempty"`
+	// example:
+	//
+	// 0
+	Mine *int64 `json:"Mine,omitempty" xml:"Mine,omitempty"`
+	// example:
+	//
+	// False
+	RejectFlag *bool `json:"RejectFlag,omitempty" xml:"RejectFlag,omitempty"`
+	// example:
+	//
+	// HANDLING
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 311011
+	Weight *int64 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s SubtaskDetailItems) String() string {
@@ -1192,8 +1405,14 @@ func (s *SubtaskDetailItems) SetWeight(v int64) *SubtaskDetailItems {
 
 type SubtaskItemDetail struct {
 	Annotations []*SubtaskItemDetailAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
-	DataSource  map[string]interface{}          `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	ItemId      *int64                          `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// example:
+	//
+	// None
+	DataSource map[string]interface{} `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	// example:
+	//
+	// 1500758847176994816
+	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 }
 
 func (s SubtaskItemDetail) String() string {
@@ -1220,16 +1439,46 @@ func (s *SubtaskItemDetail) SetItemId(v int64) *SubtaskItemDetail {
 }
 
 type SubtaskItemDetailAnnotations struct {
-	AbandonFlag    *bool   `json:"AbandonFlag,omitempty" xml:"AbandonFlag,omitempty"`
-	AbandonRemark  *string `json:"AbandonRemark,omitempty" xml:"AbandonRemark,omitempty"`
-	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	FeedbackFlag   *bool   `json:"FeedbackFlag,omitempty" xml:"FeedbackFlag,omitempty"`
+	// example:
+	//
+	// False
+	AbandonFlag *bool `json:"AbandonFlag,omitempty" xml:"AbandonFlag,omitempty"`
+	// example:
+	//
+	// None
+	AbandonRemark *string `json:"AbandonRemark,omitempty" xml:"AbandonRemark,omitempty"`
+	// example:
+	//
+	// 1957578084
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// example:
+	//
+	// False
+	FeedbackFlag *bool `json:"FeedbackFlag,omitempty" xml:"FeedbackFlag,omitempty"`
+	// example:
+	//
+	// None
 	FeedbackRemark *string `json:"FeedbackRemark,omitempty" xml:"FeedbackRemark,omitempty"`
-	FixedFlag      *bool   `json:"FixedFlag,omitempty" xml:"FixedFlag,omitempty"`
-	Mine           *int64  `json:"Mine,omitempty" xml:"Mine,omitempty"`
-	RejectFlag     *bool   `json:"RejectFlag,omitempty" xml:"RejectFlag,omitempty"`
-	State          *string `json:"State,omitempty" xml:"State,omitempty"`
-	Weight         *int64  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// example:
+	//
+	// False
+	FixedFlag *bool `json:"FixedFlag,omitempty" xml:"FixedFlag,omitempty"`
+	// example:
+	//
+	// 0
+	Mine *int64 `json:"Mine,omitempty" xml:"Mine,omitempty"`
+	// example:
+	//
+	// False
+	RejectFlag *bool `json:"RejectFlag,omitempty" xml:"RejectFlag,omitempty"`
+	// example:
+	//
+	// HANDLING
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 311011
+	Weight *int64 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s SubtaskItemDetailAnnotations) String() string {
@@ -1326,10 +1575,12 @@ func (s *TaskAssginConfig) SetAssignType(v string) *TaskAssginConfig {
 }
 
 type TaskDetail struct {
-	Admins                []*SimpleUser                      `json:"Admins,omitempty" xml:"Admins,omitempty" type:"Repeated"`
-	AlertTime             *int64                             `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
-	AllowAppendData       *bool                              `json:"AllowAppendData,omitempty" xml:"AllowAppendData,omitempty"`
-	Archived              *bool                              `json:"Archived,omitempty" xml:"Archived,omitempty"`
+	Admins          []*SimpleUser `json:"Admins,omitempty" xml:"Admins,omitempty" type:"Repeated"`
+	AlertTime       *int64        `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
+	AllowAppendData *bool         `json:"AllowAppendData,omitempty" xml:"AllowAppendData,omitempty"`
+	Archived        *bool         `json:"Archived,omitempty" xml:"Archived,omitempty"`
+	// if can be null:
+	// true
 	ArchivedInfos         *string                            `json:"ArchivedInfos,omitempty" xml:"ArchivedInfos,omitempty"`
 	AssignConfig          map[string]interface{}             `json:"AssignConfig,omitempty" xml:"AssignConfig,omitempty"`
 	Creator               *SimpleUser                        `json:"Creator,omitempty" xml:"Creator,omitempty"`
@@ -1344,23 +1595,29 @@ type TaskDetail struct {
 	PeriodConfig          map[string]interface{}             `json:"PeriodConfig,omitempty" xml:"PeriodConfig,omitempty"`
 	RefTaskId             *string                            `json:"RefTaskId,omitempty" xml:"RefTaskId,omitempty"`
 	RelateTaskConfig      map[string]interface{}             `json:"RelateTaskConfig,omitempty" xml:"RelateTaskConfig,omitempty"`
-	Remark                *string                            `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResultCallbackConfig  map[string]interface{}             `json:"ResultCallbackConfig,omitempty" xml:"ResultCallbackConfig,omitempty"`
-	Stage                 *string                            `json:"Stage,omitempty" xml:"Stage,omitempty"`
-	Status                *string                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                  []*string                          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TaskId                *string                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName              *string                            `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskTemplateConfig    *TaskDetailTaskTemplateConfig      `json:"TaskTemplateConfig,omitempty" xml:"TaskTemplateConfig,omitempty" type:"Struct"`
-	TaskType              *string                            `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TaskWorkflow          []*TaskDetailTaskWorkflow          `json:"TaskWorkflow,omitempty" xml:"TaskWorkflow,omitempty" type:"Repeated"`
-	TemplateId            *string                            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TenantId              *string                            `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	TenantName            *string                            `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	UUID                  *string                            `json:"UUID,omitempty" xml:"UUID,omitempty"`
-	VoteConfigs           map[string]interface{}             `json:"VoteConfigs,omitempty" xml:"VoteConfigs,omitempty"`
-	WorkflowNodes         []*string                          `json:"WorkflowNodes,omitempty" xml:"WorkflowNodes,omitempty" type:"Repeated"`
-	RunMsg                *string                            `json:"runMsg,omitempty" xml:"runMsg,omitempty"`
+	// if can be null:
+	// true
+	Remark               *string                `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResultCallbackConfig map[string]interface{} `json:"ResultCallbackConfig,omitempty" xml:"ResultCallbackConfig,omitempty"`
+	Stage                *string                `json:"Stage,omitempty" xml:"Stage,omitempty"`
+	Status               *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	// if can be null:
+	// true
+	Tags               []*string                     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TaskId             *string                       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName           *string                       `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskTemplateConfig *TaskDetailTaskTemplateConfig `json:"TaskTemplateConfig,omitempty" xml:"TaskTemplateConfig,omitempty" type:"Struct"`
+	TaskType           *string                       `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskWorkflow       []*TaskDetailTaskWorkflow     `json:"TaskWorkflow,omitempty" xml:"TaskWorkflow,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	TemplateId    *string                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TenantId      *string                `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantName    *string                `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	UUID          *string                `json:"UUID,omitempty" xml:"UUID,omitempty"`
+	VoteConfigs   map[string]interface{} `json:"VoteConfigs,omitempty" xml:"VoteConfigs,omitempty"`
+	WorkflowNodes []*string              `json:"WorkflowNodes,omitempty" xml:"WorkflowNodes,omitempty" type:"Repeated"`
+	RunMsg        *string                `json:"runMsg,omitempty" xml:"runMsg,omitempty"`
 }
 
 func (s TaskDetail) String() string {
@@ -1687,20 +1944,22 @@ type TaskStatistic struct {
 	FinishedItemCount    *int64   `json:"FinishedItemCount,omitempty" xml:"FinishedItemCount,omitempty"`
 	FinishedSubtaskCount *int64   `json:"FinishedSubtaskCount,omitempty" xml:"FinishedSubtaskCount,omitempty"`
 	MarkEfficiency       *float32 `json:"MarkEfficiency,omitempty" xml:"MarkEfficiency,omitempty"`
-	PreMarkFixedCount    *float32 `json:"PreMarkFixedCount,omitempty" xml:"PreMarkFixedCount,omitempty"`
-	SampledAccuracy      *float32 `json:"SampledAccuracy,omitempty" xml:"SampledAccuracy,omitempty"`
-	SampledErrorCount    *float32 `json:"SampledErrorCount,omitempty" xml:"SampledErrorCount,omitempty"`
-	SampledRejectCount   *float32 `json:"SampledRejectCount,omitempty" xml:"SampledRejectCount,omitempty"`
-	SamplingAccuracy     *float32 `json:"SamplingAccuracy,omitempty" xml:"SamplingAccuracy,omitempty"`
-	TotalCheckCount      *float32 `json:"TotalCheckCount,omitempty" xml:"TotalCheckCount,omitempty"`
-	TotalCheckTime       *float32 `json:"TotalCheckTime,omitempty" xml:"TotalCheckTime,omitempty"`
-	TotalCheckedCount    *float32 `json:"TotalCheckedCount,omitempty" xml:"TotalCheckedCount,omitempty"`
-	TotalItemCount       *int64   `json:"TotalItemCount,omitempty" xml:"TotalItemCount,omitempty"`
-	TotalMarkTime        *float32 `json:"TotalMarkTime,omitempty" xml:"TotalMarkTime,omitempty"`
-	TotalSampledCount    *float32 `json:"TotalSampledCount,omitempty" xml:"TotalSampledCount,omitempty"`
-	TotalSamplingCount   *float32 `json:"TotalSamplingCount,omitempty" xml:"TotalSamplingCount,omitempty"`
-	TotalSubtaskCount    *int64   `json:"TotalSubtaskCount,omitempty" xml:"TotalSubtaskCount,omitempty"`
-	TotalWorkTime        *float32 `json:"TotalWorkTime,omitempty" xml:"TotalWorkTime,omitempty"`
+	// if can be null:
+	// true
+	PreMarkFixedCount  *float32 `json:"PreMarkFixedCount,omitempty" xml:"PreMarkFixedCount,omitempty"`
+	SampledAccuracy    *float32 `json:"SampledAccuracy,omitempty" xml:"SampledAccuracy,omitempty"`
+	SampledErrorCount  *float32 `json:"SampledErrorCount,omitempty" xml:"SampledErrorCount,omitempty"`
+	SampledRejectCount *float32 `json:"SampledRejectCount,omitempty" xml:"SampledRejectCount,omitempty"`
+	SamplingAccuracy   *float32 `json:"SamplingAccuracy,omitempty" xml:"SamplingAccuracy,omitempty"`
+	TotalCheckCount    *float32 `json:"TotalCheckCount,omitempty" xml:"TotalCheckCount,omitempty"`
+	TotalCheckTime     *float32 `json:"TotalCheckTime,omitempty" xml:"TotalCheckTime,omitempty"`
+	TotalCheckedCount  *float32 `json:"TotalCheckedCount,omitempty" xml:"TotalCheckedCount,omitempty"`
+	TotalItemCount     *int64   `json:"TotalItemCount,omitempty" xml:"TotalItemCount,omitempty"`
+	TotalMarkTime      *float32 `json:"TotalMarkTime,omitempty" xml:"TotalMarkTime,omitempty"`
+	TotalSampledCount  *float32 `json:"TotalSampledCount,omitempty" xml:"TotalSampledCount,omitempty"`
+	TotalSamplingCount *float32 `json:"TotalSamplingCount,omitempty" xml:"TotalSamplingCount,omitempty"`
+	TotalSubtaskCount  *int64   `json:"TotalSubtaskCount,omitempty" xml:"TotalSubtaskCount,omitempty"`
+	TotalWorkTime      *float32 `json:"TotalWorkTime,omitempty" xml:"TotalWorkTime,omitempty"`
 }
 
 func (s TaskStatistic) String() string {
@@ -1878,10 +2137,18 @@ func (s *TaskTemplateConfig) SetTemplateRelationId(v string) *TaskTemplateConfig
 }
 
 type TaskTemplateOptionConfig struct {
-	DefaultResult *string           `json:"DefaultResult,omitempty" xml:"DefaultResult,omitempty"`
-	Options       []*QuestionOption `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
-	PreOptions    []*string         `json:"PreOptions,omitempty" xml:"PreOptions,omitempty" type:"Repeated"`
-	Rule          *string           `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// if can be null:
+	// false
+	DefaultResult *string `json:"DefaultResult,omitempty" xml:"DefaultResult,omitempty"`
+	// if can be null:
+	// false
+	Options []*QuestionOption `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
+	// if can be null:
+	// false
+	PreOptions []*string `json:"PreOptions,omitempty" xml:"PreOptions,omitempty" type:"Repeated"`
+	// if can be null:
+	// false
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
 }
 
 func (s TaskTemplateOptionConfig) String() string {
@@ -1913,16 +2180,19 @@ func (s *TaskTemplateOptionConfig) SetRule(v string) *TaskTemplateOptionConfig {
 }
 
 type TemplateDTO struct {
-	Classify        *string                  `json:"Classify,omitempty" xml:"Classify,omitempty"`
-	Description     *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Exif            map[string]interface{}   `json:"Exif,omitempty" xml:"Exif,omitempty"`
+	Classify    *string                `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Exif        map[string]interface{} `json:"Exif,omitempty" xml:"Exif,omitempty"`
+	// This parameter is required.
 	QuestionConfigs []*QuestionPlugin        `json:"QuestionConfigs,omitempty" xml:"QuestionConfigs,omitempty" type:"Repeated"`
 	RobotConfigs    []map[string]interface{} `json:"RobotConfigs,omitempty" xml:"RobotConfigs,omitempty" type:"Repeated"`
 	SharedMode      *string                  `json:"SharedMode,omitempty" xml:"SharedMode,omitempty"`
 	Tags            []*string                `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TemplateId      *string                  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName    *string                  `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	ViewConfigs     *TemplateDTOViewConfigs  `json:"ViewConfigs,omitempty" xml:"ViewConfigs,omitempty" type:"Struct"`
+	// This parameter is required.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// This parameter is required.
+	ViewConfigs *TemplateDTOViewConfigs `json:"ViewConfigs,omitempty" xml:"ViewConfigs,omitempty" type:"Struct"`
 }
 
 func (s TemplateDTO) String() string {
@@ -2131,13 +2401,22 @@ func (s *TemplateDetailViewConfigs) SetViewPlugins(v []*ViewPlugin) *TemplateDet
 }
 
 type TemplateQuestion struct {
-	Children   []*TemplateQuestion    `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	Exif       map[string]interface{} `json:"Exif,omitempty" xml:"Exif,omitempty"`
-	MarkTitle  *string                `json:"MarkTitle,omitempty" xml:"MarkTitle,omitempty"`
-	Options    []*QuestionOption      `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
-	PreOptions []*string              `json:"PreOptions,omitempty" xml:"PreOptions,omitempty" type:"Repeated"`
-	QuestionId *int64                 `json:"QuestionId,omitempty" xml:"QuestionId,omitempty"`
-	Type       *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Children []*TemplateQuestion    `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	Exif     map[string]interface{} `json:"Exif,omitempty" xml:"Exif,omitempty"`
+	// example:
+	//
+	// 题目1
+	MarkTitle  *string           `json:"MarkTitle,omitempty" xml:"MarkTitle,omitempty"`
+	Options    []*QuestionOption `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
+	PreOptions []*string         `json:"PreOptions,omitempty" xml:"PreOptions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	QuestionId *int64 `json:"QuestionId,omitempty" xml:"QuestionId,omitempty"`
+	// example:
+	//
+	// RADIO/GROUP
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s TemplateQuestion) String() string {
@@ -2201,10 +2480,19 @@ func (s *TemplateView) SetFields(v []*TemplateViewFields) *TemplateView {
 }
 
 type TemplateViewFields struct {
-	DisplayOriImg *bool                        `json:"DisplayOriImg,omitempty" xml:"DisplayOriImg,omitempty"`
-	FieldName     *string                      `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	Type          *string                      `json:"Type,omitempty" xml:"Type,omitempty"`
-	VisitInfo     *TemplateViewFieldsVisitInfo `json:"VisitInfo,omitempty" xml:"VisitInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// True
+	DisplayOriImg *bool `json:"DisplayOriImg,omitempty" xml:"DisplayOriImg,omitempty"`
+	// example:
+	//
+	// url
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// example:
+	//
+	// IMG
+	Type      *string                      `json:"Type,omitempty" xml:"Type,omitempty"`
+	VisitInfo *TemplateViewFieldsVisitInfo `json:"VisitInfo,omitempty" xml:"VisitInfo,omitempty" type:"Struct"`
 }
 
 func (s TemplateViewFields) String() string {
@@ -2371,16 +2659,20 @@ func (s *UserStatistic) SetUserId(v string) *UserStatistic {
 }
 
 type ViewPlugin struct {
-	BindField           *string                `json:"BindField,omitempty" xml:"BindField,omitempty"`
-	Convertor           *string                `json:"Convertor,omitempty" xml:"Convertor,omitempty"`
-	CorsProxy           *bool                  `json:"CorsProxy,omitempty" xml:"CorsProxy,omitempty"`
+	// This parameter is required.
+	BindField *string `json:"BindField,omitempty" xml:"BindField,omitempty"`
+	Convertor *string `json:"Convertor,omitempty" xml:"Convertor,omitempty"`
+	// This parameter is required.
+	CorsProxy *bool `json:"CorsProxy,omitempty" xml:"CorsProxy,omitempty"`
+	// This parameter is required.
 	DisplayOriImg       *bool                  `json:"DisplayOriImg,omitempty" xml:"DisplayOriImg,omitempty"`
 	Exif                map[string]interface{} `json:"Exif,omitempty" xml:"Exif,omitempty"`
 	Hide                *bool                  `json:"Hide,omitempty" xml:"Hide,omitempty"`
 	Plugins             map[string]interface{} `json:"Plugins,omitempty" xml:"Plugins,omitempty"`
 	RelationQuestionIds []*string              `json:"RelationQuestionIds,omitempty" xml:"RelationQuestionIds,omitempty" type:"Repeated"`
-	Type                *string                `json:"Type,omitempty" xml:"Type,omitempty"`
-	VisitInfo           *ViewPluginVisitInfo   `json:"VisitInfo,omitempty" xml:"VisitInfo,omitempty" type:"Struct"`
+	// This parameter is required.
+	Type      *string              `json:"Type,omitempty" xml:"Type,omitempty"`
+	VisitInfo *ViewPluginVisitInfo `json:"VisitInfo,omitempty" xml:"VisitInfo,omitempty" type:"Struct"`
 }
 
 func (s ViewPlugin) String() string {
@@ -2511,12 +2803,32 @@ func (s *AddWorkNodeWorkforceRequest) SetUserIds(v []*int64) *AddWorkNodeWorkfor
 }
 
 type AddWorkNodeWorkforceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddWorkNodeWorkforceResponseBody) String() string {
@@ -2586,7 +2898,123 @@ func (s *AddWorkNodeWorkforceResponse) SetBody(v *AddWorkNodeWorkforceResponseBo
 	return s
 }
 
+type AppendAllDataToTaskRequest struct {
+	Body *OpenDatasetProxyAppendDataRequest `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AppendAllDataToTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppendAllDataToTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AppendAllDataToTaskRequest) SetBody(v *OpenDatasetProxyAppendDataRequest) *AppendAllDataToTaskRequest {
+	s.Body = v
+	return s
+}
+
+type AppendAllDataToTaskResponseBody struct {
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AppendAllDataToTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppendAllDataToTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AppendAllDataToTaskResponseBody) SetCode(v int32) *AppendAllDataToTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AppendAllDataToTaskResponseBody) SetDetails(v string) *AppendAllDataToTaskResponseBody {
+	s.Details = &v
+	return s
+}
+
+func (s *AppendAllDataToTaskResponseBody) SetErrorCode(v string) *AppendAllDataToTaskResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AppendAllDataToTaskResponseBody) SetMessage(v string) *AppendAllDataToTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AppendAllDataToTaskResponseBody) SetRequestId(v string) *AppendAllDataToTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AppendAllDataToTaskResponseBody) SetSuccess(v bool) *AppendAllDataToTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AppendAllDataToTaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AppendAllDataToTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AppendAllDataToTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AppendAllDataToTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AppendAllDataToTaskResponse) SetHeaders(v map[string]*string) *AppendAllDataToTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AppendAllDataToTaskResponse) SetStatusCode(v int32) *AppendAllDataToTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AppendAllDataToTaskResponse) SetBody(v *AppendAllDataToTaskResponseBody) *AppendAllDataToTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateTaskRequest struct {
+	// This parameter is required.
 	Body *CreateTaskDetail `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -2604,13 +3032,36 @@ func (s *CreateTaskRequest) SetBody(v *CreateTaskDetail) *CreateTaskRequest {
 }
 
 type CreateTaskResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 154***2518306500608
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateTaskResponseBody) String() string {
@@ -2686,6 +3137,7 @@ func (s *CreateTaskResponse) SetBody(v *CreateTaskResponseBody) *CreateTaskRespo
 }
 
 type CreateTemplateRequest struct {
+	// This parameter is required.
 	Body *TemplateDTO `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -2703,12 +3155,35 @@ func (s *CreateTemplateRequest) SetBody(v *TemplateDTO) *CreateTemplateRequest {
 }
 
 type CreateTemplateResponseBody struct {
-	Code       *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details    *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// -
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// -
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 152***0348342353920
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -2785,10 +3260,28 @@ func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateT
 }
 
 type CreateUserRequest struct {
-	AccountNo   *string `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 166***980757310
+	AccountNo *string `json:"AccountNo,omitempty" xml:"AccountNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALIYUN
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ADMIN
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// user1
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateUserRequest) String() string {
@@ -2820,13 +3313,36 @@ func (s *CreateUserRequest) SetUserName(v string) *CreateUserRequest {
 }
 
 type CreateUserResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	UserId    *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1662339980757311
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateUserResponseBody) String() string {
@@ -2902,12 +3418,32 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 }
 
 type DeleteTaskResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteTaskResponseBody) String() string {
@@ -2978,12 +3514,35 @@ func (s *DeleteTaskResponse) SetBody(v *DeleteTaskResponseBody) *DeleteTaskRespo
 }
 
 type DeleteTemplateResponseBody struct {
-	Code       *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details    *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ""
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 152***348342353920
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -3060,12 +3619,32 @@ func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteT
 }
 
 type DeleteUserResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteUserResponseBody) String() string {
@@ -3136,9 +3715,20 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 }
 
 type ExportAnnotationsRequest struct {
-	OssPath         *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://***-hz-oss.oss-cn-hangzhou.aliyuncs.com/output/
+	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	// example:
+	//
+	// true
 	RegisterDataset *string `json:"RegisterDataset,omitempty" xml:"RegisterDataset,omitempty"`
-	Target          *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// example:
+	//
+	// PAI
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
 func (s ExportAnnotationsRequest) String() string {
@@ -3165,13 +3755,33 @@ func (s *ExportAnnotationsRequest) SetTarget(v string) *ExportAnnotationsRequest
 }
 
 type ExportAnnotationsResponseBody struct {
-	Code      *int32       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string      `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorCode *string      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	FlowJob   *FlowJobInfo `json:"FlowJob,omitempty" xml:"FlowJob,omitempty"`
-	Message   *string      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ExportAnnotationsResponseBody) String() string {
@@ -3247,6 +3857,9 @@ func (s *ExportAnnotationsResponse) SetBody(v *ExportAnnotationsResponseBody) *E
 }
 
 type GetJobRequest struct {
+	// example:
+	//
+	// DOWNLOWD_MARKRESULT_FLOW
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 }
 
@@ -3264,13 +3877,33 @@ func (s *GetJobRequest) SetJobType(v string) *GetJobRequest {
 }
 
 type GetJobResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Job       *Job    `json:"Job,omitempty" xml:"Job,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetJobResponseBody) String() string {
@@ -3346,13 +3979,33 @@ func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
 }
 
 type GetSubtaskResponseBody struct {
-	Code      *int32         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string        `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode *string        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string        `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
 	RequestId *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Subtask   *SimpleSubtask `json:"Subtask,omitempty" xml:"Subtask,omitempty"`
-	Success   *bool          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSubtaskResponseBody) String() string {
@@ -3428,13 +4081,33 @@ func (s *GetSubtaskResponse) SetBody(v *GetSubtaskResponseBody) *GetSubtaskRespo
 }
 
 type GetSubtaskItemResponseBody struct {
-	Code      *int32             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string            `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorCode *string            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Item      *SubtaskItemDetail `json:"Item,omitempty" xml:"Item,omitempty"`
-	Message   *string            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSubtaskItemResponseBody) String() string {
@@ -3510,13 +4183,33 @@ func (s *GetSubtaskItemResponse) SetBody(v *GetSubtaskItemResponseBody) *GetSubt
 }
 
 type GetTaskResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string     `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
-	Task      *TaskDetail `json:"Task,omitempty" xml:"Task,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0F01E603-8A9F-18ED-AD43-D52B5030AFA2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	Task    *TaskDetail `json:"Task,omitempty" xml:"Task,omitempty"`
 }
 
 func (s GetTaskResponseBody) String() string {
@@ -3592,6 +4285,9 @@ func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
 }
 
 type GetTaskStatisticsRequest struct {
+	// example:
+	//
+	// Item
 	StatType *string `json:"StatType,omitempty" xml:"StatType,omitempty"`
 }
 
@@ -3609,11 +4305,31 @@ func (s *GetTaskStatisticsRequest) SetStatType(v string) *GetTaskStatisticsReque
 }
 
 type GetTaskStatisticsResponseBody struct {
-	Code           *int32         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details        *string        `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode      *string        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message        *string        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
 	Success        *bool          `json:"Success,omitempty" xml:"Success,omitempty"`
 	TaskStatistics *TaskStatistic `json:"TaskStatistics,omitempty" xml:"TaskStatistics,omitempty"`
 }
@@ -3691,12 +4407,35 @@ func (s *GetTaskStatisticsResponse) SetBody(v *GetTaskStatisticsResponseBody) *G
 }
 
 type GetTaskStatusResponseBody struct {
-	Code       *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details    *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ""
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// SUCCESS
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
@@ -3773,13 +4512,33 @@ func (s *GetTaskStatusResponse) SetBody(v *GetTaskStatusResponseBody) *GetTaskSt
 }
 
 type GetTaskTemplateResponseBody struct {
-	Code      *int32          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string         `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode *string         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Template  *TemplateDetail `json:"Template,omitempty" xml:"Template,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ""
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success  *bool           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Template *TemplateDetail `json:"Template,omitempty" xml:"Template,omitempty"`
 }
 
 func (s GetTaskTemplateResponseBody) String() string {
@@ -3855,13 +4614,33 @@ func (s *GetTaskTemplateResponse) SetBody(v *GetTaskTemplateResponseBody) *GetTa
 }
 
 type GetTaskTemplateQuestionsResponseBody struct {
-	Code      *int32            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string           `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode *string           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
 	Message   *string           `json:"Message,omitempty" xml:"Message,omitempty"`
 	Questions []*QuestionPlugin `json:"Questions,omitempty" xml:"Questions,omitempty" type:"Repeated"`
-	RequestId *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTaskTemplateQuestionsResponseBody) String() string {
@@ -3937,13 +4716,33 @@ func (s *GetTaskTemplateQuestionsResponse) SetBody(v *GetTaskTemplateQuestionsRe
 }
 
 type GetTaskTemplateViewsResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string                                `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode *string                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	Views     *GetTaskTemplateViewsResponseBodyViews `json:"Views,omitempty" xml:"Views,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Views   *GetTaskTemplateViewsResponseBodyViews `json:"Views,omitempty" xml:"Views,omitempty" type:"Struct"`
 }
 
 func (s GetTaskTemplateViewsResponseBody) String() string {
@@ -4036,11 +4835,31 @@ func (s *GetTaskTemplateViewsResponse) SetBody(v *GetTaskTemplateViewsResponseBo
 }
 
 type GetTaskWorkforceResponseBody struct {
-	Code      *int32       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string      `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode *string      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
 	Success   *bool        `json:"Success,omitempty" xml:"Success,omitempty"`
 	Workforce []*Workforce `json:"Workforce,omitempty" xml:"Workforce,omitempty" type:"Repeated"`
 }
@@ -4118,9 +4937,18 @@ func (s *GetTaskWorkforceResponse) SetBody(v *GetTaskWorkforceResponseBody) *Get
 }
 
 type GetTaskWorkforceStatisticRequest struct {
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StatType   *string `json:"StatType,omitempty" xml:"StatType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Item
+	StatType *string `json:"StatType,omitempty" xml:"StatType,omitempty"`
 }
 
 func (s GetTaskWorkforceStatisticRequest) String() string {
@@ -4147,15 +4975,47 @@ func (s *GetTaskWorkforceStatisticRequest) SetStatType(v string) *GetTaskWorkfor
 }
 
 type GetTaskWorkforceStatisticResponseBody struct {
-	Code           *int32           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details        *string          `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode      *string          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message        *string          `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber     *int32           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool            `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount     *int32           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 22
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
 	TotalPage      *int32           `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 	UsersStatistic []*UserStatistic `json:"UsersStatistic,omitempty" xml:"UsersStatistic,omitempty" type:"Repeated"`
 }
@@ -4253,13 +5113,33 @@ func (s *GetTaskWorkforceStatisticResponse) SetBody(v *GetTaskWorkforceStatistic
 }
 
 type GetTemplateResponseBody struct {
-	Code      *int32          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string         `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode *string         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Template  *TemplateDetail `json:"Template,omitempty" xml:"Template,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success  *bool           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Template *TemplateDetail `json:"Template,omitempty" xml:"Template,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -4335,13 +5215,33 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 }
 
 type GetTemplateQuestionsResponseBody struct {
-	Code            *int32            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details         *string           `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode       *string           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
 	Message         *string           `json:"Message,omitempty" xml:"Message,omitempty"`
 	QuestionConfigs []*QuestionPlugin `json:"QuestionConfigs,omitempty" xml:"QuestionConfigs,omitempty" type:"Repeated"`
-	RequestId       *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success         *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTemplateQuestionsResponseBody) String() string {
@@ -4417,11 +5317,31 @@ func (s *GetTemplateQuestionsResponse) SetBody(v *GetTemplateQuestionsResponseBo
 }
 
 type GetTemplateViewResponseBody struct {
-	Code        *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details     *string                                 `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode   *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message     *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ""
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
 	Success     *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 	ViewConfigs *GetTemplateViewResponseBodyViewConfigs `json:"ViewConfigs,omitempty" xml:"ViewConfigs,omitempty" type:"Struct"`
 }
@@ -4516,13 +5436,33 @@ func (s *GetTemplateViewResponse) SetBody(v *GetTemplateViewResponseBody) *GetTe
 }
 
 type GetTenantResponseBody struct {
-	Code      *int32        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string       `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode *string       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
-	Tenant    *SingleTenant `json:"Tenant,omitempty" xml:"Tenant,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// -
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// -
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tenant  *SingleTenant `json:"Tenant,omitempty" xml:"Tenant,omitempty"`
 }
 
 func (s GetTenantResponseBody) String() string {
@@ -4598,13 +5538,33 @@ func (s *GetTenantResponse) SetBody(v *GetTenantResponseBody) *GetTenantResponse
 }
 
 type GetUserResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string     `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
-	User      *SimpleUser `json:"User,omitempty" xml:"User,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	User    *SimpleUser `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -4680,9 +5640,18 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 }
 
 type ListJobsRequest struct {
-	JobType    *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// DOWNLOWD_MARKRESULT_FLOW
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// 20
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListJobsRequest) String() string {
@@ -4709,17 +5678,49 @@ func (s *ListJobsRequest) SetPageSize(v int32) *ListJobsRequest {
 }
 
 type ListJobsResponseBody struct {
-	Code       *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details    *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Jobs       []*Job  `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32  `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Jobs      []*Job  `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 22
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListJobsResponseBody) String() string {
@@ -4815,8 +5816,14 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 }
 
 type ListSubtaskItemsRequest struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListSubtaskItemsRequest) String() string {
@@ -4838,17 +5845,49 @@ func (s *ListSubtaskItemsRequest) SetPageSize(v int32) *ListSubtaskItemsRequest 
 }
 
 type ListSubtaskItemsResponseBody struct {
-	Code       *int32               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details    *string              `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode  *string              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Items      []*SubtaskItemDetail `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	Message    *string              `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int32               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int32               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32               `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ""
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Items     []*SubtaskItemDetail `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 22
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListSubtaskItemsResponseBody) String() string {
@@ -4944,8 +5983,14 @@ func (s *ListSubtaskItemsResponse) SetBody(v *ListSubtaskItemsResponseBody) *Lis
 }
 
 type ListSubtasksRequest struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListSubtasksRequest) String() string {
@@ -4967,17 +6012,49 @@ func (s *ListSubtasksRequest) SetPageSize(v int32) *ListSubtasksRequest {
 }
 
 type ListSubtasksResponseBody struct {
-	Code       *int32           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details    *string          `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode  *string          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message    *string          `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int32           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Subtasks   []*SubtaskDetail `json:"Subtasks,omitempty" xml:"Subtasks,omitempty" type:"Repeated"`
-	Success    *bool            `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int32           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32           `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Subtasks  []*SubtaskDetail `json:"Subtasks,omitempty" xml:"Subtasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 22
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListSubtasksResponseBody) String() string {
@@ -5073,8 +6150,14 @@ func (s *ListSubtasksResponse) SetBody(v *ListSubtasksResponseBody) *ListSubtask
 }
 
 type ListTasksRequest struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListTasksRequest) String() string {
@@ -5096,17 +6179,49 @@ func (s *ListTasksRequest) SetPageSize(v int32) *ListTasksRequest {
 }
 
 type ListTasksResponseBody struct {
-	Code       *int32        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details    *string       `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode  *string       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message    *string       `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int32        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
-	Tasks      []*SimpleTask `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	TotalCount *int32        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32        `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tasks   []*SimpleTask `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 22
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListTasksResponseBody) String() string {
@@ -5202,10 +6317,19 @@ func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse
 }
 
 type ListTemplatesRequest struct {
-	PageNumber *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchKey  *string   `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	Types      []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// demo
+	SearchKey *string   `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	Types     []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
 func (s ListTemplatesRequest) String() string {
@@ -5237,8 +6361,17 @@ func (s *ListTemplatesRequest) SetTypes(v []*string) *ListTemplatesRequest {
 }
 
 type ListTemplatesShrinkRequest struct {
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// demo
 	SearchKey   *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	TypesShrink *string `json:"Types,omitempty" xml:"Types,omitempty"`
 }
@@ -5272,17 +6405,49 @@ func (s *ListTemplatesShrinkRequest) SetTypesShrink(v string) *ListTemplatesShri
 }
 
 type ListTemplatesResponseBody struct {
-	Code       *int32            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details    *string           `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode  *string           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message    *string           `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int32            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Templates  []*SimpleTemplate `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
-	TotalCount *int32            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32            `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success   *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
+	Templates []*SimpleTemplate `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 22
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListTemplatesResponseBody) String() string {
@@ -5378,8 +6543,14 @@ func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTempl
 }
 
 type ListTenantsRequest struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListTenantsRequest) String() string {
@@ -5401,17 +6572,49 @@ func (s *ListTenantsRequest) SetPageSize(v int32) *ListTenantsRequest {
 }
 
 type ListTenantsResponseBody struct {
-	Code       *int32          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details    *string         `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode  *string         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message    *string         `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int32          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Tenants    []*SimpleTenant `json:"Tenants,omitempty" xml:"Tenants,omitempty" type:"Repeated"`
-	TotalCount *int32          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32          `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// -
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// -
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tenants []*SimpleTenant `json:"Tenants,omitempty" xml:"Tenants,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 22
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListTenantsResponseBody) String() string {
@@ -5507,8 +6710,14 @@ func (s *ListTenantsResponse) SetBody(v *ListTenantsResponseBody) *ListTenantsRe
 }
 
 type ListUsersRequest struct {
+	// example:
+	//
+	// 20
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListUsersRequest) String() string {
@@ -5530,17 +6739,49 @@ func (s *ListUsersRequest) SetPageSize(v int32) *ListUsersRequest {
 }
 
 type ListUsersResponseBody struct {
-	Code       *int32        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details    *string       `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode  *string       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message    *string       `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int32        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int32        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32        `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
-	Users      []*SimpleUser `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 22
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32        `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	Users     []*SimpleUser `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -5653,12 +6894,32 @@ func (s *RemoveWorkNodeWorkforceRequest) SetUserIds(v []*int64) *RemoveWorkNodeW
 }
 
 type RemoveWorkNodeWorkforceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ""
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RemoveWorkNodeWorkforceResponseBody) String() string {
@@ -5729,6 +6990,7 @@ func (s *RemoveWorkNodeWorkforceResponse) SetBody(v *RemoveWorkNodeWorkforceResp
 }
 
 type UpdateTaskRequest struct {
+	// This parameter is required.
 	Body *UpdateTaskDTO `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5746,12 +7008,32 @@ func (s *UpdateTaskRequest) SetBody(v *UpdateTaskDTO) *UpdateTaskRequest {
 }
 
 type UpdateTaskResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateTaskResponseBody) String() string {
@@ -5839,12 +7121,32 @@ func (s *UpdateTaskWorkforceRequest) SetWorkforce(v []*SimpleWorkforce) *UpdateT
 }
 
 type UpdateTaskWorkforceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ""
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateTaskWorkforceResponseBody) String() string {
@@ -5932,12 +7234,35 @@ func (s *UpdateTemplateRequest) SetBody(v *TemplateDTO) *UpdateTemplateRequest {
 }
 
 type UpdateTemplateResponseBody struct {
-	Code       *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details    *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1529360348342353920
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -6014,6 +7339,9 @@ func (s *UpdateTemplateResponse) SetBody(v *UpdateTemplateResponseBody) *UpdateT
 }
 
 type UpdateTenantRequest struct {
+	// example:
+	//
+	// demo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	TenantName  *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
 }
@@ -6037,12 +7365,32 @@ func (s *UpdateTenantRequest) SetTenantName(v string) *UpdateTenantRequest {
 }
 
 type UpdateTenantResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateTenantResponseBody) String() string {
@@ -6113,7 +7461,17 @@ func (s *UpdateTenantResponse) SetBody(v *UpdateTenantResponseBody) *UpdateTenan
 }
 
 type UpdateUserRequest struct {
-	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ADMIN
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user1
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -6136,13 +7494,36 @@ func (s *UpdateUserRequest) SetUserName(v string) *UpdateUserRequest {
 }
 
 type UpdateUserResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Details   *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90ABA848-AD74-1F6E-84BC-4182A7F1F29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 166***980757311
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateUserResponseBody) String() string {
@@ -6264,6 +7645,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加结点任务人力
+//
+// @param request - AddWorkNodeWorkforceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddWorkNodeWorkforceResponse
 func (client *Client) AddWorkNodeWorkforceWithOptions(TenantId *string, TaskId *string, WorkNodeId *string, request *AddWorkNodeWorkforceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddWorkNodeWorkforceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6298,6 +7690,13 @@ func (client *Client) AddWorkNodeWorkforceWithOptions(TenantId *string, TaskId *
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加结点任务人力
+//
+// @param request - AddWorkNodeWorkforceRequest
+//
+// @return AddWorkNodeWorkforceResponse
 func (client *Client) AddWorkNodeWorkforce(TenantId *string, TaskId *string, WorkNodeId *string, request *AddWorkNodeWorkforceRequest) (_result *AddWorkNodeWorkforceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6310,6 +7709,76 @@ func (client *Client) AddWorkNodeWorkforce(TenantId *string, TaskId *string, Wor
 	return _result, _err
 }
 
+// Summary:
+//
+// 数据追加
+//
+// @param request - AppendAllDataToTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AppendAllDataToTaskResponse
+func (client *Client) AppendAllDataToTaskWithOptions(TenantId *string, TaskId *string, request *AppendAllDataToTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AppendAllDataToTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AppendAllDataToTask"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/api/v1/tenants/" + tea.StringValue(openapiutil.GetEncodeParam(TenantId)) + "/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(TaskId)) + "/appendAllDataToTask"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AppendAllDataToTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据追加
+//
+// @param request - AppendAllDataToTaskRequest
+//
+// @return AppendAllDataToTaskResponse
+func (client *Client) AppendAllDataToTask(TenantId *string, TaskId *string, request *AppendAllDataToTaskRequest) (_result *AppendAllDataToTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AppendAllDataToTaskResponse{}
+	_body, _err := client.AppendAllDataToTaskWithOptions(TenantId, TaskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建标注任务
+//
+// @param request - CreateTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTaskResponse
 func (client *Client) CreateTaskWithOptions(TenantId *string, request *CreateTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6339,6 +7808,13 @@ func (client *Client) CreateTaskWithOptions(TenantId *string, request *CreateTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建标注任务
+//
+// @param request - CreateTaskRequest
+//
+// @return CreateTaskResponse
 func (client *Client) CreateTask(TenantId *string, request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6351,6 +7827,17 @@ func (client *Client) CreateTask(TenantId *string, request *CreateTaskRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建标注模版
+//
+// @param request - CreateTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTemplateResponse
 func (client *Client) CreateTemplateWithOptions(TenantId *string, request *CreateTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6380,6 +7867,13 @@ func (client *Client) CreateTemplateWithOptions(TenantId *string, request *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建标注模版
+//
+// @param request - CreateTemplateRequest
+//
+// @return CreateTemplateResponse
 func (client *Client) CreateTemplate(TenantId *string, request *CreateTemplateRequest) (_result *CreateTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6392,6 +7886,17 @@ func (client *Client) CreateTemplate(TenantId *string, request *CreateTemplateRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建租户内用户
+//
+// @param request - CreateUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserResponse
 func (client *Client) CreateUserWithOptions(TenantId *string, request *CreateUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6438,6 +7943,13 @@ func (client *Client) CreateUserWithOptions(TenantId *string, request *CreateUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建租户内用户
+//
+// @param request - CreateUserRequest
+//
+// @return CreateUserResponse
 func (client *Client) CreateUser(TenantId *string, request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6450,6 +7962,15 @@ func (client *Client) CreateUser(TenantId *string, request *CreateUserRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTaskResponse
 func (client *Client) DeleteTaskWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6474,6 +7995,11 @@ func (client *Client) DeleteTaskWithOptions(TenantId *string, TaskId *string, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除任务
+//
+// @return DeleteTaskResponse
 func (client *Client) DeleteTask(TenantId *string, TaskId *string) (_result *DeleteTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6486,6 +8012,15 @@ func (client *Client) DeleteTask(TenantId *string, TaskId *string) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除租户下的单个模板
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTemplateResponse
 func (client *Client) DeleteTemplateWithOptions(TenantId *string, TemplateId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6510,6 +8045,11 @@ func (client *Client) DeleteTemplateWithOptions(TenantId *string, TemplateId *st
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除租户下的单个模板
+//
+// @return DeleteTemplateResponse
 func (client *Client) DeleteTemplate(TenantId *string, TemplateId *string) (_result *DeleteTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6522,6 +8062,15 @@ func (client *Client) DeleteTemplate(TenantId *string, TemplateId *string) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除用户
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUserWithOptions(TenantId *string, UserId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6546,6 +8095,11 @@ func (client *Client) DeleteUserWithOptions(TenantId *string, UserId *string, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除用户
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUser(TenantId *string, UserId *string) (_result *DeleteUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6558,6 +8112,17 @@ func (client *Client) DeleteUser(TenantId *string, UserId *string) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务导出结果
+//
+// @param request - ExportAnnotationsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportAnnotationsResponse
 func (client *Client) ExportAnnotationsWithOptions(TenantId *string, TaskId *string, request *ExportAnnotationsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExportAnnotationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6600,6 +8165,13 @@ func (client *Client) ExportAnnotationsWithOptions(TenantId *string, TaskId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务导出结果
+//
+// @param request - ExportAnnotationsRequest
+//
+// @return ExportAnnotationsResponse
 func (client *Client) ExportAnnotations(TenantId *string, TaskId *string, request *ExportAnnotationsRequest) (_result *ExportAnnotationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6612,6 +8184,17 @@ func (client *Client) ExportAnnotations(TenantId *string, TaskId *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异步任务Job
+//
+// @param request - GetJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobResponse
 func (client *Client) GetJobWithOptions(TenantId *string, JobId *string, request *GetJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6646,6 +8229,13 @@ func (client *Client) GetJobWithOptions(TenantId *string, JobId *string, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异步任务Job
+//
+// @param request - GetJobRequest
+//
+// @return GetJobResponse
 func (client *Client) GetJob(TenantId *string, JobId *string, request *GetJobRequest) (_result *GetJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6658,6 +8248,15 @@ func (client *Client) GetJob(TenantId *string, JobId *string, request *GetJobReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取单个子任务信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSubtaskResponse
 func (client *Client) GetSubtaskWithOptions(TenantId *string, TaskID *string, SubtaskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSubtaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6682,6 +8281,11 @@ func (client *Client) GetSubtaskWithOptions(TenantId *string, TaskID *string, Su
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取单个子任务信息
+//
+// @return GetSubtaskResponse
 func (client *Client) GetSubtask(TenantId *string, TaskID *string, SubtaskId *string) (_result *GetSubtaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6694,6 +8298,15 @@ func (client *Client) GetSubtask(TenantId *string, TaskID *string, SubtaskId *st
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取子任务单个ITEM信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSubtaskItemResponse
 func (client *Client) GetSubtaskItemWithOptions(TenantId *string, TaskId *string, SubtaskId *string, ItemId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSubtaskItemResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6718,6 +8331,11 @@ func (client *Client) GetSubtaskItemWithOptions(TenantId *string, TaskId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取子任务单个ITEM信息
+//
+// @return GetSubtaskItemResponse
 func (client *Client) GetSubtaskItem(TenantId *string, TaskId *string, SubtaskId *string, ItemId *string) (_result *GetSubtaskItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6730,6 +8348,15 @@ func (client *Client) GetSubtaskItem(TenantId *string, TaskId *string, SubtaskId
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务状态信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskResponse
 func (client *Client) GetTaskWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6754,6 +8381,11 @@ func (client *Client) GetTaskWithOptions(TenantId *string, TaskId *string, heade
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务状态信息
+//
+// @return GetTaskResponse
 func (client *Client) GetTask(TenantId *string, TaskId *string) (_result *GetTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6766,6 +8398,17 @@ func (client *Client) GetTask(TenantId *string, TaskId *string) (_result *GetTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务统计信息
+//
+// @param request - GetTaskStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskStatisticsResponse
 func (client *Client) GetTaskStatisticsWithOptions(TenantId *string, TaskId *string, request *GetTaskStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6800,6 +8443,13 @@ func (client *Client) GetTaskStatisticsWithOptions(TenantId *string, TaskId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务统计信息
+//
+// @param request - GetTaskStatisticsRequest
+//
+// @return GetTaskStatisticsResponse
 func (client *Client) GetTaskStatistics(TenantId *string, TaskId *string, request *GetTaskStatisticsRequest) (_result *GetTaskStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6812,6 +8462,15 @@ func (client *Client) GetTaskStatistics(TenantId *string, TaskId *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务状态信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskStatusResponse
 func (client *Client) GetTaskStatusWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6836,6 +8495,11 @@ func (client *Client) GetTaskStatusWithOptions(TenantId *string, TaskId *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务状态信息
+//
+// @return GetTaskStatusResponse
 func (client *Client) GetTaskStatus(TenantId *string, TaskId *string) (_result *GetTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6848,6 +8512,15 @@ func (client *Client) GetTaskStatus(TenantId *string, TaskId *string) (_result *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务模版信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskTemplateResponse
 func (client *Client) GetTaskTemplateWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskTemplateResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6872,6 +8545,11 @@ func (client *Client) GetTaskTemplateWithOptions(TenantId *string, TaskId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务模版信息
+//
+// @return GetTaskTemplateResponse
 func (client *Client) GetTaskTemplate(TenantId *string, TaskId *string) (_result *GetTaskTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6884,6 +8562,15 @@ func (client *Client) GetTaskTemplate(TenantId *string, TaskId *string) (_result
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务题目信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskTemplateQuestionsResponse
 func (client *Client) GetTaskTemplateQuestionsWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskTemplateQuestionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6908,6 +8595,11 @@ func (client *Client) GetTaskTemplateQuestionsWithOptions(TenantId *string, Task
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务题目信息
+//
+// @return GetTaskTemplateQuestionsResponse
 func (client *Client) GetTaskTemplateQuestions(TenantId *string, TaskId *string) (_result *GetTaskTemplateQuestionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6920,6 +8612,15 @@ func (client *Client) GetTaskTemplateQuestions(TenantId *string, TaskId *string)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务题目信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskTemplateViewsResponse
 func (client *Client) GetTaskTemplateViewsWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskTemplateViewsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6944,6 +8645,11 @@ func (client *Client) GetTaskTemplateViewsWithOptions(TenantId *string, TaskId *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务题目信息
+//
+// @return GetTaskTemplateViewsResponse
 func (client *Client) GetTaskTemplateViews(TenantId *string, TaskId *string) (_result *GetTaskTemplateViewsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6956,6 +8662,15 @@ func (client *Client) GetTaskTemplateViews(TenantId *string, TaskId *string) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务人力
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskWorkforceResponse
 func (client *Client) GetTaskWorkforceWithOptions(TenantId *string, TaskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskWorkforceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6980,6 +8695,11 @@ func (client *Client) GetTaskWorkforceWithOptions(TenantId *string, TaskId *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务人力
+//
+// @return GetTaskWorkforceResponse
 func (client *Client) GetTaskWorkforce(TenantId *string, TaskId *string) (_result *GetTaskWorkforceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6992,6 +8712,17 @@ func (client *Client) GetTaskWorkforce(TenantId *string, TaskId *string) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务人力统计信息
+//
+// @param request - GetTaskWorkforceStatisticRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskWorkforceStatisticResponse
 func (client *Client) GetTaskWorkforceStatisticWithOptions(TenantId *string, TaskId *string, request *GetTaskWorkforceStatisticRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskWorkforceStatisticResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7034,6 +8765,13 @@ func (client *Client) GetTaskWorkforceStatisticWithOptions(TenantId *string, Tas
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务人力统计信息
+//
+// @param request - GetTaskWorkforceStatisticRequest
+//
+// @return GetTaskWorkforceStatisticResponse
 func (client *Client) GetTaskWorkforceStatistic(TenantId *string, TaskId *string, request *GetTaskWorkforceStatisticRequest) (_result *GetTaskWorkforceStatisticResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7046,6 +8784,15 @@ func (client *Client) GetTaskWorkforceStatistic(TenantId *string, TaskId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户下单个模板
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTemplateResponse
 func (client *Client) GetTemplateWithOptions(TenantId *string, TemplateId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7070,6 +8817,11 @@ func (client *Client) GetTemplateWithOptions(TenantId *string, TemplateId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户下单个模板
+//
+// @return GetTemplateResponse
 func (client *Client) GetTemplate(TenantId *string, TemplateId *string) (_result *GetTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7082,6 +8834,15 @@ func (client *Client) GetTemplate(TenantId *string, TemplateId *string) (_result
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户下单个模板问题
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTemplateQuestionsResponse
 func (client *Client) GetTemplateQuestionsWithOptions(TenantId *string, TemplateId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTemplateQuestionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7106,6 +8867,11 @@ func (client *Client) GetTemplateQuestionsWithOptions(TenantId *string, Template
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户下单个模板问题
+//
+// @return GetTemplateQuestionsResponse
 func (client *Client) GetTemplateQuestions(TenantId *string, TemplateId *string) (_result *GetTemplateQuestionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7118,6 +8884,15 @@ func (client *Client) GetTemplateQuestions(TenantId *string, TemplateId *string)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户下模板视图
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTemplateViewResponse
 func (client *Client) GetTemplateViewWithOptions(TenantId *string, TemplateId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTemplateViewResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7142,6 +8917,11 @@ func (client *Client) GetTemplateViewWithOptions(TenantId *string, TemplateId *s
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户下模板视图
+//
+// @return GetTemplateViewResponse
 func (client *Client) GetTemplateView(TenantId *string, TemplateId *string) (_result *GetTemplateViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7154,6 +8934,15 @@ func (client *Client) GetTemplateView(TenantId *string, TemplateId *string) (_re
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTenantResponse
 func (client *Client) GetTenantWithOptions(TenantId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTenantResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7178,6 +8967,11 @@ func (client *Client) GetTenantWithOptions(TenantId *string, headers map[string]
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户信息
+//
+// @return GetTenantResponse
 func (client *Client) GetTenant(TenantId *string) (_result *GetTenantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7190,6 +8984,15 @@ func (client *Client) GetTenant(TenantId *string) (_result *GetTenantResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserResponse
 func (client *Client) GetUserWithOptions(TenantId *string, UserId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7214,6 +9017,11 @@ func (client *Client) GetUserWithOptions(TenantId *string, UserId *string, heade
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户
+//
+// @return GetUserResponse
 func (client *Client) GetUser(TenantId *string, UserId *string) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7226,6 +9034,17 @@ func (client *Client) GetUser(TenantId *string, UserId *string) (_result *GetUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异步任务Job列表
+//
+// @param request - ListJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobsResponse
 func (client *Client) ListJobsWithOptions(TenantId *string, request *ListJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7268,6 +9087,13 @@ func (client *Client) ListJobsWithOptions(TenantId *string, request *ListJobsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异步任务Job列表
+//
+// @param request - ListJobsRequest
+//
+// @return ListJobsResponse
 func (client *Client) ListJobs(TenantId *string, request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7280,6 +9106,17 @@ func (client *Client) ListJobs(TenantId *string, request *ListJobsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取子任务ITEM列表页信息
+//
+// @param request - ListSubtaskItemsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSubtaskItemsResponse
 func (client *Client) ListSubtaskItemsWithOptions(TenantId *string, TaskID *string, SubtaskId *string, request *ListSubtaskItemsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSubtaskItemsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7318,6 +9155,13 @@ func (client *Client) ListSubtaskItemsWithOptions(TenantId *string, TaskID *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取子任务ITEM列表页信息
+//
+// @param request - ListSubtaskItemsRequest
+//
+// @return ListSubtaskItemsResponse
 func (client *Client) ListSubtaskItems(TenantId *string, TaskID *string, SubtaskId *string, request *ListSubtaskItemsRequest) (_result *ListSubtaskItemsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7330,6 +9174,17 @@ func (client *Client) ListSubtaskItems(TenantId *string, TaskID *string, Subtask
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取子任务列表页信息
+//
+// @param request - ListSubtasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSubtasksResponse
 func (client *Client) ListSubtasksWithOptions(TenantId *string, TaskID *string, request *ListSubtasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSubtasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7368,6 +9223,13 @@ func (client *Client) ListSubtasksWithOptions(TenantId *string, TaskID *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取子任务列表页信息
+//
+// @param request - ListSubtasksRequest
+//
+// @return ListSubtasksResponse
 func (client *Client) ListSubtasks(TenantId *string, TaskID *string, request *ListSubtasksRequest) (_result *ListSubtasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7380,6 +9242,17 @@ func (client *Client) ListSubtasks(TenantId *string, TaskID *string, request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务列表页信息
+//
+// @param request - ListTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTasksResponse
 func (client *Client) ListTasksWithOptions(TenantId *string, request *ListTasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7418,6 +9291,13 @@ func (client *Client) ListTasksWithOptions(TenantId *string, request *ListTasksR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务列表页信息
+//
+// @param request - ListTasksRequest
+//
+// @return ListTasksResponse
 func (client *Client) ListTasks(TenantId *string, request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7430,6 +9310,17 @@ func (client *Client) ListTasks(TenantId *string, request *ListTasksRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户模板信息列表
+//
+// @param tmpReq - ListTemplatesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTemplatesResponse
 func (client *Client) ListTemplatesWithOptions(TenantId *string, tmpReq *ListTemplatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -7482,6 +9373,13 @@ func (client *Client) ListTemplatesWithOptions(TenantId *string, tmpReq *ListTem
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户模板信息列表
+//
+// @param request - ListTemplatesRequest
+//
+// @return ListTemplatesResponse
 func (client *Client) ListTemplates(TenantId *string, request *ListTemplatesRequest) (_result *ListTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7494,6 +9392,17 @@ func (client *Client) ListTemplates(TenantId *string, request *ListTemplatesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户列表
+//
+// @param request - ListTenantsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTenantsResponse
 func (client *Client) ListTenantsWithOptions(request *ListTenantsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTenantsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7532,6 +9441,13 @@ func (client *Client) ListTenantsWithOptions(request *ListTenantsRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户列表
+//
+// @param request - ListTenantsRequest
+//
+// @return ListTenantsResponse
 func (client *Client) ListTenants(request *ListTenantsRequest) (_result *ListTenantsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7544,6 +9460,17 @@ func (client *Client) ListTenants(request *ListTenantsRequest) (_result *ListTen
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户列表
+//
+// @param request - ListUsersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersResponse
 func (client *Client) ListUsersWithOptions(TenantId *string, request *ListUsersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7582,6 +9509,13 @@ func (client *Client) ListUsersWithOptions(TenantId *string, request *ListUsersR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户列表
+//
+// @param request - ListUsersRequest
+//
+// @return ListUsersResponse
 func (client *Client) ListUsers(TenantId *string, request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7594,6 +9528,17 @@ func (client *Client) ListUsers(TenantId *string, request *ListUsersRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除结点人力
+//
+// @param request - RemoveWorkNodeWorkforceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveWorkNodeWorkforceResponse
 func (client *Client) RemoveWorkNodeWorkforceWithOptions(TenantId *string, TaskId *string, WorkNodeId *string, request *RemoveWorkNodeWorkforceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveWorkNodeWorkforceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7628,6 +9573,13 @@ func (client *Client) RemoveWorkNodeWorkforceWithOptions(TenantId *string, TaskI
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除结点人力
+//
+// @param request - RemoveWorkNodeWorkforceRequest
+//
+// @return RemoveWorkNodeWorkforceResponse
 func (client *Client) RemoveWorkNodeWorkforce(TenantId *string, TaskId *string, WorkNodeId *string, request *RemoveWorkNodeWorkforceRequest) (_result *RemoveWorkNodeWorkforceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7640,6 +9592,17 @@ func (client *Client) RemoveWorkNodeWorkforce(TenantId *string, TaskId *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新标注任务基础信息
+//
+// @param request - UpdateTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTaskResponse
 func (client *Client) UpdateTaskWithOptions(TenantId *string, TaskId *string, request *UpdateTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7669,6 +9632,13 @@ func (client *Client) UpdateTaskWithOptions(TenantId *string, TaskId *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新标注任务基础信息
+//
+// @param request - UpdateTaskRequest
+//
+// @return UpdateTaskResponse
 func (client *Client) UpdateTask(TenantId *string, TaskId *string, request *UpdateTaskRequest) (_result *UpdateTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7681,6 +9651,17 @@ func (client *Client) UpdateTask(TenantId *string, TaskId *string, request *Upda
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新任务人力
+//
+// @param request - UpdateTaskWorkforceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTaskWorkforceResponse
 func (client *Client) UpdateTaskWorkforceWithOptions(TenantId *string, TaskId *string, request *UpdateTaskWorkforceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTaskWorkforceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7715,6 +9696,13 @@ func (client *Client) UpdateTaskWorkforceWithOptions(TenantId *string, TaskId *s
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新任务人力
+//
+// @param request - UpdateTaskWorkforceRequest
+//
+// @return UpdateTaskWorkforceResponse
 func (client *Client) UpdateTaskWorkforce(TenantId *string, TaskId *string, request *UpdateTaskWorkforceRequest) (_result *UpdateTaskWorkforceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7727,6 +9715,17 @@ func (client *Client) UpdateTaskWorkforce(TenantId *string, TaskId *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新标注模版
+//
+// @param request - UpdateTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTemplateResponse
 func (client *Client) UpdateTemplateWithOptions(TenantId *string, TemplateId *string, request *UpdateTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7756,6 +9755,13 @@ func (client *Client) UpdateTemplateWithOptions(TenantId *string, TemplateId *st
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新标注模版
+//
+// @param request - UpdateTemplateRequest
+//
+// @return UpdateTemplateResponse
 func (client *Client) UpdateTemplate(TenantId *string, TemplateId *string, request *UpdateTemplateRequest) (_result *UpdateTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7768,6 +9774,17 @@ func (client *Client) UpdateTemplate(TenantId *string, TemplateId *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新租户信息
+//
+// @param request - UpdateTenantRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTenantResponse
 func (client *Client) UpdateTenantWithOptions(TenantId *string, request *UpdateTenantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTenantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7806,6 +9823,13 @@ func (client *Client) UpdateTenantWithOptions(TenantId *string, request *UpdateT
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新租户信息
+//
+// @param request - UpdateTenantRequest
+//
+// @return UpdateTenantResponse
 func (client *Client) UpdateTenant(TenantId *string, request *UpdateTenantRequest) (_result *UpdateTenantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7818,6 +9842,17 @@ func (client *Client) UpdateTenant(TenantId *string, request *UpdateTenantReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新用户信息
+//
+// @param request - UpdateUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUserWithOptions(TenantId *string, UserId *string, request *UpdateUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7856,6 +9891,13 @@ func (client *Client) UpdateUserWithOptions(TenantId *string, UserId *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新用户信息
+//
+// @param request - UpdateUserRequest
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUser(TenantId *string, UserId *string, request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
