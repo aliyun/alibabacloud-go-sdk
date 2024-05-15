@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,11 +10,31 @@ import (
 )
 
 type AllocateInstancePublicConnectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-h033cn****-pub-i3
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	NetType                *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Public
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s AllocateInstancePublicConnectionRequest) String() string {
@@ -55,8 +72,14 @@ func (s *AllocateInstancePublicConnectionRequest) SetResourceOwnerId(v int64) *A
 
 type AllocateInstancePublicConnectionResponseBody struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 5ED62C81-9948-5612-81E1-EA3853752306
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 498115273
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s AllocateInstancePublicConnectionResponseBody) String() string {
@@ -112,23 +135,85 @@ func (s *AllocateInstancePublicConnectionResponse) SetBody(v *AllocateInstancePu
 }
 
 type CheckCreateDBInstanceRequest struct {
-	CacheSize             *int32  `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
-	ChargeType            *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConnectionString      *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
+	CacheSize *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// AB
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213c8y****-public.selectdbfe.pre.rds.aliyuncs.com
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb.xlarge
 	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	Period                *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityIPList        *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	UsedTime              *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	VSwitchId             *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// SelectDB
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2.4
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// Month
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-4690g37929****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 172.16.XX.XX/12,192.168.XX.XX/22
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// example:
+	//
+	// 1
+	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-bp1gzt31twhlo0sa5****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// VPC ID。
-	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp175iuvg8nxqraf2****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -226,6 +311,9 @@ func (s *CheckCreateDBInstanceRequest) SetZoneId(v string) *CheckCreateDBInstanc
 }
 
 type CheckCreateDBInstanceResponseBody struct {
+	// example:
+	//
+	// ADF42B18-43FD-5100-83A9-BE81AB70C863
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -295,8 +383,14 @@ func (s *CheckServiceLinkedRoleRequest) SetResourceOwnerId(v int64) *CheckServic
 }
 
 type CheckServiceLinkedRoleResponseBody struct {
-	HasServiceLinkedRole *bool   `json:"HasServiceLinkedRole,omitempty" xml:"HasServiceLinkedRole,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// False
+	HasServiceLinkedRole *bool `json:"HasServiceLinkedRole,omitempty" xml:"HasServiceLinkedRole,omitempty"`
+	// example:
+	//
+	// 1F455133-981E-5AD0-80EB-26EA1EF3C65F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckServiceLinkedRoleResponseBody) String() string {
@@ -347,23 +441,88 @@ func (s *CheckServiceLinkedRoleResponse) SetBody(v *CheckServiceLinkedRoleRespon
 }
 
 type CreateDBClusterRequest struct {
-	CacheSize            *string `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
-	ChargeType           *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	DBClusterClass       *string `json:"DBClusterClass,omitempty" xml:"DBClusterClass,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
+	CacheSize *string `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Prepaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb.2xlarge
+	DBClusterClass *string `json:"DBClusterClass,omitempty" xml:"DBClusterClass,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdb
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	// 代表资源一级ID的资源属性字段
-	DBInstanceId  *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// selectdb
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	Period        *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Month
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 代表资源组的资源属性字段
+	//
+	// example:
+	//
+	// rg-4690g37929****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	UsedTime        *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// 1
+	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-bp1gzt31twhlo0sa5****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// VPC ID。
-	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp175iuvg8nxqraf2****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -451,8 +610,11 @@ func (s *CreateDBClusterRequest) SetZoneId(v string) *CreateDBClusterRequest {
 }
 
 type CreateDBClusterResponseBody struct {
-	Data      *CreateDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *CreateDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// F8900A96-67F7-5274-A41B-7722E1ECF8C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDBClusterResponseBody) String() string {
@@ -474,8 +636,14 @@ func (s *CreateDBClusterResponseBody) SetRequestId(v string) *CreateDBClusterRes
 }
 
 type CreateDBClusterResponseBodyData struct {
+	// example:
+	//
+	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OrderId      *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 219543646290345
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s CreateDBClusterResponseBodyData) String() string {
@@ -526,24 +694,87 @@ func (s *CreateDBClusterResponse) SetBody(v *CreateDBClusterResponseBody) *Creat
 }
 
 type CreateDBInstanceRequest struct {
-	CacheSize             *int32  `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
-	ChargeType            *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConnectionString      *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200GB
+	CacheSize *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// AB
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213c8y****-public.selectdbfe.pre.rds.aliyuncs.com
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb.xlarge
 	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	Period                *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// selectdb
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2.4
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// Month
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 代表资源组的资源属性字段
+	//
+	// example:
+	//
+	// rg-aekzt2zaluvuvqa_fake
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityIPList  *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	UsedTime        *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// 192.168.1.1
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// example:
+	//
+	// 1
+	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-bp1gzt31twhlo0sa5****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// VPC ID。
-	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp175iuvg8nxqraf2****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-e
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -641,8 +872,11 @@ func (s *CreateDBInstanceRequest) SetZoneId(v string) *CreateDBInstanceRequest {
 }
 
 type CreateDBInstanceResponseBody struct {
-	Data      *CreateDBInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *CreateDBInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDBInstanceResponseBody) String() string {
@@ -664,8 +898,14 @@ func (s *CreateDBInstanceResponseBody) SetRequestId(v string) *CreateDBInstanceR
 }
 
 type CreateDBInstanceResponseBodyData struct {
+	// example:
+	//
+	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OrderId      *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 21137950671****
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s CreateDBInstanceResponseBodyData) String() string {
@@ -739,6 +979,9 @@ func (s *CreateServiceLinkedRoleForSelectDBRequest) SetResourceOwnerId(v int64) 
 }
 
 type CreateServiceLinkedRoleForSelectDBResponseBody struct {
+	// example:
+	//
+	// F203FA74-3041-589F-BE66-E570793A0C91
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -785,11 +1028,31 @@ func (s *CreateServiceLinkedRoleForSelectDBResponse) SetBody(v *CreateServiceLin
 }
 
 type DeleteDBClusterRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-xxxb9f2w-be
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// 代表资源一级ID的资源属性字段
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 代表资源组的资源属性字段
+	//
+	// example:
+	//
+	// rg-4690g37929****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -828,8 +1091,11 @@ func (s *DeleteDBClusterRequest) SetResourceOwnerId(v int64) *DeleteDBClusterReq
 }
 
 type DeleteDBClusterResponseBody struct {
-	Data      *DeleteDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DeleteDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// F203FA74-3041-589F-BE66-E570793A0C91
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteDBClusterResponseBody) String() string {
@@ -851,8 +1117,14 @@ func (s *DeleteDBClusterResponseBody) SetRequestId(v string) *DeleteDBClusterRes
 }
 
 type DeleteDBClusterResponseBodyData struct {
+	// example:
+	//
+	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 220088764060782
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s DeleteDBClusterResponseBodyData) String() string {
@@ -903,7 +1175,17 @@ func (s *DeleteDBClusterResponse) SetBody(v *DeleteDBClusterResponseBody) *Delet
 }
 
 type DeleteDBInstanceRequest struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -932,6 +1214,9 @@ func (s *DeleteDBInstanceRequest) SetResourceOwnerId(v int64) *DeleteDBInstanceR
 }
 
 type DeleteDBInstanceResponseBody struct {
+	// example:
+	//
+	// BD0D0B17-C145-5B91-BFC2-6791927EE973
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -977,8 +1262,569 @@ func (s *DeleteDBInstanceResponse) SetBody(v *DeleteDBInstanceResponseBody) *Del
 	return s
 }
 
+type DescribeDBClusterConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// be.conf
+	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213c8yvv09-be
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeDBClusterConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterConfigRequest) SetConfigKey(v string) *DescribeDBClusterConfigRequest {
+	s.ConfigKey = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigRequest) SetDBClusterId(v string) *DescribeDBClusterConfigRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigRequest) SetDBInstanceId(v string) *DescribeDBClusterConfigRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigRequest) SetRegionId(v string) *DescribeDBClusterConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeDBClusterConfigResponseBody struct {
+	// example:
+	//
+	// failed
+	AccessDeniedDetail *string                                  `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Data               *DescribeDBClusterConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// An error occurred while processing your request.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// ADF42B18-43FD-5100-83A9-BE81AB70C863
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDBClusterConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterConfigResponseBody) SetAccessDeniedDetail(v string) *DescribeDBClusterConfigResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBody) SetData(v *DescribeDBClusterConfigResponseBodyData) *DescribeDBClusterConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBody) SetDynamicCode(v string) *DescribeDBClusterConfigResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBody) SetDynamicMessage(v string) *DescribeDBClusterConfigResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBody) SetRequestId(v string) *DescribeDBClusterConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDBClusterConfigResponseBodyData struct {
+	// example:
+	//
+	// selectdb-cn-wny3li00g02-be
+	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	// example:
+	//
+	// 6585
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-wny3li00g02
+	DbInstanceName *string                                          `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	Params         []*DescribeDBClusterConfigResponseBodyDataParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 107841167
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DescribeDBClusterConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterConfigResponseBodyData) SetDbClusterId(v string) *DescribeDBClusterConfigResponseBodyData {
+	s.DbClusterId = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBodyData) SetDbInstanceId(v string) *DescribeDBClusterConfigResponseBodyData {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBodyData) SetDbInstanceName(v string) *DescribeDBClusterConfigResponseBodyData {
+	s.DbInstanceName = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBodyData) SetParams(v []*DescribeDBClusterConfigResponseBodyDataParams) *DescribeDBClusterConfigResponseBodyData {
+	s.Params = v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBodyData) SetTaskId(v int32) *DescribeDBClusterConfigResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type DescribeDBClusterConfigResponseBodyDataParams struct {
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 15
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// example:
+	//
+	// true
+	IsDynamic *int32 `json:"IsDynamic,omitempty" xml:"IsDynamic,omitempty"`
+	// example:
+	//
+	// true
+	IsUserModifiable *int32 `json:"IsUserModifiable,omitempty" xml:"IsUserModifiable,omitempty"`
+	// example:
+	//
+	// doris_scanner_thread_pool_thread_num
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// [0-20000]
+	Optional      *string `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	ParamCategory *string `json:"ParamCategory,omitempty" xml:"ParamCategory,omitempty"`
+	// example:
+	//
+	// 10
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDBClusterConfigResponseBodyDataParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterConfigResponseBodyDataParams) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterConfigResponseBodyDataParams) SetComment(v string) *DescribeDBClusterConfigResponseBodyDataParams {
+	s.Comment = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBodyDataParams) SetDefaultValue(v string) *DescribeDBClusterConfigResponseBodyDataParams {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBodyDataParams) SetIsDynamic(v int32) *DescribeDBClusterConfigResponseBodyDataParams {
+	s.IsDynamic = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBodyDataParams) SetIsUserModifiable(v int32) *DescribeDBClusterConfigResponseBodyDataParams {
+	s.IsUserModifiable = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBodyDataParams) SetName(v string) *DescribeDBClusterConfigResponseBodyDataParams {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBodyDataParams) SetOptional(v string) *DescribeDBClusterConfigResponseBodyDataParams {
+	s.Optional = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBodyDataParams) SetParamCategory(v string) *DescribeDBClusterConfigResponseBodyDataParams {
+	s.ParamCategory = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponseBodyDataParams) SetValue(v string) *DescribeDBClusterConfigResponseBodyDataParams {
+	s.Value = &v
+	return s
+}
+
+type DescribeDBClusterConfigResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBClusterConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDBClusterConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterConfigResponse) SetHeaders(v map[string]*string) *DescribeDBClusterConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponse) SetStatusCode(v int32) *DescribeDBClusterConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigResponse) SetBody(v *DescribeDBClusterConfigResponseBody) *DescribeDBClusterConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBClusterConfigChangeLogsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// be.conf
+	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213c8yvv09-be
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-jia3ma3b003
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-08T15:59:59Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-04-25T09:48:23Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDBClusterConfigChangeLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterConfigChangeLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterConfigChangeLogsRequest) SetConfigKey(v string) *DescribeDBClusterConfigChangeLogsRequest {
+	s.ConfigKey = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsRequest) SetDBClusterId(v string) *DescribeDBClusterConfigChangeLogsRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsRequest) SetDBInstanceId(v string) *DescribeDBClusterConfigChangeLogsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsRequest) SetEndTime(v string) *DescribeDBClusterConfigChangeLogsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsRequest) SetRegionId(v string) *DescribeDBClusterConfigChangeLogsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsRequest) SetStartTime(v string) *DescribeDBClusterConfigChangeLogsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDBClusterConfigChangeLogsResponseBody struct {
+	// example:
+	//
+	// failed
+	AccessDeniedDetail *string                                            `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Data               *DescribeDBClusterConfigChangeLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// An error occurred while processing your request.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// F8900A96-67F7-5274-A41B-7722E1ECF8C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDBClusterConfigChangeLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterConfigChangeLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBody) SetAccessDeniedDetail(v string) *DescribeDBClusterConfigChangeLogsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBody) SetData(v *DescribeDBClusterConfigChangeLogsResponseBodyData) *DescribeDBClusterConfigChangeLogsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBody) SetDynamicCode(v string) *DescribeDBClusterConfigChangeLogsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBody) SetDynamicMessage(v string) *DescribeDBClusterConfigChangeLogsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBody) SetRequestId(v string) *DescribeDBClusterConfigChangeLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDBClusterConfigChangeLogsResponseBodyData struct {
+	// example:
+	//
+	// selectdb-cn-wny3li00g02-be
+	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	// example:
+	//
+	// 6585
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-wny3li00g02
+	DbInstanceName  *string                                                             `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	ParamChangeLogs []*DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs `json:"ParamChangeLogs,omitempty" xml:"ParamChangeLogs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 107841167
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DescribeDBClusterConfigChangeLogsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterConfigChangeLogsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBodyData) SetDbClusterId(v string) *DescribeDBClusterConfigChangeLogsResponseBodyData {
+	s.DbClusterId = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBodyData) SetDbInstanceId(v string) *DescribeDBClusterConfigChangeLogsResponseBodyData {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBodyData) SetDbInstanceName(v string) *DescribeDBClusterConfigChangeLogsResponseBodyData {
+	s.DbInstanceName = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBodyData) SetParamChangeLogs(v []*DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs) *DescribeDBClusterConfigChangeLogsResponseBodyData {
+	s.ParamChangeLogs = v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBodyData) SetTaskId(v int32) *DescribeDBClusterConfigChangeLogsResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs struct {
+	// example:
+	//
+	// 2022-10-11T08:53:32Z
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2024-03-08T10:08Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 617975
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// false
+	IsApplied *bool `json:"IsApplied,omitempty" xml:"IsApplied,omitempty"`
+	// example:
+	//
+	// cumulative_compaction_rounds_for_each_base_compaction_round
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 12
+	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
+	// example:
+	//
+	// 10
+	OldValue *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
+}
+
+func (s DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs) SetGmtCreated(v string) *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs) SetGmtModified(v string) *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs) SetId(v int64) *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs) SetIsApplied(v bool) *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs {
+	s.IsApplied = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs) SetName(v string) *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs) SetNewValue(v string) *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs {
+	s.NewValue = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs) SetOldValue(v string) *DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs {
+	s.OldValue = &v
+	return s
+}
+
+type DescribeDBClusterConfigChangeLogsResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBClusterConfigChangeLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDBClusterConfigChangeLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterConfigChangeLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponse) SetHeaders(v map[string]*string) *DescribeDBClusterConfigChangeLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponse) SetStatusCode(v int32) *DescribeDBClusterConfigChangeLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBClusterConfigChangeLogsResponse) SetBody(v *DescribeDBClusterConfigChangeLogsResponseBody) *DescribeDBClusterConfigChangeLogsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDBInstanceAttributeRequest struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -1007,28 +1853,79 @@ func (s *DescribeDBInstanceAttributeRequest) SetResourceOwnerId(v int64) *Descri
 }
 
 type DescribeDBInstanceAttributeResponseBody struct {
-	CanUpgradeVersions []*string                                               `json:"CanUpgradeVersions,omitempty" xml:"CanUpgradeVersions,omitempty" type:"Repeated"`
-	ChargeType         *string                                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CreateTime         *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DBClusterList      []*DescribeDBInstanceAttributeResponseBodyDBClusterList `json:"DBClusterList,omitempty" xml:"DBClusterList,omitempty" type:"Repeated"`
-	DBInstanceId       *string                                                 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Description        *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	Engine             *string                                                 `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineMinorVersion *string                                                 `json:"EngineMinorVersion,omitempty" xml:"EngineMinorVersion,omitempty"`
-	EngineVersion      *string                                                 `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime         *string                                                 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	GmtModified        *string                                                 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	LockMode           *int64                                                  `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LockReason         *string                                                 `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MaintainEndtime    *string                                                 `json:"MaintainEndtime,omitempty" xml:"MaintainEndtime,omitempty"`
-	MaintainStarttime  *string                                                 `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
-	ObjectStoreSize    *int64                                                  `json:"ObjectStoreSize,omitempty" xml:"ObjectStoreSize,omitempty"`
-	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceCpu        *int64                                                  `json:"ResourceCpu,omitempty" xml:"ResourceCpu,omitempty"`
-	ResourceGroupId    *string                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status             *string                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageSize        *int64                                                  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	SubDomain          *string                                                 `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	CanUpgradeVersions []*string `json:"CanUpgradeVersions,omitempty" xml:"CanUpgradeVersions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Prepaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 2023-08-14T03:00:42Z
+	CreateTime    *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBClusterList []*DescribeDBInstanceAttributeResponseBodyDBClusterList `json:"DBClusterList,omitempty" xml:"DBClusterList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// selectdb
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 3.0.1
+	EngineMinorVersion *string `json:"EngineMinorVersion,omitempty" xml:"EngineMinorVersion,omitempty"`
+	// example:
+	//
+	// 2.4
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// 2023-09-17T00:00Z
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 2023-08-17T09:58Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// lock
+	LockMode *int64 `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// example:
+	//
+	// nolock
+	LockReason        *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	MaintainEndtime   *string `json:"MaintainEndtime,omitempty" xml:"MaintainEndtime,omitempty"`
+	MaintainStarttime *string `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
+	// example:
+	//
+	// 0
+	ObjectStoreSize *int64 `json:"ObjectStoreSize,omitempty" xml:"ObjectStoreSize,omitempty"`
+	// example:
+	//
+	// 06758CAB-1204-5852-A471-29C87D5C1D0F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8
+	ResourceCpu     *int64  `json:"ResourceCpu,omitempty" xml:"ResourceCpu,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// ACTIVATION
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 400
+	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// example:
+	//
+	// cn-beijing-h-aliyun
+	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBody) String() string {
@@ -1150,19 +2047,55 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetSubDomain(v string) *Descri
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
+	// example:
+	//
+	// 200
 	CacheStorageSizeGB *string `json:"CacheStorageSizeGB,omitempty" xml:"CacheStorageSizeGB,omitempty"`
-	CacheStorageType   *string `json:"CacheStorageType,omitempty" xml:"CacheStorageType,omitempty"`
-	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CpuCores           *int64  `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	CreatedTime        *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	DbClusterClass     *string `json:"DbClusterClass,omitempty" xml:"DbClusterClass,omitempty"`
-	DbClusterId        *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
-	DbClusterName      *string `json:"DbClusterName,omitempty" xml:"DbClusterName,omitempty"`
-	DbInstanceName     *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
-	Memory             *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	PerformanceLevel   *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// cloud_essd
+	CacheStorageType *string `json:"CacheStorageType,omitempty" xml:"CacheStorageType,omitempty"`
+	// example:
+	//
+	// Prepaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 8
+	CpuCores *int64 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
+	// example:
+	//
+	// 2023-08-14T09:24:13Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// selectdb.2xlarge
+	DbClusterClass *string `json:"DbClusterClass,omitempty" xml:"DbClusterClass,omitempty"`
+	// example:
+	//
+	// selectdb-cn-h033cjs****-be
+	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	// example:
+	//
+	// test01
+	DbClusterName  *string `json:"DbClusterName,omitempty" xml:"DbClusterName,omitempty"`
+	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	// example:
+	//
+	// 64
+	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// PL1
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// example:
+	//
+	// 2023-08-14T09:24:13Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// ACTIVATION
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBClusterList) String() string {
@@ -1268,7 +2201,17 @@ func (s *DescribeDBInstanceAttributeResponse) SetBody(v *DescribeDBInstanceAttri
 }
 
 type DescribeDBInstanceNetInfoRequest struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -1299,7 +2242,10 @@ func (s *DescribeDBInstanceNetInfoRequest) SetResourceOwnerId(v int64) *Describe
 type DescribeDBInstanceNetInfoResponseBody struct {
 	DBClustersNetInfos []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos `json:"DBClustersNetInfos,omitempty" xml:"DBClustersNetInfos,omitempty" type:"Repeated"`
 	DBInstanceNetInfos []*DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Repeated"`
-	RequestId          *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ADF42B18-43FD-5100-83A9-BE81AB70C863
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBody) String() string {
@@ -1414,16 +2360,38 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList) SetPro
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos struct {
-	ClusterId        *string                                                            `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ConnectionString *string                                                            `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	Ip               *string                                                            `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	NetType          *string                                                            `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	PortList         []*DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
-	UserVisible      *bool                                                              `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-h033cnd****-fe.selectdbfe.pre.rds.aliyuncs.com
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// example:
+	//
+	// 172.16.XX.XX
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// VPC
+	NetType  *string                                                            `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	PortList []*DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	UserVisible *bool `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
 	// VPC ID。
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	//
+	// example:
+	//
+	// vpc-wz90scxq6ods388ft****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-h033cnd****-fe-20230816101006
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
-	VswitchId     *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// example:
+	//
+	// vsw-uf6mlqti065rer6m0****
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) String() string {
@@ -1480,7 +2448,13 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) SetVswitchId(v
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList struct {
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// MySQLPort
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 9030
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -1533,13 +2507,33 @@ func (s *DescribeDBInstanceNetInfoResponse) SetBody(v *DescribeDBInstanceNetInfo
 
 type DescribeDBInstancesRequest struct {
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceIds         *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
-	DBInstanceStatus      *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	PageNumber            *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize              *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
+	// example:
+	//
+	// ACTIVATION
+	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-4690g37929****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DescribeDBInstancesRequest) String() string {
@@ -1591,11 +2585,23 @@ func (s *DescribeDBInstancesRequest) SetResourceOwnerId(v int64) *DescribeDBInst
 }
 
 type DescribeDBInstancesResponseBody struct {
-	Items            []*DescribeDBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber       *int64                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId        *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount *int64                                  `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	Items []*DescribeDBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// BC854513-E85E-54F3-9842-B9CCD3308CDD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalRecordCount *int64 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBody) String() string {
@@ -1632,43 +2638,119 @@ func (s *DescribeDBInstancesResponseBody) SetTotalRecordCount(v int64) *Describe
 }
 
 type DescribeDBInstancesResponseBodyItems struct {
-	Category             *string                                     `json:"Category,omitempty" xml:"Category,omitempty"`
-	ChargeType           *string                                     `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClusterCount         *int32                                      `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
-	DBInstanceId         *string                                     `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Description          *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	Engine               *string                                     `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion        *string                                     `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime           *string                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	GmtCreated           *string                                     `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	GmtModified          *string                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	InstanceUsedType     *string                                     `json:"InstanceUsedType,omitempty" xml:"InstanceUsedType,omitempty"`
-	IsDeleted            *bool                                       `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	LockMode             *int64                                      `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LockReason           *string                                     `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MaintainEndTimeStr   *string                                     `json:"MaintainEndTimeStr,omitempty" xml:"MaintainEndTimeStr,omitempty"`
-	MaintainEndtime      *string                                     `json:"MaintainEndtime,omitempty" xml:"MaintainEndtime,omitempty"`
-	MaintainStartTimeStr *string                                     `json:"MaintainStartTimeStr,omitempty" xml:"MaintainStartTimeStr,omitempty"`
-	MaintainStarttime    *string                                     `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
-	ObjectStoreSize      *int64                                      `json:"ObjectStoreSize,omitempty" xml:"ObjectStoreSize,omitempty"`
-	ParentInstance       *string                                     `json:"ParentInstance,omitempty" xml:"ParentInstance,omitempty"`
-	RegionId             *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceCpu          *int64                                      `json:"ResourceCpu,omitempty" xml:"ResourceCpu,omitempty"`
-	ResourceGroupId      *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceMemory       *int64                                      `json:"ResourceMemory,omitempty" xml:"ResourceMemory,omitempty"`
-	ScaleMax             *int64                                      `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	ScaleMin             *int64                                      `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	ScaleReplica         *int64                                      `json:"ScaleReplica,omitempty" xml:"ScaleReplica,omitempty"`
-	Status               *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageSize          *int64                                      `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	StorageType          *string                                     `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Tags                 []*DescribeDBInstancesResponseBodyItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TenantClusterId      *string                                     `json:"TenantClusterId,omitempty" xml:"TenantClusterId,omitempty"`
-	TenantToken          *string                                     `json:"TenantToken,omitempty" xml:"TenantToken,omitempty"`
-	TenantUserId         *string                                     `json:"TenantUserId,omitempty" xml:"TenantUserId,omitempty"`
+	// example:
+	//
+	// basic
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 1
+	ClusterCount *int32 `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// selectdb
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2.4
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// 2024-03-29T03:47:05Z
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 2023-08-12T04:14Z
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2023-08-12T19:05Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// Instance
+	InstanceUsedType *string `json:"InstanceUsedType,omitempty" xml:"InstanceUsedType,omitempty"`
+	// example:
+	//
+	// false
+	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	// example:
+	//
+	// 0
+	LockMode *int64 `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// example:
+	//
+	// nolock
+	LockReason           *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	MaintainEndTimeStr   *string `json:"MaintainEndTimeStr,omitempty" xml:"MaintainEndTimeStr,omitempty"`
+	MaintainEndtime      *string `json:"MaintainEndtime,omitempty" xml:"MaintainEndtime,omitempty"`
+	MaintainStartTimeStr *string `json:"MaintainStartTimeStr,omitempty" xml:"MaintainStartTimeStr,omitempty"`
+	MaintainStarttime    *string `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
+	// example:
+	//
+	// 200
+	ObjectStoreSize *int64  `json:"ObjectStoreSize,omitempty" xml:"ObjectStoreSize,omitempty"`
+	ParentInstance  *string `json:"ParentInstance,omitempty" xml:"ParentInstance,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 8
+	ResourceCpu     *int64  `json:"ResourceCpu,omitempty" xml:"ResourceCpu,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 64
+	ResourceMemory *int64 `json:"ResourceMemory,omitempty" xml:"ResourceMemory,omitempty"`
+	// example:
+	//
+	// 0
+	ScaleMax *int64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	// example:
+	//
+	// 0
+	ScaleMin     *int64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	ScaleReplica *int64 `json:"ScaleReplica,omitempty" xml:"ScaleReplica,omitempty"`
+	// example:
+	//
+	// ACTIVATION
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 100
+	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// example:
+	//
+	// cloud_essd
+	StorageType     *string                                     `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags            []*DescribeDBInstancesResponseBodyItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TenantClusterId *string                                     `json:"TenantClusterId,omitempty" xml:"TenantClusterId,omitempty"`
+	TenantToken     *string                                     `json:"TenantToken,omitempty" xml:"TenantToken,omitempty"`
+	TenantUserId    *string                                     `json:"TenantUserId,omitempty" xml:"TenantUserId,omitempty"`
 	// VPC ID。
-	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId        *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	//
+	// example:
+	//
+	// vpc-bp175iuvg8nxqraf2****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// vsw-bp1gzt31twhlo0sa5****
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId           *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	ConnectionString *string `json:"connectionString,omitempty" xml:"connectionString,omitempty"`
 }
@@ -1872,7 +2954,13 @@ func (s *DescribeDBInstancesResponseBodyItems) SetConnectionString(v string) *De
 }
 
 type DescribeDBInstancesResponseBodyItemsTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// department
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// it
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1924,7 +3012,17 @@ func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody
 }
 
 type DescribeSecurityIPListRequest struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -1953,9 +3051,15 @@ func (s *DescribeSecurityIPListRequest) SetResourceOwnerId(v int64) *DescribeSec
 }
 
 type DescribeSecurityIPListResponseBody struct {
+	// example:
+	//
+	// selectdb-cn-7213cjv****
 	DBInstanceName *string                                         `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	GroupItems     []*DescribeSecurityIPListResponseBodyGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5CBE044D-4594-525D-AC65-E988553D853E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSecurityIPListResponseBody) String() string {
@@ -1982,10 +3086,25 @@ func (s *DescribeSecurityIPListResponseBody) SetRequestId(v string) *DescribeSec
 }
 
 type DescribeSecurityIPListResponseBodyGroupItems struct {
-	AecurityIPType   *string `json:"AecurityIPType,omitempty" xml:"AecurityIPType,omitempty"`
-	GroupName        *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupTag         *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
-	SecurityIPList   *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// example:
+	//
+	// ipv4
+	AecurityIPType *string `json:"AecurityIPType,omitempty" xml:"AecurityIPType,omitempty"`
+	// example:
+	//
+	// group1
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// ""
+	GroupTag *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
+	// example:
+	//
+	// 127.0.XX.XX
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// example:
+	//
+	// mix
 	WhitelistNetType *string `json:"WhitelistNetType,omitempty" xml:"WhitelistNetType,omitempty"`
 }
 
@@ -2051,13 +3170,451 @@ func (s *DescribeSecurityIPListResponse) SetBody(v *DescribeSecurityIPListRespon
 	return s
 }
 
+type GetCreateBEClusterInquiryRequest struct {
+	// example:
+	//
+	// 200
+	CacheSize *int64 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// POSTPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// selectdb_go_public_cn
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// example:
+	//
+	// 4
+	ComputeSize *int64 `json:"ComputeSize,omitempty" xml:"ComputeSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-xxx
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// 200
+	PreCacheSize *int64 `json:"PreCacheSize,omitempty" xml:"PreCacheSize,omitempty"`
+	// example:
+	//
+	// 4
+	PreComputeSize *int64 `json:"PreComputeSize,omitempty" xml:"PreComputeSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hour
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetCreateBEClusterInquiryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCreateBEClusterInquiryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCreateBEClusterInquiryRequest) SetCacheSize(v int64) *GetCreateBEClusterInquiryRequest {
+	s.CacheSize = &v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryRequest) SetChargeType(v string) *GetCreateBEClusterInquiryRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryRequest) SetCommodityCode(v string) *GetCreateBEClusterInquiryRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryRequest) SetComputeSize(v int64) *GetCreateBEClusterInquiryRequest {
+	s.ComputeSize = &v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryRequest) SetDbInstanceId(v string) *GetCreateBEClusterInquiryRequest {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryRequest) SetPreCacheSize(v int64) *GetCreateBEClusterInquiryRequest {
+	s.PreCacheSize = &v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryRequest) SetPreComputeSize(v int64) *GetCreateBEClusterInquiryRequest {
+	s.PreComputeSize = &v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryRequest) SetPricingCycle(v string) *GetCreateBEClusterInquiryRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryRequest) SetQuantity(v int64) *GetCreateBEClusterInquiryRequest {
+	s.Quantity = &v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryRequest) SetRegionId(v string) *GetCreateBEClusterInquiryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryRequest) SetResourceOwnerId(v int64) *GetCreateBEClusterInquiryRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetCreateBEClusterInquiryResponseBody struct {
+	Data *GetCreateBEClusterInquiryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 06758CAB-1204-5852-A471-29C87D5C1D0F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetCreateBEClusterInquiryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCreateBEClusterInquiryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCreateBEClusterInquiryResponseBody) SetData(v *GetCreateBEClusterInquiryResponseBodyData) *GetCreateBEClusterInquiryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryResponseBody) SetRequestId(v string) *GetCreateBEClusterInquiryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetCreateBEClusterInquiryResponseBodyData struct {
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 1.76
+	TradeAmount *string `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s GetCreateBEClusterInquiryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCreateBEClusterInquiryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCreateBEClusterInquiryResponseBodyData) SetCurrency(v string) *GetCreateBEClusterInquiryResponseBodyData {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryResponseBodyData) SetTradeAmount(v string) *GetCreateBEClusterInquiryResponseBodyData {
+	s.TradeAmount = &v
+	return s
+}
+
+type GetCreateBEClusterInquiryResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCreateBEClusterInquiryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCreateBEClusterInquiryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCreateBEClusterInquiryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCreateBEClusterInquiryResponse) SetHeaders(v map[string]*string) *GetCreateBEClusterInquiryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryResponse) SetStatusCode(v int32) *GetCreateBEClusterInquiryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryResponse) SetBody(v *GetCreateBEClusterInquiryResponseBody) *GetCreateBEClusterInquiryResponse {
+	s.Body = v
+	return s
+}
+
+type GetModifyBEClusterInquiryRequest struct {
+	// example:
+	//
+	// 200
+	CacheSize *int64 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// POSTPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// selectdb-xxx-be
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb_go_public_cn
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// example:
+	//
+	// 4
+	ComputeSize *int64 `json:"ComputeSize,omitempty" xml:"ComputeSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-xxx
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// 200
+	PreCacheSize *int64 `json:"PreCacheSize,omitempty" xml:"PreCacheSize,omitempty"`
+	// example:
+	//
+	// 4
+	PreComputeSize *int64 `json:"PreComputeSize,omitempty" xml:"PreComputeSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hour
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetModifyBEClusterInquiryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModifyBEClusterInquiryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetModifyBEClusterInquiryRequest) SetCacheSize(v int64) *GetModifyBEClusterInquiryRequest {
+	s.CacheSize = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryRequest) SetChargeType(v string) *GetModifyBEClusterInquiryRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryRequest) SetClusterId(v string) *GetModifyBEClusterInquiryRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryRequest) SetCommodityCode(v string) *GetModifyBEClusterInquiryRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryRequest) SetComputeSize(v int64) *GetModifyBEClusterInquiryRequest {
+	s.ComputeSize = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryRequest) SetDbInstanceId(v string) *GetModifyBEClusterInquiryRequest {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryRequest) SetPreCacheSize(v int64) *GetModifyBEClusterInquiryRequest {
+	s.PreCacheSize = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryRequest) SetPreComputeSize(v int64) *GetModifyBEClusterInquiryRequest {
+	s.PreComputeSize = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryRequest) SetPricingCycle(v string) *GetModifyBEClusterInquiryRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryRequest) SetQuantity(v int64) *GetModifyBEClusterInquiryRequest {
+	s.Quantity = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryRequest) SetRegionId(v string) *GetModifyBEClusterInquiryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryRequest) SetResourceOwnerId(v int64) *GetModifyBEClusterInquiryRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetModifyBEClusterInquiryResponseBody struct {
+	Data *GetModifyBEClusterInquiryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 06758CAB-1204-5852-A471-29C87D5C1D0F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetModifyBEClusterInquiryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModifyBEClusterInquiryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetModifyBEClusterInquiryResponseBody) SetData(v *GetModifyBEClusterInquiryResponseBodyData) *GetModifyBEClusterInquiryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryResponseBody) SetRequestId(v string) *GetModifyBEClusterInquiryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetModifyBEClusterInquiryResponseBodyData struct {
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 1.76
+	TradeAmount *string `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s GetModifyBEClusterInquiryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModifyBEClusterInquiryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyData) SetCurrency(v string) *GetModifyBEClusterInquiryResponseBodyData {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyData) SetTradeAmount(v string) *GetModifyBEClusterInquiryResponseBodyData {
+	s.TradeAmount = &v
+	return s
+}
+
+type GetModifyBEClusterInquiryResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetModifyBEClusterInquiryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetModifyBEClusterInquiryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModifyBEClusterInquiryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetModifyBEClusterInquiryResponse) SetHeaders(v map[string]*string) *GetModifyBEClusterInquiryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryResponse) SetStatusCode(v int32) *GetModifyBEClusterInquiryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryResponse) SetBody(v *GetModifyBEClusterInquiryResponseBody) *GetModifyBEClusterInquiryResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyBEClusterAttributeRequest struct {
-	DBClusterId           *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-xxxb9f2w-be
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DBInstanceDescription
 	InstanceAttributeType *string `json:"InstanceAttributeType,omitempty" xml:"InstanceAttributeType,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Value                 *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdb
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ModifyBEClusterAttributeRequest) String() string {
@@ -2099,6 +3656,9 @@ func (s *ModifyBEClusterAttributeRequest) SetValue(v string) *ModifyBEClusterAtt
 }
 
 type ModifyBEClusterAttributeResponseBody struct {
+	// example:
+	//
+	// 58E21E11-90FF-50F8-A615-8DEB193676E0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2145,10 +3705,33 @@ func (s *ModifyBEClusterAttributeResponse) SetBody(v *ModifyBEClusterAttributeRe
 }
 
 type ModifyDBClusterRequest struct {
-	DBClusterClass  *string `json:"DBClusterClass,omitempty" xml:"DBClusterClass,omitempty"`
-	DBClusterId     *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Engine          *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb.2xlarge
+	DBClusterClass *string `json:"DBClusterClass,omitempty" xml:"DBClusterClass,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-xxxb9f2w-be
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// selectdb
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -2193,9 +3776,16 @@ func (s *ModifyDBClusterRequest) SetResourceOwnerId(v int64) *ModifyDBClusterReq
 
 type ModifyDBClusterResponseBody struct {
 	// 代表资源一级ID的资源属性字段
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
 	DBInstanceId *string                          `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Data         *ModifyDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId    *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0BF61F90-ACED-55DF-A6FE-56714B2BFCF6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDBClusterResponseBody) String() string {
@@ -2222,9 +3812,18 @@ func (s *ModifyDBClusterResponseBody) SetRequestId(v string) *ModifyDBClusterRes
 }
 
 type ModifyDBClusterResponseBodyData struct {
-	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OrderId      *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 219396937240838
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s ModifyDBClusterResponseBodyData) String() string {
@@ -2279,12 +3878,234 @@ func (s *ModifyDBClusterResponse) SetBody(v *ModifyDBClusterResponseBody) *Modif
 	return s
 }
 
+type ModifyDBClusterConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// be.conf
+	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213c8yvv09-be
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-xxxd8a5h60y
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{\\"name\\":\\"param1\\",\\"value\\":\\"1234577777\\"},{\\"name\\":\\"param2\\",\\"value\\":\\"${yyyyMMdd}\\"}]
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1
+	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
+}
+
+func (s ModifyDBClusterConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterConfigRequest) SetConfigKey(v string) *ModifyDBClusterConfigRequest {
+	s.ConfigKey = &v
+	return s
+}
+
+func (s *ModifyDBClusterConfigRequest) SetDBClusterId(v string) *ModifyDBClusterConfigRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBClusterConfigRequest) SetDBInstanceId(v string) *ModifyDBClusterConfigRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBClusterConfigRequest) SetParameters(v string) *ModifyDBClusterConfigRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *ModifyDBClusterConfigRequest) SetRegionId(v string) *ModifyDBClusterConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDBClusterConfigRequest) SetSwitchTimeMode(v string) *ModifyDBClusterConfigRequest {
+	s.SwitchTimeMode = &v
+	return s
+}
+
+type ModifyDBClusterConfigResponseBody struct {
+	// example:
+	//
+	// failed
+	AccessDeniedDetail *string                                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Data               *ModifyDBClusterConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// An error occurred while processing your request.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// BC854513-E85E-54F3-9842-B9CCD3308CDD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBClusterConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterConfigResponseBody) SetAccessDeniedDetail(v string) *ModifyDBClusterConfigResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ModifyDBClusterConfigResponseBody) SetData(v *ModifyDBClusterConfigResponseBodyData) *ModifyDBClusterConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyDBClusterConfigResponseBody) SetDynamicCode(v string) *ModifyDBClusterConfigResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ModifyDBClusterConfigResponseBody) SetDynamicMessage(v string) *ModifyDBClusterConfigResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ModifyDBClusterConfigResponseBody) SetRequestId(v string) *ModifyDBClusterConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBClusterConfigResponseBodyData struct {
+	// example:
+	//
+	// selectdb-cn-wny3li00g02-be
+	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	// example:
+	//
+	// 6585
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-wny3li00g02
+	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	// example:
+	//
+	// 107878719
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ModifyDBClusterConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterConfigResponseBodyData) SetDbClusterId(v string) *ModifyDBClusterConfigResponseBodyData {
+	s.DbClusterId = &v
+	return s
+}
+
+func (s *ModifyDBClusterConfigResponseBodyData) SetDbInstanceId(v string) *ModifyDBClusterConfigResponseBodyData {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBClusterConfigResponseBodyData) SetDbInstanceName(v string) *ModifyDBClusterConfigResponseBodyData {
+	s.DbInstanceName = &v
+	return s
+}
+
+func (s *ModifyDBClusterConfigResponseBodyData) SetTaskId(v int32) *ModifyDBClusterConfigResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type ModifyDBClusterConfigResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBClusterConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDBClusterConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterConfigResponse) SetHeaders(v map[string]*string) *ModifyDBClusterConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBClusterConfigResponse) SetStatusCode(v int32) *ModifyDBClusterConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBClusterConfigResponse) SetBody(v *ModifyDBClusterConfigResponseBody) *ModifyDBClusterConfigResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDBInstanceAttributeRequest struct {
-	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DBInstanceDescription
 	InstanceAttributeType *string `json:"InstanceAttributeType,omitempty" xml:"InstanceAttributeType,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Value                 *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdb01
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ModifyDBInstanceAttributeRequest) String() string {
@@ -2321,6 +4142,9 @@ func (s *ModifyDBInstanceAttributeRequest) SetValue(v string) *ModifyDBInstanceA
 }
 
 type ModifyDBInstanceAttributeResponseBody struct {
+	// example:
+	//
+	// 2DB29DEE-52E4-57EE-BF68-2C95C20E6658
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2367,12 +4191,37 @@ func (s *ModifyDBInstanceAttributeResponse) SetBody(v *ModifyDBInstanceAttribute
 }
 
 type ModifySecurityIPListRequest struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	GroupName       *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	ModifyMode      *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityIPList  *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 127.0.XX.XX,127.2.XX.XX
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 }
 
 func (s ModifySecurityIPListRequest) String() string {
@@ -2414,13 +4263,34 @@ func (s *ModifySecurityIPListRequest) SetSecurityIPList(v string) *ModifySecurit
 }
 
 type ModifySecurityIPListResponseBody struct {
-	DBInstanceName   *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	GroupName        *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupTag         *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecurityIPList   *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	SecurityIPType   *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
-	TaskId           *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// group1
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// grouptag
+	GroupTag *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
+	// example:
+	//
+	// 195F64C2-8F11-532B-A436-FC08A221D756
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 127.0.XX.XX,127.2.XX.XX
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// example:
+	//
+	// ipv4
+	SecurityIPType *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
+	// example:
+	//
+	// 479095561
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// mix
 	WhitelistNetType *string `json:"WhitelistNetType,omitempty" xml:"WhitelistNetType,omitempty"`
 }
 
@@ -2502,10 +4372,25 @@ func (s *ModifySecurityIPListResponse) SetBody(v *ModifySecurityIPListResponseBo
 }
 
 type ReleaseInstancePublicConnectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213c8y****-public.selectdbfe.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ReleaseInstancePublicConnectionRequest) String() string {
@@ -2537,6 +4422,9 @@ func (s *ReleaseInstancePublicConnectionRequest) SetResourceOwnerId(v int64) *Re
 }
 
 type ReleaseInstancePublicConnectionResponseBody struct {
+	// example:
+	//
+	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2583,9 +4471,29 @@ func (s *ReleaseInstancePublicConnectionResponse) SetBody(v *ReleaseInstancePubl
 }
 
 type ResetAccountPasswordRequest struct {
-	AccountName     *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// admin
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a1b2c3d4@
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -2624,6 +4532,9 @@ func (s *ResetAccountPasswordRequest) SetResourceOwnerId(v int64) *ResetAccountP
 }
 
 type ResetAccountPasswordResponseBody struct {
+	// example:
+	//
+	// 58E21E11-90FF-50F8-A615-8DEB193676E0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2670,12 +4581,33 @@ func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBo
 }
 
 type RestartDBClusterRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213c8yvv09-be
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// 代表资源一级ID的资源属性字段
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// 地域
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 资源组id
+	//
+	// example:
+	//
+	// rg-4690g37929****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -2714,8 +4646,11 @@ func (s *RestartDBClusterRequest) SetResourceOwnerId(v int64) *RestartDBClusterR
 }
 
 type RestartDBClusterResponseBody struct {
-	Data      *RestartDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *RestartDBClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// BD0D0B17-C145-5B91-BFC2-6791927EE973
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RestartDBClusterResponseBody) String() string {
@@ -2737,7 +4672,13 @@ func (s *RestartDBClusterResponseBody) SetRequestId(v string) *RestartDBClusterR
 }
 
 type RestartDBClusterResponseBodyData struct {
-	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213c8y****-be
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -2789,8 +4730,23 @@ func (s *RestartDBClusterResponse) SetBody(v *RestartDBClusterResponseBody) *Res
 }
 
 type StartBEClusterRequest struct {
-	DBClusterId     *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213c8yvv09-be
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -2824,6 +4780,9 @@ func (s *StartBEClusterRequest) SetResourceOwnerId(v int64) *StartBEClusterReque
 }
 
 type StartBEClusterResponseBody struct {
+	// example:
+	//
+	// F203FA74-3041-589F-BE66-E570793A0C91
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2870,8 +4829,23 @@ func (s *StartBEClusterResponse) SetBody(v *StartBEClusterResponseBody) *StartBE
 }
 
 type StopBEClusterRequest struct {
-	DBClusterId     *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -2905,6 +4879,9 @@ func (s *StopBEClusterRequest) SetResourceOwnerId(v int64) *StopBEClusterRequest
 }
 
 type StopBEClusterResponseBody struct {
+	// example:
+	//
+	// BC854513-E85E-54F3-9842-B9CCD3308CDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2951,8 +4928,23 @@ func (s *StopBEClusterResponse) SetBody(v *StopBEClusterResponseBody) *StopBEClu
 }
 
 type UpgradeDBInstanceEngineVersionRequest struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	EngineVersion   *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2.4
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SwitchTimeMode  *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
@@ -2992,6 +4984,9 @@ func (s *UpgradeDBInstanceEngineVersionRequest) SetSwitchTimeMode(v string) *Upg
 }
 
 type UpgradeDBInstanceEngineVersionResponseBody struct {
+	// example:
+	//
+	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3084,6 +5079,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 申请公网地址
+//
+// @param request - AllocateInstancePublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllocateInstancePublicConnectionResponse
 func (client *Client) AllocateInstancePublicConnectionWithOptions(request *AllocateInstancePublicConnectionRequest, runtime *util.RuntimeOptions) (_result *AllocateInstancePublicConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3133,6 +5137,13 @@ func (client *Client) AllocateInstancePublicConnectionWithOptions(request *Alloc
 	return _result, _err
 }
 
+// Summary:
+//
+// 申请公网地址
+//
+// @param request - AllocateInstancePublicConnectionRequest
+//
+// @return AllocateInstancePublicConnectionResponse
 func (client *Client) AllocateInstancePublicConnection(request *AllocateInstancePublicConnectionRequest) (_result *AllocateInstancePublicConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AllocateInstancePublicConnectionResponse{}
@@ -3144,6 +5155,15 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// SelectDB实例创建前检查
+//
+// @param request - CheckCreateDBInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckCreateDBInstanceResponse
 func (client *Client) CheckCreateDBInstanceWithOptions(request *CheckCreateDBInstanceRequest, runtime *util.RuntimeOptions) (_result *CheckCreateDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3241,6 +5261,13 @@ func (client *Client) CheckCreateDBInstanceWithOptions(request *CheckCreateDBIns
 	return _result, _err
 }
 
+// Summary:
+//
+// SelectDB实例创建前检查
+//
+// @param request - CheckCreateDBInstanceRequest
+//
+// @return CheckCreateDBInstanceResponse
 func (client *Client) CheckCreateDBInstance(request *CheckCreateDBInstanceRequest) (_result *CheckCreateDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckCreateDBInstanceResponse{}
@@ -3252,6 +5279,15 @@ func (client *Client) CheckCreateDBInstance(request *CheckCreateDBInstanceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 检查服务关联角色
+//
+// @param request - CheckServiceLinkedRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckServiceLinkedRoleResponse
 func (client *Client) CheckServiceLinkedRoleWithOptions(request *CheckServiceLinkedRoleRequest, runtime *util.RuntimeOptions) (_result *CheckServiceLinkedRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3289,6 +5325,13 @@ func (client *Client) CheckServiceLinkedRoleWithOptions(request *CheckServiceLin
 	return _result, _err
 }
 
+// Summary:
+//
+// 检查服务关联角色
+//
+// @param request - CheckServiceLinkedRoleRequest
+//
+// @return CheckServiceLinkedRoleResponse
 func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequest) (_result *CheckServiceLinkedRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckServiceLinkedRoleResponse{}
@@ -3300,6 +5343,15 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// SelectDB实例下创建集群
+//
+// @param request - CreateDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBClusterResponse
 func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest, runtime *util.RuntimeOptions) (_result *CreateDBClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3391,6 +5443,13 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// SelectDB实例下创建集群
+//
+// @param request - CreateDBClusterRequest
+//
+// @return CreateDBClusterResponse
 func (client *Client) CreateDBCluster(request *CreateDBClusterRequest) (_result *CreateDBClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBClusterResponse{}
@@ -3402,6 +5461,15 @@ func (client *Client) CreateDBCluster(request *CreateDBClusterRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建SelectDB实例
+//
+// @param request - CreateDBInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBInstanceResponse
 func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3501,6 +5569,13 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建SelectDB实例
+//
+// @param request - CreateDBInstanceRequest
+//
+// @return CreateDBInstanceResponse
 func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_result *CreateDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBInstanceResponse{}
@@ -3512,6 +5587,15 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建服务关联角色
+//
+// @param request - CreateServiceLinkedRoleForSelectDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceLinkedRoleForSelectDBResponse
 func (client *Client) CreateServiceLinkedRoleForSelectDBWithOptions(request *CreateServiceLinkedRoleForSelectDBRequest, runtime *util.RuntimeOptions) (_result *CreateServiceLinkedRoleForSelectDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3549,6 +5633,13 @@ func (client *Client) CreateServiceLinkedRoleForSelectDBWithOptions(request *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建服务关联角色
+//
+// @param request - CreateServiceLinkedRoleForSelectDBRequest
+//
+// @return CreateServiceLinkedRoleForSelectDBResponse
 func (client *Client) CreateServiceLinkedRoleForSelectDB(request *CreateServiceLinkedRoleForSelectDBRequest) (_result *CreateServiceLinkedRoleForSelectDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServiceLinkedRoleForSelectDBResponse{}
@@ -3560,6 +5651,15 @@ func (client *Client) CreateServiceLinkedRoleForSelectDB(request *CreateServiceL
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放实例下集群
+//
+// @param request - DeleteDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBClusterResponse
 func (client *Client) DeleteDBClusterWithOptions(request *DeleteDBClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteDBClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3611,6 +5711,13 @@ func (client *Client) DeleteDBClusterWithOptions(request *DeleteDBClusterRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放实例下集群
+//
+// @param request - DeleteDBClusterRequest
+//
+// @return DeleteDBClusterResponse
 func (client *Client) DeleteDBCluster(request *DeleteDBClusterRequest) (_result *DeleteDBClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBClusterResponse{}
@@ -3622,6 +5729,15 @@ func (client *Client) DeleteDBCluster(request *DeleteDBClusterRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除DB实例
+//
+// @param request - DeleteDBInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBInstanceResponse
 func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3665,6 +5781,13 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除DB实例
+//
+// @param request - DeleteDBInstanceRequest
+//
+// @return DeleteDBInstanceResponse
 func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_result *DeleteDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBInstanceResponse{}
@@ -3676,6 +5799,167 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看集群配置
+//
+// @param request - DescribeDBClusterConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterConfigResponse
+func (client *Client) DescribeDBClusterConfigWithOptions(request *DescribeDBClusterConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigKey)) {
+		query["ConfigKey"] = request.ConfigKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBClusterConfig"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBClusterConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看集群配置
+//
+// @param request - DescribeDBClusterConfigRequest
+//
+// @return DescribeDBClusterConfigResponse
+func (client *Client) DescribeDBClusterConfig(request *DescribeDBClusterConfigRequest) (_result *DescribeDBClusterConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBClusterConfigResponse{}
+	_body, _err := client.DescribeDBClusterConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看集群配置变更记录
+//
+// @param request - DescribeDBClusterConfigChangeLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterConfigChangeLogsResponse
+func (client *Client) DescribeDBClusterConfigChangeLogsWithOptions(request *DescribeDBClusterConfigChangeLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterConfigChangeLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigKey)) {
+		query["ConfigKey"] = request.ConfigKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBClusterConfigChangeLogs"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBClusterConfigChangeLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看集群配置变更记录
+//
+// @param request - DescribeDBClusterConfigChangeLogsRequest
+//
+// @return DescribeDBClusterConfigChangeLogsResponse
+func (client *Client) DescribeDBClusterConfigChangeLogs(request *DescribeDBClusterConfigChangeLogsRequest) (_result *DescribeDBClusterConfigChangeLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBClusterConfigChangeLogsResponse{}
+	_body, _err := client.DescribeDBClusterConfigChangeLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例详情
+//
+// @param request - DescribeDBInstanceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceAttributeResponse
 func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDBInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3717,6 +6001,13 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例详情
+//
+// @param request - DescribeDBInstanceAttributeRequest
+//
+// @return DescribeDBInstanceAttributeResponse
 func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAttributeRequest) (_result *DescribeDBInstanceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceAttributeResponse{}
@@ -3728,6 +6019,15 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例网络链接
+//
+// @param request - DescribeDBInstanceNetInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceNetInfoResponse
 func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBInstanceNetInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceNetInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3769,6 +6069,13 @@ func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBIn
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例网络链接
+//
+// @param request - DescribeDBInstanceNetInfoRequest
+//
+// @return DescribeDBInstanceNetInfoResponse
 func (client *Client) DescribeDBInstanceNetInfo(request *DescribeDBInstanceNetInfoRequest) (_result *DescribeDBInstanceNetInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceNetInfoResponse{}
@@ -3780,6 +6087,15 @@ func (client *Client) DescribeDBInstanceNetInfo(request *DescribeDBInstanceNetIn
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例列表
+//
+// @param request - DescribeDBInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstancesResponse
 func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3841,6 +6157,13 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例列表
+//
+// @param request - DescribeDBInstancesRequest
+//
+// @return DescribeDBInstancesResponse
 func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (_result *DescribeDBInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstancesResponse{}
@@ -3852,6 +6175,15 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看白名单
+//
+// @param request - DescribeSecurityIPListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSecurityIPListResponse
 func (client *Client) DescribeSecurityIPListWithOptions(request *DescribeSecurityIPListRequest, runtime *util.RuntimeOptions) (_result *DescribeSecurityIPListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3893,6 +6225,13 @@ func (client *Client) DescribeSecurityIPListWithOptions(request *DescribeSecurit
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看白名单
+//
+// @param request - DescribeSecurityIPListRequest
+//
+// @return DescribeSecurityIPListResponse
 func (client *Client) DescribeSecurityIPList(request *DescribeSecurityIPListRequest) (_result *DescribeSecurityIPListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSecurityIPListResponse{}
@@ -3904,6 +6243,127 @@ func (client *Client) DescribeSecurityIPList(request *DescribeSecurityIPListRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建集群询价
+//
+// @param request - GetCreateBEClusterInquiryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCreateBEClusterInquiryResponse
+func (client *Client) GetCreateBEClusterInquiryWithOptions(request *GetCreateBEClusterInquiryRequest, runtime *util.RuntimeOptions) (_result *GetCreateBEClusterInquiryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCreateBEClusterInquiry"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCreateBEClusterInquiryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建集群询价
+//
+// @param request - GetCreateBEClusterInquiryRequest
+//
+// @return GetCreateBEClusterInquiryResponse
+func (client *Client) GetCreateBEClusterInquiry(request *GetCreateBEClusterInquiryRequest) (_result *GetCreateBEClusterInquiryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCreateBEClusterInquiryResponse{}
+	_body, _err := client.GetCreateBEClusterInquiryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 集群变配询价
+//
+// @param request - GetModifyBEClusterInquiryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetModifyBEClusterInquiryResponse
+func (client *Client) GetModifyBEClusterInquiryWithOptions(request *GetModifyBEClusterInquiryRequest, runtime *util.RuntimeOptions) (_result *GetModifyBEClusterInquiryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetModifyBEClusterInquiry"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetModifyBEClusterInquiryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 集群变配询价
+//
+// @param request - GetModifyBEClusterInquiryRequest
+//
+// @return GetModifyBEClusterInquiryResponse
+func (client *Client) GetModifyBEClusterInquiry(request *GetModifyBEClusterInquiryRequest) (_result *GetModifyBEClusterInquiryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetModifyBEClusterInquiryResponse{}
+	_body, _err := client.GetModifyBEClusterInquiryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改BE集群名称、属性、设置
+//
+// @param request - ModifyBEClusterAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBEClusterAttributeResponse
 func (client *Client) ModifyBEClusterAttributeWithOptions(request *ModifyBEClusterAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyBEClusterAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3957,6 +6417,13 @@ func (client *Client) ModifyBEClusterAttributeWithOptions(request *ModifyBEClust
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改BE集群名称、属性、设置
+//
+// @param request - ModifyBEClusterAttributeRequest
+//
+// @return ModifyBEClusterAttributeResponse
 func (client *Client) ModifyBEClusterAttribute(request *ModifyBEClusterAttributeRequest) (_result *ModifyBEClusterAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBEClusterAttributeResponse{}
@@ -3968,6 +6435,15 @@ func (client *Client) ModifyBEClusterAttribute(request *ModifyBEClusterAttribute
 	return _result, _err
 }
 
+// Summary:
+//
+// 集群变配
+//
+// @param request - ModifyDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterResponse
 func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4021,6 +6497,13 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 集群变配
+//
+// @param request - ModifyDBClusterRequest
+//
+// @return ModifyDBClusterResponse
 func (client *Client) ModifyDBCluster(request *ModifyDBClusterRequest) (_result *ModifyDBClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterResponse{}
@@ -4032,6 +6515,95 @@ func (client *Client) ModifyDBCluster(request *ModifyDBClusterRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改集群配置
+//
+// @param request - ModifyDBClusterConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterConfigResponse
+func (client *Client) ModifyDBClusterConfigWithOptions(request *ModifyDBClusterConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigKey)) {
+		query["ConfigKey"] = request.ConfigKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchTimeMode)) {
+		query["SwitchTimeMode"] = request.SwitchTimeMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBClusterConfig"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBClusterConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改集群配置
+//
+// @param request - ModifyDBClusterConfigRequest
+//
+// @return ModifyDBClusterConfigResponse
+func (client *Client) ModifyDBClusterConfig(request *ModifyDBClusterConfigRequest) (_result *ModifyDBClusterConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBClusterConfigResponse{}
+	_body, _err := client.ModifyDBClusterConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改实例属性
+//
+// @param request - ModifyDBInstanceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceAttributeResponse
 func (client *Client) ModifyDBInstanceAttributeWithOptions(request *ModifyDBInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4081,6 +6653,13 @@ func (client *Client) ModifyDBInstanceAttributeWithOptions(request *ModifyDBInst
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例属性
+//
+// @param request - ModifyDBInstanceAttributeRequest
+//
+// @return ModifyDBInstanceAttributeResponse
 func (client *Client) ModifyDBInstanceAttribute(request *ModifyDBInstanceAttributeRequest) (_result *ModifyDBInstanceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceAttributeResponse{}
@@ -4092,6 +6671,15 @@ func (client *Client) ModifyDBInstanceAttribute(request *ModifyDBInstanceAttribu
 	return _result, _err
 }
 
+// Summary:
+//
+// 变更白名单
+//
+// @param request - ModifySecurityIPListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySecurityIPListResponse
 func (client *Client) ModifySecurityIPListWithOptions(request *ModifySecurityIPListRequest, runtime *util.RuntimeOptions) (_result *ModifySecurityIPListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4121,6 +6709,13 @@ func (client *Client) ModifySecurityIPListWithOptions(request *ModifySecurityIPL
 	return _result, _err
 }
 
+// Summary:
+//
+// 变更白名单
+//
+// @param request - ModifySecurityIPListRequest
+//
+// @return ModifySecurityIPListResponse
 func (client *Client) ModifySecurityIPList(request *ModifySecurityIPListRequest) (_result *ModifySecurityIPListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySecurityIPListResponse{}
@@ -4132,6 +6727,15 @@ func (client *Client) ModifySecurityIPList(request *ModifySecurityIPListRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放公网地址
+//
+// @param request - ReleaseInstancePublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseInstancePublicConnectionResponse
 func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *ReleaseInstancePublicConnectionRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstancePublicConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4177,6 +6781,13 @@ func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *Releas
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放公网地址
+//
+// @param request - ReleaseInstancePublicConnectionRequest
+//
+// @return ReleaseInstancePublicConnectionResponse
 func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePublicConnectionRequest) (_result *ReleaseInstancePublicConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstancePublicConnectionResponse{}
@@ -4188,6 +6799,15 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改 Admin 账号的密码。
+//
+// @param request - ResetAccountPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetAccountPasswordResponse
 func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPasswordRequest, runtime *util.RuntimeOptions) (_result *ResetAccountPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4217,6 +6837,13 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改 Admin 账号的密码。
+//
+// @param request - ResetAccountPasswordRequest
+//
+// @return ResetAccountPasswordResponse
 func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (_result *ResetAccountPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetAccountPasswordResponse{}
@@ -4228,6 +6855,15 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 重启BE集群
+//
+// @param request - RestartDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartDBClusterResponse
 func (client *Client) RestartDBClusterWithOptions(request *RestartDBClusterRequest, runtime *util.RuntimeOptions) (_result *RestartDBClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4279,6 +6915,13 @@ func (client *Client) RestartDBClusterWithOptions(request *RestartDBClusterReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 重启BE集群
+//
+// @param request - RestartDBClusterRequest
+//
+// @return RestartDBClusterResponse
 func (client *Client) RestartDBCluster(request *RestartDBClusterRequest) (_result *RestartDBClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartDBClusterResponse{}
@@ -4290,6 +6933,15 @@ func (client *Client) RestartDBCluster(request *RestartDBClusterRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 暂停后恢复集群
+//
+// @param request - StartBEClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartBEClusterResponse
 func (client *Client) StartBEClusterWithOptions(request *StartBEClusterRequest, runtime *util.RuntimeOptions) (_result *StartBEClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4335,6 +6987,13 @@ func (client *Client) StartBEClusterWithOptions(request *StartBEClusterRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 暂停后恢复集群
+//
+// @param request - StartBEClusterRequest
+//
+// @return StartBEClusterResponse
 func (client *Client) StartBECluster(request *StartBEClusterRequest) (_result *StartBEClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartBEClusterResponse{}
@@ -4346,6 +7005,15 @@ func (client *Client) StartBECluster(request *StartBEClusterRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 暂停BE集群
+//
+// @param request - StopBEClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopBEClusterResponse
 func (client *Client) StopBEClusterWithOptions(request *StopBEClusterRequest, runtime *util.RuntimeOptions) (_result *StopBEClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4375,6 +7043,13 @@ func (client *Client) StopBEClusterWithOptions(request *StopBEClusterRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 暂停BE集群
+//
+// @param request - StopBEClusterRequest
+//
+// @return StopBEClusterResponse
 func (client *Client) StopBECluster(request *StopBEClusterRequest) (_result *StopBEClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopBEClusterResponse{}
@@ -4386,6 +7061,15 @@ func (client *Client) StopBECluster(request *StopBEClusterRequest) (_result *Sto
 	return _result, _err
 }
 
+// Summary:
+//
+// 实例内核版本升级
+//
+// @param request - UpgradeDBInstanceEngineVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeDBInstanceEngineVersionResponse
 func (client *Client) UpgradeDBInstanceEngineVersionWithOptions(request *UpgradeDBInstanceEngineVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeDBInstanceEngineVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4415,6 +7099,13 @@ func (client *Client) UpgradeDBInstanceEngineVersionWithOptions(request *Upgrade
 	return _result, _err
 }
 
+// Summary:
+//
+// 实例内核版本升级
+//
+// @param request - UpgradeDBInstanceEngineVersionRequest
+//
+// @return UpgradeDBInstanceEngineVersionResponse
 func (client *Client) UpgradeDBInstanceEngineVersion(request *UpgradeDBInstanceEngineVersionRequest) (_result *UpgradeDBInstanceEngineVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeDBInstanceEngineVersionResponse{}
