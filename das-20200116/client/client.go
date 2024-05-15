@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,10 +11,22 @@ import (
 
 type DataResultValue struct {
 	// The SQL ID.
+	//
+	// example:
+	//
+	// ad78a4e7d3ce81590c9dc2d5f4bc****
 	SqlId *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The number of failed executions.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
 }
 
@@ -46,8 +55,16 @@ func (s *DataResultValue) SetCount(v int32) *DataResultValue {
 
 type DataSessionStatClientStatsValue struct {
 	// The number of clients whose IP addresses are active.
+	//
+	// example:
+	//
+	// 0
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
 	// The total number of IP addresses of clients.
+	//
+	// example:
+	//
+	// 11
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -71,8 +88,16 @@ func (s *DataSessionStatClientStatsValue) SetTotalCount(v int64) *DataSessionSta
 
 type DataSessionStatDbStatsValue struct {
 	// The number of active namespaces.
+	//
+	// example:
+	//
+	// 0
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
 	// The total number of namespaces.
+	//
+	// example:
+	//
+	// 11
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -96,8 +121,16 @@ func (s *DataSessionStatDbStatsValue) SetTotalCount(v int64) *DataSessionStatDbS
 
 type DataValue struct {
 	// The timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1681975870000
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The value of the metric.
+	//
+	// example:
+	//
+	// 478.28
 	Value interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -122,45 +155,109 @@ func (s *DataValue) SetValue(v interface{}) *DataValue {
 type AddHDMInstanceRequest struct {
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PostgreSQL**
-	// *   **SQLServer**
-	// *   **PolarDBMySQL**
-	// *   **PolarDBPostgreSQL**
-	// *   **Redis**
-	// *   **MongoDB**
-	// *   **PolarDBOracle**
-	// *   **PolarDBX**
+	// 	- **MySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// 	- **SQLServer**
+	//
+	// 	- **PolarDBMySQL**
+	//
+	// 	- **PolarDBPostgreSQL**
+	//
+	// 	- **Redis**
+	//
+	// 	- **MongoDB**
+	//
+	// 	- **PolarDBOracle**
+	//
+	// 	- **PolarDBX**
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	FlushAccount *string `json:"FlushAccount,omitempty" xml:"FlushAccount,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// yuecq--test****
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
 	// The type of the instance on which the database is deployed. Valid values:
 	//
-	// *   **RDS**: an Alibaba Cloud database instance.
-	// *   **ECS**: an Elastic Compute Service (ECS) instance on which a self-managed database is deployed.
-	// *   **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+	// 	- **RDS**: an Alibaba Cloud database instance.
+	//
+	// 	- **ECS**: an Elastic Compute Service (ECS) instance on which a self-managed database is deployed.
+	//
+	// 	- **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
 	//
 	// >  IDC refers to your data center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ECS
 	InstanceArea *string `json:"InstanceArea,omitempty" xml:"InstanceArea,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The endpoint that is used to access the instance over internal networks.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****.mysql.rds.aliyuncs.com
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The network type of the instance.
+	//
+	// example:
+	//
+	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The password for the username.
+	//
+	// example:
+	//
+	// 122****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The port that is used to access the instance over internal networks.
+	//
+	// example:
+	//
+	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The ID of the region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The username that is used to log on to the database.
+	//
+	// example:
+	//
+	// test****
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 	// The virtual private cloud (VPC) ID.
+	//
+	// example:
+	//
+	// vpc-m5e666n89m2bx8jar****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Context *string `json:"__context,omitempty" xml:"__context,omitempty"`
 }
 
@@ -239,21 +336,42 @@ func (s *AddHDMInstanceRequest) SetContext(v string) *AddHDMInstanceRequest {
 
 type AddHDMInstanceResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information, including the error codes and the number of entries that are returned.
 	Data *AddHDMInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Synchro *string `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
@@ -297,28 +415,76 @@ func (s *AddHDMInstanceResponseBody) SetSynchro(v string) *AddHDMInstanceRespons
 
 type AddHDMInstanceResponseBodyData struct {
 	// The user ID of the caller.
+	//
+	// example:
+	//
+	// 31063db679****
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// InvalidRequestURL
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The endpoint of the instance.
+	//
+	// example:
+	//
+	// rm-de21209****.mysql.rds.aliyuncs.com
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The ID of the instance owner.
+	//
+	// example:
+	//
+	// 325352345
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The port number of the instance that you want to access.
+	//
+	// example:
+	//
+	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The role of the current API caller.
+	//
+	// example:
+	//
+	// master
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// L0EPfLS****=SCE00000*****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// tokenID
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	// The unique identifier of the instance.
+	//
+	// example:
+	//
+	// hdm_3063db6792965c080a4bcb6e6304****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-m5e666n89m2bx8jar****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -421,28 +587,94 @@ func (s *AddHDMInstanceResponse) SetBody(v *AddHDMInstanceResponseBody) *AddHDMI
 
 type CreateAdamBenchTaskRequest struct {
 	// The description of the stress testing task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-das-bench-0501
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the destination instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](~~202857~~) operation to query the ID.
+	// The ID of the destination instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to query the ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	DstInstanceId *string `json:"DstInstanceId,omitempty" xml:"DstInstanceId,omitempty"`
 	// The name of the privileged account for the destination instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// root***
 	DstSuperAccount *string `json:"DstSuperAccount,omitempty" xml:"DstSuperAccount,omitempty"`
 	// The password of the privileged account for the destination instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// root***1234
 	DstSuperPassword *string `json:"DstSuperPassword,omitempty" xml:"DstSuperPassword,omitempty"`
 	// The rate at which the traffic captured from the source database instance is replayed on the destination database instance. Valid values: 1 to 30. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
 	// The duration of the stress testing task for which the traffic is captured from the source instance. Unit: milliseconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 86400000
 	RequestDuration *int64 `json:"RequestDuration,omitempty" xml:"RequestDuration,omitempty"`
 	// The start time of the stress testing task. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1588819800000
 	RequestStartTime *int64 `json:"RequestStartTime,omitempty" xml:"RequestStartTime,omitempty"`
 	// The database engine that the source database instance runs.
+	//
+	// example:
+	//
+	// MySQL
 	SrcEngine *string `json:"SrcEngine,omitempty" xml:"SrcEngine,omitempty"`
 	// The version of the database engine that the source database instance runs.
+	//
+	// example:
+	//
+	// 9i
 	SrcEngineVersion *string `json:"SrcEngineVersion,omitempty" xml:"SrcEngineVersion,omitempty"`
 	// The maximum number of queries per second (QPS) within the time period during which traffic on the source database instance is captured. The value must be accurate to two decimal places.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2013.22
 	SrcMaxQps *float64 `json:"SrcMaxQps,omitempty" xml:"SrcMaxQps,omitempty"`
 	// The average QPS within the time period in which traffic on the source database instance is captured. The value must be accurate to two decimal places.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 312.22
 	SrcMeanQps *float64 `json:"SrcMeanQps,omitempty" xml:"SrcMeanQps,omitempty"`
 	// The URL of the Object Storage Service (OSS) folder in which the archived objects for SQL statements that run on the source database instance are stored. You can obtain the URL after you upload the archived files to OSS.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://rdslog-hz-v3.oss-cn-hangzhou.aliyuncs.com/custins4131****
 	SrcSqlOssAddr *string `json:"SrcSqlOssAddr,omitempty" xml:"SrcSqlOssAddr,omitempty"`
 }
 
@@ -516,19 +748,40 @@ func (s *CreateAdamBenchTaskRequest) SetSrcSqlOssAddr(v string) *CreateAdamBench
 
 type CreateAdamBenchTaskResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information, including the error codes and the number of entries that are returned.
+	//
+	// example:
+	//
+	// "Data": { "total": 1, "list":[...] }, "Code": 200, "Success": true }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -595,18 +848,37 @@ func (s *CreateAdamBenchTaskResponse) SetBody(v *CreateAdamBenchTaskResponseBody
 }
 
 type CreateCacheAnalysisJobRequest struct {
-	// The ID of the backup file. You can call the [DescribeBackups](~~61081~~) operation to query the ID.
+	// The ID of the backup file. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/61081.html) operation to query the ID.
 	//
-	// *   If you need to specify multiple backup file IDs, separate them with commas (,). For example, you can set this parameter to `12345,67890`.
-	// *   If you do not specify this parameter, the system automatically backs up the task and performs cache analysis on the backup file.
+	// 	- If you need to specify multiple backup file IDs, separate them with commas (,). For example, you can set this parameter to `12345,67890`.
+	//
+	// 	- If you do not specify this parameter, the system automatically backs up the task and performs cache analysis on the backup file.
+	//
+	// example:
+	//
+	// 12345
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 	// The ID of the ApsaraDB for Redis instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the data node on the instance. You can specify this parameter to query the monitoring information about the specified node.
 	//
-	// >  If you specify the BackupSetId parameter, the system ignores the NodeId parameter. You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query the node ID.
+	// >  If you specify the BackupSetId parameter, the system ignores the NodeId parameter. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/94665.html) operation to query the node ID.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The delimiters used to identify the prefixes of keys. You do not need to specify this parameter if one or more of the following default delimiters are used: `: ; , _ - + @ = | #`
+	//
+	// example:
+	//
+	// &
 	Separators *string `json:"Separators,omitempty" xml:"Separators,omitempty"`
 }
 
@@ -640,19 +912,36 @@ func (s *CreateCacheAnalysisJobRequest) SetSeparators(v string) *CreateCacheAnal
 
 type CreateCacheAnalysisJobResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information.
 	Data *CreateCacheAnalysisJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -693,23 +982,46 @@ type CreateCacheAnalysisJobResponseBodyData struct {
 	// The number of elements in the key.
 	BigKeys *CreateCacheAnalysisJobResponseBodyDataBigKeys `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the cache analysis task.
 	//
-	// >  This parameter can be used to query a specific cache analysis task. When you call the CreateCacheAnalysisJob operation, it takes some time to create a cache analysis task. As a result, the analysis results cannot be immediately returned. You can call the [DescribeCacheAnalysisJob](~~180983~~) operation to query the analysis results of the specified cache analysis task.
+	// >  This parameter can be used to query a specific cache analysis task. When you call the CreateCacheAnalysisJob operation, it takes some time to create a cache analysis task. As a result, the analysis results cannot be immediately returned. You can call the [DescribeCacheAnalysisJob](https://help.aliyun.com/document_detail/180983.html) operation to query the analysis results of the specified cache analysis task.
+	//
+	// example:
+	//
+	// sf79-sd99-sa37-****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the data node on the instance.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The state of the cache analysis task. Valid values:
 	//
-	// *   **BACKUP**: The data is being backed up.
-	// *   **ANALYZING**: The data is being analyzed.
-	// *   **FINISHED**: The data is analyzed.
-	// *   **FAILED**: An error occurred.
+	// 	- **BACKUP**: The data is being backed up.
+	//
+	// 	- **ANALYZING**: The data is being analyzed.
+	//
+	// 	- **FINISHED**: The data is analyzed.
+	//
+	// 	- **FAILED**: An error occurred.
+	//
+	// example:
+	//
+	// BACKUP
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
 }
 
@@ -770,20 +1082,52 @@ func (s *CreateCacheAnalysisJobResponseBodyDataBigKeys) SetKeyInfo(v []*CreateCa
 
 type CreateCacheAnalysisJobResponseBodyDataBigKeysKeyInfo struct {
 	// The number of bytes that are occupied by the key.
+	//
+	// example:
+	//
+	// 12345
 	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
 	// The number of elements in the key.
+	//
+	// example:
+	//
+	// 127
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// 0
 	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The data type of the key.
+	//
+	// example:
+	//
+	// hashtable
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
 	// The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+	//
+	// example:
+	//
+	// 1596256542547
 	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
 	// The name of the key.
+	//
+	// example:
+	//
+	// task_x****
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The ID of the data node on the instance.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The data type of the ApsaraDB for Redis instance.
+	//
+	// example:
+	//
+	// hash
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -865,97 +1209,222 @@ func (s *CreateCacheAnalysisJobResponse) SetBody(v *CreateCacheAnalysisJobRespon
 }
 
 type CreateCloudBenchTasksRequest struct {
-	// The total number of stress testing tasks that you want to create. Valid values: **0** to **30**. Default value: **1**.
+	// The total number of stress testing tasks that you want to create. Valid values: **0*	- to **30**. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to query the ID of the backup set.
+	// The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID of the backup set.
+	//
+	// example:
+	//
+	// 229132
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The time when the backup starts. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2021-04-23T13:22:14Z
 	BackupTime *string `json:"BackupTime,omitempty" xml:"BackupTime,omitempty"`
 	// The type of the stress testing client. Valid values:
 	//
-	// *   **ECS**: indicates that you must create the [DBGateway](~~64905~~).
-	// *   **DAS_ECS**: indicates that DAS automatically purchases and deploys an Elastic Compute Service (ECS) instance for stress testing.
+	// 	- **ECS**: indicates that you must create the [DBGateway](https://help.aliyun.com/document_detail/64905.html).
+	//
+	// 	- **DAS_ECS**: indicates that DAS automatically purchases and deploys an Elastic Compute Service (ECS) instance for stress testing.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ECS
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
 	// The description of the stress testing task.
+	//
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// test-das-bench-0501
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The endpoint of the destination instance. The specified endpoint must be the endpoint of an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
 	//
-	// >  This parameter takes effect only if you set **DstType** to **ConnectionString**.
-	DstConnectionString *string `json:"DstConnectionString,omitempty" xml:"DstConnectionString,omitempty"`
-	// The ID of the destination instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](~~202857~~) operation to query the ID.
+	// >  This parameter takes effect only if you set **DstType*	- to **ConnectionString**.
 	//
-	// >  This parameter must be specified if you set **DstType** to **Instance**.
+	// example:
+	//
+	// rm-de21209****.mysql.rds.aliyuncs.com
+	DstConnectionString *string `json:"DstConnectionString,omitempty" xml:"DstConnectionString,omitempty"`
+	// The ID of the destination instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to query the ID.
+	//
+	// >  This parameter must be specified if you set **DstType*	- to **Instance**.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	DstInstanceId *string `json:"DstInstanceId,omitempty" xml:"DstInstanceId,omitempty"`
 	// The port number of the instance that you want to access.
 	//
-	// >  This parameter takes effect only if you set **DstType** to **ConnectionString**.
+	// >  This parameter takes effect only if you set **DstType*	- to **ConnectionString**.
+	//
+	// example:
+	//
+	// 3306
 	DstPort *string `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
 	// The name of the privileged account for the destination instance.
+	//
+	// example:
+	//
+	// root
 	DstSuperAccount *string `json:"DstSuperAccount,omitempty" xml:"DstSuperAccount,omitempty"`
 	// The password of the privileged account for the destination instance.
+	//
+	// example:
+	//
+	// test123
 	DstSuperPassword *string `json:"DstSuperPassword,omitempty" xml:"DstSuperPassword,omitempty"`
 	// The type of the identifier that is used to indicate the destination instance. Valid values:
 	//
-	// *   **Instance**: the instance ID. This is the default value.
-	// *   **ConnectionString**: the endpoint of the instance.
+	// 	- **Instance**: the instance ID. This is the default value.
+	//
+	// 	- **ConnectionString**: the endpoint of the instance.
+	//
+	// example:
+	//
+	// Instance
 	DstType *string `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	// The specification of the Data Transmission Service (DTS) migration task. You can call the [DescribeCloudbenchTask](~~230669~~) operation to query the specification.
+	// The specification of the Data Transmission Service (DTS) migration task. You can call the [DescribeCloudbenchTask](https://help.aliyun.com/document_detail/230669.html) operation to query the specification.
 	//
 	// >  You must migrate the basic data in the source instance to the destination instance before you start a stress testing task. When you create a DTS migration task, you must specify this parameter.
+	//
+	// example:
+	//
+	// medium
 	DtsJobClass *string `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	// The ID of the DTS migration task. You can call the [ConfigureDtsJob](~~208399~~) operation to query the ID.
+	// The ID of the DTS migration task. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to query the ID.
 	//
 	// >  After a DTS migration task is created in the DTS console, you must specify this parameter.
+	//
+	// example:
+	//
+	// 23127
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The state that specifies the last operation that is performed for the stress testing task. Valid values:
 	//
-	// *   **WAIT_TARGET**: prepares the destination instance
-	// *   **WAIT_DBGATEWAY**: prepares the DBGateway
-	// *   **WAIT_SQL**: prepares the full SQL statistics
-	// *   **WAIT_LOGIC**: prepares to replay the traffic
+	// 	- **WAIT_TARGET**: prepares the destination instance
+	//
+	// 	- **WAIT_DBGATEWAY**: prepares the DBGateway
+	//
+	// 	- **WAIT_SQL**: prepares the full SQL statistics
+	//
+	// 	- **WAIT_LOGIC**: prepares to replay the traffic
 	//
 	// >  When the state of a stress testing task changes to the state that is specified by the EndState parameter, the stress testing task becomes completed.
+	//
+	// example:
+	//
+	// WAIT_TARGET
 	EndState *string `json:"EndState,omitempty" xml:"EndState,omitempty"`
 	// The ID of the virtual private cloud (VPC) in which the database gateway (DBGateway) is deployed.
 	//
-	// >  This parameter must be specified if you set **ClientType** to **ECS**.
+	// >  This parameter must be specified if you set **ClientType*	- to **ECS**.
+	//
+	// example:
+	//
+	// vpc-t4nsnwvpbc1h76ja4****
 	GatewayVpcId *string `json:"GatewayVpcId,omitempty" xml:"GatewayVpcId,omitempty"`
 	// The IP address or domain name of the DBGateway.
 	//
-	// >  This parameter must be specified if you set **ClientType** to **ECS**.
+	// >  This parameter must be specified if you set **ClientType*	- to **ECS**.
+	//
+	// example:
+	//
+	// 172.30.XX.XX
 	GatewayVpcIp *string `json:"GatewayVpcIp,omitempty" xml:"GatewayVpcIp,omitempty"`
-	// The rate at which the traffic captured from the source instance is replayed on the destination instance. The value must be a positive integer. Valid values: **1** to **30**. Default value: **1**.
+	// The rate at which the traffic captured from the source instance is replayed on the destination instance. The value must be a positive integer. Valid values: **1*	- to **30**. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
 	// The duration of the stress testing task for which the traffic is captured from the source instance. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 86400000
 	RequestDuration *string `json:"RequestDuration,omitempty" xml:"RequestDuration,omitempty"`
 	// The time when the stress testing task ends. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1608888296001
 	RequestEndTime *string `json:"RequestEndTime,omitempty" xml:"RequestEndTime,omitempty"`
 	// The time when the stress testing task starts. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1608888296000
 	RequestStartTime *string `json:"RequestStartTime,omitempty" xml:"RequestStartTime,omitempty"`
 	// The duration within which the traffic generation stressing test takes effect. Unit: milliseconds.
 	//
-	// >  This parameter must be specified if you set **TaskType** to **smart pressure test**.
-	SmartPressureTime *string `json:"SmartPressureTime,omitempty" xml:"SmartPressureTime,omitempty"`
-	// The ID of the source instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](~~202857~~) operation to query the ID.
+	// >  This parameter must be specified if you set **TaskType*	- to **smart pressure test**.
 	//
-	// >  This parameter must be specified if you set **DstType** to **Instance**.
+	// example:
+	//
+	// 86400000
+	SmartPressureTime *string `json:"SmartPressureTime,omitempty" xml:"SmartPressureTime,omitempty"`
+	// The ID of the source instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to query the ID.
+	//
+	// >  This parameter must be specified if you set **DstType*	- to **Instance**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	SrcInstanceId *string `json:"SrcInstanceId,omitempty" xml:"SrcInstanceId,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	SrcPublicIp *string `json:"SrcPublicIp,omitempty" xml:"SrcPublicIp,omitempty"`
 	// The name of the privileged account for the source instance. Set the value to **admin**.
 	//
-	// >  This parameter must be specified if you set **DstType** to **Instance**.
+	// >  This parameter must be specified if you set **DstType*	- to **Instance**.
+	//
+	// example:
+	//
+	// admin
 	SrcSuperAccount *string `json:"SrcSuperAccount,omitempty" xml:"SrcSuperAccount,omitempty"`
 	// The password of the privileged account for the source instance.
 	//
-	// >  This parameter must be specified if you set **DstType** to **Instance**.
+	// >  This parameter must be specified if you set **DstType*	- to **Instance**.
+	//
+	// example:
+	//
+	// test123
 	SrcSuperPassword *string `json:"SrcSuperPassword,omitempty" xml:"SrcSuperPassword,omitempty"`
 	// The type of the stress testing task. Valid values:
 	//
-	// *   **pressure test** (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
-	// *   **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
+	// 	- **pressure test*	- (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
+	//
+	// 	- **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pressure test
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The temporary directory generated for stress testing.
+	//
+	// example:
+	//
+	// /tmp/bench/
 	WorkDir *string `json:"WorkDir,omitempty" xml:"WorkDir,omitempty"`
 }
 
@@ -1104,19 +1573,36 @@ func (s *CreateCloudBenchTasksRequest) SetWorkDir(v string) *CreateCloudBenchTas
 
 type CreateCloudBenchTasksResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information.
 	Data *CreateCloudBenchTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1201,12 +1687,30 @@ func (s *CreateCloudBenchTasksResponse) SetBody(v *CreateCloudBenchTasksResponse
 
 type CreateDiagnosticReportRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end of the time range to create the diagnostic report. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The start time must be later than the end time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1596177993001
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The beginning of the time range to create the diagnostic report. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1596177993000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -1235,19 +1739,40 @@ func (s *CreateDiagnosticReportRequest) SetStartTime(v string) *CreateDiagnostic
 
 type CreateDiagnosticReportResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// 70af71852fcdf2c5dc7b90596e2cf05b
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ac544623-f6ad-45fd-9a74-9be3db65****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1315,29 +1840,66 @@ func (s *CreateDiagnosticReportResponse) SetBody(v *CreateDiagnosticReportRespon
 
 type CreateKillInstanceSessionTaskRequest struct {
 	// The database account that has the permissions to terminate sessions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testUser
 	DbUser *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
 	// The password of the database account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testPassword
 	DbUserPassword *string `json:"DbUserPassword,omitempty" xml:"DbUserPassword,omitempty"`
 	// The account whose sessions do not need to be terminated.
 	//
-	// >  Set this parameter to a JSON array. Separate database accounts with commas (,). Example: \[\"Database account 1\",\"Database account 2\"].
+	// >  Set this parameter to a JSON array. Separate database accounts with commas (,). Example: [\\"Database account 1\\",\\"Database account 2\\"].
+	//
+	// example:
+	//
+	// [\\"db_user1\\",\\"db_user2\\"]
 	IgnoredUsers *string `json:"IgnoredUsers,omitempty" xml:"IgnoredUsers,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether to terminate all sessions.
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
 	//
-	// >  If you set this parameter to **true**, sessions of the accounts that are specified by **IgnoredUsers**, sessions of internal O\&M accounts of Alibaba Cloud, and **Binlog Dump** sessions are not terminated.
+	// 	- **false**
+	//
+	// >  If you set this parameter to **true**, sessions of the accounts that are specified by **IgnoredUsers**, sessions of internal O\\&M accounts of Alibaba Cloud, and **Binlog Dump*	- sessions are not terminated.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	KillAllSessions *bool `json:"KillAllSessions,omitempty" xml:"KillAllSessions,omitempty"`
 	// The node ID.
 	//
-	// >  This parameter must be specified if the database instance is a PolarDB for MySQL cluster. If you do not specify a node ID and set **KillAllSessions** to **true**, the system traverses all nodes in the PolarDB for MySQL cluster and terminates the active sessions on each node.
+	// >  This parameter must be specified if the database instance is a PolarDB for MySQL cluster. If you do not specify a node ID and set **KillAllSessions*	- to **true**, the system traverses all nodes in the PolarDB for MySQL cluster and terminates the active sessions on each node.
+	//
+	// example:
+	//
+	// pi-bp1v203xzzh0a****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The IDs of sessions that need to be terminated.
 	//
-	// >  Set this parameter to a JSON array. Separate session IDs with commas (,). Example: \[\"Session ID1\",\"Session ID2\"]. If **KillAllSessions** is set to **true**, this parameter does not take effect.
+	// >  Set this parameter to a JSON array. Separate session IDs with commas (,). Example: [\\"Session ID1\\",\\"Session ID2\\"]. If **KillAllSessions*	- is set to **true**, this parameter does not take effect.
+	//
+	// example:
+	//
+	// [10805639,10805623,10805645,10805553,10805566,10805616]
 	SessionIds *string `json:"SessionIds,omitempty" xml:"SessionIds,omitempty"`
 }
 
@@ -1386,21 +1948,42 @@ func (s *CreateKillInstanceSessionTaskRequest) SetSessionIds(v string) *CreateKi
 
 type CreateKillInstanceSessionTaskResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ID of the task that terminated the sessions.
 	//
-	// >  If the sessions of a PolarDB for MySQL cluster were terminated, **NodeId** is left empty, and **KillAllSessions** is set to **true**, the task IDs are returned based on the number of nodes. Example: \["f77d535b45405bd462b21caa3ee8\*\*\*\*", "e93ab549abb081eb5dcd5396a29b\*\*\*\*"].
+	// >  If the sessions of a PolarDB for MySQL cluster were terminated, **NodeId*	- is left empty, and **KillAllSessions*	- is set to **true**, the task IDs are returned based on the number of nodes. Example: ["f77d535b45405bd462b21caa3ee8\\*\\*\\*\\*", "e93ab549abb081eb5dcd5396a29b\\*\\*\\*\\*"].
+	//
+	// example:
+	//
+	// f77d535b45405bd462b21caa3ee8****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1467,8 +2050,10 @@ func (s *CreateKillInstanceSessionTaskResponse) SetBody(v *CreateKillInstanceSes
 }
 
 type CreateKillInstanceSessionTaskWithMaintainUserRequest struct {
-	IgnoredUsers    *string `json:"IgnoredUsers,omitempty" xml:"IgnoredUsers,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IgnoredUsers *string `json:"IgnoredUsers,omitempty" xml:"IgnoredUsers,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
 	KillAllSessions *bool   `json:"KillAllSessions,omitempty" xml:"KillAllSessions,omitempty"`
 	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	SessionIds      *string `json:"SessionIds,omitempty" xml:"SessionIds,omitempty"`
@@ -1581,28 +2166,68 @@ type CreateQueryOptimizeTagRequest struct {
 	// The remarks.
 	//
 	// The remarks can be 1 to 300 characters in length.
+	//
+	// example:
+	//
+	// Slow SQL queries of offline synchronization. No optimization is required.
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**: ApsaraDB RDS for MySQL
-	// *   **PolarDBMySQL**: PolarDB for MySQL
-	// *   **PostgreSQL**: ApsaraDB RDS for PostgreSQL
+	// 	- **MySQL**: ApsaraDB RDS for MySQL
+	//
+	// 	- **PolarDBMySQL**: PolarDB for MySQL
+	//
+	// 	- **PostgreSQL**: ApsaraDB RDS for PostgreSQL
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The SQL template IDs. You can call the [GetQueryOptimizeExecErrorStats](~~405261~~) operation to obtain the SQL template ID. Separate multiple SQL template IDs with commas (,).
+	// The SQL template IDs. You can call the [GetQueryOptimizeExecErrorStats](https://help.aliyun.com/document_detail/405261.html) operation to obtain the SQL template ID. Separate multiple SQL template IDs with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6068ce044e3dc9b903979672fb0b69df,d12515c015fc9f41a0778a9e1de0e941
 	SqlIds *string `json:"SqlIds,omitempty" xml:"SqlIds,omitempty"`
 	// The status of **Tags**. Valid values:
 	//
-	// *   **0**: removes all tags added to the SQL templates that are specified by **SqlIds** and leaves **Tags** empty.
-	// *   **1**: adds the tags specified by **Tags** to the SQL templates that are specified by **SqlIds**.
+	// 	- **0**: removes all tags added to the SQL templates that are specified by **SqlIds*	- and leaves **Tags*	- empty.
+	//
+	// 	- **1**: adds the tags specified by **Tags*	- to the SQL templates that are specified by **SqlIds**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The SQL tags. Separate multiple SQL tags with commas (,). Valid values:
 	//
-	// *   **DAS_IMPORTANT**: The SQL template is important.
-	// *   **DAS_NOT_IMPORTANT**: The SQL template is unimportant.
-	// *   **USER_IGNORE**: The scheduling of the SQL template does not need to be optimized.
-	// *   **DAS_IN_PLAN**: The scheduling of the SQL template needs to be optimized.
+	// 	- **DAS_IMPORTANT**: The SQL template is important.
+	//
+	// 	- **DAS_NOT_IMPORTANT**: The SQL template is unimportant.
+	//
+	// 	- **USER_IGNORE**: The scheduling of the SQL template does not need to be optimized.
+	//
+	// 	- **DAS_IN_PLAN**: The scheduling of the SQL template needs to be optimized.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DAS_IN_PLAN,DAS_NOT_IMPORTANT
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -1646,22 +2271,44 @@ func (s *CreateQueryOptimizeTagRequest) SetTags(v string) *CreateQueryOptimizeTa
 
 type CreateQueryOptimizeTagResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the tags were added to the SQL templates.
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1729,14 +2376,36 @@ func (s *CreateQueryOptimizeTagResponse) SetBody(v *CreateQueryOptimizeTagRespon
 
 type CreateRequestDiagnosisRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// das
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-0iwhhl8gx0ld6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  This parameter must be specified for PolarDB for MySQL, PolarDB for PostgreSQL (Compatible with Oracle), and ApsaraDB for MongoDB instances.
+	//
+	// example:
+	//
+	// 202****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The SQL statement that you want to diagnose.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// select 	- from test where name = \\"mockUser\\"
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 }
 
@@ -1770,19 +2439,40 @@ func (s *CreateRequestDiagnosisRequest) SetSql(v string) *CreateRequestDiagnosis
 
 type CreateRequestDiagnosisResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The diagnostics ID, which is the unique identifier of the diagnosis. This parameter can be used to query the result of the diagnosis.
+	//
+	// example:
+	//
+	// 61820b594664275c4429****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 800FBAF5-A539-5B97-A09E-C63AB2F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1849,14 +2539,58 @@ func (s *CreateRequestDiagnosisResponse) SetBody(v *CreateRequestDiagnosisRespon
 }
 
 type CreateSqlLogTaskRequest struct {
-	EndTime    *int64                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Filters    []*CreateSqlLogTaskRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	InstanceId *string                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	NodeId     *string                           `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	Role       *string                           `json:"Role,omitempty" xml:"Role,omitempty"`
-	StartTime  *int64                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type       *string                           `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1608888296000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The filter conditions.
+	Filters []*CreateSqlLogTaskRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// pc-2ze8g2am97624****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// test01
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The node ID.
+	//
+	// example:
+	//
+	// pi-uf6k5f6g3912i0dqz
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The role of the node in the PolarDB-X 2.0 instance. Valid values:
+	//
+	// 	- **polarx_cn**: compute node.
+	//
+	// 	- **polarx_dn**: data node.
+	//
+	// example:
+	//
+	// polarx_cn
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1596177993000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// 	- Export
+	//
+	// 	- Query
+	//
+	// example:
+	//
+	// Export
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateSqlLogTaskRequest) String() string {
@@ -1908,7 +2642,17 @@ func (s *CreateSqlLogTaskRequest) SetType(v string) *CreateSqlLogTaskRequest {
 }
 
 type CreateSqlLogTaskRequestFilters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the filter parameter.
+	//
+	// example:
+	//
+	// KeyWords
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the filter parameter.
+	//
+	// example:
+	//
+	// select
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1931,12 +2675,38 @@ func (s *CreateSqlLogTaskRequestFilters) SetValue(v string) *CreateSqlLogTaskReq
 }
 
 type CreateSqlLogTaskResponseBody struct {
+	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// SqlLogTask
-	Data      *CreateSqlLogTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *CreateSqlLogTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 83D9D59B-057A-54A9-BFF9-CF2B42F05645
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSqlLogTaskResponseBody) String() string {
@@ -1973,13 +2743,48 @@ func (s *CreateSqlLogTaskResponseBody) SetSuccess(v string) *CreateSqlLogTaskRes
 }
 
 type CreateSqlLogTaskResponseBodyData struct {
-	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	End        *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	// The time when the task was created.
+	//
+	// example:
+	//
+	// 1681363254423
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The end of the time range to query.
+	//
+	// example:
+	//
+	// 1608888296000
+	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// pc-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Start      *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// Export_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The beginning of the time range to query.
+	//
+	// example:
+	//
+	// 1596177993000
+	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The status of the task.
+	//
+	// example:
+	//
+	// COMPLETED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 54f8041743ca3a9ac5cb9342d050527c
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateSqlLogTaskResponseBodyData) String() string {
@@ -2056,14 +2861,32 @@ func (s *CreateSqlLogTaskResponse) SetBody(v *CreateSqlLogTaskResponseBody) *Cre
 
 type CreateStorageAnalysisTaskRequest struct {
 	// The database name. If you specify a database, the operation analyzes the storage usage of the specified database.
+	//
+	// example:
+	//
+	// testdb01
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  This parameter is reserved.
+	//
+	// example:
+	//
+	// 23302528
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The table name. If you specify a table in the specified database, the operation analyzes the storage usage of the specified table. If you specify a table, you must also specify the database to which the table belongs by using **DbName**.
+	//
+	// example:
+	//
+	// test_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -2097,19 +2920,36 @@ func (s *CreateStorageAnalysisTaskRequest) SetTableName(v string) *CreateStorage
 
 type CreateStorageAnalysisTaskResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *CreateStorageAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	// >  If the request is successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2149,12 +2989,25 @@ func (s *CreateStorageAnalysisTaskResponseBody) SetSuccess(v bool) *CreateStorag
 type CreateStorageAnalysisTaskResponseBodyData struct {
 	// Indicates whether the task is created. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	CreateTaskSuccess *bool `json:"CreateTaskSuccess,omitempty" xml:"CreateTaskSuccess,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// unknown error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// 910f83f4b96df0524ddc5749f61539f8
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2211,7 +3064,13 @@ func (s *CreateStorageAnalysisTaskResponse) SetBody(v *CreateStorageAnalysisTask
 }
 
 type DeleteCloudBenchTaskRequest struct {
-	// The ID of the stress testing task. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the ID.
+	// The ID of the stress testing task. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5cec704-0518-430f-8263-76f4dcds****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2230,19 +3089,40 @@ func (s *DeleteCloudBenchTaskRequest) SetTaskId(v string) *DeleteCloudBenchTaskR
 
 type DeleteCloudBenchTaskResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2309,7 +3189,13 @@ func (s *DeleteCloudBenchTaskResponse) SetBody(v *DeleteCloudBenchTaskResponseBo
 }
 
 type DeleteStopGatewayRequest struct {
-	// The ID that can uniquely identify the DBGateway. You can obtain the DBGateway ID by calling the [DescribeCloudbenchTask](~~230669~~) operation. The DBGateway ID is the value of the **ClientGatewayId** field in the response.
+	// The ID that can uniquely identify the DBGateway. You can obtain the DBGateway ID by calling the [DescribeCloudbenchTask](https://help.aliyun.com/document_detail/230669.html) operation. The DBGateway ID is the value of the **ClientGatewayId*	- field in the response.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 22938c83fcfbced4b4869b9695e3****
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 }
 
@@ -2328,25 +3214,50 @@ func (s *DeleteStopGatewayRequest) SetGatewayId(v string) *DeleteStopGatewayRequ
 
 type DeleteStopGatewayResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The result of the DeleteStopGateway operation. Valid values:
 	//
-	// *   **0**: The metadata of the DBGateway is deleted.
-	// *   **-1**: A system error occurs.
-	// *   **-2**: The DBGateway does not exist.
-	// *   **-3**: The DBGateway is not stopped and the metadata cannot be deleted.
-	// *   **-4**: The metadata of the DBGateway fails to be deleted.
+	// 	- **0**: The metadata of the DBGateway is deleted.
+	//
+	// 	- **-1**: A system error occurs.
+	//
+	// 	- **-2**: The DBGateway does not exist.
+	//
+	// 	- **-3**: The DBGateway is not stopped and the metadata cannot be deleted.
+	//
+	// 	- **-4**: The metadata of the DBGateway fails to be deleted.
+	//
+	// example:
+	//
+	// 0
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// FC6C0929-29E1-59FD-8DFE-70D9D41E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2414,6 +3325,12 @@ func (s *DeleteStopGatewayResponse) SetBody(v *DeleteStopGatewayResponseBody) *D
 
 type DescribeAutoScalingConfigRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-2ze1prap1k46r****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2432,19 +3349,36 @@ func (s *DescribeAutoScalingConfigRequest) SetInstanceId(v string) *DescribeAuto
 
 type DescribeAutoScalingConfigResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The configurations of the auto scaling feature.
 	Data *DescribeAutoScalingConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2529,27 +3463,52 @@ func (s *DescribeAutoScalingConfigResponseBodyData) SetStorage(v *DescribeAutoSc
 
 type DescribeAutoScalingConfigResponseBodyDataBandwidth struct {
 	// The average bandwidth usage threshold that triggers automatic bandwidth downgrade. Unit: %.
+	//
+	// example:
+	//
+	// 30
 	BandwidthUsageLowerThreshold *int32 `json:"BandwidthUsageLowerThreshold,omitempty" xml:"BandwidthUsageLowerThreshold,omitempty"`
 	// The average bandwidth usage threshold that triggers automatic bandwidth adjustment. Unit: %.
+	//
+	// example:
+	//
+	// 70
 	BandwidthUsageUpperThreshold *int32 `json:"BandwidthUsageUpperThreshold,omitempty" xml:"BandwidthUsageUpperThreshold,omitempty"`
 	// Indicates whether the automatic bandwidth downgrade feature is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Downgrade *bool `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
 	// The observation window of the automatic bandwidth adjustment feature. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// *   **s**: seconds.
-	// *   **m**: minutes.
-	// *   **h**: hours.
-	// *   **d**: days.
+	// 	- **s**: seconds.
 	//
-	// >  A value of **5m** indicates 5 minutes.
+	// 	- **m**: minutes.
+	//
+	// 	- **h**: hours.
+	//
+	// 	- **d**: days.
+	//
+	// >  A value of **5m*	- indicates 5 minutes.
+	//
+	// example:
+	//
+	// 5m
 	ObservationWindowSize *string `json:"ObservationWindowSize,omitempty" xml:"ObservationWindowSize,omitempty"`
 	// Indicates whether the automatic bandwidth adjustment feature is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
 }
 
@@ -2588,31 +3547,58 @@ func (s *DescribeAutoScalingConfigResponseBodyDataBandwidth) SetUpgrade(v bool) 
 
 type DescribeAutoScalingConfigResponseBodyDataResource struct {
 	// The scale-out step size of CPU.
+	//
+	// example:
+	//
+	// 2
 	CpuStep *int32 `json:"CpuStep,omitempty" xml:"CpuStep,omitempty"`
 	// The average CPU utilization threshold that triggers automatic scale-out of local resources. Unit: %.
+	//
+	// example:
+	//
+	// 70
 	CpuUsageUpperThreshold *int32 `json:"CpuUsageUpperThreshold,omitempty" xml:"CpuUsageUpperThreshold,omitempty"`
 	// The observation window of the automatic scale-in feature for local resources. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// *   **s**: seconds.
-	// *   **m**: minutes.
-	// *   **h**: hours.
-	// *   **d**: days.
+	// 	- **s**: seconds.
 	//
-	// >  A value of **5m** indicates 5 minutes.
+	// 	- **m**: minutes.
+	//
+	// 	- **h**: hours.
+	//
+	// 	- **d**: days.
+	//
+	// >  A value of **5m*	- indicates 5 minutes.
+	//
+	// example:
+	//
+	// 5m
 	DowngradeObservationWindowSize *string `json:"DowngradeObservationWindowSize,omitempty" xml:"DowngradeObservationWindowSize,omitempty"`
 	// Indicates whether the auto scaling feature is enabled for local resources. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The observation window of the automatic scale-out feature for local resources. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// *   **s**: seconds.
-	// *   **m**: minutes.
-	// *   **h**: hours.
-	// *   **d**: days.
+	// 	- **s**: seconds.
 	//
-	// >  A value of **5m** indicates 5 minutes.
+	// 	- **m**: minutes.
+	//
+	// 	- **h**: hours.
+	//
+	// 	- **d**: days.
+	//
+	// >  A value of **5m*	- indicates 5 minutes.
+	//
+	// example:
+	//
+	// 5m
 	UpgradeObservationWindowSize *string `json:"UpgradeObservationWindowSize,omitempty" xml:"UpgradeObservationWindowSize,omitempty"`
 }
 
@@ -2652,39 +3638,79 @@ func (s *DescribeAutoScalingConfigResponseBodyDataResource) SetUpgradeObservatio
 type DescribeAutoScalingConfigResponseBodyDataShard struct {
 	// Indicates whether the feature of automatically removing shards is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Downgrade *bool `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
 	// The observation window of the feature of automatically removing shards. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// *   **s**: seconds.
-	// *   **m**: minutes.
-	// *   **h**: hours.
-	// *   **d**: days.
+	// 	- **s**: seconds.
 	//
-	// >  A value of **1d** indicates one day.
+	// 	- **m**: minutes.
+	//
+	// 	- **h**: hours.
+	//
+	// 	- **d**: days.
+	//
+	// >  A value of **1d*	- indicates one day.
+	//
+	// example:
+	//
+	// 1d
 	DowngradeObservationWindowSize *string `json:"DowngradeObservationWindowSize,omitempty" xml:"DowngradeObservationWindowSize,omitempty"`
 	// The maximum number of shards in the instance.
+	//
+	// example:
+	//
+	// 16
 	MaxShards *int32 `json:"MaxShards,omitempty" xml:"MaxShards,omitempty"`
 	// The average memory usage threshold that triggers automatic removal of shards. Unit: %.
+	//
+	// example:
+	//
+	// 30
 	MemUsageLowerThreshold *int32 `json:"MemUsageLowerThreshold,omitempty" xml:"MemUsageLowerThreshold,omitempty"`
 	// The average memory usage threshold that triggers automatic adding of shards. Unit: %.
+	//
+	// example:
+	//
+	// 70
 	MemUsageUpperThreshold *int32 `json:"MemUsageUpperThreshold,omitempty" xml:"MemUsageUpperThreshold,omitempty"`
 	// The minimum number of shards in the instance.
+	//
+	// example:
+	//
+	// 4
 	MinShards *int32 `json:"MinShards,omitempty" xml:"MinShards,omitempty"`
 	// Indicates whether the feature of automatically adding shards is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
 	// The observation window of the feature of automatically adding shards. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// *   **s**: seconds.
-	// *   **m**: minutes.
-	// *   **h**: hours.
-	// *   **d**: days.
+	// 	- **s**: seconds.
 	//
-	// >  A value of **5m** indicates 5 minutes.
+	// 	- **m**: minutes.
+	//
+	// 	- **h**: hours.
+	//
+	// 	- **d**: days.
+	//
+	// >  A value of **5m*	- indicates 5 minutes.
+	//
+	// example:
+	//
+	// 5m
 	UpgradeObservationWindowSize *string `json:"UpgradeObservationWindowSize,omitempty" xml:"UpgradeObservationWindowSize,omitempty"`
 }
 
@@ -2739,42 +3765,83 @@ func (s *DescribeAutoScalingConfigResponseBodyDataShard) SetUpgradeObservationWi
 type DescribeAutoScalingConfigResponseBodyDataSpec struct {
 	// The quiescent period. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// *   **s**: seconds.
-	// *   **m**: minutes.
-	// *   **h**: hours.
-	// *   **d**: days.
+	// 	- **s**: seconds.
 	//
-	// >  A value of **5m** indicates 5 minutes.
+	// 	- **m**: minutes.
+	//
+	// 	- **h**: hours.
+	//
+	// 	- **d**: days.
+	//
+	// >  A value of **5m*	- indicates 5 minutes.
+	//
+	// example:
+	//
+	// 5m
 	CoolDownTime *string `json:"CoolDownTime,omitempty" xml:"CoolDownTime,omitempty"`
 	// The average CPU utilization threshold that triggers automatic specification scale-up. Unit: %.
+	//
+	// example:
+	//
+	// 70
 	CpuUsageUpperThreshold *int32 `json:"CpuUsageUpperThreshold,omitempty" xml:"CpuUsageUpperThreshold,omitempty"`
 	// Indicates whether the automatic specification scale-down feature is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Downgrade *bool `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
 	// The maximum number of read-only nodes of the instance.
+	//
+	// example:
+	//
+	// 10
 	MaxReadOnlyNodes *int32 `json:"MaxReadOnlyNodes,omitempty" xml:"MaxReadOnlyNodes,omitempty"`
 	// The maximum specifications to which the database instance can be upgraded. For more information about the specifications of each type of supported database instances, see the following topics:
 	//
-	// *   PolarDB for MySQL Cluster Edition instances: [Specifications of compute nodes](~~102542~~).
-	// *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs): [Specifications](~~276974~~).
+	// 	- PolarDB for MySQL Cluster Edition instances: [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html).
+	//
+	// 	- ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs): [Specifications](https://help.aliyun.com/document_detail/276974.html).
+	//
+	// example:
+	//
+	// polar.mysql.x8.12xlarge
 	MaxSpec *string `json:"MaxSpec,omitempty" xml:"MaxSpec,omitempty"`
 	// The average memory usage threshold that triggers automatic specification scale-up. Unit: %.
+	//
+	// example:
+	//
+	// 70
 	MemUsageUpperThreshold *int32 `json:"MemUsageUpperThreshold,omitempty" xml:"MemUsageUpperThreshold,omitempty"`
 	// The observation window. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// *   **s**: seconds.
-	// *   **m**: minutes.
-	// *   **h**: hours.
-	// *   **d**: days.
+	// 	- **s**: seconds.
 	//
-	// >  A value of **5m** indicates 5 minutes.
+	// 	- **m**: minutes.
+	//
+	// 	- **h**: hours.
+	//
+	// 	- **d**: days.
+	//
+	// >  A value of **5m*	- indicates 5 minutes.
+	//
+	// example:
+	//
+	// 5m
 	ObservationWindowSize *string `json:"ObservationWindowSize,omitempty" xml:"ObservationWindowSize,omitempty"`
 	// Indicates whether the automatic specification scale-up feature is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
 }
 
@@ -2828,13 +3895,26 @@ func (s *DescribeAutoScalingConfigResponseBodyDataSpec) SetUpgrade(v bool) *Desc
 
 type DescribeAutoScalingConfigResponseBodyDataStorage struct {
 	// The average storage usage threshold that triggers automatic storage expansion. Unit: %.
+	//
+	// example:
+	//
+	// 70
 	DiskUsageUpperThreshold *int32 `json:"DiskUsageUpperThreshold,omitempty" xml:"DiskUsageUpperThreshold,omitempty"`
 	// The maximum storage size. Unit: GB.
+	//
+	// example:
+	//
+	// 32000
 	MaxStorage *int32 `json:"MaxStorage,omitempty" xml:"MaxStorage,omitempty"`
 	// Indicates whether the automatic storage expansion feature is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
 }
 
@@ -2892,18 +3972,42 @@ func (s *DescribeAutoScalingConfigResponse) SetBody(v *DescribeAutoScalingConfig
 
 type DescribeAutoScalingHistoryRequest struct {
 	// The type of the auto scaling task that you want to query. Set the value to **SPEC**, which indicates that you can query the history of only automatic performance scaling tasks.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SPEC
 	AutoScalingTaskType *string `json:"AutoScalingTaskType,omitempty" xml:"AutoScalingTaskType,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// > The end time must be later than the start time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1676605305796
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The instance ID.
 	//
 	// > Only ApsaraDB RDS for MySQL instances are supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// > The maximum time range that can be specified is 45 days.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1675833788056
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2937,19 +4041,36 @@ func (s *DescribeAutoScalingHistoryRequest) SetStartTime(v int64) *DescribeAutoS
 
 type DescribeAutoScalingHistoryResponseBody struct {
 	// The HTTP status code returned. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The history of auto scaling.
 	Data *DescribeAutoScalingHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// > If the request was successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2990,6 +4111,10 @@ type DescribeAutoScalingHistoryResponseBodyData struct {
 	// The history of automatic bandwidth scaling of ApsaraDB for Redis instances. This feature is not supported.
 	Bandwidth []map[string]interface{} `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty" type:"Repeated"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The history of resource scale-out of ApsaraDB for Redis instances. This feature is not supported.
 	Resource []map[string]interface{} `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
@@ -3042,34 +4167,79 @@ func (s *DescribeAutoScalingHistoryResponseBodyData) SetStorage(v []map[string]i
 type DescribeAutoScalingHistoryResponseBodyDataSpecHistory struct {
 	// The error code returned by the scaling task. Valid values:
 	//
-	// *   **Insufficient_Balance**: The account has insufficient balance or an unpaid order.
-	// *   **REACH_SPEC_UPPERBOUND**: The instance type reaches the upper limit.
-	// *   **Control_Error_Timeout_Msg**: The management task timed out.
-	// *   **Invoke_Rds_Api_Error_Msg**: Failed to call the ApsaraDB RDS API.
+	// 	- **Insufficient_Balance**: The account has insufficient balance or an unpaid order.
+	//
+	// 	- **REACH_SPEC_UPPERBOUND**: The instance type reaches the upper limit.
+	//
+	// 	- **Control_Error_Timeout_Msg**: The management task timed out.
+	//
+	// 	- **Invoke_Rds_Api_Error_Msg**: Failed to call the ApsaraDB RDS API.
+	//
+	// example:
+	//
+	// Insufficient_Balance
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The original number of CPU cores of the instance.
+	//
+	// example:
+	//
+	// 4
 	OriginCore *int32 `json:"OriginCore,omitempty" xml:"OriginCore,omitempty"`
 	// The original instance type.
+	//
+	// example:
+	//
+	// mysql.n2.large.2c
 	OriginInstanceClass *string `json:"OriginInstanceClass,omitempty" xml:"OriginInstanceClass,omitempty"`
 	// The original memory size of the instance. Unit: GB.
+	//
+	// example:
+	//
+	// 8
 	OriginMemory *float64 `json:"OriginMemory,omitempty" xml:"OriginMemory,omitempty"`
 	// The type of the automatic performance scaling task. Valid values:
 	//
-	// *   **SCALE_UP**: automatic instance type scale-up task.
-	// *   **SCALE_DOWN**: automatic instance type scale-down task.
+	// 	- **SCALE_UP**: automatic instance type scale-up task.
+	//
+	// 	- **SCALE_DOWN**: automatic instance type scale-down task.
+	//
+	// example:
+	//
+	// SCALE_UP
 	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
 	// The destination number of CPU cores of the instance.
+	//
+	// example:
+	//
+	// 8
 	TargetCore *int32 `json:"TargetCore,omitempty" xml:"TargetCore,omitempty"`
 	// The destination instance type.
+	//
+	// example:
+	//
+	// mysql.n2.xlarge.2c
 	TargetInstanceClass *string `json:"TargetInstanceClass,omitempty" xml:"TargetInstanceClass,omitempty"`
 	// The destination memory size of the instance. Unit: GB.
+	//
+	// example:
+	//
+	// 16
 	TargetMemory *float64 `json:"TargetMemory,omitempty" xml:"TargetMemory,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// *   **true**: The task was successful.
-	// *   **false**: The task failed.
+	// 	- **true**: The task was successful.
+	//
+	// 	- **false**: The task failed.
+	//
+	// example:
+	//
+	// true
 	TaskExcuteStatus *bool `json:"TaskExcuteStatus,omitempty" xml:"TaskExcuteStatus,omitempty"`
 	// The time when the task was run. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1684830763000
 	TaskTime *int64 `json:"TaskTime,omitempty" xml:"TaskTime,omitempty"`
 }
 
@@ -3162,8 +4332,20 @@ func (s *DescribeAutoScalingHistoryResponse) SetBody(v *DescribeAutoScalingHisto
 
 type DescribeCacheAnalysisJobRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the cache analysis task. You can obtain the task ID from the response parameters of the [CreateCacheAnalysisJob](~~180982~~) operation.
+	// The ID of the cache analysis task. You can obtain the task ID from the response parameters of the [CreateCacheAnalysisJob](https://help.aliyun.com/document_detail/180982.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sf79-sd99-sa37-****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -3187,19 +4369,36 @@ func (s *DescribeCacheAnalysisJobRequest) SetJobId(v string) *DescribeCacheAnaly
 
 type DescribeCacheAnalysisJobResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the task.
 	Data *DescribeCacheAnalysisJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message that is returned for the request.
 	//
-	// >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
+	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3242,23 +4441,46 @@ type DescribeCacheAnalysisJobResponseBodyData struct {
 	// The details of the large keys. The returned large keys are sorted in descending order based on the number of keys.
 	BigKeysOfNum *DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum `json:"BigKeysOfNum,omitempty" xml:"BigKeysOfNum,omitempty" type:"Struct"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the cache analysis task.
+	//
+	// example:
+	//
+	// sf79-sd99-sa37-****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The prefixes of the keys.
 	KeyPrefixes *DescribeCacheAnalysisJobResponseBodyDataKeyPrefixes `json:"KeyPrefixes,omitempty" xml:"KeyPrefixes,omitempty" type:"Struct"`
 	// The message that is returned for the request.
 	//
-	// >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
+	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the data node on the instance.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The state of the cache analysis task. Valid values:
 	//
-	// *   **BACKUP**: The data is being backed up.
-	// *   **ANALYZING**: The data is being analyzed.
-	// *   **FINISHED**: The data is analyzed.
-	// *   **FAILED**: An error occurred.
+	// 	- **BACKUP**: The data is being backed up.
+	//
+	// 	- **ANALYZING**: The data is being analyzed.
+	//
+	// 	- **FINISHED**: The data is analyzed.
+	//
+	// 	- **FAILED**: An error occurred.
+	//
+	// example:
+	//
+	// BACKUP
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
 	// The details of permanent keys. The returned keys are sorted in descending order based on the number of bytes occupied by the keys.
 	UnexBigKeysOfBytes *DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytes `json:"UnexBigKeysOfBytes,omitempty" xml:"UnexBigKeysOfBytes,omitempty" type:"Struct"`
@@ -3343,20 +4565,52 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataBigKeys) SetKeyInfo(v []*Descri
 
 type DescribeCacheAnalysisJobResponseBodyDataBigKeysKeyInfo struct {
 	// The number of bytes that are occupied by the key.
+	//
+	// example:
+	//
+	// 12345
 	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
 	// The number of elements in the key.
+	//
+	// example:
+	//
+	// 127
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// 0
 	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The data type of the key.
+	//
+	// example:
+	//
+	// hashtable
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
 	// The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+	//
+	// example:
+	//
+	// 1596256542547
 	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
 	// The name of the key.
+	//
+	// example:
+	//
+	// task_x****
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The ID of the data node on the instance.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The data type of the instance.
+	//
+	// example:
+	//
+	// hash
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3427,20 +4681,52 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum) SetKeyInfo(v []*D
 
 type DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNumKeyInfo struct {
 	// The number of bytes that are occupied by the key.
+	//
+	// example:
+	//
+	// 12345
 	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
 	// The number of elements in the key.
+	//
+	// example:
+	//
+	// 127
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// 0
 	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The data type of the key.
+	//
+	// example:
+	//
+	// hashtable
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
 	// The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+	//
+	// example:
+	//
+	// 1596256542547
 	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
 	// The name of the key.
+	//
+	// example:
+	//
+	// task_x****
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The ID of the data node on the instance.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The data type of the instance.
+	//
+	// example:
+	//
+	// hash
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3511,14 +4797,34 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataKeyPrefixes) SetPrefix(v []*Des
 
 type DescribeCacheAnalysisJobResponseBodyDataKeyPrefixesPrefix struct {
 	// The number of bytes that are occupied by the key.
+	//
+	// example:
+	//
+	// 12345
 	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
 	// The number of elements in the key.
+	//
+	// example:
+	//
+	// 127
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The number of keys that contain the prefix.
+	//
+	// example:
+	//
+	// 123
 	KeyNum *int64 `json:"KeyNum,omitempty" xml:"KeyNum,omitempty"`
 	// The prefix of the key.
+	//
+	// example:
+	//
+	// task_
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 	// The data type of the instance.
+	//
+	// example:
+	//
+	// hash
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3574,20 +4880,52 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytes) SetKeyInfo(
 
 type DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytesKeyInfo struct {
 	// The number of bytes that are occupied by the key.
+	//
+	// example:
+	//
+	// 12345
 	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
 	// The number of elements in the key.
+	//
+	// example:
+	//
+	// 127
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// 0
 	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The data type of the key.
+	//
+	// example:
+	//
+	// hashtable
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
 	// The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+	//
+	// example:
+	//
+	// 1596256542547
 	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
 	// The name of the key.
+	//
+	// example:
+	//
+	// task_x****
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The ID of the data node on the instance.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The data type of the instance.
+	//
+	// example:
+	//
+	// hash
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3658,20 +4996,52 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNum) SetKeyInfo(v 
 
 type DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNumKeyInfo struct {
 	// The number of bytes that are occupied by the key.
+	//
+	// example:
+	//
+	// 12345
 	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
 	// The number of elements in the key.
+	//
+	// example:
+	//
+	// 127
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// 0
 	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The data type of the key.
+	//
+	// example:
+	//
+	// hashtable
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
 	// The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+	//
+	// example:
+	//
+	// 1596256542547
 	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
 	// The name of the key.
+	//
+	// example:
+	//
+	// task_x****
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The ID of the data node on the instance.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The data type of the instance.
+	//
+	// example:
+	//
+	// hash
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3756,14 +5126,40 @@ type DescribeCacheAnalysisJobsRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1596177993001
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. The value must be an integer that is greater than 0. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1596177993000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -3802,19 +5198,36 @@ func (s *DescribeCacheAnalysisJobsRequest) SetStartTime(v string) *DescribeCache
 
 type DescribeCacheAnalysisJobsResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The list of cache analysis tasks.
 	Data *DescribeCacheAnalysisJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3853,14 +5266,30 @@ func (s *DescribeCacheAnalysisJobsResponseBody) SetSuccess(v string) *DescribeCa
 
 type DescribeCacheAnalysisJobsResponseBodyData struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The ID of the data node on the instance.
 	List *DescribeCacheAnalysisJobsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 	// The page number. The value must be an integer that is greater than 0. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 4
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -3917,24 +5346,47 @@ func (s *DescribeCacheAnalysisJobsResponseBodyDataList) SetCacheAnalysisJob(v []
 type DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJob struct {
 	// The details about the large keys.
 	//
-	// > The sub-parameters of this parameter and the content of the sub-parameters are not returned. To query the detailed information about the cache analysis tasks, call the [DescribeCacheAnalysisJob](~~443012~~) operation.
+	// > The sub-parameters of this parameter and the content of the sub-parameters are not returned. To query the detailed information about the cache analysis tasks, call the [DescribeCacheAnalysisJob](https://help.aliyun.com/document_detail/443012.html) operation.
 	BigKeys *DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeys `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the cache analysis task.
+	//
+	// example:
+	//
+	// sf79-sd99-sa37-****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the data node on the instance.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The state of the cache analysis task. Valid values:
 	//
-	// * **BACKUP**: The data is being backed up.
-	// * **ANALYZING**: The data is being analyzed.
-	// * **FINISHED**: The data is analyzed.
-	// * **FAILED**: An error occurred.
+	// 	- **BACKUP**: The data is being backed up.
+	//
+	// 	- **ANALYZING**: The data is being analyzed.
+	//
+	// 	- **FINISHED**: The data is analyzed.
+	//
+	// 	- **FAILED**: An error occurred.
+	//
+	// example:
+	//
+	// BACKUP
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
 }
 
@@ -3995,20 +5447,52 @@ func (s *DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeys) S
 
 type DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeysKeyInfo struct {
 	// The number of bytes that are occupied by the key.
+	//
+	// example:
+	//
+	// 12345
 	Bytes *int64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
 	// The number of elements in the key.
+	//
+	// example:
+	//
+	// 127
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// 0
 	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The data type of the key.
+	//
+	// example:
+	//
+	// hashtable
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
 	// The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+	//
+	// example:
+	//
+	// 1596256542547
 	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
 	// The name of the key.
+	//
+	// example:
+	//
+	// task_*****
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The ID of the data node on the instance.
+	//
+	// example:
+	//
+	// r-****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The data type of the instance.
+	//
+	// example:
+	//
+	// hash
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -4093,24 +5577,52 @@ type DescribeCloudBenchTasksRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time.
+	//
+	// example:
+	//
+	// 1596177993001
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The page number. The value must be a positive integer. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. The value must be a positive integer. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1596177993000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the stress testing task. Valid values:
 	//
-	// *   **SUCCESS**: The task is successful.
-	// *   **IGNORED**: The task is ignored.
-	// *   **RUNNING**: The task is running.
-	// *   **EXCEPTION**: The task is abnormal.
+	// 	- **SUCCESS**: The task is successful.
+	//
+	// 	- **IGNORED**: The task is ignored.
+	//
+	// 	- **RUNNING**: The task is running.
+	//
+	// 	- **EXCEPTION**: The task is abnormal.
+	//
+	// example:
+	//
+	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the stress testing task. Valid values:
 	//
-	// *   **pressure test** (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
-	// *   **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
+	// 	- **pressure test*	- (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
+	//
+	// 	- **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
+	//
+	// example:
+	//
+	// pressure test
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -4154,19 +5666,36 @@ func (s *DescribeCloudBenchTasksRequest) SetTaskType(v string) *DescribeCloudBen
 
 type DescribeCloudBenchTasksResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information, including the error codes and the number of entries that are returned.
 	Data *DescribeCloudBenchTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4205,14 +5734,30 @@ func (s *DescribeCloudBenchTasksResponseBody) SetSuccess(v string) *DescribeClou
 
 type DescribeCloudBenchTasksResponseBodyData struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The detailed information of the stress testing task.
 	List *DescribeCloudBenchTasksResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -4268,181 +5813,408 @@ func (s *DescribeCloudBenchTasksResponseBodyDataList) SetCloudbenchTasks(v []*De
 
 type DescribeCloudBenchTasksResponseBodyDataListCloudbenchTasks struct {
 	// The archiving task ID.
+	//
+	// example:
+	//
+	// \\"202105211430070112231480820340758****
 	ArchiveJobId *string `json:"ArchiveJobId,omitempty" xml:"ArchiveJobId,omitempty"`
 	// The name of the table that was archived to Object Storage Service (OSS).
+	//
+	// example:
+	//
+	// custins15546355_161604665****
 	ArchiveOssTableName *string `json:"ArchiveOssTableName,omitempty" xml:"ArchiveOssTableName,omitempty"`
 	// The archiving status of the file that stores the analysis result of full SQL statistics. Valid values:
 	//
-	// * **0**: The file archiving is not started.
-	// * **1**: The file is archived.
-	// * **2**: An error occurred.
-	// * **3**: The file is being archived.
-	// * **4**: The archived file does not need to be downloaded.
+	// 	- **0**: The file archiving is not started.
+	//
+	// 	- **1**: The file is archived.
+	//
+	// 	- **2**: An error occurred.
+	//
+	// 	- **3**: The file is being archived.
+	//
+	// 	- **4**: The archived file does not need to be downloaded.
+	//
+	// example:
+	//
+	// 1
 	ArchiveState *int32 `json:"ArchiveState,omitempty" xml:"ArchiveState,omitempty"`
-	// The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to query the ID of the backup set.
+	// The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID of the backup set.
+	//
+	// example:
+	//
+	// 229132
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The backup type. Valid values:
 	//
-	// * **TIMESTAMP**: Data is restored to the state at a specific point in time.
-	// * **BACKUPID**: Data is restored from a backup set that is identified by an ID.
+	// 	- **TIMESTAMP**: Data is restored to the state at a specific point in time.
+	//
+	// 	- **BACKUPID**: Data is restored from a backup set that is identified by an ID.
+	//
+	// example:
+	//
+	// TIMESTAMP
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// The substep in the stress testing task. Valid values:
 	//
-	// * **NEW**: Initialize the stress testing task.
-	// * **WAIT_BUY_ECS**: Purchase an ECS instance.
-	// * **WAIT_START_ECS**: Start the ECS instance.
-	// * **WAIT_INSTALL_JDK**: Install the Java Development Kit (JDK).
-	// * **WAIT_INSTALL_DBGATEWAY**: Install the database gateway (DBGateway).
-	// * **ADD_SECURITY_IPS_STEP**: Configure the whitelist of the security group.
-	// * **ARCHIVE**: Archive the file that stores the analysis results of full SQL statistics.
-	// * **DOWNLOAD**: Download the file that stores the analysis result of full SQL statistics.
-	// * **PROCEED**: Preprocess the file that stores the analysis result of full SQL statistics.
-	// * **PRE_LOAD**: Preload the file that stores the analysis result of full SQL statistics.
-	// * **VALIDATE**: Verify the functionality of stress testing.
-	// * **PRESSURE**: Start the stress testing task.
+	// 	- **NEW**: Initialize the stress testing task.
+	//
+	// 	- **WAIT_BUY_ECS**: Purchase an ECS instance.
+	//
+	// 	- **WAIT_START_ECS**: Start the ECS instance.
+	//
+	// 	- **WAIT_INSTALL_JDK**: Install the Java Development Kit (JDK).
+	//
+	// 	- **WAIT_INSTALL_DBGATEWAY**: Install the database gateway (DBGateway).
+	//
+	// 	- **ADD_SECURITY_IPS_STEP**: Configure the whitelist of the security group.
+	//
+	// 	- **ARCHIVE**: Archive the file that stores the analysis results of full SQL statistics.
+	//
+	// 	- **DOWNLOAD**: Download the file that stores the analysis result of full SQL statistics.
+	//
+	// 	- **PROCEED**: Preprocess the file that stores the analysis result of full SQL statistics.
+	//
+	// 	- **PRE_LOAD**: Preload the file that stores the analysis result of full SQL statistics.
+	//
+	// 	- **VALIDATE**: Verify the functionality of stress testing.
+	//
+	// 	- **PRESSURE**: Start the stress testing task.
+	//
+	// example:
+	//
+	// PROCEED
 	BenchStep *string `json:"BenchStep,omitempty" xml:"BenchStep,omitempty"`
 	// The status that indicates the substep performed for the stress testing task. Valid values:
 	//
-	// * **NEW**: The task is being initialized.
-	// * **RUNNING**: The task is running.
-	// * **FAILED**: The task failed.
-	// * **FINISHED**: The task is complete.
-	// * **Terminated**: The task is terminated.
-	// * **Deleted**: The task is deleted.
+	// 	- **NEW**: The task is being initialized.
+	//
+	// 	- **RUNNING**: The task is running.
+	//
+	// 	- **FAILED**: The task failed.
+	//
+	// 	- **FINISHED**: The task is complete.
+	//
+	// 	- **Terminated**: The task is terminated.
+	//
+	// 	- **Deleted**: The task is deleted.
+	//
+	// example:
+	//
+	// FINISHED
 	BenchStepStatus *string `json:"BenchStepStatus,omitempty" xml:"BenchStepStatus,omitempty"`
 	// The DBGateway ID of the stress testing client.
+	//
+	// example:
+	//
+	// 58598b2af48a0193dfc16fc6964ef****
 	ClientGatewayId *string `json:"ClientGatewayId,omitempty" xml:"ClientGatewayId,omitempty"`
 	// The type of the stress testing client. Valid values:
 	//
-	// * **ECS**: indicates that you must prepare the DBGateway.
-	// * **DAS_ECS**: indicates that DAS automatically purchases and deploys an ECS instance for stress testing.
+	// 	- **ECS**: indicates that you must prepare the DBGateway.
+	//
+	// 	- **DAS_ECS**: indicates that DAS automatically purchases and deploys an ECS instance for stress testing.
+	//
+	// example:
+	//
+	// ECS
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
 	// The description of the stress testing task.
+	//
+	// example:
+	//
+	// test-das-bench-0501
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The UUID of the destination instance.
+	//
+	// example:
+	//
+	// hdm_d887b5ccf99fa0dc9a1e5aaac368****
 	DstInstanceUuid *string `json:"DstInstanceUuid,omitempty" xml:"DstInstanceUuid,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	DstIp *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
 	// The port number of the destination instance.
+	//
+	// example:
+	//
+	// 3306
 	DstPort *int32 `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
 	// The type of the identifier that is used to indicate the destination instance. Valid values:
 	//
-	// * **Instance** (default): the instance ID.
-	// * **ConnectionString**: the endpoint of the instance.
+	// 	- **Instance*	- (default): the instance ID.
+	//
+	// 	- **ConnectionString**: the endpoint of the instance.
+	//
+	// example:
+	//
+	// Instance
 	DstType *string `json:"DstType,omitempty" xml:"DstType,omitempty"`
 	// The specification of the DTS instance.
 	//
-	// > For more information about the specifications of DTS instances and the test performance of each instance, see [Specifications of data migration instances](~~26606~~).
+	// > For more information about the specifications of DTS instances and the test performance of each instance, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html).
+	//
+	// example:
+	//
+	// medium
 	DtsJobClass *string `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
 	// The ID of the DTS migration task.
+	//
+	// example:
+	//
+	// i03e3zty16i****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The name of the Data Transmission Service (DTS) migration task.
+	//
+	// example:
+	//
+	// RDS_TO_RDS_MIGRATION
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
 	// The status of the DTS migration task. Valid values:
 	//
-	// * **NOT_STARTED**: The task is not started.
-	// * **PRE_CHECKING**: The task is in precheck.
-	// * **PRE_CHECK_FAILED**: The precheck failed.
-	// * **CHECKING**: The task is being checked.
-	// * **MIGRATING**: The data is being migrated.
-	// * **CATCHED**: The data is migrated from the source instance to the destination instance.
-	// * **SUSPENDING**: The task is suspended.
-	// * **MIGRATION_FAILED**: The data failed to be migrated.
-	// * **FINISHED**: The task is complete.
-	// * **INITIALIZING**: The synchronization is being initialized.
-	// * **INITIALIZE_FAILED**: The synchronization failed to be initialized.
-	// * **SYNCHRONIZING**: The data is being synchronized.
-	// * **MODIFYING**: The roles of the instances are being changed.
-	// * **SWITCHING**: The roles of the instances are being switched.
-	// * **FAILED**: The task failed.
+	// 	- **NOT_STARTED**: The task is not started.
+	//
+	// 	- **PRE_CHECKING**: The task is in precheck.
+	//
+	// 	- **PRE_CHECK_FAILED**: The precheck failed.
+	//
+	// 	- **CHECKING**: The task is being checked.
+	//
+	// 	- **MIGRATING**: The data is being migrated.
+	//
+	// 	- **CATCHED**: The data is migrated from the source instance to the destination instance.
+	//
+	// 	- **SUSPENDING**: The task is suspended.
+	//
+	// 	- **MIGRATION_FAILED**: The data failed to be migrated.
+	//
+	// 	- **FINISHED**: The task is complete.
+	//
+	// 	- **INITIALIZING**: The synchronization is being initialized.
+	//
+	// 	- **INITIALIZE_FAILED**: The synchronization failed to be initialized.
+	//
+	// 	- **SYNCHRONIZING**: The data is being synchronized.
+	//
+	// 	- **MODIFYING**: The roles of the instances are being changed.
+	//
+	// 	- **SWITCHING**: The roles of the instances are being switched.
+	//
+	// 	- **FAILED**: The task failed.
+	//
+	// example:
+	//
+	// CHECKING
 	DtsJobState *int32 `json:"DtsJobState,omitempty" xml:"DtsJobState,omitempty"`
 	// The status of the DTS migration task. Valid values:
 	//
-	// * **NOT_STARTED**: The task is not started.
-	// * **PRE_CHECKING**: The task is in precheck.
-	// * **PRE_CHECK_FAILED**: The precheck failed.
-	// * **CHECKING**: The task is being checked.
-	// * **MIGRATING**: The data is being migrated.
-	// * **CATCHED**: The data is migrated from the source instance to the destination instance.
-	// * **SUSPENDING**: The task is suspended.
-	// * **MIGRATION_FAILED**: The data failed to be migrated.
-	// * **FINISHED**: The task is complete.
-	// * **INITIALIZING**: The synchronization is being initialized.
-	// * **INITIALIZE_FAILED**: The synchronization failed to be initialized.
-	// * **SYNCHRONIZING**: The data is being synchronized.
-	// * **MODIFYING**: The roles of the instances are being changed.
-	// * **SWITCHING**: The roles of the instances are being switched.
-	// * **FAILED**: The task failed.
+	// 	- **NOT_STARTED**: The task is not started.
+	//
+	// 	- **PRE_CHECKING**: The task is in precheck.
+	//
+	// 	- **PRE_CHECK_FAILED**: The precheck failed.
+	//
+	// 	- **CHECKING**: The task is being checked.
+	//
+	// 	- **MIGRATING**: The data is being migrated.
+	//
+	// 	- **CATCHED**: The data is migrated from the source instance to the destination instance.
+	//
+	// 	- **SUSPENDING**: The task is suspended.
+	//
+	// 	- **MIGRATION_FAILED**: The data failed to be migrated.
+	//
+	// 	- **FINISHED**: The task is complete.
+	//
+	// 	- **INITIALIZING**: The synchronization is being initialized.
+	//
+	// 	- **INITIALIZE_FAILED**: The synchronization failed to be initialized.
+	//
+	// 	- **SYNCHRONIZING**: The data is being synchronized.
+	//
+	// 	- **MODIFYING**: The roles of the instances are being changed.
+	//
+	// 	- **SWITCHING**: The roles of the instances are being switched.
+	//
+	// 	- **FAILED**: The task failed.
+	//
+	// example:
+	//
+	// PRE_CHECK_FAILED
 	DtsJobStatus *string `json:"DtsJobStatus,omitempty" xml:"DtsJobStatus,omitempty"`
 	// The ID of the Elastic Compute Service (ECS) instance.
+	//
+	// example:
+	//
+	// i-bp1ecr5go2go1****
 	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
 	// The state that indicates the last operation performed for the stress testing task. Valid values:
 	//
-	// * **WAIT_TARGET**: prepares the destination instance.
-	// * **WAIT_DBGATEWAY**: prepares the DBGateway.
-	// * **WAIT_SQL**: prepares the full SQL statistics.
-	// * **WAIT_LOGIC**: prepares to replay the traffic.
+	// 	- **WAIT_TARGET**: prepares the destination instance.
+	//
+	// 	- **WAIT_DBGATEWAY**: prepares the DBGateway.
+	//
+	// 	- **WAIT_SQL**: prepares the full SQL statistics.
+	//
+	// 	- **WAIT_LOGIC**: prepares to replay the traffic.
 	//
 	// > When the state of a stress testing task changes to the state that is specified by the EndState parameter, the stress testing task is complete.
+	//
+	// example:
+	//
+	// WAIT_TARGET
 	EndState *string `json:"EndState,omitempty" xml:"EndState,omitempty"`
 	// The error code returned for the substep of the stress testing task.
+	//
+	// example:
+	//
+	// 10109
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned if the task failed.
+	//
+	// example:
+	//
+	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The additional information.
+	//
+	// example:
+	//
+	// Null
 	External *string `json:"External,omitempty" xml:"External,omitempty"`
-	// The rate at which the stress testing task replayed the traffic. This value is a positive integer. Valid values: **0** to **30**. Default value: **1**.
+	// The rate at which the stress testing task replayed the traffic. This value is a positive integer. Valid values: **0*	- to **30**. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
 	// The duration of the stress testing task. Unit: millisecond.
+	//
+	// example:
+	//
+	// 86400000
 	RequestDuration *int64 `json:"RequestDuration,omitempty" xml:"RequestDuration,omitempty"`
 	// The duration of the stress testing task of the smart pressure test type. Unit: millisecond.
+	//
+	// example:
+	//
+	// 86400000
 	SmartPressureTime *int32 `json:"SmartPressureTime,omitempty" xml:"SmartPressureTime,omitempty"`
 	// The source of the task. Valid values:
 	//
-	// * **DAS**
-	// * **OPEN_API**
+	// 	- **DAS**
+	//
+	// 	- **OPEN_API**
+	//
+	// example:
+	//
+	// DAS
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The reused information about the analysis result of full SQL statistics.
+	//
+	// example:
+	//
+	// {"sqlUuid":"task_a37d2f07-45cb-4413-a2a6-c66c68****","metaUuid":"task_211e2561-5c0c-486b-864c-56b511****","sqlFile":"cl-1620057600000-1800626.sc","metaFile":"cl-1620057600000-1800626.meta"}
 	SqlCompleteReuse *string `json:"SqlCompleteReuse,omitempty" xml:"SqlCompleteReuse,omitempty"`
 	// The database engine of the source instance. Valid values:
+	//
+	// example:
+	//
+	// RDS
 	SrcInstanceArea *string `json:"SrcInstanceArea,omitempty" xml:"SrcInstanceArea,omitempty"`
 	// The UUID of the source instance.
+	//
+	// example:
+	//
+	// hdm_3063db6792965c080a4bcb6e6304****
 	SrcInstanceUuid *string `json:"SrcInstanceUuid,omitempty" xml:"SrcInstanceUuid,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	SrcPublicIp *string `json:"SrcPublicIp,omitempty" xml:"SrcPublicIp,omitempty"`
 	// The state that indicates the operation performed for the stress testing task. Valid values:
 	//
-	// * **WAIT_TARGET**: prepares the destination instance.
-	// * **WAIT_DBGATEWAY**: prepares the DBGateway.
-	// * **WAIT_SQL**: prepares the full SQL statistics.
-	// * **WAIT_LOGIC**: prepares to replay the traffic.
+	// 	- **WAIT_TARGET**: prepares the destination instance.
+	//
+	// 	- **WAIT_DBGATEWAY**: prepares the DBGateway.
+	//
+	// 	- **WAIT_SQL**: prepares the full SQL statistics.
+	//
+	// 	- **WAIT_LOGIC**: prepares to replay the traffic.
+	//
+	// example:
+	//
+	// WAIT_TARGET
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The status of the stress testing task. Valid values:
 	//
-	// * **SUCCESS**: The task was successful.
-	// * **IGNORED**: The task was ignored.
-	// * **RUNNING**: The task is running.
-	// * **EXCEPTION**: The task is abnormal.
+	// 	- **SUCCESS**: The task was successful.
+	//
+	// 	- **IGNORED**: The task was ignored.
+	//
+	// 	- **RUNNING**: The task is running.
+	//
+	// 	- **EXCEPTION**: The task is abnormal.
+	//
+	// example:
+	//
+	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the table that is used for stress testing.
+	//
+	// example:
+	//
+	// [{"TABLE_NAME":"customer1","TABLE_SCHEMA":"tpcc"}]
 	TableSchema *string `json:"TableSchema,omitempty" xml:"TableSchema,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// e5cec704-0518-430f-8263-76f4dcds****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The type of the stress testing task. Valid values:
 	//
-	// * **pressure test** (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
-	// * **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
+	// 	- **pressure test*	- (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
+	//
+	// 	- **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
+	//
+	// example:
+	//
+	// pressure test
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The topic that contains the consumed data. This topic is a topic in Message Queue for Apache Kafka.
+	//
+	// example:
+	//
+	// das
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 	// The Alibaba Cloud account ID.
+	//
+	// example:
+	//
+	// 1091411816252****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The version of the stress testing task. Valid values:
 	//
-	// * **V2.0**
-	// * **V3.0**
+	// 	- **V2.0**
+	//
+	// 	- **V3.0**
+	//
+	// example:
+	//
+	// V3.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The path of the temporary directory that is generated for stress testing.
+	//
+	// example:
+	//
+	// /tmp/bench/
 	WorkDir *string `json:"WorkDir,omitempty" xml:"WorkDir,omitempty"`
 }
 
@@ -4689,7 +6461,13 @@ func (s *DescribeCloudBenchTasksResponse) SetBody(v *DescribeCloudBenchTasksResp
 }
 
 type DescribeCloudbenchTaskRequest struct {
-	// The ID of the stress testing task. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the ID.
+	// The ID of the stress testing task. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5cec704-0518-430f-8263-76f4dcds****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -4708,19 +6486,36 @@ func (s *DescribeCloudbenchTaskRequest) SetTaskId(v string) *DescribeCloudbenchT
 
 type DescribeCloudbenchTaskResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information, including the error codes and the number of entries that are returned.
 	Data *DescribeCloudbenchTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4759,179 +6554,406 @@ func (s *DescribeCloudbenchTaskResponseBody) SetSuccess(v string) *DescribeCloud
 
 type DescribeCloudbenchTaskResponseBodyData struct {
 	// The ID of the archiving task.
+	//
+	// example:
+	//
+	// \\"202105211430070112231480820340758****
 	ArchiveJobId *string `json:"ArchiveJobId,omitempty" xml:"ArchiveJobId,omitempty"`
 	// The name of the table that was archived to Object Storage Service (OSS).
+	//
+	// example:
+	//
+	// custins15546355_161604665****
 	ArchiveOssTableName *string `json:"ArchiveOssTableName,omitempty" xml:"ArchiveOssTableName,omitempty"`
 	// The archiving state of the file that stores the analysis result of full SQL statistics. Valid values:
 	//
-	// *   **0**: The file archiving is not started.
-	// *   **1**: The file is archived.
-	// *   **2**: An error occurred.
-	// *   **3**: The file is being archived.
-	// *   **4**: The archived file does not need to be downloaded.
+	// 	- **0**: The file archiving is not started.
+	//
+	// 	- **1**: The file is archived.
+	//
+	// 	- **2**: An error occurred.
+	//
+	// 	- **3**: The file is being archived.
+	//
+	// 	- **4**: The archived file does not need to be downloaded.
+	//
+	// example:
+	//
+	// 1
 	ArchiveState *int32 `json:"ArchiveState,omitempty" xml:"ArchiveState,omitempty"`
-	// The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to query the ID of the backup set.
+	// The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID of the backup set.
+	//
+	// example:
+	//
+	// 229132
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The backup type. Valid values:
 	//
-	// *   **TIMESTAMP**
-	// *   **BACKUPID**
+	// 	- **TIMESTAMP**
+	//
+	// 	- **BACKUPID**
+	//
+	// example:
+	//
+	// TIMESTAMP
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// The substep in the stress testing task. Valid values:
 	//
-	// *   **NEW**: initializes the stress testing task.
-	// *   **WAIT_BUY_ECS**: purchases an ECS instance.
-	// *   **WAIT_START_ECS**: starts an ECS instance.
-	// *   **WAIT_INSTALL_JDK**: installs the Java Development Kit (JDK).
-	// *   **WAIT_INSTALL_DBGATEWAY**: installs the database gateway (DBGateway).
-	// *   **ADD_SECURITY_IPS_STEP**: configure a security group whitelist.
-	// *   **ARCHIVE**: archives the full SQL statistics.
-	// *   **DOWNLOAD**: downloads the file that stores the analysis result of full SQL statistics.
-	// *   **PROCEED**: preprocesses the file that stores the analysis result of full SQL statistics.
-	// *   **PRE_LOAD**: preloads the file that stores the analysis result of full SQL statistics.
-	// *   **VALIDATE**: verifies the functionality of stress testing.
-	// *   **PRESSURE**: starts the stress testing task.
+	// 	- **NEW**: initializes the stress testing task.
+	//
+	// 	- **WAIT_BUY_ECS**: purchases an ECS instance.
+	//
+	// 	- **WAIT_START_ECS**: starts an ECS instance.
+	//
+	// 	- **WAIT_INSTALL_JDK**: installs the Java Development Kit (JDK).
+	//
+	// 	- **WAIT_INSTALL_DBGATEWAY**: installs the database gateway (DBGateway).
+	//
+	// 	- **ADD_SECURITY_IPS_STEP**: configure a security group whitelist.
+	//
+	// 	- **ARCHIVE**: archives the full SQL statistics.
+	//
+	// 	- **DOWNLOAD**: downloads the file that stores the analysis result of full SQL statistics.
+	//
+	// 	- **PROCEED**: preprocesses the file that stores the analysis result of full SQL statistics.
+	//
+	// 	- **PRE_LOAD**: preloads the file that stores the analysis result of full SQL statistics.
+	//
+	// 	- **VALIDATE**: verifies the functionality of stress testing.
+	//
+	// 	- **PRESSURE**: starts the stress testing task.
+	//
+	// example:
+	//
+	// PROCEED
 	BenchStep *string `json:"BenchStep,omitempty" xml:"BenchStep,omitempty"`
 	// The status that indicates the substep performed on the stress testing task. Valid values:
 	//
-	// *   **NEW**: The task is being initialized.
-	// *   **RUNNING**: The task is running.
-	// *   **FAILED**: The task failed.
-	// *   **FINISHED**: The task is complete.
-	// *   **Terminated**: The task is terminated.
-	// *   **Deleted**: The task is deleted.
+	// 	- **NEW**: The task is being initialized.
+	//
+	// 	- **RUNNING**: The task is running.
+	//
+	// 	- **FAILED**: The task failed.
+	//
+	// 	- **FINISHED**: The task is complete.
+	//
+	// 	- **Terminated**: The task is terminated.
+	//
+	// 	- **Deleted**: The task is deleted.
+	//
+	// example:
+	//
+	// FINISHED
 	BenchStepStatus *string `json:"BenchStepStatus,omitempty" xml:"BenchStepStatus,omitempty"`
 	// The DBGateway ID of the stress testing client.
+	//
+	// example:
+	//
+	// 58598b2af48a0193dfc16fc6964ef****
 	ClientGatewayId *string `json:"ClientGatewayId,omitempty" xml:"ClientGatewayId,omitempty"`
 	// The type of the stress testing client. Valid values:
 	//
-	// *   **ECS**: indicates that you must create the [DBGateway](~~64905~~).
-	// *   **DAS_ECS**: indicates that DAS automatically purchases and deploys an ECS instance for stress testing.
+	// 	- **ECS**: indicates that you must create the [DBGateway](https://help.aliyun.com/document_detail/64905.html).
+	//
+	// 	- **DAS_ECS**: indicates that DAS automatically purchases and deploys an ECS instance for stress testing.
+	//
+	// example:
+	//
+	// ECS
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
 	// The description of the stress testing task.
+	//
+	// example:
+	//
+	// test-das-bench-0501
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The UUID of the destination instance.
+	//
+	// example:
+	//
+	// hdm_d887b5ccf99fa0dc9a1e5aaac368****
 	DstInstanceUuid *string `json:"DstInstanceUuid,omitempty" xml:"DstInstanceUuid,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	DstIp *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
 	// The port number of the destination instance.
+	//
+	// example:
+	//
+	// 3306
 	DstPort *int32 `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
 	// The type of the identifier that is used to indicate the destination instance. Valid values:
 	//
-	// *   **Instance** (default): the instance ID.
-	// *   **ConnectionString**: the endpoint of the instance.
+	// 	- **Instance*	- (default): the instance ID.
+	//
+	// 	- **ConnectionString**: the endpoint of the instance.
+	//
+	// example:
+	//
+	// Instance
 	DstType *string `json:"DstType,omitempty" xml:"DstType,omitempty"`
 	// The specification of the DTS task.
+	//
+	// example:
+	//
+	// medium
 	DtsJobClass *string `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
 	// The ID of the DTS migration task.
+	//
+	// example:
+	//
+	// i03e3zty16i****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The name of the Data Transmission Service (DTS) task.
+	//
+	// example:
+	//
+	// RDS_TO_RDS_MIGRATION
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
 	// The state of the DTS task. Valid values:
 	//
-	// *   **NOT_STARTED**: The task is not started.
-	// *   **PRE_CHECKING**: The task is in precheck.
-	// *   **PRE_CHECK_FAILED**: The precheck failed.
-	// *   **CHECKING**: The task is being checked.
-	// *   **MIGRATING**: The data is being migrated.
-	// *   **CATCHED**: The data is migrated from the source instance to the destination instance.
-	// *   **SUSPENDING**: The task is suspended.
-	// *   **MIGRATION_FAILED**: The data failed to be migrated.
-	// *   **FINISHED**: The task is complete.
-	// *   **INITIALIZING**: The synchronization is being initialized.
-	// *   **INITIALIZE_FAILED**: The synchronization failed to be initialized.
-	// *   **SYNCHRONIZING**: The data is being synchronized.
-	// *   **MODIFYING**: The objects to be synchronized are being changed.
-	// *   **SWITCHING**: The roles of the instances are being switched.
-	// *   **FAILED**: The task failed.
+	// 	- **NOT_STARTED**: The task is not started.
+	//
+	// 	- **PRE_CHECKING**: The task is in precheck.
+	//
+	// 	- **PRE_CHECK_FAILED**: The precheck failed.
+	//
+	// 	- **CHECKING**: The task is being checked.
+	//
+	// 	- **MIGRATING**: The data is being migrated.
+	//
+	// 	- **CATCHED**: The data is migrated from the source instance to the destination instance.
+	//
+	// 	- **SUSPENDING**: The task is suspended.
+	//
+	// 	- **MIGRATION_FAILED**: The data failed to be migrated.
+	//
+	// 	- **FINISHED**: The task is complete.
+	//
+	// 	- **INITIALIZING**: The synchronization is being initialized.
+	//
+	// 	- **INITIALIZE_FAILED**: The synchronization failed to be initialized.
+	//
+	// 	- **SYNCHRONIZING**: The data is being synchronized.
+	//
+	// 	- **MODIFYING**: The objects to be synchronized are being changed.
+	//
+	// 	- **SWITCHING**: The roles of the instances are being switched.
+	//
+	// 	- **FAILED**: The task failed.
+	//
+	// example:
+	//
+	// CHECKING
 	DtsJobState *int32 `json:"DtsJobState,omitempty" xml:"DtsJobState,omitempty"`
 	// The state of the DTS task. Valid values:
 	//
-	// *   **NOT_STARTED**: The task is not started.
-	// *   **PRE_CHECKING**: The task is in precheck.
-	// *   **PRE_CHECK_FAILED**: The precheck failed.
-	// *   **CHECKING**: The task is being checked.
-	// *   **MIGRATING**: The data is being migrated.
-	// *   **CATCHED**: The data is migrated from the source instance to the destination instance.
-	// *   **SUSPENDING**: The task is suspended.
-	// *   **MIGRATION_FAILED**: The data failed to be migrated.
-	// *   **FINISHED**: The task is complete.
-	// *   **INITIALIZING**: The synchronization is being initialized.
-	// *   **INITIALIZE_FAILED**: The synchronization failed to be initialized.
-	// *   **SYNCHRONIZING**: The data is being synchronized.
-	// *   **MODIFYING**: The objects to be synchronized are being changed.
-	// *   **SWITCHING**: The roles of the instances are being switched.
-	// *   **FAILED**: The task failed.
+	// 	- **NOT_STARTED**: The task is not started.
+	//
+	// 	- **PRE_CHECKING**: The task is in precheck.
+	//
+	// 	- **PRE_CHECK_FAILED**: The precheck failed.
+	//
+	// 	- **CHECKING**: The task is being checked.
+	//
+	// 	- **MIGRATING**: The data is being migrated.
+	//
+	// 	- **CATCHED**: The data is migrated from the source instance to the destination instance.
+	//
+	// 	- **SUSPENDING**: The task is suspended.
+	//
+	// 	- **MIGRATION_FAILED**: The data failed to be migrated.
+	//
+	// 	- **FINISHED**: The task is complete.
+	//
+	// 	- **INITIALIZING**: The synchronization is being initialized.
+	//
+	// 	- **INITIALIZE_FAILED**: The synchronization failed to be initialized.
+	//
+	// 	- **SYNCHRONIZING**: The data is being synchronized.
+	//
+	// 	- **MODIFYING**: The objects to be synchronized are being changed.
+	//
+	// 	- **SWITCHING**: The roles of the instances are being switched.
+	//
+	// 	- **FAILED**: The task failed.
+	//
+	// example:
+	//
+	// PRE_CHECKING
 	DtsJobStatus *string `json:"DtsJobStatus,omitempty" xml:"DtsJobStatus,omitempty"`
 	// The ID of the Elastic Compute Service (ECS) instance.
+	//
+	// example:
+	//
+	// i-bp1ecr5go2go1****
 	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
 	// The state that specifies the last operation that is performed for the stress testing task. Valid values:
 	//
-	// *   **WAIT_TARGET**: prepares the destination instance.
-	// *   **WAIT_DBGATEWAY**: prepares the DBGateway.
-	// *   **WAIT_SQL**: prepares the full SQL statistics.
-	// *   **WAIT_LOGIC**: prepares to replay the traffic.
+	// 	- **WAIT_TARGET**: prepares the destination instance.
+	//
+	// 	- **WAIT_DBGATEWAY**: prepares the DBGateway.
+	//
+	// 	- **WAIT_SQL**: prepares the full SQL statistics.
+	//
+	// 	- **WAIT_LOGIC**: prepares to replay the traffic.
 	//
 	// >  When the state of a stress testing task changes to the state that is specified by the EndState parameter, the stress testing task becomes completed.
+	//
+	// example:
+	//
+	// WAIT_LOGIC
 	EndState *string `json:"EndState,omitempty" xml:"EndState,omitempty"`
 	// The error code returned for the substep of the stress testing task.
+	//
+	// example:
+	//
+	// 10910
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The additional information.
+	//
+	// example:
+	//
+	// Null
 	External *string `json:"External,omitempty" xml:"External,omitempty"`
-	// The rate at which the stress testing task replayed the traffic. The value is a positive integer. Valid values:**1** to **30**. Default value: **1**.
+	// The rate at which the stress testing task replayed the traffic. The value is a positive integer. Valid values:**1*	- to **30**. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	Rate *int64 `json:"Rate,omitempty" xml:"Rate,omitempty"`
 	// The duration of the stress testing task for which traffic was captured from the source instance.
+	//
+	// example:
+	//
+	// 864000
 	RequestDuration *int64 `json:"RequestDuration,omitempty" xml:"RequestDuration,omitempty"`
 	// The duration of the stress testing task for which the traffic was generated on the destination instance. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 86400000
 	SmartPressureTime *int32 `json:"SmartPressureTime,omitempty" xml:"SmartPressureTime,omitempty"`
 	// The source of the task. Valid values:
 	//
-	// *   **DAS**
-	// *   **OPEN_API**
+	// 	- **DAS**
+	//
+	// 	- **OPEN_API**
+	//
+	// example:
+	//
+	// DAS
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The reuse information about the analysis result of full SQL statistics.
+	//
+	// example:
+	//
+	// {"sqlUuid":"task_a37d2f07-45cb-****-a2a6-c66c62****","metaUuid":"task_211e2561-5c0c-486b-864c-56b511****","sqlFile":"cl-1620057600000-1800626.sc","metaFile":"cl-1620057600000-180****.meta"}
 	SqlCompleteReuse *string `json:"SqlCompleteReuse,omitempty" xml:"SqlCompleteReuse,omitempty"`
 	// The database type of the source instance. Valid values:
+	//
+	// example:
+	//
+	// RDS
 	SrcInstanceArea *string `json:"SrcInstanceArea,omitempty" xml:"SrcInstanceArea,omitempty"`
 	// The UUID of the source instance.
+	//
+	// example:
+	//
+	// a364e414-e68b-4e5c-9166-65b3a153****
 	SrcInstanceUuid *string `json:"SrcInstanceUuid,omitempty" xml:"SrcInstanceUuid,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	SrcPublicIp *string `json:"SrcPublicIp,omitempty" xml:"SrcPublicIp,omitempty"`
 	// The state that indicates the operation performed for the stress testing task. Valid values:
 	//
-	// *   **WAIT_TARGET**: prepares the destination instance.
-	// *   **WAIT_DBGATEWAY**: prepares the DBGateway.
-	// *   **WAIT_SQL**: prepares the full SQL statistics.
-	// *   **WAIT_LOGIC**: prepares to replay the traffic.
+	// 	- **WAIT_TARGET**: prepares the destination instance.
+	//
+	// 	- **WAIT_DBGATEWAY**: prepares the DBGateway.
+	//
+	// 	- **WAIT_SQL**: prepares the full SQL statistics.
+	//
+	// 	- **WAIT_LOGIC**: prepares to replay the traffic.
+	//
+	// example:
+	//
+	// WAIT_TARGET
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The state of the stress testing task. Valid values:
 	//
-	// *   **SUCCESS**: The task is successful.
-	// *   **IGNORED**: The task is ignored.
-	// *   **RUNNING**: The task is running.
-	// *   **EXCEPTION**: An error occurred.
+	// 	- **SUCCESS**: The task is successful.
+	//
+	// 	- **IGNORED**: The task is ignored.
+	//
+	// 	- **RUNNING**: The task is running.
+	//
+	// 	- **EXCEPTION**: An error occurred.
+	//
+	// example:
+	//
+	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the table that is used for stress testing.
+	//
+	// example:
+	//
+	// [{"TABLE_NAME":"customer1","TABLE_SCHEMA":"tpcc"}]
 	TableSchema *string `json:"TableSchema,omitempty" xml:"TableSchema,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// e5cec704-0518-430f-8263-76f4dcds****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The type of the stress testing task. Valid values:
 	//
-	// *   **pressure test** (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
-	// *   **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
+	// 	- **pressure test*	- (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
+	//
+	// 	- **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
+	//
+	// example:
+	//
+	// pressure test
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The topic that contains the consumed data. This topic is a topic in Message Queue for Apache Kafka.
+	//
+	// example:
+	//
+	// das
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 109141182625****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The version of the stress testing task. Valid values:
 	//
-	// *   **V2.0**
-	// *   **V3.0**
+	// 	- **V2.0**
+	//
+	// 	- **V3.0**
+	//
+	// example:
+	//
+	// V3.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The temporary directory generated for stress testing.
+	//
+	// example:
+	//
+	// /tmp/bench/
 	WorkDir *string `json:"WorkDir,omitempty" xml:"WorkDir,omitempty"`
 }
 
@@ -5178,7 +7200,13 @@ func (s *DescribeCloudbenchTaskResponse) SetBody(v *DescribeCloudbenchTaskRespon
 }
 
 type DescribeCloudbenchTaskConfigRequest struct {
-	// The task ID. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the task ID.
+	// The task ID. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5cec704-0518-430f-8263-76f4dcds****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -5197,19 +7225,36 @@ func (s *DescribeCloudbenchTaskConfigRequest) SetTaskId(v string) *DescribeCloud
 
 type DescribeCloudbenchTaskConfigResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information, including the error codes and the number of entries that are returned.
 	Data *DescribeCloudbenchTaskConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5248,38 +7293,106 @@ func (s *DescribeCloudbenchTaskConfigResponseBody) SetSuccess(v string) *Describ
 
 type DescribeCloudbenchTaskConfigResponseBodyData struct {
 	// The path in which the files are archived.
+	//
+	// example:
+	//
+	// /tmp/das/cloudbench/archive-sqls/
 	ArchiveFolder *string `json:"ArchiveFolder,omitempty" xml:"ArchiveFolder,omitempty"`
 	// The command that was run to start the stress testing task.
+	//
+	// example:
+	//
+	// java -jar /tmp/das/cloudbench/CloudBenchClient.jar --bench --rocksdb /tmp/das/cloudbench/rocksdb --meta /tmp/das/cloudbench/cl-1621353601000-360****.meta --task_name 2777bba9-a836-49e6-9f70-1c3822fc9239 --result_file /tmp/das/cloudbench/null.result --user cloudb***	- --pwd \\"cloudbench@****\\" --host rm-bp1j5f8s5x26kq79216****.mysql.rds.aliyuncs.com --port 3306 --charset utf8mb4 --interval 1 --bench_time 3600 --rate_factor 1.0 --start_time 1621353601 --rt > /tmp/das/cloudbench/null.log
 	BenchCmd *string `json:"BenchCmd,omitempty" xml:"BenchCmd,omitempty"`
 	// The path to the JAR file that is used for stress testing.
+	//
+	// example:
+	//
+	// /tmp/das/cloudbench/CloudBenchClient.jar
 	ClientJarPath *string `json:"ClientJarPath,omitempty" xml:"ClientJarPath,omitempty"`
 	// The path to the JAR file that is stored in OSS. The JAR file is used for stress testing.
+	//
+	// example:
+	//
+	// https://cloudbench-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/CloudBenchClient.jar?OSSAccessKeyId=LTAI5tKj8B4wikkVtupK****&Expires=1622441372&Signature=28p%2BCe4tNHpr9VPOcHc3Si9iOb****
 	JarOnOss *string `json:"JarOnOss,omitempty" xml:"JarOnOss,omitempty"`
 	// The command that was run to preload the file that stores the analysis result of full SQL statistics.
+	//
+	// example:
+	//
+	// java -jar /tmp/das/cloudbench/CloudBenchClient.jar --load --out /tmp/das/cloudbench/cl-1621353601000-360****.sc --meta /tmp/das/cloudbench/cl-1621353601000-360****.meta --task_name 2777bba9-****-49e6-9f70-1c3822fc***	- --rocksdb /tmp/das/cloudbench/rocksdb
 	LoadCmd *string `json:"LoadCmd,omitempty" xml:"LoadCmd,omitempty"`
 	// The name of the metadata file.
+	//
+	// example:
+	//
+	// cl-1621353601000-360****.meta
 	MetaFileName *string `json:"MetaFileName,omitempty" xml:"MetaFileName,omitempty"`
 	// The name of the metadata file stored in Object Storage Service (OSS).
+	//
+	// example:
+	//
+	// "https://cb-rm-bp1w9g06h560l****.oss-cn-hangzhou.aliyuncs.com/cl-1621353601000-360****.meta?OSSAccessKeyId=LTAI5tKj8B4wikkVtupK****&Expires=1622441372&Signature=Qsehg3tzeA57M%2BIixAbWPWAtvl****
 	MetaFileOnOss *string `json:"MetaFileOnOss,omitempty" xml:"MetaFileOnOss,omitempty"`
 	// The path to the metadata file.
+	//
+	// example:
+	//
+	// /tmp/das/cloudbench/cl-1621353601000-360****.meta
 	MetaFilePath *string `json:"MetaFilePath,omitempty" xml:"MetaFilePath,omitempty"`
 	// The command that was run to parse the file that stores the analysis result of full SQL statistics.
+	//
+	// example:
+	//
+	// cd /tmp/das/cloudbench && java -jar CloudBenchClient.jar --parse --threads 32 --file /tmp/das/cloudbench/2777bba9-a836-49e6-9f70-1c3822fc9239.archiveSql --meta /tmp/das/cloudbench/cl-1621353601000-360****.meta --out /tmp/das/cloudbench/cl-1621353601000-360****.sc --parent_patmp/das/cloudbench --source RDS --h /thost rm-bp1j5f8s5x266****.mysql.rds.aliyuncs.com --port 3306 --user cloudb***	- --pwd \\"cloudbench@****\\" --cutSqlLen 8192 --db_black_list=information_schema,test,unknow,null
 	ParseCmd *string `json:"ParseCmd,omitempty" xml:"ParseCmd,omitempty"`
 	// The path to the file that is parsed. The file stores the analysis result of full SQL statistics.
+	//
+	// example:
+	//
+	// /tmp/das/cloudbench/2777bba9-a836-49e6-9f70-1c3822fc****.archiveSql
 	ParseFilePath *string `json:"ParseFilePath,omitempty" xml:"ParseFilePath,omitempty"`
 	// The location where the RocksDB storage system is deployed in the stress testing client.
+	//
+	// example:
+	//
+	// /tmp/das/cloudbench/rocksdb
 	RocksDbPath *string `json:"RocksDbPath,omitempty" xml:"RocksDbPath,omitempty"`
 	// The name of the file that stores the analysis result of full SQL statistics.
+	//
+	// example:
+	//
+	// cl-1621353601000-360****.sc
 	SqlFileName *string `json:"SqlFileName,omitempty" xml:"SqlFileName,omitempty"`
 	// The name of the file that stores the analysis result of full SQL statistics and that is stored in OSS.
+	//
+	// example:
+	//
+	// https://cb-rm-bp1w9g06h560l****.oss-cn-hangzhou.aliyuncs.com/cl-1621353601000-360****.sc?OSSAccessKeyId=LTAI5tKj8B4wikkVtupK****&Expires=1622441372&Signature=LYMADwo%2BRrJeqR3e4d8OlIkVmw****
 	SqlFileOnOss *string `json:"SqlFileOnOss,omitempty" xml:"SqlFileOnOss,omitempty"`
 	// The path to the file that stores the analysis result of full SQL statistics.
+	//
+	// example:
+	//
+	// /tmp/das/cloudbench/cl-1621353601000-360****.sc
 	SqlFilePath *string `json:"SqlFilePath,omitempty" xml:"SqlFilePath,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// e5cec704-0518-430f-8263-76f4dcds****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The Alibaba Cloud account ID.
+	//
+	// example:
+	//
+	// 1091411816252****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The path of the temporary directory that is generated for stress testing.
+	//
+	// example:
+	//
+	// /tmp/bench/
 	WorkDir *string `json:"WorkDir,omitempty" xml:"WorkDir,omitempty"`
 }
 
@@ -5407,16 +7520,42 @@ func (s *DescribeCloudbenchTaskConfigResponse) SetBody(v *DescribeCloudbenchTask
 
 type DescribeDiagnosticReportListRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1668420492000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The page number. The value must be a positive integer. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1668398892000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5455,27 +7594,56 @@ func (s *DescribeDiagnosticReportListRequest) SetStartTime(v string) *DescribeDi
 
 type DescribeDiagnosticReportListResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information of the diagnostics reports. Valid values:
 	//
-	// *   **total**: the number of diagnostics reports.
-	// *   **score**: the health score.
-	// *   **diagnosticTime**: the time when the diagnostics report was generated. The time is displayed in UTC.
-	// *   **startTime**: the start time of the query. The time is displayed in UTC.
-	// *   **endTime**: the end time of the query. The time is displayed in UTC.
+	// 	- **total**: the number of diagnostics reports.
+	//
+	// 	- **score**: the health score.
+	//
+	// 	- **diagnosticTime**: the time when the diagnostics report was generated. The time is displayed in UTC.
+	//
+	// 	- **startTime**: the start time of the query. The time is displayed in UTC.
+	//
+	// 	- **endTime**: the end time of the query. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// {     "total": 1,     "list": [       {         "score": 100,         "diagnosticTime": "2022-11-14T08:17:00Z",         "startTime": "2022-11-14T07:16:59Z",         "endTime": "2022-11-14T08:16:59Z"       }     ]   }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D00DB161-FEF6-5428-B37A-8D29A4C2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Synchro *string `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
@@ -5548,10 +7716,24 @@ func (s *DescribeDiagnosticReportListResponse) SetBody(v *DescribeDiagnosticRepo
 
 type DescribeHotBigKeysRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
-	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID.
+	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the ID.
+	// The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the ID.
+	//
+	// example:
+	//
+	// r-****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
@@ -5580,17 +7762,34 @@ func (s *DescribeHotBigKeysRequest) SetNodeId(v string) *DescribeHotBigKeysReque
 
 type DescribeHotBigKeysResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The list of hot keys and large keys.
 	Data *DescribeHotBigKeysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5629,10 +7828,18 @@ func (s *DescribeHotBigKeysResponseBody) SetSuccess(v string) *DescribeHotBigKey
 
 type DescribeHotBigKeysResponseBodyData struct {
 	// The reason why the large key failed to be queried.
+	//
+	// example:
+	//
+	// current version doesn\\"t support
 	BigKeyMsg *string `json:"BigKeyMsg,omitempty" xml:"BigKeyMsg,omitempty"`
 	// The list of large keys.
 	BigKeys *DescribeHotBigKeysResponseBodyDataBigKeys `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
 	// The reason why the hot key failed to be queried.
+	//
+	// example:
+	//
+	// current version doesn\\"t support
 	HotKeyMsg *string `json:"HotKeyMsg,omitempty" xml:"HotKeyMsg,omitempty"`
 	// The list of hot keys.
 	HotKeys *DescribeHotBigKeysResponseBodyDataHotKeys `json:"HotKeys,omitempty" xml:"HotKeys,omitempty" type:"Struct"`
@@ -5685,14 +7892,34 @@ func (s *DescribeHotBigKeysResponseBodyDataBigKeys) SetBigKey(v []*DescribeHotBi
 
 type DescribeHotBigKeysResponseBodyDataBigKeysBigKey struct {
 	// The database in which the key is stored.
+	//
+	// example:
+	//
+	// 0
 	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The key.
+	//
+	// example:
+	//
+	// abc:def:eng
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The type of the key.
+	//
+	// example:
+	//
+	// zset
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
 	// The ID of the data shard on the ApsaraDB for Redis instance.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The number of elements in the key.
+	//
+	// example:
+	//
+	// 2
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -5748,16 +7975,40 @@ func (s *DescribeHotBigKeysResponseBodyDataHotKeys) SetHotKey(v []*DescribeHotBi
 
 type DescribeHotBigKeysResponseBodyDataHotKeysHotKey struct {
 	// The database in which the key is stored.
+	//
+	// example:
+	//
+	// 0
 	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The frequency at which the key is accessed, which indicates the queries per second (QPS) of the key.
+	//
+	// example:
+	//
+	// 5500~6000
 	Hot *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
 	// The key.
+	//
+	// example:
+	//
+	// abc:def:eng
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The type of the key.
+	//
+	// example:
+	//
+	// zset
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
 	// The statistical value that is calculated based on the least frequently used (LFU) caching algorithm.
+	//
+	// example:
+	//
+	// 253
 	Lfu *int32 `json:"Lfu,omitempty" xml:"Lfu,omitempty"`
 	// The ID of the data shard on the ApsaraDB for Redis instance.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
@@ -5829,9 +8080,19 @@ func (s *DescribeHotBigKeysResponse) SetBody(v *DescribeHotBigKeysResponseBody) 
 }
 
 type DescribeHotKeysRequest struct {
-	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query the instance ID.
+	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the data shard ID.
+	// The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the data shard ID.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
@@ -5855,19 +8116,36 @@ func (s *DescribeHotKeysRequest) SetNodeId(v string) *DescribeHotKeysRequest {
 
 type DescribeHotKeysResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the hot keys.
 	Data *DescribeHotKeysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5923,14 +8201,34 @@ func (s *DescribeHotKeysResponseBodyData) SetHotKey(v []*DescribeHotKeysResponse
 
 type DescribeHotKeysResponseBodyDataHotKey struct {
 	// The database in which the key is stored.
+	//
+	// example:
+	//
+	// 0
 	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The frequency at which the key is accessed, which indicates the queries per second (QPS) of the key.
+	//
+	// example:
+	//
+	// 5500~6000
 	Hot *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
 	// The name of the key.
+	//
+	// example:
+	//
+	// abc:def:eng
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The type of the key.
+	//
+	// example:
+	//
+	// zset
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
 	// The number of elements in the key.
+	//
+	// example:
+	//
+	// 2
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -5998,6 +8296,12 @@ func (s *DescribeHotKeysResponse) SetBody(v *DescribeHotKeysResponseBody) *Descr
 
 type DescribeInstanceDasProRequest struct {
 	// The database instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -6016,22 +8320,44 @@ func (s *DescribeInstanceDasProRequest) SetInstanceId(v string) *DescribeInstanc
 
 type DescribeInstanceDasProResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether DAS Enterprise Edition is enabled for the database instance. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9CB97BC4-6479-55D0-B9D0-EA925AFE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6098,6 +8424,13 @@ func (s *DescribeInstanceDasProResponse) SetBody(v *DescribeInstanceDasProRespon
 }
 
 type DescribeSqlLogConfigRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -6115,12 +8448,38 @@ func (s *DescribeSqlLogConfigRequest) SetInstanceId(v string) *DescribeSqlLogCon
 }
 
 type DescribeSqlLogConfigResponseBody struct {
+	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// SqlLogConfig
-	Data      *DescribeSqlLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *DescribeSqlLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0A74B755-98B7-59DB-8724-1321B394****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSqlLogConfigResponseBody) String() string {
@@ -6157,23 +8516,110 @@ func (s *DescribeSqlLogConfigResponseBody) SetSuccess(v string) *DescribeSqlLogC
 }
 
 type DescribeSqlLogConfigResponseBodyData struct {
-	ColdEnable        *bool   `json:"ColdEnable,omitempty" xml:"ColdEnable,omitempty"`
-	ColdRetention     *int32  `json:"ColdRetention,omitempty" xml:"ColdRetention,omitempty"`
-	ColdStartTime     *int64  `json:"ColdStartTime,omitempty" xml:"ColdStartTime,omitempty"`
-	CollectorVersion  *string `json:"CollectorVersion,omitempty" xml:"CollectorVersion,omitempty"`
-	HotEnable         *bool   `json:"HotEnable,omitempty" xml:"HotEnable,omitempty"`
-	HotRetention      *int32  `json:"HotRetention,omitempty" xml:"HotRetention,omitempty"`
-	HotStartTime      *int64  `json:"HotStartTime,omitempty" xml:"HotStartTime,omitempty"`
-	LogFilter         *string `json:"LogFilter,omitempty" xml:"LogFilter,omitempty"`
-	RequestEnable     *bool   `json:"RequestEnable,omitempty" xml:"RequestEnable,omitempty"`
-	RequestStartTime  *int64  `json:"RequestStartTime,omitempty" xml:"RequestStartTime,omitempty"`
-	RequestStopTime   *int64  `json:"RequestStopTime,omitempty" xml:"RequestStopTime,omitempty"`
-	Retention         *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	SqlLogEnable      *bool   `json:"SqlLogEnable,omitempty" xml:"SqlLogEnable,omitempty"`
-	SqlLogState       *string `json:"SqlLogState,omitempty" xml:"SqlLogState,omitempty"`
-	SqlLogVisibleTime *int64  `json:"SqlLogVisibleTime,omitempty" xml:"SqlLogVisibleTime,omitempty"`
-	SupportVersion    *string `json:"SupportVersion,omitempty" xml:"SupportVersion,omitempty"`
-	Version           *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The cold storage duration.
+	//
+	// example:
+	//
+	// true
+	ColdEnable *bool `json:"ColdEnable,omitempty" xml:"ColdEnable,omitempty"`
+	// The cold storage duration.
+	//
+	// example:
+	//
+	// 23
+	ColdRetention *int32 `json:"ColdRetention,omitempty" xml:"ColdRetention,omitempty"`
+	// The time when cold storage was enabled.
+	//
+	// example:
+	//
+	// 1683712800000
+	ColdStartTime *int64 `json:"ColdStartTime,omitempty" xml:"ColdStartTime,omitempty"`
+	// The version of the collector.
+	//
+	// example:
+	//
+	// MYSQL_V3
+	CollectorVersion *string `json:"CollectorVersion,omitempty" xml:"CollectorVersion,omitempty"`
+	// Indicates whether hot storage was enabled.
+	//
+	// example:
+	//
+	// true
+	HotEnable *bool `json:"HotEnable,omitempty" xml:"HotEnable,omitempty"`
+	// The hot storage duration.
+	//
+	// example:
+	//
+	// 7
+	HotRetention *int32 `json:"HotRetention,omitempty" xml:"HotRetention,omitempty"`
+	// The time when hot storage was enabled.
+	//
+	// example:
+	//
+	// 1683712800000
+	HotStartTime *int64 `json:"HotStartTime,omitempty" xml:"HotStartTime,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
+	LogFilter *string `json:"LogFilter,omitempty" xml:"LogFilter,omitempty"`
+	// Indicates whether SQL Explorer and Audit was enabled.
+	//
+	// example:
+	//
+	// true
+	RequestEnable *bool `json:"RequestEnable,omitempty" xml:"RequestEnable,omitempty"`
+	// The time when SQL Explorer and Audit was enabled.
+	//
+	// example:
+	//
+	// 1683712800000
+	RequestStartTime *int64 `json:"RequestStartTime,omitempty" xml:"RequestStartTime,omitempty"`
+	// The time when SQL Explorer and Audit was disabled.
+	//
+	// >  If DAS Enterprise Edition V1 was enabled, this parameter indicates the time when DAS Enterprise Edition expired.
+	//
+	// example:
+	//
+	// 1715335200000
+	RequestStopTime *int64 `json:"RequestStopTime,omitempty" xml:"RequestStopTime,omitempty"`
+	// The storage duration of the SQL Explorer and Audit data.
+	//
+	// example:
+	//
+	// 30
+	Retention *int32 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// Indicates whether DAS Enterprise Edition was enabled.
+	//
+	// example:
+	//
+	// true
+	SqlLogEnable *bool `json:"SqlLogEnable,omitempty" xml:"SqlLogEnable,omitempty"`
+	// The status of data migration.
+	//
+	// example:
+	//
+	// FINISH
+	SqlLogState *string `json:"SqlLogState,omitempty" xml:"SqlLogState,omitempty"`
+	// The time when SQL Explorer and Audit was enabled.
+	//
+	// example:
+	//
+	// 1683712800000
+	SqlLogVisibleTime *int64 `json:"SqlLogVisibleTime,omitempty" xml:"SqlLogVisibleTime,omitempty"`
+	// The supported versions of Database Autonomy Service (DAS) Enterprise Edition.
+	//
+	// example:
+	//
+	// SQL_LOG_V3
+	SupportVersion *string `json:"SupportVersion,omitempty" xml:"SupportVersion,omitempty"`
+	// The version of SQL Explorer and Audit.
+	//
+	// example:
+	//
+	// SQL_LOG_V3
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeSqlLogConfigResponseBodyData) String() string {
@@ -6299,14 +8745,37 @@ func (s *DescribeSqlLogConfigResponse) SetBody(v *DescribeSqlLogConfigResponseBo
 }
 
 type DescribeSqlLogRecordsRequest struct {
-	EndTime    *int64                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Filters    []*DescribeSqlLogRecordsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	InstanceId *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId     *string                                `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	PageNo     *int32                                 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Role       *string                                `json:"Role,omitempty" xml:"Role,omitempty"`
-	StartTime  *int64                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1608888296000
+	EndTime *int64                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Filters []*DescribeSqlLogRecordsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-2ze8g2am97624****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// pi-uf6k5f6g3912i****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// polarx_cn
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// 1596177993000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeSqlLogRecordsRequest) String() string {
@@ -6358,7 +8827,15 @@ func (s *DescribeSqlLogRecordsRequest) SetStartTime(v int64) *DescribeSqlLogReco
 }
 
 type DescribeSqlLogRecordsRequestFilters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Parameter filtering
+	//
+	// example:
+	//
+	// keyWords
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// select
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6381,12 +8858,24 @@ func (s *DescribeSqlLogRecordsRequestFilters) SetValue(v string) *DescribeSqlLog
 }
 
 type DescribeSqlLogRecordsResponseBody struct {
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// SqlLogDetailResult
-	Data      *DescribeSqlLogRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *DescribeSqlLogRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// F43E7FB3-CE67-5FFD-A59C-EFD278BCD7BE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSqlLogRecordsResponseBody) String() string {
@@ -6423,12 +8912,27 @@ func (s *DescribeSqlLogRecordsResponseBody) SetSuccess(v string) *DescribeSqlLog
 }
 
 type DescribeSqlLogRecordsResponseBodyData struct {
-	EndTime      *int64                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Finish       *string                                     `json:"Finish,omitempty" xml:"Finish,omitempty"`
-	Items        *DescribeSqlLogRecordsResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	JobId        *string                                     `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	StartTime    *int64                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TotalRecords *int64                                      `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
+	// example:
+	//
+	// 1608888296000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	Finish *string                                     `json:"Finish,omitempty" xml:"Finish,omitempty"`
+	Items  *DescribeSqlLogRecordsResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// example:
+	//
+	// MzI4NTZfUUlOR0RBT19DTTlfTlUyMF9NWVNRTF9PREJTX0xWU18zMjg1Nl9teXNxbF9XZWQgTWFyIDA2IDE0OjUwOjQ3IENTVCAyMDI0XzBfMzBfRXhlY3V0ZVRpbWVfREVTQ19XZWQgTWFyIDA2IDE0OjM1OjQ3IENTVCAyMDI0Xw==_1709708406465
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 1596177993000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1
+	TotalRecords *int64 `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
 }
 
 func (s DescribeSqlLogRecordsResponseBodyData) String() string {
@@ -6487,39 +8991,140 @@ func (s *DescribeSqlLogRecordsResponseBodyDataItems) SetSQLLogRecord(v []*Descri
 }
 
 type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
-	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Consume           *int64  `json:"Consume,omitempty" xml:"Consume,omitempty"`
-	CpuTime           *int64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	DBName            *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	ExecuteTime       *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	Ext               *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	Frows             *int64  `json:"Frows,omitempty" xml:"Frows,omitempty"`
-	HostAddress       *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	LockTime          *int64  `json:"LockTime,omitempty" xml:"LockTime,omitempty"`
-	LogicRead         *int64  `json:"LogicRead,omitempty" xml:"LogicRead,omitempty"`
-	NodeId            *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	OriginTime        *int64  `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
-	ParallelDegree    *string `json:"ParallelDegree,omitempty" xml:"ParallelDegree,omitempty"`
+	// example:
+	//
+	// testname
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// None
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// 58
+	Consume *int64 `json:"Consume,omitempty" xml:"Consume,omitempty"`
+	// example:
+	//
+	// 100
+	CpuTime *int64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	// example:
+	//
+	// testdb
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// example:
+	//
+	// 2023-12-07T02:15:32Z
+	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// example:
+	//
+	// None
+	Ext *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// example:
+	//
+	// 10
+	Frows *int64 `json:"Frows,omitempty" xml:"Frows,omitempty"`
+	// example:
+	//
+	// 11.197.XX.XX
+	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	// example:
+	//
+	// 0
+	LockTime *int64 `json:"LockTime,omitempty" xml:"LockTime,omitempty"`
+	// example:
+	//
+	// 0
+	LogicRead *int64 `json:"LogicRead,omitempty" xml:"LogicRead,omitempty"`
+	// example:
+	//
+	// pi-uf6k5f6g3912i****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// 1701886532000
+	OriginTime *int64 `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
+	// example:
+	//
+	// 10
+	ParallelDegree *string `json:"ParallelDegree,omitempty" xml:"ParallelDegree,omitempty"`
+	// example:
+	//
+	// 2
 	ParallelQueueTime *string `json:"ParallelQueueTime,omitempty" xml:"ParallelQueueTime,omitempty"`
-	PhysicAsyncRead   *int64  `json:"PhysicAsyncRead,omitempty" xml:"PhysicAsyncRead,omitempty"`
-	PhysicRead        *int64  `json:"PhysicRead,omitempty" xml:"PhysicRead,omitempty"`
-	PhysicSyncRead    *int64  `json:"PhysicSyncRead,omitempty" xml:"PhysicSyncRead,omitempty"`
-	ReturnRows        *int64  `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
-	Rows              *int64  `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	ScanRows          *int64  `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
-	Scnt              *int64  `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
-	SqlId             *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	SqlText           *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
-	SqlType           *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	State             *string `json:"State,omitempty" xml:"State,omitempty"`
-	ThreadId          *int64  `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
-	TraceId           *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	TrxId             *int64  `json:"TrxId,omitempty" xml:"TrxId,omitempty"`
-	UpdateRows        *int64  `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
-	UseImciEngine     *string `json:"UseImciEngine,omitempty" xml:"UseImciEngine,omitempty"`
-	Vip               *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
-	Writes            *int64  `json:"Writes,omitempty" xml:"Writes,omitempty"`
+	// example:
+	//
+	// 0
+	PhysicAsyncRead *int64 `json:"PhysicAsyncRead,omitempty" xml:"PhysicAsyncRead,omitempty"`
+	// example:
+	//
+	// 0
+	PhysicRead *int64 `json:"PhysicRead,omitempty" xml:"PhysicRead,omitempty"`
+	// example:
+	//
+	// 0
+	PhysicSyncRead *int64 `json:"PhysicSyncRead,omitempty" xml:"PhysicSyncRead,omitempty"`
+	// example:
+	//
+	// 0
+	ReturnRows *int64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	// example:
+	//
+	// 10
+	Rows *int64 `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// example:
+	//
+	// 0
+	ScanRows *int64 `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
+	// example:
+	//
+	// 10
+	Scnt *int64 `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
+	// SQL ID。
+	//
+	// example:
+	//
+	// c67649d4a7fb62c4f8c7a447c52b5b17
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// example:
+	//
+	// select resource_id as cluster_id, tpl_name \\n\\tfrom dbfree_alert_resource_tpl_ref\\n\\twhere user_id=? and type=\\"cluster\\" group by resource_id, tpl_name
+	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	// example:
+	//
+	// select
+	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	// example:
+	//
+	// 0
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// None
+	ThreadId *int64 `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
+	// example:
+	//
+	// 14c93b7c7bf00000
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// example:
+	//
+	// 200000
+	TrxId *int64 `json:"TrxId,omitempty" xml:"TrxId,omitempty"`
+	// example:
+	//
+	// 0
+	UpdateRows *int64 `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
+	// example:
+	//
+	// true
+	UseImciEngine *string `json:"UseImciEngine,omitempty" xml:"UseImciEngine,omitempty"`
+	// example:
+	//
+	// 100.115.XX.XX
+	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
+	// example:
+	//
+	// 10
+	Writes *int64 `json:"Writes,omitempty" xml:"Writes,omitempty"`
 }
 
 func (s DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) String() string {
@@ -6725,6 +9330,11 @@ func (s *DescribeSqlLogRecordsResponse) SetBody(v *DescribeSqlLogRecordsResponse
 }
 
 type DescribeSqlLogStatisticRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -6742,12 +9352,24 @@ func (s *DescribeSqlLogStatisticRequest) SetInstanceId(v string) *DescribeSqlLog
 }
 
 type DescribeSqlLogStatisticResponseBody struct {
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// SqlLogStatistic
-	Data      *DescribeSqlLogStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *DescribeSqlLogStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSqlLogStatisticResponseBody) String() string {
@@ -6784,12 +9406,30 @@ func (s *DescribeSqlLogStatisticResponseBody) SetSuccess(v string) *DescribeSqlL
 }
 
 type DescribeSqlLogStatisticResponseBodyData struct {
-	ColdSqlSize     *int64 `json:"ColdSqlSize,omitempty" xml:"ColdSqlSize,omitempty"`
+	// example:
+	//
+	// 8585901
+	ColdSqlSize *int64 `json:"ColdSqlSize,omitempty" xml:"ColdSqlSize,omitempty"`
+	// example:
+	//
+	// 5041450
 	FreeColdSqlSize *int64 `json:"FreeColdSqlSize,omitempty" xml:"FreeColdSqlSize,omitempty"`
-	FreeHotSqlSize  *int64 `json:"FreeHotSqlSize,omitempty" xml:"FreeHotSqlSize,omitempty"`
-	HotSqlSize      *int64 `json:"HotSqlSize,omitempty" xml:"HotSqlSize,omitempty"`
-	ImportSqlSize   *int64 `json:"ImportSqlSize,omitempty" xml:"ImportSqlSize,omitempty"`
-	Timestamp       *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 297245
+	FreeHotSqlSize *int64 `json:"FreeHotSqlSize,omitempty" xml:"FreeHotSqlSize,omitempty"`
+	// example:
+	//
+	// 1118042
+	HotSqlSize *int64 `json:"HotSqlSize,omitempty" xml:"HotSqlSize,omitempty"`
+	// example:
+	//
+	// 23
+	ImportSqlSize *int64 `json:"ImportSqlSize,omitempty" xml:"ImportSqlSize,omitempty"`
+	// example:
+	//
+	// 1712568564928
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s DescribeSqlLogStatisticResponseBodyData) String() string {
@@ -7047,7 +9687,7 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	Consume     *int64  `json:"Consume,omitempty" xml:"Consume,omitempty"`
 	CpuTime     *int64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
 	DBName      *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// yyyy-MM-dd\"T\"HH:mm:ss.SSS\"Z\"
+	// yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\"
 	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
 	Ext         *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
 	Frows       *int64  `json:"Frows,omitempty" xml:"Frows,omitempty"`
@@ -7277,13 +9917,46 @@ func (s *DescribeSqlLogTaskResponse) SetBody(v *DescribeSqlLogTaskResponseBody) 
 }
 
 type DescribeSqlLogTasksRequest struct {
-	EndTime    *int64                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Filters    []*DescribeSqlLogTasksRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	InstanceId *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId     *string                              `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	PageNo     *int32                               `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime  *int64                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1608888296000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The filter conditions.
+	Filters []*DescribeSqlLogTasksRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The ID of the database instance.
+	//
+	// example:
+	//
+	// r-bp1nti25tc7bq5****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The node ID.
+	//
+	// > This parameter is available only for instances that run in a cluster architecture. You can specify this parameter to query the logs of a specific node. If this parameter is not specified, the logs of the primary node are returned by default.
+	//
+	// example:
+	//
+	// pi-bp1o58x3ib7e6z496
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1596177993000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeSqlLogTasksRequest) String() string {
@@ -7330,7 +10003,17 @@ func (s *DescribeSqlLogTasksRequest) SetStartTime(v int64) *DescribeSqlLogTasksR
 }
 
 type DescribeSqlLogTasksRequestFilters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the filter parameter.
+	//
+	// example:
+	//
+	// delimiter
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the filter parameter.
+	//
+	// example:
+	//
+	// ,
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7353,12 +10036,38 @@ func (s *DescribeSqlLogTasksRequestFilters) SetValue(v string) *DescribeSqlLogTa
 }
 
 type DescribeSqlLogTasksResponseBody struct {
+	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// ListResult<SqlLogTask>
-	Data      *DescribeSqlLogTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// ListResult
+	Data *DescribeSqlLogTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSqlLogTasksResponseBody) String() string {
@@ -7395,10 +10104,26 @@ func (s *DescribeSqlLogTasksResponseBody) SetSuccess(v string) *DescribeSqlLogTa
 }
 
 type DescribeSqlLogTasksResponseBodyData struct {
-	List     []*DescribeSqlLogTasksResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNo   *int64                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int64                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int64                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The details of the data returned.
+	List []*DescribeSqlLogTasksResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 40
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeSqlLogTasksResponseBodyData) String() string {
@@ -7430,22 +10155,102 @@ func (s *DescribeSqlLogTasksResponseBodyData) SetTotal(v int64) *DescribeSqlLogT
 }
 
 type DescribeSqlLogTasksResponseBodyDataList struct {
-	AnalysisTaskFinishTime *int64                                            `json:"AnalysisTaskFinishTime,omitempty" xml:"AnalysisTaskFinishTime,omitempty"`
-	AnalysisTaskStatus     *string                                           `json:"AnalysisTaskStatus,omitempty" xml:"AnalysisTaskStatus,omitempty"`
-	CreateTime             *int64                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	End                    *int64                                            `json:"End,omitempty" xml:"End,omitempty"`
-	Expire                 *bool                                             `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	Filters                []*DescribeSqlLogTasksResponseBodyDataListFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	InstanceId             *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LogCount               *int64                                            `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	Name                   *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	Progress               *int32                                            `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Result                 *string                                           `json:"Result,omitempty" xml:"Result,omitempty"`
-	ScanFileSize           *int64                                            `json:"ScanFileSize,omitempty" xml:"ScanFileSize,omitempty"`
-	Start                  *int64                                            `json:"Start,omitempty" xml:"Start,omitempty"`
-	Status                 *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId                 *string                                           `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType               *string                                           `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The time when the analysis task was complete.
+	//
+	// example:
+	//
+	// 1712751923000
+	AnalysisTaskFinishTime *int64 `json:"AnalysisTaskFinishTime,omitempty" xml:"AnalysisTaskFinishTime,omitempty"`
+	// The status of the analysis task.
+	//
+	// example:
+	//
+	// SCAN_ANALYZE_COMPLETED
+	AnalysisTaskStatus *string `json:"AnalysisTaskStatus,omitempty" xml:"AnalysisTaskStatus,omitempty"`
+	// The time when the task was created.
+	//
+	// example:
+	//
+	// 1681363254423
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The end of the time range to query.
+	//
+	// example:
+	//
+	// 1705975320000
+	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// Indicates whether the task expires.
+	//
+	// example:
+	//
+	// false
+	Expire *bool `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// The filter conditions.
+	Filters []*DescribeSqlLogTasksResponseBodyDataListFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2zew761kf7ho18752
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of log records
+	//
+	// example:
+	//
+	// 99999
+	LogCount *int64 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// test01
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The task progress.
+	//
+	// example:
+	//
+	// 100
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The Object Storage Service (OSS) URL or other information.
+	//
+	// example:
+	//
+	// https://das-sqllog-download-cn-shanghai.oss-cn-shanghai.aliyuncs.com/la
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The number of files scanned
+	//
+	// example:
+	//
+	// 3000
+	ScanFileSize *int64 `json:"ScanFileSize,omitempty" xml:"ScanFileSize,omitempty"`
+	// The beginning of the time range to query.
+	//
+	// example:
+	//
+	// 1683859555482
+	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// The status of the task.
+	//
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 9a4f5c4494dbd6713185d87a97aa53e8
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// 	- Export
+	//
+	// 	- Query
+	//
+	// example:
+	//
+	// Export
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DescribeSqlLogTasksResponseBodyDataList) String() string {
@@ -7537,7 +10342,17 @@ func (s *DescribeSqlLogTasksResponseBodyDataList) SetTaskType(v string) *Describ
 }
 
 type DescribeSqlLogTasksResponseBodyDataListFilters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the filter parameter.
+	//
+	// example:
+	//
+	// delimiter
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the filter parameter.
+	//
+	// example:
+	//
+	// ,
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7590,22 +10405,48 @@ func (s *DescribeSqlLogTasksResponse) SetBody(v *DescribeSqlLogTasksResponseBody
 
 type DescribeTopBigKeysRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >
 	//
-	// *   The end time must be later than the start time.
+	// 	- The end time must be later than the start time.
 	//
-	// *   Only data within the last four days can be queried.
+	// 	- Only data within the last four days can be queried.
 	//
-	// *   The maximum interval between the **start time** and the** end time** is 3 hours.
+	// 	- The maximum interval between the **start time*	- and the*	- end time*	- is 3 hours.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1596177993001
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID.
+	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the ID.
+	// The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the ID.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1596177993000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -7644,19 +10485,36 @@ func (s *DescribeTopBigKeysRequest) SetStartTime(v string) *DescribeTopBigKeysRe
 
 type DescribeTopBigKeysResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information about the large keys.
 	//
 	// > This parameter is left empty If no large keys exist within the specified time range.
 	Data *DescribeTopBigKeysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7712,14 +10570,34 @@ func (s *DescribeTopBigKeysResponseBodyData) SetBigKey(v []*DescribeTopBigKeysRe
 
 type DescribeTopBigKeysResponseBodyDataBigKey struct {
 	// The database in which the key is stored.
+	//
+	// example:
+	//
+	// 0
 	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The key.
+	//
+	// example:
+	//
+	// abc:def:eng
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The type of the key.
+	//
+	// example:
+	//
+	// zset
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
 	// The ID of the data shard on the ApsaraDB for Redis instance.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The number of elements in the key.
+	//
+	// example:
+	//
+	// 2
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -7787,22 +10665,48 @@ func (s *DescribeTopBigKeysResponse) SetBody(v *DescribeTopBigKeysResponseBody) 
 
 type DescribeTopHotKeysRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >
 	//
-	// *   The end time must be later than the start time.
+	// 	- The end time must be later than the start time.
 	//
-	// *   Only data within the last four days can be queried.
+	// 	- Only data within the last four days can be queried.
 	//
-	// *   The maximum interval between the **start time** and the** end time** is 3 hours.
+	// 	- The maximum interval between the **start time*	- and the*	- end time*	- is 3 hours.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1596177993001
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID.
+	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the ID.
+	// The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the ID.
+	//
+	// example:
+	//
+	// r-****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1596177993000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -7841,17 +10745,34 @@ func (s *DescribeTopHotKeysRequest) SetStartTime(v string) *DescribeTopHotKeysRe
 
 type DescribeTopHotKeysResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information about the hot keys.
 	Data *DescribeTopHotKeysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7907,16 +10828,40 @@ func (s *DescribeTopHotKeysResponseBodyData) SetHotKey(v []*DescribeTopHotKeysRe
 
 type DescribeTopHotKeysResponseBodyDataHotKey struct {
 	// The database in which the key is stored.
+	//
+	// example:
+	//
+	// 0
 	Db *int32 `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The frequency at which the key is accessed, which indicates the QPS of the key.
+	//
+	// example:
+	//
+	// 5500~6000
 	Hot *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
 	// The key.
+	//
+	// example:
+	//
+	// abc:def:eng
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The type of the key.
+	//
+	// example:
+	//
+	// zset
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
 	// The statistical value that is calculated based on the least frequently used (LFU) caching algorithm.
+	//
+	// example:
+	//
+	// 253
 	Lfu *int32 `json:"Lfu,omitempty" xml:"Lfu,omitempty"`
 	// The ID of the data shard on the ApsaraDB for Redis instance.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
@@ -7989,10 +10934,20 @@ func (s *DescribeTopHotKeysResponse) SetBody(v *DescribeTopHotKeysResponseBody) 
 
 type DisableAllSqlConcurrencyControlRulesRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The instance ID.
 	//
 	// >  You must specify this parameter only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -8016,19 +10971,40 @@ func (s *DisableAllSqlConcurrencyControlRulesRequest) SetInstanceId(v string) *D
 
 type DisableAllSqlConcurrencyControlRulesResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message that contains information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8096,10 +11072,20 @@ func (s *DisableAllSqlConcurrencyControlRulesResponse) SetBody(v *DisableAllSqlC
 
 type DisableAutoResourceOptimizeRulesRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The database instance ID.
 	//
-	// >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\", \"Instance ID2\"]`.
+	// >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\", \\"Instance ID2\\"]`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [\\"rm-2ze8g2am97624****\\",\\"rm-2ze9xrhze0709****\\"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -8123,19 +11109,36 @@ func (s *DisableAutoResourceOptimizeRulesRequest) SetInstanceIds(v string) *Disa
 
 type DisableAutoResourceOptimizeRulesResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *DisableAutoResourceOptimizeRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8174,14 +11177,26 @@ func (s *DisableAutoResourceOptimizeRulesResponseBody) SetSuccess(v bool) *Disab
 
 type DisableAutoResourceOptimizeRulesResponseBodyData struct {
 	// The number of database instances for which the automatic tablespace fragment recycling feature failed to be disabled.
+	//
+	// example:
+	//
+	// 1
 	ConfigFailInstanceCount *int64 `json:"ConfigFailInstanceCount,omitempty" xml:"ConfigFailInstanceCount,omitempty"`
 	// The list of database instances for which the automatic tablespace fragment recycling feature failed to be disabled.
 	ConfigFailInstanceList []*DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList `json:"ConfigFailInstanceList,omitempty" xml:"ConfigFailInstanceList,omitempty" type:"Repeated"`
 	// The number of database instances for which the automatic tablespace fragment recycling feature is disabled.
+	//
+	// example:
+	//
+	// 1
 	ConfigSuccessInstanceCount *int64 `json:"ConfigSuccessInstanceCount,omitempty" xml:"ConfigSuccessInstanceCount,omitempty"`
 	// The list of database instances for which the automatic tablespace fragment recycling feature is disabled.
 	ConfigSuccessInstanceList []*DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList `json:"ConfigSuccessInstanceList,omitempty" xml:"ConfigSuccessInstanceList,omitempty" type:"Repeated"`
 	// The total number of database instances.
+	//
+	// example:
+	//
+	// 2
 	TotalInstanceCount *int64 `json:"TotalInstanceCount,omitempty" xml:"TotalInstanceCount,omitempty"`
 }
 
@@ -8221,13 +11236,25 @@ func (s *DisableAutoResourceOptimizeRulesResponseBodyData) SetTotalInstanceCount
 type DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList struct {
 	// Indicates whether the automatic tablespace fragment recycling feature is disabled. Valid values:
 	//
-	// * **true**
+	// 	- **true**
 	//
-	// * **false**
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	ConfigSuccess *bool `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// cannot found instance by rm-2ze9xrhze0709****
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2ze9xrhze0709****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -8257,11 +11284,19 @@ func (s *DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList)
 type DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList struct {
 	// Indicates whether the automatic tablespace fragment recycling feature is disabled. Valid values:
 	//
-	// * **true**
+	// 	- **true**
 	//
-	// * **false**
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ConfigSuccess *bool `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -8314,10 +11349,20 @@ func (s *DisableAutoResourceOptimizeRulesResponse) SetBody(v *DisableAutoResourc
 
 type DisableAutoThrottleRulesRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The database instance IDs.
 	//
-	// >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\",\"Instance ID2\"]`.
+	// >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\",\\"Instance ID2\\"]`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [\\"rm-2ze8g2am97624****\\",\\"rm-2ze9xrhze0709****\\"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -8341,19 +11386,36 @@ func (s *DisableAutoThrottleRulesRequest) SetInstanceIds(v string) *DisableAutoT
 
 type DisableAutoThrottleRulesResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DisableAutoThrottleRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8392,14 +11454,26 @@ func (s *DisableAutoThrottleRulesResponseBody) SetSuccess(v bool) *DisableAutoTh
 
 type DisableAutoThrottleRulesResponseBodyData struct {
 	// The number of database instances for which the automatic SQL throttling feature failed to be disabled.
+	//
+	// example:
+	//
+	// 1
 	ConfigFailInstanceCount *int64 `json:"ConfigFailInstanceCount,omitempty" xml:"ConfigFailInstanceCount,omitempty"`
 	// The database instances for which the automatic SQL throttling feature failed to be disabled.
 	ConfigFailInstanceList []*DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList `json:"ConfigFailInstanceList,omitempty" xml:"ConfigFailInstanceList,omitempty" type:"Repeated"`
 	// The number of database instances for which the automatic SQL throttling feature is disabled.
+	//
+	// example:
+	//
+	// 1
 	ConfigSuccessInstanceCount *int64 `json:"ConfigSuccessInstanceCount,omitempty" xml:"ConfigSuccessInstanceCount,omitempty"`
 	// The database instances for which the automatic SQL throttling feature is disabled.
 	ConfigSuccessInstanceList []*DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList `json:"ConfigSuccessInstanceList,omitempty" xml:"ConfigSuccessInstanceList,omitempty" type:"Repeated"`
 	// The total number of database instances.
+	//
+	// example:
+	//
+	// 2
 	TotalInstanceCount *int64 `json:"TotalInstanceCount,omitempty" xml:"TotalInstanceCount,omitempty"`
 }
 
@@ -8439,13 +11513,25 @@ func (s *DisableAutoThrottleRulesResponseBodyData) SetTotalInstanceCount(v int64
 type DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList struct {
 	// Indicates whether the automatic SQL throttling feature is disabled. Valid values:
 	//
-	// * **true**
+	// 	- **true**
 	//
-	// * **false**
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	ConfigSuccess *bool `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// cannot found instance by rm-2ze9xrhze0709****
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2ze9xrhze0709****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -8475,11 +11561,19 @@ func (s *DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList) SetInst
 type DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList struct {
 	// Indicates whether the automatic SQL throttling feature is disabled. Valid values:
 	//
-	// * **true**
+	// 	- **true**
 	//
-	// * **false**
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ConfigSuccess *bool `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -8532,10 +11626,20 @@ func (s *DisableAutoThrottleRulesResponse) SetBody(v *DisableAutoThrottleRulesRe
 
 type DisableDasProRequest struct {
 	// The database instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the database instance.
 	//
 	// >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId that you set when you call this operation.
+	//
+	// example:
+	//
+	// 196278346919****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -8559,21 +11663,46 @@ func (s *DisableDasProRequest) SetUserId(v string) *DisableDasProRequest {
 
 type DisableDasProResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7172BECE-588A-5961-8126-C216E16B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Synchro *string `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
@@ -8646,14 +11775,34 @@ func (s *DisableDasProResponse) SetBody(v *DisableDasProResponseBody) *DisableDa
 
 type DisableInstanceDasConfigRequest struct {
 	// The database engine. Set the value to Redis.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Redis
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The database instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp1nti25tc7bq5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of auto scaling. Valid values:
 	//
-	// *   **specScale**: The specifications of a database instance are automatically scaled up or down.
-	// *   **shardScale**: The number of shards for a database instance is automatically increased or decreased.
-	// *   **bandwidthScale**: The bandwidth of a database instance is automatically increased or decreased.
+	// 	- **specScale**: The specifications of a database instance are automatically scaled up or down.
+	//
+	// 	- **shardScale**: The number of shards for a database instance is automatically increased or decreased.
+	//
+	// 	- **bandwidthScale**: The bandwidth of a database instance is automatically increased or decreased.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bandwidthScale
 	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
 }
 
@@ -8682,19 +11831,40 @@ func (s *DisableInstanceDasConfigRequest) SetScaleType(v string) *DisableInstanc
 
 type DisableInstanceDasConfigResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The result of disabling the auto scaling feature for the database instance.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7172BECE-588A-5961-8126-C216E16B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8762,12 +11932,28 @@ func (s *DisableInstanceDasConfigResponse) SetBody(v *DisableInstanceDasConfigRe
 
 type DisableSqlConcurrencyControlRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The instance ID.
 	//
 	// >  The database instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the throttling rule that is applied to the instance. You can call the [GetRunningSqlConcurrencyControlRules](~~223538~~) operation to query the ID.
+	// The ID of the throttling rule that is applied to the instance. You can call the [GetRunningSqlConcurrencyControlRules](https://help.aliyun.com/document_detail/223538.html) operation to query the ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 }
 
@@ -8796,19 +11982,40 @@ func (s *DisableSqlConcurrencyControlRequest) SetItemId(v int64) *DisableSqlConc
 
 type DisableSqlConcurrencyControlResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information, including the error codes and the number of entries that are returned.
+	//
+	// example:
+	//
+	// Null
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8876,18 +12083,36 @@ func (s *DisableSqlConcurrencyControlResponse) SetBody(v *DisableSqlConcurrencyC
 
 type EnableDasProRequest struct {
 	// The database instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The storage duration of SQL Explorer data. Unit: day. Default value: **30**. Valid values:
 	//
-	// *   **30**
-	// *   **180**
-	// *   **365**
-	// *   **1095**
-	// *   **1825**
+	// 	- **30**
+	//
+	// 	- **180**
+	//
+	// 	- **365**
+	//
+	// 	- **1095**
+	//
+	// 	- **1825**
+	//
+	// example:
+	//
+	// 30
 	SqlRetention *int32 `json:"SqlRetention,omitempty" xml:"SqlRetention,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the database instance.
 	//
 	// >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
+	//
+	// example:
+	//
+	// 196278346919****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -8916,21 +12141,46 @@ func (s *EnableDasProRequest) SetUserId(v string) *EnableDasProRequest {
 
 type EnableDasProResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7172BECE-588A-5961-8126-C216E16B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Synchro *string `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
@@ -9005,26 +12255,62 @@ type EnableSqlConcurrencyControlRequest struct {
 	// The duration within which the SQL throttling rule takes effect. Unit: seconds.
 	//
 	// >  The throttling rule takes effect only within this duration.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 300
 	ConcurrencyControlTime *int64 `json:"ConcurrencyControlTime,omitempty" xml:"ConcurrencyControlTime,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The instance ID.
 	//
 	// >  You must specify the instance ID only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The maximum number of concurrent SQL statements. Set this parameter to a positive integer.
 	//
 	// >  When the number of concurrent SQL statements that contain the specified keywords reaches this upper limit, the throttling rule is triggered.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// The keywords that are used to identify the SQL statements that need to be throttled.
 	//
 	// >  If you specify multiple SQL keywords, separate them with tildes (~). If the number of concurrent SQL statements that contain all the specified SQL keywords reaches the specified upper limit, the throttling rule is triggered.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// call~open~api~test~4~from~POP
 	SqlKeywords *string `json:"SqlKeywords,omitempty" xml:"SqlKeywords,omitempty"`
 	// The type of the SQL statements. Valid values:
 	//
-	// *   **SELECT**
-	// *   **UPDATE**
-	// *   **DELETE**
+	// 	- **SELECT**
+	//
+	// 	- **UPDATE**
+	//
+	// 	- **DELETE**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 }
 
@@ -9068,19 +12354,40 @@ func (s *EnableSqlConcurrencyControlRequest) SetSqlType(v string) *EnableSqlConc
 
 type EnableSqlConcurrencyControlResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information, including the error codes and the number of entries that are returned.
+	//
+	// example:
+	//
+	// Null
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9150,18 +12457,40 @@ type GetAsyncErrorRequestListByCodeRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
+	//
+	// example:
+	//
+	// 1642566830000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The error code. You can call the [GetAsyncErrorRequestStatByCode](~~409804~~) operation to query the MySQL error codes that may be generated in the SQL Explorer results of an instance.
+	// The error code. You can call the [GetAsyncErrorRequestStatByCode](https://help.aliyun.com/document_detail/409804.html) operation to query the MySQL error codes that may be generated in the SQL Explorer results of an instance.
+	//
+	// example:
+	//
+	// 1064
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  This parameter must be specified if the database instance is a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// pi-wz9s658475e58****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The start time must be within the storage duration of the SQL Explorer feature of the database instance, and can be up to 90 days earlier than the current time.
+	//
+	// example:
+	//
+	// 1642556990714
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -9200,19 +12529,40 @@ func (s *GetAsyncErrorRequestListByCodeRequest) SetStart(v int64) *GetAsyncError
 
 type GetAsyncErrorRequestListByCodeResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// {         "fail": false,         "data": [             {                 "sqlId": "ad78a4e7d3ce81590c9dc2d5f4bc****",                 "instanceId": "rm-2ze8g2am97624****"             },             {                 "sqlId": "0f92feacd92c048b06a16617a633****",                 "instanceId": "rm-2ze8g2am97624****"             }         ],         "resultId": "async__c39d43ece52d35267cc4b92a0c26****",         "isFinish": true,         "state": "SUCCESS",         "complete": true,         "timestamp": 1644559407740     }
 	Data *GetAsyncErrorRequestListByCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9CB97BC4-6479-55D0-B9D0-EA925AFE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9252,30 +12602,59 @@ func (s *GetAsyncErrorRequestListByCodeResponseBody) SetSuccess(v bool) *GetAsyn
 type GetAsyncErrorRequestListByCodeResponseBodyData struct {
 	// Indicates whether the asynchronous request was complete.
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Complete *bool `json:"complete,omitempty" xml:"complete,omitempty"`
 	// Indicates whether the asynchronous request failed. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Fail *bool `json:"fail,omitempty" xml:"fail,omitempty"`
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsFinish *bool `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
 	// The instance ID.
 	Result []*GetAsyncErrorRequestListByCodeResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 	// The ID of the asynchronous request.
+	//
+	// example:
+	//
+	// async__c39d43ece52d35267cc4b92a0c26****
 	ResultId *string `json:"resultId,omitempty" xml:"resultId,omitempty"`
 	// The state of the asynchronous request. Valid values:
 	//
-	// *   **RUNNING**
-	// *   **SUCCESS**
-	// *   **FAIL**
+	// 	- **RUNNING**
+	//
+	// 	- **SUCCESS**
+	//
+	// 	- **FAIL**
+	//
+	// example:
+	//
+	// SUCCESS
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 	// The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1644559407740
 	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 }
 
@@ -9324,8 +12703,16 @@ func (s *GetAsyncErrorRequestListByCodeResponseBodyData) SetTimestamp(v int64) *
 
 type GetAsyncErrorRequestListByCodeResponseBodyDataResult struct {
 	// The instance ID
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// SQL ID.
+	//
+	// example:
+	//
+	// ad78a4e7d3ce81590c9dc2d5f4bc****
 	SqlId *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
 }
 
@@ -9378,20 +12765,42 @@ func (s *GetAsyncErrorRequestListByCodeResponse) SetBody(v *GetAsyncErrorRequest
 
 type GetAsyncErrorRequestStatByCodeRequest struct {
 	// The name of a database.
+	//
+	// example:
+	//
+	// testdb01
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
+	//
+	// example:
+	//
+	// 1642566830000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  This parameter must be specified for PolarDB for MySQL clusters.
+	//
+	// example:
+	//
+	// pi-wz9s658475e58****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The start time must be within the storage duration of the SQL Explorer feature of the database instance and can be up to 90 days earlier than the current time.
+	//
+	// example:
+	//
+	// 1642556990714
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -9430,19 +12839,40 @@ func (s *GetAsyncErrorRequestStatByCodeRequest) SetStart(v int64) *GetAsyncError
 
 type GetAsyncErrorRequestStatByCodeResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// {     "fail": false,     "data": [       {         "instanceId": "rm-2ze8g2am97624****",         "count": 1,         "errorCode": "1062"       },       {         "instanceId": "rm-2ze8g2am97624****",         "count": 2,         "errorCode": "1064"      }     ],     "resultId": "async__fcd7c35788e62324622c3b4a03de****",     "isFinish": true,     "state": "SUCCESS",     "complete": true,     "timestamp": 1644560866961   }
 	Data *GetAsyncErrorRequestStatByCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 840F51F7-9C01-538D-94F6-AE712905****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9482,30 +12912,59 @@ func (s *GetAsyncErrorRequestStatByCodeResponseBody) SetSuccess(v bool) *GetAsyn
 type GetAsyncErrorRequestStatByCodeResponseBodyData struct {
 	// Indicates whether the asynchronous request was complete.
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Complete *bool `json:"complete,omitempty" xml:"complete,omitempty"`
 	// Indicates whether the asynchronous request failed. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Fail *bool `json:"fail,omitempty" xml:"fail,omitempty"`
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsFinish *bool `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
 	// The number of SQL queries corresponding to the error code.
 	Result []*GetAsyncErrorRequestStatByCodeResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 	// The ID of the asynchronous request.
+	//
+	// example:
+	//
+	// async__fcd7c35788e62324622c3b4a03de****
 	ResultId *string `json:"resultId,omitempty" xml:"resultId,omitempty"`
 	// The state of the asynchronous request. Valid values:
 	//
-	// *   **RUNNING**
-	// *   **SUCCESS**
-	// *   **FAIL**
+	// 	- **RUNNING**
+	//
+	// 	- **SUCCESS**
+	//
+	// 	- **FAIL**
+	//
+	// example:
+	//
+	// SUCCESS
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 	// The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1644560866961
 	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 }
 
@@ -9554,10 +13013,22 @@ func (s *GetAsyncErrorRequestStatByCodeResponseBodyData) SetTimestamp(v int64) *
 
 type GetAsyncErrorRequestStatByCodeResponseBodyDataResult struct {
 	// The number of SQL queries corresponding to the error code.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
 	// The error code returned if the request failed.
+	//
+	// example:
+	//
+	// 1062
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 }
 
@@ -9615,22 +13086,48 @@ func (s *GetAsyncErrorRequestStatByCodeResponse) SetBody(v *GetAsyncErrorRequest
 
 type GetAsyncErrorRequestStatResultRequest struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// testdb01
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
+	//
+	// example:
+	//
+	// 1642566830000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  This parameter must be specified for PolarDB for MySQL instances.
+	//
+	// example:
+	//
+	// pi-bp179lg03445l****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The ID of the SQL template. Separate multiple SQL IDs with commas (,). You can call the [GetAsyncErrorRequestListByCode](~~410746~~) operation to query the ID of the SQL query for which MySQL error code is returned.
+	// The ID of the SQL template. Separate multiple SQL IDs with commas (,). You can call the [GetAsyncErrorRequestListByCode](https://help.aliyun.com/document_detail/410746.html) operation to query the ID of the SQL query for which MySQL error code is returned.
+	//
+	// example:
+	//
+	// ad78a4e7d3ce81590c9dc2d5f4bc****,0f92feacd92c048b06a16617a633****
 	SqlIdList *string `json:"SqlIdList,omitempty" xml:"SqlIdList,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The beginning of the time range to query must be within the storage duration of the database instance and can be up to 90 days earlier than the current time.
+	//
+	// example:
+	//
+	// 1642556990714
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -9674,19 +13171,40 @@ func (s *GetAsyncErrorRequestStatResultRequest) SetStart(v int64) *GetAsyncError
 
 type GetAsyncErrorRequestStatResultResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// {         "fail": false,         "data": {             "ad78a4e7d3ce81590c9dc2d5f4bc****": {                 "sqlId": "ad78a4e7d3ce81590c9dc2d5f4bc****",                 "instanceId": "rm-2ze8g2am97624****",                 "count": 1             },             "0f92feacd92c048b06a16617a633****": {                 "sqlId": "0f92feacd92c048b06a16617a633****",                 "instanceId": "rm-2ze8g2am97624****",                 "count": 2             }         },         "resultId": "async__61f45ee381b2fa4e8a6545e3bee9****",         "isFinish": true,         "state": "SUCCESS",         "complete": true,         "timestamp": 1644558576717     }
 	Data *GetAsyncErrorRequestStatResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 3FC3F8EB-3564-5D1A-B187-3B03E5B0****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9726,30 +13244,59 @@ func (s *GetAsyncErrorRequestStatResultResponseBody) SetSuccess(v bool) *GetAsyn
 type GetAsyncErrorRequestStatResultResponseBodyData struct {
 	// Indicates whether the asynchronous request was complete.
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Complete *bool `json:"complete,omitempty" xml:"complete,omitempty"`
 	// Indicates whether the request failed. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Fail *bool `json:"fail,omitempty" xml:"fail,omitempty"`
 	// Indicates whether the asynchronous request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsFinish *bool `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
 	// The returned data of the asynchronous request.
 	Result []map[string]*DataResultValue `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 	// The ID of the asynchronous request.
+	//
+	// example:
+	//
+	// async__61f45ee381b2fa4e8a6545e3bee9****
 	ResultId *string `json:"resultId,omitempty" xml:"resultId,omitempty"`
 	// The state of the asynchronous request. Valid values:
 	//
-	// *   **RUNNING**: The asynchronous request is running.
-	// *   **SUCCESS**: The asynchronous request is successful.
-	// *   **FAIL**: The asynchronous request fails.
+	// 	- **RUNNING**: The asynchronous request is running.
+	//
+	// 	- **SUCCESS**: The asynchronous request is successful.
+	//
+	// 	- **FAIL**: The asynchronous request fails.
+	//
+	// example:
+	//
+	// SUCCESS
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 	// The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1644558576717
 	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 }
 
@@ -9828,16 +13375,39 @@ func (s *GetAsyncErrorRequestStatResultResponse) SetBody(v *GetAsyncErrorRequest
 type GetAutoIncrementUsageStatisticRequest struct {
 	// The database name. If you specify a database, the operation queries the usage of auto-increment table IDs in the specified database. Otherwise, the operation queries the usage of auto-increment table IDs in all databases on the instance.
 	//
-	// >  Specify the parameter value as a JSON array, such as \[\"db1\",\"db2\"]. Separate multiple database names with commas (,).
+	// >  Specify the parameter value as a JSON array, such as [\\"db1\\",\\"db2\\"]. Separate multiple database names with commas (,).
+	//
+	// example:
+	//
+	// [\\"db1\\",\\"db2\\"]
 	DbNames *string `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The usage threshold of auto-increment IDs. Only usage that exceeds the threshold can be returned. Valid values are decimals that range from 0 to 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.9
 	RatioFilter *float64 `json:"RatioFilter,omitempty" xml:"RatioFilter,omitempty"`
 	// Specifies whether to query real-time data. Valid values:
 	//
-	// *   **true**: queries data in real time except for data generated in the last 10 minutes.****
-	// *   **false**: queries data generated in the last 2 hours. If no such data exists, queries the latest data.
+	// 	- **true**: queries data in real time except for data generated in the last 10 minutes.****
+	//
+	// 	- **false**: queries data generated in the last 2 hours. If no such data exists, queries the latest data.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
 	RealTime *bool `json:"RealTime,omitempty" xml:"RealTime,omitempty"`
 }
 
@@ -9871,19 +13441,36 @@ func (s *GetAutoIncrementUsageStatisticRequest) SetRealTime(v bool) *GetAutoIncr
 
 type GetAutoIncrementUsageStatisticResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetAutoIncrementUsageStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	// >  If the request is successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0A74B755-98B7-59DB-8724-1321B394****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9924,20 +13511,40 @@ type GetAutoIncrementUsageStatisticResponseBodyData struct {
 	// The usage details of auto-increment IDs.
 	AutoIncrementUsageList []*GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList `json:"AutoIncrementUsageList,omitempty" xml:"AutoIncrementUsageList,omitempty" type:"Repeated"`
 	// The error message returned if the task fails.
+	//
+	// example:
+	//
+	// the given database name list invalid, none of the database names in the list exist on the instance
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
 	// Indicates whether the task is complete. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Finish *bool `json:"Finish,omitempty" xml:"Finish,omitempty"`
 	// The task status. Valid values:
 	//
-	// *   **INIT**: The task is being initialized.
-	// *   **RUNNING**: The task is being executed.
-	// *   **SUCCESS**: The task succeeds.
-	// *   **FAIL**: The task fails.
+	// 	- **INIT**: The task is being initialized.
+	//
+	// 	- **RUNNING**: The task is being executed.
+	//
+	// 	- **SUCCESS**: The task succeeds.
+	//
+	// 	- **FAIL**: The task fails.
+	//
+	// example:
+	//
+	// INIT
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 	// The time when the request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1697183353000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -9976,16 +13583,40 @@ func (s *GetAutoIncrementUsageStatisticResponseBodyData) SetTimestamp(v int64) *
 
 type GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList struct {
 	// The latest auto-increment ID.
+	//
+	// example:
+	//
+	// 2147483647
 	AutoIncrementCurrentValue *int64 `json:"AutoIncrementCurrentValue,omitempty" xml:"AutoIncrementCurrentValue,omitempty"`
 	// The usage ratio of auto-increment IDs.
+	//
+	// example:
+	//
+	// 1
 	AutoIncrementRatio *float64 `json:"AutoIncrementRatio,omitempty" xml:"AutoIncrementRatio,omitempty"`
 	// The column name.
+	//
+	// example:
+	//
+	// id
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
 	// The database name.
+	//
+	// example:
+	//
+	// db01
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The maximum auto-increment ID that is supported by the current data type.
+	//
+	// example:
+	//
+	// 2147483647
 	MaximumValue *int64 `json:"MaximumValue,omitempty" xml:"MaximumValue,omitempty"`
 	// The table name.
+	//
+	// example:
+	//
+	// test_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -10058,15 +13689,24 @@ func (s *GetAutoIncrementUsageStatisticResponse) SetBody(v *GetAutoIncrementUsag
 
 type GetAutoResourceOptimizeRulesRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The database instance IDs.
 	//
-	// *   Specify the parameter value as a JSON array, such as `[\"Database account 1\",\"Database account 2\"]`. Separate database instance IDs with commas (,).
+	// 	- Specify the parameter value as a JSON array, such as `[\\"Database account 1\\",\\"Database account 2\\"]`. Separate database instance IDs with commas (,).
 	//
-	// *   By default, if you leave this parameter empty, all database instances for which the automatic fragment recycling feature has been enabled within the current Alibaba Cloud account are returned. The following types of database instances are returned:
+	// 	- By default, if you leave this parameter empty, all database instances for which the automatic fragment recycling feature has been enabled within the current Alibaba Cloud account are returned. The following types of database instances are returned:
 	//
-	//     *   Database instances for which the automatic fragment recycling feature is currently enabled.
-	//     *   Database instances for which the automatic fragment recycling feature was once enabled but is currently disabled, including those for which DAS Enterprise Edition has been disabled but excluding those that have been released.
+	//     	- Database instances for which the automatic fragment recycling feature is currently enabled.
+	//
+	//     	- Database instances for which the automatic fragment recycling feature was once enabled but is currently disabled, including those for which DAS Enterprise Edition has been disabled but excluding those that have been released.
+	//
+	// example:
+	//
+	// [\\"rm-2ze8g2am97624****\\",\\"rm-2vc54m2a6pd6p****\\",\\"rm-2ze9xrhze0709****\\",\\"rm-2ze8g2am97627****\\"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -10090,19 +13730,36 @@ func (s *GetAutoResourceOptimizeRulesRequest) SetInstanceIds(v string) *GetAutoR
 
 type GetAutoResourceOptimizeRulesResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetAutoResourceOptimizeRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10141,10 +13798,18 @@ func (s *GetAutoResourceOptimizeRulesResponseBody) SetSuccess(v bool) *GetAutoRe
 
 type GetAutoResourceOptimizeRulesResponseBodyData struct {
 	// The number of database instances for which the automatic fragment recycling feature is currently enabled.
+	//
+	// example:
+	//
+	// 1
 	EnableAutoResourceOptimizeCount *int64 `json:"EnableAutoResourceOptimizeCount,omitempty" xml:"EnableAutoResourceOptimizeCount,omitempty"`
 	// The database instances for which the automatic fragment recycling feature is currently enabled.
 	EnableAutoResourceOptimizeList []*GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList `json:"EnableAutoResourceOptimizeList,omitempty" xml:"EnableAutoResourceOptimizeList,omitempty" type:"Repeated"`
 	// The number of database instances for which the automatic fragment recycling feature is enabled and DAS Enterprise Edition is disabled.
+	//
+	// example:
+	//
+	// 1
 	HasEnableRuleButNotDasProCount *int64 `json:"HasEnableRuleButNotDasProCount,omitempty" xml:"HasEnableRuleButNotDasProCount,omitempty"`
 	// The database instances for which the automatic fragment recycling feature is enabled and DAS Enterprise Edition is disabled.
 	//
@@ -10153,12 +13818,24 @@ type GetAutoResourceOptimizeRulesResponseBodyData struct {
 	// The number of database instances that do not exist or for which the automatic fragment recycling feature has never been enabled.
 	//
 	// >  If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
+	//
+	// example:
+	//
+	// 1
 	NeverEnableAutoResourceOptimizeOrReleasedInstanceCount *int64 `json:"NeverEnableAutoResourceOptimizeOrReleasedInstanceCount,omitempty" xml:"NeverEnableAutoResourceOptimizeOrReleasedInstanceCount,omitempty"`
 	// The database instances that do not exist or for which the automatic fragment recycling feature has never been enabled.
 	NeverEnableAutoResourceOptimizeOrReleasedInstanceIdList []*string `json:"NeverEnableAutoResourceOptimizeOrReleasedInstanceIdList,omitempty" xml:"NeverEnableAutoResourceOptimizeOrReleasedInstanceIdList,omitempty" type:"Repeated"`
 	// The number of database instances for which the automatic fragment recycling feature has been enabled.
+	//
+	// example:
+	//
+	// 3
 	TotalAutoResourceOptimizeRulesCount *int64 `json:"TotalAutoResourceOptimizeRulesCount,omitempty" xml:"TotalAutoResourceOptimizeRulesCount,omitempty"`
 	// The number of database instances for which the automatic fragment recycling feature was once enabled but is currently disabled.
+	//
+	// example:
+	//
+	// 1
 	TurnOffAutoResourceOptimizeCount *int64 `json:"TurnOffAutoResourceOptimizeCount,omitempty" xml:"TurnOffAutoResourceOptimizeCount,omitempty"`
 	// The database instances for which the automatic fragment recycling feature was once enabled but is currently disabled.
 	TurnOffAutoResourceOptimizeList []*GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList `json:"TurnOffAutoResourceOptimizeList,omitempty" xml:"TurnOffAutoResourceOptimizeList,omitempty" type:"Repeated"`
@@ -10220,21 +13897,47 @@ func (s *GetAutoResourceOptimizeRulesResponseBodyData) SetTurnOffAutoResourceOpt
 type GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList struct {
 	// Indicates whether the automatic fragment recycling feature is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	AutoDefragment *bool `json:"AutoDefragment,omitempty" xml:"AutoDefragment,omitempty"`
 	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	DasProOn *bool `json:"DasProOn,omitempty" xml:"DasProOn,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The fragmentation rate of a single physical table for which the automatic fragment recycling feature is enabled.
+	//
+	// example:
+	//
+	// 0.2
 	TableFragmentationRatio *float64 `json:"TableFragmentationRatio,omitempty" xml:"TableFragmentationRatio,omitempty"`
 	// The minimum storage usage of a single physical table for which the automatic fragment recycling feature is enabled. Unit: GB.
+	//
+	// example:
+	//
+	// 10
 	TableSpaceSize *float64 `json:"TableSpaceSize,omitempty" xml:"TableSpaceSize,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the database instance.
+	//
+	// example:
+	//
+	// 140692647406****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -10279,21 +13982,47 @@ func (s *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeL
 type GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList struct {
 	// Indicates whether the automatic fragment recycling feature is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	AutoDefragment *bool `json:"AutoDefragment,omitempty" xml:"AutoDefragment,omitempty"`
 	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	DasProOn *bool `json:"DasProOn,omitempty" xml:"DasProOn,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2ze9xrhze0709****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The fragmentation rate of a single physical table for which the automatic fragment recycling feature is enabled.
+	//
+	// example:
+	//
+	// 0.2
 	TableFragmentationRatio *float64 `json:"TableFragmentationRatio,omitempty" xml:"TableFragmentationRatio,omitempty"`
 	// The minimum storage usage of a single physical table for which the automatic fragment recycling feature is enabled. Unit: GB.
+	//
+	// example:
+	//
+	// 10
 	TableSpaceSize *float64 `json:"TableSpaceSize,omitempty" xml:"TableSpaceSize,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the database instance.
+	//
+	// example:
+	//
+	// 140692647406****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -10338,21 +14067,47 @@ func (s *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProLi
 type GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList struct {
 	// Indicates whether the automatic fragment recycling feature is enabled. Valid values:
 	//
-	// *   **true**:
-	// *   **false**
+	// 	- **true**:
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	AutoDefragment *bool `json:"AutoDefragment,omitempty" xml:"AutoDefragment,omitempty"`
 	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	DasProOn *bool `json:"DasProOn,omitempty" xml:"DasProOn,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2vc54m2a6pd6p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The fragmentation rate of a single physical table for which the automatic fragment recycling feature is enabled.
+	//
+	// example:
+	//
+	// 0.2
 	TableFragmentationRatio *float64 `json:"TableFragmentationRatio,omitempty" xml:"TableFragmentationRatio,omitempty"`
 	// The minimum storage usage of a single physical table for which the automatic fragment recycling feature is enabled. Unit: GB.
+	//
+	// example:
+	//
+	// 10
 	TableSpaceSize *float64 `json:"TableSpaceSize,omitempty" xml:"TableSpaceSize,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the database instance.
+	//
+	// example:
+	//
+	// 140692647406****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -10425,15 +14180,24 @@ func (s *GetAutoResourceOptimizeRulesResponse) SetBody(v *GetAutoResourceOptimiz
 
 type GetAutoThrottleRulesRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The database instance IDs.
 	//
-	// *   Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\",\"Instance ID2\"]`.
+	// 	- Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\",\\"Instance ID2\\"]`.
 	//
-	// *   By default, if you leave this parameter empty, all database instances for which the automatic SQL throttling feature has been enabled within the current Alibaba Cloud account are returned. The following types of database instances are returned:
+	// 	- By default, if you leave this parameter empty, all database instances for which the automatic SQL throttling feature has been enabled within the current Alibaba Cloud account are returned. The following types of database instances are returned:
 	//
-	//     *   Database instances for which the automatic SQL throttling feature is currently enabled.
-	//     *   Database instances for which the automatic SQL throttling feature was once enabled but is currently disabled. Released database instances are not included.
+	//     	- Database instances for which the automatic SQL throttling feature is currently enabled.
+	//
+	//     	- Database instances for which the automatic SQL throttling feature was once enabled but is currently disabled. Released database instances are not included.
+	//
+	// example:
+	//
+	// [\\"rm-2ze8g2am97624****\\",\\"rm-2vc54m2a6pd6p****\\",\\"rm-2ze9xrhze0709****\\"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -10457,19 +14221,36 @@ func (s *GetAutoThrottleRulesRequest) SetInstanceIds(v string) *GetAutoThrottleR
 
 type GetAutoThrottleRulesResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetAutoThrottleRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7172BECE-588A-5961-8126-C216E16B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10508,20 +14289,36 @@ func (s *GetAutoThrottleRulesResponseBody) SetSuccess(v bool) *GetAutoThrottleRu
 
 type GetAutoThrottleRulesResponseBodyData struct {
 	// The number of database instances for which the automatic SQL throttling feature is currently enabled.
+	//
+	// example:
+	//
+	// 1
 	EnableAutoThrottleCount *int64 `json:"EnableAutoThrottleCount,omitempty" xml:"EnableAutoThrottleCount,omitempty"`
 	// The database instances for which the automatic SQL throttling feature is currently enabled.
 	EnableAutoThrottleList []*GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList `json:"EnableAutoThrottleList,omitempty" xml:"EnableAutoThrottleList,omitempty" type:"Repeated"`
 	// The number of database instances that do not exist or for which the automatic SQL throttling feature has never been enabled.
 	//
 	// >  If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
+	//
+	// example:
+	//
+	// 1
 	NeverEnableAutoThrottleOrReleasedInstanceCount *int64 `json:"NeverEnableAutoThrottleOrReleasedInstanceCount,omitempty" xml:"NeverEnableAutoThrottleOrReleasedInstanceCount,omitempty"`
 	// The number of database instances that do not exist or for which the automatic SQL throttling feature has never been enabled.
 	//
 	// >  If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
 	NeverEnableAutoThrottleOrReleasedInstanceIdList []*string `json:"NeverEnableAutoThrottleOrReleasedInstanceIdList,omitempty" xml:"NeverEnableAutoThrottleOrReleasedInstanceIdList,omitempty" type:"Repeated"`
 	// The number of databases for which the automatic SQL throttling feature has been enabled.
+	//
+	// example:
+	//
+	// 3
 	TotalAutoThrottleRulesCount *int64 `json:"TotalAutoThrottleRulesCount,omitempty" xml:"TotalAutoThrottleRulesCount,omitempty"`
 	// The number of database instances for which the automatic SQL throttling feature was once enabled but is currently disabled.
+	//
+	// example:
+	//
+	// 1
 	TurnOffAutoThrottleCount *int64 `json:"TurnOffAutoThrottleCount,omitempty" xml:"TurnOffAutoThrottleCount,omitempty"`
 	// The database instances for which the automatic SQL throttling feature was once enabled but is currently disabled.
 	TurnOffAutoThrottleList []*GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList `json:"TurnOffAutoThrottleList,omitempty" xml:"TurnOffAutoThrottleList,omitempty" type:"Repeated"`
@@ -10572,37 +14369,84 @@ func (s *GetAutoThrottleRulesResponseBodyData) SetTurnOffAutoThrottleList(v []*G
 
 type GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList struct {
 	// The maximum period of time during which an exception occurs when automatic SQL throttling is triggered. Unit: minutes.
+	//
+	// example:
+	//
+	// 2
 	AbnormalDuration *float64 `json:"AbnormalDuration,omitempty" xml:"AbnormalDuration,omitempty"`
 	// The maximum number of active sessions.
+	//
+	// example:
+	//
+	// 32
 	ActiveSessions *int64 `json:"ActiveSessions,omitempty" xml:"ActiveSessions,omitempty"`
 	// The end time of the throttling window. The value of this parameter is in UTC.
+	//
+	// example:
+	//
+	// 23:59Z
 	AllowThrottleEndTime *string `json:"AllowThrottleEndTime,omitempty" xml:"AllowThrottleEndTime,omitempty"`
 	// The start time of the throttling window. The value of this parameter is in UTC.
+	//
+	// example:
+	//
+	// 00:00Z
 	AllowThrottleStartTime *string `json:"AllowThrottleStartTime,omitempty" xml:"AllowThrottleStartTime,omitempty"`
 	// Indicates whether abnormal SQL statements in execution are terminated at a time. Valid values:
 	//
 	// > Abnormal SQL statements use the same template as the SQL statements that need to be throttled.
 	//
-	// * **true**
-	// * **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	AutoKillSession *bool `json:"AutoKillSession,omitempty" xml:"AutoKillSession,omitempty"`
 	// The logical relationship between the CPU utilization threshold and the maximum number of active sessions. Valid values:
 	//
-	// * **AND**
-	// * **OR**
+	// 	- **AND**
+	//
+	// 	- **OR**
+	//
+	// example:
+	//
+	// AND
 	CpuSessionRelation *string `json:"CpuSessionRelation,omitempty" xml:"CpuSessionRelation,omitempty"`
 	// The CPU utilization threshold.
+	//
+	// example:
+	//
+	// 70
 	CpuUsage *float64 `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The maximum throttling duration. Unit: minutes.
+	//
+	// example:
+	//
+	// 10
 	MaxThrottleTime *float64 `json:"MaxThrottleTime,omitempty" xml:"MaxThrottleTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the database instance.
+	//
+	// example:
+	//
+	// 140692647406****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// Indicates whether the automatic SQL throttling feature is enabled. Valid values:
 	//
-	// * **true**
-	// * **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Visible *bool `json:"Visible,omitempty" xml:"Visible,omitempty"`
 }
 
@@ -10671,37 +14515,84 @@ func (s *GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList) SetVisible(
 
 type GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList struct {
 	// The maximum period of time during which the automatic SQL throttling feature is triggered. Unit: minutes.
+	//
+	// example:
+	//
+	// 2
 	AbnormalDuration *float64 `json:"AbnormalDuration,omitempty" xml:"AbnormalDuration,omitempty"`
 	// The maximum number of active sessions.
+	//
+	// example:
+	//
+	// 64
 	ActiveSessions *int64 `json:"ActiveSessions,omitempty" xml:"ActiveSessions,omitempty"`
 	// The end time of the throttling window. The value of this parameter is in UTC.
+	//
+	// example:
+	//
+	// 23:59Z
 	AllowThrottleEndTime *string `json:"AllowThrottleEndTime,omitempty" xml:"AllowThrottleEndTime,omitempty"`
 	// The start time of the throttling window. The value of this parameter is in UTC.
+	//
+	// example:
+	//
+	// 00:00Z
 	AllowThrottleStartTime *string `json:"AllowThrottleStartTime,omitempty" xml:"AllowThrottleStartTime,omitempty"`
 	// Indicates whether abnormal SQL statements in execution are terminated at a time. Valid values:
 	//
 	// > Abnormal SQL statements use the same template as the SQL statements that need to be throttled.
 	//
-	// * **true**
-	// * **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	AutoKillSession *bool `json:"AutoKillSession,omitempty" xml:"AutoKillSession,omitempty"`
 	// The logical relationship between the CPU utilization threshold and the maximum number of active sessions. Valid values:
 	//
-	// * **AND**
-	// * **OR**
+	// 	- **AND**
+	//
+	// 	- **OR**
+	//
+	// example:
+	//
+	// OR
 	CpuSessionRelation *string `json:"CpuSessionRelation,omitempty" xml:"CpuSessionRelation,omitempty"`
 	// The CPU utilization threshold.
+	//
+	// example:
+	//
+	// 80
 	CpuUsage *float64 `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2ze9xrhze0709****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The maximum throttling duration. Unit: minutes.
+	//
+	// example:
+	//
+	// 10
 	MaxThrottleTime *float64 `json:"MaxThrottleTime,omitempty" xml:"MaxThrottleTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the database instance.
+	//
+	// example:
+	//
+	// 140692647406****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// Indicates whether the automatic SQL throttling feature is enabled. Valid values:
 	//
-	// * **true**
-	// * **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Visible *bool `json:"Visible,omitempty" xml:"Visible,omitempty"`
 }
 
@@ -10799,10 +14690,26 @@ func (s *GetAutoThrottleRulesResponse) SetBody(v *GetAutoThrottleRulesResponseBo
 
 type GetAutonomousNotifyEventContentRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The unique identifier of the event. You can call the [GetAutonomousNotifyEventsInRange](~~288371~~) operation to query the unique identifier returned by the SpanId response parameter.
+	// The unique identifier of the event. You can call the [GetAutonomousNotifyEventsInRange](https://help.aliyun.com/document_detail/288371.html) operation to query the unique identifier returned by the SpanId response parameter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7e7b2774-95b8-4fa3-bd9c-0ab47cb7****
 	SpanId *string `json:"SpanId,omitempty" xml:"SpanId,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Context *string `json:"__context,omitempty" xml:"__context,omitempty"`
 }
 
@@ -10831,19 +14738,40 @@ func (s *GetAutonomousNotifyEventContentRequest) SetContext(v string) *GetAutono
 
 type GetAutonomousNotifyEventContentResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the notification events.
+	//
+	// example:
+	//
+	// {\\"taskId\\":\\"7e1ba595-0889-48ff-a6ff-010f54991d****\\",\\"taskType\\":\\"SQL_OPTIMIZE\\",\\"advisorId\\":\\"636dc5f34664dd56ff0****\\",\\"sqlId\\":\\"e2b1d6c1ee1bb29555a828b59f16****\\",\\"indexAdviceCount\\":1,\\"indexAdvices\\":[{\\"schemaName\\":\\"das\\",\\"tableName\\":\\"students\\",\\"indexName\\":\\"idx_name\\",\\"columns\\":[\\"name\\"],\\"unique\\":false,\\"ddlAddIndex\\":\\"ALTER TABLE `das`.`students` ADD INDEX `idx_name` (`name`)\\",\\"priority\\":0,\\"optimizeId\\":\\"96232794517277511\\"}],\\"tuningAdvices\\":[],\\"improvement\\":8127.25,\\"supportLevel\\":3,\\"priority\\":\\"HIGH\\"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10913,36 +14841,86 @@ type GetAutonomousNotifyEventsInRangeRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1568265711221
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	EventContext *string `json:"EventContext,omitempty" xml:"EventContext,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The urgency level of the events. If you specify this parameter, the MinLevel parameter does not take effect. Valid values:
 	//
-	// *   **Notice**: events for which the system sends notifications.
-	// *   **Optimization**: events that need to be optimized.
-	// *   **Warn**: events for which the system sends warnings.
-	// *   **Critical**: critical events.
+	// 	- **Notice**: events for which the system sends notifications.
+	//
+	// 	- **Optimization**: events that need to be optimized.
+	//
+	// 	- **Warn**: events for which the system sends warnings.
+	//
+	// 	- **Critical**: critical events.
+	//
+	// example:
+	//
+	// Warn
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The minimum urgency level of the events. Valid values:
 	//
-	// *   **Notice**: events for which the system sends notifications.
-	// *   **Optimization**: events that need to be optimized.
-	// *   **Warn**: events for which the system sends warnings.
-	// *   **Critical**: critical events.
+	// 	- **Notice**: events for which the system sends notifications.
+	//
+	// 	- **Optimization**: events that need to be optimized.
+	//
+	// 	- **Warn**: events for which the system sends warnings.
+	//
+	// 	- **Critical**: critical events.
+	//
+	// example:
+	//
+	// Notice
 	MinLevel *string `json:"MinLevel,omitempty" xml:"MinLevel,omitempty"`
-	// The ID of the node in a PolarDB for MySQL cluster. You can call the [DescribeDBClusters](~~98094~~) operation to query the node ID returned by the DBNodeId response parameter.
+	// The ID of the node in a PolarDB for MySQL cluster. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the node ID returned by the DBNodeId response parameter.
 	//
 	// >  You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The page number. The value must be a positive integer. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageOffset *string `json:"PageOffset,omitempty" xml:"PageOffset,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1568269711000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Context *string `json:"__context,omitempty" xml:"__context,omitempty"`
 }
 
@@ -11006,19 +14984,36 @@ func (s *GetAutonomousNotifyEventsInRangeRequest) SetContext(v string) *GetAuton
 
 type GetAutonomousNotifyEventsInRangeResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information, including the error codes and the number of entries that are returned.
 	Data *GetAutonomousNotifyEventsInRangeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11057,14 +15052,30 @@ func (s *GetAutonomousNotifyEventsInRangeResponseBody) SetSuccess(v string) *Get
 
 type GetAutonomousNotifyEventsInRangeResponseBodyData struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The detailed information, including the error codes and the number of entries that are returned.
 	List *GetAutonomousNotifyEventsInRangeResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 4
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -11150,19 +15161,53 @@ func (s *GetAutonomousNotifyEventsInRangeResponse) SetBody(v *GetAutonomousNotif
 type GetBlockingDetailListRequest struct {
 	// The database name list.
 	//
-	// *   Separate multiple database names with commas (,).
+	// 	- Separate multiple database names with commas (,).
+	//
+	// example:
+	//
+	// school1,school2
 	DbNameList *string `json:"DbNameList,omitempty" xml:"DbNameList,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1682490480548
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The database instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-t4nfalp2ap421312z
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. The value must be an integer that is greater than 0. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. The value must be an integer that is greater than 0. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The hash value of the SQL statement.
+	//
+	// example:
+	//
+	// DC08B955CAD25E7B
 	QueryHash *string `json:"QueryHash,omitempty" xml:"QueryHash,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1679429913757
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -11211,19 +15256,36 @@ func (s *GetBlockingDetailListRequest) SetStartTime(v string) *GetBlockingDetail
 
 type GetBlockingDetailListResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetBlockingDetailListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	// >  If the request is successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11264,10 +15326,22 @@ type GetBlockingDetailListResponseBodyData struct {
 	// The details of the data returned.
 	List []*GetBlockingDetailListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number of the page returned.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 19
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -11301,28 +15375,76 @@ func (s *GetBlockingDetailListResponseBodyData) SetTotal(v int64) *GetBlockingDe
 
 type GetBlockingDetailListResponseBodyDataList struct {
 	// The batch ID.
+	//
+	// example:
+	//
+	// 1683530096156
 	BatchId *int64 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// The client name.
+	//
+	// example:
+	//
+	// .Net SqlClient Data Provider
 	ClientAppName *string `json:"ClientAppName,omitempty" xml:"ClientAppName,omitempty"`
 	// The time when the blocking data was collected.
+	//
+	// example:
+	//
+	// 1700065800000
 	CurrentCollectionTime *int64 `json:"CurrentCollectionTime,omitempty" xml:"CurrentCollectionTime,omitempty"`
 	// The database name.
+	//
+	// example:
+	//
+	// school
 	DataBase *string `json:"DataBase,omitempty" xml:"DataBase,omitempty"`
 	// The client hostname.
+	//
+	// example:
+	//
+	// ALLBNMGTAPPRD01
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The username that is used for the logon.
+	//
+	// example:
+	//
+	// Cheney603
 	LoginId *string `json:"LoginId,omitempty" xml:"LoginId,omitempty"`
 	// The hash value of the SQL statement.
+	//
+	// example:
+	//
+	// 6977DD06CD9CAFF2
 	QueryHash *string `json:"QueryHash,omitempty" xml:"QueryHash,omitempty"`
 	// The session ID.
+	//
+	// example:
+	//
+	// 1717
 	Spid *string `json:"Spid,omitempty" xml:"Spid,omitempty"`
 	// The SQL statement.
+	//
+	// example:
+	//
+	// select 	- from test1
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
 	// The time when the execution started.
+	//
+	// example:
+	//
+	// 1608888296000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The blocking duration. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 30000
 	WaitTimeMs *int64 `json:"WaitTimeMs,omitempty" xml:"WaitTimeMs,omitempty"`
 	// The wait type.
+	//
+	// example:
+	//
+	// MISCELLANEOUS
 	WaitType *string `json:"WaitType,omitempty" xml:"WaitType,omitempty"`
 }
 
@@ -11425,8 +15547,20 @@ func (s *GetBlockingDetailListResponse) SetBody(v *GetBlockingDetailListResponse
 
 type GetDBInstanceConnectivityDiagnosisRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The source IP address.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 47.110.180.62
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
 }
 
@@ -11450,19 +15584,36 @@ func (s *GetDBInstanceConnectivityDiagnosisRequest) SetSrcIp(v string) *GetDBIns
 
 type GetDBInstanceConnectivityDiagnosisResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information.
 	Data *GetDBInstanceConnectivityDiagnosisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// > If the request was successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11502,31 +15653,63 @@ func (s *GetDBInstanceConnectivityDiagnosisResponseBody) SetSuccess(v string) *G
 type GetDBInstanceConnectivityDiagnosisResponseBodyData struct {
 	// The exception detection items:
 	//
-	// *   **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist of the user.
-	// *   **VIP_NOT_EXISTS**: The Application Load Balancer (ALB) instance corresponding to the virtual IP address (VIP) does not exist.
-	// *   **RS_NOT_EXISTS**: The resource sharing (RS) is not properly mounted.
-	// *   **VIP_TUNNEL_ID_NOT_CONSISTENT**: The tunnel ID used by the VIP of the virtual private cloud (VPC) type is different from the tunnel ID of the VPC.
-	// *   **VIP_VPC_CLOUD_INSTANCE_NOT_EXISTS**: The VIP of the VPC type does not exist.
-	// *   **VIP_IS_NOT_NGLB**: The NGLB mode is disabled for the VIP.
-	// *   **CUSTINS_NOT_ASSOCIATE_ECS_SECURITY_GROUP**: No security group is associated with the instance.
-	// *   **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist of the user.
-	// *   **SRC_IP_NOT_IN_ADMIN_WHITELIST**: The source IP address is not added to the whitelist of the instance.
-	// *   **SRC_IP_NOT_IN_ECS_SECURITY_GROUP**: The source IP address is not added to the security group that is associated with the instance.
-	// *   **VPC_INSTANCE_IP_NOT_WORKING_STATUS**: The IP address in the VPC is in an abnormal state.
+	// 	- **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist of the user.
+	//
+	// 	- **VIP_NOT_EXISTS**: The Application Load Balancer (ALB) instance corresponding to the virtual IP address (VIP) does not exist.
+	//
+	// 	- **RS_NOT_EXISTS**: The resource sharing (RS) is not properly mounted.
+	//
+	// 	- **VIP_TUNNEL_ID_NOT_CONSISTENT**: The tunnel ID used by the VIP of the virtual private cloud (VPC) type is different from the tunnel ID of the VPC.
+	//
+	// 	- **VIP_VPC_CLOUD_INSTANCE_NOT_EXISTS**: The VIP of the VPC type does not exist.
+	//
+	// 	- **VIP_IS_NOT_NGLB**: The NGLB mode is disabled for the VIP.
+	//
+	// 	- **CUSTINS_NOT_ASSOCIATE_ECS_SECURITY_GROUP**: No security group is associated with the instance.
+	//
+	// 	- **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist of the user.
+	//
+	// 	- **SRC_IP_NOT_IN_ADMIN_WHITELIST**: The source IP address is not added to the whitelist of the instance.
+	//
+	// 	- **SRC_IP_NOT_IN_ECS_SECURITY_GROUP**: The source IP address is not added to the security group that is associated with the instance.
+	//
+	// 	- **VPC_INSTANCE_IP_NOT_WORKING_STATUS**: The IP address in the VPC is in an abnormal state.
+	//
+	// example:
+	//
+	// SRC_IP_NOT_IN_USER_WHITELIST
 	ConnCheckErrorCode *string `json:"connCheckErrorCode,omitempty" xml:"connCheckErrorCode,omitempty"`
 	// The details of the exception detection.
+	//
+	// example:
+	//
+	// Src ip:47.110.180.62 not in user whitelist
 	ConnCheckErrorMessage *string `json:"connCheckErrorMessage,omitempty" xml:"connCheckErrorMessage,omitempty"`
 	// The type of the exception:
 	//
-	// *   **0**: an exception that can be handled by the user.
-	// *   **1**: an exception that can be handled by a technical engineer.
+	// 	- **0**: an exception that can be handled by the user.
+	//
+	// 	- **1**: an exception that can be handled by a technical engineer.
+	//
+	// example:
+	//
+	// 0
 	FailType *string `json:"failType,omitempty" xml:"failType,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// Indicates whether the connectivity test was passed:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -11594,10 +15777,20 @@ func (s *GetDBInstanceConnectivityDiagnosisResponse) SetBody(v *GetDBInstanceCon
 
 type GetDasProServiceUsageRequest struct {
 	// The database instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the database instance.
 	//
 	// >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
+	//
+	// example:
+	//
+	// 196278346919****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -11621,19 +15814,40 @@ func (s *GetDasProServiceUsageRequest) SetUserId(v string) *GetDasProServiceUsag
 
 type GetDasProServiceUsageResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// {         "storageFreeQuotaInMB": 5120,         "ip": "rm-2ze8g2am97624****.mysql.****.com",         "custinsId": 12448331,         "userId": "196278346919****",         "uuid": "hdm_b0ae36343407609bf3e8df8709d8****",         "expireTime": 1924963200000,         "instanceId": "rm-2ze8g2am97624****",         "storageUsed": 10773752667393,         "engine": "MySQL",         "instanceAlias": "TESTDB01_PROD",         "port": 3310,         "vpcId": "hdm_****",         "commodityInstanceId": "daspro-****",         "startTime": 1606381940000,         "isSpare": false,         "region": "cn-shanghai",         "serviceUnitId": "5",         "sqlRetention": 30     }
 	Data *GetDasProServiceUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7172BECE-588A-5961-8126-C216E16B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11672,43 +15886,112 @@ func (s *GetDasProServiceUsageResponseBody) SetSuccess(v bool) *GetDasProService
 
 type GetDasProServiceUsageResponseBodyData struct {
 	// The ID of the DAS Enterprise Edition instance.
+	//
+	// example:
+	//
+	// daspro-cn-v0h1l6i****
 	CommodityInstanceId *string `json:"commodityInstanceId,omitempty" xml:"commodityInstanceId,omitempty"`
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"engine,omitempty" xml:"engine,omitempty"`
 	// The point of time when DAS Enterprise Edition for the database instance expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1648742400000
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
 	// The name of the database instance.
+	//
+	// example:
+	//
+	// TESTDB01
 	InstanceAlias *string `json:"instanceAlias,omitempty" xml:"instanceAlias,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The endpoint of the database instance.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****.mysql.****.com
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
 	// Indicates whether DAS Enterprise Edition for the database instance has expired. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	IsSpare *bool `json:"isSpare,omitempty" xml:"isSpare,omitempty"`
 	// The estimated remaining time for migrating the data generated by the SQL Explorer and Audit feature from the previous version to the new version. Unit: milliseconds.
 	//
 	// >  This parameter is returned only when the SQL Explorer and Audit feature is migrated from the previous version to the new version.
+	//
+	// example:
+	//
+	// 60000
 	MigrationPredictRemainingTime *int64 `json:"migrationPredictRemainingTime,omitempty" xml:"migrationPredictRemainingTime,omitempty"`
 	// The port number that is used to connect to the database instance.
+	//
+	// example:
+	//
+	// 3306
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The region in which the database instance resides.
+	//
+	// example:
+	//
+	// cn-shanghai
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The service unit ID.
+	//
+	// example:
+	//
+	// 4
 	ServiceUnitId *string `json:"serviceUnitId,omitempty" xml:"serviceUnitId,omitempty"`
 	// The storage duration of SQL Explorer data. Unit: days.
+	//
+	// example:
+	//
+	// 180
 	SqlRetention *string `json:"sqlRetention,omitempty" xml:"sqlRetention,omitempty"`
 	// The time when DAS Enterprise Edition was enabled for the database instance. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1646100892000
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// The SQL Explorer storage space that is offered free-of-charge. Unit: MB.
+	//
+	// example:
+	//
+	// 5120
 	StorageFreeQuotaInMB *float64 `json:"storageFreeQuotaInMB,omitempty" xml:"storageFreeQuotaInMB,omitempty"`
 	// The storage usage of SQL Explorer of the database instance. Unit: bytes.
+	//
+	// example:
+	//
+	// 35903498
 	StorageUsed *int64 `json:"storageUsed,omitempty" xml:"storageUsed,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the database instance.
+	//
+	// example:
+	//
+	// 196278346919****
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 	// The virtual private cloud (VPC) ID.
+	//
+	// example:
+	//
+	// vpc-2zentqj1sk4qmolci****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
@@ -11838,89 +16121,214 @@ type GetDasSQLLogHotDataRequest struct {
 	// The account of the database.
 	//
 	// >  You can specify multiple database accounts that are separated by spaces. Example: `user1 user2 user3`.
+	//
+	// example:
+	//
+	// testuser
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The node ID.
 	//
 	// >  This parameter must be specified if the database instance is a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// pi-bp179lg03445l****
 	ChildDBInstanceIDs *string `json:"ChildDBInstanceIDs,omitempty" xml:"ChildDBInstanceIDs,omitempty"`
 	// The name of the database.
 	//
 	// >  You can specify multiple database names that are separated by spaces. Example: `DB1 DB2 DB3`.
+	//
+	// example:
+	//
+	// testDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1684820697000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The error code of SQL execution. You can call the [GetAsyncErrorRequestStatByCode](~~409804~~) operation to query MySQL error codes in SQL Explorer data.
+	// The error code of SQL execution. You can call the [GetAsyncErrorRequestStatByCode](https://help.aliyun.com/document_detail/409804.html) operation to query MySQL error codes in SQL Explorer data.
+	//
+	// example:
+	//
+	// 1064
 	Fail *string `json:"Fail,omitempty" xml:"Fail,omitempty"`
 	// The IP address of the client.
 	//
 	// >  You can specify multiple IP addresses that are separated by spaces. Example: `IP1 IP2 IP3`.
+	//
+	// example:
+	//
+	// 47.100.XX.XX
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
 	// The ID of the database instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The logical relationship among multiple keywords.
 	//
-	// *   **or**
-	// *   **and**
+	// 	- **or**
+	//
+	// 	- **and**
+	//
+	// example:
+	//
+	// or
 	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
 	// The maximum execution duration. Unit: microseconds. You can specify this parameter to query the SQL statements whose execution duration is smaller than the value of this parameter.
+	//
+	// example:
+	//
+	// 100
 	MaxLatancy *int64 `json:"MaxLatancy,omitempty" xml:"MaxLatancy,omitempty"`
 	// The maximum number of entries per page. Valid values: 5 to 100.
+	//
+	// example:
+	//
+	// 10
 	MaxRecordsPerPage *int64 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
 	// The reserved parameter. This parameter is not supported.
+	//
+	// example:
+	//
+	// None
 	MaxRows *int64 `json:"MaxRows,omitempty" xml:"MaxRows,omitempty"`
 	// The maximum number of scanned rows. You can specify this parameter to query the SQL statements that scan a smaller number of rows than the value of this parameter.
+	//
+	// example:
+	//
+	// 10000
 	MaxScanRows *int64 `json:"MaxScanRows,omitempty" xml:"MaxScanRows,omitempty"`
 	// The reserved parameter. This parameter is not supported.
+	//
+	// example:
+	//
+	// None
 	MaxSpillCnt *int64 `json:"MaxSpillCnt,omitempty" xml:"MaxSpillCnt,omitempty"`
 	// The minimum execution duration. Unit: microseconds. You can specify this parameter to query the SQL statements whose execution duration is greater than or equal to the value of this parameter.
+	//
+	// example:
+	//
+	// 10
 	MinLatancy *int64 `json:"MinLatancy,omitempty" xml:"MinLatancy,omitempty"`
 	// The reserved parameter. This parameter is not supported.
+	//
+	// example:
+	//
+	// None
 	MinRows *int64 `json:"MinRows,omitempty" xml:"MinRows,omitempty"`
 	// The minimum number of scanned rows. You can specify this parameter to query the SQL statements that scan a larger or an equal number of rows than the value of this parameter.
+	//
+	// example:
+	//
+	// 10
 	MinScanRows *int64 `json:"MinScanRows,omitempty" xml:"MinScanRows,omitempty"`
 	// The reserved parameter. This parameter is not supported.
+	//
+	// example:
+	//
+	// None
 	MinSpillCnt *int64 `json:"MinSpillCnt,omitempty" xml:"MinSpillCnt,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 2
 	PageNumbers *int64 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
 	// The keyword that is used for the query.
 	//
 	// >  The keyword must be at least four characters in length. You can specify multiple keywords that are separated by spaces. Fuzzy queries are not supported.
+	//
+	// example:
+	//
+	// test
 	QueryKeyword *string `json:"QueryKeyword,omitempty" xml:"QueryKeyword,omitempty"`
 	// The reserved parameter. This parameter is not supported.
+	//
+	// example:
+	//
+	// None
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The basis on which you want to sort the query results.
 	//
-	// *   **SCAN_ROWS**: the number of scanned rows.
-	// *   **UPDATE_ROWS**: the number of updated rows.
-	// *   **CONSUME**: the time consumed.
-	// *   **ORIGIN_TIME**: the execution duration.
+	// 	- **SCAN_ROWS**: the number of scanned rows.
+	//
+	// 	- **UPDATE_ROWS**: the number of updated rows.
+	//
+	// 	- **CONSUME**: the time consumed.
+	//
+	// 	- **ORIGIN_TIME**: the execution duration.
+	//
+	// example:
+	//
+	// SCAN_ROWS
 	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
 	// The order in which you want to sort the query results.
 	//
-	// *   **ase**: ascending order.
-	// *   **desc**: descending order.
+	// 	- **ase**: ascending order.
+	//
+	// 	- **desc**: descending order.
+	//
+	// example:
+	//
+	// ase
 	SortMethod *string `json:"SortMethod,omitempty" xml:"SortMethod,omitempty"`
 	// The type of the SQL statement. Valid values:
 	//
-	// *   **SELECT**
-	// *   **UPDATE**
-	// *   **DELETE**
+	// 	- **SELECT**
+	//
+	// 	- **UPDATE**
+	//
+	// 	- **DELETE**
+	//
+	// example:
+	//
+	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  You can query only the data that is generated after the new SQL Explorer and Audit feature is enabled. The start time can be up to seven days earlier than the current time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1684734297000
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The execution results. You can specify **0** to query the SQL statements that are successfully executed. You can also specify an error code to query the corresponding SQL statements that fail to be executed.
+	// The execution results. You can specify **0*	- to query the SQL statements that are successfully executed. You can also specify an error code to query the corresponding SQL statements that fail to be executed.
+	//
+	// example:
+	//
+	// 0
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The thread ID.
 	//
 	// >  You can specify multiple thread IDs that are separated by spaces. Example: `Thread ID1 Thread ID2 Thread ID3`.
+	//
+	// example:
+	//
+	// 657
 	ThreadID *string `json:"ThreadID,omitempty" xml:"ThreadID,omitempty"`
 	// The reserved parameter. This parameter is not supported.
+	//
+	// example:
+	//
+	// None
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 	// The transaction ID.
+	//
+	// example:
+	//
+	// 0
 	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
 }
 
@@ -12074,19 +16482,36 @@ func (s *GetDasSQLLogHotDataRequest) SetTransactionId(v string) *GetDasSQLLogHot
 
 type GetDasSQLLogHotDataResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetDasSQLLogHotDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0A74B755-98B7-59DB-8724-1321B394****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12125,14 +16550,30 @@ func (s *GetDasSQLLogHotDataResponseBody) SetSuccess(v string) *GetDasSQLLogHotD
 
 type GetDasSQLLogHotDataResponseBodyData struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Extra interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The details of the data returned.
 	List []*GetDasSQLLogHotDataResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 2
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 20
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -12171,46 +16612,124 @@ func (s *GetDasSQLLogHotDataResponseBodyData) SetTotal(v int64) *GetDasSQLLogHot
 
 type GetDasSQLLogHotDataResponseBodyDataList struct {
 	// The account of the database.
+	//
+	// example:
+	//
+	// testuser
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// testDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The execution time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-05-23 T12:11:20Z
 	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
 	// The extended information. This parameter is a reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Ext *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
 	// The IP address of the client.
+	//
+	// example:
+	//
+	// 47.100.XX.XX
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
 	// The execution duration. Unit: microseconds.
+	//
+	// example:
+	//
+	// 10000
 	Latancy *int64 `json:"Latancy,omitempty" xml:"Latancy,omitempty"`
 	// The lock wait duration. Unit: microseconds.
+	//
+	// example:
+	//
+	// 1
 	LockTime *int64 `json:"LockTime,omitempty" xml:"LockTime,omitempty"`
 	// The number of logical reads.
+	//
+	// example:
+	//
+	// 12
 	LogicRead *int64 `json:"LogicRead,omitempty" xml:"LogicRead,omitempty"`
 	// The execution time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-05-23 T12:11:20.999Z
 	OriginTime *string `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
 	// The number of physical asynchronous reads.
+	//
+	// example:
+	//
+	// 0
 	PhysicAsyncRead *int64 `json:"PhysicAsyncRead,omitempty" xml:"PhysicAsyncRead,omitempty"`
 	// The number of physical synchronous reads.
+	//
+	// example:
+	//
+	// 0
 	PhysicSyncRead *int64 `json:"PhysicSyncRead,omitempty" xml:"PhysicSyncRead,omitempty"`
 	// The number of rows returned.
+	//
+	// example:
+	//
+	// 1
 	ReturnRows *int64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
 	// The content of the SQL statement.
+	//
+	// example:
+	//
+	// select 1
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
 	// The number of rows scanned by the SQL statement.
+	//
+	// example:
+	//
+	// 29
 	ScanRows *int64 `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
 	// The type of the SQL statement. Valid values:
 	//
-	// * **SELECT**
-	// * **UPDATE**
-	// * **DELETE**
+	// 	- **SELECT**
+	//
+	// 	- **UPDATE**
+	//
+	// 	- **DELETE**
+	//
+	// example:
+	//
+	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The execution result. If a **0** is returned, the SQL statement was successfully executed. If an error code is returned, the SQL statement failed to be executed.
+	// The execution result. If a **0*	- is returned, the SQL statement was successfully executed. If an error code is returned, the SQL statement failed to be executed.
+	//
+	// example:
+	//
+	// 0
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The thread ID.
+	//
+	// example:
+	//
+	// 657
 	ThreadID *int64 `json:"ThreadID,omitempty" xml:"ThreadID,omitempty"`
 	// The transaction ID.
+	//
+	// example:
+	//
+	// 0
 	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
 	// The number of updated rows.
+	//
+	// example:
+	//
+	// 30
 	UpdateRows *int64 `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
 }
 
@@ -12348,16 +16867,46 @@ func (s *GetDasSQLLogHotDataResponse) SetBody(v *GetDasSQLLogHotDataResponseBody
 
 type GetDeadLockDetailListRequest struct {
 	// The database name list.
+	//
+	// example:
+	//
+	// school1,school2
 	DbNameList *string `json:"DbNameList,omitempty" xml:"DbNameList,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1702360530292
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze2016723b328gs2
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. The value must be an integer that is greater than 0. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 5
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1701755730292
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -12401,19 +16950,36 @@ func (s *GetDeadLockDetailListRequest) SetStartTime(v string) *GetDeadLockDetail
 
 type GetDeadLockDetailListResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetDeadLockDetailListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	// >  If the request is successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 840F51F7-9C01-538D-94F6-AE712905****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12454,10 +17020,22 @@ type GetDeadLockDetailListResponseBodyData struct {
 	// The details of the data returned.
 	List []*GetDeadLockDetailListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -12491,42 +17069,114 @@ func (s *GetDeadLockDetailListResponseBodyData) SetTotal(v int64) *GetDeadLockDe
 
 type GetDeadLockDetailListResponseBodyDataList struct {
 	// The time when the data was collected.
+	//
+	// example:
+	//
+	// 1702301170701
 	BatchId *int64 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// The blocking list.
 	BlockProcessList []*GetDeadLockDetailListResponseBodyDataListBlockProcessList `json:"BlockProcessList,omitempty" xml:"BlockProcessList,omitempty" type:"Repeated"`
 	// The client application.
+	//
+	// example:
+	//
+	// Microsoft SQL Server Management Studio - Query
 	ClientApp *string `json:"ClientApp,omitempty" xml:"ClientApp,omitempty"`
 	// The database name.
+	//
+	// example:
+	//
+	// school
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The host name.
+	//
+	// example:
+	//
+	// sd74020124
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The time when the transaction started.
+	//
+	// example:
+	//
+	// 1702301141000
 	LastTranStarted *int64 `json:"LastTranStarted,omitempty" xml:"LastTranStarted,omitempty"`
 	// The lock mode.
+	//
+	// example:
+	//
+	// U
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The size of the logs generated by the session.
+	//
+	// example:
+	//
+	// 352
 	LogUsed *int64 `json:"LogUsed,omitempty" xml:"LogUsed,omitempty"`
 	// The username that is used for login.
+	//
+	// example:
+	//
+	// sd74020124\\\\Administrator
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
 	// The locked object.
+	//
+	// example:
+	//
+	// school.dbo.test1
 	ObjectOwned *string `json:"ObjectOwned,omitempty" xml:"ObjectOwned,omitempty"`
 	// The object that the current transaction requested to lock.
+	//
+	// example:
+	//
+	// school.dbo.test2
 	ObjectRequested *string `json:"ObjectRequested,omitempty" xml:"ObjectRequested,omitempty"`
 	// The holding mode.
+	//
+	// example:
+	//
+	// X
 	OwnMode *string `json:"OwnMode,omitempty" xml:"OwnMode,omitempty"`
 	// The ID of the session that started the transaction.
+	//
+	// example:
+	//
+	// 56
 	Spid *int64 `json:"Spid,omitempty" xml:"Spid,omitempty"`
 	// The SQL statement.
+	//
+	// example:
+	//
+	// update test2 set col1 =88
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
 	// The transaction status.
+	//
+	// example:
+	//
+	// suspended
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The victim.
+	//
+	// example:
+	//
+	// 1
 	Victim *int64 `json:"Victim,omitempty" xml:"Victim,omitempty"`
 	// The wait mode.
+	//
+	// example:
+	//
+	// U
 	WaitMode *string `json:"WaitMode,omitempty" xml:"WaitMode,omitempty"`
 	// The pending resource.
+	//
+	// example:
+	//
+	// RID: 5:1:376:0
 	WaitResource *string `json:"WaitResource,omitempty" xml:"WaitResource,omitempty"`
 	// The description of the pending resource.
+	//
+	// example:
+	//
+	// RID:school:school.mdf:376:0
 	WaitResourceDescription *string `json:"WaitResourceDescription,omitempty" xml:"WaitResourceDescription,omitempty"`
 }
 
@@ -12635,38 +17285,106 @@ func (s *GetDeadLockDetailListResponseBodyDataList) SetWaitResourceDescription(v
 
 type GetDeadLockDetailListResponseBodyDataListBlockProcessList struct {
 	// The client application.
+	//
+	// example:
+	//
+	// Microsoft SQL Server Management Studio - Query
 	ClientApp *string `json:"ClientApp,omitempty" xml:"ClientApp,omitempty"`
 	// The database name.
+	//
+	// example:
+	//
+	// school
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The host name.
+	//
+	// example:
+	//
+	// sd74020124
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The time when the transaction started.
+	//
+	// example:
+	//
+	// 1702301152000
 	LastTranStarted *int64 `json:"LastTranStarted,omitempty" xml:"LastTranStarted,omitempty"`
 	// The lock mode.
+	//
+	// example:
+	//
+	// U
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The size of the logs generated by the session.
+	//
+	// example:
+	//
+	// 352
 	LogUsed *int64 `json:"LogUsed,omitempty" xml:"LogUsed,omitempty"`
 	// The username that is used for login.
+	//
+	// example:
+	//
+	// sd74020124\\\\Administrator
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
 	// The locked object.
+	//
+	// example:
+	//
+	// school.dbo.test2
 	ObjectOwned *string `json:"ObjectOwned,omitempty" xml:"ObjectOwned,omitempty"`
 	// The object that the current transaction requested to lock.
+	//
+	// example:
+	//
+	// school.dbo.test1
 	ObjectRequested *string `json:"ObjectRequested,omitempty" xml:"ObjectRequested,omitempty"`
 	// The holding mode.
+	//
+	// example:
+	//
+	// X
 	OwnMode *string `json:"OwnMode,omitempty" xml:"OwnMode,omitempty"`
 	// The ID of the session that started the transaction.
+	//
+	// example:
+	//
+	// 61
 	Spid *int64 `json:"Spid,omitempty" xml:"Spid,omitempty"`
 	// The SQL statement.
+	//
+	// example:
+	//
+	// update test1 set col1 =9
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
 	// The transaction status.
+	//
+	// example:
+	//
+	// suspended
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The victim.
+	//
+	// example:
+	//
+	// 0
 	Victim *int64 `json:"Victim,omitempty" xml:"Victim,omitempty"`
 	// The wait mode.
+	//
+	// example:
+	//
+	// U
 	WaitMode *string `json:"WaitMode,omitempty" xml:"WaitMode,omitempty"`
 	// The pending resource.
+	//
+	// example:
+	//
+	// RID: 5:1:312:0
 	WaitResource *string `json:"WaitResource,omitempty" xml:"WaitResource,omitempty"`
 	// The description of the pending resource.
+	//
+	// example:
+	//
+	// RID:school:school.mdf:312:0
 	WaitResourceDescription *string `json:"WaitResourceDescription,omitempty" xml:"WaitResourceDescription,omitempty"`
 }
 
@@ -12982,22 +17700,48 @@ func (s *GetEndpointSwitchTaskResponse) SetBody(v *GetEndpointSwitchTaskResponse
 
 type GetErrorRequestSampleRequest struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// testdb01
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time. The interval cannot exceed 24 hours.
+	//
+	// example:
+	//
+	// 1642566830000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// pi-bp179lg03445l****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The SQL query ID. You can call the [GetAsyncErrorRequestListByCode](~~410746~~) operation to query the ID of the SQL query for which MySQL error code is returned.
+	// The SQL query ID. You can call the [GetAsyncErrorRequestListByCode](https://help.aliyun.com/document_detail/410746.html) operation to query the ID of the SQL query for which MySQL error code is returned.
+	//
+	// example:
+	//
+	// 2cd4432556c3dab9d825ba363637****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The start time must be within the storage duration of the SQL Explorer feature of the database instance, and can be up to 90 days earlier than the current time.
+	//
+	// example:
+	//
+	// 1642556990714
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -13041,19 +17785,40 @@ func (s *GetErrorRequestSampleRequest) SetStart(v int64) *GetErrorRequestSampleR
 
 type GetErrorRequestSampleResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
+	//
+	// example:
+	//
+	// [         {             "sqlId": "2cd4432556c3dab9d825ba363637****",             "database": "dbgateway",             "originHost": "172.16.1****",             "tables": [                 "meter_****"             ],             "instanceId": "rm-2ze8g2am97624****",             "errorCode": "1062",             "user": "dbgat****",             "sql": "insert into meter_****\\n        ( \\n        ****\\n     )\\n        values (now(), now(), \\"bbbc8624-5e19-455a-9714-8466f688****\\", \\"2022-02-10 14:00:00\\", \\"{\\"endTime\\":\\"2022-02-10 14:00:00\\",\\"endTimestamp\\":1644472800,\\"startTime\\":\\"2022-02-10 13:00:00\\",\\"startTimestamp\\":1644469200}\\", null, null)",             "timestamp": 1644476100435         }]
 	Data []*GetErrorRequestSampleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7172BECE-588A-5961-8126-C216E16B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13092,22 +17857,54 @@ func (s *GetErrorRequestSampleResponseBody) SetSuccess(v bool) *GetErrorRequestS
 
 type GetErrorRequestSampleResponseBodyData struct {
 	// The database name.
+	//
+	// example:
+	//
+	// dbgateway
 	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The error code that is returned.
+	//
+	// example:
+	//
+	// 1062
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The IP address of the client that executes the SQL statement.
+	//
+	// example:
+	//
+	// 172.16.1****
 	OriginHost *string `json:"originHost,omitempty" xml:"originHost,omitempty"`
 	// The SQL statement.
+	//
+	// example:
+	//
+	// insert into meter_****
 	Sql *string `json:"sql,omitempty" xml:"sql,omitempty"`
 	// The SQL query ID.
+	//
+	// example:
+	//
+	// 2cd4432556c3dab9d825ba363637****
 	SqlId *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
 	// The table information.
 	Tables []*string `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
 	// The time when the SQL query was executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1644476100435
 	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 	// The username of the account that is used to log on to the database.
+	//
+	// example:
+	//
+	// dbgat****
 	User *string `json:"user,omitempty" xml:"user,omitempty"`
 }
 
@@ -13195,6 +17992,12 @@ func (s *GetErrorRequestSampleResponse) SetBody(v *GetErrorRequestSampleResponse
 
 type GetEventSubscriptionRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -13213,19 +18016,36 @@ func (s *GetEventSubscriptionRequest) SetInstanceId(v string) *GetEventSubscript
 
 type GetEventSubscriptionResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetEventSubscriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13265,48 +18085,107 @@ func (s *GetEventSubscriptionResponseBody) SetSuccess(v string) *GetEventSubscri
 type GetEventSubscriptionResponseBodyData struct {
 	// Indicates whether the event subscription feature is enabled. Valid values:
 	//
-	// *   **0**: The event subscription feature is disabled.
-	// *   **1**: The event subscription feature is enabled.
+	// 	- **0**: The event subscription feature is disabled.
+	//
+	// 	- **1**: The event subscription feature is enabled.
+	//
+	// example:
+	//
+	// 1
 	Active *int32 `json:"active,omitempty" xml:"active,omitempty"`
 	// The notification method. Valid values:
 	//
-	// *   **hdm_alarm_sms**: text message.
-	// *   **dingtalk**: DingTalk chatbot.
-	// *   **hdm_alarm_sms_and_email**: text message and email.
-	// *   **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
+	// 	- **hdm_alarm_sms**: text message.
+	//
+	// 	- **dingtalk**: DingTalk chatbot.
+	//
+	// 	- **hdm_alarm_sms_and_email**: text message and email.
+	//
+	// 	- **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
+	//
+	// example:
+	//
+	// hdm_alarm_sms,dingtalk
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
 	// The name of the contact group that receives alert notifications. Multiple names are separated by commas (,).
+	//
+	// example:
+	//
+	// Default contact group
 	ContactGroupName *string `json:"contactGroupName,omitempty" xml:"contactGroupName,omitempty"`
 	// The alert contact groups.
 	ContactGroups []*GetEventSubscriptionResponseBodyDataContactGroups `json:"contactGroups,omitempty" xml:"contactGroups,omitempty" type:"Repeated"`
 	// The name of the subscriber who receives alert notifications. Multiple names are separated by commas (,).
+	//
+	// example:
+	//
+	// Default contact
 	ContactName *string `json:"contactName,omitempty" xml:"contactName,omitempty"`
 	// The user ID.
 	Contacts []*GetEventSubscriptionResponseBodyDataContacts `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	// The supported event scenarios. Only **AllContext** may be returned, which indicates that all scenarios are supported.
+	// The supported event scenarios. Only **AllContext*	- may be returned, which indicates that all scenarios are supported.
+	//
+	// example:
+	//
+	// AllContext
 	EventContext *string `json:"eventContext,omitempty" xml:"eventContext,omitempty"`
 	// The supported event scenarios in which event subscription can be sent.
 	EventSendGroup []*string `json:"eventSendGroup,omitempty" xml:"eventSendGroup,omitempty" type:"Repeated"`
 	// The time when event subscription was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1633071840000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// The time when the event subscription settings were most recently modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1633071850000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	// The primary key ID of the database.
+	//
+	// example:
+	//
+	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The language of event notifications. Only **zh-CN** may be returned, which indicates that event notifications are sent in Chinese.
+	// The language of event notifications. Only **zh-CN*	- may be returned, which indicates that event notifications are sent in Chinese.
+	//
+	// example:
+	//
+	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
 	// The risk level of the events that trigger notifications. Valid values:
 	//
-	// *   **Notice**
-	// *   **Optimization**
-	// *   **Warn**
-	// *   **Critical**
+	// 	- **Notice**
+	//
+	// 	- **Optimization**
+	//
+	// 	- **Warn**
+	//
+	// 	- **Critical**
+	//
+	// example:
+	//
+	// Optimization
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
 	// The minimum interval between event notifications. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
 	MinInterval *string `json:"minInterval,omitempty" xml:"minInterval,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 1088760496****
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -13400,12 +18279,28 @@ func (s *GetEventSubscriptionResponseBodyData) SetUserId(v string) *GetEventSubs
 
 type GetEventSubscriptionResponseBodyDataContactGroups struct {
 	// The members of the alert contact group.
+	//
+	// example:
+	//
+	// "[\\"Mr. Zhang\\",\\"Ms. Wang\\",\\"Mr. Li\\"]"
 	Contacts *string `json:"contacts,omitempty" xml:"contacts,omitempty"`
 	// The description of the alert contact group.
+	//
+	// example:
+	//
+	// Default contact
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name of the alert contact group.
+	//
+	// example:
+	//
+	// Mr. Zhang
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 1088760496****
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -13439,21 +18334,46 @@ func (s *GetEventSubscriptionResponseBodyDataContactGroups) SetUserId(v string) 
 
 type GetEventSubscriptionResponseBodyDataContacts struct {
 	// The webhook URL of the DingTalk chatbot.
+	//
+	// example:
+	//
+	// https://oapi.dingtalk.com/robot/send?access_token=68fa29a9eaf3ba9994f54fxxxc1aa9879700308f90e9c23ebfb3663642c9****
 	DingtalkHook *string `json:"dingtalkHook,omitempty" xml:"dingtalkHook,omitempty"`
 	// The email address of the alert contact.
+	//
+	// example:
+	//
+	// a***@example.net
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// The contact groups to which the alert contact belongs.
 	Groups []*string `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
 	// Indicates whether the alert contact name is the same as the contact name on CloudMonitor.
 	//
-	// * **true**
-	// * **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsCmsReduplicated *bool `json:"isCmsReduplicated,omitempty" xml:"isCmsReduplicated,omitempty"`
 	// The name of the alert contact.
+	//
+	// example:
+	//
+	// Mr. Zhang
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The mobile number of the alert contact.
+	//
+	// example:
+	//
+	// 1390000****
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 1088760496****
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -13531,46 +18451,106 @@ func (s *GetEventSubscriptionResponse) SetBody(v *GetEventSubscriptionResponseBo
 
 type GetFullRequestOriginStatByInstanceIdRequest struct {
 	// Specifies whether to sort the results in ascending order. By default, the results are not sorted in ascending order.
+	//
+	// example:
+	//
+	// Disabled
 	Asc *bool `json:"Asc,omitempty" xml:"Asc,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1644803409000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  This parameter must be specified if the database instance is a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// pi-bp12v7243x012****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The field by which the results to be returned are sorted. Default value: **count**. Valid values:
 	//
-	// *   **count**: the number of executions.
-	// *   **avgRt**: the average execution duration.
-	// *   **rtRate**: the execution duration percentage.
-	// *   **rowsExamined**: the total number of scanned rows.
-	// *   **avgRowsExamined**: the average number of scanned rows.
-	// *   **avgRowsReturned**: the average number of returned rows.
+	// 	- **count**: the number of executions.
+	//
+	// 	- **avgRt**: the average execution duration.
+	//
+	// 	- **rtRate**: the execution duration percentage.
+	//
+	// 	- **rowsExamined**: the total number of scanned rows.
+	//
+	// 	- **avgRowsExamined**: the average number of scanned rows.
+	//
+	// 	- **avgRowsReturned**: the average number of returned rows.
+	//
+	// example:
+	//
+	// count
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 20.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The role of the PolarDB-X 2.0 node. Valid values:
 	//
-	// *   **polarx_cn**: compute node.
-	// *   **polarx_en**: data node.
+	// 	- **polarx_cn**: compute node.
+	//
+	// 	- **polarx_en**: data node.
+	//
+	// example:
+	//
+	// polarx_cn
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The type of the SQL statement. Valid values: **SELECT**, **INSERT**, **UPDATE**, **DELETE**, **LOGIN**, **LOGOUT**, **MERGE**, **ALTER**, **CREATEINDEX**, **DROPINDEX**, **CREATE**, **DROP**, **SET**, **DESC**, **REPLACE**, **CALL**, **BEGIN**, **DESCRIBE**, **ROLLBACK**, **FLUSH**, **USE**, **SHOW**, **START**, **COMMIT**, and **RENAME**.
 	//
 	// >  If the database instance is an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, or a PolarDB-X 2.0 instance, the statistics can be collected based on the SQL statement type.
+	//
+	// example:
+	//
+	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The start time must be within the storage duration of the SQL Explorer of the database instance, and can be up to 90 days earlier than the current time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1644716649000
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the database instance.
 	//
 	// >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
+	//
+	// example:
+	//
+	// 196278346919****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -13639,19 +18619,36 @@ func (s *GetFullRequestOriginStatByInstanceIdRequest) SetUserId(v string) *GetFu
 
 type GetFullRequestOriginStatByInstanceIdResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetFullRequestOriginStatByInstanceIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7172BECE-588A-5961-8126-C216E16B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13692,6 +18689,10 @@ type GetFullRequestOriginStatByInstanceIdResponseBodyData struct {
 	// The details of the full request data.
 	List []*GetFullRequestOriginStatByInstanceIdResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -13717,72 +18718,200 @@ type GetFullRequestOriginStatByInstanceIdResponseBodyDataList struct {
 	// The average number of scanned rows.
 	//
 	// > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
+	//
+	// example:
+	//
+	// 10000
 	AvgExaminedRows *float64 `json:"AvgExaminedRows,omitempty" xml:"AvgExaminedRows,omitempty"`
 	// The average number of rows that are fetched from data nodes by compute nodes on the PolarDB-X 2.0 instance.
+	//
+	// example:
+	//
+	// 0
 	AvgFetchRows *int64 `json:"AvgFetchRows,omitempty" xml:"AvgFetchRows,omitempty"`
 	// The average lock wait duration. Unit: seconds.
+	//
+	// example:
+	//
+	// 0.00009589874265269765
 	AvgLockWaitTime *float64 `json:"AvgLockWaitTime,omitempty" xml:"AvgLockWaitTime,omitempty"`
 	// The average number of logical reads.
+	//
+	// example:
+	//
+	// 654.4470327860251
 	AvgLogicalRead *float64 `json:"AvgLogicalRead,omitempty" xml:"AvgLogicalRead,omitempty"`
 	// The average number of physical asynchronous reads.
+	//
+	// example:
+	//
+	// 0
 	AvgPhysicalAsyncRead *int64 `json:"AvgPhysicalAsyncRead,omitempty" xml:"AvgPhysicalAsyncRead,omitempty"`
 	// The average number of physical synchronous reads.
+	//
+	// example:
+	//
+	// 0
 	AvgPhysicalSyncRead *float64 `json:"AvgPhysicalSyncRead,omitempty" xml:"AvgPhysicalSyncRead,omitempty"`
 	// The average number of returned rows.
+	//
+	// example:
+	//
+	// 10000
 	AvgReturnedRows *float64 `json:"AvgReturnedRows,omitempty" xml:"AvgReturnedRows,omitempty"`
 	// The average number of rows.
+	//
+	// example:
+	//
+	// 0
 	AvgRows *int64 `json:"AvgRows,omitempty" xml:"AvgRows,omitempty"`
 	// The average execution duration.
+	//
+	// example:
+	//
+	// 2.499
 	AvgRt *float64 `json:"AvgRt,omitempty" xml:"AvgRt,omitempty"`
 	// The average number of SQL statements.
+	//
+	// example:
+	//
+	// 10000
 	AvgSqlCount *int64 `json:"AvgSqlCount,omitempty" xml:"AvgSqlCount,omitempty"`
 	// The average number of updated rows.
 	//
 	// > This parameter is returned only for ApsaraDB RDS for MySQL and PolarDB-X 2.0 databases.
+	//
+	// example:
+	//
+	// 10000
 	AvgUpdatedRows *float64 `json:"AvgUpdatedRows,omitempty" xml:"AvgUpdatedRows,omitempty"`
 	// The total number of executions.
+	//
+	// example:
+	//
+	// 100000
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The percentage of the total number of executions.
+	//
+	// example:
+	//
+	// 0.0586
 	CountRate *float64 `json:"CountRate,omitempty" xml:"CountRate,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// dbtest01
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The number of failed executions.
+	//
+	// example:
+	//
+	// 1
 	ErrorCount *int64 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
 	// The total number of scanned rows.
 	//
 	// > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
+	//
+	// example:
+	//
+	// 10000
 	ExaminedRows *int64 `json:"ExaminedRows,omitempty" xml:"ExaminedRows,omitempty"`
 	// The number of rows that are fetched from data nodes by compute nodes on the PolarDB-X 2.0 instance.
+	//
+	// example:
+	//
+	// 200
 	FetchRows *int64 `json:"FetchRows,omitempty" xml:"FetchRows,omitempty"`
 	// The network address of the database instance.
+	//
+	// example:
+	//
+	// rm-uf6dyi58dm6****.mysql.rds.aliy****.com
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The IP address of the client that executes the SQL statement.
+	//
+	// example:
+	//
+	// 172.26.6****
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The lock wait duration. Unit: seconds.
+	//
+	// example:
+	//
+	// 1089.4177720290281
 	LockWaitTime *float64 `json:"LockWaitTime,omitempty" xml:"LockWaitTime,omitempty"`
 	// The number of logical reads.
+	//
+	// example:
+	//
+	// 7.434573266E9
 	LogicalRead *int64 `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
 	// The IP address of the client that executes the SQL statement.
+	//
+	// example:
+	//
+	// 172.26.6****
 	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
 	// The number of physical asynchronous reads.
+	//
+	// example:
+	//
+	// 0
 	PhysicalAsyncRead *int64 `json:"PhysicalAsyncRead,omitempty" xml:"PhysicalAsyncRead,omitempty"`
 	// The number of physical synchronous reads.
+	//
+	// example:
+	//
+	// 0
 	PhysicalSyncRead *int64 `json:"PhysicalSyncRead,omitempty" xml:"PhysicalSyncRead,omitempty"`
 	// The port number that is used to connect to the database instance.
+	//
+	// example:
+	//
+	// 3306
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The total number of rows updated or returned by the compute nodes of the PolarDB-X 2.0 instance.
+	//
+	// example:
+	//
+	// 0
 	Rows *int64 `json:"Rows,omitempty" xml:"Rows,omitempty"`
 	// The number of SQL statements that take longer than 1 second to execute.
+	//
+	// example:
+	//
+	// 2
 	RtGreaterThanOneSecondCount *int64 `json:"RtGreaterThanOneSecondCount,omitempty" xml:"RtGreaterThanOneSecondCount,omitempty"`
 	// The execution duration percentage.
+	//
+	// example:
+	//
+	// 0.1384
 	RtRate *float64 `json:"RtRate,omitempty" xml:"RtRate,omitempty"`
 	// The number of SQL statements.
+	//
+	// example:
+	//
+	// 200
 	SqlCount *int64 `json:"SqlCount,omitempty" xml:"SqlCount,omitempty"`
 	// The total number of updated rows.
+	//
+	// example:
+	//
+	// 200
 	SumUpdatedRows *int64 `json:"SumUpdatedRows,omitempty" xml:"SumUpdatedRows,omitempty"`
 	// The version number.
+	//
+	// example:
+	//
+	// 1
 	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The virtual private cloud (VPC) ID.
+	//
+	// example:
+	//
+	// vpc-2zentqj1sk4qmolci****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -13987,23 +19116,56 @@ type GetFullRequestSampleByInstanceIdRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time. The interval between the start time and the end time must be equal to or greater than 1 hour.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1660104621000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The role of the PolarDB-X 2.0 node. Valid values:
 	//
-	// *   **polarx_cn**: compute node.
-	// *   **polarx_en**: data node.
+	// 	- **polarx_cn**: compute node.
+	//
+	// 	- **polarx_en**: data node.
+	//
+	// example:
+	//
+	// polarx_cn
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The SQL statement ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 651b56fe9418d48edb8fdf0980ec****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The start time must be within the storage duration of the SQL Explorer feature of the database instance, and can be up to 90 days earlier than the current time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1660097421000
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the database instance.
 	//
 	// >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
+	//
+	// example:
+	//
+	// 196278346919****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -14047,19 +19209,36 @@ func (s *GetFullRequestSampleByInstanceIdRequest) SetUserId(v string) *GetFullRe
 
 type GetFullRequestSampleByInstanceIdResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data []*GetFullRequestSampleByInstanceIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0A74B755-98B7-59DB-8724-1321B394****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14098,44 +19277,120 @@ func (s *GetFullRequestSampleByInstanceIdResponseBody) SetSuccess(v bool) *GetFu
 
 type GetFullRequestSampleByInstanceIdResponseBodyData struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// dbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The number of rows fetched by PolarDB-X 2.0 compute nodes.
+	//
+	// example:
+	//
+	// 0
 	Frows *int64 `json:"Frows,omitempty" xml:"Frows,omitempty"`
 	// The lock wait duration. Unit: seconds.
+	//
+	// example:
+	//
+	// 0.0137
 	LockWaitTime *float64 `json:"LockWaitTime,omitempty" xml:"LockWaitTime,omitempty"`
 	// The number of logical reads.
+	//
+	// example:
+	//
+	// 165848
 	LogicalRead *float64 `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
 	// The source IP address.
+	//
+	// example:
+	//
+	// 172.17.XX.XX
 	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
 	// The number of physical asynchronous reads.
+	//
+	// example:
+	//
+	// 0
 	PhysicalAsyncRead *float64 `json:"PhysicalAsyncRead,omitempty" xml:"PhysicalAsyncRead,omitempty"`
 	// The number of physical synchronous reads.
+	//
+	// example:
+	//
+	// 0
 	PhysicalSyncRead *float64 `json:"PhysicalSyncRead,omitempty" xml:"PhysicalSyncRead,omitempty"`
 	// The number of rows updated or returned on PolarDB-X 2.0 compute nodes.
+	//
+	// example:
+	//
+	// 0
 	Rows *int64 `json:"Rows,omitempty" xml:"Rows,omitempty"`
 	// The total number of scanned rows.
 	//
 	// > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
+	//
+	// example:
+	//
+	// 2048576
 	RowsExamined *int64 `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty"`
 	// The number of rows returned by the SQL statement.
+	//
+	// example:
+	//
+	// 14
 	RowsReturned *int64 `json:"RowsReturned,omitempty" xml:"RowsReturned,omitempty"`
 	// The amount of time consumed to execute the SQL statement. Unit: seconds.
+	//
+	// example:
+	//
+	// 0.409789
 	Rt *float64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
 	// The number of scanned rows.
+	//
+	// example:
+	//
+	// 0
 	ScanRows *int64 `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
 	// The number of requests sent from PolarDB-X 2.0 compute nodes to data nodes.
+	//
+	// example:
+	//
+	// 0
 	Scnt *int64 `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
 	// The sample SQL statement.
+	//
+	// example:
+	//
+	// select 	- from testdb01 where ****
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 	// The SQL statement ID.
+	//
+	// example:
+	//
+	// 651b56fe9418d48edb8fdf0980ec****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The type of the SQL statement. Valid values: **SELECT**, **INSERT**, **UPDATE**, **DELETE**, **LOGIN**, **LOGOUT**, **MERGE**, **ALTER**, **CREATEINDEX**, **DROPINDEX**, **CREATE**, **DROP**, **SET**, **DESC**, **REPLACE**, **CALL**, **BEGIN**, **DESCRIBE**, **ROLLBACK**, **FLUSH**, **USE**, **SHOW**, **START**, **COMMIT**, and **RENAME**.
+	//
+	// example:
+	//
+	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	// The time when the SQL statement was executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1660100753556
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The number of updated rows.
+	//
+	// example:
+	//
+	// 0
 	UpdateRows *int64 `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
 	// The name of the user who executes the SQL statement.
+	//
+	// example:
+	//
+	// testuser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -14273,58 +19528,134 @@ func (s *GetFullRequestSampleByInstanceIdResponse) SetBody(v *GetFullRequestSamp
 
 type GetFullRequestStatResultByInstanceIdRequest struct {
 	// Specifies whether to sort the results in ascending order. By default, the results are not sorted in ascending order.
+	//
+	// example:
+	//
+	// Disabled
 	Asc *bool `json:"Asc,omitempty" xml:"Asc,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// dbtest01
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time. The interval cannot exceed one day.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1645668213000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The keywords that are used for query.
+	//
+	// example:
+	//
+	// dbtest01
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The node ID.
 	//
 	// >  You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// pi-bp12v7243x012****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The field by which to sort the returned entries. Default value: **count**. Valid values:
 	//
-	// *   **count**: the number of executions.
-	// *   **avgRt**: the average execution duration.
-	// *   **rtRate**: the execution duration percentage.
-	// *   **rowsExamined**: the total number of scanned rows.
-	// *   **avgRowsExamined**: the average number of scanned rows.
-	// *   **avgRowsReturned**: the average number of returned rows.
+	// 	- **count**: the number of executions.
+	//
+	// 	- **avgRt**: the average execution duration.
+	//
+	// 	- **rtRate**: the execution duration percentage.
+	//
+	// 	- **rowsExamined**: the total number of scanned rows.
+	//
+	// 	- **avgRowsExamined**: the average number of scanned rows.
+	//
+	// 	- **avgRowsReturned**: the average number of returned rows.
+	//
+	// example:
+	//
+	// count
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The IP address of the client that executes the SQL statement.
 	//
 	// >  This parameter is optional. If this parameter is specified, the full request statistics of the specified IP address are collected. If this parameter is left empty, the full request statistics of the entire database instance are collected.
+	//
+	// example:
+	//
+	// 172.26.XX.XXX
 	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 20.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The role of the node in the PolarDB-X 2.0 instance. Valid values:
 	//
-	// *   **polarx_cn**: compute node.
-	// *   **polarx_dn**: data node.
+	// 	- **polarx_cn**: compute node.
+	//
+	// 	- **polarx_dn**: data node.
+	//
+	// example:
+	//
+	// polarx_cn
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The SQL ID.
 	//
 	// >  If this parameter is specified, the full request statistics of the specified SQL query are collected. If this parameter is left empty, the full request statistics of the entire database instance are collected.
+	//
+	// example:
+	//
+	// d71f82be1eef72bd105128204d2e****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The type of the SQL statement. Valid values: **SELECT**, **INSERT**, **UPDATE**, **DELETE**, **LOGIN**, **LOGOUT**, **MERGE**, **ALTER**, **CREATEINDEX**, **DROPINDEX**, **CREATE**, **DROP**, **SET**, **DESC**, **REPLACE**, **CALL**, **BEGIN**, **DESCRIBE**, **ROLLBACK**, **FLUSH**, **USE**, **SHOW**, **START**, **COMMIT**, and **RENAME**.
 	//
 	// >  If your database instance is an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, or a PolarDB-X 2.0 instance, the statistics can be collected based on the SQL statement type.
+	//
+	// example:
+	//
+	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The start time can be up to 90 days earlier than the current time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1645581813000
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 	// The ID of the Alibaba Cloud account that was used to create the database instance.
 	//
 	// >  This parameter is optional. The system can automatically obtain the Alibaba Cloud account ID based on the value of InstanceId when you call the GetFullRequestOriginStatByInstanceId operation.
+	//
+	// example:
+	//
+	// 196278346919****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -14413,19 +19744,36 @@ func (s *GetFullRequestStatResultByInstanceIdRequest) SetUserId(v string) *GetFu
 
 type GetFullRequestStatResultByInstanceIdResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetFullRequestStatResultByInstanceIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7172BECE-588A-5961-8126-C216E16B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14465,25 +19813,49 @@ func (s *GetFullRequestStatResultByInstanceIdResponseBody) SetSuccess(v bool) *G
 type GetFullRequestStatResultByInstanceIdResponseBodyData struct {
 	// Indicates whether the asynchronous request failed. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Fail *bool `json:"Fail,omitempty" xml:"Fail,omitempty"`
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsFinish *bool `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
 	// The returned full request data.
 	Result *GetFullRequestStatResultByInstanceIdResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9CB97BC4-6479-55D0-B9D0-EA925AFE****
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
 	// The state of the asynchronous request. Valid values:
 	//
-	// *   **RUNNING**
-	// *   **SUCCESS**
-	// *   **FAIL**
+	// 	- **RUNNING**
+	//
+	// 	- **SUCCESS**
+	//
+	// 	- **FAIL**
+	//
+	// example:
+	//
+	// SUCCESS
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The time when the asynchronous request was sent. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1645668213000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -14529,6 +19901,10 @@ type GetFullRequestStatResultByInstanceIdResponseBodyDataResult struct {
 	// The full request data.
 	List []*GetFullRequestStatResultByInstanceIdResponseBodyDataResultList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -14554,72 +19930,196 @@ type GetFullRequestStatResultByInstanceIdResponseBodyDataResultList struct {
 	// The average number of scanned rows.
 	//
 	// > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
+	//
+	// example:
+	//
+	// 10000
 	AvgExaminedRows *float64 `json:"AvgExaminedRows,omitempty" xml:"AvgExaminedRows,omitempty"`
 	// The average number of rows that are fetched by compute nodes from data nodes on the PolarDB-X 2.0 instance.
+	//
+	// example:
+	//
+	// 0
 	AvgFetchRows *int64 `json:"AvgFetchRows,omitempty" xml:"AvgFetchRows,omitempty"`
 	// The average lock wait latency. Unit: seconds.
+	//
+	// example:
+	//
+	// 0.00009589874265269765
 	AvgLockWaitTime *float64 `json:"AvgLockWaitTime,omitempty" xml:"AvgLockWaitTime,omitempty"`
 	// The average number of logical reads.
+	//
+	// example:
+	//
+	// 654.4470327860251
 	AvgLogicalRead *float64 `json:"AvgLogicalRead,omitempty" xml:"AvgLogicalRead,omitempty"`
 	// The average number of physical asynchronous reads.
+	//
+	// example:
+	//
+	// 0
 	AvgPhysicalAsyncRead *int64 `json:"AvgPhysicalAsyncRead,omitempty" xml:"AvgPhysicalAsyncRead,omitempty"`
 	// The average number of physical synchronous reads.
+	//
+	// example:
+	//
+	// 0
 	AvgPhysicalSyncRead *int64 `json:"AvgPhysicalSyncRead,omitempty" xml:"AvgPhysicalSyncRead,omitempty"`
 	// The average number of returned rows.
+	//
+	// example:
+	//
+	// 10000
 	AvgReturnedRows *float64 `json:"AvgReturnedRows,omitempty" xml:"AvgReturnedRows,omitempty"`
 	// The average execution duration.
+	//
+	// example:
+	//
+	// 2.499
 	AvgRt *float64 `json:"AvgRt,omitempty" xml:"AvgRt,omitempty"`
 	// The average number of SQL statements.
+	//
+	// example:
+	//
+	// 10000
 	AvgSqlCount *int64 `json:"AvgSqlCount,omitempty" xml:"AvgSqlCount,omitempty"`
 	// The average number of updated rows.
 	//
 	//  > This parameter is returned only for ApsaraDB RDS for MySQL and PolarDB-X 2.0 databases.
+	//
+	// example:
+	//
+	// 10000
 	AvgUpdatedRows *int64 `json:"AvgUpdatedRows,omitempty" xml:"AvgUpdatedRows,omitempty"`
 	// The total number of executions.
+	//
+	// example:
+	//
+	// 100000
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The percentage of the total number of executions.
+	//
+	// example:
+	//
+	// 0.0586
 	CountRate *float64 `json:"CountRate,omitempty" xml:"CountRate,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// dbtest01
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The number of failed executions.
+	//
+	// example:
+	//
+	// 1
 	ErrorCount *int64 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
 	// The total number of scanned rows.
 	//
 	// > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
+	//
+	// example:
+	//
+	// 10000
 	ExaminedRows *int64 `json:"ExaminedRows,omitempty" xml:"ExaminedRows,omitempty"`
 	// The number of rows that are fetched by compute nodes from data nodes on the PolarDB-X 2.0 instance.
+	//
+	// example:
+	//
+	// 0
 	FetchRows *int64 `json:"FetchRows,omitempty" xml:"FetchRows,omitempty"`
 	// The IP address of the database instance.
+	//
+	// example:
+	//
+	// rm-uf6dyi58dm6****.mysql.rds.aliy****.com
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The lock wait latency. Unit: seconds.
+	//
+	// example:
+	//
+	// 1089.4177720290281
 	LockWaitTime *float64 `json:"LockWaitTime,omitempty" xml:"LockWaitTime,omitempty"`
 	// The number of logical reads.
+	//
+	// example:
+	//
+	// 7.434573266E9
 	LogicalRead *int64 `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
 	// The number of physical asynchronous reads.
+	//
+	// example:
+	//
+	// 0
 	PhysicalAsyncRead *int64 `json:"PhysicalAsyncRead,omitempty" xml:"PhysicalAsyncRead,omitempty"`
 	// The number of physical synchronous reads.
+	//
+	// example:
+	//
+	// 0
 	PhysicalSyncRead *int64 `json:"PhysicalSyncRead,omitempty" xml:"PhysicalSyncRead,omitempty"`
 	// The port number that is used to connect to the database instance.
+	//
+	// example:
+	//
+	// 3306
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The SQL template.
+	//
+	// example:
+	//
+	// select 	- from dbtest01 where ****
 	Psql *string `json:"Psql,omitempty" xml:"Psql,omitempty"`
 	// The total number of rows updated or returned by the compute nodes of the PolarDB-X 2.0 instance.
+	//
+	// example:
+	//
+	// 0
 	Rows *int64 `json:"Rows,omitempty" xml:"Rows,omitempty"`
 	// The number of SQL statements that take longer than 1 second to execute.
+	//
+	// example:
+	//
+	// 20
 	RtGreaterThanOneSecondCount *int64 `json:"RtGreaterThanOneSecondCount,omitempty" xml:"RtGreaterThanOneSecondCount,omitempty"`
 	// The execution duration percentage.
+	//
+	// example:
+	//
+	// 2.499
 	RtRate *float64 `json:"RtRate,omitempty" xml:"RtRate,omitempty"`
 	// The number of SQL statements.
+	//
+	// example:
+	//
+	// 200
 	SqlCount *int64 `json:"SqlCount,omitempty" xml:"SqlCount,omitempty"`
 	// The SQL ID.
+	//
+	// example:
+	//
+	// d71f82be1eef72bd105128204d2e****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The total number of updated rows.
+	//
+	// example:
+	//
+	// 100
 	SumUpdatedRows *int64 `json:"SumUpdatedRows,omitempty" xml:"SumUpdatedRows,omitempty"`
 	// The names of tables in the database.
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 	// The version number.
+	//
+	// example:
+	//
+	// 1
 	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The virtual private cloud (VPC) ID.
+	//
+	// example:
+	//
+	// vpc-2zentqj1sk4qmolci****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -15262,34 +20762,84 @@ type GetInstanceInspectionsRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1655427625000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **Redis**
-	// *   **PolarDBMySQL**
+	// 	- **MySQL**
+	//
+	// 	- **Redis**
+	//
+	// 	- **PolarDBMySQL**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The type of the instance on which the database is deployed. Valid values:
 	//
-	// *   **RDS**: an Alibaba Cloud database instance.
-	// *   **ECS**: an ECS instance on which a self-managed database is deployed.
-	// *   **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+	// 	- **RDS**: an Alibaba Cloud database instance.
+	//
+	// 	- **ECS**: an ECS instance on which a self-managed database is deployed.
+	//
+	// 	- **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
 	//
 	// >  The value IDC specifies that the instance is deployed in a data center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RDS
 	InstanceArea *string `json:"InstanceArea,omitempty" xml:"InstanceArea,omitempty"`
 	// The page number. The value must be a positive integer. Default value: 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 10.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aek2eil6npi****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The filter condition, which can be specified in one of the following formats:
 	//
-	// *   Specify the ID of a single instance in the {"InstanceId":"Instance ID"} format.
-	// *   Specify the IDs of multiple instances in the {"InstanceIds":\["Instance ID1","Instance ID2"]} format. Separate the instance IDs with commas (,).
-	// *   Specify the region in which the instance resides in the {"region":"Region of the instance"} format.
+	// 	- Specify the ID of a single instance in the {"InstanceId":"Instance ID"} format.
+	//
+	// 	- Specify the IDs of multiple instances in the {"InstanceIds":["Instance ID1","Instance ID2"]} format. Separate the instance IDs with commas (,).
+	//
+	// 	- Specify the region in which the instance resides in the {"region":"Region of the instance"} format.
+	//
+	// example:
+	//
+	// {"InstanceId":"rm-bp10usoc1erj7****"}
 	SearchMap *string `json:"SearchMap,omitempty" xml:"SearchMap,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1655416825000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -15343,19 +20893,36 @@ func (s *GetInstanceInspectionsRequest) SetStartTime(v string) *GetInstanceInspe
 
 type GetInstanceInspectionsResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details.
 	Data *GetInstanceInspectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15396,10 +20963,22 @@ type GetInstanceInspectionsResponseBodyData struct {
 	// The detailed information.
 	List []*GetInstanceInspectionsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number. The value returned is a positive integer. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 4
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -15435,37 +21014,74 @@ type GetInstanceInspectionsResponseBodyDataList struct {
 	// Indicates whether the autonomy service is enabled.
 	AutoFunction *GetInstanceInspectionsResponseBodyDataListAutoFunction `json:"AutoFunction,omitempty" xml:"AutoFunction,omitempty" type:"Struct"`
 	// The data returned.
+	//
+	// example:
+	//
+	// "data": { "hasDeadLock": false, "exceptionTableMap": {}, "bigTransactionCount": 0, "cpu": 4, "isRds": true, "rdsEnable": true, "enable": false, "activeSessions": [], "bigTransactionList": [], "bigSessionList": [ { "blockDuration": 0, "active": false, "Time": 0, "db": "" },
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// *   **0**: disabled.
-	// *   **1**: enabled.
-	// *   **2**: not supported.
+	// 	- **0**: disabled.
+	//
+	// 	- **1**: enabled.
+	//
+	// 	- **2**: not supported.
+	//
+	// example:
+	//
+	// 0
 	EnableDasPro *int32 `json:"EnableDasPro,omitempty" xml:"EnableDasPro,omitempty"`
 	// The end time of the inspection and scoring task. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time.
+	//
+	// example:
+	//
+	// 1608888296001
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The time when the task was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1603247192000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The information about the instance.
 	Instance *GetInstanceInspectionsResponseBodyDataListInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 	// The inspection score of the instance.
+	//
+	// example:
+	//
+	// 100
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The scores that are deducted for the instance.
 	ScoreMap map[string]interface{} `json:"ScoreMap,omitempty" xml:"ScoreMap,omitempty"`
 	// The start time of the inspection and scoring task. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1608888296000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The state of the inspection and scoring task. Valid values:
 	//
-	// *   **0**: The task is waiting for execution.
-	// *   **1**: The task is in progress.
-	// *   **2**: The task is complete.
+	// 	- **0**: The task is waiting for execution.
+	//
+	// 	- **1**: The task is in progress.
+	//
+	// 	- **2**: The task is complete.
+	//
+	// example:
+	//
+	// 2
 	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
 	// The mode in which the inspection and scoring task was initiated. Valid values:
 	//
-	// *   **0**: automatic mode.
-	// *   **1**: manual mode.
+	// 	- **0**: automatic mode.
+	//
+	// 	- **1**: manual mode.
+	//
+	// example:
+	//
+	// 0
 	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -15535,33 +21151,63 @@ func (s *GetInstanceInspectionsResponseBodyDataList) SetTaskType(v int32) *GetIn
 type GetInstanceInspectionsResponseBodyDataListAutoFunction struct {
 	// Indicates whether the feature of automatically creating and deleting indexes is enabled. Valid values:
 	//
-	// *   **0**: disabled.
-	// *   **1**: enabled.
-	// *   **2**: not supported.
+	// 	- **0**: disabled.
+	//
+	// 	- **1**: enabled.
+	//
+	// 	- **2**: not supported.
+	//
+	// example:
+	//
+	// 2
 	AutoIndex *int32 `json:"AutoIndex,omitempty" xml:"AutoIndex,omitempty"`
 	// Indicates whether the automatic throttling feature is enabled. Valid values:
 	//
-	// *   **0**: disabled.
-	// *   **1**: enabled.
-	// *   **2**: not supported.
+	// 	- **0**: disabled.
+	//
+	// 	- **1**: enabled.
+	//
+	// 	- **2**: not supported.
+	//
+	// example:
+	//
+	// 2
 	AutoLimitedSql *int32 `json:"AutoLimitedSql,omitempty" xml:"AutoLimitedSql,omitempty"`
 	// Indicates whether the automatic fragment recycling feature is enabled. Valid values:
 	//
-	// *   **0**: disabled.
-	// *   **1**: enabled.
-	// *   **2**: not supported.
+	// 	- **0**: disabled.
+	//
+	// 	- **1**: enabled.
+	//
+	// 	- **2**: not supported.
+	//
+	// example:
+	//
+	// 0
 	AutoResourceOptimize *int32 `json:"AutoResourceOptimize,omitempty" xml:"AutoResourceOptimize,omitempty"`
 	// Indicates whether the auto scaling feature is enabled. Valid values:
 	//
-	// *   **0**: disabled.
-	// *   **1**: enabled.
-	// *   **2**: not supported.
+	// 	- **0**: disabled.
+	//
+	// 	- **1**: enabled.
+	//
+	// 	- **2**: not supported.
+	//
+	// example:
+	//
+	// 0
 	AutoScale *int32 `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
 	// Indicates whether the event subscription feature is enabled. Valid values:
 	//
-	// *   **0**: disabled.
-	// *   **1**: enabled.
-	// *   **2**: not supported.
+	// 	- **0**: disabled.
+	//
+	// 	- **1**: enabled.
+	//
+	// 	- **2**: not supported.
+	//
+	// example:
+	//
+	// 0
 	EventSubscription *int32 `json:"EventSubscription,omitempty" xml:"EventSubscription,omitempty"`
 }
 
@@ -15600,49 +21246,118 @@ func (s *GetInstanceInspectionsResponseBodyDataListAutoFunction) SetEventSubscri
 
 type GetInstanceInspectionsResponseBodyDataListInstance struct {
 	// The account ID. You can view the ID of the logon account by moving the pointer over the profile in the Alibaba Cloud management console.
+	//
+	// example:
+	//
+	// 108398049688****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The connection mode of the instance. Valid values:
 	//
-	// *   **standard**: standard mode.
-	// *   **safe**: database proxy mode.
+	// 	- **standard**: standard mode.
+	//
+	// 	- **safe**: database proxy mode.
+	//
+	// example:
+	//
+	// standard
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The CPU specification of the instance. For example, if a value of 8 is returned, the instance has eight CPU cores.
+	//
+	// example:
+	//
+	// 8
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **Redis**
-	// *   **PolarDBMySQL**
+	// 	- **MySQL**
+	//
+	// 	- **Redis**
+	//
+	// 	- **PolarDBMySQL**
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The version number of the database engine.
+	//
+	// example:
+	//
+	// 8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The instance name.
+	//
+	// example:
+	//
+	// test-01
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
 	// The type of the instance on which the database is deployed. Valid values:
 	//
-	// *   **RDS**: an Alibaba Cloud database instance.
-	// *   **ECS**: an Elastic Compute Service (ECS) instance on which a self-managed database is deployed.
-	// *   **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+	// 	- **RDS**: an Alibaba Cloud database instance.
+	//
+	// 	- **ECS**: an Elastic Compute Service (ECS) instance on which a self-managed database is deployed.
+	//
+	// 	- **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
 	//
 	// >  The value IDC indicates that the instance is deployed in a data center.
+	//
+	// example:
+	//
+	// RDS
 	InstanceArea *string `json:"InstanceArea,omitempty" xml:"InstanceArea,omitempty"`
 	// The instance type.
+	//
+	// example:
+	//
+	// rds.mysql.s2.xlarge
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-bp10usoc1erj7****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The memory capacity of the database that is deployed on the instance. Unit: MB.
+	//
+	// example:
+	//
+	// 32768
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The network type of the instance.
+	//
+	// example:
+	//
+	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The ID of the node on the instance.
+	//
+	// example:
+	//
+	// rm-bp10usoc1erj7****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The storage space of the instance. Unit: GB.
+	//
+	// example:
+	//
+	// 150
 	Storage *int32 `json:"Storage,omitempty" xml:"Storage,omitempty"`
 	// The unique identifier of the instance.
+	//
+	// example:
+	//
+	// hdm_3063db6792965c080a4bcb6e6304****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	// The ID of the virtual private cloud (VPC) in which the instance is deployed.
+	//
+	// example:
+	//
+	// vpc-bp1knt7m55z9exoo7****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -15765,36 +21480,98 @@ func (s *GetInstanceInspectionsResponse) SetBody(v *GetInstanceInspectionsRespon
 
 type GetInstanceMissingIndexListRequest struct {
 	// The query condition based on the average cost savings.
+	//
+	// example:
+	//
+	// <=|8
 	AvgTotalUserCost *string `json:"AvgTotalUserCost,omitempty" xml:"AvgTotalUserCost,omitempty"`
 	// The query condition based on the performance improvement.
+	//
+	// example:
+	//
+	// >|10000
 	AvgUserImpact *string `json:"AvgUserImpact,omitempty" xml:"AvgUserImpact,omitempty"`
 	// The end time of the last seek.
+	//
+	// example:
+	//
+	// 1681869544000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The query condition based on the number of indexes.
+	//
+	// example:
+	//
+	// >=|8
 	IndexCount *string `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
 	// The database instance ID.
 	//
 	// >  Only ApsaraDB RDS for SQL Server instances are supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-************
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The object name.
+	//
+	// example:
+	//
+	// bas_customer
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query condition based on the total number of pages.
+	//
+	// example:
+	//
+	// >=|100
 	ReservedPages *string `json:"ReservedPages,omitempty" xml:"ReservedPages,omitempty"`
 	// The query condition based on the table size.
+	//
+	// example:
+	//
+	// >=|100
 	ReservedSize *string `json:"ReservedSize,omitempty" xml:"ReservedSize,omitempty"`
 	// The query condition based on the number of table rows.
+	//
+	// example:
+	//
+	// >=|100000
 	RowCount *string `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
 	// The start time of the last seek.
+	//
+	// example:
+	//
+	// 1679414400000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The query condition based on the number of compilations.
+	//
+	// example:
+	//
+	// >=|10000
 	UniqueCompiles *string `json:"UniqueCompiles,omitempty" xml:"UniqueCompiles,omitempty"`
 	// The query condition based on the number of scans.
+	//
+	// example:
+	//
+	// >=|10000
 	UserScans *string `json:"UserScans,omitempty" xml:"UserScans,omitempty"`
 	// The query condition based on the number of seeks.
+	//
+	// example:
+	//
+	// >=|1000
 	UserSeeks *string `json:"UserSeeks,omitempty" xml:"UserSeeks,omitempty"`
 }
 
@@ -15883,17 +21660,34 @@ func (s *GetInstanceMissingIndexListRequest) SetUserSeeks(v string) *GetInstance
 
 type GetInstanceMissingIndexListResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information.
 	Data *GetInstanceMissingIndexListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0A74B755-98B7-59DB-8724-1321B394****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15934,10 +21728,22 @@ type GetInstanceMissingIndexListResponseBodyData struct {
 	// The returned data.
 	List []*GetInstanceMissingIndexListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number of the page returned.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 16
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -15971,42 +21777,118 @@ func (s *GetInstanceMissingIndexListResponseBodyData) SetTotal(v int64) *GetInst
 
 type GetInstanceMissingIndexListResponseBodyDataList struct {
 	// The average cost savings.
+	//
+	// example:
+	//
+	// 4.67
 	AvgTotalUserCost *float64 `json:"AvgTotalUserCost,omitempty" xml:"AvgTotalUserCost,omitempty"`
 	// The performance improvement, in percentage.
+	//
+	// example:
+	//
+	// 98.3
 	AvgUserImpact *float64 `json:"AvgUserImpact,omitempty" xml:"AvgUserImpact,omitempty"`
 	// The statement used to create the missing indexes.
+	//
+	// example:
+	//
+	// CREATE INDEX [IX_CLOUDDBA_school_dbo_stu@col1_@col2] ON [school].[dbo].[stu]([col1],[col2],[col3]) INCLUDE ([col4],[col5]) WITH (FILLFACTOR = 90, ONLINE = OFF);
 	CreateIndex *string `json:"CreateIndex,omitempty" xml:"CreateIndex,omitempty"`
 	// The database name.
+	//
+	// example:
+	//
+	// school
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The index columns included in the equal operation.
+	//
+	// example:
+	//
+	// col1,col2,col3
 	EqualityColumns *string `json:"EqualityColumns,omitempty" xml:"EqualityColumns,omitempty"`
 	// The columns on which indexes are missing.
+	//
+	// example:
+	//
+	// col3,col4
 	IncludedColumns *string `json:"IncludedColumns,omitempty" xml:"IncludedColumns,omitempty"`
 	// The number of indexes.
+	//
+	// example:
+	//
+	// 1
 	IndexCount *int64 `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
 	// The index columns included in the not equal operation.
+	//
+	// example:
+	//
+	// 2392
 	InequalityColumns *string `json:"InequalityColumns,omitempty" xml:"InequalityColumns,omitempty"`
 	// The last seek time of a user.
+	//
+	// example:
+	//
+	// 1702023327000
 	LastUserSeek *int64 `json:"LastUserSeek,omitempty" xml:"LastUserSeek,omitempty"`
 	// The object name.
+	//
+	// example:
+	//
+	// stu
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
 	// The total number of returned pages.
+	//
+	// example:
+	//
+	// 5025
 	ReservedPages *int64 `json:"ReservedPages,omitempty" xml:"ReservedPages,omitempty"`
 	// The table size.
+	//
+	// example:
+	//
+	// 39.26
 	ReservedSize *float64 `json:"ReservedSize,omitempty" xml:"ReservedSize,omitempty"`
 	// The number of table rows.
+	//
+	// example:
+	//
+	// 226945
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
 	// The schema name.
+	//
+	// example:
+	//
+	// dbo
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// The number of scans.
+	//
+	// example:
+	//
+	// 0
 	SystemScans *int64 `json:"SystemScans,omitempty" xml:"SystemScans,omitempty"`
 	// The number of seeks.
+	//
+	// example:
+	//
+	// 0
 	SystemSeeks *int64 `json:"SystemSeeks,omitempty" xml:"SystemSeeks,omitempty"`
 	// The number of compilations.
+	//
+	// example:
+	//
+	// 2392
 	UniqueCompiles *int64 `json:"UniqueCompiles,omitempty" xml:"UniqueCompiles,omitempty"`
 	// The number of scans performed by users.
+	//
+	// example:
+	//
+	// 0
 	UserScans *int64 `json:"UserScans,omitempty" xml:"UserScans,omitempty"`
 	// The number of seeks performed by users.
+	//
+	// example:
+	//
+	// 1081
 	UserSeeks *int64 `json:"UserSeeks,omitempty" xml:"UserSeeks,omitempty"`
 }
 
@@ -16144,34 +22026,70 @@ func (s *GetInstanceMissingIndexListResponse) SetBody(v *GetInstanceMissingIndex
 
 type GetInstanceSqlOptimizeStatisticRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1662518540764
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Specifies whether to filter instances for which DAS Enterprise Edition is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  If you set this parameter to **true**, only database instances for which DAS Enterprise Edition is disabled are queried. If you set this parameter to **false**, all database instances are queried.
+	//
+	// example:
+	//
+	// false
 	FilterEnable *string `json:"FilterEnable,omitempty" xml:"FilterEnable,omitempty"`
 	// The database instance ID.
 	//
 	// >  The database instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-wz90h9560rvdz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  For ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters, you must specify the node ID.
+	//
+	// example:
+	//
+	// pi-bp12v7243x012****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1661308902060
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The duration threshold for automatic SQL optimization events. After this parameter is specified, the system collects statistics on automatic SQL optimization events whose duration does not exceed the specified threshold.
 	//
 	// >  This parameter is a reserved parameter and does not take effect.
+	//
+	// example:
+	//
+	// None
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	// Specifies whether to merge automatic SQL optimization events. Valid values:
 	//
-	// *   **true**: merges automatic SQL optimization events.
-	// *   **false**: does not merge automatic SQL optimization events.
+	// 	- **true**: merges automatic SQL optimization events.
+	//
+	// 	- **false**: does not merge automatic SQL optimization events.
 	//
 	// >  This parameter is a reserved parameter and does not take effect.
+	//
+	// example:
+	//
+	// true
 	UseMerging *string `json:"UseMerging,omitempty" xml:"UseMerging,omitempty"`
 }
 
@@ -16220,19 +22138,36 @@ func (s *GetInstanceSqlOptimizeStatisticRequest) SetUseMerging(v string) *GetIns
 
 type GetInstanceSqlOptimizeStatisticResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the automatic SQL optimization events.
 	Data *GetInstanceSqlOptimizeStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -16271,8 +22206,16 @@ func (s *GetInstanceSqlOptimizeStatisticResponseBody) SetSuccess(v string) *GetI
 
 type GetInstanceSqlOptimizeStatisticResponseBodyData struct {
 	// The total number of automatic SQL optimization events.
+	//
+	// example:
+	//
+	// 16
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
 	// The multiple of the maximum improvement for returned automatic SQL optimization events.
+	//
+	// example:
+	//
+	// 1003
 	Improvement *float64 `json:"improvement,omitempty" xml:"improvement,omitempty"`
 }
 
@@ -16325,12 +22268,28 @@ func (s *GetInstanceSqlOptimizeStatisticResponse) SetBody(v *GetInstanceSqlOptim
 
 type GetKillInstanceSessionTaskResultRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  You must specify this parameter if your database instance is a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// pi-8vbkfj5a756um****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The task ID. You can obtain the task ID from the response parameters of the [CreateKillInstanceSessionTask](~~609246~~) operation.
+	// The task ID. You can obtain the task ID from the response parameters of the [CreateKillInstanceSessionTask](https://help.aliyun.com/document_detail/609246.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f77d535b45405bd462b21caa3ee8****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -16359,19 +22318,36 @@ func (s *GetKillInstanceSessionTaskResultRequest) SetTaskId(v string) *GetKillIn
 
 type GetKillInstanceSessionTaskResultResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetKillInstanceSessionTaskResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -16409,17 +22385,37 @@ func (s *GetKillInstanceSessionTaskResultResponseBody) SetSuccess(v bool) *GetKi
 }
 
 type GetKillInstanceSessionTaskResultResponseBodyData struct {
-	// The number of ignored sessions, including sessions of the accounts that are specified by IgnoredUsers, sessions of internal O\&M accounts of Alibaba Cloud, and **Binlog Dump** sessions.
+	// The number of ignored sessions, including sessions of the accounts that are specified by IgnoredUsers, sessions of internal O\\&M accounts of Alibaba Cloud, and **Binlog Dump*	- sessions.
+	//
+	// example:
+	//
+	// 9
 	IgnoredUserSessionCount *int64 `json:"IgnoredUserSessionCount,omitempty" xml:"IgnoredUserSessionCount,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of sessions that failed to be terminated.
+	//
+	// example:
+	//
+	// 0
 	KillFailCount *int64 `json:"KillFailCount,omitempty" xml:"KillFailCount,omitempty"`
 	// The number of sessions that were terminated.
+	//
+	// example:
+	//
+	// 100
 	KillSuccessCount *int64 `json:"KillSuccessCount,omitempty" xml:"KillSuccessCount,omitempty"`
 	// The node ID.
 	//
 	// >  This parameter is returned only if the instance is a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// pi-bp1h12rv501cv****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The details of the task that terminated sessions.
 	Result []*GetKillInstanceSessionTaskResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
@@ -16428,15 +22424,30 @@ type GetKillInstanceSessionTaskResultResponseBodyData struct {
 	// >  If all sessions are terminated, the IDs of all sessions on the instance or node are returned.
 	Sessions []*int64 `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
 	// The task ID.
+	//
+	// example:
+	//
+	// f77d535b45405bd462b21caa3ee8****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The state of the task that terminates sessions.
 	//
-	// *   **RUNNING**: The task is in progress.
-	// *   **SUCCESS**: The task is successful.
-	// *   **FAILURE**: The task failed.
-	// *   **ERROR**: Other errors occur.
+	// 	- **RUNNING**: The task is in progress.
+	//
+	// 	- **SUCCESS**: The task is successful.
+	//
+	// 	- **FAILURE**: The task failed.
+	//
+	// 	- **ERROR**: Other errors occur.
+	//
+	// example:
+	//
+	// SUCCESS
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
 	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 164882191396****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -16502,35 +22513,86 @@ type GetKillInstanceSessionTaskResultResponseBodyDataResult struct {
 	// Indicates whether the session is active.
 	//
 	// > If the type of the command is Query or Execute and the session in the transaction is not terminated, the session is active.
+	//
+	// example:
+	//
+	// true
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
 	// The type of the command executed in the session.
+	//
+	// example:
+	//
+	// Sleep
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// dbTest
 	Db *string `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The IP address and port number of the host that initiated the session.
+	//
+	// example:
+	//
+	// 100.104.XX.XX:23428
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The session ID.
+	//
+	// example:
+	//
+	// 8357518
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The SQL statement executed in the session.
+	//
+	// example:
+	//
+	// SELECT sleep(60)
 	Info *string `json:"Info,omitempty" xml:"Info,omitempty"`
 	// The description of the session when the session was terminated.
 	//
-	// *   **SESSION_KILLED**: The session is terminated.
-	// *   **SESSION_EXPIRED**: The session has expired.
-	// *   **SESSION_NO_PERMISSION**: The account used to terminate the session has insufficient permissions.
-	// *   **SESSION_ACCOUNT_ERROR**: The account or password used to terminate the session is invalid.
-	// *   **SESSION_IGNORED_USER**: The session of the account does not need to be terminated.
-	// *   **SESSION_INTERNAL_USER_OR_COMMAND**: The session is a session initiated by or a command run by an Alibaba Cloud O\&M account.
-	// *   **SESSION_KILL_TASK_TIMEOUT**: Timeout occurs when the session is terminated.
-	// *   **SESSION_OTHER_ERROR**: Other errors occurred.
+	// 	- **SESSION_KILLED**: The session is terminated.
+	//
+	// 	- **SESSION_EXPIRED**: The session has expired.
+	//
+	// 	- **SESSION_NO_PERMISSION**: The account used to terminate the session has insufficient permissions.
+	//
+	// 	- **SESSION_ACCOUNT_ERROR**: The account or password used to terminate the session is invalid.
+	//
+	// 	- **SESSION_IGNORED_USER**: The session of the account does not need to be terminated.
+	//
+	// 	- **SESSION_INTERNAL_USER_OR_COMMAND**: The session is a session initiated by or a command run by an Alibaba Cloud O\\&M account.
+	//
+	// 	- **SESSION_KILL_TASK_TIMEOUT**: Timeout occurs when the session is terminated.
+	//
+	// 	- **SESSION_OTHER_ERROR**: Other errors occurred.
+	//
+	// example:
+	//
+	// SESSION_KILLED
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The status of the session.
+	//
+	// example:
+	//
+	// Sending data
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The ID of the subtask that terminates the session.
+	//
+	// example:
+	//
+	// task_d9e94107-6116-4ac3-b874-81466aff****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The execution duration. Unit: seconds.
+	//
+	// example:
+	//
+	// 1
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The account of the database.
+	//
+	// example:
+	//
+	// testUser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -16628,14 +22690,32 @@ func (s *GetKillInstanceSessionTaskResultResponse) SetBody(v *GetKillInstanceSes
 
 type GetMongoDBCurrentOpRequest struct {
 	// The `db.currentOp()` command that is used to filter sessions. For more information, see [db.currentOp()](https://docs.mongodb.com/manual/reference/method/db.currentOp/) of MongoDB Documentation.
+	//
+	// example:
+	//
+	// { "active" : true }
 	FilterDoc *string `json:"FilterDoc,omitempty" xml:"FilterDoc,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dds-uf608087********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  If you do not specify a node ID, the sessions of the primary node are queried by default.
+	//
+	// example:
+	//
+	// 23302531
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// A reserved parameter. You do not need to specify the parameter.
+	//
+	// example:
+	//
+	// None
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
@@ -16669,19 +22749,36 @@ func (s *GetMongoDBCurrentOpRequest) SetRole(v string) *GetMongoDBCurrentOpReque
 
 type GetMongoDBCurrentOpResponseBody struct {
 	// The response code.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the sessions.
 	Data *GetMongoDBCurrentOpResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// FC6C0929-29E1-59FD-8DFE-70D9D41E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -16724,6 +22821,10 @@ type GetMongoDBCurrentOpResponseBodyData struct {
 	// The statistics on the sessions.
 	SessionStat *GetMongoDBCurrentOpResponseBodyDataSessionStat `json:"SessionStat,omitempty" xml:"SessionStat,omitempty" type:"Struct"`
 	// The time when the database sessions were returned. The value is in the UNIX timestamp format. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1692029584428
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -16753,47 +22854,135 @@ func (s *GetMongoDBCurrentOpResponseBodyData) SetTimestamp(v int64) *GetMongoDBC
 type GetMongoDBCurrentOpResponseBodyDataSessionList struct {
 	// Indicates whether the operation is active. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
 	// The IP address of the client.
+	//
+	// example:
+	//
+	// 219.143.177.4:52324
 	Client *string `json:"Client,omitempty" xml:"Client,omitempty"`
 	// The document that contains the complete command object associated with the operation.
+	//
+	// example:
+	//
+	// "command" : {
+	//
+	//   "find" : "items",
+	//
+	//   "filter" : {
+	//
+	//     "sku" : 1403978
+	//
+	//   },
+	//
+	//   ...
+	//
+	//   "$db" : "test"
+	//
+	// }
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	// The connection ID.
+	//
+	// example:
+	//
+	// 66378736
 	ConnectionId *int64 `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
 	// The description of the connection.
+	//
+	// example:
+	//
+	// conn1013858
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The driver for MongoDB.
+	//
+	// example:
+	//
+	// mongo-java-driver|legacy@3.11.2
 	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
 	// The host.
+	//
+	// example:
+	//
+	// a79******.cloud.et15:3328
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// Indicates whether the operation is marked as terminated.
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	KillPending *bool `json:"KillPending,omitempty" xml:"KillPending,omitempty"`
 	// The namespace.
+	//
+	// example:
+	//
+	// admin.cmd
 	Ns *string `json:"Ns,omitempty" xml:"Ns,omitempty"`
 	// The type of the operation.
+	//
+	// example:
+	//
+	// update
 	Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
 	// The operation ID.
+	//
+	// example:
+	//
+	// 14508
 	OpId *string `json:"OpId,omitempty" xml:"OpId,omitempty"`
 	// The architecture of the operating system.
+	//
+	// example:
+	//
+	// amd64
 	OsArch *string `json:"OsArch,omitempty" xml:"OsArch,omitempty"`
 	// The name of the operating system.
+	//
+	// example:
+	//
+	// Linux
 	OsName *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
 	// The type of the operating system.
+	//
+	// example:
+	//
+	// Linux
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The description of the execution plan.
+	//
+	// example:
+	//
+	// None
 	PlanSummary *string `json:"PlanSummary,omitempty" xml:"PlanSummary,omitempty"`
 	// The platform.
+	//
+	// example:
+	//
+	// Java/Alibaba/1.8.0_152-b5
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// The duration of the operation. Unit: seconds.
+	//
+	// example:
+	//
+	// 5
 	SecsRunning *int64 `json:"SecsRunning,omitempty" xml:"SecsRunning,omitempty"`
 	// The ID of the data shard.
 	//
 	// >  This parameter is returned for sharded cluster instances.
+	//
+	// example:
+	//
+	// d-bp1689995b78****
 	Shard *string `json:"Shard,omitempty" xml:"Shard,omitempty"`
 }
 
@@ -16897,14 +23086,26 @@ func (s *GetMongoDBCurrentOpResponseBodyDataSessionList) SetShard(v string) *Get
 
 type GetMongoDBCurrentOpResponseBodyDataSessionStat struct {
 	// The number of active sessions.
+	//
+	// example:
+	//
+	// 0
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
 	// The statistics on the IP addresses of the clients.
 	ClientStats map[string]*DataSessionStatClientStatsValue `json:"ClientStats,omitempty" xml:"ClientStats,omitempty"`
 	// The statistics on the namespaces.
 	DbStats map[string]*DataSessionStatDbStatsValue `json:"DbStats,omitempty" xml:"DbStats,omitempty"`
 	// The longest duration of a session. Unit: seconds.
+	//
+	// example:
+	//
+	// 0
 	LongestSecsRunning *int64 `json:"LongestSecsRunning,omitempty" xml:"LongestSecsRunning,omitempty"`
 	// The total number of sessions.
+	//
+	// example:
+	//
+	// 55
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -16974,14 +23175,28 @@ type GetMySQLAllSessionAsyncRequest struct {
 	// The instance ID.
 	//
 	// >  Only ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances are supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  You must specify this parameter for PolarDB for MySQL clusters. If you do not specify a node ID, the session data of the primary node is returned by default.
+	//
+	// example:
+	//
+	// pi-wz954ryd8f893****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The ID of the asynchronous request.
 	//
 	// >  You can leave this parameter empty when you call the operation to initiate the request for the first time, and use the value of this parameter contained in the response to the first request for subsequent requests.
+	//
+	// example:
+	//
+	// async__507044db6c4eadfa2dab9b084e80****
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
 }
 
@@ -17010,19 +23225,36 @@ func (s *GetMySQLAllSessionAsyncRequest) SetResultId(v string) *GetMySQLAllSessi
 
 type GetMySQLAllSessionAsyncResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetMySQLAllSessionAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -17062,30 +23294,59 @@ func (s *GetMySQLAllSessionAsyncResponseBody) SetSuccess(v bool) *GetMySQLAllSes
 type GetMySQLAllSessionAsyncResponseBodyData struct {
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Complete *bool `json:"Complete,omitempty" xml:"Complete,omitempty"`
 	// Indicates whether the asynchronous request failed. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Fail *bool `json:"Fail,omitempty" xml:"Fail,omitempty"`
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsFinish *bool `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
 	// The ID of the asynchronous request.
+	//
+	// example:
+	//
+	// async__507044db6c4eadfa2dab9b084e80****
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
 	// The session data.
 	SessionData *GetMySQLAllSessionAsyncResponseBodyDataSessionData `json:"SessionData,omitempty" xml:"SessionData,omitempty" type:"Struct"`
 	// The state of the asynchronous request. Valid values:
 	//
-	// *   **RUNNING**
-	// *   **SUCCESS**
-	// *   **FAIL**
+	// 	- **RUNNING**
+	//
+	// 	- **SUCCESS**
+	//
+	// 	- **FAIL**
+	//
+	// example:
+	//
+	// SUCCESS
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1660100753556
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -17134,18 +23395,34 @@ func (s *GetMySQLAllSessionAsyncResponseBodyData) SetTimestamp(v int64) *GetMySQ
 
 type GetMySQLAllSessionAsyncResponseBodyDataSessionData struct {
 	// The total number of active sessions.
+	//
+	// example:
+	//
+	// 10
 	ActiveSessionCount *int64 `json:"ActiveSessionCount,omitempty" xml:"ActiveSessionCount,omitempty"`
 	// The sessions that are counted by client IP address.
 	ClientStats []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats `json:"ClientStats,omitempty" xml:"ClientStats,omitempty" type:"Repeated"`
 	// The sessions that are counted by database.
 	DbStats []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats `json:"DbStats,omitempty" xml:"DbStats,omitempty" type:"Repeated"`
 	// The maximum execution duration of an active session. Unit: seconds.
+	//
+	// example:
+	//
+	// 6
 	MaxActiveTime *int64 `json:"MaxActiveTime,omitempty" xml:"MaxActiveTime,omitempty"`
 	// The sessions.
 	SessionList []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList `json:"SessionList,omitempty" xml:"SessionList,omitempty" type:"Repeated"`
 	// The time when the session was queried. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1659581514000020
 	TimeStamp *int64 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	// The total number of sessions.
+	//
+	// example:
+	//
+	// 988
 	TotalSessionCount *int64 `json:"TotalSessionCount,omitempty" xml:"TotalSessionCount,omitempty"`
 	// The sessions that are counted by database account.
 	UserStats []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats `json:"UserStats,omitempty" xml:"UserStats,omitempty" type:"Repeated"`
@@ -17203,12 +23480,24 @@ type GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats struct {
 	// The number of active sessions that belong to the client IP address.
 	//
 	// >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+	//
+	// example:
+	//
+	// 1
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
 	// The IP address of the client.
+	//
+	// example:
+	//
+	// 47.100.XX.XX
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The IDs of the sessions that belong to the client IP address.
 	ThreadIdList []*int64 `json:"ThreadIdList,omitempty" xml:"ThreadIdList,omitempty" type:"Repeated"`
 	// The total number of sessions that belong to the client IP address.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The database accounts to which the sessions belong.
 	UserList []*string `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
@@ -17251,12 +23540,24 @@ type GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats struct {
 	// The number of active sessions of the database.
 	//
 	// >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+	//
+	// example:
+	//
+	// 1
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
 	// The database name.
+	//
+	// example:
+	//
+	// dbTest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The IDs of the sessions of the database.
 	ThreadIdList []*int64 `json:"ThreadIdList,omitempty" xml:"ThreadIdList,omitempty" type:"Repeated"`
 	// The total number of sessions of the database.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The database accounts to which the sessions belong.
 	UserList []*string `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
@@ -17297,30 +23598,78 @@ func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats) SetUserList(
 
 type GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList struct {
 	// The IP address of the client.
+	//
+	// example:
+	//
+	// 47.100.XX.XX
 	Client *string `json:"Client,omitempty" xml:"Client,omitempty"`
 	// The type of the command executed in the session.
+	//
+	// example:
+	//
+	// Query
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	// The database name.
+	//
+	// example:
+	//
+	// dbTest
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The session ID.
+	//
+	// example:
+	//
+	// 14521783
 	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The SQL template ID.
 	//
 	// >  This parameter is returned only when you use a PolarDB-X 2.0 instance.
+	//
+	// example:
+	//
+	// a7cac1a9
 	SqlTemplateId *string `json:"SqlTemplateId,omitempty" xml:"SqlTemplateId,omitempty"`
 	// The SQL statement executed in the session.
+	//
+	// example:
+	//
+	// INSERT INTO ...
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
 	// The status of the session.
+	//
+	// example:
+	//
+	// starting
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The execution duration of the session. Unit: seconds.
+	//
+	// example:
+	//
+	// 6
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The duration of the transaction. Unit: seconds.
+	//
+	// example:
+	//
+	// 6
 	TrxDuration *int64 `json:"TrxDuration,omitempty" xml:"TrxDuration,omitempty"`
 	// The ID of the transaction to which the session belongs.
+	//
+	// example:
+	//
+	// 754300775132
 	TrxId *string `json:"TrxId,omitempty" xml:"TrxId,omitempty"`
 	// The username of the database account.
+	//
+	// example:
+	//
+	// testUser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 	// The alias of the IP address of the client.
+	//
+	// example:
+	//
+	// master-shanghai
 	UserClientAlias *string `json:"UserClientAlias,omitempty" xml:"UserClientAlias,omitempty"`
 }
 
@@ -17396,12 +23745,24 @@ type GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats struct {
 	// The number of active sessions within the account.
 	//
 	// >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+	//
+	// example:
+	//
+	// 1
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
 	// The database account.
+	//
+	// example:
+	//
+	// testUser
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The IDs of the sessions within the account.
 	ThreadIdList []*int64 `json:"ThreadIdList,omitempty" xml:"ThreadIdList,omitempty" type:"Repeated"`
 	// The total number of sessions within the account.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The database accounts to which the sessions belong.
 	UserList []*string `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
@@ -17471,28 +23832,56 @@ func (s *GetMySQLAllSessionAsyncResponse) SetBody(v *GetMySQLAllSessionAsyncResp
 
 type GetPartitionsHeatmapRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// pxc-hzrciqy62c****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time range to be queried. Valid values:
 	//
-	// *   **LAST_ONE_HOURS**: the last hour.
-	// *   **LAST_SIX_HOURS**: the last six hours.
-	// *   **LAST_ONE_DAYS**: the last day.
-	// *   **LAST_THREE_DAYS**: the last three days.
-	// *   **LAST_SEVEN_DAYS**: the last seven days.
+	// 	- **LAST_ONE_HOURS**: the last hour.
+	//
+	// 	- **LAST_SIX_HOURS**: the last six hours.
+	//
+	// 	- **LAST_ONE_DAYS**: the last day.
+	//
+	// 	- **LAST_THREE_DAYS**: the last three days.
+	//
+	// 	- **LAST_SEVEN_DAYS**: the last seven days.
+	//
+	// example:
+	//
+	// LAST_SIX_HOURS
 	TimeRange *string `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
 	// The type of the data to be queried. Valid values:
 	//
-	// *   **READ_ROWS**: the read rows.
-	// *   **WRITTEN_ROWS**: the written rows.
-	// *   **READ_WRITTEN_ROWS**: the read and written rows.
-	// *   **UPDATE_ROWS**: the updated rows.
-	// *   **INSERTED_ROWS**: the inserted rows.
-	// *   **DELETED_ROWS**: the deleted rows.
-	// *   **READ_ROWS_WITH_DN**: the read rows returned from a data node.
-	// *   **WRITTEN_ROWS_WITH_DN**: the written rows returned from a data node.
-	// *   **READ_WRITTEN_ROWS_WITH_DN**: the read and written rows returned from a data node.
+	// 	- **READ_ROWS**: the read rows.
+	//
+	// 	- **WRITTEN_ROWS**: the written rows.
+	//
+	// 	- **READ_WRITTEN_ROWS**: the read and written rows.
+	//
+	// 	- **UPDATE_ROWS**: the updated rows.
+	//
+	// 	- **INSERTED_ROWS**: the inserted rows.
+	//
+	// 	- **DELETED_ROWS**: the deleted rows.
+	//
+	// 	- **READ_ROWS_WITH_DN**: the read rows returned from a data node.
+	//
+	// 	- **WRITTEN_ROWS_WITH_DN**: the written rows returned from a data node.
+	//
+	// 	- **READ_WRITTEN_ROWS_WITH_DN**: the read and written rows returned from a data node.
+	//
+	// example:
+	//
+	// WRITTEN_ROWS_WITH_DN
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -17526,19 +23915,124 @@ func (s *GetPartitionsHeatmapRequest) SetType(v string) *GetPartitionsHeatmapReq
 
 type GetPartitionsHeatmapResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The hot data of the PolarDB-X 2.0 instance. The data is returned in JSON format.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "boundAxis": [
+	//
+	//         {
+	//
+	//             "bound": "A,B,C,D",
+	//
+	//             "labels": [
+	//
+	//                 "L1",
+	//
+	//                 "L2",
+	//
+	//                 "L3",
+	//
+	//                 "L4"
+	//
+	//             ],
+	//
+	//             "rows": 3171
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "bound": "A,B,C,D",
+	//
+	//             "labels": [
+	//
+	//                 "L1",
+	//
+	//                 "L2",
+	//
+	//                 "L3",
+	//
+	//                 "L4"
+	//
+	//             ],
+	//
+	//             "rows": 277128
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "dataMap": {
+	//
+	//         "READ_WRITTEN_ROWS": [
+	//
+	//             [
+	//
+	//                 0,
+	//
+	//                 0,
+	//
+	//                 0
+	//
+	//             ],
+	//
+	//             [
+	//
+	//                 0,
+	//
+	//                 0,
+	//
+	//                 0
+	//
+	//             ]
+	//
+	//         ]
+	//
+	//     },
+	//
+	//     "timeAxis": [
+	//
+	//         1671701056070,
+	//
+	//         1671701116551,
+	//
+	//         1671701177020
+	//
+	//     ]
+	//
+	// }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D00DB161-FEF6-5428-B37A-8D29A4C2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -17608,21 +24102,44 @@ type GetPfsMetricTrendsRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time. You can view the data of up to seven days in the previous 30 days.
+	//
+	// example:
+	//
+	// 1678432430967
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-m5ea73876ukci****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The metric whose trend you want to query. Valid values:
 	//
-	// *   **count**: the number of executions.
-	// *   **avgRt**: the average execution duration.
-	// *   **rtRate**: the execution duration percentage.
-	// *   **rowsExamined**: the total number of scanned rows.
+	// 	- **count**: the number of executions.
+	//
+	// 	- **avgRt**: the average execution duration.
+	//
+	// 	- **rtRate**: the execution duration percentage.
+	//
+	// 	- **rowsExamined**: the total number of scanned rows.
+	//
+	// example:
+	//
+	// Count
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
 	// The node ID.
 	//
 	// >  You must specify this parameter for an ApsaraDB RDS for MySQL cluster instance and a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1677461663092
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -17661,19 +24178,36 @@ func (s *GetPfsMetricTrendsRequest) SetStartTime(v int64) *GetPfsMetricTrendsReq
 
 type GetPfsMetricTrendsResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data map[string][]*DataValue `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// F4C27966-284E-51C4-9407-DB50CAB8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -17743,18 +24277,44 @@ type GetPfsSqlSampleRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time. You can view the data of up to seven days in the previous 30 days.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1678074351197
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The instance ID.
 	//
 	// >  Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  For ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters, you must specify the node ID.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The SQL ID.
+	//
+	// example:
+	//
+	// 651b56fe9418d48edb8fdf0980ec****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1676511134614
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -17793,19 +24353,36 @@ func (s *GetPfsSqlSampleRequest) SetStartTime(v int64) *GetPfsSqlSampleRequest {
 
 type GetPfsSqlSampleResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The SQL sample data.
 	Data []*GetPfsSqlSampleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9CB97BC4-6479-55D0-B9D0-EA925AFE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -17844,80 +24421,210 @@ func (s *GetPfsSqlSampleResponseBody) SetSuccess(v bool) *GetPfsSqlSampleRespons
 
 type GetPfsSqlSampleResponseBodyData struct {
 	// The number of internal on-disk temporary tables that were created when the SQL statement was executed.
+	//
+	// example:
+	//
+	// 0
 	CreateTmpDiskTables *int32 `json:"CreateTmpDiskTables,omitempty" xml:"CreateTmpDiskTables,omitempty"`
 	// The number of internal temporary tables that were created when the SQL statement was executed.
+	//
+	// example:
+	//
+	// 0
 	CreateTmpTables *int32 `json:"CreateTmpTables,omitempty" xml:"CreateTmpTables,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// testDB
 	Db *string `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The end ID of the event. By default, the value of this parameter is NULL when the event starts and is changed to the event ID when the event ends.
+	//
+	// example:
+	//
+	// 0
 	EndEventId *int32 `json:"EndEventId,omitempty" xml:"EndEventId,omitempty"`
 	// The number of errors returned for the SQL statement.
+	//
+	// example:
+	//
+	// 0
 	Errors *int32 `json:"Errors,omitempty" xml:"Errors,omitempty"`
 	// The event ID.
+	//
+	// example:
+	//
+	// 63735293
 	EventId *int32 `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// The name of the event.
+	//
+	// example:
+	//
+	// statement/sql/select
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The execution duration. Unit: millisecond.
+	//
+	// example:
+	//
+	// 0.199
 	Latency *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The lock wait duration. Unit: millisecond.
+	//
+	// example:
+	//
+	// 0.09
 	LockLatency *float64 `json:"LockLatency,omitempty" xml:"LockLatency,omitempty"`
 	// The ID of the logical database.
+	//
+	// example:
+	//
+	// xxxxx
 	LogicId *string `json:"LogicId,omitempty" xml:"LogicId,omitempty"`
 	// Indicates whether the server failed to find an index that can be used for the SQL statement. Valid values:
 	//
-	// *   **1**: yes.
-	// *   **0**: no.
+	// 	- **1**: yes.
+	//
+	// 	- **0**: no.
+	//
+	// example:
+	//
+	// 1
 	NoGoodIndexUsed *int32 `json:"NoGoodIndexUsed,omitempty" xml:"NoGoodIndexUsed,omitempty"`
 	// Indicates whether table scans were performed when indexes were not used. Valid values:
 	//
-	// *   **1**: yes.
-	// *   **0**: no.
+	// 	- **1**: yes.
+	//
+	// 	- **0**: no.
+	//
+	// example:
+	//
+	// 1
 	NoIndexUsed *int32 `json:"NoIndexUsed,omitempty" xml:"NoIndexUsed,omitempty"`
 	// The node ID.
 	//
 	// >  This parameter is returned only for ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The number of rows affected by the SQL statement.
+	//
+	// example:
+	//
+	// 0
 	RowsAffected *int32 `json:"RowsAffected,omitempty" xml:"RowsAffected,omitempty"`
 	// The number of rows scanned by the SQL statement.
+	//
+	// example:
+	//
+	// 2048576
 	RowsExamined *int32 `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty"`
 	// The number of rows returned by the SQL statement.
+	//
+	// example:
+	//
+	// 0
 	RowsSent *int32 `json:"RowsSent,omitempty" xml:"RowsSent,omitempty"`
 	// The number of joins that are used to perform table scans without using indexes.
 	//
 	// > : This parameter is used for the scenario in which indexes are not used in a union query. If the returned value is not 0, check the indexes of tables.
+	//
+	// example:
+	//
+	// 0
 	SelectFullJoin *int32 `json:"SelectFullJoin,omitempty" xml:"SelectFullJoin,omitempty"`
 	// The number of joins that used ranges on referenced tables.
+	//
+	// example:
+	//
+	// 0
 	SelectFullRangeJoin *int32 `json:"SelectFullRangeJoin,omitempty" xml:"SelectFullRangeJoin,omitempty"`
 	// The number of joins that used ranges on the first table.
+	//
+	// example:
+	//
+	// 0
 	SelectRange *int32 `json:"SelectRange,omitempty" xml:"SelectRange,omitempty"`
 	// The number of joins that did not have key values. The keys and values were checked for each row of data.
 	//
 	// > : This parameter is used for the scenario in which indexes are not used in a union query. If the returned value is not 0, check the indexes of tables.
+	//
+	// example:
+	//
+	// 0
 	SelectRangeCheck *int32 `json:"SelectRangeCheck,omitempty" xml:"SelectRangeCheck,omitempty"`
 	// The number of scans.
+	//
+	// example:
+	//
+	// 0
 	SelectScan *int32 `json:"SelectScan,omitempty" xml:"SelectScan,omitempty"`
 	// The number of merges that the sorting algorithm must perform.
+	//
+	// example:
+	//
+	// 0
 	SortMergePasses *int32 `json:"SortMergePasses,omitempty" xml:"SortMergePasses,omitempty"`
 	// The number of times the data was sorted by using ranges.
+	//
+	// example:
+	//
+	// 0
 	SortRange *int32 `json:"SortRange,omitempty" xml:"SortRange,omitempty"`
 	// The number of sorted rows.
+	//
+	// example:
+	//
+	// 0
 	SortRows *int32 `json:"SortRows,omitempty" xml:"SortRows,omitempty"`
 	// The number of sorts that were performed during table scans.
+	//
+	// example:
+	//
+	// 1
 	SortScan *int32 `json:"SortScan,omitempty" xml:"SortScan,omitempty"`
 	// The sample SQL statement.
+	//
+	// example:
+	//
+	// select 	- from xxxx where ****
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 	// The SQL statement ID.
+	//
+	// example:
+	//
+	// 651b56fe9418d48edb8fdf0980ec****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The thread ID.
+	//
+	// example:
+	//
+	// 81751940
 	ThreadId *int32 `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
 	// The time when the SQL statement was executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1660100753556
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 196278346919****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The number of warnings returned for the SQL statement.
+	//
+	// example:
+	//
+	// 0
 	Warnings *int32 `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
 }
 
@@ -18121,39 +24828,85 @@ func (s *GetPfsSqlSampleResponse) SetBody(v *GetPfsSqlSampleResponseBody) *GetPf
 type GetPfsSqlSummariesRequest struct {
 	// Specifies whether to sort the returned entries in ascending order. Default value: **false**. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Asc *bool `json:"Asc,omitempty" xml:"Asc,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time. You can view the data of up to seven days within the last month.
+	//
+	// example:
+	//
+	// 1679297005999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-uf61swc4cru0b****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The keywords of the SQL template. Separate multiple keywords with spaces.
+	//
+	// example:
+	//
+	// select update
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
 	// The node ID.
 	//
 	// >  This parameter must be specified if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// r-****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The field by which to sort the returned entries. Default value: **count**.
 	//
-	// *   **count**: the number of executions.
-	// *   **avgRt**: the average execution duration.
-	// *   **rtRate**: the execution duration percentage.
-	// *   **rowsExamined**: the total number of scanned rows.
-	// *   **avgRowsExamined**: the average number of scanned rows.
-	// *   **avgRowsReturned**: the average number of returned rows.
+	// 	- **count**: the number of executions.
+	//
+	// 	- **avgRt**: the average execution duration.
+	//
+	// 	- **rtRate**: the execution duration percentage.
+	//
+	// 	- **rowsExamined**: the total number of scanned rows.
+	//
+	// 	- **avgRowsExamined**: the average number of scanned rows.
+	//
+	// 	- **avgRowsReturned**: the average number of returned rows.
+	//
+	// example:
+	//
+	// count
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 10. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The SQL ID.
 	//
 	// >  If this parameter is specified, the full request statistics of the specified SQL query are collected. If this parameter is left empty, the full request statistics of the entire database instance are collected.
+	//
+	// example:
+	//
+	// 651b56fe9418d48edb8fdf0980ec****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1675833788056
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -18217,19 +24970,36 @@ func (s *GetPfsSqlSummariesRequest) SetStartTime(v int64) *GetPfsSqlSummariesReq
 
 type GetPfsSqlSummariesResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetPfsSqlSummariesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 54F3DBAE-9420-511A-9C29-265E8C04****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -18268,14 +25038,30 @@ func (s *GetPfsSqlSummariesResponseBody) SetSuccess(v bool) *GetPfsSqlSummariesR
 
 type GetPfsSqlSummariesResponseBodyData struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Extra interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The detailed information.
 	List []*GetPfsSqlSummariesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 264
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -18314,147 +25100,400 @@ func (s *GetPfsSqlSummariesResponseBodyData) SetTotal(v int64) *GetPfsSqlSummari
 
 type GetPfsSqlSummariesResponseBodyDataList struct {
 	// The average execution latency. Unit: millisecond.
+	//
+	// example:
+	//
+	// 0.1717
 	AvgLatency *float64 `json:"AvgLatency,omitempty" xml:"AvgLatency,omitempty"`
 	// The total number of executions.
+	//
+	// example:
+	//
+	// 100000
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The percentage of the number of executions.
+	//
+	// example:
+	//
+	// 0.0586
 	CountRate *float64 `json:"CountRate,omitempty" xml:"CountRate,omitempty"`
 	// The ratio of the CPU execution duration to the total execution duration of the SQL statement.
+	//
+	// example:
+	//
+	// 0
 	CpuRate *float64 `json:"CpuRate,omitempty" xml:"CpuRate,omitempty"`
 	// The CPU execution duration. Unit: millisecond.
+	//
+	// example:
+	//
+	// 0
 	CpuTime *float64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
 	// The data read duration. Unit: millisecond.
+	//
+	// example:
+	//
+	// 0
 	DataReadTime *float64 `json:"DataReadTime,omitempty" xml:"DataReadTime,omitempty"`
 	// The number of nodes from which data can be read.
+	//
+	// example:
+	//
+	// 0
 	DataReads *int32 `json:"DataReads,omitempty" xml:"DataReads,omitempty"`
 	// The data write duration. Unit: millisecond.
+	//
+	// example:
+	//
+	// 0
 	DataWriteTime *float64 `json:"DataWriteTime,omitempty" xml:"DataWriteTime,omitempty"`
 	// The number of nodes to which data can be written.
+	//
+	// example:
+	//
+	// 0
 	DataWrites *int32 `json:"DataWrites,omitempty" xml:"DataWrites,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// testDB
 	Db *string `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The execution duration. Unit: millisecond.
+	//
+	// example:
+	//
+	// 0
 	ElapsedTime *float64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
 	// The number of errors.
+	//
+	// example:
+	//
+	// 0
 	ErrCount *int64 `json:"ErrCount,omitempty" xml:"ErrCount,omitempty"`
 	// The time when the SQL statement was executed for the first time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1659308149000
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
 	// Indicates whether full table scan was enabled. Valid values:
 	//
-	// * **true**
-	// * **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	FullScan *bool `json:"FullScan,omitempty" xml:"FullScan,omitempty"`
 	// The primary key ID.
+	//
+	// example:
+	//
+	// 26186357
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time when the SQL statement was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1661306520000
 	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
 	// The average lock wait latency. Unit: millisecond.
+	//
+	// example:
+	//
+	// 0
 	LockLatencyAvg *float64 `json:"LockLatencyAvg,omitempty" xml:"LockLatencyAvg,omitempty"`
 	// The logical database ID.
+	//
+	// example:
+	//
+	// 58275984
 	LogicId *int64 `json:"LogicId,omitempty" xml:"LogicId,omitempty"`
 	// The number of logical nodes.
+	//
+	// example:
+	//
+	// 0
 	LogicReads *int64 `json:"LogicReads,omitempty" xml:"LogicReads,omitempty"`
 	// The maximum execution latency. Unit: millisecond.
+	//
+	// example:
+	//
+	// 36.233
 	MaxLatency *float64 `json:"MaxLatency,omitempty" xml:"MaxLatency,omitempty"`
 	// The number of mutex spins.
+	//
+	// example:
+	//
+	// 1
 	MutexSpins *int32 `json:"MutexSpins,omitempty" xml:"MutexSpins,omitempty"`
 	// The number of mutex waits.
+	//
+	// example:
+	//
+	// 1
 	MutexWaits *int32 `json:"MutexWaits,omitempty" xml:"MutexWaits,omitempty"`
 	// The node ID.
 	//
 	// > This parameter is returned only if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The number of physical asynchronous nodes.
+	//
+	// example:
+	//
+	// 0
 	PhysicalAsyncReads *int64 `json:"PhysicalAsyncReads,omitempty" xml:"PhysicalAsyncReads,omitempty"`
 	// The number of physical nodes.
+	//
+	// example:
+	//
+	// 0
 	PhysicalReads *int64 `json:"PhysicalReads,omitempty" xml:"PhysicalReads,omitempty"`
 	// The SQL template.
+	//
+	// example:
+	//
+	// select ?
 	Psql *string `json:"Psql,omitempty" xml:"Psql,omitempty"`
 	// The number of redo nodes.
+	//
+	// example:
+	//
+	// 0
 	RedoWrites *int64 `json:"RedoWrites,omitempty" xml:"RedoWrites,omitempty"`
 	// The number of rows that are affected by the SQL statement.
+	//
+	// example:
+	//
+	// 0
 	RowsAffected *int64 `json:"RowsAffected,omitempty" xml:"RowsAffected,omitempty"`
 	// The average number of rows affected by the SQL statement.
+	//
+	// example:
+	//
+	// 0
 	RowsAffectedAvg *float64 `json:"RowsAffectedAvg,omitempty" xml:"RowsAffectedAvg,omitempty"`
 	// The total number of scanned rows.
+	//
+	// example:
+	//
+	// 100
 	RowsExamined *int64 `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty"`
 	// The average number of scanned rows.
+	//
+	// example:
+	//
+	// 0
 	RowsExaminedAvg *float64 `json:"RowsExaminedAvg,omitempty" xml:"RowsExaminedAvg,omitempty"`
 	// The average number of returned rows.
+	//
+	// example:
+	//
+	// 0
 	RowsSendAvg *float64 `json:"RowsSendAvg,omitempty" xml:"RowsSendAvg,omitempty"`
 	// The number of rows returned by the SQL statement.
+	//
+	// example:
+	//
+	// 0
 	RowsSent *int64 `json:"RowsSent,omitempty" xml:"RowsSent,omitempty"`
 	// The average number of rows returned for the SQL statement.
+	//
+	// example:
+	//
+	// 0.52
 	RowsSentAvg *float64 `json:"RowsSentAvg,omitempty" xml:"RowsSentAvg,omitempty"`
 	// The number of sorted rows.
+	//
+	// example:
+	//
+	// 0
 	RowsSorted *int64 `json:"RowsSorted,omitempty" xml:"RowsSorted,omitempty"`
 	// The execution duration percentage.
+	//
+	// example:
+	//
+	// 0.1384
 	RtRate *float64 `json:"RtRate,omitempty" xml:"RtRate,omitempty"`
 	// Indicates whether read/write splitting was enabled. Valid values:
 	//
-	// * **0:** Read/write splitting was disabled.
-	// * **1:** Read/write splitting was enabled.
+	// 	- **0:*	- Read/write splitting was disabled.
+	//
+	// 	- **1:*	- Read/write splitting was enabled.
+	//
+	// example:
+	//
+	// 0
 	RwlockOsWaits *int32 `json:"RwlockOsWaits,omitempty" xml:"RwlockOsWaits,omitempty"`
 	// The read/write splitting parameters.
+	//
+	// example:
+	//
+	// 0
 	RwlockSpinRounds *int32 `json:"RwlockSpinRounds,omitempty" xml:"RwlockSpinRounds,omitempty"`
 	// Indices whether multi-index scanning was enabled. Valid values:
 	//
-	// * **0:** Multi-index scanning was disabled.
-	// * **1:** Multi-index scanning was enabled.
+	// 	- **0:*	- Multi-index scanning was disabled.
+	//
+	// 	- **1:*	- Multi-index scanning was enabled.
+	//
+	// example:
+	//
+	// 0
 	RwlockSpinWaits *int32 `json:"RwlockSpinWaits,omitempty" xml:"RwlockSpinWaits,omitempty"`
 	// The average number of joins that performed table scans without using indexes.
 	//
 	// > If the value of this parameter is not 0, check the table indexes.
+	//
+	// example:
+	//
+	// 0
 	SelectFullJoinAvg *float64 `json:"SelectFullJoinAvg,omitempty" xml:"SelectFullJoinAvg,omitempty"`
 	// The average number of joins that selected a range.
+	//
+	// example:
+	//
+	// 0
 	SelectFullRangeJoinAvg *float64 `json:"SelectFullRangeJoinAvg,omitempty" xml:"SelectFullRangeJoinAvg,omitempty"`
 	// The average selected range.
+	//
+	// example:
+	//
+	// 0
 	SelectRangeAvg *float64 `json:"SelectRangeAvg,omitempty" xml:"SelectRangeAvg,omitempty"`
 	// The average number of scanned rows.
+	//
+	// example:
+	//
+	// 0
 	SelectScanAvg *float64 `json:"SelectScanAvg,omitempty" xml:"SelectScanAvg,omitempty"`
 	// The semi-synchronous replication latency. Unit: millisecond.
+	//
+	// example:
+	//
+	// 0.12
 	SemisyncDelayTime *float64 `json:"SemisyncDelayTime,omitempty" xml:"SemisyncDelayTime,omitempty"`
 	// The amount of time consumed for locking the server. Unit: millisecond.
+	//
+	// example:
+	//
+	// 0
 	ServerLockTime *float64 `json:"ServerLockTime,omitempty" xml:"ServerLockTime,omitempty"`
 	// The number of merges that the sorting algorithm must perform.
+	//
+	// example:
+	//
+	// 0
 	SortMergePasses *int64 `json:"SortMergePasses,omitempty" xml:"SortMergePasses,omitempty"`
 	// The average number of sorts that were performed by using a range.
+	//
+	// example:
+	//
+	// 0
 	SortRangeAvg *float64 `json:"SortRangeAvg,omitempty" xml:"SortRangeAvg,omitempty"`
 	// The average number of sorted rows.
+	//
+	// example:
+	//
+	// 0
 	SortRowsAvg *float64 `json:"SortRowsAvg,omitempty" xml:"SortRowsAvg,omitempty"`
 	// The average number of sorts that were performed during table scans.
+	//
+	// example:
+	//
+	// 0
 	SortScanAvg *float64 `json:"SortScanAvg,omitempty" xml:"SortScanAvg,omitempty"`
 	// The SQL template ID.
+	//
+	// example:
+	//
+	// 2e8147b5ca2dfc640dfd5e43d96a****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The type of the SQL statement. Valid values:
 	//
-	// * **SELECT**
-	// * **UPDATE**
-	// * **DELETE**
+	// 	- **SELECT**
+	//
+	// 	- **UPDATE**
+	//
+	// 	- **DELETE**
+	//
+	// example:
+	//
+	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	// The names of tables in the database.
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	TimerWaitAvg *float64 `json:"TimerWaitAvg,omitempty" xml:"TimerWaitAvg,omitempty"`
 	// The data timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1643040000000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The number of on-disk temporary tables.
+	//
+	// example:
+	//
+	// 0
 	TmpDiskTables *int64 `json:"TmpDiskTables,omitempty" xml:"TmpDiskTables,omitempty"`
 	// The average number of on-disk temporary tables.
+	//
+	// example:
+	//
+	// 0
 	TmpDiskTablesAvg *float64 `json:"TmpDiskTablesAvg,omitempty" xml:"TmpDiskTablesAvg,omitempty"`
 	// The number of temporary tables.
+	//
+	// example:
+	//
+	// 0
 	TmpTables *int64 `json:"TmpTables,omitempty" xml:"TmpTables,omitempty"`
 	// The average number of temporary tables.
+	//
+	// example:
+	//
+	// 0
 	TmpTablesAvg *float64 `json:"TmpTablesAvg,omitempty" xml:"TmpTablesAvg,omitempty"`
 	// The execution latency. Unit: millisecond.
+	//
+	// example:
+	//
+	// 60913.256
 	TotalLatency *float64 `json:"TotalLatency,omitempty" xml:"TotalLatency,omitempty"`
 	// The amount of time consumed for locking the storage transaction. Unit: millisecond.
+	//
+	// example:
+	//
+	// 0
 	TransactionLockTime *float64 `json:"TransactionLockTime,omitempty" xml:"TransactionLockTime,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 196278346919****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The number of warnings.
+	//
+	// example:
+	//
+	// 0
 	WarnCount *int64 `json:"WarnCount,omitempty" xml:"WarnCount,omitempty"`
 }
 
@@ -18813,66 +25852,149 @@ func (s *GetPfsSqlSummariesResponse) SetBody(v *GetPfsSqlSummariesResponseBody) 
 type GetQueryOptimizeDataStatsRequest struct {
 	// Specifies whether to sort the returned entries in ascending order. Default value: **true**. Valid values:
 	//
-	// *   **true**: sorts the returned entries in ascending order.
-	// *   **false**: does not sort the returned entries in ascending order.
+	// 	- **true**: sorts the returned entries in ascending order.
+	//
+	// 	- **false**: does not sort the returned entries in ascending order.
+	//
+	// example:
+	//
+	// true
 	Asc *string `json:"Asc,omitempty" xml:"Asc,omitempty"`
 	// The name of the database to be queried.
+	//
+	// example:
+	//
+	// testdb01
 	DbNames *string `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PolarDBMySQL**
-	// *   **PostgreSQL**
+	// 	- **MySQL**
+	//
+	// 	- **PolarDBMySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The instance IDs. Separate multiple IDs with commas (,).
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The keywords of the SQL template. Separate multiple keywords with spaces.
+	//
+	// example:
+	//
+	// select update
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
 	// The logical relationship between multiple keywords. Valid values:
 	//
-	// *   **or**
-	// *   **and**
+	// 	- **or**
+	//
+	// 	- **and**
+	//
+	// example:
+	//
+	// or
 	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
 	// Specifies whether to query only SQL templates that need to be optimized. Default value: **false**. Valid values:
 	//
-	// *   **true**: queries only SQL templates that need to be optimized.
-	// *   **false**: does not query only SQL statements that need to be optimized.
+	// 	- **true**: queries only SQL templates that need to be optimized.
+	//
+	// 	- **false**: does not query only SQL statements that need to be optimized.
+	//
+	// example:
+	//
+	// false
 	OnlyOptimizedSql *string `json:"OnlyOptimizedSql,omitempty" xml:"OnlyOptimizedSql,omitempty"`
 	// The field by which to sort the returned entries. Default value: **count**. Valid values:
 	//
-	// *   **count**: the number of executions.
-	// *   **maxQueryTime**: the longest execution time.
-	// *   **avgQueryTime**: the average execution time.
-	// *   **maxLockTime**: the longest lock wait time.
-	// *   **avgLockTime**: the longest lock wait time.
-	// *   **maxRowsExamined**: the largest number of scanned rows.
-	// *   **avgRowsExamined**: the average number of scanned rows.
-	// *   **maxRowsSent**: the largest number of returned rows.
-	// *   **avgRowsSent**: the average number of returned rows.
+	// 	- **count**: the number of executions.
+	//
+	// 	- **maxQueryTime**: the longest execution time.
+	//
+	// 	- **avgQueryTime**: the average execution time.
+	//
+	// 	- **maxLockTime**: the longest lock wait time.
+	//
+	// 	- **avgLockTime**: the longest lock wait time.
+	//
+	// 	- **maxRowsExamined**: the largest number of scanned rows.
+	//
+	// 	- **avgRowsExamined**: the average number of scanned rows.
+	//
+	// 	- **maxRowsSent**: the largest number of returned rows.
+	//
+	// 	- **avgRowsSent**: the average number of returned rows.
+	//
+	// example:
+	//
+	// count
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the instance resides. Valid values:
 	//
-	// *   **cn-china**: Chinese mainland
-	// *   **cn-hongkong**: China (Hong Kong)
-	// *   **ap-southeast-1**: Singapore
+	// 	- **cn-china**: Chinese mainland
 	//
-	// This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.****
+	// 	- **cn-hongkong**: China (Hong Kong)
 	//
-	// >  Set this parameter to **cn-china** for the instances that are created in the regions in the Chinese mainland.
+	// 	- **ap-southeast-1**: Singapore
+	//
+	// This parameter takes effect only if **InstanceIds*	- is left empty. If you leave **InstanceIds*	- empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region*	- does not take effect and the system obtains data from the region in which the first specified instance resides.****
+	//
+	// >  Set this parameter to **cn-china*	- for the instances that are created in the regions in the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-china
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The tags that are used to filter SQL templates. Separate multiple tags with commas (,). For more information, see [Query governance](~~290038~~).
+	// The tags that are used to filter SQL templates. Separate multiple tags with commas (,). For more information, see [Query governance](https://help.aliyun.com/document_detail/290038.html).
+	//
+	// example:
+	//
+	// DAS_NOT_IMPORTANT
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The SQL template ID. You can query the ID of a template by calling the [GetQueryOptimizeExecErrorStats](~~405235~~) operation.
+	// The SQL template ID. You can query the ID of a template by calling the [GetQueryOptimizeExecErrorStats](https://help.aliyun.com/document_detail/405235.html) operation.
+	//
+	// example:
+	//
+	// 2e8147b5ca2dfc640dfd5e43d96a****
 	SqlIds *string `json:"SqlIds,omitempty" xml:"SqlIds,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	TagNames *string `json:"TagNames,omitempty" xml:"TagNames,omitempty"`
 	// The time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1642953600000
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The account of the database to be queried.
+	//
+	// example:
+	//
+	// testUser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -18966,17 +26088,34 @@ func (s *GetQueryOptimizeDataStatsRequest) SetUser(v string) *GetQueryOptimizeDa
 
 type GetQueryOptimizeDataStatsResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetQueryOptimizeDataStatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19015,14 +26154,30 @@ func (s *GetQueryOptimizeDataStatsResponseBody) SetSuccess(v string) *GetQueryOp
 
 type GetQueryOptimizeDataStatsResponseBodyData struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The information about the SQL templates.
 	List []*GetQueryOptimizeDataStatsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -19061,46 +26216,118 @@ func (s *GetQueryOptimizeDataStatsResponseBodyData) SetTotal(v int64) *GetQueryO
 
 type GetQueryOptimizeDataStatsResponseBodyDataList struct {
 	// The average lock wait time. Unit: seconds.
+	//
+	// example:
+	//
+	// 0.1
 	AvgLockTime *float64 `json:"AvgLockTime,omitempty" xml:"AvgLockTime,omitempty"`
 	// The average query execution time. Unit: seconds.
+	//
+	// example:
+	//
+	// 1.1
 	AvgQueryTime *float64 `json:"AvgQueryTime,omitempty" xml:"AvgQueryTime,omitempty"`
 	// The average number of rows affected by the SQL statement.
 	//
 	// > A value of -1 indicates that this parameter is not collected.
+	//
+	// example:
+	//
+	// 100.1
 	AvgRowsAffected *float64 `json:"AvgRowsAffected,omitempty" xml:"AvgRowsAffected,omitempty"`
 	// The average number of scanned rows.
+	//
+	// example:
+	//
+	// 100.1
 	AvgRowsExamined *float64 `json:"AvgRowsExamined,omitempty" xml:"AvgRowsExamined,omitempty"`
 	// The average number of returned rows.
+	//
+	// example:
+	//
+	// 100.1
 	AvgRowsSent *float64 `json:"AvgRowsSent,omitempty" xml:"AvgRowsSent,omitempty"`
 	// The number of times that the SQL template is executed.
+	//
+	// example:
+	//
+	// 100
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The name of the database to which the SQL template belongs.
+	//
+	// example:
+	//
+	// testdb01
 	Dbname *string `json:"Dbname,omitempty" xml:"Dbname,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The longest lock wait time. Unit: seconds.
+	//
+	// example:
+	//
+	// 0.1
 	MaxLockTime *float64 `json:"MaxLockTime,omitempty" xml:"MaxLockTime,omitempty"`
 	// The longest query execution time. Unit: seconds.
+	//
+	// example:
+	//
+	// 1.1
 	MaxQueryTime *float64 `json:"MaxQueryTime,omitempty" xml:"MaxQueryTime,omitempty"`
 	// The largest number of rows affected by the SQL template.
 	//
 	// > A value of -1 indicates that this parameter is not collected.
+	//
+	// example:
+	//
+	// 10000
 	MaxRowsAffected *int64 `json:"MaxRowsAffected,omitempty" xml:"MaxRowsAffected,omitempty"`
 	// The largest number of scanned rows.
+	//
+	// example:
+	//
+	// 100000
 	MaxRowsExamined *int64 `json:"MaxRowsExamined,omitempty" xml:"MaxRowsExamined,omitempty"`
 	// The largest number of returned rows.
+	//
+	// example:
+	//
+	// 10000
 	MaxRowsSent *int64 `json:"MaxRowsSent,omitempty" xml:"MaxRowsSent,omitempty"`
 	// The SQL template.
+	//
+	// example:
+	//
+	// select 1
 	Psql *string `json:"Psql,omitempty" xml:"Psql,omitempty"`
 	// The information about the rules.
 	RuleList []*GetQueryOptimizeDataStatsResponseBodyDataListRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 	// The SQL template ID.
+	//
+	// example:
+	//
+	// 2e8147b5ca2dfc640dfd5e43d96a****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The sample query that took the longest time to execute.
+	//
+	// example:
+	//
+	// select 2
 	SqlSample *string `json:"SqlSample,omitempty" xml:"SqlSample,omitempty"`
 	// The type of the SQL statement.
+	//
+	// example:
+	//
+	// INSERT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	// The account of the database.
+	//
+	// example:
+	//
+	// testUser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -19209,11 +26436,20 @@ func (s *GetQueryOptimizeDataStatsResponseBodyDataList) SetUser(v string) *GetQu
 
 type GetQueryOptimizeDataStatsResponseBodyDataListRuleList struct {
 	// The rule name.
+	//
+	// example:
+	//
+	// DAS_NOT_IMPORTANT
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// * **Predefined**
-	// * **UserDefined**
+	// 	- **Predefined**
+	//
+	// 	- **UserDefined**
+	//
+	// example:
+	//
+	// Predefined
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -19267,30 +26503,65 @@ func (s *GetQueryOptimizeDataStatsResponse) SetBody(v *GetQueryOptimizeDataStats
 type GetQueryOptimizeDataTopRequest struct {
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PolarDBMySQL**
-	// *   **PostgreSQL**
+	// 	- **MySQL**
+	//
+	// 	- **PolarDBMySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The instance IDs. Separate multiple IDs with commas (,).
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The region in which the instance resides. Valid values:
 	//
-	// *   **cn-china**: Chinese mainland
-	// *   **cn-hongkong**: China (Hong Kong)
-	// *   **ap-southeast-1**: Singapore
+	// 	- **cn-china**: Chinese mainland
 	//
-	// This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.****
+	// 	- **cn-hongkong**: China (Hong Kong)
 	//
-	// >  Set this parameter to **cn-china** for all your instances that reside in the regions in the Chinese mainland.
+	// 	- **ap-southeast-1**: Singapore
+	//
+	// This parameter takes effect only if **InstanceIds*	- is left empty. If you leave **InstanceIds*	- empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region*	- does not take effect and the system obtains data from the region in which the first specified instance resides.****
+	//
+	// >  Set this parameter to **cn-china*	- for all your instances that reside in the regions in the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-china
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	TagNames *string `json:"TagNames,omitempty" xml:"TagNames,omitempty"`
 	// The time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1642953600000
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The type of instances that you want to query. Valid values:
 	//
-	// *   **RED**: the best-performing instances
-	// *   **BLACK**: the worst-performing instances
+	// 	- **RED**: the best-performing instances
+	//
+	// 	- **BLACK**: the worst-performing instances
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RED
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -19334,17 +26605,34 @@ func (s *GetQueryOptimizeDataTopRequest) SetType(v string) *GetQueryOptimizeData
 
 type GetQueryOptimizeDataTopResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information.
 	Data *GetQueryOptimizeDataTopResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19383,14 +26671,30 @@ func (s *GetQueryOptimizeDataTopResponseBody) SetSuccess(v string) *GetQueryOpti
 
 type GetQueryOptimizeDataTopResponseBodyData struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The information about the instances.
 	List []*GetQueryOptimizeDataTopResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -19429,13 +26733,26 @@ func (s *GetQueryOptimizeDataTopResponseBodyData) SetTotal(v int64) *GetQueryOpt
 
 type GetQueryOptimizeDataTopResponseBodyDataList struct {
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The metric name. Valid values:
 	//
-	// * **sqlExecuteCount**: the number of slow SQL executions.
-	// * **optimizedSqlExecuteCount**: the number of slow SQL executions that need to be optimized.
+	// 	- **sqlExecuteCount**: the number of slow SQL executions.
+	//
+	// 	- **optimizedSqlExecuteCount**: the number of slow SQL executions that need to be optimized.
+	//
+	// example:
+	//
+	// sqlExecuteCount
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The metric value.
+	//
+	// example:
+	//
+	// 100
 	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19495,30 +26812,64 @@ type GetQueryOptimizeDataTrendRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The end time must be later than the start time, but not later than 00:00:00 (UTC+8) on the current day.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1643040000000
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PolarDBMySQL**
-	// *   **PostgreSQL**
+	// 	- **MySQL**
+	//
+	// 	- **PolarDBMySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The instance IDs. Separate multiple IDs with commas (,).
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The region in which the instance resides. Valid values:
 	//
-	// *   **cn-china**: Chinese mainland.
-	// *   **cn-hongkong**: China (Hong Kong).
-	// *   **ap-southeast-1**: Singapore.
+	// 	- **cn-china**: Chinese mainland.
 	//
-	// This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region specified by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.****
+	// 	- **cn-hongkong**: China (Hong Kong).
+	//
+	// 	- **ap-southeast-1**: Singapore.
+	//
+	// This parameter takes effect only if **InstanceIds*	- is left empty. If you leave **InstanceIds*	- empty, the system obtains data from the region specified by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region*	- does not take effect and the system obtains data from the region in which the first specified instance resides.****
 	//
 	// >  If your instances reside in the regions inside the Chinese mainland, set this parameter to **cn-china**.
+	//
+	// example:
+	//
+	// cn-china
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  You can specify a start time up to two months earlier than the current time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1642435200000
 	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	TagNames *string `json:"TagNames,omitempty" xml:"TagNames,omitempty"`
 }
 
@@ -19562,17 +26913,34 @@ func (s *GetQueryOptimizeDataTrendRequest) SetTagNames(v string) *GetQueryOptimi
 
 type GetQueryOptimizeDataTrendResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information.
 	Data *GetQueryOptimizeDataTrendResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19611,14 +26979,30 @@ func (s *GetQueryOptimizeDataTrendResponseBody) SetSuccess(v string) *GetQueryOp
 
 type GetQueryOptimizeDataTrendResponseBodyData struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The details of the trend data.
 	List []*GetQueryOptimizeDataTrendResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -19658,18 +27042,37 @@ func (s *GetQueryOptimizeDataTrendResponseBodyData) SetTotal(v int64) *GetQueryO
 type GetQueryOptimizeDataTrendResponseBodyDataList struct {
 	// The name of the metric. Valid values:
 	//
-	// * **sqlExecuteCount**: the number of executions of slow SQL queries.
-	// * **sqlExecuteCountDiff**: the difference in the number of executions of slow SQL queries compared to the previous day.
-	// * **sqlCount**: the number of slow SQL templates.
-	// * **sqlCountDiff**: the difference in the number of slow SQL templates compared to the previous day.
-	// * **optimizedSqlExecuteCount**: the number of optimizable executions of slow SQL queries.
-	// * **optimizedSqlExecuteCountDiff**: the difference in the number of optimizable executions of slow SQL queries compared to the previous day.
-	// * **optimizedSqlCount**: the number of optimizable slow SQL templates.
-	// * **optimizedSqlCountDiff**: the difference in the number of optimizable slow SQL templates compared to the previous day.
+	// 	- **sqlExecuteCount**: the number of executions of slow SQL queries.
+	//
+	// 	- **sqlExecuteCountDiff**: the difference in the number of executions of slow SQL queries compared to the previous day.
+	//
+	// 	- **sqlCount**: the number of slow SQL templates.
+	//
+	// 	- **sqlCountDiff**: the difference in the number of slow SQL templates compared to the previous day.
+	//
+	// 	- **optimizedSqlExecuteCount**: the number of optimizable executions of slow SQL queries.
+	//
+	// 	- **optimizedSqlExecuteCountDiff**: the difference in the number of optimizable executions of slow SQL queries compared to the previous day.
+	//
+	// 	- **optimizedSqlCount**: the number of optimizable slow SQL templates.
+	//
+	// 	- **optimizedSqlCountDiff**: the difference in the number of optimizable slow SQL templates compared to the previous day.
+	//
+	// example:
+	//
+	// sqlExecuteCount
 	Kpi *string `json:"Kpi,omitempty" xml:"Kpi,omitempty"`
 	// The data timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1643040000000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The value of the metric.
+	//
+	// example:
+	//
+	// 1000
 	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19728,15 +27131,41 @@ func (s *GetQueryOptimizeDataTrendResponse) SetBody(v *GetQueryOptimizeDataTrend
 type GetQueryOptimizeExecErrorSampleRequest struct {
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PolarDBMySQL**
-	// *   **PostgreSQL**
+	// 	- **MySQL**
+	//
+	// 	- **PolarDBMySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The SQL template ID. You can call the [GetQueryOptimizeExecErrorStats](~~405235~~) operation to obtain the SQL template ID.
+	// The SQL template ID. You can call the [GetQueryOptimizeExecErrorStats](https://help.aliyun.com/document_detail/405235.html) operation to obtain the SQL template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2e8147b5ca2dfc640dfd5e43d96a****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The date to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1642953600000
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
@@ -19770,17 +27199,34 @@ func (s *GetQueryOptimizeExecErrorSampleRequest) SetTime(v string) *GetQueryOpti
 
 type GetQueryOptimizeExecErrorSampleResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information.
 	Data *GetQueryOptimizeExecErrorSampleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19819,14 +27265,30 @@ func (s *GetQueryOptimizeExecErrorSampleResponseBody) SetSuccess(v string) *GetQ
 
 type GetQueryOptimizeExecErrorSampleResponseBodyData struct {
 	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The queried data.
 	List []*GetQueryOptimizeExecErrorSampleResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -19865,18 +27327,46 @@ func (s *GetQueryOptimizeExecErrorSampleResponseBodyData) SetTotal(v int64) *Get
 
 type GetQueryOptimizeExecErrorSampleResponseBodyDataList struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// testdb01
 	Dbname *string `json:"Dbname,omitempty" xml:"Dbname,omitempty"`
 	// The error code returned.
+	//
+	// example:
+	//
+	// 1146
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The IP address of the client that executes the SQL statement.
+	//
+	// example:
+	//
+	// 100.104.XX.XX
 	OrigHost *string `json:"OrigHost,omitempty" xml:"OrigHost,omitempty"`
 	// The SQL template ID.
+	//
+	// example:
+	//
+	// 2e8147b5ca2dfc640dfd5e43d96a****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The content of the SQL statement that failed to be executed.
+	//
+	// example:
+	//
+	// select 	- from test1
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
 	// The point in time when the failed SQL statement was executed. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1643020306739
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The username of the client that executes the SQL statement.
+	//
+	// example:
+	//
+	// test01
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -19955,43 +27445,101 @@ func (s *GetQueryOptimizeExecErrorSampleResponse) SetBody(v *GetQueryOptimizeExe
 type GetQueryOptimizeExecErrorStatsRequest struct {
 	// Specifies whether to sort the returned entries in ascending order. Default value: **true**. Valid values:
 	//
-	// *   **true**: sorts the returned entries in ascending order.
-	// *   **false**: does not sort the returned entries in ascending order.
+	// 	- **true**: sorts the returned entries in ascending order.
+	//
+	// 	- **false**: does not sort the returned entries in ascending order.
+	//
+	// example:
+	//
+	// true
 	Asc *string `json:"Asc,omitempty" xml:"Asc,omitempty"`
 	// The name of the database to be queried.
+	//
+	// example:
+	//
+	// testdb01
 	DbNames *string `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PolarDBMySQL**
-	// *   **PostgreSQL**
+	// 	- **MySQL**
+	//
+	// 	- **PolarDBMySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The instance IDs. Separate multiple IDs with commas (,).
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The keywords of the SQL template. Separate multiple keywords with spaces.
+	//
+	// example:
+	//
+	// select update
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
 	// The logical relationship between multiple keywords. Valid values:
 	//
-	// *   **or**
-	// *   **and**
+	// 	- **or**
+	//
+	// 	- **and**
+	//
+	// example:
+	//
+	// or
 	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
 	// The field by which to sort the returned entries. Only error_count is supported, which specifies that the entries are sorted based on the number of failed executions.
+	//
+	// example:
+	//
+	// error_count
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 10.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the instance resides. Valid values:
 	//
-	// *   **cn-china**: Chinese mainland
-	// *   **cn-hongkong**: China (Hong Kong)
-	// *   **ap-southeast-1**: Singapore
+	// 	- **cn-china**: Chinese mainland
 	//
-	// This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.****
+	// 	- **cn-hongkong**: China (Hong Kong)
 	//
-	// >  Set this parameter to **cn-china** for the instances that are created in the regions in the Chinese mainland.
+	// 	- **ap-southeast-1**: Singapore
+	//
+	// This parameter takes effect only if **InstanceIds*	- is left empty. If you leave **InstanceIds*	- empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region*	- does not take effect and the system obtains data from the region in which the first specified instance resides.****
+	//
+	// >  Set this parameter to **cn-china*	- for the instances that are created in the regions in the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-china
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1642953600000
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
@@ -20060,17 +27608,34 @@ func (s *GetQueryOptimizeExecErrorStatsRequest) SetTime(v string) *GetQueryOptim
 
 type GetQueryOptimizeExecErrorStatsResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information, including the error codes and the number of entries that are returned.
 	Data *GetQueryOptimizeExecErrorStatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20109,14 +27674,30 @@ func (s *GetQueryOptimizeExecErrorStatsResponseBody) SetSuccess(v string) *GetQu
 
 type GetQueryOptimizeExecErrorStatsResponseBodyData struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The information about the SQL templates that failed to execute.
 	List []*GetQueryOptimizeExecErrorStatsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 19
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -20155,18 +27736,46 @@ func (s *GetQueryOptimizeExecErrorStatsResponseBodyData) SetTotal(v int64) *GetQ
 
 type GetQueryOptimizeExecErrorStatsResponseBodyDataList struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// testdb01
 	Dbname *string `json:"Dbname,omitempty" xml:"Dbname,omitempty"`
 	// The error code returned if the request failed.
+	//
+	// example:
+	//
+	// 1146
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The number of errors.
+	//
+	// example:
+	//
+	// 10
 	ErrorCount *int64 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The alias of the database instance.
+	//
+	// example:
+	//
+	// test01
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The SQL template ID.
+	//
+	// example:
+	//
+	// 2e8147b5ca2dfc640dfd5e43d96a****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The content of the SQL template.
+	//
+	// example:
+	//
+	// select 	- from test1
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
 }
 
@@ -20245,23 +27854,45 @@ func (s *GetQueryOptimizeExecErrorStatsResponse) SetBody(v *GetQueryOptimizeExec
 type GetQueryOptimizeRuleListRequest struct {
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PolarDBMySQL**
-	// *   **PostgreSQL**
+	// 	- **MySQL**
+	//
+	// 	- **PolarDBMySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The instance IDs. Separate multiple IDs with commas (,).
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The region in which the instance resides. Valid values:
 	//
-	// *   **cn-china**: Chinese mainland
-	// *   **cn-hongkong**: China (Hong Kong)
-	// *   **ap-southeast-1**: Singapore
+	// 	- **cn-china**: Chinese mainland
 	//
-	// This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.****
+	// 	- **cn-hongkong**: China (Hong Kong)
+	//
+	// 	- **ap-southeast-1**: Singapore
+	//
+	// This parameter takes effect only if **InstanceIds*	- is left empty. If you leave **InstanceIds*	- empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region*	- does not take effect and the system obtains data from the region in which the first specified instance resides.****
 	//
 	// >  If your instances reside in the regions in the Chinese mainland, set this parameter to **cn-china**.
+	//
+	// example:
+	//
+	// cn-china
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
 	TagNames *string `json:"TagNames,omitempty" xml:"TagNames,omitempty"`
 }
 
@@ -20295,17 +27926,34 @@ func (s *GetQueryOptimizeRuleListRequest) SetTagNames(v string) *GetQueryOptimiz
 
 type GetQueryOptimizeRuleListResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information.
 	Data *GetQueryOptimizeRuleListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20344,14 +27992,30 @@ func (s *GetQueryOptimizeRuleListResponseBody) SetSuccess(v string) *GetQueryOpt
 
 type GetQueryOptimizeRuleListResponseBodyData struct {
 	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The information about tags.
 	List []*GetQueryOptimizeRuleListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -20390,10 +28054,22 @@ func (s *GetQueryOptimizeRuleListResponseBodyData) SetTotal(v int64) *GetQueryOp
 
 type GetQueryOptimizeRuleListResponseBodyDataList struct {
 	// The name of the tag.
+	//
+	// example:
+	//
+	// LARGE_ROWS_EXAMINED
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The type of the tag. **Predefined** is returned, which indicates that the tag is added by the system.
+	// The type of the tag. **Predefined*	- is returned, which indicates that the tag is added by the system.
+	//
+	// example:
+	//
+	// Predefined
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -20452,66 +28128,149 @@ func (s *GetQueryOptimizeRuleListResponse) SetBody(v *GetQueryOptimizeRuleListRe
 type GetQueryOptimizeShareUrlRequest struct {
 	// Specifies whether to sort the returned entries in ascending order. Default value: **true**. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Asc *bool `json:"Asc,omitempty" xml:"Asc,omitempty"`
 	// The name of the database to be queried.
+	//
+	// example:
+	//
+	// testdb01
 	DbNames *string `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**: ApsaraDB RDS for MySQL
-	// *   **PolarDBMySQL**: PolarDB for MySQL
-	// *   **PostgreSQL**: ApsaraDB RDS for PostgreSQL
+	// 	- **MySQL**: ApsaraDB RDS for MySQL
+	//
+	// 	- **PolarDBMySQL**: PolarDB for MySQL
+	//
+	// 	- **PostgreSQL**: ApsaraDB RDS for PostgreSQL
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The instance IDs. Separate multiple IDs with commas (,).
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The keywords of the SQL template. Separate multiple keywords with spaces.
+	//
+	// example:
+	//
+	// select update
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
 	// The logical relationship between multiple keywords. Valid values:
 	//
-	// *   **or**
-	// *   **and**
+	// 	- **or**
+	//
+	// 	- **and**
+	//
+	// example:
+	//
+	// or
 	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
 	// Specifies whether to query only SQL templates that need to be optimized. Default value: **false**. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	OnlyOptimizedSql *bool `json:"OnlyOptimizedSql,omitempty" xml:"OnlyOptimizedSql,omitempty"`
 	// The field by which to sort the returned entries. Default value: **count**. Valid values:
 	//
-	// *   **count**: the number of executions.
-	// *   **maxQueryTime**: the longest execution duration.
-	// *   **avgQueryTime**: the average execution duration.
-	// *   **maxLockTime**: the longest lock wait duration.
-	// *   **avgLockTime**: the average lock wait duration.
-	// *   **maxRowsExamined**: the largest number of scanned rows.
-	// *   **avgRowsExamined**: the average number of scanned rows.
-	// *   **maxRowsSent**: the largest number of returned rows.
-	// *   **avgRowsSent**: the average number of returned rows.
+	// 	- **count**: the number of executions.
+	//
+	// 	- **maxQueryTime**: the longest execution duration.
+	//
+	// 	- **avgQueryTime**: the average execution duration.
+	//
+	// 	- **maxLockTime**: the longest lock wait duration.
+	//
+	// 	- **avgLockTime**: the average lock wait duration.
+	//
+	// 	- **maxRowsExamined**: the largest number of scanned rows.
+	//
+	// 	- **avgRowsExamined**: the average number of scanned rows.
+	//
+	// 	- **maxRowsSent**: the largest number of returned rows.
+	//
+	// 	- **avgRowsSent**: the average number of returned rows.
+	//
+	// example:
+	//
+	// count
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the instance resides. Valid values:
 	//
-	// *   **cn-china**: Chinese mainland
-	// *   **cn-hongkong**: China (Hong Kong)
-	// *   **ap-southeast-1**: Singapore
+	// 	- **cn-china**: Chinese mainland
 	//
-	// This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.****
+	// 	- **cn-hongkong**: China (Hong Kong)
+	//
+	// 	- **ap-southeast-1**: Singapore
+	//
+	// This parameter takes effect only if **InstanceIds*	- is left empty. If you leave **InstanceIds*	- empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region*	- does not take effect and the system obtains data from the region in which the first specified instance resides.****
 	//
 	// >  If your instances reside in the regions in the Chinese mainland, set this parameter to **cn-china**.
+	//
+	// example:
+	//
+	// cn-china
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The tags that are used to filter SQL templates. Separate multiple tags with commas (,). For more information, see [Query governance](~~290038~~).
+	// The tags that are used to filter SQL templates. Separate multiple tags with commas (,). For more information, see [Query governance](https://help.aliyun.com/document_detail/290038.html).
+	//
+	// example:
+	//
+	// DAS_NOT_IMPORTANT
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The SQL template IDs. You can call the [GetQueryOptimizeExecErrorStats](~~405261~~) operation to obtain the SQL template IDs.
+	// The SQL template IDs. You can call the [GetQueryOptimizeExecErrorStats](https://help.aliyun.com/document_detail/405261.html) operation to obtain the SQL template IDs.
+	//
+	// example:
+	//
+	// 6068ce044e3dc9b903979672fb0b69df,d12515c015fc9f41a0778a9e1de0****
 	SqlIds *string `json:"SqlIds,omitempty" xml:"SqlIds,omitempty"`
 	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
 	TagNames *string `json:"TagNames,omitempty" xml:"TagNames,omitempty"`
 	// The date to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1642953600000
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The account of the database to be queried.
+	//
+	// example:
+	//
+	// testUser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -20605,19 +28364,40 @@ func (s *GetQueryOptimizeShareUrlRequest) SetUser(v string) *GetQueryOptimizeSha
 
 type GetQueryOptimizeShareUrlResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The share URL.
+	//
+	// example:
+	//
+	// https://hdm.console.aliyun.com/#/queryOptimize?Keywords=&OnlyOptimizedSql=true&Time=1684771200000&Engine=MySQL&InstanceIds=&Rules=&PageNo=1&PageSize=10&OrderBy=count&Asc=false&SqlIds=&dbNames=&region=cn-china&user=
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message that contains information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20686,15 +28466,39 @@ func (s *GetQueryOptimizeShareUrlResponse) SetBody(v *GetQueryOptimizeShareUrlRe
 type GetQueryOptimizeSolutionRequest struct {
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PolarDBMySQL**
-	// *   **PostgreSQL**
+	// 	- **MySQL**
+	//
+	// 	- **PolarDBMySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The instance ID. You can call the [GetQueryOptimizeDataStats](~~405261~~) operation to query the instance ID.
+	// The instance ID. You can call the [GetQueryOptimizeDataStats](https://help.aliyun.com/document_detail/405261.html) operation to query the instance ID.
+	//
+	// example:
+	//
+	// rm-bp1o3z6beqpej****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The tag ID. For more information, see [Query governance](~~290038~~).
+	// The tag ID. For more information, see [Query governance](https://help.aliyun.com/document_detail/290038.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LARGE_ROWS_EXAMINED
 	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
-	// The SQL template ID. You can call the [GetQueryOptimizeDataStats](~~405261~~) operation to query the SQL template ID.
+	// The SQL template ID. You can call the [GetQueryOptimizeDataStats](https://help.aliyun.com/document_detail/405261.html) operation to query the SQL template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 05fecf7e7b3efd123c4d5197035f****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 }
 
@@ -20728,17 +28532,34 @@ func (s *GetQueryOptimizeSolutionRequest) SetSqlId(v string) *GetQueryOptimizeSo
 
 type GetQueryOptimizeSolutionResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetQueryOptimizeSolutionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 30FF4E40-17F3-5A51-AB23-43F30D9B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20777,14 +28598,30 @@ func (s *GetQueryOptimizeSolutionResponseBody) SetSuccess(v string) *GetQueryOpt
 
 type GetQueryOptimizeSolutionResponseBodyData struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The optimization suggestions.
 	List []*GetQueryOptimizeSolutionResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -20824,14 +28661,31 @@ func (s *GetQueryOptimizeSolutionResponseBodyData) SetTotal(v int64) *GetQueryOp
 type GetQueryOptimizeSolutionResponseBodyDataList struct {
 	// The severity level. Valid values:
 	//
-	// * **INFO**
-	// * **WARN**
+	// 	- **INFO**
+	//
+	// 	- **WARN**
+	//
+	// example:
+	//
+	// INFO
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The tag ID.
+	//
+	// example:
+	//
+	// LARGE_ROWS_EXAMINED
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The suggestion.
+	//
+	// example:
+	//
+	// LARGE_ROWS_EXAMINED_SOLUTION
 	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	SolutionExt *string `json:"SolutionExt,omitempty" xml:"SolutionExt,omitempty"`
 }
 
@@ -20895,13 +28749,33 @@ func (s *GetQueryOptimizeSolutionResponse) SetBody(v *GetQueryOptimizeSolutionRe
 type GetQueryOptimizeTagRequest struct {
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**: ApsaraDB RDS for MySQL
-	// *   **PolarDBMySQL**: PolarDB for MySQL
-	// *   **PostgreSQL**: ApsaraDB RDS for PostgreSQL
+	// 	- **MySQL**: ApsaraDB RDS for MySQL
+	//
+	// 	- **PolarDBMySQL**: PolarDB for MySQL
+	//
+	// 	- **PostgreSQL**: ApsaraDB RDS for PostgreSQL
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The SQL template ID. You can call the [GetQueryOptimizeDataStats](~~405261~~) operation to query the SQL template ID.
+	// The SQL template ID. You can call the [GetQueryOptimizeDataStats](https://help.aliyun.com/document_detail/405261.html) operation to query the SQL template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 29d9fef63e347d39c3436658a5fe5f2b
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 }
 
@@ -20930,19 +28804,36 @@ func (s *GetQueryOptimizeTagRequest) SetSqlId(v string) *GetQueryOptimizeTagRequ
 
 type GetQueryOptimizeTagResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned SQL tag data.
 	Data *GetQueryOptimizeTagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20981,10 +28872,22 @@ func (s *GetQueryOptimizeTagResponseBody) SetSuccess(v string) *GetQueryOptimize
 
 type GetQueryOptimizeTagResponseBodyData struct {
 	// The remarks.
+	//
+	// example:
+	//
+	// Slow SQL queries of offline synchronization. No optimization is required.
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	// The SQL template ID.
+	//
+	// example:
+	//
+	// 651b56fe9418d48edb8fdf0980ec****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The SQL tags. Multiple tags are separated by commas (,).
+	//
+	// example:
+	//
+	// DAS_IN_PLAN,DAS_NOT_IMPORTANT
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -21042,8 +28945,18 @@ func (s *GetQueryOptimizeTagResponse) SetBody(v *GetQueryOptimizeTagResponseBody
 
 type GetRedisAllSessionRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The database instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-2zemyfd1sh1u2i****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -21067,19 +28980,36 @@ func (s *GetRedisAllSessionRequest) SetInstanceId(v string) *GetRedisAllSessionR
 
 type GetRedisAllSessionResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The session data.
 	Data *GetRedisAllSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40C6E9AF-6C23-5614-AA83-34344CC6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -21122,8 +29052,16 @@ type GetRedisAllSessionResponseBodyData struct {
 	// The statistics on the access source.
 	SourceStats []*GetRedisAllSessionResponseBodyDataSourceStats `json:"SourceStats,omitempty" xml:"SourceStats,omitempty" type:"Repeated"`
 	// The time when the instance sessions were returned. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1660100753556
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The total number of sessions.
+	//
+	// example:
+	//
+	// 2
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -21157,63 +29095,160 @@ func (s *GetRedisAllSessionResponseBodyData) SetTotal(v int64) *GetRedisAllSessi
 
 type GetRedisAllSessionResponseBodyDataSessions struct {
 	// The IP address and port number of the client.
+	//
+	// example:
+	//
+	// 172.16.XX.XX:53458
 	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
 	// The connection duration of the session. Unit: seconds.
+	//
+	// example:
+	//
+	// 12
 	Age *string `json:"Age,omitempty" xml:"Age,omitempty"`
 	// The IP address of the client.
+	//
+	// example:
+	//
+	// 172.16.XX.XX
 	Client *string `json:"Client,omitempty" xml:"Client,omitempty"`
 	// The alias of the client.
+	//
+	// example:
+	//
+	// prod ip
 	ClientDesc *string `json:"ClientDesc,omitempty" xml:"ClientDesc,omitempty"`
 	// The command that was last run.
+	//
+	// example:
+	//
+	// PING
 	Cmd *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
 	// The ID of the database that the client is using.
+	//
+	// example:
+	//
+	// 0
 	Db *int64 `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The file descriptor event. Valid values:
 	//
-	// *   **r**: Client sockets are readable in the event loop.
-	// *   **w**: Client sockets are writable in the event loop.
+	// 	- **r**: Client sockets are readable in the event loop.
+	//
+	// 	- **w**: Client sockets are writable in the event loop.
+	//
+	// example:
+	//
+	// r
 	Events *string `json:"Events,omitempty" xml:"Events,omitempty"`
 	// The file descriptor that is used by sockets.
+	//
+	// example:
+	//
+	// 73
 	Fd *int64 `json:"Fd,omitempty" xml:"Fd,omitempty"`
 	// The client flag. Valid values:
 	//
-	// *   **A**: The connection needs to be closed at the earliest opportunity.
-	// *   **b**: The client is waiting for blocked events.
-	// *   **c**: The connection is closed after all replies are written.
-	// *   **d**: The monitored keys have been modified, and the `EXEC` command is about to fail.
-	// *   **i**: The client is waiting for VM I/O operations. This value is no longer used.
-	// *   **M**: The client is the primary node.
-	// *   **N**: No special flags are configured.
-	// *   **O**: The client is in monitor mode.
-	// *   **r**: The client is a cluster node in read-only mode.
-	// *   **S**: The client is a replica node in normal mode.
-	// *   **u**: The client is not blocked.
-	// *   **U**: The client is connected by using UNIX domain sockets.
-	// *   **x**: The client is executing a transaction.
+	// 	- **A**: The connection needs to be closed at the earliest opportunity.
+	//
+	// 	- **b**: The client is waiting for blocked events.
+	//
+	// 	- **c**: The connection is closed after all replies are written.
+	//
+	// 	- **d**: The monitored keys have been modified, and the `EXEC` command is about to fail.
+	//
+	// 	- **i**: The client is waiting for VM I/O operations. This value is no longer used.
+	//
+	// 	- **M**: The client is the primary node.
+	//
+	// 	- **N**: No special flags are configured.
+	//
+	// 	- **O**: The client is in monitor mode.
+	//
+	// 	- **r**: The client is a cluster node in read-only mode.
+	//
+	// 	- **S**: The client is a replica node in normal mode.
+	//
+	// 	- **u**: The client is not blocked.
+	//
+	// 	- **U**: The client is connected by using UNIX domain sockets.
+	//
+	// 	- **x**: The client is executing a transaction.
+	//
+	// example:
+	//
+	// N
 	Flags *string `json:"Flags,omitempty" xml:"Flags,omitempty"`
 	// The client ID.
+	//
+	// example:
+	//
+	// 9080586
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The duration during which the session is in the idle state. Unit: seconds.
+	//
+	// example:
+	//
+	// 8
 	Idle *int64 `json:"Idle,omitempty" xml:"Idle,omitempty"`
 	// The number of commands in `MULTI` or `EXEC`.
+	//
+	// example:
+	//
+	// -1
 	Multi *int64 `json:"Multi,omitempty" xml:"Multi,omitempty"`
 	// The name of the client.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node ID.
+	//
+	// example:
+	//
+	// r-2zemyfd1sh1u2i****-proxy-14#1679****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The size of the fixed output buffer. Unit: bytes.
+	//
+	// example:
+	//
+	// 0
 	Obl *int64 `json:"Obl,omitempty" xml:"Obl,omitempty"`
 	// The number of objects contained in the output list.
+	//
+	// example:
+	//
+	// 0
 	Oll *int64 `json:"Oll,omitempty" xml:"Oll,omitempty"`
 	// The size of the output buffer. Unit: bytes.
+	//
+	// example:
+	//
+	// 0
 	Omem *int64 `json:"Omem,omitempty" xml:"Omem,omitempty"`
 	// The number of subscriptions that match the pattern.
+	//
+	// example:
+	//
+	// 0
 	Psub *int64 `json:"Psub,omitempty" xml:"Psub,omitempty"`
 	// The size of the input buffer. Unit: bytes.
+	//
+	// example:
+	//
+	// 0
 	Qbuf *int64 `json:"Qbuf,omitempty" xml:"Qbuf,omitempty"`
 	// The remaining size of the input buffer. Unit: bytes.
+	//
+	// example:
+	//
+	// 0
 	QbufFree *int64 `json:"QbufFree,omitempty" xml:"QbufFree,omitempty"`
 	// The number of subscribed channels.
+	//
+	// example:
+	//
+	// 0
 	Sub *int64 `json:"Sub,omitempty" xml:"Sub,omitempty"`
 }
 
@@ -21332,10 +29367,18 @@ func (s *GetRedisAllSessionResponseBodyDataSessions) SetSub(v int64) *GetRedisAl
 
 type GetRedisAllSessionResponseBodyDataSourceStats struct {
 	// The total number of sessions from the access source.
+	//
+	// example:
+	//
+	// 1
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The client IDs.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 	// The access source.
+	//
+	// example:
+	//
+	// 172.16.XX.XX
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
@@ -21393,18 +29436,52 @@ func (s *GetRedisAllSessionResponse) SetBody(v *GetRedisAllSessionResponseBody) 
 
 type GetRequestDiagnosisPageRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1634972640000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-0iwhhl8gx0ld6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  You must specify the node ID if your database instance is a PolarDB for MySQL, PolarDB for PostgreSQL (Compatible with Oracle), or ApsaraDB for MongoDB instance.
+	//
+	// example:
+	//
+	// 202****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The page number. The value must be a positive integer. Default value: 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. The value must be a positive integer. Default value: 10.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1633071840000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -21448,19 +29525,36 @@ func (s *GetRequestDiagnosisPageRequest) SetStartTime(v int64) *GetRequestDiagno
 
 type GetRequestDiagnosisPageResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetRequestDiagnosisPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message that contains information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 800FBAF5-A539-5B97-A09E-C63AB2F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -21499,14 +29593,30 @@ func (s *GetRequestDiagnosisPageResponseBody) SetSuccess(v string) *GetRequestDi
 
 type GetRequestDiagnosisPageResponseBodyData struct {
 	// Additional information.
+	//
+	// example:
+	//
+	// {"":""}
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
 	// The SQL diagnostics records returned.
 	List []*GetRequestDiagnosisPageResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
 	// The page number. The value must be a positive integer. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int64 `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
 	// The number of entries per page. The value must be a positive integer. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 100
 	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
@@ -21545,74 +29655,146 @@ func (s *GetRequestDiagnosisPageResponseBodyData) SetTotal(v int64) *GetRequestD
 
 type GetRequestDiagnosisPageResponseBodyDataList struct {
 	// The user ID.
+	//
+	// example:
+	//
+	// 2093****
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// das
 	DbSchema *string `json:"dbSchema,omitempty" xml:"dbSchema,omitempty"`
 	// The database engine. Valid values:
 	//
-	// * **MySQL**
-	// * **PostgreSQL**
-	// * **SQLServer**
-	// * **PolarDBMySQL**
-	// * **PolarDBOracle**
-	// * **MongoDB**
+	// 	- **MySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// 	- **SQLServer**
+	//
+	// 	- **PolarDBMySQL**
+	//
+	// 	- **PolarDBOracle**
+	//
+	// 	- **MongoDB**
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"engine,omitempty" xml:"engine,omitempty"`
 	// The time when the SQL diagnostics task was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1633071840000
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// The time when the SQL diagnostics task was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1633071850000
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	// The unique ID of the diagnostics task.
+	//
+	// example:
+	//
+	// 61820b594664275c4429****
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
 	// Additional information.
+	//
+	// example:
+	//
+	// {"":""}
 	Param *string `json:"param,omitempty" xml:"param,omitempty"`
 	// The result of the SQL diagnostics task. The result includes the following information:
 	//
-	// * **endTime**: the end time of the SQL diagnostics task.
-	// * **errorCode**: indicates whether the SQL diagnostics task is complete. Valid values:
-	//   * **0001**: The SQL diagnostics task is complete.
-	//   * **0003**: The SQL diagnostics task failed.
+	// 	- **endTime**: the end time of the SQL diagnostics task.
 	//
-	// * **errorMessage**: the error message.
-	// * **estimateCost**: the estimated cost.
-	//   * **cpu**: the estimated CPU utilization of the index.
-	//   * **io**: the estimated I/O usage of the index.
-	//   * **rows**: the estimated values of the rows returned for the index.
-	// * **improvement**: the performance improvement ratio.
-	// * **indexAdvices**: the index recommendations, which include the following information:
-	//   * **columns**: the index columns.
-	//   * **ddlAddIndex**: the DDL statement for the index.
-	//   * **indexName**: the name of the index.
-	//   * **schemaName**: the name of the database.
-	//   * **tableName**: the name of the table.
-	//   * **unique**: indicates whether the index is unique.
+	// 	- **errorCode**: indicates whether the SQL diagnostics task is complete. Valid values:
 	//
-	// * **ip**: the IP address of the instance.
-	// * **messageId**: the ID of the diagnostics task.
-	// * **port**: the port used to connect to the instance.
-	// * **sqlTag**: the SQL tag.
-	// * **startTime**: the start time of the SQL diagnostics task.
-	// * **success**: indicates whether the request was successful.
-	// * **support**: indicates whether the SQL statement can be diagnosed. Valid values:
-	//   * **true**: The SQL statement can be diagnosed.
-	//   * **false**: The SQL statement cannot be diagnosed.
+	//   	- **0001**: The SQL diagnostics task is complete.
 	//
-	// * **tuningAdvices**: the SQL rewrite suggestions.
+	//   	- **0003**: The SQL diagnostics task failed.
+	//
+	// 	- **errorMessage**: the error message.
+	//
+	// 	- **estimateCost**: the estimated cost.
+	//
+	//   	- **cpu**: the estimated CPU utilization of the index.
+	//
+	//   	- **io**: the estimated I/O usage of the index.
+	//
+	//   	- **rows**: the estimated values of the rows returned for the index.
+	//
+	// 	- **improvement**: the performance improvement ratio.
+	//
+	// 	- **indexAdvices**: the index recommendations, which include the following information:
+	//
+	//   	- **columns**: the index columns.
+	//
+	//   	- **ddlAddIndex**: the DDL statement for the index.
+	//
+	//   	- **indexName**: the name of the index.
+	//
+	//   	- **schemaName**: the name of the database.
+	//
+	//   	- **tableName**: the name of the table.
+	//
+	//   	- **unique**: indicates whether the index is unique.
+	//
+	// 	- **ip**: the IP address of the instance.
+	//
+	// 	- **messageId**: the ID of the diagnostics task.
+	//
+	// 	- **port**: the port used to connect to the instance.
+	//
+	// 	- **sqlTag**: the SQL tag.
+	//
+	// 	- **startTime**: the start time of the SQL diagnostics task.
+	//
+	// 	- **success**: indicates whether the request was successful.
+	//
+	// 	- **support**: indicates whether the SQL statement can be diagnosed. Valid values:
+	//
+	//   	- **true**: The SQL statement can be diagnosed.
+	//
+	//   	- **false**: The SQL statement cannot be diagnosed.
+	//
+	// 	- **tuningAdvices**: the SQL rewrite suggestions.
+	//
+	// example:
+	//
+	// { "endTime":1636354256000, "errorCode":"0001", "errorMessage":"TFX Successful", "estimateCost":{ "cpu":1.7878745150389268, "io":9.948402604746128, "rows":8.889372575194633 }, "improvement":12933.97, "indexAdvices":[ { "columns":[ "work_no" ], "ddlAddIndex":"ALTER TABLE `test`.`work_order` ADD INDEX `idx_workno` (`work_no`)", "indexName":"idx_workno", "schemaName":"test", "tableName":"work_order", "unique":false } ], "ip":"****.mysql.rds.aliyuncs.com", "messageId":"6188c8cb2f1365b16aee****", "port":3306, "sqlTag":"{\\"PRED_EQUAL\\":\\"Y\\",\\"CNT_QB\\":\\"1\\",\\"CNT_TB\\":\\"1\\"}", "startTime":1636354252000, "success":true, "support":true, "tuningAdvices":[ ] }
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
 	// The SQL template ID.
+	//
+	// example:
+	//
+	// 0c95dae3afef77be06572612df9b****
 	SqlId *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
 	// The status of the diagnostics task. Valid values:
 	//
-	// * **0**: The diagnostics task is in progress.
+	// 	- **0**: The diagnostics task is in progress.
 	//
-	// * **1**: A diagnostics error occurred.
+	// 	- **1**: A diagnostics error occurred.
 	//
-	// * **2**: The diagnostics task is complete.
+	// 	- **2**: The diagnostics task is complete.
 	//
-	// * **3**: An SQL error occurred.
+	// 	- **3**: An SQL error occurred.
 	//
-	// * **4**: An engine error occurred.
+	// 	- **4**: An engine error occurred.
+	//
+	// example:
+	//
+	// 2
 	State *int32 `json:"state,omitempty" xml:"state,omitempty"`
 	// The unique ID of the diagnostics instance.
+	//
+	// example:
+	//
+	// hdm_51fe9bc19ec413f4d530431af87a****
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
@@ -21710,20 +29892,44 @@ func (s *GetRequestDiagnosisPageResponse) SetBody(v *GetRequestDiagnosisPageResp
 
 type GetRequestDiagnosisResultRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-0iwhhl8gx0ld6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The unique ID of the diagnostics task. You can call the [CreateRequestDiagnosis](~~341609~~) operation to query the diagnostics task ID.
+	// The unique ID of the diagnostics task. You can call the [CreateRequestDiagnosis](https://help.aliyun.com/document_detail/341609.html) operation to query the diagnostics task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 61820b594664275c4429****
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 	// The node ID.
 	//
 	// >  You must specify the node ID if your database instance is a PolarDB for MySQL cluster, a PolarDB for PostgreSQL (compatible with Oracle) instance, or an ApsaraDB for MongoDB database.
+	//
+	// example:
+	//
+	// 202****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The source of the task.
 	//
 	// >  This parameter is required if you call this operation in the DAS console. You do not need to specify this parameter when you call this operation.
+	//
+	// example:
+	//
+	// None
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The SQL template ID.
 	//
 	// >  This parameter is required if you call this operation in the DAS console. You do not need to specify this parameter when you call this operation.
+	//
+	// example:
+	//
+	// None
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 }
 
@@ -21762,19 +29968,36 @@ func (s *GetRequestDiagnosisResultRequest) SetSqlId(v string) *GetRequestDiagnos
 
 type GetRequestDiagnosisResultResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetRequestDiagnosisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 800FBAF5-A539-5B97-A09E-C63AB2F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -21813,84 +30036,146 @@ func (s *GetRequestDiagnosisResultResponseBody) SetSuccess(v string) *GetRequest
 
 type GetRequestDiagnosisResultResponseBodyData struct {
 	// The user ID.
+	//
+	// example:
+	//
+	// 2093****
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// das
 	DbSchema *string `json:"dbSchema,omitempty" xml:"dbSchema,omitempty"`
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PostgreSQL**
-	// *   **SQLServer**
-	// *   **PolarDBMySQL**
-	// *   **PolarDBOracle**
-	// *   **MongoDB**
+	// 	- **MySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// 	- **SQLServer**
+	//
+	// 	- **PolarDBMySQL**
+	//
+	// 	- **PolarDBOracle**
+	//
+	// 	- **MongoDB**
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"engine,omitempty" xml:"engine,omitempty"`
 	// The time when the SQL diagnostics task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1633071840000
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// The time when the SQL diagnostics task was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1633071850000
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	// The unique ID of the diagnostics task.
+	//
+	// example:
+	//
+	// 61820b594664275c4429****
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
 	// The additional information.
+	//
+	// example:
+	//
+	// {"":""}
 	Param *string `json:"param,omitempty" xml:"param,omitempty"`
 	// The result of the SQL diagnostics task. The result includes the following information:
 	//
-	// *   **endTime**: the end time of the SQL diagnostics task.
+	// 	- **endTime**: the end time of the SQL diagnostics task.
 	//
-	// *   **errorCode**: the error code.
+	// 	- **errorCode**: the error code.
 	//
-	//     *   **0001**: The SQL diagnostics task is complete.
-	//     *   **0003**: The SQL diagnostics task failed.
+	//     	- **0001**: The SQL diagnostics task is complete.
 	//
-	// *   **errorMessage**: the error message.
+	//     	- **0003**: The SQL diagnostics task failed.
 	//
-	// *   **estimateCost**: the estimated cost.
+	// 	- **errorMessage**: the error message.
 	//
-	//     *   **cpu**: the estimated CPU utilization of the index.
-	//     *   **io**: the estimated I/O usage of the index.
-	//     *   **rows**: the estimated values of the rows returned for the index.
+	// 	- **estimateCost**: the estimated cost.
 	//
-	// *   **improvement**: the performance improvement ratio.
+	//     	- **cpu**: the estimated CPU utilization of the index.
 	//
-	// *   **indexAdvices**: the index recommendations, which include the following information:
+	//     	- **io**: the estimated I/O usage of the index.
 	//
-	//     *   **columns**: the index columns.
-	//     *   **ddlAddIndex**: the DDL statement for the index.
-	//     *   **indexName**: the name of the index.
-	//     *   **schemaName**: the name of the database.
-	//     *   **tableName**: the name of the table.
-	//     *   **unique**: indicates whether the index is unique.
+	//     	- **rows**: the estimated values of the rows returned for the index.
 	//
-	// *   **ip**: the IP address of the instance.
+	// 	- **improvement**: the performance improvement ratio.
 	//
-	// *   **messageId**: the ID of the diagnostics task.
+	// 	- **indexAdvices**: the index recommendations, which include the following information:
 	//
-	// *   **port**: the port used to connect to the instance.
+	//     	- **columns**: the index columns.
 	//
-	// *   **sqlTag**: the SQL tag.
+	//     	- **ddlAddIndex**: the DDL statement for the index.
 	//
-	// *   **startTime**: the start time of the SQL diagnostics task.
+	//     	- **indexName**: the name of the index.
 	//
-	// *   **success**: indicates whether the request was successful.
+	//     	- **schemaName**: the name of the database.
 	//
-	// *   **support**: indicates whether the SQL statement can be diagnosed. Valid values:
+	//     	- **tableName**: the name of the table.
 	//
-	//     *   **true**
-	//     *   **false**
+	//     	- **unique**: indicates whether the index is unique.
 	//
-	// *   **tuningAdvices** : the SQL rewrite suggestions.
+	// 	- **ip**: the IP address of the instance.
+	//
+	// 	- **messageId**: the ID of the diagnostics task.
+	//
+	// 	- **port**: the port used to connect to the instance.
+	//
+	// 	- **sqlTag**: the SQL tag.
+	//
+	// 	- **startTime**: the start time of the SQL diagnostics task.
+	//
+	// 	- **success**: indicates whether the request was successful.
+	//
+	// 	- **support**: indicates whether the SQL statement can be diagnosed. Valid values:
+	//
+	//     	- **true**
+	//
+	//     	- **false**
+	//
+	// 	- **tuningAdvices*	- : the SQL rewrite suggestions.
+	//
+	// example:
+	//
+	// { "endTime":1636354256000, "errorCode":"0001", "errorMessage":"TFX succeeded", "estimateCost":{ "cpu":1.7878745150389268, "io":9.948402604746128, "rows":8.889372575194633 }, "improvement":12933.97, "indexAdvices":[ { "columns":[ "work_no" ], "ddlAddIndex":"ALTER TABLE `test`.`work_order` ADD INDEX `idx_workno` (`work_no`)", "indexName":"idx_workno", "schemaName":"test", "tableName":"work_order", "unique":false } ], "ip":"****.mysql.rds.aliyuncs.com", "messageId":"6188c8cb2f1365b16aee****", "port":3306, "sqlTag":"{\\"PRED_EQUAL\\":\\"Y\\",\\"CNT_QB\\":\\"1\\",\\"CNT_TB\\":\\"1\\"}", "startTime":1636354252000, "success":true, "support":true, "tuningAdvices":[ ] }
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
 	// The SQL template ID.
+	//
+	// example:
+	//
+	// 0c95dae3afef77be06572612df9b****
 	SqlId *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
 	// The state of the diagnostics task. Valid values:
 	//
-	// *   **0**: The diagnostics task is in progress.
-	// *   **1**: A diagnostics error occurred.
-	// *   **2**: The diagnostics task is complete.
-	// *   **3**: An SQL error occurred.
-	// *   **4**: An engine error occurred.
+	// 	- **0**: The diagnostics task is in progress.
+	//
+	// 	- **1**: A diagnostics error occurred.
+	//
+	// 	- **2**: The diagnostics task is complete.
+	//
+	// 	- **3**: An SQL error occurred.
+	//
+	// 	- **4**: An engine error occurred.
+	//
+	// example:
+	//
+	// 2
 	State *int32 `json:"state,omitempty" xml:"state,omitempty"`
 	// The unique ID of the diagnostics instance.
+	//
+	// example:
+	//
+	// hdm_51fe9bc19ec413f4d530431af87a****
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
@@ -21988,14 +30273,32 @@ func (s *GetRequestDiagnosisResultResponse) SetBody(v *GetRequestDiagnosisResult
 
 type GetRunningSqlConcurrencyControlRulesRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The instance ID.
 	//
 	// >  You must specify this parameter only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. The value must be a positive integer. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. The value must be a positive integer. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -22029,19 +30332,36 @@ func (s *GetRunningSqlConcurrencyControlRulesRequest) SetPageSize(v int64) *GetR
 
 type GetRunningSqlConcurrencyControlRulesResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information, including the error codes and the number of entries that are returned.
 	Data *GetRunningSqlConcurrencyControlRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -22082,6 +30402,10 @@ type GetRunningSqlConcurrencyControlRulesResponseBodyData struct {
 	// The returned data.
 	List *GetRunningSqlConcurrencyControlRulesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -22124,32 +30448,74 @@ type GetRunningSqlConcurrencyControlRulesResponseBodyDataListRunningRules struct
 	// The duration within which the SQL throttling rule takes effect. Unit: seconds.
 	//
 	// > The throttling rule takes effect only within this duration.
+	//
+	// example:
+	//
+	// 600
 	ConcurrencyControlTime *int64 `json:"ConcurrencyControlTime,omitempty" xml:"ConcurrencyControlTime,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the throttling rule that is applied to the instance.
+	//
+	// example:
+	//
+	// 16
 	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	// The hash value of the SQL keywords. The hash value is calculated based on the SQL keywords that are contained in the SQL statements to which the throttling rule is applied.
+	//
+	// example:
+	//
+	// b0b8aceeb43baea87b219c81767b****
 	KeywordsHash *string `json:"KeywordsHash,omitempty" xml:"KeywordsHash,omitempty"`
 	// The maximum number of concurrent SQL statements. The value is a positive integer.
 	//
 	// > If the number of concurrent SQL statements that contain the specified keywords reaches this upper limit, the throttling rule is triggered.
+	//
+	// example:
+	//
+	// 2
 	MaxConcurrency *string `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// The keywords contained in the SQL statements to which the throttling rule was applied.
 	//
 	// > SQL keywords are separated by tildes (~). If the number of concurrent SQL statements that contain all the specified SQL keywords reaches the specified upper limit, the throttling rule is triggered.
+	//
+	// example:
+	//
+	// call~open~api~test~4~from~POP
 	SqlKeywords *string `json:"SqlKeywords,omitempty" xml:"SqlKeywords,omitempty"`
 	// The type of the SQL statements. Valid values:
 	//
-	// * **SELECT**
-	// * **UPDATE**
-	// * **DELETE**
+	// 	- **SELECT**
+	//
+	// 	- **UPDATE**
+	//
+	// 	- **DELETE**
+	//
+	// example:
+	//
+	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	// The time when the throttling rule started to take effect. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1608888296000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the throttling rule. The value of **Open** indicates that the throttling rule is in effect.
+	// The status of the throttling rule. The value of **Open*	- indicates that the throttling rule is in effect.
+	//
+	// example:
+	//
+	// Open
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The Alibaba Cloud account ID.
+	//
+	// example:
+	//
+	// testxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -22242,10 +30608,26 @@ func (s *GetRunningSqlConcurrencyControlRulesResponse) SetBody(v *GetRunningSqlC
 
 type GetSqlConcurrencyControlKeywordsFromSqlTextRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze5hpn2b99d2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The SQL statement based on which a throttling keyword string is to be generated.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SELECT 	- FROM test where name = \\"das\\"
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
 }
 
@@ -22274,19 +30656,40 @@ func (s *GetSqlConcurrencyControlKeywordsFromSqlTextRequest) SetSqlText(v string
 
 type GetSqlConcurrencyControlKeywordsFromSqlTextResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The throttling keyword string that was generated based on the SQL statement.
+	//
+	// example:
+	//
+	// SELECT~FROM~test~where~name
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 30A643F5-D7A6-55F5-AB75-DF501427****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -22354,14 +30757,32 @@ func (s *GetSqlConcurrencyControlKeywordsFromSqlTextResponse) SetBody(v *GetSqlC
 
 type GetSqlConcurrencyControlRulesHistoryRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The instance ID.
 	//
 	// >  Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. The value must be an integer that is greater than 0. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. The value must be an integer that is greater than 0. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -22395,19 +30816,36 @@ func (s *GetSqlConcurrencyControlRulesHistoryRequest) SetPageSize(v int64) *GetS
 
 type GetSqlConcurrencyControlRulesHistoryResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information, including the error codes and the number of entries that are returned.
 	Data *GetSqlConcurrencyControlRulesHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -22448,6 +30886,10 @@ type GetSqlConcurrencyControlRulesHistoryResponseBodyData struct {
 	// The list of the queried throttling rules.
 	List *GetSqlConcurrencyControlRulesHistoryResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 4
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -22490,35 +30932,78 @@ type GetSqlConcurrencyControlRulesHistoryResponseBodyDataListRules struct {
 	// The duration within which the SQL throttling rule takes effect. Unit: seconds.
 	//
 	// >  The throttling rule takes effect only within this duration.
+	//
+	// example:
+	//
+	// 600
 	ConcurrencyControlTime *int64 `json:"ConcurrencyControlTime,omitempty" xml:"ConcurrencyControlTime,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the throttling rule that is applied to the instance.
+	//
+	// example:
+	//
+	// 16
 	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	// The hash value of the SQL keywords. The SQL keywords are contained in the SQL statements to which the throttling rule is applied.
+	//
+	// example:
+	//
+	// b0b8aceeb43baea87b219c81767b****
 	KeywordsHash *string `json:"KeywordsHash,omitempty" xml:"KeywordsHash,omitempty"`
 	// The maximum number of concurrent SQL statements. Set this parameter to a positive integer.
 	//
 	// >  When the number of concurrent SQL statements that contain the specified keywords reaches this upper limit, the throttling rule is triggered.
+	//
+	// example:
+	//
+	// 2
 	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// The keywords that are used to identify the SQL statements that need to be throttled.
 	//
 	// > SQL keywords are separated with tildes (~). When the number of concurrent SQL statements that contain all the specified SQL keywords reaches the specified upper limit, the throttling rule is triggered.
+	//
+	// example:
+	//
+	// call~open~api~test~4~from~POP
 	SqlKeywords *string `json:"SqlKeywords,omitempty" xml:"SqlKeywords,omitempty"`
 	// The type of the SQL statements. Valid values:
 	//
-	// * **SELECT**
-	// * **UPDATE**
-	// * **DELETE**
+	// 	- **SELECT**
+	//
+	// 	- **UPDATE**
+	//
+	// 	- **DELETE**
+	//
+	// example:
+	//
+	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1608888296000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The state of the throttling rule. Valid values:
 	//
-	// * **Open**: The throttling rule is in effect.
-	// * **Closed**: The throttling rule was in effect.
+	// 	- **Open**: The throttling rule is in effect.
+	//
+	// 	- **Closed**: The throttling rule was in effect.
+	//
+	// example:
+	//
+	// Open
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// testxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -22611,35 +31096,64 @@ func (s *GetSqlConcurrencyControlRulesHistoryResponse) SetBody(v *GetSqlConcurre
 
 type GetSqlOptimizeAdviceRequest struct {
 	// The reserved parameter.
-	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
-	// The end date of the time range to query. Specify the date in the *yyyyMMdd* format. The time must be in UTC.
 	//
-	// *   The default value of this parameter is one day before the current day.
-	// *   The value must be earlier than the current day. The interval between the start date and the end date cannot exceed 30 days.
+	// example:
+	//
+	// None
+	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
+	// The end date of the time range to query. Specify the date in the *yyyyMMdd	- format. The time must be in UTC.
+	//
+	// 	- The default value of this parameter is one day before the current day.
+	//
+	// 	- The value must be earlier than the current day. The interval between the start date and the end date cannot exceed 30 days.
+	//
+	// example:
+	//
+	// 20210917
 	EndDt *string `json:"EndDt,omitempty" xml:"EndDt,omitempty"`
 	// The database engine. Valid values:
 	//
-	// *   **MySQL**: ApsaraDB RDS for MySQL.
-	// *   **PolarDBMySQL**: PolarDB for MySQL.
+	// 	- **MySQL**: ApsaraDB RDS for MySQL.
+	//
+	// 	- **PolarDBMySQL**: PolarDB for MySQL.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The instance ID.
 	//
 	// >  You must specify the instance ID only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// rm-2ze1jdv45i7l6****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The region in which the instance resides. Valid values:
 	//
-	// *   **cn-china**: Chinese mainland.
-	// *   **cn-hongkong**: China (Hong Kong).
-	// *   **ap-southeast-1**: Singapore.
+	// 	- **cn-china**: Chinese mainland.
 	//
-	// This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region specified by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect, and the system obtains data from the region in which the first specified instance resides.****
+	// 	- **cn-hongkong**: China (Hong Kong).
+	//
+	// 	- **ap-southeast-1**: Singapore.
+	//
+	// This parameter takes effect only if **InstanceIds*	- is left empty. If you leave **InstanceIds*	- empty, the system obtains data from the region specified by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region*	- does not take effect, and the system obtains data from the region in which the first specified instance resides.****
 	//
 	// >  If your instances reside in the regions inside the Chinese mainland, set this parameter to **cn-china**.
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The start date of the time range to query. Specify the date in the *yyyyMMdd* format. The time must be in UTC.
 	//
-	// *   The default value of this parameter is one day before the current day.
-	// *   The value must be earlier than the current day.
+	// example:
+	//
+	// cn-china
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The start date of the time range to query. Specify the date in the *yyyyMMdd	- format. The time must be in UTC.
+	//
+	// 	- The default value of this parameter is one day before the current day.
+	//
+	// 	- The value must be earlier than the current day.
+	//
+	// example:
+	//
+	// 20210916
 	StartDt *string `json:"StartDt,omitempty" xml:"StartDt,omitempty"`
 }
 
@@ -22683,19 +31197,36 @@ func (s *GetSqlOptimizeAdviceRequest) SetStartDt(v string) *GetSqlOptimizeAdvice
 
 type GetSqlOptimizeAdviceResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information, including the error codes and the number of entries that are returned.
 	Data *GetSqlOptimizeAdviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
 	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -22734,27 +31265,56 @@ func (s *GetSqlOptimizeAdviceResponseBody) SetSuccess(v string) *GetSqlOptimizeA
 
 type GetSqlOptimizeAdviceResponseBodyData struct {
 	// The time when the task was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1632303861000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The URL that is used to download the file.
+	//
+	// example:
+	//
+	// https://das-sql-optimize.oss-cn-shanghai.aliyuncs.com/adb/oss_sql_optimize_advice/1083*******
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	// The time when the file expires. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// >  The file expires three days after the task is created.
+	//
+	// example:
+	//
+	// 1632563061000
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// *   **INIT**: The task is being initialized.
-	// *   **RUNNING**: The task is running.
-	// *   **FINISH**: The task is complete.
-	// *   **FAILED**: The task failed.
+	// 	- **INIT**: The task is being initialized.
+	//
+	// 	- **RUNNING**: The task is running.
+	//
+	// 	- **FINISH**: The task is complete.
+	//
+	// 	- **FAILED**: The task failed.
+	//
+	// example:
+	//
+	// FINISH
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The status code of the task. Valid values:
 	//
-	// *   **NO_DATA**: No data is returned.
-	// *   **INTERNAL_ERROR**: An internal error occurred.
-	// *   **SUCCESS**: The task is successful.
+	// 	- **NO_DATA**: No data is returned.
+	//
+	// 	- **INTERNAL_ERROR**: An internal error occurred.
+	//
+	// 	- **SUCCESS**: The task is successful.
+	//
+	// example:
+	//
+	// SUCCESS
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// 2021091710461519216****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -22827,12 +31387,28 @@ func (s *GetSqlOptimizeAdviceResponse) SetBody(v *GetSqlOptimizeAdviceResponseBo
 
 type GetStorageAnalysisResultRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-bp10xxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
 	// >  This parameter is reserved.
+	//
+	// example:
+	//
+	// 202****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The task ID, which is returned after you call the CreateStorageAnalysisTask operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 910f83f4b96df0524ddc5749f615****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -22861,19 +31437,36 @@ func (s *GetStorageAnalysisResultRequest) SetTaskId(v string) *GetStorageAnalysi
 
 type GetStorageAnalysisResultResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetStorageAnalysisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	// >  If the request is successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -22912,30 +31505,64 @@ func (s *GetStorageAnalysisResultResponseBody) SetSuccess(v bool) *GetStorageAna
 
 type GetStorageAnalysisResultResponseBodyData struct {
 	// The number of databases that have been analyzed.
+	//
+	// example:
+	//
+	// 2
 	AnalyzedDbCount *int64 `json:"AnalyzedDbCount,omitempty" xml:"AnalyzedDbCount,omitempty"`
 	// The details of storage analysis.
 	StorageAnalysisResult *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult `json:"StorageAnalysisResult,omitempty" xml:"StorageAnalysisResult,omitempty" type:"Struct"`
 	// Indicates whether the task is complete.
+	//
+	// example:
+	//
+	// true
 	TaskFinish *bool `json:"TaskFinish,omitempty" xml:"TaskFinish,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// 910f83f4b96df0524ddc5749f615****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task progress.
 	//
 	// >  Valid values are integers that range from 0 to 100.
+	//
+	// example:
+	//
+	// 50
 	TaskProgress *int64 `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
 	// The status of the storage analysis task. Valid values:
 	//
-	// *   **INIT**: The task is being initialized.
-	// *   **PENDING**: The task is being queued for execution.
-	// *   **RECEIVED**: The task is received for execution.
-	// *   **RUNNING**: The task is being executed.
-	// *   **RETRY**: The task is being retried.
-	// *   **SUCCESS**: The task succeeds.
-	// *   **FAILURE**: The task fails.
+	// 	- **INIT**: The task is being initialized.
+	//
+	// 	- **PENDING**: The task is being queued for execution.
+	//
+	// 	- **RECEIVED**: The task is received for execution.
+	//
+	// 	- **RUNNING**: The task is being executed.
+	//
+	// 	- **RETRY**: The task is being retried.
+	//
+	// 	- **SUCCESS**: The task succeeds.
+	//
+	// 	- **FAILURE**: The task fails.
+	//
+	// example:
+	//
+	// RUNNING
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
 	// Indicates whether the task is successful.
+	//
+	// example:
+	//
+	// true
 	TaskSuccess *bool `json:"TaskSuccess,omitempty" xml:"TaskSuccess,omitempty"`
 	// The number of databases that need to be analyzed in the storage analysis task.
+	//
+	// example:
+	//
+	// 32
 	TotalDbCount *int64 `json:"TotalDbCount,omitempty" xml:"TotalDbCount,omitempty"`
 }
 
@@ -22990,16 +31617,33 @@ func (s *GetStorageAnalysisResultResponseBodyData) SetTotalDbCount(v int64) *Get
 type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult struct {
 	// The reason why the analysis on the database and table fails.
 	//
-	// *   **DB_OR_TABLE_NOT_EXIST**: The specified database or table does not exist.
-	// *   **DB_NOT_EXIST**: The specified database does not exist.
+	// 	- **DB_OR_TABLE_NOT_EXIST**: The specified database or table does not exist.
+	//
+	// 	- **DB_NOT_EXIST**: The specified database does not exist.
+	//
+	// example:
+	//
+	// DB_NOT_EXIST
 	AnalysisErrorType *string `json:"AnalysisErrorType,omitempty" xml:"AnalysisErrorType,omitempty"`
 	// Indicates whether the analysis on the database and table is successful.
+	//
+	// example:
+	//
+	// true
 	AnalysisSuccess *bool `json:"AnalysisSuccess,omitempty" xml:"AnalysisSuccess,omitempty"`
 	// The estimated daily storage usage increment in the last seven days.
 	//
 	// >  Unit: bytes.
+	//
+	// example:
+	//
+	// 0
 	DailyIncrement *int64 `json:"DailyIncrement,omitempty" xml:"DailyIncrement,omitempty"`
 	// The estimated number of days before the remaining storage runs out.
+	//
+	// example:
+	//
+	// 99
 	EstimateAvailableDays *int64 `json:"EstimateAvailableDays,omitempty" xml:"EstimateAvailableDays,omitempty"`
 	// The list of items to be optimized.
 	NeedOptimizeItemList []*GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList `json:"NeedOptimizeItemList,omitempty" xml:"NeedOptimizeItemList,omitempty" type:"Repeated"`
@@ -23008,14 +31652,26 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult struct {
 	// The size of remaining storage.
 	//
 	// >  Unit: bytes.
+	//
+	// example:
+	//
+	// 146403229696
 	TotalFreeStorageSize *int64 `json:"TotalFreeStorageSize,omitempty" xml:"TotalFreeStorageSize,omitempty"`
 	// The total size of instance storage.
 	//
 	// >  Unit: bytes.
+	//
+	// example:
+	//
+	// 214748364800
 	TotalStorageSize *int64 `json:"TotalStorageSize,omitempty" xml:"TotalStorageSize,omitempty"`
 	// The size of used storage.
 	//
 	// >  Unit: bytes.
+	//
+	// example:
+	//
+	// 68345135104
 	TotalUsedStorageSize *int64 `json:"TotalUsedStorageSize,omitempty" xml:"TotalUsedStorageSize,omitempty"`
 }
 
@@ -23074,20 +31730,56 @@ func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) SetTotal
 
 type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList struct {
 	// The data associated with items to be optimized.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "autoIncrementCurrentValue": 2147483647,
+	//
+	//     "autoIncrementRatio": 1,
+	//
+	//     "dbName": "testdb01",
+	//
+	//     "maximumValue": 2147483647,
+	//
+	//     "columnName": "id",
+	//
+	//     "tableName": "test_table"
+	//
+	// }
 	AssociatedData *string `json:"AssociatedData,omitempty" xml:"AssociatedData,omitempty"`
 	// The database name.
+	//
+	// example:
+	//
+	// testdb01
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The optimization suggestion. Valid values:
 	//
-	// *   **NEED_ANALYZE_TABLE**: You can execute the ANALYZE TABLE statement on the related table during off-peak hours.
-	// *   **NEED_OPTIMIZE_TABLE**: You can reclaim fragments during off-peak hours.
+	// 	- **NEED_ANALYZE_TABLE**: You can execute the ANALYZE TABLE statement on the related table during off-peak hours.
+	//
+	// 	- **NEED_OPTIMIZE_TABLE**: You can reclaim fragments during off-peak hours.
+	//
+	// example:
+	//
+	// NEED_OPTIMIZE_TABLE
 	OptimizeAdvice *string `json:"OptimizeAdvice,omitempty" xml:"OptimizeAdvice,omitempty"`
 	// The item to be optimized. Valid values:
 	//
-	// *   **NEED_ANALYZE_TABLE**: The statistical data in information_schema.tables differs greatly from the physical file size.
-	// *   **NEED_OPTIMIZE_TABLE**: The fragmentation degree of the table is high.
+	// 	- **NEED_ANALYZE_TABLE**: The statistical data in information_schema.tables differs greatly from the physical file size.
+	//
+	// 	- **NEED_OPTIMIZE_TABLE**: The fragmentation degree of the table is high.
+	//
+	// example:
+	//
+	// NEED_OPTIMIZE_TABLE
 	OptimizeItemName *string `json:"OptimizeItemName,omitempty" xml:"OptimizeItemName,omitempty"`
 	// The table name.
+	//
+	// example:
+	//
+	// test_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -23128,40 +31820,89 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats str
 	// The average row length.
 	//
 	// >  Unit: bytes.
+	//
+	// example:
+	//
+	// 154
 	AvgRowLength *int64 `json:"AvgRowLength,omitempty" xml:"AvgRowLength,omitempty"`
 	// The size of storage occupied by fragments.
 	//
 	// >  Unit: bytes.
+	//
+	// example:
+	//
+	// 7340032
 	DataFree *int64 `json:"DataFree,omitempty" xml:"DataFree,omitempty"`
 	// The size of storage occupied by the table data.
 	//
 	// >  Unit: bytes.
+	//
+	// example:
+	//
+	// 1982857216
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
 	// The database name.
+	//
+	// example:
+	//
+	// testdb01
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The type of the engine used by the table.
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	//
+	// example:
+	//
+	// InnoDB
+	Engine       *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	FragmentSize *int64  `json:"FragmentSize,omitempty" xml:"FragmentSize,omitempty"`
 	// The size of storage occupied by indexes.
 	//
 	// >  Unit: bytes.
+	//
+	// example:
+	//
+	// 1022296064
 	IndexSize *int64 `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
 	// The size of the table storage.
 	//
 	// >  Unit: byte. The value of the parameter is the sum of DataSize, IndexSize, and DataFree.
+	//
+	// example:
+	//
+	// 3012493312
 	PhyTotalSize *int64 `json:"PhyTotalSize,omitempty" xml:"PhyTotalSize,omitempty"`
 	// The physical file size of the table.
 	//
 	// >  Unit: byte. You may fail to obtain the physical file size because of the deployment mode of the database instance.
+	//
+	// example:
+	//
+	// 3057655808
 	PhysicalFileSize *int64 `json:"PhysicalFileSize,omitempty" xml:"PhysicalFileSize,omitempty"`
 	// The table name.
+	//
+	// example:
+	//
+	// test_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The number of rows in the table.
+	//
+	// example:
+	//
+	// 12794732
 	TableRows *int64 `json:"TableRows,omitempty" xml:"TableRows,omitempty"`
 	// The table type.
+	//
+	// example:
+	//
+	// BASE TABLE
 	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
 	// The size of storage occupied by table data and indexes.
 	//
 	// >  Unit: byte. The value of the parameter is the sum of DataSize and IndexSize.
+	//
+	// example:
+	//
+	// 3005153280
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
@@ -23195,6 +31936,11 @@ func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats
 
 func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetEngine(v string) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
 	s.Engine = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetFragmentSize(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
+	s.FragmentSize = &v
 	return s
 }
 
@@ -23264,8 +32010,18 @@ func (s *GetStorageAnalysisResultResponse) SetBody(v *GetStorageAnalysisResultRe
 
 type KillInstanceAllSessionRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-8vbcyr4sw0c4yc****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -23289,19 +32045,40 @@ func (s *KillInstanceAllSessionRequest) SetInstanceId(v string) *KillInstanceAll
 
 type KillInstanceAllSessionResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -23371,6 +32148,12 @@ type ModifyAutoScalingConfigRequest struct {
 	// The configuration item of the automatic bandwidth adjustment feature.
 	Bandwidth *ModifyAutoScalingConfigRequestBandwidth `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty" type:"Struct"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The configuration item of the auto scaling feature for resources.
 	Resource *ModifyAutoScalingConfigRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
@@ -23421,43 +32204,90 @@ func (s *ModifyAutoScalingConfigRequest) SetStorage(v *ModifyAutoScalingConfigRe
 }
 
 type ModifyAutoScalingConfigRequestBandwidth struct {
-	// Specifies whether to apply the **Bandwidth** configuration of the automatic bandwidth adjustment feature. Valid values:
+	// Specifies whether to apply the **Bandwidth*	- configuration of the automatic bandwidth adjustment feature. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Apply *bool `json:"Apply,omitempty" xml:"Apply,omitempty"`
 	// The average bandwidth usage threshold that triggers automatic bandwidth downgrade. Unit: %. Valid values:
 	//
-	// *   **10**
-	// *   **20**
-	// *   **30**
+	// 	- **10**
+	//
+	// 	- **20**
+	//
+	// 	- **30**
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 30
 	BandwidthUsageLowerThreshold *int32 `json:"BandwidthUsageLowerThreshold,omitempty" xml:"BandwidthUsageLowerThreshold,omitempty"`
 	// The average bandwidth usage threshold that triggers automatic bandwidth upgrade. Unit: %. Valid values:
 	//
-	// *   **50**
-	// *   **60**
-	// *   **70**
-	// *   **80**
-	// *   **90**
-	// *   **95**
+	// 	- **50**
+	//
+	// 	- **60**
+	//
+	// 	- **70**
+	//
+	// 	- **80**
+	//
+	// 	- **90**
+	//
+	// 	- **95**
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 70
 	BandwidthUsageUpperThreshold *int32 `json:"BandwidthUsageUpperThreshold,omitempty" xml:"BandwidthUsageUpperThreshold,omitempty"`
 	// Specifies whether to enable the automatic bandwidth downgrade feature. Valid values:
 	//
-	// *   **true**
-	// *   **false**
-	Downgrade *bool `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
-	// The observation window of the automatic bandwidth adjustment feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
+	// 	- **true**
 	//
-	// *   **1m**
-	// *   **5m**
-	// *   **10m**
-	// *   **15m**
-	// *   **30m**
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Downgrade *bool `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
+	// The observation window of the automatic bandwidth adjustment feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m*	- time unit suffix specifies the minute. Valid values:
+	//
+	// 	- **1m**
+	//
+	// 	- **5m**
+	//
+	// 	- **10m**
+	//
+	// 	- **15m**
+	//
+	// 	- **30m**
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 5m
 	ObservationWindowSize *string `json:"ObservationWindowSize,omitempty" xml:"ObservationWindowSize,omitempty"`
 	// Specifies whether to enable the automatic bandwidth upgrade feature. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
 }
 
@@ -23500,39 +32330,88 @@ func (s *ModifyAutoScalingConfigRequestBandwidth) SetUpgrade(v bool) *ModifyAuto
 }
 
 type ModifyAutoScalingConfigRequestResource struct {
-	// Specifies whether to apply the **Resource** configuration of the auto scaling feature for resources. Valid values:
+	// Specifies whether to apply the **Resource*	- configuration of the auto scaling feature for resources. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// true
 	Apply *bool `json:"Apply,omitempty" xml:"Apply,omitempty"`
 	// The average CPU utilization threshold that triggers automatic scale-out of resources. Unit: %. Valid values:
 	//
-	// *   **70**
-	// *   **80**
-	// *   **90**
-	CpuUsageUpperThreshold *int32 `json:"CpuUsageUpperThreshold,omitempty" xml:"CpuUsageUpperThreshold,omitempty"`
-	// The observation window of the automatic resource scale-in feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
+	// 	- **70**
 	//
-	// *   **1m**
-	// *   **3m**
-	// *   **5m**
-	// *   **10m**
-	// *   **20m**
-	// *   **30m**
+	// 	- **80**
+	//
+	// 	- **90**
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 70
+	CpuUsageUpperThreshold *int32 `json:"CpuUsageUpperThreshold,omitempty" xml:"CpuUsageUpperThreshold,omitempty"`
+	// The observation window of the automatic resource scale-in feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m*	- time unit suffix specifies the minute. Valid values:
+	//
+	// 	- **1m**
+	//
+	// 	- **3m**
+	//
+	// 	- **5m**
+	//
+	// 	- **10m**
+	//
+	// 	- **20m**
+	//
+	// 	- **30m**
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 5m
 	DowngradeObservationWindowSize *string `json:"DowngradeObservationWindowSize,omitempty" xml:"DowngradeObservationWindowSize,omitempty"`
 	// Specifies whether to enable the auto scaling feature for resources. Valid values:
 	//
-	// *   **true**
-	// *   **false**
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The observation window of the automatic resource scale-out feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
+	// 	- **true**
 	//
-	// *   **1m**
-	// *   **3m**
-	// *   **5m**
-	// *   **10m**
-	// *   **20m**
-	// *   **30m**
+	// 	- **false**
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The observation window of the automatic resource scale-out feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m*	- time unit suffix specifies the minute. Valid values:
+	//
+	// 	- **1m**
+	//
+	// 	- **3m**
+	//
+	// 	- **5m**
+	//
+	// 	- **10m**
+	//
+	// 	- **20m**
+	//
+	// 	- **30m**
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 5m
 	UpgradeObservationWindowSize *string `json:"UpgradeObservationWindowSize,omitempty" xml:"UpgradeObservationWindowSize,omitempty"`
 }
 
@@ -23570,57 +32449,127 @@ func (s *ModifyAutoScalingConfigRequestResource) SetUpgradeObservationWindowSize
 }
 
 type ModifyAutoScalingConfigRequestShard struct {
-	// Specifies whether to apply the **Shard** configuration of the auto scaling feature for shards. Valid values:
+	// Specifies whether to apply the **Shard*	- configuration of the auto scaling feature for shards. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > The auto scaling feature for shards is available only for ApsaraDB for Redis Community Edition cloud-native instances on the China site (aliyun.com).
+	//
+	// example:
+	//
+	// true
 	Apply *bool `json:"Apply,omitempty" xml:"Apply,omitempty"`
 	// Specifies whether to enable the feature of automatically removing shards. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  The feature of automatically removing shards is in canary release.
-	Downgrade *bool `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
-	// The observation window of the feature of automatically removing shards. The value of this parameter consists of a numeric value and a time unit suffix. The **h** time unit suffix specifies the hour. The **d** time unit suffix specifies the day. Valid values:
 	//
-	// *   **1h**
-	// *   **2h**
-	// *   **3h**
-	// *   **1d**
-	// *   **7d**
+	// example:
+	//
+	// true
+	Downgrade *bool `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
+	// The observation window of the feature of automatically removing shards. The value of this parameter consists of a numeric value and a time unit suffix. The **h*	- time unit suffix specifies the hour. The **d*	- time unit suffix specifies the day. Valid values:
+	//
+	// 	- **1h**
+	//
+	// 	- **2h**
+	//
+	// 	- **3h**
+	//
+	// 	- **1d**
+	//
+	// 	- **7d**
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 1h
 	DowngradeObservationWindowSize *string `json:"DowngradeObservationWindowSize,omitempty" xml:"DowngradeObservationWindowSize,omitempty"`
 	// The maximum number of shards in the instance. The value must be a positive integer. Valid values: 4 to 32.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 16
 	MaxShards *int32 `json:"MaxShards,omitempty" xml:"MaxShards,omitempty"`
 	// The average memory usage threshold that triggers automatic removal of shards. Unit: %. Valid values:
 	//
-	// *   **10**
-	// *   **20**
-	// *   **30**
+	// 	- **10**
+	//
+	// 	- **20**
+	//
+	// 	- **30**
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 30
 	MemUsageLowerThreshold *int32 `json:"MemUsageLowerThreshold,omitempty" xml:"MemUsageLowerThreshold,omitempty"`
 	// The average memory usage threshold that triggers automatic adding of shards. Unit: %. Valid values:
 	//
-	// *   **50**
-	// *   **60**
-	// *   **70**
-	// *   **80**
-	// *   **90**
+	// 	- **50**
+	//
+	// 	- **60**
+	//
+	// 	- **70**
+	//
+	// 	- **80**
+	//
+	// 	- **90**
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 70
 	MemUsageUpperThreshold *int32 `json:"MemUsageUpperThreshold,omitempty" xml:"MemUsageUpperThreshold,omitempty"`
 	// The minimum number of shards in the instance. The value must be a positive integer. Valid values: 4 to 32.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 4
 	MinShards *int32 `json:"MinShards,omitempty" xml:"MinShards,omitempty"`
 	// Specifies whether to enable the feature of automatically adding shards. Valid values:
 	//
-	// *   **true**
-	// *   **false**
-	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
-	// The observation window of the feature of automatically adding shards. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
+	// 	- **true**
 	//
-	// *   **5m**
-	// *   **10m**
-	// *   **15m**
-	// *   **30m**
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+	// The observation window of the feature of automatically adding shards. The value of this parameter consists of a numeric value and a time unit suffix. The **m*	- time unit suffix specifies the minute. Valid values:
+	//
+	// 	- **5m**
+	//
+	// 	- **10m**
+	//
+	// 	- **15m**
+	//
+	// 	- **30m**
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 5m
 	UpgradeObservationWindowSize *string `json:"UpgradeObservationWindowSize,omitempty" xml:"UpgradeObservationWindowSize,omitempty"`
 }
 
@@ -23678,62 +32627,137 @@ func (s *ModifyAutoScalingConfigRequestShard) SetUpgradeObservationWindowSize(v 
 }
 
 type ModifyAutoScalingConfigRequestSpec struct {
-	// Specifies whether to apply the **Spec** configuration of the auto scaling feature for specifications. Valid values:
+	// Specifies whether to apply the **Spec*	- configuration of the auto scaling feature for specifications. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Apply *bool `json:"Apply,omitempty" xml:"Apply,omitempty"`
-	// The quiescent period. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute, the **h** time unit suffix specifies the hour, and the **d** time suffix unit specifies the day.
+	// The quiescent period. The value of this parameter consists of a numeric value and a time unit suffix. The **m*	- time unit suffix specifies the minute, the **h*	- time unit suffix specifies the hour, and the **d*	- time suffix unit specifies the day.
 	//
-	// *   Valid values for PolarDB for MySQL Cluster Edition instances: **5m**, **10m**, **30m**, **1h**, **2h**, **3h**, **1d**, and **7d**.
-	// *   Valid values for ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: **5m**, **10m**, **30m**, **1h**, **2h**, **3h**, **1d**, and **7d**.
+	// 	- Valid values for PolarDB for MySQL Cluster Edition instances: **5m**, **10m**, **30m**, **1h**, **2h**, **3h**, **1d**, and **7d**.
+	//
+	// 	- Valid values for ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: **5m**, **10m**, **30m**, **1h**, **2h**, **3h**, **1d**, and **7d**.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 5m
 	CoolDownTime *string `json:"CoolDownTime,omitempty" xml:"CoolDownTime,omitempty"`
 	// The average CPU utilization threshold that triggers automatic specification scale-up. Unit: %. Valid values:
 	//
-	// *   **50**
-	// *   **60**
-	// *   **70**
-	// *   **80**
-	// *   **90**
+	// 	- **50**
+	//
+	// 	- **60**
+	//
+	// 	- **70**
+	//
+	// 	- **80**
+	//
+	// 	- **90**
 	//
 	// > This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance or an ApsaraDB RDS for MySQL High-availability Edition instance that uses standard SSDs or ESSDs.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 70
 	CpuUsageUpperThreshold *int32 `json:"CpuUsageUpperThreshold,omitempty" xml:"CpuUsageUpperThreshold,omitempty"`
 	// Specifies whether to enable the automatic specification scale-down feature. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance or an ApsaraDB RDS for MySQL High-availability Edition instance that uses standard SSDs or ESSDs.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// true
 	Downgrade *bool `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
 	// The maximum number of read-only nodes of the instance.
 	//
 	// > This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 10
 	MaxReadOnlyNodes *int32 `json:"MaxReadOnlyNodes,omitempty" xml:"MaxReadOnlyNodes,omitempty"`
 	// The maximum specifications to which the database instance can be scaled up. The database instance can be upgraded only to a database instance of the same edition with higher specifications. For information about the specifications of different database instances, see the following topics:
 	//
-	// *   PolarDB for MySQL Cluster Edition instances: [Specifications of compute nodes](~~102542~~)
-	// *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: [Specifications](~~276974~~)
+	// 	- PolarDB for MySQL Cluster Edition instances: [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html)
+	//
+	// 	- ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: [Specifications](https://help.aliyun.com/document_detail/276974.html)
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// polar.mysql.x8.12xlarge
 	MaxSpec *string `json:"MaxSpec,omitempty" xml:"MaxSpec,omitempty"`
 	// The average memory usage threshold that triggers automatic specification scale-up. Unit: %. Valid values:
 	//
-	// *   **50**
-	// *   **60**
-	// *   **70**
-	// *   **80**
-	// *   **90**
+	// 	- **50**
+	//
+	// 	- **60**
+	//
+	// 	- **70**
+	//
+	// 	- **80**
+	//
+	// 	- **90**
 	//
 	// > This parameter must be specified if the database instance is an ApsaraDB for Redis Community Edition cloud-native instance on the China site (aliyun.com).
-	MemUsageUpperThreshold *int32 `json:"MemUsageUpperThreshold,omitempty" xml:"MemUsageUpperThreshold,omitempty"`
-	// The observation window. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute and the **h** time unit suffix specifies the hour.
 	//
-	// *   Valid values for PolarDB for MySQL Cluster Edition instances: **5m**, **10m**, **15m**, and **30m**.
-	// *   Valid values for ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: **5m**, **20m**, **30m**, **40m**, and **1h**.
-	// *   Valid values for ApsaraDB for Redis Community Edition cloud-native instances: **5m**, **10m**, **15m**, and **30m**.
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 70
+	MemUsageUpperThreshold *int32 `json:"MemUsageUpperThreshold,omitempty" xml:"MemUsageUpperThreshold,omitempty"`
+	// The observation window. The value of this parameter consists of a numeric value and a time unit suffix. The **m*	- time unit suffix specifies the minute and the **h*	- time unit suffix specifies the hour.
+	//
+	// 	- Valid values for PolarDB for MySQL Cluster Edition instances: **5m**, **10m**, **15m**, and **30m**.
+	//
+	// 	- Valid values for ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: **5m**, **20m**, **30m**, **40m**, and **1h**.
+	//
+	// 	- Valid values for ApsaraDB for Redis Community Edition cloud-native instances: **5m**, **10m**, **15m**, and **30m**.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 5m
 	ObservationWindowSize *string `json:"ObservationWindowSize,omitempty" xml:"ObservationWindowSize,omitempty"`
 	// Specifies whether to enable the automatic specification scale-up feature. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// true
 	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
 }
 
@@ -23791,30 +32815,62 @@ func (s *ModifyAutoScalingConfigRequestSpec) SetUpgrade(v bool) *ModifyAutoScali
 }
 
 type ModifyAutoScalingConfigRequestStorage struct {
-	// Specifies whether to apply the **Storage** configuration of the automatic storage expansion feature. Valid values:
+	// Specifies whether to apply the **Storage*	- configuration of the automatic storage expansion feature. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Apply *bool `json:"Apply,omitempty" xml:"Apply,omitempty"`
 	// The average storage usage threshold that triggers automatic storage expansion. Unit: %. Valid values:
 	//
-	// *   **50**
-	// *   **60**
-	// *   **70**
-	// *   **80**
-	// *   **90**
+	// 	- **50**
+	//
+	// 	- **60**
+	//
+	// 	- **70**
+	//
+	// 	- **80**
+	//
+	// 	- **90**
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 70
 	DiskUsageUpperThreshold *int32 `json:"DiskUsageUpperThreshold,omitempty" xml:"DiskUsageUpperThreshold,omitempty"`
 	// The maximum storage size of the database instance. The value must be greater than or equal to the total storage size of the instance. Valid values of different types of instances:
 	//
-	// *   If the ApsaraDB for RDS instance uses ESSDs, the value of this parameter can be set to 32000, in GB.
-	// *   If the ApsaraDB for RDS instance uses standard SSDs, the value of this parameter can be set to 6000, in GB.
+	// 	- If the ApsaraDB for RDS instance uses ESSDs, the value of this parameter can be set to 32000, in GB.
 	//
-	// >  The ApsaraDB RDS for MySQL instances that use standard SSDs are discontinued. We recommend that you [upgrade the storage type of an ApsaraDB RDS for MySQL instance from standard SSDs to ESSDs](~~314678~~).
+	// 	- If the ApsaraDB for RDS instance uses standard SSDs, the value of this parameter can be set to 6000, in GB.
+	//
+	// >  The ApsaraDB RDS for MySQL instances that use standard SSDs are discontinued. We recommend that you [upgrade the storage type of an ApsaraDB RDS for MySQL instance from standard SSDs to ESSDs](https://help.aliyun.com/document_detail/314678.html).
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 32000
 	MaxStorage *int32 `json:"MaxStorage,omitempty" xml:"MaxStorage,omitempty"`
 	// Specifies whether to enable the automatic storage expansion feature. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// true
 	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
 }
 
@@ -23848,17 +32904,34 @@ func (s *ModifyAutoScalingConfigRequestStorage) SetUpgrade(v bool) *ModifyAutoSc
 
 type ModifyAutoScalingConfigResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -23920,12 +32993,50 @@ func (s *ModifyAutoScalingConfigResponse) SetBody(v *ModifyAutoScalingConfigResp
 }
 
 type ModifySqlLogConfigRequest struct {
-	Enable        *bool                               `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Filters       []*ModifySqlLogConfigRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	HotRetention  *int32                              `json:"HotRetention,omitempty" xml:"HotRetention,omitempty"`
-	InstanceId    *string                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestEnable *bool                               `json:"RequestEnable,omitempty" xml:"RequestEnable,omitempty"`
-	Retention     *int32                              `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// Specifies whether to enable DAS Enterprise Edition. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// >  By default, the latest version of DAS Enterprise Edition is enabled.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// A reserved parameter.
+	Filters []*ModifySqlLogConfigRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The number of days for which data is stored in hot storage.
+	//
+	// >  This parameter is applicable only to DAS Enterprise Edition V3.
+	//
+	// example:
+	//
+	// 1
+	HotRetention *int32 `json:"HotRetention,omitempty" xml:"HotRetention,omitempty"`
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rr-2ze770smbq3tpr2o9
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to enable SQL Explorer.
+	//
+	// >  This parameter is applicable only to DAS Enterprise Edition V3.
+	//
+	// example:
+	//
+	// true
+	RequestEnable *bool `json:"RequestEnable,omitempty" xml:"RequestEnable,omitempty"`
+	// The number of days for which data generated by SQL Audit is retained.
+	//
+	// example:
+	//
+	// 30
+	Retention *int32 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 }
 
 func (s ModifySqlLogConfigRequest) String() string {
@@ -23967,7 +33078,17 @@ func (s *ModifySqlLogConfigRequest) SetRetention(v int32) *ModifySqlLogConfigReq
 }
 
 type ModifySqlLogConfigRequestFilters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -23990,12 +33111,38 @@ func (s *ModifySqlLogConfigRequestFilters) SetValue(v string) *ModifySqlLogConfi
 }
 
 type ModifySqlLogConfigResponseBody struct {
+	// The response code.
+	//
+	// example:
+	//
+	// 403
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// SqlLogConfig
-	Data      *ModifySqlLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The data returned.
+	Data *ModifySqlLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned for the request.
+	//
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, error information such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 03C88D8E-1541-518E-8BFF-BEC6589B6334
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// False
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifySqlLogConfigResponseBody) String() string {
@@ -24032,23 +33179,108 @@ func (s *ModifySqlLogConfigResponseBody) SetSuccess(v string) *ModifySqlLogConfi
 }
 
 type ModifySqlLogConfigResponseBodyData struct {
-	ColdEnable        *bool   `json:"ColdEnable,omitempty" xml:"ColdEnable,omitempty"`
-	ColdRetention     *int32  `json:"ColdRetention,omitempty" xml:"ColdRetention,omitempty"`
-	ColdStartTime     *int64  `json:"ColdStartTime,omitempty" xml:"ColdStartTime,omitempty"`
-	CollectorVersion  *string `json:"CollectorVersion,omitempty" xml:"CollectorVersion,omitempty"`
-	HotEnable         *bool   `json:"HotEnable,omitempty" xml:"HotEnable,omitempty"`
-	HotRetention      *int32  `json:"HotRetention,omitempty" xml:"HotRetention,omitempty"`
-	HotStartTime      *int64  `json:"HotStartTime,omitempty" xml:"HotStartTime,omitempty"`
-	LogFilter         *string `json:"LogFilter,omitempty" xml:"LogFilter,omitempty"`
-	RequestEnable     *bool   `json:"RequestEnable,omitempty" xml:"RequestEnable,omitempty"`
-	RequestStartTime  *int64  `json:"RequestStartTime,omitempty" xml:"RequestStartTime,omitempty"`
-	RequestStopTime   *int64  `json:"RequestStopTime,omitempty" xml:"RequestStopTime,omitempty"`
-	Retention         *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	SqlLogEnable      *bool   `json:"SqlLogEnable,omitempty" xml:"SqlLogEnable,omitempty"`
-	SqlLogState       *string `json:"SqlLogState,omitempty" xml:"SqlLogState,omitempty"`
-	SqlLogVisibleTime *int64  `json:"SqlLogVisibleTime,omitempty" xml:"SqlLogVisibleTime,omitempty"`
-	SupportVersion    *string `json:"SupportVersion,omitempty" xml:"SupportVersion,omitempty"`
-	Version           *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// Indicates whether cold storage is enabled.
+	//
+	// example:
+	//
+	// true
+	ColdEnable *bool `json:"ColdEnable,omitempty" xml:"ColdEnable,omitempty"`
+	// The number of days for which data is stored in cold storage. The value of this parameter is the value of Retention minus the value of HotRetention.
+	//
+	// example:
+	//
+	// 23
+	ColdRetention *int32 `json:"ColdRetention,omitempty" xml:"ColdRetention,omitempty"`
+	// The time when cold storage was enabled.
+	//
+	// example:
+	//
+	// 1683712800000
+	ColdStartTime *int64 `json:"ColdStartTime,omitempty" xml:"ColdStartTime,omitempty"`
+	// The collector version.
+	//
+	// example:
+	//
+	// MYSQL_V3
+	CollectorVersion *string `json:"CollectorVersion,omitempty" xml:"CollectorVersion,omitempty"`
+	// Indicates whether hot storage is enabled.
+	//
+	// example:
+	//
+	// true
+	HotEnable *bool `json:"HotEnable,omitempty" xml:"HotEnable,omitempty"`
+	// The number of days for which data is stored in hot storage.
+	//
+	// example:
+	//
+	// 7
+	HotRetention *int32 `json:"HotRetention,omitempty" xml:"HotRetention,omitempty"`
+	// The time when hot storage was enabled.
+	//
+	// example:
+	//
+	// 1683712800000
+	HotStartTime *int64 `json:"HotStartTime,omitempty" xml:"HotStartTime,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
+	LogFilter *string `json:"LogFilter,omitempty" xml:"LogFilter,omitempty"`
+	// Indicates whether SQL Explorer is enabled.
+	//
+	// example:
+	//
+	// false
+	RequestEnable *bool `json:"RequestEnable,omitempty" xml:"RequestEnable,omitempty"`
+	// The time when SQL Explorer was enabled.
+	//
+	// example:
+	//
+	// 1683712800000
+	RequestStartTime *int64 `json:"RequestStartTime,omitempty" xml:"RequestStartTime,omitempty"`
+	// The time when SQL Explorer will be disabled.
+	//
+	// example:
+	//
+	// 1715335200000
+	RequestStopTime *int64 `json:"RequestStopTime,omitempty" xml:"RequestStopTime,omitempty"`
+	// The number of days for which data generated by SQL Audit is retained.
+	//
+	// example:
+	//
+	// 30
+	Retention *int32 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// Indicates whether DAS Enterprise Edition is enabled.
+	//
+	// example:
+	//
+	// true
+	SqlLogEnable *bool `json:"SqlLogEnable,omitempty" xml:"SqlLogEnable,omitempty"`
+	// The state of data migration.
+	//
+	// example:
+	//
+	// FINISH
+	SqlLogState *string `json:"SqlLogState,omitempty" xml:"SqlLogState,omitempty"`
+	// The time when SQL Audit was enabled.
+	//
+	// example:
+	//
+	// 1683712800000
+	SqlLogVisibleTime *int64 `json:"SqlLogVisibleTime,omitempty" xml:"SqlLogVisibleTime,omitempty"`
+	// The latest version of DAS Enterprise Edition that is supported by the database instance.
+	//
+	// example:
+	//
+	// SQL_LOG_V3
+	SupportVersion *string `json:"SupportVersion,omitempty" xml:"SupportVersion,omitempty"`
+	// The version of DAS Enterprise Edition that is enabled.
+	//
+	// example:
+	//
+	// SQL_LOG_V3
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ModifySqlLogConfigResponseBodyData) String() string {
@@ -24174,7 +33406,13 @@ func (s *ModifySqlLogConfigResponse) SetBody(v *ModifySqlLogConfigResponseBody) 
 }
 
 type RunCloudBenchTaskRequest struct {
-	// The stress testing task ID. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the task ID.
+	// The stress testing task ID. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5cec704-0518-430f-8263-76f4dcds****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -24193,19 +33431,36 @@ func (s *RunCloudBenchTaskRequest) SetTaskId(v string) *RunCloudBenchTaskRequest
 
 type RunCloudBenchTaskResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information, including the error codes and the number of returned entries.
 	Data *RunCloudBenchTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -24261,29 +33516,60 @@ func (s *RunCloudBenchTaskResponseBodyData) SetPreCheckItem(v []*RunCloudBenchTa
 
 type RunCloudBenchTaskResponseBodyDataPreCheckItem struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information of the check item.
+	//
+	// example:
+	//
+	// "Data": { "total": 1, "list":[...] }, "Code": 200, "Success": true }
 	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The name of the check item. Valid values:
 	//
-	// * **SqlArchiveStatusChecker**: checks whether SQL Explorer is available.
-	// * **BenchClientEnvChecker**: checks whether the runtime environment for programs on the stress testing client is available.
-	// * **SpecChecker**: checks whether the destination instance type and the instance type of the stress testing client support this API operation.
-	// * **SourceInstanceChecker**: checks whether the account of the source instance is available and whether the source instance is connected to the destination instance.
-	// * **BenchTargetChecker**: checks whether the account of the destination instance is available and whether the source instance is connected to the destination instance.
+	// 	- **SqlArchiveStatusChecker**: checks whether SQL Explorer is available.
+	//
+	// 	- **BenchClientEnvChecker**: checks whether the runtime environment for programs on the stress testing client is available.
+	//
+	// 	- **SpecChecker**: checks whether the destination instance type and the instance type of the stress testing client support this API operation.
+	//
+	// 	- **SourceInstanceChecker**: checks whether the account of the source instance is available and whether the source instance is connected to the destination instance.
+	//
+	// 	- **BenchTargetChecker**: checks whether the account of the destination instance is available and whether the source instance is connected to the destination instance.
+	//
+	// example:
+	//
+	// BenchTargetChecker
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sequence number of the check item. Valid values: **0** to **10**.
+	// The sequence number of the check item. Valid values: **0*	- to **10**.
+	//
+	// example:
+	//
+	// 0
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// *   **SUCCESS**: The task is successful.
-	// *   **IGNORED**: The task is ignored.
-	// *   **RUNNING**: The task is running.
-	// *   **EXCEPTION**: An error occurred.
+	// 	- **SUCCESS**: The task is successful.
+	//
+	// 	- **IGNORED**: The task is ignored.
+	//
+	// 	- **RUNNING**: The task is running.
+	//
+	// 	- **EXCEPTION**: An error occurred.
+	//
+	// example:
+	//
+	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -24357,59 +33643,115 @@ func (s *RunCloudBenchTaskResponse) SetBody(v *RunCloudBenchTaskResponseBody) *R
 type SetEventSubscriptionRequest struct {
 	// Specifies whether to enable the event subscription feature. Valid values:
 	//
-	// *   **0**: disables the event subscription feature.
-	// *   **1**: enables the event subscription feature.
+	// 	- **0**: disables the event subscription feature.
+	//
+	// 	- **1**: enables the event subscription feature.
+	//
+	// example:
+	//
+	// 1
 	Active *string `json:"Active,omitempty" xml:"Active,omitempty"`
 	// The notification method. Valid values:
 	//
-	// *   **hdm_alarm_sms**: text message.
-	// *   **dingtalk**: DingTalk chatbot.
-	// *   **hdm_alarm_sms_and_email**: text message and email.
-	// *   **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
+	// 	- **hdm_alarm_sms**: text message.
+	//
+	// 	- **dingtalk**: DingTalk chatbot.
+	//
+	// 	- **hdm_alarm_sms_and_email**: text message and email.
+	//
+	// 	- **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
+	//
+	// example:
+	//
+	// hdm_alarm_sms,dingtalk
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	// The name of the contact group that receives alert notifications. Separate multiple names with commas (,).
+	//
+	// example:
+	//
+	// Default contact group
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
 	// The name of the contact who receives alert notifications. Separate multiple names with commas (,).
+	//
+	// example:
+	//
+	// Default contact
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	// The notification rules based on the event type. If you leave this parameter empty, the values of **MinInterval** and **ChannelType** prevail.
+	// The notification rules based on the event type. If you leave this parameter empty, the values of **MinInterval*	- and **ChannelType*	- prevail.
 	//
 	// Specify this parameter in the following format: `{"silenced": {"Event type 1":Specifies whether to enable adaptive silence, "Event type 2":Specify whether to enable adaptive silence},"min_interval": {"Event type 1":Minimum interval between event notifications, "Event type 2":Minimum interval between event notifications},"alert_type": {"Event type 1":"Notification method", "Event type 2":"Notification method"}}`.
 	//
-	// *   **silenced**: specifies whether to enable adaptive silence. After you enable adaptive silence, the interval between consecutive alert notifications for an event is the greater one of the minimum interval specified by **min_interval** and one third of the event duration. Valid values:
+	// 	- **silenced**: specifies whether to enable adaptive silence. After you enable adaptive silence, the interval between consecutive alert notifications for an event is the greater one of the minimum interval specified by **min_interval*	- and one third of the event duration. Valid values:
 	//
-	//     *   1: enables adaptive silence.
-	//     *   2: disables adaptive silence.
+	//     	- 1: enables adaptive silence.
 	//
-	// *   **min_interval**: the minimum interval between event notifications. Unit: seconds.
+	//     	- 2: disables adaptive silence.
 	//
-	// *   **alert_type**: the notification method. Valid values:
+	// 	- **min_interval**: the minimum interval between event notifications. Unit: seconds.
 	//
-	//     *   **hdm_alarm_sms**: text message.
-	//     *   **dingtalk**: DingTalk chatbot.
-	//     *   **hdm_alarm_sms_and_email**: text message and email.
-	//     *   **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
+	// 	- **alert_type**: the notification method. Valid values:
+	//
+	//     	- **hdm_alarm_sms**: text message.
+	//
+	//     	- **dingtalk**: DingTalk chatbot.
+	//
+	//     	- **hdm_alarm_sms_and_email**: text message and email.
+	//
+	//     	- **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
+	//
+	// example:
+	//
+	// {"silenced": {"AutoScale":1, "SQLThrottle":0, "TimeSeriesAbnormal": 1}, "min_interval": {"AutoScale":300, "SQLThrottle":360, "TimeSeriesAbnormal": 120}, "alert_type": {"AutoScale":"hdm_alarm_sms", "SQLThrottle":"hdm_alarm_sms_and_email", "TimeSeriesAbnormal": "hdm_alarm_sms,dingtalk"}}
 	DispatchRule *string `json:"DispatchRule,omitempty" xml:"DispatchRule,omitempty"`
 	// The supported event scenarios. You can set the value to **AllContext**, which indicates that all scenarios are supported.
+	//
+	// example:
+	//
+	// AllContext
 	EventContext *string `json:"EventContext,omitempty" xml:"EventContext,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The language of event notifications. You can set the value to **zh-CN**, which indicates that event notifications are sent in Chinese.
+	//
+	// example:
+	//
+	// zh-CN
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The risk level of the events. Valid values:
 	//
-	// *   **Notice**: events that trigger notifications, including events at the **Notice**, **Optimization**, **Warn**, and **Critical** levels.
-	// *   **Optimization**: events that trigger optimizations, including events at the **Optimization**, **Warn**, and **Critical** levels.
-	// *   **Warn**: events that trigger warnings, including events at the **Warn** and **Critical** levels.
-	// *   **Critical**: events that trigger critical warnings.
+	// 	- **Notice**: events that trigger notifications, including events at the **Notice**, **Optimization**, **Warn**, and **Critical*	- levels.
+	//
+	// 	- **Optimization**: events that trigger optimizations, including events at the **Optimization**, **Warn**, and **Critical*	- levels.
+	//
+	// 	- **Warn**: events that trigger warnings, including events at the **Warn*	- and **Critical*	- levels.
+	//
+	// 	- **Critical**: events that trigger critical warnings.
 	//
 	// The following content describes the events at each level in detail:
 	//
-	// *   Notice: events that are related to database exceptions for which no suggestions are generated.
-	// *   Optimization: events for which optimization suggestions are generated based on the status of the database.
-	// *   Warn: events that may affect the running of the database.
-	// *   Critical: events that affect the running of the database.
+	// 	- Notice: events that are related to database exceptions for which no suggestions are generated.
+	//
+	// 	- Optimization: events for which optimization suggestions are generated based on the status of the database.
+	//
+	// 	- Warn: events that may affect the running of the database.
+	//
+	// 	- Critical: events that affect the running of the database.
+	//
+	// example:
+	//
+	// Optimization
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The minimum interval between consecutive event notifications. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
 	MinInterval *string `json:"MinInterval,omitempty" xml:"MinInterval,omitempty"`
 	// The alert severity based on the event type.
 	//
@@ -24417,18 +33759,29 @@ type SetEventSubscriptionRequest struct {
 	//
 	// Valid values of event types:
 	//
-	// *   **AutoScale**: auto scaling event.
-	// *   **SQLThrottle**: throttling event.
-	// *   **TimeSeriesAbnormal**: event for detecting time series anomalies.
-	// *   **SQLOptimize**: SQL optimization event.
-	// *   **ResourceOptimize**: storage optimization event.
+	// 	- **AutoScale**: auto scaling event.
+	//
+	// 	- **SQLThrottle**: throttling event.
+	//
+	// 	- **TimeSeriesAbnormal**: event for detecting time series anomalies.
+	//
+	// 	- **SQLOptimize**: SQL optimization event.
+	//
+	// 	- **ResourceOptimize**: storage optimization event.
 	//
 	// Valid values of alert severities:
 	//
-	// *   **info**
-	// *   **noticed**
-	// *   **warning**
-	// *   **critical**
+	// 	- **info**
+	//
+	// 	- **noticed**
+	//
+	// 	- **warning**
+	//
+	// 	- **critical**
+	//
+	// example:
+	//
+	// {"AutoScale":"critical","SQLThrottle":"info","TimeSeriesAbnormal":"warning"}
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 }
 
@@ -24497,19 +33850,36 @@ func (s *SetEventSubscriptionRequest) SetSeverity(v string) *SetEventSubscriptio
 
 type SetEventSubscriptionResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed information.
 	Data *SetEventSubscriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 097F0C56-B252-515A-B602-FC56EF93EF8A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -24549,36 +33919,83 @@ func (s *SetEventSubscriptionResponseBody) SetSuccess(v string) *SetEventSubscri
 type SetEventSubscriptionResponseBodyData struct {
 	// Indicates whether the event subscription feature is enabled. Valid values:
 	//
-	// *   **0**: The event subscription feature is disabled.
-	// *   **1**: The event subscription feature is enabled.
+	// 	- **0**: The event subscription feature is disabled.
+	//
+	// 	- **1**: The event subscription feature is enabled.
+	//
+	// example:
+	//
+	// 1
 	Active *int32 `json:"active,omitempty" xml:"active,omitempty"`
 	// The notification method. Valid values:
 	//
-	// *   **hdm_alarm_sms**: text message.
-	// *   **dingtalk**: DingTalk chatbot.
-	// *   **hdm_alarm_sms_and_email**: text message and email.
-	// *   **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
+	// 	- **hdm_alarm_sms**: text message.
+	//
+	// 	- **dingtalk**: DingTalk chatbot.
+	//
+	// 	- **hdm_alarm_sms_and_email**: text message and email.
+	//
+	// 	- **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
+	//
+	// example:
+	//
+	// hdm_alarm_sms,dingtalk
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
 	// The name of the contact group that receives alert notifications. Multiple names are separated by commas (,).
+	//
+	// example:
+	//
+	// Default contact group
 	ContactGroupName *string `json:"contactGroupName,omitempty" xml:"contactGroupName,omitempty"`
 	// The name of the contact who receives alert notifications. Multiple names are separated by commas (,).
+	//
+	// example:
+	//
+	// Default contact
 	ContactName *string `json:"contactName,omitempty" xml:"contactName,omitempty"`
-	// The supported event scenarios. Only **AllContext** is returned for this parameter, which indicates that all scenarios are supported.
+	// The supported event scenarios. Only **AllContext*	- is returned for this parameter, which indicates that all scenarios are supported.
+	//
+	// example:
+	//
+	// AllContext
 	EventContext *string `json:"eventContext,omitempty" xml:"eventContext,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The language of event notifications. Only **zh-CN** is returned for this parameter, which indicates that event notifications are sent in Chinese.
+	// The language of event notifications. Only **zh-CN*	- is returned for this parameter, which indicates that event notifications are sent in Chinese.
+	//
+	// example:
+	//
+	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
 	// The risk level of the events. Valid values:
 	//
-	// *   **Notice**
-	// *   **Optimization**
-	// *   **Warn**
-	// *   **Critical**
+	// 	- **Notice**
+	//
+	// 	- **Optimization**
+	//
+	// 	- **Warn**
+	//
+	// 	- **Critical**
+	//
+	// example:
+	//
+	// Optimization
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
 	// The minimum interval between consecutive event notifications. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
 	MinInterval *int32 `json:"minInterval,omitempty" xml:"minInterval,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 1088760496****
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -24670,7 +34087,13 @@ func (s *SetEventSubscriptionResponse) SetBody(v *SetEventSubscriptionResponseBo
 }
 
 type StopCloudBenchTaskRequest struct {
-	// The stress testing task ID. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the task ID.
+	// The stress testing task ID. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5cec704-0518-430f-8263-76f4dcds****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -24689,19 +34112,40 @@ func (s *StopCloudBenchTaskRequest) SetTaskId(v string) *StopCloudBenchTaskReque
 
 type StopCloudBenchTaskResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -24916,18 +34360,44 @@ func (s *SyncHDMAliyunResourceResponse) SetBody(v *SyncHDMAliyunResourceResponse
 
 type UpdateAutoResourceOptimizeRulesAsyncRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The database instance IDs.
 	//
-	// >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\", \"Instance ID2\"]`.
+	// >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\", \\"Instance ID2\\"]`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [\\"rm-2ze8g2am97624****\\",\\"rm-2ze9xrhze0709****\\"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The ID of the asynchronous request.
 	//
 	// >  You can leave this parameter empty when you call the operation to initiate the request for the first time, and use the value of this parameter contained in the response to the first request for subsequent requests.
+	//
+	// example:
+	//
+	// async__507044db6c4eadfa2dab9b084e80****
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
-	// The fragmentation rate that triggers automatic fragment recycling of a single physical table. Valid values: **0.10** to **0.99**.
+	// The fragmentation rate that triggers automatic fragment recycling of a single physical table. Valid values: **0.10*	- to **0.99**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
 	TableFragmentationRatio *float64 `json:"TableFragmentationRatio,omitempty" xml:"TableFragmentationRatio,omitempty"`
-	// The minimum storage usage that triggers automatic fragment recycling of a single physical table. Valid values: **5** to **100**. Unit: GB.
+	// The minimum storage usage that triggers automatic fragment recycling of a single physical table. Valid values: **5*	- to **100**. Unit: GB.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	TableSpaceSize *float64 `json:"TableSpaceSize,omitempty" xml:"TableSpaceSize,omitempty"`
 }
 
@@ -24966,19 +34436,36 @@ func (s *UpdateAutoResourceOptimizeRulesAsyncRequest) SetTableSpaceSize(v float6
 
 type UpdateAutoResourceOptimizeRulesAsyncResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9CB97BC4-6479-55D0-B9D0-EA925AFE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25018,8 +34505,13 @@ func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBody) SetSuccess(v bool) *U
 type UpdateAutoResourceOptimizeRulesAsyncResponseBodyData struct {
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Complete *bool `json:"Complete,omitempty" xml:"Complete,omitempty"`
 	// The returned data of the configuration.
 	//
@@ -25027,23 +34519,47 @@ type UpdateAutoResourceOptimizeRulesAsyncResponseBodyData struct {
 	ConfigResponse *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse `json:"ConfigResponse,omitempty" xml:"ConfigResponse,omitempty" type:"Struct"`
 	// Indicates whether the asynchronous request failed. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Fail *bool `json:"Fail,omitempty" xml:"Fail,omitempty"`
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsFinish *bool `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
 	// The ID of the asynchronous request.
+	//
+	// example:
+	//
+	// async__20ee808e72257f16a4fe024057ca****
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
 	// The state of the asynchronous request. Valid values:
 	//
-	// *   **RUNNING**
-	// *   **SUCCESS**
-	// *   **FAIL**
+	// 	- **RUNNING**
+	//
+	// 	- **SUCCESS**
+	//
+	// 	- **FAIL**
+	//
+	// example:
+	//
+	// SUCCESS
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1645668213000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -25092,14 +34608,26 @@ func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData) SetTimestamp(v in
 
 type UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse struct {
 	// The number of database instances for which the parameters failed to be configured.
+	//
+	// example:
+	//
+	// 1
 	ConfigFailInstanceCount *int64 `json:"ConfigFailInstanceCount,omitempty" xml:"ConfigFailInstanceCount,omitempty"`
 	// The database instances for which the parameters failed to be configured.
 	ConfigFailInstanceList []*UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList `json:"ConfigFailInstanceList,omitempty" xml:"ConfigFailInstanceList,omitempty" type:"Repeated"`
 	// The number of database instances for which the parameters are configured.
+	//
+	// example:
+	//
+	// 1
 	ConfigSuccessInstanceCount *int64 `json:"ConfigSuccessInstanceCount,omitempty" xml:"ConfigSuccessInstanceCount,omitempty"`
 	// The database instances for which the parameters are configured.
 	ConfigSuccessInstanceList []*UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList `json:"ConfigSuccessInstanceList,omitempty" xml:"ConfigSuccessInstanceList,omitempty" type:"Repeated"`
 	// The total number of database instances.
+	//
+	// example:
+	//
+	// 2
 	TotalInstanceCount *int64 `json:"TotalInstanceCount,omitempty" xml:"TotalInstanceCount,omitempty"`
 }
 
@@ -25139,13 +34667,25 @@ func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse) Set
 type UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList struct {
 	// Indicates whether the parameters are configured. Valid values:
 	//
-	// * **true**
+	// 	- **true**
 	//
-	// * **false**
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	ConfigSuccess *bool `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Only Support DAS Pro High-availability Edition RDS MySQL 5.6, 5.7, 8.0 instance, and CPU cores >= 4, innodb_file_per_table=ON
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2ze9xrhze0709****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -25175,11 +34715,19 @@ func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfi
 type UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList struct {
 	// Indicates whether the parameters are configured. Valid values:
 	//
-	// * **true**
+	// 	- **true**
 	//
-	// * **false**
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ConfigSuccess *bool `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -25234,12 +34782,26 @@ type UpdateAutoSqlOptimizeStatusRequest struct {
 	// The database instance IDs. Separate multiple IDs with commas (,).
 	//
 	// >  You can specify up to 50 instance IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-bp10usoc1erj7****,rm-bp10usoc1erj7****
 	Instances *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
 	// The status of the automatic SQL optimization feature. Valid values:
 	//
-	// *   **0**: The automatic SQL optimization feature is disabled.
-	// *   **1**: **SQL diagnosis and automatic index creation** is specified.
-	// *   **3**: **SQL diagnosis only** is specified.
+	// 	- **0**: The automatic SQL optimization feature is disabled.
+	//
+	// 	- **1**: **SQL diagnosis and automatic index creation*	- is specified.
+	//
+	// 	- **3**: **SQL diagnosis only*	- is specified.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -25263,19 +34825,36 @@ func (s *UpdateAutoSqlOptimizeStatusRequest) SetStatus(v int32) *UpdateAutoSqlOp
 
 type UpdateAutoSqlOptimizeStatusResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *UpdateAutoSqlOptimizeStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// A52AD37C-35ED-581A-AC23-2232BE54****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25315,15 +34894,29 @@ func (s *UpdateAutoSqlOptimizeStatusResponseBody) SetSuccess(v string) *UpdateAu
 type UpdateAutoSqlOptimizeStatusResponseBodyData struct {
 	// The error code. Valid values:
 	//
-	// *   **-1001**: indicates that the specified parameter is invalid.
-	// *   **-91029**: indicates that a system error occurred.
+	// 	- **-1001**: indicates that the specified parameter is invalid.
+	//
+	// 	- **-91029**: indicates that a system error occurred.
+	//
+	// example:
+	//
+	// -1001
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// invalid param
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// Indicates whether the request initiated to configure the automatic SQL optimization feature was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25381,41 +34974,106 @@ func (s *UpdateAutoSqlOptimizeStatusResponse) SetBody(v *UpdateAutoSqlOptimizeSt
 
 type UpdateAutoThrottleRulesAsyncRequest struct {
 	// The duration threshold for triggering automatic SQL throttling. Set this parameter to a positive integer that is greater than or equal to 2. Unit: minutes.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
 	AbnormalDuration *float64 `json:"AbnormalDuration,omitempty" xml:"AbnormalDuration,omitempty"`
 	// The maximum number of active sessions.
 	//
-	// *   Specify an integer that is greater than or equal to 16 when the CPU utilization threshold and the maximum number of active sessions are in the **OR** relationship.
-	// *   Specify an integer that is greater than or equal to 2 when the CPU utilization threshold and the maximum number of active sessions are in the **AND** relationship.
+	// 	- Specify an integer that is greater than or equal to 16 when the CPU utilization threshold and the maximum number of active sessions are in the **OR*	- relationship.
+	//
+	// 	- Specify an integer that is greater than or equal to 2 when the CPU utilization threshold and the maximum number of active sessions are in the **AND*	- relationship.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 16
 	ActiveSessions *int64 `json:"ActiveSessions,omitempty" xml:"ActiveSessions,omitempty"`
 	// The end time of the throttling window. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23:59Z
 	AllowThrottleEndTime *string `json:"AllowThrottleEndTime,omitempty" xml:"AllowThrottleEndTime,omitempty"`
 	// The start time of the throttling window. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 00:00Z
 	AllowThrottleStartTime *string `json:"AllowThrottleStartTime,omitempty" xml:"AllowThrottleStartTime,omitempty"`
 	// Specifies whether to terminate abnormal SQL statements in execution at the same time. Valid values:
 	//
 	// >  Abnormal SQL statements use the same template as the SQL statements that need to be throttled.
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	AutoKillSession *bool `json:"AutoKillSession,omitempty" xml:"AutoKillSession,omitempty"`
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The logical relationship between the CPU utilization threshold and the maximum number of active sessions. Valid values:
 	//
-	// *   **AND**
-	// *   **OR**
+	// 	- **AND**
+	//
+	// 	- **OR**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OR
 	CpuSessionRelation *string `json:"CpuSessionRelation,omitempty" xml:"CpuSessionRelation,omitempty"`
 	// The CPU utilization threshold, in percentages. Valid values: 70 to 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 70
 	CpuUsage *float64 `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
 	// The database instance IDs.
 	//
-	// >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\", \"Instance ID2\"]`.
+	// >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\", \\"Instance ID2\\"]`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [\\"rm-2ze8g2am97624****\\",\\"rm-2ze9xrhze0709****\\"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The maximum throttling duration. Set this parameter to a positive integer. Unit: minutes.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	MaxThrottleTime *float64 `json:"MaxThrottleTime,omitempty" xml:"MaxThrottleTime,omitempty"`
 	// The ID of the asynchronous request.
 	//
 	// >  You can leave this parameter empty when you call the operation to initiate the request for the first time, and use the value of this parameter contained in the response to the first request for subsequent requests.
+	//
+	// example:
+	//
+	// async__507044db6c4eadfa2dab9b084e80****
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
 }
 
@@ -25484,19 +35142,36 @@ func (s *UpdateAutoThrottleRulesAsyncRequest) SetResultId(v string) *UpdateAutoT
 
 type UpdateAutoThrottleRulesAsyncResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *UpdateAutoThrottleRulesAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25536,8 +35211,13 @@ func (s *UpdateAutoThrottleRulesAsyncResponseBody) SetSuccess(v bool) *UpdateAut
 type UpdateAutoThrottleRulesAsyncResponseBodyData struct {
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Complete *bool `json:"Complete,omitempty" xml:"Complete,omitempty"`
 	// The returned data of the configuration.
 	//
@@ -25545,23 +35225,47 @@ type UpdateAutoThrottleRulesAsyncResponseBodyData struct {
 	ConfigResponse *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse `json:"ConfigResponse,omitempty" xml:"ConfigResponse,omitempty" type:"Struct"`
 	// Indicates whether the asynchronous request failed. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Fail *bool `json:"Fail,omitempty" xml:"Fail,omitempty"`
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsFinish *bool `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
 	// The ID of the asynchronous request.
+	//
+	// example:
+	//
+	// async__665ee69612f1627c7fd9f3c85075****
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
 	// The state of the asynchronous request. Valid values:
 	//
-	// *   **RUNNING**
-	// *   **SUCCESS**
-	// *   **FAIL**
+	// 	- **RUNNING**
+	//
+	// 	- **SUCCESS**
+	//
+	// 	- **FAIL**
+	//
+	// example:
+	//
+	// SUCCESS
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1645668213000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -25610,14 +35314,26 @@ func (s *UpdateAutoThrottleRulesAsyncResponseBodyData) SetTimestamp(v int64) *Up
 
 type UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse struct {
 	// The number of database instances for which the parameters failed to be configured.
+	//
+	// example:
+	//
+	// 1
 	ConfigFailInstanceCount *int64 `json:"ConfigFailInstanceCount,omitempty" xml:"ConfigFailInstanceCount,omitempty"`
 	// The database instances for which the parameters failed to be configured.
 	ConfigFailInstanceList []*UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList `json:"ConfigFailInstanceList,omitempty" xml:"ConfigFailInstanceList,omitempty" type:"Repeated"`
 	// The number of database instances for which the parameters are configured.
+	//
+	// example:
+	//
+	// 1
 	ConfigSuccessInstanceCount *int64 `json:"ConfigSuccessInstanceCount,omitempty" xml:"ConfigSuccessInstanceCount,omitempty"`
 	// The database instances for which the parameters are configured.
 	ConfigSuccessInstanceList []*UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList `json:"ConfigSuccessInstanceList,omitempty" xml:"ConfigSuccessInstanceList,omitempty" type:"Repeated"`
 	// The total number of database instances.
+	//
+	// example:
+	//
+	// 2
 	TotalInstanceCount *int64 `json:"TotalInstanceCount,omitempty" xml:"TotalInstanceCount,omitempty"`
 }
 
@@ -25657,13 +35373,25 @@ func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse) SetTotalIns
 type UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList struct {
 	// Indicates whether the parameters are configured. Valid values:
 	//
-	// * **true**
+	// 	- **true**
 	//
-	// * **false**
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	ConfigSuccess *bool `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// instance das autonomy service is off or can not find instance
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2ze9xrhze0709****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -25693,11 +35421,19 @@ func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailIns
 type UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList struct {
 	// Indicates whether the parameters are configured. Valid values:
 	//
-	// * **true**
+	// 	- **true**
 	//
-	// * **false**
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ConfigSuccess *bool `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
 	// The database instance ID.
+	//
+	// example:
+	//
+	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -25798,15 +35534,23 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
- *
- * @param request AddHDMInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddHDMInstanceResponse
- */
+// Summary:
+//
+// Adds a database instance to Database Autonomy Service (DAS).
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call DAS, you must set the region to cn-shanghai.
+//
+// @param request - AddHDMInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddHDMInstanceResponse
 func (client *Client) AddHDMInstanceWithOptions(request *AddHDMInstanceRequest, runtime *util.RuntimeOptions) (_result *AddHDMInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25888,14 +35632,21 @@ func (client *Client) AddHDMInstanceWithOptions(request *AddHDMInstanceRequest, 
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
- *
- * @param request AddHDMInstanceRequest
- * @return AddHDMInstanceResponse
- */
+// Summary:
+//
+// Adds a database instance to Database Autonomy Service (DAS).
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call DAS, you must set the region to cn-shanghai.
+//
+// @param request - AddHDMInstanceRequest
+//
+// @return AddHDMInstanceResponse
 func (client *Client) AddHDMInstance(request *AddHDMInstanceRequest) (_result *AddHDMInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddHDMInstanceResponse{}
@@ -25907,18 +35658,29 @@ func (client *Client) AddHDMInstance(request *AddHDMInstanceRequest) (_result *A
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. You can create an Advanced Database & Application Migration (ADAM) stress testing task to check whether you need to scale up your database instance to handle workloads during peak hours. For more information, see [Intelligent stress testing](~~155068~~).
- * Make sure that your database instances meet the following requirements:
- * *   The source database instance is an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition cluster.
- * *   The destination instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
- * *   The source and destination database instances are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](~~65405~~).
- * *   DAS Enterprise Edition is enabled for the source and destination database instances. For more information, see [Overview](~~190912~~).
- *
- * @param request CreateAdamBenchTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateAdamBenchTaskResponse
- */
+// Summary:
+//
+// Creates a stress testing task on Advanced Database & Application Migration (ADAM).
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. You can create an Advanced Database & Application Migration (ADAM) stress testing task to check whether you need to scale up your database instance to handle workloads during peak hours. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// Make sure that your database instances meet the following requirements:
+//
+// 	- The source database instance is an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition cluster.
+//
+// 	- The destination instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+//
+// 	- The source and destination database instances are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](https://help.aliyun.com/document_detail/65405.html).
+//
+// 	- DAS Enterprise Edition is enabled for the source and destination database instances. For more information, see [Overview](https://help.aliyun.com/document_detail/190912.html).
+//
+// @param request - CreateAdamBenchTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAdamBenchTaskResponse
 func (client *Client) CreateAdamBenchTaskWithOptions(request *CreateAdamBenchTaskRequest, runtime *util.RuntimeOptions) (_result *CreateAdamBenchTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25996,17 +35758,27 @@ func (client *Client) CreateAdamBenchTaskWithOptions(request *CreateAdamBenchTas
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. You can create an Advanced Database & Application Migration (ADAM) stress testing task to check whether you need to scale up your database instance to handle workloads during peak hours. For more information, see [Intelligent stress testing](~~155068~~).
- * Make sure that your database instances meet the following requirements:
- * *   The source database instance is an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition cluster.
- * *   The destination instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
- * *   The source and destination database instances are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](~~65405~~).
- * *   DAS Enterprise Edition is enabled for the source and destination database instances. For more information, see [Overview](~~190912~~).
- *
- * @param request CreateAdamBenchTaskRequest
- * @return CreateAdamBenchTaskResponse
- */
+// Summary:
+//
+// Creates a stress testing task on Advanced Database & Application Migration (ADAM).
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. You can create an Advanced Database & Application Migration (ADAM) stress testing task to check whether you need to scale up your database instance to handle workloads during peak hours. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// Make sure that your database instances meet the following requirements:
+//
+// 	- The source database instance is an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition cluster.
+//
+// 	- The destination instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+//
+// 	- The source and destination database instances are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](https://help.aliyun.com/document_detail/65405.html).
+//
+// 	- DAS Enterprise Edition is enabled for the source and destination database instances. For more information, see [Overview](https://help.aliyun.com/document_detail/190912.html).
+//
+// @param request - CreateAdamBenchTaskRequest
+//
+// @return CreateAdamBenchTaskResponse
 func (client *Client) CreateAdamBenchTask(request *CreateAdamBenchTaskRequest) (_result *CreateAdamBenchTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAdamBenchTaskResponse{}
@@ -26018,17 +35790,27 @@ func (client *Client) CreateAdamBenchTask(request *CreateAdamBenchTaskRequest) (
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
- * *   This operation is applicable only to ApsaraDB for Redis Community Edition instances and performance-enhanced instances of the ApsaraDB for Redis Enhanced Edition (Tair).
- * >  Redis 7.0 is not supported. You are not allowed to use custom modules.
- *
- * @param request CreateCacheAnalysisJobRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateCacheAnalysisJobResponse
- */
+// Summary:
+//
+// Creates a cache analysis task.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call DAS, you must set the region to cn-shanghai.
+//
+// 	- This operation is applicable only to ApsaraDB for Redis Community Edition instances and performance-enhanced instances of the ApsaraDB for Redis Enhanced Edition (Tair).
+//
+// >  Redis 7.0 is not supported. You are not allowed to use custom modules.
+//
+// @param request - CreateCacheAnalysisJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCacheAnalysisJobResponse
 func (client *Client) CreateCacheAnalysisJobWithOptions(request *CreateCacheAnalysisJobRequest, runtime *util.RuntimeOptions) (_result *CreateCacheAnalysisJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26074,16 +35856,25 @@ func (client *Client) CreateCacheAnalysisJobWithOptions(request *CreateCacheAnal
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
- * *   This operation is applicable only to ApsaraDB for Redis Community Edition instances and performance-enhanced instances of the ApsaraDB for Redis Enhanced Edition (Tair).
- * >  Redis 7.0 is not supported. You are not allowed to use custom modules.
- *
- * @param request CreateCacheAnalysisJobRequest
- * @return CreateCacheAnalysisJobResponse
- */
+// Summary:
+//
+// Creates a cache analysis task.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call DAS, you must set the region to cn-shanghai.
+//
+// 	- This operation is applicable only to ApsaraDB for Redis Community Edition instances and performance-enhanced instances of the ApsaraDB for Redis Enhanced Edition (Tair).
+//
+// >  Redis 7.0 is not supported. You are not allowed to use custom modules.
+//
+// @param request - CreateCacheAnalysisJobRequest
+//
+// @return CreateCacheAnalysisJobResponse
 func (client *Client) CreateCacheAnalysisJob(request *CreateCacheAnalysisJobRequest) (_result *CreateCacheAnalysisJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCacheAnalysisJobResponse{}
@@ -26095,17 +35886,27 @@ func (client *Client) CreateCacheAnalysisJob(request *CreateCacheAnalysisJobRequ
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](~~155068~~). Before you call this API operation, make sure that your database instances meet the following requirements:
- * *   The source database instance is an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition cluster.
- * *   The destination database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
- * *   The source and destination database instances are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](~~65405~~).
- * *   DAS Enterprise Edition is enabled for the source and destination database instances. For more information, see [Overview](~~190912~~).
- *
- * @param request CreateCloudBenchTasksRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateCloudBenchTasksResponse
- */
+// Summary:
+//
+// Creates stress testing tasks.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html). Before you call this API operation, make sure that your database instances meet the following requirements:
+//
+// 	- The source database instance is an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition cluster.
+//
+// 	- The destination database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
+//
+// 	- The source and destination database instances are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](https://help.aliyun.com/document_detail/65405.html).
+//
+// 	- DAS Enterprise Edition is enabled for the source and destination database instances. For more information, see [Overview](https://help.aliyun.com/document_detail/190912.html).
+//
+// @param request - CreateCloudBenchTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudBenchTasksResponse
 func (client *Client) CreateCloudBenchTasksWithOptions(request *CreateCloudBenchTasksRequest, runtime *util.RuntimeOptions) (_result *CreateCloudBenchTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26243,16 +36044,25 @@ func (client *Client) CreateCloudBenchTasksWithOptions(request *CreateCloudBench
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](~~155068~~). Before you call this API operation, make sure that your database instances meet the following requirements:
- * *   The source database instance is an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition cluster.
- * *   The destination database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
- * *   The source and destination database instances are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](~~65405~~).
- * *   DAS Enterprise Edition is enabled for the source and destination database instances. For more information, see [Overview](~~190912~~).
- *
- * @param request CreateCloudBenchTasksRequest
- * @return CreateCloudBenchTasksResponse
- */
+// Summary:
+//
+// Creates stress testing tasks.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html). Before you call this API operation, make sure that your database instances meet the following requirements:
+//
+// 	- The source database instance is an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition cluster.
+//
+// 	- The destination database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
+//
+// 	- The source and destination database instances are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](https://help.aliyun.com/document_detail/65405.html).
+//
+// 	- DAS Enterprise Edition is enabled for the source and destination database instances. For more information, see [Overview](https://help.aliyun.com/document_detail/190912.html).
+//
+// @param request - CreateCloudBenchTasksRequest
+//
+// @return CreateCloudBenchTasksResponse
 func (client *Client) CreateCloudBenchTasks(request *CreateCloudBenchTasksRequest) (_result *CreateCloudBenchTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCloudBenchTasksResponse{}
@@ -26264,20 +36074,33 @@ func (client *Client) CreateCloudBenchTasks(request *CreateCloudBenchTasksReques
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
- * *   The version of Database Autonomy Service (DAS) SDK must be 1.0.3 or later.
- * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   RDS MySQL
- *     *   PolarDB for MySQL
- *     *   Redis
- *
- * @param request CreateDiagnosticReportRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateDiagnosticReportResponse
- */
+// Summary:
+//
+// Creates a diagnostic report.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of Database Autonomy Service (DAS) SDK must be 1.0.3 or later.
+//
+// 	- If you use an SDK to call DAS, you must set the region to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- RDS MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- Redis
+//
+// @param request - CreateDiagnosticReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDiagnosticReportResponse
 func (client *Client) CreateDiagnosticReportWithOptions(request *CreateDiagnosticReportRequest, runtime *util.RuntimeOptions) (_result *CreateDiagnosticReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26319,19 +36142,31 @@ func (client *Client) CreateDiagnosticReportWithOptions(request *CreateDiagnosti
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
- * *   The version of Database Autonomy Service (DAS) SDK must be 1.0.3 or later.
- * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   RDS MySQL
- *     *   PolarDB for MySQL
- *     *   Redis
- *
- * @param request CreateDiagnosticReportRequest
- * @return CreateDiagnosticReportResponse
- */
+// Summary:
+//
+// Creates a diagnostic report.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of Database Autonomy Service (DAS) SDK must be 1.0.3 or later.
+//
+// 	- If you use an SDK to call DAS, you must set the region to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- RDS MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- Redis
+//
+// @param request - CreateDiagnosticReportRequest
+//
+// @return CreateDiagnosticReportResponse
 func (client *Client) CreateDiagnosticReport(request *CreateDiagnosticReportRequest) (_result *CreateDiagnosticReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDiagnosticReportResponse{}
@@ -26343,15 +36178,23 @@ func (client *Client) CreateDiagnosticReport(request *CreateDiagnosticReportRequ
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request CreateKillInstanceSessionTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateKillInstanceSessionTaskResponse
- */
+// Summary:
+//
+// Creates a task that terminates sessions.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - CreateKillInstanceSessionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKillInstanceSessionTaskResponse
 func (client *Client) CreateKillInstanceSessionTaskWithOptions(request *CreateKillInstanceSessionTaskRequest, runtime *util.RuntimeOptions) (_result *CreateKillInstanceSessionTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26409,14 +36252,21 @@ func (client *Client) CreateKillInstanceSessionTaskWithOptions(request *CreateKi
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request CreateKillInstanceSessionTaskRequest
- * @return CreateKillInstanceSessionTaskResponse
- */
+// Summary:
+//
+// Creates a task that terminates sessions.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - CreateKillInstanceSessionTaskRequest
+//
+// @return CreateKillInstanceSessionTaskResponse
 func (client *Client) CreateKillInstanceSessionTask(request *CreateKillInstanceSessionTaskRequest) (_result *CreateKillInstanceSessionTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateKillInstanceSessionTaskResponse{}
@@ -26428,6 +36278,15 @@ func (client *Client) CreateKillInstanceSessionTask(request *CreateKillInstanceS
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建结束会话的任务
+//
+// @param request - CreateKillInstanceSessionTaskWithMaintainUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKillInstanceSessionTaskWithMaintainUserResponse
 func (client *Client) CreateKillInstanceSessionTaskWithMaintainUserWithOptions(request *CreateKillInstanceSessionTaskWithMaintainUserRequest, runtime *util.RuntimeOptions) (_result *CreateKillInstanceSessionTaskWithMaintainUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26477,6 +36336,13 @@ func (client *Client) CreateKillInstanceSessionTaskWithMaintainUserWithOptions(r
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建结束会话的任务
+//
+// @param request - CreateKillInstanceSessionTaskWithMaintainUserRequest
+//
+// @return CreateKillInstanceSessionTaskWithMaintainUserResponse
 func (client *Client) CreateKillInstanceSessionTaskWithMaintainUser(request *CreateKillInstanceSessionTaskWithMaintainUserRequest) (_result *CreateKillInstanceSessionTaskWithMaintainUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateKillInstanceSessionTaskWithMaintainUserResponse{}
@@ -26488,18 +36354,29 @@ func (client *Client) CreateKillInstanceSessionTaskWithMaintainUser(request *Cre
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request CreateQueryOptimizeTagRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateQueryOptimizeTagResponse
- */
+// Summary:
+//
+// Adds a tag to a SQL template.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - CreateQueryOptimizeTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateQueryOptimizeTagResponse
 func (client *Client) CreateQueryOptimizeTagWithOptions(request *CreateQueryOptimizeTagRequest, runtime *util.RuntimeOptions) (_result *CreateQueryOptimizeTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26553,17 +36430,27 @@ func (client *Client) CreateQueryOptimizeTagWithOptions(request *CreateQueryOpti
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request CreateQueryOptimizeTagRequest
- * @return CreateQueryOptimizeTagResponse
- */
+// Summary:
+//
+// Adds a tag to a SQL template.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - CreateQueryOptimizeTagRequest
+//
+// @return CreateQueryOptimizeTagResponse
 func (client *Client) CreateQueryOptimizeTag(request *CreateQueryOptimizeTagRequest) (_result *CreateQueryOptimizeTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateQueryOptimizeTagResponse{}
@@ -26575,22 +36462,37 @@ func (client *Client) CreateQueryOptimizeTag(request *CreateQueryOptimizeTagRequ
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call Database Autonomy Service (DAS), you must set the region to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *     *   ApsaraDB RDS for SQL Server
- *     *   PolarDB for MySQL
- *     *   PolarDB for PostgreSQL (compatible with Oracle)
- *     *   ApsaraDB for MongoDB
- * >  The minor engine version of ApsaraDB RDS for PostgreSQL instances must be 20221230 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
- *
- * @param request CreateRequestDiagnosisRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateRequestDiagnosisResponse
- */
+// Summary:
+//
+// Initiates an SQL statement diagnostics request.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call Database Autonomy Service (DAS), you must set the region to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+//     	- ApsaraDB RDS for SQL Server
+//
+//     	- PolarDB for MySQL
+//
+//     	- PolarDB for PostgreSQL (compatible with Oracle)
+//
+//     	- ApsaraDB for MongoDB
+//
+// >  The minor engine version of ApsaraDB RDS for PostgreSQL instances must be 20221230 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146895.html).
+//
+// @param request - CreateRequestDiagnosisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRequestDiagnosisResponse
 func (client *Client) CreateRequestDiagnosisWithOptions(request *CreateRequestDiagnosisRequest, runtime *util.RuntimeOptions) (_result *CreateRequestDiagnosisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26636,21 +36538,35 @@ func (client *Client) CreateRequestDiagnosisWithOptions(request *CreateRequestDi
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call Database Autonomy Service (DAS), you must set the region to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *     *   ApsaraDB RDS for SQL Server
- *     *   PolarDB for MySQL
- *     *   PolarDB for PostgreSQL (compatible with Oracle)
- *     *   ApsaraDB for MongoDB
- * >  The minor engine version of ApsaraDB RDS for PostgreSQL instances must be 20221230 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
- *
- * @param request CreateRequestDiagnosisRequest
- * @return CreateRequestDiagnosisResponse
- */
+// Summary:
+//
+// Initiates an SQL statement diagnostics request.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call Database Autonomy Service (DAS), you must set the region to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+//     	- ApsaraDB RDS for SQL Server
+//
+//     	- PolarDB for MySQL
+//
+//     	- PolarDB for PostgreSQL (compatible with Oracle)
+//
+//     	- ApsaraDB for MongoDB
+//
+// >  The minor engine version of ApsaraDB RDS for PostgreSQL instances must be 20221230 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146895.html).
+//
+// @param request - CreateRequestDiagnosisRequest
+//
+// @return CreateRequestDiagnosisResponse
 func (client *Client) CreateRequestDiagnosis(request *CreateRequestDiagnosisRequest) (_result *CreateRequestDiagnosisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRequestDiagnosisResponse{}
@@ -26662,6 +36578,15 @@ func (client *Client) CreateRequestDiagnosis(request *CreateRequestDiagnosisRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an SQL Explorer and Audit task.
+//
+// @param request - CreateSqlLogTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSqlLogTaskResponse
 func (client *Client) CreateSqlLogTaskWithOptions(request *CreateSqlLogTaskRequest, runtime *util.RuntimeOptions) (_result *CreateSqlLogTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26725,6 +36650,13 @@ func (client *Client) CreateSqlLogTaskWithOptions(request *CreateSqlLogTaskReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an SQL Explorer and Audit task.
+//
+// @param request - CreateSqlLogTaskRequest
+//
+// @return CreateSqlLogTaskResponse
 func (client *Client) CreateSqlLogTask(request *CreateSqlLogTaskRequest) (_result *CreateSqlLogTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSqlLogTaskResponse{}
@@ -26736,15 +36668,23 @@ func (client *Client) CreateSqlLogTask(request *CreateSqlLogTaskRequest) (_resul
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
- *
- * @param request CreateStorageAnalysisTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateStorageAnalysisTaskResponse
- */
+// Summary:
+//
+// Creates a storage analysis task to query the usage details of one or more databases and tables.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call DAS, you must set the region to cn-shanghai.
+//
+// @param request - CreateStorageAnalysisTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStorageAnalysisTaskResponse
 func (client *Client) CreateStorageAnalysisTaskWithOptions(request *CreateStorageAnalysisTaskRequest, runtime *util.RuntimeOptions) (_result *CreateStorageAnalysisTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26790,14 +36730,21 @@ func (client *Client) CreateStorageAnalysisTaskWithOptions(request *CreateStorag
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
- *
- * @param request CreateStorageAnalysisTaskRequest
- * @return CreateStorageAnalysisTaskResponse
- */
+// Summary:
+//
+// Creates a storage analysis task to query the usage details of one or more databases and tables.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call DAS, you must set the region to cn-shanghai.
+//
+// @param request - CreateStorageAnalysisTaskRequest
+//
+// @return CreateStorageAnalysisTaskResponse
 func (client *Client) CreateStorageAnalysisTask(request *CreateStorageAnalysisTaskRequest) (_result *CreateStorageAnalysisTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateStorageAnalysisTaskResponse{}
@@ -26809,13 +36756,19 @@ func (client *Client) CreateStorageAnalysisTask(request *CreateStorageAnalysisTa
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to handle traffic spikes in an effective manner. For more information, see [Intelligent stress testing](~~155068~~).
- *
- * @param request DeleteCloudBenchTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteCloudBenchTaskResponse
- */
+// Summary:
+//
+// Deletes a stress testing task.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to handle traffic spikes in an effective manner. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// @param request - DeleteCloudBenchTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudBenchTaskResponse
 func (client *Client) DeleteCloudBenchTaskWithOptions(request *DeleteCloudBenchTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteCloudBenchTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26849,12 +36802,17 @@ func (client *Client) DeleteCloudBenchTaskWithOptions(request *DeleteCloudBenchT
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to handle traffic spikes in an effective manner. For more information, see [Intelligent stress testing](~~155068~~).
- *
- * @param request DeleteCloudBenchTaskRequest
- * @return DeleteCloudBenchTaskResponse
- */
+// Summary:
+//
+// Deletes a stress testing task.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to handle traffic spikes in an effective manner. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// @param request - DeleteCloudBenchTaskRequest
+//
+// @return DeleteCloudBenchTaskResponse
 func (client *Client) DeleteCloudBenchTask(request *DeleteCloudBenchTaskRequest) (_result *DeleteCloudBenchTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCloudBenchTaskResponse{}
@@ -26866,15 +36824,23 @@ func (client *Client) DeleteCloudBenchTask(request *DeleteCloudBenchTaskRequest)
 	return _result, _err
 }
 
-/**
- * *   This operation is used to delete the metadata of a DBGateway that is released in a stress testing task created by calling the [CreateCloudBenchTasks](~~230665~~) operation.
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * >  If the heartbeat is lost between a DBGateway and the access point for more than 20 seconds, the DBGateway is considered stopped.
- *
- * @param request DeleteStopGatewayRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteStopGatewayResponse
- */
+// Summary:
+//
+// Deletes the metadata of a stopped DBGateway.
+//
+// Description:
+//
+//   This operation is used to delete the metadata of a DBGateway that is released in a stress testing task created by calling the [CreateCloudBenchTasks](https://help.aliyun.com/document_detail/230665.html) operation.
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// >  If the heartbeat is lost between a DBGateway and the access point for more than 20 seconds, the DBGateway is considered stopped.
+//
+// @param request - DeleteStopGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStopGatewayResponse
 func (client *Client) DeleteStopGatewayWithOptions(request *DeleteStopGatewayRequest, runtime *util.RuntimeOptions) (_result *DeleteStopGatewayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26908,14 +36874,21 @@ func (client *Client) DeleteStopGatewayWithOptions(request *DeleteStopGatewayReq
 	return _result, _err
 }
 
-/**
- * *   This operation is used to delete the metadata of a DBGateway that is released in a stress testing task created by calling the [CreateCloudBenchTasks](~~230665~~) operation.
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * >  If the heartbeat is lost between a DBGateway and the access point for more than 20 seconds, the DBGateway is considered stopped.
- *
- * @param request DeleteStopGatewayRequest
- * @return DeleteStopGatewayResponse
- */
+// Summary:
+//
+// Deletes the metadata of a stopped DBGateway.
+//
+// Description:
+//
+//   This operation is used to delete the metadata of a DBGateway that is released in a stress testing task created by calling the [CreateCloudBenchTasks](https://help.aliyun.com/document_detail/230665.html) operation.
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// >  If the heartbeat is lost between a DBGateway and the access point for more than 20 seconds, the DBGateway is considered stopped.
+//
+// @param request - DeleteStopGatewayRequest
+//
+// @return DeleteStopGatewayResponse
 func (client *Client) DeleteStopGateway(request *DeleteStopGatewayRequest) (_result *DeleteStopGatewayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteStopGatewayResponse{}
@@ -26927,15 +36900,23 @@ func (client *Client) DeleteStopGateway(request *DeleteStopGatewayRequest) (_res
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request DescribeAutoScalingConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeAutoScalingConfigResponse
- */
+// Summary:
+//
+// Queries the configurations of the auto scaling feature for an instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - DescribeAutoScalingConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAutoScalingConfigResponse
 func (client *Client) DescribeAutoScalingConfigWithOptions(request *DescribeAutoScalingConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeAutoScalingConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26969,14 +36950,21 @@ func (client *Client) DescribeAutoScalingConfigWithOptions(request *DescribeAuto
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request DescribeAutoScalingConfigRequest
- * @return DescribeAutoScalingConfigResponse
- */
+// Summary:
+//
+// Queries the configurations of the auto scaling feature for an instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - DescribeAutoScalingConfigRequest
+//
+// @return DescribeAutoScalingConfigResponse
 func (client *Client) DescribeAutoScalingConfig(request *DescribeAutoScalingConfigRequest) (_result *DescribeAutoScalingConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAutoScalingConfigResponse{}
@@ -26988,15 +36976,23 @@ func (client *Client) DescribeAutoScalingConfig(request *DescribeAutoScalingConf
 	return _result, _err
 }
 
-/**
- * *   You can call this operation to query the history information about the automatic performance scaling only of ApsaraDB RDS for MySQL High-availability Edition instances.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request DescribeAutoScalingHistoryRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeAutoScalingHistoryResponse
- */
+// Summary:
+//
+// Queries the auto scaling history of an instance.
+//
+// Description:
+//
+//   You can call this operation to query the history information about the automatic performance scaling only of ApsaraDB RDS for MySQL High-availability Edition instances.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - DescribeAutoScalingHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAutoScalingHistoryResponse
 func (client *Client) DescribeAutoScalingHistoryWithOptions(request *DescribeAutoScalingHistoryRequest, runtime *util.RuntimeOptions) (_result *DescribeAutoScalingHistoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27026,14 +37022,21 @@ func (client *Client) DescribeAutoScalingHistoryWithOptions(request *DescribeAut
 	return _result, _err
 }
 
-/**
- * *   You can call this operation to query the history information about the automatic performance scaling only of ApsaraDB RDS for MySQL High-availability Edition instances.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request DescribeAutoScalingHistoryRequest
- * @return DescribeAutoScalingHistoryResponse
- */
+// Summary:
+//
+// Queries the auto scaling history of an instance.
+//
+// Description:
+//
+//   You can call this operation to query the history information about the automatic performance scaling only of ApsaraDB RDS for MySQL High-availability Edition instances.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - DescribeAutoScalingHistoryRequest
+//
+// @return DescribeAutoScalingHistoryResponse
 func (client *Client) DescribeAutoScalingHistory(request *DescribeAutoScalingHistoryRequest) (_result *DescribeAutoScalingHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAutoScalingHistoryResponse{}
@@ -27045,16 +37048,25 @@ func (client *Client) DescribeAutoScalingHistory(request *DescribeAutoScalingHis
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region to cn-shanghai.
- * *   This operation is applicable only to ApsaraDB for Redis.
- *
- * @param request DescribeCacheAnalysisJobRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeCacheAnalysisJobResponse
- */
+// Summary:
+//
+// Queries the details of a cache analysis task.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region to cn-shanghai.
+//
+// 	- This operation is applicable only to ApsaraDB for Redis.
+//
+// @param request - DescribeCacheAnalysisJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCacheAnalysisJobResponse
 func (client *Client) DescribeCacheAnalysisJobWithOptions(request *DescribeCacheAnalysisJobRequest, runtime *util.RuntimeOptions) (_result *DescribeCacheAnalysisJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27092,15 +37104,23 @@ func (client *Client) DescribeCacheAnalysisJobWithOptions(request *DescribeCache
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region to cn-shanghai.
- * *   This operation is applicable only to ApsaraDB for Redis.
- *
- * @param request DescribeCacheAnalysisJobRequest
- * @return DescribeCacheAnalysisJobResponse
- */
+// Summary:
+//
+// Queries the details of a cache analysis task.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region to cn-shanghai.
+//
+// 	- This operation is applicable only to ApsaraDB for Redis.
+//
+// @param request - DescribeCacheAnalysisJobRequest
+//
+// @return DescribeCacheAnalysisJobResponse
 func (client *Client) DescribeCacheAnalysisJob(request *DescribeCacheAnalysisJobRequest) (_result *DescribeCacheAnalysisJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCacheAnalysisJobResponse{}
@@ -27112,16 +37132,25 @@ func (client *Client) DescribeCacheAnalysisJob(request *DescribeCacheAnalysisJob
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is applicable only to ApsaraDB for Redis.
- *
- * @param request DescribeCacheAnalysisJobsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeCacheAnalysisJobsResponse
- */
+// Summary:
+//
+// Queries a list of cache analysis tasks.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to ApsaraDB for Redis.
+//
+// @param request - DescribeCacheAnalysisJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCacheAnalysisJobsResponse
 func (client *Client) DescribeCacheAnalysisJobsWithOptions(request *DescribeCacheAnalysisJobsRequest, runtime *util.RuntimeOptions) (_result *DescribeCacheAnalysisJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27171,15 +37200,23 @@ func (client *Client) DescribeCacheAnalysisJobsWithOptions(request *DescribeCach
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is applicable only to ApsaraDB for Redis.
- *
- * @param request DescribeCacheAnalysisJobsRequest
- * @return DescribeCacheAnalysisJobsResponse
- */
+// Summary:
+//
+// Queries a list of cache analysis tasks.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to ApsaraDB for Redis.
+//
+// @param request - DescribeCacheAnalysisJobsRequest
+//
+// @return DescribeCacheAnalysisJobsResponse
 func (client *Client) DescribeCacheAnalysisJobs(request *DescribeCacheAnalysisJobsRequest) (_result *DescribeCacheAnalysisJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCacheAnalysisJobsResponse{}
@@ -27191,13 +37228,19 @@ func (client *Client) DescribeCacheAnalysisJobs(request *DescribeCacheAnalysisJo
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](~~155068~~).
- *
- * @param request DescribeCloudBenchTasksRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeCloudBenchTasksResponse
- */
+// Summary:
+//
+// Queries stress testing tasks.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// @param request - DescribeCloudBenchTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudBenchTasksResponse
 func (client *Client) DescribeCloudBenchTasksWithOptions(request *DescribeCloudBenchTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudBenchTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27251,12 +37294,17 @@ func (client *Client) DescribeCloudBenchTasksWithOptions(request *DescribeCloudB
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](~~155068~~).
- *
- * @param request DescribeCloudBenchTasksRequest
- * @return DescribeCloudBenchTasksResponse
- */
+// Summary:
+//
+// Queries stress testing tasks.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// @param request - DescribeCloudBenchTasksRequest
+//
+// @return DescribeCloudBenchTasksResponse
 func (client *Client) DescribeCloudBenchTasks(request *DescribeCloudBenchTasksRequest) (_result *DescribeCloudBenchTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudBenchTasksResponse{}
@@ -27268,13 +37316,19 @@ func (client *Client) DescribeCloudBenchTasks(request *DescribeCloudBenchTasksRe
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether you need to scale up your database instance to handle workloads during peak hours. For more information, see [Intelligent stress testing](~~155068~~).
- *
- * @param request DescribeCloudbenchTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeCloudbenchTaskResponse
- */
+// Summary:
+//
+// Queries a stress testing task.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether you need to scale up your database instance to handle workloads during peak hours. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// @param request - DescribeCloudbenchTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudbenchTaskResponse
 func (client *Client) DescribeCloudbenchTaskWithOptions(request *DescribeCloudbenchTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudbenchTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27308,12 +37362,17 @@ func (client *Client) DescribeCloudbenchTaskWithOptions(request *DescribeCloudbe
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether you need to scale up your database instance to handle workloads during peak hours. For more information, see [Intelligent stress testing](~~155068~~).
- *
- * @param request DescribeCloudbenchTaskRequest
- * @return DescribeCloudbenchTaskResponse
- */
+// Summary:
+//
+// Queries a stress testing task.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether you need to scale up your database instance to handle workloads during peak hours. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// @param request - DescribeCloudbenchTaskRequest
+//
+// @return DescribeCloudbenchTaskResponse
 func (client *Client) DescribeCloudbenchTask(request *DescribeCloudbenchTaskRequest) (_result *DescribeCloudbenchTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudbenchTaskResponse{}
@@ -27325,13 +37384,19 @@ func (client *Client) DescribeCloudbenchTask(request *DescribeCloudbenchTaskRequ
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](~~155068~~).
- *
- * @param request DescribeCloudbenchTaskConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeCloudbenchTaskConfigResponse
- */
+// Summary:
+//
+// Queries the configurations of a stress testing task.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// @param request - DescribeCloudbenchTaskConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudbenchTaskConfigResponse
 func (client *Client) DescribeCloudbenchTaskConfigWithOptions(request *DescribeCloudbenchTaskConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudbenchTaskConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27365,12 +37430,17 @@ func (client *Client) DescribeCloudbenchTaskConfigWithOptions(request *DescribeC
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](~~155068~~).
- *
- * @param request DescribeCloudbenchTaskConfigRequest
- * @return DescribeCloudbenchTaskConfigResponse
- */
+// Summary:
+//
+// Queries the configurations of a stress testing task.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// @param request - DescribeCloudbenchTaskConfigRequest
+//
+// @return DescribeCloudbenchTaskConfigResponse
 func (client *Client) DescribeCloudbenchTaskConfig(request *DescribeCloudbenchTaskConfigRequest) (_result *DescribeCloudbenchTaskConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudbenchTaskConfigResponse{}
@@ -27382,19 +37452,31 @@ func (client *Client) DescribeCloudbenchTaskConfig(request *DescribeCloudbenchTa
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is applicable to the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB for Redis
- *
- * @param request DescribeDiagnosticReportListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDiagnosticReportListResponse
- */
+// Summary:
+//
+// Queries diagnostics reports.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable to the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB for Redis
+//
+// @param request - DescribeDiagnosticReportListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDiagnosticReportListResponse
 func (client *Client) DescribeDiagnosticReportListWithOptions(request *DescribeDiagnosticReportListRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosticReportListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27444,18 +37526,29 @@ func (client *Client) DescribeDiagnosticReportListWithOptions(request *DescribeD
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is applicable to the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB for Redis
- *
- * @param request DescribeDiagnosticReportListRequest
- * @return DescribeDiagnosticReportListResponse
- */
+// Summary:
+//
+// Queries diagnostics reports.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable to the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB for Redis
+//
+// @param request - DescribeDiagnosticReportListRequest
+//
+// @return DescribeDiagnosticReportListResponse
 func (client *Client) DescribeDiagnosticReportList(request *DescribeDiagnosticReportListRequest) (_result *DescribeDiagnosticReportListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiagnosticReportListResponse{}
@@ -27467,20 +37560,33 @@ func (client *Client) DescribeDiagnosticReportList(request *DescribeDiagnosticRe
 	return _result, _err
 }
 
-/**
- * This operation sorts list, hash, set, and zset keys based on the number of elements contained in these keys. The top three keys that contain the most elements are considered large keys. If the number of queries per second (QPS) of a key is greater than 3,000, the key is considered a hot key.
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
- * *   The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is available only for ApsaraDB for Redis instances that meet the following requirements:
- *     *   The instance is a Community Edition instance that uses a major version of 5.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
- *     *   The ApsaraDB for Redis instance is updated to the latest minor version.
- * >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](~~129381~~) and [DescribeEngineVersion](~~95268~~).
- *
- * @param request DescribeHotBigKeysRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeHotBigKeysResponse
- */
+// Summary:
+//
+// Queries the hot keys and the large keys in the memory in real time.
+//
+// Description:
+//
+// This operation sorts list, hash, set, and zset keys based on the number of elements contained in these keys. The top three keys that contain the most elements are considered large keys. If the number of queries per second (QPS) of a key is greater than 3,000, the key is considered a hot key.
+//
+// 	- If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is available only for ApsaraDB for Redis instances that meet the following requirements:
+//
+//     	- The instance is a Community Edition instance that uses a major version of 5.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
+//
+//     	- The ApsaraDB for Redis instance is updated to the latest minor version.
+//
+// >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
+//
+// @param request - DescribeHotBigKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHotBigKeysResponse
 func (client *Client) DescribeHotBigKeysWithOptions(request *DescribeHotBigKeysRequest, runtime *util.RuntimeOptions) (_result *DescribeHotBigKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27522,19 +37628,31 @@ func (client *Client) DescribeHotBigKeysWithOptions(request *DescribeHotBigKeysR
 	return _result, _err
 }
 
-/**
- * This operation sorts list, hash, set, and zset keys based on the number of elements contained in these keys. The top three keys that contain the most elements are considered large keys. If the number of queries per second (QPS) of a key is greater than 3,000, the key is considered a hot key.
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
- * *   The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is available only for ApsaraDB for Redis instances that meet the following requirements:
- *     *   The instance is a Community Edition instance that uses a major version of 5.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
- *     *   The ApsaraDB for Redis instance is updated to the latest minor version.
- * >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](~~129381~~) and [DescribeEngineVersion](~~95268~~).
- *
- * @param request DescribeHotBigKeysRequest
- * @return DescribeHotBigKeysResponse
- */
+// Summary:
+//
+// Queries the hot keys and the large keys in the memory in real time.
+//
+// Description:
+//
+// This operation sorts list, hash, set, and zset keys based on the number of elements contained in these keys. The top three keys that contain the most elements are considered large keys. If the number of queries per second (QPS) of a key is greater than 3,000, the key is considered a hot key.
+//
+// 	- If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is available only for ApsaraDB for Redis instances that meet the following requirements:
+//
+//     	- The instance is a Community Edition instance that uses a major version of 5.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
+//
+//     	- The ApsaraDB for Redis instance is updated to the latest minor version.
+//
+// >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
+//
+// @param request - DescribeHotBigKeysRequest
+//
+// @return DescribeHotBigKeysResponse
 func (client *Client) DescribeHotBigKeys(request *DescribeHotBigKeysRequest) (_result *DescribeHotBigKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHotBigKeysResponse{}
@@ -27546,20 +37664,33 @@ func (client *Client) DescribeHotBigKeys(request *DescribeHotBigKeysRequest) (_r
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V1.0.2 or later.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is applicable only to ApsaraDB for Redis instances that meet the following requirements:
- *     *   The ApsaraDB for Redis instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
- *     *   The ApsaraDB for Redis instance is updated to the latest minor version.
- * >  For more information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](~~129381~~) and [DescribeEngineVersion](~~95268~~).
- *
- * @param request DescribeHotKeysRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeHotKeysResponse
- */
+// Summary:
+//
+// Queries the hot keys of an ApsaraDB for Redis instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V1.0.2 or later.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to ApsaraDB for Redis instances that meet the following requirements:
+//
+//     	- The ApsaraDB for Redis instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
+//
+//     	- The ApsaraDB for Redis instance is updated to the latest minor version.
+//
+// >  For more information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
+//
+// @param request - DescribeHotKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHotKeysResponse
 func (client *Client) DescribeHotKeysWithOptions(request *DescribeHotKeysRequest, runtime *util.RuntimeOptions) (_result *DescribeHotKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27597,19 +37728,31 @@ func (client *Client) DescribeHotKeysWithOptions(request *DescribeHotKeysRequest
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V1.0.2 or later.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is applicable only to ApsaraDB for Redis instances that meet the following requirements:
- *     *   The ApsaraDB for Redis instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
- *     *   The ApsaraDB for Redis instance is updated to the latest minor version.
- * >  For more information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](~~129381~~) and [DescribeEngineVersion](~~95268~~).
- *
- * @param request DescribeHotKeysRequest
- * @return DescribeHotKeysResponse
- */
+// Summary:
+//
+// Queries the hot keys of an ApsaraDB for Redis instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V1.0.2 or later.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to ApsaraDB for Redis instances that meet the following requirements:
+//
+//     	- The ApsaraDB for Redis instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
+//
+//     	- The ApsaraDB for Redis instance is updated to the latest minor version.
+//
+// >  For more information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
+//
+// @param request - DescribeHotKeysRequest
+//
+// @return DescribeHotKeysResponse
 func (client *Client) DescribeHotKeys(request *DescribeHotKeysRequest) (_result *DescribeHotKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHotKeysResponse{}
@@ -27621,14 +37764,23 @@ func (client *Client) DescribeHotKeys(request *DescribeHotKeysRequest) (_result 
 	return _result, _err
 }
 
-/**
- * *   For more information about database instances that support DAS Enterprise Edition, see [Overview](~~190912~~).
- * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request DescribeInstanceDasProRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeInstanceDasProResponse
- */
+// Summary:
+//
+// Queries whether Database Autonomy Service (DAS) Enterprise Edition is enabled for a database instance.
+//
+// Description:
+//
+//   For more information about database instances that support DAS Enterprise Edition, see [Overview of DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to DAS Enterprise Edition V1 and V2.
+//
+// @param request - DescribeInstanceDasProRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceDasProResponse
 func (client *Client) DescribeInstanceDasProWithOptions(request *DescribeInstanceDasProRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceDasProResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27662,13 +37814,21 @@ func (client *Client) DescribeInstanceDasProWithOptions(request *DescribeInstanc
 	return _result, _err
 }
 
-/**
- * *   For more information about database instances that support DAS Enterprise Edition, see [Overview](~~190912~~).
- * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request DescribeInstanceDasProRequest
- * @return DescribeInstanceDasProResponse
- */
+// Summary:
+//
+// Queries whether Database Autonomy Service (DAS) Enterprise Edition is enabled for a database instance.
+//
+// Description:
+//
+//   For more information about database instances that support DAS Enterprise Edition, see [Overview of DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to DAS Enterprise Edition V1 and V2.
+//
+// @param request - DescribeInstanceDasProRequest
+//
+// @return DescribeInstanceDasProResponse
 func (client *Client) DescribeInstanceDasPro(request *DescribeInstanceDasProRequest) (_result *DescribeInstanceDasProResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceDasProResponse{}
@@ -27680,6 +37840,15 @@ func (client *Client) DescribeInstanceDasPro(request *DescribeInstanceDasProRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of SQL Explorer and Audit.
+//
+// @param request - DescribeSqlLogConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSqlLogConfigResponse
 func (client *Client) DescribeSqlLogConfigWithOptions(request *DescribeSqlLogConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlLogConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27713,6 +37882,13 @@ func (client *Client) DescribeSqlLogConfigWithOptions(request *DescribeSqlLogCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of SQL Explorer and Audit.
+//
+// @param request - DescribeSqlLogConfigRequest
+//
+// @return DescribeSqlLogConfigResponse
 func (client *Client) DescribeSqlLogConfig(request *DescribeSqlLogConfigRequest) (_result *DescribeSqlLogConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSqlLogConfigResponse{}
@@ -27724,6 +37900,15 @@ func (client *Client) DescribeSqlLogConfig(request *DescribeSqlLogConfigRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询明细数据列表
+//
+// @param request - DescribeSqlLogRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSqlLogRecordsResponse
 func (client *Client) DescribeSqlLogRecordsWithOptions(request *DescribeSqlLogRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlLogRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27787,6 +37972,13 @@ func (client *Client) DescribeSqlLogRecordsWithOptions(request *DescribeSqlLogRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询明细数据列表
+//
+// @param request - DescribeSqlLogRecordsRequest
+//
+// @return DescribeSqlLogRecordsResponse
 func (client *Client) DescribeSqlLogRecords(request *DescribeSqlLogRecordsRequest) (_result *DescribeSqlLogRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSqlLogRecordsResponse{}
@@ -27798,6 +37990,15 @@ func (client *Client) DescribeSqlLogRecords(request *DescribeSqlLogRecordsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询数据量统计接口
+//
+// @param request - DescribeSqlLogStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSqlLogStatisticResponse
 func (client *Client) DescribeSqlLogStatisticWithOptions(request *DescribeSqlLogStatisticRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlLogStatisticResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27831,6 +38032,13 @@ func (client *Client) DescribeSqlLogStatisticWithOptions(request *DescribeSqlLog
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询数据量统计接口
+//
+// @param request - DescribeSqlLogStatisticRequest
+//
+// @return DescribeSqlLogStatisticResponse
 func (client *Client) DescribeSqlLogStatistic(request *DescribeSqlLogStatisticRequest) (_result *DescribeSqlLogStatisticResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSqlLogStatisticResponse{}
@@ -27842,6 +38050,15 @@ func (client *Client) DescribeSqlLogStatistic(request *DescribeSqlLogStatisticRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询离线任务详情
+//
+// @param request - DescribeSqlLogTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSqlLogTaskResponse
 func (client *Client) DescribeSqlLogTaskWithOptions(request *DescribeSqlLogTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlLogTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27887,6 +38104,13 @@ func (client *Client) DescribeSqlLogTaskWithOptions(request *DescribeSqlLogTaskR
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询离线任务详情
+//
+// @param request - DescribeSqlLogTaskRequest
+//
+// @return DescribeSqlLogTaskResponse
 func (client *Client) DescribeSqlLogTask(request *DescribeSqlLogTaskRequest) (_result *DescribeSqlLogTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSqlLogTaskResponse{}
@@ -27898,6 +38122,15 @@ func (client *Client) DescribeSqlLogTask(request *DescribeSqlLogTaskRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the SQL Explorer and Audit tasks.
+//
+// @param request - DescribeSqlLogTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSqlLogTasksResponse
 func (client *Client) DescribeSqlLogTasksWithOptions(request *DescribeSqlLogTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlLogTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27955,6 +38188,13 @@ func (client *Client) DescribeSqlLogTasksWithOptions(request *DescribeSqlLogTask
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the SQL Explorer and Audit tasks.
+//
+// @param request - DescribeSqlLogTasksRequest
+//
+// @return DescribeSqlLogTasksResponse
 func (client *Client) DescribeSqlLogTasks(request *DescribeSqlLogTasksRequest) (_result *DescribeSqlLogTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSqlLogTasksResponse{}
@@ -27966,20 +38206,33 @@ func (client *Client) DescribeSqlLogTasks(request *DescribeSqlLogTasksRequest) (
 	return _result, _err
 }
 
-/**
- * The list, hash, set, and zset keys are sorted based on the number of elements in these keys. The top three keys that have the most elements are considered large keys.
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
- * *   The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
- *     *   The instance is ApsaraDB for Redis Community Edition instances that use a major version of 5.0 or later or a performance-enhanced instance of the ApsaraDB for Redis Enhanced Edition (Tair).
- *     *   The ApsaraDB for Redis instance is updated to the latest minor version.
- * >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](~~129381~~) and [DescribeEngineVersion](~~95268~~).
- *
- * @param request DescribeTopBigKeysRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeTopBigKeysResponse
- */
+// Summary:
+//
+// Queries the top 100 large keys over a period of time.
+//
+// Description:
+//
+// The list, hash, set, and zset keys are sorted based on the number of elements in these keys. The top three keys that have the most elements are considered large keys.
+//
+// 	- If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
+//
+//     	- The instance is ApsaraDB for Redis Community Edition instances that use a major version of 5.0 or later or a performance-enhanced instance of the ApsaraDB for Redis Enhanced Edition (Tair).
+//
+//     	- The ApsaraDB for Redis instance is updated to the latest minor version.
+//
+// >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
+//
+// @param request - DescribeTopBigKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTopBigKeysResponse
 func (client *Client) DescribeTopBigKeysWithOptions(request *DescribeTopBigKeysRequest, runtime *util.RuntimeOptions) (_result *DescribeTopBigKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28029,19 +38282,31 @@ func (client *Client) DescribeTopBigKeysWithOptions(request *DescribeTopBigKeysR
 	return _result, _err
 }
 
-/**
- * The list, hash, set, and zset keys are sorted based on the number of elements in these keys. The top three keys that have the most elements are considered large keys.
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
- * *   The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
- *     *   The instance is ApsaraDB for Redis Community Edition instances that use a major version of 5.0 or later or a performance-enhanced instance of the ApsaraDB for Redis Enhanced Edition (Tair).
- *     *   The ApsaraDB for Redis instance is updated to the latest minor version.
- * >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](~~129381~~) and [DescribeEngineVersion](~~95268~~).
- *
- * @param request DescribeTopBigKeysRequest
- * @return DescribeTopBigKeysResponse
- */
+// Summary:
+//
+// Queries the top 100 large keys over a period of time.
+//
+// Description:
+//
+// The list, hash, set, and zset keys are sorted based on the number of elements in these keys. The top three keys that have the most elements are considered large keys.
+//
+// 	- If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
+//
+//     	- The instance is ApsaraDB for Redis Community Edition instances that use a major version of 5.0 or later or a performance-enhanced instance of the ApsaraDB for Redis Enhanced Edition (Tair).
+//
+//     	- The ApsaraDB for Redis instance is updated to the latest minor version.
+//
+// >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
+//
+// @param request - DescribeTopBigKeysRequest
+//
+// @return DescribeTopBigKeysResponse
 func (client *Client) DescribeTopBigKeys(request *DescribeTopBigKeysRequest) (_result *DescribeTopBigKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTopBigKeysResponse{}
@@ -28053,20 +38318,33 @@ func (client *Client) DescribeTopBigKeys(request *DescribeTopBigKeysRequest) (_r
 	return _result, _err
 }
 
-/**
- * If the number of queries per second (QPS) of a key is greater than 3,000, the key is considered a hot key.
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
- * *   The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
- *     *   The instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
- *     *   The ApsaraDB for Redis instance is updated to the latest minor version.
- * >  For information about how to query and update the minor version of an instance, see [DescribeEngineVersion](~~95268~~) and [ModifyInstanceMinorVersion](~~129381~~).
- *
- * @param request DescribeTopHotKeysRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeTopHotKeysResponse
- */
+// Summary:
+//
+// Queries the top 100 hot keys over a period of time.
+//
+// Description:
+//
+// If the number of queries per second (QPS) of a key is greater than 3,000, the key is considered a hot key.
+//
+// 	- If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
+//
+//     	- The instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
+//
+//     	- The ApsaraDB for Redis instance is updated to the latest minor version.
+//
+// >  For information about how to query and update the minor version of an instance, see [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) and [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html).
+//
+// @param request - DescribeTopHotKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTopHotKeysResponse
 func (client *Client) DescribeTopHotKeysWithOptions(request *DescribeTopHotKeysRequest, runtime *util.RuntimeOptions) (_result *DescribeTopHotKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28116,19 +38394,31 @@ func (client *Client) DescribeTopHotKeysWithOptions(request *DescribeTopHotKeysR
 	return _result, _err
 }
 
-/**
- * If the number of queries per second (QPS) of a key is greater than 3,000, the key is considered a hot key.
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
- * *   The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
- *     *   The instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
- *     *   The ApsaraDB for Redis instance is updated to the latest minor version.
- * >  For information about how to query and update the minor version of an instance, see [DescribeEngineVersion](~~95268~~) and [ModifyInstanceMinorVersion](~~129381~~).
- *
- * @param request DescribeTopHotKeysRequest
- * @return DescribeTopHotKeysResponse
- */
+// Summary:
+//
+// Queries the top 100 hot keys over a period of time.
+//
+// Description:
+//
+// If the number of queries per second (QPS) of a key is greater than 3,000, the key is considered a hot key.
+//
+// 	- If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
+//
+//     	- The instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
+//
+//     	- The ApsaraDB for Redis instance is updated to the latest minor version.
+//
+// >  For information about how to query and update the minor version of an instance, see [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) and [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html).
+//
+// @param request - DescribeTopHotKeysRequest
+//
+// @return DescribeTopHotKeysResponse
 func (client *Client) DescribeTopHotKeys(request *DescribeTopHotKeysRequest) (_result *DescribeTopHotKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTopHotKeysResponse{}
@@ -28140,15 +38430,23 @@ func (client *Client) DescribeTopHotKeys(request *DescribeTopHotKeysRequest) (_r
 	return _result, _err
 }
 
-/**
- * This operation supports the following database engines:
- * *   ApsaraDB RDS for MySQL
- * *   PolarDB for MySQL
- *
- * @param request DisableAllSqlConcurrencyControlRulesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableAllSqlConcurrencyControlRulesResponse
- */
+// Summary:
+//
+// Disables all throttling rules that are in effect.
+//
+// Description:
+//
+// This operation supports the following database engines:
+//
+// 	- ApsaraDB RDS for MySQL
+//
+// 	- PolarDB for MySQL
+//
+// @param request - DisableAllSqlConcurrencyControlRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableAllSqlConcurrencyControlRulesResponse
 func (client *Client) DisableAllSqlConcurrencyControlRulesWithOptions(request *DisableAllSqlConcurrencyControlRulesRequest, runtime *util.RuntimeOptions) (_result *DisableAllSqlConcurrencyControlRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28186,14 +38484,21 @@ func (client *Client) DisableAllSqlConcurrencyControlRulesWithOptions(request *D
 	return _result, _err
 }
 
-/**
- * This operation supports the following database engines:
- * *   ApsaraDB RDS for MySQL
- * *   PolarDB for MySQL
- *
- * @param request DisableAllSqlConcurrencyControlRulesRequest
- * @return DisableAllSqlConcurrencyControlRulesResponse
- */
+// Summary:
+//
+// Disables all throttling rules that are in effect.
+//
+// Description:
+//
+// This operation supports the following database engines:
+//
+// 	- ApsaraDB RDS for MySQL
+//
+// 	- PolarDB for MySQL
+//
+// @param request - DisableAllSqlConcurrencyControlRulesRequest
+//
+// @return DisableAllSqlConcurrencyControlRulesResponse
 func (client *Client) DisableAllSqlConcurrencyControlRules(request *DisableAllSqlConcurrencyControlRulesRequest) (_result *DisableAllSqlConcurrencyControlRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableAllSqlConcurrencyControlRulesResponse{}
@@ -28205,13 +38510,19 @@ func (client *Client) DisableAllSqlConcurrencyControlRules(request *DisableAllSq
 	return _result, _err
 }
 
-/**
- * If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- *
- * @param request DisableAutoResourceOptimizeRulesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableAutoResourceOptimizeRulesResponse
- */
+// Summary:
+//
+// Disables the automatic tablespace fragment recycling feature for database instances at a time.
+//
+// Description:
+//
+// If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// @param request - DisableAutoResourceOptimizeRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableAutoResourceOptimizeRulesResponse
 func (client *Client) DisableAutoResourceOptimizeRulesWithOptions(request *DisableAutoResourceOptimizeRulesRequest, runtime *util.RuntimeOptions) (_result *DisableAutoResourceOptimizeRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28249,12 +38560,17 @@ func (client *Client) DisableAutoResourceOptimizeRulesWithOptions(request *Disab
 	return _result, _err
 }
 
-/**
- * If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- *
- * @param request DisableAutoResourceOptimizeRulesRequest
- * @return DisableAutoResourceOptimizeRulesResponse
- */
+// Summary:
+//
+// Disables the automatic tablespace fragment recycling feature for database instances at a time.
+//
+// Description:
+//
+// If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// @param request - DisableAutoResourceOptimizeRulesRequest
+//
+// @return DisableAutoResourceOptimizeRulesResponse
 func (client *Client) DisableAutoResourceOptimizeRules(request *DisableAutoResourceOptimizeRulesRequest) (_result *DisableAutoResourceOptimizeRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableAutoResourceOptimizeRulesResponse{}
@@ -28266,13 +38582,19 @@ func (client *Client) DisableAutoResourceOptimizeRules(request *DisableAutoResou
 	return _result, _err
 }
 
-/**
- * If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- *
- * @param request DisableAutoThrottleRulesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableAutoThrottleRulesResponse
- */
+// Summary:
+//
+// Disables the automatic SQL throttling feature for multiple database instances at a time.
+//
+// Description:
+//
+// If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// @param request - DisableAutoThrottleRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableAutoThrottleRulesResponse
 func (client *Client) DisableAutoThrottleRulesWithOptions(request *DisableAutoThrottleRulesRequest, runtime *util.RuntimeOptions) (_result *DisableAutoThrottleRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28310,12 +38632,17 @@ func (client *Client) DisableAutoThrottleRulesWithOptions(request *DisableAutoTh
 	return _result, _err
 }
 
-/**
- * If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- *
- * @param request DisableAutoThrottleRulesRequest
- * @return DisableAutoThrottleRulesResponse
- */
+// Summary:
+//
+// Disables the automatic SQL throttling feature for multiple database instances at a time.
+//
+// Description:
+//
+// If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// @param request - DisableAutoThrottleRulesRequest
+//
+// @return DisableAutoThrottleRulesResponse
 func (client *Client) DisableAutoThrottleRules(request *DisableAutoThrottleRulesRequest) (_result *DisableAutoThrottleRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableAutoThrottleRulesResponse{}
@@ -28327,14 +38654,23 @@ func (client *Client) DisableAutoThrottleRules(request *DisableAutoThrottleRules
 	return _result, _err
 }
 
-/**
- * *   For more information about database instances that support DAS Enterprise Edition, see [Overview](~~190912~~).
- * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request DisableDasProRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableDasProResponse
- */
+// Summary:
+//
+// Disables Database Autonomy Service (DAS) Enterprise Edition for a database instance.
+//
+// Description:
+//
+//   For more information about database instances that support DAS Enterprise Edition, see [Overview of DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to DAS Enterprise Edition V1.
+//
+// @param request - DisableDasProRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableDasProResponse
 func (client *Client) DisableDasProWithOptions(request *DisableDasProRequest, runtime *util.RuntimeOptions) (_result *DisableDasProResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28372,13 +38708,21 @@ func (client *Client) DisableDasProWithOptions(request *DisableDasProRequest, ru
 	return _result, _err
 }
 
-/**
- * *   For more information about database instances that support DAS Enterprise Edition, see [Overview](~~190912~~).
- * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request DisableDasProRequest
- * @return DisableDasProResponse
- */
+// Summary:
+//
+// Disables Database Autonomy Service (DAS) Enterprise Edition for a database instance.
+//
+// Description:
+//
+//   For more information about database instances that support DAS Enterprise Edition, see [Overview of DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to DAS Enterprise Edition V1.
+//
+// @param request - DisableDasProRequest
+//
+// @return DisableDasProResponse
 func (client *Client) DisableDasPro(request *DisableDasProRequest) (_result *DisableDasProResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableDasProResponse{}
@@ -28390,16 +38734,25 @@ func (client *Client) DisableDasPro(request *DisableDasProRequest) (_result *Dis
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is applicable only to ApsaraDB for Redis instances.
- *
- * @param request DisableInstanceDasConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableInstanceDasConfigResponse
- */
+// Summary:
+//
+// Disables the auto scaling feature for a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to ApsaraDB for Redis instances.
+//
+// @param request - DisableInstanceDasConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableInstanceDasConfigResponse
 func (client *Client) DisableInstanceDasConfigWithOptions(request *DisableInstanceDasConfigRequest, runtime *util.RuntimeOptions) (_result *DisableInstanceDasConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28441,15 +38794,23 @@ func (client *Client) DisableInstanceDasConfigWithOptions(request *DisableInstan
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation is applicable only to ApsaraDB for Redis instances.
- *
- * @param request DisableInstanceDasConfigRequest
- * @return DisableInstanceDasConfigResponse
- */
+// Summary:
+//
+// Disables the auto scaling feature for a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to ApsaraDB for Redis instances.
+//
+// @param request - DisableInstanceDasConfigRequest
+//
+// @return DisableInstanceDasConfigResponse
 func (client *Client) DisableInstanceDasConfig(request *DisableInstanceDasConfigRequest) (_result *DisableInstanceDasConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableInstanceDasConfigResponse{}
@@ -28461,15 +38822,23 @@ func (client *Client) DisableInstanceDasConfig(request *DisableInstanceDasConfig
 	return _result, _err
 }
 
-/**
- * This operation is applicable to the following database engines:
- * *   ApsaraDB RDS for MySQL
- * *   PolarDB for MySQL
- *
- * @param request DisableSqlConcurrencyControlRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableSqlConcurrencyControlResponse
- */
+// Summary:
+//
+// Disables a throttling rule.
+//
+// Description:
+//
+// This operation is applicable to the following database engines:
+//
+// 	- ApsaraDB RDS for MySQL
+//
+// 	- PolarDB for MySQL
+//
+// @param request - DisableSqlConcurrencyControlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableSqlConcurrencyControlResponse
 func (client *Client) DisableSqlConcurrencyControlWithOptions(request *DisableSqlConcurrencyControlRequest, runtime *util.RuntimeOptions) (_result *DisableSqlConcurrencyControlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28511,14 +38880,21 @@ func (client *Client) DisableSqlConcurrencyControlWithOptions(request *DisableSq
 	return _result, _err
 }
 
-/**
- * This operation is applicable to the following database engines:
- * *   ApsaraDB RDS for MySQL
- * *   PolarDB for MySQL
- *
- * @param request DisableSqlConcurrencyControlRequest
- * @return DisableSqlConcurrencyControlResponse
- */
+// Summary:
+//
+// Disables a throttling rule.
+//
+// Description:
+//
+// This operation is applicable to the following database engines:
+//
+// 	- ApsaraDB RDS for MySQL
+//
+// 	- PolarDB for MySQL
+//
+// @param request - DisableSqlConcurrencyControlRequest
+//
+// @return DisableSqlConcurrencyControlResponse
 func (client *Client) DisableSqlConcurrencyControl(request *DisableSqlConcurrencyControlRequest) (_result *DisableSqlConcurrencyControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableSqlConcurrencyControlResponse{}
@@ -28530,14 +38906,23 @@ func (client *Client) DisableSqlConcurrencyControl(request *DisableSqlConcurrenc
 	return _result, _err
 }
 
-/**
- * *   For more information about database instances that support DAS Enterprise Edition, see [Overview](~~190912~~).
- * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request EnableDasProRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EnableDasProResponse
- */
+// Summary:
+//
+// Enables Database Autonomy Service (DAS) Enterprise Edition for a database instance.
+//
+// Description:
+//
+//   For more information about database instances that support DAS Enterprise Edition, see [Overview of DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to DAS Enterprise Edition V1.
+//
+// @param request - EnableDasProRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableDasProResponse
 func (client *Client) EnableDasProWithOptions(request *EnableDasProRequest, runtime *util.RuntimeOptions) (_result *EnableDasProResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28579,13 +38964,21 @@ func (client *Client) EnableDasProWithOptions(request *EnableDasProRequest, runt
 	return _result, _err
 }
 
-/**
- * *   For more information about database instances that support DAS Enterprise Edition, see [Overview](~~190912~~).
- * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request EnableDasProRequest
- * @return EnableDasProResponse
- */
+// Summary:
+//
+// Enables Database Autonomy Service (DAS) Enterprise Edition for a database instance.
+//
+// Description:
+//
+//   For more information about database instances that support DAS Enterprise Edition, see [Overview of DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to DAS Enterprise Edition V1.
+//
+// @param request - EnableDasProRequest
+//
+// @return EnableDasProResponse
 func (client *Client) EnableDasPro(request *EnableDasProRequest) (_result *EnableDasProResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableDasProResponse{}
@@ -28597,15 +38990,23 @@ func (client *Client) EnableDasPro(request *EnableDasProRequest) (_result *Enabl
 	return _result, _err
 }
 
-/**
- * This operation supports the following database engines:
- * *   ApsaraDB RDS for MySQL
- * *   PolarDB for MySQL
- *
- * @param request EnableSqlConcurrencyControlRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EnableSqlConcurrencyControlResponse
- */
+// Summary:
+//
+// Enables SQL throttling to control the numbers of database access requests and concurrent SQL statements.
+//
+// Description:
+//
+// This operation supports the following database engines:
+//
+// 	- ApsaraDB RDS for MySQL
+//
+// 	- PolarDB for MySQL
+//
+// @param request - EnableSqlConcurrencyControlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableSqlConcurrencyControlResponse
 func (client *Client) EnableSqlConcurrencyControlWithOptions(request *EnableSqlConcurrencyControlRequest, runtime *util.RuntimeOptions) (_result *EnableSqlConcurrencyControlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28659,14 +39060,21 @@ func (client *Client) EnableSqlConcurrencyControlWithOptions(request *EnableSqlC
 	return _result, _err
 }
 
-/**
- * This operation supports the following database engines:
- * *   ApsaraDB RDS for MySQL
- * *   PolarDB for MySQL
- *
- * @param request EnableSqlConcurrencyControlRequest
- * @return EnableSqlConcurrencyControlResponse
- */
+// Summary:
+//
+// Enables SQL throttling to control the numbers of database access requests and concurrent SQL statements.
+//
+// Description:
+//
+// This operation supports the following database engines:
+//
+// 	- ApsaraDB RDS for MySQL
+//
+// 	- PolarDB for MySQL
+//
+// @param request - EnableSqlConcurrencyControlRequest
+//
+// @return EnableSqlConcurrencyControlResponse
 func (client *Client) EnableSqlConcurrencyControl(request *EnableSqlConcurrencyControlRequest) (_result *EnableSqlConcurrencyControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableSqlConcurrencyControlResponse{}
@@ -28678,15 +39086,23 @@ func (client *Client) EnableSqlConcurrencyControl(request *EnableSqlConcurrencyC
 	return _result, _err
 }
 
-/**
- * >  GetAsyncErrorRequestListByCode is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
- * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetAsyncErrorRequestListByCodeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAsyncErrorRequestListByCodeResponse
- */
+// Summary:
+//
+// Asynchronously queries the IDs of SQL statements that generate a MySQL error code in the SQL Explorer results of a database instance.
+//
+// Description:
+//
+// >  GetAsyncErrorRequestListByCode is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
+//
+// 	- This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetAsyncErrorRequestListByCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsyncErrorRequestListByCodeResponse
 func (client *Client) GetAsyncErrorRequestListByCodeWithOptions(request *GetAsyncErrorRequestListByCodeRequest, runtime *util.RuntimeOptions) (_result *GetAsyncErrorRequestListByCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28736,14 +39152,21 @@ func (client *Client) GetAsyncErrorRequestListByCodeWithOptions(request *GetAsyn
 	return _result, _err
 }
 
-/**
- * >  GetAsyncErrorRequestListByCode is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
- * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetAsyncErrorRequestListByCodeRequest
- * @return GetAsyncErrorRequestListByCodeResponse
- */
+// Summary:
+//
+// Asynchronously queries the IDs of SQL statements that generate a MySQL error code in the SQL Explorer results of a database instance.
+//
+// Description:
+//
+// >  GetAsyncErrorRequestListByCode is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
+//
+// 	- This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetAsyncErrorRequestListByCodeRequest
+//
+// @return GetAsyncErrorRequestListByCodeResponse
 func (client *Client) GetAsyncErrorRequestListByCode(request *GetAsyncErrorRequestListByCodeRequest) (_result *GetAsyncErrorRequestListByCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAsyncErrorRequestListByCodeResponse{}
@@ -28755,15 +39178,23 @@ func (client *Client) GetAsyncErrorRequestListByCode(request *GetAsyncErrorReque
 	return _result, _err
 }
 
-/**
- * >  GetAsyncErrorRequestStatByCode is an asynchronous operation After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
- * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetAsyncErrorRequestStatByCodeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAsyncErrorRequestStatByCodeResponse
- */
+// Summary:
+//
+// Asynchronously queries the MySQL error codes in SQL Explorer data and the number of SQL queries corresponding to each error code.
+//
+// Description:
+//
+// >  GetAsyncErrorRequestStatByCode is an asynchronous operation After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
+//
+// 	- This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetAsyncErrorRequestStatByCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsyncErrorRequestStatByCodeResponse
 func (client *Client) GetAsyncErrorRequestStatByCodeWithOptions(request *GetAsyncErrorRequestStatByCodeRequest, runtime *util.RuntimeOptions) (_result *GetAsyncErrorRequestStatByCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28813,14 +39244,21 @@ func (client *Client) GetAsyncErrorRequestStatByCodeWithOptions(request *GetAsyn
 	return _result, _err
 }
 
-/**
- * >  GetAsyncErrorRequestStatByCode is an asynchronous operation After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
- * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetAsyncErrorRequestStatByCodeRequest
- * @return GetAsyncErrorRequestStatByCodeResponse
- */
+// Summary:
+//
+// Asynchronously queries the MySQL error codes in SQL Explorer data and the number of SQL queries corresponding to each error code.
+//
+// Description:
+//
+// >  GetAsyncErrorRequestStatByCode is an asynchronous operation After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
+//
+// 	- This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetAsyncErrorRequestStatByCodeRequest
+//
+// @return GetAsyncErrorRequestStatByCodeResponse
 func (client *Client) GetAsyncErrorRequestStatByCode(request *GetAsyncErrorRequestStatByCodeRequest) (_result *GetAsyncErrorRequestStatByCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAsyncErrorRequestStatByCodeResponse{}
@@ -28832,15 +39270,23 @@ func (client *Client) GetAsyncErrorRequestStatByCode(request *GetAsyncErrorReque
 	return _result, _err
 }
 
-/**
- * >  GetAsyncErrorRequestStatResult is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
- * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetAsyncErrorRequestStatResultRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAsyncErrorRequestStatResultResponse
- */
+// Summary:
+//
+// Asynchronously obtains the number of failed executions of SQL templates based on SQL Explorer data.
+//
+// Description:
+//
+// >  GetAsyncErrorRequestStatResult is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
+//
+// 	- This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetAsyncErrorRequestStatResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsyncErrorRequestStatResultResponse
 func (client *Client) GetAsyncErrorRequestStatResultWithOptions(request *GetAsyncErrorRequestStatResultRequest, runtime *util.RuntimeOptions) (_result *GetAsyncErrorRequestStatResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28894,14 +39340,21 @@ func (client *Client) GetAsyncErrorRequestStatResultWithOptions(request *GetAsyn
 	return _result, _err
 }
 
-/**
- * >  GetAsyncErrorRequestStatResult is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
- * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetAsyncErrorRequestStatResultRequest
- * @return GetAsyncErrorRequestStatResultResponse
- */
+// Summary:
+//
+// Asynchronously obtains the number of failed executions of SQL templates based on SQL Explorer data.
+//
+// Description:
+//
+// >  GetAsyncErrorRequestStatResult is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
+//
+// 	- This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetAsyncErrorRequestStatResultRequest
+//
+// @return GetAsyncErrorRequestStatResultResponse
 func (client *Client) GetAsyncErrorRequestStatResult(request *GetAsyncErrorRequestStatResultRequest) (_result *GetAsyncErrorRequestStatResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAsyncErrorRequestStatResultResponse{}
@@ -28913,15 +39366,23 @@ func (client *Client) GetAsyncErrorRequestStatResult(request *GetAsyncErrorReque
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
- *
- * @param request GetAutoIncrementUsageStatisticRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAutoIncrementUsageStatisticResponse
- */
+// Summary:
+//
+// Queries the usage of auto-increment table IDs.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call DAS, you must set the region to cn-shanghai.
+//
+// @param request - GetAutoIncrementUsageStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAutoIncrementUsageStatisticResponse
 func (client *Client) GetAutoIncrementUsageStatisticWithOptions(request *GetAutoIncrementUsageStatisticRequest, runtime *util.RuntimeOptions) (_result *GetAutoIncrementUsageStatisticResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28967,14 +39428,21 @@ func (client *Client) GetAutoIncrementUsageStatisticWithOptions(request *GetAuto
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call DAS, you must set the region to cn-shanghai.
- *
- * @param request GetAutoIncrementUsageStatisticRequest
- * @return GetAutoIncrementUsageStatisticResponse
- */
+// Summary:
+//
+// Queries the usage of auto-increment table IDs.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call DAS, you must set the region to cn-shanghai.
+//
+// @param request - GetAutoIncrementUsageStatisticRequest
+//
+// @return GetAutoIncrementUsageStatisticResponse
 func (client *Client) GetAutoIncrementUsageStatistic(request *GetAutoIncrementUsageStatisticRequest) (_result *GetAutoIncrementUsageStatisticResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAutoIncrementUsageStatisticResponse{}
@@ -28986,16 +39454,25 @@ func (client *Client) GetAutoIncrementUsageStatistic(request *GetAutoIncrementUs
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The database instance is an ApsaraDB RDS for MySQL instance of High-availability Edition.
- * *   The database instance has four or more cores, and **innodb_file_per_table** is set to **ON**.
- *
- * @param request GetAutoResourceOptimizeRulesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAutoResourceOptimizeRulesResponse
- */
+// Summary:
+//
+// Queries the automatic fragment recycling rules of database instances.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- The database instance is an ApsaraDB RDS for MySQL instance of High-availability Edition.
+//
+// 	- The database instance has four or more cores, and **innodb_file_per_table*	- is set to **ON**.
+//
+// @param request - GetAutoResourceOptimizeRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAutoResourceOptimizeRulesResponse
 func (client *Client) GetAutoResourceOptimizeRulesWithOptions(request *GetAutoResourceOptimizeRulesRequest, runtime *util.RuntimeOptions) (_result *GetAutoResourceOptimizeRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29033,15 +39510,23 @@ func (client *Client) GetAutoResourceOptimizeRulesWithOptions(request *GetAutoRe
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The database instance is an ApsaraDB RDS for MySQL instance of High-availability Edition.
- * *   The database instance has four or more cores, and **innodb_file_per_table** is set to **ON**.
- *
- * @param request GetAutoResourceOptimizeRulesRequest
- * @return GetAutoResourceOptimizeRulesResponse
- */
+// Summary:
+//
+// Queries the automatic fragment recycling rules of database instances.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- The database instance is an ApsaraDB RDS for MySQL instance of High-availability Edition.
+//
+// 	- The database instance has four or more cores, and **innodb_file_per_table*	- is set to **ON**.
+//
+// @param request - GetAutoResourceOptimizeRulesRequest
+//
+// @return GetAutoResourceOptimizeRulesResponse
 func (client *Client) GetAutoResourceOptimizeRules(request *GetAutoResourceOptimizeRulesRequest) (_result *GetAutoResourceOptimizeRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAutoResourceOptimizeRulesResponse{}
@@ -29053,17 +39538,27 @@ func (client *Client) GetAutoResourceOptimizeRules(request *GetAutoResourceOptim
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The database instance that you want to manage is of one of the following types:
- *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0.
- *     *   PolarDB for MySQL Cluster Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition instance that runs MySQL 8.0.
- *
- * @param request GetAutoThrottleRulesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAutoThrottleRulesResponse
- */
+// Summary:
+//
+// Queries the automatic SQL throttling rules of a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- The database instance that you want to manage is of one of the following types:
+//
+//     	- ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0.
+//
+//     	- PolarDB for MySQL Cluster Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition instance that runs MySQL 8.0.
+//
+// @param request - GetAutoThrottleRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAutoThrottleRulesResponse
 func (client *Client) GetAutoThrottleRulesWithOptions(request *GetAutoThrottleRulesRequest, runtime *util.RuntimeOptions) (_result *GetAutoThrottleRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29101,16 +39596,25 @@ func (client *Client) GetAutoThrottleRulesWithOptions(request *GetAutoThrottleRu
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The database instance that you want to manage is of one of the following types:
- *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0.
- *     *   PolarDB for MySQL Cluster Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition instance that runs MySQL 8.0.
- *
- * @param request GetAutoThrottleRulesRequest
- * @return GetAutoThrottleRulesResponse
- */
+// Summary:
+//
+// Queries the automatic SQL throttling rules of a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- The database instance that you want to manage is of one of the following types:
+//
+//     	- ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0.
+//
+//     	- PolarDB for MySQL Cluster Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition instance that runs MySQL 8.0.
+//
+// @param request - GetAutoThrottleRulesRequest
+//
+// @return GetAutoThrottleRulesResponse
 func (client *Client) GetAutoThrottleRules(request *GetAutoThrottleRulesRequest) (_result *GetAutoThrottleRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAutoThrottleRulesResponse{}
@@ -29122,17 +39626,27 @@ func (client *Client) GetAutoThrottleRules(request *GetAutoThrottleRulesRequest)
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   After your instance is connected to DAS, notification events such as snapshot capture are triggered if DAS detects changes to database monitoring metrics during anomaly detection.
- * >  You can query the details of notification events only if the autonomy center is enabled. For more information, see [Autonomy center](~~152139~~).
- *
- * @param request GetAutonomousNotifyEventContentRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAutonomousNotifyEventContentResponse
- */
+// Summary:
+//
+// Queries the details of notification events of a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- After your instance is connected to DAS, notification events such as snapshot capture are triggered if DAS detects changes to database monitoring metrics during anomaly detection.
+//
+// >  You can query the details of notification events only if the autonomy center is enabled. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
+//
+// @param request - GetAutonomousNotifyEventContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAutonomousNotifyEventContentResponse
 func (client *Client) GetAutonomousNotifyEventContentWithOptions(request *GetAutonomousNotifyEventContentRequest, runtime *util.RuntimeOptions) (_result *GetAutonomousNotifyEventContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29174,16 +39688,25 @@ func (client *Client) GetAutonomousNotifyEventContentWithOptions(request *GetAut
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   After your instance is connected to DAS, notification events such as snapshot capture are triggered if DAS detects changes to database monitoring metrics during anomaly detection.
- * >  You can query the details of notification events only if the autonomy center is enabled. For more information, see [Autonomy center](~~152139~~).
- *
- * @param request GetAutonomousNotifyEventContentRequest
- * @return GetAutonomousNotifyEventContentResponse
- */
+// Summary:
+//
+// Queries the details of notification events of a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- After your instance is connected to DAS, notification events such as snapshot capture are triggered if DAS detects changes to database monitoring metrics during anomaly detection.
+//
+// >  You can query the details of notification events only if the autonomy center is enabled. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
+//
+// @param request - GetAutonomousNotifyEventContentRequest
+//
+// @return GetAutonomousNotifyEventContentResponse
 func (client *Client) GetAutonomousNotifyEventContent(request *GetAutonomousNotifyEventContentRequest) (_result *GetAutonomousNotifyEventContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAutonomousNotifyEventContentResponse{}
@@ -29195,17 +39718,27 @@ func (client *Client) GetAutonomousNotifyEventContent(request *GetAutonomousNoti
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   After your instance is connected to DAS, notification events such as snapshot capture are triggered if DAS detects changes to database monitoring metrics during anomaly detection.
- * >  You can query the details of notification events only if the autonomy center is enabled. For more information, see [Autonomy center](~~152139~~).
- *
- * @param request GetAutonomousNotifyEventsInRangeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAutonomousNotifyEventsInRangeResponse
- */
+// Summary:
+//
+// Queries the notification events of one or more urgency levels within a period.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- After your instance is connected to DAS, notification events such as snapshot capture are triggered if DAS detects changes to database monitoring metrics during anomaly detection.
+//
+// >  You can query the details of notification events only if the autonomy center is enabled. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
+//
+// @param request - GetAutonomousNotifyEventsInRangeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAutonomousNotifyEventsInRangeResponse
 func (client *Client) GetAutonomousNotifyEventsInRangeWithOptions(request *GetAutonomousNotifyEventsInRangeRequest, runtime *util.RuntimeOptions) (_result *GetAutonomousNotifyEventsInRangeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29275,16 +39808,25 @@ func (client *Client) GetAutonomousNotifyEventsInRangeWithOptions(request *GetAu
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   After your instance is connected to DAS, notification events such as snapshot capture are triggered if DAS detects changes to database monitoring metrics during anomaly detection.
- * >  You can query the details of notification events only if the autonomy center is enabled. For more information, see [Autonomy center](~~152139~~).
- *
- * @param request GetAutonomousNotifyEventsInRangeRequest
- * @return GetAutonomousNotifyEventsInRangeResponse
- */
+// Summary:
+//
+// Queries the notification events of one or more urgency levels within a period.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- After your instance is connected to DAS, notification events such as snapshot capture are triggered if DAS detects changes to database monitoring metrics during anomaly detection.
+//
+// >  You can query the details of notification events only if the autonomy center is enabled. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
+//
+// @param request - GetAutonomousNotifyEventsInRangeRequest
+//
+// @return GetAutonomousNotifyEventsInRangeResponse
 func (client *Client) GetAutonomousNotifyEventsInRange(request *GetAutonomousNotifyEventsInRangeRequest) (_result *GetAutonomousNotifyEventsInRangeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAutonomousNotifyEventsInRangeResponse{}
@@ -29296,15 +39838,23 @@ func (client *Client) GetAutonomousNotifyEventsInRange(request *GetAutonomousNot
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetBlockingDetailListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetBlockingDetailListResponse
- */
+// Summary:
+//
+// Queries the blocking statistics of an instance.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetBlockingDetailListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBlockingDetailListResponse
 func (client *Client) GetBlockingDetailListWithOptions(request *GetBlockingDetailListRequest, runtime *util.RuntimeOptions) (_result *GetBlockingDetailListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29362,14 +39912,21 @@ func (client *Client) GetBlockingDetailListWithOptions(request *GetBlockingDetai
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetBlockingDetailListRequest
- * @return GetBlockingDetailListResponse
- */
+// Summary:
+//
+// Queries the blocking statistics of an instance.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetBlockingDetailListRequest
+//
+// @return GetBlockingDetailListResponse
 func (client *Client) GetBlockingDetailList(request *GetBlockingDetailListRequest) (_result *GetBlockingDetailListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetBlockingDetailListResponse{}
@@ -29381,16 +39938,25 @@ func (client *Client) GetBlockingDetailList(request *GetBlockingDetailListReques
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   The database instance that you want to manage is connected to DAS.
- *
- * @param request GetDBInstanceConnectivityDiagnosisRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetDBInstanceConnectivityDiagnosisResponse
- */
+// Summary:
+//
+// Queries the diagnosis of network connectivity when a user accesses a specific database instance by specifying an IP address.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- The database instance that you want to manage is connected to DAS.
+//
+// @param request - GetDBInstanceConnectivityDiagnosisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDBInstanceConnectivityDiagnosisResponse
 func (client *Client) GetDBInstanceConnectivityDiagnosisWithOptions(request *GetDBInstanceConnectivityDiagnosisRequest, runtime *util.RuntimeOptions) (_result *GetDBInstanceConnectivityDiagnosisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29428,15 +39994,23 @@ func (client *Client) GetDBInstanceConnectivityDiagnosisWithOptions(request *Get
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   The database instance that you want to manage is connected to DAS.
- *
- * @param request GetDBInstanceConnectivityDiagnosisRequest
- * @return GetDBInstanceConnectivityDiagnosisResponse
- */
+// Summary:
+//
+// Queries the diagnosis of network connectivity when a user accesses a specific database instance by specifying an IP address.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- The database instance that you want to manage is connected to DAS.
+//
+// @param request - GetDBInstanceConnectivityDiagnosisRequest
+//
+// @return GetDBInstanceConnectivityDiagnosisResponse
 func (client *Client) GetDBInstanceConnectivityDiagnosis(request *GetDBInstanceConnectivityDiagnosisRequest) (_result *GetDBInstanceConnectivityDiagnosisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDBInstanceConnectivityDiagnosisResponse{}
@@ -29448,15 +40022,25 @@ func (client *Client) GetDBInstanceConnectivityDiagnosis(request *GetDBInstanceC
 	return _result, _err
 }
 
-/**
- * *   For information about database instances that support Database Autonomy Service (DAS) Enterprise Edition, see [Overview](~~190912~~).
- * *   If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetDasProServiceUsageRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetDasProServiceUsageResponse
- */
+// Summary:
+//
+// Queries the storage usage of SQL Explorer of a database instance.
+//
+// Description:
+//
+//   For information about database instances that support this operation, see [Overview of DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to DAS Enterprise Edition V1 and V2.
+//
+// @param request - GetDasProServiceUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDasProServiceUsageResponse
 func (client *Client) GetDasProServiceUsageWithOptions(request *GetDasProServiceUsageRequest, runtime *util.RuntimeOptions) (_result *GetDasProServiceUsageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29494,14 +40078,23 @@ func (client *Client) GetDasProServiceUsageWithOptions(request *GetDasProService
 	return _result, _err
 }
 
-/**
- * *   For information about database instances that support Database Autonomy Service (DAS) Enterprise Edition, see [Overview](~~190912~~).
- * *   If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetDasProServiceUsageRequest
- * @return GetDasProServiceUsageResponse
- */
+// Summary:
+//
+// Queries the storage usage of SQL Explorer of a database instance.
+//
+// Description:
+//
+//   For information about database instances that support this operation, see [Overview of DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation is applicable only to DAS Enterprise Edition V1 and V2.
+//
+// @param request - GetDasProServiceUsageRequest
+//
+// @return GetDasProServiceUsageResponse
 func (client *Client) GetDasProServiceUsage(request *GetDasProServiceUsageRequest) (_result *GetDasProServiceUsageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDasProServiceUsageResponse{}
@@ -29513,18 +40106,29 @@ func (client *Client) GetDasProServiceUsage(request *GetDasProServiceUsageReques
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   An ApsaraDB RDS for MySQL database or a PolarDB for MySQL database in the China (Shanghai) region is connected to DAS.
- * *   The new SQL Explorer and Audit feature is enabled for the database instance. For more information, see the [Enable the SQL Explorer and Audit feature](~~92561~~) section of the "Overview" topic.
- * >  You can query only the data that is generated after the new SQL Explorer and Audit feature is enabled. The start time can be up to seven days earlier than the current time. The interval between the start time and the end time cannot exceed 24 hours.
- *
- * @param request GetDasSQLLogHotDataRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetDasSQLLogHotDataResponse
- */
+// Summary:
+//
+// Queries the details of the hot storage data that the new SQL Explorer and Audit feature generates for a database instance within the last seven days.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- An ApsaraDB RDS for MySQL database or a PolarDB for MySQL database in the China (Shanghai) region is connected to DAS.
+//
+// 	- The new SQL Explorer and Audit feature is enabled for the database instance. For more information, see the [Enable the SQL Explorer and Audit feature](https://help.aliyun.com/document_detail/92561.html) section of the "Overview" topic.
+//
+// >  You can query only the data that is generated after the new SQL Explorer and Audit feature is enabled. The start time can be up to seven days earlier than the current time. The interval between the start time and the end time cannot exceed 24 hours.
+//
+// @param request - GetDasSQLLogHotDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDasSQLLogHotDataResponse
 func (client *Client) GetDasSQLLogHotDataWithOptions(request *GetDasSQLLogHotDataRequest, runtime *util.RuntimeOptions) (_result *GetDasSQLLogHotDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29666,17 +40270,27 @@ func (client *Client) GetDasSQLLogHotDataWithOptions(request *GetDasSQLLogHotDat
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   An ApsaraDB RDS for MySQL database or a PolarDB for MySQL database in the China (Shanghai) region is connected to DAS.
- * *   The new SQL Explorer and Audit feature is enabled for the database instance. For more information, see the [Enable the SQL Explorer and Audit feature](~~92561~~) section of the "Overview" topic.
- * >  You can query only the data that is generated after the new SQL Explorer and Audit feature is enabled. The start time can be up to seven days earlier than the current time. The interval between the start time and the end time cannot exceed 24 hours.
- *
- * @param request GetDasSQLLogHotDataRequest
- * @return GetDasSQLLogHotDataResponse
- */
+// Summary:
+//
+// Queries the details of the hot storage data that the new SQL Explorer and Audit feature generates for a database instance within the last seven days.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- An ApsaraDB RDS for MySQL database or a PolarDB for MySQL database in the China (Shanghai) region is connected to DAS.
+//
+// 	- The new SQL Explorer and Audit feature is enabled for the database instance. For more information, see the [Enable the SQL Explorer and Audit feature](https://help.aliyun.com/document_detail/92561.html) section of the "Overview" topic.
+//
+// >  You can query only the data that is generated after the new SQL Explorer and Audit feature is enabled. The start time can be up to seven days earlier than the current time. The interval between the start time and the end time cannot exceed 24 hours.
+//
+// @param request - GetDasSQLLogHotDataRequest
+//
+// @return GetDasSQLLogHotDataResponse
 func (client *Client) GetDasSQLLogHotData(request *GetDasSQLLogHotDataRequest) (_result *GetDasSQLLogHotDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDasSQLLogHotDataResponse{}
@@ -29688,15 +40302,23 @@ func (client *Client) GetDasSQLLogHotData(request *GetDasSQLLogHotDataRequest) (
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetDeadLockDetailListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetDeadLockDetailListResponse
- */
+// Summary:
+//
+// Queries the deadlock details of an instance.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetDeadLockDetailListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeadLockDetailListResponse
 func (client *Client) GetDeadLockDetailListWithOptions(request *GetDeadLockDetailListRequest, runtime *util.RuntimeOptions) (_result *GetDeadLockDetailListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29750,14 +40372,21 @@ func (client *Client) GetDeadLockDetailListWithOptions(request *GetDeadLockDetai
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetDeadLockDetailListRequest
- * @return GetDeadLockDetailListResponse
- */
+// Summary:
+//
+// Queries the deadlock details of an instance.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetDeadLockDetailListRequest
+//
+// @return GetDeadLockDetailListResponse
 func (client *Client) GetDeadLockDetailList(request *GetDeadLockDetailListRequest) (_result *GetDeadLockDetailListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDeadLockDetailListResponse{}
@@ -29769,6 +40398,11 @@ func (client *Client) GetDeadLockDetailList(request *GetDeadLockDetailListReques
 	return _result, _err
 }
 
+// @param request - GetEndpointSwitchTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEndpointSwitchTaskResponse
 func (client *Client) GetEndpointSwitchTaskWithOptions(request *GetEndpointSwitchTaskRequest, runtime *util.RuntimeOptions) (_result *GetEndpointSwitchTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29830,6 +40464,9 @@ func (client *Client) GetEndpointSwitchTaskWithOptions(request *GetEndpointSwitc
 	return _result, _err
 }
 
+// @param request - GetEndpointSwitchTaskRequest
+//
+// @return GetEndpointSwitchTaskResponse
 func (client *Client) GetEndpointSwitchTask(request *GetEndpointSwitchTaskRequest) (_result *GetEndpointSwitchTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEndpointSwitchTaskResponse{}
@@ -29841,15 +40478,23 @@ func (client *Client) GetEndpointSwitchTask(request *GetEndpointSwitchTaskReques
 	return _result, _err
 }
 
-/**
- * >  GetErrorRequestSample is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
- * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetErrorRequestSampleRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetErrorRequestSampleResponse
- */
+// Summary:
+//
+// Asynchronously queries information about failed SQL queries in SQL Explorer data. You can query up to 20 failed SQL queries within the specific time range.
+//
+// Description:
+//
+// >  GetErrorRequestSample is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
+//
+// 	- This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetErrorRequestSampleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetErrorRequestSampleResponse
 func (client *Client) GetErrorRequestSampleWithOptions(request *GetErrorRequestSampleRequest, runtime *util.RuntimeOptions) (_result *GetErrorRequestSampleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29903,14 +40548,21 @@ func (client *Client) GetErrorRequestSampleWithOptions(request *GetErrorRequestS
 	return _result, _err
 }
 
-/**
- * >  GetErrorRequestSample is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
- * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetErrorRequestSampleRequest
- * @return GetErrorRequestSampleResponse
- */
+// Summary:
+//
+// Asynchronously queries information about failed SQL queries in SQL Explorer data. You can query up to 20 failed SQL queries within the specific time range.
+//
+// Description:
+//
+// >  GetErrorRequestSample is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
+//
+// 	- This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetErrorRequestSampleRequest
+//
+// @return GetErrorRequestSampleResponse
 func (client *Client) GetErrorRequestSample(request *GetErrorRequestSampleRequest) (_result *GetErrorRequestSampleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetErrorRequestSampleResponse{}
@@ -29922,16 +40574,25 @@ func (client *Client) GetErrorRequestSample(request *GetErrorRequestSampleReques
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   The database instance that you want to manage is connected to DAS.
- *
- * @param request GetEventSubscriptionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetEventSubscriptionResponse
- */
+// Summary:
+//
+// Queries the event subscription settings of a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- The database instance that you want to manage is connected to DAS.
+//
+// @param request - GetEventSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEventSubscriptionResponse
 func (client *Client) GetEventSubscriptionWithOptions(request *GetEventSubscriptionRequest, runtime *util.RuntimeOptions) (_result *GetEventSubscriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29965,15 +40626,23 @@ func (client *Client) GetEventSubscriptionWithOptions(request *GetEventSubscript
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   The database instance that you want to manage is connected to DAS.
- *
- * @param request GetEventSubscriptionRequest
- * @return GetEventSubscriptionResponse
- */
+// Summary:
+//
+// Queries the event subscription settings of a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- The database instance that you want to manage is connected to DAS.
+//
+// @param request - GetEventSubscriptionRequest
+//
+// @return GetEventSubscriptionResponse
 func (client *Client) GetEventSubscription(request *GetEventSubscriptionRequest) (_result *GetEventSubscriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEventSubscriptionResponse{}
@@ -29985,15 +40654,23 @@ func (client *Client) GetEventSubscription(request *GetEventSubscriptionRequest)
 	return _result, _err
 }
 
-/**
- * The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](~~204096~~).
- * *   For more information about database instances that support this feature, see [Overview](~~190912~~).
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- *
- * @param request GetFullRequestOriginStatByInstanceIdRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetFullRequestOriginStatByInstanceIdResponse
- */
+// Summary:
+//
+// Collects the full request statistics in the SQL Explorer results of a database instance by access source.
+//
+// Description:
+//
+// The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
+//
+// 	- For more information about database instances that support this feature, see [Overview](https://help.aliyun.com/document_detail/190912.html).
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// @param request - GetFullRequestOriginStatByInstanceIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFullRequestOriginStatByInstanceIdResponse
 func (client *Client) GetFullRequestOriginStatByInstanceIdWithOptions(request *GetFullRequestOriginStatByInstanceIdRequest, runtime *util.RuntimeOptions) (_result *GetFullRequestOriginStatByInstanceIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30067,14 +40744,21 @@ func (client *Client) GetFullRequestOriginStatByInstanceIdWithOptions(request *G
 	return _result, _err
 }
 
-/**
- * The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](~~204096~~).
- * *   For more information about database instances that support this feature, see [Overview](~~190912~~).
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- *
- * @param request GetFullRequestOriginStatByInstanceIdRequest
- * @return GetFullRequestOriginStatByInstanceIdResponse
- */
+// Summary:
+//
+// Collects the full request statistics in the SQL Explorer results of a database instance by access source.
+//
+// Description:
+//
+// The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
+//
+// 	- For more information about database instances that support this feature, see [Overview](https://help.aliyun.com/document_detail/190912.html).
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// @param request - GetFullRequestOriginStatByInstanceIdRequest
+//
+// @return GetFullRequestOriginStatByInstanceIdResponse
 func (client *Client) GetFullRequestOriginStatByInstanceId(request *GetFullRequestOriginStatByInstanceIdRequest) (_result *GetFullRequestOriginStatByInstanceIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFullRequestOriginStatByInstanceIdResponse{}
@@ -30086,15 +40770,23 @@ func (client *Client) GetFullRequestOriginStatByInstanceId(request *GetFullReque
 	return _result, _err
 }
 
-/**
- * The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](~~204096~~).
- * *   For more information about the database engines that support SQL Explorer, see [SQL Explorer](~~204096~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetFullRequestSampleByInstanceIdRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetFullRequestSampleByInstanceIdResponse
- */
+// Summary:
+//
+// Queries sample SQL statements in the SQL Explorer data of a database instance by SQL ID. You can query up to 20 sample SQL statements.
+//
+// Description:
+//
+// The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
+//
+// 	- For more information about the database engines that support SQL Explorer, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetFullRequestSampleByInstanceIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFullRequestSampleByInstanceIdResponse
 func (client *Client) GetFullRequestSampleByInstanceIdWithOptions(request *GetFullRequestSampleByInstanceIdRequest, runtime *util.RuntimeOptions) (_result *GetFullRequestSampleByInstanceIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30150,14 +40842,21 @@ func (client *Client) GetFullRequestSampleByInstanceIdWithOptions(request *GetFu
 	return _result, _err
 }
 
-/**
- * The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](~~204096~~).
- * *   For more information about the database engines that support SQL Explorer, see [SQL Explorer](~~204096~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetFullRequestSampleByInstanceIdRequest
- * @return GetFullRequestSampleByInstanceIdResponse
- */
+// Summary:
+//
+// Queries sample SQL statements in the SQL Explorer data of a database instance by SQL ID. You can query up to 20 sample SQL statements.
+//
+// Description:
+//
+// The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
+//
+// 	- For more information about the database engines that support SQL Explorer, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetFullRequestSampleByInstanceIdRequest
+//
+// @return GetFullRequestSampleByInstanceIdResponse
 func (client *Client) GetFullRequestSampleByInstanceId(request *GetFullRequestSampleByInstanceIdRequest) (_result *GetFullRequestSampleByInstanceIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFullRequestSampleByInstanceIdResponse{}
@@ -30169,16 +40868,25 @@ func (client *Client) GetFullRequestSampleByInstanceId(request *GetFullRequestSa
 	return _result, _err
 }
 
-/**
- * >  The complete query results are not returned immediately after an asynchronous request is sent. If the value of isFinish is **false** in the response, wait for 1 second and send the request again. The complete query results are returned until the value of isFinish is **true**.
- * The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](~~204096~~).
- * *   For more information about database instances that support SQL Explorer, see [Overview](~~190912~~).
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- *
- * @param request GetFullRequestStatResultByInstanceIdRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetFullRequestStatResultByInstanceIdResponse
- */
+// Summary:
+//
+// Asynchronously collects the full request statistics in the SQL Explorer results of a database instance by SQL ID.
+//
+// Description:
+//
+// >  The complete query results are not returned immediately after an asynchronous request is sent. If the value of isFinish is **false*	- in the response, wait for 1 second and send the request again. The complete query results are returned until the value of isFinish is **true**.
+//
+// The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
+//
+// 	- For more information about database instances that support SQL Explorer, see [Overview](https://help.aliyun.com/document_detail/190912.html).
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// @param request - GetFullRequestStatResultByInstanceIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFullRequestStatResultByInstanceIdResponse
 func (client *Client) GetFullRequestStatResultByInstanceIdWithOptions(request *GetFullRequestStatResultByInstanceIdRequest, runtime *util.RuntimeOptions) (_result *GetFullRequestStatResultByInstanceIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30268,15 +40976,23 @@ func (client *Client) GetFullRequestStatResultByInstanceIdWithOptions(request *G
 	return _result, _err
 }
 
-/**
- * >  The complete query results are not returned immediately after an asynchronous request is sent. If the value of isFinish is **false** in the response, wait for 1 second and send the request again. The complete query results are returned until the value of isFinish is **true**.
- * The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](~~204096~~).
- * *   For more information about database instances that support SQL Explorer, see [Overview](~~190912~~).
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- *
- * @param request GetFullRequestStatResultByInstanceIdRequest
- * @return GetFullRequestStatResultByInstanceIdResponse
- */
+// Summary:
+//
+// Asynchronously collects the full request statistics in the SQL Explorer results of a database instance by SQL ID.
+//
+// Description:
+//
+// >  The complete query results are not returned immediately after an asynchronous request is sent. If the value of isFinish is **false*	- in the response, wait for 1 second and send the request again. The complete query results are returned until the value of isFinish is **true**.
+//
+// The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
+//
+// 	- For more information about database instances that support SQL Explorer, see [Overview](https://help.aliyun.com/document_detail/190912.html).
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// @param request - GetFullRequestStatResultByInstanceIdRequest
+//
+// @return GetFullRequestStatResultByInstanceIdResponse
 func (client *Client) GetFullRequestStatResultByInstanceId(request *GetFullRequestStatResultByInstanceIdRequest) (_result *GetFullRequestStatResultByInstanceIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFullRequestStatResultByInstanceIdResponse{}
@@ -30288,6 +41004,11 @@ func (client *Client) GetFullRequestStatResultByInstanceId(request *GetFullReque
 	return _result, _err
 }
 
+// @param request - GetHDMAliyunResourceSyncResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHDMAliyunResourceSyncResultResponse
 func (client *Client) GetHDMAliyunResourceSyncResultWithOptions(request *GetHDMAliyunResourceSyncResultRequest, runtime *util.RuntimeOptions) (_result *GetHDMAliyunResourceSyncResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30349,6 +41070,9 @@ func (client *Client) GetHDMAliyunResourceSyncResultWithOptions(request *GetHDMA
 	return _result, _err
 }
 
+// @param request - GetHDMAliyunResourceSyncResultRequest
+//
+// @return GetHDMAliyunResourceSyncResultResponse
 func (client *Client) GetHDMAliyunResourceSyncResult(request *GetHDMAliyunResourceSyncResultRequest) (_result *GetHDMAliyunResourceSyncResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHDMAliyunResourceSyncResultResponse{}
@@ -30360,6 +41084,11 @@ func (client *Client) GetHDMAliyunResourceSyncResult(request *GetHDMAliyunResour
 	return _result, _err
 }
 
+// @param request - GetHDMLastAliyunResourceSyncResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHDMLastAliyunResourceSyncResultResponse
 func (client *Client) GetHDMLastAliyunResourceSyncResultWithOptions(request *GetHDMLastAliyunResourceSyncResultRequest, runtime *util.RuntimeOptions) (_result *GetHDMLastAliyunResourceSyncResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30417,6 +41146,9 @@ func (client *Client) GetHDMLastAliyunResourceSyncResultWithOptions(request *Get
 	return _result, _err
 }
 
+// @param request - GetHDMLastAliyunResourceSyncResultRequest
+//
+// @return GetHDMLastAliyunResourceSyncResultResponse
 func (client *Client) GetHDMLastAliyunResourceSyncResult(request *GetHDMLastAliyunResourceSyncResultRequest) (_result *GetHDMLastAliyunResourceSyncResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHDMLastAliyunResourceSyncResultResponse{}
@@ -30428,18 +41160,29 @@ func (client *Client) GetHDMLastAliyunResourceSyncResult(request *GetHDMLastAliy
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the inspection and scoring feature. This feature allows you to inspect and score the health status of your instance on a regular basis. This helps you obtain information about the status of your databases. For more information, see [Inspection and scoring](~~205659~~).
- * Before you call this operation, take note of the following items:
- * *   This operation is applicable only to ApsaraDB RDS for MySQL databases, self-managed MySQL databases hosted on Elastic Compute Service (ECS) instances, self-managed MySQL databases in data centers, ApsaraDB for Redis databases, and PolarDB for MySQL databases.
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
- * *   The version of DAS SDK must be V1.0.3 or later.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetInstanceInspectionsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetInstanceInspectionsResponse
- */
+// Summary:
+//
+// Queries the result of an inspection that is performed on a database instance by using the inspection and scoring feature.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the inspection and scoring feature. This feature allows you to inspect and score the health status of your instance on a regular basis. This helps you obtain information about the status of your databases. For more information, see [Inspection and scoring](https://help.aliyun.com/document_detail/205659.html).
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- This operation is applicable only to ApsaraDB RDS for MySQL databases, self-managed MySQL databases hosted on Elastic Compute Service (ECS) instances, self-managed MySQL databases in data centers, ApsaraDB for Redis databases, and PolarDB for MySQL databases.
+//
+// 	- If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of DAS SDK must be V1.0.3 or later.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetInstanceInspectionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceInspectionsResponse
 func (client *Client) GetInstanceInspectionsWithOptions(request *GetInstanceInspectionsRequest, runtime *util.RuntimeOptions) (_result *GetInstanceInspectionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30501,17 +41244,27 @@ func (client *Client) GetInstanceInspectionsWithOptions(request *GetInstanceInsp
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the inspection and scoring feature. This feature allows you to inspect and score the health status of your instance on a regular basis. This helps you obtain information about the status of your databases. For more information, see [Inspection and scoring](~~205659~~).
- * Before you call this operation, take note of the following items:
- * *   This operation is applicable only to ApsaraDB RDS for MySQL databases, self-managed MySQL databases hosted on Elastic Compute Service (ECS) instances, self-managed MySQL databases in data centers, ApsaraDB for Redis databases, and PolarDB for MySQL databases.
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
- * *   The version of DAS SDK must be V1.0.3 or later.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetInstanceInspectionsRequest
- * @return GetInstanceInspectionsResponse
- */
+// Summary:
+//
+// Queries the result of an inspection that is performed on a database instance by using the inspection and scoring feature.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the inspection and scoring feature. This feature allows you to inspect and score the health status of your instance on a regular basis. This helps you obtain information about the status of your databases. For more information, see [Inspection and scoring](https://help.aliyun.com/document_detail/205659.html).
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- This operation is applicable only to ApsaraDB RDS for MySQL databases, self-managed MySQL databases hosted on Elastic Compute Service (ECS) instances, self-managed MySQL databases in data centers, ApsaraDB for Redis databases, and PolarDB for MySQL databases.
+//
+// 	- If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of DAS SDK must be V1.0.3 or later.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetInstanceInspectionsRequest
+//
+// @return GetInstanceInspectionsResponse
 func (client *Client) GetInstanceInspections(request *GetInstanceInspectionsRequest) (_result *GetInstanceInspectionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceInspectionsResponse{}
@@ -30523,15 +41276,23 @@ func (client *Client) GetInstanceInspections(request *GetInstanceInspectionsRequ
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetInstanceMissingIndexListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetInstanceMissingIndexListResponse
- */
+// Summary:
+//
+// Queries the details of all missing indexes of an instance.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetInstanceMissingIndexListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceMissingIndexListResponse
 func (client *Client) GetInstanceMissingIndexListWithOptions(request *GetInstanceMissingIndexListRequest, runtime *util.RuntimeOptions) (_result *GetInstanceMissingIndexListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30621,14 +41382,21 @@ func (client *Client) GetInstanceMissingIndexListWithOptions(request *GetInstanc
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetInstanceMissingIndexListRequest
- * @return GetInstanceMissingIndexListResponse
- */
+// Summary:
+//
+// Queries the details of all missing indexes of an instance.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetInstanceMissingIndexListRequest
+//
+// @return GetInstanceMissingIndexListResponse
 func (client *Client) GetInstanceMissingIndexList(request *GetInstanceMissingIndexListRequest) (_result *GetInstanceMissingIndexListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceMissingIndexListResponse{}
@@ -30640,16 +41408,25 @@ func (client *Client) GetInstanceMissingIndexList(request *GetInstanceMissingInd
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   The database engine is ApsaraDB RDS for MySQL or PolarDB for MySQL.
- *
- * @param request GetInstanceSqlOptimizeStatisticRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetInstanceSqlOptimizeStatisticResponse
- */
+// Summary:
+//
+// Queries statistics on automatic SQL optimization events within a period of time, such as the total number of optimization events and the maximum improvement.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- The database engine is ApsaraDB RDS for MySQL or PolarDB for MySQL.
+//
+// @param request - GetInstanceSqlOptimizeStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceSqlOptimizeStatisticResponse
 func (client *Client) GetInstanceSqlOptimizeStatisticWithOptions(request *GetInstanceSqlOptimizeStatisticRequest, runtime *util.RuntimeOptions) (_result *GetInstanceSqlOptimizeStatisticResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30707,15 +41484,23 @@ func (client *Client) GetInstanceSqlOptimizeStatisticWithOptions(request *GetIns
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   The database engine is ApsaraDB RDS for MySQL or PolarDB for MySQL.
- *
- * @param request GetInstanceSqlOptimizeStatisticRequest
- * @return GetInstanceSqlOptimizeStatisticResponse
- */
+// Summary:
+//
+// Queries statistics on automatic SQL optimization events within a period of time, such as the total number of optimization events and the maximum improvement.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- The database engine is ApsaraDB RDS for MySQL or PolarDB for MySQL.
+//
+// @param request - GetInstanceSqlOptimizeStatisticRequest
+//
+// @return GetInstanceSqlOptimizeStatisticResponse
 func (client *Client) GetInstanceSqlOptimizeStatistic(request *GetInstanceSqlOptimizeStatisticRequest) (_result *GetInstanceSqlOptimizeStatisticResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceSqlOptimizeStatisticResponse{}
@@ -30727,15 +41512,23 @@ func (client *Client) GetInstanceSqlOptimizeStatistic(request *GetInstanceSqlOpt
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetKillInstanceSessionTaskResultRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetKillInstanceSessionTaskResultResponse
- */
+// Summary:
+//
+// Queries the results of a task that terminates sessions.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetKillInstanceSessionTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKillInstanceSessionTaskResultResponse
 func (client *Client) GetKillInstanceSessionTaskResultWithOptions(request *GetKillInstanceSessionTaskResultRequest, runtime *util.RuntimeOptions) (_result *GetKillInstanceSessionTaskResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30777,14 +41570,21 @@ func (client *Client) GetKillInstanceSessionTaskResultWithOptions(request *GetKi
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetKillInstanceSessionTaskResultRequest
- * @return GetKillInstanceSessionTaskResultResponse
- */
+// Summary:
+//
+// Queries the results of a task that terminates sessions.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetKillInstanceSessionTaskResultRequest
+//
+// @return GetKillInstanceSessionTaskResultResponse
 func (client *Client) GetKillInstanceSessionTaskResult(request *GetKillInstanceSessionTaskResultRequest) (_result *GetKillInstanceSessionTaskResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetKillInstanceSessionTaskResultResponse{}
@@ -30796,15 +41596,23 @@ func (client *Client) GetKillInstanceSessionTaskResult(request *GetKillInstanceS
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to MongoDB instances.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
- *
- * @param request GetMongoDBCurrentOpRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetMongoDBCurrentOpResponse
- */
+// Summary:
+//
+// Queries the current sessions of an ApsaraDB for MongoDB (MongoDB) instance.
+//
+// Description:
+//
+//   This operation is applicable only to MongoDB instances.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+//
+// @param request - GetMongoDBCurrentOpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMongoDBCurrentOpResponse
 func (client *Client) GetMongoDBCurrentOpWithOptions(request *GetMongoDBCurrentOpRequest, runtime *util.RuntimeOptions) (_result *GetMongoDBCurrentOpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30850,14 +41658,21 @@ func (client *Client) GetMongoDBCurrentOpWithOptions(request *GetMongoDBCurrentO
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to MongoDB instances.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
- *
- * @param request GetMongoDBCurrentOpRequest
- * @return GetMongoDBCurrentOpResponse
- */
+// Summary:
+//
+// Queries the current sessions of an ApsaraDB for MongoDB (MongoDB) instance.
+//
+// Description:
+//
+//   This operation is applicable only to MongoDB instances.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+//
+// @param request - GetMongoDBCurrentOpRequest
+//
+// @return GetMongoDBCurrentOpResponse
 func (client *Client) GetMongoDBCurrentOp(request *GetMongoDBCurrentOpRequest) (_result *GetMongoDBCurrentOpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMongoDBCurrentOpResponse{}
@@ -30869,16 +41684,25 @@ func (client *Client) GetMongoDBCurrentOp(request *GetMongoDBCurrentOpRequest) (
 	return _result, _err
 }
 
-/**
- * >  Asynchronous calls do not immediately return the complete results. You must use the value of **ResultId** returned in the response to re-initiate the call. The complete results are returned only if the value of **IsFinish** is **true**.
- * *   This operation is applicable only to ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetMySQLAllSessionAsyncRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetMySQLAllSessionAsyncResponse
- */
+// Summary:
+//
+// Asynchronously queries the sessions of an instance and collects statistics on the sessions based on dimensions.
+//
+// Description:
+//
+// >  Asynchronous calls do not immediately return the complete results. You must use the value of **ResultId*	- returned in the response to re-initiate the call. The complete results are returned only if the value of **IsFinish*	- is **true**.
+//
+// 	- This operation is applicable only to ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetMySQLAllSessionAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMySQLAllSessionAsyncResponse
 func (client *Client) GetMySQLAllSessionAsyncWithOptions(request *GetMySQLAllSessionAsyncRequest, runtime *util.RuntimeOptions) (_result *GetMySQLAllSessionAsyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30920,15 +41744,23 @@ func (client *Client) GetMySQLAllSessionAsyncWithOptions(request *GetMySQLAllSes
 	return _result, _err
 }
 
-/**
- * >  Asynchronous calls do not immediately return the complete results. You must use the value of **ResultId** returned in the response to re-initiate the call. The complete results are returned only if the value of **IsFinish** is **true**.
- * *   This operation is applicable only to ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances.
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetMySQLAllSessionAsyncRequest
- * @return GetMySQLAllSessionAsyncResponse
- */
+// Summary:
+//
+// Asynchronously queries the sessions of an instance and collects statistics on the sessions based on dimensions.
+//
+// Description:
+//
+// >  Asynchronous calls do not immediately return the complete results. You must use the value of **ResultId*	- returned in the response to re-initiate the call. The complete results are returned only if the value of **IsFinish*	- is **true**.
+//
+// 	- This operation is applicable only to ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances.
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetMySQLAllSessionAsyncRequest
+//
+// @return GetMySQLAllSessionAsyncResponse
 func (client *Client) GetMySQLAllSessionAsync(request *GetMySQLAllSessionAsyncRequest) (_result *GetMySQLAllSessionAsyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMySQLAllSessionAsyncResponse{}
@@ -30940,13 +41772,19 @@ func (client *Client) GetMySQLAllSessionAsync(request *GetMySQLAllSessionAsyncRe
 	return _result, _err
 }
 
-/**
- * We recommend that you do not call this operation. The data is returned in a special format and is complex to parse. You can use the [heatmap](~~470302~~) feature of Database Autonomy Service (DAS) to query the data.
- *
- * @param request GetPartitionsHeatmapRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetPartitionsHeatmapResponse
- */
+// Summary:
+//
+// Queries access frequency statistics and hot data on partitions of a PolarDB-X 2.0 instance.
+//
+// Description:
+//
+// We recommend that you do not call this operation. The data is returned in a special format and is complex to parse. You can use the [heatmap](https://help.aliyun.com/document_detail/470302.html) feature of Database Autonomy Service (DAS) to query the data.
+//
+// @param request - GetPartitionsHeatmapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPartitionsHeatmapResponse
 func (client *Client) GetPartitionsHeatmapWithOptions(request *GetPartitionsHeatmapRequest, runtime *util.RuntimeOptions) (_result *GetPartitionsHeatmapResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30992,12 +41830,17 @@ func (client *Client) GetPartitionsHeatmapWithOptions(request *GetPartitionsHeat
 	return _result, _err
 }
 
-/**
- * We recommend that you do not call this operation. The data is returned in a special format and is complex to parse. You can use the [heatmap](~~470302~~) feature of Database Autonomy Service (DAS) to query the data.
- *
- * @param request GetPartitionsHeatmapRequest
- * @return GetPartitionsHeatmapResponse
- */
+// Summary:
+//
+// Queries access frequency statistics and hot data on partitions of a PolarDB-X 2.0 instance.
+//
+// Description:
+//
+// We recommend that you do not call this operation. The data is returned in a special format and is complex to parse. You can use the [heatmap](https://help.aliyun.com/document_detail/470302.html) feature of Database Autonomy Service (DAS) to query the data.
+//
+// @param request - GetPartitionsHeatmapRequest
+//
+// @return GetPartitionsHeatmapResponse
 func (client *Client) GetPartitionsHeatmap(request *GetPartitionsHeatmapRequest) (_result *GetPartitionsHeatmapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPartitionsHeatmapResponse{}
@@ -31009,17 +41852,27 @@ func (client *Client) GetPartitionsHeatmap(request *GetPartitionsHeatmapRequest)
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
- * *   The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](~~469117~~).
- *
- * @param request GetPfsMetricTrendsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetPfsMetricTrendsResponse
- */
+// Summary:
+//
+// Queries the trend of a metric for the new version of the performance insight feature of a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
+//
+// 	- The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](https://help.aliyun.com/document_detail/469117.html).
+//
+// @param request - GetPfsMetricTrendsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPfsMetricTrendsResponse
 func (client *Client) GetPfsMetricTrendsWithOptions(request *GetPfsMetricTrendsRequest, runtime *util.RuntimeOptions) (_result *GetPfsMetricTrendsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31069,16 +41922,25 @@ func (client *Client) GetPfsMetricTrendsWithOptions(request *GetPfsMetricTrendsR
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
- * *   The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](~~469117~~).
- *
- * @param request GetPfsMetricTrendsRequest
- * @return GetPfsMetricTrendsResponse
- */
+// Summary:
+//
+// Queries the trend of a metric for the new version of the performance insight feature of a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
+//
+// 	- The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](https://help.aliyun.com/document_detail/469117.html).
+//
+// @param request - GetPfsMetricTrendsRequest
+//
+// @return GetPfsMetricTrendsResponse
 func (client *Client) GetPfsMetricTrends(request *GetPfsMetricTrendsRequest) (_result *GetPfsMetricTrendsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPfsMetricTrendsResponse{}
@@ -31090,17 +41952,27 @@ func (client *Client) GetPfsMetricTrends(request *GetPfsMetricTrendsRequest) (_r
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
- * *   The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](~~469117~~).
- *
- * @param request GetPfsSqlSampleRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetPfsSqlSampleResponse
- */
+// Summary:
+//
+// Queries the SQL sample data for the new version of the performance insight feature of a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
+//
+// 	- The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](https://help.aliyun.com/document_detail/469117.html).
+//
+// @param request - GetPfsSqlSampleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPfsSqlSampleResponse
 func (client *Client) GetPfsSqlSampleWithOptions(request *GetPfsSqlSampleRequest, runtime *util.RuntimeOptions) (_result *GetPfsSqlSampleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31150,16 +42022,25 @@ func (client *Client) GetPfsSqlSampleWithOptions(request *GetPfsSqlSampleRequest
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
- * *   The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](~~469117~~).
- *
- * @param request GetPfsSqlSampleRequest
- * @return GetPfsSqlSampleResponse
- */
+// Summary:
+//
+// Queries the SQL sample data for the new version of the performance insight feature of a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
+//
+// 	- The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](https://help.aliyun.com/document_detail/469117.html).
+//
+// @param request - GetPfsSqlSampleRequest
+//
+// @return GetPfsSqlSampleResponse
 func (client *Client) GetPfsSqlSample(request *GetPfsSqlSampleRequest) (_result *GetPfsSqlSampleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPfsSqlSampleResponse{}
@@ -31171,17 +42052,27 @@ func (client *Client) GetPfsSqlSample(request *GetPfsSqlSampleRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
- * *   The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](~~469117~~).
- *
- * @param request GetPfsSqlSummariesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetPfsSqlSummariesResponse
- */
+// Summary:
+//
+// Queries the full request data generated by the new version of the performance insight feature of a database instance based on the SQL ID.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
+//
+// 	- The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](https://help.aliyun.com/document_detail/469117.html).
+//
+// @param request - GetPfsSqlSummariesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPfsSqlSummariesResponse
 func (client *Client) GetPfsSqlSummariesWithOptions(request *GetPfsSqlSummariesRequest, runtime *util.RuntimeOptions) (_result *GetPfsSqlSummariesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31251,16 +42142,25 @@ func (client *Client) GetPfsSqlSummariesWithOptions(request *GetPfsSqlSummariesR
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
- * *   The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](~~469117~~).
- *
- * @param request GetPfsSqlSummariesRequest
- * @return GetPfsSqlSummariesResponse
- */
+// Summary:
+//
+// Queries the full request data generated by the new version of the performance insight feature of a database instance based on the SQL ID.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
+//
+// 	- The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](https://help.aliyun.com/document_detail/469117.html).
+//
+// @param request - GetPfsSqlSummariesRequest
+//
+// @return GetPfsSqlSummariesResponse
 func (client *Client) GetPfsSqlSummaries(request *GetPfsSqlSummariesRequest) (_result *GetPfsSqlSummariesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPfsSqlSummariesResponse{}
@@ -31272,19 +42172,31 @@ func (client *Client) GetPfsSqlSummaries(request *GetPfsSqlSummariesRequest) (_r
 	return _result, _err
 }
 
-/**
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeDataStatsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetQueryOptimizeDataStatsResponse
- */
+// Summary:
+//
+// Queries information about SQL templates based on query governance data.
+//
+// Description:
+//
+//   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeDataStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQueryOptimizeDataStatsResponse
 func (client *Client) GetQueryOptimizeDataStatsWithOptions(request *GetQueryOptimizeDataStatsRequest, runtime *util.RuntimeOptions) (_result *GetQueryOptimizeDataStatsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31314,18 +42226,29 @@ func (client *Client) GetQueryOptimizeDataStatsWithOptions(request *GetQueryOpti
 	return _result, _err
 }
 
-/**
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeDataStatsRequest
- * @return GetQueryOptimizeDataStatsResponse
- */
+// Summary:
+//
+// Queries information about SQL templates based on query governance data.
+//
+// Description:
+//
+//   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeDataStatsRequest
+//
+// @return GetQueryOptimizeDataStatsResponse
 func (client *Client) GetQueryOptimizeDataStats(request *GetQueryOptimizeDataStatsRequest) (_result *GetQueryOptimizeDataStatsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQueryOptimizeDataStatsResponse{}
@@ -31337,19 +42260,31 @@ func (client *Client) GetQueryOptimizeDataStats(request *GetQueryOptimizeDataSta
 	return _result, _err
 }
 
-/**
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeDataTopRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetQueryOptimizeDataTopResponse
- */
+// Summary:
+//
+// Queries information about the best-performing and worst-performing instances based on query governance data.
+//
+// Description:
+//
+//   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeDataTopRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQueryOptimizeDataTopResponse
 func (client *Client) GetQueryOptimizeDataTopWithOptions(request *GetQueryOptimizeDataTopRequest, runtime *util.RuntimeOptions) (_result *GetQueryOptimizeDataTopResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31379,18 +42314,29 @@ func (client *Client) GetQueryOptimizeDataTopWithOptions(request *GetQueryOptimi
 	return _result, _err
 }
 
-/**
- * *   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeDataTopRequest
- * @return GetQueryOptimizeDataTopResponse
- */
+// Summary:
+//
+// Queries information about the best-performing and worst-performing instances based on query governance data.
+//
+// Description:
+//
+//   If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeDataTopRequest
+//
+// @return GetQueryOptimizeDataTopResponse
 func (client *Client) GetQueryOptimizeDataTop(request *GetQueryOptimizeDataTopRequest) (_result *GetQueryOptimizeDataTopResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQueryOptimizeDataTopResponse{}
@@ -31402,19 +42348,31 @@ func (client *Client) GetQueryOptimizeDataTop(request *GetQueryOptimizeDataTopRe
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeDataTrendRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetQueryOptimizeDataTrendResponse
- */
+// Summary:
+//
+// Queries query governance trend data.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeDataTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQueryOptimizeDataTrendResponse
 func (client *Client) GetQueryOptimizeDataTrendWithOptions(request *GetQueryOptimizeDataTrendRequest, runtime *util.RuntimeOptions) (_result *GetQueryOptimizeDataTrendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31444,18 +42402,29 @@ func (client *Client) GetQueryOptimizeDataTrendWithOptions(request *GetQueryOpti
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeDataTrendRequest
- * @return GetQueryOptimizeDataTrendResponse
- */
+// Summary:
+//
+// Queries query governance trend data.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeDataTrendRequest
+//
+// @return GetQueryOptimizeDataTrendResponse
 func (client *Client) GetQueryOptimizeDataTrend(request *GetQueryOptimizeDataTrendRequest) (_result *GetQueryOptimizeDataTrendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQueryOptimizeDataTrendResponse{}
@@ -31467,19 +42436,31 @@ func (client *Client) GetQueryOptimizeDataTrend(request *GetQueryOptimizeDataTre
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeExecErrorSampleRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetQueryOptimizeExecErrorSampleResponse
- */
+// Summary:
+//
+// Queries the failed SQL statements under a SQL template.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeExecErrorSampleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQueryOptimizeExecErrorSampleResponse
 func (client *Client) GetQueryOptimizeExecErrorSampleWithOptions(request *GetQueryOptimizeExecErrorSampleRequest, runtime *util.RuntimeOptions) (_result *GetQueryOptimizeExecErrorSampleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31509,18 +42490,29 @@ func (client *Client) GetQueryOptimizeExecErrorSampleWithOptions(request *GetQue
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeExecErrorSampleRequest
- * @return GetQueryOptimizeExecErrorSampleResponse
- */
+// Summary:
+//
+// Queries the failed SQL statements under a SQL template.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeExecErrorSampleRequest
+//
+// @return GetQueryOptimizeExecErrorSampleResponse
 func (client *Client) GetQueryOptimizeExecErrorSample(request *GetQueryOptimizeExecErrorSampleRequest) (_result *GetQueryOptimizeExecErrorSampleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQueryOptimizeExecErrorSampleResponse{}
@@ -31532,18 +42524,29 @@ func (client *Client) GetQueryOptimizeExecErrorSample(request *GetQueryOptimizeE
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeExecErrorStatsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetQueryOptimizeExecErrorStatsResponse
- */
+// Summary:
+//
+// Queries SQL templates that failed to be executed.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeExecErrorStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQueryOptimizeExecErrorStatsResponse
 func (client *Client) GetQueryOptimizeExecErrorStatsWithOptions(request *GetQueryOptimizeExecErrorStatsRequest, runtime *util.RuntimeOptions) (_result *GetQueryOptimizeExecErrorStatsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31573,17 +42576,27 @@ func (client *Client) GetQueryOptimizeExecErrorStatsWithOptions(request *GetQuer
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeExecErrorStatsRequest
- * @return GetQueryOptimizeExecErrorStatsResponse
- */
+// Summary:
+//
+// Queries SQL templates that failed to be executed.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeExecErrorStatsRequest
+//
+// @return GetQueryOptimizeExecErrorStatsResponse
 func (client *Client) GetQueryOptimizeExecErrorStats(request *GetQueryOptimizeExecErrorStatsRequest) (_result *GetQueryOptimizeExecErrorStatsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQueryOptimizeExecErrorStatsResponse{}
@@ -31595,19 +42608,31 @@ func (client *Client) GetQueryOptimizeExecErrorStats(request *GetQueryOptimizeEx
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeRuleListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetQueryOptimizeRuleListResponse
- */
+// Summary:
+//
+// Queries the tags added by the query governance feature to specified database instances.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeRuleListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQueryOptimizeRuleListResponse
 func (client *Client) GetQueryOptimizeRuleListWithOptions(request *GetQueryOptimizeRuleListRequest, runtime *util.RuntimeOptions) (_result *GetQueryOptimizeRuleListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31637,18 +42662,29 @@ func (client *Client) GetQueryOptimizeRuleListWithOptions(request *GetQueryOptim
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeRuleListRequest
- * @return GetQueryOptimizeRuleListResponse
- */
+// Summary:
+//
+// Queries the tags added by the query governance feature to specified database instances.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeRuleListRequest
+//
+// @return GetQueryOptimizeRuleListResponse
 func (client *Client) GetQueryOptimizeRuleList(request *GetQueryOptimizeRuleListRequest) (_result *GetQueryOptimizeRuleListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQueryOptimizeRuleListResponse{}
@@ -31660,18 +42696,29 @@ func (client *Client) GetQueryOptimizeRuleList(request *GetQueryOptimizeRuleList
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeShareUrlRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetQueryOptimizeShareUrlResponse
- */
+// Summary:
+//
+// Queries a share URL provided by the query governance feature.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeShareUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQueryOptimizeShareUrlResponse
 func (client *Client) GetQueryOptimizeShareUrlWithOptions(request *GetQueryOptimizeShareUrlRequest, runtime *util.RuntimeOptions) (_result *GetQueryOptimizeShareUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31701,17 +42748,27 @@ func (client *Client) GetQueryOptimizeShareUrlWithOptions(request *GetQueryOptim
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeShareUrlRequest
- * @return GetQueryOptimizeShareUrlResponse
- */
+// Summary:
+//
+// Queries a share URL provided by the query governance feature.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeShareUrlRequest
+//
+// @return GetQueryOptimizeShareUrlResponse
 func (client *Client) GetQueryOptimizeShareUrl(request *GetQueryOptimizeShareUrlRequest) (_result *GetQueryOptimizeShareUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQueryOptimizeShareUrlResponse{}
@@ -31723,18 +42780,29 @@ func (client *Client) GetQueryOptimizeShareUrl(request *GetQueryOptimizeShareUrl
 	return _result, _err
 }
 
-/**
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeSolutionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetQueryOptimizeSolutionResponse
- */
+// Summary:
+//
+// Queries suggestions provided by query governance for optimizing an SQL template.
+//
+// Description:
+//
+//   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeSolutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQueryOptimizeSolutionResponse
 func (client *Client) GetQueryOptimizeSolutionWithOptions(request *GetQueryOptimizeSolutionRequest, runtime *util.RuntimeOptions) (_result *GetQueryOptimizeSolutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31764,17 +42832,27 @@ func (client *Client) GetQueryOptimizeSolutionWithOptions(request *GetQueryOptim
 	return _result, _err
 }
 
-/**
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeSolutionRequest
- * @return GetQueryOptimizeSolutionResponse
- */
+// Summary:
+//
+// Queries suggestions provided by query governance for optimizing an SQL template.
+//
+// Description:
+//
+//   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeSolutionRequest
+//
+// @return GetQueryOptimizeSolutionResponse
 func (client *Client) GetQueryOptimizeSolution(request *GetQueryOptimizeSolutionRequest) (_result *GetQueryOptimizeSolutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQueryOptimizeSolutionResponse{}
@@ -31786,18 +42864,29 @@ func (client *Client) GetQueryOptimizeSolution(request *GetQueryOptimizeSolution
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeTagRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetQueryOptimizeTagResponse
- */
+// Summary:
+//
+// Queries the tags of a SQL statement.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQueryOptimizeTagResponse
 func (client *Client) GetQueryOptimizeTagWithOptions(request *GetQueryOptimizeTagRequest, runtime *util.RuntimeOptions) (_result *GetQueryOptimizeTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31827,17 +42916,27 @@ func (client *Client) GetQueryOptimizeTagWithOptions(request *GetQueryOptimizeTa
 	return _result, _err
 }
 
-/**
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   PolarDB for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *
- * @param request GetQueryOptimizeTagRequest
- * @return GetQueryOptimizeTagResponse
- */
+// Summary:
+//
+// Queries the tags of a SQL statement.
+//
+// Description:
+//
+//   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- PolarDB for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+// @param request - GetQueryOptimizeTagRequest
+//
+// @return GetQueryOptimizeTagResponse
 func (client *Client) GetQueryOptimizeTag(request *GetQueryOptimizeTagRequest) (_result *GetQueryOptimizeTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQueryOptimizeTagResponse{}
@@ -31849,15 +42948,23 @@ func (client *Client) GetQueryOptimizeTag(request *GetQueryOptimizeTagRequest) (
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB for Redis instances.
- * *   If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * >  This operation cannot be used to query sessions generated in direct connection mode on ApsaraDB for Redis cluster instances.
- *
- * @param request GetRedisAllSessionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetRedisAllSessionResponse
- */
+// Summary:
+//
+// Queries the current session on an ApsaraDB for Redis instance.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB for Redis instances.
+//
+// 	- If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// >  This operation cannot be used to query sessions generated in direct connection mode on ApsaraDB for Redis cluster instances.
+//
+// @param request - GetRedisAllSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRedisAllSessionResponse
 func (client *Client) GetRedisAllSessionWithOptions(request *GetRedisAllSessionRequest, runtime *util.RuntimeOptions) (_result *GetRedisAllSessionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31895,14 +43002,21 @@ func (client *Client) GetRedisAllSessionWithOptions(request *GetRedisAllSessionR
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB for Redis instances.
- * *   If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * >  This operation cannot be used to query sessions generated in direct connection mode on ApsaraDB for Redis cluster instances.
- *
- * @param request GetRedisAllSessionRequest
- * @return GetRedisAllSessionResponse
- */
+// Summary:
+//
+// Queries the current session on an ApsaraDB for Redis instance.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB for Redis instances.
+//
+// 	- If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// >  This operation cannot be used to query sessions generated in direct connection mode on ApsaraDB for Redis cluster instances.
+//
+// @param request - GetRedisAllSessionRequest
+//
+// @return GetRedisAllSessionResponse
 func (client *Client) GetRedisAllSession(request *GetRedisAllSessionRequest) (_result *GetRedisAllSessionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRedisAllSessionResponse{}
@@ -31914,22 +43028,37 @@ func (client *Client) GetRedisAllSession(request *GetRedisAllSessionRequest) (_r
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *     *   ApsaraDB RDS for SQL Server
- *     *   PolarDB for MySQL
- *     *   PolarDB for PostgreSQL (Compatible with Oracle)
- *     *   ApsaraDB for MongoDB
- * >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
- *
- * @param request GetRequestDiagnosisPageRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetRequestDiagnosisPageResponse
- */
+// Summary:
+//
+// Queries SQL diagnostics records by pages.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+//     	- ApsaraDB RDS for SQL Server
+//
+//     	- PolarDB for MySQL
+//
+//     	- PolarDB for PostgreSQL (Compatible with Oracle)
+//
+//     	- ApsaraDB for MongoDB
+//
+// >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146895.html).
+//
+// @param request - GetRequestDiagnosisPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRequestDiagnosisPageResponse
 func (client *Client) GetRequestDiagnosisPageWithOptions(request *GetRequestDiagnosisPageRequest, runtime *util.RuntimeOptions) (_result *GetRequestDiagnosisPageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31983,21 +43112,35 @@ func (client *Client) GetRequestDiagnosisPageWithOptions(request *GetRequestDiag
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *     *   ApsaraDB RDS for SQL Server
- *     *   PolarDB for MySQL
- *     *   PolarDB for PostgreSQL (Compatible with Oracle)
- *     *   ApsaraDB for MongoDB
- * >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
- *
- * @param request GetRequestDiagnosisPageRequest
- * @return GetRequestDiagnosisPageResponse
- */
+// Summary:
+//
+// Queries SQL diagnostics records by pages.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+//     	- ApsaraDB RDS for SQL Server
+//
+//     	- PolarDB for MySQL
+//
+//     	- PolarDB for PostgreSQL (Compatible with Oracle)
+//
+//     	- ApsaraDB for MongoDB
+//
+// >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146895.html).
+//
+// @param request - GetRequestDiagnosisPageRequest
+//
+// @return GetRequestDiagnosisPageResponse
 func (client *Client) GetRequestDiagnosisPage(request *GetRequestDiagnosisPageRequest) (_result *GetRequestDiagnosisPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRequestDiagnosisPageResponse{}
@@ -32009,22 +43152,37 @@ func (client *Client) GetRequestDiagnosisPage(request *GetRequestDiagnosisPageRe
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *     *   ApsaraDB RDS for SQL Server
- *     *   PolarDB for MySQL
- *     *   PolarDB for PostgreSQL (compatible with Oracle)
- *     *   ApsaraDB for MongoDB
- * >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
- *
- * @param request GetRequestDiagnosisResultRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetRequestDiagnosisResultResponse
- */
+// Summary:
+//
+// Queries the results of an SQL diagnostics task.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+//     	- ApsaraDB RDS for SQL Server
+//
+//     	- PolarDB for MySQL
+//
+//     	- PolarDB for PostgreSQL (compatible with Oracle)
+//
+//     	- ApsaraDB for MongoDB
+//
+// >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146895.html).
+//
+// @param request - GetRequestDiagnosisResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRequestDiagnosisResultResponse
 func (client *Client) GetRequestDiagnosisResultWithOptions(request *GetRequestDiagnosisResultRequest, runtime *util.RuntimeOptions) (_result *GetRequestDiagnosisResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32074,21 +43232,35 @@ func (client *Client) GetRequestDiagnosisResultWithOptions(request *GetRequestDi
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL
- *     *   ApsaraDB RDS for PostgreSQL
- *     *   ApsaraDB RDS for SQL Server
- *     *   PolarDB for MySQL
- *     *   PolarDB for PostgreSQL (compatible with Oracle)
- *     *   ApsaraDB for MongoDB
- * >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
- *
- * @param request GetRequestDiagnosisResultRequest
- * @return GetRequestDiagnosisResultResponse
- */
+// Summary:
+//
+// Queries the results of an SQL diagnostics task.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL
+//
+//     	- ApsaraDB RDS for PostgreSQL
+//
+//     	- ApsaraDB RDS for SQL Server
+//
+//     	- PolarDB for MySQL
+//
+//     	- PolarDB for PostgreSQL (compatible with Oracle)
+//
+//     	- ApsaraDB for MongoDB
+//
+// >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146895.html).
+//
+// @param request - GetRequestDiagnosisResultRequest
+//
+// @return GetRequestDiagnosisResultResponse
 func (client *Client) GetRequestDiagnosisResult(request *GetRequestDiagnosisResultRequest) (_result *GetRequestDiagnosisResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRequestDiagnosisResultResponse{}
@@ -32100,15 +43272,23 @@ func (client *Client) GetRequestDiagnosisResult(request *GetRequestDiagnosisResu
 	return _result, _err
 }
 
-/**
- * This operation supports the following database engines:
- * *   ApsaraDB RDS for MySQL
- * *   PolarDB for MySQL
- *
- * @param request GetRunningSqlConcurrencyControlRulesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetRunningSqlConcurrencyControlRulesResponse
- */
+// Summary:
+//
+// Queries the throttling rules that are in effect.
+//
+// Description:
+//
+// This operation supports the following database engines:
+//
+// 	- ApsaraDB RDS for MySQL
+//
+// 	- PolarDB for MySQL
+//
+// @param request - GetRunningSqlConcurrencyControlRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRunningSqlConcurrencyControlRulesResponse
 func (client *Client) GetRunningSqlConcurrencyControlRulesWithOptions(request *GetRunningSqlConcurrencyControlRulesRequest, runtime *util.RuntimeOptions) (_result *GetRunningSqlConcurrencyControlRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32154,14 +43334,21 @@ func (client *Client) GetRunningSqlConcurrencyControlRulesWithOptions(request *G
 	return _result, _err
 }
 
-/**
- * This operation supports the following database engines:
- * *   ApsaraDB RDS for MySQL
- * *   PolarDB for MySQL
- *
- * @param request GetRunningSqlConcurrencyControlRulesRequest
- * @return GetRunningSqlConcurrencyControlRulesResponse
- */
+// Summary:
+//
+// Queries the throttling rules that are in effect.
+//
+// Description:
+//
+// This operation supports the following database engines:
+//
+// 	- ApsaraDB RDS for MySQL
+//
+// 	- PolarDB for MySQL
+//
+// @param request - GetRunningSqlConcurrencyControlRulesRequest
+//
+// @return GetRunningSqlConcurrencyControlRulesResponse
 func (client *Client) GetRunningSqlConcurrencyControlRules(request *GetRunningSqlConcurrencyControlRulesRequest) (_result *GetRunningSqlConcurrencyControlRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRunningSqlConcurrencyControlRulesResponse{}
@@ -32173,15 +43360,23 @@ func (client *Client) GetRunningSqlConcurrencyControlRules(request *GetRunningSq
 	return _result, _err
 }
 
-/**
- * This operation supports the following database engines:
- * *   ApsaraDB RDS for MySQL
- * *   PolarDB for MySQL
- *
- * @param request GetSqlConcurrencyControlKeywordsFromSqlTextRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetSqlConcurrencyControlKeywordsFromSqlTextResponse
- */
+// Summary:
+//
+// Generates a throttling keyword string based on an SQL statement.
+//
+// Description:
+//
+// This operation supports the following database engines:
+//
+// 	- ApsaraDB RDS for MySQL
+//
+// 	- PolarDB for MySQL
+//
+// @param request - GetSqlConcurrencyControlKeywordsFromSqlTextRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSqlConcurrencyControlKeywordsFromSqlTextResponse
 func (client *Client) GetSqlConcurrencyControlKeywordsFromSqlTextWithOptions(request *GetSqlConcurrencyControlKeywordsFromSqlTextRequest, runtime *util.RuntimeOptions) (_result *GetSqlConcurrencyControlKeywordsFromSqlTextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32223,14 +43418,21 @@ func (client *Client) GetSqlConcurrencyControlKeywordsFromSqlTextWithOptions(req
 	return _result, _err
 }
 
-/**
- * This operation supports the following database engines:
- * *   ApsaraDB RDS for MySQL
- * *   PolarDB for MySQL
- *
- * @param request GetSqlConcurrencyControlKeywordsFromSqlTextRequest
- * @return GetSqlConcurrencyControlKeywordsFromSqlTextResponse
- */
+// Summary:
+//
+// Generates a throttling keyword string based on an SQL statement.
+//
+// Description:
+//
+// This operation supports the following database engines:
+//
+// 	- ApsaraDB RDS for MySQL
+//
+// 	- PolarDB for MySQL
+//
+// @param request - GetSqlConcurrencyControlKeywordsFromSqlTextRequest
+//
+// @return GetSqlConcurrencyControlKeywordsFromSqlTextResponse
 func (client *Client) GetSqlConcurrencyControlKeywordsFromSqlText(request *GetSqlConcurrencyControlKeywordsFromSqlTextRequest) (_result *GetSqlConcurrencyControlKeywordsFromSqlTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSqlConcurrencyControlKeywordsFromSqlTextResponse{}
@@ -32242,15 +43444,23 @@ func (client *Client) GetSqlConcurrencyControlKeywordsFromSqlText(request *GetSq
 	return _result, _err
 }
 
-/**
- * This operation supports the following database engines:
- * *   ApsaraDB RDS for MySQL
- * *   PolarDB for MySQL
- *
- * @param request GetSqlConcurrencyControlRulesHistoryRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetSqlConcurrencyControlRulesHistoryResponse
- */
+// Summary:
+//
+// Queries the throttling rules that are being executed or have been triggered.
+//
+// Description:
+//
+// This operation supports the following database engines:
+//
+// 	- ApsaraDB RDS for MySQL
+//
+// 	- PolarDB for MySQL
+//
+// @param request - GetSqlConcurrencyControlRulesHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSqlConcurrencyControlRulesHistoryResponse
 func (client *Client) GetSqlConcurrencyControlRulesHistoryWithOptions(request *GetSqlConcurrencyControlRulesHistoryRequest, runtime *util.RuntimeOptions) (_result *GetSqlConcurrencyControlRulesHistoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32296,14 +43506,21 @@ func (client *Client) GetSqlConcurrencyControlRulesHistoryWithOptions(request *G
 	return _result, _err
 }
 
-/**
- * This operation supports the following database engines:
- * *   ApsaraDB RDS for MySQL
- * *   PolarDB for MySQL
- *
- * @param request GetSqlConcurrencyControlRulesHistoryRequest
- * @return GetSqlConcurrencyControlRulesHistoryResponse
- */
+// Summary:
+//
+// Queries the throttling rules that are being executed or have been triggered.
+//
+// Description:
+//
+// This operation supports the following database engines:
+//
+// 	- ApsaraDB RDS for MySQL
+//
+// 	- PolarDB for MySQL
+//
+// @param request - GetSqlConcurrencyControlRulesHistoryRequest
+//
+// @return GetSqlConcurrencyControlRulesHistoryResponse
 func (client *Client) GetSqlConcurrencyControlRulesHistory(request *GetSqlConcurrencyControlRulesHistoryRequest) (_result *GetSqlConcurrencyControlRulesHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSqlConcurrencyControlRulesHistoryResponse{}
@@ -32315,18 +43532,29 @@ func (client *Client) GetSqlConcurrencyControlRulesHistory(request *GetSqlConcur
 	return _result, _err
 }
 
-/**
- * The SQL diagnostics feature provides optimization suggestions for instances based on diagnostics results. You can use the optimization suggestions to optimize instance indexes. For more information, see [Automatic SQL optimization](~~167895~~).
- * >  You can call this operation to query only the optimization suggestions that are automatically generated by the SQL diagnostics feature.
- * Before you call this operation, take note of the following items:
- * *   This operation is applicable to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetSqlOptimizeAdviceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetSqlOptimizeAdviceResponse
- */
+// Summary:
+//
+// Queries optimization suggestions that are generated by the SQL diagnostics feature of Database Autonomy Service (DAS).
+//
+// Description:
+//
+// The SQL diagnostics feature provides optimization suggestions for instances based on diagnostics results. You can use the optimization suggestions to optimize instance indexes. For more information, see [Automatic SQL optimization](https://help.aliyun.com/document_detail/167895.html).
+//
+// >  You can call this operation to query only the optimization suggestions that are automatically generated by the SQL diagnostics feature.
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- This operation is applicable to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+//
+// 	- If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetSqlOptimizeAdviceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSqlOptimizeAdviceResponse
 func (client *Client) GetSqlOptimizeAdviceWithOptions(request *GetSqlOptimizeAdviceRequest, runtime *util.RuntimeOptions) (_result *GetSqlOptimizeAdviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32380,17 +43608,27 @@ func (client *Client) GetSqlOptimizeAdviceWithOptions(request *GetSqlOptimizeAdv
 	return _result, _err
 }
 
-/**
- * The SQL diagnostics feature provides optimization suggestions for instances based on diagnostics results. You can use the optimization suggestions to optimize instance indexes. For more information, see [Automatic SQL optimization](~~167895~~).
- * >  You can call this operation to query only the optimization suggestions that are automatically generated by the SQL diagnostics feature.
- * Before you call this operation, take note of the following items:
- * *   This operation is applicable to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request GetSqlOptimizeAdviceRequest
- * @return GetSqlOptimizeAdviceResponse
- */
+// Summary:
+//
+// Queries optimization suggestions that are generated by the SQL diagnostics feature of Database Autonomy Service (DAS).
+//
+// Description:
+//
+// The SQL diagnostics feature provides optimization suggestions for instances based on diagnostics results. You can use the optimization suggestions to optimize instance indexes. For more information, see [Automatic SQL optimization](https://help.aliyun.com/document_detail/167895.html).
+//
+// >  You can call this operation to query only the optimization suggestions that are automatically generated by the SQL diagnostics feature.
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- This operation is applicable to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+//
+// 	- If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - GetSqlOptimizeAdviceRequest
+//
+// @return GetSqlOptimizeAdviceResponse
 func (client *Client) GetSqlOptimizeAdvice(request *GetSqlOptimizeAdviceRequest) (_result *GetSqlOptimizeAdviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSqlOptimizeAdviceResponse{}
@@ -32402,14 +43640,21 @@ func (client *Client) GetSqlOptimizeAdvice(request *GetSqlOptimizeAdviceRequest)
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   The physical file size indicates the actual size of an obtained file. Only specific deployment modes of database instances support the display of physical file sizes. The statistics on tables are obtained from information_schema.tables. Due to the asynchronicity of the statistics update mechanism in MySQL, statistics and analysis results may not be perfectly accurate. You can execute the ANALYZE TABLE statement on related tables during off-peak hours to obtain the latest information.
- *
- * @param request GetStorageAnalysisResultRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetStorageAnalysisResultResponse
- */
+// Summary:
+//
+// Queries the status and results of a storage analysis task.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+//
+// 	- The physical file size indicates the actual size of an obtained file. Only specific deployment modes of database instances support the display of physical file sizes. The statistics on tables are obtained from information_schema.tables. Due to the asynchronicity of the statistics update mechanism in MySQL, statistics and analysis results may not be perfectly accurate. You can execute the ANALYZE TABLE statement on related tables during off-peak hours to obtain the latest information.
+//
+// @param request - GetStorageAnalysisResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStorageAnalysisResultResponse
 func (client *Client) GetStorageAnalysisResultWithOptions(request *GetStorageAnalysisResultRequest, runtime *util.RuntimeOptions) (_result *GetStorageAnalysisResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32451,13 +43696,19 @@ func (client *Client) GetStorageAnalysisResultWithOptions(request *GetStorageAna
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   The physical file size indicates the actual size of an obtained file. Only specific deployment modes of database instances support the display of physical file sizes. The statistics on tables are obtained from information_schema.tables. Due to the asynchronicity of the statistics update mechanism in MySQL, statistics and analysis results may not be perfectly accurate. You can execute the ANALYZE TABLE statement on related tables during off-peak hours to obtain the latest information.
- *
- * @param request GetStorageAnalysisResultRequest
- * @return GetStorageAnalysisResultResponse
- */
+// Summary:
+//
+// Queries the status and results of a storage analysis task.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+//
+// 	- The physical file size indicates the actual size of an obtained file. Only specific deployment modes of database instances support the display of physical file sizes. The statistics on tables are obtained from information_schema.tables. Due to the asynchronicity of the statistics update mechanism in MySQL, statistics and analysis results may not be perfectly accurate. You can execute the ANALYZE TABLE statement on related tables during off-peak hours to obtain the latest information.
+//
+// @param request - GetStorageAnalysisResultRequest
+//
+// @return GetStorageAnalysisResultResponse
 func (client *Client) GetStorageAnalysisResult(request *GetStorageAnalysisResultRequest) (_result *GetStorageAnalysisResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetStorageAnalysisResultResponse{}
@@ -32469,16 +43720,25 @@ func (client *Client) GetStorageAnalysisResult(request *GetStorageAnalysisResult
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB for Redis.
- * *   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V1.0.2 or later.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request KillInstanceAllSessionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return KillInstanceAllSessionResponse
- */
+// Summary:
+//
+// Terminates all sessions on an instance.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB for Redis.
+//
+// 	- If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V1.0.2 or later.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - KillInstanceAllSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return KillInstanceAllSessionResponse
 func (client *Client) KillInstanceAllSessionWithOptions(request *KillInstanceAllSessionRequest, runtime *util.RuntimeOptions) (_result *KillInstanceAllSessionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32516,15 +43776,23 @@ func (client *Client) KillInstanceAllSessionWithOptions(request *KillInstanceAll
 	return _result, _err
 }
 
-/**
- * *   This operation is applicable only to ApsaraDB for Redis.
- * *   If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
- * *   The version of your Database Autonomy Service (DAS) SDK must be V1.0.2 or later.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request KillInstanceAllSessionRequest
- * @return KillInstanceAllSessionResponse
- */
+// Summary:
+//
+// Terminates all sessions on an instance.
+//
+// Description:
+//
+//   This operation is applicable only to ApsaraDB for Redis.
+//
+// 	- If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
+//
+// 	- The version of your Database Autonomy Service (DAS) SDK must be V1.0.2 or later.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - KillInstanceAllSessionRequest
+//
+// @return KillInstanceAllSessionResponse
 func (client *Client) KillInstanceAllSession(request *KillInstanceAllSessionRequest) (_result *KillInstanceAllSessionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &KillInstanceAllSessionResponse{}
@@ -32536,24 +43804,41 @@ func (client *Client) KillInstanceAllSession(request *KillInstanceAllSessionRequ
 	return _result, _err
 }
 
-/**
- * You can call this operation to modify the following auto scaling configurations of an instance: **auto scaling for specifications**, **automatic storage expansion**, **automatic bandwidth adjustment**, and **auto scaling for resources**.
- * *   You can modify the configurations of the **auto scaling feature for specifications** for the following types of database instances:
- *     *   PolarDB for MySQL Cluster Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
- *     *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs). For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
- * *   You can modify the configurations of the **automatic storage expansion** feature for the following types of database instances:
- *     *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs. For more information about the feature and the billing rules, see [Automatic space expansion](~~173345~~).
- * *   You can modify the configurations of the **automatic bandwidth adjustment** feature for the following types of database instances:
- *     *   ApsaraDB for Redis Classic (Local Disk-based) Edition instances. For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
- * *   You can modify the configurations of the **auto scaling feature for resources** for the following types of database instances:
- *     *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request ModifyAutoScalingConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyAutoScalingConfigResponse
- */
+// Summary:
+//
+// Modifies the auto scaling configurations of an instance.
+//
+// Description:
+//
+// You can call this operation to modify the following auto scaling configurations of an instance: **auto scaling for specifications**, **automatic storage expansion**, **automatic bandwidth adjustment**, and **auto scaling for resources**.
+//
+// 	- You can modify the configurations of the **auto scaling feature for specifications*	- for the following types of database instances:
+//
+//     	- PolarDB for MySQL Cluster Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](https://help.aliyun.com/document_detail/169686.html).
+//
+//     	- ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs). For more information about the feature and the billing rules, see [Automatic performance scaling](https://help.aliyun.com/document_detail/169686.html).
+//
+// 	- You can modify the configurations of the **automatic storage expansion*	- feature for the following types of database instances:
+//
+//     	- ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs. For more information about the feature and the billing rules, see [Automatic space expansion](https://help.aliyun.com/document_detail/173345.html).
+//
+// 	- You can modify the configurations of the **automatic bandwidth adjustment*	- feature for the following types of database instances:
+//
+//     	- ApsaraDB for Redis Classic (Local Disk-based) Edition instances. For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](https://help.aliyun.com/document_detail/216312.html).
+//
+// 	- You can modify the configurations of the **auto scaling feature for resources*	- for the following types of database instances:
+//
+//     	- General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](https://help.aliyun.com/document_detail/169686.html).
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - ModifyAutoScalingConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAutoScalingConfigResponse
 func (client *Client) ModifyAutoScalingConfigWithOptions(request *ModifyAutoScalingConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyAutoScalingConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32607,23 +43892,39 @@ func (client *Client) ModifyAutoScalingConfigWithOptions(request *ModifyAutoScal
 	return _result, _err
 }
 
-/**
- * You can call this operation to modify the following auto scaling configurations of an instance: **auto scaling for specifications**, **automatic storage expansion**, **automatic bandwidth adjustment**, and **auto scaling for resources**.
- * *   You can modify the configurations of the **auto scaling feature for specifications** for the following types of database instances:
- *     *   PolarDB for MySQL Cluster Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
- *     *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs). For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
- * *   You can modify the configurations of the **automatic storage expansion** feature for the following types of database instances:
- *     *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs. For more information about the feature and the billing rules, see [Automatic space expansion](~~173345~~).
- * *   You can modify the configurations of the **automatic bandwidth adjustment** feature for the following types of database instances:
- *     *   ApsaraDB for Redis Classic (Local Disk-based) Edition instances. For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
- * *   You can modify the configurations of the **auto scaling feature for resources** for the following types of database instances:
- *     *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
- * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- *
- * @param request ModifyAutoScalingConfigRequest
- * @return ModifyAutoScalingConfigResponse
- */
+// Summary:
+//
+// Modifies the auto scaling configurations of an instance.
+//
+// Description:
+//
+// You can call this operation to modify the following auto scaling configurations of an instance: **auto scaling for specifications**, **automatic storage expansion**, **automatic bandwidth adjustment**, and **auto scaling for resources**.
+//
+// 	- You can modify the configurations of the **auto scaling feature for specifications*	- for the following types of database instances:
+//
+//     	- PolarDB for MySQL Cluster Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](https://help.aliyun.com/document_detail/169686.html).
+//
+//     	- ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs). For more information about the feature and the billing rules, see [Automatic performance scaling](https://help.aliyun.com/document_detail/169686.html).
+//
+// 	- You can modify the configurations of the **automatic storage expansion*	- feature for the following types of database instances:
+//
+//     	- ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs. For more information about the feature and the billing rules, see [Automatic space expansion](https://help.aliyun.com/document_detail/173345.html).
+//
+// 	- You can modify the configurations of the **automatic bandwidth adjustment*	- feature for the following types of database instances:
+//
+//     	- ApsaraDB for Redis Classic (Local Disk-based) Edition instances. For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](https://help.aliyun.com/document_detail/216312.html).
+//
+// 	- You can modify the configurations of the **auto scaling feature for resources*	- for the following types of database instances:
+//
+//     	- General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](https://help.aliyun.com/document_detail/169686.html).
+//
+// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// @param request - ModifyAutoScalingConfigRequest
+//
+// @return ModifyAutoScalingConfigResponse
 func (client *Client) ModifyAutoScalingConfig(request *ModifyAutoScalingConfigRequest) (_result *ModifyAutoScalingConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAutoScalingConfigResponse{}
@@ -32635,6 +43936,15 @@ func (client *Client) ModifyAutoScalingConfig(request *ModifyAutoScalingConfigRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or configures Database Autonomy Service (DAS) Enterprise Edition for a database instance.
+//
+// @param request - ModifySqlLogConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySqlLogConfigResponse
 func (client *Client) ModifySqlLogConfigWithOptions(request *ModifySqlLogConfigRequest, runtime *util.RuntimeOptions) (_result *ModifySqlLogConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32690,6 +44000,13 @@ func (client *Client) ModifySqlLogConfigWithOptions(request *ModifySqlLogConfigR
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or configures Database Autonomy Service (DAS) Enterprise Edition for a database instance.
+//
+// @param request - ModifySqlLogConfigRequest
+//
+// @return ModifySqlLogConfigResponse
 func (client *Client) ModifySqlLogConfig(request *ModifySqlLogConfigRequest) (_result *ModifySqlLogConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySqlLogConfigResponse{}
@@ -32701,13 +44018,19 @@ func (client *Client) ModifySqlLogConfig(request *ModifySqlLogConfigRequest) (_r
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](~~155068~~).
- *
- * @param request RunCloudBenchTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RunCloudBenchTaskResponse
- */
+// Summary:
+//
+// Runs a stress testing task.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// @param request - RunCloudBenchTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunCloudBenchTaskResponse
 func (client *Client) RunCloudBenchTaskWithOptions(request *RunCloudBenchTaskRequest, runtime *util.RuntimeOptions) (_result *RunCloudBenchTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32741,12 +44064,17 @@ func (client *Client) RunCloudBenchTaskWithOptions(request *RunCloudBenchTaskReq
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](~~155068~~).
- *
- * @param request RunCloudBenchTaskRequest
- * @return RunCloudBenchTaskResponse
- */
+// Summary:
+//
+// Runs a stress testing task.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// @param request - RunCloudBenchTaskRequest
+//
+// @return RunCloudBenchTaskResponse
 func (client *Client) RunCloudBenchTask(request *RunCloudBenchTaskRequest) (_result *RunCloudBenchTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RunCloudBenchTaskResponse{}
@@ -32758,16 +44086,25 @@ func (client *Client) RunCloudBenchTask(request *RunCloudBenchTaskRequest) (_res
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   The database instance that you want to manage is connected to DAS.
- *
- * @param request SetEventSubscriptionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetEventSubscriptionResponse
- */
+// Summary:
+//
+// Configures the event subscription settings for a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- The database instance that you want to manage is connected to DAS.
+//
+// @param request - SetEventSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetEventSubscriptionResponse
 func (client *Client) SetEventSubscriptionWithOptions(request *SetEventSubscriptionRequest, runtime *util.RuntimeOptions) (_result *SetEventSubscriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32841,15 +44178,23 @@ func (client *Client) SetEventSubscriptionWithOptions(request *SetEventSubscript
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
- * *   The database instance that you want to manage is connected to DAS.
- *
- * @param request SetEventSubscriptionRequest
- * @return SetEventSubscriptionResponse
- */
+// Summary:
+//
+// Configures the event subscription settings for a database instance.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+//
+// 	- The database instance that you want to manage is connected to DAS.
+//
+// @param request - SetEventSubscriptionRequest
+//
+// @return SetEventSubscriptionResponse
 func (client *Client) SetEventSubscription(request *SetEventSubscriptionRequest) (_result *SetEventSubscriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetEventSubscriptionResponse{}
@@ -32861,13 +44206,19 @@ func (client *Client) SetEventSubscription(request *SetEventSubscriptionRequest)
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](~~155068~~).
- *
- * @param request StopCloudBenchTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StopCloudBenchTaskResponse
- */
+// Summary:
+//
+// Stops a stress testing task.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// @param request - StopCloudBenchTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopCloudBenchTaskResponse
 func (client *Client) StopCloudBenchTaskWithOptions(request *StopCloudBenchTaskRequest, runtime *util.RuntimeOptions) (_result *StopCloudBenchTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32901,12 +44252,17 @@ func (client *Client) StopCloudBenchTaskWithOptions(request *StopCloudBenchTaskR
 	return _result, _err
 }
 
-/**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](~~155068~~).
- *
- * @param request StopCloudBenchTaskRequest
- * @return StopCloudBenchTaskResponse
- */
+// Summary:
+//
+// Stops a stress testing task.
+//
+// Description:
+//
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+//
+// @param request - StopCloudBenchTaskRequest
+//
+// @return StopCloudBenchTaskResponse
 func (client *Client) StopCloudBenchTask(request *StopCloudBenchTaskRequest) (_result *StopCloudBenchTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopCloudBenchTaskResponse{}
@@ -32918,6 +44274,11 @@ func (client *Client) StopCloudBenchTask(request *StopCloudBenchTaskRequest) (_r
 	return _result, _err
 }
 
+// @param request - SyncHDMAliyunResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncHDMAliyunResourceResponse
 func (client *Client) SyncHDMAliyunResourceWithOptions(request *SyncHDMAliyunResourceRequest, runtime *util.RuntimeOptions) (_result *SyncHDMAliyunResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32987,6 +44348,9 @@ func (client *Client) SyncHDMAliyunResourceWithOptions(request *SyncHDMAliyunRes
 	return _result, _err
 }
 
+// @param request - SyncHDMAliyunResourceRequest
+//
+// @return SyncHDMAliyunResourceResponse
 func (client *Client) SyncHDMAliyunResource(request *SyncHDMAliyunResourceRequest) (_result *SyncHDMAliyunResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SyncHDMAliyunResourceResponse{}
@@ -32998,18 +44362,29 @@ func (client *Client) SyncHDMAliyunResource(request *SyncHDMAliyunResourceReques
 	return _result, _err
 }
 
-/**
- * >  UpdateAutoResourceOptimizeRulesAsync is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The database instances must be an ApsaraDB RDS for MySQL High-availability Edition instance.
- * *   DAS Enterprise Edition must be enabled for the database instance. You can call the call [DescribeInstanceDasPro](~~413866~~) operation to query whether DAS Enterprise Edition is enabled.
- * *   The database instance has four or more CPU cores, and **innodb_file_per_table** is set to **ON**.
- *
- * @param request UpdateAutoResourceOptimizeRulesAsyncRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateAutoResourceOptimizeRulesAsyncResponse
- */
+// Summary:
+//
+// Asynchronously configures parameters related to the automatic fragment recycling feature for multiple database instances at a time.
+//
+// Description:
+//
+// >  UpdateAutoResourceOptimizeRulesAsync is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- The database instances must be an ApsaraDB RDS for MySQL High-availability Edition instance.
+//
+// 	- DAS Enterprise Edition must be enabled for the database instance. You can call the call [DescribeInstanceDasPro](https://help.aliyun.com/document_detail/413866.html) operation to query whether DAS Enterprise Edition is enabled.
+//
+// 	- The database instance has four or more CPU cores, and **innodb_file_per_table*	- is set to **ON**.
+//
+// @param request - UpdateAutoResourceOptimizeRulesAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAutoResourceOptimizeRulesAsyncResponse
 func (client *Client) UpdateAutoResourceOptimizeRulesAsyncWithOptions(request *UpdateAutoResourceOptimizeRulesAsyncRequest, runtime *util.RuntimeOptions) (_result *UpdateAutoResourceOptimizeRulesAsyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33059,17 +44434,27 @@ func (client *Client) UpdateAutoResourceOptimizeRulesAsyncWithOptions(request *U
 	return _result, _err
 }
 
-/**
- * >  UpdateAutoResourceOptimizeRulesAsync is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The database instances must be an ApsaraDB RDS for MySQL High-availability Edition instance.
- * *   DAS Enterprise Edition must be enabled for the database instance. You can call the call [DescribeInstanceDasPro](~~413866~~) operation to query whether DAS Enterprise Edition is enabled.
- * *   The database instance has four or more CPU cores, and **innodb_file_per_table** is set to **ON**.
- *
- * @param request UpdateAutoResourceOptimizeRulesAsyncRequest
- * @return UpdateAutoResourceOptimizeRulesAsyncResponse
- */
+// Summary:
+//
+// Asynchronously configures parameters related to the automatic fragment recycling feature for multiple database instances at a time.
+//
+// Description:
+//
+// >  UpdateAutoResourceOptimizeRulesAsync is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- The database instances must be an ApsaraDB RDS for MySQL High-availability Edition instance.
+//
+// 	- DAS Enterprise Edition must be enabled for the database instance. You can call the call [DescribeInstanceDasPro](https://help.aliyun.com/document_detail/413866.html) operation to query whether DAS Enterprise Edition is enabled.
+//
+// 	- The database instance has four or more CPU cores, and **innodb_file_per_table*	- is set to **ON**.
+//
+// @param request - UpdateAutoResourceOptimizeRulesAsyncRequest
+//
+// @return UpdateAutoResourceOptimizeRulesAsyncResponse
 func (client *Client) UpdateAutoResourceOptimizeRulesAsync(request *UpdateAutoResourceOptimizeRulesAsyncRequest) (_result *UpdateAutoResourceOptimizeRulesAsyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAutoResourceOptimizeRulesAsyncResponse{}
@@ -33081,19 +44466,31 @@ func (client *Client) UpdateAutoResourceOptimizeRulesAsync(request *UpdateAutoRe
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   DAS Enterprise Edition must be enabled for the database instance that you want to manage. To enable DAS Enterprise Edition for a database instance, you can call the [EnableDasPro](~~411645~~) operation.
- * *   The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](~~152139~~).
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition
- *     *   PolarDB for MySQL Cluster Edition or X-Engine Edition
- *
- * @param request UpdateAutoSqlOptimizeStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateAutoSqlOptimizeStatusResponse
- */
+// Summary:
+//
+// Enables, modifies, or disables the automatic SQL optimization feature for multiple database instances at a time.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- DAS Enterprise Edition must be enabled for the database instance that you want to manage. To enable DAS Enterprise Edition for a database instance, you can call the [EnableDasPro](https://help.aliyun.com/document_detail/411645.html) operation.
+//
+// 	- The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition
+//
+//     	- PolarDB for MySQL Cluster Edition or X-Engine Edition
+//
+// @param request - UpdateAutoSqlOptimizeStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAutoSqlOptimizeStatusResponse
 func (client *Client) UpdateAutoSqlOptimizeStatusWithOptions(request *UpdateAutoSqlOptimizeStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateAutoSqlOptimizeStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33131,18 +44528,29 @@ func (client *Client) UpdateAutoSqlOptimizeStatusWithOptions(request *UpdateAuto
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   DAS Enterprise Edition must be enabled for the database instance that you want to manage. To enable DAS Enterprise Edition for a database instance, you can call the [EnableDasPro](~~411645~~) operation.
- * *   The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](~~152139~~).
- * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition
- *     *   PolarDB for MySQL Cluster Edition or X-Engine Edition
- *
- * @param request UpdateAutoSqlOptimizeStatusRequest
- * @return UpdateAutoSqlOptimizeStatusResponse
- */
+// Summary:
+//
+// Enables, modifies, or disables the automatic SQL optimization feature for multiple database instances at a time.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- DAS Enterprise Edition must be enabled for the database instance that you want to manage. To enable DAS Enterprise Edition for a database instance, you can call the [EnableDasPro](https://help.aliyun.com/document_detail/411645.html) operation.
+//
+// 	- The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
+//
+// 	- This operation supports the following database engines:
+//
+//     	- ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition
+//
+//     	- PolarDB for MySQL Cluster Edition or X-Engine Edition
+//
+// @param request - UpdateAutoSqlOptimizeStatusRequest
+//
+// @return UpdateAutoSqlOptimizeStatusResponse
 func (client *Client) UpdateAutoSqlOptimizeStatus(request *UpdateAutoSqlOptimizeStatusRequest) (_result *UpdateAutoSqlOptimizeStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAutoSqlOptimizeStatusResponse{}
@@ -33154,19 +44562,31 @@ func (client *Client) UpdateAutoSqlOptimizeStatus(request *UpdateAutoSqlOptimize
 	return _result, _err
 }
 
-/**
- * >  An asynchronous call does not immediately return complete results. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. If the value of **isFinish** is **true**, the complete results are returned.
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](~~152139~~).
- * *   The database instance that you want to manage must be of one of the following types:
- *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
- *     *   PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, and PolarDB for MySQL X-Engine Edition that runs MySQL 8.0
- *
- * @param request UpdateAutoThrottleRulesAsyncRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateAutoThrottleRulesAsyncResponse
- */
+// Summary:
+//
+// Asynchronously configures parameters related to the automatic SQL throttling feature for multiple database instances at a time.
+//
+// Description:
+//
+// >  An asynchronous call does not immediately return complete results. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then re-initiate the call. If the value of **isFinish*	- is **true**, the complete results are returned.
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
+//
+// 	- The database instance that you want to manage must be of one of the following types:
+//
+//     	- ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
+//
+//     	- PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, and PolarDB for MySQL X-Engine Edition that runs MySQL 8.0
+//
+// @param request - UpdateAutoThrottleRulesAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAutoThrottleRulesAsyncResponse
 func (client *Client) UpdateAutoThrottleRulesAsyncWithOptions(request *UpdateAutoThrottleRulesAsyncRequest, runtime *util.RuntimeOptions) (_result *UpdateAutoThrottleRulesAsyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33240,18 +44660,29 @@ func (client *Client) UpdateAutoThrottleRulesAsyncWithOptions(request *UpdateAut
 	return _result, _err
 }
 
-/**
- * >  An asynchronous call does not immediately return complete results. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. If the value of **isFinish** is **true**, the complete results are returned.
- * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](~~152139~~).
- * *   The database instance that you want to manage must be of one of the following types:
- *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
- *     *   PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, and PolarDB for MySQL X-Engine Edition that runs MySQL 8.0
- *
- * @param request UpdateAutoThrottleRulesAsyncRequest
- * @return UpdateAutoThrottleRulesAsyncResponse
- */
+// Summary:
+//
+// Asynchronously configures parameters related to the automatic SQL throttling feature for multiple database instances at a time.
+//
+// Description:
+//
+// >  An asynchronous call does not immediately return complete results. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then re-initiate the call. If the value of **isFinish*	- is **true**, the complete results are returned.
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+//
+// 	- The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
+//
+// 	- The database instance that you want to manage must be of one of the following types:
+//
+//     	- ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
+//
+//     	- PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, and PolarDB for MySQL X-Engine Edition that runs MySQL 8.0
+//
+// @param request - UpdateAutoThrottleRulesAsyncRequest
+//
+// @return UpdateAutoThrottleRulesAsyncResponse
 func (client *Client) UpdateAutoThrottleRulesAsync(request *UpdateAutoThrottleRulesAsyncRequest) (_result *UpdateAutoThrottleRulesAsyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAutoThrottleRulesAsyncResponse{}
