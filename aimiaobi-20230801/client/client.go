@@ -1213,6 +1213,256 @@ func (s *DeleteMaterialByIdResponse) SetBody(v *DeleteMaterialByIdResponseBody) 
 	return s
 }
 
+type DocumentExtractionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	Urls []*string `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
+}
+
+func (s DocumentExtractionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocumentExtractionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DocumentExtractionRequest) SetAgentKey(v string) *DocumentExtractionRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *DocumentExtractionRequest) SetUrls(v []*string) *DocumentExtractionRequest {
+	s.Urls = v
+	return s
+}
+
+type DocumentExtractionShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	UrlsShrink *string `json:"Urls,omitempty" xml:"Urls,omitempty"`
+}
+
+func (s DocumentExtractionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocumentExtractionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DocumentExtractionShrinkRequest) SetAgentKey(v string) *DocumentExtractionShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *DocumentExtractionShrinkRequest) SetUrlsShrink(v string) *DocumentExtractionShrinkRequest {
+	s.UrlsShrink = &v
+	return s
+}
+
+type DocumentExtractionResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*DocumentExtractionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DocumentExtractionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocumentExtractionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DocumentExtractionResponseBody) SetCode(v string) *DocumentExtractionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DocumentExtractionResponseBody) SetData(v []*DocumentExtractionResponseBodyData) *DocumentExtractionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DocumentExtractionResponseBody) SetHttpStatusCode(v int32) *DocumentExtractionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DocumentExtractionResponseBody) SetMessage(v string) *DocumentExtractionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DocumentExtractionResponseBody) SetRequestId(v string) *DocumentExtractionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DocumentExtractionResponseBody) SetSuccess(v bool) *DocumentExtractionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DocumentExtractionResponseBodyData struct {
+	// example:
+	//
+	// 作者
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 文档-自定义的唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 8df2d69d63a247b6b52ff455b2d426b6
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 2024-05-14 08:54:33
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 央视网
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 文章标签
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s DocumentExtractionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocumentExtractionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DocumentExtractionResponseBodyData) SetAuthor(v string) *DocumentExtractionResponseBodyData {
+	s.Author = &v
+	return s
+}
+
+func (s *DocumentExtractionResponseBodyData) SetContent(v string) *DocumentExtractionResponseBodyData {
+	s.Content = &v
+	return s
+}
+
+func (s *DocumentExtractionResponseBodyData) SetDocId(v string) *DocumentExtractionResponseBodyData {
+	s.DocId = &v
+	return s
+}
+
+func (s *DocumentExtractionResponseBodyData) SetDocUuid(v string) *DocumentExtractionResponseBodyData {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *DocumentExtractionResponseBodyData) SetPubTime(v string) *DocumentExtractionResponseBodyData {
+	s.PubTime = &v
+	return s
+}
+
+func (s *DocumentExtractionResponseBodyData) SetSource(v string) *DocumentExtractionResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+func (s *DocumentExtractionResponseBodyData) SetSummary(v string) *DocumentExtractionResponseBodyData {
+	s.Summary = &v
+	return s
+}
+
+func (s *DocumentExtractionResponseBodyData) SetTag(v string) *DocumentExtractionResponseBodyData {
+	s.Tag = &v
+	return s
+}
+
+func (s *DocumentExtractionResponseBodyData) SetTitle(v string) *DocumentExtractionResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *DocumentExtractionResponseBodyData) SetUrl(v string) *DocumentExtractionResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type DocumentExtractionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DocumentExtractionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DocumentExtractionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocumentExtractionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DocumentExtractionResponse) SetHeaders(v map[string]*string) *DocumentExtractionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DocumentExtractionResponse) SetStatusCode(v int32) *DocumentExtractionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DocumentExtractionResponse) SetBody(v *DocumentExtractionResponseBody) *DocumentExtractionResponse {
+	s.Body = v
+	return s
+}
+
 type ExportGeneratedContentRequest struct {
 	// This parameter is required.
 	//
@@ -12307,6 +12557,78 @@ func (client *Client) DeleteMaterialById(request *DeleteMaterialByIdRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMaterialByIdResponse{}
 	_body, _err := client.DeleteMaterialByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 从链接中提取文档内容
+//
+// @param tmpReq - DocumentExtractionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DocumentExtractionResponse
+func (client *Client) DocumentExtractionWithOptions(tmpReq *DocumentExtractionRequest, runtime *util.RuntimeOptions) (_result *DocumentExtractionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DocumentExtractionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Urls)) {
+		request.UrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Urls, tea.String("Urls"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UrlsShrink)) {
+		body["Urls"] = request.UrlsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DocumentExtraction"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DocumentExtractionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 从链接中提取文档内容
+//
+// @param request - DocumentExtractionRequest
+//
+// @return DocumentExtractionResponse
+func (client *Client) DocumentExtraction(request *DocumentExtractionRequest) (_result *DocumentExtractionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DocumentExtractionResponse{}
+	_body, _err := client.DocumentExtractionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
