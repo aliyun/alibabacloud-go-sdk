@@ -203,6 +203,203 @@ func (s *DataPropertiesValue) SetCreator(v string) *DataPropertiesValue {
 	return s
 }
 
+type DataSchemaPropertiesValue struct {
+	// example:
+	//
+	// name
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// -
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// string
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// example:
+	//
+	// *
+	Pattern             *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
+	// example:
+	//
+	// 1
+	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// example:
+	//
+	// 1
+	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// example:
+	//
+	// 1
+	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// example:
+	//
+	// 1
+	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// example:
+	//
+	// false
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// example:
+	//
+	// false
+	System *bool `json:"System,omitempty" xml:"System,omitempty"`
+	// example:
+	//
+	// false
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// example:
+	//
+	// false
+	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// example:
+	//
+	// false
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// example:
+	//
+	// textbox
+	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
+	// example:
+	//
+	// {}
+	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// example:
+	//
+	// 1
+	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
+	// example:
+	//
+	// 2020-10-14T09:53:53Z
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// 2020-10-14T09:53:53Z
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// example:
+	//
+	// tom
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+}
+
+func (s DataSchemaPropertiesValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSchemaPropertiesValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataSchemaPropertiesValue) SetDisplayName(v string) *DataSchemaPropertiesValue {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetDescription(v string) *DataSchemaPropertiesValue {
+	s.Description = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetName(v string) *DataSchemaPropertiesValue {
+	s.Name = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetDataType(v string) *DataSchemaPropertiesValue {
+	s.DataType = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetPattern(v string) *DataSchemaPropertiesValue {
+	s.Pattern = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetPatternErrorMessage(v string) *DataSchemaPropertiesValue {
+	s.PatternErrorMessage = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetMinLength(v int32) *DataSchemaPropertiesValue {
+	s.MinLength = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetMaxLength(v int32) *DataSchemaPropertiesValue {
+	s.MaxLength = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetMinimum(v float64) *DataSchemaPropertiesValue {
+	s.Minimum = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetMaximum(v float64) *DataSchemaPropertiesValue {
+	s.Maximum = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetRequired(v bool) *DataSchemaPropertiesValue {
+	s.Required = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetSystem(v bool) *DataSchemaPropertiesValue {
+	s.System = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetDisabled(v bool) *DataSchemaPropertiesValue {
+	s.Disabled = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetArray(v bool) *DataSchemaPropertiesValue {
+	s.Array = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetReadOnly(v bool) *DataSchemaPropertiesValue {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetEditorType(v string) *DataSchemaPropertiesValue {
+	s.EditorType = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetAttributes(v string) *DataSchemaPropertiesValue {
+	s.Attributes = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetDisplayOrder(v int32) *DataSchemaPropertiesValue {
+	s.DisplayOrder = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetCreatedTime(v int64) *DataSchemaPropertiesValue {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetUpdatedTime(v int64) *DataSchemaPropertiesValue {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *DataSchemaPropertiesValue) SetCreator(v string) *DataSchemaPropertiesValue {
+	s.Creator = &v
+	return s
+}
+
 type AbortCampaignRequest struct {
 	// This parameter is required.
 	//
@@ -1120,6 +1317,347 @@ func (s *AddPhoneNumbersResponse) SetStatusCode(v int32) *AddPhoneNumbersRespons
 }
 
 func (s *AddPhoneNumbersResponse) SetBody(v *AddPhoneNumbersResponseBody) *AddPhoneNumbersResponse {
+	s.Body = v
+	return s
+}
+
+type AddSchemaPropertyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b0eb2742-f37e-4c67-82d4-25c651c1xxxx
+	InstanceId *string                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Property   *AddSchemaPropertyRequestProperty `json:"Property,omitempty" xml:"Property,omitempty" type:"Struct"`
+	// example:
+	//
+	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// schema id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// profile
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s AddSchemaPropertyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSchemaPropertyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddSchemaPropertyRequest) SetInstanceId(v string) *AddSchemaPropertyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequest) SetProperty(v *AddSchemaPropertyRequestProperty) *AddSchemaPropertyRequest {
+	s.Property = v
+	return s
+}
+
+func (s *AddSchemaPropertyRequest) SetRequestId(v string) *AddSchemaPropertyRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequest) SetSchemaId(v string) *AddSchemaPropertyRequest {
+	s.SchemaId = &v
+	return s
+}
+
+type AddSchemaPropertyRequestProperty struct {
+	// example:
+	//
+	// false
+	Array      *bool   `json:"Array,omitempty" xml:"Array,omitempty"`
+	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// string
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// example:
+	//
+	// -
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// False
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// example:
+	//
+	// name
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 10
+	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
+	// example:
+	//
+	// textbox
+	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
+	// example:
+	//
+	// 100
+	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// example:
+	//
+	// 1
+	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// example:
+	//
+	// 1
+	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// example:
+	//
+	// 1
+	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// *
+	Pattern             *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
+	// example:
+	//
+	// true
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// example:
+	//
+	// false
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+}
+
+func (s AddSchemaPropertyRequestProperty) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSchemaPropertyRequestProperty) GoString() string {
+	return s.String()
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetArray(v bool) *AddSchemaPropertyRequestProperty {
+	s.Array = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetAttributes(v string) *AddSchemaPropertyRequestProperty {
+	s.Attributes = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetDataType(v string) *AddSchemaPropertyRequestProperty {
+	s.DataType = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetDescription(v string) *AddSchemaPropertyRequestProperty {
+	s.Description = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetDisabled(v bool) *AddSchemaPropertyRequestProperty {
+	s.Disabled = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetDisplayName(v string) *AddSchemaPropertyRequestProperty {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetDisplayOrder(v int32) *AddSchemaPropertyRequestProperty {
+	s.DisplayOrder = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetEditorType(v string) *AddSchemaPropertyRequestProperty {
+	s.EditorType = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetMaxLength(v int32) *AddSchemaPropertyRequestProperty {
+	s.MaxLength = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetMaximum(v float64) *AddSchemaPropertyRequestProperty {
+	s.Maximum = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetMinLength(v int32) *AddSchemaPropertyRequestProperty {
+	s.MinLength = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetMinimum(v float64) *AddSchemaPropertyRequestProperty {
+	s.Minimum = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetName(v string) *AddSchemaPropertyRequestProperty {
+	s.Name = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetPattern(v string) *AddSchemaPropertyRequestProperty {
+	s.Pattern = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetPatternErrorMessage(v string) *AddSchemaPropertyRequestProperty {
+	s.PatternErrorMessage = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetReadOnly(v bool) *AddSchemaPropertyRequestProperty {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *AddSchemaPropertyRequestProperty) SetRequired(v bool) *AddSchemaPropertyRequestProperty {
+	s.Required = &v
+	return s
+}
+
+type AddSchemaPropertyShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b0eb2742-f37e-4c67-82d4-25c651c1xxxx
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PropertyShrink *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// example:
+	//
+	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// schema id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// profile
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s AddSchemaPropertyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSchemaPropertyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddSchemaPropertyShrinkRequest) SetInstanceId(v string) *AddSchemaPropertyShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AddSchemaPropertyShrinkRequest) SetPropertyShrink(v string) *AddSchemaPropertyShrinkRequest {
+	s.PropertyShrink = &v
+	return s
+}
+
+func (s *AddSchemaPropertyShrinkRequest) SetRequestId(v string) *AddSchemaPropertyShrinkRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddSchemaPropertyShrinkRequest) SetSchemaId(v string) *AddSchemaPropertyShrinkRequest {
+	s.SchemaId = &v
+	return s
+}
+
+type AddSchemaPropertyResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// BF268B34-09C2-43FD-BAC4-5D31EA633111
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddSchemaPropertyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSchemaPropertyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddSchemaPropertyResponseBody) SetCode(v string) *AddSchemaPropertyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddSchemaPropertyResponseBody) SetHttpStatusCode(v int32) *AddSchemaPropertyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddSchemaPropertyResponseBody) SetMessage(v string) *AddSchemaPropertyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddSchemaPropertyResponseBody) SetParams(v []*string) *AddSchemaPropertyResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *AddSchemaPropertyResponseBody) SetRequestId(v string) *AddSchemaPropertyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddSchemaPropertyResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddSchemaPropertyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddSchemaPropertyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSchemaPropertyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddSchemaPropertyResponse) SetHeaders(v map[string]*string) *AddSchemaPropertyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddSchemaPropertyResponse) SetStatusCode(v int32) *AddSchemaPropertyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddSchemaPropertyResponse) SetBody(v *AddSchemaPropertyResponseBody) *AddSchemaPropertyResponse {
 	s.Body = v
 	return s
 }
@@ -6653,6 +7191,370 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 	return s
 }
 
+type CreateSchemaRequest struct {
+	// example:
+	//
+	// -
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// schema id
+	//
+	// example:
+	//
+	// profile
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b0eb2742-f37e-4c67-82d4-25c651c1c450
+	InstanceId *string                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Properties []*CreateSchemaRequestProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSchemaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSchemaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSchemaRequest) SetDescription(v string) *CreateSchemaRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSchemaRequest) SetId(v string) *CreateSchemaRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateSchemaRequest) SetInstanceId(v string) *CreateSchemaRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateSchemaRequest) SetProperties(v []*CreateSchemaRequestProperties) *CreateSchemaRequest {
+	s.Properties = v
+	return s
+}
+
+func (s *CreateSchemaRequest) SetRequestId(v string) *CreateSchemaRequest {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSchemaRequestProperties struct {
+	// example:
+	//
+	// false
+	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// example:
+	//
+	// {\\"Clusters\\": {\\"Description\\": \\"The list of clusters.\\"}, \\"ClusterIds\\": {\\"Description\\": \\"The list of cluster IDs.\\"}}
+	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// string
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// example:
+	//
+	// -
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
+	Disabled    *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 2
+	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
+	// example:
+	//
+	// textbox
+	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
+	// example:
+	//
+	// 100
+	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// example:
+	//
+	// 1
+	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// example:
+	//
+	// 1
+	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// example:
+	//
+	// 1
+	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// *
+	Pattern             *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
+	// example:
+	//
+	// true
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// example:
+	//
+	// false
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+}
+
+func (s CreateSchemaRequestProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSchemaRequestProperties) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSchemaRequestProperties) SetArray(v bool) *CreateSchemaRequestProperties {
+	s.Array = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetAttributes(v string) *CreateSchemaRequestProperties {
+	s.Attributes = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetDataType(v string) *CreateSchemaRequestProperties {
+	s.DataType = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetDescription(v string) *CreateSchemaRequestProperties {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetDisabled(v bool) *CreateSchemaRequestProperties {
+	s.Disabled = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetDisplayName(v string) *CreateSchemaRequestProperties {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetDisplayOrder(v int32) *CreateSchemaRequestProperties {
+	s.DisplayOrder = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetEditorType(v string) *CreateSchemaRequestProperties {
+	s.EditorType = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetMaxLength(v int32) *CreateSchemaRequestProperties {
+	s.MaxLength = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetMaximum(v float64) *CreateSchemaRequestProperties {
+	s.Maximum = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetMinLength(v int32) *CreateSchemaRequestProperties {
+	s.MinLength = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetMinimum(v float64) *CreateSchemaRequestProperties {
+	s.Minimum = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetName(v string) *CreateSchemaRequestProperties {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetPattern(v string) *CreateSchemaRequestProperties {
+	s.Pattern = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetPatternErrorMessage(v string) *CreateSchemaRequestProperties {
+	s.PatternErrorMessage = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetReadOnly(v bool) *CreateSchemaRequestProperties {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *CreateSchemaRequestProperties) SetRequired(v bool) *CreateSchemaRequestProperties {
+	s.Required = &v
+	return s
+}
+
+type CreateSchemaShrinkRequest struct {
+	// example:
+	//
+	// -
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// schema id
+	//
+	// example:
+	//
+	// profile
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b0eb2742-f37e-4c67-82d4-25c651c1c450
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PropertiesShrink *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// example:
+	//
+	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSchemaShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSchemaShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSchemaShrinkRequest) SetDescription(v string) *CreateSchemaShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSchemaShrinkRequest) SetId(v string) *CreateSchemaShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateSchemaShrinkRequest) SetInstanceId(v string) *CreateSchemaShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateSchemaShrinkRequest) SetPropertiesShrink(v string) *CreateSchemaShrinkRequest {
+	s.PropertiesShrink = &v
+	return s
+}
+
+func (s *CreateSchemaShrinkRequest) SetRequestId(v string) *CreateSchemaShrinkRequest {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSchemaResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1ca2b084-6f0a-454b-9851-29768a9a5832
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 9F766284-F103-4298-8EC5-19F9F9BE5522
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSchemaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSchemaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSchemaResponseBody) SetCode(v string) *CreateSchemaResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSchemaResponseBody) SetData(v string) *CreateSchemaResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateSchemaResponseBody) SetHttpStatusCode(v int32) *CreateSchemaResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateSchemaResponseBody) SetMessage(v string) *CreateSchemaResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateSchemaResponseBody) SetParams(v []*string) *CreateSchemaResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *CreateSchemaResponseBody) SetRequestId(v string) *CreateSchemaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSchemaResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSchemaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSchemaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSchemaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSchemaResponse) SetHeaders(v map[string]*string) *CreateSchemaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSchemaResponse) SetStatusCode(v int32) *CreateSchemaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSchemaResponse) SetBody(v *CreateSchemaResponseBody) *CreateSchemaResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSkillGroupRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
@@ -7547,6 +8449,442 @@ func (s *DeleteCustomCallTaggingResponse) SetStatusCode(v int32) *DeleteCustomCa
 }
 
 func (s *DeleteCustomCallTaggingResponse) SetBody(v *DeleteCustomCallTaggingResponseBody) *DeleteCustomCallTaggingResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDocumentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	DocumentId *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d278629c-c687-4aa3-b044-4fe9b012****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// DE803553-8AA9-4B9D-9E4E-A82BC69EDCEE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// schema id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// profile
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s DeleteDocumentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocumentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocumentRequest) SetDocumentId(v string) *DeleteDocumentRequest {
+	s.DocumentId = &v
+	return s
+}
+
+func (s *DeleteDocumentRequest) SetInstanceId(v string) *DeleteDocumentRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteDocumentRequest) SetRequestId(v string) *DeleteDocumentRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDocumentRequest) SetSchemaId(v string) *DeleteDocumentRequest {
+	s.SchemaId = &v
+	return s
+}
+
+type DeleteDocumentResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8707EB29-BAED-4302-B999-40BA61877437
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDocumentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocumentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocumentResponseBody) SetCode(v string) *DeleteDocumentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDocumentResponseBody) SetHttpStatusCode(v int32) *DeleteDocumentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteDocumentResponseBody) SetMessage(v string) *DeleteDocumentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDocumentResponseBody) SetParams(v []*string) *DeleteDocumentResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *DeleteDocumentResponseBody) SetRequestId(v string) *DeleteDocumentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDocumentResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDocumentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocumentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocumentResponse) SetHeaders(v map[string]*string) *DeleteDocumentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDocumentResponse) SetStatusCode(v int32) *DeleteDocumentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDocumentResponse) SetBody(v *DeleteDocumentResponseBody) *DeleteDocumentResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDocumentsRequest struct {
+	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 0630E5DF-CEB0-445B-8626-D5C7481181C3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// schema id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// profile
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s DeleteDocumentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocumentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocumentsRequest) SetDocumentIds(v []*string) *DeleteDocumentsRequest {
+	s.DocumentIds = v
+	return s
+}
+
+func (s *DeleteDocumentsRequest) SetInstanceId(v string) *DeleteDocumentsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteDocumentsRequest) SetRequestId(v string) *DeleteDocumentsRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDocumentsRequest) SetSchemaId(v string) *DeleteDocumentsRequest {
+	s.SchemaId = &v
+	return s
+}
+
+type DeleteDocumentsShrinkRequest struct {
+	DocumentIdsShrink *string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 0630E5DF-CEB0-445B-8626-D5C7481181C3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// schema id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// profile
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s DeleteDocumentsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocumentsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocumentsShrinkRequest) SetDocumentIdsShrink(v string) *DeleteDocumentsShrinkRequest {
+	s.DocumentIdsShrink = &v
+	return s
+}
+
+func (s *DeleteDocumentsShrinkRequest) SetInstanceId(v string) *DeleteDocumentsShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteDocumentsShrinkRequest) SetRequestId(v string) *DeleteDocumentsShrinkRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDocumentsShrinkRequest) SetSchemaId(v string) *DeleteDocumentsShrinkRequest {
+	s.SchemaId = &v
+	return s
+}
+
+type DeleteDocumentsResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// A450574A-337F-43E2-BC59-9C6594C994C6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDocumentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocumentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocumentsResponseBody) SetCode(v string) *DeleteDocumentsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDocumentsResponseBody) SetHttpStatusCode(v int32) *DeleteDocumentsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteDocumentsResponseBody) SetMessage(v string) *DeleteDocumentsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDocumentsResponseBody) SetParams(v []*string) *DeleteDocumentsResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *DeleteDocumentsResponseBody) SetRequestId(v string) *DeleteDocumentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDocumentsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDocumentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDocumentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocumentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocumentsResponse) SetHeaders(v map[string]*string) *DeleteDocumentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDocumentsResponse) SetStatusCode(v int32) *DeleteDocumentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDocumentsResponse) SetBody(v *DeleteDocumentsResponseBody) *DeleteDocumentsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSchemaRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 0630E5DF-CEB0-445B-8626-D5C7481181C3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// schema id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// profile
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s DeleteSchemaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSchemaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSchemaRequest) SetInstanceId(v string) *DeleteSchemaRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteSchemaRequest) SetRequestId(v string) *DeleteSchemaRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSchemaRequest) SetSchemaId(v string) *DeleteSchemaRequest {
+	s.SchemaId = &v
+	return s
+}
+
+type DeleteSchemaResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 678F7002-CA01-4ABF-A112-585AFBDF3A3B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSchemaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSchemaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSchemaResponseBody) SetCode(v string) *DeleteSchemaResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSchemaResponseBody) SetHttpStatusCode(v int32) *DeleteSchemaResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteSchemaResponseBody) SetMessage(v string) *DeleteSchemaResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteSchemaResponseBody) SetParams(v []*string) *DeleteSchemaResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *DeleteSchemaResponseBody) SetRequestId(v string) *DeleteSchemaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteSchemaResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSchemaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSchemaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSchemaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSchemaResponse) SetHeaders(v map[string]*string) *DeleteSchemaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSchemaResponse) SetStatusCode(v int32) *DeleteSchemaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSchemaResponse) SetBody(v *DeleteSchemaResponseBody) *DeleteSchemaResponse {
 	s.Body = v
 	return s
 }
@@ -11204,6 +12542,200 @@ func (s *GetDoNotCallFileUploadParametersResponse) SetStatusCode(v int32) *GetDo
 }
 
 func (s *GetDoNotCallFileUploadParametersResponse) SetBody(v *GetDoNotCallFileUploadParametersResponseBody) *GetDoNotCallFileUploadParametersResponse {
+	s.Body = v
+	return s
+}
+
+type GetDocumentUploadParametersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// blacklist.xlsx
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 24BE19E8-BF7D-4992-A35E-15EBA874F2E5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDocumentUploadParametersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocumentUploadParametersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocumentUploadParametersRequest) SetFileName(v string) *GetDocumentUploadParametersRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetDocumentUploadParametersRequest) SetInstanceId(v string) *GetDocumentUploadParametersRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDocumentUploadParametersRequest) SetRequestId(v string) *GetDocumentUploadParametersRequest {
+	s.RequestId = &v
+	return s
+}
+
+type GetDocumentUploadParametersResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetDocumentUploadParametersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 9FBA26B0-462B-4D77-B78F-AF35560DBC71
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDocumentUploadParametersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocumentUploadParametersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocumentUploadParametersResponseBody) SetCode(v string) *GetDocumentUploadParametersResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDocumentUploadParametersResponseBody) SetData(v *GetDocumentUploadParametersResponseBodyData) *GetDocumentUploadParametersResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDocumentUploadParametersResponseBody) SetHttpStatusCode(v int32) *GetDocumentUploadParametersResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetDocumentUploadParametersResponseBody) SetMessage(v string) *GetDocumentUploadParametersResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDocumentUploadParametersResponseBody) SetParams(v []*string) *GetDocumentUploadParametersResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *GetDocumentUploadParametersResponseBody) SetRequestId(v string) *GetDocumentUploadParametersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDocumentUploadParametersResponseBodyData struct {
+	// example:
+	//
+	// ****
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// example:
+	//
+	// 1647313420
+	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// ccc-test/blacklist.xlsx
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// oss host
+	//
+	// example:
+	//
+	// https://ccc-v2-online.oss-cn-shanghai.aliyuncs.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// Permit
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// zi31STIMtIfa/UN2l+6lww****
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+}
+
+func (s GetDocumentUploadParametersResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocumentUploadParametersResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocumentUploadParametersResponseBodyData) SetAccessKeyId(v string) *GetDocumentUploadParametersResponseBodyData {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *GetDocumentUploadParametersResponseBodyData) SetExpireTime(v int32) *GetDocumentUploadParametersResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetDocumentUploadParametersResponseBodyData) SetFilePath(v string) *GetDocumentUploadParametersResponseBodyData {
+	s.FilePath = &v
+	return s
+}
+
+func (s *GetDocumentUploadParametersResponseBodyData) SetHost(v string) *GetDocumentUploadParametersResponseBodyData {
+	s.Host = &v
+	return s
+}
+
+func (s *GetDocumentUploadParametersResponseBodyData) SetPolicy(v string) *GetDocumentUploadParametersResponseBodyData {
+	s.Policy = &v
+	return s
+}
+
+func (s *GetDocumentUploadParametersResponseBodyData) SetSignature(v string) *GetDocumentUploadParametersResponseBodyData {
+	s.Signature = &v
+	return s
+}
+
+type GetDocumentUploadParametersResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDocumentUploadParametersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDocumentUploadParametersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocumentUploadParametersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocumentUploadParametersResponse) SetHeaders(v map[string]*string) *GetDocumentUploadParametersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDocumentUploadParametersResponse) SetStatusCode(v int32) *GetDocumentUploadParametersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDocumentUploadParametersResponse) SetBody(v *GetDocumentUploadParametersResponseBody) *GetDocumentUploadParametersResponse {
 	s.Body = v
 	return s
 }
@@ -16969,6 +18501,140 @@ func (s *ImportDoNotCallNumbersResponse) SetStatusCode(v int32) *ImportDoNotCall
 }
 
 func (s *ImportDoNotCallNumbersResponse) SetBody(v *ImportDoNotCallNumbersResponseBody) *ImportDoNotCallNumbersResponse {
+	s.Body = v
+	return s
+}
+
+type ImportDocumentsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b0eb2742-f37e-4c67-82d4-25c651c1c450
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test/test-file.wav
+	OssFileKey *string `json:"OssFileKey,omitempty" xml:"OssFileKey,omitempty"`
+	// example:
+	//
+	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// schema id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// profile
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s ImportDocumentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportDocumentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportDocumentsRequest) SetInstanceId(v string) *ImportDocumentsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ImportDocumentsRequest) SetOssFileKey(v string) *ImportDocumentsRequest {
+	s.OssFileKey = &v
+	return s
+}
+
+func (s *ImportDocumentsRequest) SetRequestId(v string) *ImportDocumentsRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportDocumentsRequest) SetSchemaId(v string) *ImportDocumentsRequest {
+	s.SchemaId = &v
+	return s
+}
+
+type ImportDocumentsResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 01B12EE4-6AF2-4730-8B78-EC15F4E5C025
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImportDocumentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportDocumentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportDocumentsResponseBody) SetCode(v string) *ImportDocumentsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImportDocumentsResponseBody) SetHttpStatusCode(v int32) *ImportDocumentsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ImportDocumentsResponseBody) SetMessage(v string) *ImportDocumentsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImportDocumentsResponseBody) SetParams(v []*string) *ImportDocumentsResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ImportDocumentsResponseBody) SetRequestId(v string) *ImportDocumentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImportDocumentsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportDocumentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImportDocumentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportDocumentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportDocumentsResponse) SetHeaders(v map[string]*string) *ImportDocumentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportDocumentsResponse) SetStatusCode(v int32) *ImportDocumentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportDocumentsResponse) SetBody(v *ImportDocumentsResponseBody) *ImportDocumentsResponse {
 	s.Body = v
 	return s
 }
@@ -24299,6 +25965,383 @@ func (s *ListDoNotCallNumbersResponse) SetStatusCode(v int32) *ListDoNotCallNumb
 }
 
 func (s *ListDoNotCallNumbersResponse) SetBody(v *ListDoNotCallNumbersResponseBody) *ListDoNotCallNumbersResponse {
+	s.Body = v
+	return s
+}
+
+type ListDocumentsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d278629c-c687-4aa3-b044-4fe9b012e7ef
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// eyJ0YWJsZUlkIjoiY2Y2MTQxYjA5NDY0NDUxMzk5YjFjMTA5YTMxZWNkMzEiLCJ0b2tlbiI6IjAwMDAwMDAwMDAwNzAzNzcifQ==
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 2
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// EAF3C248-E123-441B-A545-B6CD02E98EED
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// schema id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// profile
+	SchemaId      *string                      `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	SearchPattern *string                      `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
+	Sorts         []*ListDocumentsRequestSorts `json:"Sorts,omitempty" xml:"Sorts,omitempty" type:"Repeated"`
+}
+
+func (s ListDocumentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentsRequest) SetInstanceId(v string) *ListDocumentsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDocumentsRequest) SetNextPageToken(v string) *ListDocumentsRequest {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListDocumentsRequest) SetPageSize(v int32) *ListDocumentsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDocumentsRequest) SetRequestId(v string) *ListDocumentsRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDocumentsRequest) SetSchemaId(v string) *ListDocumentsRequest {
+	s.SchemaId = &v
+	return s
+}
+
+func (s *ListDocumentsRequest) SetSearchPattern(v string) *ListDocumentsRequest {
+	s.SearchPattern = &v
+	return s
+}
+
+func (s *ListDocumentsRequest) SetSorts(v []*ListDocumentsRequestSorts) *ListDocumentsRequest {
+	s.Sorts = v
+	return s
+}
+
+type ListDocumentsRequestSorts struct {
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// name
+	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+}
+
+func (s ListDocumentsRequestSorts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentsRequestSorts) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentsRequestSorts) SetOrder(v string) *ListDocumentsRequestSorts {
+	s.Order = &v
+	return s
+}
+
+func (s *ListDocumentsRequestSorts) SetPropertyName(v string) *ListDocumentsRequestSorts {
+	s.PropertyName = &v
+	return s
+}
+
+type ListDocumentsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d278629c-c687-4aa3-b044-4fe9b012e7ef
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// eyJ0YWJsZUlkIjoiY2Y2MTQxYjA5NDY0NDUxMzk5YjFjMTA5YTMxZWNkMzEiLCJ0b2tlbiI6IjAwMDAwMDAwMDAwNzAzNzcifQ==
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 2
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// EAF3C248-E123-441B-A545-B6CD02E98EED
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// schema id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// profile
+	SchemaId      *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
+	SortsShrink   *string `json:"Sorts,omitempty" xml:"Sorts,omitempty"`
+}
+
+func (s ListDocumentsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentsShrinkRequest) SetInstanceId(v string) *ListDocumentsShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDocumentsShrinkRequest) SetNextPageToken(v string) *ListDocumentsShrinkRequest {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListDocumentsShrinkRequest) SetPageSize(v int32) *ListDocumentsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDocumentsShrinkRequest) SetRequestId(v string) *ListDocumentsShrinkRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDocumentsShrinkRequest) SetSchemaId(v string) *ListDocumentsShrinkRequest {
+	s.SchemaId = &v
+	return s
+}
+
+func (s *ListDocumentsShrinkRequest) SetSearchPattern(v string) *ListDocumentsShrinkRequest {
+	s.SearchPattern = &v
+	return s
+}
+
+func (s *ListDocumentsShrinkRequest) SetSortsShrink(v string) *ListDocumentsShrinkRequest {
+	s.SortsShrink = &v
+	return s
+}
+
+type ListDocumentsResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListDocumentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDocumentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentsResponseBody) SetCode(v string) *ListDocumentsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDocumentsResponseBody) SetData(v *ListDocumentsResponseBodyData) *ListDocumentsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDocumentsResponseBody) SetHttpStatusCode(v int32) *ListDocumentsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListDocumentsResponseBody) SetMessage(v string) *ListDocumentsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDocumentsResponseBody) SetParams(v []*string) *ListDocumentsResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ListDocumentsResponseBody) SetRequestId(v string) *ListDocumentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDocumentsResponseBodyData struct {
+	Documents []map[string]interface{} `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 54d1a616d95a4a01ba58967a9115b649
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// scheme
+	Schema *ListDocumentsResponseBodyDataSchema `json:"Schema,omitempty" xml:"Schema,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDocumentsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentsResponseBodyData) SetDocuments(v []map[string]interface{}) *ListDocumentsResponseBodyData {
+	s.Documents = v
+	return s
+}
+
+func (s *ListDocumentsResponseBodyData) SetNextPageToken(v string) *ListDocumentsResponseBodyData {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListDocumentsResponseBodyData) SetSchema(v *ListDocumentsResponseBodyDataSchema) *ListDocumentsResponseBodyData {
+	s.Schema = v
+	return s
+}
+
+func (s *ListDocumentsResponseBodyData) SetTotalCount(v int64) *ListDocumentsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDocumentsResponseBodyDataSchema struct {
+	// example:
+	//
+	// 2020-10-14T09:53:53Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// false
+	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// example:
+	//
+	// -
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// schame id
+	//
+	// example:
+	//
+	// profile
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 87b12784-8ce2-40b6-b21f-c49cb3b5501e
+	InstanceId *string                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Properties map[string]*DataSchemaPropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// example:
+	//
+	// 2020-10-14T09:53:53Z
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s ListDocumentsResponseBodyDataSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentsResponseBodyDataSchema) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentsResponseBodyDataSchema) SetCreatedTime(v string) *ListDocumentsResponseBodyDataSchema {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListDocumentsResponseBodyDataSchema) SetDeleted(v bool) *ListDocumentsResponseBodyDataSchema {
+	s.Deleted = &v
+	return s
+}
+
+func (s *ListDocumentsResponseBodyDataSchema) SetDescription(v string) *ListDocumentsResponseBodyDataSchema {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDocumentsResponseBodyDataSchema) SetId(v string) *ListDocumentsResponseBodyDataSchema {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDocumentsResponseBodyDataSchema) SetInstanceId(v string) *ListDocumentsResponseBodyDataSchema {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDocumentsResponseBodyDataSchema) SetProperties(v map[string]*DataSchemaPropertiesValue) *ListDocumentsResponseBodyDataSchema {
+	s.Properties = v
+	return s
+}
+
+func (s *ListDocumentsResponseBodyDataSchema) SetUpdatedTime(v string) *ListDocumentsResponseBodyDataSchema {
+	s.UpdatedTime = &v
+	return s
+}
+
+type ListDocumentsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDocumentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDocumentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentsResponse) SetHeaders(v map[string]*string) *ListDocumentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDocumentsResponse) SetStatusCode(v int32) *ListDocumentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDocumentsResponse) SetBody(v *ListDocumentsResponseBody) *ListDocumentsResponse {
 	s.Body = v
 	return s
 }
@@ -49093,6 +51136,158 @@ func (s *RetrieveCallResponse) SetBody(v *RetrieveCallResponseBody) *RetrieveCal
 	return s
 }
 
+type SaveDocumentRequest struct {
+	// example:
+	//
+	// xxx
+	DocumentId *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"name":"tom"}
+	DocumentJson *string `json:"DocumentJson,omitempty" xml:"DocumentJson,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// EAF3C248-E123-441B-A545-B6CD02E98EED
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// schema id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// profile
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s SaveDocumentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveDocumentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveDocumentRequest) SetDocumentId(v string) *SaveDocumentRequest {
+	s.DocumentId = &v
+	return s
+}
+
+func (s *SaveDocumentRequest) SetDocumentJson(v string) *SaveDocumentRequest {
+	s.DocumentJson = &v
+	return s
+}
+
+func (s *SaveDocumentRequest) SetInstanceId(v string) *SaveDocumentRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SaveDocumentRequest) SetRequestId(v string) *SaveDocumentRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveDocumentRequest) SetSchemaId(v string) *SaveDocumentRequest {
+	s.SchemaId = &v
+	return s
+}
+
+type SaveDocumentResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 0101234****
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 01B12EE4-6AF2-4730-8B78-EC15F4E5C025
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SaveDocumentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveDocumentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveDocumentResponseBody) SetCode(v string) *SaveDocumentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SaveDocumentResponseBody) SetData(v string) *SaveDocumentResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SaveDocumentResponseBody) SetHttpStatusCode(v int32) *SaveDocumentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SaveDocumentResponseBody) SetMessage(v string) *SaveDocumentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SaveDocumentResponseBody) SetParams(v []*string) *SaveDocumentResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *SaveDocumentResponseBody) SetRequestId(v string) *SaveDocumentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SaveDocumentResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SaveDocumentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveDocumentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveDocumentResponse) SetHeaders(v map[string]*string) *SaveDocumentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveDocumentResponse) SetStatusCode(v int32) *SaveDocumentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveDocumentResponse) SetBody(v *SaveDocumentResponseBody) *SaveDocumentResponse {
+	s.Body = v
+	return s
+}
+
 type SaveRTCStatsV2Request struct {
 	// This parameter is required.
 	//
@@ -54165,6 +56360,347 @@ func (s *UpdateConfigItemsResponse) SetBody(v *UpdateConfigItemsResponseBody) *U
 	return s
 }
 
+type UpdateSchemaPropertyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b0eb2742-f37e-4c67-82d4-25c651c1xxxx
+	InstanceId *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Property   *UpdateSchemaPropertyRequestProperty `json:"Property,omitempty" xml:"Property,omitempty" type:"Struct"`
+	// example:
+	//
+	// BC976D32-AC4C-4E0F-8AA9-F4BC6C4E2B3E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// schema id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// profile
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s UpdateSchemaPropertyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSchemaPropertyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSchemaPropertyRequest) SetInstanceId(v string) *UpdateSchemaPropertyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequest) SetProperty(v *UpdateSchemaPropertyRequestProperty) *UpdateSchemaPropertyRequest {
+	s.Property = v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequest) SetRequestId(v string) *UpdateSchemaPropertyRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequest) SetSchemaId(v string) *UpdateSchemaPropertyRequest {
+	s.SchemaId = &v
+	return s
+}
+
+type UpdateSchemaPropertyRequestProperty struct {
+	// example:
+	//
+	// false
+	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// example:
+	//
+	// {\\"instanceId\\":\\"4cc3f160-ca64-49ff-bc70-390a044a4e83\\",\\"appId\\":\\"1684145288664\\",\\"commodityCode\\":\\"dide_pre\\",\\"dide_pre_set\\":\\"version_ent\\"}
+	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// string
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// example:
+	//
+	// -
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	Disabled    *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 10
+	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
+	// example:
+	//
+	// textbox
+	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
+	// example:
+	//
+	// 100
+	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// example:
+	//
+	// 11
+	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// example:
+	//
+	// 1
+	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// example:
+	//
+	// 10800
+	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// (.*)
+	Pattern             *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
+	// example:
+	//
+	// true
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// example:
+	//
+	// false
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+}
+
+func (s UpdateSchemaPropertyRequestProperty) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSchemaPropertyRequestProperty) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetArray(v bool) *UpdateSchemaPropertyRequestProperty {
+	s.Array = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetAttributes(v string) *UpdateSchemaPropertyRequestProperty {
+	s.Attributes = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetDataType(v string) *UpdateSchemaPropertyRequestProperty {
+	s.DataType = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetDescription(v string) *UpdateSchemaPropertyRequestProperty {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetDisabled(v bool) *UpdateSchemaPropertyRequestProperty {
+	s.Disabled = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetDisplayName(v string) *UpdateSchemaPropertyRequestProperty {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetDisplayOrder(v int32) *UpdateSchemaPropertyRequestProperty {
+	s.DisplayOrder = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetEditorType(v string) *UpdateSchemaPropertyRequestProperty {
+	s.EditorType = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetMaxLength(v int32) *UpdateSchemaPropertyRequestProperty {
+	s.MaxLength = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetMaximum(v float64) *UpdateSchemaPropertyRequestProperty {
+	s.Maximum = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetMinLength(v int32) *UpdateSchemaPropertyRequestProperty {
+	s.MinLength = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetMinimum(v float64) *UpdateSchemaPropertyRequestProperty {
+	s.Minimum = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetName(v string) *UpdateSchemaPropertyRequestProperty {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetPattern(v string) *UpdateSchemaPropertyRequestProperty {
+	s.Pattern = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetPatternErrorMessage(v string) *UpdateSchemaPropertyRequestProperty {
+	s.PatternErrorMessage = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetReadOnly(v bool) *UpdateSchemaPropertyRequestProperty {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyRequestProperty) SetRequired(v bool) *UpdateSchemaPropertyRequestProperty {
+	s.Required = &v
+	return s
+}
+
+type UpdateSchemaPropertyShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b0eb2742-f37e-4c67-82d4-25c651c1xxxx
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PropertyShrink *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// example:
+	//
+	// BC976D32-AC4C-4E0F-8AA9-F4BC6C4E2B3E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// schema id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// profile
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s UpdateSchemaPropertyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSchemaPropertyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSchemaPropertyShrinkRequest) SetInstanceId(v string) *UpdateSchemaPropertyShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyShrinkRequest) SetPropertyShrink(v string) *UpdateSchemaPropertyShrinkRequest {
+	s.PropertyShrink = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyShrinkRequest) SetRequestId(v string) *UpdateSchemaPropertyShrinkRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyShrinkRequest) SetSchemaId(v string) *UpdateSchemaPropertyShrinkRequest {
+	s.SchemaId = &v
+	return s
+}
+
+type UpdateSchemaPropertyResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// A450574A-337F-43E2-BC59-9C6594C994C6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateSchemaPropertyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSchemaPropertyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSchemaPropertyResponseBody) SetCode(v string) *UpdateSchemaPropertyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyResponseBody) SetHttpStatusCode(v int32) *UpdateSchemaPropertyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyResponseBody) SetMessage(v string) *UpdateSchemaPropertyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyResponseBody) SetParams(v []*string) *UpdateSchemaPropertyResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *UpdateSchemaPropertyResponseBody) SetRequestId(v string) *UpdateSchemaPropertyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateSchemaPropertyResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSchemaPropertyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSchemaPropertyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSchemaPropertyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSchemaPropertyResponse) SetHeaders(v map[string]*string) *UpdateSchemaPropertyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSchemaPropertyResponse) SetStatusCode(v int32) *UpdateSchemaPropertyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSchemaPropertyResponse) SetBody(v *UpdateSchemaPropertyResponseBody) *UpdateSchemaPropertyResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -54687,6 +57223,76 @@ func (client *Client) AddPhoneNumbers(request *AddPhoneNumbersRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &AddPhoneNumbersResponse{}
 	_body, _err := client.AddPhoneNumbersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - AddSchemaPropertyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddSchemaPropertyResponse
+func (client *Client) AddSchemaPropertyWithOptions(tmpReq *AddSchemaPropertyRequest, runtime *util.RuntimeOptions) (_result *AddSchemaPropertyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddSchemaPropertyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Property)) {
+		request.PropertyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Property, tea.String("Property"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PropertyShrink)) {
+		body["Property"] = request.PropertyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaId)) {
+		body["SchemaId"] = request.SchemaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddSchemaProperty"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddSchemaPropertyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - AddSchemaPropertyRequest
+//
+// @return AddSchemaPropertyResponse
+func (client *Client) AddSchemaProperty(request *AddSchemaPropertyRequest) (_result *AddSchemaPropertyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddSchemaPropertyResponse{}
+	_body, _err := client.AddSchemaPropertyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -56218,6 +58824,80 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// @param tmpReq - CreateSchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSchemaResponse
+func (client *Client) CreateSchemaWithOptions(tmpReq *CreateSchemaRequest, runtime *util.RuntimeOptions) (_result *CreateSchemaResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateSchemaShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Properties)) {
+		request.PropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Properties, tea.String("Properties"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PropertiesShrink)) {
+		body["Properties"] = request.PropertiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSchema"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSchemaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateSchemaRequest
+//
+// @return CreateSchemaResponse
+func (client *Client) CreateSchema(request *CreateSchemaRequest) (_result *CreateSchemaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSchemaResponse{}
+	_body, _err := client.CreateSchemaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - CreateSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -56615,6 +59295,200 @@ func (client *Client) DeleteCustomCallTagging(request *DeleteCustomCallTaggingRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCustomCallTaggingResponse{}
 	_body, _err := client.DeleteCustomCallTaggingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDocumentResponse
+func (client *Client) DeleteDocumentWithOptions(request *DeleteDocumentRequest, runtime *util.RuntimeOptions) (_result *DeleteDocumentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocumentId)) {
+		body["DocumentId"] = request.DocumentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaId)) {
+		body["SchemaId"] = request.SchemaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDocument"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteDocumentRequest
+//
+// @return DeleteDocumentResponse
+func (client *Client) DeleteDocument(request *DeleteDocumentRequest) (_result *DeleteDocumentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDocumentResponse{}
+	_body, _err := client.DeleteDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - DeleteDocumentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDocumentsResponse
+func (client *Client) DeleteDocumentsWithOptions(tmpReq *DeleteDocumentsRequest, runtime *util.RuntimeOptions) (_result *DeleteDocumentsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteDocumentsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DocumentIds)) {
+		request.DocumentIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocumentIds, tea.String("DocumentIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocumentIdsShrink)) {
+		body["DocumentIds"] = request.DocumentIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaId)) {
+		body["SchemaId"] = request.SchemaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDocuments"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDocumentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteDocumentsRequest
+//
+// @return DeleteDocumentsResponse
+func (client *Client) DeleteDocuments(request *DeleteDocumentsRequest) (_result *DeleteDocumentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDocumentsResponse{}
+	_body, _err := client.DeleteDocumentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteSchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSchemaResponse
+func (client *Client) DeleteSchemaWithOptions(request *DeleteSchemaRequest, runtime *util.RuntimeOptions) (_result *DeleteSchemaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaId)) {
+		body["SchemaId"] = request.SchemaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSchema"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSchemaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteSchemaRequest
+//
+// @return DeleteSchemaResponse
+func (client *Client) DeleteSchema(request *DeleteSchemaRequest) (_result *DeleteSchemaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSchemaResponse{}
+	_body, _err := client.DeleteSchemaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -57773,6 +60647,66 @@ func (client *Client) GetDoNotCallFileUploadParameters(request *GetDoNotCallFile
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDoNotCallFileUploadParametersResponse{}
 	_body, _err := client.GetDoNotCallFileUploadParametersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetDocumentUploadParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocumentUploadParametersResponse
+func (client *Client) GetDocumentUploadParametersWithOptions(request *GetDocumentUploadParametersRequest, runtime *util.RuntimeOptions) (_result *GetDocumentUploadParametersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDocumentUploadParameters"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDocumentUploadParametersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetDocumentUploadParametersRequest
+//
+// @return GetDocumentUploadParametersResponse
+func (client *Client) GetDocumentUploadParameters(request *GetDocumentUploadParametersRequest) (_result *GetDocumentUploadParametersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDocumentUploadParametersResponse{}
+	_body, _err := client.GetDocumentUploadParametersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -59211,6 +62145,70 @@ func (client *Client) ImportDoNotCallNumbers(request *ImportDoNotCallNumbersRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportDoNotCallNumbersResponse{}
 	_body, _err := client.ImportDoNotCallNumbersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ImportDocumentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportDocumentsResponse
+func (client *Client) ImportDocumentsWithOptions(request *ImportDocumentsRequest, runtime *util.RuntimeOptions) (_result *ImportDocumentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssFileKey)) {
+		body["OssFileKey"] = request.OssFileKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaId)) {
+		body["SchemaId"] = request.SchemaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportDocuments"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportDocumentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ImportDocumentsRequest
+//
+// @return ImportDocumentsResponse
+func (client *Client) ImportDocuments(request *ImportDocumentsRequest) (_result *ImportDocumentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportDocumentsResponse{}
+	_body, _err := client.ImportDocumentsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -60801,6 +63799,88 @@ func (client *Client) ListDoNotCallNumbers(request *ListDoNotCallNumbersRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDoNotCallNumbersResponse{}
 	_body, _err := client.ListDoNotCallNumbersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - ListDocumentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDocumentsResponse
+func (client *Client) ListDocumentsWithOptions(tmpReq *ListDocumentsRequest, runtime *util.RuntimeOptions) (_result *ListDocumentsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListDocumentsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Sorts)) {
+		request.SortsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sorts, tea.String("Sorts"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		body["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaId)) {
+		body["SchemaId"] = request.SchemaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchPattern)) {
+		body["SearchPattern"] = request.SearchPattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortsShrink)) {
+		body["Sorts"] = request.SortsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDocuments"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDocumentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListDocumentsRequest
+//
+// @return ListDocumentsResponse
+func (client *Client) ListDocuments(request *ListDocumentsRequest) (_result *ListDocumentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDocumentsResponse{}
+	_body, _err := client.ListDocumentsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -65460,6 +68540,74 @@ func (client *Client) RetrieveCall(request *RetrieveCallRequest) (_result *Retri
 	return _result, _err
 }
 
+// @param request - SaveDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveDocumentResponse
+func (client *Client) SaveDocumentWithOptions(request *SaveDocumentRequest, runtime *util.RuntimeOptions) (_result *SaveDocumentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocumentId)) {
+		body["DocumentId"] = request.DocumentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentJson)) {
+		body["DocumentJson"] = request.DocumentJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaId)) {
+		body["SchemaId"] = request.SchemaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveDocument"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - SaveDocumentRequest
+//
+// @return SaveDocumentResponse
+func (client *Client) SaveDocument(request *SaveDocumentRequest) (_result *SaveDocumentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveDocumentResponse{}
+	_body, _err := client.SaveDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - SaveRTCStatsV2Request
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -66785,6 +69933,76 @@ func (client *Client) UpdateConfigItems(request *UpdateConfigItemsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateConfigItemsResponse{}
 	_body, _err := client.UpdateConfigItemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - UpdateSchemaPropertyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSchemaPropertyResponse
+func (client *Client) UpdateSchemaPropertyWithOptions(tmpReq *UpdateSchemaPropertyRequest, runtime *util.RuntimeOptions) (_result *UpdateSchemaPropertyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateSchemaPropertyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Property)) {
+		request.PropertyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Property, tea.String("Property"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PropertyShrink)) {
+		body["Property"] = request.PropertyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaId)) {
+		body["SchemaId"] = request.SchemaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSchemaProperty"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSchemaPropertyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateSchemaPropertyRequest
+//
+// @return UpdateSchemaPropertyResponse
+func (client *Client) UpdateSchemaProperty(request *UpdateSchemaPropertyRequest) (_result *UpdateSchemaPropertyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSchemaPropertyResponse{}
+	_body, _err := client.UpdateSchemaPropertyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
