@@ -46723,6 +46723,336 @@ func (s *QueryScheduleConferenceResponse) SetBody(v *QueryScheduleConferenceResp
 	return s
 }
 
+type QueryScheduleConferenceInfoHeaders struct {
+	CommonHeaders  map[string]*string                                `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *QueryScheduleConferenceInfoHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s QueryScheduleConferenceInfoHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryScheduleConferenceInfoHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryScheduleConferenceInfoHeaders) SetCommonHeaders(v map[string]*string) *QueryScheduleConferenceInfoHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoHeaders) SetAccountContext(v *QueryScheduleConferenceInfoHeadersAccountContext) *QueryScheduleConferenceInfoHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type QueryScheduleConferenceInfoHeadersAccountContext struct {
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s QueryScheduleConferenceInfoHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryScheduleConferenceInfoHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryScheduleConferenceInfoHeadersAccountContext) SetAccountId(v string) *QueryScheduleConferenceInfoHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type QueryScheduleConferenceInfoShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s QueryScheduleConferenceInfoShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryScheduleConferenceInfoShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryScheduleConferenceInfoShrinkHeaders) SetCommonHeaders(v map[string]*string) *QueryScheduleConferenceInfoShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoShrinkHeaders) SetAccountContextShrink(v string) *QueryScheduleConferenceInfoShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type QueryScheduleConferenceInfoRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 19
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 636cf59f2b032f014ae32902
+	ScheduleConferenceId *string                                          `json:"ScheduleConferenceId,omitempty" xml:"ScheduleConferenceId,omitempty"`
+	TenantContext        *QueryScheduleConferenceInfoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s QueryScheduleConferenceInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryScheduleConferenceInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryScheduleConferenceInfoRequest) SetMaxResults(v int32) *QueryScheduleConferenceInfoRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoRequest) SetNextToken(v string) *QueryScheduleConferenceInfoRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoRequest) SetScheduleConferenceId(v string) *QueryScheduleConferenceInfoRequest {
+	s.ScheduleConferenceId = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoRequest) SetTenantContext(v *QueryScheduleConferenceInfoRequestTenantContext) *QueryScheduleConferenceInfoRequest {
+	s.TenantContext = v
+	return s
+}
+
+type QueryScheduleConferenceInfoRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s QueryScheduleConferenceInfoRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryScheduleConferenceInfoRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryScheduleConferenceInfoRequestTenantContext) SetTenantId(v string) *QueryScheduleConferenceInfoRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type QueryScheduleConferenceInfoShrinkRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 19
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 636cf59f2b032f014ae32902
+	ScheduleConferenceId *string `json:"ScheduleConferenceId,omitempty" xml:"ScheduleConferenceId,omitempty"`
+	TenantContextShrink  *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s QueryScheduleConferenceInfoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryScheduleConferenceInfoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryScheduleConferenceInfoShrinkRequest) SetMaxResults(v int32) *QueryScheduleConferenceInfoShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoShrinkRequest) SetNextToken(v string) *QueryScheduleConferenceInfoShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoShrinkRequest) SetScheduleConferenceId(v string) *QueryScheduleConferenceInfoShrinkRequest {
+	s.ScheduleConferenceId = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoShrinkRequest) SetTenantContextShrink(v string) *QueryScheduleConferenceInfoShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type QueryScheduleConferenceInfoResponseBody struct {
+	ConferenceList []*QueryScheduleConferenceInfoResponseBodyConferenceList `json:"conferenceList,omitempty" xml:"conferenceList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 19
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s QueryScheduleConferenceInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryScheduleConferenceInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryScheduleConferenceInfoResponseBody) SetConferenceList(v []*QueryScheduleConferenceInfoResponseBodyConferenceList) *QueryScheduleConferenceInfoResponseBody {
+	s.ConferenceList = v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoResponseBody) SetNextToken(v string) *QueryScheduleConferenceInfoResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoResponseBody) SetRequestId(v string) *QueryScheduleConferenceInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoResponseBody) SetTotalCount(v int32) *QueryScheduleConferenceInfoResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoResponseBody) SetVendorRequestId(v string) *QueryScheduleConferenceInfoResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoResponseBody) SetVendorType(v string) *QueryScheduleConferenceInfoResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type QueryScheduleConferenceInfoResponseBodyConferenceList struct {
+	// example:
+	//
+	// 636cf59f2b032f014ae32902
+	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	// example:
+	//
+	// 1668087732000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 123456789
+	RoomCode *string `json:"RoomCode,omitempty" xml:"RoomCode,omitempty"`
+	// example:
+	//
+	// 1668087731000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// xxx发起的视频会议
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s QueryScheduleConferenceInfoResponseBodyConferenceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryScheduleConferenceInfoResponseBodyConferenceList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryScheduleConferenceInfoResponseBodyConferenceList) SetConferenceId(v string) *QueryScheduleConferenceInfoResponseBodyConferenceList {
+	s.ConferenceId = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoResponseBodyConferenceList) SetEndTime(v int64) *QueryScheduleConferenceInfoResponseBodyConferenceList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoResponseBodyConferenceList) SetRoomCode(v string) *QueryScheduleConferenceInfoResponseBodyConferenceList {
+	s.RoomCode = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoResponseBodyConferenceList) SetStartTime(v int64) *QueryScheduleConferenceInfoResponseBodyConferenceList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoResponseBodyConferenceList) SetStatus(v int32) *QueryScheduleConferenceInfoResponseBodyConferenceList {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoResponseBodyConferenceList) SetTitle(v string) *QueryScheduleConferenceInfoResponseBodyConferenceList {
+	s.Title = &v
+	return s
+}
+
+type QueryScheduleConferenceInfoResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryScheduleConferenceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryScheduleConferenceInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryScheduleConferenceInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryScheduleConferenceInfoResponse) SetHeaders(v map[string]*string) *QueryScheduleConferenceInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoResponse) SetStatusCode(v int32) *QueryScheduleConferenceInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryScheduleConferenceInfoResponse) SetBody(v *QueryScheduleConferenceInfoResponseBody) *QueryScheduleConferenceInfoResponse {
+	s.Body = v
+	return s
+}
+
 type QueryUserHonorsHeaders struct {
 	CommonHeaders  map[string]*string                    `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *QueryUserHonorsHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -73247,6 +73577,103 @@ func (client *Client) QueryScheduleConference(request *QueryScheduleConferenceRe
 	headers := &QueryScheduleConferenceHeaders{}
 	_result = &QueryScheduleConferenceResponse{}
 	_body, _err := client.QueryScheduleConferenceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询预约会议历史会议信息
+//
+// @param tmpReq - QueryScheduleConferenceInfoRequest
+//
+// @param tmpHeader - QueryScheduleConferenceInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryScheduleConferenceInfoResponse
+func (client *Client) QueryScheduleConferenceInfoWithOptions(tmpReq *QueryScheduleConferenceInfoRequest, tmpHeader *QueryScheduleConferenceInfoHeaders, runtime *util.RuntimeOptions) (_result *QueryScheduleConferenceInfoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryScheduleConferenceInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &QueryScheduleConferenceInfoShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleConferenceId)) {
+		body["ScheduleConferenceId"] = request.ScheduleConferenceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryScheduleConferenceInfo"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ysp/queryScheduleConferenceInfo"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryScheduleConferenceInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询预约会议历史会议信息
+//
+// @param request - QueryScheduleConferenceInfoRequest
+//
+// @return QueryScheduleConferenceInfoResponse
+func (client *Client) QueryScheduleConferenceInfo(request *QueryScheduleConferenceInfoRequest) (_result *QueryScheduleConferenceInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QueryScheduleConferenceInfoHeaders{}
+	_result = &QueryScheduleConferenceInfoResponse{}
+	_body, _err := client.QueryScheduleConferenceInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
