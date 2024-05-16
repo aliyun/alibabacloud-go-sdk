@@ -1,33 +1,19 @@
-.idea/
+# OS
 .DS_Store
-.history/
-.nyc_output/
+
+# IDE
+.idea
+.settings
+.cache/
 .vscode/
-*.lock
-*.sum
-*.log
-vendor/
-*.iml
-target/
-.settings/
-.classpath
 .project
 .history/
-coverage.html
-coverage.out
-node_modules/
-libraries/
-**/.libraries.json
-*.sh
-**/bin/
-**/obj/
-**/csharp/**/.vs/
-**/dist/
-*.tgz
-test*
-.php_cs.cache
-.env
 
-**/python/**/__pycache__
-*.nupkg
-package-lock.json
+# Go build directory
+bin/
+pkg/
+
+# Unit test / coverage reports
+coverage.*
+
+*.sh
