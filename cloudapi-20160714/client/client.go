@@ -2102,6 +2102,175 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 	return s
 }
 
+type CreateAppCodeRequest struct {
+	// example:
+	//
+	// 3aaf905a0a1f4f0eabc6d891dfa08afc
+	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111203109
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s CreateAppCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppCodeRequest) SetAppCode(v string) *CreateAppCodeRequest {
+	s.AppCode = &v
+	return s
+}
+
+func (s *CreateAppCodeRequest) SetAppId(v string) *CreateAppCodeRequest {
+	s.AppId = &v
+	return s
+}
+
+type CreateAppCodeResponseBody struct {
+	// example:
+	//
+	// 418DAAE7-A0C2-5E9C-ADFF-4CD14A474F88
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAppCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppCodeResponseBody) SetRequestId(v string) *CreateAppCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAppCodeResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAppCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppCodeResponse) SetHeaders(v map[string]*string) *CreateAppCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAppCodeResponse) SetStatusCode(v int32) *CreateAppCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAppCodeResponse) SetBody(v *CreateAppCodeResponseBody) *CreateAppCodeResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAppKeyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111053351
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 204203237
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// 6f0a4ad7918a4b41a57fc087d5b066d0
+	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+}
+
+func (s CreateAppKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppKeyRequest) SetAppId(v string) *CreateAppKeyRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAppKeyRequest) SetAppKey(v string) *CreateAppKeyRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *CreateAppKeyRequest) SetAppSecret(v string) *CreateAppKeyRequest {
+	s.AppSecret = &v
+	return s
+}
+
+type CreateAppKeyResponseBody struct {
+	// example:
+	//
+	// 5D524309-6BED-5BB4-A735-F7D9F98B7B88
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAppKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppKeyResponseBody) SetRequestId(v string) *CreateAppKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAppKeyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAppKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppKeyResponse) SetHeaders(v map[string]*string) *CreateAppKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAppKeyResponse) SetStatusCode(v int32) *CreateAppKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAppKeyResponse) SetBody(v *CreateAppKeyResponseBody) *CreateAppKeyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBackendRequest struct {
 	// This parameter is required.
 	//
@@ -4817,6 +4986,170 @@ func (s *DeleteAppResponse) SetStatusCode(v int32) *DeleteAppResponse {
 }
 
 func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAppCodeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0d13f021c5cd4997831a9717e75b0663
+	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111265074
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s DeleteAppCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppCodeRequest) SetAppCode(v string) *DeleteAppCodeRequest {
+	s.AppCode = &v
+	return s
+}
+
+func (s *DeleteAppCodeRequest) SetAppId(v string) *DeleteAppCodeRequest {
+	s.AppId = &v
+	return s
+}
+
+type DeleteAppCodeResponseBody struct {
+	// example:
+	//
+	// E8515BA6-81CD-4191-A7CF-C4FCDD3C0D99
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAppCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppCodeResponseBody) SetRequestId(v string) *DeleteAppCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAppCodeResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAppCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAppCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppCodeResponse) SetHeaders(v map[string]*string) *DeleteAppCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAppCodeResponse) SetStatusCode(v int32) *DeleteAppCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAppCodeResponse) SetBody(v *DeleteAppCodeResponseBody) *DeleteAppCodeResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAppKeyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 110840611
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 203708622
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+}
+
+func (s DeleteAppKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppKeyRequest) SetAppId(v string) *DeleteAppKeyRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAppKeyRequest) SetAppKey(v string) *DeleteAppKeyRequest {
+	s.AppKey = &v
+	return s
+}
+
+type DeleteAppKeyResponseBody struct {
+	// example:
+	//
+	// 79EF055D-AC00-5161-8F35-6A36AAED7422
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAppKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppKeyResponseBody) SetRequestId(v string) *DeleteAppKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAppKeyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAppKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAppKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppKeyResponse) SetHeaders(v map[string]*string) *DeleteAppKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAppKeyResponse) SetStatusCode(v int32) *DeleteAppKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAppKeyResponse) SetBody(v *DeleteAppKeyResponseBody) *DeleteAppKeyResponse {
 	s.Body = v
 	return s
 }
@@ -46167,6 +46500,138 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 
 // Summary:
 //
+// 创建新的AppCode
+//
+// @param request - CreateAppCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppCodeResponse
+func (client *Client) CreateAppCodeWithOptions(request *CreateAppCodeRequest, runtime *util.RuntimeOptions) (_result *CreateAppCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppCode)) {
+		query["AppCode"] = request.AppCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAppCode"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAppCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建新的AppCode
+//
+// @param request - CreateAppCodeRequest
+//
+// @return CreateAppCodeResponse
+func (client *Client) CreateAppCode(request *CreateAppCodeRequest) (_result *CreateAppCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAppCodeResponse{}
+	_body, _err := client.CreateAppCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建新的AK、SK
+//
+// @param request - CreateAppKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppKeyResponse
+func (client *Client) CreateAppKeyWithOptions(request *CreateAppKeyRequest, runtime *util.RuntimeOptions) (_result *CreateAppKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppSecret)) {
+		query["AppSecret"] = request.AppSecret
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAppKey"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAppKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建新的AK、SK
+//
+// @param request - CreateAppKeyRequest
+//
+// @return CreateAppKeyResponse
+func (client *Client) CreateAppKey(request *CreateAppKeyRequest) (_result *CreateAppKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAppKeyResponse{}
+	_body, _err := client.CreateAppKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建后端服务
 //
 // @param request - CreateBackendRequest
@@ -47790,6 +48255,134 @@ func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppResponse{}
 	_body, _err := client.DeleteAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除新的AppCode
+//
+// @param request - DeleteAppCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppCodeResponse
+func (client *Client) DeleteAppCodeWithOptions(request *DeleteAppCodeRequest, runtime *util.RuntimeOptions) (_result *DeleteAppCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppCode)) {
+		query["AppCode"] = request.AppCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAppCode"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAppCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除新的AppCode
+//
+// @param request - DeleteAppCodeRequest
+//
+// @return DeleteAppCodeResponse
+func (client *Client) DeleteAppCode(request *DeleteAppCodeRequest) (_result *DeleteAppCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAppCodeResponse{}
+	_body, _err := client.DeleteAppCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除新的AppKey
+//
+// @param request - DeleteAppKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppKeyResponse
+func (client *Client) DeleteAppKeyWithOptions(request *DeleteAppKeyRequest, runtime *util.RuntimeOptions) (_result *DeleteAppKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAppKey"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAppKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除新的AppKey
+//
+// @param request - DeleteAppKeyRequest
+//
+// @return DeleteAppKeyResponse
+func (client *Client) DeleteAppKey(request *DeleteAppKeyRequest) (_result *DeleteAppKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAppKeyResponse{}
+	_body, _err := client.DeleteAppKeyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
