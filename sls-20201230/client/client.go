@@ -4175,15 +4175,20 @@ func (s *MachineGroupGroupAttribute) SetGroupTopic(v string) *MachineGroupGroupA
 
 type Project struct {
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// LRS
+	DataRedundancyType *string `json:"dataRedundancyType,omitempty" xml:"dataRedundancyType,omitempty"`
 	// This parameter is required.
 	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
 	LastModifyTime *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
 	Owner          *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// This parameter is required.
-	ProjectName     *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	Region          *string `json:"region,omitempty" xml:"region,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
+	ProjectName     *string                `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	Quota           map[string]interface{} `json:"quota,omitempty" xml:"quota,omitempty"`
+	Region          *string                `json:"region,omitempty" xml:"region,omitempty"`
+	ResourceGroupId *string                `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Status          *string                `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s Project) String() string {
@@ -4196,6 +4201,11 @@ func (s Project) GoString() string {
 
 func (s *Project) SetCreateTime(v string) *Project {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *Project) SetDataRedundancyType(v string) *Project {
+	s.DataRedundancyType = &v
 	return s
 }
 
@@ -4216,6 +4226,11 @@ func (s *Project) SetOwner(v string) *Project {
 
 func (s *Project) SetProjectName(v string) *Project {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *Project) SetQuota(v map[string]interface{}) *Project {
+	s.Quota = v
 	return s
 }
 
@@ -12988,6 +13003,7 @@ func (s *ListOSSIngestionsResponse) SetBody(v *ListOSSIngestionsResponseBody) *L
 }
 
 type ListProjectRequest struct {
+	FetchQuota *bool `json:"fetchQuota,omitempty" xml:"fetchQuota,omitempty"`
 	// The line from which the query starts. Default value: 0.
 	//
 	// example:
@@ -13015,6 +13031,11 @@ func (s ListProjectRequest) String() string {
 
 func (s ListProjectRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListProjectRequest) SetFetchQuota(v bool) *ListProjectRequest {
+	s.FetchQuota = &v
+	return s
 }
 
 func (s *ListProjectRequest) SetOffset(v int32) *ListProjectRequest {
@@ -25223,6 +25244,10 @@ func (client *Client) ListProjectWithOptions(request *ListProjectRequest, header
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FetchQuota)) {
+		query["fetchQuota"] = request.FetchQuota
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
 		query["offset"] = request.Offset
 	}
