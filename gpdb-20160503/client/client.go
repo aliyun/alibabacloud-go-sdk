@@ -450,6 +450,314 @@ func (s *CancelUpsertCollectionDataJobResponse) SetBody(v *CancelUpsertCollectio
 	return s
 }
 
+type CheckHadoopDataSourceRequest struct {
+	// This parameter is required.
+	CheckDir *string `json:"CheckDir,omitempty" xml:"CheckDir,omitempty"`
+	// This parameter is required.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CheckHadoopDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckHadoopDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckHadoopDataSourceRequest) SetCheckDir(v string) *CheckHadoopDataSourceRequest {
+	s.CheckDir = &v
+	return s
+}
+
+func (s *CheckHadoopDataSourceRequest) SetDBInstanceId(v string) *CheckHadoopDataSourceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CheckHadoopDataSourceRequest) SetDataSourceId(v string) *CheckHadoopDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *CheckHadoopDataSourceRequest) SetRegionId(v string) *CheckHadoopDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CheckHadoopDataSourceResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CheckHadoopDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckHadoopDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckHadoopDataSourceResponseBody) SetMessage(v string) *CheckHadoopDataSourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckHadoopDataSourceResponseBody) SetRequestId(v string) *CheckHadoopDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckHadoopDataSourceResponseBody) SetStatus(v string) *CheckHadoopDataSourceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CheckHadoopDataSourceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckHadoopDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckHadoopDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckHadoopDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckHadoopDataSourceResponse) SetHeaders(v map[string]*string) *CheckHadoopDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckHadoopDataSourceResponse) SetStatusCode(v int32) *CheckHadoopDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckHadoopDataSourceResponse) SetBody(v *CheckHadoopDataSourceResponseBody) *CheckHadoopDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type CheckHadoopNetConnectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CheckHadoopNetConnection
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c-xxx
+	EmrInstanceId *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CheckHadoopNetConnectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckHadoopNetConnectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckHadoopNetConnectionRequest) SetDBInstanceId(v string) *CheckHadoopNetConnectionRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CheckHadoopNetConnectionRequest) SetEmrInstanceId(v string) *CheckHadoopNetConnectionRequest {
+	s.EmrInstanceId = &v
+	return s
+}
+
+func (s *CheckHadoopNetConnectionRequest) SetRegionId(v string) *CheckHadoopNetConnectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CheckHadoopNetConnectionResponseBody struct {
+	// example:
+	//
+	// xxx
+	ConnectionMessage *string `json:"ConnectionMessage,omitempty" xml:"ConnectionMessage,omitempty"`
+	// example:
+	//
+	// Success
+	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckHadoopNetConnectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckHadoopNetConnectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckHadoopNetConnectionResponseBody) SetConnectionMessage(v string) *CheckHadoopNetConnectionResponseBody {
+	s.ConnectionMessage = &v
+	return s
+}
+
+func (s *CheckHadoopNetConnectionResponseBody) SetConnectionStatus(v string) *CheckHadoopNetConnectionResponseBody {
+	s.ConnectionStatus = &v
+	return s
+}
+
+func (s *CheckHadoopNetConnectionResponseBody) SetRequestId(v string) *CheckHadoopNetConnectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckHadoopNetConnectionResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckHadoopNetConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckHadoopNetConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckHadoopNetConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckHadoopNetConnectionResponse) SetHeaders(v map[string]*string) *CheckHadoopNetConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckHadoopNetConnectionResponse) SetStatusCode(v int32) *CheckHadoopNetConnectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckHadoopNetConnectionResponse) SetBody(v *CheckHadoopNetConnectionResponseBody) *CheckHadoopNetConnectionResponse {
+	s.Body = v
+	return s
+}
+
+type CheckJDBCSourceNetConnectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	JdbcConnectionString *string `json:"JdbcConnectionString,omitempty" xml:"JdbcConnectionString,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CheckJDBCSourceNetConnectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckJDBCSourceNetConnectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckJDBCSourceNetConnectionRequest) SetDBInstanceId(v string) *CheckJDBCSourceNetConnectionRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CheckJDBCSourceNetConnectionRequest) SetJdbcConnectionString(v string) *CheckJDBCSourceNetConnectionRequest {
+	s.JdbcConnectionString = &v
+	return s
+}
+
+func (s *CheckJDBCSourceNetConnectionRequest) SetRegionId(v string) *CheckJDBCSourceNetConnectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CheckJDBCSourceNetConnectionResponseBody struct {
+	// example:
+	//
+	// xxx
+	ConnectionMessage *string `json:"ConnectionMessage,omitempty" xml:"ConnectionMessage,omitempty"`
+	// example:
+	//
+	// Success
+	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckJDBCSourceNetConnectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckJDBCSourceNetConnectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckJDBCSourceNetConnectionResponseBody) SetConnectionMessage(v string) *CheckJDBCSourceNetConnectionResponseBody {
+	s.ConnectionMessage = &v
+	return s
+}
+
+func (s *CheckJDBCSourceNetConnectionResponseBody) SetConnectionStatus(v string) *CheckJDBCSourceNetConnectionResponseBody {
+	s.ConnectionStatus = &v
+	return s
+}
+
+func (s *CheckJDBCSourceNetConnectionResponseBody) SetRequestId(v string) *CheckJDBCSourceNetConnectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckJDBCSourceNetConnectionResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckJDBCSourceNetConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckJDBCSourceNetConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckJDBCSourceNetConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckJDBCSourceNetConnectionResponse) SetHeaders(v map[string]*string) *CheckJDBCSourceNetConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckJDBCSourceNetConnectionResponse) SetStatusCode(v int32) *CheckJDBCSourceNetConnectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckJDBCSourceNetConnectionResponse) SetBody(v *CheckJDBCSourceNetConnectionResponseBody) *CheckJDBCSourceNetConnectionResponse {
+	s.Body = v
+	return s
+}
+
 type CheckServiceLinkedRoleRequest struct {
 	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
 	//
@@ -2122,6 +2430,559 @@ func (s *CreateDocumentCollectionResponse) SetBody(v *CreateDocumentCollectionRe
 	return s
 }
 
+type CreateExtensionsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demo1
+	DBNames *string `json:"DBNames,omitempty" xml:"DBNames,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// citext, dblink
+	Extensions *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateExtensionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExtensionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExtensionsRequest) SetDBInstanceId(v string) *CreateExtensionsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateExtensionsRequest) SetDBNames(v string) *CreateExtensionsRequest {
+	s.DBNames = &v
+	return s
+}
+
+func (s *CreateExtensionsRequest) SetExtensions(v string) *CreateExtensionsRequest {
+	s.Extensions = &v
+	return s
+}
+
+func (s *CreateExtensionsRequest) SetRegionId(v string) *CreateExtensionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateExtensionsResponseBody struct {
+	// example:
+	//
+	// citext, dblink
+	Extensions *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateExtensionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExtensionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExtensionsResponseBody) SetExtensions(v string) *CreateExtensionsResponseBody {
+	s.Extensions = &v
+	return s
+}
+
+func (s *CreateExtensionsResponseBody) SetRequestId(v string) *CreateExtensionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateExtensionsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateExtensionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateExtensionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExtensionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExtensionsResponse) SetHeaders(v map[string]*string) *CreateExtensionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateExtensionsResponse) SetStatusCode(v int32) *CreateExtensionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateExtensionsResponse) SetBody(v *CreateExtensionsResponseBody) *CreateExtensionsResponse {
+	s.Body = v
+	return s
+}
+
+type CreateExternalDataServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test-adbpgss
+	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-adbpgss
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+}
+
+func (s CreateExternalDataServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExternalDataServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExternalDataServiceRequest) SetDBInstanceId(v string) *CreateExternalDataServiceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateExternalDataServiceRequest) SetRegionId(v string) *CreateExternalDataServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateExternalDataServiceRequest) SetServiceDescription(v string) *CreateExternalDataServiceRequest {
+	s.ServiceDescription = &v
+	return s
+}
+
+func (s *CreateExternalDataServiceRequest) SetServiceName(v string) *CreateExternalDataServiceRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *CreateExternalDataServiceRequest) SetServiceSpec(v string) *CreateExternalDataServiceRequest {
+	s.ServiceSpec = &v
+	return s
+}
+
+type CreateExternalDataServiceResponseBody struct {
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	ServiceId *int32 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s CreateExternalDataServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExternalDataServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExternalDataServiceResponseBody) SetRequestId(v string) *CreateExternalDataServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateExternalDataServiceResponseBody) SetServiceId(v int32) *CreateExternalDataServiceResponseBody {
+	s.ServiceId = &v
+	return s
+}
+
+type CreateExternalDataServiceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateExternalDataServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateExternalDataServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExternalDataServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExternalDataServiceResponse) SetHeaders(v map[string]*string) *CreateExternalDataServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateExternalDataServiceResponse) SetStatusCode(v int32) *CreateExternalDataServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateExternalDataServiceResponse) SetBody(v *CreateExternalDataServiceResponseBody) *CreateExternalDataServiceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHadoopDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// pxf for hdfs data source
+	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// example:
+	//
+	// hdfs_pxf
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// example:
+	//
+	// HDFS
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// c-1234567
+	EmrInstanceId *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	HDFSConf *string `json:"HDFSConf,omitempty" xml:"HDFSConf,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	HadoopCoreConf *string `json:"HadoopCoreConf,omitempty" xml:"HadoopCoreConf,omitempty"`
+	// example:
+	//
+	// emr
+	HadoopCreateType *string `json:"HadoopCreateType,omitempty" xml:"HadoopCreateType,omitempty"`
+	// example:
+	//
+	// 127.0.0.1 localhost
+	HadoopHostsAddress *string `json:"HadoopHostsAddress,omitempty" xml:"HadoopHostsAddress,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	HiveConf *string `json:"HiveConf,omitempty" xml:"HiveConf,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	MapReduceConf *string `json:"MapReduceConf,omitempty" xml:"MapReduceConf,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	YarnConf *string `json:"YarnConf,omitempty" xml:"YarnConf,omitempty"`
+}
+
+func (s CreateHadoopDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHadoopDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHadoopDataSourceRequest) SetDBInstanceId(v string) *CreateHadoopDataSourceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceRequest) SetDataSourceDescription(v string) *CreateHadoopDataSourceRequest {
+	s.DataSourceDescription = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceRequest) SetDataSourceName(v string) *CreateHadoopDataSourceRequest {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceRequest) SetDataSourceType(v string) *CreateHadoopDataSourceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceRequest) SetEmrInstanceId(v string) *CreateHadoopDataSourceRequest {
+	s.EmrInstanceId = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceRequest) SetHDFSConf(v string) *CreateHadoopDataSourceRequest {
+	s.HDFSConf = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceRequest) SetHadoopCoreConf(v string) *CreateHadoopDataSourceRequest {
+	s.HadoopCoreConf = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceRequest) SetHadoopCreateType(v string) *CreateHadoopDataSourceRequest {
+	s.HadoopCreateType = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceRequest) SetHadoopHostsAddress(v string) *CreateHadoopDataSourceRequest {
+	s.HadoopHostsAddress = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceRequest) SetHiveConf(v string) *CreateHadoopDataSourceRequest {
+	s.HiveConf = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceRequest) SetMapReduceConf(v string) *CreateHadoopDataSourceRequest {
+	s.MapReduceConf = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceRequest) SetRegionId(v string) *CreateHadoopDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceRequest) SetYarnConf(v string) *CreateHadoopDataSourceRequest {
+	s.YarnConf = &v
+	return s
+}
+
+type CreateHadoopDataSourceResponseBody struct {
+	// example:
+	//
+	// 123
+	DataSourceId *int32 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// 2C125605-266F-41CA-8AC5-3A643D4F42C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateHadoopDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHadoopDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHadoopDataSourceResponseBody) SetDataSourceId(v int32) *CreateHadoopDataSourceResponseBody {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceResponseBody) SetRequestId(v string) *CreateHadoopDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateHadoopDataSourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHadoopDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateHadoopDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHadoopDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHadoopDataSourceResponse) SetHeaders(v map[string]*string) *CreateHadoopDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHadoopDataSourceResponse) SetStatusCode(v int32) *CreateHadoopDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHadoopDataSourceResponse) SetBody(v *CreateHadoopDataSourceResponseBody) *CreateHadoopDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateJDBCDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// test
+	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// example:
+	//
+	// jdbc_pxf
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// example:
+	//
+	// mysql
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	JDBCConnectionString *string `json:"JDBCConnectionString,omitempty" xml:"JDBCConnectionString,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	JDBCPassword *string `json:"JDBCPassword,omitempty" xml:"JDBCPassword,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	JDBCUserName *string `json:"JDBCUserName,omitempty" xml:"JDBCUserName,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateJDBCDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJDBCDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJDBCDataSourceRequest) SetDBInstanceId(v string) *CreateJDBCDataSourceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateJDBCDataSourceRequest) SetDataSourceDescription(v string) *CreateJDBCDataSourceRequest {
+	s.DataSourceDescription = &v
+	return s
+}
+
+func (s *CreateJDBCDataSourceRequest) SetDataSourceName(v string) *CreateJDBCDataSourceRequest {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *CreateJDBCDataSourceRequest) SetDataSourceType(v string) *CreateJDBCDataSourceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *CreateJDBCDataSourceRequest) SetJDBCConnectionString(v string) *CreateJDBCDataSourceRequest {
+	s.JDBCConnectionString = &v
+	return s
+}
+
+func (s *CreateJDBCDataSourceRequest) SetJDBCPassword(v string) *CreateJDBCDataSourceRequest {
+	s.JDBCPassword = &v
+	return s
+}
+
+func (s *CreateJDBCDataSourceRequest) SetJDBCUserName(v string) *CreateJDBCDataSourceRequest {
+	s.JDBCUserName = &v
+	return s
+}
+
+func (s *CreateJDBCDataSourceRequest) SetRegionId(v string) *CreateJDBCDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateJDBCDataSourceResponseBody struct {
+	// example:
+	//
+	// 123
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// 2C125605-266F-41CA-8AC5-3A643D4F42C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateJDBCDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJDBCDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJDBCDataSourceResponseBody) SetDataSourceId(v string) *CreateJDBCDataSourceResponseBody {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *CreateJDBCDataSourceResponseBody) SetRequestId(v string) *CreateJDBCDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateJDBCDataSourceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateJDBCDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateJDBCDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJDBCDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJDBCDataSourceResponse) SetHeaders(v map[string]*string) *CreateJDBCDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateJDBCDataSourceResponse) SetStatusCode(v int32) *CreateJDBCDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateJDBCDataSourceResponse) SetBody(v *CreateJDBCDataSourceResponseBody) *CreateJDBCDataSourceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateNamespaceRequest struct {
 	// The instance ID.
 	//
@@ -2493,6 +3354,696 @@ func (s *CreateServiceLinkedRoleResponse) SetStatusCode(v int32) *CreateServiceL
 }
 
 func (s *CreateServiceLinkedRoleResponse) SetBody(v *CreateServiceLinkedRoleResponseBody) *CreateServiceLinkedRoleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateStreamingDataServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test-adbpgss
+	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-adbpgss
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+}
+
+func (s CreateStreamingDataServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStreamingDataServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStreamingDataServiceRequest) SetDBInstanceId(v string) *CreateStreamingDataServiceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateStreamingDataServiceRequest) SetRegionId(v string) *CreateStreamingDataServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateStreamingDataServiceRequest) SetServiceDescription(v string) *CreateStreamingDataServiceRequest {
+	s.ServiceDescription = &v
+	return s
+}
+
+func (s *CreateStreamingDataServiceRequest) SetServiceName(v string) *CreateStreamingDataServiceRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *CreateStreamingDataServiceRequest) SetServiceSpec(v string) *CreateStreamingDataServiceRequest {
+	s.ServiceSpec = &v
+	return s
+}
+
+type CreateStreamingDataServiceResponseBody struct {
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceId *int32  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s CreateStreamingDataServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStreamingDataServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStreamingDataServiceResponseBody) SetRequestId(v string) *CreateStreamingDataServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateStreamingDataServiceResponseBody) SetServiceId(v int32) *CreateStreamingDataServiceResponseBody {
+	s.ServiceId = &v
+	return s
+}
+
+type CreateStreamingDataServiceResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateStreamingDataServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateStreamingDataServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStreamingDataServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStreamingDataServiceResponse) SetHeaders(v map[string]*string) *CreateStreamingDataServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateStreamingDataServiceResponse) SetStatusCode(v int32) *CreateStreamingDataServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateStreamingDataServiceResponse) SetBody(v *CreateStreamingDataServiceResponseBody) *CreateStreamingDataServiceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateStreamingDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CreateExternalDataSource
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"broker_list":"broker0:9091,broker1:9091","topic":"topic"}
+	DataSourceConfig      *string `json:"DataSourceConfig,omitempty" xml:"DataSourceConfig,omitempty"`
+	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-kafka
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// kafka
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *int32 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s CreateStreamingDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStreamingDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStreamingDataSourceRequest) SetDBInstanceId(v string) *CreateStreamingDataSourceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateStreamingDataSourceRequest) SetDataSourceConfig(v string) *CreateStreamingDataSourceRequest {
+	s.DataSourceConfig = &v
+	return s
+}
+
+func (s *CreateStreamingDataSourceRequest) SetDataSourceDescription(v string) *CreateStreamingDataSourceRequest {
+	s.DataSourceDescription = &v
+	return s
+}
+
+func (s *CreateStreamingDataSourceRequest) SetDataSourceName(v string) *CreateStreamingDataSourceRequest {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *CreateStreamingDataSourceRequest) SetDataSourceType(v string) *CreateStreamingDataSourceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *CreateStreamingDataSourceRequest) SetRegionId(v string) *CreateStreamingDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateStreamingDataSourceRequest) SetServiceId(v int32) *CreateStreamingDataSourceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type CreateStreamingDataSourceResponseBody struct {
+	// example:
+	//
+	// 1
+	DataSourceId *int32 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateStreamingDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStreamingDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStreamingDataSourceResponseBody) SetDataSourceId(v int32) *CreateStreamingDataSourceResponseBody {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *CreateStreamingDataSourceResponseBody) SetRequestId(v string) *CreateStreamingDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateStreamingDataSourceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateStreamingDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateStreamingDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStreamingDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStreamingDataSourceResponse) SetHeaders(v map[string]*string) *CreateStreamingDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateStreamingDataSourceResponse) SetStatusCode(v int32) *CreateStreamingDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateStreamingDataSourceResponse) SetBody(v *CreateStreamingDataSourceResponseBody) *CreateStreamingDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateStreamingJobRequest struct {
+	// example:
+	//
+	// test-account
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// example:
+	//
+	// ATLEAST / EXACTLY
+	Consistency *string `json:"Consistency,omitempty" xml:"Consistency,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DataSourceId *string   `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DestColumns  []*string `json:"DestColumns,omitempty" xml:"DestColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dest-db
+	DestDatabase *string `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
+	DestSchema   *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
+	// example:
+	//
+	// dest-table
+	DestTable       *string `json:"DestTable,omitempty" xml:"DestTable,omitempty"`
+	ErrorLimitCount *int64  `json:"ErrorLimitCount,omitempty" xml:"ErrorLimitCount,omitempty"`
+	// example:
+	//
+	// earliest /  latest
+	FallbackOffset *string `json:"FallbackOffset,omitempty" xml:"FallbackOffset,omitempty"`
+	// example:
+	//
+	// group_name。
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	JobConfig *string `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
+	// example:
+	//
+	// test-job
+	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-job
+	JobName      *string   `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	MatchColumns []*string `json:"MatchColumns,omitempty" xml:"MatchColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// basic / professional
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// pwd123
+	Password   *string   `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SrcColumns []*string `json:"SrcColumns,omitempty" xml:"SrcColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	TryRun        *bool     `json:"TryRun,omitempty" xml:"TryRun,omitempty"`
+	UpdateColumns []*string `json:"UpdateColumns,omitempty" xml:"UpdateColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// insert/update/merge
+	WriteMode *string `json:"WriteMode,omitempty" xml:"WriteMode,omitempty"`
+}
+
+func (s CreateStreamingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStreamingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStreamingJobRequest) SetAccount(v string) *CreateStreamingJobRequest {
+	s.Account = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetConsistency(v string) *CreateStreamingJobRequest {
+	s.Consistency = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetDBInstanceId(v string) *CreateStreamingJobRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetDataSourceId(v string) *CreateStreamingJobRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetDestColumns(v []*string) *CreateStreamingJobRequest {
+	s.DestColumns = v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetDestDatabase(v string) *CreateStreamingJobRequest {
+	s.DestDatabase = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetDestSchema(v string) *CreateStreamingJobRequest {
+	s.DestSchema = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetDestTable(v string) *CreateStreamingJobRequest {
+	s.DestTable = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetErrorLimitCount(v int64) *CreateStreamingJobRequest {
+	s.ErrorLimitCount = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetFallbackOffset(v string) *CreateStreamingJobRequest {
+	s.FallbackOffset = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetGroupName(v string) *CreateStreamingJobRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetJobConfig(v string) *CreateStreamingJobRequest {
+	s.JobConfig = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetJobDescription(v string) *CreateStreamingJobRequest {
+	s.JobDescription = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetJobName(v string) *CreateStreamingJobRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetMatchColumns(v []*string) *CreateStreamingJobRequest {
+	s.MatchColumns = v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetMode(v string) *CreateStreamingJobRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetPassword(v string) *CreateStreamingJobRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetRegionId(v string) *CreateStreamingJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetSrcColumns(v []*string) *CreateStreamingJobRequest {
+	s.SrcColumns = v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetTryRun(v bool) *CreateStreamingJobRequest {
+	s.TryRun = &v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetUpdateColumns(v []*string) *CreateStreamingJobRequest {
+	s.UpdateColumns = v
+	return s
+}
+
+func (s *CreateStreamingJobRequest) SetWriteMode(v string) *CreateStreamingJobRequest {
+	s.WriteMode = &v
+	return s
+}
+
+type CreateStreamingJobShrinkRequest struct {
+	// example:
+	//
+	// test-account
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// example:
+	//
+	// ATLEAST / EXACTLY
+	Consistency *string `json:"Consistency,omitempty" xml:"Consistency,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DataSourceId      *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DestColumnsShrink *string `json:"DestColumns,omitempty" xml:"DestColumns,omitempty"`
+	// example:
+	//
+	// dest-db
+	DestDatabase *string `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
+	DestSchema   *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
+	// example:
+	//
+	// dest-table
+	DestTable       *string `json:"DestTable,omitempty" xml:"DestTable,omitempty"`
+	ErrorLimitCount *int64  `json:"ErrorLimitCount,omitempty" xml:"ErrorLimitCount,omitempty"`
+	// example:
+	//
+	// earliest /  latest
+	FallbackOffset *string `json:"FallbackOffset,omitempty" xml:"FallbackOffset,omitempty"`
+	// example:
+	//
+	// group_name。
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	JobConfig *string `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
+	// example:
+	//
+	// test-job
+	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-job
+	JobName            *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	MatchColumnsShrink *string `json:"MatchColumns,omitempty" xml:"MatchColumns,omitempty"`
+	// example:
+	//
+	// basic / professional
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// pwd123
+	Password         *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SrcColumnsShrink *string `json:"SrcColumns,omitempty" xml:"SrcColumns,omitempty"`
+	// example:
+	//
+	// true
+	TryRun              *bool   `json:"TryRun,omitempty" xml:"TryRun,omitempty"`
+	UpdateColumnsShrink *string `json:"UpdateColumns,omitempty" xml:"UpdateColumns,omitempty"`
+	// example:
+	//
+	// insert/update/merge
+	WriteMode *string `json:"WriteMode,omitempty" xml:"WriteMode,omitempty"`
+}
+
+func (s CreateStreamingJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStreamingJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetAccount(v string) *CreateStreamingJobShrinkRequest {
+	s.Account = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetConsistency(v string) *CreateStreamingJobShrinkRequest {
+	s.Consistency = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetDBInstanceId(v string) *CreateStreamingJobShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetDataSourceId(v string) *CreateStreamingJobShrinkRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetDestColumnsShrink(v string) *CreateStreamingJobShrinkRequest {
+	s.DestColumnsShrink = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetDestDatabase(v string) *CreateStreamingJobShrinkRequest {
+	s.DestDatabase = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetDestSchema(v string) *CreateStreamingJobShrinkRequest {
+	s.DestSchema = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetDestTable(v string) *CreateStreamingJobShrinkRequest {
+	s.DestTable = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetErrorLimitCount(v int64) *CreateStreamingJobShrinkRequest {
+	s.ErrorLimitCount = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetFallbackOffset(v string) *CreateStreamingJobShrinkRequest {
+	s.FallbackOffset = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetGroupName(v string) *CreateStreamingJobShrinkRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetJobConfig(v string) *CreateStreamingJobShrinkRequest {
+	s.JobConfig = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetJobDescription(v string) *CreateStreamingJobShrinkRequest {
+	s.JobDescription = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetJobName(v string) *CreateStreamingJobShrinkRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetMatchColumnsShrink(v string) *CreateStreamingJobShrinkRequest {
+	s.MatchColumnsShrink = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetMode(v string) *CreateStreamingJobShrinkRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetPassword(v string) *CreateStreamingJobShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetRegionId(v string) *CreateStreamingJobShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetSrcColumnsShrink(v string) *CreateStreamingJobShrinkRequest {
+	s.SrcColumnsShrink = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetTryRun(v bool) *CreateStreamingJobShrinkRequest {
+	s.TryRun = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetUpdateColumnsShrink(v string) *CreateStreamingJobShrinkRequest {
+	s.UpdateColumnsShrink = &v
+	return s
+}
+
+func (s *CreateStreamingJobShrinkRequest) SetWriteMode(v string) *CreateStreamingJobShrinkRequest {
+	s.WriteMode = &v
+	return s
+}
+
+type CreateStreamingJobResponseBody struct {
+	// example:
+	//
+	// 1
+	JobId *int32 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateStreamingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStreamingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStreamingJobResponseBody) SetJobId(v int32) *CreateStreamingJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *CreateStreamingJobResponseBody) SetRequestId(v string) *CreateStreamingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateStreamingJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateStreamingJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateStreamingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStreamingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStreamingJobResponse) SetHeaders(v map[string]*string) *CreateStreamingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateStreamingJobResponse) SetStatusCode(v int32) *CreateStreamingJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateStreamingJobResponse) SetBody(v *CreateStreamingJobResponseBody) *CreateStreamingJobResponse {
 	s.Body = v
 	return s
 }
@@ -3576,6 +5127,372 @@ func (s *DeleteDocumentCollectionResponse) SetBody(v *DeleteDocumentCollectionRe
 	return s
 }
 
+type DeleteExtensionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demo1
+	DBNames *string `json:"DBNames,omitempty" xml:"DBNames,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// citext
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteExtensionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExtensionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExtensionRequest) SetDBInstanceId(v string) *DeleteExtensionRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteExtensionRequest) SetDBNames(v string) *DeleteExtensionRequest {
+	s.DBNames = &v
+	return s
+}
+
+func (s *DeleteExtensionRequest) SetExtension(v string) *DeleteExtensionRequest {
+	s.Extension = &v
+	return s
+}
+
+func (s *DeleteExtensionRequest) SetRegionId(v string) *DeleteExtensionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteExtensionResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteExtensionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExtensionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExtensionResponseBody) SetRequestId(v string) *DeleteExtensionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteExtensionResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteExtensionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExtensionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExtensionResponse) SetHeaders(v map[string]*string) *DeleteExtensionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteExtensionResponse) SetStatusCode(v int32) *DeleteExtensionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteExtensionResponse) SetBody(v *DeleteExtensionResponseBody) *DeleteExtensionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteExternalDataServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s DeleteExternalDataServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExternalDataServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExternalDataServiceRequest) SetDBInstanceId(v string) *DeleteExternalDataServiceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteExternalDataServiceRequest) SetRegionId(v string) *DeleteExternalDataServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteExternalDataServiceRequest) SetServiceId(v string) *DeleteExternalDataServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type DeleteExternalDataServiceResponseBody struct {
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteExternalDataServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExternalDataServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExternalDataServiceResponseBody) SetRequestId(v string) *DeleteExternalDataServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteExternalDataServiceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteExternalDataServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteExternalDataServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExternalDataServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExternalDataServiceResponse) SetHeaders(v map[string]*string) *DeleteExternalDataServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteExternalDataServiceResponse) SetStatusCode(v int32) *DeleteExternalDataServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteExternalDataServiceResponse) SetBody(v *DeleteExternalDataServiceResponseBody) *DeleteExternalDataServiceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHadoopDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteHadoopDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHadoopDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHadoopDataSourceRequest) SetDBInstanceId(v string) *DeleteHadoopDataSourceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteHadoopDataSourceRequest) SetDataSourceId(v string) *DeleteHadoopDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DeleteHadoopDataSourceRequest) SetRegionId(v string) *DeleteHadoopDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteHadoopDataSourceResponseBody struct {
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteHadoopDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHadoopDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHadoopDataSourceResponseBody) SetRequestId(v string) *DeleteHadoopDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteHadoopDataSourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHadoopDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteHadoopDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHadoopDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHadoopDataSourceResponse) SetHeaders(v map[string]*string) *DeleteHadoopDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHadoopDataSourceResponse) SetStatusCode(v int32) *DeleteHadoopDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHadoopDataSourceResponse) SetBody(v *DeleteHadoopDataSourceResponseBody) *DeleteHadoopDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteJDBCDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteJDBCDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteJDBCDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteJDBCDataSourceRequest) SetDBInstanceId(v string) *DeleteJDBCDataSourceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteJDBCDataSourceRequest) SetDataSourceId(v string) *DeleteJDBCDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DeleteJDBCDataSourceRequest) SetRegionId(v string) *DeleteJDBCDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteJDBCDataSourceResponseBody struct {
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteJDBCDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteJDBCDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteJDBCDataSourceResponseBody) SetRequestId(v string) *DeleteJDBCDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteJDBCDataSourceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteJDBCDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteJDBCDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteJDBCDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteJDBCDataSourceResponse) SetHeaders(v map[string]*string) *DeleteJDBCDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteJDBCDataSourceResponse) SetStatusCode(v int32) *DeleteJDBCDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteJDBCDataSourceResponse) SetBody(v *DeleteJDBCDataSourceResponseBody) *DeleteJDBCDataSourceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteNamespaceRequest struct {
 	// The instance ID.
 	//
@@ -3735,6 +5652,285 @@ func (s *DeleteNamespaceResponse) SetStatusCode(v int32) *DeleteNamespaceRespons
 }
 
 func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *DeleteNamespaceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteStreamingDataServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s DeleteStreamingDataServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStreamingDataServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStreamingDataServiceRequest) SetDBInstanceId(v string) *DeleteStreamingDataServiceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteStreamingDataServiceRequest) SetRegionId(v string) *DeleteStreamingDataServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteStreamingDataServiceRequest) SetServiceId(v string) *DeleteStreamingDataServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type DeleteStreamingDataServiceResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteStreamingDataServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStreamingDataServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStreamingDataServiceResponseBody) SetErrorMessage(v string) *DeleteStreamingDataServiceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteStreamingDataServiceResponseBody) SetRequestId(v string) *DeleteStreamingDataServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteStreamingDataServiceResponseBody) SetStatus(v bool) *DeleteStreamingDataServiceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteStreamingDataServiceResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteStreamingDataServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteStreamingDataServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStreamingDataServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStreamingDataServiceResponse) SetHeaders(v map[string]*string) *DeleteStreamingDataServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteStreamingDataServiceResponse) SetStatusCode(v int32) *DeleteStreamingDataServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteStreamingDataServiceResponse) SetBody(v *DeleteStreamingDataServiceResponseBody) *DeleteStreamingDataServiceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteStreamingDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DataSourceId *int32  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteStreamingDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStreamingDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStreamingDataSourceRequest) SetDBInstanceId(v string) *DeleteStreamingDataSourceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteStreamingDataSourceRequest) SetDataSourceId(v int32) *DeleteStreamingDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DeleteStreamingDataSourceRequest) SetRegionId(v string) *DeleteStreamingDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteStreamingDataSourceResponseBody struct {
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteStreamingDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStreamingDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStreamingDataSourceResponseBody) SetRequestId(v string) *DeleteStreamingDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteStreamingDataSourceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteStreamingDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteStreamingDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStreamingDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStreamingDataSourceResponse) SetHeaders(v map[string]*string) *DeleteStreamingDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteStreamingDataSourceResponse) SetStatusCode(v int32) *DeleteStreamingDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteStreamingDataSourceResponse) SetBody(v *DeleteStreamingDataSourceResponseBody) *DeleteStreamingDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteStreamingJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	JobId    *int32  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteStreamingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStreamingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStreamingJobRequest) SetDBInstanceId(v string) *DeleteStreamingJobRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteStreamingJobRequest) SetJobId(v int32) *DeleteStreamingJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *DeleteStreamingJobRequest) SetRegionId(v string) *DeleteStreamingJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteStreamingJobResponseBody struct {
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteStreamingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStreamingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStreamingJobResponseBody) SetRequestId(v string) *DeleteStreamingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteStreamingJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteStreamingJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteStreamingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStreamingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStreamingJobResponse) SetHeaders(v map[string]*string) *DeleteStreamingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteStreamingJobResponse) SetStatusCode(v int32) *DeleteStreamingJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteStreamingJobResponse) SetBody(v *DeleteStreamingJobResponseBody) *DeleteStreamingJobResponse {
 	s.Body = v
 	return s
 }
@@ -13268,6 +15464,591 @@ func (s *DescribeDownloadSQLLogsResponse) SetBody(v *DescribeDownloadSQLLogsResp
 	return s
 }
 
+type DescribeExternalDataServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s DescribeExternalDataServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExternalDataServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExternalDataServiceRequest) SetDBInstanceId(v string) *DescribeExternalDataServiceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeExternalDataServiceRequest) SetRegionId(v string) *DescribeExternalDataServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeExternalDataServiceRequest) SetServiceId(v string) *DescribeExternalDataServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type DescribeExternalDataServiceResponseBody struct {
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2019-09-08T17:00:00Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// test-adbpgss
+	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// test-adbpgss
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// example:
+	//
+	// 2
+	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeExternalDataServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExternalDataServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExternalDataServiceResponseBody) SetCreateTime(v string) *DescribeExternalDataServiceResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeExternalDataServiceResponseBody) SetModifyTime(v string) *DescribeExternalDataServiceResponseBody {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *DescribeExternalDataServiceResponseBody) SetRequestId(v string) *DescribeExternalDataServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeExternalDataServiceResponseBody) SetServiceDescription(v string) *DescribeExternalDataServiceResponseBody {
+	s.ServiceDescription = &v
+	return s
+}
+
+func (s *DescribeExternalDataServiceResponseBody) SetServiceId(v string) *DescribeExternalDataServiceResponseBody {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *DescribeExternalDataServiceResponseBody) SetServiceName(v string) *DescribeExternalDataServiceResponseBody {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *DescribeExternalDataServiceResponseBody) SetServiceSpec(v string) *DescribeExternalDataServiceResponseBody {
+	s.ServiceSpec = &v
+	return s
+}
+
+func (s *DescribeExternalDataServiceResponseBody) SetStatus(v string) *DescribeExternalDataServiceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeExternalDataServiceResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeExternalDataServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeExternalDataServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExternalDataServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExternalDataServiceResponse) SetHeaders(v map[string]*string) *DescribeExternalDataServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeExternalDataServiceResponse) SetStatusCode(v int32) *DescribeExternalDataServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeExternalDataServiceResponse) SetBody(v *DescribeExternalDataServiceResponseBody) *DescribeExternalDataServiceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHadoopClustersInSameNetRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeHadoopClustersInSameNetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHadoopClustersInSameNetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHadoopClustersInSameNetRequest) SetDBInstanceId(v string) *DescribeHadoopClustersInSameNetRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeHadoopClustersInSameNetRequest) SetRegionId(v string) *DescribeHadoopClustersInSameNetRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeHadoopClustersInSameNetResponseBody struct {
+	Clusters []*string `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeHadoopClustersInSameNetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHadoopClustersInSameNetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHadoopClustersInSameNetResponseBody) SetClusters(v []*string) *DescribeHadoopClustersInSameNetResponseBody {
+	s.Clusters = v
+	return s
+}
+
+func (s *DescribeHadoopClustersInSameNetResponseBody) SetRequestId(v string) *DescribeHadoopClustersInSameNetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeHadoopClustersInSameNetResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHadoopClustersInSameNetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeHadoopClustersInSameNetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHadoopClustersInSameNetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHadoopClustersInSameNetResponse) SetHeaders(v map[string]*string) *DescribeHadoopClustersInSameNetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHadoopClustersInSameNetResponse) SetStatusCode(v int32) *DescribeHadoopClustersInSameNetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHadoopClustersInSameNetResponse) SetBody(v *DescribeHadoopClustersInSameNetResponseBody) *DescribeHadoopClustersInSameNetResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHadoopConfigsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hdfs-site
+	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c-xxx
+	EmrInstanceId *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeHadoopConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHadoopConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHadoopConfigsRequest) SetConfigName(v string) *DescribeHadoopConfigsRequest {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *DescribeHadoopConfigsRequest) SetDBInstanceId(v string) *DescribeHadoopConfigsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeHadoopConfigsRequest) SetEmrInstanceId(v string) *DescribeHadoopConfigsRequest {
+	s.EmrInstanceId = &v
+	return s
+}
+
+func (s *DescribeHadoopConfigsRequest) SetRegionId(v string) *DescribeHadoopConfigsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeHadoopConfigsResponseBody struct {
+	// example:
+	//
+	// hdfs-site
+	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// example:
+	//
+	// <?xml version="1.0"?>
+	//
+	// <configuration>
+	//
+	//     <property>
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeHadoopConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHadoopConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHadoopConfigsResponseBody) SetConfigName(v string) *DescribeHadoopConfigsResponseBody {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *DescribeHadoopConfigsResponseBody) SetConfigValue(v string) *DescribeHadoopConfigsResponseBody {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *DescribeHadoopConfigsResponseBody) SetRequestId(v string) *DescribeHadoopConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeHadoopConfigsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHadoopConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeHadoopConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHadoopConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHadoopConfigsResponse) SetHeaders(v map[string]*string) *DescribeHadoopConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHadoopConfigsResponse) SetStatusCode(v int32) *DescribeHadoopConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHadoopConfigsResponse) SetBody(v *DescribeHadoopConfigsResponseBody) *DescribeHadoopConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHadoopDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 123
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeHadoopDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHadoopDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHadoopDataSourceRequest) SetDBInstanceId(v string) *DescribeHadoopDataSourceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceRequest) SetDataSourceId(v string) *DescribeHadoopDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceRequest) SetRegionId(v string) *DescribeHadoopDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeHadoopDataSourceResponseBody struct {
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// pxf for hdfs data source
+	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// example:
+	//
+	// HadoopDir
+	DataSourceDir *string `json:"DataSourceDir,omitempty" xml:"DataSourceDir,omitempty"`
+	// example:
+	//
+	// 123
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// hdfs_pxf
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// example:
+	//
+	// Running
+	DataSourceStatus *string `json:"DataSourceStatus,omitempty" xml:"DataSourceStatus,omitempty"`
+	DataSourceType   *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// c-1234567
+	EmrInstanceId *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	HDFSConf *string `json:"HDFSConf,omitempty" xml:"HDFSConf,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	HadoopCoreConf *string `json:"HadoopCoreConf,omitempty" xml:"HadoopCoreConf,omitempty"`
+	// example:
+	//
+	// HDFS
+	HadoopCreateType *string `json:"HadoopCreateType,omitempty" xml:"HadoopCreateType,omitempty"`
+	// example:
+	//
+	// 127.0.0.1 localhost
+	HadoopHostsAddress *string `json:"HadoopHostsAddress,omitempty" xml:"HadoopHostsAddress,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	HiveConf *string `json:"HiveConf,omitempty" xml:"HiveConf,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	MapReduceConf *string `json:"MapReduceConf,omitempty" xml:"MapReduceConf,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ""
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	YarnConf *string `json:"YarnConf,omitempty" xml:"YarnConf,omitempty"`
+}
+
+func (s DescribeHadoopDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHadoopDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetCreateTime(v string) *DescribeHadoopDataSourceResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetDataSourceDescription(v string) *DescribeHadoopDataSourceResponseBody {
+	s.DataSourceDescription = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetDataSourceDir(v string) *DescribeHadoopDataSourceResponseBody {
+	s.DataSourceDir = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetDataSourceId(v string) *DescribeHadoopDataSourceResponseBody {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetDataSourceName(v string) *DescribeHadoopDataSourceResponseBody {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetDataSourceStatus(v string) *DescribeHadoopDataSourceResponseBody {
+	s.DataSourceStatus = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetDataSourceType(v string) *DescribeHadoopDataSourceResponseBody {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetEmrInstanceId(v string) *DescribeHadoopDataSourceResponseBody {
+	s.EmrInstanceId = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetHDFSConf(v string) *DescribeHadoopDataSourceResponseBody {
+	s.HDFSConf = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetHadoopCoreConf(v string) *DescribeHadoopDataSourceResponseBody {
+	s.HadoopCoreConf = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetHadoopCreateType(v string) *DescribeHadoopDataSourceResponseBody {
+	s.HadoopCreateType = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetHadoopHostsAddress(v string) *DescribeHadoopDataSourceResponseBody {
+	s.HadoopHostsAddress = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetHiveConf(v string) *DescribeHadoopDataSourceResponseBody {
+	s.HiveConf = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetMapReduceConf(v string) *DescribeHadoopDataSourceResponseBody {
+	s.MapReduceConf = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetRequestId(v string) *DescribeHadoopDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetStatusMessage(v string) *DescribeHadoopDataSourceResponseBody {
+	s.StatusMessage = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponseBody) SetYarnConf(v string) *DescribeHadoopDataSourceResponseBody {
+	s.YarnConf = &v
+	return s
+}
+
+type DescribeHadoopDataSourceResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHadoopDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeHadoopDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHadoopDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHadoopDataSourceResponse) SetHeaders(v map[string]*string) *DescribeHadoopDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponse) SetStatusCode(v int32) *DescribeHadoopDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHadoopDataSourceResponse) SetBody(v *DescribeHadoopDataSourceResponseBody) *DescribeHadoopDataSourceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeHealthStatusRequest struct {
 	// The ID of the instance.
 	//
@@ -14196,6 +16977,172 @@ func (s *DescribeIMVInfosResponse) SetStatusCode(v int32) *DescribeIMVInfosRespo
 }
 
 func (s *DescribeIMVInfosResponse) SetBody(v *DescribeIMVInfosResponseBody) *DescribeIMVInfosResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeJDBCDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+}
+
+func (s DescribeJDBCDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJDBCDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJDBCDataSourceRequest) SetDBInstanceId(v string) *DescribeJDBCDataSourceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceRequest) SetDataSourceId(v string) *DescribeJDBCDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+type DescribeJDBCDataSourceResponseBody struct {
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
+	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// example:
+	//
+	// 123
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// hdfs_pxf
+	DataSourceName   *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	DataSourceStatus *string `json:"DataSourceStatus,omitempty" xml:"DataSourceStatus,omitempty"`
+	// example:
+	//
+	// MySQL
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	JDBCConnectionString *string `json:"JDBCConnectionString,omitempty" xml:"JDBCConnectionString,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	JDBCPassword *string `json:"JDBCPassword,omitempty" xml:"JDBCPassword,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	JDBCUserName *string `json:"JDBCUserName,omitempty" xml:"JDBCUserName,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ""
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+}
+
+func (s DescribeJDBCDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJDBCDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJDBCDataSourceResponseBody) SetCreateTime(v string) *DescribeJDBCDataSourceResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceResponseBody) SetDataSourceDescription(v string) *DescribeJDBCDataSourceResponseBody {
+	s.DataSourceDescription = &v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceResponseBody) SetDataSourceId(v string) *DescribeJDBCDataSourceResponseBody {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceResponseBody) SetDataSourceName(v string) *DescribeJDBCDataSourceResponseBody {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceResponseBody) SetDataSourceStatus(v string) *DescribeJDBCDataSourceResponseBody {
+	s.DataSourceStatus = &v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceResponseBody) SetDataSourceType(v string) *DescribeJDBCDataSourceResponseBody {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceResponseBody) SetJDBCConnectionString(v string) *DescribeJDBCDataSourceResponseBody {
+	s.JDBCConnectionString = &v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceResponseBody) SetJDBCPassword(v string) *DescribeJDBCDataSourceResponseBody {
+	s.JDBCPassword = &v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceResponseBody) SetJDBCUserName(v string) *DescribeJDBCDataSourceResponseBody {
+	s.JDBCUserName = &v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceResponseBody) SetRequestId(v string) *DescribeJDBCDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceResponseBody) SetStatusMessage(v string) *DescribeJDBCDataSourceResponseBody {
+	s.StatusMessage = &v
+	return s
+}
+
+type DescribeJDBCDataSourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeJDBCDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeJDBCDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJDBCDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJDBCDataSourceResponse) SetHeaders(v map[string]*string) *DescribeJDBCDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceResponse) SetStatusCode(v int32) *DescribeJDBCDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeJDBCDataSourceResponse) SetBody(v *DescribeJDBCDataSourceResponseBody) *DescribeJDBCDataSourceResponse {
 	s.Body = v
 	return s
 }
@@ -17287,6 +20234,619 @@ func (s *DescribeSampleDataResponse) SetStatusCode(v int32) *DescribeSampleDataR
 }
 
 func (s *DescribeSampleDataResponse) SetBody(v *DescribeSampleDataResponseBody) *DescribeSampleDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeStreamingDataServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s DescribeStreamingDataServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamingDataServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamingDataServiceRequest) SetDBInstanceId(v string) *DescribeStreamingDataServiceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeStreamingDataServiceRequest) SetRegionId(v string) *DescribeStreamingDataServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeStreamingDataServiceRequest) SetServiceId(v string) *DescribeStreamingDataServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type DescribeStreamingDataServiceResponseBody struct {
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2019-09-08T17:00:00Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// test-adbpgss
+	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// 192.168.0.1
+	ServiceIp *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
+	// example:
+	//
+	// test-adbpgss
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// example:
+	//
+	// 5432
+	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// example:
+	//
+	// 2
+	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeStreamingDataServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamingDataServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamingDataServiceResponseBody) SetCreateTime(v string) *DescribeStreamingDataServiceResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeStreamingDataServiceResponseBody) SetModifyTime(v string) *DescribeStreamingDataServiceResponseBody {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *DescribeStreamingDataServiceResponseBody) SetRequestId(v string) *DescribeStreamingDataServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeStreamingDataServiceResponseBody) SetServiceDescription(v string) *DescribeStreamingDataServiceResponseBody {
+	s.ServiceDescription = &v
+	return s
+}
+
+func (s *DescribeStreamingDataServiceResponseBody) SetServiceId(v string) *DescribeStreamingDataServiceResponseBody {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *DescribeStreamingDataServiceResponseBody) SetServiceIp(v string) *DescribeStreamingDataServiceResponseBody {
+	s.ServiceIp = &v
+	return s
+}
+
+func (s *DescribeStreamingDataServiceResponseBody) SetServiceName(v string) *DescribeStreamingDataServiceResponseBody {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *DescribeStreamingDataServiceResponseBody) SetServicePort(v int32) *DescribeStreamingDataServiceResponseBody {
+	s.ServicePort = &v
+	return s
+}
+
+func (s *DescribeStreamingDataServiceResponseBody) SetServiceSpec(v string) *DescribeStreamingDataServiceResponseBody {
+	s.ServiceSpec = &v
+	return s
+}
+
+func (s *DescribeStreamingDataServiceResponseBody) SetStatus(v string) *DescribeStreamingDataServiceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeStreamingDataServiceResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeStreamingDataServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeStreamingDataServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamingDataServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamingDataServiceResponse) SetHeaders(v map[string]*string) *DescribeStreamingDataServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeStreamingDataServiceResponse) SetStatusCode(v int32) *DescribeStreamingDataServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeStreamingDataServiceResponse) SetBody(v *DescribeStreamingDataServiceResponseBody) *DescribeStreamingDataServiceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeStreamingDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DataSourceId *int32  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeStreamingDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamingDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamingDataSourceRequest) SetDBInstanceId(v string) *DescribeStreamingDataSourceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeStreamingDataSourceRequest) SetDataSourceId(v int32) *DescribeStreamingDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DescribeStreamingDataSourceRequest) SetRegionId(v string) *DescribeStreamingDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeStreamingDataSourceResponseBody struct {
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// {"brokers":"broker0:9091,broker1:9091","topic":"topic"}
+	DataSourceConfig *string `json:"DataSourceConfig,omitempty" xml:"DataSourceConfig,omitempty"`
+	// example:
+	//
+	// test-kafka
+	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// example:
+	//
+	// 1
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// test-kafka
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// example:
+	//
+	// kafka
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceId *int32 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeStreamingDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamingDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamingDataSourceResponseBody) SetCreateTime(v string) *DescribeStreamingDataSourceResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeStreamingDataSourceResponseBody) SetDataSourceConfig(v string) *DescribeStreamingDataSourceResponseBody {
+	s.DataSourceConfig = &v
+	return s
+}
+
+func (s *DescribeStreamingDataSourceResponseBody) SetDataSourceDescription(v string) *DescribeStreamingDataSourceResponseBody {
+	s.DataSourceDescription = &v
+	return s
+}
+
+func (s *DescribeStreamingDataSourceResponseBody) SetDataSourceId(v string) *DescribeStreamingDataSourceResponseBody {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DescribeStreamingDataSourceResponseBody) SetDataSourceName(v string) *DescribeStreamingDataSourceResponseBody {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *DescribeStreamingDataSourceResponseBody) SetDataSourceType(v string) *DescribeStreamingDataSourceResponseBody {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *DescribeStreamingDataSourceResponseBody) SetErrorMessage(v string) *DescribeStreamingDataSourceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeStreamingDataSourceResponseBody) SetRequestId(v string) *DescribeStreamingDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeStreamingDataSourceResponseBody) SetServiceId(v int32) *DescribeStreamingDataSourceResponseBody {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *DescribeStreamingDataSourceResponseBody) SetStatus(v string) *DescribeStreamingDataSourceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeStreamingDataSourceResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeStreamingDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeStreamingDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamingDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamingDataSourceResponse) SetHeaders(v map[string]*string) *DescribeStreamingDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeStreamingDataSourceResponse) SetStatusCode(v int32) *DescribeStreamingDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeStreamingDataSourceResponse) SetBody(v *DescribeStreamingDataSourceResponseBody) *DescribeStreamingDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeStreamingJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	JobId    *int32  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeStreamingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamingJobRequest) SetDBInstanceId(v string) *DescribeStreamingJobRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeStreamingJobRequest) SetJobId(v int32) *DescribeStreamingJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeStreamingJobRequest) SetRegionId(v string) *DescribeStreamingJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeStreamingJobResponseBody struct {
+	// example:
+	//
+	// test-account
+	Account     *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	Consistency *string `json:"Consistency,omitempty" xml:"Consistency,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
+	//
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// test-kafka
+	DataSourceId   *string   `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceName *string   `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	DestColumns    []*string `json:"DestColumns,omitempty" xml:"DestColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dest-db
+	DestDatabase *string `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
+	DestSchema   *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
+	// example:
+	//
+	// dest-table
+	DestTable       *string `json:"DestTable,omitempty" xml:"DestTable,omitempty"`
+	ErrorLimitCount *int32  `json:"ErrorLimitCount,omitempty" xml:"ErrorLimitCount,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FallbackOffset *string `json:"FallbackOffset,omitempty" xml:"FallbackOffset,omitempty"`
+	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	JobConfig      *string `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
+	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	// example:
+	//
+	// 1
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// test-job
+	JobName      *string   `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	MatchColumns []*string `json:"MatchColumns,omitempty" xml:"MatchColumns,omitempty" type:"Repeated"`
+	Mode         *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
+	//
+	// example:
+	//
+	// 2019-09-08T17:00:00Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// pwd123
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SrcColumns []*string `json:"SrcColumns,omitempty" xml:"SrcColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Running
+	Status        *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateColumns []*string `json:"UpdateColumns,omitempty" xml:"UpdateColumns,omitempty" type:"Repeated"`
+	WriteMode     *string   `json:"WriteMode,omitempty" xml:"WriteMode,omitempty"`
+}
+
+func (s DescribeStreamingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamingJobResponseBody) SetAccount(v string) *DescribeStreamingJobResponseBody {
+	s.Account = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetConsistency(v string) *DescribeStreamingJobResponseBody {
+	s.Consistency = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetCreateTime(v string) *DescribeStreamingJobResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetDataSourceId(v string) *DescribeStreamingJobResponseBody {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetDataSourceName(v string) *DescribeStreamingJobResponseBody {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetDestColumns(v []*string) *DescribeStreamingJobResponseBody {
+	s.DestColumns = v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetDestDatabase(v string) *DescribeStreamingJobResponseBody {
+	s.DestDatabase = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetDestSchema(v string) *DescribeStreamingJobResponseBody {
+	s.DestSchema = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetDestTable(v string) *DescribeStreamingJobResponseBody {
+	s.DestTable = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetErrorLimitCount(v int32) *DescribeStreamingJobResponseBody {
+	s.ErrorLimitCount = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetErrorMessage(v string) *DescribeStreamingJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetFallbackOffset(v string) *DescribeStreamingJobResponseBody {
+	s.FallbackOffset = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetGroupName(v string) *DescribeStreamingJobResponseBody {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetJobConfig(v string) *DescribeStreamingJobResponseBody {
+	s.JobConfig = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetJobDescription(v string) *DescribeStreamingJobResponseBody {
+	s.JobDescription = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetJobId(v string) *DescribeStreamingJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetJobName(v string) *DescribeStreamingJobResponseBody {
+	s.JobName = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetMatchColumns(v []*string) *DescribeStreamingJobResponseBody {
+	s.MatchColumns = v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetMode(v string) *DescribeStreamingJobResponseBody {
+	s.Mode = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetModifyTime(v string) *DescribeStreamingJobResponseBody {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetPassword(v string) *DescribeStreamingJobResponseBody {
+	s.Password = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetRequestId(v string) *DescribeStreamingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetSrcColumns(v []*string) *DescribeStreamingJobResponseBody {
+	s.SrcColumns = v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetStatus(v string) *DescribeStreamingJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetUpdateColumns(v []*string) *DescribeStreamingJobResponseBody {
+	s.UpdateColumns = v
+	return s
+}
+
+func (s *DescribeStreamingJobResponseBody) SetWriteMode(v string) *DescribeStreamingJobResponseBody {
+	s.WriteMode = &v
+	return s
+}
+
+type DescribeStreamingJobResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeStreamingJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeStreamingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamingJobResponse) SetHeaders(v map[string]*string) *DescribeStreamingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeStreamingJobResponse) SetStatusCode(v int32) *DescribeStreamingJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeStreamingJobResponse) SetBody(v *DescribeStreamingJobResponseBody) *DescribeStreamingJobResponse {
 	s.Body = v
 	return s
 }
@@ -20408,6 +23968,657 @@ func (s *ListDocumentsResponse) SetBody(v *ListDocumentsResponseBody) *ListDocum
 	return s
 }
 
+type ListExternalDataServicesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListExternalDataServicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalDataServicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalDataServicesRequest) SetDBInstanceId(v string) *ListExternalDataServicesRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListExternalDataServicesRequest) SetPageNumber(v int32) *ListExternalDataServicesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListExternalDataServicesRequest) SetPageSize(v int32) *ListExternalDataServicesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListExternalDataServicesRequest) SetRegionId(v string) *ListExternalDataServicesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListExternalDataServicesResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceItems []*ListExternalDataServicesResponseBodyServiceItems `json:"ServiceItems,omitempty" xml:"ServiceItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s ListExternalDataServicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalDataServicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalDataServicesResponseBody) SetPageNumber(v int32) *ListExternalDataServicesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListExternalDataServicesResponseBody) SetRequestId(v string) *ListExternalDataServicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListExternalDataServicesResponseBody) SetServiceItems(v []*ListExternalDataServicesResponseBodyServiceItems) *ListExternalDataServicesResponseBody {
+	s.ServiceItems = v
+	return s
+}
+
+func (s *ListExternalDataServicesResponseBody) SetTotalRecordCount(v int32) *ListExternalDataServicesResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type ListExternalDataServicesResponseBodyServiceItems struct {
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2019-09-08T17:00:00Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// test-adbpgss
+	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// test-adbpgss
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// example:
+	//
+	// 2
+	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+	// example:
+	//
+	// pxf
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListExternalDataServicesResponseBodyServiceItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalDataServicesResponseBodyServiceItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalDataServicesResponseBodyServiceItems) SetCreateTime(v string) *ListExternalDataServicesResponseBodyServiceItems {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListExternalDataServicesResponseBodyServiceItems) SetModifyTime(v string) *ListExternalDataServicesResponseBodyServiceItems {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListExternalDataServicesResponseBodyServiceItems) SetServiceDescription(v string) *ListExternalDataServicesResponseBodyServiceItems {
+	s.ServiceDescription = &v
+	return s
+}
+
+func (s *ListExternalDataServicesResponseBodyServiceItems) SetServiceId(v string) *ListExternalDataServicesResponseBodyServiceItems {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ListExternalDataServicesResponseBodyServiceItems) SetServiceName(v string) *ListExternalDataServicesResponseBodyServiceItems {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListExternalDataServicesResponseBodyServiceItems) SetServiceSpec(v string) *ListExternalDataServicesResponseBodyServiceItems {
+	s.ServiceSpec = &v
+	return s
+}
+
+func (s *ListExternalDataServicesResponseBodyServiceItems) SetServiceType(v string) *ListExternalDataServicesResponseBodyServiceItems {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *ListExternalDataServicesResponseBodyServiceItems) SetStatus(v string) *ListExternalDataServicesResponseBodyServiceItems {
+	s.Status = &v
+	return s
+}
+
+type ListExternalDataServicesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListExternalDataServicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListExternalDataServicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalDataServicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalDataServicesResponse) SetHeaders(v map[string]*string) *ListExternalDataServicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListExternalDataServicesResponse) SetStatusCode(v int32) *ListExternalDataServicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListExternalDataServicesResponse) SetBody(v *ListExternalDataServicesResponseBody) *ListExternalDataServicesResponse {
+	s.Body = v
+	return s
+}
+
+type ListExternalDataSourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListExternalDataSourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalDataSourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalDataSourcesRequest) SetDBInstanceId(v string) *ListExternalDataSourcesRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesRequest) SetPageNumber(v int32) *ListExternalDataSourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesRequest) SetPageSize(v int32) *ListExternalDataSourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesRequest) SetRegionId(v string) *ListExternalDataSourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListExternalDataSourcesResponseBody struct {
+	Items []*ListExternalDataSourcesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// BBE00C04-A3E8-4114-881D-0480A72CB92E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s ListExternalDataSourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalDataSourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalDataSourcesResponseBody) SetItems(v []*ListExternalDataSourcesResponseBodyItems) *ListExternalDataSourcesResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponseBody) SetPageNumber(v int32) *ListExternalDataSourcesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponseBody) SetRequestId(v string) *ListExternalDataSourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponseBody) SetTotalRecordCount(v int32) *ListExternalDataSourcesResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type ListExternalDataSourcesResponseBodyItems struct {
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// test
+	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// example:
+	//
+	// HadoopDir
+	DataSourceDir *string `json:"DataSourceDir,omitempty" xml:"DataSourceDir,omitempty"`
+	// example:
+	//
+	// 123
+	DataSourceId *int32 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// hdfs_pxf
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// example:
+	//
+	// Running
+	DataSourceStatus *string `json:"DataSourceStatus,omitempty" xml:"DataSourceStatus,omitempty"`
+	// example:
+	//
+	// HDFS
+	DataSourceType        *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	ExternalDataServiceId *int32  `json:"ExternalDataServiceId,omitempty" xml:"ExternalDataServiceId,omitempty"`
+	// example:
+	//
+	// 2019-10-08T16:00:00Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// ""
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+}
+
+func (s ListExternalDataSourcesResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalDataSourcesResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalDataSourcesResponseBodyItems) SetCreateTime(v string) *ListExternalDataSourcesResponseBodyItems {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponseBodyItems) SetDataSourceDescription(v string) *ListExternalDataSourcesResponseBodyItems {
+	s.DataSourceDescription = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponseBodyItems) SetDataSourceDir(v string) *ListExternalDataSourcesResponseBodyItems {
+	s.DataSourceDir = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponseBodyItems) SetDataSourceId(v int32) *ListExternalDataSourcesResponseBodyItems {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponseBodyItems) SetDataSourceName(v string) *ListExternalDataSourcesResponseBodyItems {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponseBodyItems) SetDataSourceStatus(v string) *ListExternalDataSourcesResponseBodyItems {
+	s.DataSourceStatus = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponseBodyItems) SetDataSourceType(v string) *ListExternalDataSourcesResponseBodyItems {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponseBodyItems) SetExternalDataServiceId(v int32) *ListExternalDataSourcesResponseBodyItems {
+	s.ExternalDataServiceId = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponseBodyItems) SetModifyTime(v string) *ListExternalDataSourcesResponseBodyItems {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponseBodyItems) SetStatusMessage(v string) *ListExternalDataSourcesResponseBodyItems {
+	s.StatusMessage = &v
+	return s
+}
+
+type ListExternalDataSourcesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListExternalDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListExternalDataSourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalDataSourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalDataSourcesResponse) SetHeaders(v map[string]*string) *ListExternalDataSourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponse) SetStatusCode(v int32) *ListExternalDataSourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListExternalDataSourcesResponse) SetBody(v *ListExternalDataSourcesResponseBody) *ListExternalDataSourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListInstanceExtensionsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// citext
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// installed
+	InstallStatus *string `json:"InstallStatus,omitempty" xml:"InstallStatus,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListInstanceExtensionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceExtensionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceExtensionsRequest) SetDBInstanceId(v string) *ListInstanceExtensionsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsRequest) SetExtension(v string) *ListInstanceExtensionsRequest {
+	s.Extension = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsRequest) SetInstallStatus(v string) *ListInstanceExtensionsRequest {
+	s.InstallStatus = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsRequest) SetPageNumber(v int32) *ListInstanceExtensionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsRequest) SetPageSize(v int32) *ListInstanceExtensionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsRequest) SetRegionId(v string) *ListInstanceExtensionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListInstanceExtensionsResponseBody struct {
+	Items []*ListInstanceExtensionsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// example:
+	//
+	// 7565770E-7C45-462D-BA4A-8A5396F2CAD1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s ListInstanceExtensionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceExtensionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceExtensionsResponseBody) SetItems(v []*ListInstanceExtensionsResponseBodyItems) *ListInstanceExtensionsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListInstanceExtensionsResponseBody) SetPageNumber(v int32) *ListInstanceExtensionsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsResponseBody) SetPageRecordCount(v int32) *ListInstanceExtensionsResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsResponseBody) SetRequestId(v string) *ListInstanceExtensionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsResponseBody) SetTotalRecordCount(v int32) *ListInstanceExtensionsResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type ListInstanceExtensionsResponseBodyItems struct {
+	// example:
+	//
+	// 1.0
+	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// example:
+	//
+	// citext usage
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1
+	ExtensionId *string `json:"ExtensionId,omitempty" xml:"ExtensionId,omitempty"`
+	// example:
+	//
+	// test
+	InstalledDatabases *string `json:"InstalledDatabases,omitempty" xml:"InstalledDatabases,omitempty"`
+	// example:
+	//
+	// false
+	IsInstallNeedRestart *bool `json:"IsInstallNeedRestart,omitempty" xml:"IsInstallNeedRestart,omitempty"`
+	// example:
+	//
+	// 1.1
+	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// example:
+	//
+	// citext
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// installed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListInstanceExtensionsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceExtensionsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceExtensionsResponseBodyItems) SetCurrentVersion(v string) *ListInstanceExtensionsResponseBodyItems {
+	s.CurrentVersion = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsResponseBodyItems) SetDescription(v string) *ListInstanceExtensionsResponseBodyItems {
+	s.Description = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsResponseBodyItems) SetExtensionId(v string) *ListInstanceExtensionsResponseBodyItems {
+	s.ExtensionId = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsResponseBodyItems) SetInstalledDatabases(v string) *ListInstanceExtensionsResponseBodyItems {
+	s.InstalledDatabases = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsResponseBodyItems) SetIsInstallNeedRestart(v bool) *ListInstanceExtensionsResponseBodyItems {
+	s.IsInstallNeedRestart = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsResponseBodyItems) SetLatestVersion(v string) *ListInstanceExtensionsResponseBodyItems {
+	s.LatestVersion = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsResponseBodyItems) SetName(v string) *ListInstanceExtensionsResponseBodyItems {
+	s.Name = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsResponseBodyItems) SetStatus(v string) *ListInstanceExtensionsResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+type ListInstanceExtensionsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceExtensionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInstanceExtensionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceExtensionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceExtensionsResponse) SetHeaders(v map[string]*string) *ListInstanceExtensionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceExtensionsResponse) SetStatusCode(v int32) *ListInstanceExtensionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstanceExtensionsResponse) SetBody(v *ListInstanceExtensionsResponseBody) *ListInstanceExtensionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListNamespacesRequest struct {
 	// The instance ID.
 	//
@@ -20611,6 +24822,735 @@ func (s *ListNamespacesResponse) SetStatusCode(v int32) *ListNamespacesResponse 
 }
 
 func (s *ListNamespacesResponse) SetBody(v *ListNamespacesResponseBody) *ListNamespacesResponse {
+	s.Body = v
+	return s
+}
+
+type ListStreamingDataServicesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListStreamingDataServicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStreamingDataServicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListStreamingDataServicesRequest) SetDBInstanceId(v string) *ListStreamingDataServicesRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesRequest) SetPageNumber(v int32) *ListStreamingDataServicesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesRequest) SetPageSize(v int32) *ListStreamingDataServicesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesRequest) SetRegionId(v string) *ListStreamingDataServicesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListStreamingDataServicesResponseBody struct {
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId        *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceItems     []*ListStreamingDataServicesResponseBodyServiceItems `json:"ServiceItems,omitempty" xml:"ServiceItems,omitempty" type:"Repeated"`
+	TotalRecordCount *int32                                               `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s ListStreamingDataServicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStreamingDataServicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListStreamingDataServicesResponseBody) SetRequestId(v string) *ListStreamingDataServicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesResponseBody) SetServiceItems(v []*ListStreamingDataServicesResponseBodyServiceItems) *ListStreamingDataServicesResponseBody {
+	s.ServiceItems = v
+	return s
+}
+
+func (s *ListStreamingDataServicesResponseBody) SetTotalRecordCount(v int32) *ListStreamingDataServicesResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type ListStreamingDataServicesResponseBodyServiceItems struct {
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2019-09-08T17:00:00Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// test-adbpgss
+	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// 192.168.0.1
+	ServiceIp *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
+	// example:
+	//
+	// test-adbpgss
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// example:
+	//
+	// 5432
+	ServicePort *string `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// example:
+	//
+	// 2
+	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+	// example:
+	//
+	// adbpgss
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListStreamingDataServicesResponseBodyServiceItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStreamingDataServicesResponseBodyServiceItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListStreamingDataServicesResponseBodyServiceItems) SetCreateTime(v string) *ListStreamingDataServicesResponseBodyServiceItems {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesResponseBodyServiceItems) SetModifyTime(v string) *ListStreamingDataServicesResponseBodyServiceItems {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesResponseBodyServiceItems) SetServiceDescription(v string) *ListStreamingDataServicesResponseBodyServiceItems {
+	s.ServiceDescription = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesResponseBodyServiceItems) SetServiceId(v string) *ListStreamingDataServicesResponseBodyServiceItems {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesResponseBodyServiceItems) SetServiceIp(v string) *ListStreamingDataServicesResponseBodyServiceItems {
+	s.ServiceIp = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesResponseBodyServiceItems) SetServiceName(v string) *ListStreamingDataServicesResponseBodyServiceItems {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesResponseBodyServiceItems) SetServicePort(v string) *ListStreamingDataServicesResponseBodyServiceItems {
+	s.ServicePort = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesResponseBodyServiceItems) SetServiceSpec(v string) *ListStreamingDataServicesResponseBodyServiceItems {
+	s.ServiceSpec = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesResponseBodyServiceItems) SetServiceType(v string) *ListStreamingDataServicesResponseBodyServiceItems {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesResponseBodyServiceItems) SetStatus(v string) *ListStreamingDataServicesResponseBodyServiceItems {
+	s.Status = &v
+	return s
+}
+
+type ListStreamingDataServicesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListStreamingDataServicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListStreamingDataServicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStreamingDataServicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListStreamingDataServicesResponse) SetHeaders(v map[string]*string) *ListStreamingDataServicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListStreamingDataServicesResponse) SetStatusCode(v int32) *ListStreamingDataServicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListStreamingDataServicesResponse) SetBody(v *ListStreamingDataServicesResponseBody) *ListStreamingDataServicesResponse {
+	s.Body = v
+	return s
+}
+
+type ListStreamingDataSourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListStreamingDataSourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStreamingDataSourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListStreamingDataSourcesRequest) SetDBInstanceId(v string) *ListStreamingDataSourcesRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesRequest) SetPageNumber(v int32) *ListStreamingDataSourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesRequest) SetPageSize(v int32) *ListStreamingDataSourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesRequest) SetRegionId(v string) *ListStreamingDataSourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListStreamingDataSourcesResponseBody struct {
+	DataSourceItems []*ListStreamingDataSourcesResponseBodyDataSourceItems `json:"DataSourceItems,omitempty" xml:"DataSourceItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s ListStreamingDataSourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStreamingDataSourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListStreamingDataSourcesResponseBody) SetDataSourceItems(v []*ListStreamingDataSourcesResponseBodyDataSourceItems) *ListStreamingDataSourcesResponseBody {
+	s.DataSourceItems = v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponseBody) SetPageNumber(v int32) *ListStreamingDataSourcesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponseBody) SetRequestId(v string) *ListStreamingDataSourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponseBody) SetTotalRecordCount(v int32) *ListStreamingDataSourcesResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type ListStreamingDataSourcesResponseBodyDataSourceItems struct {
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// {"brokers":"broker0:9091,broker1:9091","topic":"topic"}
+	DataSourceConfig *string `json:"DataSourceConfig,omitempty" xml:"DataSourceConfig,omitempty"`
+	// example:
+	//
+	// test-kafka
+	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// example:
+	//
+	// 1
+	DataSourceId *int32 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// test-kafka
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// example:
+	//
+	// kafka
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 2019-09-08T17:00:00Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceId *int32 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListStreamingDataSourcesResponseBodyDataSourceItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStreamingDataSourcesResponseBodyDataSourceItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListStreamingDataSourcesResponseBodyDataSourceItems) SetCreateTime(v string) *ListStreamingDataSourcesResponseBodyDataSourceItems {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponseBodyDataSourceItems) SetDataSourceConfig(v string) *ListStreamingDataSourcesResponseBodyDataSourceItems {
+	s.DataSourceConfig = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponseBodyDataSourceItems) SetDataSourceDescription(v string) *ListStreamingDataSourcesResponseBodyDataSourceItems {
+	s.DataSourceDescription = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponseBodyDataSourceItems) SetDataSourceId(v int32) *ListStreamingDataSourcesResponseBodyDataSourceItems {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponseBodyDataSourceItems) SetDataSourceName(v string) *ListStreamingDataSourcesResponseBodyDataSourceItems {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponseBodyDataSourceItems) SetDataSourceType(v string) *ListStreamingDataSourcesResponseBodyDataSourceItems {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponseBodyDataSourceItems) SetErrorMessage(v string) *ListStreamingDataSourcesResponseBodyDataSourceItems {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponseBodyDataSourceItems) SetModifyTime(v string) *ListStreamingDataSourcesResponseBodyDataSourceItems {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponseBodyDataSourceItems) SetServiceId(v int32) *ListStreamingDataSourcesResponseBodyDataSourceItems {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponseBodyDataSourceItems) SetStatus(v string) *ListStreamingDataSourcesResponseBodyDataSourceItems {
+	s.Status = &v
+	return s
+}
+
+type ListStreamingDataSourcesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListStreamingDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListStreamingDataSourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStreamingDataSourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListStreamingDataSourcesResponse) SetHeaders(v map[string]*string) *ListStreamingDataSourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponse) SetStatusCode(v int32) *ListStreamingDataSourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListStreamingDataSourcesResponse) SetBody(v *ListStreamingDataSourcesResponseBody) *ListStreamingDataSourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListStreamingJobsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// kafka
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListStreamingJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStreamingJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListStreamingJobsRequest) SetDBInstanceId(v string) *ListStreamingJobsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListStreamingJobsRequest) SetPageNumber(v int32) *ListStreamingJobsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListStreamingJobsRequest) SetPageSize(v int32) *ListStreamingJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListStreamingJobsRequest) SetRegionId(v string) *ListStreamingJobsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListStreamingJobsResponseBody struct {
+	JobItems []*ListStreamingJobsResponseBodyJobItems `json:"JobItems,omitempty" xml:"JobItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 2
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s ListStreamingJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStreamingJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListStreamingJobsResponseBody) SetJobItems(v []*ListStreamingJobsResponseBodyJobItems) *ListStreamingJobsResponseBody {
+	s.JobItems = v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBody) SetPageNumber(v int32) *ListStreamingJobsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBody) SetPageRecordCount(v int32) *ListStreamingJobsResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBody) SetRequestId(v string) *ListStreamingJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBody) SetTotalRecordCount(v int32) *ListStreamingJobsResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type ListStreamingJobsResponseBodyJobItems struct {
+	// example:
+	//
+	// test-account
+	Account     *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	Consistency *string `json:"Consistency,omitempty" xml:"Consistency,omitempty"`
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
+	CreateTime     *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataSourceId   *string   `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceName *string   `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	DestColumns    []*string `json:"DestColumns,omitempty" xml:"DestColumns,omitempty" type:"Repeated"`
+	DestDatabase   *string   `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
+	DestSchema     *string   `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
+	// example:
+	//
+	// dest-table
+	DestTable      *string `json:"DestTable,omitempty" xml:"DestTable,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FallbackOffset *string `json:"FallbackOffset,omitempty" xml:"FallbackOffset,omitempty"`
+	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	// example:
+	//
+	// 1
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// test-job
+	JobName      *string   `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	MatchColumns []*string `json:"MatchColumns,omitempty" xml:"MatchColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Basic / Professional
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// 2019-09-08T17:00:00Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// pwd123
+	Password   *string   `json:"Password,omitempty" xml:"Password,omitempty"`
+	SrcColumns []*string `json:"SrcColumns,omitempty" xml:"SrcColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Running
+	Status        *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateColumns []*string `json:"UpdateColumns,omitempty" xml:"UpdateColumns,omitempty" type:"Repeated"`
+	WriteMode     *string   `json:"WriteMode,omitempty" xml:"WriteMode,omitempty"`
+}
+
+func (s ListStreamingJobsResponseBodyJobItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStreamingJobsResponseBodyJobItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetAccount(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.Account = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetConsistency(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.Consistency = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetCreateTime(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetDataSourceId(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetDataSourceName(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetDestColumns(v []*string) *ListStreamingJobsResponseBodyJobItems {
+	s.DestColumns = v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetDestDatabase(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.DestDatabase = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetDestSchema(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.DestSchema = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetDestTable(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.DestTable = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetErrorMessage(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetFallbackOffset(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.FallbackOffset = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetJobDescription(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.JobDescription = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetJobId(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetJobName(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetMatchColumns(v []*string) *ListStreamingJobsResponseBodyJobItems {
+	s.MatchColumns = v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetMode(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.Mode = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetModifyTime(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetPassword(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.Password = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetSrcColumns(v []*string) *ListStreamingJobsResponseBodyJobItems {
+	s.SrcColumns = v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetStatus(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.Status = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetUpdateColumns(v []*string) *ListStreamingJobsResponseBodyJobItems {
+	s.UpdateColumns = v
+	return s
+}
+
+func (s *ListStreamingJobsResponseBodyJobItems) SetWriteMode(v string) *ListStreamingJobsResponseBodyJobItems {
+	s.WriteMode = &v
+	return s
+}
+
+type ListStreamingJobsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListStreamingJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListStreamingJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStreamingJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListStreamingJobsResponse) SetHeaders(v map[string]*string) *ListStreamingJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListStreamingJobsResponse) SetStatusCode(v int32) *ListStreamingJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListStreamingJobsResponse) SetBody(v *ListStreamingJobsResponseBody) *ListStreamingJobsResponse {
 	s.Body = v
 	return s
 }
@@ -21889,6 +26829,414 @@ func (s *ModifyDBInstanceSSLResponse) SetBody(v *ModifyDBInstanceSSLResponseBody
 	return s
 }
 
+type ModifyExternalDataServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test-adbpgss
+	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+}
+
+func (s ModifyExternalDataServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyExternalDataServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyExternalDataServiceRequest) SetDBInstanceId(v string) *ModifyExternalDataServiceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyExternalDataServiceRequest) SetRegionId(v string) *ModifyExternalDataServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyExternalDataServiceRequest) SetServiceDescription(v string) *ModifyExternalDataServiceRequest {
+	s.ServiceDescription = &v
+	return s
+}
+
+func (s *ModifyExternalDataServiceRequest) SetServiceId(v string) *ModifyExternalDataServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ModifyExternalDataServiceRequest) SetServiceSpec(v string) *ModifyExternalDataServiceRequest {
+	s.ServiceSpec = &v
+	return s
+}
+
+type ModifyExternalDataServiceResponseBody struct {
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyExternalDataServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyExternalDataServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyExternalDataServiceResponseBody) SetRequestId(v string) *ModifyExternalDataServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyExternalDataServiceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyExternalDataServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyExternalDataServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyExternalDataServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyExternalDataServiceResponse) SetHeaders(v map[string]*string) *ModifyExternalDataServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyExternalDataServiceResponse) SetStatusCode(v int32) *ModifyExternalDataServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyExternalDataServiceResponse) SetBody(v *ModifyExternalDataServiceResponseBody) *ModifyExternalDataServiceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyHadoopDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// pxf for hdfs data source
+	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// example:
+	//
+	// 123
+	DataSourceId   *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// c-1234567
+	EmrInstanceId *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	HDFSConf *string `json:"HDFSConf,omitempty" xml:"HDFSConf,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	HadoopCoreConf   *string `json:"HadoopCoreConf,omitempty" xml:"HadoopCoreConf,omitempty"`
+	HadoopCreateType *string `json:"HadoopCreateType,omitempty" xml:"HadoopCreateType,omitempty"`
+	// example:
+	//
+	// 127.0.0.1 localhost
+	HadoopHostsAddress *string `json:"HadoopHostsAddress,omitempty" xml:"HadoopHostsAddress,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	HiveConf      *string `json:"HiveConf,omitempty" xml:"HiveConf,omitempty"`
+	MapReduceConf *string `json:"MapReduceConf,omitempty" xml:"MapReduceConf,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	YarnConf *string `json:"YarnConf,omitempty" xml:"YarnConf,omitempty"`
+}
+
+func (s ModifyHadoopDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHadoopDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHadoopDataSourceRequest) SetDBInstanceId(v string) *ModifyHadoopDataSourceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceRequest) SetDataSourceDescription(v string) *ModifyHadoopDataSourceRequest {
+	s.DataSourceDescription = &v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceRequest) SetDataSourceId(v string) *ModifyHadoopDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceRequest) SetDataSourceType(v string) *ModifyHadoopDataSourceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceRequest) SetEmrInstanceId(v string) *ModifyHadoopDataSourceRequest {
+	s.EmrInstanceId = &v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceRequest) SetHDFSConf(v string) *ModifyHadoopDataSourceRequest {
+	s.HDFSConf = &v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceRequest) SetHadoopCoreConf(v string) *ModifyHadoopDataSourceRequest {
+	s.HadoopCoreConf = &v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceRequest) SetHadoopCreateType(v string) *ModifyHadoopDataSourceRequest {
+	s.HadoopCreateType = &v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceRequest) SetHadoopHostsAddress(v string) *ModifyHadoopDataSourceRequest {
+	s.HadoopHostsAddress = &v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceRequest) SetHiveConf(v string) *ModifyHadoopDataSourceRequest {
+	s.HiveConf = &v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceRequest) SetMapReduceConf(v string) *ModifyHadoopDataSourceRequest {
+	s.MapReduceConf = &v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceRequest) SetRegionId(v string) *ModifyHadoopDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceRequest) SetYarnConf(v string) *ModifyHadoopDataSourceRequest {
+	s.YarnConf = &v
+	return s
+}
+
+type ModifyHadoopDataSourceResponseBody struct {
+	// example:
+	//
+	// 2C125605-266F-41CA-8AC5-3A643D4F42C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyHadoopDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHadoopDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHadoopDataSourceResponseBody) SetRequestId(v string) *ModifyHadoopDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyHadoopDataSourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyHadoopDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyHadoopDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHadoopDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHadoopDataSourceResponse) SetHeaders(v map[string]*string) *ModifyHadoopDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceResponse) SetStatusCode(v int32) *ModifyHadoopDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyHadoopDataSourceResponse) SetBody(v *ModifyHadoopDataSourceResponseBody) *ModifyHadoopDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyJDBCDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// test
+	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// mysql
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	JDBCConnectionString *string `json:"JDBCConnectionString,omitempty" xml:"JDBCConnectionString,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	JDBCPassword *string `json:"JDBCPassword,omitempty" xml:"JDBCPassword,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	JDBCUserName *string `json:"JDBCUserName,omitempty" xml:"JDBCUserName,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyJDBCDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyJDBCDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyJDBCDataSourceRequest) SetDBInstanceId(v string) *ModifyJDBCDataSourceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyJDBCDataSourceRequest) SetDataSourceDescription(v string) *ModifyJDBCDataSourceRequest {
+	s.DataSourceDescription = &v
+	return s
+}
+
+func (s *ModifyJDBCDataSourceRequest) SetDataSourceId(v string) *ModifyJDBCDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ModifyJDBCDataSourceRequest) SetDataSourceType(v string) *ModifyJDBCDataSourceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ModifyJDBCDataSourceRequest) SetJDBCConnectionString(v string) *ModifyJDBCDataSourceRequest {
+	s.JDBCConnectionString = &v
+	return s
+}
+
+func (s *ModifyJDBCDataSourceRequest) SetJDBCPassword(v string) *ModifyJDBCDataSourceRequest {
+	s.JDBCPassword = &v
+	return s
+}
+
+func (s *ModifyJDBCDataSourceRequest) SetJDBCUserName(v string) *ModifyJDBCDataSourceRequest {
+	s.JDBCUserName = &v
+	return s
+}
+
+func (s *ModifyJDBCDataSourceRequest) SetRegionId(v string) *ModifyJDBCDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyJDBCDataSourceResponseBody struct {
+	// example:
+	//
+	// 2C125605-266F-41CA-8AC5-3A643D4F42C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyJDBCDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyJDBCDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyJDBCDataSourceResponseBody) SetRequestId(v string) *ModifyJDBCDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyJDBCDataSourceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyJDBCDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyJDBCDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyJDBCDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyJDBCDataSourceResponse) SetHeaders(v map[string]*string) *ModifyJDBCDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyJDBCDataSourceResponse) SetStatusCode(v int32) *ModifyJDBCDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyJDBCDataSourceResponse) SetBody(v *ModifyJDBCDataSourceResponseBody) *ModifyJDBCDataSourceResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyMasterSpecRequest struct {
 	// example:
 	//
@@ -22357,6 +27705,608 @@ func (s *ModifySecurityIpsResponse) SetStatusCode(v int32) *ModifySecurityIpsRes
 }
 
 func (s *ModifySecurityIpsResponse) SetBody(v *ModifySecurityIpsResponseBody) *ModifySecurityIpsResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyStreamingDataServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp10g78o9807yv9h3
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test-adbpgss
+	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+}
+
+func (s ModifyStreamingDataServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStreamingDataServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStreamingDataServiceRequest) SetDBInstanceId(v string) *ModifyStreamingDataServiceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyStreamingDataServiceRequest) SetRegionId(v string) *ModifyStreamingDataServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyStreamingDataServiceRequest) SetServiceDescription(v string) *ModifyStreamingDataServiceRequest {
+	s.ServiceDescription = &v
+	return s
+}
+
+func (s *ModifyStreamingDataServiceRequest) SetServiceId(v string) *ModifyStreamingDataServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ModifyStreamingDataServiceRequest) SetServiceSpec(v string) *ModifyStreamingDataServiceRequest {
+	s.ServiceSpec = &v
+	return s
+}
+
+type ModifyStreamingDataServiceResponseBody struct {
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyStreamingDataServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStreamingDataServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStreamingDataServiceResponseBody) SetRequestId(v string) *ModifyStreamingDataServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyStreamingDataServiceResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyStreamingDataServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyStreamingDataServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStreamingDataServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStreamingDataServiceResponse) SetHeaders(v map[string]*string) *ModifyStreamingDataServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyStreamingDataServiceResponse) SetStatusCode(v int32) *ModifyStreamingDataServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyStreamingDataServiceResponse) SetBody(v *ModifyStreamingDataServiceResponseBody) *ModifyStreamingDataServiceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyStreamingDataSourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-k2j36a3172b102593
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// {"brokers":"broker0:9091,broker1:9091","topic":"topic"}
+	DataSourceConfig *string `json:"DataSourceConfig,omitempty" xml:"DataSourceConfig,omitempty"`
+	// example:
+	//
+	// test-kafka
+	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 57
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyStreamingDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStreamingDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStreamingDataSourceRequest) SetDBInstanceId(v string) *ModifyStreamingDataSourceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyStreamingDataSourceRequest) SetDataSourceConfig(v string) *ModifyStreamingDataSourceRequest {
+	s.DataSourceConfig = &v
+	return s
+}
+
+func (s *ModifyStreamingDataSourceRequest) SetDataSourceDescription(v string) *ModifyStreamingDataSourceRequest {
+	s.DataSourceDescription = &v
+	return s
+}
+
+func (s *ModifyStreamingDataSourceRequest) SetDataSourceId(v string) *ModifyStreamingDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ModifyStreamingDataSourceRequest) SetRegionId(v string) *ModifyStreamingDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyStreamingDataSourceResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyStreamingDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStreamingDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStreamingDataSourceResponseBody) SetRequestId(v string) *ModifyStreamingDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyStreamingDataSourceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyStreamingDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyStreamingDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStreamingDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStreamingDataSourceResponse) SetHeaders(v map[string]*string) *ModifyStreamingDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyStreamingDataSourceResponse) SetStatusCode(v int32) *ModifyStreamingDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyStreamingDataSourceResponse) SetBody(v *ModifyStreamingDataSourceResponseBody) *ModifyStreamingDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyStreamingJobRequest struct {
+	// example:
+	//
+	// test-account
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// example:
+	//
+	// ATLEAST / EXACTLY
+	Consistency *string `json:"Consistency,omitempty" xml:"Consistency,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ModifyStreamingJob
+	DBInstanceId *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DestColumns  []*string `json:"DestColumns,omitempty" xml:"DestColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dest-db
+	DestDatabase *string `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
+	DestSchema   *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
+	// example:
+	//
+	// dest-table
+	DestTable       *string `json:"DestTable,omitempty" xml:"DestTable,omitempty"`
+	ErrorLimitCount *int64  `json:"ErrorLimitCount,omitempty" xml:"ErrorLimitCount,omitempty"`
+	// example:
+	//
+	// earliest /  latest
+	FallbackOffset *string `json:"FallbackOffset,omitempty" xml:"FallbackOffset,omitempty"`
+	// example:
+	//
+	// group_name
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	JobConfig *string `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
+	// example:
+	//
+	// test-job
+	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	JobId        *int64    `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MatchColumns []*string `json:"MatchColumns,omitempty" xml:"MatchColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pwd123
+	Password   *string   `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SrcColumns []*string `json:"SrcColumns,omitempty" xml:"SrcColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	TryRun        *bool     `json:"TryRun,omitempty" xml:"TryRun,omitempty"`
+	UpdateColumns []*string `json:"UpdateColumns,omitempty" xml:"UpdateColumns,omitempty" type:"Repeated"`
+	WriteMode     *string   `json:"WriteMode,omitempty" xml:"WriteMode,omitempty"`
+}
+
+func (s ModifyStreamingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStreamingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStreamingJobRequest) SetAccount(v string) *ModifyStreamingJobRequest {
+	s.Account = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetConsistency(v string) *ModifyStreamingJobRequest {
+	s.Consistency = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetDBInstanceId(v string) *ModifyStreamingJobRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetDestColumns(v []*string) *ModifyStreamingJobRequest {
+	s.DestColumns = v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetDestDatabase(v string) *ModifyStreamingJobRequest {
+	s.DestDatabase = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetDestSchema(v string) *ModifyStreamingJobRequest {
+	s.DestSchema = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetDestTable(v string) *ModifyStreamingJobRequest {
+	s.DestTable = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetErrorLimitCount(v int64) *ModifyStreamingJobRequest {
+	s.ErrorLimitCount = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetFallbackOffset(v string) *ModifyStreamingJobRequest {
+	s.FallbackOffset = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetGroupName(v string) *ModifyStreamingJobRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetJobConfig(v string) *ModifyStreamingJobRequest {
+	s.JobConfig = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetJobDescription(v string) *ModifyStreamingJobRequest {
+	s.JobDescription = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetJobId(v int64) *ModifyStreamingJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetMatchColumns(v []*string) *ModifyStreamingJobRequest {
+	s.MatchColumns = v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetPassword(v string) *ModifyStreamingJobRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetRegionId(v string) *ModifyStreamingJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetSrcColumns(v []*string) *ModifyStreamingJobRequest {
+	s.SrcColumns = v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetTryRun(v bool) *ModifyStreamingJobRequest {
+	s.TryRun = &v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetUpdateColumns(v []*string) *ModifyStreamingJobRequest {
+	s.UpdateColumns = v
+	return s
+}
+
+func (s *ModifyStreamingJobRequest) SetWriteMode(v string) *ModifyStreamingJobRequest {
+	s.WriteMode = &v
+	return s
+}
+
+type ModifyStreamingJobShrinkRequest struct {
+	// example:
+	//
+	// test-account
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// example:
+	//
+	// ATLEAST / EXACTLY
+	Consistency *string `json:"Consistency,omitempty" xml:"Consistency,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ModifyStreamingJob
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DestColumnsShrink *string `json:"DestColumns,omitempty" xml:"DestColumns,omitempty"`
+	// example:
+	//
+	// dest-db
+	DestDatabase *string `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
+	DestSchema   *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
+	// example:
+	//
+	// dest-table
+	DestTable       *string `json:"DestTable,omitempty" xml:"DestTable,omitempty"`
+	ErrorLimitCount *int64  `json:"ErrorLimitCount,omitempty" xml:"ErrorLimitCount,omitempty"`
+	// example:
+	//
+	// earliest /  latest
+	FallbackOffset *string `json:"FallbackOffset,omitempty" xml:"FallbackOffset,omitempty"`
+	// example:
+	//
+	// group_name
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	JobConfig *string `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
+	// example:
+	//
+	// test-job
+	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	JobId              *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MatchColumnsShrink *string `json:"MatchColumns,omitempty" xml:"MatchColumns,omitempty"`
+	// example:
+	//
+	// pwd123
+	Password         *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SrcColumnsShrink *string `json:"SrcColumns,omitempty" xml:"SrcColumns,omitempty"`
+	// example:
+	//
+	// true
+	TryRun              *bool   `json:"TryRun,omitempty" xml:"TryRun,omitempty"`
+	UpdateColumnsShrink *string `json:"UpdateColumns,omitempty" xml:"UpdateColumns,omitempty"`
+	WriteMode           *string `json:"WriteMode,omitempty" xml:"WriteMode,omitempty"`
+}
+
+func (s ModifyStreamingJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStreamingJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetAccount(v string) *ModifyStreamingJobShrinkRequest {
+	s.Account = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetConsistency(v string) *ModifyStreamingJobShrinkRequest {
+	s.Consistency = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetDBInstanceId(v string) *ModifyStreamingJobShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetDestColumnsShrink(v string) *ModifyStreamingJobShrinkRequest {
+	s.DestColumnsShrink = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetDestDatabase(v string) *ModifyStreamingJobShrinkRequest {
+	s.DestDatabase = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetDestSchema(v string) *ModifyStreamingJobShrinkRequest {
+	s.DestSchema = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetDestTable(v string) *ModifyStreamingJobShrinkRequest {
+	s.DestTable = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetErrorLimitCount(v int64) *ModifyStreamingJobShrinkRequest {
+	s.ErrorLimitCount = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetFallbackOffset(v string) *ModifyStreamingJobShrinkRequest {
+	s.FallbackOffset = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetGroupName(v string) *ModifyStreamingJobShrinkRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetJobConfig(v string) *ModifyStreamingJobShrinkRequest {
+	s.JobConfig = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetJobDescription(v string) *ModifyStreamingJobShrinkRequest {
+	s.JobDescription = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetJobId(v int64) *ModifyStreamingJobShrinkRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetMatchColumnsShrink(v string) *ModifyStreamingJobShrinkRequest {
+	s.MatchColumnsShrink = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetPassword(v string) *ModifyStreamingJobShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetRegionId(v string) *ModifyStreamingJobShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetSrcColumnsShrink(v string) *ModifyStreamingJobShrinkRequest {
+	s.SrcColumnsShrink = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetTryRun(v bool) *ModifyStreamingJobShrinkRequest {
+	s.TryRun = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetUpdateColumnsShrink(v string) *ModifyStreamingJobShrinkRequest {
+	s.UpdateColumnsShrink = &v
+	return s
+}
+
+func (s *ModifyStreamingJobShrinkRequest) SetWriteMode(v string) *ModifyStreamingJobShrinkRequest {
+	s.WriteMode = &v
+	return s
+}
+
+type ModifyStreamingJobResponseBody struct {
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyStreamingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStreamingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStreamingJobResponseBody) SetRequestId(v string) *ModifyStreamingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyStreamingJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyStreamingJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyStreamingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStreamingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStreamingJobResponse) SetHeaders(v map[string]*string) *ModifyStreamingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyStreamingJobResponse) SetStatusCode(v int32) *ModifyStreamingJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyStreamingJobResponse) SetBody(v *ModifyStreamingJobResponseBody) *ModifyStreamingJobResponse {
 	s.Body = v
 	return s
 }
@@ -26310,6 +32260,97 @@ func (s *UpgradeDBVersionResponse) SetBody(v *UpgradeDBVersionResponseBody) *Upg
 	return s
 }
 
+type UpgradeExtensionsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// citext,dblink
+	Extensions *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpgradeExtensionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeExtensionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeExtensionsRequest) SetDBInstanceId(v string) *UpgradeExtensionsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpgradeExtensionsRequest) SetExtensions(v string) *UpgradeExtensionsRequest {
+	s.Extensions = &v
+	return s
+}
+
+func (s *UpgradeExtensionsRequest) SetRegionId(v string) *UpgradeExtensionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpgradeExtensionsResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpgradeExtensionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeExtensionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeExtensionsResponseBody) SetRequestId(v string) *UpgradeExtensionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpgradeExtensionsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeExtensionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpgradeExtensionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeExtensionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeExtensionsResponse) SetHeaders(v map[string]*string) *UpgradeExtensionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeExtensionsResponse) SetStatusCode(v int32) *UpgradeExtensionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeExtensionsResponse) SetBody(v *UpgradeExtensionsResponseBody) *UpgradeExtensionsResponse {
+	s.Body = v
+	return s
+}
+
 type UploadDocumentAsyncRequest struct {
 	// example:
 	//
@@ -27994,6 +34035,214 @@ func (client *Client) CancelUpsertCollectionDataJob(request *CancelUpsertCollect
 
 // Summary:
 //
+// 检查hadoop数据源配置
+//
+// @param request - CheckHadoopDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckHadoopDataSourceResponse
+func (client *Client) CheckHadoopDataSourceWithOptions(request *CheckHadoopDataSourceRequest, runtime *util.RuntimeOptions) (_result *CheckHadoopDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckDir)) {
+		query["CheckDir"] = request.CheckDir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckHadoopDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckHadoopDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查hadoop数据源配置
+//
+// @param request - CheckHadoopDataSourceRequest
+//
+// @return CheckHadoopDataSourceResponse
+func (client *Client) CheckHadoopDataSource(request *CheckHadoopDataSourceRequest) (_result *CheckHadoopDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckHadoopDataSourceResponse{}
+	_body, _err := client.CheckHadoopDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查hadoop集群网络连通性
+//
+// @param request - CheckHadoopNetConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckHadoopNetConnectionResponse
+func (client *Client) CheckHadoopNetConnectionWithOptions(request *CheckHadoopNetConnectionRequest, runtime *util.RuntimeOptions) (_result *CheckHadoopNetConnectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EmrInstanceId)) {
+		query["EmrInstanceId"] = request.EmrInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckHadoopNetConnection"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckHadoopNetConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查hadoop集群网络连通性
+//
+// @param request - CheckHadoopNetConnectionRequest
+//
+// @return CheckHadoopNetConnectionResponse
+func (client *Client) CheckHadoopNetConnection(request *CheckHadoopNetConnectionRequest) (_result *CheckHadoopNetConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckHadoopNetConnectionResponse{}
+	_body, _err := client.CheckHadoopNetConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查jdbc连接串网络连通性
+//
+// @param request - CheckJDBCSourceNetConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckJDBCSourceNetConnectionResponse
+func (client *Client) CheckJDBCSourceNetConnectionWithOptions(request *CheckJDBCSourceNetConnectionRequest, runtime *util.RuntimeOptions) (_result *CheckJDBCSourceNetConnectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JdbcConnectionString)) {
+		query["JdbcConnectionString"] = request.JdbcConnectionString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckJDBCSourceNetConnection"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckJDBCSourceNetConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查jdbc连接串网络连通性
+//
+// @param request - CheckJDBCSourceNetConnectionRequest
+//
+// @return CheckJDBCSourceNetConnectionResponse
+func (client *Client) CheckJDBCSourceNetConnection(request *CheckJDBCSourceNetConnectionRequest) (_result *CheckJDBCSourceNetConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckJDBCSourceNetConnectionResponse{}
+	_body, _err := client.CheckJDBCSourceNetConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries whether a service-linked role is created.
 //
 // @param request - CheckServiceLinkedRoleRequest
@@ -28734,6 +34983,350 @@ func (client *Client) CreateDocumentCollection(request *CreateDocumentCollection
 
 // Summary:
 //
+// 安装插件
+//
+// @param request - CreateExtensionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExtensionsResponse
+func (client *Client) CreateExtensionsWithOptions(request *CreateExtensionsRequest, runtime *util.RuntimeOptions) (_result *CreateExtensionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBNames)) {
+		query["DBNames"] = request.DBNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extensions)) {
+		query["Extensions"] = request.Extensions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateExtensions"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateExtensionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 安装插件
+//
+// @param request - CreateExtensionsRequest
+//
+// @return CreateExtensionsResponse
+func (client *Client) CreateExtensions(request *CreateExtensionsRequest) (_result *CreateExtensionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateExtensionsResponse{}
+	_body, _err := client.CreateExtensionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据服务
+//
+// @param request - CreateExternalDataServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExternalDataServiceResponse
+func (client *Client) CreateExternalDataServiceWithOptions(request *CreateExternalDataServiceRequest, runtime *util.RuntimeOptions) (_result *CreateExternalDataServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceDescription)) {
+		query["ServiceDescription"] = request.ServiceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceSpec)) {
+		query["ServiceSpec"] = request.ServiceSpec
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateExternalDataService"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateExternalDataServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据服务
+//
+// @param request - CreateExternalDataServiceRequest
+//
+// @return CreateExternalDataServiceResponse
+func (client *Client) CreateExternalDataService(request *CreateExternalDataServiceRequest) (_result *CreateExternalDataServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateExternalDataServiceResponse{}
+	_body, _err := client.CreateExternalDataServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建hadoop数据源配置
+//
+// @param request - CreateHadoopDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHadoopDataSourceResponse
+func (client *Client) CreateHadoopDataSourceWithOptions(request *CreateHadoopDataSourceRequest, runtime *util.RuntimeOptions) (_result *CreateHadoopDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceDescription)) {
+		query["DataSourceDescription"] = request.DataSourceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceName)) {
+		query["DataSourceName"] = request.DataSourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EmrInstanceId)) {
+		query["EmrInstanceId"] = request.EmrInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HDFSConf)) {
+		query["HDFSConf"] = request.HDFSConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HadoopCoreConf)) {
+		query["HadoopCoreConf"] = request.HadoopCoreConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HadoopCreateType)) {
+		query["HadoopCreateType"] = request.HadoopCreateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HadoopHostsAddress)) {
+		query["HadoopHostsAddress"] = request.HadoopHostsAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HiveConf)) {
+		query["HiveConf"] = request.HiveConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MapReduceConf)) {
+		query["MapReduceConf"] = request.MapReduceConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.YarnConf)) {
+		query["YarnConf"] = request.YarnConf
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHadoopDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHadoopDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建hadoop数据源配置
+//
+// @param request - CreateHadoopDataSourceRequest
+//
+// @return CreateHadoopDataSourceResponse
+func (client *Client) CreateHadoopDataSource(request *CreateHadoopDataSourceRequest) (_result *CreateHadoopDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHadoopDataSourceResponse{}
+	_body, _err := client.CreateHadoopDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建JDBC数据源配置
+//
+// @param request - CreateJDBCDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateJDBCDataSourceResponse
+func (client *Client) CreateJDBCDataSourceWithOptions(request *CreateJDBCDataSourceRequest, runtime *util.RuntimeOptions) (_result *CreateJDBCDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceDescription)) {
+		query["DataSourceDescription"] = request.DataSourceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceName)) {
+		query["DataSourceName"] = request.DataSourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JDBCConnectionString)) {
+		query["JDBCConnectionString"] = request.JDBCConnectionString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JDBCPassword)) {
+		query["JDBCPassword"] = request.JDBCPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JDBCUserName)) {
+		query["JDBCUserName"] = request.JDBCUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateJDBCDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateJDBCDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建JDBC数据源配置
+//
+// @param request - CreateJDBCDataSourceRequest
+//
+// @return CreateJDBCDataSourceResponse
+func (client *Client) CreateJDBCDataSource(request *CreateJDBCDataSourceRequest) (_result *CreateJDBCDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateJDBCDataSourceResponse{}
+	_body, _err := client.CreateJDBCDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a vector namespace.
 //
 // @param request - CreateNamespaceRequest
@@ -28973,6 +35566,328 @@ func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServiceLinkedRoleResponse{}
 	_body, _err := client.CreateServiceLinkedRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - CreateStreamingDataServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStreamingDataServiceResponse
+func (client *Client) CreateStreamingDataServiceWithOptions(request *CreateStreamingDataServiceRequest, runtime *util.RuntimeOptions) (_result *CreateStreamingDataServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceDescription)) {
+		query["ServiceDescription"] = request.ServiceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceSpec)) {
+		query["ServiceSpec"] = request.ServiceSpec
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateStreamingDataService"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateStreamingDataServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - CreateStreamingDataServiceRequest
+//
+// @return CreateStreamingDataServiceResponse
+func (client *Client) CreateStreamingDataService(request *CreateStreamingDataServiceRequest) (_result *CreateStreamingDataServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateStreamingDataServiceResponse{}
+	_body, _err := client.CreateStreamingDataServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - CreateStreamingDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStreamingDataSourceResponse
+func (client *Client) CreateStreamingDataSourceWithOptions(request *CreateStreamingDataSourceRequest, runtime *util.RuntimeOptions) (_result *CreateStreamingDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceConfig)) {
+		query["DataSourceConfig"] = request.DataSourceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceDescription)) {
+		query["DataSourceDescription"] = request.DataSourceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceName)) {
+		query["DataSourceName"] = request.DataSourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateStreamingDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateStreamingDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - CreateStreamingDataSourceRequest
+//
+// @return CreateStreamingDataSourceResponse
+func (client *Client) CreateStreamingDataSource(request *CreateStreamingDataSourceRequest) (_result *CreateStreamingDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateStreamingDataSourceResponse{}
+	_body, _err := client.CreateStreamingDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param tmpReq - CreateStreamingJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStreamingJobResponse
+func (client *Client) CreateStreamingJobWithOptions(tmpReq *CreateStreamingJobRequest, runtime *util.RuntimeOptions) (_result *CreateStreamingJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateStreamingJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DestColumns)) {
+		request.DestColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DestColumns, tea.String("DestColumns"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.MatchColumns)) {
+		request.MatchColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MatchColumns, tea.String("MatchColumns"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SrcColumns)) {
+		request.SrcColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SrcColumns, tea.String("SrcColumns"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UpdateColumns)) {
+		request.UpdateColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateColumns, tea.String("UpdateColumns"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Account)) {
+		query["Account"] = request.Account
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Consistency)) {
+		query["Consistency"] = request.Consistency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestColumnsShrink)) {
+		query["DestColumns"] = request.DestColumnsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestDatabase)) {
+		query["DestDatabase"] = request.DestDatabase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestSchema)) {
+		query["DestSchema"] = request.DestSchema
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestTable)) {
+		query["DestTable"] = request.DestTable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorLimitCount)) {
+		query["ErrorLimitCount"] = request.ErrorLimitCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FallbackOffset)) {
+		query["FallbackOffset"] = request.FallbackOffset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobConfig)) {
+		query["JobConfig"] = request.JobConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobDescription)) {
+		query["JobDescription"] = request.JobDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobName)) {
+		query["JobName"] = request.JobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchColumnsShrink)) {
+		query["MatchColumns"] = request.MatchColumnsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcColumnsShrink)) {
+		query["SrcColumns"] = request.SrcColumnsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TryRun)) {
+		query["TryRun"] = request.TryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateColumnsShrink)) {
+		query["UpdateColumns"] = request.UpdateColumnsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WriteMode)) {
+		query["WriteMode"] = request.WriteMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateStreamingJob"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateStreamingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - CreateStreamingJobRequest
+//
+// @return CreateStreamingJobResponse
+func (client *Client) CreateStreamingJob(request *CreateStreamingJobRequest) (_result *CreateStreamingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateStreamingJobResponse{}
+	_body, _err := client.CreateStreamingJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29594,6 +36509,282 @@ func (client *Client) DeleteDocumentCollection(request *DeleteDocumentCollection
 
 // Summary:
 //
+// 删除插件
+//
+// @param request - DeleteExtensionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExtensionResponse
+func (client *Client) DeleteExtensionWithOptions(request *DeleteExtensionRequest, runtime *util.RuntimeOptions) (_result *DeleteExtensionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBNames)) {
+		query["DBNames"] = request.DBNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extension)) {
+		query["Extension"] = request.Extension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteExtension"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteExtensionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除插件
+//
+// @param request - DeleteExtensionRequest
+//
+// @return DeleteExtensionResponse
+func (client *Client) DeleteExtension(request *DeleteExtensionRequest) (_result *DeleteExtensionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteExtensionResponse{}
+	_body, _err := client.DeleteExtensionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除外部数据服务
+//
+// @param request - DeleteExternalDataServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExternalDataServiceResponse
+func (client *Client) DeleteExternalDataServiceWithOptions(request *DeleteExternalDataServiceRequest, runtime *util.RuntimeOptions) (_result *DeleteExternalDataServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteExternalDataService"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteExternalDataServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除外部数据服务
+//
+// @param request - DeleteExternalDataServiceRequest
+//
+// @return DeleteExternalDataServiceResponse
+func (client *Client) DeleteExternalDataService(request *DeleteExternalDataServiceRequest) (_result *DeleteExternalDataServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteExternalDataServiceResponse{}
+	_body, _err := client.DeleteExternalDataServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除hadoop数据源
+//
+// @param request - DeleteHadoopDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHadoopDataSourceResponse
+func (client *Client) DeleteHadoopDataSourceWithOptions(request *DeleteHadoopDataSourceRequest, runtime *util.RuntimeOptions) (_result *DeleteHadoopDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHadoopDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHadoopDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除hadoop数据源
+//
+// @param request - DeleteHadoopDataSourceRequest
+//
+// @return DeleteHadoopDataSourceResponse
+func (client *Client) DeleteHadoopDataSource(request *DeleteHadoopDataSourceRequest) (_result *DeleteHadoopDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHadoopDataSourceResponse{}
+	_body, _err := client.DeleteHadoopDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除jdbc数据源
+//
+// @param request - DeleteJDBCDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteJDBCDataSourceResponse
+func (client *Client) DeleteJDBCDataSourceWithOptions(request *DeleteJDBCDataSourceRequest, runtime *util.RuntimeOptions) (_result *DeleteJDBCDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteJDBCDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteJDBCDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除jdbc数据源
+//
+// @param request - DeleteJDBCDataSourceRequest
+//
+// @return DeleteJDBCDataSourceResponse
+func (client *Client) DeleteJDBCDataSource(request *DeleteJDBCDataSourceRequest) (_result *DeleteJDBCDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteJDBCDataSourceResponse{}
+	_body, _err := client.DeleteJDBCDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a namespace.
 //
 // @param request - DeleteNamespaceRequest
@@ -29665,6 +36856,210 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNamespaceResponse{}
 	_body, _err := client.DeleteNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - DeleteStreamingDataServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStreamingDataServiceResponse
+func (client *Client) DeleteStreamingDataServiceWithOptions(request *DeleteStreamingDataServiceRequest, runtime *util.RuntimeOptions) (_result *DeleteStreamingDataServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteStreamingDataService"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteStreamingDataServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - DeleteStreamingDataServiceRequest
+//
+// @return DeleteStreamingDataServiceResponse
+func (client *Client) DeleteStreamingDataService(request *DeleteStreamingDataServiceRequest) (_result *DeleteStreamingDataServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteStreamingDataServiceResponse{}
+	_body, _err := client.DeleteStreamingDataServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除外部数据源配置
+//
+// @param request - DeleteStreamingDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStreamingDataSourceResponse
+func (client *Client) DeleteStreamingDataSourceWithOptions(request *DeleteStreamingDataSourceRequest, runtime *util.RuntimeOptions) (_result *DeleteStreamingDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteStreamingDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteStreamingDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除外部数据源配置
+//
+// @param request - DeleteStreamingDataSourceRequest
+//
+// @return DeleteStreamingDataSourceResponse
+func (client *Client) DeleteStreamingDataSource(request *DeleteStreamingDataSourceRequest) (_result *DeleteStreamingDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteStreamingDataSourceResponse{}
+	_body, _err := client.DeleteStreamingDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除外部数据源配置
+//
+// @param request - DeleteStreamingJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStreamingJobResponse
+func (client *Client) DeleteStreamingJobWithOptions(request *DeleteStreamingJobRequest, runtime *util.RuntimeOptions) (_result *DeleteStreamingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteStreamingJob"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteStreamingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除外部数据源配置
+//
+// @param request - DeleteStreamingJobRequest
+//
+// @return DeleteStreamingJobResponse
+func (client *Client) DeleteStreamingJob(request *DeleteStreamingJobRequest) (_result *DeleteStreamingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteStreamingJobResponse{}
+	_body, _err := client.DeleteStreamingJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32536,6 +39931,278 @@ func (client *Client) DescribeDownloadSQLLogs(request *DescribeDownloadSQLLogsRe
 
 // Summary:
 //
+// 获取外部数据服务详情
+//
+// @param request - DescribeExternalDataServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExternalDataServiceResponse
+func (client *Client) DescribeExternalDataServiceWithOptions(request *DescribeExternalDataServiceRequest, runtime *util.RuntimeOptions) (_result *DescribeExternalDataServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExternalDataService"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeExternalDataServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外部数据服务详情
+//
+// @param request - DescribeExternalDataServiceRequest
+//
+// @return DescribeExternalDataServiceResponse
+func (client *Client) DescribeExternalDataService(request *DescribeExternalDataServiceRequest) (_result *DescribeExternalDataServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeExternalDataServiceResponse{}
+	_body, _err := client.DescribeExternalDataServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取同网络下的Hadoop集群列表
+//
+// @param request - DescribeHadoopClustersInSameNetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHadoopClustersInSameNetResponse
+func (client *Client) DescribeHadoopClustersInSameNetWithOptions(request *DescribeHadoopClustersInSameNetRequest, runtime *util.RuntimeOptions) (_result *DescribeHadoopClustersInSameNetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHadoopClustersInSameNet"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHadoopClustersInSameNetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取同网络下的Hadoop集群列表
+//
+// @param request - DescribeHadoopClustersInSameNetRequest
+//
+// @return DescribeHadoopClustersInSameNetResponse
+func (client *Client) DescribeHadoopClustersInSameNet(request *DescribeHadoopClustersInSameNetRequest) (_result *DescribeHadoopClustersInSameNetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHadoopClustersInSameNetResponse{}
+	_body, _err := client.DescribeHadoopClustersInSameNetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取hadoop配置信息
+//
+// @param request - DescribeHadoopConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHadoopConfigsResponse
+func (client *Client) DescribeHadoopConfigsWithOptions(request *DescribeHadoopConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeHadoopConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigName)) {
+		query["ConfigName"] = request.ConfigName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EmrInstanceId)) {
+		query["EmrInstanceId"] = request.EmrInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHadoopConfigs"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHadoopConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取hadoop配置信息
+//
+// @param request - DescribeHadoopConfigsRequest
+//
+// @return DescribeHadoopConfigsResponse
+func (client *Client) DescribeHadoopConfigs(request *DescribeHadoopConfigsRequest) (_result *DescribeHadoopConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHadoopConfigsResponse{}
+	_body, _err := client.DescribeHadoopConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取hadoop数据源配置信息
+//
+// @param request - DescribeHadoopDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHadoopDataSourceResponse
+func (client *Client) DescribeHadoopDataSourceWithOptions(request *DescribeHadoopDataSourceRequest, runtime *util.RuntimeOptions) (_result *DescribeHadoopDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHadoopDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHadoopDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取hadoop数据源配置信息
+//
+// @param request - DescribeHadoopDataSourceRequest
+//
+// @return DescribeHadoopDataSourceResponse
+func (client *Client) DescribeHadoopDataSource(request *DescribeHadoopDataSourceRequest) (_result *DescribeHadoopDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHadoopDataSourceResponse{}
+	_body, _err := client.DescribeHadoopDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the health status of an AnalyticDB for PostgreSQL instance and its nodes.
 //
 // Description:
@@ -32675,6 +40342,70 @@ func (client *Client) DescribeIMVInfos(request *DescribeIMVInfosRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIMVInfosResponse{}
 	_body, _err := client.DescribeIMVInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取jdbc数据源配置信息
+//
+// @param request - DescribeJDBCDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeJDBCDataSourceResponse
+func (client *Client) DescribeJDBCDataSourceWithOptions(request *DescribeJDBCDataSourceRequest, runtime *util.RuntimeOptions) (_result *DescribeJDBCDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeJDBCDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeJDBCDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取jdbc数据源配置信息
+//
+// @param request - DescribeJDBCDataSourceRequest
+//
+// @return DescribeJDBCDataSourceResponse
+func (client *Client) DescribeJDBCDataSource(request *DescribeJDBCDataSourceRequest) (_result *DescribeJDBCDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeJDBCDataSourceResponse{}
+	_body, _err := client.DescribeJDBCDataSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33715,6 +41446,210 @@ func (client *Client) DescribeSampleData(request *DescribeSampleDataRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSampleDataResponse{}
 	_body, _err := client.DescribeSampleDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - DescribeStreamingDataServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeStreamingDataServiceResponse
+func (client *Client) DescribeStreamingDataServiceWithOptions(request *DescribeStreamingDataServiceRequest, runtime *util.RuntimeOptions) (_result *DescribeStreamingDataServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeStreamingDataService"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeStreamingDataServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - DescribeStreamingDataServiceRequest
+//
+// @return DescribeStreamingDataServiceResponse
+func (client *Client) DescribeStreamingDataService(request *DescribeStreamingDataServiceRequest) (_result *DescribeStreamingDataServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeStreamingDataServiceResponse{}
+	_body, _err := client.DescribeStreamingDataServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外部数据源配置信息
+//
+// @param request - DescribeStreamingDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeStreamingDataSourceResponse
+func (client *Client) DescribeStreamingDataSourceWithOptions(request *DescribeStreamingDataSourceRequest, runtime *util.RuntimeOptions) (_result *DescribeStreamingDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeStreamingDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeStreamingDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外部数据源配置信息
+//
+// @param request - DescribeStreamingDataSourceRequest
+//
+// @return DescribeStreamingDataSourceResponse
+func (client *Client) DescribeStreamingDataSource(request *DescribeStreamingDataSourceRequest) (_result *DescribeStreamingDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeStreamingDataSourceResponse{}
+	_body, _err := client.DescribeStreamingDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除外部数据源配置
+//
+// @param request - DescribeStreamingJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeStreamingJobResponse
+func (client *Client) DescribeStreamingJobWithOptions(request *DescribeStreamingJobRequest, runtime *util.RuntimeOptions) (_result *DescribeStreamingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeStreamingJob"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeStreamingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除外部数据源配置
+//
+// @param request - DescribeStreamingJobRequest
+//
+// @return DescribeStreamingJobResponse
+func (client *Client) DescribeStreamingJob(request *DescribeStreamingJobRequest) (_result *DescribeStreamingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeStreamingJobResponse{}
+	_body, _err := client.DescribeStreamingJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35004,6 +42939,230 @@ func (client *Client) ListDocuments(request *ListDocumentsRequest) (_result *Lis
 
 // Summary:
 //
+// 获取外部数据服务列表
+//
+// @param request - ListExternalDataServicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExternalDataServicesResponse
+func (client *Client) ListExternalDataServicesWithOptions(request *ListExternalDataServicesRequest, runtime *util.RuntimeOptions) (_result *ListExternalDataServicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListExternalDataServices"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListExternalDataServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外部数据服务列表
+//
+// @param request - ListExternalDataServicesRequest
+//
+// @return ListExternalDataServicesResponse
+func (client *Client) ListExternalDataServices(request *ListExternalDataServicesRequest) (_result *ListExternalDataServicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListExternalDataServicesResponse{}
+	_body, _err := client.ListExternalDataServicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例外表配置列表
+//
+// @param request - ListExternalDataSourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExternalDataSourcesResponse
+func (client *Client) ListExternalDataSourcesWithOptions(request *ListExternalDataSourcesRequest, runtime *util.RuntimeOptions) (_result *ListExternalDataSourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListExternalDataSources"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListExternalDataSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例外表配置列表
+//
+// @param request - ListExternalDataSourcesRequest
+//
+// @return ListExternalDataSourcesResponse
+func (client *Client) ListExternalDataSources(request *ListExternalDataSourcesRequest) (_result *ListExternalDataSourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListExternalDataSourcesResponse{}
+	_body, _err := client.ListExternalDataSourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例插件列表
+//
+// @param request - ListInstanceExtensionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceExtensionsResponse
+func (client *Client) ListInstanceExtensionsWithOptions(request *ListInstanceExtensionsRequest, runtime *util.RuntimeOptions) (_result *ListInstanceExtensionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extension)) {
+		query["Extension"] = request.Extension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstallStatus)) {
+		query["InstallStatus"] = request.InstallStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceExtensions"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceExtensionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例插件列表
+//
+// @param request - ListInstanceExtensionsRequest
+//
+// @return ListInstanceExtensionsResponse
+func (client *Client) ListInstanceExtensions(request *ListInstanceExtensionsRequest) (_result *ListInstanceExtensionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInstanceExtensionsResponse{}
+	_body, _err := client.ListInstanceExtensionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of namespaces.
 //
 // @param request - ListNamespacesRequest
@@ -35071,6 +43230,222 @@ func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *L
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNamespacesResponse{}
 	_body, _err := client.ListNamespacesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - ListStreamingDataServicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListStreamingDataServicesResponse
+func (client *Client) ListStreamingDataServicesWithOptions(request *ListStreamingDataServicesRequest, runtime *util.RuntimeOptions) (_result *ListStreamingDataServicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStreamingDataServices"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListStreamingDataServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - ListStreamingDataServicesRequest
+//
+// @return ListStreamingDataServicesResponse
+func (client *Client) ListStreamingDataServices(request *ListStreamingDataServicesRequest) (_result *ListStreamingDataServicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListStreamingDataServicesResponse{}
+	_body, _err := client.ListStreamingDataServicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例外表配置列表
+//
+// @param request - ListStreamingDataSourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListStreamingDataSourcesResponse
+func (client *Client) ListStreamingDataSourcesWithOptions(request *ListStreamingDataSourcesRequest, runtime *util.RuntimeOptions) (_result *ListStreamingDataSourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStreamingDataSources"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListStreamingDataSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例外表配置列表
+//
+// @param request - ListStreamingDataSourcesRequest
+//
+// @return ListStreamingDataSourcesResponse
+func (client *Client) ListStreamingDataSources(request *ListStreamingDataSourcesRequest) (_result *ListStreamingDataSourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListStreamingDataSourcesResponse{}
+	_body, _err := client.ListStreamingDataSourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除外部数据源配置
+//
+// @param request - ListStreamingJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListStreamingJobsResponse
+func (client *Client) ListStreamingJobsWithOptions(request *ListStreamingJobsRequest, runtime *util.RuntimeOptions) (_result *ListStreamingJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStreamingJobs"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListStreamingJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除外部数据源配置
+//
+// @param request - ListStreamingJobsRequest
+//
+// @return ListStreamingJobsResponse
+func (client *Client) ListStreamingJobs(request *ListStreamingJobsRequest) (_result *ListStreamingJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListStreamingJobsResponse{}
+	_body, _err := client.ListStreamingJobsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35800,6 +44175,278 @@ func (client *Client) ModifyDBInstanceSSL(request *ModifyDBInstanceSSLRequest) (
 
 // Summary:
 //
+// 修改外部数据服务
+//
+// @param request - ModifyExternalDataServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyExternalDataServiceResponse
+func (client *Client) ModifyExternalDataServiceWithOptions(request *ModifyExternalDataServiceRequest, runtime *util.RuntimeOptions) (_result *ModifyExternalDataServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceDescription)) {
+		query["ServiceDescription"] = request.ServiceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceSpec)) {
+		query["ServiceSpec"] = request.ServiceSpec
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyExternalDataService"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyExternalDataServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改外部数据服务
+//
+// @param request - ModifyExternalDataServiceRequest
+//
+// @return ModifyExternalDataServiceResponse
+func (client *Client) ModifyExternalDataService(request *ModifyExternalDataServiceRequest) (_result *ModifyExternalDataServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyExternalDataServiceResponse{}
+	_body, _err := client.ModifyExternalDataServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改hadoop数据源配置
+//
+// @param request - ModifyHadoopDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHadoopDataSourceResponse
+func (client *Client) ModifyHadoopDataSourceWithOptions(request *ModifyHadoopDataSourceRequest, runtime *util.RuntimeOptions) (_result *ModifyHadoopDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceDescription)) {
+		query["DataSourceDescription"] = request.DataSourceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EmrInstanceId)) {
+		query["EmrInstanceId"] = request.EmrInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HDFSConf)) {
+		query["HDFSConf"] = request.HDFSConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HadoopCoreConf)) {
+		query["HadoopCoreConf"] = request.HadoopCoreConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HadoopCreateType)) {
+		query["HadoopCreateType"] = request.HadoopCreateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HadoopHostsAddress)) {
+		query["HadoopHostsAddress"] = request.HadoopHostsAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HiveConf)) {
+		query["HiveConf"] = request.HiveConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MapReduceConf)) {
+		query["MapReduceConf"] = request.MapReduceConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.YarnConf)) {
+		query["YarnConf"] = request.YarnConf
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyHadoopDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyHadoopDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改hadoop数据源配置
+//
+// @param request - ModifyHadoopDataSourceRequest
+//
+// @return ModifyHadoopDataSourceResponse
+func (client *Client) ModifyHadoopDataSource(request *ModifyHadoopDataSourceRequest) (_result *ModifyHadoopDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyHadoopDataSourceResponse{}
+	_body, _err := client.ModifyHadoopDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改jdbc数据源配置
+//
+// @param request - ModifyJDBCDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyJDBCDataSourceResponse
+func (client *Client) ModifyJDBCDataSourceWithOptions(request *ModifyJDBCDataSourceRequest, runtime *util.RuntimeOptions) (_result *ModifyJDBCDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceDescription)) {
+		query["DataSourceDescription"] = request.DataSourceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JDBCConnectionString)) {
+		query["JDBCConnectionString"] = request.JDBCConnectionString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JDBCPassword)) {
+		query["JDBCPassword"] = request.JDBCPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JDBCUserName)) {
+		query["JDBCUserName"] = request.JDBCUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyJDBCDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyJDBCDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改jdbc数据源配置
+//
+// @param request - ModifyJDBCDataSourceRequest
+//
+// @return ModifyJDBCDataSourceResponse
+func (client *Client) ModifyJDBCDataSource(request *ModifyJDBCDataSourceRequest) (_result *ModifyJDBCDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyJDBCDataSourceResponse{}
+	_body, _err := client.ModifyJDBCDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改master规格
 //
 // @param request - ModifyMasterSpecRequest
@@ -36107,6 +44754,312 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySecurityIpsResponse{}
 	_body, _err := client.ModifySecurityIpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - ModifyStreamingDataServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyStreamingDataServiceResponse
+func (client *Client) ModifyStreamingDataServiceWithOptions(request *ModifyStreamingDataServiceRequest, runtime *util.RuntimeOptions) (_result *ModifyStreamingDataServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceDescription)) {
+		query["ServiceDescription"] = request.ServiceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceSpec)) {
+		query["ServiceSpec"] = request.ServiceSpec
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyStreamingDataService"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyStreamingDataServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - ModifyStreamingDataServiceRequest
+//
+// @return ModifyStreamingDataServiceResponse
+func (client *Client) ModifyStreamingDataService(request *ModifyStreamingDataServiceRequest) (_result *ModifyStreamingDataServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyStreamingDataServiceResponse{}
+	_body, _err := client.ModifyStreamingDataServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改外部数据源配置
+//
+// @param request - ModifyStreamingDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyStreamingDataSourceResponse
+func (client *Client) ModifyStreamingDataSourceWithOptions(request *ModifyStreamingDataSourceRequest, runtime *util.RuntimeOptions) (_result *ModifyStreamingDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceConfig)) {
+		query["DataSourceConfig"] = request.DataSourceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceDescription)) {
+		query["DataSourceDescription"] = request.DataSourceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyStreamingDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyStreamingDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改外部数据源配置
+//
+// @param request - ModifyStreamingDataSourceRequest
+//
+// @return ModifyStreamingDataSourceResponse
+func (client *Client) ModifyStreamingDataSource(request *ModifyStreamingDataSourceRequest) (_result *ModifyStreamingDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyStreamingDataSourceResponse{}
+	_body, _err := client.ModifyStreamingDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param tmpReq - ModifyStreamingJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyStreamingJobResponse
+func (client *Client) ModifyStreamingJobWithOptions(tmpReq *ModifyStreamingJobRequest, runtime *util.RuntimeOptions) (_result *ModifyStreamingJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyStreamingJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DestColumns)) {
+		request.DestColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DestColumns, tea.String("DestColumns"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.MatchColumns)) {
+		request.MatchColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MatchColumns, tea.String("MatchColumns"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SrcColumns)) {
+		request.SrcColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SrcColumns, tea.String("SrcColumns"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UpdateColumns)) {
+		request.UpdateColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateColumns, tea.String("UpdateColumns"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Account)) {
+		query["Account"] = request.Account
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Consistency)) {
+		query["Consistency"] = request.Consistency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestColumnsShrink)) {
+		query["DestColumns"] = request.DestColumnsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestDatabase)) {
+		query["DestDatabase"] = request.DestDatabase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestSchema)) {
+		query["DestSchema"] = request.DestSchema
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestTable)) {
+		query["DestTable"] = request.DestTable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorLimitCount)) {
+		query["ErrorLimitCount"] = request.ErrorLimitCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FallbackOffset)) {
+		query["FallbackOffset"] = request.FallbackOffset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobConfig)) {
+		query["JobConfig"] = request.JobConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobDescription)) {
+		query["JobDescription"] = request.JobDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchColumnsShrink)) {
+		query["MatchColumns"] = request.MatchColumnsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcColumnsShrink)) {
+		query["SrcColumns"] = request.SrcColumnsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TryRun)) {
+		query["TryRun"] = request.TryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateColumnsShrink)) {
+		query["UpdateColumns"] = request.UpdateColumnsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WriteMode)) {
+		query["WriteMode"] = request.WriteMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyStreamingJob"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyStreamingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外部数据源配置
+//
+// @param request - ModifyStreamingJobRequest
+//
+// @return ModifyStreamingJobResponse
+func (client *Client) ModifyStreamingJob(request *ModifyStreamingJobRequest) (_result *ModifyStreamingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyStreamingJobResponse{}
+	_body, _err := client.ModifyStreamingJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38001,6 +46954,74 @@ func (client *Client) UpgradeDBVersion(request *UpgradeDBVersionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeDBVersionResponse{}
 	_body, _err := client.UpgradeDBVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级插件
+//
+// @param request - UpgradeExtensionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeExtensionsResponse
+func (client *Client) UpgradeExtensionsWithOptions(request *UpgradeExtensionsRequest, runtime *util.RuntimeOptions) (_result *UpgradeExtensionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extensions)) {
+		query["Extensions"] = request.Extensions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeExtensions"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpgradeExtensionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级插件
+//
+// @param request - UpgradeExtensionsRequest
+//
+// @return UpgradeExtensionsResponse
+func (client *Client) UpgradeExtensions(request *UpgradeExtensionsRequest) (_result *UpgradeExtensionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpgradeExtensionsResponse{}
+	_body, _err := client.UpgradeExtensionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
