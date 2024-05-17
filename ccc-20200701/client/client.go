@@ -41655,7 +41655,8 @@ type ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummary
 	// example:
 	//
 	// 0
-	CallsOffered *int64 `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	CallsOffered        *int64 `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	CallsQueuingTimeout *int64 `json:"CallsQueuingTimeout,omitempty" xml:"CallsQueuingTimeout,omitempty"`
 	// example:
 	//
 	// 0
@@ -41668,6 +41669,7 @@ type ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummary
 	//
 	// 0
 	CallsServiceLevel30 *int64 `json:"CallsServiceLevel30,omitempty" xml:"CallsServiceLevel30,omitempty"`
+	CallsTimeout        *int64 `json:"CallsTimeout,omitempty" xml:"CallsTimeout,omitempty"`
 	// example:
 	//
 	// 0
@@ -41797,6 +41799,11 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSum
 	return s
 }
 
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsQueuingTimeout(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
+	s.CallsQueuingTimeout = &v
+	return s
+}
+
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsServiceLevel10(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
 	s.CallsServiceLevel10 = &v
 	return s
@@ -41809,6 +41816,11 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSum
 
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsServiceLevel30(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
 	s.CallsServiceLevel30 = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsTimeout(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
+	s.CallsTimeout = &v
 	return s
 }
 
