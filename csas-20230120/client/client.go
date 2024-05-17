@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,8 +10,15 @@ import (
 )
 
 type AttachApplication2ConnectorRequest struct {
+	// This parameter is required.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	// ConnectorID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// connector-94db94e06b98****
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
 }
 
@@ -37,8 +41,15 @@ func (s *AttachApplication2ConnectorRequest) SetConnectorId(v string) *AttachApp
 }
 
 type AttachApplication2ConnectorShrinkRequest struct {
+	// This parameter is required.
 	ApplicationIdsShrink *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
 	// ConnectorID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// connector-94db94e06b98****
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
 }
 
@@ -61,6 +72,9 @@ func (s *AttachApplication2ConnectorShrinkRequest) SetConnectorId(v string) *Att
 }
 
 type AttachApplication2ConnectorResponseBody struct {
+	// example:
+	//
+	// 7E9D7ACD-53D5-56EF-A913-79D148D06299
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -107,13 +121,33 @@ func (s *AttachApplication2ConnectorResponse) SetBody(v *AttachApplication2Conne
 }
 
 type CreateClientUserRequest struct {
+	// example:
+	//
+	// 10797
 	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	IdpConfigId  *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// johndoe@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 727
+	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// example:
+	//
+	// 13641966835
 	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
-	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Username     *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// kehudiyi
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s CreateClientUserRequest) String() string {
@@ -160,7 +194,13 @@ func (s *CreateClientUserRequest) SetUsername(v string) *CreateClientUserRequest
 }
 
 type CreateClientUserResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 726
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -212,16 +252,47 @@ func (s *CreateClientUserResponse) SetBody(v *CreateClientUserResponseBody) *Cre
 }
 
 type CreateDynamicRouteRequest struct {
-	ApplicationIds   []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	ApplicationType  *string   `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	Description      *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DynamicRouteType *string   `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
-	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextHop          *string   `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	Priority         *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionIds        []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds           []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Application
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// connector
+	DynamicRouteType *string `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dynamic_route_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// connector-8ccb13b6f52c****
+	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 99
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// This parameter is required.
+	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Disabled
+	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateDynamicRouteRequest) String() string {
@@ -283,8 +354,14 @@ func (s *CreateDynamicRouteRequest) SetTagIds(v []*string) *CreateDynamicRouteRe
 }
 
 type CreateDynamicRouteResponseBody struct {
+	// example:
+	//
+	// dr-ca9fddfac7c6****
 	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDynamicRouteResponseBody) String() string {
@@ -335,8 +412,14 @@ func (s *CreateDynamicRouteResponse) SetBody(v *CreateDynamicRouteResponseBody) 
 }
 
 type CreateIdpDepartmentRequest struct {
+	// This parameter is required.
 	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
-	IdpConfigId    *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1222
+	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
 }
 
 func (s CreateIdpDepartmentRequest) String() string {
@@ -358,7 +441,13 @@ func (s *CreateIdpDepartmentRequest) SetIdpConfigId(v string) *CreateIdpDepartme
 }
 
 type CreateIdpDepartmentResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 726
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// D6707286-A50E-57B1-B2CF-EFAC59E850D8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -410,13 +499,30 @@ func (s *CreateIdpDepartmentResponse) SetBody(v *CreateIdpDepartmentResponseBody
 }
 
 type CreatePrivateAccessApplicationRequest struct {
-	Addresses   []*string                                          `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	Description *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	PortRanges  []*CreatePrivateAccessApplicationRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	Protocol    *string                                            `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Status      *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds      []*string                                          `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Addresses   []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// private_access_application_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	PortRanges []*CreatePrivateAccessApplicationRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// All
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Enabled
+	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
 func (s CreatePrivateAccessApplicationRequest) String() string {
@@ -463,8 +569,18 @@ func (s *CreatePrivateAccessApplicationRequest) SetTagIds(v []*string) *CreatePr
 }
 
 type CreatePrivateAccessApplicationRequestPortRanges struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	End   *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 81
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
 }
 
 func (s CreatePrivateAccessApplicationRequestPortRanges) String() string {
@@ -486,8 +602,14 @@ func (s *CreatePrivateAccessApplicationRequestPortRanges) SetEnd(v int32) *Creat
 }
 
 type CreatePrivateAccessApplicationResponseBody struct {
+	// example:
+	//
+	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePrivateAccessApplicationResponseBody) String() string {
@@ -538,21 +660,54 @@ func (s *CreatePrivateAccessApplicationResponse) SetBody(v *CreatePrivateAccessA
 }
 
 type CreatePrivateAccessPolicyRequest struct {
-	ApplicationIds       []*string                                               `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Application
 	ApplicationType      *string                                                 `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	CustomUserAttributes []*CreatePrivateAccessPolicyRequestCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
 	Description          *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
 	DeviceAttributeId    *string                                                 `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
-	Name                 *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyAction         *string                                                 `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	Priority             *int32                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status               *string                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// private_access_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Allow
+	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 内网访问标签ID集合。最多可输入100个内网访问标签ID。当**ApplicationType**为**Tag时**，必填。和**ApplicationIds**互斥。
 	TagIds       []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 	// 内网访问策略的用户组类型。取值：
+	//
 	// - **Normal**：普通用户组。
+	//
 	// - **Custom**：自定义用户组。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Normal
 	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
 }
 
@@ -625,8 +780,17 @@ func (s *CreatePrivateAccessPolicyRequest) SetUserGroupMode(v string) *CreatePri
 }
 
 type CreatePrivateAccessPolicyRequestCustomUserAttributes struct {
-	IdpId         *int32  `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	Relation      *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// 12
+	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// example:
+	//
+	// Equal
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
 	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -660,7 +824,13 @@ func (s *CreatePrivateAccessPolicyRequestCustomUserAttributes) SetValue(v string
 }
 
 type CreatePrivateAccessPolicyResponseBody struct {
-	PolicyId  *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// pa-policy-867ef4007c8a****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// EFE7EBB2-449D-5BBB-B381-CA7839BC1649
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -713,7 +883,12 @@ func (s *CreatePrivateAccessPolicyResponse) SetBody(v *CreatePrivateAccessPolicy
 
 type CreatePrivateAccessTagRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tag_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreatePrivateAccessTagRequest) String() string {
@@ -735,8 +910,14 @@ func (s *CreatePrivateAccessTagRequest) SetName(v string) *CreatePrivateAccessTa
 }
 
 type CreatePrivateAccessTagResponseBody struct {
+	// example:
+	//
+	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TagId     *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// example:
+	//
+	// tag-d3f64e8bdd4a****
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
 func (s CreatePrivateAccessTagResponseBody) String() string {
@@ -787,17 +968,45 @@ func (s *CreatePrivateAccessTagResponse) SetBody(v *CreatePrivateAccessTagRespon
 }
 
 type CreateRegistrationPolicyRequest struct {
-	CompanyLimitCount  *CreateRegistrationPolicyRequestCompanyLimitCount  `json:"CompanyLimitCount,omitempty" xml:"CompanyLimitCount,omitempty" type:"Struct"`
-	CompanyLimitType   *string                                            `json:"CompanyLimitType,omitempty" xml:"CompanyLimitType,omitempty"`
-	Description        *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	MatchMode          *string                                            `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	CompanyLimitCount *CreateRegistrationPolicyRequestCompanyLimitCount `json:"CompanyLimitCount,omitempty" xml:"CompanyLimitCount,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LimitAll
+	CompanyLimitType *string `json:"CompanyLimitType,omitempty" xml:"CompanyLimitType,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UserGroupAll
+	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// registration_policy_name
 	Name               *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
 	PersonalLimitCount *CreateRegistrationPolicyRequestPersonalLimitCount `json:"PersonalLimitCount,omitempty" xml:"PersonalLimitCount,omitempty" type:"Struct"`
-	PersonalLimitType  *string                                            `json:"PersonalLimitType,omitempty" xml:"PersonalLimitType,omitempty"`
-	Priority           *int64                                             `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status             *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserGroupIds       []*string                                          `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	Whitelist          []*string                                          `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LimitDiff
+	PersonalLimitType *string `json:"PersonalLimitType,omitempty" xml:"PersonalLimitType,omitempty"`
+	// example:
+	//
+	// 99
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Enabled
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	Whitelist    []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
 func (s CreateRegistrationPolicyRequest) String() string {
@@ -864,9 +1073,18 @@ func (s *CreateRegistrationPolicyRequest) SetWhitelist(v []*string) *CreateRegis
 }
 
 type CreateRegistrationPolicyRequestCompanyLimitCount struct {
-	All    *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 1
+	All *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 0
 	Mobile *int32 `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	PC     *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
+	// example:
+	//
+	// 0
+	PC *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
 }
 
 func (s CreateRegistrationPolicyRequestCompanyLimitCount) String() string {
@@ -893,9 +1111,18 @@ func (s *CreateRegistrationPolicyRequestCompanyLimitCount) SetPC(v int32) *Creat
 }
 
 type CreateRegistrationPolicyRequestPersonalLimitCount struct {
-	All    *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 0
+	All *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 3
 	Mobile *int32 `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	PC     *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
+	// example:
+	//
+	// 2
+	PC *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
 }
 
 func (s CreateRegistrationPolicyRequestPersonalLimitCount) String() string {
@@ -922,17 +1149,45 @@ func (s *CreateRegistrationPolicyRequestPersonalLimitCount) SetPC(v int32) *Crea
 }
 
 type CreateRegistrationPolicyShrinkRequest struct {
-	CompanyLimitCountShrink  *string   `json:"CompanyLimitCount,omitempty" xml:"CompanyLimitCount,omitempty"`
-	CompanyLimitType         *string   `json:"CompanyLimitType,omitempty" xml:"CompanyLimitType,omitempty"`
-	Description              *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	MatchMode                *string   `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
-	Name                     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PersonalLimitCountShrink *string   `json:"PersonalLimitCount,omitempty" xml:"PersonalLimitCount,omitempty"`
-	PersonalLimitType        *string   `json:"PersonalLimitType,omitempty" xml:"PersonalLimitType,omitempty"`
-	Priority                 *int64    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status                   *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserGroupIds             []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	Whitelist                []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
+	CompanyLimitCountShrink *string `json:"CompanyLimitCount,omitempty" xml:"CompanyLimitCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LimitAll
+	CompanyLimitType *string `json:"CompanyLimitType,omitempty" xml:"CompanyLimitType,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UserGroupAll
+	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// registration_policy_name
+	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PersonalLimitCountShrink *string `json:"PersonalLimitCount,omitempty" xml:"PersonalLimitCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LimitDiff
+	PersonalLimitType *string `json:"PersonalLimitType,omitempty" xml:"PersonalLimitType,omitempty"`
+	// example:
+	//
+	// 99
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Enabled
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	Whitelist    []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
 func (s CreateRegistrationPolicyShrinkRequest) String() string {
@@ -999,8 +1254,11 @@ func (s *CreateRegistrationPolicyShrinkRequest) SetWhitelist(v []*string) *Creat
 }
 
 type CreateRegistrationPolicyResponseBody struct {
-	Policy    *CreateRegistrationPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Policy *CreateRegistrationPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	// example:
+	//
+	// FEF1144C-95D1-5F7C-81EF-9DB70EA49FCE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateRegistrationPolicyResponseBody) String() string {
@@ -1022,16 +1280,34 @@ func (s *CreateRegistrationPolicyResponseBody) SetRequestId(v string) *CreateReg
 }
 
 type CreateRegistrationPolicyResponseBodyPolicy struct {
-	CreateTime   *string                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description  *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	LimitDetail  []*CreateRegistrationPolicyResponseBodyPolicyLimitDetail `json:"LimitDetail,omitempty" xml:"LimitDetail,omitempty" type:"Repeated"`
-	MatchMode    *string                                                  `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
-	Name         *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyId     *string                                                  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Priority     *string                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status       *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserGroupIds []*string                                                `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	Whitelist    []*string                                                `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-05-16 17:18:46
+	CreateTime  *string                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	LimitDetail []*CreateRegistrationPolicyResponseBodyPolicyLimitDetail `json:"LimitDetail,omitempty" xml:"LimitDetail,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UserGroupNormal
+	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// example:
+	//
+	// registration_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// reg-policy-dcbfd33cb004****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	Whitelist    []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
 func (s CreateRegistrationPolicyResponseBodyPolicy) String() string {
@@ -1093,9 +1369,15 @@ func (s *CreateRegistrationPolicyResponseBodyPolicy) SetWhitelist(v []*string) *
 }
 
 type CreateRegistrationPolicyResponseBodyPolicyLimitDetail struct {
+	// example:
+	//
+	// Company
 	DeviceBelong *string                                                          `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
 	LimitCount   *CreateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount `json:"LimitCount,omitempty" xml:"LimitCount,omitempty" type:"Struct"`
-	LimitType    *string                                                          `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
+	// example:
+	//
+	// LimitDiff
+	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
 }
 
 func (s CreateRegistrationPolicyResponseBodyPolicyLimitDetail) String() string {
@@ -1122,9 +1404,18 @@ func (s *CreateRegistrationPolicyResponseBodyPolicyLimitDetail) SetLimitType(v s
 }
 
 type CreateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount struct {
-	All    *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 0
+	All *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 3
 	Mobile *int32 `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	PC     *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
+	// example:
+	//
+	// 2
+	PC *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
 }
 
 func (s CreateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount) String() string {
@@ -1180,9 +1471,15 @@ func (s *CreateRegistrationPolicyResponse) SetBody(v *CreateRegistrationPolicyRe
 }
 
 type CreateUserGroupRequest struct {
+	// This parameter is required.
 	Attributes  []*CreateUserGroupRequestAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
 	Description *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_group_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateUserGroupRequest) String() string {
@@ -1209,10 +1506,24 @@ func (s *CreateUserGroupRequest) SetName(v string) *CreateUserGroupRequest {
 }
 
 type CreateUserGroupRequestAttributes struct {
-	IdpId         *int32  `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	Relation      *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// 12
+	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Equal
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is required.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateUserGroupRequestAttributes) String() string {
@@ -1244,7 +1555,13 @@ func (s *CreateUserGroupRequestAttributes) SetValue(v string) *CreateUserGroupRe
 }
 
 type CreateUserGroupResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// usergroup-6f1ef2fc56b6****
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -1296,6 +1613,11 @@ func (s *CreateUserGroupResponse) SetBody(v *CreateUserGroupResponseBody) *Creat
 }
 
 type DeleteClientUserRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 27058
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1313,6 +1635,9 @@ func (s *DeleteClientUserRequest) SetId(v string) *DeleteClientUserRequest {
 }
 
 type DeleteClientUserResponseBody struct {
+	// example:
+	//
+	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1359,6 +1684,11 @@ func (s *DeleteClientUserResponse) SetBody(v *DeleteClientUserResponseBody) *Del
 }
 
 type DeleteDynamicRouteRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dr-ca9fddfac7c6****
 	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
 }
 
@@ -1376,6 +1706,9 @@ func (s *DeleteDynamicRouteRequest) SetDynamicRouteId(v string) *DeleteDynamicRo
 }
 
 type DeleteDynamicRouteResponseBody struct {
+	// example:
+	//
+	// 748CFDC7-1EB6-5B8B-9405-DA76ED5BB60D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1422,8 +1755,18 @@ func (s *DeleteDynamicRouteResponse) SetBody(v *DeleteDynamicRouteResponseBody) 
 }
 
 type DeleteIdpDepartmentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10829
 	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	IdpConfigId  *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 507
+	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
 }
 
 func (s DeleteIdpDepartmentRequest) String() string {
@@ -1445,6 +1788,9 @@ func (s *DeleteIdpDepartmentRequest) SetIdpConfigId(v string) *DeleteIdpDepartme
 }
 
 type DeleteIdpDepartmentResponseBody struct {
+	// example:
+	//
+	// FEF1144C-95D1-5F7C-81EF-9DB70EA49FCE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1491,6 +1837,11 @@ func (s *DeleteIdpDepartmentResponse) SetBody(v *DeleteIdpDepartmentResponseBody
 }
 
 type DeletePrivateAccessApplicationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 }
 
@@ -1508,6 +1859,9 @@ func (s *DeletePrivateAccessApplicationRequest) SetApplicationId(v string) *Dele
 }
 
 type DeletePrivateAccessApplicationResponseBody struct {
+	// example:
+	//
+	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1554,6 +1908,11 @@ func (s *DeletePrivateAccessApplicationResponse) SetBody(v *DeletePrivateAccessA
 }
 
 type DeletePrivateAccessPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pa-policy-867ef4007c8a****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
@@ -1571,6 +1930,9 @@ func (s *DeletePrivateAccessPolicyRequest) SetPolicyId(v string) *DeletePrivateA
 }
 
 type DeletePrivateAccessPolicyResponseBody struct {
+	// example:
+	//
+	// 4D169859-A4F2-5EC8-853B-8447787C0D8A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1617,6 +1979,11 @@ func (s *DeletePrivateAccessPolicyResponse) SetBody(v *DeletePrivateAccessPolicy
 }
 
 type DeletePrivateAccessTagRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tag-d3f64e8bdd4a****
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
@@ -1634,6 +2001,9 @@ func (s *DeletePrivateAccessTagRequest) SetTagId(v string) *DeletePrivateAccessT
 }
 
 type DeletePrivateAccessTagResponseBody struct {
+	// example:
+	//
+	// FD724DBC-CD76-5235-BF76-59C51B73296D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1680,6 +2050,7 @@ func (s *DeletePrivateAccessTagResponse) SetBody(v *DeletePrivateAccessTagRespon
 }
 
 type DeleteRegistrationPoliciesRequest struct {
+	// This parameter is required.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 }
 
@@ -1697,6 +2068,9 @@ func (s *DeleteRegistrationPoliciesRequest) SetPolicyIds(v []*string) *DeleteReg
 }
 
 type DeleteRegistrationPoliciesResponseBody struct {
+	// example:
+	//
+	// D6707286-A50E-57B1-B2CF-EFAC59E850D8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1743,6 +2117,11 @@ func (s *DeleteRegistrationPoliciesResponse) SetBody(v *DeleteRegistrationPolici
 }
 
 type DeleteUserGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// usergroup-6f1ef2fc56b6****
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -1760,6 +2139,9 @@ func (s *DeleteUserGroupRequest) SetUserGroupId(v string) *DeleteUserGroupReques
 }
 
 type DeleteUserGroupResponseBody struct {
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1806,8 +2188,15 @@ func (s *DeleteUserGroupResponse) SetBody(v *DeleteUserGroupResponseBody) *Delet
 }
 
 type DetachApplication2ConnectorRequest struct {
+	// This parameter is required.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	// ConnectorID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// connector-94db94e06b98****
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
 }
 
@@ -1830,8 +2219,15 @@ func (s *DetachApplication2ConnectorRequest) SetConnectorId(v string) *DetachApp
 }
 
 type DetachApplication2ConnectorShrinkRequest struct {
+	// This parameter is required.
 	ApplicationIdsShrink *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
 	// ConnectorID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// connector-94db94e06b98****
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
 }
 
@@ -1854,6 +2250,9 @@ func (s *DetachApplication2ConnectorShrinkRequest) SetConnectorId(v string) *Det
 }
 
 type DetachApplication2ConnectorResponseBody struct {
+	// example:
+	//
+	// 4D169859-A4F2-5EC8-853B-8447787C0D8A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1900,8 +2299,11 @@ func (s *DetachApplication2ConnectorResponse) SetBody(v *DetachApplication2Conne
 }
 
 type GetActiveIdpConfigResponseBody struct {
-	Data      *GetActiveIdpConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetActiveIdpConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 4D169859-A4F2-5EC8-853B-8447787C0D8A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetActiveIdpConfigResponseBody) String() string {
@@ -1924,9 +2326,15 @@ func (s *GetActiveIdpConfigResponseBody) SetRequestId(v string) *GetActiveIdpCon
 
 type GetActiveIdpConfigResponseBodyData struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// idp-cfg001
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// DingTalk
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetActiveIdpConfigResponseBodyData) String() string {
@@ -1987,8 +2395,14 @@ func (s *GetActiveIdpConfigResponse) SetBody(v *GetActiveIdpConfigResponseBody) 
 }
 
 type GetClientUserRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 598
 	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
-	Username    *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// This parameter is required.
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s GetClientUserRequest) String() string {
@@ -2010,8 +2424,11 @@ func (s *GetClientUserRequest) SetUsername(v string) *GetClientUserRequest {
 }
 
 type GetClientUserResponseBody struct {
-	Data      *GetClientUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetClientUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetClientUserResponseBody) String() string {
@@ -2033,16 +2450,37 @@ func (s *GetClientUserResponseBody) SetRequestId(v string) *GetClientUserRespons
 }
 
 type GetClientUserResponseBodyData struct {
-	Department   *GetClientUserResponseBodyDataDepartment `json:"Department,omitempty" xml:"Department,omitempty" type:"Struct"`
-	DepartmentId *string                                  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	Description  *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Email        *string                                  `json:"Email,omitempty" xml:"Email,omitempty"`
-	Id           *string                                  `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdpConfigId  *string                                  `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
-	MobileNumber *string                                  `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
-	Status       *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserId       *string                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Username     *string                                  `json:"Username,omitempty" xml:"Username,omitempty"`
+	Department *GetClientUserResponseBodyDataDepartment `json:"Department,omitempty" xml:"Department,omitempty" type:"Struct"`
+	// example:
+	//
+	// 10713
+	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// johndoe@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 83
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 598
+	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// example:
+	//
+	// 13641966835
+	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	// example:
+	//
+	// Disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// su_abcd7215****
+	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s GetClientUserResponseBodyData) String() string {
@@ -2104,6 +2542,9 @@ func (s *GetClientUserResponseBodyData) SetUsername(v string) *GetClientUserResp
 }
 
 type GetClientUserResponseBodyDataDepartment struct {
+	// example:
+	//
+	// 107
 	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -2156,6 +2597,11 @@ func (s *GetClientUserResponse) SetBody(v *GetClientUserResponseBody) *GetClient
 }
 
 type GetDynamicRouteRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dr-16ff07c8207d****
 	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
 }
 
@@ -2174,7 +2620,10 @@ func (s *GetDynamicRouteRequest) SetDynamicRouteId(v string) *GetDynamicRouteReq
 
 type GetDynamicRouteResponseBody struct {
 	DynamicRoute *GetDynamicRouteResponseBodyDynamicRoute `json:"DynamicRoute,omitempty" xml:"DynamicRoute,omitempty" type:"Struct"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDynamicRouteResponseBody) String() string {
@@ -2196,18 +2645,42 @@ func (s *GetDynamicRouteResponseBody) SetRequestId(v string) *GetDynamicRouteRes
 }
 
 type GetDynamicRouteResponseBodyDynamicRoute struct {
-	ApplicationIds   []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	ApplicationType  *string   `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	CreateTime       *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description      *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DynamicRouteId   *string   `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
-	DynamicRouteType *string   `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
-	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextHop          *string   `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	Priority         *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionIds        []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds           []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Application
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// example:
+	//
+	// 2023-02-09 10:31:47
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// dr-16ff07c8207d****
+	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+	// example:
+	//
+	// connector
+	DynamicRouteType *string `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
+	// example:
+	//
+	// dynamic_route_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// connector-8ccb13b6f52c****
+	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	// example:
+	//
+	// 1
+	Priority  *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Enabled
+	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
 func (s GetDynamicRouteResponseBodyDynamicRoute) String() string {
@@ -2308,6 +2781,11 @@ func (s *GetDynamicRouteResponse) SetBody(v *GetDynamicRouteResponseBody) *GetDy
 }
 
 type GetIdpConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1465
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -2325,8 +2803,11 @@ func (s *GetIdpConfigRequest) SetId(v string) *GetIdpConfigRequest {
 }
 
 type GetIdpConfigResponseBody struct {
-	Data      *GetIdpConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetIdpConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetIdpConfigResponseBody) String() string {
@@ -2349,25 +2830,75 @@ func (s *GetIdpConfigResponseBody) SetRequestId(v string) *GetIdpConfigResponseB
 
 type GetIdpConfigResponseBodyData struct {
 	// AccessKey ID
+	//
+	// example:
+	//
+	// LTAI5tJVztnh6Nn***
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	// AccessKey Secret
-	AccessKeySecret     *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GetGroupUrl         *string `json:"GetGroupUrl,omitempty" xml:"GetGroupUrl,omitempty"`
-	Id                  *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdpMetadata         *string `json:"IdpMetadata,omitempty" xml:"IdpMetadata,omitempty"`
-	MfaConfigType       *string `json:"MfaConfigType,omitempty" xml:"MfaConfigType,omitempty"`
-	MobileLoginType     *string `json:"MobileLoginType,omitempty" xml:"MobileLoginType,omitempty"`
+	//
+	// example:
+	//
+	// E75ktr5jENiR3ssjC***
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// https://172.10.10.2:4321/getGroup?name=%s&pass=%s
+	GetGroupUrl *string `json:"GetGroupUrl,omitempty" xml:"GetGroupUrl,omitempty"`
+	// example:
+	//
+	// 1465
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// <?xml version="1.0" encoding="utf-8"?>***
+	IdpMetadata *string `json:"IdpMetadata,omitempty" xml:"IdpMetadata,omitempty"`
+	// example:
+	//
+	// totp
+	MfaConfigType *string `json:"MfaConfigType,omitempty" xml:"MfaConfigType,omitempty"`
+	// example:
+	//
+	// password
+	MobileLoginType *string `json:"MobileLoginType,omitempty" xml:"MobileLoginType,omitempty"`
+	// example:
+	//
+	// totp
 	MobileMfaConfigType *string `json:"MobileMfaConfigType,omitempty" xml:"MobileMfaConfigType,omitempty"`
-	MultiIdpInfo        *string `json:"MultiIdpInfo,omitempty" xml:"MultiIdpInfo,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PcLoginType         *string `json:"PcLoginType,omitempty" xml:"PcLoginType,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VerifyAesKey        *string `json:"VerifyAesKey,omitempty" xml:"VerifyAesKey,omitempty"`
-	VerifyToken         *string `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
-	VerifyUrl           *string `json:"VerifyUrl,omitempty" xml:"VerifyUrl,omitempty"`
+	// example:
+	//
+	// 1482,1355
+	MultiIdpInfo *string `json:"MultiIdpInfo,omitempty" xml:"MultiIdpInfo,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// password
+	PcLoginType *string `json:"PcLoginType,omitempty" xml:"PcLoginType,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// CSAS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2024-02-26T02:02:42Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// QVhaU0RDR0JIWVV***
+	VerifyAesKey *string `json:"VerifyAesKey,omitempty" xml:"VerifyAesKey,omitempty"`
+	// example:
+	//
+	// 7JAr3fYtnl***
+	VerifyToken *string `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
+	// example:
+	//
+	// http://172.10.10.1:1234/otp_verify
+	VerifyUrl *string `json:"VerifyUrl,omitempty" xml:"VerifyUrl,omitempty"`
 }
 
 func (s GetIdpConfigResponseBodyData) String() string {
@@ -2498,6 +3029,11 @@ func (s *GetIdpConfigResponse) SetBody(v *GetIdpConfigResponseBody) *GetIdpConfi
 }
 
 type GetPrivateAccessApplicationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 }
 
@@ -2516,7 +3052,10 @@ func (s *GetPrivateAccessApplicationRequest) SetApplicationId(v string) *GetPriv
 
 type GetPrivateAccessApplicationResponseBody struct {
 	Application *GetPrivateAccessApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
-	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3ACC5EDC-2B7D-5032-8C58-D7615D66C1D4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPrivateAccessApplicationResponseBody) String() string {
@@ -2538,17 +3077,32 @@ func (s *GetPrivateAccessApplicationResponseBody) SetRequestId(v string) *GetPri
 }
 
 type GetPrivateAccessApplicationResponseBodyApplication struct {
-	Addresses     []*string                                                       `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	ApplicationId *string                                                         `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ConnectorIds  []*string                                                       `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
-	CreateTime    *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name          *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyIds     []*string                                                       `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	PortRanges    []*GetPrivateAccessApplicationResponseBodyApplicationPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	Protocol      *string                                                         `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Status        *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds        []*string                                                       `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pa-application-e12860ef6c48****
+	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ConnectorIds  []*string `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-08-30 16:50:32
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// private_access_application_name
+	Name       *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	PolicyIds  []*string                                                       `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	PortRanges []*GetPrivateAccessApplicationResponseBodyApplicationPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// example:
+	//
+	// All
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
 func (s GetPrivateAccessApplicationResponseBodyApplication) String() string {
@@ -2615,8 +3169,14 @@ func (s *GetPrivateAccessApplicationResponseBodyApplication) SetTagIds(v []*stri
 }
 
 type GetPrivateAccessApplicationResponseBodyApplicationPortRanges struct {
+	// example:
+	//
+	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	End   *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 81
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
 }
 
 func (s GetPrivateAccessApplicationResponseBodyApplicationPortRanges) String() string {
@@ -2667,6 +3227,11 @@ func (s *GetPrivateAccessApplicationResponse) SetBody(v *GetPrivateAccessApplica
 }
 
 type GetPrivateAccessPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pa-policy-63b2f1844b86****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
@@ -2684,8 +3249,11 @@ func (s *GetPrivateAccessPolicyRequest) SetPolicyId(v string) *GetPrivateAccessP
 }
 
 type GetPrivateAccessPolicyResponseBody struct {
-	Policy    *GetPrivateAccessPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Policy *GetPrivateAccessPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	// example:
+	//
+	// 7E9D7ACD-53D5-56EF-A913-79D148D06299
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPrivateAccessPolicyResponseBody) String() string {
@@ -2707,20 +3275,44 @@ func (s *GetPrivateAccessPolicyResponseBody) SetRequestId(v string) *GetPrivateA
 }
 
 type GetPrivateAccessPolicyResponseBodyPolicy struct {
-	ApplicationIds       []*string                                                       `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	ApplicationType      *string                                                         `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Application
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// example:
+	//
+	// 2021-07-29 11:26:02
 	CreateTime           *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CustomUserAttributes []*GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
 	Description          *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
 	DeviceAttributeId    *string                                                         `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
-	Name                 *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyAction         *string                                                         `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	PolicyId             *string                                                         `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Priority             *int32                                                          `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status               *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds               []*string                                                       `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	UserGroupIds         []*string                                                       `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	UserGroupMode        *string                                                         `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
+	// example:
+	//
+	// private_access_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Allow
+	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// example:
+	//
+	// pa-policy-63b2f1844b86****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds       []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Normal
+	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
 }
 
 func (s GetPrivateAccessPolicyResponseBodyPolicy) String() string {
@@ -2802,8 +3394,17 @@ func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetUserGroupMode(v string) *G
 }
 
 type GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes struct {
-	IdpId         *int32  `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	Relation      *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// 12
+	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// example:
+	//
+	// Equal
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
 	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -2866,6 +3467,11 @@ func (s *GetPrivateAccessPolicyResponse) SetBody(v *GetPrivateAccessPolicyRespon
 }
 
 type GetRegistrationPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// reg-policy-dcbfd33cb004****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
@@ -2883,17 +3489,38 @@ func (s *GetRegistrationPolicyRequest) SetPolicyId(v string) *GetRegistrationPol
 }
 
 type GetRegistrationPolicyResponseBody struct {
-	CreateTime   *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description  *string                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	LimitDetail  []*GetRegistrationPolicyResponseBodyLimitDetail `json:"LimitDetail,omitempty" xml:"LimitDetail,omitempty" type:"Repeated"`
-	MatchMode    *string                                         `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
-	Name         *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyId     *string                                         `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Priority     *int64                                          `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status       *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserGroupIds []*string                                       `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	Whitelist    []*string                                       `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-05-16 17:18:46
+	CreateTime  *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	LimitDetail []*GetRegistrationPolicyResponseBodyLimitDetail `json:"LimitDetail,omitempty" xml:"LimitDetail,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UserGroupAll
+	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// example:
+	//
+	// registration_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// reg-policy-dcbfd33cb004****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 99
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 47363C2B-1AAA-5954-8847-0E50FCC54117
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	Whitelist    []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
 func (s GetRegistrationPolicyResponseBody) String() string {
@@ -2960,9 +3587,15 @@ func (s *GetRegistrationPolicyResponseBody) SetWhitelist(v []*string) *GetRegist
 }
 
 type GetRegistrationPolicyResponseBodyLimitDetail struct {
+	// example:
+	//
+	// Personal
 	DeviceBelong *string                                                 `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
 	LimitCount   *GetRegistrationPolicyResponseBodyLimitDetailLimitCount `json:"LimitCount,omitempty" xml:"LimitCount,omitempty" type:"Struct"`
-	LimitType    *string                                                 `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
+	// example:
+	//
+	// LimitDiff
+	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
 }
 
 func (s GetRegistrationPolicyResponseBodyLimitDetail) String() string {
@@ -2989,9 +3622,18 @@ func (s *GetRegistrationPolicyResponseBodyLimitDetail) SetLimitType(v string) *G
 }
 
 type GetRegistrationPolicyResponseBodyLimitDetailLimitCount struct {
-	All    *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 0
+	All *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 2
 	Mobile *int32 `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	PC     *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
+	// example:
+	//
+	// 2
+	PC *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
 }
 
 func (s GetRegistrationPolicyResponseBodyLimitDetailLimitCount) String() string {
@@ -3047,6 +3689,11 @@ func (s *GetRegistrationPolicyResponse) SetBody(v *GetRegistrationPolicyResponse
 }
 
 type GetUserDeviceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
 }
 
@@ -3064,8 +3711,11 @@ func (s *GetUserDeviceRequest) SetDeviceTag(v string) *GetUserDeviceRequest {
 }
 
 type GetUserDeviceResponseBody struct {
-	Device    *GetUserDeviceResponseBodyDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Device *GetUserDeviceResponseBodyDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Struct"`
+	// example:
+	//
+	// EFE7EBB2-449D-5BBB-B381-CA7839BC1649
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetUserDeviceResponseBody) String() string {
@@ -3087,32 +3737,101 @@ func (s *GetUserDeviceResponseBody) SetRequestId(v string) *GetUserDeviceRespons
 }
 
 type GetUserDeviceResponseBodyDevice struct {
-	AppStatus     *string                                        `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
-	AppVersion    *string                                        `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	CPU           *string                                        `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	CreateTime    *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Department    *string                                        `json:"Department,omitempty" xml:"Department,omitempty"`
-	DeviceBelong  *string                                        `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
-	DeviceModel   *string                                        `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	DeviceStatus  *string                                        `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
-	DeviceTag     *string                                        `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
-	DeviceType    *string                                        `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	DeviceVersion *string                                        `json:"DeviceVersion,omitempty" xml:"DeviceVersion,omitempty"`
-	Disk          *string                                        `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	DlpStatus     *string                                        `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
-	HistoryUsers  []*GetUserDeviceResponseBodyDeviceHistoryUsers `json:"HistoryUsers,omitempty" xml:"HistoryUsers,omitempty" type:"Repeated"`
-	Hostname      *string                                        `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	IaStatus      *string                                        `json:"IaStatus,omitempty" xml:"IaStatus,omitempty"`
-	InnerIP       *string                                        `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
-	Mac           *string                                        `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	Memory        *string                                        `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	NacStatus     *string                                        `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
-	PaStatus      *string                                        `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
-	SaseUserId    *string                                        `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	SharingStatus *bool                                          `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
-	SrcIP         *string                                        `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
-	UpdateTime    *string                                        `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Username      *string                                        `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// Online
+	AppStatus *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
+	// example:
+	//
+	// 2.2.0
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// Apple M1
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// 2023-05-16 17:18:46
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// example:
+	//
+	// Company
+	DeviceBelong *string `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
+	// example:
+	//
+	// MacBookPro17,1
+	DeviceModel *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	// example:
+	//
+	// Online
+	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
+	// example:
+	//
+	// Windows
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 3.5.1
+	DeviceVersion *string `json:"DeviceVersion,omitempty" xml:"DeviceVersion,omitempty"`
+	// example:
+	//
+	// APPLE SSD AP0512Q Media
+	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// example:
+	//
+	// Unauthorized
+	DlpStatus    *string                                        `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
+	HistoryUsers []*GetUserDeviceResponseBodyDeviceHistoryUsers `json:"HistoryUsers,omitempty" xml:"HistoryUsers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// win10-64bit
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// Disabled
+	IaStatus *string `json:"IaStatus,omitempty" xml:"IaStatus,omitempty"`
+	// example:
+	//
+	// 172.16.XX.XX
+	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
+	// example:
+	//
+	// 48:9e:XX:XX:02:80
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// example:
+	//
+	// 16
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// Unprovisioned
+	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	// example:
+	//
+	// Enabled
+	PaStatus *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// example:
+	//
+	// true
+	SharingStatus *bool `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
+	// example:
+	//
+	// 106.14.XX.XX
+	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// example:
+	//
+	// 2023-08-24 19:04:42
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s GetUserDeviceResponseBodyDevice) String() string {
@@ -3254,6 +3973,9 @@ func (s *GetUserDeviceResponseBodyDevice) SetUsername(v string) *GetUserDeviceRe
 }
 
 type GetUserDeviceResponseBodyDeviceHistoryUsers struct {
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
 	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
@@ -3306,6 +4028,7 @@ func (s *GetUserDeviceResponse) SetBody(v *GetUserDeviceResponseBody) *GetUserDe
 }
 
 type GetUserGroupRequest struct {
+	// This parameter is required.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -3323,6 +4046,9 @@ func (s *GetUserGroupRequest) SetUserGroupId(v string) *GetUserGroupRequest {
 }
 
 type GetUserGroupResponseBody struct {
+	// example:
+	//
+	// 1310DBC7-7E1F-55D3-B4B4-E4BE912517FB
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserGroup *GetUserGroupResponseBodyUserGroup `json:"UserGroup,omitempty" xml:"UserGroup,omitempty" type:"Struct"`
 }
@@ -3346,11 +4072,17 @@ func (s *GetUserGroupResponseBody) SetUserGroup(v *GetUserGroupResponseBodyUserG
 }
 
 type GetUserGroupResponseBodyUserGroup struct {
-	Attributes  []*GetUserGroupResponseBodyUserGroupAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	CreateTime  *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	UserGroupId *string                                        `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	Attributes []*GetUserGroupResponseBodyUserGroupAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-10-10 11:39:22
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// user_group_name
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
 func (s GetUserGroupResponseBodyUserGroup) String() string {
@@ -3387,8 +4119,17 @@ func (s *GetUserGroupResponseBodyUserGroup) SetUserGroupId(v string) *GetUserGro
 }
 
 type GetUserGroupResponseBodyUserGroupAttributes struct {
-	IdpId         *int32  `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	Relation      *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// 12
+	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// example:
+	//
+	// Equal
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
 	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -3451,6 +4192,7 @@ func (s *GetUserGroupResponse) SetBody(v *GetUserGroupResponseBody) *GetUserGrou
 }
 
 type ListApplicationsForPrivateAccessPolicyRequest struct {
+	// This parameter is required.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 }
 
@@ -3468,8 +4210,11 @@ func (s *ListApplicationsForPrivateAccessPolicyRequest) SetPolicyIds(v []*string
 }
 
 type ListApplicationsForPrivateAccessPolicyResponseBody struct {
-	Polices   []*ListApplicationsForPrivateAccessPolicyResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
-	RequestId *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Polices []*ListApplicationsForPrivateAccessPolicyResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4D169859-A4F2-5EC8-853B-8447787C0D8A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListApplicationsForPrivateAccessPolicyResponseBody) String() string {
@@ -3492,7 +4237,10 @@ func (s *ListApplicationsForPrivateAccessPolicyResponseBody) SetRequestId(v stri
 
 type ListApplicationsForPrivateAccessPolicyResponseBodyPolices struct {
 	Applications []*ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	PolicyId     *string                                                                  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// pa-policy-1b0d0e8b4bcf****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
 func (s ListApplicationsForPrivateAccessPolicyResponseBodyPolices) String() string {
@@ -3514,14 +4262,29 @@ func (s *ListApplicationsForPrivateAccessPolicyResponseBodyPolices) SetPolicyId(
 }
 
 type ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplications struct {
-	Addresses     []*string                                                                          `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	ApplicationId *string                                                                            `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	CreateTime    *string                                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string                                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name          *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	PortRanges    []*ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	Protocol      *string                                                                            `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Status        *string                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pa-application-7a9243dd02f4****
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// example:
+	//
+	// 2022-09-27 18:10:25
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// application_name
+	Name       *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	PortRanges []*ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// example:
+	//
+	// TCP
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplications) String() string {
@@ -3573,8 +4336,14 @@ func (s *ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplications) 
 }
 
 type ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplicationsPortRanges struct {
+	// example:
+	//
+	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	End   *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 81
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
 }
 
 func (s ListApplicationsForPrivateAccessPolicyResponseBodyPolicesApplicationsPortRanges) String() string {
@@ -3625,6 +4394,7 @@ func (s *ListApplicationsForPrivateAccessPolicyResponse) SetBody(v *ListApplicat
 }
 
 type ListApplicationsForPrivateAccessTagRequest struct {
+	// This parameter is required.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
@@ -3642,6 +4412,9 @@ func (s *ListApplicationsForPrivateAccessTagRequest) SetTagIds(v []*string) *Lis
 }
 
 type ListApplicationsForPrivateAccessTagResponseBody struct {
+	// example:
+	//
+	// B608C6AE-623D-55C4-9454-601B88AE937E
 	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tags      []*ListApplicationsForPrivateAccessTagResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -3666,7 +4439,10 @@ func (s *ListApplicationsForPrivateAccessTagResponseBody) SetTags(v []*ListAppli
 
 type ListApplicationsForPrivateAccessTagResponseBodyTags struct {
 	Applications []*ListApplicationsForPrivateAccessTagResponseBodyTagsApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	TagId        *string                                                            `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// example:
+	//
+	// tag-7ffc82853476****
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
 func (s ListApplicationsForPrivateAccessTagResponseBodyTags) String() string {
@@ -3688,15 +4464,31 @@ func (s *ListApplicationsForPrivateAccessTagResponseBodyTags) SetTagId(v string)
 }
 
 type ListApplicationsForPrivateAccessTagResponseBodyTagsApplications struct {
-	Addresses     []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pa-application-7a9243dd02f4****
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// 内网访问应用创建时间。
-	CreateTime  *string                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string                                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	PortRanges  []*ListApplicationsForPrivateAccessTagResponseBodyTagsApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	Protocol    *string                                                                      `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Status      *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	//
+	// example:
+	//
+	// 2022-09-27 18:10:25
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// private_access_application_name
+	Name       *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	PortRanges []*ListApplicationsForPrivateAccessTagResponseBodyTagsApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// example:
+	//
+	// All
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListApplicationsForPrivateAccessTagResponseBodyTagsApplications) String() string {
@@ -3748,8 +4540,14 @@ func (s *ListApplicationsForPrivateAccessTagResponseBodyTagsApplications) SetSta
 }
 
 type ListApplicationsForPrivateAccessTagResponseBodyTagsApplicationsPortRanges struct {
+	// example:
+	//
+	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	End   *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 81
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
 }
 
 func (s ListApplicationsForPrivateAccessTagResponseBodyTagsApplicationsPortRanges) String() string {
@@ -3800,14 +4598,37 @@ func (s *ListApplicationsForPrivateAccessTagResponse) SetBody(v *ListApplication
 }
 
 type ListClientUsersRequest struct {
-	CurrentPage  *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 10785
 	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	IdpConfigId  *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// example:
+	//
+	// johndoe@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1071
+	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// example:
+	//
+	// 18980976559
 	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
-	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Username     *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ListClientUsersRequest) String() string {
@@ -3859,8 +4680,11 @@ func (s *ListClientUsersRequest) SetUsername(v string) *ListClientUsersRequest {
 }
 
 type ListClientUsersResponseBody struct {
-	Data      *ListClientUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *ListClientUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// FEF1144C-95D1-5F7C-81EF-9DB70EA49FCE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListClientUsersResponseBody) String() string {
@@ -3883,7 +4707,10 @@ func (s *ListClientUsersResponseBody) SetRequestId(v string) *ListClientUsersRes
 
 type ListClientUsersResponseBodyData struct {
 	DataList []*ListClientUsersResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	TotalNum *int64                                     `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 2
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListClientUsersResponseBodyData) String() string {
@@ -3905,16 +4732,37 @@ func (s *ListClientUsersResponseBodyData) SetTotalNum(v int64) *ListClientUsersR
 }
 
 type ListClientUsersResponseBodyDataDataList struct {
-	Department   *ListClientUsersResponseBodyDataDataListDepartment `json:"Department,omitempty" xml:"Department,omitempty" type:"Struct"`
-	DepartmentId *string                                            `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	Description  *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	Email        *string                                            `json:"Email,omitempty" xml:"Email,omitempty"`
-	Id           *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
-	IdpConfigId  *string                                            `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
-	MobileNumber *string                                            `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
-	Status       *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserId       *string                                            `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Username     *string                                            `json:"Username,omitempty" xml:"Username,omitempty"`
+	Department *ListClientUsersResponseBodyDataDataListDepartment `json:"Department,omitempty" xml:"Department,omitempty" type:"Struct"`
+	// example:
+	//
+	// 10800
+	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// johndoe@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 1970
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1026
+	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// example:
+	//
+	// 15800820468
+	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	// example:
+	//
+	// Disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// su_dead7216****
+	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ListClientUsersResponseBodyDataDataList) String() string {
@@ -3976,6 +4824,9 @@ func (s *ListClientUsersResponseBodyDataDataList) SetUsername(v string) *ListCli
 }
 
 type ListClientUsersResponseBodyDataDataListDepartment struct {
+	// example:
+	//
+	// 105
 	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -4029,11 +4880,24 @@ func (s *ListClientUsersResponse) SetBody(v *ListClientUsersResponseBody) *ListC
 
 type ListConnectorsRequest struct {
 	ConnectorIds []*string `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
-	CurrentPage  *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	SwitchStatus *string   `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// connector_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SwitchStatus *string `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
 }
 
 func (s ListConnectorsRequest) String() string {
@@ -4076,8 +4940,14 @@ func (s *ListConnectorsRequest) SetSwitchStatus(v string) *ListConnectorsRequest
 
 type ListConnectorsResponseBody struct {
 	Connectors []*ListConnectorsResponseBodyConnectors `json:"Connectors,omitempty" xml:"Connectors,omitempty" type:"Repeated"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum   *int32                                  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListConnectorsResponseBody) String() string {
@@ -4107,11 +4977,30 @@ type ListConnectorsResponseBodyConnectors struct {
 	Applications     []*ListConnectorsResponseBodyConnectorsApplications     `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	ConnectorClients []*ListConnectorsResponseBodyConnectorsConnectorClients `json:"ConnectorClients,omitempty" xml:"ConnectorClients,omitempty" type:"Repeated"`
 	// ConnectorID。
-	ConnectorId  *string                                          `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	CreateTime   *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Name         *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId     *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status       *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	//
+	// example:
+	//
+	// connector-94db94e06b98****
+	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// example:
+	//
+	// 2022-09-27 18:10:25
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// connector_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Enabled
 	SwitchStatus *string                                          `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
 	UpgradeTime  *ListConnectorsResponseBodyConnectorsUpgradeTime `json:"UpgradeTime,omitempty" xml:"UpgradeTime,omitempty" type:"Struct"`
 }
@@ -4170,7 +5059,13 @@ func (s *ListConnectorsResponseBodyConnectors) SetUpgradeTime(v *ListConnectorsR
 }
 
 type ListConnectorsResponseBodyConnectorsApplications struct {
-	ApplicationId   *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// example:
+	//
+	// pa-application-e12860ef6c48****
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// example:
+	//
+	// application_name
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 }
 
@@ -4228,7 +5123,13 @@ func (s *ListConnectorsResponseBodyConnectorsConnectorClients) SetPublicIp(v str
 }
 
 type ListConnectorsResponseBodyConnectorsUpgradeTime struct {
-	End   *string `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 23:00
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 20:00
 	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -4280,9 +5181,15 @@ func (s *ListConnectorsResponse) SetBody(v *ListConnectorsResponseBody) *ListCon
 }
 
 type ListDynamicRouteRegionsResponseBody struct {
-	Regions   []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum  *int32    `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListDynamicRouteRegionsResponseBody) String() string {
@@ -4338,15 +5245,40 @@ func (s *ListDynamicRouteRegionsResponse) SetBody(v *ListDynamicRouteRegionsResp
 }
 
 type ListDynamicRoutesRequest struct {
-	ApplicationId   *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// example:
+	//
+	// pa-application-e12860ef6c48****
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage     *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DynamicRouteIds []*string `json:"DynamicRouteIds,omitempty" xml:"DynamicRouteIds,omitempty" type:"Repeated"`
-	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextHop         *string   `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionIds       []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	Status          *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagId           *string   `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// example:
+	//
+	// dynamic_route_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// connector-8ccb13b6f52c****
+	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize  *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// tag-d3f64e8bdd4a****
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
 func (s ListDynamicRoutesRequest) String() string {
@@ -4404,8 +5336,14 @@ func (s *ListDynamicRoutesRequest) SetTagId(v string) *ListDynamicRoutesRequest 
 
 type ListDynamicRoutesResponseBody struct {
 	DynamicRoutes []*ListDynamicRoutesResponseBodyDynamicRoutes `json:"DynamicRoutes,omitempty" xml:"DynamicRoutes,omitempty" type:"Repeated"`
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum      *int32                                        `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListDynamicRoutesResponseBody) String() string {
@@ -4432,18 +5370,42 @@ func (s *ListDynamicRoutesResponseBody) SetTotalNum(v int32) *ListDynamicRoutesR
 }
 
 type ListDynamicRoutesResponseBodyDynamicRoutes struct {
-	ApplicationIds   []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	ApplicationType  *string   `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	CreateTime       *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description      *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DynamicRouteId   *string   `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
-	DynamicRouteType *string   `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
-	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextHop          *string   `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	Priority         *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionIds        []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds           []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Application
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// example:
+	//
+	// 2023-03-21 11:50:03
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// dr-a0ca843f53cf****
+	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+	// example:
+	//
+	// connector
+	DynamicRouteType *string `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
+	// example:
+	//
+	// dynamic_route_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// connector-8ccb13b6f52c****
+	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	// example:
+	//
+	// 1
+	Priority  *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Enabled
+	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
 func (s ListDynamicRoutesResponseBodyDynamicRoutes) String() string {
@@ -4545,15 +5507,37 @@ func (s *ListDynamicRoutesResponse) SetBody(v *ListDynamicRoutesResponseBody) *L
 
 type ListExcessiveDeviceRegistrationApplicationsRequest struct {
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	CurrentPage    *int64    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Department     *string   `json:"Department,omitempty" xml:"Department,omitempty"`
-	DeviceTag      *string   `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
-	Hostname       *string   `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	Mac            *string   `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	PageSize       *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SaseUserId     *string   `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	Statuses       []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
-	Username       *string   `json:"Username,omitempty" xml:"Username,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
+	// example:
+	//
+	// win10-64bit
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// 00:16:XX:XX:7c:46
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string   `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	Statuses   []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	Username   *string   `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ListExcessiveDeviceRegistrationApplicationsRequest) String() string {
@@ -4616,8 +5600,14 @@ func (s *ListExcessiveDeviceRegistrationApplicationsRequest) SetUsername(v strin
 
 type ListExcessiveDeviceRegistrationApplicationsResponseBody struct {
 	Applications []*ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	RequestId    *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum     *int64                                                                 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListExcessiveDeviceRegistrationApplicationsResponseBody) String() string {
@@ -4644,18 +5634,45 @@ func (s *ListExcessiveDeviceRegistrationApplicationsResponseBody) SetTotalNum(v 
 }
 
 type ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications struct {
+	// example:
+	//
+	// reg-application-0f4a127b7e78****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Department    *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DeviceTag     *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
-	DeviceType    *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	Hostname      *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	IsUsed        *bool   `json:"IsUsed,omitempty" xml:"IsUsed,omitempty"`
-	Mac           *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	SaseUserId    *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// 2023-07-17 18:46:55
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
+	// example:
+	//
+	// Windows
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// win10-64bit
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// false
+	IsUsed *bool `json:"IsUsed,omitempty" xml:"IsUsed,omitempty"`
+	// example:
+	//
+	// 00:16:XX:XX:7c:46
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// example:
+	//
+	// Approved
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications) String() string {
@@ -4756,9 +5773,18 @@ func (s *ListExcessiveDeviceRegistrationApplicationsResponse) SetBody(v *ListExc
 }
 
 type ListIdpConfigsRequest struct {
-	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Include     *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// CSAS,DingTalk,LDAP
+	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListIdpConfigsRequest) String() string {
@@ -4785,8 +5811,11 @@ func (s *ListIdpConfigsRequest) SetPageSize(v int64) *ListIdpConfigsRequest {
 }
 
 type ListIdpConfigsResponseBody struct {
-	Data      *ListIdpConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *ListIdpConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// FD724DBC-CD76-5235-BF76-59C51B73296D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListIdpConfigsResponseBody) String() string {
@@ -4809,7 +5838,10 @@ func (s *ListIdpConfigsResponseBody) SetRequestId(v string) *ListIdpConfigsRespo
 
 type ListIdpConfigsResponseBodyData struct {
 	DataList []*ListIdpConfigsResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	TotalNum *int64                                    `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListIdpConfigsResponseBodyData) String() string {
@@ -4831,17 +5863,44 @@ func (s *ListIdpConfigsResponseBodyData) SetTotalNum(v int64) *ListIdpConfigsRes
 }
 
 type ListIdpConfigsResponseBodyDataDataList struct {
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id                  *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Mfa                 *string `json:"Mfa,omitempty" xml:"Mfa,omitempty"`
-	MobileLoginType     *string `json:"MobileLoginType,omitempty" xml:"MobileLoginType,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 277
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// totp
+	Mfa *string `json:"Mfa,omitempty" xml:"Mfa,omitempty"`
+	// example:
+	//
+	// password
+	MobileLoginType *string `json:"MobileLoginType,omitempty" xml:"MobileLoginType,omitempty"`
+	// example:
+	//
+	// password
 	MobileMfaConfigType *string `json:"MobileMfaConfigType,omitempty" xml:"MobileMfaConfigType,omitempty"`
-	MultiIdpInfo        *string `json:"MultiIdpInfo,omitempty" xml:"MultiIdpInfo,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PcLoginType         *string `json:"PcLoginType,omitempty" xml:"PcLoginType,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1482,1355
+	MultiIdpInfo *string `json:"MultiIdpInfo,omitempty" xml:"MultiIdpInfo,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// password
+	PcLoginType *string `json:"PcLoginType,omitempty" xml:"PcLoginType,omitempty"`
+	// example:
+	//
+	// Disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// DingTalk
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2023-05-09T02:22:41.430Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListIdpConfigsResponseBodyDataDataList) String() string {
@@ -4937,9 +5996,20 @@ func (s *ListIdpConfigsResponse) SetBody(v *ListIdpConfigsResponseBody) *ListIdp
 }
 
 type ListIdpDepartmentsRequest struct {
-	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1440
 	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListIdpDepartmentsRequest) String() string {
@@ -4966,8 +6036,11 @@ func (s *ListIdpDepartmentsRequest) SetPageSize(v int64) *ListIdpDepartmentsRequ
 }
 
 type ListIdpDepartmentsResponseBody struct {
-	Data      *ListIdpDepartmentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *ListIdpDepartmentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListIdpDepartmentsResponseBody) String() string {
@@ -4990,7 +6063,10 @@ func (s *ListIdpDepartmentsResponseBody) SetRequestId(v string) *ListIdpDepartme
 
 type ListIdpDepartmentsResponseBodyData struct {
 	DataList []*ListIdpDepartmentsResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	TotalNum *int64                                        `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 2
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListIdpDepartmentsResponseBodyData) String() string {
@@ -5012,7 +6088,13 @@ func (s *ListIdpDepartmentsResponseBodyData) SetTotalNum(v int64) *ListIdpDepart
 }
 
 type ListIdpDepartmentsResponseBodyDataDataList struct {
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 30520
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1440
 	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -5070,6 +6152,7 @@ func (s *ListIdpDepartmentsResponse) SetBody(v *ListIdpDepartmentsResponseBody) 
 }
 
 type ListPolicesForPrivateAccessApplicationRequest struct {
+	// This parameter is required.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 }
 
@@ -5088,7 +6171,10 @@ func (s *ListPolicesForPrivateAccessApplicationRequest) SetApplicationIds(v []*s
 
 type ListPolicesForPrivateAccessApplicationResponseBody struct {
 	Applications []*ListPolicesForPrivateAccessApplicationResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	RequestId    *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4AB972E2-D702-5464-B132-B1911498B8BF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPolicesForPrivateAccessApplicationResponseBody) String() string {
@@ -5110,6 +6196,9 @@ func (s *ListPolicesForPrivateAccessApplicationResponseBody) SetRequestId(v stri
 }
 
 type ListPolicesForPrivateAccessApplicationResponseBodyApplications struct {
+	// example:
+	//
+	// pa-application-b927baf3e592****
 	ApplicationId *string                                                                   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	Policies      []*ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
 }
@@ -5133,16 +6222,40 @@ func (s *ListPolicesForPrivateAccessApplicationResponseBodyApplications) SetPoli
 }
 
 type ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies struct {
-	ApplicationType      *string                                                                                       `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// example:
+	//
+	// Application
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// example:
+	//
+	// 2022-09-27 18:10:25
 	CreateTime           *string                                                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CustomUserAttributes []*ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPoliciesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
 	Description          *string                                                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                 *string                                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyAction         *string                                                                                       `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	PolicyId             *string                                                                                       `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Priority             *int32                                                                                        `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status               *string                                                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserGroupType        *string                                                                                       `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
+	// example:
+	//
+	// private_access_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Allow
+	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// example:
+	//
+	// pa-policy-867ef4007c8a****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Normal
+	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
 }
 
 func (s ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies) String() string {
@@ -5204,8 +6317,17 @@ func (s *ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies)
 }
 
 type ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPoliciesCustomUserAttributes struct {
-	IdpId         *int32  `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	Relation      *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// 12
+	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// example:
+	//
+	// Equal
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
 	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -5268,6 +6390,7 @@ func (s *ListPolicesForPrivateAccessApplicationResponse) SetBody(v *ListPolicesF
 }
 
 type ListPolicesForPrivateAccessTagRequest struct {
+	// This parameter is required.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
@@ -5285,6 +6408,9 @@ func (s *ListPolicesForPrivateAccessTagRequest) SetTagIds(v []*string) *ListPoli
 }
 
 type ListPolicesForPrivateAccessTagResponseBody struct {
+	// example:
+	//
+	// 4D169859-A4F2-5EC8-853B-8447787C0D8A
 	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tags      []*ListPolicesForPrivateAccessTagResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -5309,7 +6435,10 @@ func (s *ListPolicesForPrivateAccessTagResponseBody) SetTags(v []*ListPolicesFor
 
 type ListPolicesForPrivateAccessTagResponseBodyTags struct {
 	Polices []*ListPolicesForPrivateAccessTagResponseBodyTagsPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
-	TagId   *string                                                  `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// example:
+	//
+	// tag-b927baf3e592****
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
 func (s ListPolicesForPrivateAccessTagResponseBodyTags) String() string {
@@ -5331,18 +6460,43 @@ func (s *ListPolicesForPrivateAccessTagResponseBodyTags) SetTagId(v string) *Lis
 }
 
 type ListPolicesForPrivateAccessTagResponseBodyTagsPolices struct {
+	// example:
+	//
+	// Application
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// 内网访问策略创建时间。
+	//
+	// example:
+	//
+	// 2023-02-21 14:10:16
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 自定义用户组属性集合。多个自定义用户组属性之间是或的关系，按照合集生效。
 	CustomUserAttributes []*ListPolicesForPrivateAccessTagResponseBodyTagsPolicesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
 	Description          *string                                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                 *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyAction         *string                                                                      `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	PolicyId             *string                                                                      `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Priority             *int32                                                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status               *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserGroupType        *string                                                                      `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
+	// example:
+	//
+	// private_access_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Allow
+	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// example:
+	//
+	// pa-policy-867ef4007c8a****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Normal
+	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
 }
 
 func (s ListPolicesForPrivateAccessTagResponseBodyTagsPolices) String() string {
@@ -5405,22 +6559,48 @@ func (s *ListPolicesForPrivateAccessTagResponseBodyTagsPolices) SetUserGroupType
 
 type ListPolicesForPrivateAccessTagResponseBodyTagsPolicesCustomUserAttributes struct {
 	// 用户组的身份源ID。当自定义用户组类型为**department**时，存在该值。
+	//
+	// example:
+	//
+	// 12
 	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
 	// 用户组的关系。取值：
+	//
 	// - **Equal**：等于。
+	//
 	// - **Unequal**：不等于。
+	//
+	// example:
+	//
+	// Equal
 	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
 	// 用户组的类型。取值：
+	//
 	// - **username**：用户名。
+	//
 	// - **department**：部门。
+	//
 	// - **email**：邮箱。
+	//
 	// - **telephone**：手机。
+	//
+	// example:
+	//
+	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
 	// 用户组属性的值。
+	//
 	// - 当用户组类型为**username**时，表示用户名的值。长度为1~128个字符，支持中文和大小写英文字母，可包含数字、半角句号（.）、下划线（_）和短划线（-）。
+	//
 	// - 当用户组类型为**department**时，表示部门的值。如：OU=部门1,OU=SASE钉钉。
+	//
 	// - 当用户组类型为**email**时，表示邮箱的值。如：username@example.com。
+	//
 	// - 当用户组类型为**telephone**时，表示手机的值。如：13900001234。
+	//
+	// example:
+	//
+	// OU=部门1,OU=SASE钉钉
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5482,6 +6662,7 @@ func (s *ListPolicesForPrivateAccessTagResponse) SetBody(v *ListPolicesForPrivat
 }
 
 type ListPolicesForUserGroupRequest struct {
+	// This parameter is required.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 }
 
@@ -5499,6 +6680,9 @@ func (s *ListPolicesForUserGroupRequest) SetUserGroupIds(v []*string) *ListPolic
 }
 
 type ListPolicesForUserGroupResponseBody struct {
+	// example:
+	//
+	// 5F04DFBD-3F48-5F70-AE72-474026670128
 	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserGroups []*ListPolicesForUserGroupResponseBodyUserGroups `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
 }
@@ -5522,8 +6706,11 @@ func (s *ListPolicesForUserGroupResponseBody) SetUserGroups(v []*ListPolicesForU
 }
 
 type ListPolicesForUserGroupResponseBodyUserGroups struct {
-	Polices     []*ListPolicesForUserGroupResponseBodyUserGroupsPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
-	UserGroupId *string                                                 `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	Polices []*ListPolicesForUserGroupResponseBodyUserGroupsPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// usergroup-6f1ef2fc56b6****
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
 func (s ListPolicesForUserGroupResponseBodyUserGroups) String() string {
@@ -5545,8 +6732,17 @@ func (s *ListPolicesForUserGroupResponseBodyUserGroups) SetUserGroupId(v string)
 }
 
 type ListPolicesForUserGroupResponseBodyUserGroupsPolices struct {
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// private_access_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// pa-policy-ce2bf7236fab****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// PrivateAccess
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -5603,8 +6799,17 @@ func (s *ListPolicesForUserGroupResponse) SetBody(v *ListPolicesForUserGroupResp
 }
 
 type ListPopTrafficStatisticsRequest struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 1681293719
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 1681035708
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5633,6 +6838,10 @@ func (s *ListPopTrafficStatisticsRequest) SetStartTime(v string) *ListPopTraffic
 
 type ListPopTrafficStatisticsResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// EFE7EBB2-449D-5BBB-B381-CA7839BC1649
 	RequestId   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TrafficData []*ListPopTrafficStatisticsResponseBodyTrafficData `json:"TrafficData,omitempty" xml:"TrafficData,omitempty" type:"Repeated"`
 }
@@ -5657,7 +6866,10 @@ func (s *ListPopTrafficStatisticsResponseBody) SetTrafficData(v []*ListPopTraffi
 
 type ListPopTrafficStatisticsResponseBodyTrafficData struct {
 	Datapoints []*ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints `json:"Datapoints,omitempty" xml:"Datapoints,omitempty" type:"Repeated"`
-	MetricName *string                                                      `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// example:
+	//
+	// InternetTx
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 }
 
 func (s ListPopTrafficStatisticsResponseBodyTrafficData) String() string {
@@ -5679,8 +6891,14 @@ func (s *ListPopTrafficStatisticsResponseBodyTrafficData) SetMetricName(v string
 }
 
 type ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints struct {
-	Average  *float64 `json:"Average,omitempty" xml:"Average,omitempty"`
-	DateTime *string  `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// example:
+	//
+	// 15325
+	Average *float64 `json:"Average,omitempty" xml:"Average,omitempty"`
+	// example:
+	//
+	// 2023-12-06 15:29:00
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
 }
 
 func (s ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints) String() string {
@@ -5731,15 +6949,40 @@ func (s *ListPopTrafficStatisticsResponse) SetBody(v *ListPopTrafficStatisticsRe
 }
 
 type ListPrivateAccessApplicationsRequest struct {
+	// example:
+	//
+	// 192.168.0.0/16
 	Address        *string   `json:"Address,omitempty" xml:"Address,omitempty"`
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	ConnectorId    *string   `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	CurrentPage    *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize       *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PolicyId       *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Status         *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagId          *string   `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// private_access_application_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// pa-policy-54a7838a48bf****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// tag-d3f64e8bdd4a****
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
 func (s ListPrivateAccessApplicationsRequest) String() string {
@@ -5797,8 +7040,14 @@ func (s *ListPrivateAccessApplicationsRequest) SetTagId(v string) *ListPrivateAc
 
 type ListPrivateAccessApplicationsResponseBody struct {
 	Applications []*ListPrivateAccessApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	RequestId    *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum     *int32                                                   `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 748CFDC7-1EB6-5B8B-9405-DA76ED5BB60D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListPrivateAccessApplicationsResponseBody) String() string {
@@ -5825,17 +7074,32 @@ func (s *ListPrivateAccessApplicationsResponseBody) SetTotalNum(v int32) *ListPr
 }
 
 type ListPrivateAccessApplicationsResponseBodyApplications struct {
-	Addresses     []*string                                                          `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	ApplicationId *string                                                            `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ConnectorIds  []*string                                                          `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
-	CreateTime    *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name          *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyIds     []*string                                                          `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	PortRanges    []*ListPrivateAccessApplicationsResponseBodyApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	Protocol      *string                                                            `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Status        *string                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds        []*string                                                          `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pa-application-e12860ef6c48****
+	ApplicationId *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ConnectorIds  []*string `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-12-16 15:03:42
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// private_access_application_name
+	Name       *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	PolicyIds  []*string                                                          `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	PortRanges []*ListPrivateAccessApplicationsResponseBodyApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// example:
+	//
+	// All
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
 func (s ListPrivateAccessApplicationsResponseBodyApplications) String() string {
@@ -5902,8 +7166,14 @@ func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetTagIds(v []*s
 }
 
 type ListPrivateAccessApplicationsResponseBodyApplicationsPortRanges struct {
+	// example:
+	//
+	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	End   *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 81
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
 }
 
 func (s ListPrivateAccessApplicationsResponseBodyApplicationsPortRanges) String() string {
@@ -5954,6 +7224,7 @@ func (s *ListPrivateAccessApplicationsResponse) SetBody(v *ListPrivateAccessAppl
 }
 
 type ListPrivateAccessApplicationsForDynamicRouteRequest struct {
+	// This parameter is required.
 	DynamicRouteIds []*string `json:"DynamicRouteIds,omitempty" xml:"DynamicRouteIds,omitempty" type:"Repeated"`
 }
 
@@ -5972,7 +7243,10 @@ func (s *ListPrivateAccessApplicationsForDynamicRouteRequest) SetDynamicRouteIds
 
 type ListPrivateAccessApplicationsForDynamicRouteResponseBody struct {
 	DynamicRoutes []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes `json:"DynamicRoutes,omitempty" xml:"DynamicRoutes,omitempty" type:"Repeated"`
-	RequestId     *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPrivateAccessApplicationsForDynamicRouteResponseBody) String() string {
@@ -5994,8 +7268,11 @@ func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBody) SetRequestId(
 }
 
 type ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes struct {
-	Applications   []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	DynamicRouteId *string                                                                              `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+	Applications []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dr-ca9fddfac7c6****
+	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
 }
 
 func (s ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes) String() string {
@@ -6017,14 +7294,29 @@ func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutes) 
 }
 
 type ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications struct {
-	Addresses     []*string                                                                                      `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	ApplicationId *string                                                                                        `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	CreateTime    *string                                                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string                                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name          *string                                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	PortRanges    []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	Protocol      *string                                                                                        `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Status        *string                                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pa-application-7a9243dd02f4****
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// example:
+	//
+	// 2022-04-13 13:33:24
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// application_name
+	Name       *string                                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	PortRanges []*ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// example:
+	//
+	// All
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplications) String() string {
@@ -6076,8 +7368,14 @@ func (s *ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesAp
 }
 
 type ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges struct {
+	// example:
+	//
+	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	End   *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 81
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
 }
 
 func (s ListPrivateAccessApplicationsForDynamicRouteResponseBodyDynamicRoutesApplicationsPortRanges) String() string {
@@ -6128,19 +7426,50 @@ func (s *ListPrivateAccessApplicationsForDynamicRouteResponse) SetBody(v *ListPr
 }
 
 type ListPrivateAccessPolicesRequest struct {
-	ApplicationId   *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ApplicationName *string   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	CurrentPage     *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PolicyAction    *string   `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	PolicyIds       []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	Status          *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagId           *string   `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName         *string   `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// example:
+	//
+	// pa-application-e12860ef6c48****
+	ApplicationId   *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// private_access_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Allow
+	PolicyAction *string   `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	PolicyIds    []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// tag-c0cb77857a99****
+	TagId   *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 	// 用户组ID。取值来源：
+	//
 	// - [ListUserGroups](~~ListUserGroups~~)：批量查询用户组。
+	//
 	// - [CreateUserGroup](~~CreateUserGroup~~)：创建用户组。
+	//
+	// example:
+	//
+	// usergroup-6f1ef2fc56b6****
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -6208,9 +7537,15 @@ func (s *ListPrivateAccessPolicesRequest) SetUserGroupId(v string) *ListPrivateA
 }
 
 type ListPrivateAccessPolicesResponseBody struct {
-	Polices   []*ListPrivateAccessPolicesResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum  *int32                                         `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	Polices []*ListPrivateAccessPolicesResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 748CFDC7-1EB6-5B8B-9405-DA76ED5BB60D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListPrivateAccessPolicesResponseBody) String() string {
@@ -6237,20 +7572,44 @@ func (s *ListPrivateAccessPolicesResponseBody) SetTotalNum(v int32) *ListPrivate
 }
 
 type ListPrivateAccessPolicesResponseBodyPolices struct {
-	ApplicationIds       []*string                                                          `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	ApplicationType      *string                                                            `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Application
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// example:
+	//
+	// 2022-07-10 15:50:23
 	CreateTime           *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CustomUserAttributes []*ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
 	Description          *string                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
 	DeviceAttributeId    *string                                                            `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
-	Name                 *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyAction         *string                                                            `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	PolicyId             *string                                                            `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Priority             *int32                                                             `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status               *string                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds               []*string                                                          `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	UserGroupIds         []*string                                                          `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	UserGroupMode        *string                                                            `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
+	// example:
+	//
+	// private_access_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Allow
+	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// example:
+	//
+	// pa-policy-63b2f1844b86****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds       []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Normal
+	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
 }
 
 func (s ListPrivateAccessPolicesResponseBodyPolices) String() string {
@@ -6332,8 +7691,17 @@ func (s *ListPrivateAccessPolicesResponseBodyPolices) SetUserGroupMode(v string)
 }
 
 type ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes struct {
-	IdpId         *int32  `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	Relation      *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// 12
+	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// example:
+	//
+	// Equal
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
 	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -6398,21 +7766,51 @@ func (s *ListPrivateAccessPolicesResponse) SetBody(v *ListPrivateAccessPolicesRe
 type ListPrivateAccessTagsRequest struct {
 	// The ID of the internal access application. You can obtain the application ID by calling the following operations:
 	//
-	// *   [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries all internal access applications.
-	// *   [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an internal access application.
+	// 	- [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries all internal access applications.
+	//
+	// 	- [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an internal access application.
+	//
+	// example:
+	//
+	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The page number. Valid values: 1 to 10000.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the internal access tag. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+	// The name of the internal access tag. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// tag_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of entries per page. Valid values: 1 to 1000.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the internal access policy. You can obtain the policy ID by calling the following operations:
 	//
-	// *   [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): queries all internal access policies.
-	// *   [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): creates an internal access policy.
+	// 	- [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): queries all internal access policies.
+	//
+	// 	- [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): creates an internal access policy.
+	//
+	// example:
+	//
+	// pa-policy-54a7838a48bf****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// Specifies whether to enable the simple query mode. A value of true specifies that policy IDs are not queried.
+	//
+	// example:
+	//
+	// true
 	SimpleMode *bool `json:"SimpleMode,omitempty" xml:"SimpleMode,omitempty"`
 	// The IDs of internal access tags. You can specify up to 100 tag IDs.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
@@ -6463,10 +7861,18 @@ func (s *ListPrivateAccessTagsRequest) SetTagIds(v []*string) *ListPrivateAccess
 
 type ListPrivateAccessTagsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 54C1D236-CDB9-586C-B44D-AFDCEA195545
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The internal access tags.
 	Tags []*ListPrivateAccessTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The total number of internal access tags.
+	//
+	// example:
+	//
+	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
@@ -6497,19 +7903,36 @@ type ListPrivateAccessTagsResponseBodyTags struct {
 	// The IDs of the internal access applications.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	// The time when the internal access tag was created.
+	//
+	// example:
+	//
+	// 2022-10-10 11:39:34
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the internal access tag.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the internal access tag.
+	//
+	// example:
+	//
+	// tag_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The IDs of the internal access policies.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the internal access tag.
+	//
+	// example:
+	//
+	// tag-d3f64e8bdd4a****
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 	// The type of the internal access tag. Valid values:
 	//
-	// *   **Default**
-	// *   **Custom**
+	// 	- **Default**
+	//
+	// 	- **Custom**
+	//
+	// example:
+	//
+	// Default
 	TagType *string `json:"TagType,omitempty" xml:"TagType,omitempty"`
 }
 
@@ -6586,6 +8009,7 @@ func (s *ListPrivateAccessTagsResponse) SetBody(v *ListPrivateAccessTagsResponse
 }
 
 type ListPrivateAccessTagsForDynamicRouteRequest struct {
+	// This parameter is required.
 	DynamicRouteIds []*string `json:"DynamicRouteIds,omitempty" xml:"DynamicRouteIds,omitempty" type:"Repeated"`
 }
 
@@ -6604,7 +8028,10 @@ func (s *ListPrivateAccessTagsForDynamicRouteRequest) SetDynamicRouteIds(v []*st
 
 type ListPrivateAccessTagsForDynamicRouteResponseBody struct {
 	DynamicRoutes []*ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes `json:"DynamicRoutes,omitempty" xml:"DynamicRoutes,omitempty" type:"Repeated"`
-	RequestId     *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// B608C6AE-623D-55C4-9454-601B88AE937E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPrivateAccessTagsForDynamicRouteResponseBody) String() string {
@@ -6626,6 +8053,9 @@ func (s *ListPrivateAccessTagsForDynamicRouteResponseBody) SetRequestId(v string
 }
 
 type ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes struct {
+	// example:
+	//
+	// dr-ca9fddfac7c6****
 	DynamicRouteId *string                                                              `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
 	Tags           []*ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -6649,11 +8079,23 @@ func (s *ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutes) SetTags(
 }
 
 type ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags struct {
+	// example:
+	//
+	// 2022-10-23 14:02:56
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TagId       *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagType     *string `json:"TagType,omitempty" xml:"TagType,omitempty"`
+	// example:
+	//
+	// tag_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// tag-d3f64e8bdd4a****
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// example:
+	//
+	// Custom
+	TagType *string `json:"TagType,omitempty" xml:"TagType,omitempty"`
 }
 
 func (s ListPrivateAccessTagsForDynamicRouteResponseBodyDynamicRoutesTags) String() string {
@@ -6719,15 +8161,43 @@ func (s *ListPrivateAccessTagsForDynamicRouteResponse) SetBody(v *ListPrivateAcc
 }
 
 type ListRegistrationPoliciesRequest struct {
-	CompanyLimitType  *string   `json:"CompanyLimitType,omitempty" xml:"CompanyLimitType,omitempty"`
-	CurrentPage       *int64    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	MatchMode         *string   `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
-	Name              *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize          *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// LimitAll
+	CompanyLimitType *string `json:"CompanyLimitType,omitempty" xml:"CompanyLimitType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// UserGroupAll
+	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// example:
+	//
+	// registration_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// LimitDiff
 	PersonalLimitType *string   `json:"PersonalLimitType,omitempty" xml:"PersonalLimitType,omitempty"`
 	PolicyIds         []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	Status            *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserGroupId       *string   `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// usergroup-6f1ef2fc56b6****
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
 func (s ListRegistrationPoliciesRequest) String() string {
@@ -6784,9 +8254,15 @@ func (s *ListRegistrationPoliciesRequest) SetUserGroupId(v string) *ListRegistra
 }
 
 type ListRegistrationPoliciesResponseBody struct {
-	Policies  []*ListRegistrationPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum  *string                                         `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	Policies []*ListRegistrationPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7A8FE38A-E29C-5678-B84A-FEDBCB83552F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *string `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListRegistrationPoliciesResponseBody) String() string {
@@ -6813,16 +8289,34 @@ func (s *ListRegistrationPoliciesResponseBody) SetTotalNum(v string) *ListRegist
 }
 
 type ListRegistrationPoliciesResponseBodyPolicies struct {
-	CreateTime   *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description  *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	LimitDetail  []*ListRegistrationPoliciesResponseBodyPoliciesLimitDetail `json:"LimitDetail,omitempty" xml:"LimitDetail,omitempty" type:"Repeated"`
-	MatchMode    *string                                                    `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
-	Name         *string                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyId     *string                                                    `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Priority     *int64                                                     `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status       *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserGroupIds []*string                                                  `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	Whitelist    []*string                                                  `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-05-16 17:18:46
+	CreateTime  *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	LimitDetail []*ListRegistrationPoliciesResponseBodyPoliciesLimitDetail `json:"LimitDetail,omitempty" xml:"LimitDetail,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UserGroupNormal
+	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// example:
+	//
+	// registration_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// reg-policy-dcbfd33cb004****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	Whitelist    []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
 func (s ListRegistrationPoliciesResponseBodyPolicies) String() string {
@@ -6884,9 +8378,15 @@ func (s *ListRegistrationPoliciesResponseBodyPolicies) SetWhitelist(v []*string)
 }
 
 type ListRegistrationPoliciesResponseBodyPoliciesLimitDetail struct {
+	// example:
+	//
+	// Company
 	DeviceBelong *string                                                            `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
 	LimitCount   *ListRegistrationPoliciesResponseBodyPoliciesLimitDetailLimitCount `json:"LimitCount,omitempty" xml:"LimitCount,omitempty" type:"Struct"`
-	LimitType    *string                                                            `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
+	// example:
+	//
+	// LimitAll
+	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
 }
 
 func (s ListRegistrationPoliciesResponseBodyPoliciesLimitDetail) String() string {
@@ -6913,9 +8413,18 @@ func (s *ListRegistrationPoliciesResponseBodyPoliciesLimitDetail) SetLimitType(v
 }
 
 type ListRegistrationPoliciesResponseBodyPoliciesLimitDetailLimitCount struct {
-	All    *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 3
+	All *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 0
 	Mobile *int32 `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	PC     *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
+	// example:
+	//
+	// 0
+	PC *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
 }
 
 func (s ListRegistrationPoliciesResponseBodyPoliciesLimitDetailLimitCount) String() string {
@@ -6971,6 +8480,7 @@ func (s *ListRegistrationPoliciesResponse) SetBody(v *ListRegistrationPoliciesRe
 }
 
 type ListRegistrationPoliciesForUserGroupRequest struct {
+	// This parameter is required.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 }
 
@@ -6988,6 +8498,9 @@ func (s *ListRegistrationPoliciesForUserGroupRequest) SetUserGroupIds(v []*strin
 }
 
 type ListRegistrationPoliciesForUserGroupResponseBody struct {
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
 	RequestId  *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserGroups []*ListRegistrationPoliciesForUserGroupResponseBodyUserGroups `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
 }
@@ -7011,8 +8524,11 @@ func (s *ListRegistrationPoliciesForUserGroupResponseBody) SetUserGroups(v []*Li
 }
 
 type ListRegistrationPoliciesForUserGroupResponseBodyUserGroups struct {
-	Policies    []*ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	UserGroupId *string                                                               `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	Policies []*ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// usergroup-6f1ef2fc56b6****
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
 func (s ListRegistrationPoliciesForUserGroupResponseBodyUserGroups) String() string {
@@ -7034,15 +8550,33 @@ func (s *ListRegistrationPoliciesForUserGroupResponseBodyUserGroups) SetUserGrou
 }
 
 type ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies struct {
+	// example:
+	//
+	// 2023-05-16 17:18:46
 	CreateTime  *string                                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string                                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
 	LimitDetail []*ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetail `json:"LimitDetail,omitempty" xml:"LimitDetail,omitempty" type:"Repeated"`
-	MatchMode   *string                                                                          `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
-	Name        *string                                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyId    *string                                                                          `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Priority    *int64                                                                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status      *string                                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	Whitelist   []*string                                                                        `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UserGroupNormal
+	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// example:
+	//
+	// registration_policy_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// reg-policy-dcbfd33cb004****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status    *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Whitelist []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
 func (s ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies) String() string {
@@ -7099,9 +8633,15 @@ func (s *ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies) Set
 }
 
 type ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetail struct {
+	// example:
+	//
+	// Company
 	DeviceBelong *string                                                                                  `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
 	LimitCount   *ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetailLimitCount `json:"LimitCount,omitempty" xml:"LimitCount,omitempty" type:"Struct"`
-	LimitType    *string                                                                                  `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
+	// example:
+	//
+	// LimitAll
+	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
 }
 
 func (s ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetail) String() string {
@@ -7128,9 +8668,18 @@ func (s *ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimit
 }
 
 type ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetailLimitCount struct {
-	All    *string `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 3
+	All *string `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 0
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	PC     *string `json:"PC,omitempty" xml:"PC,omitempty"`
+	// example:
+	//
+	// 0
+	PC *string `json:"PC,omitempty" xml:"PC,omitempty"`
 }
 
 func (s ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPoliciesLimitDetailLimitCount) String() string {
@@ -7186,9 +8735,24 @@ func (s *ListRegistrationPoliciesForUserGroupResponse) SetBody(v *ListRegistrati
 }
 
 type ListSoftwareForUserDeviceRequest struct {
-	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DeviceTag   *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListSoftwareForUserDeviceRequest) String() string {
@@ -7215,9 +8779,15 @@ func (s *ListSoftwareForUserDeviceRequest) SetPageSize(v int64) *ListSoftwareFor
 }
 
 type ListSoftwareForUserDeviceResponseBody struct {
+	// example:
+	//
+	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Software  []*ListSoftwareForUserDeviceResponseBodySoftware `json:"Software,omitempty" xml:"Software,omitempty" type:"Repeated"`
-	TotalNum  *int64                                           `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListSoftwareForUserDeviceResponseBody) String() string {
@@ -7244,7 +8814,13 @@ func (s *ListSoftwareForUserDeviceResponseBody) SetTotalNum(v int64) *ListSoftwa
 }
 
 type ListSoftwareForUserDeviceResponseBodySoftware struct {
-	Inc         *string   `json:"Inc,omitempty" xml:"Inc,omitempty"`
+	// example:
+	//
+	// Alibaba (China) Network Technology Co.,Ltd.
+	Inc *string `json:"Inc,omitempty" xml:"Inc,omitempty"`
+	// example:
+	//
+	// 2023-08-18 02:43:02
 	InstallTime *string   `json:"InstallTime,omitempty" xml:"InstallTime,omitempty"`
 	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Versions    []*string `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
@@ -7308,6 +8884,7 @@ func (s *ListSoftwareForUserDeviceResponse) SetBody(v *ListSoftwareForUserDevice
 }
 
 type ListTagsForPrivateAccessApplicationRequest struct {
+	// This parameter is required.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 }
 
@@ -7326,7 +8903,10 @@ func (s *ListTagsForPrivateAccessApplicationRequest) SetApplicationIds(v []*stri
 
 type ListTagsForPrivateAccessApplicationResponseBody struct {
 	Applications []*ListTagsForPrivateAccessApplicationResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	RequestId    *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 7241F45B-E8D3-5BA3-8172-8A58AC2AB0FC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListTagsForPrivateAccessApplicationResponseBody) String() string {
@@ -7348,6 +8928,9 @@ func (s *ListTagsForPrivateAccessApplicationResponseBody) SetRequestId(v string)
 }
 
 type ListTagsForPrivateAccessApplicationResponseBodyApplications struct {
+	// example:
+	//
+	// pa-application-7a4445897856****
 	ApplicationId *string                                                            `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	Tags          []*ListTagsForPrivateAccessApplicationResponseBodyApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -7371,11 +8954,23 @@ func (s *ListTagsForPrivateAccessApplicationResponseBodyApplications) SetTags(v 
 }
 
 type ListTagsForPrivateAccessApplicationResponseBodyApplicationsTags struct {
+	// example:
+	//
+	// 2022-07-01 16:05:26
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TagId       *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagType     *string `json:"TagType,omitempty" xml:"TagType,omitempty"`
+	// example:
+	//
+	// tag_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// tag-c0cb77857a99****
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// example:
+	//
+	// Default
+	TagType *string `json:"TagType,omitempty" xml:"TagType,omitempty"`
 }
 
 func (s ListTagsForPrivateAccessApplicationResponseBodyApplicationsTags) String() string {
@@ -7441,6 +9036,7 @@ func (s *ListTagsForPrivateAccessApplicationResponse) SetBody(v *ListTagsForPriv
 }
 
 type ListTagsForPrivateAccessPolicyRequest struct {
+	// This parameter is required.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 }
 
@@ -7458,8 +9054,11 @@ func (s *ListTagsForPrivateAccessPolicyRequest) SetPolicyIds(v []*string) *ListT
 }
 
 type ListTagsForPrivateAccessPolicyResponseBody struct {
-	Polices   []*ListTagsForPrivateAccessPolicyResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
-	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Polices []*ListTagsForPrivateAccessPolicyResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 9EE61139-A6A8-5E13-80AF-83435C21B26B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListTagsForPrivateAccessPolicyResponseBody) String() string {
@@ -7481,6 +9080,9 @@ func (s *ListTagsForPrivateAccessPolicyResponseBody) SetRequestId(v string) *Lis
 }
 
 type ListTagsForPrivateAccessPolicyResponseBodyPolices struct {
+	// example:
+	//
+	// pa-policy-1b0d0e8b4bcf****
 	PolicyId *string                                                  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	Tags     []*ListTagsForPrivateAccessPolicyResponseBodyPolicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -7505,11 +9107,24 @@ func (s *ListTagsForPrivateAccessPolicyResponseBodyPolices) SetTags(v []*ListTag
 
 type ListTagsForPrivateAccessPolicyResponseBodyPolicesTags struct {
 	// 内网访问标签创建时间。
+	//
+	// example:
+	//
+	// 2023-02-21 14:10:16
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TagId       *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagType     *string `json:"TagType,omitempty" xml:"TagType,omitempty"`
+	// example:
+	//
+	// tag_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// tag-d3f64e8bdd4a****
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// example:
+	//
+	// Default
+	TagType *string `json:"TagType,omitempty" xml:"TagType,omitempty"`
 }
 
 func (s ListTagsForPrivateAccessPolicyResponseBodyPolicesTags) String() string {
@@ -7575,24 +9190,50 @@ func (s *ListTagsForPrivateAccessPolicyResponse) SetBody(v *ListTagsForPrivateAc
 }
 
 type ListUserDevicesRequest struct {
-	AppStatuses    []*string `json:"AppStatuses,omitempty" xml:"AppStatuses,omitempty" type:"Repeated"`
-	CurrentPage    *int64    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Department     *string   `json:"Department,omitempty" xml:"Department,omitempty"`
+	AppStatuses []*string `json:"AppStatuses,omitempty" xml:"AppStatuses,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// example:
+	//
+	// Company
 	DeviceBelong   *string   `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
 	DeviceStatuses []*string `json:"DeviceStatuses,omitempty" xml:"DeviceStatuses,omitempty" type:"Repeated"`
 	DeviceTags     []*string `json:"DeviceTags,omitempty" xml:"DeviceTags,omitempty" type:"Repeated"`
 	DeviceTypes    []*string `json:"DeviceTypes,omitempty" xml:"DeviceTypes,omitempty" type:"Repeated"`
 	DlpStatuses    []*string `json:"DlpStatuses,omitempty" xml:"DlpStatuses,omitempty" type:"Repeated"`
-	Hostname       *string   `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	IaStatuses     []*string `json:"IaStatuses,omitempty" xml:"IaStatuses,omitempty" type:"Repeated"`
-	Mac            *string   `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	NacStatuses    []*string `json:"NacStatuses,omitempty" xml:"NacStatuses,omitempty" type:"Repeated"`
-	PaStatuses     []*string `json:"PaStatuses,omitempty" xml:"PaStatuses,omitempty" type:"Repeated"`
-	PageSize       *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SaseUserId     *string   `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	SharingStatus  *bool     `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
-	SortBy         *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Username       *string   `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// win10-64bit
+	Hostname   *string   `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	IaStatuses []*string `json:"IaStatuses,omitempty" xml:"IaStatuses,omitempty" type:"Repeated"`
+	InnerIp    *string   `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
+	// example:
+	//
+	// 00:16:XX:XX:7c:46
+	Mac         *string   `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	NacStatuses []*string `json:"NacStatuses,omitempty" xml:"NacStatuses,omitempty" type:"Repeated"`
+	PaStatuses  []*string `json:"PaStatuses,omitempty" xml:"PaStatuses,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// example:
+	//
+	// true
+	SharingStatus *bool   `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
+	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ListUserDevicesRequest) String() string {
@@ -7653,6 +9294,11 @@ func (s *ListUserDevicesRequest) SetIaStatuses(v []*string) *ListUserDevicesRequ
 	return s
 }
 
+func (s *ListUserDevicesRequest) SetInnerIp(v string) *ListUserDevicesRequest {
+	s.InnerIp = &v
+	return s
+}
+
 func (s *ListUserDevicesRequest) SetMac(v string) *ListUserDevicesRequest {
 	s.Mac = &v
 	return s
@@ -7694,9 +9340,15 @@ func (s *ListUserDevicesRequest) SetUsername(v string) *ListUserDevicesRequest {
 }
 
 type ListUserDevicesResponseBody struct {
-	Devices   []*ListUserDevicesResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum  *int64                                `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	Devices []*ListUserDevicesResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5FEF5CFA-14CC-5DE5-BD1F-AFFE0996E71D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListUserDevicesResponseBody) String() string {
@@ -7723,31 +9375,100 @@ func (s *ListUserDevicesResponseBody) SetTotalNum(v int64) *ListUserDevicesRespo
 }
 
 type ListUserDevicesResponseBodyDevices struct {
-	AppStatus     *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
-	AppVersion    *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	CPU           *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Department    *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	DeviceBelong  *string `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
-	DeviceModel   *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	DeviceStatus  *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
-	DeviceTag     *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
-	DeviceType    *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// Online
+	AppStatus *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
+	// example:
+	//
+	// 2.2.0
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// Apple M1
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// 2023-07-17 18:46:55
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// example:
+	//
+	// Company
+	DeviceBelong *string `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
+	// example:
+	//
+	// MacBookPro17,1
+	DeviceModel *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	// example:
+	//
+	// Online
+	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
+	// example:
+	//
+	// Windows
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 3.5.1
 	DeviceVersion *string `json:"DeviceVersion,omitempty" xml:"DeviceVersion,omitempty"`
-	Disk          *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	DlpStatus     *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
-	Hostname      *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	IaStatus      *string `json:"IaStatus,omitempty" xml:"IaStatus,omitempty"`
-	InnerIP       *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
-	Mac           *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	Memory        *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	NacStatus     *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
-	PaStatus      *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
-	SaseUserId    *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	SharingStatus *bool   `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
-	SrcIP         *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// APPLE SSD AP0512Q Media
+	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// example:
+	//
+	// Enabled
+	DlpStatus *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
+	// example:
+	//
+	// win10-64bit
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// Enabled
+	IaStatus *string `json:"IaStatus,omitempty" xml:"IaStatus,omitempty"`
+	// example:
+	//
+	// 192.168.XX.XX
+	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
+	// example:
+	//
+	// 00:16:XX:XX:7c:46
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// example:
+	//
+	// 16
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// Enabled
+	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	// example:
+	//
+	// Enabled
+	PaStatus *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// example:
+	//
+	// true
+	SharingStatus *bool `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
+	// example:
+	//
+	// 11.49.XX.XX
+	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// example:
+	//
+	// 2023-08-24 19:04:42
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ListUserDevicesResponseBodyDevices) String() string {
@@ -7913,11 +9634,31 @@ func (s *ListUserDevicesResponse) SetBody(v *ListUserDevicesResponseBody) *ListU
 }
 
 type ListUserGroupsRequest struct {
+	// example:
+	//
+	// username
 	AttributeValue *string `json:"AttributeValue,omitempty" xml:"AttributeValue,omitempty"`
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// 用户组名称。长度为1~128个字符，支持中文和大小写英文字母，可包含数字、半角句号（.）、下划线（_）和短划线（-）。
-	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PAPolicyId   *string   `json:"PAPolicyId,omitempty" xml:"PAPolicyId,omitempty"`
+	//
+	// example:
+	//
+	// user_group_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// pa-policy-54a7838a48bf****
+	PAPolicyId *string `json:"PAPolicyId,omitempty" xml:"PAPolicyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 }
@@ -7961,7 +9702,13 @@ func (s *ListUserGroupsRequest) SetUserGroupIds(v []*string) *ListUserGroupsRequ
 }
 
 type ListUserGroupsResponseBody struct {
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4AB972E2-D702-5464-B132-B1911498B8BF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
 	TotalNum   *int32                                  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 	UserGroups []*ListUserGroupsResponseBodyUserGroups `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
 }
@@ -7990,11 +9737,20 @@ func (s *ListUserGroupsResponseBody) SetUserGroups(v []*ListUserGroupsResponseBo
 }
 
 type ListUserGroupsResponseBodyUserGroups struct {
-	Attributes  []*ListUserGroupsResponseBodyUserGroupsAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	CreateTime  *string                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string                                           `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	UserGroupId *string                                           `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	Attributes []*ListUserGroupsResponseBodyUserGroupsAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-10-10 11:39:22
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// user_group_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// usergroup-6f1ef2fc56b6****
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
 func (s ListUserGroupsResponseBodyUserGroups) String() string {
@@ -8031,8 +9787,17 @@ func (s *ListUserGroupsResponseBodyUserGroups) SetUserGroupId(v string) *ListUse
 }
 
 type ListUserGroupsResponseBodyUserGroupsAttributes struct {
-	IdpId         *int32  `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	Relation      *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// 12
+	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// example:
+	//
+	// Equal
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
 	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -8095,6 +9860,7 @@ func (s *ListUserGroupsResponse) SetBody(v *ListUserGroupsResponseBody) *ListUse
 }
 
 type ListUserGroupsForPrivateAccessPolicyRequest struct {
+	// This parameter is required.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 }
 
@@ -8112,8 +9878,11 @@ func (s *ListUserGroupsForPrivateAccessPolicyRequest) SetPolicyIds(v []*string) 
 }
 
 type ListUserGroupsForPrivateAccessPolicyResponseBody struct {
-	Polices   []*ListUserGroupsForPrivateAccessPolicyResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
-	RequestId *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Polices []*ListUserGroupsForPrivateAccessPolicyResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListUserGroupsForPrivateAccessPolicyResponseBody) String() string {
@@ -8135,6 +9904,9 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponseBody) SetRequestId(v string
 }
 
 type ListUserGroupsForPrivateAccessPolicyResponseBodyPolices struct {
+	// example:
+	//
+	// pa-policy-1b0d0e8b4bcf****
 	PolicyId   *string                                                              `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	UserGroups []*ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroups `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
 }
@@ -8160,9 +9932,19 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponseBodyPolices) SetUserGroups(
 type ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroups struct {
 	Attributes []*ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroupsAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
 	// 用户组创建时间。
+	//
+	// example:
+	//
+	// 2022-09-27 18:10:25
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// user_group_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// usergroup-6f1ef2fc56b6****
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -8200,8 +9982,17 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroups) SetU
 }
 
 type ListUserGroupsForPrivateAccessPolicyResponseBodyPolicesUserGroupsAttributes struct {
-	IdpId         *int32  `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	Relation      *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// 12
+	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// example:
+	//
+	// Equal
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
 	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -8264,6 +10055,7 @@ func (s *ListUserGroupsForPrivateAccessPolicyResponse) SetBody(v *ListUserGroups
 }
 
 type ListUserGroupsForRegistrationPolicyRequest struct {
+	// This parameter is required.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 }
 
@@ -8281,8 +10073,11 @@ func (s *ListUserGroupsForRegistrationPolicyRequest) SetPolicyIds(v []*string) *
 }
 
 type ListUserGroupsForRegistrationPolicyResponseBody struct {
-	Policies  []*ListUserGroupsForRegistrationPolicyResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	RequestId *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Policies []*ListUserGroupsForRegistrationPolicyResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// D89009C7-54C6-51B6-BAE7-3F373920C6BF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListUserGroupsForRegistrationPolicyResponseBody) String() string {
@@ -8304,6 +10099,9 @@ func (s *ListUserGroupsForRegistrationPolicyResponseBody) SetRequestId(v string)
 }
 
 type ListUserGroupsForRegistrationPolicyResponseBodyPolicies struct {
+	// example:
+	//
+	// reg-policy-f25c9e5872e5****
 	PolicyId   *string                                                              `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	UserGroups []*ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroups `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
 }
@@ -8327,11 +10125,20 @@ func (s *ListUserGroupsForRegistrationPolicyResponseBodyPolicies) SetUserGroups(
 }
 
 type ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroups struct {
-	Attributes  []*ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroupsAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	CreateTime  *string                                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	UserGroupId *string                                                                        `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	Attributes []*ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroupsAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-09-27 18:10:25
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// user_group_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// usergroup-6f1ef2fc56b6****
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
 func (s ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroups) String() string {
@@ -8368,8 +10175,17 @@ func (s *ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroups) SetU
 }
 
 type ListUserGroupsForRegistrationPolicyResponseBodyPoliciesUserGroupsAttributes struct {
-	IdpId         *int32  `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	Relation      *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// 12
+	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// example:
+	//
+	// Equal
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
 	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -8432,13 +10248,26 @@ func (s *ListUserGroupsForRegistrationPolicyResponse) SetBody(v *ListUserGroupsF
 }
 
 type ListUsersRequest struct {
-	CurrentPage     *int64    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Department      *string   `json:"Department,omitempty" xml:"Department,omitempty"`
-	FuzzyUsername   *string   `json:"FuzzyUsername,omitempty" xml:"FuzzyUsername,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage   *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Department    *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	FuzzyUsername *string `json:"FuzzyUsername,omitempty" xml:"FuzzyUsername,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize        *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PreciseUsername *string   `json:"PreciseUsername,omitempty" xml:"PreciseUsername,omitempty"`
 	SaseUserIds     []*string `json:"SaseUserIds,omitempty" xml:"SaseUserIds,omitempty" type:"Repeated"`
-	Status          *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListUsersRequest) String() string {
@@ -8485,9 +10314,15 @@ func (s *ListUsersRequest) SetStatus(v string) *ListUsersRequest {
 }
 
 type ListUsersResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum  *string                       `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	Users     []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5FEF5CFA-14CC-5DE5-BD1F-AFFE0996E71D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *string                       `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	Users    []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -8515,12 +10350,24 @@ func (s *ListUsersResponseBody) SetUsers(v []*ListUsersResponseBodyUsers) *ListU
 
 type ListUsersResponseBodyUsers struct {
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	Email      *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	IdpName    *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
-	Phone      *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// example:
+	//
+	// a***@example.net
+	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	IdpName *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
+	// example:
+	//
+	// 1381111****
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ListUsersResponseBodyUsers) String() string {
@@ -8596,10 +10443,24 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 }
 
 type UpdateClientUserRequest struct {
+	// example:
+	//
+	// 10701
 	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// johndoe@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20644
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 13641966835
 	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
 }
 
@@ -8637,6 +10498,9 @@ func (s *UpdateClientUserRequest) SetMobileNumber(v string) *UpdateClientUserReq
 }
 
 type UpdateClientUserResponseBody struct {
+	// example:
+	//
+	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8683,7 +10547,13 @@ func (s *UpdateClientUserResponse) SetBody(v *UpdateClientUserResponseBody) *Upd
 }
 
 type UpdateClientUserPasswordRequest struct {
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1128
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// kehudiyidj
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
@@ -8712,6 +10582,9 @@ func (s *UpdateClientUserPasswordRequest) SetUsername(v string) *UpdateClientUse
 }
 
 type UpdateClientUserPasswordResponseBody struct {
+	// example:
+	//
+	// EFE7EBB2-449D-5BBB-B381-CA7839BC1649
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8758,7 +10631,17 @@ func (s *UpdateClientUserPasswordResponse) SetBody(v *UpdateClientUserPasswordRe
 }
 
 type UpdateClientUserStatusRequest struct {
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1495
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8781,6 +10664,9 @@ func (s *UpdateClientUserStatusRequest) SetStatus(v string) *UpdateClientUserSta
 }
 
 type UpdateClientUserStatusResponseBody struct {
+	// example:
+	//
+	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8827,18 +10713,44 @@ func (s *UpdateClientUserStatusResponse) SetBody(v *UpdateClientUserStatusRespon
 }
 
 type UpdateDynamicRouteRequest struct {
-	ApplicationIds   []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	ApplicationType  *string   `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	Description      *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DynamicRouteId   *string   `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
-	DynamicRouteType *string   `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
-	ModifyType       *string   `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextHop          *string   `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	Priority         *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionIds        []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds           []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Application
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dr-ca9fddfac7c6****
+	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
+	// example:
+	//
+	// connector
+	DynamicRouteType *string `json:"DynamicRouteType,omitempty" xml:"DynamicRouteType,omitempty"`
+	// example:
+	//
+	// Cover
+	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	// example:
+	//
+	// dynamic_route_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// connector-8ccb13b6f52c****
+	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	// example:
+	//
+	// 99
+	Priority  *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Disabled
+	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateDynamicRouteRequest) String() string {
@@ -8910,6 +10822,9 @@ func (s *UpdateDynamicRouteRequest) SetTagIds(v []*string) *UpdateDynamicRouteRe
 }
 
 type UpdateDynamicRouteResponseBody struct {
+	// example:
+	//
+	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8956,8 +10871,14 @@ func (s *UpdateDynamicRouteResponse) SetBody(v *UpdateDynamicRouteResponseBody) 
 }
 
 type UpdateExcessiveDeviceRegistrationApplicationsStatusRequest struct {
+	// This parameter is required.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	Status         *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Approved
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateExcessiveDeviceRegistrationApplicationsStatusRequest) String() string {
@@ -8980,7 +10901,10 @@ func (s *UpdateExcessiveDeviceRegistrationApplicationsStatusRequest) SetStatus(v
 
 type UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBody struct {
 	Applications []*UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	RequestId    *string                                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBody) String() string {
@@ -9002,18 +10926,45 @@ func (s *UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBody) SetReq
 }
 
 type UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBodyApplications struct {
+	// example:
+	//
+	// reg-application-0f4a127b7e78****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Department    *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DeviceTag     *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
-	DeviceType    *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	Hostname      *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	IsUsed        *bool   `json:"IsUsed,omitempty" xml:"IsUsed,omitempty"`
-	Mac           *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	SaseUserId    *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// 2023-07-17 18:46:55
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
+	// example:
+	//
+	// Windows
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// win10-64bit
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// false
+	IsUsed *bool `json:"IsUsed,omitempty" xml:"IsUsed,omitempty"`
+	// example:
+	//
+	// 00:16:XX:XX:7c:46
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// example:
+	//
+	// Approved
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBodyApplications) String() string {
@@ -9114,9 +11065,20 @@ func (s *UpdateExcessiveDeviceRegistrationApplicationsStatusResponse) SetBody(v 
 }
 
 type UpdateIdpDepartmentRequest struct {
-	DepartmentId   *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10653
+	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// This parameter is required.
 	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
-	IdpConfigId    *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 598
+	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
 }
 
 func (s UpdateIdpDepartmentRequest) String() string {
@@ -9143,6 +11105,9 @@ func (s *UpdateIdpDepartmentRequest) SetIdpConfigId(v string) *UpdateIdpDepartme
 }
 
 type UpdateIdpDepartmentResponseBody struct {
+	// example:
+	//
+	// 4D169859-A4F2-5EC8-853B-8447787C0D8A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9189,14 +11154,32 @@ func (s *UpdateIdpDepartmentResponse) SetBody(v *UpdateIdpDepartmentResponseBody
 }
 
 type UpdatePrivateAccessApplicationRequest struct {
-	Addresses     []*string                                          `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	ApplicationId *string                                            `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Description   *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	ModifyType    *string                                            `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	PortRanges    []*UpdatePrivateAccessApplicationRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	Protocol      *string                                            `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Status        *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds        []*string                                          `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pa-application-e12860ef6c48****
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// if can be null:
+	// true
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Cover
+	ModifyType *string                                            `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	PortRanges []*UpdatePrivateAccessApplicationRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// example:
+	//
+	// All
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// if can be null:
+	// true
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdatePrivateAccessApplicationRequest) String() string {
@@ -9248,8 +11231,14 @@ func (s *UpdatePrivateAccessApplicationRequest) SetTagIds(v []*string) *UpdatePr
 }
 
 type UpdatePrivateAccessApplicationRequestPortRanges struct {
+	// example:
+	//
+	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	End   *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 81
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
 }
 
 func (s UpdatePrivateAccessApplicationRequestPortRanges) String() string {
@@ -9271,6 +11260,9 @@ func (s *UpdatePrivateAccessApplicationRequestPortRanges) SetEnd(v int32) *Updat
 }
 
 type UpdatePrivateAccessApplicationResponseBody struct {
+	// example:
+	//
+	// FD724DBC-CD76-5235-BF76-59C51B73296D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9317,22 +11309,50 @@ func (s *UpdatePrivateAccessApplicationResponse) SetBody(v *UpdatePrivateAccessA
 }
 
 type UpdatePrivateAccessPolicyRequest struct {
-	ApplicationIds       []*string                                               `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Application
 	ApplicationType      *string                                                 `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	CustomUserAttributes []*UpdatePrivateAccessPolicyRequestCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
-	Description          *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	DeviceAttributeId    *string                                                 `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
-	ModifyType           *string                                                 `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	PolicyAction         *string                                                 `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	PolicyId             *string                                                 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Priority             *int32                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status               *string                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// if can be null:
+	// true
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceAttributeId *string `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
+	// example:
+	//
+	// Cover
+	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	// example:
+	//
+	// Allow
+	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pa-policy-63b2f1844b86****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 内网访问标签ID集合。一条策略最多支持100个内网访问标签ID。
 	TagIds       []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 	// 内网访问策略的用户组类型。取值：
+	//
 	// - **Normal**：普通用户组。
+	//
 	// - **Custom**：自定义用户组。
+	//
+	// example:
+	//
+	// Normal
 	UserGroupMode *string `json:"UserGroupMode,omitempty" xml:"UserGroupMode,omitempty"`
 }
 
@@ -9410,10 +11430,24 @@ func (s *UpdatePrivateAccessPolicyRequest) SetUserGroupMode(v string) *UpdatePri
 }
 
 type UpdatePrivateAccessPolicyRequestCustomUserAttributes struct {
-	IdpId         *int32  `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	Relation      *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// 12
+	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Equal
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is required.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdatePrivateAccessPolicyRequestCustomUserAttributes) String() string {
@@ -9445,6 +11479,9 @@ func (s *UpdatePrivateAccessPolicyRequestCustomUserAttributes) SetValue(v string
 }
 
 type UpdatePrivateAccessPolicyResponseBody struct {
+	// example:
+	//
+	// 5FEF5CFA-14CC-5DE5-BD1F-AFFE0996E71D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9491,18 +11528,41 @@ func (s *UpdatePrivateAccessPolicyResponse) SetBody(v *UpdatePrivateAccessPolicy
 }
 
 type UpdateRegistrationPolicyRequest struct {
-	CompanyLimitCount  *UpdateRegistrationPolicyRequestCompanyLimitCount  `json:"CompanyLimitCount,omitempty" xml:"CompanyLimitCount,omitempty" type:"Struct"`
-	CompanyLimitType   *string                                            `json:"CompanyLimitType,omitempty" xml:"CompanyLimitType,omitempty"`
-	Description        *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	MatchMode          *string                                            `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	CompanyLimitCount *UpdateRegistrationPolicyRequestCompanyLimitCount `json:"CompanyLimitCount,omitempty" xml:"CompanyLimitCount,omitempty" type:"Struct"`
+	// example:
+	//
+	// LimitAll
+	CompanyLimitType *string `json:"CompanyLimitType,omitempty" xml:"CompanyLimitType,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// UserGroupNormal
+	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// example:
+	//
+	// registration_policy_name
 	Name               *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
 	PersonalLimitCount *UpdateRegistrationPolicyRequestPersonalLimitCount `json:"PersonalLimitCount,omitempty" xml:"PersonalLimitCount,omitempty" type:"Struct"`
-	PersonalLimitType  *string                                            `json:"PersonalLimitType,omitempty" xml:"PersonalLimitType,omitempty"`
-	PolicyId           *string                                            `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Priority           *int64                                             `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status             *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserGroupIds       []*string                                          `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	Whitelist          []*string                                          `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
+	// example:
+	//
+	// LimitDiff
+	PersonalLimitType *string `json:"PersonalLimitType,omitempty" xml:"PersonalLimitType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// reg-policy-63b2f1844b86****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 0
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	Whitelist    []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRegistrationPolicyRequest) String() string {
@@ -9574,9 +11634,18 @@ func (s *UpdateRegistrationPolicyRequest) SetWhitelist(v []*string) *UpdateRegis
 }
 
 type UpdateRegistrationPolicyRequestCompanyLimitCount struct {
-	All    *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 1
+	All *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 0
 	Mobile *int32 `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	PC     *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
+	// example:
+	//
+	// 0
+	PC *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
 }
 
 func (s UpdateRegistrationPolicyRequestCompanyLimitCount) String() string {
@@ -9603,9 +11672,18 @@ func (s *UpdateRegistrationPolicyRequestCompanyLimitCount) SetPC(v int32) *Updat
 }
 
 type UpdateRegistrationPolicyRequestPersonalLimitCount struct {
-	All    *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 0
+	All *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 1
 	Mobile *int32 `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	PC     *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
+	// example:
+	//
+	// 2
+	PC *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
 }
 
 func (s UpdateRegistrationPolicyRequestPersonalLimitCount) String() string {
@@ -9632,18 +11710,41 @@ func (s *UpdateRegistrationPolicyRequestPersonalLimitCount) SetPC(v int32) *Upda
 }
 
 type UpdateRegistrationPolicyShrinkRequest struct {
-	CompanyLimitCountShrink  *string   `json:"CompanyLimitCount,omitempty" xml:"CompanyLimitCount,omitempty"`
-	CompanyLimitType         *string   `json:"CompanyLimitType,omitempty" xml:"CompanyLimitType,omitempty"`
-	Description              *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	MatchMode                *string   `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
-	Name                     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PersonalLimitCountShrink *string   `json:"PersonalLimitCount,omitempty" xml:"PersonalLimitCount,omitempty"`
-	PersonalLimitType        *string   `json:"PersonalLimitType,omitempty" xml:"PersonalLimitType,omitempty"`
-	PolicyId                 *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Priority                 *int64    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status                   *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserGroupIds             []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	Whitelist                []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
+	CompanyLimitCountShrink *string `json:"CompanyLimitCount,omitempty" xml:"CompanyLimitCount,omitempty"`
+	// example:
+	//
+	// LimitAll
+	CompanyLimitType *string `json:"CompanyLimitType,omitempty" xml:"CompanyLimitType,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// UserGroupNormal
+	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// example:
+	//
+	// registration_policy_name
+	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PersonalLimitCountShrink *string `json:"PersonalLimitCount,omitempty" xml:"PersonalLimitCount,omitempty"`
+	// example:
+	//
+	// LimitDiff
+	PersonalLimitType *string `json:"PersonalLimitType,omitempty" xml:"PersonalLimitType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// reg-policy-63b2f1844b86****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 0
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	Whitelist    []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRegistrationPolicyShrinkRequest) String() string {
@@ -9715,8 +11816,11 @@ func (s *UpdateRegistrationPolicyShrinkRequest) SetWhitelist(v []*string) *Updat
 }
 
 type UpdateRegistrationPolicyResponseBody struct {
-	Policy    *UpdateRegistrationPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Policy *UpdateRegistrationPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	// example:
+	//
+	// 27064ECA-0936-59F3-8A98-EC821E5BD08F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateRegistrationPolicyResponseBody) String() string {
@@ -9738,16 +11842,31 @@ func (s *UpdateRegistrationPolicyResponseBody) SetRequestId(v string) *UpdateReg
 }
 
 type UpdateRegistrationPolicyResponseBodyPolicy struct {
-	CreateTime   *string                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description  *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	LimitDetail  []*UpdateRegistrationPolicyResponseBodyPolicyLimitDetail `json:"LimitDetail,omitempty" xml:"LimitDetail,omitempty" type:"Repeated"`
-	MatchMode    *string                                                  `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
-	Name         *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyId     *string                                                  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Priority     *string                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Status       *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserGroupIds []*string                                                `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	Whitelist    []*string                                                `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-05-16 17:18:46
+	CreateTime  *string                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	LimitDetail []*UpdateRegistrationPolicyResponseBodyPolicyLimitDetail `json:"LimitDetail,omitempty" xml:"LimitDetail,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UserGroupNormal
+	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// example:
+	//
+	// registration_policy_name
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	Whitelist    []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRegistrationPolicyResponseBodyPolicy) String() string {
@@ -9809,9 +11928,15 @@ func (s *UpdateRegistrationPolicyResponseBodyPolicy) SetWhitelist(v []*string) *
 }
 
 type UpdateRegistrationPolicyResponseBodyPolicyLimitDetail struct {
+	// example:
+	//
+	// Company
 	DeviceBelong *string                                                          `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
 	LimitCount   *UpdateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount `json:"LimitCount,omitempty" xml:"LimitCount,omitempty" type:"Struct"`
-	LimitType    *string                                                          `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
+	// example:
+	//
+	// LimitAll
+	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
 }
 
 func (s UpdateRegistrationPolicyResponseBodyPolicyLimitDetail) String() string {
@@ -9838,9 +11963,18 @@ func (s *UpdateRegistrationPolicyResponseBodyPolicyLimitDetail) SetLimitType(v s
 }
 
 type UpdateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount struct {
-	All    *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 1
+	All *int32 `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 0
 	Mobile *int32 `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	PC     *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
+	// example:
+	//
+	// 0
+	PC *int32 `json:"PC,omitempty" xml:"PC,omitempty"`
 }
 
 func (s UpdateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount) String() string {
@@ -9896,8 +12030,14 @@ func (s *UpdateRegistrationPolicyResponse) SetBody(v *UpdateRegistrationPolicyRe
 }
 
 type UpdateUserDevicesSharingStatusRequest struct {
-	DeviceTags    []*string `json:"DeviceTags,omitempty" xml:"DeviceTags,omitempty" type:"Repeated"`
-	SharingStatus *bool     `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
+	// This parameter is required.
+	DeviceTags []*string `json:"DeviceTags,omitempty" xml:"DeviceTags,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	SharingStatus *bool `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
 }
 
 func (s UpdateUserDevicesSharingStatusRequest) String() string {
@@ -9919,8 +12059,11 @@ func (s *UpdateUserDevicesSharingStatusRequest) SetSharingStatus(v bool) *Update
 }
 
 type UpdateUserDevicesSharingStatusResponseBody struct {
-	Devices   []*UpdateUserDevicesSharingStatusResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
-	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Devices []*UpdateUserDevicesSharingStatusResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4D169859-A4F2-5EC8-853B-8447787C0D8A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateUserDevicesSharingStatusResponseBody) String() string {
@@ -9942,31 +12085,100 @@ func (s *UpdateUserDevicesSharingStatusResponseBody) SetRequestId(v string) *Upd
 }
 
 type UpdateUserDevicesSharingStatusResponseBodyDevices struct {
-	AppStatus     *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
-	AppVersion    *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	CPU           *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Department    *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	DeviceBelong  *string `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
-	DeviceModel   *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	DeviceStatus  *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
-	DeviceTag     *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
-	DeviceType    *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// Online
+	AppStatus *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
+	// example:
+	//
+	// 2.2.0
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// Apple M1
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// 2023-05-16 17:18:46
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// example:
+	//
+	// Company
+	DeviceBelong *string `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
+	// example:
+	//
+	// MacBookPro17,1
+	DeviceModel *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	// example:
+	//
+	// Online
+	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
+	// example:
+	//
+	// Windows
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 3.5.1
 	DeviceVersion *string `json:"DeviceVersion,omitempty" xml:"DeviceVersion,omitempty"`
-	Disk          *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	DlpStatus     *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
-	Hostname      *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	IaStatus      *string `json:"IaStatus,omitempty" xml:"IaStatus,omitempty"`
-	InnerIP       *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
-	Mac           *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	Memory        *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	NacStatus     *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
-	PaStatus      *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
-	SaseUserId    *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	SharingStatus *bool   `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
-	SrcIP         *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// APPLE SSD AP0512Q Media
+	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// example:
+	//
+	// Enabled
+	DlpStatus *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
+	// example:
+	//
+	// win10-64bit
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// Enabled
+	IaStatus *string `json:"IaStatus,omitempty" xml:"IaStatus,omitempty"`
+	// example:
+	//
+	// 192.168.XX.XX
+	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
+	// example:
+	//
+	// 00:16:XX:XX:7c:46
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// example:
+	//
+	// 16
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// Enabled
+	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	// example:
+	//
+	// Enabled
+	PaStatus *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// example:
+	//
+	// true
+	SharingStatus *bool `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
+	// example:
+	//
+	// 11.49.XX.XX
+	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// example:
+	//
+	// 2023-08-24 19:04:42
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s UpdateUserDevicesSharingStatusResponseBodyDevices) String() string {
@@ -10132,8 +12344,14 @@ func (s *UpdateUserDevicesSharingStatusResponse) SetBody(v *UpdateUserDevicesSha
 }
 
 type UpdateUserDevicesStatusRequest struct {
-	DeviceAction *string   `json:"DeviceAction,omitempty" xml:"DeviceAction,omitempty"`
-	DeviceTags   []*string `json:"DeviceTags,omitempty" xml:"DeviceTags,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Unbound
+	DeviceAction *string `json:"DeviceAction,omitempty" xml:"DeviceAction,omitempty"`
+	// This parameter is required.
+	DeviceTags []*string `json:"DeviceTags,omitempty" xml:"DeviceTags,omitempty" type:"Repeated"`
 }
 
 func (s UpdateUserDevicesStatusRequest) String() string {
@@ -10155,8 +12373,11 @@ func (s *UpdateUserDevicesStatusRequest) SetDeviceTags(v []*string) *UpdateUserD
 }
 
 type UpdateUserDevicesStatusResponseBody struct {
-	Devices   []*UpdateUserDevicesStatusResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Devices []*UpdateUserDevicesStatusResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5FEF5CFA-14CC-5DE5-BD1F-AFFE0996E71D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateUserDevicesStatusResponseBody) String() string {
@@ -10178,31 +12399,100 @@ func (s *UpdateUserDevicesStatusResponseBody) SetRequestId(v string) *UpdateUser
 }
 
 type UpdateUserDevicesStatusResponseBodyDevices struct {
-	AppStatus     *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
-	AppVersion    *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	CPU           *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Department    *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	DeviceBelong  *string `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
-	DeviceModel   *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	DeviceStatus  *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
-	DeviceTag     *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
-	DeviceType    *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// Online
+	AppStatus *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
+	// example:
+	//
+	// 2.2.0
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// Apple M1
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// 2023-07-17 18:46:55
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// example:
+	//
+	// Company
+	DeviceBelong *string `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
+	// example:
+	//
+	// MacBookPro17,1
+	DeviceModel *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
+	// example:
+	//
+	// Online
+	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
+	// example:
+	//
+	// Windows
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 3.5.1
 	DeviceVersion *string `json:"DeviceVersion,omitempty" xml:"DeviceVersion,omitempty"`
-	Disk          *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	DlpStatus     *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
-	Hostname      *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	IaStatus      *string `json:"IaStatus,omitempty" xml:"IaStatus,omitempty"`
-	InnerIP       *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
-	Mac           *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	Memory        *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	NacStatus     *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
-	PaStatus      *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
-	SaseUserId    *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	SharingStatus *bool   `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
-	SrcIP         *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// APPLE SSD AP0512Q Media
+	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// example:
+	//
+	// Enabled
+	DlpStatus *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
+	// example:
+	//
+	// win10-64bit
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// Enabled
+	IaStatus *string `json:"IaStatus,omitempty" xml:"IaStatus,omitempty"`
+	// example:
+	//
+	// 192.168.XX.XX
+	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
+	// example:
+	//
+	// 00:16:XX:XX:7c:46
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// example:
+	//
+	// 16
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// Enabled
+	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	// example:
+	//
+	// Enabled
+	PaStatus *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// example:
+	//
+	// true
+	SharingStatus *bool `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
+	// example:
+	//
+	// 11.49.XX.XX
+	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// example:
+	//
+	// 2023-08-24 19:04:42
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s UpdateUserDevicesStatusResponseBodyDevices) String() string {
@@ -10368,10 +12658,20 @@ func (s *UpdateUserDevicesStatusResponse) SetBody(v *UpdateUserDevicesStatusResp
 }
 
 type UpdateUserGroupRequest struct {
-	Attributes  []*UpdateUserGroupRequestAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	Description *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	ModifyType  *string                             `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	UserGroupId *string                             `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	Attributes []*UpdateUserGroupRequestAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Cover
+	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// usergroup-6f1ef2fc56b6****
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
 func (s UpdateUserGroupRequest) String() string {
@@ -10403,10 +12703,24 @@ func (s *UpdateUserGroupRequest) SetUserGroupId(v string) *UpdateUserGroupReques
 }
 
 type UpdateUserGroupRequestAttributes struct {
-	IdpId         *int32  `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	Relation      *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// example:
+	//
+	// 12
+	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Equal
+	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is required.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdateUserGroupRequestAttributes) String() string {
@@ -10438,6 +12752,9 @@ func (s *UpdateUserGroupRequestAttributes) SetValue(v string) *UpdateUserGroupRe
 }
 
 type UpdateUserGroupResponseBody struct {
+	// example:
+	//
+	// FD724DBC-CD76-5235-BF76-59C51B73296D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10484,8 +12801,14 @@ func (s *UpdateUserGroupResponse) SetBody(v *UpdateUserGroupResponseBody) *Updat
 }
 
 type UpdateUsersStatusRequest struct {
+	// This parameter is required.
 	SaseUserIds []*string `json:"SaseUserIds,omitempty" xml:"SaseUserIds,omitempty" type:"Repeated"`
-	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateUsersStatusRequest) String() string {
@@ -10507,6 +12830,9 @@ func (s *UpdateUsersStatusRequest) SetStatus(v string) *UpdateUsersStatusRequest
 }
 
 type UpdateUsersStatusResponseBody struct {
+	// example:
+	//
+	// 47363C2B-1AAA-5954-8847-0E50FCC54117
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10599,6 +12925,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 挂载connector的应用
+//
+// @param tmpReq - AttachApplication2ConnectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachApplication2ConnectorResponse
 func (client *Client) AttachApplication2ConnectorWithOptions(tmpReq *AttachApplication2ConnectorRequest, runtime *util.RuntimeOptions) (_result *AttachApplication2ConnectorResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -10642,6 +12977,13 @@ func (client *Client) AttachApplication2ConnectorWithOptions(tmpReq *AttachAppli
 	return _result, _err
 }
 
+// Summary:
+//
+// 挂载connector的应用
+//
+// @param request - AttachApplication2ConnectorRequest
+//
+// @return AttachApplication2ConnectorResponse
 func (client *Client) AttachApplication2Connector(request *AttachApplication2ConnectorRequest) (_result *AttachApplication2ConnectorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachApplication2ConnectorResponse{}
@@ -10653,6 +12995,15 @@ func (client *Client) AttachApplication2Connector(request *AttachApplication2Con
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自定义身份源用户
+//
+// @param request - CreateClientUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateClientUserResponse
 func (client *Client) CreateClientUserWithOptions(request *CreateClientUserRequest, runtime *util.RuntimeOptions) (_result *CreateClientUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10710,6 +13061,13 @@ func (client *Client) CreateClientUserWithOptions(request *CreateClientUserReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自定义身份源用户
+//
+// @param request - CreateClientUserRequest
+//
+// @return CreateClientUserResponse
 func (client *Client) CreateClientUser(request *CreateClientUserRequest) (_result *CreateClientUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateClientUserResponse{}
@@ -10721,6 +13079,15 @@ func (client *Client) CreateClientUser(request *CreateClientUserRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建动态路由
+//
+// @param request - CreateDynamicRouteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDynamicRouteResponse
 func (client *Client) CreateDynamicRouteWithOptions(request *CreateDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *CreateDynamicRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10793,6 +13160,13 @@ func (client *Client) CreateDynamicRouteWithOptions(request *CreateDynamicRouteR
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建动态路由
+//
+// @param request - CreateDynamicRouteRequest
+//
+// @return CreateDynamicRouteResponse
 func (client *Client) CreateDynamicRoute(request *CreateDynamicRouteRequest) (_result *CreateDynamicRouteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDynamicRouteResponse{}
@@ -10804,6 +13178,15 @@ func (client *Client) CreateDynamicRoute(request *CreateDynamicRouteRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自定义身份源部门
+//
+// @param request - CreateIdpDepartmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIdpDepartmentResponse
 func (client *Client) CreateIdpDepartmentWithOptions(request *CreateIdpDepartmentRequest, runtime *util.RuntimeOptions) (_result *CreateIdpDepartmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10841,6 +13224,13 @@ func (client *Client) CreateIdpDepartmentWithOptions(request *CreateIdpDepartmen
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自定义身份源部门
+//
+// @param request - CreateIdpDepartmentRequest
+//
+// @return CreateIdpDepartmentResponse
 func (client *Client) CreateIdpDepartment(request *CreateIdpDepartmentRequest) (_result *CreateIdpDepartmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateIdpDepartmentResponse{}
@@ -10852,6 +13242,15 @@ func (client *Client) CreateIdpDepartment(request *CreateIdpDepartmentRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建内网访问应用
+//
+// @param request - CreatePrivateAccessApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePrivateAccessApplicationResponse
 func (client *Client) CreatePrivateAccessApplicationWithOptions(request *CreatePrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *CreatePrivateAccessApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10912,6 +13311,13 @@ func (client *Client) CreatePrivateAccessApplicationWithOptions(request *CreateP
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建内网访问应用
+//
+// @param request - CreatePrivateAccessApplicationRequest
+//
+// @return CreatePrivateAccessApplicationResponse
 func (client *Client) CreatePrivateAccessApplication(request *CreatePrivateAccessApplicationRequest) (_result *CreatePrivateAccessApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePrivateAccessApplicationResponse{}
@@ -10923,6 +13329,15 @@ func (client *Client) CreatePrivateAccessApplication(request *CreatePrivateAcces
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建内网访问策略
+//
+// @param request - CreatePrivateAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePrivateAccessPolicyResponse
 func (client *Client) CreatePrivateAccessPolicyWithOptions(request *CreatePrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *CreatePrivateAccessPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11003,6 +13418,13 @@ func (client *Client) CreatePrivateAccessPolicyWithOptions(request *CreatePrivat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建内网访问策略
+//
+// @param request - CreatePrivateAccessPolicyRequest
+//
+// @return CreatePrivateAccessPolicyResponse
 func (client *Client) CreatePrivateAccessPolicy(request *CreatePrivateAccessPolicyRequest) (_result *CreatePrivateAccessPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePrivateAccessPolicyResponse{}
@@ -11014,6 +13436,15 @@ func (client *Client) CreatePrivateAccessPolicy(request *CreatePrivateAccessPoli
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建内网访问标签
+//
+// @param request - CreatePrivateAccessTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePrivateAccessTagResponse
 func (client *Client) CreatePrivateAccessTagWithOptions(request *CreatePrivateAccessTagRequest, runtime *util.RuntimeOptions) (_result *CreatePrivateAccessTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11051,6 +13482,13 @@ func (client *Client) CreatePrivateAccessTagWithOptions(request *CreatePrivateAc
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建内网访问标签
+//
+// @param request - CreatePrivateAccessTagRequest
+//
+// @return CreatePrivateAccessTagResponse
 func (client *Client) CreatePrivateAccessTag(request *CreatePrivateAccessTagRequest) (_result *CreatePrivateAccessTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePrivateAccessTagResponse{}
@@ -11062,6 +13500,15 @@ func (client *Client) CreatePrivateAccessTag(request *CreatePrivateAccessTagRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建设备注册策略
+//
+// @param tmpReq - CreateRegistrationPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRegistrationPolicyResponse
 func (client *Client) CreateRegistrationPolicyWithOptions(tmpReq *CreateRegistrationPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateRegistrationPolicyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -11148,6 +13595,13 @@ func (client *Client) CreateRegistrationPolicyWithOptions(tmpReq *CreateRegistra
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建设备注册策略
+//
+// @param request - CreateRegistrationPolicyRequest
+//
+// @return CreateRegistrationPolicyResponse
 func (client *Client) CreateRegistrationPolicy(request *CreateRegistrationPolicyRequest) (_result *CreateRegistrationPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRegistrationPolicyResponse{}
@@ -11159,6 +13613,15 @@ func (client *Client) CreateRegistrationPolicy(request *CreateRegistrationPolicy
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建用户组
+//
+// @param request - CreateUserGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserGroupResponse
 func (client *Client) CreateUserGroupWithOptions(request *CreateUserGroupRequest, runtime *util.RuntimeOptions) (_result *CreateUserGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11203,6 +13666,13 @@ func (client *Client) CreateUserGroupWithOptions(request *CreateUserGroupRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建用户组
+//
+// @param request - CreateUserGroupRequest
+//
+// @return CreateUserGroupResponse
 func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result *CreateUserGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUserGroupResponse{}
@@ -11214,6 +13684,15 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除自定义身份源指定用户
+//
+// @param request - DeleteClientUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteClientUserResponse
 func (client *Client) DeleteClientUserWithOptions(request *DeleteClientUserRequest, runtime *util.RuntimeOptions) (_result *DeleteClientUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11247,6 +13726,13 @@ func (client *Client) DeleteClientUserWithOptions(request *DeleteClientUserReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除自定义身份源指定用户
+//
+// @param request - DeleteClientUserRequest
+//
+// @return DeleteClientUserResponse
 func (client *Client) DeleteClientUser(request *DeleteClientUserRequest) (_result *DeleteClientUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteClientUserResponse{}
@@ -11258,6 +13744,15 @@ func (client *Client) DeleteClientUser(request *DeleteClientUserRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除动态路由
+//
+// @param request - DeleteDynamicRouteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDynamicRouteResponse
 func (client *Client) DeleteDynamicRouteWithOptions(request *DeleteDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *DeleteDynamicRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11291,6 +13786,13 @@ func (client *Client) DeleteDynamicRouteWithOptions(request *DeleteDynamicRouteR
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除动态路由
+//
+// @param request - DeleteDynamicRouteRequest
+//
+// @return DeleteDynamicRouteResponse
 func (client *Client) DeleteDynamicRoute(request *DeleteDynamicRouteRequest) (_result *DeleteDynamicRouteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDynamicRouteResponse{}
@@ -11302,6 +13804,15 @@ func (client *Client) DeleteDynamicRoute(request *DeleteDynamicRouteRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定自定义身份源部门
+//
+// @param request - DeleteIdpDepartmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIdpDepartmentResponse
 func (client *Client) DeleteIdpDepartmentWithOptions(request *DeleteIdpDepartmentRequest, runtime *util.RuntimeOptions) (_result *DeleteIdpDepartmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11339,6 +13850,13 @@ func (client *Client) DeleteIdpDepartmentWithOptions(request *DeleteIdpDepartmen
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定自定义身份源部门
+//
+// @param request - DeleteIdpDepartmentRequest
+//
+// @return DeleteIdpDepartmentResponse
 func (client *Client) DeleteIdpDepartment(request *DeleteIdpDepartmentRequest) (_result *DeleteIdpDepartmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIdpDepartmentResponse{}
@@ -11350,6 +13868,15 @@ func (client *Client) DeleteIdpDepartment(request *DeleteIdpDepartmentRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除内网访问应用
+//
+// @param request - DeletePrivateAccessApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrivateAccessApplicationResponse
 func (client *Client) DeletePrivateAccessApplicationWithOptions(request *DeletePrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *DeletePrivateAccessApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11383,6 +13910,13 @@ func (client *Client) DeletePrivateAccessApplicationWithOptions(request *DeleteP
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除内网访问应用
+//
+// @param request - DeletePrivateAccessApplicationRequest
+//
+// @return DeletePrivateAccessApplicationResponse
 func (client *Client) DeletePrivateAccessApplication(request *DeletePrivateAccessApplicationRequest) (_result *DeletePrivateAccessApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePrivateAccessApplicationResponse{}
@@ -11394,6 +13928,15 @@ func (client *Client) DeletePrivateAccessApplication(request *DeletePrivateAcces
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除内网访问策略
+//
+// @param request - DeletePrivateAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrivateAccessPolicyResponse
 func (client *Client) DeletePrivateAccessPolicyWithOptions(request *DeletePrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *DeletePrivateAccessPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11427,6 +13970,13 @@ func (client *Client) DeletePrivateAccessPolicyWithOptions(request *DeletePrivat
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除内网访问策略
+//
+// @param request - DeletePrivateAccessPolicyRequest
+//
+// @return DeletePrivateAccessPolicyResponse
 func (client *Client) DeletePrivateAccessPolicy(request *DeletePrivateAccessPolicyRequest) (_result *DeletePrivateAccessPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePrivateAccessPolicyResponse{}
@@ -11438,6 +13988,15 @@ func (client *Client) DeletePrivateAccessPolicy(request *DeletePrivateAccessPoli
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除内网访问标签
+//
+// @param request - DeletePrivateAccessTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrivateAccessTagResponse
 func (client *Client) DeletePrivateAccessTagWithOptions(request *DeletePrivateAccessTagRequest, runtime *util.RuntimeOptions) (_result *DeletePrivateAccessTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11471,6 +14030,13 @@ func (client *Client) DeletePrivateAccessTagWithOptions(request *DeletePrivateAc
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除内网访问标签
+//
+// @param request - DeletePrivateAccessTagRequest
+//
+// @return DeletePrivateAccessTagResponse
 func (client *Client) DeletePrivateAccessTag(request *DeletePrivateAccessTagRequest) (_result *DeletePrivateAccessTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePrivateAccessTagResponse{}
@@ -11482,6 +14048,15 @@ func (client *Client) DeletePrivateAccessTag(request *DeletePrivateAccessTagRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除设备注册策略
+//
+// @param request - DeleteRegistrationPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRegistrationPoliciesResponse
 func (client *Client) DeleteRegistrationPoliciesWithOptions(request *DeleteRegistrationPoliciesRequest, runtime *util.RuntimeOptions) (_result *DeleteRegistrationPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11518,6 +14093,13 @@ func (client *Client) DeleteRegistrationPoliciesWithOptions(request *DeleteRegis
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除设备注册策略
+//
+// @param request - DeleteRegistrationPoliciesRequest
+//
+// @return DeleteRegistrationPoliciesResponse
 func (client *Client) DeleteRegistrationPolicies(request *DeleteRegistrationPoliciesRequest) (_result *DeleteRegistrationPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRegistrationPoliciesResponse{}
@@ -11529,6 +14111,15 @@ func (client *Client) DeleteRegistrationPolicies(request *DeleteRegistrationPoli
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除用户组
+//
+// @param request - DeleteUserGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserGroupResponse
 func (client *Client) DeleteUserGroupWithOptions(request *DeleteUserGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteUserGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11562,6 +14153,13 @@ func (client *Client) DeleteUserGroupWithOptions(request *DeleteUserGroupRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除用户组
+//
+// @param request - DeleteUserGroupRequest
+//
+// @return DeleteUserGroupResponse
 func (client *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (_result *DeleteUserGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserGroupResponse{}
@@ -11573,6 +14171,15 @@ func (client *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 卸载connector的应用
+//
+// @param tmpReq - DetachApplication2ConnectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachApplication2ConnectorResponse
 func (client *Client) DetachApplication2ConnectorWithOptions(tmpReq *DetachApplication2ConnectorRequest, runtime *util.RuntimeOptions) (_result *DetachApplication2ConnectorResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -11616,6 +14223,13 @@ func (client *Client) DetachApplication2ConnectorWithOptions(tmpReq *DetachAppli
 	return _result, _err
 }
 
+// Summary:
+//
+// 卸载connector的应用
+//
+// @param request - DetachApplication2ConnectorRequest
+//
+// @return DetachApplication2ConnectorResponse
 func (client *Client) DetachApplication2Connector(request *DetachApplication2ConnectorRequest) (_result *DetachApplication2ConnectorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachApplication2ConnectorResponse{}
@@ -11627,6 +14241,15 @@ func (client *Client) DetachApplication2Connector(request *DetachApplication2Con
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询已启用的身份源配置
+//
+// @param request - GetActiveIdpConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetActiveIdpConfigResponse
 func (client *Client) GetActiveIdpConfigWithOptions(runtime *util.RuntimeOptions) (_result *GetActiveIdpConfigResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -11649,6 +14272,11 @@ func (client *Client) GetActiveIdpConfigWithOptions(runtime *util.RuntimeOptions
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询已启用的身份源配置
+//
+// @return GetActiveIdpConfigResponse
 func (client *Client) GetActiveIdpConfig() (_result *GetActiveIdpConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetActiveIdpConfigResponse{}
@@ -11660,6 +14288,15 @@ func (client *Client) GetActiveIdpConfig() (_result *GetActiveIdpConfigResponse,
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询自定义身份源指定用户
+//
+// @param request - GetClientUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetClientUserResponse
 func (client *Client) GetClientUserWithOptions(request *GetClientUserRequest, runtime *util.RuntimeOptions) (_result *GetClientUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11689,6 +14326,13 @@ func (client *Client) GetClientUserWithOptions(request *GetClientUserRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询自定义身份源指定用户
+//
+// @param request - GetClientUserRequest
+//
+// @return GetClientUserResponse
 func (client *Client) GetClientUser(request *GetClientUserRequest) (_result *GetClientUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetClientUserResponse{}
@@ -11700,6 +14344,15 @@ func (client *Client) GetClientUser(request *GetClientUserRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询动态路由详情
+//
+// @param request - GetDynamicRouteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDynamicRouteResponse
 func (client *Client) GetDynamicRouteWithOptions(request *GetDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *GetDynamicRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11729,6 +14382,13 @@ func (client *Client) GetDynamicRouteWithOptions(request *GetDynamicRouteRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询动态路由详情
+//
+// @param request - GetDynamicRouteRequest
+//
+// @return GetDynamicRouteResponse
 func (client *Client) GetDynamicRoute(request *GetDynamicRouteRequest) (_result *GetDynamicRouteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDynamicRouteResponse{}
@@ -11740,6 +14400,15 @@ func (client *Client) GetDynamicRoute(request *GetDynamicRouteRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询身份源配置详情
+//
+// @param request - GetIdpConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIdpConfigResponse
 func (client *Client) GetIdpConfigWithOptions(request *GetIdpConfigRequest, runtime *util.RuntimeOptions) (_result *GetIdpConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11769,6 +14438,13 @@ func (client *Client) GetIdpConfigWithOptions(request *GetIdpConfigRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询身份源配置详情
+//
+// @param request - GetIdpConfigRequest
+//
+// @return GetIdpConfigResponse
 func (client *Client) GetIdpConfig(request *GetIdpConfigRequest) (_result *GetIdpConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetIdpConfigResponse{}
@@ -11780,6 +14456,15 @@ func (client *Client) GetIdpConfig(request *GetIdpConfigRequest) (_result *GetId
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询内网访问应用详情
+//
+// @param request - GetPrivateAccessApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPrivateAccessApplicationResponse
 func (client *Client) GetPrivateAccessApplicationWithOptions(request *GetPrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *GetPrivateAccessApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11809,6 +14494,13 @@ func (client *Client) GetPrivateAccessApplicationWithOptions(request *GetPrivate
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询内网访问应用详情
+//
+// @param request - GetPrivateAccessApplicationRequest
+//
+// @return GetPrivateAccessApplicationResponse
 func (client *Client) GetPrivateAccessApplication(request *GetPrivateAccessApplicationRequest) (_result *GetPrivateAccessApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPrivateAccessApplicationResponse{}
@@ -11820,6 +14512,15 @@ func (client *Client) GetPrivateAccessApplication(request *GetPrivateAccessAppli
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询内网访问策略详情
+//
+// @param request - GetPrivateAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPrivateAccessPolicyResponse
 func (client *Client) GetPrivateAccessPolicyWithOptions(request *GetPrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *GetPrivateAccessPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11849,6 +14550,13 @@ func (client *Client) GetPrivateAccessPolicyWithOptions(request *GetPrivateAcces
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询内网访问策略详情
+//
+// @param request - GetPrivateAccessPolicyRequest
+//
+// @return GetPrivateAccessPolicyResponse
 func (client *Client) GetPrivateAccessPolicy(request *GetPrivateAccessPolicyRequest) (_result *GetPrivateAccessPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPrivateAccessPolicyResponse{}
@@ -11860,6 +14568,15 @@ func (client *Client) GetPrivateAccessPolicy(request *GetPrivateAccessPolicyRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询设备注册策略详情
+//
+// @param request - GetRegistrationPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRegistrationPolicyResponse
 func (client *Client) GetRegistrationPolicyWithOptions(request *GetRegistrationPolicyRequest, runtime *util.RuntimeOptions) (_result *GetRegistrationPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11889,6 +14606,13 @@ func (client *Client) GetRegistrationPolicyWithOptions(request *GetRegistrationP
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询设备注册策略详情
+//
+// @param request - GetRegistrationPolicyRequest
+//
+// @return GetRegistrationPolicyResponse
 func (client *Client) GetRegistrationPolicy(request *GetRegistrationPolicyRequest) (_result *GetRegistrationPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRegistrationPolicyResponse{}
@@ -11900,6 +14624,15 @@ func (client *Client) GetRegistrationPolicy(request *GetRegistrationPolicyReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户设备详情
+//
+// @param request - GetUserDeviceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserDeviceResponse
 func (client *Client) GetUserDeviceWithOptions(request *GetUserDeviceRequest, runtime *util.RuntimeOptions) (_result *GetUserDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11929,6 +14662,13 @@ func (client *Client) GetUserDeviceWithOptions(request *GetUserDeviceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户设备详情
+//
+// @param request - GetUserDeviceRequest
+//
+// @return GetUserDeviceResponse
 func (client *Client) GetUserDevice(request *GetUserDeviceRequest) (_result *GetUserDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserDeviceResponse{}
@@ -11940,6 +14680,15 @@ func (client *Client) GetUserDevice(request *GetUserDeviceRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户组详情
+//
+// @param request - GetUserGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserGroupResponse
 func (client *Client) GetUserGroupWithOptions(request *GetUserGroupRequest, runtime *util.RuntimeOptions) (_result *GetUserGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11969,6 +14718,13 @@ func (client *Client) GetUserGroupWithOptions(request *GetUserGroupRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户组详情
+//
+// @param request - GetUserGroupRequest
+//
+// @return GetUserGroupResponse
 func (client *Client) GetUserGroup(request *GetUserGroupRequest) (_result *GetUserGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserGroupResponse{}
@@ -11980,6 +14736,15 @@ func (client *Client) GetUserGroup(request *GetUserGroupRequest) (_result *GetUs
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问策略的应用
+//
+// @param request - ListApplicationsForPrivateAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationsForPrivateAccessPolicyResponse
 func (client *Client) ListApplicationsForPrivateAccessPolicyWithOptions(request *ListApplicationsForPrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *ListApplicationsForPrivateAccessPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12009,6 +14774,13 @@ func (client *Client) ListApplicationsForPrivateAccessPolicyWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问策略的应用
+//
+// @param request - ListApplicationsForPrivateAccessPolicyRequest
+//
+// @return ListApplicationsForPrivateAccessPolicyResponse
 func (client *Client) ListApplicationsForPrivateAccessPolicy(request *ListApplicationsForPrivateAccessPolicyRequest) (_result *ListApplicationsForPrivateAccessPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationsForPrivateAccessPolicyResponse{}
@@ -12020,6 +14792,15 @@ func (client *Client) ListApplicationsForPrivateAccessPolicy(request *ListApplic
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问标签的应用
+//
+// @param request - ListApplicationsForPrivateAccessTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationsForPrivateAccessTagResponse
 func (client *Client) ListApplicationsForPrivateAccessTagWithOptions(request *ListApplicationsForPrivateAccessTagRequest, runtime *util.RuntimeOptions) (_result *ListApplicationsForPrivateAccessTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12049,6 +14830,13 @@ func (client *Client) ListApplicationsForPrivateAccessTagWithOptions(request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问标签的应用
+//
+// @param request - ListApplicationsForPrivateAccessTagRequest
+//
+// @return ListApplicationsForPrivateAccessTagResponse
 func (client *Client) ListApplicationsForPrivateAccessTag(request *ListApplicationsForPrivateAccessTagRequest) (_result *ListApplicationsForPrivateAccessTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationsForPrivateAccessTagResponse{}
@@ -12060,6 +14848,15 @@ func (client *Client) ListApplicationsForPrivateAccessTag(request *ListApplicati
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询自定义身份源用户
+//
+// @param request - ListClientUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClientUsersResponse
 func (client *Client) ListClientUsersWithOptions(request *ListClientUsersRequest, runtime *util.RuntimeOptions) (_result *ListClientUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12089,6 +14886,13 @@ func (client *Client) ListClientUsersWithOptions(request *ListClientUsersRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询自定义身份源用户
+//
+// @param request - ListClientUsersRequest
+//
+// @return ListClientUsersResponse
 func (client *Client) ListClientUsers(request *ListClientUsersRequest) (_result *ListClientUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListClientUsersResponse{}
@@ -12100,6 +14904,15 @@ func (client *Client) ListClientUsers(request *ListClientUsersRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询connector
+//
+// @param request - ListConnectorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConnectorsResponse
 func (client *Client) ListConnectorsWithOptions(request *ListConnectorsRequest, runtime *util.RuntimeOptions) (_result *ListConnectorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12129,6 +14942,13 @@ func (client *Client) ListConnectorsWithOptions(request *ListConnectorsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询connector
+//
+// @param request - ListConnectorsRequest
+//
+// @return ListConnectorsResponse
 func (client *Client) ListConnectors(request *ListConnectorsRequest) (_result *ListConnectorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConnectorsResponse{}
@@ -12140,6 +14960,15 @@ func (client *Client) ListConnectors(request *ListConnectorsRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询动态路由的地域
+//
+// @param request - ListDynamicRouteRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDynamicRouteRegionsResponse
 func (client *Client) ListDynamicRouteRegionsWithOptions(runtime *util.RuntimeOptions) (_result *ListDynamicRouteRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -12162,6 +14991,11 @@ func (client *Client) ListDynamicRouteRegionsWithOptions(runtime *util.RuntimeOp
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询动态路由的地域
+//
+// @return ListDynamicRouteRegionsResponse
 func (client *Client) ListDynamicRouteRegions() (_result *ListDynamicRouteRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDynamicRouteRegionsResponse{}
@@ -12173,6 +15007,15 @@ func (client *Client) ListDynamicRouteRegions() (_result *ListDynamicRouteRegion
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询动态路由
+//
+// @param request - ListDynamicRoutesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDynamicRoutesResponse
 func (client *Client) ListDynamicRoutesWithOptions(request *ListDynamicRoutesRequest, runtime *util.RuntimeOptions) (_result *ListDynamicRoutesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12202,6 +15045,13 @@ func (client *Client) ListDynamicRoutesWithOptions(request *ListDynamicRoutesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询动态路由
+//
+// @param request - ListDynamicRoutesRequest
+//
+// @return ListDynamicRoutesResponse
 func (client *Client) ListDynamicRoutes(request *ListDynamicRoutesRequest) (_result *ListDynamicRoutesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDynamicRoutesResponse{}
@@ -12213,6 +15063,15 @@ func (client *Client) ListDynamicRoutes(request *ListDynamicRoutesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询超额注册申请列表
+//
+// @param request - ListExcessiveDeviceRegistrationApplicationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExcessiveDeviceRegistrationApplicationsResponse
 func (client *Client) ListExcessiveDeviceRegistrationApplicationsWithOptions(request *ListExcessiveDeviceRegistrationApplicationsRequest, runtime *util.RuntimeOptions) (_result *ListExcessiveDeviceRegistrationApplicationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12242,6 +15101,13 @@ func (client *Client) ListExcessiveDeviceRegistrationApplicationsWithOptions(req
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询超额注册申请列表
+//
+// @param request - ListExcessiveDeviceRegistrationApplicationsRequest
+//
+// @return ListExcessiveDeviceRegistrationApplicationsResponse
 func (client *Client) ListExcessiveDeviceRegistrationApplications(request *ListExcessiveDeviceRegistrationApplicationsRequest) (_result *ListExcessiveDeviceRegistrationApplicationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListExcessiveDeviceRegistrationApplicationsResponse{}
@@ -12253,6 +15119,15 @@ func (client *Client) ListExcessiveDeviceRegistrationApplications(request *ListE
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询IDP配置
+//
+// @param request - ListIdpConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIdpConfigsResponse
 func (client *Client) ListIdpConfigsWithOptions(request *ListIdpConfigsRequest, runtime *util.RuntimeOptions) (_result *ListIdpConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12282,6 +15157,13 @@ func (client *Client) ListIdpConfigsWithOptions(request *ListIdpConfigsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询IDP配置
+//
+// @param request - ListIdpConfigsRequest
+//
+// @return ListIdpConfigsResponse
 func (client *Client) ListIdpConfigs(request *ListIdpConfigsRequest) (_result *ListIdpConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListIdpConfigsResponse{}
@@ -12293,6 +15175,15 @@ func (client *Client) ListIdpConfigs(request *ListIdpConfigsRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询自定义身份源部门
+//
+// @param request - ListIdpDepartmentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIdpDepartmentsResponse
 func (client *Client) ListIdpDepartmentsWithOptions(request *ListIdpDepartmentsRequest, runtime *util.RuntimeOptions) (_result *ListIdpDepartmentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12322,6 +15213,13 @@ func (client *Client) ListIdpDepartmentsWithOptions(request *ListIdpDepartmentsR
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询自定义身份源部门
+//
+// @param request - ListIdpDepartmentsRequest
+//
+// @return ListIdpDepartmentsResponse
 func (client *Client) ListIdpDepartments(request *ListIdpDepartmentsRequest) (_result *ListIdpDepartmentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListIdpDepartmentsResponse{}
@@ -12333,6 +15231,15 @@ func (client *Client) ListIdpDepartments(request *ListIdpDepartmentsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问应用的策略
+//
+// @param request - ListPolicesForPrivateAccessApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPolicesForPrivateAccessApplicationResponse
 func (client *Client) ListPolicesForPrivateAccessApplicationWithOptions(request *ListPolicesForPrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *ListPolicesForPrivateAccessApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12362,6 +15269,13 @@ func (client *Client) ListPolicesForPrivateAccessApplicationWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问应用的策略
+//
+// @param request - ListPolicesForPrivateAccessApplicationRequest
+//
+// @return ListPolicesForPrivateAccessApplicationResponse
 func (client *Client) ListPolicesForPrivateAccessApplication(request *ListPolicesForPrivateAccessApplicationRequest) (_result *ListPolicesForPrivateAccessApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPolicesForPrivateAccessApplicationResponse{}
@@ -12373,6 +15287,15 @@ func (client *Client) ListPolicesForPrivateAccessApplication(request *ListPolice
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问标签的策略
+//
+// @param request - ListPolicesForPrivateAccessTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPolicesForPrivateAccessTagResponse
 func (client *Client) ListPolicesForPrivateAccessTagWithOptions(request *ListPolicesForPrivateAccessTagRequest, runtime *util.RuntimeOptions) (_result *ListPolicesForPrivateAccessTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12402,6 +15325,13 @@ func (client *Client) ListPolicesForPrivateAccessTagWithOptions(request *ListPol
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问标签的策略
+//
+// @param request - ListPolicesForPrivateAccessTagRequest
+//
+// @return ListPolicesForPrivateAccessTagResponse
 func (client *Client) ListPolicesForPrivateAccessTag(request *ListPolicesForPrivateAccessTagRequest) (_result *ListPolicesForPrivateAccessTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPolicesForPrivateAccessTagResponse{}
@@ -12413,6 +15343,15 @@ func (client *Client) ListPolicesForPrivateAccessTag(request *ListPolicesForPriv
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询用户组的策略
+//
+// @param request - ListPolicesForUserGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPolicesForUserGroupResponse
 func (client *Client) ListPolicesForUserGroupWithOptions(request *ListPolicesForUserGroupRequest, runtime *util.RuntimeOptions) (_result *ListPolicesForUserGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12442,6 +15381,13 @@ func (client *Client) ListPolicesForUserGroupWithOptions(request *ListPolicesFor
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询用户组的策略
+//
+// @param request - ListPolicesForUserGroupRequest
+//
+// @return ListPolicesForUserGroupResponse
 func (client *Client) ListPolicesForUserGroup(request *ListPolicesForUserGroupRequest) (_result *ListPolicesForUserGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPolicesForUserGroupResponse{}
@@ -12453,6 +15399,15 @@ func (client *Client) ListPolicesForUserGroup(request *ListPolicesForUserGroupRe
 	return _result, _err
 }
 
+// Summary:
+//
+// pop节点流量统计
+//
+// @param request - ListPopTrafficStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPopTrafficStatisticsResponse
 func (client *Client) ListPopTrafficStatisticsWithOptions(request *ListPopTrafficStatisticsRequest, runtime *util.RuntimeOptions) (_result *ListPopTrafficStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12482,6 +15437,13 @@ func (client *Client) ListPopTrafficStatisticsWithOptions(request *ListPopTraffi
 	return _result, _err
 }
 
+// Summary:
+//
+// pop节点流量统计
+//
+// @param request - ListPopTrafficStatisticsRequest
+//
+// @return ListPopTrafficStatisticsResponse
 func (client *Client) ListPopTrafficStatistics(request *ListPopTrafficStatisticsRequest) (_result *ListPopTrafficStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPopTrafficStatisticsResponse{}
@@ -12493,6 +15455,15 @@ func (client *Client) ListPopTrafficStatistics(request *ListPopTrafficStatistics
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问应用
+//
+// @param request - ListPrivateAccessApplicationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrivateAccessApplicationsResponse
 func (client *Client) ListPrivateAccessApplicationsWithOptions(request *ListPrivateAccessApplicationsRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessApplicationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12522,6 +15493,13 @@ func (client *Client) ListPrivateAccessApplicationsWithOptions(request *ListPriv
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问应用
+//
+// @param request - ListPrivateAccessApplicationsRequest
+//
+// @return ListPrivateAccessApplicationsResponse
 func (client *Client) ListPrivateAccessApplications(request *ListPrivateAccessApplicationsRequest) (_result *ListPrivateAccessApplicationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrivateAccessApplicationsResponse{}
@@ -12533,6 +15511,15 @@ func (client *Client) ListPrivateAccessApplications(request *ListPrivateAccessAp
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询动态路由的内网访问应用
+//
+// @param request - ListPrivateAccessApplicationsForDynamicRouteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrivateAccessApplicationsForDynamicRouteResponse
 func (client *Client) ListPrivateAccessApplicationsForDynamicRouteWithOptions(request *ListPrivateAccessApplicationsForDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessApplicationsForDynamicRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12562,6 +15549,13 @@ func (client *Client) ListPrivateAccessApplicationsForDynamicRouteWithOptions(re
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询动态路由的内网访问应用
+//
+// @param request - ListPrivateAccessApplicationsForDynamicRouteRequest
+//
+// @return ListPrivateAccessApplicationsForDynamicRouteResponse
 func (client *Client) ListPrivateAccessApplicationsForDynamicRoute(request *ListPrivateAccessApplicationsForDynamicRouteRequest) (_result *ListPrivateAccessApplicationsForDynamicRouteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrivateAccessApplicationsForDynamicRouteResponse{}
@@ -12573,6 +15567,15 @@ func (client *Client) ListPrivateAccessApplicationsForDynamicRoute(request *List
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问策略
+//
+// @param request - ListPrivateAccessPolicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrivateAccessPolicesResponse
 func (client *Client) ListPrivateAccessPolicesWithOptions(request *ListPrivateAccessPolicesRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessPolicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12602,6 +15605,13 @@ func (client *Client) ListPrivateAccessPolicesWithOptions(request *ListPrivateAc
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问策略
+//
+// @param request - ListPrivateAccessPolicesRequest
+//
+// @return ListPrivateAccessPolicesResponse
 func (client *Client) ListPrivateAccessPolices(request *ListPrivateAccessPolicesRequest) (_result *ListPrivateAccessPolicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrivateAccessPolicesResponse{}
@@ -12613,6 +15623,15 @@ func (client *Client) ListPrivateAccessPolices(request *ListPrivateAccessPolices
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about all internal access tags within the current Alibaba Cloud account.
+//
+// @param request - ListPrivateAccessTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrivateAccessTagsResponse
 func (client *Client) ListPrivateAccessTagsWithOptions(request *ListPrivateAccessTagsRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12642,6 +15661,13 @@ func (client *Client) ListPrivateAccessTagsWithOptions(request *ListPrivateAcces
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about all internal access tags within the current Alibaba Cloud account.
+//
+// @param request - ListPrivateAccessTagsRequest
+//
+// @return ListPrivateAccessTagsResponse
 func (client *Client) ListPrivateAccessTags(request *ListPrivateAccessTagsRequest) (_result *ListPrivateAccessTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrivateAccessTagsResponse{}
@@ -12653,6 +15679,15 @@ func (client *Client) ListPrivateAccessTags(request *ListPrivateAccessTagsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询动态路由的内网访问标签
+//
+// @param request - ListPrivateAccessTagsForDynamicRouteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrivateAccessTagsForDynamicRouteResponse
 func (client *Client) ListPrivateAccessTagsForDynamicRouteWithOptions(request *ListPrivateAccessTagsForDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *ListPrivateAccessTagsForDynamicRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12682,6 +15717,13 @@ func (client *Client) ListPrivateAccessTagsForDynamicRouteWithOptions(request *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询动态路由的内网访问标签
+//
+// @param request - ListPrivateAccessTagsForDynamicRouteRequest
+//
+// @return ListPrivateAccessTagsForDynamicRouteResponse
 func (client *Client) ListPrivateAccessTagsForDynamicRoute(request *ListPrivateAccessTagsForDynamicRouteRequest) (_result *ListPrivateAccessTagsForDynamicRouteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrivateAccessTagsForDynamicRouteResponse{}
@@ -12693,6 +15735,15 @@ func (client *Client) ListPrivateAccessTagsForDynamicRoute(request *ListPrivateA
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户设备注册策略列表
+//
+// @param request - ListRegistrationPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRegistrationPoliciesResponse
 func (client *Client) ListRegistrationPoliciesWithOptions(request *ListRegistrationPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListRegistrationPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12722,6 +15773,13 @@ func (client *Client) ListRegistrationPoliciesWithOptions(request *ListRegistrat
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户设备注册策略列表
+//
+// @param request - ListRegistrationPoliciesRequest
+//
+// @return ListRegistrationPoliciesResponse
 func (client *Client) ListRegistrationPolicies(request *ListRegistrationPoliciesRequest) (_result *ListRegistrationPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRegistrationPoliciesResponse{}
@@ -12733,6 +15791,15 @@ func (client *Client) ListRegistrationPolicies(request *ListRegistrationPolicies
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户组相关的设备注册策略
+//
+// @param request - ListRegistrationPoliciesForUserGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRegistrationPoliciesForUserGroupResponse
 func (client *Client) ListRegistrationPoliciesForUserGroupWithOptions(request *ListRegistrationPoliciesForUserGroupRequest, runtime *util.RuntimeOptions) (_result *ListRegistrationPoliciesForUserGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12762,6 +15829,13 @@ func (client *Client) ListRegistrationPoliciesForUserGroupWithOptions(request *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户组相关的设备注册策略
+//
+// @param request - ListRegistrationPoliciesForUserGroupRequest
+//
+// @return ListRegistrationPoliciesForUserGroupResponse
 func (client *Client) ListRegistrationPoliciesForUserGroup(request *ListRegistrationPoliciesForUserGroupRequest) (_result *ListRegistrationPoliciesForUserGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRegistrationPoliciesForUserGroupResponse{}
@@ -12773,6 +15847,15 @@ func (client *Client) ListRegistrationPoliciesForUserGroup(request *ListRegistra
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询终端安装软件列表
+//
+// @param request - ListSoftwareForUserDeviceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSoftwareForUserDeviceResponse
 func (client *Client) ListSoftwareForUserDeviceWithOptions(request *ListSoftwareForUserDeviceRequest, runtime *util.RuntimeOptions) (_result *ListSoftwareForUserDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12802,6 +15885,13 @@ func (client *Client) ListSoftwareForUserDeviceWithOptions(request *ListSoftware
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询终端安装软件列表
+//
+// @param request - ListSoftwareForUserDeviceRequest
+//
+// @return ListSoftwareForUserDeviceResponse
 func (client *Client) ListSoftwareForUserDevice(request *ListSoftwareForUserDeviceRequest) (_result *ListSoftwareForUserDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSoftwareForUserDeviceResponse{}
@@ -12813,6 +15903,15 @@ func (client *Client) ListSoftwareForUserDevice(request *ListSoftwareForUserDevi
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问应用的标签
+//
+// @param request - ListTagsForPrivateAccessApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagsForPrivateAccessApplicationResponse
 func (client *Client) ListTagsForPrivateAccessApplicationWithOptions(request *ListTagsForPrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *ListTagsForPrivateAccessApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12842,6 +15941,13 @@ func (client *Client) ListTagsForPrivateAccessApplicationWithOptions(request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问应用的标签
+//
+// @param request - ListTagsForPrivateAccessApplicationRequest
+//
+// @return ListTagsForPrivateAccessApplicationResponse
 func (client *Client) ListTagsForPrivateAccessApplication(request *ListTagsForPrivateAccessApplicationRequest) (_result *ListTagsForPrivateAccessApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagsForPrivateAccessApplicationResponse{}
@@ -12853,6 +15959,15 @@ func (client *Client) ListTagsForPrivateAccessApplication(request *ListTagsForPr
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问策略的标签
+//
+// @param request - ListTagsForPrivateAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagsForPrivateAccessPolicyResponse
 func (client *Client) ListTagsForPrivateAccessPolicyWithOptions(request *ListTagsForPrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *ListTagsForPrivateAccessPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12882,6 +15997,13 @@ func (client *Client) ListTagsForPrivateAccessPolicyWithOptions(request *ListTag
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问策略的标签
+//
+// @param request - ListTagsForPrivateAccessPolicyRequest
+//
+// @return ListTagsForPrivateAccessPolicyResponse
 func (client *Client) ListTagsForPrivateAccessPolicy(request *ListTagsForPrivateAccessPolicyRequest) (_result *ListTagsForPrivateAccessPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagsForPrivateAccessPolicyResponse{}
@@ -12893,6 +16015,15 @@ func (client *Client) ListTagsForPrivateAccessPolicy(request *ListTagsForPrivate
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询用户设备列表
+//
+// @param request - ListUserDevicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserDevicesResponse
 func (client *Client) ListUserDevicesWithOptions(request *ListUserDevicesRequest, runtime *util.RuntimeOptions) (_result *ListUserDevicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12922,6 +16053,13 @@ func (client *Client) ListUserDevicesWithOptions(request *ListUserDevicesRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询用户设备列表
+//
+// @param request - ListUserDevicesRequest
+//
+// @return ListUserDevicesResponse
 func (client *Client) ListUserDevices(request *ListUserDevicesRequest) (_result *ListUserDevicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserDevicesResponse{}
@@ -12933,6 +16071,15 @@ func (client *Client) ListUserDevices(request *ListUserDevicesRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询用户组
+//
+// @param request - ListUserGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserGroupsResponse
 func (client *Client) ListUserGroupsWithOptions(request *ListUserGroupsRequest, runtime *util.RuntimeOptions) (_result *ListUserGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12962,6 +16109,13 @@ func (client *Client) ListUserGroupsWithOptions(request *ListUserGroupsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询用户组
+//
+// @param request - ListUserGroupsRequest
+//
+// @return ListUserGroupsResponse
 func (client *Client) ListUserGroups(request *ListUserGroupsRequest) (_result *ListUserGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserGroupsResponse{}
@@ -12973,6 +16127,15 @@ func (client *Client) ListUserGroups(request *ListUserGroupsRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问策略的用户组
+//
+// @param request - ListUserGroupsForPrivateAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserGroupsForPrivateAccessPolicyResponse
 func (client *Client) ListUserGroupsForPrivateAccessPolicyWithOptions(request *ListUserGroupsForPrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *ListUserGroupsForPrivateAccessPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13002,6 +16165,13 @@ func (client *Client) ListUserGroupsForPrivateAccessPolicyWithOptions(request *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询内网访问策略的用户组
+//
+// @param request - ListUserGroupsForPrivateAccessPolicyRequest
+//
+// @return ListUserGroupsForPrivateAccessPolicyResponse
 func (client *Client) ListUserGroupsForPrivateAccessPolicy(request *ListUserGroupsForPrivateAccessPolicyRequest) (_result *ListUserGroupsForPrivateAccessPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserGroupsForPrivateAccessPolicyResponse{}
@@ -13013,6 +16183,15 @@ func (client *Client) ListUserGroupsForPrivateAccessPolicy(request *ListUserGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询设备注册策略相关用户组
+//
+// @param request - ListUserGroupsForRegistrationPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserGroupsForRegistrationPolicyResponse
 func (client *Client) ListUserGroupsForRegistrationPolicyWithOptions(request *ListUserGroupsForRegistrationPolicyRequest, runtime *util.RuntimeOptions) (_result *ListUserGroupsForRegistrationPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13042,6 +16221,13 @@ func (client *Client) ListUserGroupsForRegistrationPolicyWithOptions(request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询设备注册策略相关用户组
+//
+// @param request - ListUserGroupsForRegistrationPolicyRequest
+//
+// @return ListUserGroupsForRegistrationPolicyResponse
 func (client *Client) ListUserGroupsForRegistrationPolicy(request *ListUserGroupsForRegistrationPolicyRequest) (_result *ListUserGroupsForRegistrationPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserGroupsForRegistrationPolicyResponse{}
@@ -13053,6 +16239,15 @@ func (client *Client) ListUserGroupsForRegistrationPolicy(request *ListUserGroup
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询登陆用户
+//
+// @param request - ListUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersResponse
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *util.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13082,6 +16277,13 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询登陆用户
+//
+// @param request - ListUsersRequest
+//
+// @return ListUsersResponse
 func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersResponse{}
@@ -13093,6 +16295,15 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改自定义身份源指定用户
+//
+// @param request - UpdateClientUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateClientUserResponse
 func (client *Client) UpdateClientUserWithOptions(request *UpdateClientUserRequest, runtime *util.RuntimeOptions) (_result *UpdateClientUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13142,6 +16353,13 @@ func (client *Client) UpdateClientUserWithOptions(request *UpdateClientUserReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改自定义身份源指定用户
+//
+// @param request - UpdateClientUserRequest
+//
+// @return UpdateClientUserResponse
 func (client *Client) UpdateClientUser(request *UpdateClientUserRequest) (_result *UpdateClientUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateClientUserResponse{}
@@ -13153,6 +16371,15 @@ func (client *Client) UpdateClientUser(request *UpdateClientUserRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改自定义身份源指定用户密码
+//
+// @param request - UpdateClientUserPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateClientUserPasswordResponse
 func (client *Client) UpdateClientUserPasswordWithOptions(request *UpdateClientUserPasswordRequest, runtime *util.RuntimeOptions) (_result *UpdateClientUserPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13194,6 +16421,13 @@ func (client *Client) UpdateClientUserPasswordWithOptions(request *UpdateClientU
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改自定义身份源指定用户密码
+//
+// @param request - UpdateClientUserPasswordRequest
+//
+// @return UpdateClientUserPasswordResponse
 func (client *Client) UpdateClientUserPassword(request *UpdateClientUserPasswordRequest) (_result *UpdateClientUserPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateClientUserPasswordResponse{}
@@ -13205,6 +16439,15 @@ func (client *Client) UpdateClientUserPassword(request *UpdateClientUserPassword
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改自定义身份源指定用户启用状态
+//
+// @param request - UpdateClientUserStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateClientUserStatusResponse
 func (client *Client) UpdateClientUserStatusWithOptions(request *UpdateClientUserStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateClientUserStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13242,6 +16485,13 @@ func (client *Client) UpdateClientUserStatusWithOptions(request *UpdateClientUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改自定义身份源指定用户启用状态
+//
+// @param request - UpdateClientUserStatusRequest
+//
+// @return UpdateClientUserStatusResponse
 func (client *Client) UpdateClientUserStatus(request *UpdateClientUserStatusRequest) (_result *UpdateClientUserStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateClientUserStatusResponse{}
@@ -13253,6 +16503,15 @@ func (client *Client) UpdateClientUserStatus(request *UpdateClientUserStatusRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改动态路由
+//
+// @param request - UpdateDynamicRouteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDynamicRouteResponse
 func (client *Client) UpdateDynamicRouteWithOptions(request *UpdateDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *UpdateDynamicRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13333,6 +16592,13 @@ func (client *Client) UpdateDynamicRouteWithOptions(request *UpdateDynamicRouteR
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改动态路由
+//
+// @param request - UpdateDynamicRouteRequest
+//
+// @return UpdateDynamicRouteResponse
 func (client *Client) UpdateDynamicRoute(request *UpdateDynamicRouteRequest) (_result *UpdateDynamicRouteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDynamicRouteResponse{}
@@ -13344,6 +16610,15 @@ func (client *Client) UpdateDynamicRoute(request *UpdateDynamicRouteRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新超额注册申请状态
+//
+// @param request - UpdateExcessiveDeviceRegistrationApplicationsStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateExcessiveDeviceRegistrationApplicationsStatusResponse
 func (client *Client) UpdateExcessiveDeviceRegistrationApplicationsStatusWithOptions(request *UpdateExcessiveDeviceRegistrationApplicationsStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateExcessiveDeviceRegistrationApplicationsStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13384,6 +16659,13 @@ func (client *Client) UpdateExcessiveDeviceRegistrationApplicationsStatusWithOpt
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新超额注册申请状态
+//
+// @param request - UpdateExcessiveDeviceRegistrationApplicationsStatusRequest
+//
+// @return UpdateExcessiveDeviceRegistrationApplicationsStatusResponse
 func (client *Client) UpdateExcessiveDeviceRegistrationApplicationsStatus(request *UpdateExcessiveDeviceRegistrationApplicationsStatusRequest) (_result *UpdateExcessiveDeviceRegistrationApplicationsStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateExcessiveDeviceRegistrationApplicationsStatusResponse{}
@@ -13395,6 +16677,15 @@ func (client *Client) UpdateExcessiveDeviceRegistrationApplicationsStatus(reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改指定自定义身份源部门
+//
+// @param request - UpdateIdpDepartmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIdpDepartmentResponse
 func (client *Client) UpdateIdpDepartmentWithOptions(request *UpdateIdpDepartmentRequest, runtime *util.RuntimeOptions) (_result *UpdateIdpDepartmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13436,6 +16727,13 @@ func (client *Client) UpdateIdpDepartmentWithOptions(request *UpdateIdpDepartmen
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改指定自定义身份源部门
+//
+// @param request - UpdateIdpDepartmentRequest
+//
+// @return UpdateIdpDepartmentResponse
 func (client *Client) UpdateIdpDepartment(request *UpdateIdpDepartmentRequest) (_result *UpdateIdpDepartmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateIdpDepartmentResponse{}
@@ -13447,6 +16745,15 @@ func (client *Client) UpdateIdpDepartment(request *UpdateIdpDepartmentRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改内网访问应用
+//
+// @param request - UpdatePrivateAccessApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrivateAccessApplicationResponse
 func (client *Client) UpdatePrivateAccessApplicationWithOptions(request *UpdatePrivateAccessApplicationRequest, runtime *util.RuntimeOptions) (_result *UpdatePrivateAccessApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13511,6 +16818,13 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(request *UpdateP
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改内网访问应用
+//
+// @param request - UpdatePrivateAccessApplicationRequest
+//
+// @return UpdatePrivateAccessApplicationResponse
 func (client *Client) UpdatePrivateAccessApplication(request *UpdatePrivateAccessApplicationRequest) (_result *UpdatePrivateAccessApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePrivateAccessApplicationResponse{}
@@ -13522,6 +16836,15 @@ func (client *Client) UpdatePrivateAccessApplication(request *UpdatePrivateAcces
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改内网访问策略
+//
+// @param request - UpdatePrivateAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrivateAccessPolicyResponse
 func (client *Client) UpdatePrivateAccessPolicyWithOptions(request *UpdatePrivateAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *UpdatePrivateAccessPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13606,6 +16929,13 @@ func (client *Client) UpdatePrivateAccessPolicyWithOptions(request *UpdatePrivat
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改内网访问策略
+//
+// @param request - UpdatePrivateAccessPolicyRequest
+//
+// @return UpdatePrivateAccessPolicyResponse
 func (client *Client) UpdatePrivateAccessPolicy(request *UpdatePrivateAccessPolicyRequest) (_result *UpdatePrivateAccessPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePrivateAccessPolicyResponse{}
@@ -13617,6 +16947,15 @@ func (client *Client) UpdatePrivateAccessPolicy(request *UpdatePrivateAccessPoli
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改设备注册策略
+//
+// @param tmpReq - UpdateRegistrationPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRegistrationPolicyResponse
 func (client *Client) UpdateRegistrationPolicyWithOptions(tmpReq *UpdateRegistrationPolicyRequest, runtime *util.RuntimeOptions) (_result *UpdateRegistrationPolicyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -13707,6 +17046,13 @@ func (client *Client) UpdateRegistrationPolicyWithOptions(tmpReq *UpdateRegistra
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改设备注册策略
+//
+// @param request - UpdateRegistrationPolicyRequest
+//
+// @return UpdateRegistrationPolicyResponse
 func (client *Client) UpdateRegistrationPolicy(request *UpdateRegistrationPolicyRequest) (_result *UpdateRegistrationPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRegistrationPolicyResponse{}
@@ -13718,6 +17064,15 @@ func (client *Client) UpdateRegistrationPolicy(request *UpdateRegistrationPolicy
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新用户设备共享状态
+//
+// @param request - UpdateUserDevicesSharingStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserDevicesSharingStatusResponse
 func (client *Client) UpdateUserDevicesSharingStatusWithOptions(request *UpdateUserDevicesSharingStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateUserDevicesSharingStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13758,6 +17113,13 @@ func (client *Client) UpdateUserDevicesSharingStatusWithOptions(request *UpdateU
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新用户设备共享状态
+//
+// @param request - UpdateUserDevicesSharingStatusRequest
+//
+// @return UpdateUserDevicesSharingStatusResponse
 func (client *Client) UpdateUserDevicesSharingStatus(request *UpdateUserDevicesSharingStatusRequest) (_result *UpdateUserDevicesSharingStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserDevicesSharingStatusResponse{}
@@ -13769,6 +17131,15 @@ func (client *Client) UpdateUserDevicesSharingStatus(request *UpdateUserDevicesS
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新用户设备状态
+//
+// @param request - UpdateUserDevicesStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserDevicesStatusResponse
 func (client *Client) UpdateUserDevicesStatusWithOptions(request *UpdateUserDevicesStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateUserDevicesStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13809,6 +17180,13 @@ func (client *Client) UpdateUserDevicesStatusWithOptions(request *UpdateUserDevi
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新用户设备状态
+//
+// @param request - UpdateUserDevicesStatusRequest
+//
+// @return UpdateUserDevicesStatusResponse
 func (client *Client) UpdateUserDevicesStatus(request *UpdateUserDevicesStatusRequest) (_result *UpdateUserDevicesStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserDevicesStatusResponse{}
@@ -13820,6 +17198,15 @@ func (client *Client) UpdateUserDevicesStatus(request *UpdateUserDevicesStatusRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改用户组
+//
+// @param request - UpdateUserGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserGroupResponse
 func (client *Client) UpdateUserGroupWithOptions(request *UpdateUserGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateUserGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13868,6 +17255,13 @@ func (client *Client) UpdateUserGroupWithOptions(request *UpdateUserGroupRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改用户组
+//
+// @param request - UpdateUserGroupRequest
+//
+// @return UpdateUserGroupResponse
 func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result *UpdateUserGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserGroupResponse{}
@@ -13879,6 +17273,15 @@ func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量修改登陆用户状态
+//
+// @param request - UpdateUsersStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUsersStatusResponse
 func (client *Client) UpdateUsersStatusWithOptions(request *UpdateUsersStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateUsersStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13916,6 +17319,13 @@ func (client *Client) UpdateUsersStatusWithOptions(request *UpdateUsersStatusReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量修改登陆用户状态
+//
+// @param request - UpdateUsersStatusRequest
+//
+// @return UpdateUsersStatusResponse
 func (client *Client) UpdateUsersStatus(request *UpdateUsersStatusRequest) (_result *UpdateUsersStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUsersStatusResponse{}
