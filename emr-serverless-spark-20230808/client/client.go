@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,14 +10,21 @@ import (
 )
 
 type Artifact struct {
-	BizId       *string     `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	Creator     *int64      `json:"creator,omitempty" xml:"creator,omitempty"`
-	Credential  *Credential `json:"credential,omitempty" xml:"credential,omitempty"`
-	GmtCreated  *string     `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
-	GmtModified *string     `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Location    *string     `json:"location,omitempty" xml:"location,omitempty"`
-	Modifier    *int64      `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	Name        *string     `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	// This parameter is required.
+	Creator    *int64      `json:"creator,omitempty" xml:"creator,omitempty"`
+	Credential *Credential `json:"credential,omitempty" xml:"credential,omitempty"`
+	// This parameter is required.
+	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
+	// This parameter is required.
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// This parameter is required.
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// This parameter is required.
+	Modifier *int64 `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// This parameter is required.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s Artifact) String() string {
@@ -72,14 +76,21 @@ func (s *Artifact) SetName(v string) *Artifact {
 }
 
 type Category struct {
-	BizId       *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	Creator     *int64  `json:"creator,omitempty" xml:"creator,omitempty"`
-	GmtCreated  *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
+	// This parameter is required.
+	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	// This parameter is required.
+	Creator *int64 `json:"creator,omitempty" xml:"creator,omitempty"`
+	// This parameter is required.
+	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
+	// This parameter is required.
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Modifier    *int64  `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// This parameter is required.
+	Modifier *int64 `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// This parameter is required.
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
 	ParentBizId *string `json:"parentBizId,omitempty" xml:"parentBizId,omitempty"`
-	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
+	// This parameter is required.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s Category) String() string {
@@ -159,14 +170,67 @@ func (s *Configuration) SetConfigItemValue(v string) *Configuration {
 	return s
 }
 
+type ConfigurationOverrides struct {
+	Configurations []*ConfigurationOverridesConfigurations `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
+}
+
+func (s ConfigurationOverrides) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigurationOverrides) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigurationOverrides) SetConfigurations(v []*ConfigurationOverridesConfigurations) *ConfigurationOverrides {
+	s.Configurations = v
+	return s
+}
+
+type ConfigurationOverridesConfigurations struct {
+	ConfigFileName  *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
+	ConfigItemKey   *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
+	ConfigItemValue *string `json:"configItemValue,omitempty" xml:"configItemValue,omitempty"`
+}
+
+func (s ConfigurationOverridesConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigurationOverridesConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigurationOverridesConfigurations) SetConfigFileName(v string) *ConfigurationOverridesConfigurations {
+	s.ConfigFileName = &v
+	return s
+}
+
+func (s *ConfigurationOverridesConfigurations) SetConfigItemKey(v string) *ConfigurationOverridesConfigurations {
+	s.ConfigItemKey = &v
+	return s
+}
+
+func (s *ConfigurationOverridesConfigurations) SetConfigItemValue(v string) *ConfigurationOverridesConfigurations {
+	s.ConfigItemValue = &v
+	return s
+}
+
 type Credential struct {
-	AccessId      *string `json:"accessId,omitempty" xml:"accessId,omitempty"`
-	Dir           *string `json:"dir,omitempty" xml:"dir,omitempty"`
-	Expire        *string `json:"expire,omitempty" xml:"expire,omitempty"`
-	Host          *string `json:"host,omitempty" xml:"host,omitempty"`
-	Policy        *string `json:"policy,omitempty" xml:"policy,omitempty"`
+	// This parameter is required.
+	AccessId *string `json:"accessId,omitempty" xml:"accessId,omitempty"`
+	// This parameter is required.
+	Dir *string `json:"dir,omitempty" xml:"dir,omitempty"`
+	// This parameter is required.
+	Expire *string `json:"expire,omitempty" xml:"expire,omitempty"`
+	// This parameter is required.
+	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// This parameter is required.
+	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
+	// This parameter is required.
 	SecurityToken *string `json:"securityToken,omitempty" xml:"securityToken,omitempty"`
-	Signature     *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	// This parameter is required.
+	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
 }
 
 func (s Credential) String() string {
@@ -259,7 +323,13 @@ func (s *JobDriverSparkSubmit) SetSparkSubmitParameters(v string) *JobDriverSpar
 }
 
 type PrincipalAction struct {
-	ActionArn    *string `json:"actionArn,omitempty" xml:"actionArn,omitempty"`
+	// example:
+	//
+	// acs:emr::workspaceId:action/create_queue
+	ActionArn *string `json:"actionArn,omitempty" xml:"actionArn,omitempty"`
+	// example:
+	//
+	// acs:emr::workspaceId:user/237593691541622267
 	PrincipalArn *string `json:"principalArn,omitempty" xml:"principalArn,omitempty"`
 }
 
@@ -311,8 +381,10 @@ func (s *ReleaseVersionImage) SetRuntimeEngineType(v string) *ReleaseVersionImag
 }
 
 type RunLog struct {
+	DriverStartup  *string `json:"driverStartup,omitempty" xml:"driverStartup,omitempty"`
 	DriverStdError *string `json:"driverStdError,omitempty" xml:"driverStdError,omitempty"`
 	DriverStdOut   *string `json:"driverStdOut,omitempty" xml:"driverStdOut,omitempty"`
+	DriverSyslog   *string `json:"driverSyslog,omitempty" xml:"driverSyslog,omitempty"`
 }
 
 func (s RunLog) String() string {
@@ -321,6 +393,11 @@ func (s RunLog) String() string {
 
 func (s RunLog) GoString() string {
 	return s.String()
+}
+
+func (s *RunLog) SetDriverStartup(v string) *RunLog {
+	s.DriverStartup = &v
+	return s
 }
 
 func (s *RunLog) SetDriverStdError(v string) *RunLog {
@@ -333,8 +410,15 @@ func (s *RunLog) SetDriverStdOut(v string) *RunLog {
 	return s
 }
 
+func (s *RunLog) SetDriverSyslog(v string) *RunLog {
+	s.DriverSyslog = &v
+	return s
+}
+
 type SparkConf struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// This parameter is required.
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// This parameter is required.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -380,6 +464,9 @@ func (s *SqlOutput) SetSchema(v *SqlOutputSchema) *SqlOutput {
 }
 
 type SqlOutputRows struct {
+	// example:
+	//
+	// null
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
@@ -444,8 +531,16 @@ func (s *SqlOutputSchemaFields) SetType(v string) *SqlOutputSchemaFields {
 
 type Tag struct {
 	// 标签key值。
+	//
+	// example:
+	//
+	// workflowId
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// 标签key值。
+	//
+	// example:
+	//
+	// wf-123test
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -468,36 +563,58 @@ func (s *Tag) SetValue(v string) *Tag {
 }
 
 type Task struct {
-	ArtifactUrl            *string            `json:"artifactUrl,omitempty" xml:"artifactUrl,omitempty"`
-	BizId                  *string            `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	CategoryBizId          *string            `json:"categoryBizId,omitempty" xml:"categoryBizId,omitempty"`
-	Content                *string            `json:"content,omitempty" xml:"content,omitempty"`
-	Creator                *int64             `json:"creator,omitempty" xml:"creator,omitempty"`
-	DefaultCatalogId       *string            `json:"defaultCatalogId,omitempty" xml:"defaultCatalogId,omitempty"`
-	DefaultDatabase        *string            `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
-	DefaultResourceQueueId *string            `json:"defaultResourceQueueId,omitempty" xml:"defaultResourceQueueId,omitempty"`
-	DefaultSqlComputeId    *string            `json:"defaultSqlComputeId,omitempty" xml:"defaultSqlComputeId,omitempty"`
-	ExtraArtifactIds       []*string          `json:"extraArtifactIds,omitempty" xml:"extraArtifactIds,omitempty" type:"Repeated"`
-	GmtCreated             *string            `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
-	GmtModified            *string            `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	HasChanged             *bool              `json:"hasChanged,omitempty" xml:"hasChanged,omitempty"`
-	HasCommited            *bool              `json:"hasCommited,omitempty" xml:"hasCommited,omitempty"`
-	LastRunResourceQueueId *string            `json:"lastRunResourceQueueId,omitempty" xml:"lastRunResourceQueueId,omitempty"`
-	Modifier               *int64             `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	Name                   *string            `json:"name,omitempty" xml:"name,omitempty"`
-	PyFiles                []*string          `json:"pyFiles,omitempty" xml:"pyFiles,omitempty" type:"Repeated"`
-	SparkArgs              *string            `json:"sparkArgs,omitempty" xml:"sparkArgs,omitempty"`
-	SparkConf              []*SparkConf       `json:"sparkConf,omitempty" xml:"sparkConf,omitempty" type:"Repeated"`
-	SparkDriverCores       *int32             `json:"sparkDriverCores,omitempty" xml:"sparkDriverCores,omitempty"`
-	SparkDriverMemory      *int64             `json:"sparkDriverMemory,omitempty" xml:"sparkDriverMemory,omitempty"`
-	SparkEntrypoint        *string            `json:"sparkEntrypoint,omitempty" xml:"sparkEntrypoint,omitempty"`
-	SparkExecutorCores     *int32             `json:"sparkExecutorCores,omitempty" xml:"sparkExecutorCores,omitempty"`
-	SparkExecutorMemory    *int64             `json:"sparkExecutorMemory,omitempty" xml:"sparkExecutorMemory,omitempty"`
-	SparkLogLevel          *string            `json:"sparkLogLevel,omitempty" xml:"sparkLogLevel,omitempty"`
-	SparkLogPath           *string            `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
-	SparkVersion           *string            `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
-	Tags                   map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
-	Type                   *string            `json:"type,omitempty" xml:"type,omitempty"`
+	Archives    []*string `json:"archives,omitempty" xml:"archives,omitempty" type:"Repeated"`
+	ArtifactUrl *string   `json:"artifactUrl,omitempty" xml:"artifactUrl,omitempty"`
+	// This parameter is required.
+	BizId         *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	CategoryBizId *string `json:"categoryBizId,omitempty" xml:"categoryBizId,omitempty"`
+	Content       *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	Creator                *int64    `json:"creator,omitempty" xml:"creator,omitempty"`
+	DefaultCatalogId       *string   `json:"defaultCatalogId,omitempty" xml:"defaultCatalogId,omitempty"`
+	DefaultDatabase        *string   `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
+	DefaultResourceQueueId *string   `json:"defaultResourceQueueId,omitempty" xml:"defaultResourceQueueId,omitempty"`
+	DefaultSqlComputeId    *string   `json:"defaultSqlComputeId,omitempty" xml:"defaultSqlComputeId,omitempty"`
+	ExtraArtifactIds       []*string `json:"extraArtifactIds,omitempty" xml:"extraArtifactIds,omitempty" type:"Repeated"`
+	ExtraSparkSubmitParams *string   `json:"extraSparkSubmitParams,omitempty" xml:"extraSparkSubmitParams,omitempty"`
+	Files                  []*string `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// This parameter is required.
+	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
+	// This parameter is required.
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	HasChanged  *bool   `json:"hasChanged,omitempty" xml:"hasChanged,omitempty"`
+	// This parameter is required.
+	HasCommited            *bool     `json:"hasCommited,omitempty" xml:"hasCommited,omitempty"`
+	Jars                   []*string `json:"jars,omitempty" xml:"jars,omitempty" type:"Repeated"`
+	LastRunResourceQueueId *string   `json:"lastRunResourceQueueId,omitempty" xml:"lastRunResourceQueueId,omitempty"`
+	// This parameter is required.
+	Modifier *int64 `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// This parameter is required.
+	Name    *string   `json:"name,omitempty" xml:"name,omitempty"`
+	PyFiles []*string `json:"pyFiles,omitempty" xml:"pyFiles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	SparkArgs *string      `json:"sparkArgs,omitempty" xml:"sparkArgs,omitempty"`
+	SparkConf []*SparkConf `json:"sparkConf,omitempty" xml:"sparkConf,omitempty" type:"Repeated"`
+	// This parameter is required.
+	SparkDriverCores *int32 `json:"sparkDriverCores,omitempty" xml:"sparkDriverCores,omitempty"`
+	// This parameter is required.
+	SparkDriverMemory *int64  `json:"sparkDriverMemory,omitempty" xml:"sparkDriverMemory,omitempty"`
+	SparkEntrypoint   *string `json:"sparkEntrypoint,omitempty" xml:"sparkEntrypoint,omitempty"`
+	// This parameter is required.
+	SparkExecutorCores *int32 `json:"sparkExecutorCores,omitempty" xml:"sparkExecutorCores,omitempty"`
+	// This parameter is required.
+	SparkExecutorMemory *int64 `json:"sparkExecutorMemory,omitempty" xml:"sparkExecutorMemory,omitempty"`
+	// This parameter is required.
+	SparkLogLevel *string `json:"sparkLogLevel,omitempty" xml:"sparkLogLevel,omitempty"`
+	// This parameter is required.
+	SparkLogPath *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
+	// This parameter is required.
+	SparkVersion *string            `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
+	Tags         map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// This parameter is required.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s Task) String() string {
@@ -506,6 +623,11 @@ func (s Task) String() string {
 
 func (s Task) GoString() string {
 	return s.String()
+}
+
+func (s *Task) SetArchives(v []*string) *Task {
+	s.Archives = v
+	return s
 }
 
 func (s *Task) SetArtifactUrl(v string) *Task {
@@ -558,6 +680,16 @@ func (s *Task) SetExtraArtifactIds(v []*string) *Task {
 	return s
 }
 
+func (s *Task) SetExtraSparkSubmitParams(v string) *Task {
+	s.ExtraSparkSubmitParams = &v
+	return s
+}
+
+func (s *Task) SetFiles(v []*string) *Task {
+	s.Files = v
+	return s
+}
+
 func (s *Task) SetGmtCreated(v string) *Task {
 	s.GmtCreated = &v
 	return s
@@ -575,6 +707,11 @@ func (s *Task) SetHasChanged(v bool) *Task {
 
 func (s *Task) SetHasCommited(v bool) *Task {
 	s.HasCommited = &v
+	return s
+}
+
+func (s *Task) SetJars(v []*string) *Task {
+	s.Jars = v
 	return s
 }
 
@@ -771,19 +908,30 @@ func (s *TaskSnapshot) SetVersion(v string) *TaskSnapshot {
 }
 
 type Template struct {
-	Creator             *int64       `json:"creator,omitempty" xml:"creator,omitempty"`
-	GmtCreated          *string      `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
-	GmtModified         *string      `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Modifier            *int64       `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	SparkConf           []*SparkConf `json:"sparkConf,omitempty" xml:"sparkConf,omitempty" type:"Repeated"`
-	SparkDriverCores    *int32       `json:"sparkDriverCores,omitempty" xml:"sparkDriverCores,omitempty"`
-	SparkDriverMemory   *int64       `json:"sparkDriverMemory,omitempty" xml:"sparkDriverMemory,omitempty"`
-	SparkExecutorCores  *int32       `json:"sparkExecutorCores,omitempty" xml:"sparkExecutorCores,omitempty"`
-	SparkExecutorMemory *int64       `json:"sparkExecutorMemory,omitempty" xml:"sparkExecutorMemory,omitempty"`
-	SparkLogLevel       *string      `json:"sparkLogLevel,omitempty" xml:"sparkLogLevel,omitempty"`
-	SparkLogPath        *string      `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
-	SparkVersion        *string      `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
-	TemplateType        *string      `json:"templateType,omitempty" xml:"templateType,omitempty"`
+	// This parameter is required.
+	Creator *int64 `json:"creator,omitempty" xml:"creator,omitempty"`
+	// This parameter is required.
+	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
+	// This parameter is required.
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// This parameter is required.
+	Modifier  *int64       `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	SparkConf []*SparkConf `json:"sparkConf,omitempty" xml:"sparkConf,omitempty" type:"Repeated"`
+	// This parameter is required.
+	SparkDriverCores *int32 `json:"sparkDriverCores,omitempty" xml:"sparkDriverCores,omitempty"`
+	// This parameter is required.
+	SparkDriverMemory *int64 `json:"sparkDriverMemory,omitempty" xml:"sparkDriverMemory,omitempty"`
+	// This parameter is required.
+	SparkExecutorCores *int32 `json:"sparkExecutorCores,omitempty" xml:"sparkExecutorCores,omitempty"`
+	// This parameter is required.
+	SparkExecutorMemory *int64 `json:"sparkExecutorMemory,omitempty" xml:"sparkExecutorMemory,omitempty"`
+	// This parameter is required.
+	SparkLogLevel *string `json:"sparkLogLevel,omitempty" xml:"sparkLogLevel,omitempty"`
+	// This parameter is required.
+	SparkLogPath *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
+	// This parameter is required.
+	SparkVersion *string `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
+	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
 }
 
 func (s Template) String() string {
@@ -861,8 +1009,16 @@ func (s *Template) SetTemplateType(v string) *Template {
 
 type TimeRange struct {
 	// 时间范围结束时间。
+	//
+	// example:
+	//
+	// 1688370894339
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// 时间范围开始时间。
+	//
+	// example:
+	//
+	// 1688370894339
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
@@ -885,6 +1041,9 @@ func (s *TimeRange) SetStartTime(v int64) *TimeRange {
 }
 
 type CancelJobRunRequest struct {
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
@@ -902,8 +1061,15 @@ func (s *CancelJobRunRequest) SetRegionId(v string) *CancelJobRunRequest {
 }
 
 type CancelJobRunResponseBody struct {
+	// example:
+	//
+	// jr-1a2bc3
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
 	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -955,6 +1121,9 @@ func (s *CancelJobRunResponse) SetBody(v *CancelJobRunResponseBody) *CancelJobRu
 }
 
 type GetJobRunRequest struct {
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
@@ -974,6 +1143,10 @@ func (s *GetJobRunRequest) SetRegionId(v string) *GetJobRunRequest {
 type GetJobRunResponseBody struct {
 	JobRun *GetJobRunResponseBodyJobRun `json:"jobRun,omitempty" xml:"jobRun,omitempty" type:"Struct"`
 	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -997,32 +1170,78 @@ func (s *GetJobRunResponseBody) SetRequestId(v string) *GetJobRunResponseBody {
 
 type GetJobRunResponseBodyJobRun struct {
 	// 作业代码类型。
+	//
+	// example:
+	//
+	// SQL
 	CodeType               *string                                            `json:"codeType,omitempty" xml:"codeType,omitempty"`
 	ConfigurationOverrides *GetJobRunResponseBodyJobRunConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
 	// 作业结束时间。
+	//
+	// example:
+	//
+	// 1684119314000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// 运行超时时间。
+	//
+	// example:
+	//
+	// 3600
 	ExecutionTimeoutSeconds *int32     `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
 	JobDriver               *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
 	// 任务实例ID。
+	//
+	// example:
+	//
+	// jr-231231
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
 	Log      *RunLog `json:"log,omitempty" xml:"log,omitempty"`
 	// 作业实例名称。
-	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+	//
+	// example:
+	//
+	// jobName
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// esr-3.3.1
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
 	// 创建用户Uid。
+	//
+	// example:
+	//
+	// 1509789347011222
 	ResourceOwnerId *string `json:"resourceOwnerId,omitempty" xml:"resourceOwnerId,omitempty"`
+	// example:
+	//
+	// root_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
 	// 作业状态。
+	//
+	// example:
+	//
+	// Running
 	State             *string                                       `json:"state,omitempty" xml:"state,omitempty"`
 	StateChangeReason *GetJobRunResponseBodyJobRunStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
 	// 作业提交时间。
+	//
+	// example:
+	//
+	// 1684119314000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
 	// 标签。
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 作业web ui。
+	//
+	// example:
+	//
+	// http://spark-ui
 	WebUI *string `json:"webUI,omitempty" xml:"webUI,omitempty"`
 	// 工作空间id。
+	//
+	// example:
+	//
+	// w-1234abcd
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
@@ -1137,7 +1356,13 @@ func (s *GetJobRunResponseBodyJobRunConfigurationOverrides) SetConfigurations(v 
 }
 
 type GetJobRunResponseBodyJobRunStateChangeReason struct {
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// ERR-100000
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// connection refused
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 
@@ -1190,20 +1415,50 @@ func (s *GetJobRunResponse) SetBody(v *GetJobRunResponseBody) *GetJobRunResponse
 
 type ListJobRunsRequest struct {
 	// 创建用户Uid。
+	//
+	// example:
+	//
+	// 1509789347011222
 	Creator *string                    `json:"creator,omitempty" xml:"creator,omitempty"`
 	EndTime *ListJobRunsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
 	// 作业id。
+	//
+	// example:
+	//
+	// j-xxx
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
 	// 一次获取的最大记录数。
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// 作业名称。
+	//
+	// example:
+	//
+	// emr-spark-demo-job
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// 标记当前开始读取的位置，置空表示从头开始。
-	NextToken       *string                      `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	RegionId        *string                      `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// dev_queue
 	ResourceQueueId *string                      `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
 	StartTime       *ListJobRunsRequestStartTime `json:"startTime,omitempty" xml:"startTime,omitempty" type:"Struct"`
 	// 作业状态。
+	//
+	// example:
+	//
+	// ["Running","Submitted"]
 	States []*string `json:"states,omitempty" xml:"states,omitempty" type:"Repeated"`
 	// 标签。
 	Tags []*ListJobRunsRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
@@ -1273,7 +1528,13 @@ func (s *ListJobRunsRequest) SetTags(v []*ListJobRunsRequestTags) *ListJobRunsRe
 }
 
 type ListJobRunsRequestEndTime struct {
-	EndTime   *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 1710432000000
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 1709740800000
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
@@ -1296,7 +1557,13 @@ func (s *ListJobRunsRequestEndTime) SetStartTime(v int64) *ListJobRunsRequestEnd
 }
 
 type ListJobRunsRequestStartTime struct {
-	EndTime   *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 1710432000000
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 1709740800000
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
@@ -1319,7 +1586,13 @@ func (s *ListJobRunsRequestStartTime) SetStartTime(v int64) *ListJobRunsRequestS
 }
 
 type ListJobRunsRequestTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// tag_key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// value
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -1343,20 +1616,50 @@ func (s *ListJobRunsRequestTags) SetValue(v string) *ListJobRunsRequestTags {
 
 type ListJobRunsShrinkRequest struct {
 	// 创建用户Uid。
+	//
+	// example:
+	//
+	// 1509789347011222
 	Creator       *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	EndTimeShrink *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// 作业id。
+	//
+	// example:
+	//
+	// j-xxx
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
 	// 一次获取的最大记录数。
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// 作业名称。
+	//
+	// example:
+	//
+	// emr-spark-demo-job
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// 标记当前开始读取的位置，置空表示从头开始。
-	NextToken       *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
 	StartTimeShrink *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// 作业状态。
+	//
+	// example:
+	//
+	// ["Running","Submitted"]
 	StatesShrink *string `json:"states,omitempty" xml:"states,omitempty"`
 	// 标签。
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
@@ -1428,12 +1731,28 @@ func (s *ListJobRunsShrinkRequest) SetTagsShrink(v string) *ListJobRunsShrinkReq
 type ListJobRunsResponseBody struct {
 	JobRuns []*ListJobRunsResponseBodyJobRuns `json:"jobRuns,omitempty" xml:"jobRuns,omitempty" type:"Repeated"`
 	// 本次请求所返回的最大记录条数。
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// 本次请求条件下的数据总量。
+	//
+	// example:
+	//
+	// 200
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -1472,31 +1791,74 @@ func (s *ListJobRunsResponseBody) SetTotalCount(v int32) *ListJobRunsResponseBod
 
 type ListJobRunsResponseBodyJobRuns struct {
 	// 作业代码类型。
+	//
+	// example:
+	//
+	// SQL
 	CodeType               *string                                               `json:"codeType,omitempty" xml:"codeType,omitempty"`
 	ConfigurationOverrides *ListJobRunsResponseBodyJobRunsConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
 	// 创建用户Uid。
+	//
+	// example:
+	//
+	// 1509789347011222
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	// 作业结束时间。
+	//
+	// example:
+	//
+	// 1684119314000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// 运行超时时间。
+	//
+	// example:
+	//
+	// 3600
 	ExecutionTimeoutSeconds *int32     `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
 	JobDriver               *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
 	// 任务实例ID。
+	//
+	// example:
+	//
+	// jr-231231
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
 	Log      *RunLog `json:"log,omitempty" xml:"log,omitempty"`
 	// 作业实例名称。
-	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+	//
+	// example:
+	//
+	// jobName
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// esr-native-3.4.0
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
 	// 作业状态。
+	//
+	// example:
+	//
+	// Running
 	State             *string                                          `json:"state,omitempty" xml:"state,omitempty"`
 	StateChangeReason *ListJobRunsResponseBodyJobRunsStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
 	// 作业提交时间。
+	//
+	// example:
+	//
+	// 1684119314000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
 	// 标签。
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// 作业web ui。
+	//
+	// example:
+	//
+	// http://spark-ui
 	WebUI *string `json:"webUI,omitempty" xml:"webUI,omitempty"`
 	// 工作空间id。
+	//
+	// example:
+	//
+	// w-1234abcd
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
@@ -1606,7 +1968,13 @@ func (s *ListJobRunsResponseBodyJobRunsConfigurationOverrides) SetConfigurations
 }
 
 type ListJobRunsResponseBodyJobRunsStateChangeReason struct {
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 
@@ -1658,17 +2026,41 @@ func (s *ListJobRunsResponse) SetBody(v *ListJobRunsResponseBody) *ListJobRunsRe
 }
 
 type StartJobRunRequest struct {
-	ClientToken             *string                                   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	CodeType                *string                                   `json:"codeType,omitempty" xml:"codeType,omitempty"`
-	ConfigurationOverrides  *StartJobRunRequestConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
-	ExecutionTimeoutSeconds *int32                                    `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
-	JobDriver               *JobDriver                                `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
-	JobId                   *string                                   `json:"jobId,omitempty" xml:"jobId,omitempty"`
-	Name                    *string                                   `json:"name,omitempty" xml:"name,omitempty"`
-	ReleaseVersion          *string                                   `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	ResourceQueueId         *string                                   `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	Tags                    []*Tag                                    `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	RegionId                *string                                   `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// 8e6aae2810c8f67229ca70bb31cd6028
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// example:
+	//
+	// SQL
+	CodeType               *string                                   `json:"codeType,omitempty" xml:"codeType,omitempty"`
+	ConfigurationOverrides *StartJobRunRequestConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
+	// example:
+	//
+	// 100
+	ExecutionTimeoutSeconds *int32     `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
+	JobDriver               *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
+	// example:
+	//
+	// jr-12345
+	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// example:
+	//
+	// spark_job_name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// esr-3.3.1
+	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// example:
+	//
+	// dev_queue
+	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	Tags            []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s StartJobRunRequest) String() string {
@@ -1752,8 +2144,17 @@ func (s *StartJobRunRequestConfigurationOverrides) SetConfigurations(v []*StartJ
 }
 
 type StartJobRunRequestConfigurationOverridesConfigurations struct {
-	ConfigFileName  *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
-	ConfigItemKey   *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
+	// example:
+	//
+	// spark-default.conf
+	ConfigFileName *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
+	// example:
+	//
+	// spark.app.name
+	ConfigItemKey *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
+	// example:
+	//
+	// test_app
 	ConfigItemValue *string `json:"configItemValue,omitempty" xml:"configItemValue,omitempty"`
 }
 
@@ -1781,8 +2182,15 @@ func (s *StartJobRunRequestConfigurationOverridesConfigurations) SetConfigItemVa
 }
 
 type StartJobRunResponseBody struct {
+	// example:
+	//
+	// jr-54321
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
 	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1880,6 +2288,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消jobRun作业
+//
+// @param request - CancelJobRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelJobRunResponse
 func (client *Client) CancelJobRunWithOptions(workspaceId *string, jobRunId *string, request *CancelJobRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelJobRunResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1914,6 +2333,13 @@ func (client *Client) CancelJobRunWithOptions(workspaceId *string, jobRunId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消jobRun作业
+//
+// @param request - CancelJobRunRequest
+//
+// @return CancelJobRunResponse
 func (client *Client) CancelJobRun(workspaceId *string, jobRunId *string, request *CancelJobRunRequest) (_result *CancelJobRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1926,6 +2352,17 @@ func (client *Client) CancelJobRun(workspaceId *string, jobRunId *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务
+//
+// @param request - GetJobRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobRunResponse
 func (client *Client) GetJobRunWithOptions(workspaceId *string, jobRunId *string, request *GetJobRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobRunResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1960,6 +2397,13 @@ func (client *Client) GetJobRunWithOptions(workspaceId *string, jobRunId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务
+//
+// @param request - GetJobRunRequest
+//
+// @return GetJobRunResponse
 func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *GetJobRunRequest) (_result *GetJobRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1972,6 +2416,17 @@ func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询run列表
+//
+// @param tmpReq - ListJobRunsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobRunsResponse
 func (client *Client) ListJobRunsWithOptions(workspaceId *string, tmpReq *ListJobRunsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListJobRunsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2064,6 +2519,13 @@ func (client *Client) ListJobRunsWithOptions(workspaceId *string, tmpReq *ListJo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询run列表
+//
+// @param request - ListJobRunsRequest
+//
+// @return ListJobRunsResponse
 func (client *Client) ListJobRuns(workspaceId *string, request *ListJobRunsRequest) (_result *ListJobRunsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2076,6 +2538,17 @@ func (client *Client) ListJobRuns(workspaceId *string, request *ListJobRunsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动作业
+//
+// @param request - StartJobRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartJobRunResponse
 func (client *Client) StartJobRunWithOptions(workspaceId *string, request *StartJobRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartJobRunResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2152,6 +2625,13 @@ func (client *Client) StartJobRunWithOptions(workspaceId *string, request *Start
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动作业
+//
+// @param request - StartJobRunRequest
+//
+// @return StartJobRunResponse
 func (client *Client) StartJobRun(workspaceId *string, request *StartJobRunRequest) (_result *StartJobRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
