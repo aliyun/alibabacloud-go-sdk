@@ -18,6 +18,8 @@ type ChangeResourceGroupRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the resource group to which you want to move the resource.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// rg-aekz4kee6******
@@ -30,11 +32,15 @@ type ChangeResourceGroupRequest struct {
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 	// The ID of the resource.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dbs1jyajqk******
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. Set the value to backupplan.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -201,7 +207,7 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateDownloadRequest struct {
-	// The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to query the ID of the backup set.
+	// The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID of the backup set.
 	//
 	// > This parameter is required if the BakSetType parameter is set to full.
 	//
@@ -209,7 +215,7 @@ type CreateDownloadRequest struct {
 	//
 	// 146005****
 	BakSetId *string `json:"BakSetId,omitempty" xml:"BakSetId,omitempty"`
-	// The size of the full backup set. Unit: bytes. You can call the [DescribeBackups](~~26273~~) operation to query the size of the full backup set.
+	// The size of the full backup set. Unit: bytes. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the size of the full backup set.
 	//
 	// example:
 	//
@@ -249,11 +255,15 @@ type CreateDownloadRequest struct {
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// rm-wz994c1t1****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query the region ID of the instance.
+	// The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query the region ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -263,7 +273,7 @@ type CreateDownloadRequest struct {
 	//
 	// 	- This parameter is required if the TargetType parameter is set to OSS.
 	//
-	// 	- Make sure that your account is granted the **AliyunDBSDefaultRole*	- permission. For more information, see [Use RAM for resource authorization](~~26307~~). You can also grant permissions based on the operation instructions in the Resource Access Management (RAM) console.
+	// 	- Make sure that your account is granted the **AliyunDBSDefaultRole*	- permission. For more information, see [Use RAM for resource authorization](https://help.aliyun.com/document_detail/26307.html). You can also grant permissions based on the operation instructions in the Resource Access Management (RAM) console.
 	//
 	// example:
 	//
@@ -650,15 +660,19 @@ func (s *CreateDownloadResponse) SetBody(v *CreateDownloadResponseBody) *CreateD
 }
 
 type DeleteSandboxInstanceRequest struct {
-	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to query the ID of the backup schedule.
+	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/437215.html) operation to query the ID of the backup schedule.
 	//
-	// > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+	// > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](https://help.aliyun.com/document_detail/193091.html) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// 1hxxxx8xxxxxa
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The ID of the sandbox instance. You can call the [DescribeSandboxInstances](~~437257~~) operation to query the ID of the sandbox instance.
+	// The ID of the sandbox instance. You can call the [DescribeSandboxInstances](https://help.aliyun.com/document_detail/437257.html) operation to query the ID of the sandbox instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1704,6 +1718,7 @@ type DescribeBackupPolicyResponseBodyDataAdvanceDataPolicies struct {
 	//
 	// 1,2,3,4,5,6,7
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	PolicyId    *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// example:
 	//
 	// delay
@@ -1771,6 +1786,11 @@ func (s *DescribeBackupPolicyResponseBodyDataAdvanceDataPolicies) SetFilterType(
 
 func (s *DescribeBackupPolicyResponseBodyDataAdvanceDataPolicies) SetFilterValue(v string) *DescribeBackupPolicyResponseBodyDataAdvanceDataPolicies {
 	s.FilterValue = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBodyDataAdvanceDataPolicies) SetPolicyId(v string) *DescribeBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.PolicyId = &v
 	return s
 }
 
@@ -2241,6 +2261,8 @@ type DescribeDownloadBackupSetStorageInfoRequest struct {
 	//
 	// 	- Before you specify this parameter, convert the validity period to seconds. For example, if you want to set the validity period of the URL to 5 minutes, enter 300.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 300
@@ -2253,17 +2275,19 @@ type DescribeDownloadBackupSetStorageInfoRequest struct {
 	//
 	// rm-uf6qqf569n435****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query the region ID of the instance.
+	// The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query the region ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// The ID of the download task.
+	// The download task ID.
 	//
 	// 	- The **BackupSetId*	- and **InstanceName*	- parameters are required if you do not specify the **TaskId*	- parameter.
 	//
-	// 	- You can go to the instance details page in the Alibaba Cloud Management Console and click **Backup and Restoration*	- in the left-side navigation pane. On the **Backup Download*	- tab, view the task ID.
+	// 	- To view the download task ID, go to the instance details page in the console and click **Backup and Restoration*	- in the left-side navigation pane. On the **Backup Download*	- tab, view the task ID.
 	//
 	// example:
 	//
@@ -2470,11 +2494,15 @@ func (s *DescribeDownloadBackupSetStorageInfoResponse) SetBody(v *DescribeDownlo
 type DescribeDownloadSupportRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// rm-bp1a48p922r4b****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query the region ID of the instance.
+	// The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query the region ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2626,7 +2654,7 @@ func (s *DescribeDownloadSupportResponse) SetBody(v *DescribeDownloadSupportResp
 }
 
 type DescribeDownloadTaskRequest struct {
-	// The ID of the backup set generated when you create a download task. You can call the [DescribeBackups](~~26273~~) operation to query the ID.
+	// The ID of the backup set generated when you create a download task. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID.
 	//
 	// example:
 	//
@@ -2638,7 +2666,7 @@ type DescribeDownloadTaskRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the Database Backup (DBS) data source. Specify the parameter in the format of *ds-${Instance ID}\_${regionId}*.
+	// The ID of the Database Backup (DBS) data source. Specify the parameter in the format of *ds-${Instance ID}_${regionId}*.
 	//
 	// example:
 	//
@@ -2680,7 +2708,9 @@ type DescribeDownloadTaskRequest struct {
 	//
 	// 50
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query the region ID of the instance.
+	// The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query the region ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3174,9 +3204,11 @@ func (s *DescribeDownloadTaskResponse) SetBody(v *DescribeDownloadTaskResponseBo
 }
 
 type DescribeSandboxBackupSetsRequest struct {
-	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to query the ID of the backup schedule.
+	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/437215.html) operation to query the ID of the backup schedule.
 	//
-	// > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+	// > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](https://help.aliyun.com/document_detail/193091.html) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3198,9 +3230,9 @@ type DescribeSandboxBackupSetsRequest struct {
 	//
 	// 	- 30: This is the default value.
 	//
-	// 	- 50\.
+	// 	- 50\\.
 	//
-	// 	- 100\.
+	// 	- 100\\.
 	//
 	// example:
 	//
@@ -3362,15 +3394,17 @@ func (s *DescribeSandboxBackupSetsResponse) SetBody(v *DescribeSandboxBackupSets
 }
 
 type DescribeSandboxInstancesRequest struct {
-	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to obtain the ID of the backup schedule.
+	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/437215.html) operation to obtain the ID of the backup schedule.
 	//
-	// > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+	// > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](https://help.aliyun.com/document_detail/193091.html) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// 1hxxxx8xxxxxa
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The ID of the sandbox instance. You can call the [CreateSandboxInstance](~~437252~~) operation to obtain the ID of the sandbox instance.
+	// The ID of the sandbox instance. You can call the [CreateSandboxInstance](https://help.aliyun.com/document_detail/437252.html) operation to obtain the ID of the sandbox instance.
 	//
 	// example:
 	//
@@ -3384,7 +3418,7 @@ type DescribeSandboxInstancesRequest struct {
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// 	- 30\. This is the default value.
+	// 	- 30\\. This is the default value.
 	//
 	// 	- 50
 	//
@@ -3564,9 +3598,11 @@ func (s *DescribeSandboxInstancesResponse) SetBody(v *DescribeSandboxInstancesRe
 }
 
 type DescribeSandboxRecoveryTimeRequest struct {
-	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to obtain the ID of the backup schedule. If you set this parameter to the backup schedule ID obtained by calling the DescribeBackupPlanList operation, the dbs prefix must be removed. Otherwise, the call fails.
+	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/437215.html) operation to obtain the ID of the backup schedule. If you set this parameter to the backup schedule ID obtained by calling the DescribeBackupPlanList operation, the dbs prefix must be removed. Otherwise, the call fails.
 	//
-	// > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+	// > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](https://help.aliyun.com/document_detail/193091.html) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4038,6 +4074,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a resource from one resource group to another.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4087,6 +4132,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a resource from one resource group to another.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
@@ -4098,6 +4150,10 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an advanced download task for an ApsaraDB RDS for MySQL instance, an ApsaraDB RDS for PostgreSQL instance, or a PolarDB for MySQL cluster.
+//
 // Description:
 //
 // ### [](#)Supported database engines
@@ -4112,11 +4168,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 //
 // For the instances that meet your business requirements, you can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
 //
-// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98819.html)
 //
-// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96774.html)
 //
-// 	- [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
+// 	- [Download the backup files of a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/2627635.html)
 //
 // @param request - CreateDownloadRequest
 //
@@ -4196,6 +4252,10 @@ func (client *Client) CreateDownloadWithOptions(request *CreateDownloadRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an advanced download task for an ApsaraDB RDS for MySQL instance, an ApsaraDB RDS for PostgreSQL instance, or a PolarDB for MySQL cluster.
+//
 // Description:
 //
 // ### [](#)Supported database engines
@@ -4210,11 +4270,11 @@ func (client *Client) CreateDownloadWithOptions(request *CreateDownloadRequest, 
 //
 // For the instances that meet your business requirements, you can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
 //
-// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98819.html)
 //
-// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96774.html)
 //
-// 	- [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
+// 	- [Download the backup files of a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/2627635.html)
 //
 // @param request - CreateDownloadRequest
 //
@@ -4230,6 +4290,10 @@ func (client *Client) CreateDownload(request *CreateDownloadRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a sandbox instance.
+//
 // Description:
 //
 // This operation is available only for the Database Backup (DBS) API of the 2021-01-01 version.
@@ -4280,6 +4344,10 @@ func (client *Client) DeleteSandboxInstanceWithOptions(request *DeleteSandboxIns
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a sandbox instance.
+//
 // Description:
 //
 // This operation is available only for the Database Backup (DBS) API of the 2021-01-01 version.
@@ -4298,6 +4366,15 @@ func (client *Client) DeleteSandboxInstance(request *DeleteSandboxInstanceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 备份数据列表查询接口
+//
+// @param request - DescribeBackupDataListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupDataListResponse
 func (client *Client) DescribeBackupDataListWithOptions(request *DescribeBackupDataListRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupDataListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4391,6 +4468,13 @@ func (client *Client) DescribeBackupDataListWithOptions(request *DescribeBackupD
 	return _result, _err
 }
 
+// Summary:
+//
+// 备份数据列表查询接口
+//
+// @param request - DescribeBackupDataListRequest
+//
+// @return DescribeBackupDataListResponse
 func (client *Client) DescribeBackupDataList(request *DescribeBackupDataListRequest) (_result *DescribeBackupDataListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupDataListResponse{}
@@ -4402,6 +4486,15 @@ func (client *Client) DescribeBackupDataList(request *DescribeBackupDataListRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取备份策略接口
+//
+// @param request - DescribeBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4439,6 +4532,13 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取备份策略接口
+//
+// @param request - DescribeBackupPolicyRequest
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupPolicyResponse{}
@@ -4450,6 +4550,11 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	return _result, _err
 }
 
+// @param request - DescribeDBTablesRecoveryBackupSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBTablesRecoveryBackupSetResponse
 func (client *Client) DescribeDBTablesRecoveryBackupSetWithOptions(request *DescribeDBTablesRecoveryBackupSetRequest, runtime *util.RuntimeOptions) (_result *DescribeDBTablesRecoveryBackupSetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4487,6 +4592,9 @@ func (client *Client) DescribeDBTablesRecoveryBackupSetWithOptions(request *Desc
 	return _result, _err
 }
 
+// @param request - DescribeDBTablesRecoveryBackupSetRequest
+//
+// @return DescribeDBTablesRecoveryBackupSetResponse
 func (client *Client) DescribeDBTablesRecoveryBackupSet(request *DescribeDBTablesRecoveryBackupSetRequest) (_result *DescribeDBTablesRecoveryBackupSetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBTablesRecoveryBackupSetResponse{}
@@ -4498,6 +4606,11 @@ func (client *Client) DescribeDBTablesRecoveryBackupSet(request *DescribeDBTable
 	return _result, _err
 }
 
+// @param request - DescribeDBTablesRecoveryStateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBTablesRecoveryStateResponse
 func (client *Client) DescribeDBTablesRecoveryStateWithOptions(request *DescribeDBTablesRecoveryStateRequest, runtime *util.RuntimeOptions) (_result *DescribeDBTablesRecoveryStateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4535,6 +4648,9 @@ func (client *Client) DescribeDBTablesRecoveryStateWithOptions(request *Describe
 	return _result, _err
 }
 
+// @param request - DescribeDBTablesRecoveryStateRequest
+//
+// @return DescribeDBTablesRecoveryStateResponse
 func (client *Client) DescribeDBTablesRecoveryState(request *DescribeDBTablesRecoveryStateRequest) (_result *DescribeDBTablesRecoveryStateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBTablesRecoveryStateResponse{}
@@ -4546,6 +4662,11 @@ func (client *Client) DescribeDBTablesRecoveryState(request *DescribeDBTablesRec
 	return _result, _err
 }
 
+// @param request - DescribeDBTablesRecoveryTimeRangeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBTablesRecoveryTimeRangeResponse
 func (client *Client) DescribeDBTablesRecoveryTimeRangeWithOptions(request *DescribeDBTablesRecoveryTimeRangeRequest, runtime *util.RuntimeOptions) (_result *DescribeDBTablesRecoveryTimeRangeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4583,6 +4704,9 @@ func (client *Client) DescribeDBTablesRecoveryTimeRangeWithOptions(request *Desc
 	return _result, _err
 }
 
+// @param request - DescribeDBTablesRecoveryTimeRangeRequest
+//
+// @return DescribeDBTablesRecoveryTimeRangeResponse
 func (client *Client) DescribeDBTablesRecoveryTimeRange(request *DescribeDBTablesRecoveryTimeRangeRequest) (_result *DescribeDBTablesRecoveryTimeRangeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBTablesRecoveryTimeRangeResponse{}
@@ -4594,6 +4718,10 @@ func (client *Client) DescribeDBTablesRecoveryTimeRange(request *DescribeDBTable
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the storage information of a downloaded backup set.
+//
 // Description:
 //
 // ### [](#)Supported database engines
@@ -4606,11 +4734,11 @@ func (client *Client) DescribeDBTablesRecoveryTimeRange(request *DescribeDBTable
 //
 // ### [](#)References
 //
-// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98819.html)
 //
-// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96774.html)
 //
-// 	- [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
+// 	- [Download the backup files of a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/2627635.html)
 //
 // @param request - DescribeDownloadBackupSetStorageInfoRequest
 //
@@ -4666,6 +4794,10 @@ func (client *Client) DescribeDownloadBackupSetStorageInfoWithOptions(request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the storage information of a downloaded backup set.
+//
 // Description:
 //
 // ### [](#)Supported database engines
@@ -4678,11 +4810,11 @@ func (client *Client) DescribeDownloadBackupSetStorageInfoWithOptions(request *D
 //
 // ### [](#)References
 //
-// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98819.html)
 //
-// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96774.html)
 //
-// 	- [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
+// 	- [Download the backup files of a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/2627635.html)
 //
 // @param request - DescribeDownloadBackupSetStorageInfoRequest
 //
@@ -4698,6 +4830,10 @@ func (client *Client) DescribeDownloadBackupSetStorageInfo(request *DescribeDown
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether an instance supports the advanced download feature.
+//
 // Description:
 //
 // ### [](#)Supported database engines
@@ -4712,11 +4848,11 @@ func (client *Client) DescribeDownloadBackupSetStorageInfo(request *DescribeDown
 //
 // You can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
 //
-// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98819.html)
 //
-// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96774.html)
 //
-// 	- [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
+// 	- [Download the backup files of a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/2627635.html)
 //
 // @param request - DescribeDownloadSupportRequest
 //
@@ -4760,6 +4896,10 @@ func (client *Client) DescribeDownloadSupportWithOptions(request *DescribeDownlo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether an instance supports the advanced download feature.
+//
 // Description:
 //
 // ### [](#)Supported database engines
@@ -4774,11 +4914,11 @@ func (client *Client) DescribeDownloadSupportWithOptions(request *DescribeDownlo
 //
 // You can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
 //
-// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98819.html)
 //
-// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96774.html)
 //
-// 	- [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
+// 	- [Download the backup files of a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/2627635.html)
 //
 // @param request - DescribeDownloadSupportRequest
 //
@@ -4794,6 +4934,10 @@ func (client *Client) DescribeDownloadSupport(request *DescribeDownloadSupportRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the advanced download tasks for an ApsaraDB RDS for MySQL instance, an ApsaraDB RDS for PostgreSQL instance, or a PolarDB for MySQL cluster.
+//
 // Description:
 //
 // ### [](#)Supported database engines
@@ -4806,11 +4950,11 @@ func (client *Client) DescribeDownloadSupport(request *DescribeDownloadSupportRe
 //
 // ### [](#)References
 //
-// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98819.html)
 //
-// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96774.html)
 //
-// 	- [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
+// 	- [Download the backup files of a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/2627635.html)
 //
 // @param request - DescribeDownloadTaskRequest
 //
@@ -4894,6 +5038,10 @@ func (client *Client) DescribeDownloadTaskWithOptions(request *DescribeDownloadT
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the advanced download tasks for an ApsaraDB RDS for MySQL instance, an ApsaraDB RDS for PostgreSQL instance, or a PolarDB for MySQL cluster.
+//
 // Description:
 //
 // ### [](#)Supported database engines
@@ -4906,11 +5054,11 @@ func (client *Client) DescribeDownloadTaskWithOptions(request *DescribeDownloadT
 //
 // ### [](#)References
 //
-// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+// 	- [Download the backup files of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98819.html)
 //
-// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+// 	- [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96774.html)
 //
-// 	- [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
+// 	- [Download the backup files of a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/2627635.html)
 //
 // @param request - DescribeDownloadTaskRequest
 //
@@ -4926,9 +5074,13 @@ func (client *Client) DescribeDownloadTask(request *DescribeDownloadTaskRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the snapshots of an instance.
+//
 // Description:
 //
-// Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only for the Database Backup (DBS) API of the 2021-01-01 version.
+// Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/203154.html) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](https://help.aliyun.com/document_detail/185577.html). This operation is available only for the Database Backup (DBS) API of the 2021-01-01 version.
 //
 // @param request - DescribeSandboxBackupSetsRequest
 //
@@ -4980,9 +5132,13 @@ func (client *Client) DescribeSandboxBackupSetsWithOptions(request *DescribeSand
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the snapshots of an instance.
+//
 // Description:
 //
-// Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only for the Database Backup (DBS) API of the 2021-01-01 version.
+// Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/203154.html) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](https://help.aliyun.com/document_detail/185577.html). This operation is available only for the Database Backup (DBS) API of the 2021-01-01 version.
 //
 // @param request - DescribeSandboxBackupSetsRequest
 //
@@ -4998,6 +5154,10 @@ func (client *Client) DescribeSandboxBackupSets(request *DescribeSandboxBackupSe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries sandbox instances that are created within an account.
+//
 // Description:
 //
 // This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
@@ -5052,6 +5212,10 @@ func (client *Client) DescribeSandboxInstancesWithOptions(request *DescribeSandb
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries sandbox instances that are created within an account.
+//
 // Description:
 //
 // This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
@@ -5070,9 +5234,13 @@ func (client *Client) DescribeSandboxInstances(request *DescribeSandboxInstances
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the recoverable time range of a sandbox instance.
+//
 // Description:
 //
-// Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
+// Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/203154.html) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](https://help.aliyun.com/document_detail/185577.html). This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
 //
 // @param request - DescribeSandboxRecoveryTimeRequest
 //
@@ -5112,9 +5280,13 @@ func (client *Client) DescribeSandboxRecoveryTimeWithOptions(request *DescribeSa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the recoverable time range of a sandbox instance.
+//
 // Description:
 //
-// Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
+// Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/203154.html) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](https://help.aliyun.com/document_detail/185577.html). This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
 //
 // @param request - DescribeSandboxRecoveryTimeRequest
 //
@@ -5130,6 +5302,11 @@ func (client *Client) DescribeSandboxRecoveryTime(request *DescribeSandboxRecove
 	return _result, _err
 }
 
+// @param request - ModifyDBTablesRecoveryStateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBTablesRecoveryStateResponse
 func (client *Client) ModifyDBTablesRecoveryStateWithOptions(request *ModifyDBTablesRecoveryStateRequest, runtime *util.RuntimeOptions) (_result *ModifyDBTablesRecoveryStateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5175,6 +5352,9 @@ func (client *Client) ModifyDBTablesRecoveryStateWithOptions(request *ModifyDBTa
 	return _result, _err
 }
 
+// @param request - ModifyDBTablesRecoveryStateRequest
+//
+// @return ModifyDBTablesRecoveryStateResponse
 func (client *Client) ModifyDBTablesRecoveryState(request *ModifyDBTablesRecoveryStateRequest) (_result *ModifyDBTablesRecoveryStateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBTablesRecoveryStateResponse{}
@@ -5186,6 +5366,11 @@ func (client *Client) ModifyDBTablesRecoveryState(request *ModifyDBTablesRecover
 	return _result, _err
 }
 
+// @param request - SupportDBTableRecoveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SupportDBTableRecoveryResponse
 func (client *Client) SupportDBTableRecoveryWithOptions(request *SupportDBTableRecoveryRequest, runtime *util.RuntimeOptions) (_result *SupportDBTableRecoveryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5223,6 +5408,9 @@ func (client *Client) SupportDBTableRecoveryWithOptions(request *SupportDBTableR
 	return _result, _err
 }
 
+// @param request - SupportDBTableRecoveryRequest
+//
+// @return SupportDBTableRecoveryResponse
 func (client *Client) SupportDBTableRecovery(request *SupportDBTableRecoveryRequest) (_result *SupportDBTableRecoveryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SupportDBTableRecoveryResponse{}
