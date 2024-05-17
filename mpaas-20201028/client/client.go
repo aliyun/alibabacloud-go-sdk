@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,10 +10,14 @@ import (
 )
 
 type AddMdsMiniConfigRequest struct {
-	AppId                               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMiniConfigAddJsonStr *string `json:"MpaasMappcenterMiniConfigAddJsonStr,omitempty" xml:"MpaasMappcenterMiniConfigAddJsonStr,omitempty"`
-	TenantId                            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	WorkspaceId                         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s AddMdsMiniConfigRequest) String() string {
@@ -176,9 +177,12 @@ func (s *AddMdsMiniConfigResponse) SetBody(v *AddMdsMiniConfigResponseBody) *Add
 }
 
 type CancelPushSchedulerRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Type        *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	UniqueIds   *string `json:"UniqueIds,omitempty" xml:"UniqueIds,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Type  *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	UniqueIds *string `json:"UniqueIds,omitempty" xml:"UniqueIds,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -275,12 +279,19 @@ func (s *CancelPushSchedulerResponse) SetBody(v *CancelPushSchedulerResponseBody
 }
 
 type ChangeMcubeMiniTaskStatusRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	PackageId   *int64  `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	TaskId      *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskStatus  *int64  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	PackageId *int64 `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	// This parameter is required.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	TaskStatus *int64 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -719,7 +730,8 @@ func (s *ChangeMcubePublicTaskStatusResponse) SetBody(v *ChangeMcubePublicTaskSt
 }
 
 type CopyMcdpGroupRequest struct {
-	AppId                               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpGroupCopyJsonStr *string `json:"MpaasMappcenterMcdpGroupCopyJsonStr,omitempty" xml:"MpaasMappcenterMcdpGroupCopyJsonStr,omitempty"`
 	TenantId                            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -852,8 +864,193 @@ func (s *CopyMcdpGroupResponse) SetBody(v *CopyMcdpGroupResponseBody) *CopyMcdpG
 	return s
 }
 
+type CreateLinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BB5953C300957
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// false
+	Cors *string `json:"Cors,omitempty" xml:"Cors,omitempty"`
+	// example:
+	//
+	// x519.cn
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// txt
+	Dynamicfield *string `json:"Dynamicfield,omitempty" xml:"Dynamicfield,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://********
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLinkRequest) SetAppId(v string) *CreateLinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateLinkRequest) SetCors(v string) *CreateLinkRequest {
+	s.Cors = &v
+	return s
+}
+
+func (s *CreateLinkRequest) SetDomain(v string) *CreateLinkRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateLinkRequest) SetDynamicfield(v string) *CreateLinkRequest {
+	s.Dynamicfield = &v
+	return s
+}
+
+func (s *CreateLinkRequest) SetTargetUrl(v string) *CreateLinkRequest {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *CreateLinkRequest) SetWorkspaceId(v string) *CreateLinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateLinkResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 0CC8A9CB-9BA3-13FD-A404-6E2E7461881A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	ResultCode    *string                              `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultContent *CreateLinkResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+}
+
+func (s CreateLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLinkResponseBody) SetRequestId(v string) *CreateLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateLinkResponseBody) SetResultCode(v string) *CreateLinkResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *CreateLinkResponseBody) SetResultContent(v *CreateLinkResponseBodyResultContent) *CreateLinkResponseBody {
+	s.ResultContent = v
+	return s
+}
+
+func (s *CreateLinkResponseBody) SetResultMessage(v string) *CreateLinkResponseBody {
+	s.ResultMessage = &v
+	return s
+}
+
+type CreateLinkResponseBodyResultContent struct {
+	// example:
+	//
+	// https://xxx/xxx
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// https://xxx/xxx/xxx
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// example:
+	//
+	// 0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s CreateLinkResponseBodyResultContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLinkResponseBodyResultContent) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLinkResponseBodyResultContent) SetData(v string) *CreateLinkResponseBodyResultContent {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateLinkResponseBodyResultContent) SetTarget(v string) *CreateLinkResponseBodyResultContent {
+	s.Target = &v
+	return s
+}
+
+func (s *CreateLinkResponseBodyResultContent) SetVersion(v string) *CreateLinkResponseBodyResultContent {
+	s.Version = &v
+	return s
+}
+
+type CreateLinkResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLinkResponse) SetHeaders(v map[string]*string) *CreateLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLinkResponse) SetStatusCode(v int32) *CreateLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLinkResponse) SetBody(v *CreateLinkResponseBody) *CreateLinkResponse {
+	s.Body = v
+	return s
+}
+
 type CreateMasCrowdRequest struct {
-	AppId                                    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpMasCrowdCreateJsonStr *string `json:"MpaasMappcenterMcdpMasCrowdCreateJsonStr,omitempty" xml:"MpaasMappcenterMcdpMasCrowdCreateJsonStr,omitempty"`
 	TenantId                                 *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                              *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -987,7 +1184,8 @@ func (s *CreateMasCrowdResponse) SetBody(v *CreateMasCrowdResponseBody) *CreateM
 }
 
 type CreateMasFunnelRequest struct {
-	AppId                                     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpMasFunnelCreateJsonStr *string `json:"MpaasMappcenterMcdpMasFunnelCreateJsonStr,omitempty" xml:"MpaasMappcenterMcdpMasFunnelCreateJsonStr,omitempty"`
 	TenantId                                  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                               *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -1121,7 +1319,8 @@ func (s *CreateMasFunnelResponse) SetBody(v *CreateMasFunnelResponseBody) *Creat
 }
 
 type CreateMcdpEventRequest struct {
-	AppId                                 *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpEventCreateJsonStr *string `json:"MpaasMappcenterMcdpEventCreateJsonStr,omitempty" xml:"MpaasMappcenterMcdpEventCreateJsonStr,omitempty"`
 	TenantId                              *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                           *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -1255,7 +1454,8 @@ func (s *CreateMcdpEventResponse) SetBody(v *CreateMcdpEventResponseBody) *Creat
 }
 
 type CreateMcdpEventAttributeRequest struct {
-	AppId                                          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpEventAttributeCreateJsonStr *string `json:"MpaasMappcenterMcdpEventAttributeCreateJsonStr,omitempty" xml:"MpaasMappcenterMcdpEventAttributeCreateJsonStr,omitempty"`
 	TenantId                                       *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                                    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -1389,7 +1589,8 @@ func (s *CreateMcdpEventAttributeResponse) SetBody(v *CreateMcdpEventAttributeRe
 }
 
 type CreateMcdpGroupRequest struct {
-	AppId                                 *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpGroupCreateJsonStr *string `json:"MpaasMappcenterMcdpGroupCreateJsonStr,omitempty" xml:"MpaasMappcenterMcdpGroupCreateJsonStr,omitempty"`
 	TenantId                              *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                           *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -1523,7 +1724,8 @@ func (s *CreateMcdpGroupResponse) SetBody(v *CreateMcdpGroupResponseBody) *Creat
 }
 
 type CreateMcdpMaterialRequest struct {
-	AppId                                    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpMaterialCreateJsonStr *string `json:"MpaasMappcenterMcdpMaterialCreateJsonStr,omitempty" xml:"MpaasMappcenterMcdpMaterialCreateJsonStr,omitempty"`
 	TenantId                                 *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                              *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -1657,7 +1859,8 @@ func (s *CreateMcdpMaterialResponse) SetBody(v *CreateMcdpMaterialResponseBody) 
 }
 
 type CreateMcdpZoneRequest struct {
-	AppId                                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpZoneCreateJsonStr *string `json:"MpaasMappcenterMcdpZoneCreateJsonStr,omitempty" xml:"MpaasMappcenterMcdpZoneCreateJsonStr,omitempty"`
 	TenantId                             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                          *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -1791,10 +1994,15 @@ func (s *CreateMcdpZoneResponse) SetBody(v *CreateMcdpZoneResponseBody) *CreateM
 }
 
 type CreateMcubeMiniAppRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	H5Id        *string `json:"H5Id,omitempty" xml:"H5Id,omitempty"`
-	H5Name      *string `json:"H5Name,omitempty" xml:"H5Name,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	H5Id *string `json:"H5Id,omitempty" xml:"H5Id,omitempty"`
+	// This parameter is required.
+	H5Name *string `json:"H5Name,omitempty" xml:"H5Name,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -1925,17 +2133,24 @@ func (s *CreateMcubeMiniAppResponse) SetBody(v *CreateMcubeMiniAppResponseBody) 
 }
 
 type CreateMcubeMiniTaskRequest struct {
+	// This parameter is required.
 	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	GreyConfigInfo  *string `json:"GreyConfigInfo,omitempty" xml:"GreyConfigInfo,omitempty"`
 	GreyEndtimeData *string `json:"GreyEndtimeData,omitempty" xml:"GreyEndtimeData,omitempty"`
 	GreyNum         *int64  `json:"GreyNum,omitempty" xml:"GreyNum,omitempty"`
-	Memo            *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	PackageId       *int64  `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	PublishMode     *int64  `json:"PublishMode,omitempty" xml:"PublishMode,omitempty"`
-	PublishType     *int64  `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
-	TenantId        *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	WhitelistIds    *string `json:"WhitelistIds,omitempty" xml:"WhitelistIds,omitempty"`
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	// This parameter is required.
+	PackageId *int64 `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	// This parameter is required.
+	PublishMode *int64 `json:"PublishMode,omitempty" xml:"PublishMode,omitempty"`
+	// This parameter is required.
+	PublishType *int64 `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	// This parameter is required.
+	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	WhitelistIds *string `json:"WhitelistIds,omitempty" xml:"WhitelistIds,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateMcubeMiniTaskRequest) String() string {
@@ -3239,9 +3454,13 @@ func (s *CreateMcubeUpgradeTaskResponse) SetBody(v *CreateMcubeUpgradeTaskRespon
 }
 
 type CreateMcubeVhostRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Vhost       *string `json:"Vhost,omitempty" xml:"Vhost,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	Vhost *string `json:"Vhost,omitempty" xml:"Vhost,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -3367,11 +3586,16 @@ func (s *CreateMcubeVhostResponse) SetBody(v *CreateMcubeVhostResponseBody) *Cre
 }
 
 type CreateMcubeWhitelistRequest struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WhiteListName *string `json:"WhiteListName,omitempty" xml:"WhiteListName,omitempty"`
+	// This parameter is required.
 	WhitelistType *string `json:"WhitelistType,omitempty" xml:"WhitelistType,omitempty"`
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateMcubeWhitelistRequest) String() string {
@@ -3501,11 +3725,16 @@ func (s *CreateMcubeWhitelistResponse) SetBody(v *CreateMcubeWhitelistResponseBo
 }
 
 type CreateMcubeWhitelistForIdeRequest struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	TenantId       *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
 	WhitelistValue *string `json:"WhitelistValue,omitempty" xml:"WhitelistValue,omitempty"`
-	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateMcubeWhitelistForIdeRequest) String() string {
@@ -3639,15 +3868,18 @@ type CreateMdsMiniprogramTaskRequest struct {
 	GreyConfigInfo  *string `json:"GreyConfigInfo,omitempty" xml:"GreyConfigInfo,omitempty"`
 	GreyEndtimeData *string `json:"GreyEndtimeData,omitempty" xml:"GreyEndtimeData,omitempty"`
 	GreyNum         *string `json:"GreyNum,omitempty" xml:"GreyNum,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Memo            *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	PackageId       *int64  `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	PublishMode     *string `json:"PublishMode,omitempty" xml:"PublishMode,omitempty"`
-	PublishType     *int64  `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
-	SyncMode        *string `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
-	TenantId        *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	WhitelistIds    *string `json:"WhitelistIds,omitempty" xml:"WhitelistIds,omitempty"`
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	// This parameter is required.
+	PackageId   *int64  `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	PublishMode *string `json:"PublishMode,omitempty" xml:"PublishMode,omitempty"`
+	// This parameter is required.
+	PublishType  *int64  `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	SyncMode     *string `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
+	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	WhitelistIds *string `json:"WhitelistIds,omitempty" xml:"WhitelistIds,omitempty"`
+	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateMdsMiniprogramTaskRequest) String() string {
@@ -3852,10 +4084,14 @@ func (s *CreateMdsMiniprogramTaskResponse) SetBody(v *CreateMdsMiniprogramTaskRe
 }
 
 type CreateMsaEnhanceRequest struct {
-	AppId                                  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMsaEnhanceCreateJsonStr *string `json:"MpaasMappcenterMsaEnhanceCreateJsonStr,omitempty" xml:"MpaasMappcenterMsaEnhanceCreateJsonStr,omitempty"`
-	TenantId                               *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	WorkspaceId                            *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateMsaEnhanceRequest) String() string {
@@ -3986,20 +4222,25 @@ func (s *CreateMsaEnhanceResponse) SetBody(v *CreateMsaEnhanceResponseBody) *Cre
 }
 
 type CreateOpenGlobalDataRequest struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppMaxVersion  *string `json:"AppMaxVersion,omitempty" xml:"AppMaxVersion,omitempty"`
-	AppMinVersion  *string `json:"AppMinVersion,omitempty" xml:"AppMinVersion,omitempty"`
-	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	ExtAttrStr     *string `json:"ExtAttrStr,omitempty" xml:"ExtAttrStr,omitempty"`
-	MaxUid         *int64  `json:"MaxUid,omitempty" xml:"MaxUid,omitempty"`
-	MinUid         *int64  `json:"MinUid,omitempty" xml:"MinUid,omitempty"`
-	OsType         *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	Payload        *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// This parameter is required.
+	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppMaxVersion *string `json:"AppMaxVersion,omitempty" xml:"AppMaxVersion,omitempty"`
+	AppMinVersion *string `json:"AppMinVersion,omitempty" xml:"AppMinVersion,omitempty"`
+	// This parameter is required.
+	BizType    *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	ExtAttrStr *string `json:"ExtAttrStr,omitempty" xml:"ExtAttrStr,omitempty"`
+	MaxUid     *int64  `json:"MaxUid,omitempty" xml:"MaxUid,omitempty"`
+	MinUid     *int64  `json:"MinUid,omitempty" xml:"MinUid,omitempty"`
+	OsType     *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// This parameter is required.
+	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// This parameter is required.
 	ThirdMsgId     *string `json:"ThirdMsgId,omitempty" xml:"ThirdMsgId,omitempty"`
 	Uids           *string `json:"Uids,omitempty" xml:"Uids,omitempty"`
 	ValidTimeEnd   *int64  `json:"ValidTimeEnd,omitempty" xml:"ValidTimeEnd,omitempty"`
 	ValidTimeStart *int64  `json:"ValidTimeStart,omitempty" xml:"ValidTimeStart,omitempty"`
-	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateOpenGlobalDataRequest) String() string {
@@ -4145,19 +4386,25 @@ func (s *CreateOpenGlobalDataResponse) SetBody(v *CreateOpenGlobalDataResponseBo
 }
 
 type CreateOpenSingleDataRequest struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppMaxVersion  *string `json:"AppMaxVersion,omitempty" xml:"AppMaxVersion,omitempty"`
-	AppMinVersion  *string `json:"AppMinVersion,omitempty" xml:"AppMinVersion,omitempty"`
-	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CheckOnline    *bool   `json:"CheckOnline,omitempty" xml:"CheckOnline,omitempty"`
-	ExtAttrStr     *string `json:"ExtAttrStr,omitempty" xml:"ExtAttrStr,omitempty"`
-	LinkToken      *string `json:"LinkToken,omitempty" xml:"LinkToken,omitempty"`
-	OsType         *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	Payload        *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// This parameter is required.
+	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppMaxVersion *string `json:"AppMaxVersion,omitempty" xml:"AppMaxVersion,omitempty"`
+	AppMinVersion *string `json:"AppMinVersion,omitempty" xml:"AppMinVersion,omitempty"`
+	// This parameter is required.
+	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CheckOnline *bool   `json:"CheckOnline,omitempty" xml:"CheckOnline,omitempty"`
+	ExtAttrStr  *string `json:"ExtAttrStr,omitempty" xml:"ExtAttrStr,omitempty"`
+	// This parameter is required.
+	LinkToken *string `json:"LinkToken,omitempty" xml:"LinkToken,omitempty"`
+	OsType    *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// This parameter is required.
+	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// This parameter is required.
 	ThirdMsgId     *string `json:"ThirdMsgId,omitempty" xml:"ThirdMsgId,omitempty"`
 	ValidTimeEnd   *int64  `json:"ValidTimeEnd,omitempty" xml:"ValidTimeEnd,omitempty"`
 	ValidTimeStart *int64  `json:"ValidTimeStart,omitempty" xml:"ValidTimeStart,omitempty"`
-	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateOpenSingleDataRequest) String() string {
@@ -4461,7 +4708,8 @@ func (s *DeleteCubecardWhitelistContentResponse) SetBody(v *DeleteCubecardWhitel
 }
 
 type DeleteMcdpAimRequest struct {
-	AppId                               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpAimDeleteJsonStr *string `json:"MpaasMappcenterMcdpAimDeleteJsonStr,omitempty" xml:"MpaasMappcenterMcdpAimDeleteJsonStr,omitempty"`
 	TenantId                            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -4595,7 +4843,8 @@ func (s *DeleteMcdpAimResponse) SetBody(v *DeleteMcdpAimResponseBody) *DeleteMcd
 }
 
 type DeleteMcdpCrowdRequest struct {
-	AppId                                 *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpCrowdDeleteJsonStr *string `json:"MpaasMappcenterMcdpCrowdDeleteJsonStr,omitempty" xml:"MpaasMappcenterMcdpCrowdDeleteJsonStr,omitempty"`
 	TenantId                              *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                           *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -4729,7 +4978,8 @@ func (s *DeleteMcdpCrowdResponse) SetBody(v *DeleteMcdpCrowdResponseBody) *Delet
 }
 
 type DeleteMcdpEventAttributeByIdRequest struct {
-	AppId                                          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpEventAttributeDeleteJsonStr *string `json:"MpaasMappcenterMcdpEventAttributeDeleteJsonStr,omitempty" xml:"MpaasMappcenterMcdpEventAttributeDeleteJsonStr,omitempty"`
 	TenantId                                       *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                                    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -4863,7 +5113,8 @@ func (s *DeleteMcdpEventAttributeByIdResponse) SetBody(v *DeleteMcdpEventAttribu
 }
 
 type DeleteMcdpEventByIdRequest struct {
-	AppId                                 *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpEventDeleteJsonStr *string `json:"MpaasMappcenterMcdpEventDeleteJsonStr,omitempty" xml:"MpaasMappcenterMcdpEventDeleteJsonStr,omitempty"`
 	TenantId                              *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                           *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -4997,7 +5248,8 @@ func (s *DeleteMcdpEventByIdResponse) SetBody(v *DeleteMcdpEventByIdResponseBody
 }
 
 type DeleteMcdpMaterialRequest struct {
-	AppId                                    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpMaterialDeleteJsonStr *string `json:"MpaasMappcenterMcdpMaterialDeleteJsonStr,omitempty" xml:"MpaasMappcenterMcdpMaterialDeleteJsonStr,omitempty"`
 	TenantId                                 *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                              *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -5131,7 +5383,8 @@ func (s *DeleteMcdpMaterialResponse) SetBody(v *DeleteMcdpMaterialResponseBody) 
 }
 
 type DeleteMcdpZoneRequest struct {
-	AppId                                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMcdpZoneDeleteJsonStr *string `json:"MpaasMappcenterMcdpZoneDeleteJsonStr,omitempty" xml:"MpaasMappcenterMcdpZoneDeleteJsonStr,omitempty"`
 	TenantId                             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId                          *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -5265,9 +5518,13 @@ func (s *DeleteMcdpZoneResponse) SetBody(v *DeleteMcdpZoneResponseBody) *DeleteM
 }
 
 type DeleteMcubeMiniAppRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	H5Id        *string `json:"H5Id,omitempty" xml:"H5Id,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	H5Id *string `json:"H5Id,omitempty" xml:"H5Id,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -5667,9 +5924,13 @@ func (s *DeleteMcubeUpgradeResourceResponse) SetBody(v *DeleteMcubeUpgradeResour
 }
 
 type DeleteMcubeWhitelistRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -5958,8 +6219,11 @@ func (s *DeleteMdsWhitelistContentResponse) SetBody(v *DeleteMdsWhitelistContent
 }
 
 type ExistMcubeRsaKeyRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -6083,10 +6347,13 @@ type ExportMappCenterAppConfigRequest struct {
 	ApkFileUrl    *string `json:"ApkFileUrl,omitempty" xml:"ApkFileUrl,omitempty"`
 	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	CertRsaBase64 *string `json:"CertRsaBase64,omitempty" xml:"CertRsaBase64,omitempty"`
-	Identifier    *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	OnexFlag      *bool   `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
-	SystemType    *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// This parameter is required.
+	OnexFlag *bool `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
+	// This parameter is required.
+	SystemType  *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ExportMappCenterAppConfigRequest) String() string {
@@ -6226,9 +6493,12 @@ func (s *ExportMappCenterAppConfigResponse) SetBody(v *ExportMappCenterAppConfig
 }
 
 type GetFileTokenForUploadToMsaRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	OnexFlag    *bool   `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	OnexFlag *bool   `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -6413,9 +6683,12 @@ func (s *GetFileTokenForUploadToMsaResponse) SetBody(v *GetFileTokenForUploadToM
 }
 
 type GetLogUrlInMsaRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -6547,9 +6820,13 @@ func (s *GetLogUrlInMsaResponse) SetBody(v *GetLogUrlInMsaResponseBody) *GetLogU
 }
 
 type GetMcubeFileTokenRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	OnexFlag    *bool   `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	OnexFlag *bool `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -8449,9 +8726,13 @@ func (s *GetMcubeUpgradeTaskInfoResponse) SetBody(v *GetMcubeUpgradeTaskInfoResp
 }
 
 type GetMdsMiniConfigRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	H5Id        *string `json:"H5Id,omitempty" xml:"H5Id,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	H5Id *string `json:"H5Id,omitempty" xml:"H5Id,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -8949,9 +9230,13 @@ func (s *GetMdsMiniConfigResponse) SetBody(v *GetMdsMiniConfigResponseBody) *Get
 }
 
 type GetUserAppDonwloadUrlInMsaRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -9106,9 +9391,13 @@ func (s *GetUserAppDonwloadUrlInMsaResponse) SetBody(v *GetUserAppDonwloadUrlInM
 }
 
 type GetUserAppEnhanceProcessInMsaRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -9406,9 +9695,13 @@ func (s *GetUserAppEnhanceProcessInMsaResponse) SetBody(v *GetUserAppEnhanceProc
 }
 
 type GetUserAppUploadProcessInMsaRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -10345,11 +10638,14 @@ func (s *ListMcdpAimResponse) SetBody(v *ListMcdpAimResponseBody) *ListMcdpAimRe
 }
 
 type ListMcubeMiniAppsRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Keyword     *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Keyword  *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -10550,13 +10846,18 @@ func (s *ListMcubeMiniAppsResponse) SetBody(v *ListMcubeMiniAppsResponseBody) *L
 }
 
 type ListMcubeMiniPackagesRequest struct {
-	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	H5Id         *string `json:"H5Id,omitempty" xml:"H5Id,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	H5Id *string `json:"H5Id,omitempty" xml:"H5Id,omitempty"`
+	// This parameter is required.
 	PackageTypes *string `json:"PackageTypes,omitempty" xml:"PackageTypes,omitempty"`
 	PageNum      *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListMcubeMiniPackagesRequest) String() string {
@@ -10863,9 +11164,13 @@ func (s *ListMcubeMiniPackagesResponse) SetBody(v *ListMcubeMiniPackagesResponse
 }
 
 type ListMcubeMiniTasksRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -12867,12 +13172,15 @@ func (s *ListMcubeUpgradeTasksResponse) SetBody(v *ListMcubeUpgradeTasksResponse
 }
 
 type ListMcubeWhitelistsRequest struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	PageNum       *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
 	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WhitelistName *string `json:"WhitelistName,omitempty" xml:"WhitelistName,omitempty"`
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListMcubeWhitelistsRequest) String() string {
@@ -13945,10 +14253,13 @@ func (s *ListMgsApiResponse) SetBody(v *ListMgsApiResponseBody) *ListMgsApiRespo
 }
 
 type LogMsaQueryRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	OnexFlag    *string `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	OnexFlag *string `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -14085,11 +14396,30 @@ func (s *LogMsaQueryResponse) SetBody(v *LogMsaQueryResponseBody) *LogMsaQueryRe
 }
 
 type MTRSOCRServiceRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ImageRaw    *string `json:"ImageRaw,omitempty" xml:"ImageRaw,omitempty"`
-	Mask        *bool   `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// ONEX8C7E7FA161089
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xydasf==ac
+	ImageRaw *string `json:"ImageRaw,omitempty" xml:"ImageRaw,omitempty"`
+	Mask     *bool   `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	// example:
+	//
+	// tabcaa
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ID_CARD_OCR
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// default
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -14132,12 +14462,24 @@ func (s *MTRSOCRServiceRequest) SetWorkspaceId(v string) *MTRSOCRServiceRequest 
 }
 
 type MTRSOCRServiceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Msg  *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// D9B3C4E7-BEC7-1E2C-86A3-EA985B4FFD73
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// example:
+	//
+	// {"aa":"ss"}
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true/false
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 777799aa
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s MTRSOCRServiceResponseBody) String() string {
@@ -15237,12 +15579,17 @@ func (s *OpenApiUpdateActiveSceneResponse) SetBody(v *OpenApiUpdateActiveSceneRe
 }
 
 type PushBindRequest struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	DeliveryToken *string `json:"DeliveryToken,omitempty" xml:"DeliveryToken,omitempty"`
-	OsType        *int32  `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	PhoneNumber   *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	OsType      *int32  `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// This parameter is required.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PushBindRequest) String() string {
@@ -15377,28 +15724,34 @@ func (s *PushBindResponse) SetBody(v *PushBindResponseBody) *PushBindResponse {
 }
 
 type PushBroadcastRequest struct {
-	AndroidChannel       *int32                 `json:"AndroidChannel,omitempty" xml:"AndroidChannel,omitempty"`
-	AppId                *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BindPeriod           *int32                 `json:"BindPeriod,omitempty" xml:"BindPeriod,omitempty"`
-	ChannelId            *string                `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Classification       *string                `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	DeliveryType         *int64                 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	ExpiredSeconds       *int64                 `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
-	ExtendedParams       *string                `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	MiChannelId          *string                `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
-	Msgkey               *string                `json:"Msgkey,omitempty" xml:"Msgkey,omitempty"`
-	NotifyType           *string                `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction           *int64                 `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	PushStatus           *int64                 `json:"PushStatus,omitempty" xml:"PushStatus,omitempty"`
-	Silent               *int64                 `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	StrategyContent      *string                `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType         *int32                 `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	TaskName             *string                `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TemplateKeyValue     *string                `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
+	AndroidChannel *int32 `json:"AndroidChannel,omitempty" xml:"AndroidChannel,omitempty"`
+	// This parameter is required.
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BindPeriod     *int32  `json:"BindPeriod,omitempty" xml:"BindPeriod,omitempty"`
+	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	// This parameter is required.
+	DeliveryType *int64 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	// This parameter is required.
+	ExpiredSeconds *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
+	ExtendedParams *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	MiChannelId    *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
+	// This parameter is required.
+	Msgkey           *string `json:"Msgkey,omitempty" xml:"Msgkey,omitempty"`
+	NotifyType       *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction       *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	PushStatus       *int64  `json:"PushStatus,omitempty" xml:"PushStatus,omitempty"`
+	Silent           *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	StrategyContent  *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType     *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	TaskName         *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TemplateKeyValue *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
+	// This parameter is required.
 	TemplateName         *string                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	ThirdChannelCategory map[string]interface{} `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
 	UnBindPeriod         *int64                 `json:"UnBindPeriod,omitempty" xml:"UnBindPeriod,omitempty"`
-	WorkspaceId          *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PushBroadcastRequest) String() string {
@@ -15520,28 +15873,34 @@ func (s *PushBroadcastRequest) SetWorkspaceId(v string) *PushBroadcastRequest {
 }
 
 type PushBroadcastShrinkRequest struct {
-	AndroidChannel             *int32  `json:"AndroidChannel,omitempty" xml:"AndroidChannel,omitempty"`
-	AppId                      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BindPeriod                 *int32  `json:"BindPeriod,omitempty" xml:"BindPeriod,omitempty"`
-	ChannelId                  *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Classification             *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	DeliveryType               *int64  `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	ExpiredSeconds             *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
-	ExtendedParams             *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	MiChannelId                *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
-	Msgkey                     *string `json:"Msgkey,omitempty" xml:"Msgkey,omitempty"`
-	NotifyType                 *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction                 *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	PushStatus                 *int64  `json:"PushStatus,omitempty" xml:"PushStatus,omitempty"`
-	Silent                     *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	StrategyContent            *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType               *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	TaskName                   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TemplateKeyValue           *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
+	AndroidChannel *int32 `json:"AndroidChannel,omitempty" xml:"AndroidChannel,omitempty"`
+	// This parameter is required.
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BindPeriod     *int32  `json:"BindPeriod,omitempty" xml:"BindPeriod,omitempty"`
+	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	// This parameter is required.
+	DeliveryType *int64 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	// This parameter is required.
+	ExpiredSeconds *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
+	ExtendedParams *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	MiChannelId    *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
+	// This parameter is required.
+	Msgkey           *string `json:"Msgkey,omitempty" xml:"Msgkey,omitempty"`
+	NotifyType       *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction       *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	PushStatus       *int64  `json:"PushStatus,omitempty" xml:"PushStatus,omitempty"`
+	Silent           *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	StrategyContent  *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType     *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	TaskName         *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TemplateKeyValue *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
+	// This parameter is required.
 	TemplateName               *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	ThirdChannelCategoryShrink *string `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
 	UnBindPeriod               *int64  `json:"UnBindPeriod,omitempty" xml:"UnBindPeriod,omitempty"`
-	WorkspaceId                *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PushBroadcastShrinkRequest) String() string {
@@ -15756,26 +16115,32 @@ func (s *PushBroadcastResponse) SetBody(v *PushBroadcastResponseBody) *PushBroad
 }
 
 type PushMultipleRequest struct {
-	ActivityContentState interface{}                     `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
-	ActivityEvent        *string                         `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
-	AppId                *string                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId            *string                         `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Classification       *string                         `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	DeliveryType         *int64                          `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	DismissalDate        *int64                          `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
-	ExpiredSeconds       *int64                          `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
-	ExtendedParams       *string                         `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	MiChannelId          *string                         `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
-	NotifyType           *string                         `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction           *int64                          `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	Silent               *int64                          `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	StrategyContent      *string                         `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType         *int32                          `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	TargetMsg            []*PushMultipleRequestTargetMsg `json:"TargetMsg,omitempty" xml:"TargetMsg,omitempty" type:"Repeated"`
-	TaskName             *string                         `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TemplateName         *string                         `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	ThirdChannelCategory map[string]interface{}          `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
-	WorkspaceId          *string                         `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	ActivityContentState interface{} `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
+	ActivityEvent        *string     `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
+	// This parameter is required.
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	// This parameter is required.
+	DeliveryType  *int64 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	DismissalDate *int64 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
+	// This parameter is required.
+	ExpiredSeconds  *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
+	ExtendedParams  *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	MiChannelId     *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
+	NotifyType      *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction      *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	Silent          *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	StrategyContent *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType    *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// This parameter is required.
+	TargetMsg []*PushMultipleRequestTargetMsg `json:"TargetMsg,omitempty" xml:"TargetMsg,omitempty" type:"Repeated"`
+	TaskName  *string                         `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// This parameter is required.
+	TemplateName         *string                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	ThirdChannelCategory map[string]interface{} `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PushMultipleRequest) String() string {
@@ -15887,8 +16252,10 @@ func (s *PushMultipleRequest) SetWorkspaceId(v string) *PushMultipleRequest {
 }
 
 type PushMultipleRequestTargetMsg struct {
-	ExtendedParams   *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	MsgKey           *string `json:"MsgKey,omitempty" xml:"MsgKey,omitempty"`
+	ExtendedParams *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	// This parameter is required.
+	MsgKey *string `json:"MsgKey,omitempty" xml:"MsgKey,omitempty"`
+	// This parameter is required.
 	Target           *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	TemplateKeyValue *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
 }
@@ -15922,26 +16289,32 @@ func (s *PushMultipleRequestTargetMsg) SetTemplateKeyValue(v string) *PushMultip
 }
 
 type PushMultipleShrinkRequest struct {
-	ActivityContentState       interface{}                           `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
-	ActivityEvent              *string                               `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
-	AppId                      *string                               `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId                  *string                               `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Classification             *string                               `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	DeliveryType               *int64                                `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	DismissalDate              *int64                                `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
-	ExpiredSeconds             *int64                                `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
-	ExtendedParams             *string                               `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	MiChannelId                *string                               `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
-	NotifyType                 *string                               `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction                 *int64                                `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	Silent                     *int64                                `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	StrategyContent            *string                               `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType               *int32                                `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	TargetMsg                  []*PushMultipleShrinkRequestTargetMsg `json:"TargetMsg,omitempty" xml:"TargetMsg,omitempty" type:"Repeated"`
-	TaskName                   *string                               `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TemplateName               *string                               `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	ThirdChannelCategoryShrink *string                               `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
-	WorkspaceId                *string                               `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	ActivityContentState interface{} `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
+	ActivityEvent        *string     `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
+	// This parameter is required.
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	// This parameter is required.
+	DeliveryType  *int64 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	DismissalDate *int64 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
+	// This parameter is required.
+	ExpiredSeconds  *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
+	ExtendedParams  *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	MiChannelId     *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
+	NotifyType      *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction      *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	Silent          *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	StrategyContent *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType    *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// This parameter is required.
+	TargetMsg []*PushMultipleShrinkRequestTargetMsg `json:"TargetMsg,omitempty" xml:"TargetMsg,omitempty" type:"Repeated"`
+	TaskName  *string                               `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// This parameter is required.
+	TemplateName               *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	ThirdChannelCategoryShrink *string `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PushMultipleShrinkRequest) String() string {
@@ -16053,8 +16426,10 @@ func (s *PushMultipleShrinkRequest) SetWorkspaceId(v string) *PushMultipleShrink
 }
 
 type PushMultipleShrinkRequestTargetMsg struct {
-	ExtendedParams   *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	MsgKey           *string `json:"MsgKey,omitempty" xml:"MsgKey,omitempty"`
+	ExtendedParams *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	// This parameter is required.
+	MsgKey *string `json:"MsgKey,omitempty" xml:"MsgKey,omitempty"`
+	// This parameter is required.
 	Target           *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	TemplateKeyValue *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
 }
@@ -16181,19 +16556,23 @@ func (s *PushMultipleResponse) SetBody(v *PushMultipleResponseBody) *PushMultipl
 }
 
 type PushReportRequest struct {
-	AppId                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion              *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	Channel                 *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	ConnectType             *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
-	DeliveryToken           *string `json:"DeliveryToken,omitempty" xml:"DeliveryToken,omitempty"`
-	Imei                    *string `json:"Imei,omitempty" xml:"Imei,omitempty"`
-	Imsi                    *string `json:"Imsi,omitempty" xml:"Imsi,omitempty"`
-	Model                   *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// This parameter is required.
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion  *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	Channel     *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	ConnectType *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
+	// This parameter is required.
+	DeliveryToken *string `json:"DeliveryToken,omitempty" xml:"DeliveryToken,omitempty"`
+	Imei          *string `json:"Imei,omitempty" xml:"Imei,omitempty"`
+	Imsi          *string `json:"Imsi,omitempty" xml:"Imsi,omitempty"`
+	Model         *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// This parameter is required.
 	OsType                  *int32  `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	PushVersion             *string `json:"PushVersion,omitempty" xml:"PushVersion,omitempty"`
 	ThirdChannel            *int32  `json:"ThirdChannel,omitempty" xml:"ThirdChannel,omitempty"`
 	ThirdChannelDeviceToken *string `json:"ThirdChannelDeviceToken,omitempty" xml:"ThirdChannelDeviceToken,omitempty"`
-	WorkspaceId             *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PushReportRequest) String() string {
@@ -16363,35 +16742,42 @@ func (s *PushReportResponse) SetBody(v *PushReportResponseBody) *PushReportRespo
 }
 
 type PushSimpleRequest struct {
-	ActivityContentState interface{}            `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
-	ActivityEvent        *string                `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
-	AppId                *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId            *string                `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Classification       *string                `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	Content              *string                `json:"Content,omitempty" xml:"Content,omitempty"`
-	DeliveryType         *int64                 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	DismissalDate        *int64                 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
-	ExpiredSeconds       *int64                 `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
-	ExtendedParams       *string                `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	IconUrls             *string                `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
-	ImageUrls            *string                `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
-	MiChannelId          *string                `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
-	NotifyType           *string                `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction           *int64                 `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	PushStyle            *int32                 `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
-	Silent               *int64                 `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	SmsSignName          *string                `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
-	SmsStrategy          *int32                 `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
-	SmsTemplateCode      *string                `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
-	SmsTemplateParam     *string                `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
-	StrategyContent      *string                `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType         *int32                 `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	ActivityContentState interface{} `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
+	ActivityEvent        *string     `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
+	// This parameter is required.
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	// This parameter is required.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	DeliveryType  *int64 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	DismissalDate *int64 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
+	// This parameter is required.
+	ExpiredSeconds   *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
+	ExtendedParams   *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	IconUrls         *string `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
+	ImageUrls        *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	MiChannelId      *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
+	NotifyType       *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction       *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	PushStyle        *int32  `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
+	Silent           *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	SmsSignName      *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
+	SmsStrategy      *int32  `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
+	SmsTemplateCode  *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
+	SmsTemplateParam *string `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
+	StrategyContent  *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType     *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// This parameter is required.
 	TargetMsgkey         *string                `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
 	TaskName             *string                `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	ThirdChannelCategory map[string]interface{} `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
-	Title                *string                `json:"Title,omitempty" xml:"Title,omitempty"`
-	Uri                  *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	WorkspaceId          *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Uri   *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PushSimpleRequest) String() string {
@@ -16548,35 +16934,42 @@ func (s *PushSimpleRequest) SetWorkspaceId(v string) *PushSimpleRequest {
 }
 
 type PushSimpleShrinkRequest struct {
-	ActivityContentState       interface{} `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
-	ActivityEvent              *string     `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
-	AppId                      *string     `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId                  *string     `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Classification             *string     `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	Content                    *string     `json:"Content,omitempty" xml:"Content,omitempty"`
-	DeliveryType               *int64      `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	DismissalDate              *int64      `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
-	ExpiredSeconds             *int64      `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
-	ExtendedParams             *string     `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	IconUrls                   *string     `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
-	ImageUrls                  *string     `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
-	MiChannelId                *string     `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
-	NotifyType                 *string     `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction                 *int64      `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	PushStyle                  *int32      `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
-	Silent                     *int64      `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	SmsSignName                *string     `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
-	SmsStrategy                *int32      `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
-	SmsTemplateCode            *string     `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
-	SmsTemplateParam           *string     `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
-	StrategyContent            *string     `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType               *int32      `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	TargetMsgkey               *string     `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
-	TaskName                   *string     `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	ThirdChannelCategoryShrink *string     `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
-	Title                      *string     `json:"Title,omitempty" xml:"Title,omitempty"`
-	Uri                        *string     `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	WorkspaceId                *string     `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	ActivityContentState interface{} `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
+	ActivityEvent        *string     `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
+	// This parameter is required.
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	// This parameter is required.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	DeliveryType  *int64 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	DismissalDate *int64 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
+	// This parameter is required.
+	ExpiredSeconds   *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
+	ExtendedParams   *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	IconUrls         *string `json:"IconUrls,omitempty" xml:"IconUrls,omitempty"`
+	ImageUrls        *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	MiChannelId      *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
+	NotifyType       *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction       *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	PushStyle        *int32  `json:"PushStyle,omitempty" xml:"PushStyle,omitempty"`
+	Silent           *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	SmsSignName      *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
+	SmsStrategy      *int32  `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
+	SmsTemplateCode  *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
+	SmsTemplateParam *string `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
+	StrategyContent  *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType     *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// This parameter is required.
+	TargetMsgkey               *string `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
+	TaskName                   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	ThirdChannelCategoryShrink *string `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
+	// This parameter is required.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Uri   *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PushSimpleShrinkRequest) String() string {
@@ -16826,31 +17219,37 @@ func (s *PushSimpleResponse) SetBody(v *PushSimpleResponseBody) *PushSimpleRespo
 }
 
 type PushTemplateRequest struct {
-	ActivityContentState interface{}            `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
-	ActivityEvent        *string                `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
-	AppId                *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId            *string                `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Classification       *string                `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	DeliveryType         *int64                 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	DismissalDate        *int64                 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
-	ExpiredSeconds       *int64                 `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
-	ExtendedParams       *string                `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	MiChannelId          *string                `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
-	NotifyType           *string                `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction           *int64                 `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	Silent               *int64                 `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	SmsSignName          *string                `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
-	SmsStrategy          *int32                 `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
-	SmsTemplateCode      *string                `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
-	SmsTemplateParam     *string                `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
-	StrategyContent      *string                `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType         *int32                 `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	TargetMsgkey         *string                `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
-	TaskName             *string                `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TemplateKeyValue     *string                `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
+	ActivityContentState interface{} `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
+	ActivityEvent        *string     `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
+	// This parameter is required.
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	// This parameter is required.
+	DeliveryType  *int64 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	DismissalDate *int64 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
+	// This parameter is required.
+	ExpiredSeconds   *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
+	ExtendedParams   *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	MiChannelId      *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
+	NotifyType       *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction       *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	Silent           *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	SmsSignName      *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
+	SmsStrategy      *int32  `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
+	SmsTemplateCode  *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
+	SmsTemplateParam *string `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
+	StrategyContent  *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType     *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// This parameter is required.
+	TargetMsgkey     *string `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
+	TaskName         *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TemplateKeyValue *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
+	// This parameter is required.
 	TemplateName         *string                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	ThirdChannelCategory map[string]interface{} `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
-	WorkspaceId          *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PushTemplateRequest) String() string {
@@ -16987,31 +17386,37 @@ func (s *PushTemplateRequest) SetWorkspaceId(v string) *PushTemplateRequest {
 }
 
 type PushTemplateShrinkRequest struct {
-	ActivityContentState       interface{} `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
-	ActivityEvent              *string     `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
-	AppId                      *string     `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId                  *string     `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Classification             *string     `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	DeliveryType               *int64      `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	DismissalDate              *int64      `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
-	ExpiredSeconds             *int64      `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
-	ExtendedParams             *string     `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
-	MiChannelId                *string     `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
-	NotifyType                 *string     `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
-	PushAction                 *int64      `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
-	Silent                     *int64      `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	SmsSignName                *string     `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
-	SmsStrategy                *int32      `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
-	SmsTemplateCode            *string     `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
-	SmsTemplateParam           *string     `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
-	StrategyContent            *string     `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
-	StrategyType               *int32      `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	TargetMsgkey               *string     `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
-	TaskName                   *string     `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TemplateKeyValue           *string     `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
-	TemplateName               *string     `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	ThirdChannelCategoryShrink *string     `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
-	WorkspaceId                *string     `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	ActivityContentState interface{} `json:"ActivityContentState,omitempty" xml:"ActivityContentState,omitempty"`
+	ActivityEvent        *string     `json:"ActivityEvent,omitempty" xml:"ActivityEvent,omitempty"`
+	// This parameter is required.
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	// This parameter is required.
+	DeliveryType  *int64 `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	DismissalDate *int64 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
+	// This parameter is required.
+	ExpiredSeconds   *int64  `json:"ExpiredSeconds,omitempty" xml:"ExpiredSeconds,omitempty"`
+	ExtendedParams   *string `json:"ExtendedParams,omitempty" xml:"ExtendedParams,omitempty"`
+	MiChannelId      *string `json:"MiChannelId,omitempty" xml:"MiChannelId,omitempty"`
+	NotifyType       *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	PushAction       *int64  `json:"PushAction,omitempty" xml:"PushAction,omitempty"`
+	Silent           *int64  `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	SmsSignName      *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
+	SmsStrategy      *int32  `json:"SmsStrategy,omitempty" xml:"SmsStrategy,omitempty"`
+	SmsTemplateCode  *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
+	SmsTemplateParam *string `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
+	StrategyContent  *string `json:"StrategyContent,omitempty" xml:"StrategyContent,omitempty"`
+	StrategyType     *int32  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// This parameter is required.
+	TargetMsgkey     *string `json:"TargetMsgkey,omitempty" xml:"TargetMsgkey,omitempty"`
+	TaskName         *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TemplateKeyValue *string `json:"TemplateKeyValue,omitempty" xml:"TemplateKeyValue,omitempty"`
+	// This parameter is required.
+	TemplateName               *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	ThirdChannelCategoryShrink *string `json:"ThirdChannelCategory,omitempty" xml:"ThirdChannelCategory,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PushTemplateShrinkRequest) String() string {
@@ -17241,10 +17646,14 @@ func (s *PushTemplateResponse) SetBody(v *PushTemplateResponseBody) *PushTemplat
 }
 
 type PushUnBindRequest struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	DeliveryToken *string `json:"DeliveryToken,omitempty" xml:"DeliveryToken,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s PushUnBindRequest) String() string {
@@ -17369,13 +17778,40 @@ func (s *PushUnBindResponse) SetBody(v *PushUnBindResponseBody) *PushUnBindRespo
 }
 
 type QueryInfoFromMdpRequest struct {
-	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	MobileMd5    *string `json:"MobileMd5,omitempty" xml:"MobileMd5,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALIPUBE5C3F6D091419
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 13178195662
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// 2fe6e5fa754be73d1721b9bd2c6cf821
+	MobileMd5 *string `json:"MobileMd5,omitempty" xml:"MobileMd5,omitempty"`
+	// example:
+	//
+	// db0797452ccafce84d7c151eb81596099bda3f097693d1e18b588804e6742ced
 	MobileSha256 *string `json:"MobileSha256,omitempty" xml:"MobileSha256,omitempty"`
-	RiskScene    *string `json:"RiskScene,omitempty" xml:"RiskScene,omitempty"`
-	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	RiskScene *string `json:"RiskScene,omitempty" xml:"RiskScene,omitempty"`
+	// example:
+	//
+	// ZXCXMAHQ-zh_CN
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s QueryInfoFromMdpRequest) String() string {
@@ -17422,11 +17858,26 @@ func (s *QueryInfoFromMdpRequest) SetWorkspaceId(v string) *QueryInfoFromMdpRequ
 }
 
 type QueryInfoFromMdpResponseBody struct {
-	Data          *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode    *int32  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// {\\"db0797452ccafce84d7c151eb81596099bda3f097693d1e18b588804e6742ced\\":{\\"riskScore\\":\\"3\\"}}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
+	ResultCode *int32 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// SYSTEM_ERROR
 	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryInfoFromMdpResponseBody) String() string {
@@ -17491,8 +17942,195 @@ func (s *QueryInfoFromMdpResponse) SetBody(v *QueryInfoFromMdpResponseBody) *Que
 	return s
 }
 
+type QueryLinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BB5953C300957
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8hGb9SyJARqp7V4PGP92X
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s QueryLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLinkRequest) SetAppId(v string) *QueryLinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *QueryLinkRequest) SetUrl(v string) *QueryLinkRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *QueryLinkRequest) SetWorkspaceId(v string) *QueryLinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type QueryLinkResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// D9B3C4E7-BEC7-1E2C-86A3-EA985B4FFD73
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	ResultCode    *string                             `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultContent *QueryLinkResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+}
+
+func (s QueryLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLinkResponseBody) SetRequestId(v string) *QueryLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryLinkResponseBody) SetResultCode(v string) *QueryLinkResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryLinkResponseBody) SetResultContent(v *QueryLinkResponseBodyResultContent) *QueryLinkResponseBody {
+	s.ResultContent = v
+	return s
+}
+
+func (s *QueryLinkResponseBody) SetResultMessage(v string) *QueryLinkResponseBody {
+	s.ResultMessage = &v
+	return s
+}
+
+type QueryLinkResponseBodyResultContent struct {
+	// example:
+	//
+	// {
+	//
+	//             "Modified": "2024-04-29 16:35:55",
+	//
+	//             "NeedRenderEvent": false,
+	//
+	//             "WorkspaceId": "default",
+	//
+	//             "Cors": false,
+	//
+	//             "Url": "https://xxx/xxx",
+	//
+	//             "Created": "2024-04-29 16:35:55",
+	//
+	//             "LastModified": "2024-04-29 16:35:55",
+	//
+	//             "Target": "http://xxx/test.html",
+	//
+	//             "Dynamictarget": "",
+	//
+	//             "AppId": "BB5953C300957",
+	//
+	//             "Version": 0,
+	//
+	//             "Traceid": "f6c95f06891a19ff2d896ea309581883",
+	//
+	//             "Domain": "u.aliyuncs.com"
+	//
+	//         }
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// https://xxx/xxx/xxx
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// example:
+	//
+	// 0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s QueryLinkResponseBodyResultContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLinkResponseBodyResultContent) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLinkResponseBodyResultContent) SetData(v interface{}) *QueryLinkResponseBodyResultContent {
+	s.Data = v
+	return s
+}
+
+func (s *QueryLinkResponseBodyResultContent) SetTarget(v string) *QueryLinkResponseBodyResultContent {
+	s.Target = &v
+	return s
+}
+
+func (s *QueryLinkResponseBodyResultContent) SetVersion(v string) *QueryLinkResponseBodyResultContent {
+	s.Version = &v
+	return s
+}
+
+type QueryLinkResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLinkResponse) SetHeaders(v map[string]*string) *QueryLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryLinkResponse) SetStatusCode(v int32) *QueryLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryLinkResponse) SetBody(v *QueryLinkResponseBody) *QueryLinkResponse {
+	s.Body = v
+	return s
+}
+
 type QueryMappCenterAppRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -17755,7 +18393,8 @@ func (s *QueryMappCenterAppResponse) SetBody(v *QueryMappCenterAppResponseBody) 
 }
 
 type QueryMcdpAimRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -18023,10 +18662,15 @@ func (s *QueryMcdpZoneResponse) SetBody(v *QueryMcdpZoneResponseBody) *QueryMcdp
 }
 
 type QueryMcubeMiniPackageRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	H5Id        *string `json:"H5Id,omitempty" xml:"H5Id,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	H5Id *string `json:"H5Id,omitempty" xml:"H5Id,omitempty"`
+	// This parameter is required.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -18300,9 +18944,13 @@ func (s *QueryMcubeMiniPackageResponse) SetBody(v *QueryMcubeMiniPackageResponse
 }
 
 type QueryMcubeMiniTaskRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	TaskId      *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -18541,8 +19189,11 @@ func (s *QueryMcubeMiniTaskResponse) SetBody(v *QueryMcubeMiniTaskResponseBody) 
 }
 
 type QueryMcubeVhostRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -18663,7 +19314,8 @@ func (s *QueryMcubeVhostResponse) SetBody(v *QueryMcubeVhostResponseBody) *Query
 }
 
 type QueryMdsUpgradeTaskDetailRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	TaskId      *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -21045,13 +21697,15 @@ func (s *QueryMgsTestreqbodyautogenResponse) SetBody(v *QueryMgsTestreqbodyautog
 }
 
 type QueryMpsSchedulerListRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type        *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	UniqueId    *string `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
+	// This parameter is required.
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type       *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	UniqueId   *string `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -21285,13 +21939,17 @@ func (s *QueryMpsSchedulerListResponse) SetBody(v *QueryMpsSchedulerListResponse
 }
 
 type QueryPushAnalysisCoreIndexRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Channel     *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Platform    *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// This parameter is required.
+	EndTime  *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// This parameter is required.
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -21484,8 +22142,11 @@ func (s *QueryPushAnalysisCoreIndexResponse) SetBody(v *QueryPushAnalysisCoreInd
 }
 
 type QueryPushAnalysisTaskDetailRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -21647,12 +22308,15 @@ func (s *QueryPushAnalysisTaskDetailResponse) SetBody(v *QueryPushAnalysisTaskDe
 }
 
 type QueryPushAnalysisTaskListRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// This parameter is required.
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName  *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -21881,13 +22545,17 @@ func (s *QueryPushAnalysisTaskListResponse) SetBody(v *QueryPushAnalysisTaskList
 }
 
 type QueryPushSchedulerListRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type        *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	UniqueId    *string `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	EndTime    *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type      *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	UniqueId  *string `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -22121,9 +22789,13 @@ func (s *QueryPushSchedulerListResponse) SetBody(v *QueryPushSchedulerListRespon
 }
 
 type RevokePushMessageRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	MessageId   *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	TargetId    *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// This parameter is required.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -22249,8 +22921,11 @@ func (s *RevokePushMessageResponse) SetBody(v *RevokePushMessageResponseBody) *R
 }
 
 type RevokePushTaskRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -22371,10 +23046,14 @@ func (s *RevokePushTaskResponse) SetBody(v *RevokePushTaskResponseBody) *RevokeP
 }
 
 type RunMsaDiffRequest struct {
-	AppId                            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	MpaasMappcenterMsaDiffRunJsonStr *string `json:"MpaasMappcenterMsaDiffRunJsonStr,omitempty" xml:"MpaasMappcenterMsaDiffRunJsonStr,omitempty"`
-	TenantId                         *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	WorkspaceId                      *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s RunMsaDiffRequest) String() string {
@@ -22633,26 +23312,30 @@ func (s *SaveMgsApirestResponse) SetBody(v *SaveMgsApirestResponseBody) *SaveMgs
 }
 
 type StartUserAppAsyncEnhanceInMsaRequest struct {
-	ApkProtector        *bool   `json:"ApkProtector,omitempty" xml:"ApkProtector,omitempty"`
+	ApkProtector *bool `json:"ApkProtector,omitempty" xml:"ApkProtector,omitempty"`
+	// This parameter is required.
 	AppId               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AssetsFileList      *string `json:"AssetsFileList,omitempty" xml:"AssetsFileList,omitempty"`
 	Classes             *string `json:"Classes,omitempty" xml:"Classes,omitempty"`
 	DalvikDebugger      *int32  `json:"DalvikDebugger,omitempty" xml:"DalvikDebugger,omitempty"`
 	EmulatorEnvironment *int32  `json:"EmulatorEnvironment,omitempty" xml:"EmulatorEnvironment,omitempty"`
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	JavaHook            *int32  `json:"JavaHook,omitempty" xml:"JavaHook,omitempty"`
-	MemoryDump          *int32  `json:"MemoryDump,omitempty" xml:"MemoryDump,omitempty"`
-	NativeDebugger      *int32  `json:"NativeDebugger,omitempty" xml:"NativeDebugger,omitempty"`
-	NativeHook          *int32  `json:"NativeHook,omitempty" xml:"NativeHook,omitempty"`
-	PackageTampered     *int32  `json:"PackageTampered,omitempty" xml:"PackageTampered,omitempty"`
-	Root                *int32  `json:"Root,omitempty" xml:"Root,omitempty"`
-	RunMode             *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
-	SoFileList          *string `json:"SoFileList,omitempty" xml:"SoFileList,omitempty"`
-	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	TotalSwitch         *bool   `json:"TotalSwitch,omitempty" xml:"TotalSwitch,omitempty"`
-	UseAShield          *bool   `json:"UseAShield,omitempty" xml:"UseAShield,omitempty"`
-	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	JavaHook        *int32  `json:"JavaHook,omitempty" xml:"JavaHook,omitempty"`
+	MemoryDump      *int32  `json:"MemoryDump,omitempty" xml:"MemoryDump,omitempty"`
+	NativeDebugger  *int32  `json:"NativeDebugger,omitempty" xml:"NativeDebugger,omitempty"`
+	NativeHook      *int32  `json:"NativeHook,omitempty" xml:"NativeHook,omitempty"`
+	PackageTampered *int32  `json:"PackageTampered,omitempty" xml:"PackageTampered,omitempty"`
+	Root            *int32  `json:"Root,omitempty" xml:"Root,omitempty"`
+	RunMode         *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
+	SoFileList      *string `json:"SoFileList,omitempty" xml:"SoFileList,omitempty"`
+	TaskType        *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// This parameter is required.
+	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TotalSwitch *bool   `json:"TotalSwitch,omitempty" xml:"TotalSwitch,omitempty"`
+	UseAShield  *bool   `json:"UseAShield,omitempty" xml:"UseAShield,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s StartUserAppAsyncEnhanceInMsaRequest) String() string {
@@ -23029,12 +23712,17 @@ func (s *StartUserAppAsyncEnhanceInMsaResponse) SetBody(v *StartUserAppAsyncEnha
 }
 
 type UpdateMcubeWhitelistRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	KeyIds      *string `json:"KeyIds,omitempty" xml:"KeyIds,omitempty"`
-	OnexFlag    *bool   `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
-	OssUrl      *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	KeyIds *string `json:"KeyIds,omitempty" xml:"KeyIds,omitempty"`
+	// This parameter is required.
+	OnexFlag *bool   `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
+	OssUrl   *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -23385,12 +24073,36 @@ func (s *UpdateMpaasAppInfoResponse) SetBody(v *UpdateMpaasAppInfoResponseBody) 
 }
 
 type UploadBitcodeToMsaRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Bitcode     *string `json:"Bitcode,omitempty" xml:"Bitcode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALIPUBE5C3F6D091419
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 3sAXCwAAAAAUAAAACHoAAP
+	Bitcode *string `json:"Bitcode,omitempty" xml:"Bitcode,omitempty"`
+	// example:
+	//
+	// xcode14
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	License     *string `json:"License,omitempty" xml:"License,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// {}
+	License *string `json:"License,omitempty" xml:"License,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ZXCXMAHQ-zh_CN
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dev
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -23438,10 +24150,19 @@ func (s *UploadBitcodeToMsaRequest) SetWorkspaceId(v string) *UploadBitcodeToMsa
 }
 
 type UploadBitcodeToMsaResponseBody struct {
-	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 11E66B29-9E5E-5C10-B64E-B5A0E0F26355
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
 	ResultCode    *string                                      `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultContent *UploadBitcodeToMsaResponseBodyResultContent `json:"ResultContent,omitempty" xml:"ResultContent,omitempty" type:"Struct"`
-	ResultMessage *string                                      `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// SYSTEM_ERROR
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 }
 
 func (s UploadBitcodeToMsaResponseBody) String() string {
@@ -23473,10 +24194,22 @@ func (s *UploadBitcodeToMsaResponseBody) SetResultMessage(v string) *UploadBitco
 }
 
 type UploadBitcodeToMsaResponseBodyResultContent struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1234
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Normal
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UploadBitcodeToMsaResponseBodyResultContent) String() string {
@@ -23537,31 +24270,51 @@ func (s *UploadBitcodeToMsaResponse) SetBody(v *UploadBitcodeToMsaResponseBody) 
 }
 
 type UploadMcubeMiniPackageRequest struct {
-	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	AutoInstall      *int64  `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
 	ClientVersionMax *string `json:"ClientVersionMax,omitempty" xml:"ClientVersionMax,omitempty"`
+	// This parameter is required.
 	ClientVersionMin *string `json:"ClientVersionMin,omitempty" xml:"ClientVersionMin,omitempty"`
-	EnableKeepAlive  *string `json:"EnableKeepAlive,omitempty" xml:"EnableKeepAlive,omitempty"`
+	// This parameter is required.
+	EnableKeepAlive *string `json:"EnableKeepAlive,omitempty" xml:"EnableKeepAlive,omitempty"`
+	// This parameter is required.
 	EnableOptionMenu *string `json:"EnableOptionMenu,omitempty" xml:"EnableOptionMenu,omitempty"`
-	EnableTabBar     *int64  `json:"EnableTabBar,omitempty" xml:"EnableTabBar,omitempty"`
-	ExtendInfo       *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	H5Id             *string `json:"H5Id,omitempty" xml:"H5Id,omitempty"`
-	H5Name           *string `json:"H5Name,omitempty" xml:"H5Name,omitempty"`
-	H5Version        *string `json:"H5Version,omitempty" xml:"H5Version,omitempty"`
-	IconFileUrl      *string `json:"IconFileUrl,omitempty" xml:"IconFileUrl,omitempty"`
-	IconUrl          *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
-	InstallType      *int64  `json:"InstallType,omitempty" xml:"InstallType,omitempty"`
-	MainUrl          *string `json:"MainUrl,omitempty" xml:"MainUrl,omitempty"`
-	OnexFlag         *bool   `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
-	PackageType      *int64  `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	Platform         *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	ResourceFileUrl  *string `json:"ResourceFileUrl,omitempty" xml:"ResourceFileUrl,omitempty"`
-	ResourceType     *int64  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TenantId         *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UserId           *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Uuid             *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	Vhost            *string `json:"Vhost,omitempty" xml:"Vhost,omitempty"`
-	WorkspaceId      *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	EnableTabBar *int64  `json:"EnableTabBar,omitempty" xml:"EnableTabBar,omitempty"`
+	ExtendInfo   *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// This parameter is required.
+	H5Id *string `json:"H5Id,omitempty" xml:"H5Id,omitempty"`
+	// This parameter is required.
+	H5Name *string `json:"H5Name,omitempty" xml:"H5Name,omitempty"`
+	// This parameter is required.
+	H5Version   *string `json:"H5Version,omitempty" xml:"H5Version,omitempty"`
+	IconFileUrl *string `json:"IconFileUrl,omitempty" xml:"IconFileUrl,omitempty"`
+	IconUrl     *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// This parameter is required.
+	InstallType *int64 `json:"InstallType,omitempty" xml:"InstallType,omitempty"`
+	// This parameter is required.
+	MainUrl *string `json:"MainUrl,omitempty" xml:"MainUrl,omitempty"`
+	// This parameter is required.
+	OnexFlag *bool `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
+	// This parameter is required.
+	PackageType *int64 `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// This parameter is required.
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// This parameter is required.
+	ResourceFileUrl *string `json:"ResourceFileUrl,omitempty" xml:"ResourceFileUrl,omitempty"`
+	// This parameter is required.
+	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Uuid   *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// This parameter is required.
+	Vhost *string `json:"Vhost,omitempty" xml:"Vhost,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UploadMcubeMiniPackageRequest) String() string {
@@ -23820,10 +24573,15 @@ func (s *UploadMcubeMiniPackageResponse) SetBody(v *UploadMcubeMiniPackageRespon
 }
 
 type UploadMcubeRsaKeyRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	OnexFlag    *bool   `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// This parameter is required.
+	OnexFlag *bool `json:"OnexFlag,omitempty" xml:"OnexFlag,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -23954,9 +24712,12 @@ func (s *UploadMcubeRsaKeyResponse) SetBody(v *UploadMcubeRsaKeyResponseBody) *U
 }
 
 type UploadUserAppToMsaRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// This parameter is required.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// This parameter is required.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -24379,6 +25140,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AddMdsMiniConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddMdsMiniConfigResponse
 func (client *Client) AddMdsMiniConfigWithOptions(request *AddMdsMiniConfigRequest, runtime *util.RuntimeOptions) (_result *AddMdsMiniConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24424,6 +25190,9 @@ func (client *Client) AddMdsMiniConfigWithOptions(request *AddMdsMiniConfigReque
 	return _result, _err
 }
 
+// @param request - AddMdsMiniConfigRequest
+//
+// @return AddMdsMiniConfigResponse
 func (client *Client) AddMdsMiniConfig(request *AddMdsMiniConfigRequest) (_result *AddMdsMiniConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddMdsMiniConfigResponse{}
@@ -24435,6 +25204,11 @@ func (client *Client) AddMdsMiniConfig(request *AddMdsMiniConfigRequest) (_resul
 	return _result, _err
 }
 
+// @param request - CancelPushSchedulerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelPushSchedulerResponse
 func (client *Client) CancelPushSchedulerWithOptions(request *CancelPushSchedulerRequest, runtime *util.RuntimeOptions) (_result *CancelPushSchedulerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24480,6 +25254,9 @@ func (client *Client) CancelPushSchedulerWithOptions(request *CancelPushSchedule
 	return _result, _err
 }
 
+// @param request - CancelPushSchedulerRequest
+//
+// @return CancelPushSchedulerResponse
 func (client *Client) CancelPushScheduler(request *CancelPushSchedulerRequest) (_result *CancelPushSchedulerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelPushSchedulerResponse{}
@@ -24491,6 +25268,11 @@ func (client *Client) CancelPushScheduler(request *CancelPushSchedulerRequest) (
 	return _result, _err
 }
 
+// @param request - ChangeMcubeMiniTaskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeMcubeMiniTaskStatusResponse
 func (client *Client) ChangeMcubeMiniTaskStatusWithOptions(request *ChangeMcubeMiniTaskStatusRequest, runtime *util.RuntimeOptions) (_result *ChangeMcubeMiniTaskStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24548,6 +25330,9 @@ func (client *Client) ChangeMcubeMiniTaskStatusWithOptions(request *ChangeMcubeM
 	return _result, _err
 }
 
+// @param request - ChangeMcubeMiniTaskStatusRequest
+//
+// @return ChangeMcubeMiniTaskStatusResponse
 func (client *Client) ChangeMcubeMiniTaskStatus(request *ChangeMcubeMiniTaskStatusRequest) (_result *ChangeMcubeMiniTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeMcubeMiniTaskStatusResponse{}
@@ -24559,6 +25344,11 @@ func (client *Client) ChangeMcubeMiniTaskStatus(request *ChangeMcubeMiniTaskStat
 	return _result, _err
 }
 
+// @param request - ChangeMcubeNebulaTaskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeMcubeNebulaTaskStatusResponse
 func (client *Client) ChangeMcubeNebulaTaskStatusWithOptions(request *ChangeMcubeNebulaTaskStatusRequest, runtime *util.RuntimeOptions) (_result *ChangeMcubeNebulaTaskStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24616,6 +25406,9 @@ func (client *Client) ChangeMcubeNebulaTaskStatusWithOptions(request *ChangeMcub
 	return _result, _err
 }
 
+// @param request - ChangeMcubeNebulaTaskStatusRequest
+//
+// @return ChangeMcubeNebulaTaskStatusResponse
 func (client *Client) ChangeMcubeNebulaTaskStatus(request *ChangeMcubeNebulaTaskStatusRequest) (_result *ChangeMcubeNebulaTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeMcubeNebulaTaskStatusResponse{}
@@ -24627,6 +25420,11 @@ func (client *Client) ChangeMcubeNebulaTaskStatus(request *ChangeMcubeNebulaTask
 	return _result, _err
 }
 
+// @param request - ChangeMcubePublicTaskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeMcubePublicTaskStatusResponse
 func (client *Client) ChangeMcubePublicTaskStatusWithOptions(request *ChangeMcubePublicTaskStatusRequest, runtime *util.RuntimeOptions) (_result *ChangeMcubePublicTaskStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24676,6 +25474,9 @@ func (client *Client) ChangeMcubePublicTaskStatusWithOptions(request *ChangeMcub
 	return _result, _err
 }
 
+// @param request - ChangeMcubePublicTaskStatusRequest
+//
+// @return ChangeMcubePublicTaskStatusResponse
 func (client *Client) ChangeMcubePublicTaskStatus(request *ChangeMcubePublicTaskStatusRequest) (_result *ChangeMcubePublicTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeMcubePublicTaskStatusResponse{}
@@ -24687,6 +25488,11 @@ func (client *Client) ChangeMcubePublicTaskStatus(request *ChangeMcubePublicTask
 	return _result, _err
 }
 
+// @param request - CopyMcdpGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CopyMcdpGroupResponse
 func (client *Client) CopyMcdpGroupWithOptions(request *CopyMcdpGroupRequest, runtime *util.RuntimeOptions) (_result *CopyMcdpGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24732,6 +25538,9 @@ func (client *Client) CopyMcdpGroupWithOptions(request *CopyMcdpGroupRequest, ru
 	return _result, _err
 }
 
+// @param request - CopyMcdpGroupRequest
+//
+// @return CopyMcdpGroupResponse
 func (client *Client) CopyMcdpGroup(request *CopyMcdpGroupRequest) (_result *CopyMcdpGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CopyMcdpGroupResponse{}
@@ -24743,6 +25552,91 @@ func (client *Client) CopyMcdpGroup(request *CopyMcdpGroupRequest) (_result *Cop
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建短链
+//
+// @param request - CreateLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLinkResponse
+func (client *Client) CreateLinkWithOptions(request *CreateLinkRequest, runtime *util.RuntimeOptions) (_result *CreateLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Cors)) {
+		body["Cors"] = request.Cors
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		body["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dynamicfield)) {
+		body["Dynamicfield"] = request.Dynamicfield
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetUrl)) {
+		body["TargetUrl"] = request.TargetUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLink"),
+		Version:     tea.String("2020-10-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建短链
+//
+// @param request - CreateLinkRequest
+//
+// @return CreateLinkResponse
+func (client *Client) CreateLink(request *CreateLinkRequest) (_result *CreateLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLinkResponse{}
+	_body, _err := client.CreateLinkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CreateMasCrowdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMasCrowdResponse
 func (client *Client) CreateMasCrowdWithOptions(request *CreateMasCrowdRequest, runtime *util.RuntimeOptions) (_result *CreateMasCrowdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24788,6 +25682,9 @@ func (client *Client) CreateMasCrowdWithOptions(request *CreateMasCrowdRequest, 
 	return _result, _err
 }
 
+// @param request - CreateMasCrowdRequest
+//
+// @return CreateMasCrowdResponse
 func (client *Client) CreateMasCrowd(request *CreateMasCrowdRequest) (_result *CreateMasCrowdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMasCrowdResponse{}
@@ -24799,6 +25696,11 @@ func (client *Client) CreateMasCrowd(request *CreateMasCrowdRequest) (_result *C
 	return _result, _err
 }
 
+// @param request - CreateMasFunnelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMasFunnelResponse
 func (client *Client) CreateMasFunnelWithOptions(request *CreateMasFunnelRequest, runtime *util.RuntimeOptions) (_result *CreateMasFunnelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24844,6 +25746,9 @@ func (client *Client) CreateMasFunnelWithOptions(request *CreateMasFunnelRequest
 	return _result, _err
 }
 
+// @param request - CreateMasFunnelRequest
+//
+// @return CreateMasFunnelResponse
 func (client *Client) CreateMasFunnel(request *CreateMasFunnelRequest) (_result *CreateMasFunnelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMasFunnelResponse{}
@@ -24855,6 +25760,11 @@ func (client *Client) CreateMasFunnel(request *CreateMasFunnelRequest) (_result 
 	return _result, _err
 }
 
+// @param request - CreateMcdpEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcdpEventResponse
 func (client *Client) CreateMcdpEventWithOptions(request *CreateMcdpEventRequest, runtime *util.RuntimeOptions) (_result *CreateMcdpEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24900,6 +25810,9 @@ func (client *Client) CreateMcdpEventWithOptions(request *CreateMcdpEventRequest
 	return _result, _err
 }
 
+// @param request - CreateMcdpEventRequest
+//
+// @return CreateMcdpEventResponse
 func (client *Client) CreateMcdpEvent(request *CreateMcdpEventRequest) (_result *CreateMcdpEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcdpEventResponse{}
@@ -24911,6 +25824,11 @@ func (client *Client) CreateMcdpEvent(request *CreateMcdpEventRequest) (_result 
 	return _result, _err
 }
 
+// @param request - CreateMcdpEventAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcdpEventAttributeResponse
 func (client *Client) CreateMcdpEventAttributeWithOptions(request *CreateMcdpEventAttributeRequest, runtime *util.RuntimeOptions) (_result *CreateMcdpEventAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24956,6 +25874,9 @@ func (client *Client) CreateMcdpEventAttributeWithOptions(request *CreateMcdpEve
 	return _result, _err
 }
 
+// @param request - CreateMcdpEventAttributeRequest
+//
+// @return CreateMcdpEventAttributeResponse
 func (client *Client) CreateMcdpEventAttribute(request *CreateMcdpEventAttributeRequest) (_result *CreateMcdpEventAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcdpEventAttributeResponse{}
@@ -24967,6 +25888,11 @@ func (client *Client) CreateMcdpEventAttribute(request *CreateMcdpEventAttribute
 	return _result, _err
 }
 
+// @param request - CreateMcdpGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcdpGroupResponse
 func (client *Client) CreateMcdpGroupWithOptions(request *CreateMcdpGroupRequest, runtime *util.RuntimeOptions) (_result *CreateMcdpGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25012,6 +25938,9 @@ func (client *Client) CreateMcdpGroupWithOptions(request *CreateMcdpGroupRequest
 	return _result, _err
 }
 
+// @param request - CreateMcdpGroupRequest
+//
+// @return CreateMcdpGroupResponse
 func (client *Client) CreateMcdpGroup(request *CreateMcdpGroupRequest) (_result *CreateMcdpGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcdpGroupResponse{}
@@ -25023,6 +25952,11 @@ func (client *Client) CreateMcdpGroup(request *CreateMcdpGroupRequest) (_result 
 	return _result, _err
 }
 
+// @param request - CreateMcdpMaterialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcdpMaterialResponse
 func (client *Client) CreateMcdpMaterialWithOptions(request *CreateMcdpMaterialRequest, runtime *util.RuntimeOptions) (_result *CreateMcdpMaterialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25068,6 +26002,9 @@ func (client *Client) CreateMcdpMaterialWithOptions(request *CreateMcdpMaterialR
 	return _result, _err
 }
 
+// @param request - CreateMcdpMaterialRequest
+//
+// @return CreateMcdpMaterialResponse
 func (client *Client) CreateMcdpMaterial(request *CreateMcdpMaterialRequest) (_result *CreateMcdpMaterialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcdpMaterialResponse{}
@@ -25079,6 +26016,11 @@ func (client *Client) CreateMcdpMaterial(request *CreateMcdpMaterialRequest) (_r
 	return _result, _err
 }
 
+// @param request - CreateMcdpZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcdpZoneResponse
 func (client *Client) CreateMcdpZoneWithOptions(request *CreateMcdpZoneRequest, runtime *util.RuntimeOptions) (_result *CreateMcdpZoneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25124,6 +26066,9 @@ func (client *Client) CreateMcdpZoneWithOptions(request *CreateMcdpZoneRequest, 
 	return _result, _err
 }
 
+// @param request - CreateMcdpZoneRequest
+//
+// @return CreateMcdpZoneResponse
 func (client *Client) CreateMcdpZone(request *CreateMcdpZoneRequest) (_result *CreateMcdpZoneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcdpZoneResponse{}
@@ -25135,6 +26080,11 @@ func (client *Client) CreateMcdpZone(request *CreateMcdpZoneRequest) (_result *C
 	return _result, _err
 }
 
+// @param request - CreateMcubeMiniAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcubeMiniAppResponse
 func (client *Client) CreateMcubeMiniAppWithOptions(request *CreateMcubeMiniAppRequest, runtime *util.RuntimeOptions) (_result *CreateMcubeMiniAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25184,6 +26134,9 @@ func (client *Client) CreateMcubeMiniAppWithOptions(request *CreateMcubeMiniAppR
 	return _result, _err
 }
 
+// @param request - CreateMcubeMiniAppRequest
+//
+// @return CreateMcubeMiniAppResponse
 func (client *Client) CreateMcubeMiniApp(request *CreateMcubeMiniAppRequest) (_result *CreateMcubeMiniAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcubeMiniAppResponse{}
@@ -25195,6 +26148,11 @@ func (client *Client) CreateMcubeMiniApp(request *CreateMcubeMiniAppRequest) (_r
 	return _result, _err
 }
 
+// @param request - CreateMcubeMiniTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcubeMiniTaskResponse
 func (client *Client) CreateMcubeMiniTaskWithOptions(request *CreateMcubeMiniTaskRequest, runtime *util.RuntimeOptions) (_result *CreateMcubeMiniTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25268,6 +26226,9 @@ func (client *Client) CreateMcubeMiniTaskWithOptions(request *CreateMcubeMiniTas
 	return _result, _err
 }
 
+// @param request - CreateMcubeMiniTaskRequest
+//
+// @return CreateMcubeMiniTaskResponse
 func (client *Client) CreateMcubeMiniTask(request *CreateMcubeMiniTaskRequest) (_result *CreateMcubeMiniTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcubeMiniTaskResponse{}
@@ -25279,6 +26240,11 @@ func (client *Client) CreateMcubeMiniTask(request *CreateMcubeMiniTaskRequest) (
 	return _result, _err
 }
 
+// @param request - CreateMcubeNebulaAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcubeNebulaAppResponse
 func (client *Client) CreateMcubeNebulaAppWithOptions(request *CreateMcubeNebulaAppRequest, runtime *util.RuntimeOptions) (_result *CreateMcubeNebulaAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25328,6 +26294,9 @@ func (client *Client) CreateMcubeNebulaAppWithOptions(request *CreateMcubeNebula
 	return _result, _err
 }
 
+// @param request - CreateMcubeNebulaAppRequest
+//
+// @return CreateMcubeNebulaAppResponse
 func (client *Client) CreateMcubeNebulaApp(request *CreateMcubeNebulaAppRequest) (_result *CreateMcubeNebulaAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcubeNebulaAppResponse{}
@@ -25339,6 +26308,11 @@ func (client *Client) CreateMcubeNebulaApp(request *CreateMcubeNebulaAppRequest)
 	return _result, _err
 }
 
+// @param request - CreateMcubeNebulaResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcubeNebulaResourceResponse
 func (client *Client) CreateMcubeNebulaResourceWithOptions(request *CreateMcubeNebulaResourceRequest, runtime *util.RuntimeOptions) (_result *CreateMcubeNebulaResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25448,6 +26422,9 @@ func (client *Client) CreateMcubeNebulaResourceWithOptions(request *CreateMcubeN
 	return _result, _err
 }
 
+// @param request - CreateMcubeNebulaResourceRequest
+//
+// @return CreateMcubeNebulaResourceResponse
 func (client *Client) CreateMcubeNebulaResource(request *CreateMcubeNebulaResourceRequest) (_result *CreateMcubeNebulaResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcubeNebulaResourceResponse{}
@@ -25459,6 +26436,11 @@ func (client *Client) CreateMcubeNebulaResource(request *CreateMcubeNebulaResour
 	return _result, _err
 }
 
+// @param request - CreateMcubeNebulaTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcubeNebulaTaskResponse
 func (client *Client) CreateMcubeNebulaTaskWithOptions(request *CreateMcubeNebulaTaskRequest, runtime *util.RuntimeOptions) (_result *CreateMcubeNebulaTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25640,6 +26622,9 @@ func (client *Client) CreateMcubeNebulaTaskWithOptions(request *CreateMcubeNebul
 	return _result, _err
 }
 
+// @param request - CreateMcubeNebulaTaskRequest
+//
+// @return CreateMcubeNebulaTaskResponse
 func (client *Client) CreateMcubeNebulaTask(request *CreateMcubeNebulaTaskRequest) (_result *CreateMcubeNebulaTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcubeNebulaTaskResponse{}
@@ -25651,6 +26636,11 @@ func (client *Client) CreateMcubeNebulaTask(request *CreateMcubeNebulaTaskReques
 	return _result, _err
 }
 
+// @param request - CreateMcubeUpgradePackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcubeUpgradePackageResponse
 func (client *Client) CreateMcubeUpgradePackageWithOptions(request *CreateMcubeUpgradePackageRequest, runtime *util.RuntimeOptions) (_result *CreateMcubeUpgradePackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25752,6 +26742,9 @@ func (client *Client) CreateMcubeUpgradePackageWithOptions(request *CreateMcubeU
 	return _result, _err
 }
 
+// @param request - CreateMcubeUpgradePackageRequest
+//
+// @return CreateMcubeUpgradePackageResponse
 func (client *Client) CreateMcubeUpgradePackage(request *CreateMcubeUpgradePackageRequest) (_result *CreateMcubeUpgradePackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcubeUpgradePackageResponse{}
@@ -25763,6 +26756,11 @@ func (client *Client) CreateMcubeUpgradePackage(request *CreateMcubeUpgradePacka
 	return _result, _err
 }
 
+// @param request - CreateMcubeUpgradeTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcubeUpgradeTaskResponse
 func (client *Client) CreateMcubeUpgradeTaskWithOptions(request *CreateMcubeUpgradeTaskRequest, runtime *util.RuntimeOptions) (_result *CreateMcubeUpgradeTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25848,6 +26846,9 @@ func (client *Client) CreateMcubeUpgradeTaskWithOptions(request *CreateMcubeUpgr
 	return _result, _err
 }
 
+// @param request - CreateMcubeUpgradeTaskRequest
+//
+// @return CreateMcubeUpgradeTaskResponse
 func (client *Client) CreateMcubeUpgradeTask(request *CreateMcubeUpgradeTaskRequest) (_result *CreateMcubeUpgradeTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcubeUpgradeTaskResponse{}
@@ -25859,6 +26860,11 @@ func (client *Client) CreateMcubeUpgradeTask(request *CreateMcubeUpgradeTaskRequ
 	return _result, _err
 }
 
+// @param request - CreateMcubeVhostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcubeVhostResponse
 func (client *Client) CreateMcubeVhostWithOptions(request *CreateMcubeVhostRequest, runtime *util.RuntimeOptions) (_result *CreateMcubeVhostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25904,6 +26910,9 @@ func (client *Client) CreateMcubeVhostWithOptions(request *CreateMcubeVhostReque
 	return _result, _err
 }
 
+// @param request - CreateMcubeVhostRequest
+//
+// @return CreateMcubeVhostResponse
 func (client *Client) CreateMcubeVhost(request *CreateMcubeVhostRequest) (_result *CreateMcubeVhostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcubeVhostResponse{}
@@ -25915,6 +26924,11 @@ func (client *Client) CreateMcubeVhost(request *CreateMcubeVhostRequest) (_resul
 	return _result, _err
 }
 
+// @param request - CreateMcubeWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcubeWhitelistResponse
 func (client *Client) CreateMcubeWhitelistWithOptions(request *CreateMcubeWhitelistRequest, runtime *util.RuntimeOptions) (_result *CreateMcubeWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25964,6 +26978,9 @@ func (client *Client) CreateMcubeWhitelistWithOptions(request *CreateMcubeWhitel
 	return _result, _err
 }
 
+// @param request - CreateMcubeWhitelistRequest
+//
+// @return CreateMcubeWhitelistResponse
 func (client *Client) CreateMcubeWhitelist(request *CreateMcubeWhitelistRequest) (_result *CreateMcubeWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcubeWhitelistResponse{}
@@ -25975,6 +26992,11 @@ func (client *Client) CreateMcubeWhitelist(request *CreateMcubeWhitelistRequest)
 	return _result, _err
 }
 
+// @param request - CreateMcubeWhitelistForIdeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcubeWhitelistForIdeResponse
 func (client *Client) CreateMcubeWhitelistForIdeWithOptions(request *CreateMcubeWhitelistForIdeRequest, runtime *util.RuntimeOptions) (_result *CreateMcubeWhitelistForIdeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26024,6 +27046,9 @@ func (client *Client) CreateMcubeWhitelistForIdeWithOptions(request *CreateMcube
 	return _result, _err
 }
 
+// @param request - CreateMcubeWhitelistForIdeRequest
+//
+// @return CreateMcubeWhitelistForIdeResponse
 func (client *Client) CreateMcubeWhitelistForIde(request *CreateMcubeWhitelistForIdeRequest) (_result *CreateMcubeWhitelistForIdeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMcubeWhitelistForIdeResponse{}
@@ -26035,6 +27060,11 @@ func (client *Client) CreateMcubeWhitelistForIde(request *CreateMcubeWhitelistFo
 	return _result, _err
 }
 
+// @param request - CreateMdsMiniprogramTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMdsMiniprogramTaskResponse
 func (client *Client) CreateMdsMiniprogramTaskWithOptions(request *CreateMdsMiniprogramTaskRequest, runtime *util.RuntimeOptions) (_result *CreateMdsMiniprogramTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26116,6 +27146,9 @@ func (client *Client) CreateMdsMiniprogramTaskWithOptions(request *CreateMdsMini
 	return _result, _err
 }
 
+// @param request - CreateMdsMiniprogramTaskRequest
+//
+// @return CreateMdsMiniprogramTaskResponse
 func (client *Client) CreateMdsMiniprogramTask(request *CreateMdsMiniprogramTaskRequest) (_result *CreateMdsMiniprogramTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMdsMiniprogramTaskResponse{}
@@ -26127,6 +27160,11 @@ func (client *Client) CreateMdsMiniprogramTask(request *CreateMdsMiniprogramTask
 	return _result, _err
 }
 
+// @param request - CreateMsaEnhanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMsaEnhanceResponse
 func (client *Client) CreateMsaEnhanceWithOptions(request *CreateMsaEnhanceRequest, runtime *util.RuntimeOptions) (_result *CreateMsaEnhanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26172,6 +27210,9 @@ func (client *Client) CreateMsaEnhanceWithOptions(request *CreateMsaEnhanceReque
 	return _result, _err
 }
 
+// @param request - CreateMsaEnhanceRequest
+//
+// @return CreateMsaEnhanceResponse
 func (client *Client) CreateMsaEnhance(request *CreateMsaEnhanceRequest) (_result *CreateMsaEnhanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMsaEnhanceResponse{}
@@ -26183,6 +27224,11 @@ func (client *Client) CreateMsaEnhance(request *CreateMsaEnhanceRequest) (_resul
 	return _result, _err
 }
 
+// @param request - CreateOpenGlobalDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOpenGlobalDataResponse
 func (client *Client) CreateOpenGlobalDataWithOptions(request *CreateOpenGlobalDataRequest, runtime *util.RuntimeOptions) (_result *CreateOpenGlobalDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26268,6 +27314,9 @@ func (client *Client) CreateOpenGlobalDataWithOptions(request *CreateOpenGlobalD
 	return _result, _err
 }
 
+// @param request - CreateOpenGlobalDataRequest
+//
+// @return CreateOpenGlobalDataResponse
 func (client *Client) CreateOpenGlobalData(request *CreateOpenGlobalDataRequest) (_result *CreateOpenGlobalDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOpenGlobalDataResponse{}
@@ -26279,6 +27328,11 @@ func (client *Client) CreateOpenGlobalData(request *CreateOpenGlobalDataRequest)
 	return _result, _err
 }
 
+// @param request - CreateOpenSingleDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOpenSingleDataResponse
 func (client *Client) CreateOpenSingleDataWithOptions(request *CreateOpenSingleDataRequest, runtime *util.RuntimeOptions) (_result *CreateOpenSingleDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26360,6 +27414,9 @@ func (client *Client) CreateOpenSingleDataWithOptions(request *CreateOpenSingleD
 	return _result, _err
 }
 
+// @param request - CreateOpenSingleDataRequest
+//
+// @return CreateOpenSingleDataResponse
 func (client *Client) CreateOpenSingleData(request *CreateOpenSingleDataRequest) (_result *CreateOpenSingleDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOpenSingleDataResponse{}
@@ -26371,6 +27428,11 @@ func (client *Client) CreateOpenSingleData(request *CreateOpenSingleDataRequest)
 	return _result, _err
 }
 
+// @param request - DeleteCubecardWhitelistContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCubecardWhitelistContentResponse
 func (client *Client) DeleteCubecardWhitelistContentWithOptions(request *DeleteCubecardWhitelistContentRequest, runtime *util.RuntimeOptions) (_result *DeleteCubecardWhitelistContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26420,6 +27482,9 @@ func (client *Client) DeleteCubecardWhitelistContentWithOptions(request *DeleteC
 	return _result, _err
 }
 
+// @param request - DeleteCubecardWhitelistContentRequest
+//
+// @return DeleteCubecardWhitelistContentResponse
 func (client *Client) DeleteCubecardWhitelistContent(request *DeleteCubecardWhitelistContentRequest) (_result *DeleteCubecardWhitelistContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCubecardWhitelistContentResponse{}
@@ -26431,6 +27496,11 @@ func (client *Client) DeleteCubecardWhitelistContent(request *DeleteCubecardWhit
 	return _result, _err
 }
 
+// @param request - DeleteMcdpAimRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcdpAimResponse
 func (client *Client) DeleteMcdpAimWithOptions(request *DeleteMcdpAimRequest, runtime *util.RuntimeOptions) (_result *DeleteMcdpAimResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26476,6 +27546,9 @@ func (client *Client) DeleteMcdpAimWithOptions(request *DeleteMcdpAimRequest, ru
 	return _result, _err
 }
 
+// @param request - DeleteMcdpAimRequest
+//
+// @return DeleteMcdpAimResponse
 func (client *Client) DeleteMcdpAim(request *DeleteMcdpAimRequest) (_result *DeleteMcdpAimResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMcdpAimResponse{}
@@ -26487,6 +27560,11 @@ func (client *Client) DeleteMcdpAim(request *DeleteMcdpAimRequest) (_result *Del
 	return _result, _err
 }
 
+// @param request - DeleteMcdpCrowdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcdpCrowdResponse
 func (client *Client) DeleteMcdpCrowdWithOptions(request *DeleteMcdpCrowdRequest, runtime *util.RuntimeOptions) (_result *DeleteMcdpCrowdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26532,6 +27610,9 @@ func (client *Client) DeleteMcdpCrowdWithOptions(request *DeleteMcdpCrowdRequest
 	return _result, _err
 }
 
+// @param request - DeleteMcdpCrowdRequest
+//
+// @return DeleteMcdpCrowdResponse
 func (client *Client) DeleteMcdpCrowd(request *DeleteMcdpCrowdRequest) (_result *DeleteMcdpCrowdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMcdpCrowdResponse{}
@@ -26543,6 +27624,11 @@ func (client *Client) DeleteMcdpCrowd(request *DeleteMcdpCrowdRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DeleteMcdpEventAttributeByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcdpEventAttributeByIdResponse
 func (client *Client) DeleteMcdpEventAttributeByIdWithOptions(request *DeleteMcdpEventAttributeByIdRequest, runtime *util.RuntimeOptions) (_result *DeleteMcdpEventAttributeByIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26588,6 +27674,9 @@ func (client *Client) DeleteMcdpEventAttributeByIdWithOptions(request *DeleteMcd
 	return _result, _err
 }
 
+// @param request - DeleteMcdpEventAttributeByIdRequest
+//
+// @return DeleteMcdpEventAttributeByIdResponse
 func (client *Client) DeleteMcdpEventAttributeById(request *DeleteMcdpEventAttributeByIdRequest) (_result *DeleteMcdpEventAttributeByIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMcdpEventAttributeByIdResponse{}
@@ -26599,6 +27688,11 @@ func (client *Client) DeleteMcdpEventAttributeById(request *DeleteMcdpEventAttri
 	return _result, _err
 }
 
+// @param request - DeleteMcdpEventByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcdpEventByIdResponse
 func (client *Client) DeleteMcdpEventByIdWithOptions(request *DeleteMcdpEventByIdRequest, runtime *util.RuntimeOptions) (_result *DeleteMcdpEventByIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26644,6 +27738,9 @@ func (client *Client) DeleteMcdpEventByIdWithOptions(request *DeleteMcdpEventByI
 	return _result, _err
 }
 
+// @param request - DeleteMcdpEventByIdRequest
+//
+// @return DeleteMcdpEventByIdResponse
 func (client *Client) DeleteMcdpEventById(request *DeleteMcdpEventByIdRequest) (_result *DeleteMcdpEventByIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMcdpEventByIdResponse{}
@@ -26655,6 +27752,11 @@ func (client *Client) DeleteMcdpEventById(request *DeleteMcdpEventByIdRequest) (
 	return _result, _err
 }
 
+// @param request - DeleteMcdpMaterialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcdpMaterialResponse
 func (client *Client) DeleteMcdpMaterialWithOptions(request *DeleteMcdpMaterialRequest, runtime *util.RuntimeOptions) (_result *DeleteMcdpMaterialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26700,6 +27802,9 @@ func (client *Client) DeleteMcdpMaterialWithOptions(request *DeleteMcdpMaterialR
 	return _result, _err
 }
 
+// @param request - DeleteMcdpMaterialRequest
+//
+// @return DeleteMcdpMaterialResponse
 func (client *Client) DeleteMcdpMaterial(request *DeleteMcdpMaterialRequest) (_result *DeleteMcdpMaterialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMcdpMaterialResponse{}
@@ -26711,6 +27816,11 @@ func (client *Client) DeleteMcdpMaterial(request *DeleteMcdpMaterialRequest) (_r
 	return _result, _err
 }
 
+// @param request - DeleteMcdpZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcdpZoneResponse
 func (client *Client) DeleteMcdpZoneWithOptions(request *DeleteMcdpZoneRequest, runtime *util.RuntimeOptions) (_result *DeleteMcdpZoneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26756,6 +27866,9 @@ func (client *Client) DeleteMcdpZoneWithOptions(request *DeleteMcdpZoneRequest, 
 	return _result, _err
 }
 
+// @param request - DeleteMcdpZoneRequest
+//
+// @return DeleteMcdpZoneResponse
 func (client *Client) DeleteMcdpZone(request *DeleteMcdpZoneRequest) (_result *DeleteMcdpZoneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMcdpZoneResponse{}
@@ -26767,6 +27880,11 @@ func (client *Client) DeleteMcdpZone(request *DeleteMcdpZoneRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DeleteMcubeMiniAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcubeMiniAppResponse
 func (client *Client) DeleteMcubeMiniAppWithOptions(request *DeleteMcubeMiniAppRequest, runtime *util.RuntimeOptions) (_result *DeleteMcubeMiniAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26812,6 +27930,9 @@ func (client *Client) DeleteMcubeMiniAppWithOptions(request *DeleteMcubeMiniAppR
 	return _result, _err
 }
 
+// @param request - DeleteMcubeMiniAppRequest
+//
+// @return DeleteMcubeMiniAppResponse
 func (client *Client) DeleteMcubeMiniApp(request *DeleteMcubeMiniAppRequest) (_result *DeleteMcubeMiniAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMcubeMiniAppResponse{}
@@ -26823,6 +27944,11 @@ func (client *Client) DeleteMcubeMiniApp(request *DeleteMcubeMiniAppRequest) (_r
 	return _result, _err
 }
 
+// @param request - DeleteMcubeNebulaAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcubeNebulaAppResponse
 func (client *Client) DeleteMcubeNebulaAppWithOptions(request *DeleteMcubeNebulaAppRequest, runtime *util.RuntimeOptions) (_result *DeleteMcubeNebulaAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26868,6 +27994,9 @@ func (client *Client) DeleteMcubeNebulaAppWithOptions(request *DeleteMcubeNebula
 	return _result, _err
 }
 
+// @param request - DeleteMcubeNebulaAppRequest
+//
+// @return DeleteMcubeNebulaAppResponse
 func (client *Client) DeleteMcubeNebulaApp(request *DeleteMcubeNebulaAppRequest) (_result *DeleteMcubeNebulaAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMcubeNebulaAppResponse{}
@@ -26879,6 +28008,11 @@ func (client *Client) DeleteMcubeNebulaApp(request *DeleteMcubeNebulaAppRequest)
 	return _result, _err
 }
 
+// @param request - DeleteMcubeUpgradeResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcubeUpgradeResourceResponse
 func (client *Client) DeleteMcubeUpgradeResourceWithOptions(request *DeleteMcubeUpgradeResourceRequest, runtime *util.RuntimeOptions) (_result *DeleteMcubeUpgradeResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26928,6 +28062,9 @@ func (client *Client) DeleteMcubeUpgradeResourceWithOptions(request *DeleteMcube
 	return _result, _err
 }
 
+// @param request - DeleteMcubeUpgradeResourceRequest
+//
+// @return DeleteMcubeUpgradeResourceResponse
 func (client *Client) DeleteMcubeUpgradeResource(request *DeleteMcubeUpgradeResourceRequest) (_result *DeleteMcubeUpgradeResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMcubeUpgradeResourceResponse{}
@@ -26939,6 +28076,11 @@ func (client *Client) DeleteMcubeUpgradeResource(request *DeleteMcubeUpgradeReso
 	return _result, _err
 }
 
+// @param request - DeleteMcubeWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcubeWhitelistResponse
 func (client *Client) DeleteMcubeWhitelistWithOptions(request *DeleteMcubeWhitelistRequest, runtime *util.RuntimeOptions) (_result *DeleteMcubeWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26984,6 +28126,9 @@ func (client *Client) DeleteMcubeWhitelistWithOptions(request *DeleteMcubeWhitel
 	return _result, _err
 }
 
+// @param request - DeleteMcubeWhitelistRequest
+//
+// @return DeleteMcubeWhitelistResponse
 func (client *Client) DeleteMcubeWhitelist(request *DeleteMcubeWhitelistRequest) (_result *DeleteMcubeWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMcubeWhitelistResponse{}
@@ -26995,6 +28140,11 @@ func (client *Client) DeleteMcubeWhitelist(request *DeleteMcubeWhitelistRequest)
 	return _result, _err
 }
 
+// @param request - DeleteMdsWhitelistContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMdsWhitelistContentResponse
 func (client *Client) DeleteMdsWhitelistContentWithOptions(request *DeleteMdsWhitelistContentRequest, runtime *util.RuntimeOptions) (_result *DeleteMdsWhitelistContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27044,6 +28194,9 @@ func (client *Client) DeleteMdsWhitelistContentWithOptions(request *DeleteMdsWhi
 	return _result, _err
 }
 
+// @param request - DeleteMdsWhitelistContentRequest
+//
+// @return DeleteMdsWhitelistContentResponse
 func (client *Client) DeleteMdsWhitelistContent(request *DeleteMdsWhitelistContentRequest) (_result *DeleteMdsWhitelistContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMdsWhitelistContentResponse{}
@@ -27055,6 +28208,11 @@ func (client *Client) DeleteMdsWhitelistContent(request *DeleteMdsWhitelistConte
 	return _result, _err
 }
 
+// @param request - ExistMcubeRsaKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExistMcubeRsaKeyResponse
 func (client *Client) ExistMcubeRsaKeyWithOptions(request *ExistMcubeRsaKeyRequest, runtime *util.RuntimeOptions) (_result *ExistMcubeRsaKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27096,6 +28254,9 @@ func (client *Client) ExistMcubeRsaKeyWithOptions(request *ExistMcubeRsaKeyReque
 	return _result, _err
 }
 
+// @param request - ExistMcubeRsaKeyRequest
+//
+// @return ExistMcubeRsaKeyResponse
 func (client *Client) ExistMcubeRsaKey(request *ExistMcubeRsaKeyRequest) (_result *ExistMcubeRsaKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExistMcubeRsaKeyResponse{}
@@ -27107,6 +28268,11 @@ func (client *Client) ExistMcubeRsaKey(request *ExistMcubeRsaKeyRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ExportMappCenterAppConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportMappCenterAppConfigResponse
 func (client *Client) ExportMappCenterAppConfigWithOptions(request *ExportMappCenterAppConfigRequest, runtime *util.RuntimeOptions) (_result *ExportMappCenterAppConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27164,6 +28330,9 @@ func (client *Client) ExportMappCenterAppConfigWithOptions(request *ExportMappCe
 	return _result, _err
 }
 
+// @param request - ExportMappCenterAppConfigRequest
+//
+// @return ExportMappCenterAppConfigResponse
 func (client *Client) ExportMappCenterAppConfig(request *ExportMappCenterAppConfigRequest) (_result *ExportMappCenterAppConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExportMappCenterAppConfigResponse{}
@@ -27175,6 +28344,11 @@ func (client *Client) ExportMappCenterAppConfig(request *ExportMappCenterAppConf
 	return _result, _err
 }
 
+// @param request - GetFileTokenForUploadToMsaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFileTokenForUploadToMsaResponse
 func (client *Client) GetFileTokenForUploadToMsaWithOptions(request *GetFileTokenForUploadToMsaRequest, runtime *util.RuntimeOptions) (_result *GetFileTokenForUploadToMsaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27220,6 +28394,9 @@ func (client *Client) GetFileTokenForUploadToMsaWithOptions(request *GetFileToke
 	return _result, _err
 }
 
+// @param request - GetFileTokenForUploadToMsaRequest
+//
+// @return GetFileTokenForUploadToMsaResponse
 func (client *Client) GetFileTokenForUploadToMsa(request *GetFileTokenForUploadToMsaRequest) (_result *GetFileTokenForUploadToMsaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFileTokenForUploadToMsaResponse{}
@@ -27231,6 +28408,11 @@ func (client *Client) GetFileTokenForUploadToMsa(request *GetFileTokenForUploadT
 	return _result, _err
 }
 
+// @param request - GetLogUrlInMsaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLogUrlInMsaResponse
 func (client *Client) GetLogUrlInMsaWithOptions(request *GetLogUrlInMsaRequest, runtime *util.RuntimeOptions) (_result *GetLogUrlInMsaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27276,6 +28458,9 @@ func (client *Client) GetLogUrlInMsaWithOptions(request *GetLogUrlInMsaRequest, 
 	return _result, _err
 }
 
+// @param request - GetLogUrlInMsaRequest
+//
+// @return GetLogUrlInMsaResponse
 func (client *Client) GetLogUrlInMsa(request *GetLogUrlInMsaRequest) (_result *GetLogUrlInMsaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLogUrlInMsaResponse{}
@@ -27287,6 +28472,11 @@ func (client *Client) GetLogUrlInMsa(request *GetLogUrlInMsaRequest) (_result *G
 	return _result, _err
 }
 
+// @param request - GetMcubeFileTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMcubeFileTokenResponse
 func (client *Client) GetMcubeFileTokenWithOptions(request *GetMcubeFileTokenRequest, runtime *util.RuntimeOptions) (_result *GetMcubeFileTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27332,6 +28522,9 @@ func (client *Client) GetMcubeFileTokenWithOptions(request *GetMcubeFileTokenReq
 	return _result, _err
 }
 
+// @param request - GetMcubeFileTokenRequest
+//
+// @return GetMcubeFileTokenResponse
 func (client *Client) GetMcubeFileToken(request *GetMcubeFileTokenRequest) (_result *GetMcubeFileTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMcubeFileTokenResponse{}
@@ -27343,6 +28536,11 @@ func (client *Client) GetMcubeFileToken(request *GetMcubeFileTokenRequest) (_res
 	return _result, _err
 }
 
+// @param request - GetMcubeNebulaResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMcubeNebulaResourceResponse
 func (client *Client) GetMcubeNebulaResourceWithOptions(request *GetMcubeNebulaResourceRequest, runtime *util.RuntimeOptions) (_result *GetMcubeNebulaResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27388,6 +28586,9 @@ func (client *Client) GetMcubeNebulaResourceWithOptions(request *GetMcubeNebulaR
 	return _result, _err
 }
 
+// @param request - GetMcubeNebulaResourceRequest
+//
+// @return GetMcubeNebulaResourceResponse
 func (client *Client) GetMcubeNebulaResource(request *GetMcubeNebulaResourceRequest) (_result *GetMcubeNebulaResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMcubeNebulaResourceResponse{}
@@ -27399,6 +28600,11 @@ func (client *Client) GetMcubeNebulaResource(request *GetMcubeNebulaResourceRequ
 	return _result, _err
 }
 
+// @param request - GetMcubeNebulaTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMcubeNebulaTaskDetailResponse
 func (client *Client) GetMcubeNebulaTaskDetailWithOptions(request *GetMcubeNebulaTaskDetailRequest, runtime *util.RuntimeOptions) (_result *GetMcubeNebulaTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27444,6 +28650,9 @@ func (client *Client) GetMcubeNebulaTaskDetailWithOptions(request *GetMcubeNebul
 	return _result, _err
 }
 
+// @param request - GetMcubeNebulaTaskDetailRequest
+//
+// @return GetMcubeNebulaTaskDetailResponse
 func (client *Client) GetMcubeNebulaTaskDetail(request *GetMcubeNebulaTaskDetailRequest) (_result *GetMcubeNebulaTaskDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMcubeNebulaTaskDetailResponse{}
@@ -27455,6 +28664,11 @@ func (client *Client) GetMcubeNebulaTaskDetail(request *GetMcubeNebulaTaskDetail
 	return _result, _err
 }
 
+// @param request - GetMcubeUpgradePackageInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMcubeUpgradePackageInfoResponse
 func (client *Client) GetMcubeUpgradePackageInfoWithOptions(request *GetMcubeUpgradePackageInfoRequest, runtime *util.RuntimeOptions) (_result *GetMcubeUpgradePackageInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27500,6 +28714,9 @@ func (client *Client) GetMcubeUpgradePackageInfoWithOptions(request *GetMcubeUpg
 	return _result, _err
 }
 
+// @param request - GetMcubeUpgradePackageInfoRequest
+//
+// @return GetMcubeUpgradePackageInfoResponse
 func (client *Client) GetMcubeUpgradePackageInfo(request *GetMcubeUpgradePackageInfoRequest) (_result *GetMcubeUpgradePackageInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMcubeUpgradePackageInfoResponse{}
@@ -27511,6 +28728,11 @@ func (client *Client) GetMcubeUpgradePackageInfo(request *GetMcubeUpgradePackage
 	return _result, _err
 }
 
+// @param request - GetMcubeUpgradeTaskInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMcubeUpgradeTaskInfoResponse
 func (client *Client) GetMcubeUpgradeTaskInfoWithOptions(request *GetMcubeUpgradeTaskInfoRequest, runtime *util.RuntimeOptions) (_result *GetMcubeUpgradeTaskInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27556,6 +28778,9 @@ func (client *Client) GetMcubeUpgradeTaskInfoWithOptions(request *GetMcubeUpgrad
 	return _result, _err
 }
 
+// @param request - GetMcubeUpgradeTaskInfoRequest
+//
+// @return GetMcubeUpgradeTaskInfoResponse
 func (client *Client) GetMcubeUpgradeTaskInfo(request *GetMcubeUpgradeTaskInfoRequest) (_result *GetMcubeUpgradeTaskInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMcubeUpgradeTaskInfoResponse{}
@@ -27567,6 +28792,11 @@ func (client *Client) GetMcubeUpgradeTaskInfo(request *GetMcubeUpgradeTaskInfoRe
 	return _result, _err
 }
 
+// @param request - GetMdsMiniConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMdsMiniConfigResponse
 func (client *Client) GetMdsMiniConfigWithOptions(request *GetMdsMiniConfigRequest, runtime *util.RuntimeOptions) (_result *GetMdsMiniConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27612,6 +28842,9 @@ func (client *Client) GetMdsMiniConfigWithOptions(request *GetMdsMiniConfigReque
 	return _result, _err
 }
 
+// @param request - GetMdsMiniConfigRequest
+//
+// @return GetMdsMiniConfigResponse
 func (client *Client) GetMdsMiniConfig(request *GetMdsMiniConfigRequest) (_result *GetMdsMiniConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMdsMiniConfigResponse{}
@@ -27623,6 +28856,11 @@ func (client *Client) GetMdsMiniConfig(request *GetMdsMiniConfigRequest) (_resul
 	return _result, _err
 }
 
+// @param request - GetUserAppDonwloadUrlInMsaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserAppDonwloadUrlInMsaResponse
 func (client *Client) GetUserAppDonwloadUrlInMsaWithOptions(request *GetUserAppDonwloadUrlInMsaRequest, runtime *util.RuntimeOptions) (_result *GetUserAppDonwloadUrlInMsaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27668,6 +28906,9 @@ func (client *Client) GetUserAppDonwloadUrlInMsaWithOptions(request *GetUserAppD
 	return _result, _err
 }
 
+// @param request - GetUserAppDonwloadUrlInMsaRequest
+//
+// @return GetUserAppDonwloadUrlInMsaResponse
 func (client *Client) GetUserAppDonwloadUrlInMsa(request *GetUserAppDonwloadUrlInMsaRequest) (_result *GetUserAppDonwloadUrlInMsaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserAppDonwloadUrlInMsaResponse{}
@@ -27679,6 +28920,11 @@ func (client *Client) GetUserAppDonwloadUrlInMsa(request *GetUserAppDonwloadUrlI
 	return _result, _err
 }
 
+// @param request - GetUserAppEnhanceProcessInMsaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserAppEnhanceProcessInMsaResponse
 func (client *Client) GetUserAppEnhanceProcessInMsaWithOptions(request *GetUserAppEnhanceProcessInMsaRequest, runtime *util.RuntimeOptions) (_result *GetUserAppEnhanceProcessInMsaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27724,6 +28970,9 @@ func (client *Client) GetUserAppEnhanceProcessInMsaWithOptions(request *GetUserA
 	return _result, _err
 }
 
+// @param request - GetUserAppEnhanceProcessInMsaRequest
+//
+// @return GetUserAppEnhanceProcessInMsaResponse
 func (client *Client) GetUserAppEnhanceProcessInMsa(request *GetUserAppEnhanceProcessInMsaRequest) (_result *GetUserAppEnhanceProcessInMsaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserAppEnhanceProcessInMsaResponse{}
@@ -27735,6 +28984,11 @@ func (client *Client) GetUserAppEnhanceProcessInMsa(request *GetUserAppEnhancePr
 	return _result, _err
 }
 
+// @param request - GetUserAppUploadProcessInMsaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserAppUploadProcessInMsaResponse
 func (client *Client) GetUserAppUploadProcessInMsaWithOptions(request *GetUserAppUploadProcessInMsaRequest, runtime *util.RuntimeOptions) (_result *GetUserAppUploadProcessInMsaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27780,6 +29034,9 @@ func (client *Client) GetUserAppUploadProcessInMsaWithOptions(request *GetUserAp
 	return _result, _err
 }
 
+// @param request - GetUserAppUploadProcessInMsaRequest
+//
+// @return GetUserAppUploadProcessInMsaResponse
 func (client *Client) GetUserAppUploadProcessInMsa(request *GetUserAppUploadProcessInMsaRequest) (_result *GetUserAppUploadProcessInMsaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserAppUploadProcessInMsaResponse{}
@@ -27791,6 +29048,11 @@ func (client *Client) GetUserAppUploadProcessInMsa(request *GetUserAppUploadProc
 	return _result, _err
 }
 
+// @param request - ListMappCenterAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMappCenterAppsResponse
 func (client *Client) ListMappCenterAppsWithOptions(runtime *util.RuntimeOptions) (_result *ListMappCenterAppsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -27813,6 +29075,7 @@ func (client *Client) ListMappCenterAppsWithOptions(runtime *util.RuntimeOptions
 	return _result, _err
 }
 
+// @return ListMappCenterAppsResponse
 func (client *Client) ListMappCenterApps() (_result *ListMappCenterAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMappCenterAppsResponse{}
@@ -27824,6 +29087,11 @@ func (client *Client) ListMappCenterApps() (_result *ListMappCenterAppsResponse,
 	return _result, _err
 }
 
+// @param request - ListMappCenterWorkspacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMappCenterWorkspacesResponse
 func (client *Client) ListMappCenterWorkspacesWithOptions(runtime *util.RuntimeOptions) (_result *ListMappCenterWorkspacesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -27846,6 +29114,7 @@ func (client *Client) ListMappCenterWorkspacesWithOptions(runtime *util.RuntimeO
 	return _result, _err
 }
 
+// @return ListMappCenterWorkspacesResponse
 func (client *Client) ListMappCenterWorkspaces() (_result *ListMappCenterWorkspacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMappCenterWorkspacesResponse{}
@@ -27857,6 +29126,11 @@ func (client *Client) ListMappCenterWorkspaces() (_result *ListMappCenterWorkspa
 	return _result, _err
 }
 
+// @param request - ListMcdpAimRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcdpAimResponse
 func (client *Client) ListMcdpAimWithOptions(request *ListMcdpAimRequest, runtime *util.RuntimeOptions) (_result *ListMcdpAimResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27930,6 +29204,9 @@ func (client *Client) ListMcdpAimWithOptions(request *ListMcdpAimRequest, runtim
 	return _result, _err
 }
 
+// @param request - ListMcdpAimRequest
+//
+// @return ListMcdpAimResponse
 func (client *Client) ListMcdpAim(request *ListMcdpAimRequest) (_result *ListMcdpAimResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMcdpAimResponse{}
@@ -27941,6 +29218,11 @@ func (client *Client) ListMcdpAim(request *ListMcdpAimRequest) (_result *ListMcd
 	return _result, _err
 }
 
+// @param request - ListMcubeMiniAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcubeMiniAppsResponse
 func (client *Client) ListMcubeMiniAppsWithOptions(request *ListMcubeMiniAppsRequest, runtime *util.RuntimeOptions) (_result *ListMcubeMiniAppsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27994,6 +29276,9 @@ func (client *Client) ListMcubeMiniAppsWithOptions(request *ListMcubeMiniAppsReq
 	return _result, _err
 }
 
+// @param request - ListMcubeMiniAppsRequest
+//
+// @return ListMcubeMiniAppsResponse
 func (client *Client) ListMcubeMiniApps(request *ListMcubeMiniAppsRequest) (_result *ListMcubeMiniAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMcubeMiniAppsResponse{}
@@ -28005,6 +29290,11 @@ func (client *Client) ListMcubeMiniApps(request *ListMcubeMiniAppsRequest) (_res
 	return _result, _err
 }
 
+// @param request - ListMcubeMiniPackagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcubeMiniPackagesResponse
 func (client *Client) ListMcubeMiniPackagesWithOptions(request *ListMcubeMiniPackagesRequest, runtime *util.RuntimeOptions) (_result *ListMcubeMiniPackagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28062,6 +29352,9 @@ func (client *Client) ListMcubeMiniPackagesWithOptions(request *ListMcubeMiniPac
 	return _result, _err
 }
 
+// @param request - ListMcubeMiniPackagesRequest
+//
+// @return ListMcubeMiniPackagesResponse
 func (client *Client) ListMcubeMiniPackages(request *ListMcubeMiniPackagesRequest) (_result *ListMcubeMiniPackagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMcubeMiniPackagesResponse{}
@@ -28073,6 +29366,11 @@ func (client *Client) ListMcubeMiniPackages(request *ListMcubeMiniPackagesReques
 	return _result, _err
 }
 
+// @param request - ListMcubeMiniTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcubeMiniTasksResponse
 func (client *Client) ListMcubeMiniTasksWithOptions(request *ListMcubeMiniTasksRequest, runtime *util.RuntimeOptions) (_result *ListMcubeMiniTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28118,6 +29416,9 @@ func (client *Client) ListMcubeMiniTasksWithOptions(request *ListMcubeMiniTasksR
 	return _result, _err
 }
 
+// @param request - ListMcubeMiniTasksRequest
+//
+// @return ListMcubeMiniTasksResponse
 func (client *Client) ListMcubeMiniTasks(request *ListMcubeMiniTasksRequest) (_result *ListMcubeMiniTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMcubeMiniTasksResponse{}
@@ -28129,6 +29430,11 @@ func (client *Client) ListMcubeMiniTasks(request *ListMcubeMiniTasksRequest) (_r
 	return _result, _err
 }
 
+// @param request - ListMcubeNebulaAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcubeNebulaAppsResponse
 func (client *Client) ListMcubeNebulaAppsWithOptions(request *ListMcubeNebulaAppsRequest, runtime *util.RuntimeOptions) (_result *ListMcubeNebulaAppsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28182,6 +29488,9 @@ func (client *Client) ListMcubeNebulaAppsWithOptions(request *ListMcubeNebulaApp
 	return _result, _err
 }
 
+// @param request - ListMcubeNebulaAppsRequest
+//
+// @return ListMcubeNebulaAppsResponse
 func (client *Client) ListMcubeNebulaApps(request *ListMcubeNebulaAppsRequest) (_result *ListMcubeNebulaAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMcubeNebulaAppsResponse{}
@@ -28193,6 +29502,11 @@ func (client *Client) ListMcubeNebulaApps(request *ListMcubeNebulaAppsRequest) (
 	return _result, _err
 }
 
+// @param request - ListMcubeNebulaResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcubeNebulaResourcesResponse
 func (client *Client) ListMcubeNebulaResourcesWithOptions(request *ListMcubeNebulaResourcesRequest, runtime *util.RuntimeOptions) (_result *ListMcubeNebulaResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28246,6 +29560,9 @@ func (client *Client) ListMcubeNebulaResourcesWithOptions(request *ListMcubeNebu
 	return _result, _err
 }
 
+// @param request - ListMcubeNebulaResourcesRequest
+//
+// @return ListMcubeNebulaResourcesResponse
 func (client *Client) ListMcubeNebulaResources(request *ListMcubeNebulaResourcesRequest) (_result *ListMcubeNebulaResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMcubeNebulaResourcesResponse{}
@@ -28257,6 +29574,11 @@ func (client *Client) ListMcubeNebulaResources(request *ListMcubeNebulaResources
 	return _result, _err
 }
 
+// @param request - ListMcubeNebulaTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcubeNebulaTasksResponse
 func (client *Client) ListMcubeNebulaTasksWithOptions(request *ListMcubeNebulaTasksRequest, runtime *util.RuntimeOptions) (_result *ListMcubeNebulaTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28302,6 +29624,9 @@ func (client *Client) ListMcubeNebulaTasksWithOptions(request *ListMcubeNebulaTa
 	return _result, _err
 }
 
+// @param request - ListMcubeNebulaTasksRequest
+//
+// @return ListMcubeNebulaTasksResponse
 func (client *Client) ListMcubeNebulaTasks(request *ListMcubeNebulaTasksRequest) (_result *ListMcubeNebulaTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMcubeNebulaTasksResponse{}
@@ -28313,6 +29638,11 @@ func (client *Client) ListMcubeNebulaTasks(request *ListMcubeNebulaTasksRequest)
 	return _result, _err
 }
 
+// @param request - ListMcubeUpgradePackagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcubeUpgradePackagesResponse
 func (client *Client) ListMcubeUpgradePackagesWithOptions(request *ListMcubeUpgradePackagesRequest, runtime *util.RuntimeOptions) (_result *ListMcubeUpgradePackagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28362,6 +29692,9 @@ func (client *Client) ListMcubeUpgradePackagesWithOptions(request *ListMcubeUpgr
 	return _result, _err
 }
 
+// @param request - ListMcubeUpgradePackagesRequest
+//
+// @return ListMcubeUpgradePackagesResponse
 func (client *Client) ListMcubeUpgradePackages(request *ListMcubeUpgradePackagesRequest) (_result *ListMcubeUpgradePackagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMcubeUpgradePackagesResponse{}
@@ -28373,6 +29706,11 @@ func (client *Client) ListMcubeUpgradePackages(request *ListMcubeUpgradePackages
 	return _result, _err
 }
 
+// @param request - ListMcubeUpgradeTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcubeUpgradeTasksResponse
 func (client *Client) ListMcubeUpgradeTasksWithOptions(request *ListMcubeUpgradeTasksRequest, runtime *util.RuntimeOptions) (_result *ListMcubeUpgradeTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28418,6 +29756,9 @@ func (client *Client) ListMcubeUpgradeTasksWithOptions(request *ListMcubeUpgrade
 	return _result, _err
 }
 
+// @param request - ListMcubeUpgradeTasksRequest
+//
+// @return ListMcubeUpgradeTasksResponse
 func (client *Client) ListMcubeUpgradeTasks(request *ListMcubeUpgradeTasksRequest) (_result *ListMcubeUpgradeTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMcubeUpgradeTasksResponse{}
@@ -28429,6 +29770,11 @@ func (client *Client) ListMcubeUpgradeTasks(request *ListMcubeUpgradeTasksReques
 	return _result, _err
 }
 
+// @param request - ListMcubeWhitelistsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcubeWhitelistsResponse
 func (client *Client) ListMcubeWhitelistsWithOptions(request *ListMcubeWhitelistsRequest, runtime *util.RuntimeOptions) (_result *ListMcubeWhitelistsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28482,6 +29828,9 @@ func (client *Client) ListMcubeWhitelistsWithOptions(request *ListMcubeWhitelist
 	return _result, _err
 }
 
+// @param request - ListMcubeWhitelistsRequest
+//
+// @return ListMcubeWhitelistsResponse
 func (client *Client) ListMcubeWhitelists(request *ListMcubeWhitelistsRequest) (_result *ListMcubeWhitelistsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMcubeWhitelistsResponse{}
@@ -28493,6 +29842,11 @@ func (client *Client) ListMcubeWhitelists(request *ListMcubeWhitelistsRequest) (
 	return _result, _err
 }
 
+// @param request - ListMgsApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMgsApiResponse
 func (client *Client) ListMgsApiWithOptions(request *ListMgsApiRequest, runtime *util.RuntimeOptions) (_result *ListMgsApiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28586,6 +29940,9 @@ func (client *Client) ListMgsApiWithOptions(request *ListMgsApiRequest, runtime 
 	return _result, _err
 }
 
+// @param request - ListMgsApiRequest
+//
+// @return ListMgsApiResponse
 func (client *Client) ListMgsApi(request *ListMgsApiRequest) (_result *ListMgsApiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMgsApiResponse{}
@@ -28597,6 +29954,11 @@ func (client *Client) ListMgsApi(request *ListMgsApiRequest) (_result *ListMgsAp
 	return _result, _err
 }
 
+// @param request - LogMsaQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LogMsaQueryResponse
 func (client *Client) LogMsaQueryWithOptions(request *LogMsaQueryRequest, runtime *util.RuntimeOptions) (_result *LogMsaQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28646,6 +30008,9 @@ func (client *Client) LogMsaQueryWithOptions(request *LogMsaQueryRequest, runtim
 	return _result, _err
 }
 
+// @param request - LogMsaQueryRequest
+//
+// @return LogMsaQueryResponse
 func (client *Client) LogMsaQuery(request *LogMsaQueryRequest) (_result *LogMsaQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &LogMsaQueryResponse{}
@@ -28657,6 +30022,15 @@ func (client *Client) LogMsaQuery(request *LogMsaQueryRequest) (_result *LogMsaQ
 	return _result, _err
 }
 
+// Summary:
+//
+// OCR通用接口
+//
+// @param request - MTRSOCRServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MTRSOCRServiceResponse
 func (client *Client) MTRSOCRServiceWithOptions(request *MTRSOCRServiceRequest, runtime *util.RuntimeOptions) (_result *MTRSOCRServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28710,6 +30084,13 @@ func (client *Client) MTRSOCRServiceWithOptions(request *MTRSOCRServiceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// OCR通用接口
+//
+// @param request - MTRSOCRServiceRequest
+//
+// @return MTRSOCRServiceResponse
 func (client *Client) MTRSOCRService(request *MTRSOCRServiceRequest) (_result *MTRSOCRServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MTRSOCRServiceResponse{}
@@ -28721,6 +30102,15 @@ func (client *Client) MTRSOCRService(request *MTRSOCRServiceRequest) (_result *M
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增主扫码
+//
+// @param request - OpenApiAddActiveCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenApiAddActiveCodeResponse
 func (client *Client) OpenApiAddActiveCodeWithOptions(request *OpenApiAddActiveCodeRequest, runtime *util.RuntimeOptions) (_result *OpenApiAddActiveCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28766,6 +30156,13 @@ func (client *Client) OpenApiAddActiveCodeWithOptions(request *OpenApiAddActiveC
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增主扫码
+//
+// @param request - OpenApiAddActiveCodeRequest
+//
+// @return OpenApiAddActiveCodeResponse
 func (client *Client) OpenApiAddActiveCode(request *OpenApiAddActiveCodeRequest) (_result *OpenApiAddActiveCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenApiAddActiveCodeResponse{}
@@ -28777,6 +30174,15 @@ func (client *Client) OpenApiAddActiveCode(request *OpenApiAddActiveCodeRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增场景
+//
+// @param request - OpenApiAddActiveSceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenApiAddActiveSceneResponse
 func (client *Client) OpenApiAddActiveSceneWithOptions(request *OpenApiAddActiveSceneRequest, runtime *util.RuntimeOptions) (_result *OpenApiAddActiveSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28822,6 +30228,13 @@ func (client *Client) OpenApiAddActiveSceneWithOptions(request *OpenApiAddActive
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增场景
+//
+// @param request - OpenApiAddActiveSceneRequest
+//
+// @return OpenApiAddActiveSceneResponse
 func (client *Client) OpenApiAddActiveScene(request *OpenApiAddActiveSceneRequest) (_result *OpenApiAddActiveSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenApiAddActiveSceneResponse{}
@@ -28833,6 +30246,15 @@ func (client *Client) OpenApiAddActiveScene(request *OpenApiAddActiveSceneReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 用户注册
+//
+// @param request - OpenApiCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenApiCallbackResponse
 func (client *Client) OpenApiCallbackWithOptions(request *OpenApiCallbackRequest, runtime *util.RuntimeOptions) (_result *OpenApiCallbackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28878,6 +30300,13 @@ func (client *Client) OpenApiCallbackWithOptions(request *OpenApiCallbackRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 用户注册
+//
+// @param request - OpenApiCallbackRequest
+//
+// @return OpenApiCallbackResponse
 func (client *Client) OpenApiCallback(request *OpenApiCallbackRequest) (_result *OpenApiCallbackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenApiCallbackResponse{}
@@ -28889,6 +30318,15 @@ func (client *Client) OpenApiCallback(request *OpenApiCallbackRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 解码
+//
+// @param request - OpenApiDecodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenApiDecodeResponse
 func (client *Client) OpenApiDecodeWithOptions(request *OpenApiDecodeRequest, runtime *util.RuntimeOptions) (_result *OpenApiDecodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28934,6 +30372,13 @@ func (client *Client) OpenApiDecodeWithOptions(request *OpenApiDecodeRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 解码
+//
+// @param request - OpenApiDecodeRequest
+//
+// @return OpenApiDecodeResponse
 func (client *Client) OpenApiDecode(request *OpenApiDecodeRequest) (_result *OpenApiDecodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenApiDecodeResponse{}
@@ -28945,6 +30390,15 @@ func (client *Client) OpenApiDecode(request *OpenApiDecodeRequest) (_result *Ope
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除主扫码
+//
+// @param request - OpenApiDeleteActiveCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenApiDeleteActiveCodeResponse
 func (client *Client) OpenApiDeleteActiveCodeWithOptions(request *OpenApiDeleteActiveCodeRequest, runtime *util.RuntimeOptions) (_result *OpenApiDeleteActiveCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28990,6 +30444,13 @@ func (client *Client) OpenApiDeleteActiveCodeWithOptions(request *OpenApiDeleteA
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除主扫码
+//
+// @param request - OpenApiDeleteActiveCodeRequest
+//
+// @return OpenApiDeleteActiveCodeResponse
 func (client *Client) OpenApiDeleteActiveCode(request *OpenApiDeleteActiveCodeRequest) (_result *OpenApiDeleteActiveCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenApiDeleteActiveCodeResponse{}
@@ -29001,6 +30462,15 @@ func (client *Client) OpenApiDeleteActiveCode(request *OpenApiDeleteActiveCodeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 编码
+//
+// @param request - OpenApiEncodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenApiEncodeResponse
 func (client *Client) OpenApiEncodeWithOptions(request *OpenApiEncodeRequest, runtime *util.RuntimeOptions) (_result *OpenApiEncodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29046,6 +30516,13 @@ func (client *Client) OpenApiEncodeWithOptions(request *OpenApiEncodeRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 编码
+//
+// @param request - OpenApiEncodeRequest
+//
+// @return OpenApiEncodeResponse
 func (client *Client) OpenApiEncode(request *OpenApiEncodeRequest) (_result *OpenApiEncodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenApiEncodeResponse{}
@@ -29057,6 +30534,15 @@ func (client *Client) OpenApiEncode(request *OpenApiEncodeRequest) (_result *Ope
 	return _result, _err
 }
 
+// Summary:
+//
+// 主扫码查询
+//
+// @param request - OpenApiQueryActiveCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenApiQueryActiveCodeResponse
 func (client *Client) OpenApiQueryActiveCodeWithOptions(request *OpenApiQueryActiveCodeRequest, runtime *util.RuntimeOptions) (_result *OpenApiQueryActiveCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29102,6 +30588,13 @@ func (client *Client) OpenApiQueryActiveCodeWithOptions(request *OpenApiQueryAct
 	return _result, _err
 }
 
+// Summary:
+//
+// 主扫码查询
+//
+// @param request - OpenApiQueryActiveCodeRequest
+//
+// @return OpenApiQueryActiveCodeResponse
 func (client *Client) OpenApiQueryActiveCode(request *OpenApiQueryActiveCodeRequest) (_result *OpenApiQueryActiveCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenApiQueryActiveCodeResponse{}
@@ -29113,6 +30606,15 @@ func (client *Client) OpenApiQueryActiveCode(request *OpenApiQueryActiveCodeRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询场景
+//
+// @param request - OpenApiQueryActiveSceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenApiQueryActiveSceneResponse
 func (client *Client) OpenApiQueryActiveSceneWithOptions(request *OpenApiQueryActiveSceneRequest, runtime *util.RuntimeOptions) (_result *OpenApiQueryActiveSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29158,6 +30660,13 @@ func (client *Client) OpenApiQueryActiveSceneWithOptions(request *OpenApiQueryAc
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询场景
+//
+// @param request - OpenApiQueryActiveSceneRequest
+//
+// @return OpenApiQueryActiveSceneResponse
 func (client *Client) OpenApiQueryActiveScene(request *OpenApiQueryActiveSceneRequest) (_result *OpenApiQueryActiveSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenApiQueryActiveSceneResponse{}
@@ -29169,6 +30678,15 @@ func (client *Client) OpenApiQueryActiveScene(request *OpenApiQueryActiveSceneRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 生成唯一被扫码
+//
+// @param request - OpenApiUniqueEncodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenApiUniqueEncodeResponse
 func (client *Client) OpenApiUniqueEncodeWithOptions(request *OpenApiUniqueEncodeRequest, runtime *util.RuntimeOptions) (_result *OpenApiUniqueEncodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29214,6 +30732,13 @@ func (client *Client) OpenApiUniqueEncodeWithOptions(request *OpenApiUniqueEncod
 	return _result, _err
 }
 
+// Summary:
+//
+// 生成唯一被扫码
+//
+// @param request - OpenApiUniqueEncodeRequest
+//
+// @return OpenApiUniqueEncodeResponse
 func (client *Client) OpenApiUniqueEncode(request *OpenApiUniqueEncodeRequest) (_result *OpenApiUniqueEncodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenApiUniqueEncodeResponse{}
@@ -29225,6 +30750,15 @@ func (client *Client) OpenApiUniqueEncode(request *OpenApiUniqueEncodeRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新主扫码
+//
+// @param request - OpenApiUpdateActiveCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenApiUpdateActiveCodeResponse
 func (client *Client) OpenApiUpdateActiveCodeWithOptions(request *OpenApiUpdateActiveCodeRequest, runtime *util.RuntimeOptions) (_result *OpenApiUpdateActiveCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29270,6 +30804,13 @@ func (client *Client) OpenApiUpdateActiveCodeWithOptions(request *OpenApiUpdateA
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新主扫码
+//
+// @param request - OpenApiUpdateActiveCodeRequest
+//
+// @return OpenApiUpdateActiveCodeResponse
 func (client *Client) OpenApiUpdateActiveCode(request *OpenApiUpdateActiveCodeRequest) (_result *OpenApiUpdateActiveCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenApiUpdateActiveCodeResponse{}
@@ -29281,6 +30822,15 @@ func (client *Client) OpenApiUpdateActiveCode(request *OpenApiUpdateActiveCodeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新场景
+//
+// @param request - OpenApiUpdateActiveSceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenApiUpdateActiveSceneResponse
 func (client *Client) OpenApiUpdateActiveSceneWithOptions(request *OpenApiUpdateActiveSceneRequest, runtime *util.RuntimeOptions) (_result *OpenApiUpdateActiveSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29326,6 +30876,13 @@ func (client *Client) OpenApiUpdateActiveSceneWithOptions(request *OpenApiUpdate
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新场景
+//
+// @param request - OpenApiUpdateActiveSceneRequest
+//
+// @return OpenApiUpdateActiveSceneResponse
 func (client *Client) OpenApiUpdateActiveScene(request *OpenApiUpdateActiveSceneRequest) (_result *OpenApiUpdateActiveSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenApiUpdateActiveSceneResponse{}
@@ -29337,6 +30894,11 @@ func (client *Client) OpenApiUpdateActiveScene(request *OpenApiUpdateActiveScene
 	return _result, _err
 }
 
+// @param request - PushBindRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushBindResponse
 func (client *Client) PushBindWithOptions(request *PushBindRequest, runtime *util.RuntimeOptions) (_result *PushBindResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29390,6 +30952,9 @@ func (client *Client) PushBindWithOptions(request *PushBindRequest, runtime *uti
 	return _result, _err
 }
 
+// @param request - PushBindRequest
+//
+// @return PushBindResponse
 func (client *Client) PushBind(request *PushBindRequest) (_result *PushBindResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PushBindResponse{}
@@ -29401,6 +30966,11 @@ func (client *Client) PushBind(request *PushBindRequest) (_result *PushBindRespo
 	return _result, _err
 }
 
+// @param tmpReq - PushBroadcastRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushBroadcastResponse
 func (client *Client) PushBroadcastWithOptions(tmpReq *PushBroadcastRequest, runtime *util.RuntimeOptions) (_result *PushBroadcastResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -29524,6 +31094,9 @@ func (client *Client) PushBroadcastWithOptions(tmpReq *PushBroadcastRequest, run
 	return _result, _err
 }
 
+// @param request - PushBroadcastRequest
+//
+// @return PushBroadcastResponse
 func (client *Client) PushBroadcast(request *PushBroadcastRequest) (_result *PushBroadcastResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PushBroadcastResponse{}
@@ -29535,6 +31108,11 @@ func (client *Client) PushBroadcast(request *PushBroadcastRequest) (_result *Pus
 	return _result, _err
 }
 
+// @param tmpReq - PushMultipleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushMultipleResponse
 func (client *Client) PushMultipleWithOptions(tmpReq *PushMultipleRequest, runtime *util.RuntimeOptions) (_result *PushMultipleResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -29650,6 +31228,9 @@ func (client *Client) PushMultipleWithOptions(tmpReq *PushMultipleRequest, runti
 	return _result, _err
 }
 
+// @param request - PushMultipleRequest
+//
+// @return PushMultipleResponse
 func (client *Client) PushMultiple(request *PushMultipleRequest) (_result *PushMultipleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PushMultipleResponse{}
@@ -29661,6 +31242,11 @@ func (client *Client) PushMultiple(request *PushMultipleRequest) (_result *PushM
 	return _result, _err
 }
 
+// @param request - PushReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushReportResponse
 func (client *Client) PushReportWithOptions(request *PushReportRequest, runtime *util.RuntimeOptions) (_result *PushReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29742,6 +31328,9 @@ func (client *Client) PushReportWithOptions(request *PushReportRequest, runtime 
 	return _result, _err
 }
 
+// @param request - PushReportRequest
+//
+// @return PushReportResponse
 func (client *Client) PushReport(request *PushReportRequest) (_result *PushReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PushReportResponse{}
@@ -29753,6 +31342,11 @@ func (client *Client) PushReport(request *PushReportRequest) (_result *PushRepor
 	return _result, _err
 }
 
+// @param tmpReq - PushSimpleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushSimpleResponse
 func (client *Client) PushSimpleWithOptions(tmpReq *PushSimpleRequest, runtime *util.RuntimeOptions) (_result *PushSimpleResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -29904,6 +31498,9 @@ func (client *Client) PushSimpleWithOptions(tmpReq *PushSimpleRequest, runtime *
 	return _result, _err
 }
 
+// @param request - PushSimpleRequest
+//
+// @return PushSimpleResponse
 func (client *Client) PushSimple(request *PushSimpleRequest) (_result *PushSimpleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PushSimpleResponse{}
@@ -29915,6 +31512,11 @@ func (client *Client) PushSimple(request *PushSimpleRequest) (_result *PushSimpl
 	return _result, _err
 }
 
+// @param tmpReq - PushTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushTemplateResponse
 func (client *Client) PushTemplateWithOptions(tmpReq *PushTemplateRequest, runtime *util.RuntimeOptions) (_result *PushTemplateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -30050,6 +31652,9 @@ func (client *Client) PushTemplateWithOptions(tmpReq *PushTemplateRequest, runti
 	return _result, _err
 }
 
+// @param request - PushTemplateRequest
+//
+// @return PushTemplateResponse
 func (client *Client) PushTemplate(request *PushTemplateRequest) (_result *PushTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PushTemplateResponse{}
@@ -30061,6 +31666,11 @@ func (client *Client) PushTemplate(request *PushTemplateRequest) (_result *PushT
 	return _result, _err
 }
 
+// @param request - PushUnBindRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushUnBindResponse
 func (client *Client) PushUnBindWithOptions(request *PushUnBindRequest, runtime *util.RuntimeOptions) (_result *PushUnBindResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30106,6 +31716,9 @@ func (client *Client) PushUnBindWithOptions(request *PushUnBindRequest, runtime 
 	return _result, _err
 }
 
+// @param request - PushUnBindRequest
+//
+// @return PushUnBindResponse
 func (client *Client) PushUnBind(request *PushUnBindRequest) (_result *PushUnBindResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PushUnBindResponse{}
@@ -30117,6 +31730,15 @@ func (client *Client) PushUnBind(request *PushUnBindRequest) (_result *PushUnBin
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询Device+服务的
+//
+// @param request - QueryInfoFromMdpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInfoFromMdpResponse
 func (client *Client) QueryInfoFromMdpWithOptions(request *QueryInfoFromMdpRequest, runtime *util.RuntimeOptions) (_result *QueryInfoFromMdpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30174,6 +31796,13 @@ func (client *Client) QueryInfoFromMdpWithOptions(request *QueryInfoFromMdpReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询Device+服务的
+//
+// @param request - QueryInfoFromMdpRequest
+//
+// @return QueryInfoFromMdpResponse
 func (client *Client) QueryInfoFromMdp(request *QueryInfoFromMdpRequest) (_result *QueryInfoFromMdpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryInfoFromMdpResponse{}
@@ -30185,6 +31814,79 @@ func (client *Client) QueryInfoFromMdp(request *QueryInfoFromMdpRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询短链
+//
+// @param request - QueryLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryLinkResponse
+func (client *Client) QueryLinkWithOptions(request *QueryLinkRequest, runtime *util.RuntimeOptions) (_result *QueryLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["Url"] = request.Url
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryLink"),
+		Version:     tea.String("2020-10-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询短链
+//
+// @param request - QueryLinkRequest
+//
+// @return QueryLinkResponse
+func (client *Client) QueryLink(request *QueryLinkRequest) (_result *QueryLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryLinkResponse{}
+	_body, _err := client.QueryLinkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - QueryMappCenterAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMappCenterAppResponse
 func (client *Client) QueryMappCenterAppWithOptions(request *QueryMappCenterAppRequest, runtime *util.RuntimeOptions) (_result *QueryMappCenterAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30222,6 +31924,9 @@ func (client *Client) QueryMappCenterAppWithOptions(request *QueryMappCenterAppR
 	return _result, _err
 }
 
+// @param request - QueryMappCenterAppRequest
+//
+// @return QueryMappCenterAppResponse
 func (client *Client) QueryMappCenterApp(request *QueryMappCenterAppRequest) (_result *QueryMappCenterAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMappCenterAppResponse{}
@@ -30233,6 +31938,11 @@ func (client *Client) QueryMappCenterApp(request *QueryMappCenterAppRequest) (_r
 	return _result, _err
 }
 
+// @param request - QueryMcdpAimRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMcdpAimResponse
 func (client *Client) QueryMcdpAimWithOptions(request *QueryMcdpAimRequest, runtime *util.RuntimeOptions) (_result *QueryMcdpAimResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30278,6 +31988,9 @@ func (client *Client) QueryMcdpAimWithOptions(request *QueryMcdpAimRequest, runt
 	return _result, _err
 }
 
+// @param request - QueryMcdpAimRequest
+//
+// @return QueryMcdpAimResponse
 func (client *Client) QueryMcdpAim(request *QueryMcdpAimRequest) (_result *QueryMcdpAimResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMcdpAimResponse{}
@@ -30289,6 +32002,11 @@ func (client *Client) QueryMcdpAim(request *QueryMcdpAimRequest) (_result *Query
 	return _result, _err
 }
 
+// @param request - QueryMcdpZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMcdpZoneResponse
 func (client *Client) QueryMcdpZoneWithOptions(request *QueryMcdpZoneRequest, runtime *util.RuntimeOptions) (_result *QueryMcdpZoneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30334,6 +32052,9 @@ func (client *Client) QueryMcdpZoneWithOptions(request *QueryMcdpZoneRequest, ru
 	return _result, _err
 }
 
+// @param request - QueryMcdpZoneRequest
+//
+// @return QueryMcdpZoneResponse
 func (client *Client) QueryMcdpZone(request *QueryMcdpZoneRequest) (_result *QueryMcdpZoneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMcdpZoneResponse{}
@@ -30345,6 +32066,11 @@ func (client *Client) QueryMcdpZone(request *QueryMcdpZoneRequest) (_result *Que
 	return _result, _err
 }
 
+// @param request - QueryMcubeMiniPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMcubeMiniPackageResponse
 func (client *Client) QueryMcubeMiniPackageWithOptions(request *QueryMcubeMiniPackageRequest, runtime *util.RuntimeOptions) (_result *QueryMcubeMiniPackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30394,6 +32120,9 @@ func (client *Client) QueryMcubeMiniPackageWithOptions(request *QueryMcubeMiniPa
 	return _result, _err
 }
 
+// @param request - QueryMcubeMiniPackageRequest
+//
+// @return QueryMcubeMiniPackageResponse
 func (client *Client) QueryMcubeMiniPackage(request *QueryMcubeMiniPackageRequest) (_result *QueryMcubeMiniPackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMcubeMiniPackageResponse{}
@@ -30405,6 +32134,11 @@ func (client *Client) QueryMcubeMiniPackage(request *QueryMcubeMiniPackageReques
 	return _result, _err
 }
 
+// @param request - QueryMcubeMiniTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMcubeMiniTaskResponse
 func (client *Client) QueryMcubeMiniTaskWithOptions(request *QueryMcubeMiniTaskRequest, runtime *util.RuntimeOptions) (_result *QueryMcubeMiniTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30450,6 +32184,9 @@ func (client *Client) QueryMcubeMiniTaskWithOptions(request *QueryMcubeMiniTaskR
 	return _result, _err
 }
 
+// @param request - QueryMcubeMiniTaskRequest
+//
+// @return QueryMcubeMiniTaskResponse
 func (client *Client) QueryMcubeMiniTask(request *QueryMcubeMiniTaskRequest) (_result *QueryMcubeMiniTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMcubeMiniTaskResponse{}
@@ -30461,6 +32198,11 @@ func (client *Client) QueryMcubeMiniTask(request *QueryMcubeMiniTaskRequest) (_r
 	return _result, _err
 }
 
+// @param request - QueryMcubeVhostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMcubeVhostResponse
 func (client *Client) QueryMcubeVhostWithOptions(request *QueryMcubeVhostRequest, runtime *util.RuntimeOptions) (_result *QueryMcubeVhostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30502,6 +32244,9 @@ func (client *Client) QueryMcubeVhostWithOptions(request *QueryMcubeVhostRequest
 	return _result, _err
 }
 
+// @param request - QueryMcubeVhostRequest
+//
+// @return QueryMcubeVhostResponse
 func (client *Client) QueryMcubeVhost(request *QueryMcubeVhostRequest) (_result *QueryMcubeVhostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMcubeVhostResponse{}
@@ -30513,6 +32258,11 @@ func (client *Client) QueryMcubeVhost(request *QueryMcubeVhostRequest) (_result 
 	return _result, _err
 }
 
+// @param request - QueryMdsUpgradeTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMdsUpgradeTaskDetailResponse
 func (client *Client) QueryMdsUpgradeTaskDetailWithOptions(request *QueryMdsUpgradeTaskDetailRequest, runtime *util.RuntimeOptions) (_result *QueryMdsUpgradeTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30558,6 +32308,9 @@ func (client *Client) QueryMdsUpgradeTaskDetailWithOptions(request *QueryMdsUpgr
 	return _result, _err
 }
 
+// @param request - QueryMdsUpgradeTaskDetailRequest
+//
+// @return QueryMdsUpgradeTaskDetailResponse
 func (client *Client) QueryMdsUpgradeTaskDetail(request *QueryMdsUpgradeTaskDetailRequest) (_result *QueryMdsUpgradeTaskDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMdsUpgradeTaskDetailResponse{}
@@ -30569,6 +32322,11 @@ func (client *Client) QueryMdsUpgradeTaskDetail(request *QueryMdsUpgradeTaskDeta
 	return _result, _err
 }
 
+// @param request - QueryMgsApipageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMgsApipageResponse
 func (client *Client) QueryMgsApipageWithOptions(request *QueryMgsApipageRequest, runtime *util.RuntimeOptions) (_result *QueryMgsApipageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30662,6 +32420,9 @@ func (client *Client) QueryMgsApipageWithOptions(request *QueryMgsApipageRequest
 	return _result, _err
 }
 
+// @param request - QueryMgsApipageRequest
+//
+// @return QueryMgsApipageResponse
 func (client *Client) QueryMgsApipage(request *QueryMgsApipageRequest) (_result *QueryMgsApipageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMgsApipageResponse{}
@@ -30673,6 +32434,11 @@ func (client *Client) QueryMgsApipage(request *QueryMgsApipageRequest) (_result 
 	return _result, _err
 }
 
+// @param request - QueryMgsApirestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMgsApirestResponse
 func (client *Client) QueryMgsApirestWithOptions(request *QueryMgsApirestRequest, runtime *util.RuntimeOptions) (_result *QueryMgsApirestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30726,6 +32492,9 @@ func (client *Client) QueryMgsApirestWithOptions(request *QueryMgsApirestRequest
 	return _result, _err
 }
 
+// @param request - QueryMgsApirestRequest
+//
+// @return QueryMgsApirestResponse
 func (client *Client) QueryMgsApirest(request *QueryMgsApirestRequest) (_result *QueryMgsApirestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMgsApirestResponse{}
@@ -30737,6 +32506,11 @@ func (client *Client) QueryMgsApirest(request *QueryMgsApirestRequest) (_result 
 	return _result, _err
 }
 
+// @param request - QueryMgsTestreqbodyautogenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMgsTestreqbodyautogenResponse
 func (client *Client) QueryMgsTestreqbodyautogenWithOptions(request *QueryMgsTestreqbodyautogenRequest, runtime *util.RuntimeOptions) (_result *QueryMgsTestreqbodyautogenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30786,6 +32560,9 @@ func (client *Client) QueryMgsTestreqbodyautogenWithOptions(request *QueryMgsTes
 	return _result, _err
 }
 
+// @param request - QueryMgsTestreqbodyautogenRequest
+//
+// @return QueryMgsTestreqbodyautogenResponse
 func (client *Client) QueryMgsTestreqbodyautogen(request *QueryMgsTestreqbodyautogenRequest) (_result *QueryMgsTestreqbodyautogenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMgsTestreqbodyautogenResponse{}
@@ -30797,6 +32574,11 @@ func (client *Client) QueryMgsTestreqbodyautogen(request *QueryMgsTestreqbodyaut
 	return _result, _err
 }
 
+// @param request - QueryMpsSchedulerListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMpsSchedulerListResponse
 func (client *Client) QueryMpsSchedulerListWithOptions(request *QueryMpsSchedulerListRequest, runtime *util.RuntimeOptions) (_result *QueryMpsSchedulerListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30858,6 +32640,9 @@ func (client *Client) QueryMpsSchedulerListWithOptions(request *QueryMpsSchedule
 	return _result, _err
 }
 
+// @param request - QueryMpsSchedulerListRequest
+//
+// @return QueryMpsSchedulerListResponse
 func (client *Client) QueryMpsSchedulerList(request *QueryMpsSchedulerListRequest) (_result *QueryMpsSchedulerListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMpsSchedulerListResponse{}
@@ -30869,6 +32654,11 @@ func (client *Client) QueryMpsSchedulerList(request *QueryMpsSchedulerListReques
 	return _result, _err
 }
 
+// @param request - QueryPushAnalysisCoreIndexRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPushAnalysisCoreIndexResponse
 func (client *Client) QueryPushAnalysisCoreIndexWithOptions(request *QueryPushAnalysisCoreIndexRequest, runtime *util.RuntimeOptions) (_result *QueryPushAnalysisCoreIndexResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30930,6 +32720,9 @@ func (client *Client) QueryPushAnalysisCoreIndexWithOptions(request *QueryPushAn
 	return _result, _err
 }
 
+// @param request - QueryPushAnalysisCoreIndexRequest
+//
+// @return QueryPushAnalysisCoreIndexResponse
 func (client *Client) QueryPushAnalysisCoreIndex(request *QueryPushAnalysisCoreIndexRequest) (_result *QueryPushAnalysisCoreIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPushAnalysisCoreIndexResponse{}
@@ -30941,6 +32734,11 @@ func (client *Client) QueryPushAnalysisCoreIndex(request *QueryPushAnalysisCoreI
 	return _result, _err
 }
 
+// @param request - QueryPushAnalysisTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPushAnalysisTaskDetailResponse
 func (client *Client) QueryPushAnalysisTaskDetailWithOptions(request *QueryPushAnalysisTaskDetailRequest, runtime *util.RuntimeOptions) (_result *QueryPushAnalysisTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30982,6 +32780,9 @@ func (client *Client) QueryPushAnalysisTaskDetailWithOptions(request *QueryPushA
 	return _result, _err
 }
 
+// @param request - QueryPushAnalysisTaskDetailRequest
+//
+// @return QueryPushAnalysisTaskDetailResponse
 func (client *Client) QueryPushAnalysisTaskDetail(request *QueryPushAnalysisTaskDetailRequest) (_result *QueryPushAnalysisTaskDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPushAnalysisTaskDetailResponse{}
@@ -30993,6 +32794,11 @@ func (client *Client) QueryPushAnalysisTaskDetail(request *QueryPushAnalysisTask
 	return _result, _err
 }
 
+// @param request - QueryPushAnalysisTaskListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPushAnalysisTaskListResponse
 func (client *Client) QueryPushAnalysisTaskListWithOptions(request *QueryPushAnalysisTaskListRequest, runtime *util.RuntimeOptions) (_result *QueryPushAnalysisTaskListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31050,6 +32856,9 @@ func (client *Client) QueryPushAnalysisTaskListWithOptions(request *QueryPushAna
 	return _result, _err
 }
 
+// @param request - QueryPushAnalysisTaskListRequest
+//
+// @return QueryPushAnalysisTaskListResponse
 func (client *Client) QueryPushAnalysisTaskList(request *QueryPushAnalysisTaskListRequest) (_result *QueryPushAnalysisTaskListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPushAnalysisTaskListResponse{}
@@ -31061,6 +32870,11 @@ func (client *Client) QueryPushAnalysisTaskList(request *QueryPushAnalysisTaskLi
 	return _result, _err
 }
 
+// @param request - QueryPushSchedulerListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPushSchedulerListResponse
 func (client *Client) QueryPushSchedulerListWithOptions(request *QueryPushSchedulerListRequest, runtime *util.RuntimeOptions) (_result *QueryPushSchedulerListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31122,6 +32936,9 @@ func (client *Client) QueryPushSchedulerListWithOptions(request *QueryPushSchedu
 	return _result, _err
 }
 
+// @param request - QueryPushSchedulerListRequest
+//
+// @return QueryPushSchedulerListResponse
 func (client *Client) QueryPushSchedulerList(request *QueryPushSchedulerListRequest) (_result *QueryPushSchedulerListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPushSchedulerListResponse{}
@@ -31133,6 +32950,11 @@ func (client *Client) QueryPushSchedulerList(request *QueryPushSchedulerListRequ
 	return _result, _err
 }
 
+// @param request - RevokePushMessageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokePushMessageResponse
 func (client *Client) RevokePushMessageWithOptions(request *RevokePushMessageRequest, runtime *util.RuntimeOptions) (_result *RevokePushMessageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31178,6 +33000,9 @@ func (client *Client) RevokePushMessageWithOptions(request *RevokePushMessageReq
 	return _result, _err
 }
 
+// @param request - RevokePushMessageRequest
+//
+// @return RevokePushMessageResponse
 func (client *Client) RevokePushMessage(request *RevokePushMessageRequest) (_result *RevokePushMessageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokePushMessageResponse{}
@@ -31189,6 +33014,11 @@ func (client *Client) RevokePushMessage(request *RevokePushMessageRequest) (_res
 	return _result, _err
 }
 
+// @param request - RevokePushTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokePushTaskResponse
 func (client *Client) RevokePushTaskWithOptions(request *RevokePushTaskRequest, runtime *util.RuntimeOptions) (_result *RevokePushTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31230,6 +33060,9 @@ func (client *Client) RevokePushTaskWithOptions(request *RevokePushTaskRequest, 
 	return _result, _err
 }
 
+// @param request - RevokePushTaskRequest
+//
+// @return RevokePushTaskResponse
 func (client *Client) RevokePushTask(request *RevokePushTaskRequest) (_result *RevokePushTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokePushTaskResponse{}
@@ -31241,6 +33074,11 @@ func (client *Client) RevokePushTask(request *RevokePushTaskRequest) (_result *R
 	return _result, _err
 }
 
+// @param request - RunMsaDiffRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunMsaDiffResponse
 func (client *Client) RunMsaDiffWithOptions(request *RunMsaDiffRequest, runtime *util.RuntimeOptions) (_result *RunMsaDiffResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31286,6 +33124,9 @@ func (client *Client) RunMsaDiffWithOptions(request *RunMsaDiffRequest, runtime 
 	return _result, _err
 }
 
+// @param request - RunMsaDiffRequest
+//
+// @return RunMsaDiffResponse
 func (client *Client) RunMsaDiff(request *RunMsaDiffRequest) (_result *RunMsaDiffResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RunMsaDiffResponse{}
@@ -31297,6 +33138,11 @@ func (client *Client) RunMsaDiff(request *RunMsaDiffRequest) (_result *RunMsaDif
 	return _result, _err
 }
 
+// @param request - SaveMgsApirestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveMgsApirestResponse
 func (client *Client) SaveMgsApirestWithOptions(request *SaveMgsApirestRequest, runtime *util.RuntimeOptions) (_result *SaveMgsApirestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31342,6 +33188,9 @@ func (client *Client) SaveMgsApirestWithOptions(request *SaveMgsApirestRequest, 
 	return _result, _err
 }
 
+// @param request - SaveMgsApirestRequest
+//
+// @return SaveMgsApirestResponse
 func (client *Client) SaveMgsApirest(request *SaveMgsApirestRequest) (_result *SaveMgsApirestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveMgsApirestResponse{}
@@ -31353,6 +33202,11 @@ func (client *Client) SaveMgsApirest(request *SaveMgsApirestRequest) (_result *S
 	return _result, _err
 }
 
+// @param request - StartUserAppAsyncEnhanceInMsaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartUserAppAsyncEnhanceInMsaResponse
 func (client *Client) StartUserAppAsyncEnhanceInMsaWithOptions(request *StartUserAppAsyncEnhanceInMsaRequest, runtime *util.RuntimeOptions) (_result *StartUserAppAsyncEnhanceInMsaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31462,6 +33316,9 @@ func (client *Client) StartUserAppAsyncEnhanceInMsaWithOptions(request *StartUse
 	return _result, _err
 }
 
+// @param request - StartUserAppAsyncEnhanceInMsaRequest
+//
+// @return StartUserAppAsyncEnhanceInMsaResponse
 func (client *Client) StartUserAppAsyncEnhanceInMsa(request *StartUserAppAsyncEnhanceInMsaRequest) (_result *StartUserAppAsyncEnhanceInMsaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartUserAppAsyncEnhanceInMsaResponse{}
@@ -31473,6 +33330,11 @@ func (client *Client) StartUserAppAsyncEnhanceInMsa(request *StartUserAppAsyncEn
 	return _result, _err
 }
 
+// @param request - UpdateMcubeWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMcubeWhitelistResponse
 func (client *Client) UpdateMcubeWhitelistWithOptions(request *UpdateMcubeWhitelistRequest, runtime *util.RuntimeOptions) (_result *UpdateMcubeWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31530,6 +33392,9 @@ func (client *Client) UpdateMcubeWhitelistWithOptions(request *UpdateMcubeWhitel
 	return _result, _err
 }
 
+// @param request - UpdateMcubeWhitelistRequest
+//
+// @return UpdateMcubeWhitelistResponse
 func (client *Client) UpdateMcubeWhitelist(request *UpdateMcubeWhitelistRequest) (_result *UpdateMcubeWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMcubeWhitelistResponse{}
@@ -31541,6 +33406,11 @@ func (client *Client) UpdateMcubeWhitelist(request *UpdateMcubeWhitelistRequest)
 	return _result, _err
 }
 
+// @param request - UpdateMpaasAppInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMpaasAppInfoResponse
 func (client *Client) UpdateMpaasAppInfoWithOptions(request *UpdateMpaasAppInfoRequest, runtime *util.RuntimeOptions) (_result *UpdateMpaasAppInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31598,6 +33468,9 @@ func (client *Client) UpdateMpaasAppInfoWithOptions(request *UpdateMpaasAppInfoR
 	return _result, _err
 }
 
+// @param request - UpdateMpaasAppInfoRequest
+//
+// @return UpdateMpaasAppInfoResponse
 func (client *Client) UpdateMpaasAppInfo(request *UpdateMpaasAppInfoRequest) (_result *UpdateMpaasAppInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMpaasAppInfoResponse{}
@@ -31609,6 +33482,15 @@ func (client *Client) UpdateMpaasAppInfo(request *UpdateMpaasAppInfoRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传字节码到msa进行加固
+//
+// @param request - UploadBitcodeToMsaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadBitcodeToMsaResponse
 func (client *Client) UploadBitcodeToMsaWithOptions(request *UploadBitcodeToMsaRequest, runtime *util.RuntimeOptions) (_result *UploadBitcodeToMsaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31666,6 +33548,13 @@ func (client *Client) UploadBitcodeToMsaWithOptions(request *UploadBitcodeToMsaR
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传字节码到msa进行加固
+//
+// @param request - UploadBitcodeToMsaRequest
+//
+// @return UploadBitcodeToMsaResponse
 func (client *Client) UploadBitcodeToMsa(request *UploadBitcodeToMsaRequest) (_result *UploadBitcodeToMsaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UploadBitcodeToMsaResponse{}
@@ -31677,6 +33566,11 @@ func (client *Client) UploadBitcodeToMsa(request *UploadBitcodeToMsaRequest) (_r
 	return _result, _err
 }
 
+// @param request - UploadMcubeMiniPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadMcubeMiniPackageResponse
 func (client *Client) UploadMcubeMiniPackageWithOptions(request *UploadMcubeMiniPackageRequest, runtime *util.RuntimeOptions) (_result *UploadMcubeMiniPackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31806,6 +33700,9 @@ func (client *Client) UploadMcubeMiniPackageWithOptions(request *UploadMcubeMini
 	return _result, _err
 }
 
+// @param request - UploadMcubeMiniPackageRequest
+//
+// @return UploadMcubeMiniPackageResponse
 func (client *Client) UploadMcubeMiniPackage(request *UploadMcubeMiniPackageRequest) (_result *UploadMcubeMiniPackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UploadMcubeMiniPackageResponse{}
@@ -31817,6 +33714,11 @@ func (client *Client) UploadMcubeMiniPackage(request *UploadMcubeMiniPackageRequ
 	return _result, _err
 }
 
+// @param request - UploadMcubeRsaKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadMcubeRsaKeyResponse
 func (client *Client) UploadMcubeRsaKeyWithOptions(request *UploadMcubeRsaKeyRequest, runtime *util.RuntimeOptions) (_result *UploadMcubeRsaKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31866,6 +33768,9 @@ func (client *Client) UploadMcubeRsaKeyWithOptions(request *UploadMcubeRsaKeyReq
 	return _result, _err
 }
 
+// @param request - UploadMcubeRsaKeyRequest
+//
+// @return UploadMcubeRsaKeyResponse
 func (client *Client) UploadMcubeRsaKey(request *UploadMcubeRsaKeyRequest) (_result *UploadMcubeRsaKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UploadMcubeRsaKeyResponse{}
@@ -31877,6 +33782,11 @@ func (client *Client) UploadMcubeRsaKey(request *UploadMcubeRsaKeyRequest) (_res
 	return _result, _err
 }
 
+// @param request - UploadUserAppToMsaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadUserAppToMsaResponse
 func (client *Client) UploadUserAppToMsaWithOptions(request *UploadUserAppToMsaRequest, runtime *util.RuntimeOptions) (_result *UploadUserAppToMsaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31922,6 +33832,9 @@ func (client *Client) UploadUserAppToMsaWithOptions(request *UploadUserAppToMsaR
 	return _result, _err
 }
 
+// @param request - UploadUserAppToMsaRequest
+//
+// @return UploadUserAppToMsaResponse
 func (client *Client) UploadUserAppToMsa(request *UploadUserAppToMsaRequest) (_result *UploadUserAppToMsaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UploadUserAppToMsaResponse{}
