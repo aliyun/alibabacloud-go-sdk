@@ -10352,7 +10352,9 @@ func (s *CreateSubscribedCalendarRequest) SetSubscribeScope(v *CreateSubscribedC
 }
 
 type CreateSubscribedCalendarRequestSubscribeScope struct {
-	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	CorpIds             []*string `json:"CorpIds,omitempty" xml:"CorpIds,omitempty" type:"Repeated"`
+	OpenConversationIds []*string `json:"OpenConversationIds,omitempty" xml:"OpenConversationIds,omitempty" type:"Repeated"`
+	UserIds             []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateSubscribedCalendarRequestSubscribeScope) String() string {
@@ -10361,6 +10363,16 @@ func (s CreateSubscribedCalendarRequestSubscribeScope) String() string {
 
 func (s CreateSubscribedCalendarRequestSubscribeScope) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSubscribedCalendarRequestSubscribeScope) SetCorpIds(v []*string) *CreateSubscribedCalendarRequestSubscribeScope {
+	s.CorpIds = v
+	return s
+}
+
+func (s *CreateSubscribedCalendarRequestSubscribeScope) SetOpenConversationIds(v []*string) *CreateSubscribedCalendarRequestSubscribeScope {
+	s.OpenConversationIds = v
+	return s
 }
 
 func (s *CreateSubscribedCalendarRequestSubscribeScope) SetUserIds(v []*string) *CreateSubscribedCalendarRequestSubscribeScope {
