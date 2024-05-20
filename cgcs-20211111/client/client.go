@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,6 +10,7 @@ import (
 )
 
 type BatchCheckSessionRequest struct {
+	// This parameter is required.
 	Records []*BatchCheckSessionRequestRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 }
 
@@ -33,7 +31,8 @@ type BatchCheckSessionRequestRecords struct {
 	CustomSessionId   *string                `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
 	PlatformSessionId *string                `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
 	ReferenceInfo     map[string]interface{} `json:"ReferenceInfo,omitempty" xml:"ReferenceInfo,omitempty"`
-	Type              *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s BatchCheckSessionRequestRecords) String() string {
@@ -65,6 +64,7 @@ func (s *BatchCheckSessionRequestRecords) SetType(v string) *BatchCheckSessionRe
 }
 
 type BatchCheckSessionShrinkRequest struct {
+	// This parameter is required.
 	RecordsShrink *string `json:"Records,omitempty" xml:"Records,omitempty"`
 }
 
@@ -82,6 +82,9 @@ func (s *BatchCheckSessionShrinkRequest) SetRecordsShrink(v string) *BatchCheckS
 }
 
 type BatchCheckSessionResponseBody struct {
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -99,9 +102,9 @@ func (s *BatchCheckSessionResponseBody) SetRequestId(v string) *BatchCheckSessio
 }
 
 type BatchCheckSessionResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchCheckSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchCheckSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchCheckSessionResponse) String() string {
@@ -128,8 +131,16 @@ func (s *BatchCheckSessionResponse) SetBody(v *BatchCheckSessionResponseBody) *B
 }
 
 type CancelReserveTaskRequest struct {
+	// example:
+	//
+	// 2YEF0****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b354****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CancelReserveTaskRequest) String() string {
@@ -151,8 +162,14 @@ func (s *CancelReserveTaskRequest) SetTaskId(v string) *CancelReserveTaskRequest
 }
 
 type CancelReserveTaskResponseBody struct {
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// b354****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CancelReserveTaskResponseBody) String() string {
@@ -174,9 +191,9 @@ func (s *CancelReserveTaskResponseBody) SetTaskId(v string) *CancelReserveTaskRe
 }
 
 type CancelReserveTaskResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelReserveTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelReserveTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelReserveTaskResponse) String() string {
@@ -203,8 +220,13 @@ func (s *CancelReserveTaskResponse) SetBody(v *CancelReserveTaskResponseBody) *C
 }
 
 type CreateAdaptationRequest struct {
-	AdaptTarget  *CreateAdaptationRequestAdaptTarget `json:"AdaptTarget,omitempty" xml:"AdaptTarget,omitempty" type:"Struct"`
-	AppVersionId *string                             `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	AdaptTarget *CreateAdaptationRequestAdaptTarget `json:"AdaptTarget,omitempty" xml:"AdaptTarget,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1432****
+	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
 }
 
 func (s CreateAdaptationRequest) String() string {
@@ -226,9 +248,21 @@ func (s *CreateAdaptationRequest) SetAppVersionId(v string) *CreateAdaptationReq
 }
 
 type CreateAdaptationRequestAdaptTarget struct {
-	BitRate      *int32  `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
-	FrameRate    *int32  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	Resolution   *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// example:
+	//
+	// 30
+	BitRate *int32 `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
+	// example:
+	//
+	// 30
+	FrameRate *int32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// example:
+	//
+	// 1080p
+	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// example:
+	//
+	// /example/example.exe
 	StartProgram *string `json:"StartProgram,omitempty" xml:"StartProgram,omitempty"`
 }
 
@@ -262,7 +296,12 @@ func (s *CreateAdaptationRequestAdaptTarget) SetStartProgram(v string) *CreateAd
 
 type CreateAdaptationShrinkRequest struct {
 	AdaptTargetShrink *string `json:"AdaptTarget,omitempty" xml:"AdaptTarget,omitempty"`
-	AppVersionId      *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1432****
+	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
 }
 
 func (s CreateAdaptationShrinkRequest) String() string {
@@ -284,8 +323,14 @@ func (s *CreateAdaptationShrinkRequest) SetAppVersionId(v string) *CreateAdaptat
 }
 
 type CreateAdaptationResponseBody struct {
-	AdaptApplyId *int64  `json:"AdaptApplyId,omitempty" xml:"AdaptApplyId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5435****
+	AdaptApplyId *int64 `json:"AdaptApplyId,omitempty" xml:"AdaptApplyId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAdaptationResponseBody) String() string {
@@ -307,9 +352,9 @@ func (s *CreateAdaptationResponseBody) SetRequestId(v string) *CreateAdaptationR
 }
 
 type CreateAdaptationResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAdaptationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAdaptationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAdaptationResponse) String() string {
@@ -336,9 +381,25 @@ func (s *CreateAdaptationResponse) SetBody(v *CreateAdaptationResponseBody) *Cre
 }
 
 type CreateAppRequest struct {
-	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppType           *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	StreamingAppId    *string `json:"StreamingAppId,omitempty" xml:"StreamingAppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// end_game
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// example:
+	//
+	// 47d0bd4d-8815-48a2-b783-6cbba89d****
+	StreamingAppId *string `json:"StreamingAppId,omitempty" xml:"StreamingAppId,omitempty"`
+	// example:
+	//
+	// self-have-streaming
 	StreamingSolution *string `json:"StreamingSolution,omitempty" xml:"StreamingSolution,omitempty"`
 }
 
@@ -371,7 +432,13 @@ func (s *CreateAppRequest) SetStreamingSolution(v string) *CreateAppRequest {
 }
 
 type CreateAppResponseBody struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 4384****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -394,9 +461,9 @@ func (s *CreateAppResponseBody) SetRequestId(v string) *CreateAppResponseBody {
 }
 
 type CreateAppResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAppResponse) String() string {
@@ -424,19 +491,55 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 
 type CreateAppSessionRequest struct {
 	// 适配文件ID。此功能灰度开放，如未约定使用请勿传入。
-	AdapterFileId   *string `json:"AdapterFileId,omitempty" xml:"AdapterFileId,omitempty"`
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion      *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	ClientIp        *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	//
+	// example:
+	//
+	// 501716211209548966XXXX
+	AdapterFileId *string `json:"AdapterFileId,omitempty" xml:"AdapterFileId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13027XXXX
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067XXXX
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// 192.168.XXX.XXX
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1ADE0XXXX
 	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	CustomUserId    *string `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
-	DistrictId      *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	EnablePostpaid  *bool   `json:"EnablePostpaid,omitempty" xml:"EnablePostpaid,omitempty"`
+	// example:
+	//
+	// 2YEF0XXXX
+	CustomUserId *string `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
+	// example:
+	//
+	// huadong
+	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	// example:
+	//
+	// false
+	EnablePostpaid *bool `json:"EnablePostpaid,omitempty" xml:"EnablePostpaid,omitempty"`
 	// 项目ID。如果已将应用关联到项目，创建会话时需填写正确的项目ID。
+	//
+	// example:
+	//
+	// d9a8****
 	ProjectId       *string                                   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	StartParameters []*CreateAppSessionRequestStartParameters `json:"StartParameters,omitempty" xml:"StartParameters,omitempty" type:"Repeated"`
 	SystemInfo      []*CreateAppSessionRequestSystemInfo      `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Repeated"`
-	Timeout         *int64                                    `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// 1800
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s CreateAppSessionRequest) String() string {
@@ -508,7 +611,13 @@ func (s *CreateAppSessionRequest) SetTimeout(v int64) *CreateAppSessionRequest {
 }
 
 type CreateAppSessionRequestStartParameters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// startArgument
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// exampleValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -531,7 +640,13 @@ func (s *CreateAppSessionRequestStartParameters) SetValue(v string) *CreateAppSe
 }
 
 type CreateAppSessionRequestSystemInfo struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// utdid
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// OE0usD+APXXXX
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -554,11 +669,26 @@ func (s *CreateAppSessionRequestSystemInfo) SetValue(v string) *CreateAppSession
 }
 
 type CreateAppSessionResponseBody struct {
-	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion        *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	CustomSessionId   *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 13027XXXX
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067XXXX
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// 1ADE0XXXX
+	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 100XXXX
 	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAppSessionResponseBody) String() string {
@@ -595,9 +725,9 @@ func (s *CreateAppSessionResponseBody) SetRequestId(v string) *CreateAppSessionR
 }
 
 type CreateAppSessionResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAppSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAppSessionResponse) String() string {
@@ -624,9 +754,12 @@ func (s *CreateAppSessionResponse) SetBody(v *CreateAppSessionResponseBody) *Cre
 }
 
 type CreateAppSessionBatchRequest struct {
-	AppInfos     []*CreateAppSessionBatchRequestAppInfos `json:"AppInfos,omitempty" xml:"AppInfos,omitempty" type:"Repeated"`
-	CustomTaskId *string                                 `json:"CustomTaskId,omitempty" xml:"CustomTaskId,omitempty"`
-	Timeout      *int32                                  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// This parameter is required.
+	AppInfos []*CreateAppSessionBatchRequestAppInfos `json:"AppInfos,omitempty" xml:"AppInfos,omitempty" type:"Repeated"`
+	// This parameter is required.
+	CustomTaskId *string `json:"CustomTaskId,omitempty" xml:"CustomTaskId,omitempty"`
+	// This parameter is required.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s CreateAppSessionBatchRequest) String() string {
@@ -653,11 +786,16 @@ func (s *CreateAppSessionBatchRequest) SetTimeout(v int32) *CreateAppSessionBatc
 }
 
 type CreateAppSessionBatchRequestAppInfos struct {
-	AdapterFileId     *string                                                `json:"AdapterFileId,omitempty" xml:"AdapterFileId,omitempty"`
-	AppId             *string                                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion        *string                                                `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	ClientIp          *string                                                `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	CustomUserId      *string                                                `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
+	AdapterFileId *string `json:"AdapterFileId,omitempty" xml:"AdapterFileId,omitempty"`
+	// This parameter is required.
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion   *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	ClientIp     *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	CustomUserId *string `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
 	CustomerSessionId *string                                                `json:"CustomerSessionId,omitempty" xml:"CustomerSessionId,omitempty"`
 	DatasetId         *string                                                `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	DistrictId        *string                                                `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
@@ -834,9 +972,12 @@ func (s *CreateAppSessionBatchRequestAppInfosSystemInfo) SetValue(v string) *Cre
 }
 
 type CreateAppSessionBatchShrinkRequest struct {
+	// This parameter is required.
 	AppInfosShrink *string `json:"AppInfos,omitempty" xml:"AppInfos,omitempty"`
-	CustomTaskId   *string `json:"CustomTaskId,omitempty" xml:"CustomTaskId,omitempty"`
-	Timeout        *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// This parameter is required.
+	CustomTaskId *string `json:"CustomTaskId,omitempty" xml:"CustomTaskId,omitempty"`
+	// This parameter is required.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s CreateAppSessionBatchShrinkRequest) String() string {
@@ -892,9 +1033,9 @@ func (s *CreateAppSessionBatchResponseBody) SetRequestId(v string) *CreateAppSes
 }
 
 type CreateAppSessionBatchResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAppSessionBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppSessionBatchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAppSessionBatchResponse) String() string {
@@ -921,8 +1062,14 @@ func (s *CreateAppSessionBatchResponse) SetBody(v *CreateAppSessionBatchResponse
 }
 
 type CreateAppSessionBatchSyncRequest struct {
+	// This parameter is required.
 	AppInfos []*CreateAppSessionBatchSyncRequestAppInfos `json:"AppInfos,omitempty" xml:"AppInfos,omitempty" type:"Repeated"`
-	BatchId  *string                                     `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6d4d****
+	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 }
 
 func (s CreateAppSessionBatchSyncRequest) String() string {
@@ -944,18 +1091,49 @@ func (s *CreateAppSessionBatchSyncRequest) SetBatchId(v string) *CreateAppSessio
 }
 
 type CreateAppSessionBatchSyncRequestAppInfos struct {
-	AdapterFileId     *string                                                    `json:"AdapterFileId,omitempty" xml:"AdapterFileId,omitempty"`
-	AppId             *string                                                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion        *string                                                    `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	ClientIp          *string                                                    `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	CustomUserId      *string                                                    `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
-	CustomerSessionId *string                                                    `json:"CustomerSessionId,omitempty" xml:"CustomerSessionId,omitempty"`
-	DistrictId        *string                                                    `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	MatchRules        []*CreateAppSessionBatchSyncRequestAppInfosMatchRules      `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
-	ProjectId         *string                                                    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	StartParameters   []*CreateAppSessionBatchSyncRequestAppInfosStartParameters `json:"StartParameters,omitempty" xml:"StartParameters,omitempty" type:"Repeated"`
-	SystemInfo        []*CreateAppSessionBatchSyncRequestAppInfosSystemInfo      `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Repeated"`
-	Tags              []*CreateAppSessionBatchSyncRequestAppInfosTags            `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 501716211209548966XXXX
+	AdapterFileId *string `json:"AdapterFileId,omitempty" xml:"AdapterFileId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067****
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// 192.168.XX.XX
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// 2YEF0****
+	CustomUserId *string `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// 1ADE0****
+	CustomerSessionId *string `json:"CustomerSessionId,omitempty" xml:"CustomerSessionId,omitempty"`
+	// example:
+	//
+	// huadong
+	DistrictId *string                                               `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	MatchRules []*CreateAppSessionBatchSyncRequestAppInfosMatchRules `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// d9a8****
+	ProjectId       *string                                                    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	StartParameters []*CreateAppSessionBatchSyncRequestAppInfosStartParameters `json:"StartParameters,omitempty" xml:"StartParameters,omitempty" type:"Repeated"`
+	SystemInfo      []*CreateAppSessionBatchSyncRequestAppInfosSystemInfo      `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Repeated"`
+	Tags            []*CreateAppSessionBatchSyncRequestAppInfosTags            `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateAppSessionBatchSyncRequestAppInfos) String() string {
@@ -1027,7 +1205,13 @@ func (s *CreateAppSessionBatchSyncRequestAppInfos) SetTags(v []*CreateAppSession
 }
 
 type CreateAppSessionBatchSyncRequestAppInfosMatchRules struct {
-	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// component
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// in
 	Type   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
@@ -1056,7 +1240,13 @@ func (s *CreateAppSessionBatchSyncRequestAppInfosMatchRules) SetValues(v []*stri
 }
 
 type CreateAppSessionBatchSyncRequestAppInfosStartParameters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// startArgument
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// exampleValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1079,7 +1269,13 @@ func (s *CreateAppSessionBatchSyncRequestAppInfosStartParameters) SetValue(v str
 }
 
 type CreateAppSessionBatchSyncRequestAppInfosSystemInfo struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// utdid
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// OE0usD+AP****
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1102,7 +1298,13 @@ func (s *CreateAppSessionBatchSyncRequestAppInfosSystemInfo) SetValue(v string) 
 }
 
 type CreateAppSessionBatchSyncRequestAppInfosTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// exampleTag
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// exampleValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1125,8 +1327,14 @@ func (s *CreateAppSessionBatchSyncRequestAppInfosTags) SetValue(v string) *Creat
 }
 
 type CreateAppSessionBatchSyncShrinkRequest struct {
+	// This parameter is required.
 	AppInfosShrink *string `json:"AppInfos,omitempty" xml:"AppInfos,omitempty"`
-	BatchId        *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6d4d****
+	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 }
 
 func (s CreateAppSessionBatchSyncShrinkRequest) String() string {
@@ -1148,8 +1356,14 @@ func (s *CreateAppSessionBatchSyncShrinkRequest) SetBatchId(v string) *CreateApp
 }
 
 type CreateAppSessionBatchSyncResponseBody struct {
+	// example:
+	//
+	// 6d4d****
 	BatchId    *string                                            `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	FailedList []*CreateAppSessionBatchSyncResponseBodyFailedList `json:"FailedList,omitempty" xml:"FailedList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
 	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultList []*CreateAppSessionBatchSyncResponseBodyResultList `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
 }
@@ -1183,7 +1397,13 @@ func (s *CreateAppSessionBatchSyncResponseBody) SetResultList(v []*CreateAppSess
 }
 
 type CreateAppSessionBatchSyncResponseBodyFailedList struct {
-	AppId           *string                                                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 100****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 1ADE0****
 	CustomSessionId *string                                                    `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
 	FailedInfo      *CreateAppSessionBatchSyncResponseBodyFailedListFailedInfo `json:"FailedInfo,omitempty" xml:"FailedInfo,omitempty" type:"Struct"`
 }
@@ -1212,7 +1432,13 @@ func (s *CreateAppSessionBatchSyncResponseBodyFailedList) SetFailedInfo(v *Creat
 }
 
 type CreateAppSessionBatchSyncResponseBodyFailedListFailedInfo struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// App type not support.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 400
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 }
 
@@ -1235,11 +1461,23 @@ func (s *CreateAppSessionBatchSyncResponseBodyFailedListFailedInfo) SetErrorMess
 }
 
 type CreateAppSessionBatchSyncResponseBodyResultList struct {
-	AppId             *string                                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion        *string                                                 `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	BizInfo           *CreateAppSessionBatchSyncResponseBodyResultListBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
-	CustomSessionId   *string                                                 `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	PlatformSessionId *string                                                 `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067****
+	AppVersion *string                                                 `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	BizInfo    *CreateAppSessionBatchSyncResponseBodyResultListBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1ADE0****
+	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 100****
+	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
 }
 
 func (s CreateAppSessionBatchSyncResponseBodyResultList) String() string {
@@ -1276,6 +1514,9 @@ func (s *CreateAppSessionBatchSyncResponseBodyResultList) SetPlatformSessionId(v
 }
 
 type CreateAppSessionBatchSyncResponseBodyResultListBizInfo struct {
+	// example:
+	//
+	// authToken
 	Biz       map[string]interface{}                                             `json:"Biz,omitempty" xml:"Biz,omitempty"`
 	Endpoints []*CreateAppSessionBatchSyncResponseBodyResultListBizInfoEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 }
@@ -1299,12 +1540,30 @@ func (s *CreateAppSessionBatchSyncResponseBodyResultListBizInfo) SetEndpoints(v 
 }
 
 type CreateAppSessionBatchSyncResponseBodyResultListBizInfoEndpoints struct {
+	// example:
+	//
+	// 127.0.X.X
 	AccessHost *string `json:"AccessHost,omitempty" xml:"AccessHost,omitempty"`
+	// example:
+	//
+	// 8080
 	AccessPort *string `json:"AccessPort,omitempty" xml:"AccessPort,omitempty"`
+	// example:
+	//
+	// huadong
 	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	Isp        *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// bgp
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// example:
+	//
+	// exampleName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Native
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateAppSessionBatchSyncResponseBodyResultListBizInfoEndpoints) String() string {
@@ -1346,9 +1605,9 @@ func (s *CreateAppSessionBatchSyncResponseBodyResultListBizInfoEndpoints) SetTyp
 }
 
 type CreateAppSessionBatchSyncResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAppSessionBatchSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppSessionBatchSyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAppSessionBatchSyncResponse) String() string {
@@ -1375,14 +1634,42 @@ func (s *CreateAppSessionBatchSyncResponse) SetBody(v *CreateAppSessionBatchSync
 }
 
 type CreateAppSessionSyncRequest struct {
-	AdapterFileId   *string                                       `json:"AdapterFileId,omitempty" xml:"AdapterFileId,omitempty"`
-	AppId           *string                                       `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion      *string                                       `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	ClientIp        *string                                       `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	CustomSessionId *string                                       `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	CustomUserId    *string                                       `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
-	DistrictId      *string                                       `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	MatchRules      []*CreateAppSessionSyncRequestMatchRules      `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 501716211209548966XXXX
+	AdapterFileId *string `json:"AdapterFileId,omitempty" xml:"AdapterFileId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067****
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// 192.168.XX.XX
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1ADE0****
+	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 2YEF0****
+	CustomUserId *string `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
+	// example:
+	//
+	// huadong
+	DistrictId *string                                  `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	MatchRules []*CreateAppSessionSyncRequestMatchRules `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// d9a8****
 	ProjectId       *string                                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	StartParameters []*CreateAppSessionSyncRequestStartParameters `json:"StartParameters,omitempty" xml:"StartParameters,omitempty" type:"Repeated"`
 	SystemInfo      []*CreateAppSessionSyncRequestSystemInfo      `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Repeated"`
@@ -1458,7 +1745,13 @@ func (s *CreateAppSessionSyncRequest) SetTags(v []*CreateAppSessionSyncRequestTa
 }
 
 type CreateAppSessionSyncRequestMatchRules struct {
-	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// component
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// in
 	Type   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
@@ -1487,7 +1780,13 @@ func (s *CreateAppSessionSyncRequestMatchRules) SetValues(v []*string) *CreateAp
 }
 
 type CreateAppSessionSyncRequestStartParameters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// startArgument
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// exampleValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1510,7 +1809,13 @@ func (s *CreateAppSessionSyncRequestStartParameters) SetValue(v string) *CreateA
 }
 
 type CreateAppSessionSyncRequestSystemInfo struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// utdid
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// OE0usD+AP****
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1533,7 +1838,13 @@ func (s *CreateAppSessionSyncRequestSystemInfo) SetValue(v string) *CreateAppSes
 }
 
 type CreateAppSessionSyncRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// exampleTag
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// exampleValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1556,12 +1867,27 @@ func (s *CreateAppSessionSyncRequestTags) SetValue(v string) *CreateAppSessionSy
 }
 
 type CreateAppSessionSyncResponseBody struct {
-	AppId             *string                                  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion        *string                                  `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	BizInfo           *CreateAppSessionSyncResponseBodyBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
-	CustomSessionId   *string                                  `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	PlatformSessionId *string                                  `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
-	RequestId         *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067****
+	AppVersion *string                                  `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	BizInfo    *CreateAppSessionSyncResponseBodyBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1ADE0****
+	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 100****
+	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAppSessionSyncResponseBody) String() string {
@@ -1603,6 +1929,9 @@ func (s *CreateAppSessionSyncResponseBody) SetRequestId(v string) *CreateAppSess
 }
 
 type CreateAppSessionSyncResponseBodyBizInfo struct {
+	// example:
+	//
+	// authToken
 	Biz       map[string]interface{}                              `json:"Biz,omitempty" xml:"Biz,omitempty"`
 	Endpoints []*CreateAppSessionSyncResponseBodyBizInfoEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 }
@@ -1626,12 +1955,30 @@ func (s *CreateAppSessionSyncResponseBodyBizInfo) SetEndpoints(v []*CreateAppSes
 }
 
 type CreateAppSessionSyncResponseBodyBizInfoEndpoints struct {
+	// example:
+	//
+	// 127.0.X.X
 	AccessHost *string `json:"AccessHost,omitempty" xml:"AccessHost,omitempty"`
+	// example:
+	//
+	// 8080
 	AccessPort *string `json:"AccessPort,omitempty" xml:"AccessPort,omitempty"`
+	// example:
+	//
+	// huabei
 	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	Isp        *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// BGP
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// example:
+	//
+	// exampleName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Native
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateAppSessionSyncResponseBodyBizInfoEndpoints) String() string {
@@ -1673,9 +2020,9 @@ func (s *CreateAppSessionSyncResponseBodyBizInfoEndpoints) SetType(v string) *Cr
 }
 
 type CreateAppSessionSyncResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAppSessionSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppSessionSyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAppSessionSyncResponse) String() string {
@@ -1702,7 +2049,17 @@ func (s *CreateAppSessionSyncResponse) SetBody(v *CreateAppSessionSyncResponseBo
 }
 
 type CreateAppVersionRequest struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4384****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// exampleVersion
 	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
 }
 
@@ -1725,8 +2082,14 @@ func (s *CreateAppVersionRequest) SetAppVersionName(v string) *CreateAppVersionR
 }
 
 type CreateAppVersionResponseBody struct {
+	// example:
+	//
+	// 1432****
 	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAppVersionResponseBody) String() string {
@@ -1748,9 +2111,9 @@ func (s *CreateAppVersionResponseBody) SetRequestId(v string) *CreateAppVersionR
 }
 
 type CreateAppVersionResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAppVersionResponse) String() string {
@@ -1777,14 +2140,44 @@ func (s *CreateAppVersionResponse) SetBody(v *CreateAppVersionResponseBody) *Cre
 }
 
 type CreateCapacityReservationRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion  *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067****
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// 2YEF0****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DistrictId  *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// huadong
+	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// 2022-02-02 22:22:22
 	ExpectResourceReadyTime *string `json:"ExpectResourceReadyTime,omitempty" xml:"ExpectResourceReadyTime,omitempty"`
-	ExpectSessionCapacity   *int32  `json:"ExpectSessionCapacity,omitempty" xml:"ExpectSessionCapacity,omitempty"`
-	ProjectId               *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ExpectSessionCapacity *int32 `json:"ExpectSessionCapacity,omitempty" xml:"ExpectSessionCapacity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d9a8****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s CreateCapacityReservationRequest) String() string {
@@ -1831,9 +2224,18 @@ func (s *CreateCapacityReservationRequest) SetProjectId(v string) *CreateCapacit
 }
 
 type CreateCapacityReservationResponseBody struct {
-	CurrMaxAllocatableSessionCapacity *int32  `json:"CurrMaxAllocatableSessionCapacity,omitempty" xml:"CurrMaxAllocatableSessionCapacity,omitempty"`
-	RequestId                         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId                            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 10000
+	CurrMaxAllocatableSessionCapacity *int32 `json:"CurrMaxAllocatableSessionCapacity,omitempty" xml:"CurrMaxAllocatableSessionCapacity,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// b354****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateCapacityReservationResponseBody) String() string {
@@ -1860,9 +2262,9 @@ func (s *CreateCapacityReservationResponseBody) SetTaskId(v string) *CreateCapac
 }
 
 type CreateCapacityReservationResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCapacityReservationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCapacityReservationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCapacityReservationResponse) String() string {
@@ -1889,6 +2291,11 @@ func (s *CreateCapacityReservationResponse) SetBody(v *CreateCapacityReservation
 }
 
 type DeleteAppRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4384****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -1906,7 +2313,13 @@ func (s *DeleteAppRequest) SetAppId(v string) *DeleteAppRequest {
 }
 
 type DeleteAppResponseBody struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 4384****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1929,9 +2342,9 @@ func (s *DeleteAppResponseBody) SetRequestId(v string) *DeleteAppResponseBody {
 }
 
 type DeleteAppResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAppResponse) String() string {
@@ -1958,6 +2371,11 @@ func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse
 }
 
 type DeleteAppVersionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1432****
 	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
 }
 
@@ -1975,8 +2393,14 @@ func (s *DeleteAppVersionRequest) SetAppVersionId(v string) *DeleteAppVersionReq
 }
 
 type DeleteAppVersionResponseBody struct {
+	// example:
+	//
+	// 1432****
 	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteAppVersionResponseBody) String() string {
@@ -1998,9 +2422,9 @@ func (s *DeleteAppVersionResponseBody) SetRequestId(v string) *DeleteAppVersionR
 }
 
 type DeleteAppVersionResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAppVersionResponse) String() string {
@@ -2027,7 +2451,13 @@ func (s *DeleteAppVersionResponse) SetBody(v *DeleteAppVersionResponseBody) *Del
 }
 
 type GetAdaptationRequest struct {
-	AdaptApplyId *int64  `json:"AdaptApplyId,omitempty" xml:"AdaptApplyId,omitempty"`
+	// example:
+	//
+	// 1432****
+	AdaptApplyId *int64 `json:"AdaptApplyId,omitempty" xml:"AdaptApplyId,omitempty"`
+	// example:
+	//
+	// 5435****
 	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
 }
 
@@ -2050,13 +2480,31 @@ func (s *GetAdaptationRequest) SetAppVersionId(v string) *GetAdaptationRequest {
 }
 
 type GetAdaptationResponseBody struct {
+	// example:
+	//
+	// 5435****
 	AdaptApplyId *int64                                `json:"AdaptApplyId,omitempty" xml:"AdaptApplyId,omitempty"`
 	AdaptTarget  *GetAdaptationResponseBodyAdaptTarget `json:"AdaptTarget,omitempty" xml:"AdaptTarget,omitempty" type:"Struct"`
-	AppId        *string                               `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersionId *string                               `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	GmtCreate    *string                               `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified  *string                               `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4384****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 1432****
+	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	// example:
+	//
+	// 2022-04-06 02:00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2022-04-06 02:00:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAdaptationResponseBody) String() string {
@@ -2103,9 +2551,21 @@ func (s *GetAdaptationResponseBody) SetRequestId(v string) *GetAdaptationRespons
 }
 
 type GetAdaptationResponseBodyAdaptTarget struct {
-	BitRate      *int32  `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
-	FrameRate    *int32  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	Resolution   *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// example:
+	//
+	// 30
+	BitRate *int32 `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
+	// example:
+	//
+	// 30
+	FrameRate *int32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// example:
+	//
+	// 1080p
+	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// example:
+	//
+	// /example/example.exe
 	StartProgram *string `json:"StartProgram,omitempty" xml:"StartProgram,omitempty"`
 }
 
@@ -2138,9 +2598,9 @@ func (s *GetAdaptationResponseBodyAdaptTarget) SetStartProgram(v string) *GetAda
 }
 
 type GetAdaptationResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAdaptationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAdaptationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAdaptationResponse) String() string {
@@ -2167,6 +2627,11 @@ func (s *GetAdaptationResponse) SetBody(v *GetAdaptationResponseBody) *GetAdapta
 }
 
 type GetAppRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4384****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -2184,16 +2649,46 @@ func (s *GetAppRequest) SetAppId(v string) *GetAppRequest {
 }
 
 type GetAppResponseBody struct {
-	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppType           *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	GmtCreate         *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified       *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StreamingAppId    *string `json:"StreamingAppId,omitempty" xml:"StreamingAppId,omitempty"`
+	// example:
+	//
+	// 4384****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// example
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// end_game
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// example:
+	//
+	// 2022-04-06 02:00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2022-04-06 02:00:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 47d0bd4d-8815-48a2-b783-6cbba89d****
+	StreamingAppId *string `json:"StreamingAppId,omitempty" xml:"StreamingAppId,omitempty"`
+	// example:
+	//
+	// self-have-streaming
 	StreamingSolution *string `json:"StreamingSolution,omitempty" xml:"StreamingSolution,omitempty"`
-	VersionAdaptNum   *int64  `json:"VersionAdaptNum,omitempty" xml:"VersionAdaptNum,omitempty"`
-	VersionTotalNum   *int64  `json:"VersionTotalNum,omitempty" xml:"VersionTotalNum,omitempty"`
+	// example:
+	//
+	// 10
+	VersionAdaptNum *int64 `json:"VersionAdaptNum,omitempty" xml:"VersionAdaptNum,omitempty"`
+	// example:
+	//
+	// 28
+	VersionTotalNum *int64 `json:"VersionTotalNum,omitempty" xml:"VersionTotalNum,omitempty"`
 }
 
 func (s GetAppResponseBody) String() string {
@@ -2255,9 +2750,9 @@ func (s *GetAppResponseBody) SetVersionTotalNum(v int64) *GetAppResponseBody {
 }
 
 type GetAppResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAppResponse) String() string {
@@ -2284,9 +2779,18 @@ func (s *GetAppResponse) SetBody(v *GetAppResponseBody) *GetAppResponse {
 }
 
 type GetAppCcuRequest struct {
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067****
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// d9a8****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s GetAppCcuRequest) String() string {
@@ -2314,8 +2818,11 @@ func (s *GetAppCcuRequest) SetProjectId(v string) *GetAppCcuRequest {
 
 type GetAppCcuResponseBody struct {
 	DetailList []*GetAppCcuResponseBodyDetailList `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Repeated"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Timestamp  *string                            `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s GetAppCcuResponseBody) String() string {
@@ -2342,11 +2849,26 @@ func (s *GetAppCcuResponseBody) SetTimestamp(v string) *GetAppCcuResponseBody {
 }
 
 type GetAppCcuResponseBodyDetailList struct {
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067****
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	Ccu        *string `json:"Ccu,omitempty" xml:"Ccu,omitempty"`
+	// example:
+	//
+	// 100
+	Ccu *string `json:"Ccu,omitempty" xml:"Ccu,omitempty"`
+	// example:
+	//
+	// huadong
 	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// d9a8****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s GetAppCcuResponseBodyDetailList) String() string {
@@ -2383,9 +2905,9 @@ func (s *GetAppCcuResponseBodyDetailList) SetProjectId(v string) *GetAppCcuRespo
 }
 
 type GetAppCcuResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAppCcuResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAppCcuResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAppCcuResponse) String() string {
@@ -2412,7 +2934,13 @@ func (s *GetAppCcuResponse) SetBody(v *GetAppCcuResponseBody) *GetAppCcuResponse
 }
 
 type GetAppSessionRequest struct {
-	CustomSessionId   *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 1ADE0XXXX
+	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 100XXXX
 	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
 }
 
@@ -2435,14 +2963,32 @@ func (s *GetAppSessionRequest) SetPlatformSessionId(v string) *GetAppSessionRequ
 }
 
 type GetAppSessionResponseBody struct {
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 13027XXXX
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067XXXX
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	// 业务特定的信息，如会话启动/停止时间。
-	BizInfo           *GetAppSessionResponseBodyBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
-	CustomSessionId   *string                           `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	PlatformSessionId *string                           `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
-	RequestId         *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status            *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	BizInfo *GetAppSessionResponseBodyBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1ADE0XXXX
+	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 100XXXX
+	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAppSessionResponseBody) String() string {
@@ -2490,8 +3036,16 @@ func (s *GetAppSessionResponseBody) SetStatus(v string) *GetAppSessionResponseBo
 
 type GetAppSessionResponseBodyBizInfo struct {
 	// 会话启动时间
+	//
+	// example:
+	//
+	// 2022-07-20 17:58:51
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// 会话停止时间
+	//
+	// example:
+	//
+	// 2022-07-20 17:58:57
 	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
 }
 
@@ -2514,9 +3068,9 @@ func (s *GetAppSessionResponseBodyBizInfo) SetStopTime(v string) *GetAppSessionR
 }
 
 type GetAppSessionResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAppSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAppSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAppSessionResponse) String() string {
@@ -2543,6 +3097,11 @@ func (s *GetAppSessionResponse) SetBody(v *GetAppSessionResponseBody) *GetAppSes
 }
 
 type GetAppVersionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1432****
 	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
 }
 
@@ -2560,19 +3119,55 @@ func (s *GetAppVersionRequest) SetAppVersionId(v string) *GetAppVersionRequest {
 }
 
 type GetAppVersionResponseBody struct {
-	AppId                *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersionId         *string  `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	AppVersionName       *string  `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
-	AppVersionStatus     *string  `json:"AppVersionStatus,omitempty" xml:"AppVersionStatus,omitempty"`
-	AppVersionStatusMemo *string  `json:"AppVersionStatusMemo,omitempty" xml:"AppVersionStatusMemo,omitempty"`
-	ConsumeCu            *float64 `json:"ConsumeCu,omitempty" xml:"ConsumeCu,omitempty"`
-	FileAddress          *string  `json:"FileAddress,omitempty" xml:"FileAddress,omitempty"`
-	FileSize             *int64   `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	FileUploadFinishTime *string  `json:"FileUploadFinishTime,omitempty" xml:"FileUploadFinishTime,omitempty"`
-	FileUploadType       *string  `json:"FileUploadType,omitempty" xml:"FileUploadType,omitempty"`
-	GmtCreate            *string  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified          *string  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	RequestId            *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4384****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 1432****
+	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	// example:
+	//
+	// exampleVersion
+	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
+	// example:
+	//
+	// file_uploading
+	AppVersionStatus     *string `json:"AppVersionStatus,omitempty" xml:"AppVersionStatus,omitempty"`
+	AppVersionStatusMemo *string `json:"AppVersionStatusMemo,omitempty" xml:"AppVersionStatusMemo,omitempty"`
+	// example:
+	//
+	// 0.31
+	ConsumeCu *float64 `json:"ConsumeCu,omitempty" xml:"ConsumeCu,omitempty"`
+	// example:
+	//
+	// https://www.example.com/exampleFile.tar
+	FileAddress *string `json:"FileAddress,omitempty" xml:"FileAddress,omitempty"`
+	// example:
+	//
+	// 1024
+	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// example:
+	//
+	// 2022-04-06 02:00:00
+	FileUploadFinishTime *string `json:"FileUploadFinishTime,omitempty" xml:"FileUploadFinishTime,omitempty"`
+	// example:
+	//
+	// local_file_upload
+	FileUploadType *string `json:"FileUploadType,omitempty" xml:"FileUploadType,omitempty"`
+	// example:
+	//
+	// 2022-04-06 02:00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2022-04-06 02:00:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAppVersionResponseBody) String() string {
@@ -2649,9 +3244,9 @@ func (s *GetAppVersionResponseBody) SetRequestId(v string) *GetAppVersionRespons
 }
 
 type GetAppVersionResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAppVersionResponse) String() string {
@@ -2678,12 +3273,30 @@ func (s *GetAppVersionResponse) SetBody(v *GetAppVersionResponseBody) *GetAppVer
 }
 
 type GetCapacityRequest struct {
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067****
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// huadong
 	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	PageNum    *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// d9a8****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s GetCapacityRequest) String() string {
@@ -2726,10 +3339,22 @@ func (s *GetCapacityRequest) SetProjectId(v string) *GetCapacityRequest {
 
 type GetCapacityResponseBody struct {
 	Capacities []*GetCapacityResponseBodyCapacities `json:"Capacities,omitempty" xml:"Capacities,omitempty" type:"Repeated"`
-	PageNum    *int32                               `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total      *int32                               `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetCapacityResponseBody) String() string {
@@ -2766,11 +3391,26 @@ func (s *GetCapacityResponseBody) SetTotal(v int32) *GetCapacityResponseBody {
 }
 
 type GetCapacityResponseBodyCapacities struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion      *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	DistrictId      *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SessionCapacity *int32  `json:"SessionCapacity,omitempty" xml:"SessionCapacity,omitempty"`
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067****
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// huadong
+	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	// example:
+	//
+	// d9a8****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 2
+	SessionCapacity *int32 `json:"SessionCapacity,omitempty" xml:"SessionCapacity,omitempty"`
 }
 
 func (s GetCapacityResponseBodyCapacities) String() string {
@@ -2807,9 +3447,9 @@ func (s *GetCapacityResponseBodyCapacities) SetSessionCapacity(v int32) *GetCapa
 }
 
 type GetCapacityResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCapacityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCapacityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCapacityResponse) String() string {
@@ -2836,6 +3476,11 @@ func (s *GetCapacityResponse) SetBody(v *GetCapacityResponseBody) *GetCapacityRe
 }
 
 type GetReserveTaskDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b354****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2853,17 +3498,47 @@ func (s *GetReserveTaskDetailRequest) SetTaskId(v string) *GetReserveTaskDetailR
 }
 
 type GetReserveTaskDetailResponseBody struct {
-	AppId                        *string                                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion                   *string                                         `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	CurrCompletedSessionCapacity *int32                                          `json:"CurrCompletedSessionCapacity,omitempty" xml:"CurrCompletedSessionCapacity,omitempty"`
-	DistrictId                   *string                                         `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	ExpectResourceReadyTime      *string                                         `json:"ExpectResourceReadyTime,omitempty" xml:"ExpectResourceReadyTime,omitempty"`
-	ExpectSessionCapacity        *int32                                          `json:"ExpectSessionCapacity,omitempty" xml:"ExpectSessionCapacity,omitempty"`
-	ProjectId                    *string                                         `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RequestId                    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResBatchList                 []*GetReserveTaskDetailResponseBodyResBatchList `json:"ResBatchList,omitempty" xml:"ResBatchList,omitempty" type:"Repeated"`
-	TaskId                       *string                                         `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskStatus                   *string                                         `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067****
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// 100
+	CurrCompletedSessionCapacity *int32 `json:"CurrCompletedSessionCapacity,omitempty" xml:"CurrCompletedSessionCapacity,omitempty"`
+	// example:
+	//
+	// huadong
+	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	// example:
+	//
+	// 2022-02-02 22:22:22
+	ExpectResourceReadyTime *string `json:"ExpectResourceReadyTime,omitempty" xml:"ExpectResourceReadyTime,omitempty"`
+	// example:
+	//
+	// 100
+	ExpectSessionCapacity *int32 `json:"ExpectSessionCapacity,omitempty" xml:"ExpectSessionCapacity,omitempty"`
+	// example:
+	//
+	// d9a8****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResBatchList []*GetReserveTaskDetailResponseBodyResBatchList `json:"ResBatchList,omitempty" xml:"ResBatchList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// b354****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// created
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s GetReserveTaskDetailResponseBody) String() string {
@@ -2930,7 +3605,13 @@ func (s *GetReserveTaskDetailResponseBody) SetTaskStatus(v string) *GetReserveTa
 }
 
 type GetReserveTaskDetailResponseBodyResBatchList struct {
-	ResBatchId      *string `json:"ResBatchId,omitempty" xml:"ResBatchId,omitempty"`
+	// example:
+	//
+	// 726573XXXX
+	ResBatchId *string `json:"ResBatchId,omitempty" xml:"ResBatchId,omitempty"`
+	// example:
+	//
+	// resBatchId
 	ResBatchTagName *string `json:"ResBatchTagName,omitempty" xml:"ResBatchTagName,omitempty"`
 }
 
@@ -2953,9 +3634,9 @@ func (s *GetReserveTaskDetailResponseBodyResBatchList) SetResBatchTagName(v stri
 }
 
 type GetReserveTaskDetailResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetReserveTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetReserveTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetReserveTaskDetailResponse) String() string {
@@ -2982,8 +3663,17 @@ func (s *GetReserveTaskDetailResponse) SetBody(v *GetReserveTaskDetailResponseBo
 }
 
 type GetResourcePublicIPsRequest struct {
-	PageNum   *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// d9a8****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -3011,11 +3701,23 @@ func (s *GetResourcePublicIPsRequest) SetProjectId(v string) *GetResourcePublicI
 }
 
 type GetResourcePublicIPsResponseBody struct {
-	IpList    []*GetResourcePublicIPsResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
-	PageNum   *int32                                    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize  *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int32                                    `json:"Total,omitempty" xml:"Total,omitempty"`
+	IpList []*GetResourcePublicIPsResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetResourcePublicIPsResponseBody) String() string {
@@ -3052,7 +3754,13 @@ func (s *GetResourcePublicIPsResponseBody) SetTotal(v int32) *GetResourcePublicI
 }
 
 type GetResourcePublicIPsResponseBodyIpList struct {
-	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 127.0.X.X
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// d9a8****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -3075,9 +3783,9 @@ func (s *GetResourcePublicIPsResponseBodyIpList) SetProjectId(v string) *GetReso
 }
 
 type GetResourcePublicIPsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourcePublicIPsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourcePublicIPsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourcePublicIPsResponse) String() string {
@@ -3104,9 +3812,18 @@ func (s *GetResourcePublicIPsResponse) SetBody(v *GetResourcePublicIPsResponseBo
 }
 
 type ListAppRequest struct {
-	KeySearch  *string `json:"KeySearch,omitempty" xml:"KeySearch,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// example
+	KeySearch *string `json:"KeySearch,omitempty" xml:"KeySearch,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListAppRequest) String() string {
@@ -3133,9 +3850,15 @@ func (s *ListAppRequest) SetPageSize(v int32) *ListAppRequest {
 }
 
 type ListAppResponseBody struct {
-	Apps      []*ListAppResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int64                     `json:"Total,omitempty" xml:"Total,omitempty"`
+	Apps []*ListAppResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 12
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListAppResponseBody) String() string {
@@ -3162,13 +3885,34 @@ func (s *ListAppResponseBody) SetTotal(v int64) *ListAppResponseBody {
 }
 
 type ListAppResponseBodyApps struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppType         *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	VersionAdaptNum *int64  `json:"VersionAdaptNum,omitempty" xml:"VersionAdaptNum,omitempty"`
-	VersionTotalNum *int64  `json:"VersionTotalNum,omitempty" xml:"VersionTotalNum,omitempty"`
+	// example:
+	//
+	// 4384****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// example
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// end_game
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// example:
+	//
+	// 2022-04-06 02:00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2022-04-06 02:00:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 10
+	VersionAdaptNum *int64 `json:"VersionAdaptNum,omitempty" xml:"VersionAdaptNum,omitempty"`
+	// example:
+	//
+	// 28
+	VersionTotalNum *int64 `json:"VersionTotalNum,omitempty" xml:"VersionTotalNum,omitempty"`
 }
 
 func (s ListAppResponseBodyApps) String() string {
@@ -3215,9 +3959,9 @@ func (s *ListAppResponseBodyApps) SetVersionTotalNum(v int64) *ListAppResponseBo
 }
 
 type ListAppResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAppResponse) String() string {
@@ -3244,12 +3988,24 @@ func (s *ListAppResponse) SetBody(v *ListAppResponseBody) *ListAppResponse {
 }
 
 type ListAppSessionsRequest struct {
-	AppId              *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CustomSessionIds   []*string `json:"CustomSessionIds,omitempty" xml:"CustomSessionIds,omitempty" type:"Repeated"`
-	PageNumber         *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 13027XXXX
+	AppId            *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CustomSessionIds []*string `json:"CustomSessionIds,omitempty" xml:"CustomSessionIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
 	PageSize           *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PlatformSessionIds []*string `json:"PlatformSessionIds,omitempty" xml:"PlatformSessionIds,omitempty" type:"Repeated"`
-	ProjectId          *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// d9a8****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s ListAppSessionsRequest) String() string {
@@ -3292,10 +4048,22 @@ func (s *ListAppSessionsRequest) SetProjectId(v string) *ListAppSessionsRequest 
 
 type ListAppSessionsResponseBody struct {
 	AppSessions []*ListAppSessionsResponseBodyAppSessions `json:"AppSessions,omitempty" xml:"AppSessions,omitempty" type:"Repeated"`
-	PageNumber  *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAppSessionsResponseBody) String() string {
@@ -3332,14 +4100,32 @@ func (s *ListAppSessionsResponseBody) SetTotalCount(v int32) *ListAppSessionsRes
 }
 
 type ListAppSessionsResponseBodyAppSessions struct {
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 13027XXXX
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067XXXX
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	// 业务特定的信息，如会话启动/停止时间。
-	BizInfo           *ListAppSessionsResponseBodyAppSessionsBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
-	CustomSessionId   *string                                        `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	PlatformSessionId *string                                        `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
-	ProjectId         *string                                        `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Status            *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	BizInfo *ListAppSessionsResponseBodyAppSessionsBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1ADE0XXXX
+	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 100XXXX
+	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+	// example:
+	//
+	// d9a8****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAppSessionsResponseBodyAppSessions) String() string {
@@ -3387,8 +4173,16 @@ func (s *ListAppSessionsResponseBodyAppSessions) SetStatus(v string) *ListAppSes
 
 type ListAppSessionsResponseBodyAppSessionsBizInfo struct {
 	// 会话启动时间
+	//
+	// example:
+	//
+	// 2022-07-20 17:58:51
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// 会话停止时间
+	//
+	// example:
+	//
+	// 2022-07-20 17:58:57
 	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
 }
 
@@ -3411,9 +4205,9 @@ func (s *ListAppSessionsResponseBodyAppSessionsBizInfo) SetStopTime(v string) *L
 }
 
 type ListAppSessionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAppSessionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAppSessionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAppSessionsResponse) String() string {
@@ -3440,9 +4234,20 @@ func (s *ListAppSessionsResponse) SetBody(v *ListAppSessionsResponseBody) *ListA
 }
 
 type ListAppVersionRequest struct {
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4384****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListAppVersionRequest) String() string {
@@ -3469,9 +4274,15 @@ func (s *ListAppVersionRequest) SetPageSize(v int32) *ListAppVersionRequest {
 }
 
 type ListAppVersionResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int64                                `json:"Total,omitempty" xml:"Total,omitempty"`
-	Versions  []*ListAppVersionResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 16
+	Total    *int64                                `json:"Total,omitempty" xml:"Total,omitempty"`
+	Versions []*ListAppVersionResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
 func (s ListAppVersionResponseBody) String() string {
@@ -3498,18 +4309,51 @@ func (s *ListAppVersionResponseBody) SetVersions(v []*ListAppVersionResponseBody
 }
 
 type ListAppVersionResponseBodyVersions struct {
-	AppId                *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersionId         *string  `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	AppVersionName       *string  `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
-	AppVersionStatus     *string  `json:"AppVersionStatus,omitempty" xml:"AppVersionStatus,omitempty"`
-	AppVersionStatusMemo *string  `json:"AppVersionStatusMemo,omitempty" xml:"AppVersionStatusMemo,omitempty"`
-	ConsumeCu            *float64 `json:"ConsumeCu,omitempty" xml:"ConsumeCu,omitempty"`
-	FileAddress          *string  `json:"FileAddress,omitempty" xml:"FileAddress,omitempty"`
-	FileSize             *int64   `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	FileUploadFinishTime *string  `json:"FileUploadFinishTime,omitempty" xml:"FileUploadFinishTime,omitempty"`
-	FileUploadType       *string  `json:"FileUploadType,omitempty" xml:"FileUploadType,omitempty"`
-	GmtCreate            *string  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified          *string  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 4384****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 1432****
+	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	// example:
+	//
+	// exampleVersion
+	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
+	// example:
+	//
+	// file_uploading
+	AppVersionStatus     *string `json:"AppVersionStatus,omitempty" xml:"AppVersionStatus,omitempty"`
+	AppVersionStatusMemo *string `json:"AppVersionStatusMemo,omitempty" xml:"AppVersionStatusMemo,omitempty"`
+	// example:
+	//
+	// 0.31
+	ConsumeCu *float64 `json:"ConsumeCu,omitempty" xml:"ConsumeCu,omitempty"`
+	// example:
+	//
+	// https://www.example.com/exampleFile.tar
+	FileAddress *string `json:"FileAddress,omitempty" xml:"FileAddress,omitempty"`
+	// example:
+	//
+	// 1024
+	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// example:
+	//
+	// 2022-04-06 02:00:00
+	FileUploadFinishTime *string `json:"FileUploadFinishTime,omitempty" xml:"FileUploadFinishTime,omitempty"`
+	// example:
+	//
+	// cloud_file_download
+	FileUploadType *string `json:"FileUploadType,omitempty" xml:"FileUploadType,omitempty"`
+	// example:
+	//
+	// 2022-04-06 02:00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2022-04-06 02:00:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 }
 
 func (s ListAppVersionResponseBodyVersions) String() string {
@@ -3581,9 +4425,9 @@ func (s *ListAppVersionResponseBodyVersions) SetGmtModified(v string) *ListAppVe
 }
 
 type ListAppVersionResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAppVersionResponse) String() string {
@@ -3610,13 +4454,31 @@ func (s *ListAppVersionResponse) SetBody(v *ListAppVersionResponseBody) *ListApp
 }
 
 type ListInstancesRequest struct {
-	DistrictId   *string   `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	InstanceType *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	MaxResults   *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ProjectId    *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// huadong
+	DistrictId *string   `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	// example:
+	//
+	// gcs.r1c1m1.1xlarge
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// BEXZPF01W23U46598WVf
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 4820372607851300489003
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// CREATING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -3663,10 +4525,19 @@ func (s *ListInstancesRequest) SetStatus(v string) *ListInstancesRequest {
 }
 
 type ListInstancesResponseBody struct {
-	Instances  []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	MaxResults *string                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 50
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// BEXZPF01W23U46598WVf
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -3698,12 +4569,30 @@ func (s *ListInstancesResponseBody) SetRequestId(v string) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyInstances struct {
+	// example:
+	//
+	// 2023-12-13T11:12:11Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DistrictId   *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// huadong
+	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	// example:
+	//
+	// gcs-bmt0kbn7e013aedg9
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// gcs.r1c1m1.1xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 4820372607851300489003
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// CREATING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -3745,9 +4634,9 @@ func (s *ListInstancesResponseBodyInstances) SetStatus(v string) *ListInstancesR
 }
 
 type ListInstancesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstancesResponse) String() string {
@@ -3774,7 +4663,17 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ModifyAppRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4384****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
@@ -3797,7 +4696,13 @@ func (s *ModifyAppRequest) SetAppName(v string) *ModifyAppRequest {
 }
 
 type ModifyAppResponseBody struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 4384****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3820,9 +4725,9 @@ func (s *ModifyAppResponseBody) SetRequestId(v string) *ModifyAppResponseBody {
 }
 
 type ModifyAppResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAppResponse) String() string {
@@ -3849,7 +4754,17 @@ func (s *ModifyAppResponse) SetBody(v *ModifyAppResponseBody) *ModifyAppResponse
 }
 
 type ModifyAppVersionRequest struct {
-	AppVersionId   *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1432****
+	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// exampleVersion
 	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
 }
 
@@ -3872,8 +4787,14 @@ func (s *ModifyAppVersionRequest) SetAppVersionName(v string) *ModifyAppVersionR
 }
 
 type ModifyAppVersionResponseBody struct {
+	// example:
+	//
+	// 1432****
 	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyAppVersionResponseBody) String() string {
@@ -3895,9 +4816,9 @@ func (s *ModifyAppVersionResponseBody) SetRequestId(v string) *ModifyAppVersionR
 }
 
 type ModifyAppVersionResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAppVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAppVersionResponse) String() string {
@@ -3924,11 +4845,34 @@ func (s *ModifyAppVersionResponse) SetBody(v *ModifyAppVersionResponseBody) *Mod
 }
 
 type ReleaseCapacityRequest struct {
-	AppId                        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion                   *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	DistrictId                   *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	ExpectReleaseSessionCapacity *int32  `json:"ExpectReleaseSessionCapacity,omitempty" xml:"ExpectReleaseSessionCapacity,omitempty"`
-	ProjectId                    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067****
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// huadong
+	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	ExpectReleaseSessionCapacity *int32 `json:"ExpectReleaseSessionCapacity,omitempty" xml:"ExpectReleaseSessionCapacity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d9a8****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s ReleaseCapacityRequest) String() string {
@@ -3965,8 +4909,14 @@ func (s *ReleaseCapacityRequest) SetProjectId(v string) *ReleaseCapacityRequest 
 }
 
 type ReleaseCapacityResponseBody struct {
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// b354****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ReleaseCapacityResponseBody) String() string {
@@ -3988,9 +4938,9 @@ func (s *ReleaseCapacityResponseBody) SetTaskId(v string) *ReleaseCapacityRespon
 }
 
 type ReleaseCapacityResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReleaseCapacityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseCapacityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReleaseCapacityResponse) String() string {
@@ -4017,6 +4967,11 @@ func (s *ReleaseCapacityResponse) SetBody(v *ReleaseCapacityResponseBody) *Relea
 }
 
 type ReleaseCapacityByBatchRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 726573XXXX
 	ResBatchId *string `json:"ResBatchId,omitempty" xml:"ResBatchId,omitempty"`
 }
 
@@ -4034,6 +4989,9 @@ func (s *ReleaseCapacityByBatchRequest) SetResBatchId(v string) *ReleaseCapacity
 }
 
 type ReleaseCapacityByBatchResponseBody struct {
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4051,9 +5009,9 @@ func (s *ReleaseCapacityByBatchResponseBody) SetRequestId(v string) *ReleaseCapa
 }
 
 type ReleaseCapacityByBatchResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReleaseCapacityByBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseCapacityByBatchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReleaseCapacityByBatchResponse) String() string {
@@ -4080,10 +5038,30 @@ func (s *ReleaseCapacityByBatchResponse) SetBody(v *ReleaseCapacityByBatchRespon
 }
 
 type ReleaseInstancesRequest struct {
-	Amount       *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	DistrictId   *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// huadong
+	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gcs.r1c1m1.1xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4820372607851300489003
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s ReleaseInstancesRequest) String() string {
@@ -4116,7 +5094,10 @@ func (s *ReleaseInstancesRequest) SetProjectId(v string) *ReleaseInstancesReques
 
 type ReleaseInstancesResponseBody struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ReleaseInstancesResponseBody) String() string {
@@ -4138,9 +5119,9 @@ func (s *ReleaseInstancesResponseBody) SetRequestId(v string) *ReleaseInstancesR
 }
 
 type ReleaseInstancesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReleaseInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReleaseInstancesResponse) String() string {
@@ -4167,10 +5148,30 @@ func (s *ReleaseInstancesResponse) SetBody(v *ReleaseInstancesResponseBody) *Rel
 }
 
 type ReserveInstancesRequest struct {
-	Amount       *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	DistrictId   *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// huadong
+	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gcs.r1c1m1.1xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5469588382860444937003
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s ReserveInstancesRequest) String() string {
@@ -4203,7 +5204,10 @@ func (s *ReserveInstancesRequest) SetProjectId(v string) *ReserveInstancesReques
 
 type ReserveInstancesResponseBody struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ReserveInstancesResponseBody) String() string {
@@ -4225,9 +5229,9 @@ func (s *ReserveInstancesResponseBody) SetRequestId(v string) *ReserveInstancesR
 }
 
 type ReserveInstancesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReserveInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReserveInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReserveInstancesResponse) String() string {
@@ -4294,9 +5298,9 @@ func (s *SendBizCocChangeCallbackResponseBody) SetRequestId(v string) *SendBizCo
 }
 
 type SendBizCocChangeCallbackResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendBizCocChangeCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendBizCocChangeCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendBizCocChangeCallbackResponse) String() string {
@@ -4323,7 +5327,13 @@ func (s *SendBizCocChangeCallbackResponse) SetBody(v *SendBizCocChangeCallbackRe
 }
 
 type StopAppSessionRequest struct {
-	CustomSessionId   *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 1ADE0XXXX
+	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 100XXXX
 	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
 	// 停止容器参数。此参数将透传到Agent。
 	StopParam []*StopAppSessionRequestStopParam `json:"StopParam,omitempty" xml:"StopParam,omitempty" type:"Repeated"`
@@ -4354,9 +5364,18 @@ func (s *StopAppSessionRequest) SetStopParam(v []*StopAppSessionRequestStopParam
 
 type StopAppSessionRequestStopParam struct {
 	// 目前支持的枚举值包括：
+	//
 	// - reason：停止原因。
+	//
+	// example:
+	//
+	// reason
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// key对应的取值。
+	//
+	// example:
+	//
+	// exampleValue
 	Value interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4379,7 +5398,13 @@ func (s *StopAppSessionRequestStopParam) SetValue(v interface{}) *StopAppSession
 }
 
 type StopAppSessionShrinkRequest struct {
-	CustomSessionId   *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 1ADE0XXXX
+	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 100XXXX
 	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
 	// 停止容器参数。此参数将透传到Agent。
 	StopParamShrink *string `json:"StopParam,omitempty" xml:"StopParam,omitempty"`
@@ -4409,11 +5434,26 @@ func (s *StopAppSessionShrinkRequest) SetStopParamShrink(v string) *StopAppSessi
 }
 
 type StopAppSessionResponseBody struct {
-	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion        *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	CustomSessionId   *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 13027XXXX
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067XXXX
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// 1ADE0XXXX
+	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	// example:
+	//
+	// 100XXXX
 	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StopAppSessionResponseBody) String() string {
@@ -4450,9 +5490,9 @@ func (s *StopAppSessionResponseBody) SetRequestId(v string) *StopAppSessionRespo
 }
 
 type StopAppSessionResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopAppSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopAppSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopAppSessionResponse) String() string {
@@ -4479,12 +5519,26 @@ func (s *StopAppSessionResponse) SetBody(v *StopAppSessionResponseBody) *StopApp
 }
 
 type StopAppSessionBatchRequest struct {
-	AppId      *string                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion *string                                `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	BatchId    *string                                `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	ProjectId  *string                                `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	StopParam  []*StopAppSessionBatchRequestStopParam `json:"StopParam,omitempty" xml:"StopParam,omitempty" type:"Repeated"`
-	Tags       []*StopAppSessionBatchRequestTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067****
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6d4d****
+	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// example:
+	//
+	// d9a8****
+	ProjectId *string                                `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	StopParam []*StopAppSessionBatchRequestStopParam `json:"StopParam,omitempty" xml:"StopParam,omitempty" type:"Repeated"`
+	Tags      []*StopAppSessionBatchRequestTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s StopAppSessionBatchRequest) String() string {
@@ -4526,7 +5580,13 @@ func (s *StopAppSessionBatchRequest) SetTags(v []*StopAppSessionBatchRequestTags
 }
 
 type StopAppSessionBatchRequestStopParam struct {
-	Key   *string     `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// reason
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// exampleValue
 	Value interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4549,7 +5609,13 @@ func (s *StopAppSessionBatchRequestStopParam) SetValue(v interface{}) *StopAppSe
 }
 
 type StopAppSessionBatchRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// exampleTag
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// exampleValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4572,9 +5638,23 @@ func (s *StopAppSessionBatchRequestTags) SetValue(v string) *StopAppSessionBatch
 }
 
 type StopAppSessionBatchShrinkRequest struct {
-	AppId           *string                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion      *string                                 `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	BatchId         *string                                 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 35067****
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6d4d****
+	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// example:
+	//
+	// d9a8****
 	ProjectId       *string                                 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	StopParamShrink *string                                 `json:"StopParam,omitempty" xml:"StopParam,omitempty"`
 	Tags            []*StopAppSessionBatchShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -4619,7 +5699,13 @@ func (s *StopAppSessionBatchShrinkRequest) SetTags(v []*StopAppSessionBatchShrin
 }
 
 type StopAppSessionBatchShrinkRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// exampleTag
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// exampleValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4642,9 +5728,21 @@ func (s *StopAppSessionBatchShrinkRequestTags) SetValue(v string) *StopAppSessio
 }
 
 type StopAppSessionBatchResponseBody struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BatchId   *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// example:
+	//
+	// 13027****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 6d4d****
+	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// example:
+	//
+	// d9a8****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0986
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4677,9 +5775,9 @@ func (s *StopAppSessionBatchResponseBody) SetRequestId(v string) *StopAppSession
 }
 
 type StopAppSessionBatchResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopAppSessionBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopAppSessionBatchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopAppSessionBatchResponse) String() string {
@@ -4706,7 +5804,8 @@ func (s *StopAppSessionBatchResponse) SetBody(v *StopAppSessionBatchResponseBody
 }
 
 type UpdateSessionBizStatusRequest struct {
-	BizStatus         *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
+	BizStatus *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
+	// This parameter is required.
 	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
 }
 
@@ -4793,9 +5892,9 @@ func (s *UpdateSessionBizStatusResponseBodyData) SetPlatformSessionId(v string) 
 }
 
 type UpdateSessionBizStatusResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSessionBizStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSessionBizStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSessionBizStatusResponse) String() string {
@@ -4868,6 +5967,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量检查异常会话
+//
+// @param tmpReq - BatchCheckSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCheckSessionResponse
 func (client *Client) BatchCheckSessionWithOptions(tmpReq *BatchCheckSessionRequest, runtime *util.RuntimeOptions) (_result *BatchCheckSessionResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4907,6 +6015,13 @@ func (client *Client) BatchCheckSessionWithOptions(tmpReq *BatchCheckSessionRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量检查异常会话
+//
+// @param request - BatchCheckSessionRequest
+//
+// @return BatchCheckSessionResponse
 func (client *Client) BatchCheckSession(request *BatchCheckSessionRequest) (_result *BatchCheckSessionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchCheckSessionResponse{}
@@ -4918,6 +6033,15 @@ func (client *Client) BatchCheckSession(request *BatchCheckSessionRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消 session 资源预定任务
+//
+// @param request - CancelReserveTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelReserveTaskResponse
 func (client *Client) CancelReserveTaskWithOptions(request *CancelReserveTaskRequest, runtime *util.RuntimeOptions) (_result *CancelReserveTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4955,6 +6079,13 @@ func (client *Client) CancelReserveTaskWithOptions(request *CancelReserveTaskReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消 session 资源预定任务
+//
+// @param request - CancelReserveTaskRequest
+//
+// @return CancelReserveTaskResponse
 func (client *Client) CancelReserveTask(request *CancelReserveTaskRequest) (_result *CancelReserveTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelReserveTaskResponse{}
@@ -4966,6 +6097,15 @@ func (client *Client) CancelReserveTask(request *CancelReserveTaskRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交适配请求
+//
+// @param tmpReq - CreateAdaptationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAdaptationResponse
 func (client *Client) CreateAdaptationWithOptions(tmpReq *CreateAdaptationRequest, runtime *util.RuntimeOptions) (_result *CreateAdaptationResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5009,6 +6149,13 @@ func (client *Client) CreateAdaptationWithOptions(tmpReq *CreateAdaptationReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交适配请求
+//
+// @param request - CreateAdaptationRequest
+//
+// @return CreateAdaptationResponse
 func (client *Client) CreateAdaptation(request *CreateAdaptationRequest) (_result *CreateAdaptationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAdaptationResponse{}
@@ -5020,6 +6167,15 @@ func (client *Client) CreateAdaptation(request *CreateAdaptationRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用创建服务
+//
+// @param request - CreateAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppResponse
 func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *util.RuntimeOptions) (_result *CreateAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5065,6 +6221,13 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用创建服务
+//
+// @param request - CreateAppRequest
+//
+// @return CreateAppResponse
 func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAppResponse{}
@@ -5076,6 +6239,15 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加实时生产资源的相关字段
+//
+// @param request - CreateAppSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppSessionResponse
 func (client *Client) CreateAppSessionWithOptions(request *CreateAppSessionRequest, runtime *util.RuntimeOptions) (_result *CreateAppSessionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5153,6 +6325,13 @@ func (client *Client) CreateAppSessionWithOptions(request *CreateAppSessionReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加实时生产资源的相关字段
+//
+// @param request - CreateAppSessionRequest
+//
+// @return CreateAppSessionResponse
 func (client *Client) CreateAppSession(request *CreateAppSessionRequest) (_result *CreateAppSessionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAppSessionResponse{}
@@ -5164,6 +6343,15 @@ func (client *Client) CreateAppSession(request *CreateAppSessionRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建会话
+//
+// @param tmpReq - CreateAppSessionBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppSessionBatchResponse
 func (client *Client) CreateAppSessionBatchWithOptions(tmpReq *CreateAppSessionBatchRequest, runtime *util.RuntimeOptions) (_result *CreateAppSessionBatchResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5211,6 +6399,13 @@ func (client *Client) CreateAppSessionBatchWithOptions(tmpReq *CreateAppSessionB
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建会话
+//
+// @param request - CreateAppSessionBatchRequest
+//
+// @return CreateAppSessionBatchResponse
 func (client *Client) CreateAppSessionBatch(request *CreateAppSessionBatchRequest) (_result *CreateAppSessionBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAppSessionBatchResponse{}
@@ -5222,6 +6417,15 @@ func (client *Client) CreateAppSessionBatch(request *CreateAppSessionBatchReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步批量创建多个会话
+//
+// @param tmpReq - CreateAppSessionBatchSyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppSessionBatchSyncResponse
 func (client *Client) CreateAppSessionBatchSyncWithOptions(tmpReq *CreateAppSessionBatchSyncRequest, runtime *util.RuntimeOptions) (_result *CreateAppSessionBatchSyncResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5265,6 +6469,13 @@ func (client *Client) CreateAppSessionBatchSyncWithOptions(tmpReq *CreateAppSess
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步批量创建多个会话
+//
+// @param request - CreateAppSessionBatchSyncRequest
+//
+// @return CreateAppSessionBatchSyncResponse
 func (client *Client) CreateAppSessionBatchSync(request *CreateAppSessionBatchSyncRequest) (_result *CreateAppSessionBatchSyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAppSessionBatchSyncResponse{}
@@ -5276,6 +6487,15 @@ func (client *Client) CreateAppSessionBatchSync(request *CreateAppSessionBatchSy
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步创建会话
+//
+// @param request - CreateAppSessionSyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppSessionSyncResponse
 func (client *Client) CreateAppSessionSyncWithOptions(request *CreateAppSessionSyncRequest, runtime *util.RuntimeOptions) (_result *CreateAppSessionSyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5353,6 +6573,13 @@ func (client *Client) CreateAppSessionSyncWithOptions(request *CreateAppSessionS
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步创建会话
+//
+// @param request - CreateAppSessionSyncRequest
+//
+// @return CreateAppSessionSyncResponse
 func (client *Client) CreateAppSessionSync(request *CreateAppSessionSyncRequest) (_result *CreateAppSessionSyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAppSessionSyncResponse{}
@@ -5364,6 +6591,15 @@ func (client *Client) CreateAppSessionSync(request *CreateAppSessionSyncRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用版本创建服务
+//
+// @param request - CreateAppVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppVersionResponse
 func (client *Client) CreateAppVersionWithOptions(request *CreateAppVersionRequest, runtime *util.RuntimeOptions) (_result *CreateAppVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5401,6 +6637,13 @@ func (client *Client) CreateAppVersionWithOptions(request *CreateAppVersionReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用版本创建服务
+//
+// @param request - CreateAppVersionRequest
+//
+// @return CreateAppVersionResponse
 func (client *Client) CreateAppVersion(request *CreateAppVersionRequest) (_result *CreateAppVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAppVersionResponse{}
@@ -5412,6 +6655,15 @@ func (client *Client) CreateAppVersion(request *CreateAppVersionRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 预定session资源
+//
+// @param request - CreateCapacityReservationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCapacityReservationResponse
 func (client *Client) CreateCapacityReservationWithOptions(request *CreateCapacityReservationRequest, runtime *util.RuntimeOptions) (_result *CreateCapacityReservationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5469,6 +6721,13 @@ func (client *Client) CreateCapacityReservationWithOptions(request *CreateCapaci
 	return _result, _err
 }
 
+// Summary:
+//
+// 预定session资源
+//
+// @param request - CreateCapacityReservationRequest
+//
+// @return CreateCapacityReservationResponse
 func (client *Client) CreateCapacityReservation(request *CreateCapacityReservationRequest) (_result *CreateCapacityReservationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCapacityReservationResponse{}
@@ -5480,6 +6739,15 @@ func (client *Client) CreateCapacityReservation(request *CreateCapacityReservati
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用删除接口
+//
+// @param request - DeleteAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppResponse
 func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *util.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5513,6 +6781,13 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用删除接口
+//
+// @param request - DeleteAppRequest
+//
+// @return DeleteAppResponse
 func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppResponse{}
@@ -5524,6 +6799,15 @@ func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用版本删除接口
+//
+// @param request - DeleteAppVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppVersionResponse
 func (client *Client) DeleteAppVersionWithOptions(request *DeleteAppVersionRequest, runtime *util.RuntimeOptions) (_result *DeleteAppVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5557,6 +6841,13 @@ func (client *Client) DeleteAppVersionWithOptions(request *DeleteAppVersionReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用版本删除接口
+//
+// @param request - DeleteAppVersionRequest
+//
+// @return DeleteAppVersionResponse
 func (client *Client) DeleteAppVersion(request *DeleteAppVersionRequest) (_result *DeleteAppVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppVersionResponse{}
@@ -5568,6 +6859,15 @@ func (client *Client) DeleteAppVersion(request *DeleteAppVersionRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取适配申请详情
+//
+// @param request - GetAdaptationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAdaptationResponse
 func (client *Client) GetAdaptationWithOptions(request *GetAdaptationRequest, runtime *util.RuntimeOptions) (_result *GetAdaptationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5605,6 +6905,13 @@ func (client *Client) GetAdaptationWithOptions(request *GetAdaptationRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取适配申请详情
+//
+// @param request - GetAdaptationRequest
+//
+// @return GetAdaptationResponse
 func (client *Client) GetAdaptation(request *GetAdaptationRequest) (_result *GetAdaptationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAdaptationResponse{}
@@ -5616,6 +6923,15 @@ func (client *Client) GetAdaptation(request *GetAdaptationRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用详情接口
+//
+// @param request - GetAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppResponse
 func (client *Client) GetAppWithOptions(request *GetAppRequest, runtime *util.RuntimeOptions) (_result *GetAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5649,6 +6965,13 @@ func (client *Client) GetAppWithOptions(request *GetAppRequest, runtime *util.Ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用详情接口
+//
+// @param request - GetAppRequest
+//
+// @return GetAppResponse
 func (client *Client) GetApp(request *GetAppRequest) (_result *GetAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAppResponse{}
@@ -5660,6 +6983,15 @@ func (client *Client) GetApp(request *GetAppRequest) (_result *GetAppResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会话并发数
+//
+// @param request - GetAppCcuRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppCcuResponse
 func (client *Client) GetAppCcuWithOptions(request *GetAppCcuRequest, runtime *util.RuntimeOptions) (_result *GetAppCcuResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5689,6 +7021,13 @@ func (client *Client) GetAppCcuWithOptions(request *GetAppCcuRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会话并发数
+//
+// @param request - GetAppCcuRequest
+//
+// @return GetAppCcuResponse
 func (client *Client) GetAppCcu(request *GetAppCcuRequest) (_result *GetAppCcuResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAppCcuResponse{}
@@ -5700,6 +7039,15 @@ func (client *Client) GetAppCcu(request *GetAppCcuRequest) (_result *GetAppCcuRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取App会话信息
+//
+// @param request - GetAppSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppSessionResponse
 func (client *Client) GetAppSessionWithOptions(request *GetAppSessionRequest, runtime *util.RuntimeOptions) (_result *GetAppSessionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5737,6 +7085,13 @@ func (client *Client) GetAppSessionWithOptions(request *GetAppSessionRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取App会话信息
+//
+// @param request - GetAppSessionRequest
+//
+// @return GetAppSessionResponse
 func (client *Client) GetAppSession(request *GetAppSessionRequest) (_result *GetAppSessionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAppSessionResponse{}
@@ -5748,6 +7103,15 @@ func (client *Client) GetAppSession(request *GetAppSessionRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用版本详情接口
+//
+// @param request - GetAppVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppVersionResponse
 func (client *Client) GetAppVersionWithOptions(request *GetAppVersionRequest, runtime *util.RuntimeOptions) (_result *GetAppVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5781,6 +7145,13 @@ func (client *Client) GetAppVersionWithOptions(request *GetAppVersionRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用版本详情接口
+//
+// @param request - GetAppVersionRequest
+//
+// @return GetAppVersionResponse
 func (client *Client) GetAppVersion(request *GetAppVersionRequest) (_result *GetAppVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAppVersionResponse{}
@@ -5792,6 +7163,15 @@ func (client *Client) GetAppVersion(request *GetAppVersionRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询 session 会话容量信息
+//
+// @param request - GetCapacityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCapacityResponse
 func (client *Client) GetCapacityWithOptions(request *GetCapacityRequest, runtime *util.RuntimeOptions) (_result *GetCapacityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5845,6 +7225,13 @@ func (client *Client) GetCapacityWithOptions(request *GetCapacityRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询 session 会话容量信息
+//
+// @param request - GetCapacityRequest
+//
+// @return GetCapacityResponse
 func (client *Client) GetCapacity(request *GetCapacityRequest) (_result *GetCapacityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCapacityResponse{}
@@ -5856,6 +7243,15 @@ func (client *Client) GetCapacity(request *GetCapacityRequest) (_result *GetCapa
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询预定任务的详情信息
+//
+// @param request - GetReserveTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetReserveTaskDetailResponse
 func (client *Client) GetReserveTaskDetailWithOptions(request *GetReserveTaskDetailRequest, runtime *util.RuntimeOptions) (_result *GetReserveTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5889,6 +7285,13 @@ func (client *Client) GetReserveTaskDetailWithOptions(request *GetReserveTaskDet
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询预定任务的详情信息
+//
+// @param request - GetReserveTaskDetailRequest
+//
+// @return GetReserveTaskDetailResponse
 func (client *Client) GetReserveTaskDetail(request *GetReserveTaskDetailRequest) (_result *GetReserveTaskDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetReserveTaskDetailResponse{}
@@ -5900,6 +7303,15 @@ func (client *Client) GetReserveTaskDetail(request *GetReserveTaskDetailRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询公网ip
+//
+// @param request - GetResourcePublicIPsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourcePublicIPsResponse
 func (client *Client) GetResourcePublicIPsWithOptions(request *GetResourcePublicIPsRequest, runtime *util.RuntimeOptions) (_result *GetResourcePublicIPsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5941,6 +7353,13 @@ func (client *Client) GetResourcePublicIPsWithOptions(request *GetResourcePublic
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询公网ip
+//
+// @param request - GetResourcePublicIPsRequest
+//
+// @return GetResourcePublicIPsResponse
 func (client *Client) GetResourcePublicIPs(request *GetResourcePublicIPsRequest) (_result *GetResourcePublicIPsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourcePublicIPsResponse{}
@@ -5952,6 +7371,15 @@ func (client *Client) GetResourcePublicIPs(request *GetResourcePublicIPsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用列表接口
+//
+// @param request - ListAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppResponse
 func (client *Client) ListAppWithOptions(request *ListAppRequest, runtime *util.RuntimeOptions) (_result *ListAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5993,6 +7421,13 @@ func (client *Client) ListAppWithOptions(request *ListAppRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用列表接口
+//
+// @param request - ListAppRequest
+//
+// @return ListAppResponse
 func (client *Client) ListApp(request *ListAppRequest) (_result *ListAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAppResponse{}
@@ -6004,6 +7439,15 @@ func (client *Client) ListApp(request *ListAppRequest) (_result *ListAppResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询App会话
+//
+// @param request - ListAppSessionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppSessionsResponse
 func (client *Client) ListAppSessionsWithOptions(request *ListAppSessionsRequest, runtime *util.RuntimeOptions) (_result *ListAppSessionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6057,6 +7501,13 @@ func (client *Client) ListAppSessionsWithOptions(request *ListAppSessionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询App会话
+//
+// @param request - ListAppSessionsRequest
+//
+// @return ListAppSessionsResponse
 func (client *Client) ListAppSessions(request *ListAppSessionsRequest) (_result *ListAppSessionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAppSessionsResponse{}
@@ -6068,6 +7519,15 @@ func (client *Client) ListAppSessions(request *ListAppSessionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用版本列表接口
+//
+// @param request - ListAppVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppVersionResponse
 func (client *Client) ListAppVersionWithOptions(request *ListAppVersionRequest, runtime *util.RuntimeOptions) (_result *ListAppVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6109,6 +7569,13 @@ func (client *Client) ListAppVersionWithOptions(request *ListAppVersionRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用版本列表接口
+//
+// @param request - ListAppVersionRequest
+//
+// @return ListAppVersionResponse
 func (client *Client) ListAppVersion(request *ListAppVersionRequest) (_result *ListAppVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAppVersionResponse{}
@@ -6120,6 +7587,15 @@ func (client *Client) ListAppVersion(request *ListAppVersionRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询GCS实例列表
+//
+// @param request - ListInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6149,6 +7625,13 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询GCS实例列表
+//
+// @param request - ListInstancesRequest
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstancesResponse{}
@@ -6160,6 +7643,15 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用修改服务
+//
+// @param request - ModifyAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppResponse
 func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *util.RuntimeOptions) (_result *ModifyAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6197,6 +7689,13 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用修改服务
+//
+// @param request - ModifyAppRequest
+//
+// @return ModifyAppResponse
 func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAppResponse{}
@@ -6208,6 +7707,15 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用版本修改服务
+//
+// @param request - ModifyAppVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppVersionResponse
 func (client *Client) ModifyAppVersionWithOptions(request *ModifyAppVersionRequest, runtime *util.RuntimeOptions) (_result *ModifyAppVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6245,6 +7753,13 @@ func (client *Client) ModifyAppVersionWithOptions(request *ModifyAppVersionReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用版本修改服务
+//
+// @param request - ModifyAppVersionRequest
+//
+// @return ModifyAppVersionResponse
 func (client *Client) ModifyAppVersion(request *ModifyAppVersionRequest) (_result *ModifyAppVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAppVersionResponse{}
@@ -6256,6 +7771,15 @@ func (client *Client) ModifyAppVersion(request *ModifyAppVersionRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放 session 资源预定的资源
+//
+// @param request - ReleaseCapacityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseCapacityResponse
 func (client *Client) ReleaseCapacityWithOptions(request *ReleaseCapacityRequest, runtime *util.RuntimeOptions) (_result *ReleaseCapacityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6305,6 +7829,13 @@ func (client *Client) ReleaseCapacityWithOptions(request *ReleaseCapacityRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放 session 资源预定的资源
+//
+// @param request - ReleaseCapacityRequest
+//
+// @return ReleaseCapacityResponse
 func (client *Client) ReleaseCapacity(request *ReleaseCapacityRequest) (_result *ReleaseCapacityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseCapacityResponse{}
@@ -6316,6 +7847,15 @@ func (client *Client) ReleaseCapacity(request *ReleaseCapacityRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据资源批次号释放 session 资源预定的资源
+//
+// @param request - ReleaseCapacityByBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseCapacityByBatchResponse
 func (client *Client) ReleaseCapacityByBatchWithOptions(request *ReleaseCapacityByBatchRequest, runtime *util.RuntimeOptions) (_result *ReleaseCapacityByBatchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6349,6 +7889,13 @@ func (client *Client) ReleaseCapacityByBatchWithOptions(request *ReleaseCapacity
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据资源批次号释放 session 资源预定的资源
+//
+// @param request - ReleaseCapacityByBatchRequest
+//
+// @return ReleaseCapacityByBatchResponse
 func (client *Client) ReleaseCapacityByBatch(request *ReleaseCapacityByBatchRequest) (_result *ReleaseCapacityByBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseCapacityByBatchResponse{}
@@ -6360,6 +7907,15 @@ func (client *Client) ReleaseCapacityByBatch(request *ReleaseCapacityByBatchRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 退订GCS实例
+//
+// @param request - ReleaseInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseInstancesResponse
 func (client *Client) ReleaseInstancesWithOptions(request *ReleaseInstancesRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6405,6 +7961,13 @@ func (client *Client) ReleaseInstancesWithOptions(request *ReleaseInstancesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 退订GCS实例
+//
+// @param request - ReleaseInstancesRequest
+//
+// @return ReleaseInstancesResponse
 func (client *Client) ReleaseInstances(request *ReleaseInstancesRequest) (_result *ReleaseInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstancesResponse{}
@@ -6416,6 +7979,15 @@ func (client *Client) ReleaseInstances(request *ReleaseInstancesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 预定GCS实例
+//
+// @param request - ReserveInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReserveInstancesResponse
 func (client *Client) ReserveInstancesWithOptions(request *ReserveInstancesRequest, runtime *util.RuntimeOptions) (_result *ReserveInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6461,6 +8033,13 @@ func (client *Client) ReserveInstancesWithOptions(request *ReserveInstancesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 预定GCS实例
+//
+// @param request - ReserveInstancesRequest
+//
+// @return ReserveInstancesResponse
 func (client *Client) ReserveInstances(request *ReserveInstancesRequest) (_result *ReserveInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReserveInstancesResponse{}
@@ -6472,6 +8051,15 @@ func (client *Client) ReserveInstances(request *ReserveInstancesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 发送业务能力变更结果回调
+//
+// @param request - SendBizCocChangeCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendBizCocChangeCallbackResponse
 func (client *Client) SendBizCocChangeCallbackWithOptions(request *SendBizCocChangeCallbackRequest, runtime *util.RuntimeOptions) (_result *SendBizCocChangeCallbackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6509,6 +8097,13 @@ func (client *Client) SendBizCocChangeCallbackWithOptions(request *SendBizCocCha
 	return _result, _err
 }
 
+// Summary:
+//
+// 发送业务能力变更结果回调
+//
+// @param request - SendBizCocChangeCallbackRequest
+//
+// @return SendBizCocChangeCallbackResponse
 func (client *Client) SendBizCocChangeCallback(request *SendBizCocChangeCallbackRequest) (_result *SendBizCocChangeCallbackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendBizCocChangeCallbackResponse{}
@@ -6520,6 +8115,15 @@ func (client *Client) SendBizCocChangeCallback(request *SendBizCocChangeCallback
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止App会话
+//
+// @param tmpReq - StopAppSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAppSessionResponse
 func (client *Client) StopAppSessionWithOptions(tmpReq *StopAppSessionRequest, runtime *util.RuntimeOptions) (_result *StopAppSessionResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6567,6 +8171,13 @@ func (client *Client) StopAppSessionWithOptions(tmpReq *StopAppSessionRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止App会话
+//
+// @param request - StopAppSessionRequest
+//
+// @return StopAppSessionResponse
 func (client *Client) StopAppSession(request *StopAppSessionRequest) (_result *StopAppSessionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopAppSessionResponse{}
@@ -6578,6 +8189,15 @@ func (client *Client) StopAppSession(request *StopAppSessionRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量停止会话接口
+//
+// @param tmpReq - StopAppSessionBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAppSessionBatchResponse
 func (client *Client) StopAppSessionBatchWithOptions(tmpReq *StopAppSessionBatchRequest, runtime *util.RuntimeOptions) (_result *StopAppSessionBatchResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6637,6 +8257,13 @@ func (client *Client) StopAppSessionBatchWithOptions(tmpReq *StopAppSessionBatch
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量停止会话接口
+//
+// @param request - StopAppSessionBatchRequest
+//
+// @return StopAppSessionBatchResponse
 func (client *Client) StopAppSessionBatch(request *StopAppSessionBatchRequest) (_result *StopAppSessionBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopAppSessionBatchResponse{}
@@ -6648,6 +8275,15 @@ func (client *Client) StopAppSessionBatch(request *StopAppSessionBatchRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新会话状态
+//
+// @param request - UpdateSessionBizStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSessionBizStatusResponse
 func (client *Client) UpdateSessionBizStatusWithOptions(request *UpdateSessionBizStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateSessionBizStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6685,6 +8321,13 @@ func (client *Client) UpdateSessionBizStatusWithOptions(request *UpdateSessionBi
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新会话状态
+//
+// @param request - UpdateSessionBizStatusRequest
+//
+// @return UpdateSessionBizStatusResponse
 func (client *Client) UpdateSessionBizStatus(request *UpdateSessionBizStatusRequest) (_result *UpdateSessionBizStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSessionBizStatusResponse{}
