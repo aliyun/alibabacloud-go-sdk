@@ -2102,8 +2102,7 @@ type CreateDocRequest struct {
 	// example:
 	//
 	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":""}
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// This parameter is required.
+	Config  *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// example:
 	//
@@ -2116,9 +2115,14 @@ type CreateDocRequest struct {
 	// example:
 	//
 	// 2022-05-25T16:28:36Z
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate *string  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	TagIds    []*int64 `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 	// This parameter is required.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://example.com/example.pdf
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s CreateDocRequest) String() string {
@@ -2164,8 +2168,113 @@ func (s *CreateDocRequest) SetStartDate(v string) *CreateDocRequest {
 	return s
 }
 
+func (s *CreateDocRequest) SetTagIds(v []*int64) *CreateDocRequest {
+	s.TagIds = v
+	return s
+}
+
 func (s *CreateDocRequest) SetTitle(v string) *CreateDocRequest {
 	s.Title = &v
+	return s
+}
+
+func (s *CreateDocRequest) SetUrl(v string) *CreateDocRequest {
+	s.Url = &v
+	return s
+}
+
+type CreateDocShrinkRequest struct {
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30000049006
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":""}
+	Config  *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2032-05-25T16:28:36Z
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// {"code":"xxx"}
+	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// example:
+	//
+	// 2022-05-25T16:28:36Z
+	StartDate    *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	TagIdsShrink *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
+	// This parameter is required.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://example.com/example.pdf
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s CreateDocShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocShrinkRequest) SetAgentKey(v string) *CreateDocShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *CreateDocShrinkRequest) SetCategoryId(v int64) *CreateDocShrinkRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *CreateDocShrinkRequest) SetConfig(v string) *CreateDocShrinkRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *CreateDocShrinkRequest) SetContent(v string) *CreateDocShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateDocShrinkRequest) SetEndDate(v string) *CreateDocShrinkRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *CreateDocShrinkRequest) SetMeta(v string) *CreateDocShrinkRequest {
+	s.Meta = &v
+	return s
+}
+
+func (s *CreateDocShrinkRequest) SetStartDate(v string) *CreateDocShrinkRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *CreateDocShrinkRequest) SetTagIdsShrink(v string) *CreateDocShrinkRequest {
+	s.TagIdsShrink = &v
+	return s
+}
+
+func (s *CreateDocShrinkRequest) SetTitle(v string) *CreateDocShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateDocShrinkRequest) SetUrl(v string) *CreateDocShrinkRequest {
+	s.Url = &v
 	return s
 }
 
@@ -5317,10 +5426,11 @@ type DescribeDocResponseBody struct {
 	// example:
 	//
 	// 1111111111
-	CreateUserId   *int64                          `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	CreateUserName *string                         `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	DocInfo        *DescribeDocResponseBodyDocInfo `json:"DocInfo,omitempty" xml:"DocInfo,omitempty" type:"Struct"`
-	DocName        *string                         `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	CreateUserId   *int64                            `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	CreateUserName *string                           `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	DocInfo        *DescribeDocResponseBodyDocInfo   `json:"DocInfo,omitempty" xml:"DocInfo,omitempty" type:"Struct"`
+	DocName        *string                           `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	DocTags        []*DescribeDocResponseBodyDocTags `json:"DocTags,omitempty" xml:"DocTags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 20
@@ -5418,6 +5528,11 @@ func (s *DescribeDocResponseBody) SetDocInfo(v *DescribeDocResponseBodyDocInfo) 
 
 func (s *DescribeDocResponseBody) SetDocName(v string) *DescribeDocResponseBody {
 	s.DocName = &v
+	return s
+}
+
+func (s *DescribeDocResponseBody) SetDocTags(v []*DescribeDocResponseBodyDocTags) *DescribeDocResponseBody {
+	s.DocTags = v
 	return s
 }
 
@@ -5554,6 +5669,47 @@ func (s *DescribeDocResponseBodyDocInfoDocParas) SetParaText(v string) *Describe
 
 func (s *DescribeDocResponseBodyDocInfoDocParas) SetParaType(v string) *DescribeDocResponseBodyDocInfoDocParas {
 	s.ParaType = &v
+	return s
+}
+
+type DescribeDocResponseBodyDocTags struct {
+	DefaultTag *bool   `json:"DefaultTag,omitempty" xml:"DefaultTag,omitempty"`
+	GroupId    *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	TagId      *int64  `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagName    *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s DescribeDocResponseBodyDocTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocResponseBodyDocTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocResponseBodyDocTags) SetDefaultTag(v bool) *DescribeDocResponseBodyDocTags {
+	s.DefaultTag = &v
+	return s
+}
+
+func (s *DescribeDocResponseBodyDocTags) SetGroupId(v int64) *DescribeDocResponseBodyDocTags {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeDocResponseBodyDocTags) SetGroupName(v string) *DescribeDocResponseBodyDocTags {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeDocResponseBodyDocTags) SetTagId(v int64) *DescribeDocResponseBodyDocTags {
+	s.TagId = &v
+	return s
+}
+
+func (s *DescribeDocResponseBodyDocTags) SetTagName(v string) *DescribeDocResponseBodyDocTags {
+	s.TagName = &v
 	return s
 }
 
@@ -7543,8 +7699,7 @@ type ListAgentRequest struct {
 	// example:
 	//
 	// 10
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListAgentRequest) String() string {
@@ -7572,11 +7727,6 @@ func (s *ListAgentRequest) SetPageNumber(v int32) *ListAgentRequest {
 
 func (s *ListAgentRequest) SetPageSize(v int32) *ListAgentRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListAgentRequest) SetProductCode(v string) *ListAgentRequest {
-	s.ProductCode = &v
 	return s
 }
 
@@ -7645,7 +7795,6 @@ type ListAgentResponseBodyData struct {
 	// 4e7400028e6f4a7393ed3acf6a7b8927_p_beebot_public
 	AgentKey      *string                `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	AgentName     *string                `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	DefaultAgent  *bool                  `json:"DefaultAgent,omitempty" xml:"DefaultAgent,omitempty"`
 	InstanceInfos map[string]interface{} `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty"`
 }
 
@@ -7669,11 +7818,6 @@ func (s *ListAgentResponseBodyData) SetAgentKey(v string) *ListAgentResponseBody
 
 func (s *ListAgentResponseBodyData) SetAgentName(v string) *ListAgentResponseBodyData {
 	s.AgentName = &v
-	return s
-}
-
-func (s *ListAgentResponseBodyData) SetDefaultAgent(v bool) *ListAgentResponseBodyData {
-	s.DefaultAgent = &v
 	return s
 }
 
@@ -10813,7 +10957,8 @@ type SearchDocRequest struct {
 	// example:
 	//
 	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds []*int64 `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
 func (s SearchDocRequest) String() string {
@@ -10914,6 +11059,11 @@ func (s *SearchDocRequest) SetStatus(v int32) *SearchDocRequest {
 	return s
 }
 
+func (s *SearchDocRequest) SetTagIds(v []*int64) *SearchDocRequest {
+	s.TagIds = v
+	return s
+}
+
 type SearchDocShrinkRequest struct {
 	// example:
 	//
@@ -10974,7 +11124,8 @@ type SearchDocShrinkRequest struct {
 	// example:
 	//
 	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIdsShrink *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
 }
 
 func (s SearchDocShrinkRequest) String() string {
@@ -11075,6 +11226,11 @@ func (s *SearchDocShrinkRequest) SetStatus(v int32) *SearchDocShrinkRequest {
 	return s
 }
 
+func (s *SearchDocShrinkRequest) SetTagIdsShrink(v string) *SearchDocShrinkRequest {
+	s.TagIdsShrink = &v
+	return s
+}
+
 type SearchDocResponseBody struct {
 	DocHits []*SearchDocResponseBodyDocHits `json:"DocHits,omitempty" xml:"DocHits,omitempty" type:"Repeated"`
 	// example:
@@ -11150,9 +11306,10 @@ type SearchDocResponseBodyDocHits struct {
 	// example:
 	//
 	// 111111111
-	CreateUserId   *int64  `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	DocName        *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	CreateUserId   *int64                                 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	CreateUserName *string                                `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	DocName        *string                                `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	DocTags        []*SearchDocResponseBodyDocHitsDocTags `json:"DocTags,omitempty" xml:"DocTags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 20
@@ -11241,6 +11398,11 @@ func (s *SearchDocResponseBodyDocHits) SetDocName(v string) *SearchDocResponseBo
 	return s
 }
 
+func (s *SearchDocResponseBodyDocHits) SetDocTags(v []*SearchDocResponseBodyDocHitsDocTags) *SearchDocResponseBodyDocHits {
+	s.DocTags = v
+	return s
+}
+
 func (s *SearchDocResponseBodyDocHits) SetEffectStatus(v int32) *SearchDocResponseBodyDocHits {
 	s.EffectStatus = &v
 	return s
@@ -11303,6 +11465,47 @@ func (s *SearchDocResponseBodyDocHits) SetStatus(v int32) *SearchDocResponseBody
 
 func (s *SearchDocResponseBodyDocHits) SetUrl(v string) *SearchDocResponseBodyDocHits {
 	s.Url = &v
+	return s
+}
+
+type SearchDocResponseBodyDocHitsDocTags struct {
+	DefaultTag *bool   `json:"DefaultTag,omitempty" xml:"DefaultTag,omitempty"`
+	GroupId    *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	TagId      *int64  `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagName    *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s SearchDocResponseBodyDocHitsDocTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDocResponseBodyDocHitsDocTags) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDocResponseBodyDocHitsDocTags) SetDefaultTag(v bool) *SearchDocResponseBodyDocHitsDocTags {
+	s.DefaultTag = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHitsDocTags) SetGroupId(v int64) *SearchDocResponseBodyDocHitsDocTags {
+	s.GroupId = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHitsDocTags) SetGroupName(v string) *SearchDocResponseBodyDocHitsDocTags {
+	s.GroupName = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHitsDocTags) SetTagId(v int64) *SearchDocResponseBodyDocHitsDocTags {
+	s.TagId = &v
+	return s
+}
+
+func (s *SearchDocResponseBodyDocHitsDocTags) SetTagName(v string) *SearchDocResponseBodyDocHitsDocTags {
+	s.TagName = &v
 	return s
 }
 
@@ -12378,8 +12581,9 @@ type UpdateDocRequest struct {
 	// example:
 	//
 	// 2022-05-25T16:28:36Z
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	StartDate *string  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	TagIds    []*int64 `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	Title     *string  `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateDocRequest) String() string {
@@ -12435,7 +12639,112 @@ func (s *UpdateDocRequest) SetStartDate(v string) *UpdateDocRequest {
 	return s
 }
 
+func (s *UpdateDocRequest) SetTagIds(v []*int64) *UpdateDocRequest {
+	s.TagIds = v
+	return s
+}
+
 func (s *UpdateDocRequest) SetTitle(v string) *UpdateDocRequest {
+	s.Title = &v
+	return s
+}
+
+type UpdateDocShrinkRequest struct {
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 231001028593
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// {"Splitter":"treeSplitter","ChunkSize":500,"TreePatterns":["^# .*","^## .*","^### .*","^#### .*"],"TitleSource":""}
+	Config  *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// example:
+	//
+	// 2023-03-11T23:59:59Z
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001905617
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// example:
+	//
+	// {"code":"xxx"}
+	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	// example:
+	//
+	// 2022-05-25T16:28:36Z
+	StartDate    *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	TagIdsShrink *string `json:"TagIds,omitempty" xml:"TagIds,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateDocShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDocShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDocShrinkRequest) SetAgentKey(v string) *UpdateDocShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *UpdateDocShrinkRequest) SetCategoryId(v int64) *UpdateDocShrinkRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *UpdateDocShrinkRequest) SetConfig(v string) *UpdateDocShrinkRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *UpdateDocShrinkRequest) SetContent(v string) *UpdateDocShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateDocShrinkRequest) SetDocName(v string) *UpdateDocShrinkRequest {
+	s.DocName = &v
+	return s
+}
+
+func (s *UpdateDocShrinkRequest) SetEndDate(v string) *UpdateDocShrinkRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *UpdateDocShrinkRequest) SetKnowledgeId(v int64) *UpdateDocShrinkRequest {
+	s.KnowledgeId = &v
+	return s
+}
+
+func (s *UpdateDocShrinkRequest) SetMeta(v string) *UpdateDocShrinkRequest {
+	s.Meta = &v
+	return s
+}
+
+func (s *UpdateDocShrinkRequest) SetStartDate(v string) *UpdateDocShrinkRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *UpdateDocShrinkRequest) SetTagIdsShrink(v string) *UpdateDocShrinkRequest {
+	s.TagIdsShrink = &v
+	return s
+}
+
+func (s *UpdateDocShrinkRequest) SetTitle(v string) *UpdateDocShrinkRequest {
 	s.Title = &v
 	return s
 }
@@ -14523,16 +14832,22 @@ func (client *Client) CreateDSEntityValue(request *CreateDSEntityValueRequest) (
 //
 // 创建文档
 //
-// @param request - CreateDocRequest
+// @param tmpReq - CreateDocRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDocResponse
-func (client *Client) CreateDocWithOptions(request *CreateDocRequest, runtime *util.RuntimeOptions) (_result *CreateDocResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateDocWithOptions(tmpReq *CreateDocRequest, runtime *util.RuntimeOptions) (_result *CreateDocResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateDocShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
+		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
 		query["AgentKey"] = request.AgentKey
@@ -14562,8 +14877,16 @@ func (client *Client) CreateDocWithOptions(request *CreateDocRequest, runtime *u
 		query["StartDate"] = request.StartDate
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagIdsShrink)) {
+		query["TagIds"] = request.TagIdsShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
 		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -17272,10 +17595,6 @@ func (client *Client) ListAgentWithOptions(request *ListAgentRequest, runtime *u
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
-		query["ProductCode"] = request.ProductCode
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18479,6 +18798,10 @@ func (client *Client) SearchDocWithOptions(tmpReq *SearchDocRequest, runtime *ut
 		request.CategoryIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CategoryIds, tea.String("CategoryIds"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
+		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
 		query["AgentKey"] = request.AgentKey
@@ -18550,6 +18873,10 @@ func (client *Client) SearchDocWithOptions(tmpReq *SearchDocRequest, runtime *ut
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagIdsShrink)) {
+		query["TagIds"] = request.TagIdsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -19037,16 +19364,22 @@ func (client *Client) UpdateDSEntityValue(request *UpdateDSEntityValueRequest) (
 //
 // 文档变更
 //
-// @param request - UpdateDocRequest
+// @param tmpReq - UpdateDocRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDocResponse
-func (client *Client) UpdateDocWithOptions(request *UpdateDocRequest, runtime *util.RuntimeOptions) (_result *UpdateDocResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateDocWithOptions(tmpReq *UpdateDocRequest, runtime *util.RuntimeOptions) (_result *UpdateDocResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateDocShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagIds)) {
+		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, tea.String("TagIds"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
 		query["AgentKey"] = request.AgentKey
@@ -19082,6 +19415,10 @@ func (client *Client) UpdateDocWithOptions(request *UpdateDocRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
 		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagIdsShrink)) {
+		query["TagIds"] = request.TagIdsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
