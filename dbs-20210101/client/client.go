@@ -206,6 +206,138 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 	return s
 }
 
+type CreateAdvancedPolicyRequest struct {
+	// example:
+	//
+	// pc-2ze3nrr64c5****
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+}
+
+func (s CreateAdvancedPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAdvancedPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAdvancedPolicyRequest) SetInstanceName(v string) *CreateAdvancedPolicyRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateAdvancedPolicyRequest) SetRegionCode(v string) *CreateAdvancedPolicyRequest {
+	s.RegionCode = &v
+	return s
+}
+
+type CreateAdvancedPolicyResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Success
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// The specified parameter %s value is not valid.
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// instanceName can not be empty.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1EFBAC73-4A72-5AD0-BE27-932491FCB848
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateAdvancedPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAdvancedPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAdvancedPolicyResponseBody) SetCode(v string) *CreateAdvancedPolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateAdvancedPolicyResponseBody) SetData(v bool) *CreateAdvancedPolicyResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateAdvancedPolicyResponseBody) SetErrCode(v string) *CreateAdvancedPolicyResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateAdvancedPolicyResponseBody) SetErrMessage(v string) *CreateAdvancedPolicyResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *CreateAdvancedPolicyResponseBody) SetMessage(v string) *CreateAdvancedPolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAdvancedPolicyResponseBody) SetRequestId(v string) *CreateAdvancedPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAdvancedPolicyResponseBody) SetSuccess(v string) *CreateAdvancedPolicyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAdvancedPolicyResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAdvancedPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAdvancedPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAdvancedPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAdvancedPolicyResponse) SetHeaders(v map[string]*string) *CreateAdvancedPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAdvancedPolicyResponse) SetStatusCode(v int32) *CreateAdvancedPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAdvancedPolicyResponse) SetBody(v *CreateAdvancedPolicyResponseBody) *CreateAdvancedPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDownloadRequest struct {
 	// The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID of the backup set.
 	//
@@ -3780,6 +3912,432 @@ func (s *DescribeSandboxRecoveryTimeResponse) SetBody(v *DescribeSandboxRecovery
 	return s
 }
 
+type ModifyBackupPolicyRequest struct {
+	AdvanceDataPolicies []*ModifyBackupPolicyRequestAdvanceDataPolicies `json:"AdvanceDataPolicies,omitempty" xml:"AdvanceDataPolicies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pc-2ze3nrr64c5****
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 17:00Z
+	PreferredBackupWindowBegin *string `json:"PreferredBackupWindowBegin,omitempty" xml:"PreferredBackupWindowBegin,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+}
+
+func (s ModifyBackupPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyRequest) SetAdvanceDataPolicies(v []*ModifyBackupPolicyRequestAdvanceDataPolicies) *ModifyBackupPolicyRequest {
+	s.AdvanceDataPolicies = v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetInstanceName(v string) *ModifyBackupPolicyRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetPreferredBackupWindowBegin(v string) *ModifyBackupPolicyRequest {
+	s.PreferredBackupWindowBegin = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetRegionCode(v string) *ModifyBackupPolicyRequest {
+	s.RegionCode = &v
+	return s
+}
+
+type ModifyBackupPolicyRequestAdvanceDataPolicies struct {
+	// example:
+	//
+	// UPDATE
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	// example:
+	//
+	// level1
+	DestType *string `json:"DestType,omitempty" xml:"DestType,omitempty"`
+	// example:
+	//
+	// backupInterval
+	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// crontab
+	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
+	// example:
+	//
+	// crontab
+	FilterTypeCopy *string `json:"FilterType-copy,omitempty" xml:"FilterType-copy,omitempty"`
+	// example:
+	//
+	// 180
+	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	// example:
+	//
+	// 6s67c7i3y8f8p72808p******
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// delay
+	RetentionType *string `json:"RetentionType,omitempty" xml:"RetentionType,omitempty"`
+	// example:
+	//
+	// 4
+	RetentionValue *string `json:"RetentionValue,omitempty" xml:"RetentionValue,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	// example:
+	//
+	// db
+	SrcType *string `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+}
+
+func (s ModifyBackupPolicyRequestAdvanceDataPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyRequestAdvanceDataPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyRequestAdvanceDataPolicies) SetActionType(v string) *ModifyBackupPolicyRequestAdvanceDataPolicies {
+	s.ActionType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvanceDataPolicies) SetDestRegion(v string) *ModifyBackupPolicyRequestAdvanceDataPolicies {
+	s.DestRegion = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvanceDataPolicies) SetDestType(v string) *ModifyBackupPolicyRequestAdvanceDataPolicies {
+	s.DestType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvanceDataPolicies) SetFilterKey(v string) *ModifyBackupPolicyRequestAdvanceDataPolicies {
+	s.FilterKey = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvanceDataPolicies) SetFilterType(v string) *ModifyBackupPolicyRequestAdvanceDataPolicies {
+	s.FilterType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvanceDataPolicies) SetFilterTypeCopy(v string) *ModifyBackupPolicyRequestAdvanceDataPolicies {
+	s.FilterTypeCopy = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvanceDataPolicies) SetFilterValue(v string) *ModifyBackupPolicyRequestAdvanceDataPolicies {
+	s.FilterValue = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvanceDataPolicies) SetPolicyId(v string) *ModifyBackupPolicyRequestAdvanceDataPolicies {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvanceDataPolicies) SetRetentionType(v string) *ModifyBackupPolicyRequestAdvanceDataPolicies {
+	s.RetentionType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvanceDataPolicies) SetRetentionValue(v string) *ModifyBackupPolicyRequestAdvanceDataPolicies {
+	s.RetentionValue = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvanceDataPolicies) SetSrcRegion(v string) *ModifyBackupPolicyRequestAdvanceDataPolicies {
+	s.SrcRegion = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvanceDataPolicies) SetSrcType(v string) *ModifyBackupPolicyRequestAdvanceDataPolicies {
+	s.SrcType = &v
+	return s
+}
+
+type ModifyBackupPolicyResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ModifyBackupPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Success
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// The specified parameter %s value is not valid.
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// instanceName can not be empty.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D570F209-A166-50C6-98A3-155A20B218B7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyBackupPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyResponseBody) SetCode(v string) *ModifyBackupPolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBody) SetData(v *ModifyBackupPolicyResponseBodyData) *ModifyBackupPolicyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBody) SetErrCode(v string) *ModifyBackupPolicyResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBody) SetErrMessage(v string) *ModifyBackupPolicyResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBody) SetMessage(v string) *ModifyBackupPolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBody) SetRequestId(v string) *ModifyBackupPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBody) SetSuccess(v string) *ModifyBackupPolicyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyBackupPolicyResponseBodyData struct {
+	AdvanceDataPolicies []*ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies `json:"AdvanceDataPolicies,omitempty" xml:"AdvanceDataPolicies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 17:00Z-18:00Z
+	PreferredBackupWindow *string `json:"PreferredBackupWindow,omitempty" xml:"PreferredBackupWindow,omitempty"`
+	// example:
+	//
+	// 17:00Z
+	PreferredBackupWindowBegin *string `json:"PreferredBackupWindowBegin,omitempty" xml:"PreferredBackupWindowBegin,omitempty"`
+}
+
+func (s ModifyBackupPolicyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyResponseBodyData) SetAdvanceDataPolicies(v []*ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) *ModifyBackupPolicyResponseBodyData {
+	s.AdvanceDataPolicies = v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyData) SetPreferredBackupWindow(v string) *ModifyBackupPolicyResponseBodyData {
+	s.PreferredBackupWindow = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyData) SetPreferredBackupWindowBegin(v string) *ModifyBackupPolicyResponseBodyData {
+	s.PreferredBackupWindowBegin = &v
+	return s
+}
+
+type ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies struct {
+	// example:
+	//
+	// false
+	AutoCreated *bool `json:"AutoCreated,omitempty" xml:"AutoCreated,omitempty"`
+	// example:
+	//
+	// F
+	BakType *string `json:"BakType,omitempty" xml:"BakType,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	// example:
+	//
+	// level1
+	DestType *string `json:"DestType,omitempty" xml:"DestType,omitempty"`
+	// example:
+	//
+	// copy
+	DumpAction *string `json:"DumpAction,omitempty" xml:"DumpAction,omitempty"`
+	// example:
+	//
+	// backupInterval
+	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// example:
+	//
+	// crontab
+	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
+	// example:
+	//
+	// 180
+	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	// example:
+	//
+	// dc13b153acc91141789122c23835****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// delay
+	RetentionType *string `json:"RetentionType,omitempty" xml:"RetentionType,omitempty"`
+	// example:
+	//
+	// 4
+	RetentionValue *string `json:"RetentionValue,omitempty" xml:"RetentionValue,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	// example:
+	//
+	// db
+	SrcType *string `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+}
+
+func (s ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) SetAutoCreated(v bool) *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.AutoCreated = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) SetBakType(v string) *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.BakType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) SetDestRegion(v string) *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.DestRegion = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) SetDestType(v string) *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.DestType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) SetDumpAction(v string) *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.DumpAction = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) SetFilterKey(v string) *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.FilterKey = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) SetFilterType(v string) *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.FilterType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) SetFilterValue(v string) *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.FilterValue = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) SetPolicyId(v string) *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) SetRetentionType(v string) *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.RetentionType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) SetRetentionValue(v string) *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.RetentionValue = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) SetSrcRegion(v string) *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.SrcRegion = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies) SetSrcType(v string) *ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies {
+	s.SrcType = &v
+	return s
+}
+
+type ModifyBackupPolicyResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyBackupPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyResponse) SetHeaders(v map[string]*string) *ModifyBackupPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponse) SetStatusCode(v int32) *ModifyBackupPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) *ModifyBackupPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDBTablesRecoveryStateRequest struct {
 	Category   *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -4143,6 +4701,70 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
 	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启高级备份策略
+//
+// @param request - CreateAdvancedPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAdvancedPolicyResponse
+func (client *Client) CreateAdvancedPolicyWithOptions(request *CreateAdvancedPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateAdvancedPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionCode)) {
+		query["RegionCode"] = request.RegionCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAdvancedPolicy"),
+		Version:     tea.String("2021-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAdvancedPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启高级备份策略
+//
+// @param request - CreateAdvancedPolicyRequest
+//
+// @return CreateAdvancedPolicyResponse
+func (client *Client) CreateAdvancedPolicy(request *CreateAdvancedPolicyRequest) (_result *CreateAdvancedPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAdvancedPolicyResponse{}
+	_body, _err := client.CreateAdvancedPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5295,6 +5917,78 @@ func (client *Client) DescribeSandboxRecoveryTime(request *DescribeSandboxRecove
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSandboxRecoveryTimeResponse{}
 	_body, _err := client.DescribeSandboxRecoveryTimeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改备份策略
+//
+// @param request - ModifyBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBackupPolicyResponse
+func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdvanceDataPolicies)) {
+		query["AdvanceDataPolicies"] = request.AdvanceDataPolicies
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupWindowBegin)) {
+		query["PreferredBackupWindowBegin"] = request.PreferredBackupWindowBegin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionCode)) {
+		query["RegionCode"] = request.RegionCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBackupPolicy"),
+		Version:     tea.String("2021-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyBackupPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改备份策略
+//
+// @param request - ModifyBackupPolicyRequest
+//
+// @return ModifyBackupPolicyResponse
+func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_result *ModifyBackupPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyBackupPolicyResponse{}
+	_body, _err := client.ModifyBackupPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
