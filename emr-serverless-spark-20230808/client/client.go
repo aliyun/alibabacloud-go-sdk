@@ -2025,6 +2025,935 @@ func (s *ListJobRunsResponse) SetBody(v *ListJobRunsResponseBody) *ListJobRunsRe
 	return s
 }
 
+type ListReleaseVersionsRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// stable
+	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
+	// example:
+	//
+	// esr-2.1 (Spark 3.3.1, Scala 2.12, Java Runtime)
+	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// example:
+	//
+	// ONLINE
+	ReleaseVersionStatus *string `json:"releaseVersionStatus,omitempty" xml:"releaseVersionStatus,omitempty"`
+}
+
+func (s ListReleaseVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReleaseVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListReleaseVersionsRequest) SetRegionId(v string) *ListReleaseVersionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListReleaseVersionsRequest) SetReleaseType(v string) *ListReleaseVersionsRequest {
+	s.ReleaseType = &v
+	return s
+}
+
+func (s *ListReleaseVersionsRequest) SetReleaseVersion(v string) *ListReleaseVersionsRequest {
+	s.ReleaseVersion = &v
+	return s
+}
+
+func (s *ListReleaseVersionsRequest) SetReleaseVersionStatus(v string) *ListReleaseVersionsRequest {
+	s.ReleaseVersionStatus = &v
+	return s
+}
+
+type ListReleaseVersionsResponseBody struct {
+	// 一次获取的最大记录数。
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 下一页TOKEN。
+	//
+	// example:
+	//
+	// 1
+	NextToken       *string                                           `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	ReleaseVersions []*ListReleaseVersionsResponseBodyReleaseVersions `json:"releaseVersions,omitempty" xml:"releaseVersions,omitempty" type:"Repeated"`
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 记录总数。
+	//
+	// example:
+	//
+	// 200
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListReleaseVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReleaseVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListReleaseVersionsResponseBody) SetMaxResults(v int32) *ListReleaseVersionsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBody) SetNextToken(v string) *ListReleaseVersionsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBody) SetReleaseVersions(v []*ListReleaseVersionsResponseBodyReleaseVersions) *ListReleaseVersionsResponseBody {
+	s.ReleaseVersions = v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBody) SetRequestId(v string) *ListReleaseVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBody) SetTotalCount(v int32) *ListReleaseVersionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListReleaseVersionsResponseBodyReleaseVersions struct {
+	// example:
+	//
+	// Spark 3.3.1
+	CommunityVersion *string   `json:"communityVersion,omitempty" xml:"communityVersion,omitempty"`
+	CpuArchitectures []*string `json:"cpuArchitectures,omitempty" xml:"cpuArchitectures,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1716215854101
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// ASI
+	IaasType *string `json:"iaasType,omitempty" xml:"iaasType,omitempty"`
+	// example:
+	//
+	// esr-2.1 (Spark 3.3.1, Scala 2.12, Java Runtime)
+	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// example:
+	//
+	// 2.12
+	ScalaVersion *string `json:"scalaVersion,omitempty" xml:"scalaVersion,omitempty"`
+	// example:
+	//
+	// ONLINE
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// example:
+	//
+	// stable
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListReleaseVersionsResponseBodyReleaseVersions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReleaseVersionsResponseBodyReleaseVersions) GoString() string {
+	return s.String()
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetCommunityVersion(v string) *ListReleaseVersionsResponseBodyReleaseVersions {
+	s.CommunityVersion = &v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetCpuArchitectures(v []*string) *ListReleaseVersionsResponseBodyReleaseVersions {
+	s.CpuArchitectures = v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetGmtCreate(v int64) *ListReleaseVersionsResponseBodyReleaseVersions {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetIaasType(v string) *ListReleaseVersionsResponseBodyReleaseVersions {
+	s.IaasType = &v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetReleaseVersion(v string) *ListReleaseVersionsResponseBodyReleaseVersions {
+	s.ReleaseVersion = &v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetScalaVersion(v string) *ListReleaseVersionsResponseBodyReleaseVersions {
+	s.ScalaVersion = &v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetState(v string) *ListReleaseVersionsResponseBodyReleaseVersions {
+	s.State = &v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetType(v string) *ListReleaseVersionsResponseBodyReleaseVersions {
+	s.Type = &v
+	return s
+}
+
+type ListReleaseVersionsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListReleaseVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListReleaseVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReleaseVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListReleaseVersionsResponse) SetHeaders(v map[string]*string) *ListReleaseVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListReleaseVersionsResponse) SetStatusCode(v int32) *ListReleaseVersionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListReleaseVersionsResponse) SetBody(v *ListReleaseVersionsResponseBody) *ListReleaseVersionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkspaceQueuesRequest struct {
+	// example:
+	//
+	// production
+	Environment *string `json:"environment,omitempty" xml:"environment,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s ListWorkspaceQueuesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceQueuesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceQueuesRequest) SetEnvironment(v string) *ListWorkspaceQueuesRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesRequest) SetRegionId(v string) *ListWorkspaceQueuesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListWorkspaceQueuesResponseBody struct {
+	// 一次获取的最大记录数。
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 下一页TOKEN。
+	//
+	// example:
+	//
+	// 1
+	NextToken *string                                  `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Queues    []*ListWorkspaceQueuesResponseBodyQueues `json:"queues,omitempty" xml:"queues,omitempty" type:"Repeated"`
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 记录总数。
+	//
+	// example:
+	//
+	// 200
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListWorkspaceQueuesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceQueuesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceQueuesResponseBody) SetMaxResults(v int32) *ListWorkspaceQueuesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBody) SetNextToken(v string) *ListWorkspaceQueuesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBody) SetQueues(v []*ListWorkspaceQueuesResponseBodyQueues) *ListWorkspaceQueuesResponseBody {
+	s.Queues = v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBody) SetRequestId(v string) *ListWorkspaceQueuesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBody) SetTotalCount(v int32) *ListWorkspaceQueuesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListWorkspaceQueuesResponseBodyQueues struct {
+	// 队列允许的操作
+	AllowActions []*ListWorkspaceQueuesResponseBodyQueuesAllowActions `json:"allowActions,omitempty" xml:"allowActions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 237109
+	Creator      *string   `json:"creator,omitempty" xml:"creator,omitempty"`
+	Environments []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+	// 队列资源最大容量
+	//
+	// example:
+	//
+	// {"cpu": "2","memory": "2Gi"}
+	MaxResource *string `json:"maxResource,omitempty" xml:"maxResource,omitempty"`
+	// 队列资源最小容量
+	//
+	// example:
+	//
+	// {"cpu": "2","memory": "2Gi"}
+	MinResource *string `json:"minResource,omitempty" xml:"minResource,omitempty"`
+	// 队列Label
+	//
+	// example:
+	//
+	// dev_queue
+	Properties *string `json:"properties,omitempty" xml:"properties,omitempty"`
+	// 队列名称。
+	//
+	// example:
+	//
+	// dev_queue
+	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// 队列架构
+	//
+	// example:
+	//
+	// {"arch": "x86"}
+	QueueScope *string `json:"queueScope,omitempty" xml:"queueScope,omitempty"`
+	// example:
+	//
+	// RUNNING
+	QueueStatus *string `json:"queueStatus,omitempty" xml:"queueStatus,omitempty"`
+	// 队列类型
+	//
+	// example:
+	//
+	// instance, instanceChildren
+	QueueType *string `json:"queueType,omitempty" xml:"queueType,omitempty"`
+	// regionId。
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// 队列资源使用容量
+	//
+	// example:
+	//
+	// {"cpu": "2","memory": "2Gi"}
+	UsedResource *string `json:"usedResource,omitempty" xml:"usedResource,omitempty"`
+	// 工作空间id。
+	//
+	// example:
+	//
+	// w-1234abcd
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListWorkspaceQueuesResponseBodyQueues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceQueuesResponseBodyQueues) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetAllowActions(v []*ListWorkspaceQueuesResponseBodyQueuesAllowActions) *ListWorkspaceQueuesResponseBodyQueues {
+	s.AllowActions = v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetCreator(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetEnvironments(v []*string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.Environments = v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetMaxResource(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.MaxResource = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetMinResource(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.MinResource = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetProperties(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.Properties = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetQueueName(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.QueueName = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetQueueScope(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.QueueScope = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetQueueStatus(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.QueueStatus = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetQueueType(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.QueueType = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetRegionId(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetUsedResource(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.UsedResource = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetWorkspaceId(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListWorkspaceQueuesResponseBodyQueuesAllowActions struct {
+	// 行为 arn。
+	//
+	// example:
+	//
+	// acs:emr::workspaceId:action/create_queue
+	ActionArn *string `json:"actionArn,omitempty" xml:"actionArn,omitempty"`
+	// 权限名称。
+	//
+	// example:
+	//
+	// view
+	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
+	// action 依赖列表。
+	//
+	// example:
+	//
+	// ["view"]
+	Dependencies []*string `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
+	// action 描述。
+	//
+	// example:
+	//
+	// 文件目录遍历、文件浏览
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 权限展示名称。
+	//
+	// example:
+	//
+	// 文件目录遍历、文件浏览
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s ListWorkspaceQueuesResponseBodyQueuesAllowActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceQueuesResponseBodyQueuesAllowActions) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueuesAllowActions) SetActionArn(v string) *ListWorkspaceQueuesResponseBodyQueuesAllowActions {
+	s.ActionArn = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueuesAllowActions) SetActionName(v string) *ListWorkspaceQueuesResponseBodyQueuesAllowActions {
+	s.ActionName = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueuesAllowActions) SetDependencies(v []*string) *ListWorkspaceQueuesResponseBodyQueuesAllowActions {
+	s.Dependencies = v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueuesAllowActions) SetDescription(v string) *ListWorkspaceQueuesResponseBodyQueuesAllowActions {
+	s.Description = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueuesAllowActions) SetDisplayName(v string) *ListWorkspaceQueuesResponseBodyQueuesAllowActions {
+	s.DisplayName = &v
+	return s
+}
+
+type ListWorkspaceQueuesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWorkspaceQueuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWorkspaceQueuesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceQueuesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceQueuesResponse) SetHeaders(v map[string]*string) *ListWorkspaceQueuesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponse) SetStatusCode(v int32) *ListWorkspaceQueuesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponse) SetBody(v *ListWorkspaceQueuesResponseBody) *ListWorkspaceQueuesResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkspacesRequest struct {
+	// 一次获取的最大记录数。
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// test_workspace
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 标记当前开始读取的位置，置空表示从头开始。
+	//
+	// example:
+	//
+	// 1
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// running
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s ListWorkspacesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspacesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesRequest) SetMaxResults(v int32) *ListWorkspacesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWorkspacesRequest) SetName(v string) *ListWorkspacesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWorkspacesRequest) SetNextToken(v string) *ListWorkspacesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkspacesRequest) SetRegionId(v string) *ListWorkspacesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListWorkspacesRequest) SetState(v string) *ListWorkspacesRequest {
+	s.State = &v
+	return s
+}
+
+type ListWorkspacesResponseBody struct {
+	// 一次获取的最大记录数。
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 下一页TOKEN。
+	//
+	// example:
+	//
+	// 1
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 记录总数。
+	//
+	// example:
+	//
+	// 200
+	TotalCount *int32                                  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Workspaces []*ListWorkspacesResponseBodyWorkspaces `json:"workspaces,omitempty" xml:"workspaces,omitempty" type:"Repeated"`
+}
+
+func (s ListWorkspacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesResponseBody) SetMaxResults(v int32) *ListWorkspacesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBody) SetNextToken(v string) *ListWorkspacesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBody) SetRequestId(v string) *ListWorkspacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBody) SetTotalCount(v int32) *ListWorkspacesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBody) SetWorkspaces(v []*ListWorkspacesResponseBodyWorkspaces) *ListWorkspacesResponseBody {
+	s.Workspaces = v
+	return s
+}
+
+type ListWorkspacesResponseBodyWorkspaces struct {
+	// 是否自动续费(pre付费类型必须)。
+	//
+	// example:
+	//
+	// true
+	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
+	// 自动续费时长(pre付费类型必须)。
+	//
+	// example:
+	//
+	// 1
+	AutoRenewPeriod *int32 `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
+	// 自动续费周期(pre付费类型必须)。
+	//
+	// example:
+	//
+	// YEAR, MONTH, WEEK, DAY, HOUR, MINUTE
+	AutoRenewPeriodUnit *string `json:"autoRenewPeriodUnit,omitempty" xml:"autoRenewPeriodUnit,omitempty"`
+	// example:
+	//
+	// 1684115879955
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// dlf catalog 信息。
+	//
+	// example:
+	//
+	// default
+	DlfCatalogId *string `json:"dlfCatalogId,omitempty" xml:"dlfCatalogId,omitempty"`
+	// 订购周期数量(pre付费类型必须)。
+	//
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// example:
+	//
+	// 1687103999999
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// 失败原因。
+	//
+	// example:
+	//
+	// out of stock
+	FailReason *string `json:"failReason,omitempty" xml:"failReason,omitempty"`
+	// 订购周期(pre付费类型必须)。
+	//
+	// example:
+	//
+	// YEAR, MONTH, WEEK, DAY, HOUR, MINUTE
+	PaymentDurationUnit *string `json:"paymentDurationUnit,omitempty" xml:"paymentDurationUnit,omitempty"`
+	// 支付状态。
+	//
+	// example:
+	//
+	// PAID/UNPAID
+	PaymentStatus *string `json:"paymentStatus,omitempty" xml:"paymentStatus,omitempty"`
+	// 付费类型。
+	//
+	// example:
+	//
+	// PayAsYouGo or Subscription
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// SERVICE_RELEASE
+	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
+	// 资源规格。
+	//
+	// example:
+	//
+	// 100cu
+	ResourceSpec      *string                                                `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty"`
+	StateChangeReason *ListWorkspacesResponseBodyWorkspacesStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
+	// oss 路径。
+	//
+	// example:
+	//
+	// spark-result
+	Storage *string `json:"storage,omitempty" xml:"storage,omitempty"`
+	// Workspace Id。
+	//
+	// example:
+	//
+	// w-******
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// 工作空间名称。
+	//
+	// example:
+	//
+	// spark批作业空间-1
+	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
+	// 工作空间状态。
+	//
+	// example:
+	//
+	// STARTING,RUNNING,TERMINATED
+	WorkspaceStatus *string `json:"workspaceStatus,omitempty" xml:"workspaceStatus,omitempty"`
+}
+
+func (s ListWorkspacesResponseBodyWorkspaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspacesResponseBodyWorkspaces) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetAutoRenew(v bool) *ListWorkspacesResponseBodyWorkspaces {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetAutoRenewPeriod(v int32) *ListWorkspacesResponseBodyWorkspaces {
+	s.AutoRenewPeriod = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetAutoRenewPeriodUnit(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.AutoRenewPeriodUnit = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetCreateTime(v int64) *ListWorkspacesResponseBodyWorkspaces {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetDlfCatalogId(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.DlfCatalogId = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetDuration(v int32) *ListWorkspacesResponseBodyWorkspaces {
+	s.Duration = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetEndTime(v int64) *ListWorkspacesResponseBodyWorkspaces {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetFailReason(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.FailReason = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetPaymentDurationUnit(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.PaymentDurationUnit = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetPaymentStatus(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.PaymentStatus = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetPaymentType(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetRegionId(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetReleaseType(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.ReleaseType = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetResourceSpec(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.ResourceSpec = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetStateChangeReason(v *ListWorkspacesResponseBodyWorkspacesStateChangeReason) *ListWorkspacesResponseBodyWorkspaces {
+	s.StateChangeReason = v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetStorage(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.Storage = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetWorkspaceId(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetWorkspaceName(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.WorkspaceName = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetWorkspaceStatus(v string) *ListWorkspacesResponseBodyWorkspaces {
+	s.WorkspaceStatus = &v
+	return s
+}
+
+type ListWorkspacesResponseBodyWorkspacesStateChangeReason struct {
+	// example:
+	//
+	// 0
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s ListWorkspacesResponseBodyWorkspacesStateChangeReason) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspacesResponseBodyWorkspacesStateChangeReason) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesResponseBodyWorkspacesStateChangeReason) SetCode(v string) *ListWorkspacesResponseBodyWorkspacesStateChangeReason {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspacesStateChangeReason) SetMessage(v string) *ListWorkspacesResponseBodyWorkspacesStateChangeReason {
+	s.Message = &v
+	return s
+}
+
+type ListWorkspacesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWorkspacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWorkspacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspacesResponse) SetHeaders(v map[string]*string) *ListWorkspacesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkspacesResponse) SetStatusCode(v int32) *ListWorkspacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWorkspacesResponse) SetBody(v *ListWorkspacesResponseBody) *ListWorkspacesResponse {
+	s.Body = v
+	return s
+}
+
 type StartJobRunRequest struct {
 	// example:
 	//
@@ -2531,6 +3460,230 @@ func (client *Client) ListJobRuns(workspaceId *string, request *ListJobRunsReque
 	headers := make(map[string]*string)
 	_result = &ListJobRunsResponse{}
 	_body, _err := client.ListJobRunsWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取发布版本列表
+//
+// @param request - ListReleaseVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListReleaseVersionsResponse
+func (client *Client) ListReleaseVersionsWithOptions(request *ListReleaseVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListReleaseVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseType)) {
+		query["releaseType"] = request.ReleaseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseVersion)) {
+		query["releaseVersion"] = request.ReleaseVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseVersionStatus)) {
+		query["releaseVersionStatus"] = request.ReleaseVersionStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListReleaseVersions"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/releaseVersions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListReleaseVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取发布版本列表
+//
+// @param request - ListReleaseVersionsRequest
+//
+// @return ListReleaseVersionsResponse
+func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (_result *ListReleaseVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListReleaseVersionsResponse{}
+	_body, _err := client.ListReleaseVersionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看工作空间队列列表
+//
+// @param request - ListWorkspaceQueuesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspaceQueuesResponse
+func (client *Client) ListWorkspaceQueuesWithOptions(workspaceId *string, request *ListWorkspaceQueuesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkspaceQueuesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		query["environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkspaceQueues"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/queues"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWorkspaceQueuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看工作空间队列列表
+//
+// @param request - ListWorkspaceQueuesRequest
+//
+// @return ListWorkspaceQueuesResponse
+func (client *Client) ListWorkspaceQueues(workspaceId *string, request *ListWorkspaceQueuesRequest) (_result *ListWorkspaceQueuesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkspaceQueuesResponse{}
+	_body, _err := client.ListWorkspaceQueuesWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看工作空间列表
+//
+// @param request - ListWorkspacesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspacesResponse
+func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["state"] = request.State
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkspaces"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWorkspacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看工作空间列表
+//
+// @param request - ListWorkspacesRequest
+//
+// @return ListWorkspacesResponse
+func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *ListWorkspacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkspacesResponse{}
+	_body, _err := client.ListWorkspacesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
