@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,10 +10,19 @@ import (
 )
 
 type DataValue struct {
-	ServiceId *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// failed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 6003
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s DataValue) String() string {
@@ -348,8 +354,15 @@ func (s *ADMiniCogResultResponse) SetBody(v *ADMiniCogResultResponseBody) *ADMin
 }
 
 type DeleteServiceDataByConditionsRequest struct {
+	// This parameter is required.
 	Conditions map[string]interface{} `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
-	ServiceId  *int64                 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId               *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	XDashScopeOpenAPISource *string `json:"X-DashScope-OpenAPISource,omitempty" xml:"X-DashScope-OpenAPISource,omitempty"`
 }
 
 func (s DeleteServiceDataByConditionsRequest) String() string {
@@ -370,9 +383,21 @@ func (s *DeleteServiceDataByConditionsRequest) SetServiceId(v int64) *DeleteServ
 	return s
 }
 
+func (s *DeleteServiceDataByConditionsRequest) SetXDashScopeOpenAPISource(v string) *DeleteServiceDataByConditionsRequest {
+	s.XDashScopeOpenAPISource = &v
+	return s
+}
+
 type DeleteServiceDataByConditionsShrinkRequest struct {
+	// This parameter is required.
 	ConditionsShrink *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
-	ServiceId        *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId               *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	XDashScopeOpenAPISource *string `json:"X-DashScope-OpenAPISource,omitempty" xml:"X-DashScope-OpenAPISource,omitempty"`
 }
 
 func (s DeleteServiceDataByConditionsShrinkRequest) String() string {
@@ -393,12 +418,32 @@ func (s *DeleteServiceDataByConditionsShrinkRequest) SetServiceId(v int64) *Dele
 	return s
 }
 
+func (s *DeleteServiceDataByConditionsShrinkRequest) SetXDashScopeOpenAPISource(v string) *DeleteServiceDataByConditionsShrinkRequest {
+	s.XDashScopeOpenAPISource = &v
+	return s
+}
+
 type DeleteServiceDataByConditionsResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Msg       *string     `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// null
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 6A8108E0-B9CD-5E74-B312-50E6E1AC1722
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteServiceDataByConditionsResponseBody) String() string {
@@ -464,8 +509,14 @@ func (s *DeleteServiceDataByConditionsResponse) SetBody(v *DeleteServiceDataByCo
 }
 
 type DeleteServiceDataByIdsRequest struct {
-	Ids       []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	ServiceId *int64    `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	Ids []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
 func (s DeleteServiceDataByIdsRequest) String() string {
@@ -487,8 +538,14 @@ func (s *DeleteServiceDataByIdsRequest) SetServiceId(v int64) *DeleteServiceData
 }
 
 type DeleteServiceDataByIdsShrinkRequest struct {
+	// This parameter is required.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	ServiceId *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
 func (s DeleteServiceDataByIdsShrinkRequest) String() string {
@@ -510,11 +567,26 @@ func (s *DeleteServiceDataByIdsShrinkRequest) SetServiceId(v int64) *DeleteServi
 }
 
 type DeleteServiceDataByIdsResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Msg       *string     `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// null
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 6A8108E0-B9CD-5E74-B312-50E6E1AC1722
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteServiceDataByIdsResponseBody) String() string {
@@ -580,7 +652,8 @@ func (s *DeleteServiceDataByIdsResponse) SetBody(v *DeleteServiceDataByIdsRespon
 }
 
 type GetBrandChEcomRequest struct {
-	ImageUrl    *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
@@ -661,9 +734,11 @@ func (s *GetBrandChEcomResponse) SetBody(v *GetBrandChEcomResponseBody) *GetBran
 }
 
 type GetCateChEcomRequest struct {
-	ImageUrl    *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetCateChEcomRequest) String() string {
@@ -742,8 +817,11 @@ func (s *GetCateChEcomResponse) SetBody(v *GetCateChEcomResponseBody) *GetCateCh
 }
 
 type GetCheckDuplicationChMedicalRequest struct {
-	OriginQ     *string `json:"OriginQ,omitempty" xml:"OriginQ,omitempty"`
-	OriginT     *string `json:"OriginT,omitempty" xml:"OriginT,omitempty"`
+	// This parameter is required.
+	OriginQ *string `json:"OriginQ,omitempty" xml:"OriginQ,omitempty"`
+	// This parameter is required.
+	OriginT *string `json:"OriginT,omitempty" xml:"OriginT,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 
@@ -823,7 +901,9 @@ func (s *GetCheckDuplicationChMedicalResponse) SetBody(v *GetCheckDuplicationChM
 }
 
 type GetDiagnosisChMedicalRequest struct {
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 
@@ -898,8 +978,10 @@ func (s *GetDiagnosisChMedicalResponse) SetBody(v *GetDiagnosisChMedicalResponse
 }
 
 type GetDpChEcomRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetDpChEcomRequest) String() string {
@@ -973,8 +1055,10 @@ func (s *GetDpChEcomResponse) SetBody(v *GetDpChEcomResponseBody) *GetDpChEcomRe
 }
 
 type GetDpChGeneralCTBRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetDpChGeneralCTBRequest) String() string {
@@ -1048,8 +1132,10 @@ func (s *GetDpChGeneralCTBResponse) SetBody(v *GetDpChGeneralCTBResponseBody) *G
 }
 
 type GetDpChGeneralStanfordRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetDpChGeneralStanfordRequest) String() string {
@@ -1123,8 +1209,10 @@ func (s *GetDpChGeneralStanfordResponse) SetBody(v *GetDpChGeneralStanfordRespon
 }
 
 type GetEcChGeneralRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetEcChGeneralRequest) String() string {
@@ -1198,8 +1286,10 @@ func (s *GetEcChGeneralResponse) SetBody(v *GetEcChGeneralResponseBody) *GetEcCh
 }
 
 type GetEcEnGeneralRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetEcEnGeneralRequest) String() string {
@@ -1273,6 +1363,7 @@ func (s *GetEcEnGeneralResponse) SetBody(v *GetEcEnGeneralResponseBody) *GetEcEn
 }
 
 type GetEmbeddingRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	TextType    *string `json:"TextType,omitempty" xml:"TextType,omitempty"`
@@ -1354,9 +1445,11 @@ func (s *GetEmbeddingResponse) SetBody(v *GetEmbeddingResponseBody) *GetEmbeddin
 }
 
 type GetItemPubChEcomRequest struct {
-	ImageUrl    *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetItemPubChEcomRequest) String() string {
@@ -1435,9 +1528,11 @@ func (s *GetItemPubChEcomResponse) SetBody(v *GetItemPubChEcomResponseBody) *Get
 }
 
 type GetKeywordChEcomRequest struct {
-	ApiVersion  *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
+	ApiVersion *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetKeywordChEcomRequest) String() string {
@@ -1516,8 +1611,10 @@ func (s *GetKeywordChEcomResponse) SetBody(v *GetKeywordChEcomResponseBody) *Get
 }
 
 type GetKeywordEnEcomRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetKeywordEnEcomRequest) String() string {
@@ -1591,8 +1688,10 @@ func (s *GetKeywordEnEcomResponse) SetBody(v *GetKeywordEnEcomResponseBody) *Get
 }
 
 type GetMedicineChMedicalRequest struct {
-	Factory       *string `json:"Factory,omitempty" xml:"Factory,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Factory *string `json:"Factory,omitempty" xml:"Factory,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
 	ServiceCode   *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 	Unit          *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
@@ -1684,9 +1783,11 @@ func (s *GetMedicineChMedicalResponse) SetBody(v *GetMedicineChMedicalResponseBo
 }
 
 type GetNerChEcomRequest struct {
-	LexerId     *string `json:"LexerId,omitempty" xml:"LexerId,omitempty"`
+	LexerId *string `json:"LexerId,omitempty" xml:"LexerId,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetNerChEcomRequest) String() string {
@@ -1765,8 +1866,10 @@ func (s *GetNerChEcomResponse) SetBody(v *GetNerChEcomResponseBody) *GetNerChEco
 }
 
 type GetNerChMedicalRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetNerChMedicalRequest) String() string {
@@ -1840,9 +1943,11 @@ func (s *GetNerChMedicalResponse) SetBody(v *GetNerChMedicalResponseBody) *GetNe
 }
 
 type GetNerCustomizedChEcomRequest struct {
-	LexerId     *string `json:"LexerId,omitempty" xml:"LexerId,omitempty"`
+	LexerId *string `json:"LexerId,omitempty" xml:"LexerId,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetNerCustomizedChEcomRequest) String() string {
@@ -1921,9 +2026,12 @@ func (s *GetNerCustomizedChEcomResponse) SetBody(v *GetNerCustomizedChEcomRespon
 }
 
 type GetNerCustomizedSeaEcomRequest struct {
-	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetNerCustomizedSeaEcomRequest) String() string {
@@ -2002,9 +2110,10 @@ func (s *GetNerCustomizedSeaEcomResponse) SetBody(v *GetNerCustomizedSeaEcomResp
 }
 
 type GetOpenNLURequest struct {
-	Examples    *string `json:"Examples,omitempty" xml:"Examples,omitempty"`
-	Labels      *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Sentence    *string `json:"Sentence,omitempty" xml:"Sentence,omitempty"`
+	Examples *string `json:"Examples,omitempty" xml:"Examples,omitempty"`
+	Labels   *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Sentence *string `json:"Sentence,omitempty" xml:"Sentence,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 	Task        *string `json:"Task,omitempty" xml:"Task,omitempty"`
 }
@@ -2095,9 +2204,10 @@ func (s *GetOpenNLUResponse) SetBody(v *GetOpenNLUResponseBody) *GetOpenNLURespo
 }
 
 type GetOpenNLUHighRecallRequest struct {
-	Examples    *string `json:"Examples,omitempty" xml:"Examples,omitempty"`
-	Labels      *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Sentence    *string `json:"Sentence,omitempty" xml:"Sentence,omitempty"`
+	Examples *string `json:"Examples,omitempty" xml:"Examples,omitempty"`
+	Labels   *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Sentence *string `json:"Sentence,omitempty" xml:"Sentence,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 	Task        *string `json:"Task,omitempty" xml:"Task,omitempty"`
 }
@@ -2188,7 +2298,9 @@ func (s *GetOpenNLUHighRecallResponse) SetBody(v *GetOpenNLUHighRecallResponseBo
 }
 
 type GetOperationChMedicalRequest struct {
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 
@@ -2263,8 +2375,10 @@ func (s *GetOperationChMedicalResponse) SetBody(v *GetOperationChMedicalResponse
 }
 
 type GetPosChEcomRequest struct {
-	OutType     *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	OutType *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// This parameter is required.
 	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	TokenizerId *string `json:"TokenizerId,omitempty" xml:"TokenizerId,omitempty"`
 }
@@ -2350,8 +2464,10 @@ func (s *GetPosChEcomResponse) SetBody(v *GetPosChEcomResponseBody) *GetPosChEco
 }
 
 type GetPosChGeneralRequest struct {
-	OutType     *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	OutType *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// This parameter is required.
 	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	TokenizerId *string `json:"TokenizerId,omitempty" xml:"TokenizerId,omitempty"`
 }
@@ -2437,8 +2553,10 @@ func (s *GetPosChGeneralResponse) SetBody(v *GetPosChGeneralResponseBody) *GetPo
 }
 
 type GetPriceChEcomRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetPriceChEcomRequest) String() string {
@@ -2587,8 +2705,10 @@ func (s *GetSSETestResponse) SetBody(v *GetSSETestResponseBody) *GetSSETestRespo
 }
 
 type GetSaChGeneralRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetSaChGeneralRequest) String() string {
@@ -2662,9 +2782,12 @@ func (s *GetSaChGeneralResponse) SetBody(v *GetSaChGeneralResponseBody) *GetSaCh
 }
 
 type GetSaSeaEcomRequest struct {
-	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetSaSeaEcomRequest) String() string {
@@ -2743,6 +2866,7 @@ func (s *GetSaSeaEcomResponse) SetBody(v *GetSaSeaEcomResponseBody) *GetSaSeaEco
 }
 
 type GetServiceDataImportStatusRequest struct {
+	// This parameter is required.
 	DataImportIds []*int64 `json:"DataImportIds,omitempty" xml:"DataImportIds,omitempty" type:"Repeated"`
 }
 
@@ -2760,6 +2884,7 @@ func (s *GetServiceDataImportStatusRequest) SetDataImportIds(v []*int64) *GetSer
 }
 
 type GetServiceDataImportStatusShrinkRequest struct {
+	// This parameter is required.
 	DataImportIdsShrink *string `json:"DataImportIds,omitempty" xml:"DataImportIds,omitempty"`
 }
 
@@ -2777,11 +2902,23 @@ func (s *GetServiceDataImportStatusShrinkRequest) SetDataImportIdsShrink(v strin
 }
 
 type GetServiceDataImportStatusResponseBody struct {
-	Code      *int32                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      map[string]*DataValue `json:"Data,omitempty" xml:"Data,omitempty"`
-	Msg       *string               `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data map[string]*DataValue `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// null
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 6A8108E0-B9CD-5E74-B312-50E6E1AC1722
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetServiceDataImportStatusResponseBody) String() string {
@@ -2847,8 +2984,11 @@ func (s *GetServiceDataImportStatusResponse) SetBody(v *GetServiceDataImportStat
 }
 
 type GetSimilarityChMedicalRequest struct {
-	OriginQ     *string `json:"OriginQ,omitempty" xml:"OriginQ,omitempty"`
-	OriginT     *string `json:"OriginT,omitempty" xml:"OriginT,omitempty"`
+	// This parameter is required.
+	OriginQ *string `json:"OriginQ,omitempty" xml:"OriginQ,omitempty"`
+	// This parameter is required.
+	OriginT *string `json:"OriginT,omitempty" xml:"OriginT,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 
@@ -2928,8 +3068,10 @@ func (s *GetSimilarityChMedicalResponse) SetBody(v *GetSimilarityChMedicalRespon
 }
 
 type GetSummaryChEcomRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetSummaryChEcomRequest) String() string {
@@ -3078,8 +3220,10 @@ func (s *GetTableQAServiceInfoByIdResponse) SetBody(v *GetTableQAServiceInfoById
 }
 
 type GetTcChEcomRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetTcChEcomRequest) String() string {
@@ -3153,8 +3297,10 @@ func (s *GetTcChEcomResponse) SetBody(v *GetTcChEcomResponseBody) *GetTcChEcomRe
 }
 
 type GetTcChGeneralRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetTcChGeneralRequest) String() string {
@@ -3228,10 +3374,14 @@ func (s *GetTcChGeneralResponse) SetBody(v *GetTcChGeneralResponseBody) *GetTcCh
 }
 
 type GetTsChEcomRequest struct {
-	OriginQ     *string `json:"OriginQ,omitempty" xml:"OriginQ,omitempty"`
-	OriginT     *string `json:"OriginT,omitempty" xml:"OriginT,omitempty"`
+	// This parameter is required.
+	OriginQ *string `json:"OriginQ,omitempty" xml:"OriginQ,omitempty"`
+	// This parameter is required.
+	OriginT *string `json:"OriginT,omitempty" xml:"OriginT,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTsChEcomRequest) String() string {
@@ -3315,6 +3465,7 @@ func (s *GetTsChEcomResponse) SetBody(v *GetTsChEcomResponseBody) *GetTsChEcomRe
 }
 
 type GetUserUploadSignRequest struct {
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 
@@ -3384,10 +3535,13 @@ func (s *GetUserUploadSignResponse) SetBody(v *GetUserUploadSignResponseBody) *G
 }
 
 type GetWeChCommentRequest struct {
-	Operation   *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 	Size        *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
 	TokenizerId *string `json:"TokenizerId,omitempty" xml:"TokenizerId,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -3483,10 +3637,13 @@ func (s *GetWeChCommentResponse) SetBody(v *GetWeChCommentResponseBody) *GetWeCh
 }
 
 type GetWeChEcomRequest struct {
-	Operation   *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 	Size        *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
 	TokenizerId *string `json:"TokenizerId,omitempty" xml:"TokenizerId,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -3582,10 +3739,13 @@ func (s *GetWeChEcomResponse) SetBody(v *GetWeChEcomResponseBody) *GetWeChEcomRe
 }
 
 type GetWeChEntertainmentRequest struct {
-	Operation   *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 	Size        *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
 	TokenizerId *string `json:"TokenizerId,omitempty" xml:"TokenizerId,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -3681,11 +3841,13 @@ func (s *GetWeChEntertainmentResponse) SetBody(v *GetWeChEntertainmentResponseBo
 }
 
 type GetWeChGeneralRequest struct {
-	Operation   *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 	Size        *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetWeChGeneralRequest) String() string {
@@ -3774,10 +3936,13 @@ func (s *GetWeChGeneralResponse) SetBody(v *GetWeChGeneralResponseBody) *GetWeCh
 }
 
 type GetWeChSearchRequest struct {
-	Operation   *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 	Size        *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
 	TokenizerId *string `json:"TokenizerId,omitempty" xml:"TokenizerId,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -3873,8 +4038,10 @@ func (s *GetWeChSearchResponse) SetBody(v *GetWeChSearchResponseBody) *GetWeChSe
 }
 
 type GetWsChGeneralRequest struct {
-	OutType     *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	OutType *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// This parameter is required.
 	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	TokenizerId *string `json:"TokenizerId,omitempty" xml:"TokenizerId,omitempty"`
 }
@@ -3960,8 +4127,10 @@ func (s *GetWsChGeneralResponse) SetBody(v *GetWsChGeneralResponseBody) *GetWsCh
 }
 
 type GetWsCustomizedChEcomCommentRequest struct {
-	OutType     *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	OutType *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// This parameter is required.
 	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	TokenizerId *string `json:"TokenizerId,omitempty" xml:"TokenizerId,omitempty"`
 }
@@ -4047,8 +4216,10 @@ func (s *GetWsCustomizedChEcomCommentResponse) SetBody(v *GetWsCustomizedChEcomC
 }
 
 type GetWsCustomizedChEcomContentRequest struct {
-	OutType     *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	OutType *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// This parameter is required.
 	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	TokenizerId *string `json:"TokenizerId,omitempty" xml:"TokenizerId,omitempty"`
 }
@@ -4134,8 +4305,10 @@ func (s *GetWsCustomizedChEcomContentResponse) SetBody(v *GetWsCustomizedChEcomC
 }
 
 type GetWsCustomizedChEcomTitleRequest struct {
-	OutType     *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	OutType *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// This parameter is required.
 	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	TokenizerId *string `json:"TokenizerId,omitempty" xml:"TokenizerId,omitempty"`
 }
@@ -4221,8 +4394,10 @@ func (s *GetWsCustomizedChEcomTitleResponse) SetBody(v *GetWsCustomizedChEcomTit
 }
 
 type GetWsCustomizedChEntertainmentRequest struct {
-	OutType     *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	OutType *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// This parameter is required.
 	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	TokenizerId *string `json:"TokenizerId,omitempty" xml:"TokenizerId,omitempty"`
 }
@@ -4308,9 +4483,25 @@ func (s *GetWsCustomizedChEntertainmentResponse) SetBody(v *GetWsCustomizedChEnt
 }
 
 type GetWsCustomizedChGeneralRequest struct {
-	OutType     *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	// example:
+	//
+	// a
+	OutType *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// a
 	TokenizerId *string `json:"TokenizerId,omitempty" xml:"TokenizerId,omitempty"`
 }
 
@@ -4343,7 +4534,13 @@ func (s *GetWsCustomizedChGeneralRequest) SetTokenizerId(v string) *GetWsCustomi
 }
 
 type GetWsCustomizedChGeneralResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// a
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// a
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4395,8 +4592,10 @@ func (s *GetWsCustomizedChGeneralResponse) SetBody(v *GetWsCustomizedChGeneralRe
 }
 
 type GetWsCustomizedChO2ORequest struct {
-	OutType     *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	OutType *string `json:"OutType,omitempty" xml:"OutType,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// This parameter is required.
 	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	TokenizerId *string `json:"TokenizerId,omitempty" xml:"TokenizerId,omitempty"`
 }
@@ -4482,9 +4681,12 @@ func (s *GetWsCustomizedChO2OResponse) SetBody(v *GetWsCustomizedChO2OResponseBo
 }
 
 type GetWsCustomizedSeaEcomRequest struct {
-	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetWsCustomizedSeaEcomRequest) String() string {
@@ -4563,9 +4765,12 @@ func (s *GetWsCustomizedSeaEcomResponse) SetBody(v *GetWsCustomizedSeaEcomRespon
 }
 
 type GetWsCustomizedSeaGeneralRequest struct {
-	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetWsCustomizedSeaGeneralRequest) String() string {
@@ -4645,9 +4850,17 @@ func (s *GetWsCustomizedSeaGeneralResponse) SetBody(v *GetWsCustomizedSeaGeneral
 
 type ImportServiceDataRequest struct {
 	Partition []map[string]*string `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Repeated"`
-	ServiceId *int64               `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	SubPath   *string              `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
-	Url       *string              `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// directoryName
+	SubPath *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	Url     *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s ImportServiceDataRequest) String() string {
@@ -4680,9 +4893,17 @@ func (s *ImportServiceDataRequest) SetUrl(v string) *ImportServiceDataRequest {
 
 type ImportServiceDataShrinkRequest struct {
 	PartitionShrink *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
-	ServiceId       *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	SubPath         *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
-	Url             *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// directoryName
+	SubPath *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	Url     *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s ImportServiceDataShrinkRequest) String() string {
@@ -4714,11 +4935,26 @@ func (s *ImportServiceDataShrinkRequest) SetUrl(v string) *ImportServiceDataShri
 }
 
 type ImportServiceDataResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// null
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 6A8108E0-B9CD-5E74-B312-50E6E1AC1722
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ImportServiceDataResponseBody) String() string {
@@ -4784,9 +5020,17 @@ func (s *ImportServiceDataResponse) SetBody(v *ImportServiceDataResponseBody) *I
 }
 
 type ImportServiceDataV2Request struct {
+	// example:
+	//
+	// docuemnt
 	DataType  *string                                `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	Documents []*ImportServiceDataV2RequestDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
-	ServiceId *int64                                 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
 func (s ImportServiceDataV2Request) String() string {
@@ -4813,12 +5057,24 @@ func (s *ImportServiceDataV2Request) SetServiceId(v int64) *ImportServiceDataV2R
 }
 
 type ImportServiceDataV2RequestDocuments struct {
-	BizParams     map[string]*string `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
-	DocId         *string            `json:"DocId,omitempty" xml:"DocId,omitempty"`
-	FileExtension *string            `json:"FileExtension,omitempty" xml:"FileExtension,omitempty"`
-	FileName      *string            `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FilePath      *string            `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	Version       *string            `json:"Version,omitempty" xml:"Version,omitempty"`
+	BizParams map[string]*string `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
+	// example:
+	//
+	// 1
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// txt
+	FileExtension *string `json:"FileExtension,omitempty" xml:"FileExtension,omitempty"`
+	FileName      *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// http://xxxx.txt
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// example:
+	//
+	// 20240101
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ImportServiceDataV2RequestDocuments) String() string {
@@ -4860,9 +5116,17 @@ func (s *ImportServiceDataV2RequestDocuments) SetVersion(v string) *ImportServic
 }
 
 type ImportServiceDataV2ShrinkRequest struct {
+	// example:
+	//
+	// docuemnt
 	DataType        *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	DocumentsShrink *string `json:"Documents,omitempty" xml:"Documents,omitempty"`
-	ServiceId       *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
 func (s ImportServiceDataV2ShrinkRequest) String() string {
@@ -4889,11 +5153,26 @@ func (s *ImportServiceDataV2ShrinkRequest) SetServiceId(v int64) *ImportServiceD
 }
 
 type ImportServiceDataV2ResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// null
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 6A8108E0-B9CD-5E74-B312-50E6E1AC1722
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ImportServiceDataV2ResponseBody) String() string {
@@ -4959,12 +5238,14 @@ func (s *ImportServiceDataV2Response) SetBody(v *ImportServiceDataV2ResponseBody
 }
 
 type InsertCustomRequest struct {
+	// This parameter is required.
 	ApiId          *int32  `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	CustomFileName *string `json:"CustomFileName,omitempty" xml:"CustomFileName,omitempty"`
 	CustomUrl      *string `json:"CustomUrl,omitempty" xml:"CustomUrl,omitempty"`
 	RegFileName    *string `json:"RegFileName,omitempty" xml:"RegFileName,omitempty"`
 	RegUrl         *string `json:"RegUrl,omitempty" xml:"RegUrl,omitempty"`
-	ServiceCode    *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// This parameter is required.
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 
 func (s InsertCustomRequest) String() string {
@@ -5110,11 +5391,17 @@ func (s *OpenAlinlpServiceResponse) SetBody(v *OpenAlinlpServiceResponseBody) *O
 }
 
 type PostISConvRewriterRequest struct {
-	Algorithm  *string                `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// example:
+	//
+	// "conversation_rewriter"
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// example:
+	//
+	// false
 	Debug      *bool                  `json:"Debug,omitempty" xml:"Debug,omitempty"`
 	Input      map[string]interface{} `json:"Input,omitempty" xml:"Input,omitempty"`
+	Model      *string                `json:"Model,omitempty" xml:"Model,omitempty"`
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	Version    *string                `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s PostISConvRewriterRequest) String() string {
@@ -5140,22 +5427,28 @@ func (s *PostISConvRewriterRequest) SetInput(v map[string]interface{}) *PostISCo
 	return s
 }
 
+func (s *PostISConvRewriterRequest) SetModel(v string) *PostISConvRewriterRequest {
+	s.Model = &v
+	return s
+}
+
 func (s *PostISConvRewriterRequest) SetParameters(v map[string]interface{}) *PostISConvRewriterRequest {
 	s.Parameters = v
 	return s
 }
 
-func (s *PostISConvRewriterRequest) SetVersion(v string) *PostISConvRewriterRequest {
-	s.Version = &v
-	return s
-}
-
 type PostISConvRewriterShrinkRequest struct {
-	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// example:
+	//
+	// "conversation_rewriter"
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// example:
+	//
+	// false
 	Debug            *bool   `json:"Debug,omitempty" xml:"Debug,omitempty"`
 	InputShrink      *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Model            *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	Version          *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s PostISConvRewriterShrinkRequest) String() string {
@@ -5181,22 +5474,31 @@ func (s *PostISConvRewriterShrinkRequest) SetInputShrink(v string) *PostISConvRe
 	return s
 }
 
-func (s *PostISConvRewriterShrinkRequest) SetParametersShrink(v string) *PostISConvRewriterShrinkRequest {
-	s.ParametersShrink = &v
+func (s *PostISConvRewriterShrinkRequest) SetModel(v string) *PostISConvRewriterShrinkRequest {
+	s.Model = &v
 	return s
 }
 
-func (s *PostISConvRewriterShrinkRequest) SetVersion(v string) *PostISConvRewriterShrinkRequest {
-	s.Version = &v
+func (s *PostISConvRewriterShrinkRequest) SetParametersShrink(v string) *PostISConvRewriterShrinkRequest {
+	s.ParametersShrink = &v
 	return s
 }
 
 type PostISConvRewriterResponseBody struct {
 	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	DebugInfo map[string]interface{} `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *int32                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// "xxx"
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PostISConvRewriterResponseBody) String() string {
@@ -5262,11 +5564,17 @@ func (s *PostISConvRewriterResponse) SetBody(v *PostISConvRewriterResponseBody) 
 }
 
 type PostISRetrieveRouterRequest struct {
-	Algorithm  *string                `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// example:
+	//
+	// "retrieve_router"
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// example:
+	//
+	// false
 	Debug      *bool                  `json:"Debug,omitempty" xml:"Debug,omitempty"`
 	Input      map[string]interface{} `json:"Input,omitempty" xml:"Input,omitempty"`
+	Model      *string                `json:"Model,omitempty" xml:"Model,omitempty"`
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	Version    *string                `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s PostISRetrieveRouterRequest) String() string {
@@ -5292,22 +5600,28 @@ func (s *PostISRetrieveRouterRequest) SetInput(v map[string]interface{}) *PostIS
 	return s
 }
 
+func (s *PostISRetrieveRouterRequest) SetModel(v string) *PostISRetrieveRouterRequest {
+	s.Model = &v
+	return s
+}
+
 func (s *PostISRetrieveRouterRequest) SetParameters(v map[string]interface{}) *PostISRetrieveRouterRequest {
 	s.Parameters = v
 	return s
 }
 
-func (s *PostISRetrieveRouterRequest) SetVersion(v string) *PostISRetrieveRouterRequest {
-	s.Version = &v
-	return s
-}
-
 type PostISRetrieveRouterShrinkRequest struct {
-	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// example:
+	//
+	// "retrieve_router"
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// example:
+	//
+	// false
 	Debug            *bool   `json:"Debug,omitempty" xml:"Debug,omitempty"`
 	InputShrink      *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Model            *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	Version          *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s PostISRetrieveRouterShrinkRequest) String() string {
@@ -5333,22 +5647,31 @@ func (s *PostISRetrieveRouterShrinkRequest) SetInputShrink(v string) *PostISRetr
 	return s
 }
 
-func (s *PostISRetrieveRouterShrinkRequest) SetParametersShrink(v string) *PostISRetrieveRouterShrinkRequest {
-	s.ParametersShrink = &v
+func (s *PostISRetrieveRouterShrinkRequest) SetModel(v string) *PostISRetrieveRouterShrinkRequest {
+	s.Model = &v
 	return s
 }
 
-func (s *PostISRetrieveRouterShrinkRequest) SetVersion(v string) *PostISRetrieveRouterShrinkRequest {
-	s.Version = &v
+func (s *PostISRetrieveRouterShrinkRequest) SetParametersShrink(v string) *PostISRetrieveRouterShrinkRequest {
+	s.ParametersShrink = &v
 	return s
 }
 
 type PostISRetrieveRouterResponseBody struct {
 	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	DebugInfo map[string]interface{} `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *int32                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// "xxx"
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PostISRetrieveRouterResponseBody) String() string {
@@ -5414,12 +5737,30 @@ func (s *PostISRetrieveRouterResponse) SetBody(v *PostISRetrieveRouterResponseBo
 }
 
 type PostMSConvSearchTokenGeneratedResponseBody struct {
-	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Msg            *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// toY1FWrNAjvWkOmp24+UQFIi2PsYzbhNBq+yJmzumNmXw3sro3oOt9Kde5kzLcc4
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// ok
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 6A8108E0-B9CD-5E74-B312-50E6E1AC1722
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PostMSConvSearchTokenGeneratedResponseBody) String() string {
@@ -5490,9 +5831,16 @@ func (s *PostMSConvSearchTokenGeneratedResponse) SetBody(v *PostMSConvSearchToke
 }
 
 type PostMSDataProcessingCountRequest struct {
-	DataIds      []*string `json:"DataIds,omitempty" xml:"DataIds,omitempty" type:"Repeated"`
-	DataImportId *int64    `json:"DataImportId,omitempty" xml:"DataImportId,omitempty"`
-	ServiceId    *int64    `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	DataIds []*string `json:"DataIds,omitempty" xml:"DataIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 103654
+	DataImportId *int64 `json:"DataImportId,omitempty" xml:"DataImportId,omitempty"`
+	// example:
+	//
+	// 325
+	ServiceId               *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	XDashScopeOpenAPISource *string `json:"X-DashScope-OpenAPISource,omitempty" xml:"X-DashScope-OpenAPISource,omitempty"`
 }
 
 func (s PostMSDataProcessingCountRequest) String() string {
@@ -5518,10 +5866,22 @@ func (s *PostMSDataProcessingCountRequest) SetServiceId(v int64) *PostMSDataProc
 	return s
 }
 
+func (s *PostMSDataProcessingCountRequest) SetXDashScopeOpenAPISource(v string) *PostMSDataProcessingCountRequest {
+	s.XDashScopeOpenAPISource = &v
+	return s
+}
+
 type PostMSDataProcessingCountShrinkRequest struct {
 	DataIdsShrink *string `json:"DataIds,omitempty" xml:"DataIds,omitempty"`
-	DataImportId  *int64  `json:"DataImportId,omitempty" xml:"DataImportId,omitempty"`
-	ServiceId     *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// 103654
+	DataImportId *int64 `json:"DataImportId,omitempty" xml:"DataImportId,omitempty"`
+	// example:
+	//
+	// 325
+	ServiceId               *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	XDashScopeOpenAPISource *string `json:"X-DashScope-OpenAPISource,omitempty" xml:"X-DashScope-OpenAPISource,omitempty"`
 }
 
 func (s PostMSDataProcessingCountShrinkRequest) String() string {
@@ -5547,13 +5907,33 @@ func (s *PostMSDataProcessingCountShrinkRequest) SetServiceId(v int64) *PostMSDa
 	return s
 }
 
+func (s *PostMSDataProcessingCountShrinkRequest) SetXDashScopeOpenAPISource(v string) *PostMSDataProcessingCountShrinkRequest {
+	s.XDashScopeOpenAPISource = &v
+	return s
+}
+
 type PostMSDataProcessingCountResponseBody struct {
-	Code           *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *PostMSDataProcessingCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Msg            *string                                    `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *PostMSDataProcessingCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// null
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 6A8108E0-B9CD-5E74-B312-50E6E1AC1722
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PostMSDataProcessingCountResponseBody) String() string {
@@ -5596,7 +5976,10 @@ func (s *PostMSDataProcessingCountResponseBody) SetSuccess(v bool) *PostMSDataPr
 
 type PostMSDataProcessingCountResponseBodyData struct {
 	DataProcessedStatuses []*PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses `json:"DataProcessedStatuses,omitempty" xml:"DataProcessedStatuses,omitempty" type:"Repeated"`
-	Status                *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PostMSDataProcessingCountResponseBodyData) String() string {
@@ -5618,12 +6001,24 @@ func (s *PostMSDataProcessingCountResponseBodyData) SetStatus(v string) *PostMSD
 }
 
 type PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses struct {
-	ChunkNum      *string                                                                        `json:"ChunkNum,omitempty" xml:"ChunkNum,omitempty"`
+	// example:
+	//
+	// "11"
+	ChunkNum *string `json:"ChunkNum,omitempty" xml:"ChunkNum,omitempty"`
+	// example:
+	//
+	// "1"
 	DataId        *string                                                                        `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	ErrorDataList []*PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList `json:"ErrorDataList,omitempty" xml:"ErrorDataList,omitempty" type:"Repeated"`
 	OpStatus      map[string]*int32                                                              `json:"OpStatus,omitempty" xml:"OpStatus,omitempty"`
-	Status        *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	VersionValue  *string                                                                        `json:"VersionValue,omitempty" xml:"VersionValue,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2023-01-22 18:44:00
+	VersionValue *string `json:"VersionValue,omitempty" xml:"VersionValue,omitempty"`
 }
 
 func (s PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses) String() string {
@@ -5665,9 +6060,18 @@ func (s *PostMSDataProcessingCountResponseBodyDataDataProcessedStatuses) SetVers
 }
 
 type PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList struct {
-	Count     *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 2
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 0
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	OpType    *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	// example:
+	//
+	// chunk
+	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
 }
 
 func (s PostMSDataProcessingCountResponseBodyDataDataProcessedStatusesErrorDataList) String() string {
@@ -5723,20 +6127,42 @@ func (s *PostMSDataProcessingCountResponse) SetBody(v *PostMSDataProcessingCount
 }
 
 type PostMSSearchEnhanceRequest struct {
+	// example:
+	//
+	// {}
 	Body             *string                `json:"Body,omitempty" xml:"Body,omitempty"`
 	CustomConfigInfo map[string]interface{} `json:"CustomConfigInfo,omitempty" xml:"CustomConfigInfo,omitempty"`
-	Debug            *bool                  `json:"Debug,omitempty" xml:"Debug,omitempty"`
-	Fields           []*string              `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	Filters          *string                `json:"Filters,omitempty" xml:"Filters,omitempty"`
-	MinScore         *float64               `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
-	Page             *int32                 `json:"Page,omitempty" xml:"Page,omitempty"`
-	Queries          *string                `json:"Queries,omitempty" xml:"Queries,omitempty"`
-	RankModelInfo    map[string]interface{} `json:"RankModelInfo,omitempty" xml:"RankModelInfo,omitempty"`
-	Rows             *int32                 `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	ServiceId        *int64                 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	Sort             []*string              `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Repeated"`
-	Type             *string                `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uq               *string                `json:"Uq,omitempty" xml:"Uq,omitempty"`
+	// example:
+	//
+	// 0
+	Debug  *bool     `json:"Debug,omitempty" xml:"Debug,omitempty"`
+	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// []
+	Filters  *string  `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	MinScore *float64 `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// []
+	Queries       *string                `json:"Queries,omitempty" xml:"Queries,omitempty"`
+	RankModelInfo map[string]interface{} `json:"RankModelInfo,omitempty" xml:"RankModelInfo,omitempty"`
+	// example:
+	//
+	// 10
+	Rows *int32 `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// example:
+	//
+	// 101
+	ServiceId               *int64    `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	Sort                    []*string `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Repeated"`
+	Type                    *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uq                      *string   `json:"Uq,omitempty" xml:"Uq,omitempty"`
+	XDashScopeOpenAPISource *string   `json:"X-DashScope-OpenAPISource,omitempty" xml:"X-DashScope-OpenAPISource,omitempty"`
 }
 
 func (s PostMSSearchEnhanceRequest) String() string {
@@ -5817,21 +6243,48 @@ func (s *PostMSSearchEnhanceRequest) SetUq(v string) *PostMSSearchEnhanceRequest
 	return s
 }
 
+func (s *PostMSSearchEnhanceRequest) SetXDashScopeOpenAPISource(v string) *PostMSSearchEnhanceRequest {
+	s.XDashScopeOpenAPISource = &v
+	return s
+}
+
 type PostMSSearchEnhanceShrinkRequest struct {
-	Body                   *string  `json:"Body,omitempty" xml:"Body,omitempty"`
-	CustomConfigInfoShrink *string  `json:"CustomConfigInfo,omitempty" xml:"CustomConfigInfo,omitempty"`
-	Debug                  *bool    `json:"Debug,omitempty" xml:"Debug,omitempty"`
-	FieldsShrink           *string  `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	Filters                *string  `json:"Filters,omitempty" xml:"Filters,omitempty"`
-	MinScore               *float64 `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
-	Page                   *int32   `json:"Page,omitempty" xml:"Page,omitempty"`
-	Queries                *string  `json:"Queries,omitempty" xml:"Queries,omitempty"`
-	RankModelInfoShrink    *string  `json:"RankModelInfo,omitempty" xml:"RankModelInfo,omitempty"`
-	Rows                   *int32   `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	ServiceId              *int64   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	SortShrink             *string  `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	Type                   *string  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uq                     *string  `json:"Uq,omitempty" xml:"Uq,omitempty"`
+	// example:
+	//
+	// {}
+	Body                   *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	CustomConfigInfoShrink *string `json:"CustomConfigInfo,omitempty" xml:"CustomConfigInfo,omitempty"`
+	// example:
+	//
+	// 0
+	Debug        *bool   `json:"Debug,omitempty" xml:"Debug,omitempty"`
+	FieldsShrink *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	// example:
+	//
+	// []
+	Filters  *string  `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	MinScore *float64 `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// []
+	Queries             *string `json:"Queries,omitempty" xml:"Queries,omitempty"`
+	RankModelInfoShrink *string `json:"RankModelInfo,omitempty" xml:"RankModelInfo,omitempty"`
+	// example:
+	//
+	// 10
+	Rows *int32 `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// example:
+	//
+	// 101
+	ServiceId               *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	SortShrink              *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uq                      *string `json:"Uq,omitempty" xml:"Uq,omitempty"`
+	XDashScopeOpenAPISource *string `json:"X-DashScope-OpenAPISource,omitempty" xml:"X-DashScope-OpenAPISource,omitempty"`
 }
 
 func (s PostMSSearchEnhanceShrinkRequest) String() string {
@@ -5912,14 +6365,35 @@ func (s *PostMSSearchEnhanceShrinkRequest) SetUq(v string) *PostMSSearchEnhanceS
 	return s
 }
 
+func (s *PostMSSearchEnhanceShrinkRequest) SetXDashScopeOpenAPISource(v string) *PostMSSearchEnhanceShrinkRequest {
+	s.XDashScopeOpenAPISource = &v
+	return s
+}
+
 type PostMSSearchEnhanceResponseBody struct {
-	Code           *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Msg            *string     `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// ""
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 6A8108E0-B9CD-5E74-B312-50E6E1AC1722
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PostMSSearchEnhanceResponseBody) String() string {
@@ -5990,9 +6464,17 @@ func (s *PostMSSearchEnhanceResponse) SetBody(v *PostMSSearchEnhanceResponseBody
 }
 
 type PostMSServiceDataImportRequest struct {
+	// example:
+	//
+	// document
 	DataType  *string                                    `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	Documents []*PostMSServiceDataImportRequestDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
-	ServiceId *int64                                     `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
 func (s PostMSServiceDataImportRequest) String() string {
@@ -6019,12 +6501,21 @@ func (s *PostMSServiceDataImportRequest) SetServiceId(v int64) *PostMSServiceDat
 }
 
 type PostMSServiceDataImportRequestDocuments struct {
-	BizParams     map[string]interface{} `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
-	DocId         *string                `json:"DocId,omitempty" xml:"DocId,omitempty"`
-	FileExtension *string                `json:"FileExtension,omitempty" xml:"FileExtension,omitempty"`
-	FileName      *string                `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FilePath      *string                `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	Version       *string                `json:"Version,omitempty" xml:"Version,omitempty"`
+	BizParams map[string]interface{} `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
+	// example:
+	//
+	// 1
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// pdf
+	FileExtension *string `json:"FileExtension,omitempty" xml:"FileExtension,omitempty"`
+	FileName      *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FilePath      *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// example:
+	//
+	// 20240101
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s PostMSServiceDataImportRequestDocuments) String() string {
@@ -6066,9 +6557,17 @@ func (s *PostMSServiceDataImportRequestDocuments) SetVersion(v string) *PostMSSe
 }
 
 type PostMSServiceDataImportShrinkRequest struct {
+	// example:
+	//
+	// document
 	DataType        *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	DocumentsShrink *string `json:"Documents,omitempty" xml:"Documents,omitempty"`
-	ServiceId       *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
 func (s PostMSServiceDataImportShrinkRequest) String() string {
@@ -6095,11 +6594,26 @@ func (s *PostMSServiceDataImportShrinkRequest) SetServiceId(v int64) *PostMSServ
 }
 
 type PostMSServiceDataImportResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// null
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 6A8108E0-B9CD-5E74-B312-50E6E1AC1722
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PostMSServiceDataImportResponseBody) String() string {
@@ -6165,7 +6679,9 @@ func (s *PostMSServiceDataImportResponse) SetBody(v *PostMSServiceDataImportResp
 }
 
 type RequestTableQARequest struct {
-	Params      *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// This parameter is required.
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// This parameter is required.
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 
@@ -6327,8 +6843,14 @@ func (s *RequestTableQAOnlineResponse) SetBody(v *RequestTableQAOnlineResponseBo
 }
 
 type UpdateServiceDataRequest struct {
+	// This parameter is required.
 	Conditions map[string]interface{} `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
-	ServiceId  *int64                 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
 func (s UpdateServiceDataRequest) String() string {
@@ -6350,8 +6872,14 @@ func (s *UpdateServiceDataRequest) SetServiceId(v int64) *UpdateServiceDataReque
 }
 
 type UpdateServiceDataShrinkRequest struct {
+	// This parameter is required.
 	ConditionsShrink *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
-	ServiceId        *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
 func (s UpdateServiceDataShrinkRequest) String() string {
@@ -6373,11 +6901,26 @@ func (s *UpdateServiceDataShrinkRequest) SetServiceId(v int64) *UpdateServiceDat
 }
 
 type UpdateServiceDataResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Msg       *string     `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// null
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 6A8108E0-B9CD-5E74-B312-50E6E1AC1722
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateServiceDataResponseBody) String() string {
@@ -6489,6 +7032,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// ad画钟算法处理算法
+//
+// @param request - ADClockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ADClockResponse
 func (client *Client) ADClockWithOptions(request *ADClockRequest, runtime *util.RuntimeOptions) (_result *ADClockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6526,6 +7078,13 @@ func (client *Client) ADClockWithOptions(request *ADClockRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// ad画钟算法处理算法
+//
+// @param request - ADClockRequest
+//
+// @return ADClockResponse
 func (client *Client) ADClock(request *ADClockRequest) (_result *ADClockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ADClockResponse{}
@@ -6537,6 +7096,15 @@ func (client *Client) ADClock(request *ADClockRequest) (_result *ADClockResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// ad语音处理算法
+//
+// @param request - ADMMURequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ADMMUResponse
 func (client *Client) ADMMUWithOptions(request *ADMMURequest, runtime *util.RuntimeOptions) (_result *ADMMUResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6574,6 +7142,13 @@ func (client *Client) ADMMUWithOptions(request *ADMMURequest, runtime *util.Runt
 	return _result, _err
 }
 
+// Summary:
+//
+// ad语音处理算法
+//
+// @param request - ADMMURequest
+//
+// @return ADMMUResponse
 func (client *Client) ADMMU(request *ADMMURequest) (_result *ADMMUResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ADMMUResponse{}
@@ -6585,6 +7160,15 @@ func (client *Client) ADMMU(request *ADMMURequest) (_result *ADMMUResponse, _err
 	return _result, _err
 }
 
+// Summary:
+//
+// AD筛查能力，处理用户传入的答题音频和画钟图片从而计算风险结果
+//
+// @param request - ADMiniCogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ADMiniCogResponse
 func (client *Client) ADMiniCogWithOptions(request *ADMiniCogRequest, runtime *util.RuntimeOptions) (_result *ADMiniCogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6622,6 +7206,13 @@ func (client *Client) ADMiniCogWithOptions(request *ADMiniCogRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// AD筛查能力，处理用户传入的答题音频和画钟图片从而计算风险结果
+//
+// @param request - ADMiniCogRequest
+//
+// @return ADMiniCogResponse
 func (client *Client) ADMiniCog(request *ADMiniCogRequest) (_result *ADMiniCogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ADMiniCogResponse{}
@@ -6633,6 +7224,15 @@ func (client *Client) ADMiniCog(request *ADMiniCogRequest) (_result *ADMiniCogRe
 	return _result, _err
 }
 
+// Summary:
+//
+// AD筛查能力,提供给用户查询筛查结果，筛查结果来源自接口ADMIniCog
+//
+// @param request - ADMiniCogResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ADMiniCogResultResponse
 func (client *Client) ADMiniCogResultWithOptions(request *ADMiniCogResultRequest, runtime *util.RuntimeOptions) (_result *ADMiniCogResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6670,6 +7270,13 @@ func (client *Client) ADMiniCogResultWithOptions(request *ADMiniCogResultRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// AD筛查能力,提供给用户查询筛查结果，筛查结果来源自接口ADMIniCog
+//
+// @param request - ADMiniCogResultRequest
+//
+// @return ADMiniCogResultResponse
 func (client *Client) ADMiniCogResult(request *ADMiniCogResultRequest) (_result *ADMiniCogResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ADMiniCogResultResponse{}
@@ -6681,6 +7288,15 @@ func (client *Client) ADMiniCogResult(request *ADMiniCogResultRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据条件删除服务数据
+//
+// @param tmpReq - DeleteServiceDataByConditionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceDataByConditionsResponse
 func (client *Client) DeleteServiceDataByConditionsWithOptions(tmpReq *DeleteServiceDataByConditionsRequest, runtime *util.RuntimeOptions) (_result *DeleteServiceDataByConditionsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6699,6 +7315,10 @@ func (client *Client) DeleteServiceDataByConditionsWithOptions(tmpReq *DeleteSer
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
 		body["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XDashScopeOpenAPISource)) {
+		body["X-DashScope-OpenAPISource"] = request.XDashScopeOpenAPISource
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6724,6 +7344,13 @@ func (client *Client) DeleteServiceDataByConditionsWithOptions(tmpReq *DeleteSer
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据条件删除服务数据
+//
+// @param request - DeleteServiceDataByConditionsRequest
+//
+// @return DeleteServiceDataByConditionsResponse
 func (client *Client) DeleteServiceDataByConditions(request *DeleteServiceDataByConditionsRequest) (_result *DeleteServiceDataByConditionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteServiceDataByConditionsResponse{}
@@ -6735,6 +7362,15 @@ func (client *Client) DeleteServiceDataByConditions(request *DeleteServiceDataBy
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据ids删除服务数据
+//
+// @param tmpReq - DeleteServiceDataByIdsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceDataByIdsResponse
 func (client *Client) DeleteServiceDataByIdsWithOptions(tmpReq *DeleteServiceDataByIdsRequest, runtime *util.RuntimeOptions) (_result *DeleteServiceDataByIdsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6778,6 +7414,13 @@ func (client *Client) DeleteServiceDataByIdsWithOptions(tmpReq *DeleteServiceDat
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据ids删除服务数据
+//
+// @param request - DeleteServiceDataByIdsRequest
+//
+// @return DeleteServiceDataByIdsResponse
 func (client *Client) DeleteServiceDataByIds(request *DeleteServiceDataByIdsRequest) (_result *DeleteServiceDataByIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteServiceDataByIdsResponse{}
@@ -6789,6 +7432,15 @@ func (client *Client) DeleteServiceDataByIds(request *DeleteServiceDataByIdsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 品牌预测
+//
+// @param request - GetBrandChEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBrandChEcomResponse
 func (client *Client) GetBrandChEcomWithOptions(request *GetBrandChEcomRequest, runtime *util.RuntimeOptions) (_result *GetBrandChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6830,6 +7482,13 @@ func (client *Client) GetBrandChEcomWithOptions(request *GetBrandChEcomRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 品牌预测
+//
+// @param request - GetBrandChEcomRequest
+//
+// @return GetBrandChEcomResponse
 func (client *Client) GetBrandChEcom(request *GetBrandChEcomRequest) (_result *GetBrandChEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetBrandChEcomResponse{}
@@ -6841,6 +7500,15 @@ func (client *Client) GetBrandChEcom(request *GetBrandChEcomRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 类目预测
+//
+// @param request - GetCateChEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCateChEcomResponse
 func (client *Client) GetCateChEcomWithOptions(request *GetCateChEcomRequest, runtime *util.RuntimeOptions) (_result *GetCateChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6882,6 +7550,13 @@ func (client *Client) GetCateChEcomWithOptions(request *GetCateChEcomRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 类目预测
+//
+// @param request - GetCateChEcomRequest
+//
+// @return GetCateChEcomResponse
 func (client *Client) GetCateChEcom(request *GetCateChEcomRequest) (_result *GetCateChEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCateChEcomResponse{}
@@ -6893,6 +7568,11 @@ func (client *Client) GetCateChEcom(request *GetCateChEcomRequest) (_result *Get
 	return _result, _err
 }
 
+// @param request - GetCheckDuplicationChMedicalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCheckDuplicationChMedicalResponse
 func (client *Client) GetCheckDuplicationChMedicalWithOptions(request *GetCheckDuplicationChMedicalRequest, runtime *util.RuntimeOptions) (_result *GetCheckDuplicationChMedicalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6934,6 +7614,9 @@ func (client *Client) GetCheckDuplicationChMedicalWithOptions(request *GetCheckD
 	return _result, _err
 }
 
+// @param request - GetCheckDuplicationChMedicalRequest
+//
+// @return GetCheckDuplicationChMedicalResponse
 func (client *Client) GetCheckDuplicationChMedical(request *GetCheckDuplicationChMedicalRequest) (_result *GetCheckDuplicationChMedicalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCheckDuplicationChMedicalResponse{}
@@ -6945,6 +7628,11 @@ func (client *Client) GetCheckDuplicationChMedical(request *GetCheckDuplicationC
 	return _result, _err
 }
 
+// @param request - GetDiagnosisChMedicalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDiagnosisChMedicalResponse
 func (client *Client) GetDiagnosisChMedicalWithOptions(request *GetDiagnosisChMedicalRequest, runtime *util.RuntimeOptions) (_result *GetDiagnosisChMedicalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6982,6 +7670,9 @@ func (client *Client) GetDiagnosisChMedicalWithOptions(request *GetDiagnosisChMe
 	return _result, _err
 }
 
+// @param request - GetDiagnosisChMedicalRequest
+//
+// @return GetDiagnosisChMedicalResponse
 func (client *Client) GetDiagnosisChMedical(request *GetDiagnosisChMedicalRequest) (_result *GetDiagnosisChMedicalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDiagnosisChMedicalResponse{}
@@ -6993,6 +7684,11 @@ func (client *Client) GetDiagnosisChMedical(request *GetDiagnosisChMedicalReques
 	return _result, _err
 }
 
+// @param request - GetDpChEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDpChEcomResponse
 func (client *Client) GetDpChEcomWithOptions(request *GetDpChEcomRequest, runtime *util.RuntimeOptions) (_result *GetDpChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7030,6 +7726,9 @@ func (client *Client) GetDpChEcomWithOptions(request *GetDpChEcomRequest, runtim
 	return _result, _err
 }
 
+// @param request - GetDpChEcomRequest
+//
+// @return GetDpChEcomResponse
 func (client *Client) GetDpChEcom(request *GetDpChEcomRequest) (_result *GetDpChEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDpChEcomResponse{}
@@ -7041,6 +7740,11 @@ func (client *Client) GetDpChEcom(request *GetDpChEcomRequest) (_result *GetDpCh
 	return _result, _err
 }
 
+// @param request - GetDpChGeneralCTBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDpChGeneralCTBResponse
 func (client *Client) GetDpChGeneralCTBWithOptions(request *GetDpChGeneralCTBRequest, runtime *util.RuntimeOptions) (_result *GetDpChGeneralCTBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7078,6 +7782,9 @@ func (client *Client) GetDpChGeneralCTBWithOptions(request *GetDpChGeneralCTBReq
 	return _result, _err
 }
 
+// @param request - GetDpChGeneralCTBRequest
+//
+// @return GetDpChGeneralCTBResponse
 func (client *Client) GetDpChGeneralCTB(request *GetDpChGeneralCTBRequest) (_result *GetDpChGeneralCTBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDpChGeneralCTBResponse{}
@@ -7089,6 +7796,11 @@ func (client *Client) GetDpChGeneralCTB(request *GetDpChGeneralCTBRequest) (_res
 	return _result, _err
 }
 
+// @param request - GetDpChGeneralStanfordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDpChGeneralStanfordResponse
 func (client *Client) GetDpChGeneralStanfordWithOptions(request *GetDpChGeneralStanfordRequest, runtime *util.RuntimeOptions) (_result *GetDpChGeneralStanfordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7126,6 +7838,9 @@ func (client *Client) GetDpChGeneralStanfordWithOptions(request *GetDpChGeneralS
 	return _result, _err
 }
 
+// @param request - GetDpChGeneralStanfordRequest
+//
+// @return GetDpChGeneralStanfordResponse
 func (client *Client) GetDpChGeneralStanford(request *GetDpChGeneralStanfordRequest) (_result *GetDpChGeneralStanfordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDpChGeneralStanfordResponse{}
@@ -7137,6 +7852,11 @@ func (client *Client) GetDpChGeneralStanford(request *GetDpChGeneralStanfordRequ
 	return _result, _err
 }
 
+// @param request - GetEcChGeneralRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEcChGeneralResponse
 func (client *Client) GetEcChGeneralWithOptions(request *GetEcChGeneralRequest, runtime *util.RuntimeOptions) (_result *GetEcChGeneralResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7174,6 +7894,9 @@ func (client *Client) GetEcChGeneralWithOptions(request *GetEcChGeneralRequest, 
 	return _result, _err
 }
 
+// @param request - GetEcChGeneralRequest
+//
+// @return GetEcChGeneralResponse
 func (client *Client) GetEcChGeneral(request *GetEcChGeneralRequest) (_result *GetEcChGeneralResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEcChGeneralResponse{}
@@ -7185,6 +7908,11 @@ func (client *Client) GetEcChGeneral(request *GetEcChGeneralRequest) (_result *G
 	return _result, _err
 }
 
+// @param request - GetEcEnGeneralRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEcEnGeneralResponse
 func (client *Client) GetEcEnGeneralWithOptions(request *GetEcEnGeneralRequest, runtime *util.RuntimeOptions) (_result *GetEcEnGeneralResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7222,6 +7950,9 @@ func (client *Client) GetEcEnGeneralWithOptions(request *GetEcEnGeneralRequest, 
 	return _result, _err
 }
 
+// @param request - GetEcEnGeneralRequest
+//
+// @return GetEcEnGeneralResponse
 func (client *Client) GetEcEnGeneral(request *GetEcEnGeneralRequest) (_result *GetEcEnGeneralResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEcEnGeneralResponse{}
@@ -7233,6 +7964,15 @@ func (client *Client) GetEcEnGeneral(request *GetEcEnGeneralRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// embedding
+//
+// @param request - GetEmbeddingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEmbeddingResponse
 func (client *Client) GetEmbeddingWithOptions(request *GetEmbeddingRequest, runtime *util.RuntimeOptions) (_result *GetEmbeddingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7274,6 +8014,13 @@ func (client *Client) GetEmbeddingWithOptions(request *GetEmbeddingRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// embedding
+//
+// @param request - GetEmbeddingRequest
+//
+// @return GetEmbeddingResponse
 func (client *Client) GetEmbedding(request *GetEmbeddingRequest) (_result *GetEmbeddingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEmbeddingResponse{}
@@ -7285,6 +8032,15 @@ func (client *Client) GetEmbedding(request *GetEmbeddingRequest) (_result *GetEm
 	return _result, _err
 }
 
+// Summary:
+//
+// 微购整合接口
+//
+// @param request - GetItemPubChEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetItemPubChEcomResponse
 func (client *Client) GetItemPubChEcomWithOptions(request *GetItemPubChEcomRequest, runtime *util.RuntimeOptions) (_result *GetItemPubChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7326,6 +8082,13 @@ func (client *Client) GetItemPubChEcomWithOptions(request *GetItemPubChEcomReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 微购整合接口
+//
+// @param request - GetItemPubChEcomRequest
+//
+// @return GetItemPubChEcomResponse
 func (client *Client) GetItemPubChEcom(request *GetItemPubChEcomRequest) (_result *GetItemPubChEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetItemPubChEcomResponse{}
@@ -7337,6 +8100,11 @@ func (client *Client) GetItemPubChEcom(request *GetItemPubChEcomRequest) (_resul
 	return _result, _err
 }
 
+// @param request - GetKeywordChEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKeywordChEcomResponse
 func (client *Client) GetKeywordChEcomWithOptions(request *GetKeywordChEcomRequest, runtime *util.RuntimeOptions) (_result *GetKeywordChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7378,6 +8146,9 @@ func (client *Client) GetKeywordChEcomWithOptions(request *GetKeywordChEcomReque
 	return _result, _err
 }
 
+// @param request - GetKeywordChEcomRequest
+//
+// @return GetKeywordChEcomResponse
 func (client *Client) GetKeywordChEcom(request *GetKeywordChEcomRequest) (_result *GetKeywordChEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetKeywordChEcomResponse{}
@@ -7389,6 +8160,11 @@ func (client *Client) GetKeywordChEcom(request *GetKeywordChEcomRequest) (_resul
 	return _result, _err
 }
 
+// @param request - GetKeywordEnEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKeywordEnEcomResponse
 func (client *Client) GetKeywordEnEcomWithOptions(request *GetKeywordEnEcomRequest, runtime *util.RuntimeOptions) (_result *GetKeywordEnEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7426,6 +8202,9 @@ func (client *Client) GetKeywordEnEcomWithOptions(request *GetKeywordEnEcomReque
 	return _result, _err
 }
 
+// @param request - GetKeywordEnEcomRequest
+//
+// @return GetKeywordEnEcomResponse
 func (client *Client) GetKeywordEnEcom(request *GetKeywordEnEcomRequest) (_result *GetKeywordEnEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetKeywordEnEcomResponse{}
@@ -7437,6 +8216,11 @@ func (client *Client) GetKeywordEnEcom(request *GetKeywordEnEcomRequest) (_resul
 	return _result, _err
 }
 
+// @param request - GetMedicineChMedicalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMedicineChMedicalResponse
 func (client *Client) GetMedicineChMedicalWithOptions(request *GetMedicineChMedicalRequest, runtime *util.RuntimeOptions) (_result *GetMedicineChMedicalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7486,6 +8270,9 @@ func (client *Client) GetMedicineChMedicalWithOptions(request *GetMedicineChMedi
 	return _result, _err
 }
 
+// @param request - GetMedicineChMedicalRequest
+//
+// @return GetMedicineChMedicalResponse
 func (client *Client) GetMedicineChMedical(request *GetMedicineChMedicalRequest) (_result *GetMedicineChMedicalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMedicineChMedicalResponse{}
@@ -7497,6 +8284,11 @@ func (client *Client) GetMedicineChMedical(request *GetMedicineChMedicalRequest)
 	return _result, _err
 }
 
+// @param request - GetNerChEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNerChEcomResponse
 func (client *Client) GetNerChEcomWithOptions(request *GetNerChEcomRequest, runtime *util.RuntimeOptions) (_result *GetNerChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7538,6 +8330,9 @@ func (client *Client) GetNerChEcomWithOptions(request *GetNerChEcomRequest, runt
 	return _result, _err
 }
 
+// @param request - GetNerChEcomRequest
+//
+// @return GetNerChEcomResponse
 func (client *Client) GetNerChEcom(request *GetNerChEcomRequest) (_result *GetNerChEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNerChEcomResponse{}
@@ -7549,6 +8344,11 @@ func (client *Client) GetNerChEcom(request *GetNerChEcomRequest) (_result *GetNe
 	return _result, _err
 }
 
+// @param request - GetNerChMedicalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNerChMedicalResponse
 func (client *Client) GetNerChMedicalWithOptions(request *GetNerChMedicalRequest, runtime *util.RuntimeOptions) (_result *GetNerChMedicalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7586,6 +8386,9 @@ func (client *Client) GetNerChMedicalWithOptions(request *GetNerChMedicalRequest
 	return _result, _err
 }
 
+// @param request - GetNerChMedicalRequest
+//
+// @return GetNerChMedicalResponse
 func (client *Client) GetNerChMedical(request *GetNerChMedicalRequest) (_result *GetNerChMedicalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNerChMedicalResponse{}
@@ -7597,6 +8400,11 @@ func (client *Client) GetNerChMedical(request *GetNerChMedicalRequest) (_result 
 	return _result, _err
 }
 
+// @param request - GetNerCustomizedChEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNerCustomizedChEcomResponse
 func (client *Client) GetNerCustomizedChEcomWithOptions(request *GetNerCustomizedChEcomRequest, runtime *util.RuntimeOptions) (_result *GetNerCustomizedChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7638,6 +8446,9 @@ func (client *Client) GetNerCustomizedChEcomWithOptions(request *GetNerCustomize
 	return _result, _err
 }
 
+// @param request - GetNerCustomizedChEcomRequest
+//
+// @return GetNerCustomizedChEcomResponse
 func (client *Client) GetNerCustomizedChEcom(request *GetNerCustomizedChEcomRequest) (_result *GetNerCustomizedChEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNerCustomizedChEcomResponse{}
@@ -7649,6 +8460,11 @@ func (client *Client) GetNerCustomizedChEcom(request *GetNerCustomizedChEcomRequ
 	return _result, _err
 }
 
+// @param request - GetNerCustomizedSeaEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNerCustomizedSeaEcomResponse
 func (client *Client) GetNerCustomizedSeaEcomWithOptions(request *GetNerCustomizedSeaEcomRequest, runtime *util.RuntimeOptions) (_result *GetNerCustomizedSeaEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7690,6 +8506,9 @@ func (client *Client) GetNerCustomizedSeaEcomWithOptions(request *GetNerCustomiz
 	return _result, _err
 }
 
+// @param request - GetNerCustomizedSeaEcomRequest
+//
+// @return GetNerCustomizedSeaEcomResponse
 func (client *Client) GetNerCustomizedSeaEcom(request *GetNerCustomizedSeaEcomRequest) (_result *GetNerCustomizedSeaEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNerCustomizedSeaEcomResponse{}
@@ -7701,6 +8520,15 @@ func (client *Client) GetNerCustomizedSeaEcom(request *GetNerCustomizedSeaEcomRe
 	return _result, _err
 }
 
+// Summary:
+//
+// openNLU
+//
+// @param request - GetOpenNLURequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOpenNLUResponse
 func (client *Client) GetOpenNLUWithOptions(request *GetOpenNLURequest, runtime *util.RuntimeOptions) (_result *GetOpenNLUResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7750,6 +8578,13 @@ func (client *Client) GetOpenNLUWithOptions(request *GetOpenNLURequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// openNLU
+//
+// @param request - GetOpenNLURequest
+//
+// @return GetOpenNLUResponse
 func (client *Client) GetOpenNLU(request *GetOpenNLURequest) (_result *GetOpenNLUResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOpenNLUResponse{}
@@ -7761,6 +8596,15 @@ func (client *Client) GetOpenNLU(request *GetOpenNLURequest) (_result *GetOpenNL
 	return _result, _err
 }
 
+// Summary:
+//
+// openNLU高召回版
+//
+// @param request - GetOpenNLUHighRecallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOpenNLUHighRecallResponse
 func (client *Client) GetOpenNLUHighRecallWithOptions(request *GetOpenNLUHighRecallRequest, runtime *util.RuntimeOptions) (_result *GetOpenNLUHighRecallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7810,6 +8654,13 @@ func (client *Client) GetOpenNLUHighRecallWithOptions(request *GetOpenNLUHighRec
 	return _result, _err
 }
 
+// Summary:
+//
+// openNLU高召回版
+//
+// @param request - GetOpenNLUHighRecallRequest
+//
+// @return GetOpenNLUHighRecallResponse
 func (client *Client) GetOpenNLUHighRecall(request *GetOpenNLUHighRecallRequest) (_result *GetOpenNLUHighRecallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOpenNLUHighRecallResponse{}
@@ -7821,6 +8672,11 @@ func (client *Client) GetOpenNLUHighRecall(request *GetOpenNLUHighRecallRequest)
 	return _result, _err
 }
 
+// @param request - GetOperationChMedicalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOperationChMedicalResponse
 func (client *Client) GetOperationChMedicalWithOptions(request *GetOperationChMedicalRequest, runtime *util.RuntimeOptions) (_result *GetOperationChMedicalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7858,6 +8714,9 @@ func (client *Client) GetOperationChMedicalWithOptions(request *GetOperationChMe
 	return _result, _err
 }
 
+// @param request - GetOperationChMedicalRequest
+//
+// @return GetOperationChMedicalResponse
 func (client *Client) GetOperationChMedical(request *GetOperationChMedicalRequest) (_result *GetOperationChMedicalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOperationChMedicalResponse{}
@@ -7869,6 +8728,11 @@ func (client *Client) GetOperationChMedical(request *GetOperationChMedicalReques
 	return _result, _err
 }
 
+// @param request - GetPosChEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPosChEcomResponse
 func (client *Client) GetPosChEcomWithOptions(request *GetPosChEcomRequest, runtime *util.RuntimeOptions) (_result *GetPosChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7914,6 +8778,9 @@ func (client *Client) GetPosChEcomWithOptions(request *GetPosChEcomRequest, runt
 	return _result, _err
 }
 
+// @param request - GetPosChEcomRequest
+//
+// @return GetPosChEcomResponse
 func (client *Client) GetPosChEcom(request *GetPosChEcomRequest) (_result *GetPosChEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPosChEcomResponse{}
@@ -7925,6 +8792,11 @@ func (client *Client) GetPosChEcom(request *GetPosChEcomRequest) (_result *GetPo
 	return _result, _err
 }
 
+// @param request - GetPosChGeneralRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPosChGeneralResponse
 func (client *Client) GetPosChGeneralWithOptions(request *GetPosChGeneralRequest, runtime *util.RuntimeOptions) (_result *GetPosChGeneralResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7970,6 +8842,9 @@ func (client *Client) GetPosChGeneralWithOptions(request *GetPosChGeneralRequest
 	return _result, _err
 }
 
+// @param request - GetPosChGeneralRequest
+//
+// @return GetPosChGeneralResponse
 func (client *Client) GetPosChGeneral(request *GetPosChGeneralRequest) (_result *GetPosChGeneralResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPosChGeneralResponse{}
@@ -7981,6 +8856,11 @@ func (client *Client) GetPosChGeneral(request *GetPosChGeneralRequest) (_result 
 	return _result, _err
 }
 
+// @param request - GetPriceChEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPriceChEcomResponse
 func (client *Client) GetPriceChEcomWithOptions(request *GetPriceChEcomRequest, runtime *util.RuntimeOptions) (_result *GetPriceChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8018,6 +8898,9 @@ func (client *Client) GetPriceChEcomWithOptions(request *GetPriceChEcomRequest, 
 	return _result, _err
 }
 
+// @param request - GetPriceChEcomRequest
+//
+// @return GetPriceChEcomResponse
 func (client *Client) GetPriceChEcom(request *GetPriceChEcomRequest) (_result *GetPriceChEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPriceChEcomResponse{}
@@ -8029,6 +8912,15 @@ func (client *Client) GetPriceChEcom(request *GetPriceChEcomRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 测试sse
+//
+// @param request - GetSSETestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSSETestResponse
 func (client *Client) GetSSETestWithOptions(request *GetSSETestRequest, runtime *util.RuntimeOptions) (_result *GetSSETestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8066,6 +8958,13 @@ func (client *Client) GetSSETestWithOptions(request *GetSSETestRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 测试sse
+//
+// @param request - GetSSETestRequest
+//
+// @return GetSSETestResponse
 func (client *Client) GetSSETest(request *GetSSETestRequest) (_result *GetSSETestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSSETestResponse{}
@@ -8077,6 +8976,11 @@ func (client *Client) GetSSETest(request *GetSSETestRequest) (_result *GetSSETes
 	return _result, _err
 }
 
+// @param request - GetSaChGeneralRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSaChGeneralResponse
 func (client *Client) GetSaChGeneralWithOptions(request *GetSaChGeneralRequest, runtime *util.RuntimeOptions) (_result *GetSaChGeneralResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8114,6 +9018,9 @@ func (client *Client) GetSaChGeneralWithOptions(request *GetSaChGeneralRequest, 
 	return _result, _err
 }
 
+// @param request - GetSaChGeneralRequest
+//
+// @return GetSaChGeneralResponse
 func (client *Client) GetSaChGeneral(request *GetSaChGeneralRequest) (_result *GetSaChGeneralResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSaChGeneralResponse{}
@@ -8125,6 +9032,11 @@ func (client *Client) GetSaChGeneral(request *GetSaChGeneralRequest) (_result *G
 	return _result, _err
 }
 
+// @param request - GetSaSeaEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSaSeaEcomResponse
 func (client *Client) GetSaSeaEcomWithOptions(request *GetSaSeaEcomRequest, runtime *util.RuntimeOptions) (_result *GetSaSeaEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8166,6 +9078,9 @@ func (client *Client) GetSaSeaEcomWithOptions(request *GetSaSeaEcomRequest, runt
 	return _result, _err
 }
 
+// @param request - GetSaSeaEcomRequest
+//
+// @return GetSaSeaEcomResponse
 func (client *Client) GetSaSeaEcom(request *GetSaSeaEcomRequest) (_result *GetSaSeaEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSaSeaEcomResponse{}
@@ -8177,6 +9092,15 @@ func (client *Client) GetSaSeaEcom(request *GetSaSeaEcomRequest) (_result *GetSa
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取服务数据导入状态
+//
+// @param tmpReq - GetServiceDataImportStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceDataImportStatusResponse
 func (client *Client) GetServiceDataImportStatusWithOptions(tmpReq *GetServiceDataImportStatusRequest, runtime *util.RuntimeOptions) (_result *GetServiceDataImportStatusResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -8216,6 +9140,13 @@ func (client *Client) GetServiceDataImportStatusWithOptions(tmpReq *GetServiceDa
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取服务数据导入状态
+//
+// @param request - GetServiceDataImportStatusRequest
+//
+// @return GetServiceDataImportStatusResponse
 func (client *Client) GetServiceDataImportStatus(request *GetServiceDataImportStatusRequest) (_result *GetServiceDataImportStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetServiceDataImportStatusResponse{}
@@ -8227,6 +9158,11 @@ func (client *Client) GetServiceDataImportStatus(request *GetServiceDataImportSt
 	return _result, _err
 }
 
+// @param request - GetSimilarityChMedicalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSimilarityChMedicalResponse
 func (client *Client) GetSimilarityChMedicalWithOptions(request *GetSimilarityChMedicalRequest, runtime *util.RuntimeOptions) (_result *GetSimilarityChMedicalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8268,6 +9204,9 @@ func (client *Client) GetSimilarityChMedicalWithOptions(request *GetSimilarityCh
 	return _result, _err
 }
 
+// @param request - GetSimilarityChMedicalRequest
+//
+// @return GetSimilarityChMedicalResponse
 func (client *Client) GetSimilarityChMedical(request *GetSimilarityChMedicalRequest) (_result *GetSimilarityChMedicalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSimilarityChMedicalResponse{}
@@ -8279,6 +9218,11 @@ func (client *Client) GetSimilarityChMedical(request *GetSimilarityChMedicalRequ
 	return _result, _err
 }
 
+// @param request - GetSummaryChEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSummaryChEcomResponse
 func (client *Client) GetSummaryChEcomWithOptions(request *GetSummaryChEcomRequest, runtime *util.RuntimeOptions) (_result *GetSummaryChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8316,6 +9260,9 @@ func (client *Client) GetSummaryChEcomWithOptions(request *GetSummaryChEcomReque
 	return _result, _err
 }
 
+// @param request - GetSummaryChEcomRequest
+//
+// @return GetSummaryChEcomResponse
 func (client *Client) GetSummaryChEcom(request *GetSummaryChEcomRequest) (_result *GetSummaryChEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSummaryChEcomResponse{}
@@ -8327,6 +9274,15 @@ func (client *Client) GetSummaryChEcom(request *GetSummaryChEcomRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据id查询tableqa服务基本信息
+//
+// @param request - GetTableQAServiceInfoByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableQAServiceInfoByIdResponse
 func (client *Client) GetTableQAServiceInfoByIdWithOptions(request *GetTableQAServiceInfoByIdRequest, runtime *util.RuntimeOptions) (_result *GetTableQAServiceInfoByIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8364,6 +9320,13 @@ func (client *Client) GetTableQAServiceInfoByIdWithOptions(request *GetTableQASe
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据id查询tableqa服务基本信息
+//
+// @param request - GetTableQAServiceInfoByIdRequest
+//
+// @return GetTableQAServiceInfoByIdResponse
 func (client *Client) GetTableQAServiceInfoById(request *GetTableQAServiceInfoByIdRequest) (_result *GetTableQAServiceInfoByIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTableQAServiceInfoByIdResponse{}
@@ -8375,6 +9338,11 @@ func (client *Client) GetTableQAServiceInfoById(request *GetTableQAServiceInfoBy
 	return _result, _err
 }
 
+// @param request - GetTcChEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTcChEcomResponse
 func (client *Client) GetTcChEcomWithOptions(request *GetTcChEcomRequest, runtime *util.RuntimeOptions) (_result *GetTcChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8412,6 +9380,9 @@ func (client *Client) GetTcChEcomWithOptions(request *GetTcChEcomRequest, runtim
 	return _result, _err
 }
 
+// @param request - GetTcChEcomRequest
+//
+// @return GetTcChEcomResponse
 func (client *Client) GetTcChEcom(request *GetTcChEcomRequest) (_result *GetTcChEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTcChEcomResponse{}
@@ -8423,6 +9394,11 @@ func (client *Client) GetTcChEcom(request *GetTcChEcomRequest) (_result *GetTcCh
 	return _result, _err
 }
 
+// @param request - GetTcChGeneralRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTcChGeneralResponse
 func (client *Client) GetTcChGeneralWithOptions(request *GetTcChGeneralRequest, runtime *util.RuntimeOptions) (_result *GetTcChGeneralResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8460,6 +9436,9 @@ func (client *Client) GetTcChGeneralWithOptions(request *GetTcChGeneralRequest, 
 	return _result, _err
 }
 
+// @param request - GetTcChGeneralRequest
+//
+// @return GetTcChGeneralResponse
 func (client *Client) GetTcChGeneral(request *GetTcChGeneralRequest) (_result *GetTcChGeneralResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTcChGeneralResponse{}
@@ -8471,6 +9450,11 @@ func (client *Client) GetTcChGeneral(request *GetTcChGeneralRequest) (_result *G
 	return _result, _err
 }
 
+// @param request - GetTsChEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTsChEcomResponse
 func (client *Client) GetTsChEcomWithOptions(request *GetTsChEcomRequest, runtime *util.RuntimeOptions) (_result *GetTsChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8516,6 +9500,9 @@ func (client *Client) GetTsChEcomWithOptions(request *GetTsChEcomRequest, runtim
 	return _result, _err
 }
 
+// @param request - GetTsChEcomRequest
+//
+// @return GetTsChEcomResponse
 func (client *Client) GetTsChEcom(request *GetTsChEcomRequest) (_result *GetTsChEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTsChEcomResponse{}
@@ -8527,6 +9514,11 @@ func (client *Client) GetTsChEcom(request *GetTsChEcomRequest) (_result *GetTsCh
 	return _result, _err
 }
 
+// @param request - GetUserUploadSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserUploadSignResponse
 func (client *Client) GetUserUploadSignWithOptions(request *GetUserUploadSignRequest, runtime *util.RuntimeOptions) (_result *GetUserUploadSignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8560,6 +9552,9 @@ func (client *Client) GetUserUploadSignWithOptions(request *GetUserUploadSignReq
 	return _result, _err
 }
 
+// @param request - GetUserUploadSignRequest
+//
+// @return GetUserUploadSignResponse
 func (client *Client) GetUserUploadSign(request *GetUserUploadSignRequest) (_result *GetUserUploadSignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserUploadSignResponse{}
@@ -8571,6 +9566,11 @@ func (client *Client) GetUserUploadSign(request *GetUserUploadSignRequest) (_res
 	return _result, _err
 }
 
+// @param request - GetWeChCommentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWeChCommentResponse
 func (client *Client) GetWeChCommentWithOptions(request *GetWeChCommentRequest, runtime *util.RuntimeOptions) (_result *GetWeChCommentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8624,6 +9624,9 @@ func (client *Client) GetWeChCommentWithOptions(request *GetWeChCommentRequest, 
 	return _result, _err
 }
 
+// @param request - GetWeChCommentRequest
+//
+// @return GetWeChCommentResponse
 func (client *Client) GetWeChComment(request *GetWeChCommentRequest) (_result *GetWeChCommentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWeChCommentResponse{}
@@ -8635,6 +9638,11 @@ func (client *Client) GetWeChComment(request *GetWeChCommentRequest) (_result *G
 	return _result, _err
 }
 
+// @param request - GetWeChEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWeChEcomResponse
 func (client *Client) GetWeChEcomWithOptions(request *GetWeChEcomRequest, runtime *util.RuntimeOptions) (_result *GetWeChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8688,6 +9696,9 @@ func (client *Client) GetWeChEcomWithOptions(request *GetWeChEcomRequest, runtim
 	return _result, _err
 }
 
+// @param request - GetWeChEcomRequest
+//
+// @return GetWeChEcomResponse
 func (client *Client) GetWeChEcom(request *GetWeChEcomRequest) (_result *GetWeChEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWeChEcomResponse{}
@@ -8699,6 +9710,11 @@ func (client *Client) GetWeChEcom(request *GetWeChEcomRequest) (_result *GetWeCh
 	return _result, _err
 }
 
+// @param request - GetWeChEntertainmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWeChEntertainmentResponse
 func (client *Client) GetWeChEntertainmentWithOptions(request *GetWeChEntertainmentRequest, runtime *util.RuntimeOptions) (_result *GetWeChEntertainmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8752,6 +9768,9 @@ func (client *Client) GetWeChEntertainmentWithOptions(request *GetWeChEntertainm
 	return _result, _err
 }
 
+// @param request - GetWeChEntertainmentRequest
+//
+// @return GetWeChEntertainmentResponse
 func (client *Client) GetWeChEntertainment(request *GetWeChEntertainmentRequest) (_result *GetWeChEntertainmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWeChEntertainmentResponse{}
@@ -8763,6 +9782,11 @@ func (client *Client) GetWeChEntertainment(request *GetWeChEntertainmentRequest)
 	return _result, _err
 }
 
+// @param request - GetWeChGeneralRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWeChGeneralResponse
 func (client *Client) GetWeChGeneralWithOptions(request *GetWeChGeneralRequest, runtime *util.RuntimeOptions) (_result *GetWeChGeneralResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8812,6 +9836,9 @@ func (client *Client) GetWeChGeneralWithOptions(request *GetWeChGeneralRequest, 
 	return _result, _err
 }
 
+// @param request - GetWeChGeneralRequest
+//
+// @return GetWeChGeneralResponse
 func (client *Client) GetWeChGeneral(request *GetWeChGeneralRequest) (_result *GetWeChGeneralResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWeChGeneralResponse{}
@@ -8823,6 +9850,11 @@ func (client *Client) GetWeChGeneral(request *GetWeChGeneralRequest) (_result *G
 	return _result, _err
 }
 
+// @param request - GetWeChSearchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWeChSearchResponse
 func (client *Client) GetWeChSearchWithOptions(request *GetWeChSearchRequest, runtime *util.RuntimeOptions) (_result *GetWeChSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8876,6 +9908,9 @@ func (client *Client) GetWeChSearchWithOptions(request *GetWeChSearchRequest, ru
 	return _result, _err
 }
 
+// @param request - GetWeChSearchRequest
+//
+// @return GetWeChSearchResponse
 func (client *Client) GetWeChSearch(request *GetWeChSearchRequest) (_result *GetWeChSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWeChSearchResponse{}
@@ -8887,6 +9922,11 @@ func (client *Client) GetWeChSearch(request *GetWeChSearchRequest) (_result *Get
 	return _result, _err
 }
 
+// @param request - GetWsChGeneralRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWsChGeneralResponse
 func (client *Client) GetWsChGeneralWithOptions(request *GetWsChGeneralRequest, runtime *util.RuntimeOptions) (_result *GetWsChGeneralResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8932,6 +9972,9 @@ func (client *Client) GetWsChGeneralWithOptions(request *GetWsChGeneralRequest, 
 	return _result, _err
 }
 
+// @param request - GetWsChGeneralRequest
+//
+// @return GetWsChGeneralResponse
 func (client *Client) GetWsChGeneral(request *GetWsChGeneralRequest) (_result *GetWsChGeneralResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWsChGeneralResponse{}
@@ -8943,6 +9986,11 @@ func (client *Client) GetWsChGeneral(request *GetWsChGeneralRequest) (_result *G
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedChEcomCommentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWsCustomizedChEcomCommentResponse
 func (client *Client) GetWsCustomizedChEcomCommentWithOptions(request *GetWsCustomizedChEcomCommentRequest, runtime *util.RuntimeOptions) (_result *GetWsCustomizedChEcomCommentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8988,6 +10036,9 @@ func (client *Client) GetWsCustomizedChEcomCommentWithOptions(request *GetWsCust
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedChEcomCommentRequest
+//
+// @return GetWsCustomizedChEcomCommentResponse
 func (client *Client) GetWsCustomizedChEcomComment(request *GetWsCustomizedChEcomCommentRequest) (_result *GetWsCustomizedChEcomCommentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWsCustomizedChEcomCommentResponse{}
@@ -8999,6 +10050,11 @@ func (client *Client) GetWsCustomizedChEcomComment(request *GetWsCustomizedChEco
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedChEcomContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWsCustomizedChEcomContentResponse
 func (client *Client) GetWsCustomizedChEcomContentWithOptions(request *GetWsCustomizedChEcomContentRequest, runtime *util.RuntimeOptions) (_result *GetWsCustomizedChEcomContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9044,6 +10100,9 @@ func (client *Client) GetWsCustomizedChEcomContentWithOptions(request *GetWsCust
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedChEcomContentRequest
+//
+// @return GetWsCustomizedChEcomContentResponse
 func (client *Client) GetWsCustomizedChEcomContent(request *GetWsCustomizedChEcomContentRequest) (_result *GetWsCustomizedChEcomContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWsCustomizedChEcomContentResponse{}
@@ -9055,6 +10114,11 @@ func (client *Client) GetWsCustomizedChEcomContent(request *GetWsCustomizedChEco
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedChEcomTitleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWsCustomizedChEcomTitleResponse
 func (client *Client) GetWsCustomizedChEcomTitleWithOptions(request *GetWsCustomizedChEcomTitleRequest, runtime *util.RuntimeOptions) (_result *GetWsCustomizedChEcomTitleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9100,6 +10164,9 @@ func (client *Client) GetWsCustomizedChEcomTitleWithOptions(request *GetWsCustom
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedChEcomTitleRequest
+//
+// @return GetWsCustomizedChEcomTitleResponse
 func (client *Client) GetWsCustomizedChEcomTitle(request *GetWsCustomizedChEcomTitleRequest) (_result *GetWsCustomizedChEcomTitleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWsCustomizedChEcomTitleResponse{}
@@ -9111,6 +10178,11 @@ func (client *Client) GetWsCustomizedChEcomTitle(request *GetWsCustomizedChEcomT
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedChEntertainmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWsCustomizedChEntertainmentResponse
 func (client *Client) GetWsCustomizedChEntertainmentWithOptions(request *GetWsCustomizedChEntertainmentRequest, runtime *util.RuntimeOptions) (_result *GetWsCustomizedChEntertainmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9156,6 +10228,9 @@ func (client *Client) GetWsCustomizedChEntertainmentWithOptions(request *GetWsCu
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedChEntertainmentRequest
+//
+// @return GetWsCustomizedChEntertainmentResponse
 func (client *Client) GetWsCustomizedChEntertainment(request *GetWsCustomizedChEntertainmentRequest) (_result *GetWsCustomizedChEntertainmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWsCustomizedChEntertainmentResponse{}
@@ -9167,6 +10242,15 @@ func (client *Client) GetWsCustomizedChEntertainment(request *GetWsCustomizedChE
 	return _result, _err
 }
 
+// Summary:
+//
+// a
+//
+// @param request - GetWsCustomizedChGeneralRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWsCustomizedChGeneralResponse
 func (client *Client) GetWsCustomizedChGeneralWithOptions(request *GetWsCustomizedChGeneralRequest, runtime *util.RuntimeOptions) (_result *GetWsCustomizedChGeneralResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9212,6 +10296,13 @@ func (client *Client) GetWsCustomizedChGeneralWithOptions(request *GetWsCustomiz
 	return _result, _err
 }
 
+// Summary:
+//
+// a
+//
+// @param request - GetWsCustomizedChGeneralRequest
+//
+// @return GetWsCustomizedChGeneralResponse
 func (client *Client) GetWsCustomizedChGeneral(request *GetWsCustomizedChGeneralRequest) (_result *GetWsCustomizedChGeneralResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWsCustomizedChGeneralResponse{}
@@ -9223,6 +10314,11 @@ func (client *Client) GetWsCustomizedChGeneral(request *GetWsCustomizedChGeneral
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedChO2ORequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWsCustomizedChO2OResponse
 func (client *Client) GetWsCustomizedChO2OWithOptions(request *GetWsCustomizedChO2ORequest, runtime *util.RuntimeOptions) (_result *GetWsCustomizedChO2OResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9268,6 +10364,9 @@ func (client *Client) GetWsCustomizedChO2OWithOptions(request *GetWsCustomizedCh
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedChO2ORequest
+//
+// @return GetWsCustomizedChO2OResponse
 func (client *Client) GetWsCustomizedChO2O(request *GetWsCustomizedChO2ORequest) (_result *GetWsCustomizedChO2OResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWsCustomizedChO2OResponse{}
@@ -9279,6 +10378,11 @@ func (client *Client) GetWsCustomizedChO2O(request *GetWsCustomizedChO2ORequest)
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedSeaEcomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWsCustomizedSeaEcomResponse
 func (client *Client) GetWsCustomizedSeaEcomWithOptions(request *GetWsCustomizedSeaEcomRequest, runtime *util.RuntimeOptions) (_result *GetWsCustomizedSeaEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9320,6 +10424,9 @@ func (client *Client) GetWsCustomizedSeaEcomWithOptions(request *GetWsCustomized
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedSeaEcomRequest
+//
+// @return GetWsCustomizedSeaEcomResponse
 func (client *Client) GetWsCustomizedSeaEcom(request *GetWsCustomizedSeaEcomRequest) (_result *GetWsCustomizedSeaEcomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWsCustomizedSeaEcomResponse{}
@@ -9331,6 +10438,11 @@ func (client *Client) GetWsCustomizedSeaEcom(request *GetWsCustomizedSeaEcomRequ
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedSeaGeneralRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWsCustomizedSeaGeneralResponse
 func (client *Client) GetWsCustomizedSeaGeneralWithOptions(request *GetWsCustomizedSeaGeneralRequest, runtime *util.RuntimeOptions) (_result *GetWsCustomizedSeaGeneralResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9372,6 +10484,9 @@ func (client *Client) GetWsCustomizedSeaGeneralWithOptions(request *GetWsCustomi
 	return _result, _err
 }
 
+// @param request - GetWsCustomizedSeaGeneralRequest
+//
+// @return GetWsCustomizedSeaGeneralResponse
 func (client *Client) GetWsCustomizedSeaGeneral(request *GetWsCustomizedSeaGeneralRequest) (_result *GetWsCustomizedSeaGeneralResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWsCustomizedSeaGeneralResponse{}
@@ -9383,6 +10498,15 @@ func (client *Client) GetWsCustomizedSeaGeneral(request *GetWsCustomizedSeaGener
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入服务数据
+//
+// @param tmpReq - ImportServiceDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportServiceDataResponse
 func (client *Client) ImportServiceDataWithOptions(tmpReq *ImportServiceDataRequest, runtime *util.RuntimeOptions) (_result *ImportServiceDataResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9434,6 +10558,13 @@ func (client *Client) ImportServiceDataWithOptions(tmpReq *ImportServiceDataRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入服务数据
+//
+// @param request - ImportServiceDataRequest
+//
+// @return ImportServiceDataResponse
 func (client *Client) ImportServiceData(request *ImportServiceDataRequest) (_result *ImportServiceDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportServiceDataResponse{}
@@ -9445,6 +10576,15 @@ func (client *Client) ImportServiceData(request *ImportServiceDataRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入服务数据V2
+//
+// @param tmpReq - ImportServiceDataV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportServiceDataV2Response
 func (client *Client) ImportServiceDataV2WithOptions(tmpReq *ImportServiceDataV2Request, runtime *util.RuntimeOptions) (_result *ImportServiceDataV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9492,6 +10632,13 @@ func (client *Client) ImportServiceDataV2WithOptions(tmpReq *ImportServiceDataV2
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入服务数据V2
+//
+// @param request - ImportServiceDataV2Request
+//
+// @return ImportServiceDataV2Response
 func (client *Client) ImportServiceDataV2(request *ImportServiceDataV2Request) (_result *ImportServiceDataV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportServiceDataV2Response{}
@@ -9503,6 +10650,11 @@ func (client *Client) ImportServiceDataV2(request *ImportServiceDataV2Request) (
 	return _result, _err
 }
 
+// @param request - InsertCustomRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsertCustomResponse
 func (client *Client) InsertCustomWithOptions(request *InsertCustomRequest, runtime *util.RuntimeOptions) (_result *InsertCustomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9556,6 +10708,9 @@ func (client *Client) InsertCustomWithOptions(request *InsertCustomRequest, runt
 	return _result, _err
 }
 
+// @param request - InsertCustomRequest
+//
+// @return InsertCustomResponse
 func (client *Client) InsertCustom(request *InsertCustomRequest) (_result *InsertCustomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InsertCustomResponse{}
@@ -9567,6 +10722,11 @@ func (client *Client) InsertCustom(request *InsertCustomRequest) (_result *Inser
 	return _result, _err
 }
 
+// @param request - OpenAlinlpServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenAlinlpServiceResponse
 func (client *Client) OpenAlinlpServiceWithOptions(runtime *util.RuntimeOptions) (_result *OpenAlinlpServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -9589,6 +10749,7 @@ func (client *Client) OpenAlinlpServiceWithOptions(runtime *util.RuntimeOptions)
 	return _result, _err
 }
 
+// @return OpenAlinlpServiceResponse
 func (client *Client) OpenAlinlpService() (_result *OpenAlinlpServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenAlinlpServiceResponse{}
@@ -9600,6 +10761,15 @@ func (client *Client) OpenAlinlpService() (_result *OpenAlinlpServiceResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// 多轮改写
+//
+// @param tmpReq - PostISConvRewriterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostISConvRewriterResponse
 func (client *Client) PostISConvRewriterWithOptions(tmpReq *PostISConvRewriterRequest, runtime *util.RuntimeOptions) (_result *PostISConvRewriterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9628,12 +10798,12 @@ func (client *Client) PostISConvRewriterWithOptions(tmpReq *PostISConvRewriterRe
 		body["Input"] = request.InputShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
-		body["Parameters"] = request.ParametersShrink
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		body["Model"] = request.Model
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		body["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		body["Parameters"] = request.ParametersShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9659,6 +10829,13 @@ func (client *Client) PostISConvRewriterWithOptions(tmpReq *PostISConvRewriterRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 多轮改写
+//
+// @param request - PostISConvRewriterRequest
+//
+// @return PostISConvRewriterResponse
 func (client *Client) PostISConvRewriter(request *PostISConvRewriterRequest) (_result *PostISConvRewriterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PostISConvRewriterResponse{}
@@ -9670,6 +10847,15 @@ func (client *Client) PostISConvRewriter(request *PostISConvRewriterRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 开放域搜索判定
+//
+// @param tmpReq - PostISRetrieveRouterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostISRetrieveRouterResponse
 func (client *Client) PostISRetrieveRouterWithOptions(tmpReq *PostISRetrieveRouterRequest, runtime *util.RuntimeOptions) (_result *PostISRetrieveRouterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9703,8 +10889,8 @@ func (client *Client) PostISRetrieveRouterWithOptions(tmpReq *PostISRetrieveRout
 		body["Algorithm"] = request.Algorithm
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		body["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		body["Model"] = request.Model
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9731,6 +10917,13 @@ func (client *Client) PostISRetrieveRouterWithOptions(tmpReq *PostISRetrieveRout
 	return _result, _err
 }
 
+// Summary:
+//
+// 开放域搜索判定
+//
+// @param request - PostISRetrieveRouterRequest
+//
+// @return PostISRetrieveRouterResponse
 func (client *Client) PostISRetrieveRouter(request *PostISRetrieveRouterRequest) (_result *PostISRetrieveRouterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PostISRetrieveRouterResponse{}
@@ -9742,6 +10935,15 @@ func (client *Client) PostISRetrieveRouter(request *PostISRetrieveRouterRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 对话搜索身份凭证生成
+//
+// @param request - PostMSConvSearchTokenGeneratedRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostMSConvSearchTokenGeneratedResponse
 func (client *Client) PostMSConvSearchTokenGeneratedWithOptions(runtime *util.RuntimeOptions) (_result *PostMSConvSearchTokenGeneratedResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -9764,6 +10966,11 @@ func (client *Client) PostMSConvSearchTokenGeneratedWithOptions(runtime *util.Ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 对话搜索身份凭证生成
+//
+// @return PostMSConvSearchTokenGeneratedResponse
 func (client *Client) PostMSConvSearchTokenGenerated() (_result *PostMSConvSearchTokenGeneratedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PostMSConvSearchTokenGeneratedResponse{}
@@ -9775,6 +10982,15 @@ func (client *Client) PostMSConvSearchTokenGenerated() (_result *PostMSConvSearc
 	return _result, _err
 }
 
+// Summary:
+//
+// 数据处理进度查询
+//
+// @param tmpReq - PostMSDataProcessingCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostMSDataProcessingCountResponse
 func (client *Client) PostMSDataProcessingCountWithOptions(tmpReq *PostMSDataProcessingCountRequest, runtime *util.RuntimeOptions) (_result *PostMSDataProcessingCountResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9797,6 +11013,10 @@ func (client *Client) PostMSDataProcessingCountWithOptions(tmpReq *PostMSDataPro
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
 		body["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XDashScopeOpenAPISource)) {
+		body["X-DashScope-OpenAPISource"] = request.XDashScopeOpenAPISource
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9822,6 +11042,13 @@ func (client *Client) PostMSDataProcessingCountWithOptions(tmpReq *PostMSDataPro
 	return _result, _err
 }
 
+// Summary:
+//
+// 数据处理进度查询
+//
+// @param request - PostMSDataProcessingCountRequest
+//
+// @return PostMSDataProcessingCountResponse
 func (client *Client) PostMSDataProcessingCount(request *PostMSDataProcessingCountRequest) (_result *PostMSDataProcessingCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PostMSDataProcessingCountResponse{}
@@ -9833,6 +11060,15 @@ func (client *Client) PostMSDataProcessingCount(request *PostMSDataProcessingCou
 	return _result, _err
 }
 
+// Summary:
+//
+// 搜索增强
+//
+// @param tmpReq - PostMSSearchEnhanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostMSSearchEnhanceResponse
 func (client *Client) PostMSSearchEnhanceWithOptions(tmpReq *PostMSSearchEnhanceRequest, runtime *util.RuntimeOptions) (_result *PostMSSearchEnhanceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9913,6 +11149,10 @@ func (client *Client) PostMSSearchEnhanceWithOptions(tmpReq *PostMSSearchEnhance
 		body["Uq"] = request.Uq
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.XDashScopeOpenAPISource)) {
+		body["X-DashScope-OpenAPISource"] = request.XDashScopeOpenAPISource
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -9936,6 +11176,13 @@ func (client *Client) PostMSSearchEnhanceWithOptions(tmpReq *PostMSSearchEnhance
 	return _result, _err
 }
 
+// Summary:
+//
+// 搜索增强
+//
+// @param request - PostMSSearchEnhanceRequest
+//
+// @return PostMSSearchEnhanceResponse
 func (client *Client) PostMSSearchEnhance(request *PostMSSearchEnhanceRequest) (_result *PostMSSearchEnhanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PostMSSearchEnhanceResponse{}
@@ -9947,6 +11194,15 @@ func (client *Client) PostMSSearchEnhance(request *PostMSSearchEnhanceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入服务数据V2
+//
+// @param tmpReq - PostMSServiceDataImportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostMSServiceDataImportResponse
 func (client *Client) PostMSServiceDataImportWithOptions(tmpReq *PostMSServiceDataImportRequest, runtime *util.RuntimeOptions) (_result *PostMSServiceDataImportResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9994,6 +11250,13 @@ func (client *Client) PostMSServiceDataImportWithOptions(tmpReq *PostMSServiceDa
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入服务数据V2
+//
+// @param request - PostMSServiceDataImportRequest
+//
+// @return PostMSServiceDataImportResponse
 func (client *Client) PostMSServiceDataImport(request *PostMSServiceDataImportRequest) (_result *PostMSServiceDataImportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PostMSServiceDataImportResponse{}
@@ -10005,6 +11268,11 @@ func (client *Client) PostMSServiceDataImport(request *PostMSServiceDataImportRe
 	return _result, _err
 }
 
+// @param request - RequestTableQARequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RequestTableQAResponse
 func (client *Client) RequestTableQAWithOptions(request *RequestTableQARequest, runtime *util.RuntimeOptions) (_result *RequestTableQAResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10042,6 +11310,9 @@ func (client *Client) RequestTableQAWithOptions(request *RequestTableQARequest, 
 	return _result, _err
 }
 
+// @param request - RequestTableQARequest
+//
+// @return RequestTableQAResponse
 func (client *Client) RequestTableQA(request *RequestTableQARequest) (_result *RequestTableQAResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RequestTableQAResponse{}
@@ -10053,6 +11324,15 @@ func (client *Client) RequestTableQA(request *RequestTableQARequest) (_result *R
 	return _result, _err
 }
 
+// Summary:
+//
+// 表格问答在线接口
+//
+// @param request - RequestTableQAOnlineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RequestTableQAOnlineResponse
 func (client *Client) RequestTableQAOnlineWithOptions(request *RequestTableQAOnlineRequest, runtime *util.RuntimeOptions) (_result *RequestTableQAOnlineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10098,6 +11378,13 @@ func (client *Client) RequestTableQAOnlineWithOptions(request *RequestTableQAOnl
 	return _result, _err
 }
 
+// Summary:
+//
+// 表格问答在线接口
+//
+// @param request - RequestTableQAOnlineRequest
+//
+// @return RequestTableQAOnlineResponse
 func (client *Client) RequestTableQAOnline(request *RequestTableQAOnlineRequest) (_result *RequestTableQAOnlineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RequestTableQAOnlineResponse{}
@@ -10109,6 +11396,15 @@ func (client *Client) RequestTableQAOnline(request *RequestTableQAOnlineRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新服务数据
+//
+// @param tmpReq - UpdateServiceDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceDataResponse
 func (client *Client) UpdateServiceDataWithOptions(tmpReq *UpdateServiceDataRequest, runtime *util.RuntimeOptions) (_result *UpdateServiceDataResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -10152,6 +11448,13 @@ func (client *Client) UpdateServiceDataWithOptions(tmpReq *UpdateServiceDataRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新服务数据
+//
+// @param request - UpdateServiceDataRequest
+//
+// @return UpdateServiceDataResponse
 func (client *Client) UpdateServiceData(request *UpdateServiceDataRequest) (_result *UpdateServiceDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateServiceDataResponse{}
