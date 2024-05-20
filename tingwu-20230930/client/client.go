@@ -71,6 +71,7 @@ type CreateTaskRequestInput struct {
 	// pcm
 	Format                      *string `json:"Format,omitempty" xml:"Format,omitempty"`
 	MultipleStreamsEnabled      *bool   `json:"MultipleStreamsEnabled,omitempty" xml:"MultipleStreamsEnabled,omitempty"`
+	OutputPath                  *string `json:"OutputPath,omitempty" xml:"OutputPath,omitempty"`
 	ProgressiveCallbacksEnabled *bool   `json:"ProgressiveCallbacksEnabled,omitempty" xml:"ProgressiveCallbacksEnabled,omitempty"`
 	// example:
 	//
@@ -109,6 +110,11 @@ func (s *CreateTaskRequestInput) SetFormat(v string) *CreateTaskRequestInput {
 
 func (s *CreateTaskRequestInput) SetMultipleStreamsEnabled(v bool) *CreateTaskRequestInput {
 	s.MultipleStreamsEnabled = &v
+	return s
+}
+
+func (s *CreateTaskRequestInput) SetOutputPath(v string) *CreateTaskRequestInput {
+	s.OutputPath = &v
 	return s
 }
 
@@ -299,7 +305,8 @@ func (s *CreateTaskRequestParametersCustomPromptContents) SetTransType(v string)
 }
 
 type CreateTaskRequestParametersExtraParams struct {
-	NfixEnabled *bool `json:"NfixEnabled,omitempty" xml:"NfixEnabled,omitempty"`
+	MaxKeywords *int32 `json:"MaxKeywords,omitempty" xml:"MaxKeywords,omitempty"`
+	NfixEnabled *bool  `json:"NfixEnabled,omitempty" xml:"NfixEnabled,omitempty"`
 }
 
 func (s CreateTaskRequestParametersExtraParams) String() string {
@@ -308,6 +315,11 @@ func (s CreateTaskRequestParametersExtraParams) String() string {
 
 func (s CreateTaskRequestParametersExtraParams) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTaskRequestParametersExtraParams) SetMaxKeywords(v int32) *CreateTaskRequestParametersExtraParams {
+	s.MaxKeywords = &v
+	return s
 }
 
 func (s *CreateTaskRequestParametersExtraParams) SetNfixEnabled(v bool) *CreateTaskRequestParametersExtraParams {
