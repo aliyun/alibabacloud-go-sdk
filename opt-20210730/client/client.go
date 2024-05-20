@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,11 +10,26 @@ import (
 )
 
 type GetOpenStatusResponseBody struct {
-	Code      *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"gmtModified":"2021-07-27T04:00:00.000+00:00","mpStatus":1,"id":11,"pk":"1084126944995576","gmtCreate":"2021-07-27T04:00:00.000+00:00","parentPk":"1084126944995576"}
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0EB-FCAC-1B78-BBB8-500ED951E9EB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOpenStatusResponseBody) String() string {
@@ -83,8 +95,19 @@ func (s *GetOpenStatusResponse) SetBody(v *GetOpenStatusResponseBody) *GetOpenSt
 }
 
 type GetOrderInfoRequest struct {
-	RelService   *string `json:"RelService,omitempty" xml:"RelService,omitempty"`
-	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ListReleased *bool `json:"ListReleased,omitempty" xml:"ListReleased,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MP
+	RelService *string `json:"RelService,omitempty" xml:"RelService,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetOrderInfoRequest) String() string {
@@ -93,6 +116,11 @@ func (s GetOrderInfoRequest) String() string {
 
 func (s GetOrderInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetOrderInfoRequest) SetListReleased(v bool) *GetOrderInfoRequest {
+	s.ListReleased = &v
+	return s
 }
 
 func (s *GetOrderInfoRequest) SetRelService(v string) *GetOrderInfoRequest {
@@ -106,11 +134,26 @@ func (s *GetOrderInfoRequest) SetResourceType(v int32) *GetOrderInfoRequest {
 }
 
 type GetOrderInfoResponseBody struct {
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*GetOrderInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"licenseKey":"eems7ri3b1u5nui*****","currentConcurrency":2,"instanceId":"opt_mplicense_public_cn-****","totalDays":124,"currentDays":103}
+	Data []*GetOrderInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 5D6653C5-CA2B-14EC-9CF0-50AA0FF49C31
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOrderInfoResponseBody) String() string {
@@ -229,10 +272,24 @@ func (s *GetOrderInfoResponse) SetBody(v *GetOrderInfoResponseBody) *GetOrderInf
 }
 
 type GetOrderUsageRequest struct {
-	LicenseKey   *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
-	RelService   *string `json:"RelService,omitempty" xml:"RelService,omitempty"`
-	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TimeRange    *int32  `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
+	// This parameter is required.
+	LicenseKey *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MP
+	RelService *string `json:"RelService,omitempty" xml:"RelService,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 1
+	TimeRange *int32 `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
 }
 
 func (s GetOrderUsageRequest) String() string {
@@ -264,10 +321,19 @@ func (s *GetOrderUsageRequest) SetTimeRange(v int32) *GetOrderUsageRequest {
 }
 
 type GetOrderUsageResponseBody struct {
-	Data      []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 5D6653C5-CA2B-14EC-9CF0-50AA0FF49C31
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOrderUsageResponseBody) String() string {
@@ -374,6 +440,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - GetOpenStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOpenStatusResponse
 func (client *Client) GetOpenStatusWithOptions(runtime *util.RuntimeOptions) (_result *GetOpenStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -396,6 +467,7 @@ func (client *Client) GetOpenStatusWithOptions(runtime *util.RuntimeOptions) (_r
 	return _result, _err
 }
 
+// @return GetOpenStatusResponse
 func (client *Client) GetOpenStatus() (_result *GetOpenStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOpenStatusResponse{}
@@ -407,12 +479,21 @@ func (client *Client) GetOpenStatus() (_result *GetOpenStatusResponse, _err erro
 	return _result, _err
 }
 
+// @param request - GetOrderInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOrderInfoResponse
 func (client *Client) GetOrderInfoWithOptions(request *GetOrderInfoRequest, runtime *util.RuntimeOptions) (_result *GetOrderInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ListReleased)) {
+		query["ListReleased"] = request.ListReleased
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RelService)) {
 		query["RelService"] = request.RelService
 	}
@@ -444,6 +525,9 @@ func (client *Client) GetOrderInfoWithOptions(request *GetOrderInfoRequest, runt
 	return _result, _err
 }
 
+// @param request - GetOrderInfoRequest
+//
+// @return GetOrderInfoResponse
 func (client *Client) GetOrderInfo(request *GetOrderInfoRequest) (_result *GetOrderInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOrderInfoResponse{}
@@ -455,6 +539,11 @@ func (client *Client) GetOrderInfo(request *GetOrderInfoRequest) (_result *GetOr
 	return _result, _err
 }
 
+// @param request - GetOrderUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOrderUsageResponse
 func (client *Client) GetOrderUsageWithOptions(request *GetOrderUsageRequest, runtime *util.RuntimeOptions) (_result *GetOrderUsageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -500,6 +589,9 @@ func (client *Client) GetOrderUsageWithOptions(request *GetOrderUsageRequest, ru
 	return _result, _err
 }
 
+// @param request - GetOrderUsageRequest
+//
+// @return GetOrderUsageResponse
 func (client *Client) GetOrderUsage(request *GetOrderUsageRequest) (_result *GetOrderUsageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOrderUsageResponse{}
