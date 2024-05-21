@@ -1,3 +1,9 @@
+2024-05-21 Version: v4.1.6
+- Update API DescribeSecurityGroupAttribute: add param MaxResults.
+- Update API DescribeSecurityGroupAttribute: add param NextToken.
+- Update API DescribeSecurityGroupAttribute: update response param.
+
+
 2024-05-17 Version: v4.1.5
 - Update API AttachDisk: add param Force.
 - Update API AttachDisk: update response param.
