@@ -6534,7 +6534,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// true
-	AutoConfig *bool `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
+	AutoConfig *bool   `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
+	BaseAppId  *string `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
 	// sleep
 	//
 	// example:
@@ -6631,7 +6632,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// "0"
-	MicroRegistration *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	MicroRegistration       *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
 	// [{mountPath: "/tmp", nasPath: "/"}]
 	//
 	// example:
@@ -6769,6 +6771,7 @@ type CreateApplicationRequest struct {
 	//
 	// sg-wz969ngg2e49q5i4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	ServiceTags     *string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
 	//
 	// example:
@@ -6862,6 +6865,11 @@ func (s *CreateApplicationRequest) SetAutoConfig(v bool) *CreateApplicationReque
 	return s
 }
 
+func (s *CreateApplicationRequest) SetBaseAppId(v string) *CreateApplicationRequest {
+	s.BaseAppId = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetCommand(v string) *CreateApplicationRequest {
 	s.Command = &v
 	return s
@@ -6949,6 +6957,11 @@ func (s *CreateApplicationRequest) SetMemory(v int32) *CreateApplicationRequest 
 
 func (s *CreateApplicationRequest) SetMicroRegistration(v string) *CreateApplicationRequest {
 	s.MicroRegistration = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetMicroRegistrationConfig(v string) *CreateApplicationRequest {
+	s.MicroRegistrationConfig = &v
 	return s
 }
 
@@ -7074,6 +7087,11 @@ func (s *CreateApplicationRequest) SetSaeVersion(v string) *CreateApplicationReq
 
 func (s *CreateApplicationRequest) SetSecurityGroupId(v string) *CreateApplicationRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetServiceTags(v string) *CreateApplicationRequest {
+	s.ServiceTags = &v
 	return s
 }
 
@@ -11550,7 +11568,8 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// "0"
-	MicroRegistration *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	MicroRegistration       *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
 	// The percentage of the minimum number of available instances. Take note of the following rules:
 	//
 	// 	- If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. Default value: -1.
@@ -11725,6 +11744,7 @@ type DeployApplicationRequest struct {
 	Readiness       *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
 	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	ServiceTags     *string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
 	// The logging configurations of Log Service.
 	//
 	// 	- To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
@@ -11964,6 +11984,11 @@ func (s *DeployApplicationRequest) SetMicroRegistration(v string) *DeployApplica
 	return s
 }
 
+func (s *DeployApplicationRequest) SetMicroRegistrationConfig(v string) *DeployApplicationRequest {
+	s.MicroRegistrationConfig = &v
+	return s
+}
+
 func (s *DeployApplicationRequest) SetMinReadyInstanceRatio(v int32) *DeployApplicationRequest {
 	s.MinReadyInstanceRatio = &v
 	return s
@@ -12081,6 +12106,11 @@ func (s *DeployApplicationRequest) SetReplicas(v int32) *DeployApplicationReques
 
 func (s *DeployApplicationRequest) SetSecurityGroupId(v string) *DeployApplicationRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetServiceTags(v string) *DeployApplicationRequest {
+	s.ServiceTags = &v
 	return s
 }
 
@@ -13399,7 +13429,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// sg-wz969ngg2e49q5i4****
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string            `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	ServiceTags     map[string]*string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
 	// The logging configurations of Log Service.
 	//
 	// 	- To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
@@ -13792,6 +13823,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetReplicas(v int32) *Descri
 
 func (s *DescribeApplicationConfigResponseBodyData) SetSecurityGroupId(v string) *DescribeApplicationConfigResponseBodyData {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetServiceTags(v map[string]*string) *DescribeApplicationConfigResponseBodyData {
+	s.ServiceTags = v
 	return s
 }
 
@@ -27512,21 +27548,25 @@ type ListApplicationsResponseBodyDataApplications struct {
 	// example:
 	//
 	// demo-app
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Cpu     *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	AppName   *string                                                 `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BaseAppId *string                                                 `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
+	Children  []*ListApplicationsResponseBodyDataApplicationsChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	Cpu       *int32                                                  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The total number of applications.
 	//
 	// example:
 	//
 	// 2
-	Instances *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	Mem       *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	Instances  *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	Mem        *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	MseEnabled *bool  `json:"MseEnabled,omitempty" xml:"MseEnabled,omitempty"`
 	// demo-app
 	//
 	// example:
 	//
 	// cn-beijing:demo
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NamespaceId         *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	ProgrammingLanguage *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
 	// The number of running instances.
 	//
 	// example:
@@ -27571,6 +27611,16 @@ func (s *ListApplicationsResponseBodyDataApplications) SetAppName(v string) *Lis
 	return s
 }
 
+func (s *ListApplicationsResponseBodyDataApplications) SetBaseAppId(v string) *ListApplicationsResponseBodyDataApplications {
+	s.BaseAppId = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplications) SetChildren(v []*ListApplicationsResponseBodyDataApplicationsChildren) *ListApplicationsResponseBodyDataApplications {
+	s.Children = v
+	return s
+}
+
 func (s *ListApplicationsResponseBodyDataApplications) SetCpu(v int32) *ListApplicationsResponseBodyDataApplications {
 	s.Cpu = &v
 	return s
@@ -27586,8 +27636,18 @@ func (s *ListApplicationsResponseBodyDataApplications) SetMem(v int32) *ListAppl
 	return s
 }
 
+func (s *ListApplicationsResponseBodyDataApplications) SetMseEnabled(v bool) *ListApplicationsResponseBodyDataApplications {
+	s.MseEnabled = &v
+	return s
+}
+
 func (s *ListApplicationsResponseBodyDataApplications) SetNamespaceId(v string) *ListApplicationsResponseBodyDataApplications {
 	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplications) SetProgrammingLanguage(v string) *ListApplicationsResponseBodyDataApplications {
+	s.ProgrammingLanguage = &v
 	return s
 }
 
@@ -27603,6 +27663,136 @@ func (s *ListApplicationsResponseBodyDataApplications) SetRunningInstances(v int
 
 func (s *ListApplicationsResponseBodyDataApplications) SetTags(v []*ListApplicationsResponseBodyDataApplicationsTags) *ListApplicationsResponseBodyDataApplications {
 	s.Tags = v
+	return s
+}
+
+type ListApplicationsResponseBodyDataApplicationsChildren struct {
+	AppDeletingStatus   *bool                                                       `json:"AppDeletingStatus,omitempty" xml:"AppDeletingStatus,omitempty"`
+	AppDescription      *string                                                     `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	AppId               *string                                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName             *string                                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BaseAppId           *string                                                     `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
+	Cpu                 *int32                                                      `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Instances           *int32                                                      `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	Mem                 *int32                                                      `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	MseEnabled          *bool                                                       `json:"MseEnabled,omitempty" xml:"MseEnabled,omitempty"`
+	NamespaceId         *string                                                     `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	ProgrammingLanguage *string                                                     `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	RegionId            *string                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RunningInstances    *int32                                                      `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
+	ScaleRuleEnabled    *bool                                                       `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
+	ScaleRuleType       *string                                                     `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
+	Tags                []*ListApplicationsResponseBodyDataApplicationsChildrenTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s ListApplicationsResponseBodyDataApplicationsChildren) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsResponseBodyDataApplicationsChildren) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetAppDeletingStatus(v bool) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.AppDeletingStatus = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetAppDescription(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.AppDescription = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetAppId(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetAppName(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetBaseAppId(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.BaseAppId = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetCpu(v int32) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetInstances(v int32) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.Instances = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetMem(v int32) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.Mem = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetMseEnabled(v bool) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.MseEnabled = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetNamespaceId(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetProgrammingLanguage(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.ProgrammingLanguage = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetRegionId(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetRunningInstances(v int32) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.RunningInstances = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetScaleRuleEnabled(v bool) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.ScaleRuleEnabled = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetScaleRuleType(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.ScaleRuleType = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetTags(v []*ListApplicationsResponseBodyDataApplicationsChildrenTags) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.Tags = v
+	return s
+}
+
+type ListApplicationsResponseBodyDataApplicationsChildrenTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListApplicationsResponseBodyDataApplicationsChildrenTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsResponseBodyDataApplicationsChildrenTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildrenTags) SetKey(v string) *ListApplicationsResponseBodyDataApplicationsChildrenTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildrenTags) SetValue(v string) *ListApplicationsResponseBodyDataApplicationsChildrenTags {
+	s.Value = &v
 	return s
 }
 
@@ -38376,8 +38566,16 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		body["AssociateEip"] = request.AssociateEip
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BaseAppId)) {
+		body["BaseAppId"] = request.BaseAppId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ConfigMapMountDesc)) {
 		body["ConfigMapMountDesc"] = request.ConfigMapMountDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MicroRegistrationConfig)) {
+		body["MicroRegistrationConfig"] = request.MicroRegistrationConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OssAkId)) {
@@ -38398,6 +38596,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.PhpConfig)) {
 		body["PhpConfig"] = request.PhpConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceTags)) {
+		body["ServiceTags"] = request.ServiceTags
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -40058,6 +40260,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 		body["ConfigMapMountDesc"] = request.ConfigMapMountDesc
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MicroRegistrationConfig)) {
+		body["MicroRegistrationConfig"] = request.MicroRegistrationConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OssAkId)) {
 		body["OssAkId"] = request.OssAkId
 	}
@@ -40076,6 +40282,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.PhpConfig)) {
 		body["PhpConfig"] = request.PhpConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceTags)) {
+		body["ServiceTags"] = request.ServiceTags
 	}
 
 	req := &openapi.OpenApiRequest{
