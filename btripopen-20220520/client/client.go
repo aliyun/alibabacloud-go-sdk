@@ -5473,6 +5473,189 @@ func (s *AccessTokenResponse) SetBody(v *AccessTokenResponseBody) *AccessTokenRe
 	return s
 }
 
+type AddEmployeesToCustomRoleHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s AddEmployeesToCustomRoleHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEmployeesToCustomRoleHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddEmployeesToCustomRoleHeaders) SetCommonHeaders(v map[string]*string) *AddEmployeesToCustomRoleHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddEmployeesToCustomRoleHeaders) SetXAcsBtripCorpToken(v string) *AddEmployeesToCustomRoleHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type AddEmployeesToCustomRoleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	UserIdList []*string `json:"user_id_list,omitempty" xml:"user_id_list,omitempty" type:"Repeated"`
+}
+
+func (s AddEmployeesToCustomRoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEmployeesToCustomRoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddEmployeesToCustomRoleRequest) SetRoleId(v string) *AddEmployeesToCustomRoleRequest {
+	s.RoleId = &v
+	return s
+}
+
+func (s *AddEmployeesToCustomRoleRequest) SetUserIdList(v []*string) *AddEmployeesToCustomRoleRequest {
+	s.UserIdList = v
+	return s
+}
+
+type AddEmployeesToCustomRoleShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	UserIdListShrink *string `json:"user_id_list,omitempty" xml:"user_id_list,omitempty"`
+}
+
+func (s AddEmployeesToCustomRoleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEmployeesToCustomRoleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddEmployeesToCustomRoleShrinkRequest) SetRoleId(v string) *AddEmployeesToCustomRoleShrinkRequest {
+	s.RoleId = &v
+	return s
+}
+
+func (s *AddEmployeesToCustomRoleShrinkRequest) SetUserIdListShrink(v string) *AddEmployeesToCustomRoleShrinkRequest {
+	s.UserIdListShrink = &v
+	return s
+}
+
+type AddEmployeesToCustomRoleResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s AddEmployeesToCustomRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEmployeesToCustomRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddEmployeesToCustomRoleResponseBody) SetCode(v string) *AddEmployeesToCustomRoleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddEmployeesToCustomRoleResponseBody) SetHttpStatusCode(v int32) *AddEmployeesToCustomRoleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddEmployeesToCustomRoleResponseBody) SetMessage(v string) *AddEmployeesToCustomRoleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddEmployeesToCustomRoleResponseBody) SetRequestId(v string) *AddEmployeesToCustomRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddEmployeesToCustomRoleResponseBody) SetSuccess(v bool) *AddEmployeesToCustomRoleResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AddEmployeesToCustomRoleResponseBody) SetTraceId(v string) *AddEmployeesToCustomRoleResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type AddEmployeesToCustomRoleResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddEmployeesToCustomRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddEmployeesToCustomRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEmployeesToCustomRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddEmployeesToCustomRoleResponse) SetHeaders(v map[string]*string) *AddEmployeesToCustomRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddEmployeesToCustomRoleResponse) SetStatusCode(v int32) *AddEmployeesToCustomRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddEmployeesToCustomRoleResponse) SetBody(v *AddEmployeesToCustomRoleResponseBody) *AddEmployeesToCustomRoleResponse {
+	s.Body = v
+	return s
+}
+
 type AddInvoiceEntityHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// example:
@@ -9506,9 +9689,11 @@ type ApplyListQueryResponseBodyModuleListItineraryList struct {
 	// example:
 	//
 	// xm1
-	ProjectCode          *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle         *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	ThirdpartInvoiceId    *string `json:"thirdpart_invoice_id,omitempty" xml:"thirdpart_invoice_id,omitempty"`
+	ThirdpartItineraryId  *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
 	// example:
 	//
 	// 0
@@ -9572,6 +9757,16 @@ func (s *ApplyListQueryResponseBodyModuleListItineraryList) SetProjectTitle(v st
 	return s
 }
 
+func (s *ApplyListQueryResponseBodyModuleListItineraryList) SetThirdpartCostCenterId(v string) *ApplyListQueryResponseBodyModuleListItineraryList {
+	s.ThirdpartCostCenterId = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItineraryList) SetThirdpartInvoiceId(v string) *ApplyListQueryResponseBodyModuleListItineraryList {
+	s.ThirdpartInvoiceId = &v
+	return s
+}
+
 func (s *ApplyListQueryResponseBodyModuleListItineraryList) SetThirdpartItineraryId(v string) *ApplyListQueryResponseBodyModuleListItineraryList {
 	s.ThirdpartItineraryId = &v
 	return s
@@ -9610,9 +9805,11 @@ type ApplyListQueryResponseBodyModuleListItinerarySetList struct {
 	// example:
 	//
 	// 12345
-	ProjectCode          *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle         *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	ThirdpartInvoiceId    *string `json:"thirdpart_invoice_id,omitempty" xml:"thirdpart_invoice_id,omitempty"`
+	ThirdpartItineraryId  *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
 	// example:
 	//
 	// 0
@@ -9669,6 +9866,16 @@ func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetProjectCode(v 
 
 func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetProjectTitle(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
 	s.ProjectTitle = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetThirdpartCostCenterId(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
+	s.ThirdpartCostCenterId = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListItinerarySetList) SetThirdpartInvoiceId(v string) *ApplyListQueryResponseBodyModuleListItinerarySetList {
+	s.ThirdpartInvoiceId = &v
 	return s
 }
 
@@ -12353,9 +12560,11 @@ type ApplyQueryResponseBodyModuleItineraryList struct {
 	// example:
 	//
 	// xm1
-	ProjectCode          *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle         *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	ThirdpartInvoiceId    *string `json:"thirdpart_invoice_id,omitempty" xml:"thirdpart_invoice_id,omitempty"`
+	ThirdpartItineraryId  *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
 	// example:
 	//
 	// 1
@@ -12439,6 +12648,16 @@ func (s *ApplyQueryResponseBodyModuleItineraryList) SetProjectTitle(v string) *A
 	return s
 }
 
+func (s *ApplyQueryResponseBodyModuleItineraryList) SetThirdpartCostCenterId(v string) *ApplyQueryResponseBodyModuleItineraryList {
+	s.ThirdpartCostCenterId = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleItineraryList) SetThirdpartInvoiceId(v string) *ApplyQueryResponseBodyModuleItineraryList {
+	s.ThirdpartInvoiceId = &v
+	return s
+}
+
 func (s *ApplyQueryResponseBodyModuleItineraryList) SetThirdpartItineraryId(v string) *ApplyQueryResponseBodyModuleItineraryList {
 	s.ThirdpartItineraryId = &v
 	return s
@@ -12496,9 +12715,11 @@ type ApplyQueryResponseBodyModuleItinerarySetList struct {
 	// example:
 	//
 	// projecttow
-	ProjectCode          *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle         *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	ThirdpartInvoiceId    *string `json:"thirdpart_invoice_id,omitempty" xml:"thirdpart_invoice_id,omitempty"`
+	ThirdpartItineraryId  *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
 	// example:
 	//
 	// 0
@@ -12565,6 +12786,16 @@ func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetProjectCode(v string) 
 
 func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetProjectTitle(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
 	s.ProjectTitle = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetThirdpartCostCenterId(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.ThirdpartCostCenterId = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleItinerarySetList) SetThirdpartInvoiceId(v string) *ApplyQueryResponseBodyModuleItinerarySetList {
+	s.ThirdpartInvoiceId = &v
 	return s
 }
 
@@ -20822,6 +21053,154 @@ func (s *CostCenterSaveResponse) SetBody(v *CostCenterSaveResponseBody) *CostCen
 	return s
 }
 
+type CreateCustomRoleHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s CreateCustomRoleHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoleHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoleHeaders) SetCommonHeaders(v map[string]*string) *CreateCustomRoleHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateCustomRoleHeaders) SetXAcsBtripCorpToken(v string) *CreateCustomRoleHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type CreateCustomRoleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123abc
+	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
+	// This parameter is required.
+	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
+}
+
+func (s CreateCustomRoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoleRequest) SetRoleId(v string) *CreateCustomRoleRequest {
+	s.RoleId = &v
+	return s
+}
+
+func (s *CreateCustomRoleRequest) SetRoleName(v string) *CreateCustomRoleRequest {
+	s.RoleName = &v
+	return s
+}
+
+type CreateCustomRoleResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s CreateCustomRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoleResponseBody) SetCode(v string) *CreateCustomRoleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateCustomRoleResponseBody) SetHttpStatusCode(v int32) *CreateCustomRoleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateCustomRoleResponseBody) SetMessage(v string) *CreateCustomRoleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateCustomRoleResponseBody) SetRequestId(v string) *CreateCustomRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCustomRoleResponseBody) SetSuccess(v bool) *CreateCustomRoleResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateCustomRoleResponseBody) SetTraceId(v string) *CreateCustomRoleResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type CreateCustomRoleResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCustomRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCustomRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoleResponse) SetHeaders(v map[string]*string) *CreateCustomRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCustomRoleResponse) SetStatusCode(v int32) *CreateCustomRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCustomRoleResponse) SetBody(v *CreateCustomRoleResponseBody) *CreateCustomRoleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSubCorpHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// example:
@@ -20992,6 +21371,324 @@ func (s *CreateSubCorpResponse) SetStatusCode(v int32) *CreateSubCorpResponse {
 }
 
 func (s *CreateSubCorpResponse) SetBody(v *CreateSubCorpResponseBody) *CreateSubCorpResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomRoleHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s DeleteCustomRoleHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoleHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoleHeaders) SetCommonHeaders(v map[string]*string) *DeleteCustomRoleHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteCustomRoleHeaders) SetXAcsBtripCorpToken(v string) *DeleteCustomRoleHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type DeleteCustomRoleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
+}
+
+func (s DeleteCustomRoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoleRequest) SetRoleId(v string) *DeleteCustomRoleRequest {
+	s.RoleId = &v
+	return s
+}
+
+type DeleteCustomRoleResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210f079e16603757182131635d866a
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s DeleteCustomRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoleResponseBody) SetCode(v string) *DeleteCustomRoleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteCustomRoleResponseBody) SetHttpStatusCode(v int32) *DeleteCustomRoleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomRoleResponseBody) SetMessage(v string) *DeleteCustomRoleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCustomRoleResponseBody) SetRequestId(v string) *DeleteCustomRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCustomRoleResponseBody) SetSuccess(v bool) *DeleteCustomRoleResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteCustomRoleResponseBody) SetTraceId(v string) *DeleteCustomRoleResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DeleteCustomRoleResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCustomRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCustomRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoleResponse) SetHeaders(v map[string]*string) *DeleteCustomRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomRoleResponse) SetStatusCode(v int32) *DeleteCustomRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomRoleResponse) SetBody(v *DeleteCustomRoleResponseBody) *DeleteCustomRoleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEmployeesFromCustomRoleHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s DeleteEmployeesFromCustomRoleHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEmployeesFromCustomRoleHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEmployeesFromCustomRoleHeaders) SetCommonHeaders(v map[string]*string) *DeleteEmployeesFromCustomRoleHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteEmployeesFromCustomRoleHeaders) SetXAcsBtripCorpToken(v string) *DeleteEmployeesFromCustomRoleHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type DeleteEmployeesFromCustomRoleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
+	// This parameter is required.
+	UserIdList []*string `json:"user_id_list,omitempty" xml:"user_id_list,omitempty" type:"Repeated"`
+}
+
+func (s DeleteEmployeesFromCustomRoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEmployeesFromCustomRoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEmployeesFromCustomRoleRequest) SetRoleId(v string) *DeleteEmployeesFromCustomRoleRequest {
+	s.RoleId = &v
+	return s
+}
+
+func (s *DeleteEmployeesFromCustomRoleRequest) SetUserIdList(v []*string) *DeleteEmployeesFromCustomRoleRequest {
+	s.UserIdList = v
+	return s
+}
+
+type DeleteEmployeesFromCustomRoleShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
+	// This parameter is required.
+	UserIdListShrink *string `json:"user_id_list,omitempty" xml:"user_id_list,omitempty"`
+}
+
+func (s DeleteEmployeesFromCustomRoleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEmployeesFromCustomRoleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEmployeesFromCustomRoleShrinkRequest) SetRoleId(v string) *DeleteEmployeesFromCustomRoleShrinkRequest {
+	s.RoleId = &v
+	return s
+}
+
+func (s *DeleteEmployeesFromCustomRoleShrinkRequest) SetUserIdListShrink(v string) *DeleteEmployeesFromCustomRoleShrinkRequest {
+	s.UserIdListShrink = &v
+	return s
+}
+
+type DeleteEmployeesFromCustomRoleResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s DeleteEmployeesFromCustomRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEmployeesFromCustomRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEmployeesFromCustomRoleResponseBody) SetCode(v string) *DeleteEmployeesFromCustomRoleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteEmployeesFromCustomRoleResponseBody) SetHttpStatusCode(v int32) *DeleteEmployeesFromCustomRoleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteEmployeesFromCustomRoleResponseBody) SetMessage(v string) *DeleteEmployeesFromCustomRoleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteEmployeesFromCustomRoleResponseBody) SetRequestId(v string) *DeleteEmployeesFromCustomRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteEmployeesFromCustomRoleResponseBody) SetSuccess(v bool) *DeleteEmployeesFromCustomRoleResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteEmployeesFromCustomRoleResponseBody) SetTraceId(v string) *DeleteEmployeesFromCustomRoleResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DeleteEmployeesFromCustomRoleResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEmployeesFromCustomRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteEmployeesFromCustomRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEmployeesFromCustomRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEmployeesFromCustomRoleResponse) SetHeaders(v map[string]*string) *DeleteEmployeesFromCustomRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEmployeesFromCustomRoleResponse) SetStatusCode(v int32) *DeleteEmployeesFromCustomRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEmployeesFromCustomRoleResponse) SetBody(v *DeleteEmployeesFromCustomRoleResponseBody) *DeleteEmployeesFromCustomRoleResponse {
 	s.Body = v
 	return s
 }
@@ -37734,9 +38431,11 @@ func (s *FlightOrderQueryResponseBodyModule) SetPriceInfoList(v []*FlightOrderQu
 }
 
 type FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList struct {
-	ApplyId    *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ArrAirport *string `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
-	ArrCity    *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ApplyId        *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ArrAirport     *string `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
+	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
 	// example:
 	//
 	// 2022-07-20T10:40Z
@@ -37765,9 +38464,11 @@ type FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList struct {
 	// example:
 	//
 	// 0
-	ChangeType *int32  `json:"change_type,omitempty" xml:"change_type,omitempty"`
-	DepAirport *string `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
-	DepCity    *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	ChangeType     *int32  `json:"change_type,omitempty" xml:"change_type,omitempty"`
+	DepAirport     *string `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
+	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	// example:
 	//
 	// 2022-07-20T10:40Z
@@ -37817,8 +38518,18 @@ func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetArrAir
 	return s
 }
 
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetArrAirportCode(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.ArrAirportCode = &v
+	return s
+}
+
 func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetArrCity(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
 	s.ArrCity = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetArrCityCode(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.ArrCityCode = &v
 	return s
 }
 
@@ -37867,8 +38578,18 @@ func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetDepAir
 	return s
 }
 
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetDepAirportCode(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.DepAirportCode = &v
+	return s
+}
+
 func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetDepCity(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
 	s.DepCity = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetDepCityCode(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.DepCityCode = &v
 	return s
 }
 
@@ -38080,12 +38801,16 @@ func (s *FlightOrderQueryResponseBodyModuleFlightInfoList) SetFlightNo(v string)
 }
 
 type FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList struct {
-	ApplyId    *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ArrAirport *string `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
-	ArrCity    *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	DepAirport *string `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
-	DepCity    *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	FlightNo   *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	ApplyId        *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ArrAirport     *string `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
+	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	DepAirport     *string `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
+	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	FlightNo       *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
 	// example:
 	//
 	// 2022-07-20T10:40Z
@@ -38132,8 +38857,18 @@ func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetArrAir
 	return s
 }
 
+func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetArrAirportCode(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
+	s.ArrAirportCode = &v
+	return s
+}
+
 func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetArrCity(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
 	s.ArrCity = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetArrCityCode(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
+	s.ArrCityCode = &v
 	return s
 }
 
@@ -38142,8 +38877,18 @@ func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetDepAir
 	return s
 }
 
+func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetDepAirportCode(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
+	s.DepAirportCode = &v
+	return s
+}
+
 func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetDepCity(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
 	s.DepCity = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetDepCityCode(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
+	s.DepCityCode = &v
 	return s
 }
 
@@ -38193,6 +38938,8 @@ func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetTicket
 }
 
 type FlightOrderQueryResponseBodyModuleFlightTicketInfoList struct {
+	ArrAirport     *string `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
+	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
 	// example:
 	//
 	// 100
@@ -38200,7 +38947,9 @@ type FlightOrderQueryResponseBodyModuleFlightTicketInfoList struct {
 	// example:
 	//
 	// false
-	Changed *bool `json:"changed,omitempty" xml:"changed,omitempty"`
+	Changed        *bool   `json:"changed,omitempty" xml:"changed,omitempty"`
+	DepAirport     *string `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
+	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
 	// example:
 	//
 	// 10
@@ -38253,6 +39002,16 @@ func (s FlightOrderQueryResponseBodyModuleFlightTicketInfoList) GoString() strin
 	return s.String()
 }
 
+func (s *FlightOrderQueryResponseBodyModuleFlightTicketInfoList) SetArrAirport(v string) *FlightOrderQueryResponseBodyModuleFlightTicketInfoList {
+	s.ArrAirport = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightTicketInfoList) SetArrAirportCode(v string) *FlightOrderQueryResponseBodyModuleFlightTicketInfoList {
+	s.ArrAirportCode = &v
+	return s
+}
+
 func (s *FlightOrderQueryResponseBodyModuleFlightTicketInfoList) SetBuildPrice(v float64) *FlightOrderQueryResponseBodyModuleFlightTicketInfoList {
 	s.BuildPrice = &v
 	return s
@@ -38260,6 +39019,16 @@ func (s *FlightOrderQueryResponseBodyModuleFlightTicketInfoList) SetBuildPrice(v
 
 func (s *FlightOrderQueryResponseBodyModuleFlightTicketInfoList) SetChanged(v bool) *FlightOrderQueryResponseBodyModuleFlightTicketInfoList {
 	s.Changed = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightTicketInfoList) SetDepAirport(v string) *FlightOrderQueryResponseBodyModuleFlightTicketInfoList {
+	s.DepAirport = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightTicketInfoList) SetDepAirportCode(v string) *FlightOrderQueryResponseBodyModuleFlightTicketInfoList {
+	s.DepAirportCode = &v
 	return s
 }
 
@@ -63151,8 +63920,9 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	// example:
 	//
 	// 23423432423
-	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectName *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	ProjectCode      *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectName      *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	RefundChangeCost *float64 `json:"refund_change_cost,omitempty" xml:"refund_change_cost,omitempty"`
 	// example:
 	//
 	// 23.9
@@ -63557,6 +64327,11 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetProjectCode(v
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetProjectName(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetRefundChangeCost(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.RefundChangeCost = &v
 	return s
 }
 
@@ -78221,7 +78996,8 @@ type IsvUserSaveRequestUserList struct {
 	// example:
 	//
 	// ceshi
-	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	RealNameEn *string   `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	RoleIdList []*string `json:"role_id_list,omitempty" xml:"role_id_list,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 123
@@ -78313,6 +79089,11 @@ func (s *IsvUserSaveRequestUserList) SetPositionLevel(v string) *IsvUserSaveRequ
 
 func (s *IsvUserSaveRequestUserList) SetRealNameEn(v string) *IsvUserSaveRequestUserList {
 	s.RealNameEn = &v
+	return s
+}
+
+func (s *IsvUserSaveRequestUserList) SetRoleIdList(v []*string) *IsvUserSaveRequestUserList {
+	s.RoleIdList = v
 	return s
 }
 
@@ -80628,6 +81409,166 @@ func (s *ProjectModifyResponse) SetStatusCode(v int32) *ProjectModifyResponse {
 }
 
 func (s *ProjectModifyResponse) SetBody(v *ProjectModifyResponseBody) *ProjectModifyResponse {
+	s.Body = v
+	return s
+}
+
+type QueryGroupCorpListHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s QueryGroupCorpListHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupCorpListHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupCorpListHeaders) SetCommonHeaders(v map[string]*string) *QueryGroupCorpListHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryGroupCorpListHeaders) SetXAcsBtripCorpToken(v string) *QueryGroupCorpListHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type QueryGroupCorpListRequest struct {
+	// example:
+	//
+	// 123
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s QueryGroupCorpListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupCorpListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupCorpListRequest) SetUserId(v string) *QueryGroupCorpListRequest {
+	s.UserId = &v
+	return s
+}
+
+type QueryGroupCorpListResponseBody struct {
+	// example:
+	//
+	// A3F8DCAB-8301-5770-BD9F-71B0BF9E1A6E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	Code    *int32                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module  []*QueryGroupCorpListResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"trace_id,omitempty" xml:"trace_id,omitempty"`
+}
+
+func (s QueryGroupCorpListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupCorpListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupCorpListResponseBody) SetRequestId(v string) *QueryGroupCorpListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryGroupCorpListResponseBody) SetCode(v int32) *QueryGroupCorpListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryGroupCorpListResponseBody) SetMessage(v string) *QueryGroupCorpListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryGroupCorpListResponseBody) SetModule(v []*QueryGroupCorpListResponseBodyModule) *QueryGroupCorpListResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *QueryGroupCorpListResponseBody) SetSuccess(v bool) *QueryGroupCorpListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryGroupCorpListResponseBody) SetTraceId(v string) *QueryGroupCorpListResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type QueryGroupCorpListResponseBodyModule struct {
+	// example:
+	//
+	// corp1
+	CorpId   *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+}
+
+func (s QueryGroupCorpListResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupCorpListResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupCorpListResponseBodyModule) SetCorpId(v string) *QueryGroupCorpListResponseBodyModule {
+	s.CorpId = &v
+	return s
+}
+
+func (s *QueryGroupCorpListResponseBodyModule) SetCorpName(v string) *QueryGroupCorpListResponseBodyModule {
+	s.CorpName = &v
+	return s
+}
+
+type QueryGroupCorpListResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryGroupCorpListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryGroupCorpListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupCorpListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupCorpListResponse) SetHeaders(v map[string]*string) *QueryGroupCorpListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryGroupCorpListResponse) SetStatusCode(v int32) *QueryGroupCorpListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryGroupCorpListResponse) SetBody(v *QueryGroupCorpListResponseBody) *QueryGroupCorpListResponse {
 	s.Body = v
 	return s
 }
@@ -97244,6 +98185,154 @@ func (s *TravelStandardQueryResponse) SetBody(v *TravelStandardQueryResponseBody
 	return s
 }
 
+type UpdateCustomRoleHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwis
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s UpdateCustomRoleHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoleHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoleHeaders) SetCommonHeaders(v map[string]*string) *UpdateCustomRoleHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateCustomRoleHeaders) SetXAcsBtripCorpToken(v string) *UpdateCustomRoleHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type UpdateCustomRoleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
+	// This parameter is required.
+	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
+}
+
+func (s UpdateCustomRoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoleRequest) SetRoleId(v string) *UpdateCustomRoleRequest {
+	s.RoleId = &v
+	return s
+}
+
+func (s *UpdateCustomRoleRequest) SetRoleName(v string) *UpdateCustomRoleRequest {
+	s.RoleName = &v
+	return s
+}
+
+type UpdateCustomRoleResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210bcc3a16583004579056128d33d7
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s UpdateCustomRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoleResponseBody) SetCode(v string) *UpdateCustomRoleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateCustomRoleResponseBody) SetHttpStatusCode(v int32) *UpdateCustomRoleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateCustomRoleResponseBody) SetMessage(v string) *UpdateCustomRoleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateCustomRoleResponseBody) SetRequestId(v string) *UpdateCustomRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCustomRoleResponseBody) SetSuccess(v bool) *UpdateCustomRoleResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateCustomRoleResponseBody) SetTraceId(v string) *UpdateCustomRoleResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UpdateCustomRoleResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCustomRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCustomRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoleResponse) SetHeaders(v map[string]*string) *UpdateCustomRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCustomRoleResponse) SetStatusCode(v int32) *UpdateCustomRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCustomRoleResponse) SetBody(v *UpdateCustomRoleResponseBody) *UpdateCustomRoleResponse {
+	s.Body = v
+	return s
+}
+
 type UserQueryHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// example:
@@ -98497,6 +99586,89 @@ func (client *Client) AccessToken(request *AccessTokenRequest) (_result *AccessT
 	headers := make(map[string]*string)
 	_result = &AccessTokenResponse{}
 	_body, _err := client.AccessTokenWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量新增企业自定义角色下人员
+//
+// @param tmpReq - AddEmployeesToCustomRoleRequest
+//
+// @param headers - AddEmployeesToCustomRoleHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddEmployeesToCustomRoleResponse
+func (client *Client) AddEmployeesToCustomRoleWithOptions(tmpReq *AddEmployeesToCustomRoleRequest, headers *AddEmployeesToCustomRoleHeaders, runtime *util.RuntimeOptions) (_result *AddEmployeesToCustomRoleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddEmployeesToCustomRoleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserIdList)) {
+		request.UserIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserIdList, tea.String("user_id_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		body["role_id"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdListShrink)) {
+		body["user_id_list"] = request.UserIdListShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddEmployeesToCustomRole"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/role/v1/customRoleEmployees/add"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddEmployeesToCustomRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量新增企业自定义角色下人员
+//
+// @param request - AddEmployeesToCustomRoleRequest
+//
+// @return AddEmployeesToCustomRoleResponse
+func (client *Client) AddEmployeesToCustomRole(request *AddEmployeesToCustomRoleRequest) (_result *AddEmployeesToCustomRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddEmployeesToCustomRoleHeaders{}
+	_result = &AddEmployeesToCustomRoleResponse{}
+	_body, _err := client.AddEmployeesToCustomRoleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -101550,6 +102722,83 @@ func (client *Client) CostCenterSave(request *CostCenterSaveRequest) (_result *C
 
 // Summary:
 //
+// 创建企业自定义角色
+//
+// @param request - CreateCustomRoleRequest
+//
+// @param headers - CreateCustomRoleHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomRoleResponse
+func (client *Client) CreateCustomRoleWithOptions(request *CreateCustomRoleRequest, headers *CreateCustomRoleHeaders, runtime *util.RuntimeOptions) (_result *CreateCustomRoleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		body["role_id"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		body["role_name"] = request.RoleName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCustomRole"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/role/v1/customRoles/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCustomRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建企业自定义角色
+//
+// @param request - CreateCustomRoleRequest
+//
+// @return CreateCustomRoleResponse
+func (client *Client) CreateCustomRole(request *CreateCustomRoleRequest) (_result *CreateCustomRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateCustomRoleHeaders{}
+	_result = &CreateCustomRoleResponse{}
+	_body, _err := client.CreateCustomRoleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建子企业
 //
 // @param request - CreateSubCorpRequest
@@ -101622,6 +102871,162 @@ func (client *Client) CreateSubCorp(request *CreateSubCorpRequest) (_result *Cre
 	headers := &CreateSubCorpHeaders{}
 	_result = &CreateSubCorpResponse{}
 	_body, _err := client.CreateSubCorpWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除企业自定义角色
+//
+// @param request - DeleteCustomRoleRequest
+//
+// @param headers - DeleteCustomRoleHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomRoleResponse
+func (client *Client) DeleteCustomRoleWithOptions(request *DeleteCustomRoleRequest, headers *DeleteCustomRoleHeaders, runtime *util.RuntimeOptions) (_result *DeleteCustomRoleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		body["role_id"] = request.RoleId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomRole"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/role/v1/customRoles/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除企业自定义角色
+//
+// @param request - DeleteCustomRoleRequest
+//
+// @return DeleteCustomRoleResponse
+func (client *Client) DeleteCustomRole(request *DeleteCustomRoleRequest) (_result *DeleteCustomRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteCustomRoleHeaders{}
+	_result = &DeleteCustomRoleResponse{}
+	_body, _err := client.DeleteCustomRoleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除企业自定义角色下人员
+//
+// @param tmpReq - DeleteEmployeesFromCustomRoleRequest
+//
+// @param headers - DeleteEmployeesFromCustomRoleHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEmployeesFromCustomRoleResponse
+func (client *Client) DeleteEmployeesFromCustomRoleWithOptions(tmpReq *DeleteEmployeesFromCustomRoleRequest, headers *DeleteEmployeesFromCustomRoleHeaders, runtime *util.RuntimeOptions) (_result *DeleteEmployeesFromCustomRoleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteEmployeesFromCustomRoleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserIdList)) {
+		request.UserIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserIdList, tea.String("user_id_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		body["role_id"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdListShrink)) {
+		body["user_id_list"] = request.UserIdListShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEmployeesFromCustomRole"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/role/v1/customRoleEmployees/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEmployeesFromCustomRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除企业自定义角色下人员
+//
+// @param request - DeleteEmployeesFromCustomRoleRequest
+//
+// @return DeleteEmployeesFromCustomRoleResponse
+func (client *Client) DeleteEmployeesFromCustomRole(request *DeleteEmployeesFromCustomRoleRequest) (_result *DeleteEmployeesFromCustomRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteEmployeesFromCustomRoleHeaders{}
+	_result = &DeleteEmployeesFromCustomRoleResponse{}
+	_body, _err := client.DeleteEmployeesFromCustomRoleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -110841,6 +112246,79 @@ func (client *Client) ProjectModify(request *ProjectModifyRequest) (_result *Pro
 
 // Summary:
 //
+// 查询子企业列表
+//
+// @param request - QueryGroupCorpListRequest
+//
+// @param headers - QueryGroupCorpListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryGroupCorpListResponse
+func (client *Client) QueryGroupCorpListWithOptions(request *QueryGroupCorpListRequest, headers *QueryGroupCorpListHeaders, runtime *util.RuntimeOptions) (_result *QueryGroupCorpListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryGroupCorpList"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/sub_corps/v1/corps/action/corpList"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryGroupCorpListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询子企业列表
+//
+// @param request - QueryGroupCorpListRequest
+//
+// @return QueryGroupCorpListResponse
+func (client *Client) QueryGroupCorpList(request *QueryGroupCorpListRequest) (_result *QueryGroupCorpListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QueryGroupCorpListHeaders{}
+	_result = &QueryGroupCorpListResponse{}
+	_body, _err := client.QueryGroupCorpListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 报销单查询
 //
 // @param request - QueryReimbursementOrderRequest
@@ -113664,6 +115142,83 @@ func (client *Client) TravelStandardQuery(request *TravelStandardQueryRequest) (
 	headers := &TravelStandardQueryHeaders{}
 	_result = &TravelStandardQueryResponse{}
 	_body, _err := client.TravelStandardQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新企业自定义角色
+//
+// @param request - UpdateCustomRoleRequest
+//
+// @param headers - UpdateCustomRoleHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCustomRoleResponse
+func (client *Client) UpdateCustomRoleWithOptions(request *UpdateCustomRoleRequest, headers *UpdateCustomRoleHeaders, runtime *util.RuntimeOptions) (_result *UpdateCustomRoleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		body["role_id"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		body["role_name"] = request.RoleName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCustomRole"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/role/v1/customRoles/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCustomRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新企业自定义角色
+//
+// @param request - UpdateCustomRoleRequest
+//
+// @return UpdateCustomRoleResponse
+func (client *Client) UpdateCustomRole(request *UpdateCustomRoleRequest) (_result *UpdateCustomRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateCustomRoleHeaders{}
+	_result = &UpdateCustomRoleResponse{}
+	_body, _err := client.UpdateCustomRoleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
