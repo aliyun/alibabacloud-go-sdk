@@ -2242,6 +2242,382 @@ func (s *ListReleaseVersionsResponse) SetBody(v *ListReleaseVersionsResponseBody
 	return s
 }
 
+type ListSessionClustersRequest struct {
+	// 一次获取的最大记录数。
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 标记当前开始读取的位置，置空表示从头开始。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// root
+	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// 作业名称。
+	//
+	// example:
+	//
+	// emr-spark-demo-job
+	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+}
+
+func (s ListSessionClustersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionClustersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionClustersRequest) SetMaxResults(v int32) *ListSessionClustersRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSessionClustersRequest) SetNextToken(v string) *ListSessionClustersRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSessionClustersRequest) SetQueueName(v string) *ListSessionClustersRequest {
+	s.QueueName = &v
+	return s
+}
+
+func (s *ListSessionClustersRequest) SetRegionId(v string) *ListSessionClustersRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListSessionClustersRequest) SetSessionClusterId(v string) *ListSessionClustersRequest {
+	s.SessionClusterId = &v
+	return s
+}
+
+type ListSessionClustersResponseBody struct {
+	// 本次请求所返回的最大记录条数。
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId       *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SessionClusters []*ListSessionClustersResponseBodySessionClusters `json:"sessionClusters,omitempty" xml:"sessionClusters,omitempty" type:"Repeated"`
+	// 本次请求条件下的数据总量。
+	//
+	// example:
+	//
+	// 200
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListSessionClustersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionClustersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionClustersResponseBody) SetMaxResults(v int32) *ListSessionClustersResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBody) SetNextToken(v string) *ListSessionClustersResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBody) SetRequestId(v string) *ListSessionClustersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBody) SetSessionClusters(v []*ListSessionClustersResponseBodySessionClusters) *ListSessionClustersResponseBody {
+	s.SessionClusters = v
+	return s
+}
+
+func (s *ListSessionClustersResponseBody) SetTotalCount(v int32) *ListSessionClustersResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSessionClustersResponseBodySessionClusters struct {
+	ApplicationConfigs     []*ListSessionClustersResponseBodySessionClustersApplicationConfigs   `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty" type:"Repeated"`
+	AutoStartConfiguration *ListSessionClustersResponseBodySessionClustersAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
+	AutoStopConfiguration  *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration  `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	// example:
+	//
+	// adhoc_query
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 作业实例名称。
+	//
+	// example:
+	//
+	// dev_queue
+	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// SQL Compute id
+	//
+	// example:
+	//
+	// sc-123131
+	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+	// 作业状态。
+	//
+	// example:
+	//
+	// Running
+	State             *string                                                          `json:"state,omitempty" xml:"state,omitempty"`
+	StateChangeReason *ListSessionClustersResponseBodySessionClustersStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
+	// 任务实例ID。
+	//
+	// example:
+	//
+	// 123131
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// test_user
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// 工作空间id。
+	//
+	// example:
+	//
+	// w-1234abcd
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListSessionClustersResponseBodySessionClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionClustersResponseBodySessionClusters) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetApplicationConfigs(v []*ListSessionClustersResponseBodySessionClustersApplicationConfigs) *ListSessionClustersResponseBodySessionClusters {
+	s.ApplicationConfigs = v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetAutoStartConfiguration(v *ListSessionClustersResponseBodySessionClustersAutoStartConfiguration) *ListSessionClustersResponseBodySessionClusters {
+	s.AutoStartConfiguration = v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetAutoStopConfiguration(v *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration) *ListSessionClustersResponseBodySessionClusters {
+	s.AutoStopConfiguration = v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetName(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetQueueName(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.QueueName = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetSessionClusterId(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.SessionClusterId = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetState(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.State = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetStateChangeReason(v *ListSessionClustersResponseBodySessionClustersStateChangeReason) *ListSessionClustersResponseBodySessionClusters {
+	s.StateChangeReason = v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetUserId(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetUserName(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.UserName = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetWorkspaceId(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListSessionClustersResponseBodySessionClustersApplicationConfigs struct {
+	// example:
+	//
+	// spark-default.conf
+	ConfigFileName *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
+	// example:
+	//
+	// spark.app.name
+	ConfigItemKey *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
+	// example:
+	//
+	// test_application
+	ConfigItemValue *string `json:"configItemValue,omitempty" xml:"configItemValue,omitempty"`
+}
+
+func (s ListSessionClustersResponseBodySessionClustersApplicationConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionClustersResponseBodySessionClustersApplicationConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionClustersResponseBodySessionClustersApplicationConfigs) SetConfigFileName(v string) *ListSessionClustersResponseBodySessionClustersApplicationConfigs {
+	s.ConfigFileName = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClustersApplicationConfigs) SetConfigItemKey(v string) *ListSessionClustersResponseBodySessionClustersApplicationConfigs {
+	s.ConfigItemKey = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClustersApplicationConfigs) SetConfigItemValue(v string) *ListSessionClustersResponseBodySessionClustersApplicationConfigs {
+	s.ConfigItemValue = &v
+	return s
+}
+
+type ListSessionClustersResponseBodySessionClustersAutoStartConfiguration struct {
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s ListSessionClustersResponseBodySessionClustersAutoStartConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionClustersResponseBodySessionClustersAutoStartConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionClustersResponseBodySessionClustersAutoStartConfiguration) SetEnable(v bool) *ListSessionClustersResponseBodySessionClustersAutoStartConfiguration {
+	s.Enable = &v
+	return s
+}
+
+type ListSessionClustersResponseBodySessionClustersAutoStopConfiguration struct {
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// 45
+	IdleTimeoutMinutes *int32 `json:"idleTimeoutMinutes,omitempty" xml:"idleTimeoutMinutes,omitempty"`
+}
+
+func (s ListSessionClustersResponseBodySessionClustersAutoStopConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionClustersResponseBodySessionClustersAutoStopConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration) SetEnable(v bool) *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration) SetIdleTimeoutMinutes(v int32) *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration {
+	s.IdleTimeoutMinutes = &v
+	return s
+}
+
+type ListSessionClustersResponseBodySessionClustersStateChangeReason struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s ListSessionClustersResponseBodySessionClustersStateChangeReason) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionClustersResponseBodySessionClustersStateChangeReason) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionClustersResponseBodySessionClustersStateChangeReason) SetCode(v string) *ListSessionClustersResponseBodySessionClustersStateChangeReason {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClustersStateChangeReason) SetMessage(v string) *ListSessionClustersResponseBodySessionClustersStateChangeReason {
+	s.Message = &v
+	return s
+}
+
+type ListSessionClustersResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSessionClustersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSessionClustersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSessionClustersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSessionClustersResponse) SetHeaders(v map[string]*string) *ListSessionClustersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSessionClustersResponse) SetStatusCode(v int32) *ListSessionClustersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSessionClustersResponse) SetBody(v *ListSessionClustersResponseBody) *ListSessionClustersResponse {
+	s.Body = v
+	return s
+}
+
 type ListWorkspaceQueuesRequest struct {
 	// example:
 	//
@@ -3536,6 +3912,86 @@ func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (
 	headers := make(map[string]*string)
 	_result = &ListReleaseVersionsResponse{}
 	_body, _err := client.ListReleaseVersionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询run列表
+//
+// @param request - ListSessionClustersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSessionClustersResponse
+func (client *Client) ListSessionClustersWithOptions(workspaceId *string, request *ListSessionClustersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSessionClustersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueName)) {
+		query["queueName"] = request.QueueName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionClusterId)) {
+		query["sessionClusterId"] = request.SessionClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSessionClusters"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/sessionClusters"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSessionClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询run列表
+//
+// @param request - ListSessionClustersRequest
+//
+// @return ListSessionClustersResponse
+func (client *Client) ListSessionClusters(workspaceId *string, request *ListSessionClustersRequest) (_result *ListSessionClustersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSessionClustersResponse{}
+	_body, _err := client.ListSessionClustersWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
