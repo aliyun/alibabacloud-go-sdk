@@ -10077,7 +10077,9 @@ func (s *DeleteEciScalingConfigurationRequest) SetScalingConfigurationId(v strin
 }
 
 type DeleteEciScalingConfigurationResponseBody struct {
-	// The ID of the request. This request ID is returned regardless of whether the request is successful.
+	// The request ID.
+	//
+	// The request ID is consistently returned in the response, irrespective of whether the request is executed successfully or encounters an error.
 	//
 	// example:
 	//
@@ -10472,15 +10474,15 @@ func (s *DeleteScalingConfigurationResponse) SetBody(v *DeleteScalingConfigurati
 }
 
 type DeleteScalingGroupRequest struct {
-	// Specifies whether to forcibly delete the scaling group and release Elastic Compute Service (ECS) instances in the scaling group when ECS instances or ongoing scaling activities exist in the scaling group. Valid values:
+	// Specifies whether to enforce the deletion of the scaling group, including the removal of the current ECS instances or elastic container instances from the scaling group and their subsequent release, even if the scaling group is actively undergoing scaling activities. Valid values:
 	//
-	// 	- true: forcibly deletes the scaling group. The scaling group is disabled and new scaling requests are rejected. After all existing scaling requests are processed, the ECS instances are removed from the scaling group. Then, the scaling group is deleted. If the ECS instances are manually added to the scaling group, the ECS instances are only removed from the scaling group. If the ECS instances are automatically created and added to the scaling group, the ECS instances are removed from the scaling group and then released.
+	// 	- true: enforces the deletion of the scaling group. In this case, the scaling group first enters the Disabled state, ceasing acceptance of new scaling requests. Auto Scaling awaits the conclusion of all ongoing scaling activities in the scaling group before it automatically removes the current ECS instances or elastic container instances from the scaling group and enforces the deletion operation. Note that manually added instances are merely removed from the scaling group, whereas auto-provisioned instances are removed and deleted.
 	//
-	// 	- false: does not forcibly delete the scaling group. The scaling group is disabled and then deleted if the following conditions are met:
+	// 	- false: does not enforce the deletion of the scaling group. The scaling group will be disabled and then deleted once all the following requirements are satisfied:
 	//
-	//     	- No scaling activities are in process in the scaling group.
+	//     	- The scaling group has no ongoing scaling activities.
 	//
-	//     	- The Total Capacity parameter is set to 0. A value of 0 specifies that no ECS instances exist in the scaling group.
+	//     	- The scaling group contains no ECS instances or elastic container instances (Total Capacity=0).
 	//
 	// Default value: false.
 	//
@@ -10546,7 +10548,7 @@ func (s *DeleteScalingGroupRequest) SetScalingGroupId(v string) *DeleteScalingGr
 }
 
 type DeleteScalingGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -10754,7 +10756,7 @@ func (s *DeleteScheduledTaskRequest) SetScheduledTaskId(v string) *DeleteSchedul
 }
 
 type DeleteScheduledTaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -17335,7 +17337,7 @@ func (s *DescribePatternTypesResponse) SetBody(v *DescribePatternTypesResponseBo
 }
 
 type DescribeRegionsRequest struct {
-	// The language that is used as a filter condition to filter returned results. For more information, see [RFC 7231](https://tools.ietf.org/html/rfc7231). Valid values:
+	// The language for the response. For more information, see [RFC7231](https://tools.ietf.org/html/rfc7231). Valid values:
 	//
 	// 	- zh-CN: Chinese
 	//
@@ -17343,7 +17345,7 @@ type DescribeRegionsRequest struct {
 	//
 	// 	- ja: Japanese
 	//
-	// Default value: en-US
+	// Default value: zh-CN.
 	//
 	// example:
 	//
@@ -17383,7 +17385,7 @@ func (s *DescribeRegionsRequest) SetResourceOwnerId(v int64) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
-	// Details of the regions.
+	// The collection of region information.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -17412,7 +17414,7 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	// Indicates whether the region supports scaling groups of the classic network type. Valid values:
+	// Indicates whether the current region supports scaling groups that reside in the classic network. Valid values:
 	//
 	// 	- true
 	//
@@ -17422,29 +17424,29 @@ type DescribeRegionsResponseBodyRegions struct {
 	//
 	// false
 	ClassicUnavailable *bool `json:"ClassicUnavailable,omitempty" xml:"ClassicUnavailable,omitempty"`
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//
 	// China (Beijing)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The endpoint of the region.
+	// The region endpoint.
 	//
 	// example:
 	//
 	// ess.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Indicates whether the region supports scaling groups of the virtual private cloud (VPC) type. Valid values:
+	// Indicates whether the current region supports scaling groups that reside in virtual private clouds (VPCs). Valid values:
 	//
-	// 	- true: The region does not support scaling groups of the VPC type.
+	// 	- true
 	//
-	// 	- false: The region supports scaling groups of the VPC type.
+	// 	- false
 	//
 	// example:
 	//
@@ -24113,6 +24115,10 @@ type DetachInstancesRequest struct {
 	//
 	// both
 	DetachOption *string `json:"DetachOption,omitempty" xml:"DetachOption,omitempty"`
+	// example:
+	//
+	// false
+	IgnoreInvalidInstance *bool `json:"IgnoreInvalidInstance,omitempty" xml:"IgnoreInvalidInstance,omitempty"`
 	// The IDs of the ECS instances or elastic container instances that you want to remove from the scaling group.
 	//
 	// This parameter is required.
@@ -24163,6 +24169,11 @@ func (s *DetachInstancesRequest) SetDecreaseDesiredCapacity(v bool) *DetachInsta
 
 func (s *DetachInstancesRequest) SetDetachOption(v string) *DetachInstancesRequest {
 	s.DetachOption = &v
+	return s
+}
+
+func (s *DetachInstancesRequest) SetIgnoreInvalidInstance(v bool) *DetachInstancesRequest {
+	s.IgnoreInvalidInstance = &v
 	return s
 }
 
@@ -33952,6 +33963,7 @@ type RemoveInstancesRequest struct {
 	//
 	// true
 	DecreaseDesiredCapacity *bool `json:"DecreaseDesiredCapacity,omitempty" xml:"DecreaseDesiredCapacity,omitempty"`
+	IgnoreInvalidInstance   *bool `json:"IgnoreInvalidInstance,omitempty" xml:"IgnoreInvalidInstance,omitempty"`
 	// The IDs of the ECS instances that you want to remove from the scaling group.
 	//
 	// This parameter is required.
@@ -34017,6 +34029,11 @@ func (s *RemoveInstancesRequest) SetClientToken(v string) *RemoveInstancesReques
 
 func (s *RemoveInstancesRequest) SetDecreaseDesiredCapacity(v bool) *RemoveInstancesRequest {
 	s.DecreaseDesiredCapacity = &v
+	return s
+}
+
+func (s *RemoveInstancesRequest) SetIgnoreInvalidInstance(v bool) *RemoveInstancesRequest {
+	s.IgnoreInvalidInstance = &v
 	return s
 }
 
@@ -34987,7 +35004,7 @@ type SetInstancesProtectionRequest struct {
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	OwnerId     *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to put ECS instances into the Protected state. Auto Scaling does not remove ECS instances in the Protected state from scaling groups during scale-in activities.
+	// Specifies whether to protect ECS instances from being stopped or removed from the scaling group during scale-ins. Valid values:
 	//
 	// 	- true
 	//
@@ -35095,9 +35112,7 @@ func (s *SetInstancesProtectionResponse) SetBody(v *SetInstancesProtectionRespon
 }
 
 type SuspendProcessesRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
-	//
-	// The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
 	//
 	// example:
 	//
@@ -35106,17 +35121,17 @@ type SuspendProcessesRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The types of the processes that you want to suspend. Valid values:
 	//
-	// 	- scalein
+	// 	- scalein: the scale-in process.
 	//
-	// 	- scaleout
+	// 	- scaleout: the scale-out process.
 	//
-	// 	- healthcheck
+	// 	- healthcheck: the health check process.
 	//
-	// 	- alarmnotification
+	// 	- alarmnotification: the process of executing an event-triggered task.
 	//
-	// 	- scheduledaction
+	// 	- scheduledaction: the process of executing a scheduled task.
 	//
-	// You can suspend five processes of the preceding types at the same time. If you try to suspend more than five processes at the same time, Auto Scaling automatically removes duplicate processes.
+	// Presently, Auto Scaling supports suspending the five mentioned process types. In cases where more than five types are specified, Auto Scaling will automatically disregard duplicates and proceed with suspending the unique process types.
 	//
 	// This parameter is required.
 	Processes []*string `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
@@ -35399,11 +35414,11 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags from the Auto Scaling resource. This parameter takes effect only if you do not specify the `TagKeys` parameter. Valid values:
+	// Specifies whether to remove all tags from the resource. This parameter takes effect only when you do not specify `TagKeys` in the request parameters. Valid values:
 	//
-	// 	- true: removes all tags from the Auto Scaling resource.
+	// 	- true
 	//
-	// 	- false: does not remove tags from the Auto Scaling resource.
+	// 	- false
 	//
 	// Default value: false.
 	//
@@ -35412,7 +35427,7 @@ type UntagResourcesRequest struct {
 	// false
 	All     *bool  `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the Auto Scaling resource. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -35420,12 +35435,12 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the Auto Scaling resources. You can specify 1 to 50 resource IDs.
+	// The resource IDs.
 	//
 	// This parameter is required.
 	ResourceIds          []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The type of the resource. Only scaling groups are supported. Set the value to scalinggroup.
+	// The resource type. Set the value to scalinggroup.
 	//
 	// This parameter is required.
 	//
@@ -35433,7 +35448,7 @@ type UntagResourcesRequest struct {
 	//
 	// scalinggroup
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The keys of the tags that you want to remove from the Auto Scaling resource. You can specify 1 to 20 tag keys.
+	// The tag keys.
 	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 }
 
@@ -35639,7 +35654,9 @@ func (s *VerifyAuthenticationResponse) SetBody(v *VerifyAuthenticationResponseBo
 
 type VerifyUserRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where you want to activate Auto Scaling.
+	// The ID of the region where Auto Scaling is required.
+	//
+	// Examples: `cn-hangzhou` and `cn-shanghai`. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 	//
 	// example:
 	//
@@ -38737,7 +38754,7 @@ func (client *Client) DeactivateScalingConfiguration(request *DeactivateScalingC
 
 // Summary:
 //
-// Deletes an event-triggered task.
+// Deletes an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you no longer need an event-triggered task, you can call the DeleteAlarm operation to delete it.
 //
 // @param request - DeleteAlarmRequest
 //
@@ -38791,7 +38808,7 @@ func (client *Client) DeleteAlarmWithOptions(request *DeleteAlarmRequest, runtim
 
 // Summary:
 //
-// Deletes an event-triggered task.
+// Deletes an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you no longer need an event-triggered task, you can call the DeleteAlarm operation to delete it.
 //
 // @param request - DeleteAlarmRequest
 //
@@ -38809,15 +38826,15 @@ func (client *Client) DeleteAlarm(request *DeleteAlarmRequest) (_result *DeleteA
 
 // Summary:
 //
-// Deletes a scaling configuration that is used to create elastic container instances.
+// Deletes a scaling configuration of the Elastic Container Instance type. If the scaling configuration of a scaling group is in the Inactive state and the scaling group contains no elastic container instances created from the scaling configuration, you can call the DeleteEciScalingConfiguration operation to delete the scaling configuration to free up the scaling configuration quota.
 //
 // Description:
 //
-// You cannot delete a scaling configuration that is used to create elastic container instances in the following scenarios:
+// You cannot call this operation to delete a scaling configuration in the following scenarios:
 //
 // 	- The scaling configuration is in the Active state.
 //
-// 	- The scaling group contains elastic container instances that are created based on the scaling configuration.
+// 	- The scaling group contains elastic container instances created from the scaling configuration.
 //
 // @param request - DeleteEciScalingConfigurationRequest
 //
@@ -38875,15 +38892,15 @@ func (client *Client) DeleteEciScalingConfigurationWithOptions(request *DeleteEc
 
 // Summary:
 //
-// Deletes a scaling configuration that is used to create elastic container instances.
+// Deletes a scaling configuration of the Elastic Container Instance type. If the scaling configuration of a scaling group is in the Inactive state and the scaling group contains no elastic container instances created from the scaling configuration, you can call the DeleteEciScalingConfiguration operation to delete the scaling configuration to free up the scaling configuration quota.
 //
 // Description:
 //
-// You cannot delete a scaling configuration that is used to create elastic container instances in the following scenarios:
+// You cannot call this operation to delete a scaling configuration in the following scenarios:
 //
 // 	- The scaling configuration is in the Active state.
 //
-// 	- The scaling group contains elastic container instances that are created based on the scaling configuration.
+// 	- The scaling group contains elastic container instances created from the scaling configuration.
 //
 // @param request - DeleteEciScalingConfigurationRequest
 //
@@ -39001,7 +39018,7 @@ func (client *Client) DeleteLifecycleHook(request *DeleteLifecycleHookRequest) (
 
 // Summary:
 //
-// Deletes a notification.
+// Deletes event notification rules. The event notification feature facilitates efficient issue identification and event management by automatically forwarding notifications from Auto Scaling to designated endpoints such as CloudMonitor or Message Service (MNS) topics and queues. If you no longer require an event notification rule, you can call the DeleteNotificationConfiguration operation to delete it.
 //
 // @param request - DeleteNotificationConfigurationRequest
 //
@@ -39059,7 +39076,7 @@ func (client *Client) DeleteNotificationConfigurationWithOptions(request *Delete
 
 // Summary:
 //
-// Deletes a notification.
+// Deletes event notification rules. The event notification feature facilitates efficient issue identification and event management by automatically forwarding notifications from Auto Scaling to designated endpoints such as CloudMonitor or Message Service (MNS) topics and queues. If you no longer require an event notification rule, you can call the DeleteNotificationConfiguration operation to delete it.
 //
 // @param request - DeleteNotificationConfigurationRequest
 //
@@ -39165,15 +39182,29 @@ func (client *Client) DeleteScalingConfiguration(request *DeleteScalingConfigura
 
 // Summary:
 //
-// Deletes a scaling group.
+// Deletes a scaling group. If you want to enable policy-based automatic addition or removal of instances of a specific type to meet evolving business requirements, you can create scaling groups to manage your computing power with ease. The computing power refers to the instances that provide the computing capability. If you no longer require a scaling group, you can call the DeleteScalingGroup operation to delete it to free up the scaling group quota.
 //
 // Description:
 //
-// Before you delete a scaling group, take note of the following items:
+// Before you call the DeleteScalingGroup operation, take note of the following items:
 //
-// 	- After you delete a scaling group, the scaling configuration, scaling rules, scaling activities, and scaling requests related to the scaling group are also deleted.
+// 	- If you delete a scaling group, the scaling configurations, scaling rules, scaling activities, and scaling requests related to the scaling group are also deleted.
 //
-// 	- After you delete a scaling group, the scheduled tasks and event-triggered tasks of the scaling group are not deleted. The Classic Load Balancer (CLB) instances and ApsaraDB RDS instances with which the scaling group is associated are also not deleted.
+// 	- If you delete a scaling group, the scheduled tasks and event-triggered tasks of the scaling group are not deleted. The Server Load Balancer (SLB) instances and ApsaraDB RDS instances that are attached to the scaling group are also not deleted.
+//
+// 	- If the scaling group that you want to delete contains ECS instances or elastic container instances that are in the In Service state, Auto Scaling stops the instances and then removes all manually added instances from the scaling group or releases all automatically created instances in the scaling group before the scaling group is deleted.
+//
+//     **
+//
+//     **Note*	- Before you delete a scaling group, make sure that the Deletion Protection feature is disabled. If you have enabled the Deletion Protection feature for a scaling group, disable the feature on the Modify Scaling Group page before you delete the scaling group.
+//
+// 	- If you do not disable the Deletion Protection feature for a scaling group, you cannot delete the scaling group by using the Auto Scaling console or calling this operation. The Deletion Protection feature is an effective measure to safeguard scaling groups against unintended deletion.
+//
+// 	- Prior to deleting a scaling group, make sure that your ECS instances within the scaling group are safeguarded against unintended release. Even if you have already enabled the Release Protection feature for the ECS instances, you must manually put these ECS instances into the Protected state. Doing so guarantees that the ECS instances will not be forcibly released during the deletion process of the scaling group, providing an extra layer of security.
+//
+//     **
+//
+//     **Note*	- Before you delete a scaling group, we recommend that you enable the Deletion Protection feature for ECS instances that you want to retain. This action guarantees that the ECS instances are not forcibly released after you delete the scaling group. For more information, see [SetInstancesProtection](https://help.aliyun.com/document_detail/459342.html).
 //
 // @param request - DeleteScalingGroupRequest
 //
@@ -39235,15 +39266,29 @@ func (client *Client) DeleteScalingGroupWithOptions(request *DeleteScalingGroupR
 
 // Summary:
 //
-// Deletes a scaling group.
+// Deletes a scaling group. If you want to enable policy-based automatic addition or removal of instances of a specific type to meet evolving business requirements, you can create scaling groups to manage your computing power with ease. The computing power refers to the instances that provide the computing capability. If you no longer require a scaling group, you can call the DeleteScalingGroup operation to delete it to free up the scaling group quota.
 //
 // Description:
 //
-// Before you delete a scaling group, take note of the following items:
+// Before you call the DeleteScalingGroup operation, take note of the following items:
 //
-// 	- After you delete a scaling group, the scaling configuration, scaling rules, scaling activities, and scaling requests related to the scaling group are also deleted.
+// 	- If you delete a scaling group, the scaling configurations, scaling rules, scaling activities, and scaling requests related to the scaling group are also deleted.
 //
-// 	- After you delete a scaling group, the scheduled tasks and event-triggered tasks of the scaling group are not deleted. The Classic Load Balancer (CLB) instances and ApsaraDB RDS instances with which the scaling group is associated are also not deleted.
+// 	- If you delete a scaling group, the scheduled tasks and event-triggered tasks of the scaling group are not deleted. The Server Load Balancer (SLB) instances and ApsaraDB RDS instances that are attached to the scaling group are also not deleted.
+//
+// 	- If the scaling group that you want to delete contains ECS instances or elastic container instances that are in the In Service state, Auto Scaling stops the instances and then removes all manually added instances from the scaling group or releases all automatically created instances in the scaling group before the scaling group is deleted.
+//
+//     **
+//
+//     **Note*	- Before you delete a scaling group, make sure that the Deletion Protection feature is disabled. If you have enabled the Deletion Protection feature for a scaling group, disable the feature on the Modify Scaling Group page before you delete the scaling group.
+//
+// 	- If you do not disable the Deletion Protection feature for a scaling group, you cannot delete the scaling group by using the Auto Scaling console or calling this operation. The Deletion Protection feature is an effective measure to safeguard scaling groups against unintended deletion.
+//
+// 	- Prior to deleting a scaling group, make sure that your ECS instances within the scaling group are safeguarded against unintended release. Even if you have already enabled the Release Protection feature for the ECS instances, you must manually put these ECS instances into the Protected state. Doing so guarantees that the ECS instances will not be forcibly released during the deletion process of the scaling group, providing an extra layer of security.
+//
+//     **
+//
+//     **Note*	- Before you delete a scaling group, we recommend that you enable the Deletion Protection feature for ECS instances that you want to retain. This action guarantees that the ECS instances are not forcibly released after you delete the scaling group. For more information, see [SetInstancesProtection](https://help.aliyun.com/document_detail/459342.html).
 //
 // @param request - DeleteScalingGroupRequest
 //
@@ -39337,7 +39382,7 @@ func (client *Client) DeleteScalingRule(request *DeleteScalingRuleRequest) (_res
 
 // Summary:
 //
-// Deletes a scheduled task.
+// Deletes scheduled tasks. For workloads with predictable patterns, you can create scheduled tasks to align with your business requirements and optimize resource utilization for cost savings. These tasks automatically ensure that sufficient computing resources are provisioned in anticipation of peak hours and efficiently release unused resources during off-peak hours, thereby streamlining operational efficiency and reducing expenses. If you no longer require a scheduled task, you can call the DeleteScheduledTask operation to delete it.
 //
 // @param request - DeleteScheduledTaskRequest
 //
@@ -39395,7 +39440,7 @@ func (client *Client) DeleteScheduledTaskWithOptions(request *DeleteScheduledTas
 
 // Summary:
 //
-// Deletes a scheduled task.
+// Deletes scheduled tasks. For workloads with predictable patterns, you can create scheduled tasks to align with your business requirements and optimize resource utilization for cost savings. These tasks automatically ensure that sufficient computing resources are provisioned in anticipation of peak hours and efficiently release unused resources during off-peak hours, thereby streamlining operational efficiency and reducing expenses. If you no longer require a scheduled task, you can call the DeleteScheduledTask operation to delete it.
 //
 // @param request - DeleteScheduledTaskRequest
 //
@@ -40157,7 +40202,7 @@ func (client *Client) DescribePatternTypes(request *DescribePatternTypesRequest)
 
 // Summary:
 //
-// Queries the regions in which Auto Scaling is available.
+// Queries regions. Before you activate Auto Scaling, you can call the DescribeRegions operation to query the regions where Auto Scaling is officially launched. This preliminary step facilitates the strategic selection of both the optimal region and availability zones for activating Auto Scaling, thereby guaranteeing the finest access speeds and operational efficiency within your chosen geographical area.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -40211,7 +40256,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Queries the regions in which Auto Scaling is available.
+// Queries regions. Before you activate Auto Scaling, you can call the DescribeRegions operation to query the regions where Auto Scaling is officially launched. This preliminary step facilitates the strategic selection of both the optimal region and availability zones for activating Auto Scaling, thereby guaranteeing the finest access speeds and operational efficiency within your chosen geographical area.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -41248,6 +41293,10 @@ func (client *Client) DetachInstancesWithOptions(request *DetachInstancesRequest
 		query["DetachOption"] = request.DetachOption
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IgnoreInvalidInstance)) {
+		query["IgnoreInvalidInstance"] = request.IgnoreInvalidInstance
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
 		query["InstanceIds"] = request.InstanceIds
 	}
@@ -41621,7 +41670,11 @@ func (client *Client) DetachVServerGroups(request *DetachVServerGroupsRequest) (
 
 // Summary:
 //
-// Disables an event-triggered task.
+// Disables an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you currently do not need an event-triggered task, you can call the DisableAlarm operation to disable it.
+//
+// Description:
+//
+// Before you disable an event-triggered task, make sure that the task is in the `Normal`, `Alert`, or `Insufficient Data` state.
 //
 // @param request - DisableAlarmRequest
 //
@@ -41675,7 +41728,11 @@ func (client *Client) DisableAlarmWithOptions(request *DisableAlarmRequest, runt
 
 // Summary:
 //
-// Disables an event-triggered task.
+// Disables an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you currently do not need an event-triggered task, you can call the DisableAlarm operation to disable it.
+//
+// Description:
+//
+// Before you disable an event-triggered task, make sure that the task is in the `Normal`, `Alert`, or `Insufficient Data` state.
 //
 // @param request - DisableAlarmRequest
 //
@@ -41785,7 +41842,7 @@ func (client *Client) DisableScalingGroup(request *DisableScalingGroupRequest) (
 
 // Summary:
 //
-// Enables an event-triggered task.
+// Enables an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you want to reuse an event-triggered task that is in the Disabled state, you can call the EnableAlarm operation to enable it.
 //
 // @param request - EnableAlarmRequest
 //
@@ -41839,7 +41896,7 @@ func (client *Client) EnableAlarmWithOptions(request *EnableAlarmRequest, runtim
 
 // Summary:
 //
-// Enables an event-triggered task.
+// Enables an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you want to reuse an event-triggered task that is in the Disabled state, you can call the EnableAlarm operation to enable it.
 //
 // @param request - EnableAlarmRequest
 //
@@ -42477,7 +42534,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Queries tag values.
+// Queries the tag keys associated with Auto Scaling resources to facilitate a deeper comprehension of those resources. By doing so, you can categorize and manage your Auto Scaling resources more efficiently.
 //
 // @param request - ListTagValuesRequest
 //
@@ -42543,7 +42600,7 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 
 // Summary:
 //
-// Queries tag values.
+// Queries the tag keys associated with Auto Scaling resources to facilitate a deeper comprehension of those resources. By doing so, you can categorize and manage your Auto Scaling resources more efficiently.
 //
 // @param request - ListTagValuesRequest
 //
@@ -44318,6 +44375,10 @@ func (client *Client) RemoveInstancesWithOptions(request *RemoveInstancesRequest
 		query["DecreaseDesiredCapacity"] = request.DecreaseDesiredCapacity
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IgnoreInvalidInstance)) {
+		query["IgnoreInvalidInstance"] = request.IgnoreInvalidInstance
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
 		query["InstanceIds"] = request.InstanceIds
 	}
@@ -44793,19 +44854,17 @@ func (client *Client) SetInstanceHealth(request *SetInstanceHealthRequest) (_res
 
 // Summary:
 //
-// Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
+// Puts Elastic Compute Service (ECS) instances into the Protected state. When ECS instances are put into the Protected state, they become immune to manual deletion attempts by using the Auto Scaling console or API operations. This operation serves as a robust safeguard, efficiently preventing any inadvertent instance release that could lead to irreversible consequences.
 //
 // Description:
 //
-// ## Description
+// Once ECS instances enter the Protected state, they become subject to the following restrictions:
 //
-// Before you call this operation, take note of the following items:
+// 	- ECS instances will persist in the Protected state, unless you deliberately remove them from this state.
 //
-// 	- After you put an ECS instance into the Protected state, the ECS instance remains in the Protected state until you manually move the ECS instance out of the Protected state.
+// 	- Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/25955.html).
 //
-// 	- After you put an ECS instance into the Protected state, Auto Scaling does not remove the ECS instance even if a scale-in activity caused by changes in instance quantity or event-triggered tasks occurs. In this case, you must manually move the ECS instance out of the Protected state and then release the ECS instance. For more information, see the "RemoveInstances" topic.
-//
-// 	- After you put an ECS instance into the Protected state, Auto Scaling does not update the health status of the instance when the instance is stopped or restarted.
+// 	- ECS instances in the Protected state maintain their existing health status even when they undergo stopping or restarting processes.
 //
 // @param request - SetInstancesProtectionRequest
 //
@@ -44863,19 +44922,17 @@ func (client *Client) SetInstancesProtectionWithOptions(request *SetInstancesPro
 
 // Summary:
 //
-// Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
+// Puts Elastic Compute Service (ECS) instances into the Protected state. When ECS instances are put into the Protected state, they become immune to manual deletion attempts by using the Auto Scaling console or API operations. This operation serves as a robust safeguard, efficiently preventing any inadvertent instance release that could lead to irreversible consequences.
 //
 // Description:
 //
-// ## Description
+// Once ECS instances enter the Protected state, they become subject to the following restrictions:
 //
-// Before you call this operation, take note of the following items:
+// 	- ECS instances will persist in the Protected state, unless you deliberately remove them from this state.
 //
-// 	- After you put an ECS instance into the Protected state, the ECS instance remains in the Protected state until you manually move the ECS instance out of the Protected state.
+// 	- Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/25955.html).
 //
-// 	- After you put an ECS instance into the Protected state, Auto Scaling does not remove the ECS instance even if a scale-in activity caused by changes in instance quantity or event-triggered tasks occurs. In this case, you must manually move the ECS instance out of the Protected state and then release the ECS instance. For more information, see the "RemoveInstances" topic.
-//
-// 	- After you put an ECS instance into the Protected state, Auto Scaling does not update the health status of the instance when the instance is stopped or restarted.
+// 	- ECS instances in the Protected state maintain their existing health status even when they undergo stopping or restarting processes.
 //
 // @param request - SetInstancesProtectionRequest
 //
@@ -44893,7 +44950,7 @@ func (client *Client) SetInstancesProtection(request *SetInstancesProtectionRequ
 
 // Summary:
 //
-// Suspends processes in a scaling group.
+// Suspends scaling processes. This operation empowers you to selectively pause distinct scaling processes within a particular scaling group, enabling you to carry out alternative tasks and achieve more granular management over your scaling operations.
 //
 // @param request - SuspendProcessesRequest
 //
@@ -44955,7 +45012,7 @@ func (client *Client) SuspendProcessesWithOptions(request *SuspendProcessesReque
 
 // Summary:
 //
-// Suspends processes in a scaling group.
+// Suspends scaling processes. This operation empowers you to selectively pause distinct scaling processes within a particular scaling group, enabling you to carry out alternative tasks and achieve more granular management over your scaling operations.
 //
 // @param request - SuspendProcessesRequest
 //
@@ -45053,7 +45110,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Removes tags from the specified Auto Scaling resources. If you remove a tag and the tag is not added to other resources, the tag is automatically deleted.
+// Removes tags from Auto Scaling resources simultaneously. This operation streamlines resource management activities, enhances system efficiency, and mitigates potential security vulnerabilities. Once a tag is removed from a particular resource, and if it is not re-added to any other resource, the system will automatically delete the unused tag.
 //
 // @param request - UntagResourcesRequest
 //
@@ -45119,7 +45176,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Removes tags from the specified Auto Scaling resources. If you remove a tag and the tag is not added to other resources, the tag is automatically deleted.
+// Removes tags from Auto Scaling resources simultaneously. This operation streamlines resource management activities, enhances system efficiency, and mitigates potential security vulnerabilities. Once a tag is removed from a particular resource, and if it is not re-added to any other resource, the system will automatically delete the unused tag.
 //
 // @param request - UntagResourcesRequest
 //
@@ -45213,7 +45270,7 @@ func (client *Client) VerifyAuthentication(request *VerifyAuthenticationRequest)
 
 // Summary:
 //
-// Checks whether Auto Scaling is activated.
+// Verifies whether Auto Scaling is activated. This operation guarantees that in response to shifts in business workloads or variations in incoming traffic, the system will automatically adjust resource provisioning. This auto-scaling capability enhances the overall system performance, ensuring high availability and improved flexibility to accommodate dynamic demands.
 //
 // @param request - VerifyUserRequest
 //
@@ -45267,7 +45324,7 @@ func (client *Client) VerifyUserWithOptions(request *VerifyUserRequest, runtime 
 
 // Summary:
 //
-// Checks whether Auto Scaling is activated.
+// Verifies whether Auto Scaling is activated. This operation guarantees that in response to shifts in business workloads or variations in incoming traffic, the system will automatically adjust resource provisioning. This auto-scaling capability enhances the overall system performance, ensuring high availability and improved flexibility to accommodate dynamic demands.
 //
 // @param request - VerifyUserRequest
 //

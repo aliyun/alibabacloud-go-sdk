@@ -1,3 +1,8 @@
+2024-05-21 Version: v2.6.1
+- Update API DetachInstances: add param IgnoreInvalidInstance.
+- Update API RemoveInstances: add param IgnoreInvalidInstance.
+
+
 2024-05-16 Version: v2.6.0
 - Support API DescribePatternTypes.
 
