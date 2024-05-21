@@ -422,6 +422,7 @@ type CreateTaskRequestParametersTranscription struct {
 	//
 	// false
 	DiarizationEnabled *bool   `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
+	Model              *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	OutputLevel        *int32  `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
 	PhraseId           *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
 }
@@ -451,6 +452,11 @@ func (s *CreateTaskRequestParametersTranscription) SetDiarization(v *CreateTaskR
 
 func (s *CreateTaskRequestParametersTranscription) SetDiarizationEnabled(v bool) *CreateTaskRequestParametersTranscription {
 	s.DiarizationEnabled = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersTranscription) SetModel(v string) *CreateTaskRequestParametersTranscription {
+	s.Model = &v
 	return s
 }
 
