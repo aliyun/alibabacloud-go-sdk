@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -18,11 +15,34 @@ import (
 )
 
 type GetH5PageTrendRequest struct {
-	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// example:
+	//
+	// 1.0.2
+	AppVersion *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	EndDate      *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	StartDate    *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	TimeUnit     *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-03
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-01
+	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// day
+	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
 }
 
 func (s GetH5PageTrendRequest) String() string {
@@ -59,10 +79,19 @@ func (s *GetH5PageTrendRequest) SetTimeUnit(v string) *GetH5PageTrendRequest {
 }
 
 type GetH5PageTrendResponseBody struct {
-	Code    *int64                            `json:"code,omitempty" xml:"code,omitempty"`
-	Data    []*GetH5PageTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Msg     *string                           `json:"msg,omitempty" xml:"msg,omitempty"`
-	Success *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                            `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*GetH5PageTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// succeed in handling request
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetH5PageTrendResponseBody) String() string {
@@ -94,28 +123,94 @@ func (s *GetH5PageTrendResponseBody) SetSuccess(v bool) *GetH5PageTrendResponseB
 }
 
 type GetH5PageTrendResponseBodyData struct {
-	AnalyzeDOM     *float64 `json:"analyzeDOM,omitempty" xml:"analyzeDOM,omitempty"`
-	AppCache       *float64 `json:"appCache,omitempty" xml:"appCache,omitempty"`
-	ContentTrans   *float64 `json:"contentTrans,omitempty" xml:"contentTrans,omitempty"`
-	Dns            *float64 `json:"dns,omitempty" xml:"dns,omitempty"`
-	DomReady       *float64 `json:"domReady,omitempty" xml:"domReady,omitempty"`
-	Fcp            *float64 `json:"fcp,omitempty" xml:"fcp,omitempty"`
-	FirstByte      *float64 `json:"firstByte,omitempty" xml:"firstByte,omitempty"`
+	// example:
+	//
+	// 504.89
+	AnalyzeDOM *float64 `json:"analyzeDOM,omitempty" xml:"analyzeDOM,omitempty"`
+	// example:
+	//
+	// 49.48
+	AppCache *float64 `json:"appCache,omitempty" xml:"appCache,omitempty"`
+	// example:
+	//
+	// 979.83
+	ContentTrans *float64 `json:"contentTrans,omitempty" xml:"contentTrans,omitempty"`
+	// example:
+	//
+	// 50.16
+	Dns *float64 `json:"dns,omitempty" xml:"dns,omitempty"`
+	// example:
+	//
+	// 1881.96
+	DomReady *float64 `json:"domReady,omitempty" xml:"domReady,omitempty"`
+	// example:
+	//
+	// 190.69
+	Fcp *float64 `json:"fcp,omitempty" xml:"fcp,omitempty"`
+	// example:
+	//
+	// 472.57
+	FirstByte *float64 `json:"firstByte,omitempty" xml:"firstByte,omitempty"`
+	// example:
+	//
+	// 44.67
 	FiveSecondRate *float64 `json:"fiveSecondRate,omitempty" xml:"fiveSecondRate,omitempty"`
-	Fp             *float64 `json:"fp,omitempty" xml:"fp,omitempty"`
-	LoadEvent      *float64 `json:"loadEvent,omitempty" xml:"loadEvent,omitempty"`
-	LoadFinish     *float64 `json:"loadFinish,omitempty" xml:"loadFinish,omitempty"`
-	LoadResource   *float64 `json:"loadResource,omitempty" xml:"loadResource,omitempty"`
-	LogCnt         *int64   `json:"logCnt,omitempty" xml:"logCnt,omitempty"`
-	OneSecondRate  *float64 `json:"oneSecondRate,omitempty" xml:"oneSecondRate,omitempty"`
-	Redirect       *float64 `json:"redirect,omitempty" xml:"redirect,omitempty"`
-	Ssl            *float64 `json:"ssl,omitempty" xml:"ssl,omitempty"`
-	Tcp            *float64 `json:"tcp,omitempty" xml:"tcp,omitempty"`
-	TimePoint      *string  `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
-	Ttfb           *float64 `json:"ttfb,omitempty" xml:"ttfb,omitempty"`
-	Tti            *float64 `json:"tti,omitempty" xml:"tti,omitempty"`
-	TwoSecondRate  *float64 `json:"twoSecondRate,omitempty" xml:"twoSecondRate,omitempty"`
-	Unload         *float64 `json:"unload,omitempty" xml:"unload,omitempty"`
+	// example:
+	//
+	// 50.25
+	Fp *float64 `json:"fp,omitempty" xml:"fp,omitempty"`
+	// example:
+	//
+	// 492.86
+	LoadEvent *float64 `json:"loadEvent,omitempty" xml:"loadEvent,omitempty"`
+	// example:
+	//
+	// 4741.44
+	LoadFinish *float64 `json:"loadFinish,omitempty" xml:"loadFinish,omitempty"`
+	// example:
+	//
+	// 2549.46
+	LoadResource *float64 `json:"loadResource,omitempty" xml:"loadResource,omitempty"`
+	// example:
+	//
+	// 2062
+	LogCnt *int64 `json:"logCnt,omitempty" xml:"logCnt,omitempty"`
+	// example:
+	//
+	// 0.19
+	OneSecondRate *float64 `json:"oneSecondRate,omitempty" xml:"oneSecondRate,omitempty"`
+	// example:
+	//
+	// 100.93
+	Redirect *float64 `json:"redirect,omitempty" xml:"redirect,omitempty"`
+	// example:
+	//
+	// 71.02
+	Ssl *float64 `json:"ssl,omitempty" xml:"ssl,omitempty"`
+	// example:
+	//
+	// 150.18
+	Tcp *float64 `json:"tcp,omitempty" xml:"tcp,omitempty"`
+	// example:
+	//
+	// 2023-05-20
+	TimePoint *string `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+	// example:
+	//
+	// 249.55
+	Ttfb *float64 `json:"ttfb,omitempty" xml:"ttfb,omitempty"`
+	// example:
+	//
+	// 2126.61
+	Tti *float64 `json:"tti,omitempty" xml:"tti,omitempty"`
+	// example:
+	//
+	// 4.9
+	TwoSecondRate *float64 `json:"twoSecondRate,omitempty" xml:"twoSecondRate,omitempty"`
+	// example:
+	//
+	// 98.26
+	Unload *float64 `json:"unload,omitempty" xml:"unload,omitempty"`
 }
 
 func (s GetH5PageTrendResponseBodyData) String() string {
@@ -266,11 +361,34 @@ func (s *GetH5PageTrendResponse) SetBody(v *GetH5PageTrendResponseBody) *GetH5Pa
 }
 
 type GetLaunchTrendRequest struct {
-	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// example:
+	//
+	// 1.0.2
+	AppVersion *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	EndDate      *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	StartDate    *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	TimeUnit     *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-03
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-01
+	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// day
+	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
 }
 
 func (s GetLaunchTrendRequest) String() string {
@@ -307,10 +425,19 @@ func (s *GetLaunchTrendRequest) SetTimeUnit(v string) *GetLaunchTrendRequest {
 }
 
 type GetLaunchTrendResponseBody struct {
-	Code    *int64                            `json:"code,omitempty" xml:"code,omitempty"`
-	Data    []*GetLaunchTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Msg     *string                           `json:"msg,omitempty" xml:"msg,omitempty"`
-	Success *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                            `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*GetLaunchTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// succeed in handling request
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetLaunchTrendResponseBody) String() string {
@@ -342,13 +469,34 @@ func (s *GetLaunchTrendResponseBody) SetSuccess(v bool) *GetLaunchTrendResponseB
 }
 
 type GetLaunchTrendResponseBodyData struct {
-	ColdLaunchCount     *int64   `json:"coldLaunchCount,omitempty" xml:"coldLaunchCount,omitempty"`
-	ColdLaunchDuration  *float64 `json:"coldLaunchDuration,omitempty" xml:"coldLaunchDuration,omitempty"`
-	FirstLaunchCount    *int64   `json:"firstLaunchCount,omitempty" xml:"firstLaunchCount,omitempty"`
+	// example:
+	//
+	// 2495
+	ColdLaunchCount *int64 `json:"coldLaunchCount,omitempty" xml:"coldLaunchCount,omitempty"`
+	// example:
+	//
+	// 3784.5
+	ColdLaunchDuration *float64 `json:"coldLaunchDuration,omitempty" xml:"coldLaunchDuration,omitempty"`
+	// example:
+	//
+	// 2495
+	FirstLaunchCount *int64 `json:"firstLaunchCount,omitempty" xml:"firstLaunchCount,omitempty"`
+	// example:
+	//
+	// 3740.5
 	FirstLaunchDuration *float64 `json:"firstLaunchDuration,omitempty" xml:"firstLaunchDuration,omitempty"`
-	HotLaunchCount      *int64   `json:"hotLaunchCount,omitempty" xml:"hotLaunchCount,omitempty"`
-	HotLaunchDuration   *float64 `json:"hotLaunchDuration,omitempty" xml:"hotLaunchDuration,omitempty"`
-	TimePoint           *string  `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+	// example:
+	//
+	// 2495
+	HotLaunchCount *int64 `json:"hotLaunchCount,omitempty" xml:"hotLaunchCount,omitempty"`
+	// example:
+	//
+	// 1400.5
+	HotLaunchDuration *float64 `json:"hotLaunchDuration,omitempty" xml:"hotLaunchDuration,omitempty"`
+	// example:
+	//
+	// 2023-05-20
+	TimePoint *string `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
 }
 
 func (s GetLaunchTrendResponseBodyData) String() string {
@@ -424,11 +572,34 @@ func (s *GetLaunchTrendResponse) SetBody(v *GetLaunchTrendResponseBody) *GetLaun
 }
 
 type GetNativePageTrendRequest struct {
-	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// example:
+	//
+	// 1.0.2
+	AppVersion *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	EndDate      *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	StartDate    *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	TimeUnit     *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-03
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-01
+	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// day
+	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
 }
 
 func (s GetNativePageTrendRequest) String() string {
@@ -465,10 +636,19 @@ func (s *GetNativePageTrendRequest) SetTimeUnit(v string) *GetNativePageTrendReq
 }
 
 type GetNativePageTrendResponseBody struct {
-	Code    *int64                                `json:"code,omitempty" xml:"code,omitempty"`
-	Data    []*GetNativePageTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Msg     *string                               `json:"msg,omitempty" xml:"msg,omitempty"`
-	Success *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                                `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*GetNativePageTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// succeed in handling request
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetNativePageTrendResponseBody) String() string {
@@ -500,11 +680,26 @@ func (s *GetNativePageTrendResponseBody) SetSuccess(v bool) *GetNativePageTrendR
 }
 
 type GetNativePageTrendResponseBodyData struct {
+	// example:
+	//
+	// 75.9
 	AvgLoadDuration *float64 `json:"avgLoadDuration,omitempty" xml:"avgLoadDuration,omitempty"`
-	CrashRate       *float64 `json:"crashRate,omitempty" xml:"crashRate,omitempty"`
-	LoadCnt         *int64   `json:"loadCnt,omitempty" xml:"loadCnt,omitempty"`
-	SlowLoadRate    *float64 `json:"slowLoadRate,omitempty" xml:"slowLoadRate,omitempty"`
-	TimePoint       *string  `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+	// example:
+	//
+	// 37.317
+	CrashRate *float64 `json:"crashRate,omitempty" xml:"crashRate,omitempty"`
+	// example:
+	//
+	// 2460
+	LoadCnt *int64 `json:"loadCnt,omitempty" xml:"loadCnt,omitempty"`
+	// example:
+	//
+	// 99.837
+	SlowLoadRate *float64 `json:"slowLoadRate,omitempty" xml:"slowLoadRate,omitempty"`
+	// example:
+	//
+	// 2023-05-20
+	TimePoint *string `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
 }
 
 func (s GetNativePageTrendResponseBodyData) String() string {
@@ -570,11 +765,34 @@ func (s *GetNativePageTrendResponse) SetBody(v *GetNativePageTrendResponseBody) 
 }
 
 type GetNetworkTrendRequest struct {
-	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// example:
+	//
+	// 1.0.2
+	AppVersion *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	EndDate      *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	StartDate    *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	TimeUnit     *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-03
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-01
+	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// day
+	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
 }
 
 func (s GetNetworkTrendRequest) String() string {
@@ -611,10 +829,19 @@ func (s *GetNetworkTrendRequest) SetTimeUnit(v string) *GetNetworkTrendRequest {
 }
 
 type GetNetworkTrendResponseBody struct {
-	Code    *int64                             `json:"code,omitempty" xml:"code,omitempty"`
-	Data    []*GetNetworkTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Msg     *string                            `json:"msg,omitempty" xml:"msg,omitempty"`
-	Success *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                             `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*GetNetworkTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// succeed in handling request
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetNetworkTrendResponseBody) String() string {
@@ -646,11 +873,26 @@ func (s *GetNetworkTrendResponseBody) SetSuccess(v bool) *GetNetworkTrendRespons
 }
 
 type GetNetworkTrendResponseBodyData struct {
-	AvgCost           *float64 `json:"avgCost,omitempty" xml:"avgCost,omitempty"`
-	AvgResponseTime   *float64 `json:"avgResponseTime,omitempty" xml:"avgResponseTime,omitempty"`
+	// example:
+	//
+	// 4402.8
+	AvgCost *float64 `json:"avgCost,omitempty" xml:"avgCost,omitempty"`
+	// example:
+	//
+	// 1654.51
+	AvgResponseTime *float64 `json:"avgResponseTime,omitempty" xml:"avgResponseTime,omitempty"`
+	// example:
+	//
+	// 3299.43
 	AvgTransformBytes *float64 `json:"avgTransformBytes,omitempty" xml:"avgTransformBytes,omitempty"`
-	RequestPerMinute  *float64 `json:"requestPerMinute,omitempty" xml:"requestPerMinute,omitempty"`
-	TimePoint         *string  `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+	// example:
+	//
+	// 1.61
+	RequestPerMinute *float64 `json:"requestPerMinute,omitempty" xml:"requestPerMinute,omitempty"`
+	// example:
+	//
+	// 2023-05-20
+	TimePoint *string `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
 }
 
 func (s GetNetworkTrendResponseBodyData) String() string {
@@ -716,11 +958,30 @@ func (s *GetNetworkTrendResponse) SetBody(v *GetNetworkTrendResponseBody) *GetNe
 }
 
 type GetStatTrendRequest struct {
-	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// example:
+	//
+	// 1.0
+	AppVersion *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	EndDate      *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	StartDate    *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	Type         *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 2021-06-03
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// example:
+	//
+	// 2021-06-01
+	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetStatTrendRequest) String() string {
@@ -757,10 +1018,19 @@ func (s *GetStatTrendRequest) SetType(v int32) *GetStatTrendRequest {
 }
 
 type GetStatTrendResponseBody struct {
-	Code    *int64                          `json:"code,omitempty" xml:"code,omitempty"`
-	Data    []*GetStatTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Msg     *string                         `json:"msg,omitempty" xml:"msg,omitempty"`
-	Success *bool                           `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                          `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*GetStatTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// succeed in handling request
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetStatTrendResponseBody) String() string {
@@ -792,11 +1062,26 @@ func (s *GetStatTrendResponseBody) SetSuccess(v bool) *GetStatTrendResponseBody 
 }
 
 type GetStatTrendResponseBodyData struct {
-	AffectedUserCount *int64   `json:"affectedUserCount,omitempty" xml:"affectedUserCount,omitempty"`
-	AffectedUserRate  *float64 `json:"affectedUserRate,omitempty" xml:"affectedUserRate,omitempty"`
-	ErrorCount        *int64   `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
-	ErrorRate         *float64 `json:"errorRate,omitempty" xml:"errorRate,omitempty"`
-	TimePoint         *string  `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+	// example:
+	//
+	// 52
+	AffectedUserCount *int64 `json:"affectedUserCount,omitempty" xml:"affectedUserCount,omitempty"`
+	// example:
+	//
+	// 10.3
+	AffectedUserRate *float64 `json:"affectedUserRate,omitempty" xml:"affectedUserRate,omitempty"`
+	// example:
+	//
+	// 120
+	ErrorCount *int64 `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
+	// example:
+	//
+	// 25.6
+	ErrorRate *float64 `json:"errorRate,omitempty" xml:"errorRate,omitempty"`
+	// example:
+	//
+	// 2021-06-01
+	TimePoint *string `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
 }
 
 func (s GetStatTrendResponseBodyData) String() string {
@@ -862,11 +1147,34 @@ func (s *GetStatTrendResponse) SetBody(v *GetStatTrendResponseBody) *GetStatTren
 }
 
 type GetSymUploadParamRequest struct {
-	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.0.3
+	AppVersion *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	FileName     *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	FileType     *int32  `json:"fileType,omitempty" xml:"fileType,omitempty"`
-	FlutterName  *string `json:"flutterName,omitempty" xml:"flutterName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// symbol.zip
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	FileType *int32 `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// example:
+	//
+	// my-flutter-app
+	FlutterName *string `json:"flutterName,omitempty" xml:"flutterName,omitempty"`
 }
 
 func (s GetSymUploadParamRequest) String() string {
@@ -903,12 +1211,25 @@ func (s *GetSymUploadParamRequest) SetFlutterName(v string) *GetSymUploadParamRe
 }
 
 type GetSymUploadParamResponseBody struct {
+	// example:
+	//
+	// 200
 	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
 	// data
-	Data    *GetSymUploadParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Msg     *string                            `json:"msg,omitempty" xml:"msg,omitempty"`
-	Success *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+	Data *GetSymUploadParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// succeed in handling request
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// traceId
+	//
+	// example:
+	//
+	// 210f07c516457690916816858d94ea
 	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -946,11 +1267,29 @@ func (s *GetSymUploadParamResponseBody) SetTraceId(v string) *GetSymUploadParamR
 }
 
 type GetSymUploadParamResponseBodyData struct {
-	AccessKeyId   *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
-	Callback      *string `json:"callback,omitempty" xml:"callback,omitempty"`
-	Key           *string `json:"key,omitempty" xml:"key,omitempty"`
-	Policy        *string `json:"policy,omitempty" xml:"policy,omitempty"`
-	Signature     *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	// example:
+	//
+	// LTAI5tM4ZXXXXX
+	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
+	// example:
+	//
+	// eyJjYWxsYmFja1VybCI6Imh0dHBzOi8vYXBtLnVtZW5nLmNvbS9oc2Yvc3ltL29zcy9ub3RpZnlNc2ciLCJjYqc29uIn0=
+	Callback *string `json:"callback,omitempty" xml:"callback,omitempty"`
+	// example:
+	//
+	// tmp/20220428/5fb6001a73749c24fd9cb356_f49a08dc1225438188c109fcf92eb9f3/symbol.zip
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// eyJleHBpcmF0aW9uIjoiMjAyMi0wNC0yOFQwNDoxMzo0MS43OTJaIiwiY29uZGl0aW9ucyI6W1siZXEiLCIka2V5IiwidG1WpveGZTSXNJbU5oYkd4aVlXTnJRbTlrZVZSNWNHVWlPaUpoY0hCc2FXTmhkR2x2Ymk5cWMyOXVJbjA9In1dfQ==
+	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
+	// example:
+	//
+	// 3f67c435e08d164f41f6e522a2b5d1d7feb93000
+	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	// example:
+	//
+	// https://quickbird.oss-cn-shanghai.aliyuncs.com
 	UploadAddress *string `json:"uploadAddress,omitempty" xml:"uploadAddress,omitempty"`
 }
 
@@ -1022,9 +1361,22 @@ func (s *GetSymUploadParamResponse) SetBody(v *GetSymUploadParamResponseBody) *G
 }
 
 type GetTodayStatTrendRequest struct {
-	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// example:
+	//
+	// 1.0
+	AppVersion *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	Type         *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetTodayStatTrendRequest) String() string {
@@ -1051,10 +1403,19 @@ func (s *GetTodayStatTrendRequest) SetType(v int32) *GetTodayStatTrendRequest {
 }
 
 type GetTodayStatTrendResponseBody struct {
-	Code    *int64                               `json:"code,omitempty" xml:"code,omitempty"`
-	Data    []*GetTodayStatTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Msg     *string                              `json:"msg,omitempty" xml:"msg,omitempty"`
-	Success *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                               `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*GetTodayStatTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// succeed in handling request
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetTodayStatTrendResponseBody) String() string {
@@ -1086,11 +1447,26 @@ func (s *GetTodayStatTrendResponseBody) SetSuccess(v bool) *GetTodayStatTrendRes
 }
 
 type GetTodayStatTrendResponseBodyData struct {
-	AffectedUserCount *int64   `json:"affectedUserCount,omitempty" xml:"affectedUserCount,omitempty"`
-	AffectedUserRate  *float64 `json:"affectedUserRate,omitempty" xml:"affectedUserRate,omitempty"`
-	ErrorCount        *int64   `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
-	ErrorRate         *float64 `json:"errorRate,omitempty" xml:"errorRate,omitempty"`
-	TimePoint         *string  `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+	// example:
+	//
+	// 56
+	AffectedUserCount *int64 `json:"affectedUserCount,omitempty" xml:"affectedUserCount,omitempty"`
+	// example:
+	//
+	// 10.21
+	AffectedUserRate *float64 `json:"affectedUserRate,omitempty" xml:"affectedUserRate,omitempty"`
+	// example:
+	//
+	// 120
+	ErrorCount *int64 `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
+	// example:
+	//
+	// 17.24
+	ErrorRate *float64 `json:"errorRate,omitempty" xml:"errorRate,omitempty"`
+	// example:
+	//
+	// 13:00
+	TimePoint *string `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
 }
 
 func (s GetTodayStatTrendResponseBodyData) String() string {
@@ -1156,9 +1532,24 @@ func (s *GetTodayStatTrendResponse) SetBody(v *GetTodayStatTrendResponseBody) *G
 }
 
 type UpdateAlertPlanRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	PlanId       *int64  `json:"planId,omitempty" xml:"planId,omitempty"`
-	Versions     *string `json:"versions,omitempty" xml:"versions,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 18288
+	PlanId *int64 `json:"planId,omitempty" xml:"planId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// "1.1.0,1.2.0,1.3.0"
+	Versions *string `json:"versions,omitempty" xml:"versions,omitempty"`
 }
 
 func (s UpdateAlertPlanRequest) String() string {
@@ -1185,9 +1576,18 @@ func (s *UpdateAlertPlanRequest) SetVersions(v string) *UpdateAlertPlanRequest {
 }
 
 type UpdateAlertPlanResponseBody struct {
-	Code    *int64  `json:"code,omitempty" xml:"code,omitempty"`
-	Msg     *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// Success
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateAlertPlanResponseBody) String() string {
@@ -1243,12 +1643,38 @@ func (s *UpdateAlertPlanResponse) SetBody(v *UpdateAlertPlanResponseBody) *Updat
 }
 
 type UploadSymbolFileRequest struct {
-	AppVersion   *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.0.3
+	AppVersion *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	FileName     *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	FileType     *int32  `json:"fileType,omitempty" xml:"fileType,omitempty"`
-	FlutterName  *string `json:"flutterName,omitempty" xml:"flutterName,omitempty"`
-	OssUrl       *string `json:"ossUrl,omitempty" xml:"ossUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// symbol.zip
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	FileType *int32 `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// example:
+	//
+	// my-flutter-app
+	FlutterName *string `json:"flutterName,omitempty" xml:"flutterName,omitempty"`
+	// example:
+	//
+	// -
+	OssUrl *string `json:"ossUrl,omitempty" xml:"ossUrl,omitempty"`
 }
 
 func (s UploadSymbolFileRequest) String() string {
@@ -1290,11 +1716,37 @@ func (s *UploadSymbolFileRequest) SetOssUrl(v string) *UploadSymbolFileRequest {
 }
 
 type UploadSymbolFileAdvanceRequest struct {
-	AppVersion   *string   `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
-	DataSourceId *string   `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	FileName     *string   `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	FileType     *int32    `json:"fileType,omitempty" xml:"fileType,omitempty"`
-	FlutterName  *string   `json:"flutterName,omitempty" xml:"flutterName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.0.3
+	AppVersion *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
+	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// symbol.zip
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	FileType *int32 `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// example:
+	//
+	// my-flutter-app
+	FlutterName *string `json:"flutterName,omitempty" xml:"flutterName,omitempty"`
+	// example:
+	//
+	// -
 	OssUrlObject io.Reader `json:"ossUrl,omitempty" xml:"ossUrl,omitempty"`
 }
 
@@ -1338,11 +1790,28 @@ func (s *UploadSymbolFileAdvanceRequest) SetOssUrlObject(v io.Reader) *UploadSym
 
 type UploadSymbolFileResponseBody struct {
 	// code
-	Code      *int64  `json:"code,omitempty" xml:"code,omitempty"`
-	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	//
+	// example:
+	//
+	// 200
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// succeed in handling request
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// example:
+	//
+	// 8B99488B-2B73-502E-A5F2-00B4746F4325
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// traceId
+	//
+	// example:
+	//
+	// 210f07c516457690916816858d94ea
 	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -1455,6 +1924,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取H5页面性能统计数据
+//
+// @param request - GetH5PageTrendRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetH5PageTrendResponse
 func (client *Client) GetH5PageTrendWithOptions(request *GetH5PageTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetH5PageTrendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1505,6 +1985,13 @@ func (client *Client) GetH5PageTrendWithOptions(request *GetH5PageTrendRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取H5页面性能统计数据
+//
+// @param request - GetH5PageTrendRequest
+//
+// @return GetH5PageTrendResponse
 func (client *Client) GetH5PageTrend(request *GetH5PageTrendRequest) (_result *GetH5PageTrendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1517,6 +2004,17 @@ func (client *Client) GetH5PageTrend(request *GetH5PageTrendRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取启动性能统计数据
+//
+// @param request - GetLaunchTrendRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLaunchTrendResponse
 func (client *Client) GetLaunchTrendWithOptions(request *GetLaunchTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLaunchTrendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1567,6 +2065,13 @@ func (client *Client) GetLaunchTrendWithOptions(request *GetLaunchTrendRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取启动性能统计数据
+//
+// @param request - GetLaunchTrendRequest
+//
+// @return GetLaunchTrendResponse
 func (client *Client) GetLaunchTrend(request *GetLaunchTrendRequest) (_result *GetLaunchTrendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1579,6 +2084,17 @@ func (client *Client) GetLaunchTrend(request *GetLaunchTrendRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取原生页面性能统计数据
+//
+// @param request - GetNativePageTrendRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNativePageTrendResponse
 func (client *Client) GetNativePageTrendWithOptions(request *GetNativePageTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNativePageTrendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1629,6 +2145,13 @@ func (client *Client) GetNativePageTrendWithOptions(request *GetNativePageTrendR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取原生页面性能统计数据
+//
+// @param request - GetNativePageTrendRequest
+//
+// @return GetNativePageTrendResponse
 func (client *Client) GetNativePageTrend(request *GetNativePageTrendRequest) (_result *GetNativePageTrendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1641,6 +2164,17 @@ func (client *Client) GetNativePageTrend(request *GetNativePageTrendRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取网络性能统计数据
+//
+// @param request - GetNetworkTrendRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNetworkTrendResponse
 func (client *Client) GetNetworkTrendWithOptions(request *GetNetworkTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNetworkTrendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1691,6 +2225,13 @@ func (client *Client) GetNetworkTrendWithOptions(request *GetNetworkTrendRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取网络性能统计数据
+//
+// @param request - GetNetworkTrendRequest
+//
+// @return GetNetworkTrendResponse
 func (client *Client) GetNetworkTrend(request *GetNetworkTrendRequest) (_result *GetNetworkTrendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1703,6 +2244,17 @@ func (client *Client) GetNetworkTrend(request *GetNetworkTrendRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取离线统计数据
+//
+// @param request - GetStatTrendRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStatTrendResponse
 func (client *Client) GetStatTrendWithOptions(request *GetStatTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetStatTrendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1753,6 +2305,13 @@ func (client *Client) GetStatTrendWithOptions(request *GetStatTrendRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取离线统计数据
+//
+// @param request - GetStatTrendRequest
+//
+// @return GetStatTrendResponse
 func (client *Client) GetStatTrend(request *GetStatTrendRequest) (_result *GetStatTrendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1765,6 +2324,17 @@ func (client *Client) GetStatTrend(request *GetStatTrendRequest) (_result *GetSt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取符号表文件上传参数
+//
+// @param request - GetSymUploadParamRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSymUploadParamResponse
 func (client *Client) GetSymUploadParamWithOptions(request *GetSymUploadParamRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSymUploadParamResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1815,6 +2385,13 @@ func (client *Client) GetSymUploadParamWithOptions(request *GetSymUploadParamReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取符号表文件上传参数
+//
+// @param request - GetSymUploadParamRequest
+//
+// @return GetSymUploadParamResponse
 func (client *Client) GetSymUploadParam(request *GetSymUploadParamRequest) (_result *GetSymUploadParamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1827,6 +2404,17 @@ func (client *Client) GetSymUploadParam(request *GetSymUploadParamRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取今日实时统计数据
+//
+// @param request - GetTodayStatTrendRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTodayStatTrendResponse
 func (client *Client) GetTodayStatTrendWithOptions(request *GetTodayStatTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTodayStatTrendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1869,6 +2457,13 @@ func (client *Client) GetTodayStatTrendWithOptions(request *GetTodayStatTrendReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取今日实时统计数据
+//
+// @param request - GetTodayStatTrendRequest
+//
+// @return GetTodayStatTrendResponse
 func (client *Client) GetTodayStatTrend(request *GetTodayStatTrendRequest) (_result *GetTodayStatTrendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1881,6 +2476,17 @@ func (client *Client) GetTodayStatTrend(request *GetTodayStatTrendRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新监控告警计划
+//
+// @param request - UpdateAlertPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAlertPlanResponse
 func (client *Client) UpdateAlertPlanWithOptions(request *UpdateAlertPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAlertPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1923,6 +2529,13 @@ func (client *Client) UpdateAlertPlanWithOptions(request *UpdateAlertPlanRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新监控告警计划
+//
+// @param request - UpdateAlertPlanRequest
+//
+// @return UpdateAlertPlanResponse
 func (client *Client) UpdateAlertPlan(request *UpdateAlertPlanRequest) (_result *UpdateAlertPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1935,6 +2548,17 @@ func (client *Client) UpdateAlertPlan(request *UpdateAlertPlanRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传符号表文件
+//
+// @param request - UploadSymbolFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadSymbolFileResponse
 func (client *Client) UploadSymbolFileWithOptions(request *UploadSymbolFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadSymbolFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1989,6 +2613,13 @@ func (client *Client) UploadSymbolFileWithOptions(request *UploadSymbolFileReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传符号表文件
+//
+// @param request - UploadSymbolFileRequest
+//
+// @return UploadSymbolFileResponse
 func (client *Client) UploadSymbolFile(request *UploadSymbolFileRequest) (_result *UploadSymbolFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2020,7 +2651,7 @@ func (client *Client) UploadSymbolFileAdvance(request *UploadSymbolFileAdvanceRe
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -2048,12 +2679,17 @@ func (client *Client) UploadSymbolFileAdvance(request *UploadSymbolFileAdvanceRe
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
