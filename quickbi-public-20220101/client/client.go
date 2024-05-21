@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,6 +10,11 @@ import (
 )
 
 type AddDataLevelPermissionRuleUsersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"ruleId":"a5bb24da-***-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","addModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
 	AddUserModel *string `json:"AddUserModel,omitempty" xml:"AddUserModel,omitempty"`
 }
 
@@ -31,10 +33,22 @@ func (s *AddDataLevelPermissionRuleUsersRequest) SetAddUserModel(v string) *AddD
 
 type AddDataLevelPermissionRuleUsersResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The execution result of the interface. Valid values:\n\n*   true: The request was successful.\n*   false: The request failed.\n
+	// The execution result of the interface. Valid values:\\n\\n	- true: The request was successful.\\n	- false: The request failed.\\n
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request is successful. Valid values:\n\n*   true: The request was successful.\n*   false: The request failed.\n
+	// Indicates whether the request is successful. Valid values:\\n\\n	- true: The request was successful.\\n	- false: The request failed.\\n
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -92,22 +106,46 @@ func (s *AddDataLevelPermissionRuleUsersResponse) SetBody(v *AddDataLevelPermiss
 
 type AddDataLevelPermissionWhiteListRequest struct {
 	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7c7223ae-***-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
 	// Operation Type: You can set this parameter to one of the following values.
 	//
-	// *   ADD: Add a whitelist
-	// *   DELETE: deletes a whitelist.
+	// 	- ADD: Add a whitelist
+	//
+	// 	- DELETE: deletes a whitelist.
+	//
+	// example:
+	//
+	// ADD
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
 	// The type of row-level permissions.
 	//
-	// *   ROW_LEVEL: row-level permissions,
-	// *   COLUMN_LEVEL: column-level permissions
-	RuleType  *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// 	- ROW_LEVEL: row-level permissions,
+	//
+	// 	- COLUMN_LEVEL: column-level permissions
+	//
+	// example:
+	//
+	// ROW_LEVEL
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// example:
+	//
+	// 43342***435,1553a****41231
 	TargetIds *string `json:"TargetIds,omitempty" xml:"TargetIds,omitempty"`
 	// Modify the type of the whitelist:
 	//
-	// *   1: user
-	// *   2: user group
+	// 	- 1: user
+	//
+	// 	- 2: user group
+	//
+	// example:
+	//
+	// 1
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -145,9 +183,18 @@ func (s *AddDataLevelPermissionWhiteListRequest) SetTargetType(v string) *AddDat
 }
 
 type AddDataLevelPermissionWhiteListResponseBody struct {
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddDataLevelPermissionWhiteListResponseBody) String() string {
@@ -205,24 +252,57 @@ func (s *AddDataLevelPermissionWhiteListResponse) SetBody(v *AddDataLevelPermiss
 type AddShareReportRequest struct {
 	// The scope of authorization. Valid values:
 	//
-	// *   1: view only
-	// *   3: View and export
+	// 	- 1: view only
+	//
+	// 	- 3: View and export
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	AuthPoint *int32 `json:"AuthPoint,omitempty" xml:"AuthPoint,omitempty"`
 	// The validity period of the share. The value is a timestamp in milliseconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1608202110838
 	ExpireDate *int64 `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
 	// The ID of the person to be shared, which may be the user ID of the Quick BI or the user group ID.
 	//
-	// *   If ShareToType is 0 (user), ShareTo is the user ID.
-	// *   When ShareToType is set to 1 (user group), ShareTo is the user group ID.
-	// *   When ShareToType=2 (organization), ShareTo is the ID of the organization.
+	// 	- If ShareToType is 0 (user), ShareTo is the user ID.
+	//
+	// 	- When ShareToType is set to 1 (user group), ShareTo is the user group ID.
+	//
+	// 	- When ShareToType=2 (organization), ShareTo is the ID of the organization.
+	//
+	// example:
+	//
+	// de4bc5f9429141cc8091cdd1c15b****
 	ShareToId *string `json:"ShareToId,omitempty" xml:"ShareToId,omitempty"`
 	// The share type of the template. Valid values:
 	//
-	// *   0: user
-	// *   1: user group
-	// *   2: organization
+	// 	- 0: user
+	//
+	// 	- 1: user group
+	//
+	// 	- 2: organization
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	ShareToType *int32 `json:"ShareToType,omitempty" xml:"ShareToType,omitempty"`
 	// The ID of the shared work. The works here include BI portal, dashboards, spreadsheets, and self-service access.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6b407e50-e774-406b-9956-da2425c2****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -261,16 +341,30 @@ func (s *AddShareReportRequest) SetWorksId(v string) *AddShareReportRequest {
 
 type AddShareReportResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 05739b8e-3de0-4204-9669-7f04f02522b9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution result of the interface is returned. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request fails.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -327,13 +421,34 @@ func (s *AddShareReportResponse) SetBody(v *AddShareReportResponseBody) *AddShar
 }
 
 type AddUserRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxxx@163.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// Add organization members.
-	AdminUser     *bool   `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
-	AuthAdminUser *bool   `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
-	NickName      *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	RoleIds       *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
-	UserType      *int32  `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// true
+	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
+	// example:
+	//
+	// true
+	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	// This parameter is required.
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	RoleIds  *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	UserType *int32 `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s AddUserRequest) String() string {
@@ -375,9 +490,15 @@ func (s *AddUserRequest) SetUserType(v int32) *AddUserRequest {
 }
 
 type AddUserResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *AddUserResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddUserResponseBody) String() string {
@@ -404,13 +525,28 @@ func (s *AddUserResponseBody) SetSuccess(v bool) *AddUserResponseBody {
 }
 
 type AddUserResponseBodyResult struct {
-	AccountName   *string  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AdminUser     *bool    `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
+	// example:
+	//
+	// xxxxxx@163.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// true
+	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
+	// example:
+	//
+	// true
 	AuthAdminUser *bool    `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
 	NickName      *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	RoleIdList    []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
-	UserId        *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserType      *int32   `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	// example:
+	//
+	// b5d8fd9348cc4327****afb604
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1
+	UserType *int32 `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s AddUserResponseBodyResult) String() string {
@@ -488,13 +624,27 @@ func (s *AddUserResponse) SetBody(v *AddUserResponseBody) *AddUserResponse {
 type AddUserGroupMemberRequest struct {
 	// The result of adding members to a user group is returned. Valid values:
 	//
-	// *   true: The task is added.
-	// *   false: The tag failed to be added.
+	// 	- true: The task is added.
+	//
+	// 	- false: The tag failed to be added.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 555c4cd****
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 46e537a5****,3dadsu****
 	UserIdList *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
 }
 
@@ -517,9 +667,18 @@ func (s *AddUserGroupMemberRequest) SetUserIdList(v string) *AddUserGroupMemberR
 }
 
 type AddUserGroupMemberResponseBody struct {
+	// example:
+	//
+	// B6141A5A-A9EF-5F16-BF34-EFB9C1CCE4F3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddUserGroupMemberResponseBody) String() string {
@@ -576,8 +735,20 @@ func (s *AddUserGroupMemberResponse) SetBody(v *AddUserGroupMemberResponseBody) 
 
 type AddUserGroupMembersRequest struct {
 	// The IDs of the user groups. Separate the IDs with commas (,). Example: aGroupId,bGroupId,cGroupIds
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0d5fb19b-****-****-99da-1248fc27ca51
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
 	// The user ID of the Quick BI.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 46e5****37a5
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -601,16 +772,30 @@ func (s *AddUserGroupMembersRequest) SetUserId(v string) *AddUserGroupMembersReq
 
 type AddUserGroupMembersResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution result of the interface. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -668,7 +853,8 @@ func (s *AddUserGroupMembersResponse) SetBody(v *AddUserGroupMembersResponseBody
 
 type AddUserTagMetaRequest struct {
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
-	TagName        *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// This parameter is required.
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s AddUserTagMetaRequest) String() string {
@@ -690,9 +876,18 @@ func (s *AddUserTagMetaRequest) SetTagName(v string) *AddUserTagMetaRequest {
 }
 
 type AddUserTagMetaResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0822a7d9-****-****-****-f20163ab9b0d
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddUserTagMetaResponseBody) String() string {
@@ -748,8 +943,23 @@ func (s *AddUserTagMetaResponse) SetBody(v *AddUserTagMetaResponseBody) *AddUser
 }
 
 type AddUserToWorkspaceRequest struct {
-	RoleId      *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 25
+	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// de4bc5f9429141cc8091cdd1c15b****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -777,9 +987,18 @@ func (s *AddUserToWorkspaceRequest) SetWorkspaceId(v string) *AddUserToWorkspace
 }
 
 type AddUserToWorkspaceResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddUserToWorkspaceResponseBody) String() string {
@@ -835,8 +1054,23 @@ func (s *AddUserToWorkspaceResponse) SetBody(v *AddUserToWorkspaceResponseBody) 
 }
 
 type AddWorkspaceUsersRequest struct {
-	RoleId      *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	UserIds     *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 25
+	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// de4bc5f9429141cc8091cdd1c15b****
+	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -864,9 +1098,15 @@ func (s *AddWorkspaceUsersRequest) SetWorkspaceId(v string) *AddWorkspaceUsersRe
 }
 
 type AddWorkspaceUsersResponseBody struct {
+	// example:
+	//
+	// 7AAB95D7-2E11-4FE2-94BC-858E4FC0C976
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *AddWorkspaceUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddWorkspaceUsersResponseBody) String() string {
@@ -893,10 +1133,22 @@ func (s *AddWorkspaceUsersResponseBody) SetSuccess(v bool) *AddWorkspaceUsersRes
 }
 
 type AddWorkspaceUsersResponseBodyResult struct {
-	Failure       *int32                 `json:"Failure,omitempty" xml:"Failure,omitempty"`
+	// example:
+	//
+	// 2
+	Failure *int32 `json:"Failure,omitempty" xml:"Failure,omitempty"`
+	// example:
+	//
+	// {"2046274934845893" : "AE0150010001: This user already exists.", "1213444447906552" : "AE0150010001: This user already exists."}
 	FailureDetail map[string]interface{} `json:"FailureDetail,omitempty" xml:"FailureDetail,omitempty"`
-	Success       *int32                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total         *int32                 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 1
+	Success *int32 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 3
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s AddWorkspaceUsersResponseBodyResult) String() string {
@@ -957,6 +1209,11 @@ func (s *AddWorkspaceUsersResponse) SetBody(v *AddWorkspaceUsersResponseBody) *A
 }
 
 type AllotDatasetAccelerationTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
 }
 
@@ -974,9 +1231,18 @@ func (s *AllotDatasetAccelerationTaskRequest) SetCubeId(v string) *AllotDatasetA
 }
 
 type AllotDatasetAccelerationTaskResponseBody struct {
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AllotDatasetAccelerationTaskResponseBody) String() string {
@@ -1034,24 +1300,51 @@ func (s *AllotDatasetAccelerationTaskResponse) SetBody(v *AllotDatasetAccelerati
 type AuthorizeMenuRequest struct {
 	// Authorizes the permissions of the menu. Valid values:
 	//
-	// *   1: view
-	// *   3: View + Export (default)
+	// 	- 1: view
+	//
+	// 	- 3: View + Export (default)
+	//
+	// example:
+	//
+	// 3
 	AuthPointsValue *int32 `json:"AuthPointsValue,omitempty" xml:"AuthPointsValue,omitempty"`
 	// The ID of the BI portal.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0d173abb53e84c8ca7495429163b****
 	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
 	// The menu ID of the BI portal leaf node.
 	//
-	// *   The directory menu cannot be authorized.
-	// *   You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 100.
+	// 	- The directory menu cannot be authorized.
+	//
+	// 	- You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 54kqgoa****,pg1n135****
 	MenuIds *string `json:"MenuIds,omitempty" xml:"MenuIds,omitempty"`
 	// The IDs of the user groups.
 	//
-	// *   You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 200.
-	// *   UserGroupIds and UserIds cannot be empty at the same time
+	// 	- You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 200.
+	//
+	// 	- UserGroupIds and UserIds cannot be empty at the same time
+	//
+	// example:
+	//
+	// 34fd141d-4598-4093-8c33-8e066dcb****,3d2c23d4-2b41-4af8-a1f5-f6390f32****
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
 	// The IDs of the end users. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
 	//
-	// *   You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 200.
+	// 	- You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 200.
+	//
+	// example:
+	//
+	// 204627493484****,121344444790****
 	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
 }
 
@@ -1090,13 +1383,26 @@ func (s *AuthorizeMenuRequest) SetUserIds(v string) *AuthorizeMenuRequest {
 
 type AuthorizeMenuResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 188F0B12-00EF-41B3-944A-FB7EF06C9F43
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of authorized menus.
+	//
+	// example:
+	//
+	// 2
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1153,11 +1459,23 @@ func (s *AuthorizeMenuResponse) SetBody(v *AuthorizeMenuResponseBody) *Authorize
 }
 
 type BatchAddFeishuUsersRequest struct {
-	FeishuUsers  *string `json:"FeishuUsers,omitempty" xml:"FeishuUsers,omitempty"`
-	IsAdmin      *bool   `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
-	IsAuthAdmin  *bool   `json:"IsAuthAdmin,omitempty" xml:"IsAuthAdmin,omitempty"`
+	FeishuUsers *string `json:"FeishuUsers,omitempty" xml:"FeishuUsers,omitempty"`
+	// example:
+	//
+	// False
+	IsAdmin *bool `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
+	// example:
+	//
+	// true
+	IsAuthAdmin *bool `json:"IsAuthAdmin,omitempty" xml:"IsAuthAdmin,omitempty"`
+	// example:
+	//
+	// "0d5fb19b-5555-41f0-99da-1248fc27ca51,0f868dd6_68dd_4d13_8422_c5dca3bd4b61"
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-	UserType     *int32  `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	// example:
+	//
+	// 1
+	UserType *int32 `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s BatchAddFeishuUsersRequest) String() string {
@@ -1194,9 +1512,18 @@ func (s *BatchAddFeishuUsersRequest) SetUserType(v int32) *BatchAddFeishuUsersRe
 }
 
 type BatchAddFeishuUsersResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *BatchAddFeishuUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Result *BatchAddFeishuUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchAddFeishuUsersResponseBody) String() string {
@@ -1223,9 +1550,15 @@ func (s *BatchAddFeishuUsersResponseBody) SetSuccess(v bool) *BatchAddFeishuUser
 }
 
 type BatchAddFeishuUsersResponseBodyResult struct {
+	// example:
+	//
+	// 10
 	FailCount   *int32                                              `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
 	FailResults []*BatchAddFeishuUsersResponseBodyResultFailResults `json:"FailResults,omitempty" xml:"FailResults,omitempty" type:"Repeated"`
-	OkCount     *int32                                              `json:"OkCount,omitempty" xml:"OkCount,omitempty"`
+	// example:
+	//
+	// 1
+	OkCount *int32 `json:"OkCount,omitempty" xml:"OkCount,omitempty"`
 }
 
 func (s BatchAddFeishuUsersResponseBodyResult) String() string {
@@ -1269,9 +1602,15 @@ func (s *BatchAddFeishuUsersResponseBodyResultFailResults) SetFailInfos(v []*Bat
 }
 
 type BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos struct {
+	// example:
+	//
+	// ACCOUNT_EXIST
 	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	CodeDesc *string `json:"CodeDesc,omitempty" xml:"CodeDesc,omitempty"`
-	Input    *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// 20
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
 }
 
 func (s BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos) String() string {
@@ -1327,10 +1666,26 @@ func (s *BatchAddFeishuUsersResponse) SetBody(v *BatchAddFeishuUsersResponseBody
 }
 
 type CancelAuthorizationMenuRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0d173abb53e84c8ca7495429163b****
 	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
-	MenuIds      *string `json:"MenuIds,omitempty" xml:"MenuIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 54kqgoa****,pg1n135****
+	MenuIds *string `json:"MenuIds,omitempty" xml:"MenuIds,omitempty"`
+	// example:
+	//
+	// 34fd141d-4598-4093-8c33-8e066dcb****,3d2c23d4-2b41-4af8-a1f5-f6390f32****
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-	UserIds      *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	// example:
+	//
+	// 204627493484****,121344444790****
+	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
 }
 
 func (s CancelAuthorizationMenuRequest) String() string {
@@ -1362,9 +1717,18 @@ func (s *CancelAuthorizationMenuRequest) SetUserIds(v string) *CancelAuthorizati
 }
 
 type CancelAuthorizationMenuResponseBody struct {
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 2
+	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CancelAuthorizationMenuResponseBody) String() string {
@@ -1421,8 +1785,20 @@ func (s *CancelAuthorizationMenuResponse) SetBody(v *CancelAuthorizationMenuResp
 
 type CancelCollectionRequest struct {
 	// The ID of the favorite user. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 121344444790****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The ID of the work to cancel the collection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5d6ae4e7-cede-43cd-b4d3-d2fd442a9202
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -1446,16 +1822,30 @@ func (s *CancelCollectionRequest) SetWorksId(v string) *CancelCollectionRequest 
 
 type CancelCollectionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution result of the interface is returned. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request fails.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1513,18 +1903,40 @@ func (s *CancelCollectionResponse) SetBody(v *CancelCollectionResponseBody) *Can
 
 type CancelReportShareRequest struct {
 	// The ID of the work. The works here include BI portal, dashboards, spreadsheets, and self-service access.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6b407e50-e774-406b-9956-da2425c2****
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	// The ID of the person to be shared, which may be the user ID of the Quick BI or the user group ID.
 	//
-	// *   If ShareToType is 0 (user), ShareTo is the user ID.
-	// *   When ShareToType is set to 1 (user group), ShareTo is the user group ID.
-	// *   When ShareToType=2 (organization), ShareTo is the ID of the organization.
+	// 	- If ShareToType is 0 (user), ShareTo is the user ID.
+	//
+	// 	- When ShareToType is set to 1 (user group), ShareTo is the user group ID.
+	//
+	// 	- When ShareToType=2 (organization), ShareTo is the ID of the organization.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// de4bc5f9429141cc8091cdd1c15b****
 	ShareToIds *string `json:"ShareToIds,omitempty" xml:"ShareToIds,omitempty"`
 	// The deletion method. Valid values:
 	//
-	// *   0: Delete by user
-	// *   1: Delete by user group
-	// *   2: Delete by organization
+	// 	- 0: Delete by user
+	//
+	// 	- 1: Delete by user group
+	//
+	// 	- 2: Delete by organization
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	ShareToType *int32 `json:"ShareToType,omitempty" xml:"ShareToType,omitempty"`
 }
 
@@ -1553,16 +1965,30 @@ func (s *CancelReportShareRequest) SetShareToType(v int32) *CancelReportShareReq
 
 type CancelReportShareResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution result of the interface is returned. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request fails.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1620,13 +2046,31 @@ func (s *CancelReportShareResponse) SetBody(v *CancelReportShareResponseBody) *C
 
 type ChangeVisibilityModelRequest struct {
 	// The number of menus that are successfully modified.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0d173abb53e84c8ca7495429163b****
 	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
-	MenuIds            *string `json:"MenuIds,omitempty" xml:"MenuIds,omitempty"`
-	ShowOnlyWithAccess *bool   `json:"ShowOnlyWithAccess,omitempty" xml:"ShowOnlyWithAccess,omitempty"`
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 54kqgoa****,pg1n135****
+	MenuIds *string `json:"MenuIds,omitempty" xml:"MenuIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	ShowOnlyWithAccess *bool `json:"ShowOnlyWithAccess,omitempty" xml:"ShowOnlyWithAccess,omitempty"`
 }
 
 func (s ChangeVisibilityModelRequest) String() string {
@@ -1653,9 +2097,18 @@ func (s *ChangeVisibilityModelRequest) SetShowOnlyWithAccess(v bool) *ChangeVisi
 }
 
 type ChangeVisibilityModelResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 2
+	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ChangeVisibilityModelResponseBody) String() string {
@@ -1712,8 +2165,20 @@ func (s *ChangeVisibilityModelResponse) SetBody(v *ChangeVisibilityModelResponse
 
 type CheckReadableRequest struct {
 	// The user ID of the Quick BI to be checked.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// de4bc5f9429141cc8091cdd1c15b****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The ID of the work. Resources here include BI portal, dashboards, spreadsheets, and self-service access.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -1737,16 +2202,30 @@ func (s *CheckReadableRequest) SetWorksId(v string) *CheckReadableRequest {
 
 type CheckReadableResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution result of the interface is returned. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request fails.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1803,15 +2282,38 @@ func (s *CheckReadableResponse) SetBody(v *CheckReadableResponseBody) *CheckRead
 }
 
 type CreateTicketRequest struct {
-	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountType    *int32  `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	CmptId         *string `json:"CmptId,omitempty" xml:"CmptId,omitempty"`
-	ExpireTime     *int32  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	GlobalParam    *string `json:"GlobalParam,omitempty" xml:"GlobalParam,omitempty"`
-	TicketNum      *int32  `json:"TicketNum,omitempty" xml:"TicketNum,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 1
+	AccountType *int32 `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// example:
+	//
+	// 0fc6a275c7f64f17b1****a306ce0f31
+	CmptId *string `json:"CmptId,omitempty" xml:"CmptId,omitempty"`
+	// example:
+	//
+	// 200
+	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// [{"paramKey":"price","joinType":"and","conditionList":[{"operate":">","value":"0"}]}]
+	GlobalParam *string `json:"GlobalParam,omitempty" xml:"GlobalParam,omitempty"`
+	// example:
+	//
+	// 1
+	TicketNum *int32 `json:"TicketNum,omitempty" xml:"TicketNum,omitempty"`
+	// example:
+	//
+	// 46e537466****92704c8
 	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WatermarkParam *string `json:"WatermarkParam,omitempty" xml:"WatermarkParam,omitempty"`
-	WorksId        *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a206f5f3-****-e9b17c835b03
+	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
 func (s CreateTicketRequest) String() string {
@@ -1868,9 +2370,18 @@ func (s *CreateTicketRequest) SetWorksId(v string) *CreateTicketRequest {
 }
 
 type CreateTicketResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// ccd3428c-****-****-a608-26bae29dffee
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateTicketResponseBody) String() string {
@@ -1928,23 +2439,47 @@ func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicke
 type CreateUserGroupRequest struct {
 	// The ID of the parent user group. You can add new user groups to this group:
 	//
-	// *   If you enter the ID of a parent user group, the new user group is added to the user group with the ID.
-	// *   If you enter -1, the new user group is added to the root directory.
+	// 	- If you enter the ID of a parent user group, the new user group is added to the user group with the ID.
+	//
+	// 	- If you enter -1, the new user group is added to the root directory.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3d2c23d4-2b41-4af8-a1f5-f6390f32****
 	ParentUserGroupId *string `json:"ParentUserGroupId,omitempty" xml:"ParentUserGroupId,omitempty"`
 	// The description of the user group.
 	//
-	// *   Format verification: Maximum length 255
-	// *   Special format verification: Chinese and English digits\_ \ / | () ] \[
+	// 	- Format verification: Maximum length 255
+	//
+	// 	- Special format verification: Chinese and English digits_ \\ / | () ] [
+	//
+	// example:
+	//
+	// User group description
 	UserGroupDescription *string `json:"UserGroupDescription,omitempty" xml:"UserGroupDescription,omitempty"`
 	// The unique ID of the user group.
 	//
-	// *   If you specify the UserGroupId parameter, the system automatically generates the UserGroupId parameter. If you specify the UserGroupId parameter, the user ID is used as the user group ID. You must ensure that the user ID is unique within the organization.
-	// *   Format verification: Maximum length 64, cannot be -1,
+	// 	- If you specify the UserGroupId parameter, the system automatically generates the UserGroupId parameter. If you specify the UserGroupId parameter, the user ID is used as the user group ID. You must ensure that the user ID is unique within the organization.
+	//
+	// 	- Format verification: Maximum length 64, cannot be -1,
+	//
+	// example:
+	//
+	// pop0001
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 	// The name of the RAM user group.
 	//
-	// *   Format verification: Maximum length 255
-	// *   Special format verification: Chinese and English digits\_ \ / | () ] \[
+	// 	- Format verification: Maximum length 255
+	//
+	// 	- Special format verification: Chinese and English digits_ \\ / | () ] [
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hangzhou Financial Report
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 
@@ -1978,13 +2513,26 @@ func (s *CreateUserGroupRequest) SetUserGroupName(v string) *CreateUserGroupRequ
 
 type CreateUserGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 36829379-0C38-5BC0-830A-92665BF77D4F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the added user group is returned. An empty string \"\" is returned if the add fails.
+	// The ID of the added user group is returned. An empty string \\"\\" is returned if the add fails.
+	//
+	// example:
+	//
+	// f5eeb52e-d9c2-4a8b-80e3-47ab55c2****
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2043,10 +2591,23 @@ func (s *CreateUserGroupResponse) SetBody(v *CreateUserGroupResponseBody) *Creat
 type DelayTicketExpireTimeRequest struct {
 	// The time to postpone.
 	//
-	// *   Unit: minutes. Valid values: 0 to 240. Unit: minutes. Valid values: 4 hours.
-	// *   Expired bills cannot be extended.
+	// 	- Unit: minutes. Valid values: 0 to 240. Unit: minutes. Valid values: 4 hours.
+	//
+	// 	- Expired bills cannot be extended.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
 	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The value of the third-party embedded ticket, that is, the accessTicket value in the URL.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 040e6f79d33444838e*****c7206c070
 	Ticket *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
 }
 
@@ -2070,16 +2631,30 @@ func (s *DelayTicketExpireTimeRequest) SetTicket(v string) *DelayTicketExpireTim
 
 type DelayTicketExpireTimeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Whether the extension is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2136,6 +2711,11 @@ func (s *DelayTicketExpireTimeResponse) SetBody(v *DelayTicketExpireTimeResponse
 }
 
 type DeleteDataLevelPermissionRuleUsersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"ruleId":"a5bb24da-***-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
 	DeleteUserModel *string `json:"DeleteUserModel,omitempty" xml:"DeleteUserModel,omitempty"`
 }
 
@@ -2153,9 +2733,18 @@ func (s *DeleteDataLevelPermissionRuleUsersRequest) SetDeleteUserModel(v string)
 }
 
 type DeleteDataLevelPermissionRuleUsersResponseBody struct {
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteDataLevelPermissionRuleUsersResponseBody) String() string {
@@ -2211,7 +2800,17 @@ func (s *DeleteDataLevelPermissionRuleUsersResponse) SetBody(v *DeleteDataLevelP
 }
 
 type DeleteDataLevelRuleConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a5bb24da-****-a891683e14da
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -2234,9 +2833,18 @@ func (s *DeleteDataLevelRuleConfigRequest) SetRuleId(v string) *DeleteDataLevelR
 }
 
 type DeleteDataLevelRuleConfigResponseBody struct {
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteDataLevelRuleConfigResponseBody) String() string {
@@ -2293,6 +2901,12 @@ func (s *DeleteDataLevelRuleConfigResponse) SetBody(v *DeleteDataLevelRuleConfig
 
 type DeleteTicketRequest struct {
 	// Deletes a specified ticket from an embedded report.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 040e6f79d****7d283c7206c070
 	Ticket *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
 }
 
@@ -2310,9 +2924,18 @@ func (s *DeleteTicketRequest) SetTicket(v string) *DeleteTicketRequest {
 }
 
 type DeleteTicketResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteTicketResponseBody) String() string {
@@ -2368,8 +2991,17 @@ func (s *DeleteTicketResponse) SetBody(v *DeleteTicketResponseBody) *DeleteTicke
 }
 
 type DeleteUserRequest struct {
+	// example:
+	//
+	// f5****afccd9e434a274
 	TransferUserId *string `json:"TransferUserId,omitempty" xml:"TransferUserId,omitempty"`
 	// Deletes a user from a specified organization.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fe67f61a35a94b7da1a34ba174a7****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -2392,9 +3024,18 @@ func (s *DeleteUserRequest) SetUserId(v string) *DeleteUserRequest {
 }
 
 type DeleteUserResponseBody struct {
+	// example:
+	//
+	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteUserResponseBody) String() string {
@@ -2450,7 +3091,17 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 }
 
 type DeleteUserFromWorkspaceRequest struct {
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// de4bc5f9429141cc8091cdd1c15b****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -2473,9 +3124,18 @@ func (s *DeleteUserFromWorkspaceRequest) SetWorkspaceId(v string) *DeleteUserFro
 }
 
 type DeleteUserFromWorkspaceResponseBody struct {
+	// example:
+	//
+	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteUserFromWorkspaceResponseBody) String() string {
@@ -2532,6 +3192,12 @@ func (s *DeleteUserFromWorkspaceResponse) SetBody(v *DeleteUserFromWorkspaceResp
 
 type DeleteUserGroupRequest struct {
 	// The ID of the user group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f5eeb52e-d9c2-4a8b-80e3-47ab55c2****
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -2550,16 +3216,30 @@ func (s *DeleteUserGroupRequest) SetUserGroupId(v string) *DeleteUserGroupReques
 
 type DeleteUserGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F2775AB6-DE99-5FA6-86A4-72EA0A8AFEE3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution result of the interface is returned. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request fails.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2617,8 +3297,20 @@ func (s *DeleteUserGroupResponse) SetBody(v *DeleteUserGroupResponseBody) *Delet
 
 type DeleteUserGroupMemberRequest struct {
 	// The ID of the user group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 46e537****
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 	// The user ID of the Quick BI.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2fe4fbd8****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -2642,16 +3334,30 @@ func (s *DeleteUserGroupMemberRequest) SetUserId(v string) *DeleteUserGroupMembe
 
 type DeleteUserGroupMemberResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Returns the result of deleting a user group member. Valid values:
 	//
-	// *   true: The task is deleted.
-	// *   false: The deletion failed.
+	// 	- true: The task is deleted.
+	//
+	// 	- false: The deletion failed.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2708,8 +3414,18 @@ func (s *DeleteUserGroupMemberResponse) SetBody(v *DeleteUserGroupMemberResponse
 }
 
 type DeleteUserGroupMembersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 34fd141d-4598-4093-8c33-8e066dcb****,3d2c23d4-2b41-4af8-a1f5-f6390f32****
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 204627493484****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteUserGroupMembersRequest) String() string {
@@ -2731,9 +3447,18 @@ func (s *DeleteUserGroupMembersRequest) SetUserId(v string) *DeleteUserGroupMemb
 }
 
 type DeleteUserGroupMembersResponseBody struct {
+	// example:
+	//
+	// ABBAD906-3925-5D18-B23D-714053AB0AA2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteUserGroupMembersResponseBody) String() string {
@@ -2789,6 +3514,11 @@ func (s *DeleteUserGroupMembersResponse) SetBody(v *DeleteUserGroupMembersRespon
 }
 
 type DeleteUserTagMetaRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pop_001
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
@@ -2806,9 +3536,18 @@ func (s *DeleteUserTagMetaRequest) SetTagId(v string) *DeleteUserTagMetaRequest 
 }
 
 type DeleteUserTagMetaResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteUserTagMetaResponseBody) String() string {
@@ -2865,6 +3604,12 @@ func (s *DeleteUserTagMetaResponse) SetBody(v *DeleteUserTagMetaResponseBody) *D
 
 type GetUserGroupInfoRequest struct {
 	// The ID of the user group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// The user group modifier. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 }
 
@@ -2882,9 +3627,15 @@ func (s *GetUserGroupInfoRequest) SetKeyword(v string) *GetUserGroupInfoRequest 
 }
 
 type GetUserGroupInfoResponseBody struct {
+	// example:
+	//
+	// D7980306-1F08-5A88-9FE7-ECB8B9C4C0F5
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*GetUserGroupInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetUserGroupInfoResponseBody) String() string {
@@ -2911,15 +3662,36 @@ func (s *GetUserGroupInfoResponseBody) SetSuccess(v bool) *GetUserGroupInfoRespo
 }
 
 type GetUserGroupInfoResponseBodyResult struct {
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUser        *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	IdentifiedPath    *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
-	ModifiedTime      *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	ModifyUser        *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// 2021-03-15 17:13:55
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 46e5374665ba4b679ee22e2a2927****
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****/34fd141d-4598-4093-8c33-8e066dcb****
+	IdentifiedPath *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
+	// example:
+	//
+	// 2021-03-15 20:36:40
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// 46e5374665ba4b679ee22e2a2927****
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****
 	ParentUsergroupId *string `json:"ParentUsergroupId,omitempty" xml:"ParentUsergroupId,omitempty"`
 	UsergroupDesc     *string `json:"UsergroupDesc,omitempty" xml:"UsergroupDesc,omitempty"`
-	UsergroupId       *string `json:"UsergroupId,omitempty" xml:"UsergroupId,omitempty"`
-	UsergroupName     *string `json:"UsergroupName,omitempty" xml:"UsergroupName,omitempty"`
+	// example:
+	//
+	// 34fd141d-4598-4093-8c33-8e066dcb****
+	UsergroupId   *string `json:"UsergroupId,omitempty" xml:"UsergroupId,omitempty"`
+	UsergroupName *string `json:"UsergroupName,omitempty" xml:"UsergroupName,omitempty"`
 }
 
 func (s GetUserGroupInfoResponseBodyResult) String() string {
@@ -3005,9 +3777,20 @@ func (s *GetUserGroupInfoResponse) SetBody(v *GetUserGroupInfoResponseBody) *Get
 }
 
 type ListApiDatasourceRequest struct {
-	KeyWord     *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 89713491-cb4f-4579-b889-e82c35f1****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -3040,9 +3823,15 @@ func (s *ListApiDatasourceRequest) SetWorkspaceId(v string) *ListApiDatasourceRe
 }
 
 type ListApiDatasourceResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ListApiDatasourceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListApiDatasourceResponseBody) String() string {
@@ -3069,10 +3858,19 @@ func (s *ListApiDatasourceResponseBody) SetSuccess(v bool) *ListApiDatasourceRes
 }
 
 type ListApiDatasourceResponseBodyResult struct {
-	Data     []*ListApiDatasourceResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum  *int32                                     `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalNum *int32                                     `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	Data []*ListApiDatasourceResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s ListApiDatasourceResponseBodyResult) String() string {
@@ -3104,16 +3902,43 @@ func (s *ListApiDatasourceResponseBodyResult) SetTotalNum(v int32) *ListApiDatas
 }
 
 type ListApiDatasourceResponseBodyResultData struct {
-	ApiId          *string  `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	Body           *string  `json:"Body,omitempty" xml:"Body,omitempty"`
-	DataSize       *float32 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	DateUpdateTime *string  `json:"DateUpdateTime,omitempty" xml:"DateUpdateTime,omitempty"`
-	GmtCreate      *string  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified    *string  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	JobId          *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Parameters     *string  `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	ShowName       *string  `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
-	StatusType     *int32   `json:"StatusType,omitempty" xml:"StatusType,omitempty"`
+	// example:
+	//
+	// 0f2c3c6409be4dc0810f2a5785e816a8
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// example:
+	//
+	// {"key1":"value1"}
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// example:
+	//
+	// 0.39746094
+	DataSize *float32 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// 2022-05-25 16:19:43
+	DateUpdateTime *string `json:"DateUpdateTime,omitempty" xml:"DateUpdateTime,omitempty"`
+	// example:
+	//
+	// 2022-05-25 16:19:43
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2022-05-25 16:19:43
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// REST_API_SYNC_0f2c3c6409be4dc0810f2a5785e816a8
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// [{"name":"token","value":"xxxxxxxxxxxx"},{"name":"pageSize","value":100}]
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	ShowName   *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	// example:
+	//
+	// 2
+	StatusType *int32 `json:"StatusType,omitempty" xml:"StatusType,omitempty"`
 }
 
 func (s ListApiDatasourceResponseBodyResultData) String() string {
@@ -3205,6 +4030,12 @@ func (s *ListApiDatasourceResponse) SetBody(v *ListApiDatasourceResponseBody) *L
 
 type ListByUserGroupIdRequest struct {
 	// The ID of the user group that you want to query. Separate multiple user groups with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 34fe-***-6dcb,84q9-****-4a274
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
 }
 
@@ -3223,13 +4054,22 @@ func (s *ListByUserGroupIdRequest) SetUserGroupIds(v string) *ListByUserGroupIdR
 
 type ListByUserGroupIdResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The user group query result is returned.
 	Result *ListByUserGroupIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3282,22 +4122,58 @@ func (s *ListByUserGroupIdResponseBodyResult) SetUserGroupModels(v []*ListByUser
 
 type ListByUserGroupIdResponseBodyResultUserGroupModels struct {
 	// The time when the Secret was created.
+	//
+	// example:
+	//
+	// 2021-03-15 17:13:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The UserID of the creator in the Quick BI.
+	//
+	// example:
+	//
+	// 46e5*******ee22e2a292704c8
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// The path of the user group.
+	//
+	// example:
+	//
+	// 2fe4fbd8-****-af083ea/34fd1-****-dcbc33f
 	IdentifiedPath *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
 	// The time when the protection policy was last modified.
+	//
+	// example:
+	//
+	// 2021-03-15 20:36:40
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The UserID of the modifier in the Quick BI.
+	//
+	// example:
+	//
+	// 46e5*******ee22e2a292704c8
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
 	// The ID of the parent user group.
+	//
+	// example:
+	//
+	// 2fe4fbd8-588f-489a-b3e1-e92c7af083ea
 	ParentUsergroupId *string `json:"ParentUsergroupId,omitempty" xml:"ParentUsergroupId,omitempty"`
 	// The description of the user group.
+	//
+	// example:
+	//
+	// Description
 	UsergroupDesc *string `json:"UsergroupDesc,omitempty" xml:"UsergroupDesc,omitempty"`
 	// The ID of the user group.
+	//
+	// example:
+	//
+	// 34fd141d-****-4093-8c33-8e066dcbc33f
 	UsergroupId *string `json:"UsergroupId,omitempty" xml:"UsergroupId,omitempty"`
 	// The name of the user group.
+	//
+	// example:
+	//
+	// Test user group
 	UsergroupName *string `json:"UsergroupName,omitempty" xml:"UsergroupName,omitempty"`
 }
 
@@ -3385,6 +4261,12 @@ func (s *ListByUserGroupIdResponse) SetBody(v *ListByUserGroupIdResponseBody) *L
 
 type ListCollectionsRequest struct {
 	// The ID of the user. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fe67f61a35a94b7da1a34ba174a7****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -3403,9 +4285,17 @@ func (s *ListCollectionsRequest) SetUserId(v string) *ListCollectionsRequest {
 
 type ListCollectionsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 162A632E-0A88-51CF-98F8-94FDEE82DB7D
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*ListCollectionsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The primary key ID of the favorite record.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3433,11 +4323,26 @@ func (s *ListCollectionsResponseBody) SetSuccess(v bool) *ListCollectionsRespons
 }
 
 type ListCollectionsResponseBodyResult struct {
-	FavoriteId    *int32  `json:"FavoriteId,omitempty" xml:"FavoriteId,omitempty"`
-	OwnerId       *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	WorksId       *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
-	WorksName     *string `json:"WorksName,omitempty" xml:"WorksName,omitempty"`
-	WorksType     *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
+	// example:
+	//
+	// 12373
+	FavoriteId *int32 `json:"FavoriteId,omitempty" xml:"FavoriteId,omitempty"`
+	// example:
+	//
+	// fe67f61a35a94b7da1a34ba174a7****
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
+	WorksId   *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	WorksName *string `json:"WorksName,omitempty" xml:"WorksName,omitempty"`
+	// example:
+	//
+	// dashboardOfflineQuery
+	WorksType *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
+	// example:
+	//
+	// 9337d121-a78f-4c1b-a8bc-f81de117****
 	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
@@ -3516,11 +4421,24 @@ func (s *ListCollectionsResponse) SetBody(v *ListCollectionsResponseBody) *ListC
 
 type ListCubeDataLevelPermissionConfigRequest struct {
 	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
 	// The type of the dataset row and column permission. Valid values:
 	//
-	// *   ROW_LEVEL: row-level permissions
-	// *   COLUMN_LEVEL: column-level permissions
+	// 	- ROW_LEVEL: row-level permissions
+	//
+	// 	- COLUMN_LEVEL: column-level permissions
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ROW_LEVEL
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
@@ -3544,14 +4462,28 @@ func (s *ListCubeDataLevelPermissionConfigRequest) SetRuleType(v string) *ListCu
 
 type ListCubeDataLevelPermissionConfigResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// { "isOpen": 1, "extraConfigModel": { // Additional configuration information "ruleType": "ROW_LEVEL", // The row-level permission type. "missHitPolicy": "NONE", // The hit rule policy: NONE has no permissions, and ALL has permissions. "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b" // The ID of the dataset. }, "ruleType": "ROW_LEVEL", // Row-column permission type\
-	// "ruleModels": \[ { "ruleUsersModel": { // The target population. "userGroups": \[ "0d5fb19b- ****-1248 fc27ca51", // The ID of the user group. "4aa3f089-****-85f0-0e8ac7c2dee9" ], "users": \[ "HuangJia ***2e3fa822", // The ID of the user. "4334***84358" ] }, "ruleContentModel": { "ruleContentType": "ROW_FIELD", // The row-column permission type. "ruleContentJson": "{"conditionNode":{"caption": " Period ","isMeasure":false,"pathId":"7d3b073bc6","relationOperator":"not-null","name":"7d3b073bc6","value":{"value":\[""}UM]," ENueType "} // The JSON string of the row-column permission rule. "ruleOriginConfigJson": "{"operator":"and","operands":\[{"labelName": " Period ","isValid":true,"uniqueId":"5","fieldId":"7d3b073bc6","error":false,"fieldType":"string",": default "" value":{"conditionOp":"not-null","conditionValue":""},"valueType":"ENUM"}}],"isRelation":true}" }, // The fixed-format JSON string required by the frontend "isOpen": 1, // The status of the row-column permission configuration. 1. On. 0. Off. "hitTakeEffect": 1, // Specifies whether the rule takes effect after a column-level permission is hit. 1 takes effect and 0 takes effect. "ruleName": "Test row-level permission_Do not delete", // The name of the row-column permission rule. "ruleLevelType": "ROW_LEVEL", // The row-column permission type. "ruleId": "a5bb24 da-772f-45e8-a43c-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b", // The ID of the dataset. "ruleTargetScope": "OTHERS" rule takes effect: ALL owner and OTHERS designated owner. } ], "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b" // The ID of the dataset. }
+	// { "isOpen": 1, "extraConfigModel": { // Additional configuration information "ruleType": "ROW_LEVEL", // The row-level permission type. "missHitPolicy": "NONE", // The hit rule policy: NONE has no permissions, and ALL has permissions. "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b" // The ID of the dataset. }, "ruleType": "ROW_LEVEL", // Row-column permission type\\
+	//
+	// "ruleModels": [ { "ruleUsersModel": { // The target population. "userGroups": [ "0d5fb19b- ****-1248 fc27ca51", // The ID of the user group. "4aa3f089-****-85f0-0e8ac7c2dee9" ], "users": [ "HuangJia ***2e3fa822", // The ID of the user. "4334***84358" ] }, "ruleContentModel": { "ruleContentType": "ROW_FIELD", // The row-column permission type. "ruleContentJson": "{"conditionNode":{"caption": " Period ","isMeasure":false,"pathId":"7d3b073bc6","relationOperator":"not-null","name":"7d3b073bc6","value":{"value":[""}UM]," ENueType "} // The JSON string of the row-column permission rule. "ruleOriginConfigJson": "{"operator":"and","operands":[{"labelName": " Period ","isValid":true,"uniqueId":"5","fieldId":"7d3b073bc6","error":false,"fieldType":"string",": default "" value":{"conditionOp":"not-null","conditionValue":""},"valueType":"ENUM"}}],"isRelation":true}" }, // The fixed-format JSON string required by the frontend "isOpen": 1, // The status of the row-column permission configuration. 1. On. 0. Off. "hitTakeEffect": 1, // Specifies whether the rule takes effect after a column-level permission is hit. 1 takes effect and 0 takes effect. "ruleName": "Test row-level permission_Do not delete", // The name of the row-column permission rule. "ruleLevelType": "ROW_LEVEL", // The row-column permission type. "ruleId": "a5bb24 da-772f-45e8-a43c-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b", // The ID of the dataset. "ruleTargetScope": "OTHERS" rule takes effect: ALL owner and OTHERS designated owner. } ], "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b" // The ID of the dataset. }
+	//
+	// example:
+	//
+	// The JSON string of the row-column permission list. For more information, see the description.
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3608,7 +4540,17 @@ func (s *ListCubeDataLevelPermissionConfigResponse) SetBody(v *ListCubeDataLevel
 }
 
 type ListDataLevelPermissionWhiteListRequest struct {
-	CubeId   *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3d5db23c-e4f2-49dd-a883-92285b48e14a
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ROW_LEVEL
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
@@ -3631,9 +4573,15 @@ func (s *ListDataLevelPermissionWhiteListRequest) SetRuleType(v string) *ListDat
 }
 
 type ListDataLevelPermissionWhiteListResponseBody struct {
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ListDataLevelPermissionWhiteListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDataLevelPermissionWhiteListResponseBody) String() string {
@@ -3660,7 +4608,13 @@ func (s *ListDataLevelPermissionWhiteListResponseBody) SetSuccess(v bool) *ListD
 }
 
 type ListDataLevelPermissionWhiteListResponseBodyResult struct {
-	CubeId     *string                                                       `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// example:
+	//
+	// ROW_LEVEL
 	RuleType   *string                                                       `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	UsersModel *ListDataLevelPermissionWhiteListResponseBodyResultUsersModel `json:"UsersModel,omitempty" xml:"UsersModel,omitempty" type:"Struct"`
 }
@@ -3741,10 +4695,21 @@ func (s *ListDataLevelPermissionWhiteListResponse) SetBody(v *ListDataLevelPermi
 }
 
 type ListFavoriteReportsRequest struct {
-	Keyword  *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// PAGE
 	TreeType *string `json:"TreeType,omitempty" xml:"TreeType,omitempty"`
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b5d8fd9348cc4327****afb604
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListFavoriteReportsRequest) String() string {
@@ -3776,9 +4741,15 @@ func (s *ListFavoriteReportsRequest) SetUserId(v string) *ListFavoriteReportsReq
 }
 
 type ListFavoriteReportsResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ListFavoriteReportsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListFavoriteReportsResponseBody) String() string {
@@ -3805,11 +4776,23 @@ func (s *ListFavoriteReportsResponseBody) SetSuccess(v bool) *ListFavoriteReport
 }
 
 type ListFavoriteReportsResponseBodyResult struct {
-	Data       []*ListFavoriteReportsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum    *int32                                       `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalNum   *int32                                       `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPages *int32                                       `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	Data []*ListFavoriteReportsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s ListFavoriteReportsResponseBodyResult) String() string {
@@ -3846,17 +4829,48 @@ func (s *ListFavoriteReportsResponseBodyResult) SetTotalPages(v int32) *ListFavo
 }
 
 type ListFavoriteReportsResponseBodyResultData struct {
-	Favorite      *bool   `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
-	GmtCreate     *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified   *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	HasEditAuth   *bool   `json:"HasEditAuth,omitempty" xml:"HasEditAuth,omitempty"`
-	HasViewAuth   *bool   `json:"HasViewAuth,omitempty" xml:"HasViewAuth,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerName     *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	OwnerNum      *string `json:"OwnerNum,omitempty" xml:"OwnerNum,omitempty"`
-	PublishStatus *int32  `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
-	TreeId        *string `json:"TreeId,omitempty" xml:"TreeId,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// true
+	Favorite     *bool   `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
+	FavoriteDate *string `json:"FavoriteDate,omitempty" xml:"FavoriteDate,omitempty"`
+	// example:
+	//
+	// 1640088615000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1640595729000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// true
+	HasEditAuth *bool `json:"HasEditAuth,omitempty" xml:"HasEditAuth,omitempty"`
+	// example:
+	//
+	// true
+	HasViewAuth *bool   `json:"HasViewAuth,omitempty" xml:"HasViewAuth,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerName   *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// example:
+	//
+	// 1365*****238860
+	OwnerNum *string `json:"OwnerNum,omitempty" xml:"OwnerNum,omitempty"`
+	// example:
+	//
+	// 1
+	PublishStatus *int32 `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	// example:
+	//
+	// 977c7698-****-****-****-44b7304d20fc
+	TreeId *string `json:"TreeId,omitempty" xml:"TreeId,omitempty"`
+	// example:
+	//
+	// PAGE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 523793cb-****-****-****-aa71c65ffa39
 	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
@@ -3871,6 +4885,11 @@ func (s ListFavoriteReportsResponseBodyResultData) GoString() string {
 
 func (s *ListFavoriteReportsResponseBodyResultData) SetFavorite(v bool) *ListFavoriteReportsResponseBodyResultData {
 	s.Favorite = &v
+	return s
+}
+
+func (s *ListFavoriteReportsResponseBodyResultData) SetFavoriteDate(v string) *ListFavoriteReportsResponseBodyResultData {
+	s.FavoriteDate = &v
 	return s
 }
 
@@ -3964,10 +4983,21 @@ func (s *ListFavoriteReportsResponse) SetBody(v *ListFavoriteReportsResponseBody
 }
 
 type ListOrganizationRoleUsersRequest struct {
-	Keyword  *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RoleId   *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111111111
+	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 }
 
 func (s ListOrganizationRoleUsersRequest) String() string {
@@ -3999,9 +5029,15 @@ func (s *ListOrganizationRoleUsersRequest) SetRoleId(v int64) *ListOrganizationR
 }
 
 type ListOrganizationRoleUsersResponseBody struct {
+	// example:
+	//
+	// BCE45E6D-9304-4F94-86BB-5A772B1615FF
 	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ListOrganizationRoleUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListOrganizationRoleUsersResponseBody) String() string {
@@ -4028,11 +5064,23 @@ func (s *ListOrganizationRoleUsersResponseBody) SetSuccess(v bool) *ListOrganiza
 }
 
 type ListOrganizationRoleUsersResponseBodyResult struct {
-	Data       []*ListOrganizationRoleUsersResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum    *int32                                             `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalNum   *int32                                             `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPages *int32                                             `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	Data []*ListOrganizationRoleUsersResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s ListOrganizationRoleUsersResponseBodyResult) String() string {
@@ -4070,7 +5118,10 @@ func (s *ListOrganizationRoleUsersResponseBodyResult) SetTotalPages(v int32) *Li
 
 type ListOrganizationRoleUsersResponseBodyResultData struct {
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// b5d8fd9348cc4327****afb604
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListOrganizationRoleUsersResponseBodyResultData) String() string {
@@ -4121,9 +5172,15 @@ func (s *ListOrganizationRoleUsersResponse) SetBody(v *ListOrganizationRoleUsers
 }
 
 type ListOrganizationRolesResponseBody struct {
+	// example:
+	//
+	// 7AAB95D7-2E11-4FE2-94BC-858E4FC0C976
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*ListOrganizationRolesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListOrganizationRolesResponseBody) String() string {
@@ -4151,9 +5208,15 @@ func (s *ListOrganizationRolesResponseBody) SetSuccess(v bool) *ListOrganization
 
 type ListOrganizationRolesResponseBodyResult struct {
 	AuthConfigList []*ListOrganizationRolesResponseBodyResultAuthConfigList `json:"AuthConfigList,omitempty" xml:"AuthConfigList,omitempty" type:"Repeated"`
-	IsSystemRole   *bool                                                    `json:"IsSystemRole,omitempty" xml:"IsSystemRole,omitempty"`
-	RoleId         *int64                                                   `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	RoleName       *string                                                  `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// example:
+	//
+	// true
+	IsSystemRole *bool `json:"IsSystemRole,omitempty" xml:"IsSystemRole,omitempty"`
+	// example:
+	//
+	// 111111111
+	RoleId   *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s ListOrganizationRolesResponseBodyResult) String() string {
@@ -4185,6 +5248,9 @@ func (s *ListOrganizationRolesResponseBodyResult) SetRoleName(v string) *ListOrg
 }
 
 type ListOrganizationRolesResponseBodyResultAuthConfigList struct {
+	// example:
+	//
+	// enterprise_safety
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 }
 
@@ -4232,6 +5298,12 @@ func (s *ListOrganizationRolesResponse) SetBody(v *ListOrganizationRolesResponse
 
 type ListPortalMenuAuthorizationRequest struct {
 	// The ID of the BI portal.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0d173abb53e84c8ca7495429163b****
 	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
 }
 
@@ -4250,13 +5322,22 @@ func (s *ListPortalMenuAuthorizationRequest) SetDataPortalId(v string) *ListPort
 
 type ListPortalMenuAuthorizationResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of authorization details of the portal menu.
 	Result []*ListPortalMenuAuthorizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4285,13 +5366,22 @@ func (s *ListPortalMenuAuthorizationResponseBody) SetSuccess(v bool) *ListPortal
 
 type ListPortalMenuAuthorizationResponseBodyResult struct {
 	// The menu ID of the BI portal leaf node.
+	//
+	// example:
+	//
+	// 54kqgoa****
 	MenuId *string `json:"MenuId,omitempty" xml:"MenuId,omitempty"`
 	// The details of the object to which the menu is authorized.
 	Receivers []*ListPortalMenuAuthorizationResponseBodyResultReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
 	// Whether only authorization is visible. Valid values:
 	//
-	// *   true: Only the authorization is visible.
-	// *   false: Both are visible.
+	// 	- true: Only the authorization is visible.
+	//
+	// 	- false: Both are visible.
+	//
+	// example:
+	//
+	// true
 	ShowOnlyWithAccess *bool `json:"ShowOnlyWithAccess,omitempty" xml:"ShowOnlyWithAccess,omitempty"`
 }
 
@@ -4320,11 +5410,20 @@ func (s *ListPortalMenuAuthorizationResponseBodyResult) SetShowOnlyWithAccess(v 
 
 type ListPortalMenuAuthorizationResponseBodyResultReceivers struct {
 	// The ID of the authorization object.
+	//
+	// example:
+	//
+	// 121344444790****
 	ReceiverId *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
 	// The type of the authorization object. Valid values:
 	//
-	// *   0: user
-	// *   1: user group
+	// 	- 0: user
+	//
+	// 	- 1: user group
+	//
+	// example:
+	//
+	// 0
 	ReceiverType *int32 `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
 }
 
@@ -4377,8 +5476,18 @@ func (s *ListPortalMenuAuthorizationResponse) SetBody(v *ListPortalMenuAuthoriza
 
 type ListPortalMenusRequest struct {
 	// The ID of the BI portal.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0d173abb53e84c8ca7495429163b****
 	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
 	// The user ID in the Quick BI. When passed in, the list displays only the menus that the user has permissions on.
+	//
+	// example:
+	//
+	// 1234567***
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -4402,34 +5511,52 @@ func (s *ListPortalMenusRequest) SetUserId(v string) *ListPortalMenusRequest {
 
 type ListPortalMenusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 75912036-5527-4B7E-9265-B481D6651AC2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// A JSON string that levels the details of the portal menu list. Valid values:
 	//
-	// *   menuType: the type of the menu.
+	// 	- menuType: the type of the menu.
 	//
-	//     *   0: dashboard
-	//     *   1: outer chain
-	//     *   2: workbook
-	//     *   4: directory folder
-	//     *   5: form filling
-	//     *   6: self-service data retrieval
+	//     	- 0: dashboard
 	//
-	// *   menuId: menu ID
+	//     	- 1: outer chain
 	//
-	// *   uri: ID or URL of the resource associated with the menu
+	//     	- 2: workbook
 	//
-	// *   showOnlyWithAccess: Authorized Only Visible
+	//     	- 4: directory folder
 	//
-	// *   menuName: menu display name
+	//     	- 5: form filling
 	//
-	// *   dependentPermisson: whether the report resource associated with the menu has permissions
+	//     	- 6: self-service data retrieval
 	//
-	// *   children: submenu
+	// 	- menuId: menu ID
+	//
+	// 	- uri: ID or URL of the resource associated with the menu
+	//
+	// 	- showOnlyWithAccess: Authorized Only Visible
+	//
+	// 	- menuName: menu display name
+	//
+	// 	- dependentPermisson: whether the report resource associated with the menu has permissions
+	//
+	// 	- children: submenu
+	//
+	// example:
+	//
+	// [{"children":[{"children":[{"children":[{"menuId":"54kqgoa\\*\\*\\*\\*","menuName":"Report menu","menuType":0,"showOnlyWithAccess":true,"dependentPermisson":false,"uri":"e5da4a3f-d7f9-4262-a39e-a840043c\\*\\*\\*\\*"},{\\*\\*\\*\\	- "menu1nId":"pName" 135 "Directory menu","menuType":4,"showOnlyWithAccess":false,"dependentPermisson":true}],"menuId":"23a7d5d8-e55a-4737-b6a1-3c585505\\*\\*\\*\\*","menuName":"pop level -3 menu","menuType":4,"showOnlyWithAccess":true,"dependentPermisson":true}],"menuId":"80764 f3c-affd-45a1-aaa1-bb039d8a\\*\\*\\*\\*","menuName":"pop menu","menuType":4,"showOnlyWithAccess":false,"dependentPermisson":true}],"menuId":"277 f968a-22 ff-4ce6-83f0-a82950f4\\*\\*\\*\\*","menuName":"pop menu","menuType":4,"showOnlyWithAccess":false,"dependentPermisson":true}]
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4486,12 +5613,29 @@ func (s *ListPortalMenusResponse) SetBody(v *ListPortalMenusResponseBody) *ListP
 }
 
 type ListRecentViewReportsRequest struct {
-	Keyword   *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	OffsetDay *int32  `json:"OffsetDay,omitempty" xml:"OffsetDay,omitempty"`
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 10
+	OffsetDay *int32 `json:"OffsetDay,omitempty" xml:"OffsetDay,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
 	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
-	TreeType  *string `json:"TreeType,omitempty" xml:"TreeType,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// PAGE
+	TreeType *string `json:"TreeType,omitempty" xml:"TreeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b5d8fd9348cc4327****afb604
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListRecentViewReportsRequest) String() string {
@@ -4533,9 +5677,15 @@ func (s *ListRecentViewReportsRequest) SetUserId(v string) *ListRecentViewReport
 }
 
 type ListRecentViewReportsResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ListRecentViewReportsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListRecentViewReportsResponseBody) String() string {
@@ -4562,12 +5712,27 @@ func (s *ListRecentViewReportsResponseBody) SetSuccess(v bool) *ListRecentViewRe
 }
 
 type ListRecentViewReportsResponseBodyResult struct {
-	Attention  *string                                        `json:"Attention,omitempty" xml:"Attention,omitempty"`
-	Data       []*ListRecentViewReportsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum    *int32                                         `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalNum   *int32                                         `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPages *int32                                         `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// example:
+	//
+	// 当前API返回的分页参数如TotalNum等即将下线，如有使用请及时修改
+	Attention *string                                        `json:"Attention,omitempty" xml:"Attention,omitempty"`
+	Data      []*ListRecentViewReportsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s ListRecentViewReportsResponseBodyResult) String() string {
@@ -4609,21 +5774,57 @@ func (s *ListRecentViewReportsResponseBodyResult) SetTotalPages(v int32) *ListRe
 }
 
 type ListRecentViewReportsResponseBodyResultData struct {
-	Favorite       *bool   `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
-	GmtCreate      *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified    *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	HasEditAuth    *bool   `json:"HasEditAuth,omitempty" xml:"HasEditAuth,omitempty"`
-	HasViewAuth    *bool   `json:"HasViewAuth,omitempty" xml:"HasViewAuth,omitempty"`
+	// example:
+	//
+	// true
+	Favorite *bool `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
+	// example:
+	//
+	// 1496651577000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1640595729000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// true
+	HasEditAuth *bool `json:"HasEditAuth,omitempty" xml:"HasEditAuth,omitempty"`
+	// example:
+	//
+	// true
+	HasViewAuth *bool `json:"HasViewAuth,omitempty" xml:"HasViewAuth,omitempty"`
+	// example:
+	//
+	// 1642067498000
 	LatestViewTime *string `json:"LatestViewTime,omitempty" xml:"LatestViewTime,omitempty"`
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerName      *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	OwnerNum       *string `json:"OwnerNum,omitempty" xml:"OwnerNum,omitempty"`
-	PublishStatus  *int32  `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
-	TreeId         *string `json:"TreeId,omitempty" xml:"TreeId,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	ViewCount      *int64  `json:"ViewCount,omitempty" xml:"ViewCount,omitempty"`
-	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName  *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// 1365*****238860
+	OwnerNum *string `json:"OwnerNum,omitempty" xml:"OwnerNum,omitempty"`
+	// example:
+	//
+	// 1
+	PublishStatus *int32 `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	// example:
+	//
+	// 977c7698-****-****-****-44b7304d20fc
+	TreeId *string `json:"TreeId,omitempty" xml:"TreeId,omitempty"`
+	// example:
+	//
+	// PAGE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 7
+	ViewCount *int64 `json:"ViewCount,omitempty" xml:"ViewCount,omitempty"`
+	// example:
+	//
+	// 523793cb-****-****-****-aa71c65ffa39
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s ListRecentViewReportsResponseBodyResultData) String() string {
@@ -4739,10 +5940,21 @@ func (s *ListRecentViewReportsResponse) SetBody(v *ListRecentViewReportsResponse
 }
 
 type ListSharedReportsRequest struct {
-	Keyword  *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// PAGE
 	TreeType *string `json:"TreeType,omitempty" xml:"TreeType,omitempty"`
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b5d8fd9348cc4327****afb604
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListSharedReportsRequest) String() string {
@@ -4774,9 +5986,15 @@ func (s *ListSharedReportsRequest) SetUserId(v string) *ListSharedReportsRequest
 }
 
 type ListSharedReportsResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ListSharedReportsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListSharedReportsResponseBody) String() string {
@@ -4803,11 +6021,23 @@ func (s *ListSharedReportsResponseBody) SetSuccess(v bool) *ListSharedReportsRes
 }
 
 type ListSharedReportsResponseBodyResult struct {
-	Data       []*ListSharedReportsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum    *int32                                     `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalNum   *int32                                     `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPages *int32                                     `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	Data []*ListSharedReportsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s ListSharedReportsResponseBodyResult) String() string {
@@ -4844,17 +6074,47 @@ func (s *ListSharedReportsResponseBodyResult) SetTotalPages(v int32) *ListShared
 }
 
 type ListSharedReportsResponseBodyResultData struct {
-	Favorite      *bool   `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
-	GmtCreate     *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified   *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	HasEditAuth   *bool   `json:"HasEditAuth,omitempty" xml:"HasEditAuth,omitempty"`
-	HasViewAuth   *bool   `json:"HasViewAuth,omitempty" xml:"HasViewAuth,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerName     *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	OwnerNum      *string `json:"OwnerNum,omitempty" xml:"OwnerNum,omitempty"`
-	PublishStatus *int32  `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
-	TreeId        *string `json:"TreeId,omitempty" xml:"TreeId,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// true
+	Favorite *bool `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
+	// example:
+	//
+	// 1640088615000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1644373980000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// true
+	HasEditAuth *bool `json:"HasEditAuth,omitempty" xml:"HasEditAuth,omitempty"`
+	// example:
+	//
+	// true
+	HasViewAuth *bool   `json:"HasViewAuth,omitempty" xml:"HasViewAuth,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerName   *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// example:
+	//
+	// 1365*****238860
+	OwnerNum *string `json:"OwnerNum,omitempty" xml:"OwnerNum,omitempty"`
+	// example:
+	//
+	// 1
+	PublishStatus *int32 `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	// example:
+	//
+	// 977c7698-****-****-****-44b7304d20fc
+	TreeId *string `json:"TreeId,omitempty" xml:"TreeId,omitempty"`
+	// example:
+	//
+	// PAGE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// gfidm145-****-****-9426-8f93be23****
 	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
@@ -4963,6 +6223,12 @@ func (s *ListSharedReportsResponse) SetBody(v *ListSharedReportsResponseBody) *L
 
 type ListUserGroupsByUserIdRequest struct {
 	// The ID of the user group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 46e5374665ba4b679ee22e2a2927****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -4980,9 +6246,16 @@ func (s *ListUserGroupsByUserIdRequest) SetUserId(v string) *ListUserGroupsByUse
 }
 
 type ListUserGroupsByUserIdResponseBody struct {
+	// example:
+	//
+	// E2440604-3059-561A-AD68-DEDBC870EB2B
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*ListUserGroupsByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The user group modifier. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5010,15 +6283,36 @@ func (s *ListUserGroupsByUserIdResponseBody) SetSuccess(v bool) *ListUserGroupsB
 }
 
 type ListUserGroupsByUserIdResponseBodyResult struct {
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUser        *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	IdentifiedPath    *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
-	ModifiedTime      *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	ModifyUser        *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// 2021-03-15 17:13:55
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 46e5374665ba4b679ee22e2a2927****
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****/3d2c23d4-2b41-4af8-a1f5-f6390f32****/f5eeb52e-d9c2-4a8b-80e3-47ab55c2****
+	IdentifiedPath *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
+	// example:
+	//
+	// 2021-03-15 20:36:40
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// 46e5374665ba4b679ee22e2a2927****
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****
 	ParentUsergroupId *string `json:"ParentUsergroupId,omitempty" xml:"ParentUsergroupId,omitempty"`
 	UsergroupDesc     *string `json:"UsergroupDesc,omitempty" xml:"UsergroupDesc,omitempty"`
-	UsergroupId       *string `json:"UsergroupId,omitempty" xml:"UsergroupId,omitempty"`
-	UsergroupName     *string `json:"UsergroupName,omitempty" xml:"UsergroupName,omitempty"`
+	// example:
+	//
+	// 34fd141d-4598-4093-8c33-8e066dcb****
+	UsergroupId   *string `json:"UsergroupId,omitempty" xml:"UsergroupId,omitempty"`
+	UsergroupName *string `json:"UsergroupName,omitempty" xml:"UsergroupName,omitempty"`
 }
 
 func (s ListUserGroupsByUserIdResponseBodyResult) String() string {
@@ -5104,10 +6398,26 @@ func (s *ListUserGroupsByUserIdResponse) SetBody(v *ListUserGroupsByUserIdRespon
 }
 
 type ListWorkspaceRoleUsersRequest struct {
-	Keyword     *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RoleId      *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 25
+	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 726bee5a-****-43e1-9a8e-b550f0120f35
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -5145,9 +6455,15 @@ func (s *ListWorkspaceRoleUsersRequest) SetWorkspaceId(v string) *ListWorkspaceR
 }
 
 type ListWorkspaceRoleUsersResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ListWorkspaceRoleUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListWorkspaceRoleUsersResponseBody) String() string {
@@ -5174,11 +6490,23 @@ func (s *ListWorkspaceRoleUsersResponseBody) SetSuccess(v bool) *ListWorkspaceRo
 }
 
 type ListWorkspaceRoleUsersResponseBodyResult struct {
-	Data       []*ListWorkspaceRoleUsersResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum    *int32                                          `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalNum   *int32                                          `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPages *int32                                          `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	Data []*ListWorkspaceRoleUsersResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s ListWorkspaceRoleUsersResponseBodyResult) String() string {
@@ -5215,8 +6543,14 @@ func (s *ListWorkspaceRoleUsersResponseBodyResult) SetTotalPages(v int32) *ListW
 }
 
 type ListWorkspaceRoleUsersResponseBodyResultData struct {
-	NickName      *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// example:
+	//
+	// b5d8fd9348cc4327****afb604
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 7350a155-0e94-4c6c-8620-57bbec38****
 	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
@@ -5279,6 +6613,11 @@ func (s *ListWorkspaceRoleUsersResponse) SetBody(v *ListWorkspaceRoleUsersRespon
 }
 
 type ListWorkspaceRolesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -5296,9 +6635,15 @@ func (s *ListWorkspaceRolesRequest) SetWorkspaceId(v string) *ListWorkspaceRoles
 }
 
 type ListWorkspaceRolesResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*ListWorkspaceRolesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListWorkspaceRolesResponseBody) String() string {
@@ -5326,9 +6671,15 @@ func (s *ListWorkspaceRolesResponseBody) SetSuccess(v bool) *ListWorkspaceRolesR
 
 type ListWorkspaceRolesResponseBodyResult struct {
 	AuthConfigList []*ListWorkspaceRolesResponseBodyResultAuthConfigList `json:"AuthConfigList,omitempty" xml:"AuthConfigList,omitempty" type:"Repeated"`
-	IsSystemRole   *bool                                                 `json:"IsSystemRole,omitempty" xml:"IsSystemRole,omitempty"`
-	RoleId         *int64                                                `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	RoleName       *string                                               `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// example:
+	//
+	// true
+	IsSystemRole *bool `json:"IsSystemRole,omitempty" xml:"IsSystemRole,omitempty"`
+	// example:
+	//
+	// 25
+	RoleId   *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s ListWorkspaceRolesResponseBodyResult) String() string {
@@ -5361,7 +6712,10 @@ func (s *ListWorkspaceRolesResponseBodyResult) SetRoleName(v string) *ListWorksp
 
 type ListWorkspaceRolesResponseBodyResultAuthConfigList struct {
 	ActionAuthKeys []*string `json:"ActionAuthKeys,omitempty" xml:"ActionAuthKeys,omitempty" type:"Repeated"`
-	AuthKey        *string   `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	// example:
+	//
+	// portal_create
+	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 }
 
 func (s ListWorkspaceRolesResponseBodyResultAuthConfigList) String() string {
@@ -5412,8 +6766,23 @@ func (s *ListWorkspaceRolesResponse) SetBody(v *ListWorkspaceRolesResponseBody) 
 }
 
 type ModifyApiDatasourceParametersRequest struct {
-	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	Parameters  *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b66a66de51f24d149116c17718138194
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"name":"token","value":"xxxxxxxxxxxx"},{"name":"pageSize","value":100}]
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 726bee5a-****-43e1-9a8e-b550f0120f35
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -5441,9 +6810,18 @@ func (s *ModifyApiDatasourceParametersRequest) SetWorkspaceId(v string) *ModifyA
 }
 
 type ModifyApiDatasourceParametersResponseBody struct {
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyApiDatasourceParametersResponseBody) String() string {
@@ -5499,13 +6877,38 @@ func (s *ModifyApiDatasourceParametersResponse) SetBody(v *ModifyApiDatasourcePa
 }
 
 type QueryComponentPerformanceRequest struct {
-	CostTimeAvgMin *int32  `json:"CostTimeAvgMin,omitempty" xml:"CostTimeAvgMin,omitempty"`
-	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryType      *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	ReportId       *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// 1
+	CostTimeAvgMin *int32 `json:"CostTimeAvgMin,omitempty" xml:"CostTimeAvgMin,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sevenDays
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// example:
+	//
+	// 6b407e50-e774-406b-9956-da2425c2****
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// example:
+	//
+	// report
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 89713491-cb4f-4579-b889-e82c35f1****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s QueryComponentPerformanceRequest) String() string {
@@ -5552,9 +6955,15 @@ func (s *QueryComponentPerformanceRequest) SetWorkspaceId(v string) *QueryCompon
 }
 
 type QueryComponentPerformanceResponseBody struct {
+	// example:
+	//
+	// BCE45E6D-9304-4F94-86BB-5A772B1615FF
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*QueryComponentPerformanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryComponentPerformanceResponseBody) String() string {
@@ -5581,30 +6990,96 @@ func (s *QueryComponentPerformanceResponseBody) SetSuccess(v bool) *QueryCompone
 }
 
 type QueryComponentPerformanceResponseBodyResult struct {
-	CacheCostTimeAvg          *float64 `json:"CacheCostTimeAvg,omitempty" xml:"CacheCostTimeAvg,omitempty"`
-	CacheQueryCount           *int32   `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
-	ComponentId               *string  `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	ComponentName             *string  `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	CostTimeAvg               *float64 `json:"CostTimeAvg,omitempty" xml:"CostTimeAvg,omitempty"`
-	QueryCount                *int32   `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
-	QueryCountAvg             *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
-	QueryOverFivePercentNum   *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
-	QueryOverFiveSecPercent   *string  `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
-	QueryOverTenSecPercent    *string  `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
+	// example:
+	//
+	// 0.3
+	CacheCostTimeAvg *float64 `json:"CacheCostTimeAvg,omitempty" xml:"CacheCostTimeAvg,omitempty"`
+	// example:
+	//
+	// 3
+	CacheQueryCount *int32 `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
+	// example:
+	//
+	// 0696083a-ca72-4d89-8e7a-c017910e0***
+	ComponentId   *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// example:
+	//
+	// 0.3
+	CostTimeAvg *float64 `json:"CostTimeAvg,omitempty" xml:"CostTimeAvg,omitempty"`
+	// example:
+	//
+	// 5
+	QueryCount *int32 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	// example:
+	//
+	// 0.3
+	QueryCountAvg *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
+	// example:
+	//
+	// 5
+	QueryOverFivePercentNum *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
+	// example:
+	//
+	// 0.3
+	QueryOverFiveSecPercent *string `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
+	// example:
+	//
+	// 0.3
+	QueryOverTenSecPercent *string `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
+	// example:
+	//
+	// 0.3
 	QueryOverTenSecPercentNum *float64 `json:"QueryOverTenSecPercentNum,omitempty" xml:"QueryOverTenSecPercentNum,omitempty"`
-	QueryTimeoutCount         *int32   `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
-	QueryTimeoutCountPercent  *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
-	QuickIndexCostTimeAvg     *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
-	QuickIndexQueryCount      *int32   `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
-	RepeatQueryPercent        *string  `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
-	RepeatQueryPercentNum     *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
-	RepeatSqlQueryCount       *int32   `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
-	RepeatSqlQueryPercent     *string  `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
-	ReportId                  *string  `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	ReportName                *string  `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
-	ReportType                *string  `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	WorkspaceId               *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName             *string  `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// 1
+	QueryTimeoutCount *int32 `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
+	// example:
+	//
+	// 0.3
+	QueryTimeoutCountPercent *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
+	// example:
+	//
+	// 0.3
+	QuickIndexCostTimeAvg *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
+	// example:
+	//
+	// 3
+	QuickIndexQueryCount *int32 `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
+	// example:
+	//
+	// 0.3
+	RepeatQueryPercent *string `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
+	// example:
+	//
+	// 2
+	RepeatQueryPercentNum *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
+	// example:
+	//
+	// 5
+	RepeatSqlQueryCount *int32 `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
+	// example:
+	//
+	// 0.3
+	RepeatSqlQueryPercent *string `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
+	// example:
+	//
+	// 6b407e50-e774-406b-9956-da2425c2****
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// example:
+	//
+	// ClusterRiskReport
+	ReportName *string `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
+	// example:
+	//
+	// report
+	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// example:
+	//
+	// 89713491-cb4f-4579-b889-e82c35f1****
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QueryComponentPerformanceResponseBodyResult) String() string {
@@ -5765,6 +7240,11 @@ func (s *QueryComponentPerformanceResponse) SetBody(v *QueryComponentPerformance
 }
 
 type QueryCubeOptimizationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -5782,9 +7262,15 @@ func (s *QueryCubeOptimizationRequest) SetWorkspaceId(v string) *QueryCubeOptimi
 }
 
 type QueryCubeOptimizationResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*QueryCubeOptimizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryCubeOptimizationResponseBody) String() string {
@@ -5811,6 +7297,9 @@ func (s *QueryCubeOptimizationResponseBody) SetSuccess(v bool) *QueryCubeOptimiz
 }
 
 type QueryCubeOptimizationResponseBodyResult struct {
+	// example:
+	//
+	// OPENQUICKENGINE
 	AdviceType                   *string                                                              `json:"AdviceType,omitempty" xml:"AdviceType,omitempty"`
 	CubePerformanceDiagnoseModel *QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel `json:"CubePerformanceDiagnoseModel,omitempty" xml:"CubePerformanceDiagnoseModel,omitempty" type:"Struct"`
 }
@@ -5834,27 +7323,90 @@ func (s *QueryCubeOptimizationResponseBodyResult) SetCubePerformanceDiagnoseMode
 }
 
 type QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel struct {
-	CacheCostTimeAvg          *float64 `json:"CacheCostTimeAvg,omitempty" xml:"CacheCostTimeAvg,omitempty"`
-	CacheQueryCount           *int32   `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
-	CostTimeAvg               *float64 `json:"CostTimeAvg,omitempty" xml:"CostTimeAvg,omitempty"`
-	CubeId                    *string  `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	CubeName                  *string  `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
-	QueryCount                *int32   `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
-	QueryCountAvg             *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
-	QueryOverFivePercentNum   *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
-	QueryOverFiveSecPercent   *string  `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
-	QueryOverTenSecPercent    *string  `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
+	// example:
+	//
+	// 1
+	CacheCostTimeAvg *float64 `json:"CacheCostTimeAvg,omitempty" xml:"CacheCostTimeAvg,omitempty"`
+	// example:
+	//
+	// 2
+	CacheQueryCount *int32 `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
+	// example:
+	//
+	// 1.0
+	CostTimeAvg *float64 `json:"CostTimeAvg,omitempty" xml:"CostTimeAvg,omitempty"`
+	// example:
+	//
+	// 3e45b61a-9ba8-4c7c-8248-8dbe69945636
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// example:
+	//
+	// test
+	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
+	// example:
+	//
+	// 50
+	QueryCount *int32 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	// example:
+	//
+	// 2
+	QueryCountAvg *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
+	// example:
+	//
+	// 0.1
+	QueryOverFivePercentNum *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
+	// example:
+	//
+	// 0.5
+	QueryOverFiveSecPercent *string `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
+	// example:
+	//
+	// 0.1
+	QueryOverTenSecPercent *string `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
+	// example:
+	//
+	// 0.3
 	QueryOverTenSecPercentNum *float64 `json:"QueryOverTenSecPercentNum,omitempty" xml:"QueryOverTenSecPercentNum,omitempty"`
-	QueryTimeoutCount         *int32   `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
-	QueryTimeoutCountPercent  *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
-	QuickIndexCostTimeAvg     *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
-	QuickIndexQueryCount      *int32   `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
-	RepeatQueryPercent        *string  `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
-	RepeatQueryPercentNum     *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
-	RepeatSqlQueryCount       *int32   `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
-	RepeatSqlQueryPercent     *string  `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
-	WorkspaceId               *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName             *string  `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// 1
+	QueryTimeoutCount *int32 `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
+	// example:
+	//
+	// 0.3
+	QueryTimeoutCountPercent *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
+	// example:
+	//
+	// 1
+	QuickIndexCostTimeAvg *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
+	// example:
+	//
+	// 2
+	QuickIndexQueryCount *int32 `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
+	// example:
+	//
+	// 0.1
+	RepeatQueryPercent *string `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
+	// example:
+	//
+	// 2
+	RepeatQueryPercentNum *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
+	// example:
+	//
+	// 2
+	RepeatSqlQueryCount *int32 `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
+	// example:
+	//
+	// 0.3
+	RepeatSqlQueryPercent *string `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
+	// example:
+	//
+	// 6ea74bff-c818-4188-b462-dbb45a24dbac
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// eco0sh0prods
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel) String() string {
@@ -6000,12 +7552,34 @@ func (s *QueryCubeOptimizationResponse) SetBody(v *QueryCubeOptimizationResponse
 }
 
 type QueryCubePerformanceRequest struct {
-	CostTimeAvgMin *int32  `json:"CostTimeAvgMin,omitempty" xml:"CostTimeAvgMin,omitempty"`
-	CubeId         *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryType      *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// 1
+	CostTimeAvgMin *int32 `json:"CostTimeAvgMin,omitempty" xml:"CostTimeAvgMin,omitempty"`
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sevenDays
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s QueryCubePerformanceRequest) String() string {
@@ -6047,9 +7621,15 @@ func (s *QueryCubePerformanceRequest) SetWorkspaceId(v string) *QueryCubePerform
 }
 
 type QueryCubePerformanceResponseBody struct {
+	// example:
+	//
+	// 685072a0-1fd5-40ef-ae6b-cf94e79e718f
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*QueryCubePerformanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryCubePerformanceResponseBody) String() string {
@@ -6076,27 +7656,87 @@ func (s *QueryCubePerformanceResponseBody) SetSuccess(v bool) *QueryCubePerforma
 }
 
 type QueryCubePerformanceResponseBodyResult struct {
-	CacheCostTimeAvg          *float64 `json:"CacheCostTimeAvg,omitempty" xml:"CacheCostTimeAvg,omitempty"`
-	CacheQueryCount           *int32   `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
-	CostTimeAvg               *float64 `json:"CostTimeAvg,omitempty" xml:"CostTimeAvg,omitempty"`
-	CubeId                    *string  `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	CubeName                  *string  `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
-	QueryCount                *int32   `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
-	QueryCountAvg             *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
-	QueryOverFivePercentNum   *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
-	QueryOverFiveSecPercent   *string  `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
-	QueryOverTenSecPercent    *string  `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
+	// example:
+	//
+	// 1
+	CacheCostTimeAvg *float64 `json:"CacheCostTimeAvg,omitempty" xml:"CacheCostTimeAvg,omitempty"`
+	// example:
+	//
+	// 1
+	CacheQueryCount *int32 `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
+	// example:
+	//
+	// 1
+	CostTimeAvg *float64 `json:"CostTimeAvg,omitempty" xml:"CostTimeAvg,omitempty"`
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// example:
+	//
+	// test
+	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
+	// example:
+	//
+	// 50
+	QueryCount *int32 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	// example:
+	//
+	// 1
+	QueryCountAvg *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
+	// example:
+	//
+	// 1.0
+	QueryOverFivePercentNum *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
+	// example:
+	//
+	// 1.0
+	QueryOverFiveSecPercent *string `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
+	// example:
+	//
+	// 1.0
+	QueryOverTenSecPercent *string `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
+	// example:
+	//
+	// 1.0
 	QueryOverTenSecPercentNum *float64 `json:"QueryOverTenSecPercentNum,omitempty" xml:"QueryOverTenSecPercentNum,omitempty"`
-	QueryTimeoutCount         *int32   `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
-	QueryTimeoutCountPercent  *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
-	QuickIndexCostTimeAvg     *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
-	QuickIndexQueryCount      *int32   `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
-	RepeatQueryPercent        *string  `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
-	RepeatQueryPercentNum     *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
-	RepeatSqlQueryCount       *int32   `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
-	RepeatSqlQueryPercent     *string  `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
-	WorkspaceId               *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName             *string  `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// 1
+	QueryTimeoutCount *int32 `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
+	// example:
+	//
+	// 1
+	QueryTimeoutCountPercent *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
+	// example:
+	//
+	// 1
+	QuickIndexCostTimeAvg *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
+	// example:
+	//
+	// 1
+	QuickIndexQueryCount *int32 `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
+	// example:
+	//
+	// 0.3
+	RepeatQueryPercent *string `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
+	// example:
+	//
+	// 1
+	RepeatQueryPercentNum *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
+	// example:
+	//
+	// 1
+	RepeatSqlQueryCount *int32 `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
+	// example:
+	//
+	// 1
+	RepeatSqlQueryPercent *string `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
+	// example:
+	//
+	// 87c6b145-090c-43e1-9426-8f93be23****
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QueryCubePerformanceResponseBodyResult) String() string {
@@ -6243,33 +7883,56 @@ func (s *QueryCubePerformanceResponse) SetBody(v *QueryCubePerformanceResponseBo
 
 type QueryDataServiceRequest struct {
 	// Call an API that is created in DataService Studio.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4cc43bc3***
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// # Prerequisites
 	//
-	// You can use the Quick BI data service to create an API for the data service. For more information, see [Data service](~~144980~~).
+	// You can use the Quick BI data service to create an API for the data service. For more information, see [Data service](https://help.aliyun.com/document_detail/144980.html).
 	//
 	// # Limits
 	//
-	// *   The Data Service feature is available only to Professional customers.
-	// *   The timeout period for API calls is 60s. The QPS of a single API is 10 times per second.
-	// *   If row-level permissions are enabled for datasets that are referenced by a Data Service API, the API may be blocked by row-level permission policies.
+	// 	- The Data Service feature is available only to Professional customers.
+	//
+	// 	- The timeout period for API calls is 60s. The QPS of a single API is 10 times per second.
+	//
+	// 	- If row-level permissions are enabled for datasets that are referenced by a Data Service API, the API may be blocked by row-level permission policies.
+	//
+	// example:
+	//
+	// For more information about API IDs in DataService, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
 	Conditions *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
 	// The query conditions of the data service. The query conditions are specified in the form of keys and values. A string of the map type. Key is the name of the request parameters parameter, and Value is the value of the request parameters parameter. Key and Value must appear in pairs.
 	//
 	// **Note:**
 	//
-	// *   If a value contains multiple values, the value is a List in the JSON format. Example: `area=["East China","North China","South China"]`
+	// 	- If a value contains multiple values, the value is a List in the JSON format. Example: `area=["East China","North China","South China"]`
 	//
-	// *   For dates, different input parameter formats are provided based on different types:
+	// 	- For dates, different input parameter formats are provided based on different types:
 	//
-	//     *   Year: 2019
-	//     *   Season: 2019Q1
-	//     *   Month: 201901 (carry 0)
-	//     *   Week: 2019-52
-	//     *   Day: 20190101
-	//     *   Hours: 14:00:00 (minutes and seconds are 00)
-	//     *   Minutes: 14:12:00 (seconds are 00)
-	//     *   Seconds: 14:34:34
+	//     	- Year: 2019
+	//
+	//     	- Season: 2019Q1
+	//
+	//     	- Month: 201901 (carry 0)
+	//
+	//     	- Week: 2019-52
+	//
+	//     	- Day: 20190101
+	//
+	//     	- Hours: 14:00:00 (minutes and seconds are 00)
+	//
+	//     	- Minutes: 14:12:00 (seconds are 00)
+	//
+	//     	- Seconds: 14:34:34
+	//
+	// example:
+	//
+	// ["area", "city", "price", "date"]
 	ReturnFields *string `json:"ReturnFields,omitempty" xml:"ReturnFields,omitempty"`
 }
 
@@ -6298,13 +7961,22 @@ func (s *QueryDataServiceRequest) SetReturnFields(v string) *QueryDataServiceReq
 
 type QueryDataServiceResponseBody struct {
 	// The list of parameter names of the returned parameters. The value is a string of the List type.
+	//
+	// example:
+	//
+	// 78C1AA2D-9201-599E-A0BA-6FC462E57A95
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
 	Result *QueryDataServiceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// { "area": \["East China", "North China"], "shopping_date": "2019Q1", }
+	// { "area": ["East China", "North China"], "shopping_date": "2019Q1", }
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6335,6 +8007,10 @@ type QueryDataServiceResponseBodyResult struct {
 	// The SQL of the request query.
 	Headers []*QueryDataServiceResponseBodyResultHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// The query result of the API operation is returned.
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 	// Physical Field Name
 	Values []map[string]interface{} `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -6365,19 +8041,44 @@ func (s *QueryDataServiceResponseBodyResult) SetValues(v []map[string]interface{
 
 type QueryDataServiceResponseBodyResultHeaders struct {
 	// The field name, which corresponds to the physical table field name.
+	//
+	// example:
+	//
+	// SUM
 	Aggregator *string `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
 	// The granularity of the dimension field. This field is returned only when the requested field is a date dimension or a geographical dimension. Valid values:
 	//
-	// *   Date granularity: yearRegion (year), monthRegion (month), weekRegion (week), dayRegion (day), hourRegion (hour), minRegion (minute), secRegion (second)
-	// *   Geographic information granularity: COUNTRY (international level), PROVINCE (provincial level), CITY (municipal level), XIAN (district /county), and REGION (regional level)
+	// 	- Date granularity: yearRegion (year), monthRegion (month), weekRegion (week), dayRegion (day), hourRegion (hour), minRegion (minute), secRegion (second)
+	//
+	// 	- Geographic information granularity: COUNTRY (international level), PROVINCE (provincial level), CITY (municipal level), XIAN (district /county), and REGION (regional level)
+	//
+	// example:
+	//
+	// The alias of the field. The key of the map data row in the result parameter values.
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
 	// The column header.
+	//
+	// example:
+	//
+	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The field type, which is used to distinguish whether the field type is a dimension or a measure.
+	//
+	// example:
+	//
+	// yearRegion
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
 	// The data type of the field. generally have number, string, date, datetime, time, and geographic.
+	//
+	// example:
+	//
+	// area
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// SELECT COMPANY_T\_1\_.\"area\" AS D_AREA\_2\_, COMPANY_T\_1\_.\"city\" AS D_CITY\_3\_, SUM(COMPANY_T\_1\_.\"profit_amt\") AS D_PROFIT\_4\_ FROM \"quickbi_test\".\"company_sales_record_copy\" AS COMPANY_T\_1\_ WHERE COMPANY_T\_1\_.\"area\" LIKE \"% China East %\" GROUP BY COMPANY_T\_1\_.\"area\", COMPANY_T\_1\_.\"city\" HAVING SUM(COMPANY_T\_1\_.\"order_amt\") > 1 LIMIT 0,10
+	// SELECT COMPANY_T_1_.\\"area\\" AS D_AREA_2_, COMPANY_T_1_.\\"city\\" AS D_CITY_3_, SUM(COMPANY_T_1_.\\"profit_amt\\") AS D_PROFIT_4_ FROM \\"quickbi_test\\".\\"company_sales_record_copy\\" AS COMPANY_T_1_ WHERE COMPANY_T_1_.\\"area\\" LIKE \\"% China East %\\" GROUP BY COMPANY_T_1_.\\"area\\", COMPANY_T_1_.\\"city\\" HAVING SUM(COMPANY_T_1_.\\"order_amt\\") > 1 LIMIT 0,10
+	//
+	// example:
+	//
+	// StandardDimension
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -6450,6 +8151,12 @@ func (s *QueryDataServiceResponse) SetBody(v *QueryDataServiceResponseBody) *Que
 
 type QueryDatasetDetailInfoRequest struct {
 	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5820f58c-c734-4d8a-baf1-7979af4f****
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 }
 
@@ -6468,13 +8175,26 @@ func (s *QueryDatasetDetailInfoRequest) SetDatasetId(v string) *QueryDatasetDeta
 
 type QueryDatasetDetailInfoResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Returns the dataset data in JSON format: `{ "cube": { "dimensions": [ { "caption": "customer name", "dataType": "string", "dimensionType": "standard_dimension", "factColumn": "customer_name", "uid": "N5820f5_customer_name" }, { "caption": "datastring", "" standard_dimension", "factColumn": "order_id", "uid": "N5820f5_order_id" }, ], "measures": [ { "caption": "order amount ", "dataType": "number", "factColumn": "order_amt", "measureType": "standard_measure ": " Nderamid " }, " { "customsql": false, "dsId": "261b252d-c3c3-498a-a0a7-5d1ec6cd****", "tableName": "company_sales_record_copy" } }, "datasetId": "5820f58c-c734-4d8a-baf1-7979af4f****", "datasetName": "company_sales_record_copy12", "datasource": { "dsId": "261b252d-c3c3-498a-a0a7-5d1ec6cd****", "dsName": "Self-use", "dsType": "mysql" }, "directory" { "id": "schemaad8aad00-9c55-4984-a767-b4e0ec60****", "name": "My dataset", "pathId": "schemaad8aad00-9c55-4984-a767-b4e0ec60****", "pathName": "My dataset" }, "ownerId": "13651626232****", "ownerName": "Zhang San", "rowLevel": false, "workspaceId": "95296e95-ca89-4c7d-8af9-dedf0ad0****", "workspaceName": "Test Workspace" }`
+	//
+	// example:
+	//
+	// A JSON dataset is returned. For more information, see the description on the left.
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The execution result of the interface is returned. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request fails.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6532,6 +8252,12 @@ func (s *QueryDatasetDetailInfoResponse) SetBody(v *QueryDatasetDetailInfoRespon
 
 type QueryDatasetInfoRequest struct {
 	// Queries information about a specified dataset.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a201c85c-******
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 }
 
@@ -6551,12 +8277,21 @@ func (s *QueryDatasetInfoRequest) SetDatasetId(v string) *QueryDatasetInfoReques
 type QueryDatasetInfoResponseBody struct {
 	// Whether the operation is successfully returned. Valid values:
 	//
-	// *   true: The call is successful.
-	// *   false: The call fails.
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
+	// example:
+	//
+	// a4d1a221d-41za1-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the request.
 	Result *QueryDatasetInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The unique ID of the dataset.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6587,47 +8322,104 @@ type QueryDatasetInfoResponseBodyResult struct {
 	// The unique ID of the dataset.
 	CubeTableList []*QueryDatasetInfoResponseBodyResultCubeTableList `json:"CubeTableList,omitempty" xml:"CubeTableList,omitempty" type:"Repeated"`
 	// The unique ID of the workspace to which the dataset belongs.
+	//
+	// example:
+	//
+	// false
 	CustimzeSql *bool `json:"CustimzeSql,omitempty" xml:"CustimzeSql,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   mysql
-	// *   odps
-	// *   oracle
-	// *   ... Data source types supported by Quick BI such as
+	// 	- mysql
+	//
+	// 	- odps
+	//
+	// 	- oracle
+	//
+	// 	- ... Data source types supported by Quick BI such as
+	//
+	// example:
+	//
+	// a201c85c-******
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	// The user ID of the dataset owner in the Quick BI.
+	//
+	// example:
+	//
+	// opds_40
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	// If it is a custom SQL table, this is the specific SQL.
 	DimensionList []*QueryDatasetInfoResponseBodyResultDimensionList `json:"DimensionList,omitempty" xml:"DimensionList,omitempty" type:"Repeated"`
 	// The unique ID of the metric.
 	Directory *QueryDatasetInfoResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 	// The name of the data source.
+	//
+	// example:
+	//
+	// a201c85c-******
 	DsId *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
 	// The time when the dataset was last modified.
+	//
+	// example:
+	//
+	// odps
 	DsName *string `json:"DsName,omitempty" xml:"DsName,omitempty"`
 	// The point in time when the training dataset was created.
+	//
+	// example:
+	//
+	// odps
 	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
 	// Indicates whether to customize SQL statements. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// 1629450382000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The information about the dataset.
+	//
+	// example:
+	//
+	// 1629450382000
 	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
 	// The unique ID of the table to which the table belongs, which corresponds to the UniqueId of the CubeTypeList.
 	MeasureList []*QueryDatasetInfoResponseBodyResultMeasureList `json:"MeasureList,omitempty" xml:"MeasureList,omitempty" type:"Repeated"`
 	// Test Space
+	//
+	// example:
+	//
+	// b8494aab26124*****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The unique ID of the data source.
+	//
+	// example:
+	//
+	// The name of the dataset owner.
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The name of the training dataset.
+	//
+	// example:
+	//
+	// false
 	RowLevel *bool `json:"RowLevel,omitempty" xml:"RowLevel,omitempty"`
 	// Whether row-level permissions are enabled. Valid values:
 	//
-	// *   true: The VIP Netty channel is enabled.
-	// *   false: The VIP Netty channel is disabled.
+	// 	- true: The VIP Netty channel is enabled.
+	//
+	// 	- false: The VIP Netty channel is disabled.
+	//
+	// example:
+	//
+	// 420abef4-a79b-4289-b12****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// Big Baby
+	//
+	// example:
+	//
+	// The name of the workspace in which the dataset resides.
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -6727,30 +8519,67 @@ func (s *QueryDatasetInfoResponseBodyResult) SetWorkspaceName(v string) *QueryDa
 type QueryDatasetInfoResponseBodyResultCubeTableList struct {
 	// Indicates whether the data source table is valid. Valid values:
 	//
-	// *   true: data source table
-	// *   false: custom table
+	// 	- true: data source table
+	//
+	// 	- false: custom table
+	//
+	// example:
+	//
+	// odps_40
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// The display name of the table.
+	//
+	// example:
+	//
+	// false
 	Customsql *bool `json:"Customsql,omitempty" xml:"Customsql,omitempty"`
 	// The name of the table.
+	//
+	// example:
+	//
+	// dfefd7f4-fc6e-42c9-b4******
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
 	// The ID of the data source.
+	//
+	// example:
+	//
+	// maxcompute
 	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
 	// The unique ID of the table.
+	//
+	// example:
+	//
+	// true
 	FactTable *bool `json:"FactTable,omitempty" xml:"FactTable,omitempty"`
 	// Indicates whether the table is a custom SQL table. Valid values:
 	//
-	// *   true: custom SQL table
-	// *   false: non-custom SQL table
+	// 	- true: custom SQL table
+	//
+	// 	- false: non-custom SQL table
+	//
+	// example:
+	//
+	// select 	- from ****
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 	// The list of tables used by the dataset.
+	//
+	// example:
+	//
+	// viewdasb8494aab2612473cb74992159fe****
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   mysql
-	// *   odps
-	// *   oracle
-	// *   ... and other data source types supported by Quick BI
+	// 	- mysql
+	//
+	// 	- odps
+	//
+	// 	- oracle
+	//
+	// 	- ... and other data source types supported by Quick BI
+	//
+	// example:
+	//
+	// 7a62530b36
 	UniqueId *string `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
 }
 
@@ -6804,30 +8633,70 @@ func (s *QueryDatasetInfoResponseBodyResultCubeTableList) SetUniqueId(v string) 
 
 type QueryDatasetInfoResponseBodyResultDimensionList struct {
 	// The unique ID of the field that is referenced by the group measure. Non-NULL if and only if the metric is a grouping metric.
+	//
+	// example:
+	//
+	// city
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// A list of all dimensions in the dataset.
+	//
+	// example:
+	//
+	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The actual physical field.
+	//
+	// example:
+	//
+	// group_dimension
 	DimensionType *string `json:"DimensionType,omitempty" xml:"DimensionType,omitempty"`
 	// Data type; value:
 	//
-	// *   string: character
-	// *   number: a number
-	// *   datetime: time
+	// 	- string: character
+	//
+	// 	- number: a number
+	//
+	// 	- datetime: time
+	//
+	// example:
+	//
+	// example_expression
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// Expression for a calculated dimension; valid only for calculated dimensions.
+	//
+	// example:
+	//
+	// city
 	FactColumn *string `json:"FactColumn,omitempty" xml:"FactColumn,omitempty"`
 	// The type of the dimension. Valid values:
 	//
-	// *   standard_dimension: General Dimension
-	// *   calculate_dimension: calculating dimensions
-	// *   group_dimension: grouping dimensions
+	// 	- standard_dimension: General Dimension
+	//
+	// 	- calculate_dimension: calculating dimensions
+	//
+	// 	- group_dimension: grouping dimensions
+	//
+	// example:
+	//
+	// example_granularity
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
 	// The granularity.
+	//
+	// example:
+	//
+	// 308f7****
 	RefUid *string `json:"RefUid,omitempty" xml:"RefUid,omitempty"`
 	// The ARN.
+	//
+	// example:
+	//
+	// 7a62530***
 	TableUniqueId *string `json:"TableUniqueId,omitempty" xml:"TableUniqueId,omitempty"`
 	// The display name of the dimension.
+	//
+	// example:
+	//
+	// a69774***
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -6886,12 +8755,28 @@ func (s *QueryDatasetInfoResponseBodyResultDimensionList) SetUid(v string) *Quer
 
 type QueryDatasetInfoResponseBodyResultDirectory struct {
 	// Test directory
+	//
+	// example:
+	//
+	// a3eecab7-618d-4f9f-*****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Test directory
+	//
+	// example:
+	//
+	// The name of the directory.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The information about the directory to which the dataset belongs.
+	//
+	// example:
+	//
+	// 88b680****
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
 	// The path of the directory ID, for example, aa/bb/cc/dd.
+	//
+	// example:
+	//
+	// The path name of the directory ID, for example, one-level directory /two-level directory.
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -6925,25 +8810,56 @@ func (s *QueryDatasetInfoResponseBodyResultDirectory) SetPathName(v string) *Que
 
 type QueryDatasetInfoResponseBodyResultMeasureList struct {
 	// The actual physical field.
+	//
+	// example:
+	//
+	// profit_amt
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// A list of all measures for the dataset.
+	//
+	// example:
+	//
+	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// Data type; value:
 	//
-	// *   string: character
-	// *   number: a number
-	// *   datetime: time
+	// 	- string: character
+	//
+	// 	- number: a number
+	//
+	// 	- datetime: time
+	//
+	// example:
+	//
+	// example_expression
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The type of the measure. Valid values:
 	//
-	// *   standard_measure: General Metrics
-	// *   calculate_measure: Calculating Measures
+	// 	- standard_measure: General Metrics
+	//
+	// 	- calculate_measure: Calculating Measures
+	//
+	// example:
+	//
+	// profit_amt
 	FactColumn *string `json:"FactColumn,omitempty" xml:"FactColumn,omitempty"`
 	// An expression that calculates a measure; valid only for calculated measures.
+	//
+	// example:
+	//
+	// calculate_measure
 	MeasureType *string `json:"MeasureType,omitempty" xml:"MeasureType,omitempty"`
 	// The display name of the metric.
+	//
+	// example:
+	//
+	// 7a62530b36
 	TableUniqueId *string `json:"TableUniqueId,omitempty" xml:"TableUniqueId,omitempty"`
 	// The unique ID of the table to which the table belongs, which corresponds to the UniqueId of the CubeTypeList.
+	//
+	// example:
+	//
+	// 88b680****
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -7021,18 +8937,44 @@ func (s *QueryDatasetInfoResponse) SetBody(v *QueryDatasetInfoResponseBody) *Que
 
 type QueryDatasetListRequest struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// schemaad8aad00-9c55-4984-a767-b4e0ec60****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// Information about the directory where the dataset is located
+	//
+	// example:
+	//
+	// Queries the datasets of a specified workspace. The datasets are sorted in descending order by creation time.
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The ID of the workspace.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// Specifies the directory ID.
 	//
-	// *   If this field is not empty, all datasets in the directory are obtained.
+	// 	- If this field is not empty, all datasets in the directory are obtained.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of pages returned.
+	//
+	// example:
+	//
+	// true
 	WithChildren *bool `json:"WithChildren,omitempty" xml:"WithChildren,omitempty"`
 	// The name of the data source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -7076,13 +9018,22 @@ func (s *QueryDatasetListRequest) SetWorkspaceId(v string) *QueryDatasetListRequ
 
 type QueryDatasetListResponseBody struct {
 	// The keyword used to search for the dataset name.
+	//
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Test dataset
 	Result *QueryDatasetListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Whether to recursively wrap the dataset in the subdirectory. Valid values:
 	//
-	// *   true: returns datasets in all recursive subdirectories in the directoryId directory.
-	// *   false: Only datasets in the directory specified by directoryId are returned, excluding subdirectories.
+	// 	- true: returns datasets in all recursive subdirectories in the directoryId directory.
+	//
+	// 	- false: Only datasets in the directory specified by directoryId are returned, excluding subdirectories.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7114,20 +9065,39 @@ type QueryDatasetListResponseBodyResult struct {
 	Data []*QueryDatasetListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The number of rows per page in a paged query.
 	//
-	// *   Default value: 10.
-	// *   Maximum value: 1,000.
+	// 	- Default value: 10.
+	//
+	// 	- Maximum value: 1,000.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 	// Current page number for dataset list:
 	//
-	// *   Pages start from page 1.
-	// *   Default value: 1.
+	// 	- Pages start from page 1.
+	//
+	// 	- Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
@@ -7166,31 +9136,72 @@ func (s *QueryDatasetListResponseBodyResult) SetTotalPages(v int32) *QueryDatase
 
 type QueryDatasetListResponseBodyResultData struct {
 	// The details of the dataset list.
+	//
+	// example:
+	//
+	// 2020-11-02 10:36:05
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Test Space
 	DataSource *QueryDatasetListResponseBodyResultDataDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The name of the workspace.
+	//
+	// example:
+	//
+	// 5820f58c-c734-4d8a-baf1-7979af4f****
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	// Tom
+	//
+	// example:
+	//
+	// company_sales_record_copy12
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	// The number of rows per page set when the interface is requested.
+	//
+	// example:
+	//
+	// The total number of rows in the table.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The information about the data source to which the dataset belongs.
 	Directory *QueryDatasetListResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 	// The nickname of the dataset owner.
+	//
+	// example:
+	//
+	// 2020-11-02 10:36:05
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The creation time.
+	//
+	// example:
+	//
+	// 136516262323****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Whether to enable row-level permissions. Valid values:
 	//
-	// *   true: The VIP Netty channel is enabled.
-	// *   false: The incremental log backup feature is disabled.
+	// 	- true: The VIP Netty channel is enabled.
+	//
+	// 	- false: The incremental log backup feature is disabled.
+	//
+	// example:
+	//
+	// The ID of the workspace.
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The total number of pages returned.
+	//
+	// example:
+	//
+	// true
 	RowLevel *bool `json:"RowLevel,omitempty" xml:"RowLevel,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad06adf
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The description of the dataset.
+	//
+	// example:
+	//
+	// Test dataset
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -7264,10 +9275,22 @@ func (s *QueryDatasetListResponseBodyResultData) SetWorkspaceName(v string) *Que
 
 type QueryDatasetListResponseBodyResultDataDataSource struct {
 	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+	//
+	// example:
+	//
+	// 261b252d-c3c3-498a-a0a7-5d1ec6cd****
 	DsId *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
 	// The time when the scaling group was modified.
+	//
+	// example:
+	//
+	// The name of the training dataset.
 	DsName *string `json:"DsName,omitempty" xml:"DsName,omitempty"`
 	// The user ID of the dataset owner in the Quick BI.
+	//
+	// example:
+	//
+	// mysql
 	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
 }
 
@@ -7296,12 +9319,28 @@ func (s *QueryDatasetListResponseBodyResultDataDataSource) SetDsType(v string) *
 
 type QueryDatasetListResponseBodyResultDataDirectory struct {
 	// The ID of the directory path.
+	//
+	// example:
+	//
+	// schemaad8aad00-9c55-4984-a767-b4e0ec60****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the data source.
+	//
+	// example:
+	//
+	// Information about the directory where the dataset is located
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the data source.
+	//
+	// example:
+	//
+	// schemaad8aad00-9c55-4984-a767-b4e0ec60****
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
 	// The name of the data source.
+	//
+	// example:
+	//
+	// Test a data source
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -7363,6 +9402,11 @@ func (s *QueryDatasetListResponse) SetBody(v *QueryDatasetListResponseBody) *Que
 }
 
 type QueryDatasetSwitchInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
 }
 
@@ -7380,9 +9424,15 @@ func (s *QueryDatasetSwitchInfoRequest) SetCubeId(v string) *QueryDatasetSwitchI
 }
 
 type QueryDatasetSwitchInfoResponseBody struct {
+	// example:
+	//
+	// FAECEFA8-09BB-58AB-BC58-C8ACEFE4D232
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *QueryDatasetSwitchInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryDatasetSwitchInfoResponseBody) String() string {
@@ -7409,9 +9459,18 @@ func (s *QueryDatasetSwitchInfoResponseBody) SetSuccess(v bool) *QueryDatasetSwi
 }
 
 type QueryDatasetSwitchInfoResponseBodyResult struct {
-	CubeId                      *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	IsOpenColumnLevelPermission *int32  `json:"IsOpenColumnLevelPermission,omitempty" xml:"IsOpenColumnLevelPermission,omitempty"`
-	IsOpenRowLevelPermission    *int32  `json:"IsOpenRowLevelPermission,omitempty" xml:"IsOpenRowLevelPermission,omitempty"`
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// example:
+	//
+	// 1
+	IsOpenColumnLevelPermission *int32 `json:"IsOpenColumnLevelPermission,omitempty" xml:"IsOpenColumnLevelPermission,omitempty"`
+	// example:
+	//
+	// 1
+	IsOpenRowLevelPermission *int32 `json:"IsOpenRowLevelPermission,omitempty" xml:"IsOpenRowLevelPermission,omitempty"`
 }
 
 func (s QueryDatasetSwitchInfoResponseBodyResult) String() string {
@@ -7467,12 +9526,20 @@ func (s *QueryDatasetSwitchInfoResponse) SetBody(v *QueryDatasetSwitchInfoRespon
 }
 
 type QueryEmbeddedInfoResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *QueryEmbeddedInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7500,9 +9567,15 @@ func (s *QueryEmbeddedInfoResponseBody) SetSuccess(v bool) *QueryEmbeddedInfoRes
 }
 
 type QueryEmbeddedInfoResponseBodyResult struct {
-	Detail        *QueryEmbeddedInfoResponseBodyResultDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
-	EmbeddedCount *int32                                     `json:"EmbeddedCount,omitempty" xml:"EmbeddedCount,omitempty"`
-	MaxCount      *int32                                     `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	Detail *QueryEmbeddedInfoResponseBodyResultDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3
+	EmbeddedCount *int32 `json:"EmbeddedCount,omitempty" xml:"EmbeddedCount,omitempty"`
+	// example:
+	//
+	// 100
+	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
 }
 
 func (s QueryEmbeddedInfoResponseBodyResult) String() string {
@@ -7529,9 +9602,18 @@ func (s *QueryEmbeddedInfoResponseBodyResult) SetMaxCount(v int32) *QueryEmbedde
 }
 
 type QueryEmbeddedInfoResponseBodyResultDetail struct {
+	// example:
+	//
+	// 1
 	DashboardOfflineQuery *int32 `json:"DashboardOfflineQuery,omitempty" xml:"DashboardOfflineQuery,omitempty"`
-	Page                  *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	Report                *int32 `json:"Report,omitempty" xml:"Report,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 1
+	Report *int32 `json:"Report,omitempty" xml:"Report,omitempty"`
 }
 
 func (s QueryEmbeddedInfoResponseBodyResultDetail) String() string {
@@ -7588,6 +9670,12 @@ func (s *QueryEmbeddedInfoResponse) SetBody(v *QueryEmbeddedInfoResponseBody) *Q
 
 type QueryEmbeddedStatusRequest struct {
 	// The work ID of the query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -7606,16 +9694,30 @@ func (s *QueryEmbeddedStatusRequest) SetWorksId(v string) *QueryEmbeddedStatusRe
 
 type QueryEmbeddedStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Whether the work is enabled for embedding. Valid values:
 	//
-	// *   true: embedded
-	// *   false: not embedded
+	// 	- true: embedded
+	//
+	// 	- false: not embedded
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7672,6 +9774,11 @@ func (s *QueryEmbeddedStatusResponse) SetBody(v *QueryEmbeddedStatusResponseBody
 }
 
 type QueryOrganizationRoleConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111111111
 	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 }
 
@@ -7689,9 +9796,15 @@ func (s *QueryOrganizationRoleConfigRequest) SetRoleId(v int64) *QueryOrganizati
 }
 
 type QueryOrganizationRoleConfigResponseBody struct {
+	// example:
+	//
+	// BCE45E6D-9304-4F94-86BB-5A772B1615FF
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *QueryOrganizationRoleConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryOrganizationRoleConfigResponseBody) String() string {
@@ -7719,9 +9832,15 @@ func (s *QueryOrganizationRoleConfigResponseBody) SetSuccess(v bool) *QueryOrgan
 
 type QueryOrganizationRoleConfigResponseBodyResult struct {
 	AuthConfigList []*QueryOrganizationRoleConfigResponseBodyResultAuthConfigList `json:"AuthConfigList,omitempty" xml:"AuthConfigList,omitempty" type:"Repeated"`
-	IsSystemRole   *bool                                                          `json:"IsSystemRole,omitempty" xml:"IsSystemRole,omitempty"`
-	RoleId         *int64                                                         `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	RoleName       *string                                                        `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// example:
+	//
+	// true
+	IsSystemRole *bool `json:"IsSystemRole,omitempty" xml:"IsSystemRole,omitempty"`
+	// example:
+	//
+	// 111111111
+	RoleId   *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s QueryOrganizationRoleConfigResponseBodyResult) String() string {
@@ -7753,6 +9872,9 @@ func (s *QueryOrganizationRoleConfigResponseBodyResult) SetRoleName(v string) *Q
 }
 
 type QueryOrganizationRoleConfigResponseBodyResultAuthConfigList struct {
+	// example:
+	//
+	// quick_monitor
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 }
 
@@ -7799,10 +9921,19 @@ func (s *QueryOrganizationRoleConfigResponse) SetBody(v *QueryOrganizationRoleCo
 }
 
 type QueryOrganizationWorkspaceListRequest struct {
-	Keyword  *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// fe67f61a35a94b7da1a34ba174a7****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryOrganizationWorkspaceListRequest) String() string {
@@ -7834,9 +9965,15 @@ func (s *QueryOrganizationWorkspaceListRequest) SetUserId(v string) *QueryOrgani
 }
 
 type QueryOrganizationWorkspaceListResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *QueryOrganizationWorkspaceListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryOrganizationWorkspaceListResponseBody) String() string {
@@ -7863,11 +10000,23 @@ func (s *QueryOrganizationWorkspaceListResponseBody) SetSuccess(v bool) *QueryOr
 }
 
 type QueryOrganizationWorkspaceListResponseBodyResult struct {
-	Data       []*QueryOrganizationWorkspaceListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum    *int32                                                  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalNum   *int32                                                  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPages *int32                                                  `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	Data []*QueryOrganizationWorkspaceListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s QueryOrganizationWorkspaceListResponseBodyResult) String() string {
@@ -7904,20 +10053,56 @@ func (s *QueryOrganizationWorkspaceListResponseBodyResult) SetTotalPages(v int32
 }
 
 type QueryOrganizationWorkspaceListResponseBodyResultData struct {
-	AllowPublishOperation *bool   `json:"AllowPublishOperation,omitempty" xml:"AllowPublishOperation,omitempty"`
-	AllowShareOperation   *bool   `json:"AllowShareOperation,omitempty" xml:"AllowShareOperation,omitempty"`
-	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUser            *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// true
+	AllowPublishOperation *bool `json:"AllowPublishOperation,omitempty" xml:"AllowPublishOperation,omitempty"`
+	// example:
+	//
+	// true
+	AllowShareOperation *bool `json:"AllowShareOperation,omitempty" xml:"AllowShareOperation,omitempty"`
+	// example:
+	//
+	// 2020-11-10 17:51:07
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// de4bc5f9429141cc8091cdd1c15b****
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// pop****@aliyun.com
 	CreateUserAccountName *string `json:"CreateUserAccountName,omitempty" xml:"CreateUserAccountName,omitempty"`
-	ModifiedTime          *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	ModifyUser            *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// 2020-11-10 17:51:07
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// de4bc5f9429141cc8091cdd1c15b****
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// pop****@aliyun.com
 	ModifyUserAccountName *string `json:"ModifyUserAccountName,omitempty" xml:"ModifyUserAccountName,omitempty"`
-	OrganizationId        *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	Owner                 *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	OwnerAccountName      *string `json:"OwnerAccountName,omitempty" xml:"OwnerAccountName,omitempty"`
-	WorkspaceDescription  *string `json:"WorkspaceDescription,omitempty" xml:"WorkspaceDescription,omitempty"`
-	WorkspaceId           *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName         *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// de4bc5f9429141cc8091cdd1c15b****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// pop****@aliyun.com
+	OwnerAccountName     *string `json:"OwnerAccountName,omitempty" xml:"OwnerAccountName,omitempty"`
+	WorkspaceDescription *string `json:"WorkspaceDescription,omitempty" xml:"WorkspaceDescription,omitempty"`
+	// example:
+	//
+	// 7350a155-0e94-4c6c-8620-57bbec38****
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QueryOrganizationWorkspaceListResponseBodyResultData) String() string {
@@ -8029,6 +10214,12 @@ func (s *QueryOrganizationWorkspaceListResponse) SetBody(v *QueryOrganizationWor
 
 type QueryReadableResourcesListByUserIdRequest struct {
 	// Quick BI the user ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// de4bc5f9429141cc8091cdd1c15b****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -8047,13 +10238,22 @@ func (s *QueryReadableResourcesListByUserIdRequest) SetUserId(v string) *QueryRe
 
 type QueryReadableResourcesListByUserIdResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of works that the user has permission to view.
 	Result []*QueryReadableResourcesListByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8082,55 +10282,115 @@ func (s *QueryReadableResourcesListByUserIdResponseBody) SetSuccess(v bool) *Que
 
 type QueryReadableResourcesListByUserIdResponseBodyResult struct {
 	// The timestamp of the creation time in milliseconds.
+	//
+	// example:
+	//
+	// 1611023338000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Remarks on the work.
+	//
+	// example:
+	//
+	// Description
 	Description *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
 	Directory   *QueryReadableResourcesListByUserIdResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 	// The name of the Alibaba Cloud account to which the modifier belongs.
+	//
+	// example:
+	//
+	// Li Si
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
+	// example:
+	//
+	// 1611023338000
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The Quick BI UserID of the work owner.
+	//
+	// example:
+	//
+	// 46e5374665ba4b679ee22e2a2927****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The Alibaba Cloud account name of the owner.
+	//
+	// example:
+	//
+	// Tom
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// Security policies for collaborative authorization of works. Valid values:
 	//
-	// *   0: private
-	// *   12: Authorize specified members
-	// *   1 or 11: Authorize all workspace members
+	// 	- 0: private
+	//
+	// 	- 12: Authorize specified members
+	//
+	// 	- 1 or 11: Authorize all workspace members
 	//
 	// >
 	//
-	// *   If you use legacy permissions, the return value is 1.
+	// 	- If you use legacy permissions, the return value is 1.
 	//
-	// *   If you use the new permissions, the return value is 11.
+	// 	- If you use the new permissions, the return value is 11.
+	//
+	// example:
+	//
+	// 0
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
 	// The status of the report. Valid values:
 	//
-	// *   0: unpublished
-	// *   1: published
-	// *   2: modified but not published
-	// *   3: unpublished
+	// 	- 0: unpublished
+	//
+	// 	- 1: published
+	//
+	// 	- 2: modified but not published
+	//
+	// 	- 3: unpublished
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Third-party embedding status. Valid values:
 	//
-	// *   0: The embed service is not enabled.
-	// *   1: Embed is enabled.
+	// 	- 0: The embed service is not enabled.
+	//
+	// 	- 1: Embed is enabled.
+	//
+	// example:
+	//
+	// 1
 	ThirdPartAuthFlag *int32 `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
 	// The name of the work.
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
 	// The type of the work. Valid values:
 	//
-	// *   DATAPRODUCT: BI portal
-	// *   PAGE: Dashboard
-	// *   FULLPAGE: full-screen dashboards
-	// *   REPORT: workbook
+	// 	- DATAPRODUCT: BI portal
+	//
+	// 	- PAGE: Dashboard
+	//
+	// 	- FULLPAGE: full-screen dashboards
+	//
+	// 	- REPORT: workbook
+	//
+	// example:
+	//
+	// PAGE
 	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
 	// The ID of the work.
+	//
+	// example:
+	//
+	// 03366b16-69ce-43c8-b782-56c2f6ec****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 	// The ID of the workspace to which the work belongs.
+	//
+	// example:
+	//
+	// 89713491-cb4f-4579-b889-e82c35f1****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The name of the workspace to which the work belongs.
+	//
+	// example:
+	//
+	// Test Workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -8218,8 +10478,14 @@ func (s *QueryReadableResourcesListByUserIdResponseBodyResult) SetWorkspaceName(
 }
 
 type QueryReadableResourcesListByUserIdResponseBodyResultDirectory struct {
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// e4276ea5-b232-4fb1-8f0f-efcee4a2****
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// e4276ea5-b232-4fb1-8f0f-efcee4a2****
 	PathId   *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
@@ -8282,13 +10548,38 @@ func (s *QueryReadableResourcesListByUserIdResponse) SetBody(v *QueryReadableRes
 }
 
 type QueryReportPerformanceRequest struct {
-	CostTimeAvgMin *int32  `json:"CostTimeAvgMin,omitempty" xml:"CostTimeAvgMin,omitempty"`
-	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryType      *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	ReportId       *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// 1
+	CostTimeAvgMin *int32 `json:"CostTimeAvgMin,omitempty" xml:"CostTimeAvgMin,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sevenDays
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// example:
+	//
+	// 6b407e50-e774-406b-9956-da2425c2****
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// example:
+	//
+	// report
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s QueryReportPerformanceRequest) String() string {
@@ -8335,9 +10626,15 @@ func (s *QueryReportPerformanceRequest) SetWorkspaceId(v string) *QueryReportPer
 }
 
 type QueryReportPerformanceResponseBody struct {
+	// example:
+	//
+	// 1FC71085-D5FD-08E0-813A-4D4BD1031BC5
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*QueryReportPerformanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryReportPerformanceResponseBody) String() string {
@@ -8364,30 +10661,99 @@ func (s *QueryReportPerformanceResponseBody) SetSuccess(v bool) *QueryReportPerf
 }
 
 type QueryReportPerformanceResponseBodyResult struct {
-	CacheCostTimeAvg          *float64 `json:"CacheCostTimeAvg,omitempty" xml:"CacheCostTimeAvg,omitempty"`
-	CacheQueryCount           *int32   `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
-	ComponentQueryCount       *int32   `json:"ComponentQueryCount,omitempty" xml:"ComponentQueryCount,omitempty"`
-	ComponentQueryCountAvg    *float64 `json:"ComponentQueryCountAvg,omitempty" xml:"ComponentQueryCountAvg,omitempty"`
-	CostTimeAvg               *float64 `json:"CostTimeAvg,omitempty" xml:"CostTimeAvg,omitempty"`
-	QueryCount                *int32   `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
-	QueryCountAvg             *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
-	QueryOverFivePercentNum   *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
-	QueryOverFiveSecPercent   *string  `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
-	QueryOverTenSecPercent    *string  `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
+	// example:
+	//
+	// 2.2
+	CacheCostTimeAvg *float64 `json:"CacheCostTimeAvg,omitempty" xml:"CacheCostTimeAvg,omitempty"`
+	// example:
+	//
+	// 1
+	CacheQueryCount *int32 `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
+	// example:
+	//
+	// 1
+	ComponentQueryCount *int32 `json:"ComponentQueryCount,omitempty" xml:"ComponentQueryCount,omitempty"`
+	// example:
+	//
+	// 2.0
+	ComponentQueryCountAvg *float64 `json:"ComponentQueryCountAvg,omitempty" xml:"ComponentQueryCountAvg,omitempty"`
+	// example:
+	//
+	// 0.2
+	CostTimeAvg *float64 `json:"CostTimeAvg,omitempty" xml:"CostTimeAvg,omitempty"`
+	// example:
+	//
+	// 50
+	QueryCount *int32 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	// example:
+	//
+	// 3.3
+	QueryCountAvg *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
+	// example:
+	//
+	// 0.5
+	QueryOverFivePercentNum *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
+	// example:
+	//
+	// 0.5
+	QueryOverFiveSecPercent *string `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
+	// example:
+	//
+	// 0.5
+	QueryOverTenSecPercent *string `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
+	// example:
+	//
+	// 0.5
 	QueryOverTenSecPercentNum *float64 `json:"QueryOverTenSecPercentNum,omitempty" xml:"QueryOverTenSecPercentNum,omitempty"`
-	QueryTimeoutCount         *int32   `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
-	QueryTimeoutCountPercent  *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
-	QuickIndexCostTimeAvg     *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
-	QuickIndexQueryCount      *int32   `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
-	RepeatQueryPercent        *string  `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
-	RepeatQueryPercentNum     *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
-	RepeatSqlQueryCount       *int32   `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
-	RepeatSqlQueryPercent     *string  `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
-	ReportId                  *string  `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	ReportName                *string  `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
-	ReportType                *string  `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	WorkspaceId               *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName             *string  `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// 8
+	QueryTimeoutCount *int32 `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
+	// example:
+	//
+	// 0.5
+	QueryTimeoutCountPercent *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
+	// example:
+	//
+	// 10
+	QuickIndexCostTimeAvg *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
+	// example:
+	//
+	// 5
+	QuickIndexQueryCount *int32 `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
+	// example:
+	//
+	// 0.8
+	RepeatQueryPercent *string `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
+	// example:
+	//
+	// 3
+	RepeatQueryPercentNum *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
+	// example:
+	//
+	// 1
+	RepeatSqlQueryCount *int32 `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
+	// example:
+	//
+	// 0.7
+	RepeatSqlQueryPercent *string `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
+	// example:
+	//
+	// 6b407e50-e774-406b-9956-da2425c2****
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// example:
+	//
+	// ClusterAddonUpgradeReport
+	ReportName *string `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
+	// example:
+	//
+	// report
+	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// example:
+	//
+	// ab46ed33-6278-4ef7-8013-8c1335f266ee
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QueryReportPerformanceResponseBodyResult) String() string {
@@ -8550,13 +10916,25 @@ func (s *QueryReportPerformanceResponse) SetBody(v *QueryReportPerformanceRespon
 type QueryShareListRequest struct {
 	// The type of work being shared. Valid values:
 	//
-	// *   product: BI portal
-	// *   dashboard: dashboard
-	// *   worksheet: workbook
-	// *   dashboardOfflineQuery: self-service data retrieval
-	// *   Analysis: Ad hoc analysis
-	// *   DATAFORM
-	// *   SCREEN: Data dashboard
+	// 	- product: BI portal
+	//
+	// 	- dashboard: dashboard
+	//
+	// 	- worksheet: workbook
+	//
+	// 	- dashboardOfflineQuery: self-service data retrieval
+	//
+	// 	- Analysis: Ad hoc analysis
+	//
+	// 	- DATAFORM
+	//
+	// 	- SCREEN: Data dashboard
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6b407e50-e774-406b-9956-da2425c2****
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 }
 
@@ -8574,9 +10952,15 @@ func (s *QueryShareListRequest) SetReportId(v string) *QueryShareListRequest {
 }
 
 type QueryShareListResponseBody struct {
+	// example:
+	//
+	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*QueryShareListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryShareListResponseBody) String() string {
@@ -8603,14 +10987,35 @@ func (s *QueryShareListResponseBody) SetSuccess(v bool) *QueryShareListResponseB
 }
 
 type QueryShareListResponseBodyResult struct {
-	AuthPoint   *int32  `json:"AuthPoint,omitempty" xml:"AuthPoint,omitempty"`
-	ExpireDate  *int64  `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	ReportId    *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	ShareId     *string `json:"ShareId,omitempty" xml:"ShareId,omitempty"`
+	// example:
+	//
+	// 3
+	AuthPoint *int32 `json:"AuthPoint,omitempty" xml:"AuthPoint,omitempty"`
+	// example:
+	//
+	// 1640102400000
+	ExpireDate *int64 `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// example:
+	//
+	// 6b407e50-e774-406b-9956-da2425c2****
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// example:
+	//
+	// 0ab9659e-29cf-47d7-a364-3a91553b****
+	ShareId *string `json:"ShareId,omitempty" xml:"ShareId,omitempty"`
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	ShareToId   *string `json:"ShareToId,omitempty" xml:"ShareToId,omitempty"`
 	ShareToName *string `json:"ShareToName,omitempty" xml:"ShareToName,omitempty"`
-	ShareToType *int32  `json:"ShareToType,omitempty" xml:"ShareToType,omitempty"`
-	ShareType   *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// example:
+	//
+	// 0
+	ShareToType *int32 `json:"ShareToType,omitempty" xml:"ShareToType,omitempty"`
+	// example:
+	//
+	// product
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 }
 
 func (s QueryShareListResponseBodyResult) String() string {
@@ -8692,6 +11097,12 @@ func (s *QueryShareListResponse) SetBody(v *QueryShareListResponseBody) *QuerySh
 
 type QuerySharesToUserListRequest struct {
 	// The ID of the user. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 46e53****5ba4b679ee22e2a2927****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -8710,13 +11121,22 @@ func (s *QuerySharesToUserListRequest) SetUserId(v string) *QuerySharesToUserLis
 
 type QuerySharesToUserListResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Returns a list of works authorized to the user.
 	Result []*QuerySharesToUserListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8745,58 +11165,124 @@ func (s *QuerySharesToUserListResponseBody) SetSuccess(v bool) *QuerySharesToUse
 
 type QuerySharesToUserListResponseBodyResult struct {
 	// The timestamp of the creation time in milliseconds.
+	//
+	// example:
+	//
+	// 1530078690000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Remarks on the work.
+	//
+	// example:
+	//
+	// Description of the test report
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Information about the directory where the work is located.
 	Directory *QuerySharesToUserListResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 	// The name of the Alibaba Cloud account to which the modifier belongs.
+	//
+	// example:
+	//
+	// 13855265****@163.com
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
 	// The timestamp of the modification time in milliseconds.
+	//
+	// example:
+	//
+	// 1530078690000
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The UserID of the work owner in Quickbi.
+	//
+	// example:
+	//
+	// 74f5527216d14e9892245320ebf2****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The Alibaba Cloud account name of the work owner.
+	//
+	// example:
+	//
+	// w****@aliyun.com
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// Security policies for collaborative authorization of works. Valid values:
 	//
-	// *   0: private
-	// *   12: Authorize specified members
-	// *   1 or 11: Authorize all workspace members
+	// 	- 0: private
+	//
+	// 	- 12: Authorize specified members
+	//
+	// 	- 1 or 11: Authorize all workspace members
 	//
 	// >
 	//
-	// *   If you use legacy permissions, the return value is 1.
+	// 	- If you use legacy permissions, the return value is 1.
 	//
-	// *   If you use the new permissions, the return value is 11.
+	// 	- If you use the new permissions, the return value is 11.
+	//
+	// example:
+	//
+	// 0
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
 	// The publishing status of the report. Valid values:
 	//
-	// *   0: unpublished
-	// *   1: published
-	// *   2: modified but not published
-	// *   3: unpublished
+	// 	- 0: unpublished
+	//
+	// 	- 1: published
+	//
+	// 	- 2: modified but not published
+	//
+	// 	- 3: unpublished
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Third-party embedding status. Valid values:
 	//
-	// *   0: No embedding is enabled.
-	// *   1: Embed is enabled.
+	// 	- 0: No embedding is enabled.
+	//
+	// 	- 1: Embed is enabled.
+	//
+	// example:
+	//
+	// 0
 	ThirdPartAuthFlag *int32 `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
 	// The name of the report.
+	//
+	// example:
+	//
+	// Test report
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
 	// The type of the work. Valid values:
 	//
-	// *   DATAPRODUCT: BI portal
-	// *   PAGE: Dashboard
-	// *   FULLPAGE: full-screen dashboards
-	// *   REPORT: workbook
-	// *   dashboardOfflineQuery: self-service data retrieval
+	// 	- DATAPRODUCT: BI portal
+	//
+	// 	- PAGE: Dashboard
+	//
+	// 	- FULLPAGE: full-screen dashboards
+	//
+	// 	- REPORT: workbook
+	//
+	// 	- dashboardOfflineQuery: self-service data retrieval
+	//
+	// example:
+	//
+	// DATAFORM
 	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
 	// The ID of the operations report.
+	//
+	// example:
+	//
+	// 97f7f4c1-543a-4069-8e8d-a56cfcd6****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 	// The ID of the workspace to which the report belongs.
+	//
+	// example:
+	//
+	// c5f86ad2-ef53-4c51-8720-162ecfdb****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The name of the workspace to which the report belongs.
+	//
+	// example:
+	//
+	// Return to Professional Edition
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -8885,12 +11371,28 @@ func (s *QuerySharesToUserListResponseBodyResult) SetWorkspaceName(v string) *Qu
 
 type QuerySharesToUserListResponseBodyResultDirectory struct {
 	// The ID of the directory where the resource is located.
+	//
+	// example:
+	//
+	// f7f6e22b-83be-47fd-b49d-9ca686a9****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the resource.
+	//
+	// example:
+	//
+	// Chart Report
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The path ID of the directory where the resource is located.
+	//
+	// example:
+	//
+	// 66ffe22b-83be-47fd-b49d-9ca58d29****/f7f6e22b-83be-47fd-b49d-9ca686a9****
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
 	// The path name of the directory where the resource is located.
+	//
+	// example:
+	//
+	// Level -1 Directory /Level -2 Directory
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -8953,6 +11455,12 @@ func (s *QuerySharesToUserListResponse) SetBody(v *QuerySharesToUserListResponse
 
 type QueryTicketInfoRequest struct {
 	// Obtains the details of a specified ticket for a report that is not embedded in the report.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a27a9aec-****-****-bd40-1a21ea41d7c5
 	Ticket *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
 }
 
@@ -8970,9 +11478,15 @@ func (s *QueryTicketInfoRequest) SetTicket(v string) *QueryTicketInfoRequest {
 }
 
 type QueryTicketInfoResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *QueryTicketInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryTicketInfoResponseBody) String() string {
@@ -8999,17 +11513,44 @@ func (s *QueryTicketInfoResponseBody) SetSuccess(v bool) *QueryTicketInfoRespons
 }
 
 type QueryTicketInfoResponseBodyResult struct {
-	AccessTicket   *string `json:"AccessTicket,omitempty" xml:"AccessTicket,omitempty"`
-	CmptId         *string `json:"CmptId,omitempty" xml:"CmptId,omitempty"`
-	GlobalParam    *string `json:"GlobalParam,omitempty" xml:"GlobalParam,omitempty"`
-	InvalidTime    *string `json:"InvalidTime,omitempty" xml:"InvalidTime,omitempty"`
-	MaxTicketNum   *int32  `json:"MaxTicketNum,omitempty" xml:"MaxTicketNum,omitempty"`
+	// example:
+	//
+	// a27a9aec-****-****-bd40-1a21ea41d7c5
+	AccessTicket *string `json:"AccessTicket,omitempty" xml:"AccessTicket,omitempty"`
+	// example:
+	//
+	// sfdgsds-****-****-a608-mghdgd
+	CmptId      *string `json:"CmptId,omitempty" xml:"CmptId,omitempty"`
+	GlobalParam *string `json:"GlobalParam,omitempty" xml:"GlobalParam,omitempty"`
+	// example:
+	//
+	// 2022-01-30 03:03:49
+	InvalidTime *string `json:"InvalidTime,omitempty" xml:"InvalidTime,omitempty"`
+	// example:
+	//
+	// 9999
+	MaxTicketNum *int32 `json:"MaxTicketNum,omitempty" xml:"MaxTicketNum,omitempty"`
+	// example:
+	//
+	// 2fe4fbd8-****-****-b3e1-e92c7af083ea
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	RegisterTime   *string `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
-	UsedTicketNum  *int32  `json:"UsedTicketNum,omitempty" xml:"UsedTicketNum,omitempty"`
+	// example:
+	//
+	// 2022-01-09 22:23:49
+	RegisterTime *string `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
+	// example:
+	//
+	// 47
+	UsedTicketNum *int32 `json:"UsedTicketNum,omitempty" xml:"UsedTicketNum,omitempty"`
+	// example:
+	//
+	// 974e50**********9033f46
 	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WatermarkParam *string `json:"WatermarkParam,omitempty" xml:"WatermarkParam,omitempty"`
-	WorksId        *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	// example:
+	//
+	// ccd3428c-****-****-a608-26bae29dffee
+	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
 func (s QueryTicketInfoResponseBodyResult) String() string {
@@ -9107,8 +11648,15 @@ func (s *QueryTicketInfoResponse) SetBody(v *QueryTicketInfoResponseBody) *Query
 type QueryUserGroupListByParentIdRequest struct {
 	// The ID of the parent user group.
 	//
-	// *   If you enter the ID of the parent user group, you can obtain the information of the child user group under this ID.
-	// *   If you enter -1, you can obtain the sub-user group information under the root directory.
+	// 	- If you enter the ID of the parent user group, you can obtain the information of the child user group under this ID.
+	//
+	// 	- If you enter -1, you can obtain the sub-user group information under the root directory.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3d2c23d4-2b41-4af8-a1f5-f6390f32****
 	ParentUserGroupId *string `json:"ParentUserGroupId,omitempty" xml:"ParentUserGroupId,omitempty"`
 }
 
@@ -9127,13 +11675,22 @@ func (s *QueryUserGroupListByParentIdRequest) SetParentUserGroupId(v string) *Qu
 
 type QueryUserGroupListByParentIdResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 72B19D61-B37A-5C7A-9389-0856CD7935B3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the sub-user group.
 	Result []*QueryUserGroupListByParentIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9162,22 +11719,58 @@ func (s *QueryUserGroupListByParentIdResponseBody) SetSuccess(v bool) *QueryUser
 
 type QueryUserGroupListByParentIdResponseBodyResult struct {
 	// The time when the sub-user group was created.
+	//
+	// example:
+	//
+	// 2020-10-30 10:03:09
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The creator of the sub-user group. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+	//
+	// example:
+	//
+	// 136516262323****
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// Directory level of the sub-user group.
+	//
+	// example:
+	//
+	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****/3d2c23d4-2b41-4af8-a1f5-f6390f32****/f5eeb52e-d9c2-4a8b-80e3-47ab55c2****
 	IdentifiedPath *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
 	// The time when the sub-user group was last modified.
+	//
+	// example:
+	//
+	// 2020-11-16 15:49:08
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The user who modified the subgroup. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+	//
+	// example:
+	//
+	// 136516262323****
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
 	// The ID of the parent user group.
+	//
+	// example:
+	//
+	// 3d2c23d4-2b41-4af8-a1f5-f6390f32****
 	ParentUserGroupId *string `json:"ParentUserGroupId,omitempty" xml:"ParentUserGroupId,omitempty"`
 	// The description of the sub-user group.
+	//
+	// example:
+	//
+	// User Group for Testing
 	UserGroupDescription *string `json:"UserGroupDescription,omitempty" xml:"UserGroupDescription,omitempty"`
 	// The ID of the sub-user group.
+	//
+	// example:
+	//
+	// f5eeb52e-d9c2-4a8b-80e3-47ab55c2****
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 	// The name of the sub-user group.
+	//
+	// example:
+	//
+	// popapi test group
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 
@@ -9264,7 +11857,12 @@ func (s *QueryUserGroupListByParentIdResponse) SetBody(v *QueryUserGroupListByPa
 }
 
 type QueryUserGroupMemberRequest struct {
-	Keyword     *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -9287,9 +11885,15 @@ func (s *QueryUserGroupMemberRequest) SetUserGroupId(v string) *QueryUserGroupMe
 }
 
 type QueryUserGroupMemberResponseBody struct {
+	// example:
+	//
+	// 48C930FF-DFCF-5986-902B-E24C202E2443
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*QueryUserGroupMemberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserGroupMemberResponseBody) String() string {
@@ -9316,9 +11920,18 @@ func (s *QueryUserGroupMemberResponseBody) SetSuccess(v bool) *QueryUserGroupMem
 }
 
 type QueryUserGroupMemberResponseBodyResult struct {
-	Id                  *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsUserGroup         *bool   `json:"IsUserGroup,omitempty" xml:"IsUserGroup,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 3d2c23d4-2b41-4af8-a1f5-f6390f32****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// true
+	IsUserGroup *bool   `json:"IsUserGroup,omitempty" xml:"IsUserGroup,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****
 	ParentUserGroupId   *string `json:"ParentUserGroupId,omitempty" xml:"ParentUserGroupId,omitempty"`
 	ParentUserGroupName *string `json:"ParentUserGroupName,omitempty" xml:"ParentUserGroupName,omitempty"`
 }
@@ -9388,14 +12001,21 @@ func (s *QueryUserGroupMemberResponse) SetBody(v *QueryUserGroupMemberResponseBo
 type QueryUserInfoByAccountRequest struct {
 	// Enter the name or ID of the Alibaba Cloud account that you want to query.
 	//
-	// *   When you enter an account name:
+	// 	- When you enter an account name:
 	//
-	//     *   If the organization user is a master account, such as main_account, the query account format is master account. That is, the main account main_account to be entered.
-	//     *   If the organization user is a RAM user, such as a <zhangsan@test.onaliyun.com>, the query account format is the head of the RAM user, that is, the RAM user to be entered is zhangsan.
+	//     	- If the organization user is a master account, such as main_account, the query account format is master account. That is, the main account main_account to be entered.
 	//
-	// *   ID：
+	//     	- If the organization user is a RAM user, such as a <zhangsan@test.onaliyun.com>, the query account format is the head of the RAM user, that is, the RAM user to be entered is zhangsan.
 	//
-	//     *   Enter the UID of the account to query the account information.
+	// 	- ID：
+	//
+	//     	- Enter the UID of the account to query the account information.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1386587****@163.com
 	Account           *string `json:"Account,omitempty" xml:"Account,omitempty"`
 	ParentAccountName *string `json:"ParentAccountName,omitempty" xml:"ParentAccountName,omitempty"`
 }
@@ -9420,13 +12040,22 @@ func (s *QueryUserInfoByAccountRequest) SetParentAccountName(v string) *QueryUse
 
 type QueryUserInfoByAccountResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned organization user information.
 	Result *QueryUserInfoByAccountResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9455,33 +12084,73 @@ func (s *QueryUserInfoByAccountResponseBody) SetSuccess(v bool) *QueryUserInfoBy
 
 type QueryUserInfoByAccountResponseBodyResult struct {
 	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 135****5848
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The name of the Alibaba Cloud account that corresponds to the member. (If you use a RAM user, the domain name information that follows @ is removed. For example, if you use a <test@test.com>, test is returned.)
+	//
+	// example:
+	//
+	// 1386587****@163.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// Whether you are an administrator of the organization. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
 	// Whether you are a permission administrator. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
 	// The email address of the user.
+	//
+	// example:
+	//
+	// 1386587****@163.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The nickname of the account.
+	//
+	// example:
+	//
+	// Test user
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// The phone number of the alert contact.
+	//
+	// example:
+	//
+	// 1386587****
 	Phone      *string  `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	RoleIdList []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
 	// The UserID in the Quick BI.
+	//
+	// example:
+	//
+	// fe67f61a35a94b7da1a34ba174a7****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The role type of the organization member. Valid values:
 	//
-	// *   1 : developer
-	// *   2 : visitors
-	// *   3 : Analyst
+	// 	- 1 : developer
+	//
+	// 	- 2 : visitors
+	//
+	// 	- 3 : Analyst
+	//
+	// example:
+	//
+	// 1
 	UserType *int32 `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -9574,6 +12243,12 @@ func (s *QueryUserInfoByAccountResponse) SetBody(v *QueryUserInfoByAccountRespon
 
 type QueryUserInfoByUserIdRequest struct {
 	// The ID of the user. The UserID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fe67f61a35a94b7da1a34ba174a7****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -9592,13 +12267,22 @@ func (s *QueryUserInfoByUserIdRequest) SetUserId(v string) *QueryUserInfoByUserI
 
 type QueryUserInfoByUserIdResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned organization user information.
 	Result *QueryUserInfoByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9627,33 +12311,73 @@ func (s *QueryUserInfoByUserIdResponseBody) SetSuccess(v bool) *QueryUserInfoByU
 
 type QueryUserInfoByUserIdResponseBodyResult struct {
 	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 135****5848
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The name of the Alibaba Cloud account that corresponds to the member.
+	//
+	// example:
+	//
+	// 1386587****@163.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// Whether you are an administrator of the organization. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
 	// Whether you are a permission administrator. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
 	// The email address of the user.
+	//
+	// example:
+	//
+	// 1386587****@163.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The nickname of the account.
+	//
+	// example:
+	//
+	// Test user
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// The phone number of the alert contact.
+	//
+	// example:
+	//
+	// 1386587****
 	Phone      *string  `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	RoleIdList []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
 	// The UserID in the Quick BI.
+	//
+	// example:
+	//
+	// fe67f61a35a94b7da1a34ba174a7****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The role type of the organization member. Valid values:
 	//
-	// *   1 : developer
-	// *   2 : visitors
-	// *   3 : Analyst
+	// 	- 1 : developer
+	//
+	// 	- 2 : visitors
+	//
+	// 	- 3 : Analyst
+	//
+	// example:
+	//
+	// 1
 	UserType *int32 `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -9745,9 +12469,15 @@ func (s *QueryUserInfoByUserIdResponse) SetBody(v *QueryUserInfoByUserIdResponse
 }
 
 type QueryUserListRequest struct {
-	Keyword  *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryUserListRequest) String() string {
@@ -9774,9 +12504,15 @@ func (s *QueryUserListRequest) SetPageSize(v int32) *QueryUserListRequest {
 }
 
 type QueryUserListResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *QueryUserListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserListResponseBody) String() string {
@@ -9803,11 +12539,23 @@ func (s *QueryUserListResponseBody) SetSuccess(v bool) *QueryUserListResponseBod
 }
 
 type QueryUserListResponseBodyResult struct {
-	Data       []*QueryUserListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum    *int32                                 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalNum   *int32                                 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPages *int32                                 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	Data []*QueryUserListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s QueryUserListResponseBodyResult) String() string {
@@ -9844,14 +12592,29 @@ func (s *QueryUserListResponseBodyResult) SetTotalPages(v int32) *QueryUserListR
 }
 
 type QueryUserListResponseBodyResultData struct {
-	AccountId     *string  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountName   *string  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AdminUser     *bool    `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
+	// example:
+	//
+	// 1355********
+	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// true
+	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
+	// example:
+	//
+	// true
 	AuthAdminUser *bool    `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
 	NickName      *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	RoleIdList    []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
-	UserId        *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserType      *int32   `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	// example:
+	//
+	// fe67f61a35a94b7da1a34ba174a7****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1
+	UserType *int32 `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s QueryUserListResponseBodyResultData) String() string {
@@ -9932,7 +12695,17 @@ func (s *QueryUserListResponse) SetBody(v *QueryUserListResponseBody) *QueryUser
 }
 
 type QueryUserRoleInfoInWorkspaceRequest struct {
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f5698bedeb384b1986afccd9e434****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -9955,9 +12728,15 @@ func (s *QueryUserRoleInfoInWorkspaceRequest) SetWorkspaceId(v string) *QueryUse
 }
 
 type QueryUserRoleInfoInWorkspaceResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *QueryUserRoleInfoInWorkspaceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserRoleInfoInWorkspaceResponseBody) String() string {
@@ -9984,7 +12763,13 @@ func (s *QueryUserRoleInfoInWorkspaceResponseBody) SetSuccess(v bool) *QueryUser
 }
 
 type QueryUserRoleInfoInWorkspaceResponseBodyResult struct {
+	// example:
+	//
+	// role_workspace_admin
 	RoleCode *string `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
+	// example:
+	//
+	// 25
 	RoleId   *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
@@ -10042,9 +12827,16 @@ func (s *QueryUserRoleInfoInWorkspaceResponse) SetBody(v *QueryUserRoleInfoInWor
 }
 
 type QueryUserTagMetaListResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*QueryUserTagMetaListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Queries the metadata list of member tags in an organization.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10073,8 +12865,11 @@ func (s *QueryUserTagMetaListResponseBody) SetSuccess(v bool) *QueryUserTagMetaL
 
 type QueryUserTagMetaListResponseBodyResult struct {
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
-	TagId          *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName        *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// example:
+	//
+	// pop_001
+	TagId   *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s QueryUserTagMetaListResponseBodyResult) String() string {
@@ -10130,6 +12925,11 @@ func (s *QueryUserTagMetaListResponse) SetBody(v *QueryUserTagMetaListResponseBo
 }
 
 type QueryUserTagValueListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fe67f61a35a94b7da1a34ba174a7****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -10147,9 +12947,15 @@ func (s *QueryUserTagValueListRequest) SetUserId(v string) *QueryUserTagValueLis
 }
 
 type QueryUserTagValueListResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*QueryUserTagValueListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserTagValueListResponseBody) String() string {
@@ -10176,6 +12982,9 @@ func (s *QueryUserTagValueListResponseBody) SetSuccess(v bool) *QueryUserTagValu
 }
 
 type QueryUserTagValueListResponseBodyResult struct {
+	// example:
+	//
+	// pop_001
 	TagId    *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
 	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
@@ -10234,6 +13043,11 @@ func (s *QueryUserTagValueListResponse) SetBody(v *QueryUserTagValueListResponse
 }
 
 type QueryWorksRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abcd****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -10251,9 +13065,15 @@ func (s *QueryWorksRequest) SetWorksId(v string) *QueryWorksRequest {
 }
 
 type QueryWorksResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *QueryWorksResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryWorksResponseBody) String() string {
@@ -10280,21 +13100,48 @@ func (s *QueryWorksResponseBody) SetSuccess(v bool) *QueryWorksResponseBody {
 }
 
 type QueryWorksResponseBodyResult struct {
-	Auth3rdFlag   *int32                                 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
-	Description   *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Directory     *QueryWorksResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	GmtCreate     *string                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModify     *string                                `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	ModifyName    *string                                `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
-	OwnerId       *string                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	OwnerName     *string                                `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	SecurityLevel *string                                `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	Status        *int32                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	WorkName      *string                                `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
-	WorkType      *string                                `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
-	WorksId       *string                                `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
-	WorkspaceId   *string                                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName *string                                `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// 0
+	Auth3rdFlag *int32                                 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
+	Description *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Directory   *QueryWorksResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1496651577000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1496651577000
+	GmtModify  *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
+	// example:
+	//
+	// 9187a612aa474e2a8ac1414d5529****
+	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// example:
+	//
+	// 0
+	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	// example:
+	//
+	// 0
+	Status   *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
+	// example:
+	//
+	// PAGE
+	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
+	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	// example:
+	//
+	// 87c6b145-090c-43e1-9426-8f93be23****
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QueryWorksResponseBodyResult) String() string {
@@ -10381,8 +13228,14 @@ func (s *QueryWorksResponseBodyResult) SetWorkspaceName(v string) *QueryWorksRes
 }
 
 type QueryWorksResponseBodyResultDirectory struct {
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 83d37ba6-d909-48a2-a517-f4d05c3a****
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 83d37ba6-d909-48a2-a517-f4d05c3a****
 	PathId   *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
@@ -10446,6 +13299,12 @@ func (s *QueryWorksResponse) SetBody(v *QueryWorksResponseBody) *QueryWorksRespo
 
 type QueryWorksBloodRelationshipRequest struct {
 	// Obtains the kinship of a data work, including the datasets referenced by each component and query field information. Currently, only supported data works include dashboards, workbooks, and self-service data retrieval.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abcd****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -10465,12 +13324,21 @@ func (s *QueryWorksBloodRelationshipRequest) SetWorksId(v string) *QueryWorksBlo
 type QueryWorksBloodRelationshipResponseBody struct {
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the request.
 	Result []*QueryWorksBloodRelationshipResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The response.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10499,14 +13367,34 @@ func (s *QueryWorksBloodRelationshipResponseBody) SetSuccess(v bool) *QueryWorks
 
 type QueryWorksBloodRelationshipResponseBodyResult struct {
 	// List of work blood information.
+	//
+	// example:
+	//
+	// 0696083a-ca72-4d89-8e7a-c017910e0***
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
 	// The ID of the component that you want to modify.
+	//
+	// example:
+	//
+	// The name of the component.
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
 	// Line
+	//
+	// example:
+	//
+	// 3
 	ComponentType *int32 `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
 	// The type of the image component.
+	//
+	// example:
+	//
+	// LINE
 	ComponentTypeName *string `json:"ComponentTypeName,omitempty" xml:"ComponentTypeName,omitempty"`
 	// Column (Measure)
+	//
+	// example:
+	//
+	// dc78a4ed-880d-452e-b017-90cfc10c83e5_company_sales_record
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	// The name of the component type.
 	QueryParams []*QueryWorksBloodRelationshipResponseBodyResultQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Repeated"`
@@ -10554,29 +13442,66 @@ type QueryWorksBloodRelationshipResponseBodyResultQueryParams struct {
 	// Indices whether the metric. Valid values:
 	//
 	// true false
+	//
+	// example:
+	//
+	// area_column
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
 	// The ID of the owning location.
+	//
+	// example:
+	//
+	// The name of the owning location.
 	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
 	// The globally unique PathId.
+	//
+	// example:
+	//
+	// order_number
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// The display name of the field.
+	//
+	// example:
+	//
+	// number
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The type of the field. Valid values:
 	//
-	// *   string: string type
-	// *   date: a date type that contains only the year, month, and day parts
-	// *   datetime: a common date type
-	// *   time: a date type that contains only hours, minutes, and seconds.
-	// *   number: numeric
-	// *   boolean: Boolean type
-	// *   geographical: geographical location
-	// *   url: string type
-	// *   imageUrl: the type of the image link.
-	// *   multivalue: a multi-value column
+	// 	- string: string type
+	//
+	// 	- date: a date type that contains only the year, month, and day parts
+	//
+	// 	- datetime: a common date type
+	//
+	// 	- time: a date type that contains only hours, minutes, and seconds.
+	//
+	// 	- number: numeric
+	//
+	// 	- boolean: Boolean type
+	//
+	// 	- geographical: geographical location
+	//
+	// 	- url: string type
+	//
+	// 	- imageUrl: the type of the image link.
+	//
+	// 	- multivalue: a multi-value column
+	//
+	// example:
+	//
+	// true
 	IsMeasure *bool `json:"IsMeasure,omitempty" xml:"IsMeasure,omitempty"`
 	// The unique ID of the field.
+	//
+	// example:
+	//
+	// schema7d1944eb-443e-48c6-8123-bf45a99e7e74.dc78a4ed-880d-452e-b017-90cfc10c83e5_company_sales_record.[Ndc78a4_order_level].[Ndc78a4_order_level].[Ndc78a4_order_level]
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
 	// A list of query parameter reference columns.
+	//
+	// example:
+	//
+	// Ndc78a4_order_number
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -10654,14 +13579,34 @@ func (s *QueryWorksBloodRelationshipResponse) SetBody(v *QueryWorksBloodRelation
 
 type QueryWorksByOrganizationRequest struct {
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of rows per page set when the interface is requested.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Returns a list of all works in the organization that meet the requested criteria.
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 1
 	ThirdPartAuthFlag *int32 `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// PAGE
 	WorksType *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
 }
 
@@ -10700,15 +13645,26 @@ func (s *QueryWorksByOrganizationRequest) SetWorksType(v string) *QueryWorksByOr
 
 type QueryWorksByOrganizationResponseBody struct {
 	// The details of the list of works.
+	//
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the report. Valid values:
 	//
-	// *   0: unpublished
-	// *   1: published
-	// *   2: modified but not published
-	// *   3: unpublished
+	// 	- 0: unpublished
+	//
+	// 	- 1: published
+	//
+	// 	- 2: modified but not published
+	//
+	// 	- 3: unpublished
 	Result *QueryWorksByOrganizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The total number of rows in the table.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10739,20 +13695,40 @@ type QueryWorksByOrganizationResponseBodyResult struct {
 	// The Alibaba Cloud account name of the work owner.
 	Data []*QueryWorksByOrganizationResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The timestamp of the modification of the work in milliseconds.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The ID of the work.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the work. Valid values:
 	//
-	// *   DATAPRODUCT: BI portal
-	// *   PAGE: Dashboard
-	// *   FULLPAGE: full-screen dashboards
-	// *   REPORT: workbook
+	// 	- DATAPRODUCT: BI portal
+	//
+	// 	- PAGE: Dashboard
+	//
+	// 	- FULLPAGE: full-screen dashboards
+	//
+	// 	- REPORT: workbook
+	//
+	// example:
+	//
+	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 	// Third-party embedding status. Valid values:
 	//
-	// *   0: The embed service is not enabled.
-	// *   1: Embed is enabled.
+	// 	- 0: The embed service is not enabled.
+	//
+	// 	- 1: Embed is enabled.
+	//
+	// example:
+	//
+	// 1
 	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
@@ -10791,44 +13767,102 @@ func (s *QueryWorksByOrganizationResponseBodyResult) SetTotalPages(v int32) *Que
 
 type QueryWorksByOrganizationResponseBodyResultData struct {
 	// The name of the workspace to which the work belongs.
+	//
+	// example:
+	//
+	// 1
 	Auth3rdFlag *int32 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
 	// The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
+	//
+	// example:
+	//
+	// The hierarchical structure of the directory to which the directory belongs. Separate the hierarchical structure with a (/).
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the directory.
 	Directory *QueryWorksByOrganizationResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 	// Test directory
+	//
+	// example:
+	//
+	// 1496651577000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// Test Workspace
+	//
+	// example:
+	//
+	// 1572334870000
 	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
 	// Description
+	//
+	// example:
+	//
+	// The name of the work.
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
 	// Security policies for collaborative authorization of works. Valid values:
 	//
-	// *   0: private
-	// *   12: Authorize specified members
-	// *   1 or 11: Authorize all workspace members
+	// 	- 0: private
+	//
+	// 	- 12: Authorize specified members
+	//
+	// 	- 1 or 11: Authorize all workspace members
 	//
 	// >
 	//
-	// *   If you use legacy permissions, the return value is 1.
+	// 	- If you use legacy permissions, the return value is 1.
 	//
-	// *   If you use the new permissions, the return value is 11.
+	// 	- If you use the new permissions, the return value is 11.
+	//
+	// example:
+	//
+	// Remarks on the work.
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The Alibaba Cloud account name of the person who modified the work.
+	//
+	// example:
+	//
+	// Tom
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The directory to which the work belongs.
+	//
+	// example:
+	//
+	// 1
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
 	// Li Si
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Test directory
+	//
+	// example:
+	//
+	// The name of the directory.
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
 	// The name of the workspace to which the work belongs.
+	//
+	// example:
+	//
+	// PAGE
 	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
 	// The user ID of the work owner in the Quick BI.
+	//
+	// example:
+	//
+	// 897ce25e-****-****-af84-d13c5610****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 	// Test report
+	//
+	// example:
+	//
+	// The timestamp of the creation of the work in milliseconds.
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The ID of the workspace to which the work belongs.
+	//
+	// example:
+	//
+	// The name of the Alibaba Cloud account that modified the work.
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -10916,8 +13950,14 @@ func (s *QueryWorksByOrganizationResponseBodyResultData) SetWorkspaceName(v stri
 }
 
 type QueryWorksByOrganizationResponseBodyResultDataDirectory struct {
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 83d37ba6-d909-48a2-a517-f4d05c3a****
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 83d37ba6-d909-48a2-a517-f4d05c3a****
 	PathId   *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
@@ -10982,32 +14022,65 @@ func (s *QueryWorksByOrganizationResponse) SetBody(v *QueryWorksByOrganizationRe
 type QueryWorksByWorkspaceRequest struct {
 	// The page number of the returned page.
 	//
-	// *   Default value: 1.
+	// 	- Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
 	//
-	// *   Default value: 10.
+	// 	- Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The status of the work. Valid values:
 	//
-	// *   0: unpublished
-	// *   1: published
-	// *   2: modified but not published
-	// *   3: unpublished
+	// 	- 0: unpublished
+	//
+	// 	- 1: published
+	//
+	// 	- 2: modified but not published
+	//
+	// 	- 3: unpublished
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Third-party embedding status. Valid values:
 	//
-	// *   0: The embed service is not enabled.
-	// *   1: Embed is enabled.
+	// 	- 0: The embed service is not enabled.
+	//
+	// 	- 1: Embed is enabled.
+	//
+	// example:
+	//
+	// 0
 	ThirdPartAuthFlag *int32 `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
 	// The type of the work. Valid values:
 	//
-	// *   DATAPRODUCT: BI portal
-	// *   PAGE: Dashboard
-	// *   FULLPAGE: full-screen dashboards
-	// *   REPORT: workbook
+	// 	- DATAPRODUCT: BI portal
+	//
+	// 	- PAGE: Dashboard
+	//
+	// 	- FULLPAGE: full-screen dashboards
+	//
+	// 	- REPORT: workbook
+	//
+	// example:
+	//
+	// PAGE
 	WorksType *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
 	// The ID of the workspace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 89713491-cb4f-4579-b889-e82c35f1****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -11051,13 +14124,22 @@ func (s *QueryWorksByWorkspaceRequest) SetWorkspaceId(v string) *QueryWorksByWor
 
 type QueryWorksByWorkspaceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Returns a list of all works in the organization workspace that meet the requested criteria.
 	Result *QueryWorksByWorkspaceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11088,12 +14170,28 @@ type QueryWorksByWorkspaceResponseBodyResult struct {
 	// The details of the list of works.
 	Data []*QueryWorksByWorkspaceResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of rows per page set when the interface is requested.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of rows in the table.
+	//
+	// example:
+	//
+	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 1
 	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
@@ -11133,59 +14231,127 @@ func (s *QueryWorksByWorkspaceResponseBodyResult) SetTotalPages(v int32) *QueryW
 type QueryWorksByWorkspaceResponseBodyResultData struct {
 	// Third-party embedding status. Valid values:
 	//
-	// *   0: The embed service is not enabled.
-	// *   1: Embed is enabled.
+	// 	- 0: The embed service is not enabled.
+	//
+	// 	- 1: Embed is enabled.
+	//
+	// example:
+	//
+	// 1
 	Auth3rdFlag *int32 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
 	// Remarks on the work.
+	//
+	// example:
+	//
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The directory to which the work belongs.
 	Directory *QueryWorksByWorkspaceResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 	// The timestamp of the creation of the work in milliseconds.
+	//
+	// example:
+	//
+	// 1496651577000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The timestamp of the modification of the work in milliseconds.
+	//
+	// example:
+	//
+	// 1572334870000
 	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
 	// Nickname of the work modifier.
+	//
+	// example:
+	//
+	// Tom
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
 	// The user ID of the work owner in the Quick BI.
+	//
+	// example:
+	//
+	// The name of the workspace to which the work belongs.
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The nickname of the work owner.
+	//
+	// example:
+	//
+	// Li Si
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// Security policies for collaborative authorization of works. Valid values:
 	//
-	// *   0: private
-	// *   12: Authorize specified members
-	// *   1 or 11: Authorize all workspace members
+	// 	- 0: private
+	//
+	// 	- 12: Authorize specified members
+	//
+	// 	- 1 or 11: Authorize all workspace members
 	//
 	// >
 	//
-	// *   If you use legacy permissions, the return value is 1.
+	// 	- If you use legacy permissions, the return value is 1.
 	//
-	// *   If you use the new permissions, the return value is 11.
+	// 	- If you use the new permissions, the return value is 11.
+	//
+	// example:
+	//
+	// 0
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
 	// Status of dashboards, full-screen dashboards, spreadsheets. The default value of other work types is 1. Valid values:
 	//
-	// *   0: unpublished
-	// *   1: published
-	// *   2: modified but not published
-	// *   3: unpublished
+	// 	- 0: unpublished
+	//
+	// 	- 1: published
+	//
+	// 	- 2: modified but not published
+	//
+	// 	- 3: unpublished
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the work.
+	//
+	// example:
+	//
+	// Test report
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
 	// The type of the work. Valid values:
 	//
-	// *   DATAPRODUCT: BI portal
-	// *   PAGE: Dashboard
-	// *   FULLPAGE: full-screen dashboards
-	// *   REPORT: workbook
-	// *   dashboardOfflineQuery: self-service data retrieval
-	// *   Analysis: Ad hoc analysis
-	// *   DATAFORM: form filling
+	// 	- DATAPRODUCT: BI portal
+	//
+	// 	- PAGE: Dashboard
+	//
+	// 	- FULLPAGE: full-screen dashboards
+	//
+	// 	- REPORT: workbook
+	//
+	// 	- dashboardOfflineQuery: self-service data retrieval
+	//
+	// 	- Analysis: Ad hoc analysis
+	//
+	// 	- DATAFORM: form filling
+	//
+	// example:
+	//
+	// PAGE
 	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
 	// The ID of the work.
+	//
+	// example:
+	//
+	// 897ce25e-f993-4abd-af84-d13c5610****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 	// The ID of the workspace to which the work belongs.
+	//
+	// example:
+	//
+	// 87c6b145-090c-43e1-9426-8f93be23****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The name of the workspace to which the work belongs.
+	//
+	// example:
+	//
+	// Test Workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -11273,11 +14439,22 @@ func (s *QueryWorksByWorkspaceResponseBodyResultData) SetWorkspaceName(v string)
 }
 
 type QueryWorksByWorkspaceResponseBodyResultDataDirectory struct {
+	// example:
+	//
+	// 83d37ba6-d909-48a2-a517-f4d05c3a****
 	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
+	//
+	// example:
+	//
+	// 83d37ba6-d909-48a2-a517-f4d05c3a****
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
 	// The hierarchical structure of the directory to which the directory belongs. Separate the hierarchical structure with a (/).
+	//
+	// example:
+	//
+	// Test directory
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -11339,6 +14516,11 @@ func (s *QueryWorksByWorkspaceResponse) SetBody(v *QueryWorksByWorkspaceResponse
 }
 
 type QueryWorkspaceRoleConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 25
 	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 }
 
@@ -11356,9 +14538,15 @@ func (s *QueryWorkspaceRoleConfigRequest) SetRoleId(v int64) *QueryWorkspaceRole
 }
 
 type QueryWorkspaceRoleConfigResponseBody struct {
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *QueryWorkspaceRoleConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryWorkspaceRoleConfigResponseBody) String() string {
@@ -11386,9 +14574,15 @@ func (s *QueryWorkspaceRoleConfigResponseBody) SetSuccess(v bool) *QueryWorkspac
 
 type QueryWorkspaceRoleConfigResponseBodyResult struct {
 	AuthConfigList []*QueryWorkspaceRoleConfigResponseBodyResultAuthConfigList `json:"AuthConfigList,omitempty" xml:"AuthConfigList,omitempty" type:"Repeated"`
-	IsSystemRole   *bool                                                       `json:"IsSystemRole,omitempty" xml:"IsSystemRole,omitempty"`
-	RoleId         *int64                                                      `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	RoleName       *string                                                     `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// example:
+	//
+	// true
+	IsSystemRole *bool `json:"IsSystemRole,omitempty" xml:"IsSystemRole,omitempty"`
+	// example:
+	//
+	// 25
+	RoleId   *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s QueryWorkspaceRoleConfigResponseBodyResult) String() string {
@@ -11421,7 +14615,10 @@ func (s *QueryWorkspaceRoleConfigResponseBodyResult) SetRoleName(v string) *Quer
 
 type QueryWorkspaceRoleConfigResponseBodyResultAuthConfigList struct {
 	ActionAuthKeys []*string `json:"ActionAuthKeys,omitempty" xml:"ActionAuthKeys,omitempty" type:"Repeated"`
-	AuthKey        *string   `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	// example:
+	//
+	// portal_create
+	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 }
 
 func (s QueryWorkspaceRoleConfigResponseBodyResultAuthConfigList) String() string {
@@ -11472,9 +14669,20 @@ func (s *QueryWorkspaceRoleConfigResponse) SetBody(v *QueryWorkspaceRoleConfigRe
 }
 
 type QueryWorkspaceUserListRequest struct {
-	Keyword     *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -11507,9 +14715,15 @@ func (s *QueryWorkspaceUserListRequest) SetWorkspaceId(v string) *QueryWorkspace
 }
 
 type QueryWorkspaceUserListResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *QueryWorkspaceUserListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryWorkspaceUserListResponseBody) String() string {
@@ -11536,11 +14750,23 @@ func (s *QueryWorkspaceUserListResponseBody) SetSuccess(v bool) *QueryWorkspaceU
 }
 
 type QueryWorkspaceUserListResponseBodyResult struct {
-	Data       []*QueryWorkspaceUserListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum    *int32                                          `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalNum   *int32                                          `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPages *int32                                          `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	Data []*QueryWorkspaceUserListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s QueryWorkspaceUserListResponseBodyResult) String() string {
@@ -11577,11 +14803,20 @@ func (s *QueryWorkspaceUserListResponseBodyResult) SetTotalPages(v int32) *Query
 }
 
 type QueryWorkspaceUserListResponseBodyResultData struct {
-	AccountId   *string                                           `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// 16020915****8429
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// pop****@aliyunid.test
 	AccountName *string                                           `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	NickName    *string                                           `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	Role        *QueryWorkspaceUserListResponseBodyResultDataRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
-	UserId      *string                                           `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// de4bc5f9429141cc8091cdd1c15b****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryWorkspaceUserListResponseBodyResultData) String() string {
@@ -11618,7 +14853,13 @@ func (s *QueryWorkspaceUserListResponseBodyResultData) SetUserId(v string) *Quer
 }
 
 type QueryWorkspaceUserListResponseBodyResultDataRole struct {
+	// example:
+	//
+	// role_workspace_admin
 	RoleCode *string `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
+	// example:
+	//
+	// 25
 	RoleId   *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
@@ -11676,9 +14917,20 @@ func (s *QueryWorkspaceUserListResponse) SetBody(v *QueryWorkspaceUserListRespon
 }
 
 type ResultCallbackRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5ea0db8-****-****-9081-04bc0df4c6a3
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	HandleReason  *string `json:"HandleReason,omitempty" xml:"HandleReason,omitempty"`
-	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	HandleReason *string `json:"HandleReason,omitempty" xml:"HandleReason,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ResultCallbackRequest) String() string {
@@ -11705,9 +14957,18 @@ func (s *ResultCallbackRequest) SetStatus(v int32) *ResultCallbackRequest {
 }
 
 type ResultCallbackResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ResultCallbackResponseBody) String() string {
@@ -11764,8 +15025,20 @@ func (s *ResultCallbackResponse) SetBody(v *ResultCallbackResponseBody) *ResultC
 
 type SaveFavoritesRequest struct {
 	// The user ID of the collection. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 121344444790****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The ID of the collection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d23e84a1-82a0-4292-bfdb-521306c3****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -11789,16 +15062,30 @@ func (s *SaveFavoritesRequest) SetWorksId(v string) *SaveFavoritesRequest {
 
 type SaveFavoritesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution result of the interface is returned. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request fails.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11855,9 +15142,24 @@ func (s *SaveFavoritesResponse) SetBody(v *SaveFavoritesResponseBody) *SaveFavor
 }
 
 type SetDataLevelPermissionExtraConfigRequest struct {
-	CubeId        *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7c7223ae-******-3c744528014b
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// NONE
 	MissHitPolicy *string `json:"MissHitPolicy,omitempty" xml:"MissHitPolicy,omitempty"`
-	RuleType      *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ROW_LEVEL
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
 func (s SetDataLevelPermissionExtraConfigRequest) String() string {
@@ -11884,9 +15186,18 @@ func (s *SetDataLevelPermissionExtraConfigRequest) SetRuleType(v string) *SetDat
 }
 
 type SetDataLevelPermissionExtraConfigResponseBody struct {
+	// example:
+	//
+	// B70E1FBD-E533-52F2-A7A1-E02B92F78DDF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetDataLevelPermissionExtraConfigResponseBody) String() string {
@@ -11942,6 +15253,7 @@ func (s *SetDataLevelPermissionExtraConfigResponse) SetBody(v *SetDataLevelPermi
 }
 
 type SetDataLevelPermissionRuleConfigRequest struct {
+	// This parameter is required.
 	RuleModel *string `json:"RuleModel,omitempty" xml:"RuleModel,omitempty"`
 }
 
@@ -11959,9 +15271,15 @@ func (s *SetDataLevelPermissionRuleConfigRequest) SetRuleModel(v string) *SetDat
 }
 
 type SetDataLevelPermissionRuleConfigResponseBody struct {
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetDataLevelPermissionRuleConfigResponseBody) String() string {
@@ -12017,7 +15335,13 @@ func (s *SetDataLevelPermissionRuleConfigResponse) SetBody(v *SetDataLevelPermis
 }
 
 type SetDataLevelPermissionWhiteListRequest struct {
-	// { "ruleType": "ROW_LEVEL", // The row-level permission type. "usersModel": { "userGroups": \[ "0d5fb19b- ***-1248 fc27ca51", // The ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": \[ "4334 ***358", // Quick BI the UserID of the user. "Huang***3fa822" ] }, "cubeId": "7c7223ae-31d1-4d2f-b11f-3c744528014b" }
+	// { "ruleType": "ROW_LEVEL", // The row-level permission type. "usersModel": { "userGroups": [ "0d5fb19b- ***-1248 fc27ca51", // The ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": [ "4334 ***358", // Quick BI the UserID of the user. "Huang***3fa822" ] }, "cubeId": "7c7223ae-31d1-4d2f-b11f-3c744528014b" }
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"ruleType":"ROW_LEVEL","usersModel":{"userGroups":["26edcb76-****-bdbab78267cb","187e6dd5-1611-4cf7-a034-1a93bd5fecf9"],"users":["4334***358","Huang***3fa822"]},"cubeId":"7c7223ae-****44528014b"}
 	WhiteListModel *string `json:"WhiteListModel,omitempty" xml:"WhiteListModel,omitempty"`
 }
 
@@ -12036,16 +15360,30 @@ func (s *SetDataLevelPermissionWhiteListRequest) SetWhiteListModel(v string) *Se
 
 type SetDataLevelPermissionWhiteListResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution result of the interface. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12103,8 +15441,24 @@ func (s *SetDataLevelPermissionWhiteListResponse) SetBody(v *SetDataLevelPermiss
 
 type UpdateDataLevelPermissionStatusRequest struct {
 	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
-	CubeId   *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
-	IsOpen   *int32  `json:"IsOpen,omitempty" xml:"IsOpen,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	IsOpen *int32 `json:"IsOpen,omitempty" xml:"IsOpen,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ROW_LEVEL
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
@@ -12132,9 +15486,18 @@ func (s *UpdateDataLevelPermissionStatusRequest) SetRuleType(v string) *UpdateDa
 }
 
 type UpdateDataLevelPermissionStatusResponseBody struct {
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateDataLevelPermissionStatusResponseBody) String() string {
@@ -12190,8 +15553,18 @@ func (s *UpdateDataLevelPermissionStatusResponse) SetBody(v *UpdateDataLevelPerm
 }
 
 type UpdateEmbeddedStatusRequest struct {
-	ThirdPartAuthFlag *bool   `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
-	WorksId           *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	ThirdPartAuthFlag *bool `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 897ce25e-f993-4abd-af84-d13c5610****
+	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
 func (s UpdateEmbeddedStatusRequest) String() string {
@@ -12213,9 +15586,18 @@ func (s *UpdateEmbeddedStatusRequest) SetWorksId(v string) *UpdateEmbeddedStatus
 }
 
 type UpdateEmbeddedStatusResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1
+	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateEmbeddedStatusResponseBody) String() string {
@@ -12271,8 +15653,18 @@ func (s *UpdateEmbeddedStatusResponse) SetBody(v *UpdateEmbeddedStatusResponseBo
 }
 
 type UpdateTicketNumRequest struct {
-	Ticket    *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
-	TicketNum *int32  `json:"TicketNum,omitempty" xml:"TicketNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 040e6f79d33444838***83c7206c070
+	Ticket *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TicketNum *int32 `json:"TicketNum,omitempty" xml:"TicketNum,omitempty"`
 }
 
 func (s UpdateTicketNumRequest) String() string {
@@ -12294,9 +15686,18 @@ func (s *UpdateTicketNumRequest) SetTicketNum(v int32) *UpdateTicketNumRequest {
 }
 
 type UpdateTicketNumResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateTicketNumResponseBody) String() string {
@@ -12354,27 +15755,57 @@ func (s *UpdateTicketNumResponse) SetBody(v *UpdateTicketNumResponseBody) *Updat
 type UpdateUserRequest struct {
 	// Indicates whether the organization administrator. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// true
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
 	// Indicate whether the RAM user is a permission administrator. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
 	// The nickname of the account.
 	//
-	// *   Format check: The value can be up to 50 characters in length.
-	// *   Special format verification: Chinese and English digits\_ \ / | () ] \[
+	// 	- Format check: The value can be up to 50 characters in length.
+	//
+	// 	- Special format verification: Chinese and English digits_ \\ / | () ] [
+	//
+	// example:
+	//
+	// Xiao Zhang
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	RoleIds  *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
 	// The ID of the user to be updated. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fe67f61a35a94b7da1a34ba174a7****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The role type of the organization member. Valid values:
 	//
-	// *   1 : developer
-	// *   2 : visitors
-	// *   3 : Analyst
+	// 	- 1 : developer
+	//
+	// 	- 2 : visitors
+	//
+	// 	- 3 : Analyst
+	//
+	// example:
+	//
+	// 1
 	UserType *int32 `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -12418,16 +15849,30 @@ func (s *UpdateUserRequest) SetUserType(v int32) *UpdateUserRequest {
 
 type UpdateUserResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution result of the interface is returned. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request fails.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12486,15 +15931,31 @@ func (s *UpdateUserResponse) SetBody(v *UpdateUserResponseBody) *UpdateUserRespo
 type UpdateUserGroupRequest struct {
 	// The description of the user group.
 	//
-	// *   Format verification: Maximum length 255
-	// *   Special format verification: Chinese and English digits\_ \ / | () ] \[
+	// 	- Format verification: Maximum length 255
+	//
+	// 	- Special format verification: Chinese and English digits_ \\ / | () ] [
+	//
+	// example:
+	//
+	// Description
 	UserGroupDescription *string `json:"UserGroupDescription,omitempty" xml:"UserGroupDescription,omitempty"`
 	// The ID of the user group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f5eeb52e-d9c2-4a8b-80e3-47ab55c2****
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 	// The name of the user group.
 	//
-	// *   Format verification: Maximum length 255
-	// *   Special format verification: Chinese and English digits\_ \ / | () ] \[
+	// 	- Format verification: Maximum length 255
+	//
+	// 	- Special format verification: Chinese and English digits_ \\ / | () ] [
+	//
+	// example:
+	//
+	// pop0001
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 
@@ -12523,16 +15984,30 @@ func (s *UpdateUserGroupRequest) SetUserGroupName(v string) *UpdateUserGroupRequ
 
 type UpdateUserGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4AEF8C5C-D5D2-55D3-BB2F-9D3AA1B6F4FA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Whether the interface is successfully executed. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request fails.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12590,8 +16065,14 @@ func (s *UpdateUserGroupResponse) SetBody(v *UpdateUserGroupResponseBody) *Updat
 
 type UpdateUserTagMetaRequest struct {
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
-	TagId          *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName        *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e82f6c6c0333431bad0225b2f85e****
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// This parameter is required.
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s UpdateUserTagMetaRequest) String() string {
@@ -12618,9 +16099,18 @@ func (s *UpdateUserTagMetaRequest) SetTagName(v string) *UpdateUserTagMetaReques
 }
 
 type UpdateUserTagMetaResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateUserTagMetaResponseBody) String() string {
@@ -12676,9 +16166,20 @@ func (s *UpdateUserTagMetaResponse) SetBody(v *UpdateUserTagMetaResponseBody) *U
 }
 
 type UpdateUserTagValueRequest struct {
-	TagId    *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pop_001
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// This parameter is required.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fe67f61a35a94b7da1a34ba174a7****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateUserTagValueRequest) String() string {
@@ -12705,9 +16206,18 @@ func (s *UpdateUserTagValueRequest) SetUserId(v string) *UpdateUserTagValueReque
 }
 
 type UpdateUserTagValueResponseBody struct {
+	// example:
+	//
+	// 46e5374665ba4b679ee22e2a29270
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateUserTagValueResponseBody) String() string {
@@ -12763,8 +16273,23 @@ func (s *UpdateUserTagValueResponse) SetBody(v *UpdateUserTagValueResponseBody) 
 }
 
 type UpdateWorkspaceUserRoleRequest struct {
-	RoleId      *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 25
+	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f5698bedeb384b1986afccd9e434****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -12792,9 +16317,18 @@ func (s *UpdateWorkspaceUserRoleRequest) SetWorkspaceId(v string) *UpdateWorkspa
 }
 
 type UpdateWorkspaceUserRoleResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateWorkspaceUserRoleResponseBody) String() string {
@@ -12850,8 +16384,23 @@ func (s *UpdateWorkspaceUserRoleResponse) SetBody(v *UpdateWorkspaceUserRoleResp
 }
 
 type UpdateWorkspaceUsersRoleRequest struct {
-	RoleId      *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	UserIds     *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 25
+	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 136516262323****,124498444445****
+	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -12879,9 +16428,15 @@ func (s *UpdateWorkspaceUsersRoleRequest) SetWorkspaceId(v string) *UpdateWorksp
 }
 
 type UpdateWorkspaceUsersRoleResponseBody struct {
+	// example:
+	//
+	// 7AAB95D7-2E11-4FE2-94BC-858E4FC0C976
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *UpdateWorkspaceUsersRoleResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateWorkspaceUsersRoleResponseBody) String() string {
@@ -12908,10 +16463,19 @@ func (s *UpdateWorkspaceUsersRoleResponseBody) SetSuccess(v bool) *UpdateWorkspa
 }
 
 type UpdateWorkspaceUsersRoleResponseBodyResult struct {
+	// example:
+	//
+	// 0
 	Failure       *int32                 `json:"Failure,omitempty" xml:"Failure,omitempty"`
 	FailureDetail map[string]interface{} `json:"FailureDetail,omitempty" xml:"FailureDetail,omitempty"`
-	Success       *int32                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total         *int32                 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 2
+	Success *int32 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 2
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s UpdateWorkspaceUsersRoleResponseBodyResult) String() string {
@@ -12973,6 +16537,12 @@ func (s *UpdateWorkspaceUsersRoleResponse) SetBody(v *UpdateWorkspaceUsersRoleRe
 
 type WithdrawAllUserGroupsRequest struct {
 	// The ID of the user. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 46e5374665ba4b679ee22e2a2927****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -12991,16 +16561,30 @@ func (s *WithdrawAllUserGroupsRequest) SetUserId(v string) *WithdrawAllUserGroup
 
 type WithdrawAllUserGroupsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution result of the interface is returned. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request fails.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request fails.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13103,13 +16687,19 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.\\n
- *
- * @param request AddDataLevelPermissionRuleUsersRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddDataLevelPermissionRuleUsersResponse
- */
+// Summary:
+//
+// Add selected groups of people incrementally for a single row and column permission rule.
+//
+// Description:
+//
+// > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.\\n
+//
+// @param request - AddDataLevelPermissionRuleUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDataLevelPermissionRuleUsersResponse
 func (client *Client) AddDataLevelPermissionRuleUsersWithOptions(request *AddDataLevelPermissionRuleUsersRequest, runtime *util.RuntimeOptions) (_result *AddDataLevelPermissionRuleUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13143,12 +16733,17 @@ func (client *Client) AddDataLevelPermissionRuleUsersWithOptions(request *AddDat
 	return _result, _err
 }
 
-/**
- * > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.\\n
- *
- * @param request AddDataLevelPermissionRuleUsersRequest
- * @return AddDataLevelPermissionRuleUsersResponse
- */
+// Summary:
+//
+// Add selected groups of people incrementally for a single row and column permission rule.
+//
+// Description:
+//
+// > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.\\n
+//
+// @param request - AddDataLevelPermissionRuleUsersRequest
+//
+// @return AddDataLevelPermissionRuleUsersResponse
 func (client *Client) AddDataLevelPermissionRuleUsers(request *AddDataLevelPermissionRuleUsersRequest) (_result *AddDataLevelPermissionRuleUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDataLevelPermissionRuleUsersResponse{}
@@ -13160,13 +16755,19 @@ func (client *Client) AddDataLevelPermissionRuleUsers(request *AddDataLevelPermi
 	return _result, _err
 }
 
-/**
- * ROW_LEVEL
- *
- * @param request AddDataLevelPermissionWhiteListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddDataLevelPermissionWhiteListResponse
- */
+// Summary:
+//
+// 43342***435,1553a****41231
+//
+// Description:
+//
+// ROW_LEVEL
+//
+// @param request - AddDataLevelPermissionWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDataLevelPermissionWhiteListResponse
 func (client *Client) AddDataLevelPermissionWhiteListWithOptions(request *AddDataLevelPermissionWhiteListRequest, runtime *util.RuntimeOptions) (_result *AddDataLevelPermissionWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13216,12 +16817,17 @@ func (client *Client) AddDataLevelPermissionWhiteListWithOptions(request *AddDat
 	return _result, _err
 }
 
-/**
- * ROW_LEVEL
- *
- * @param request AddDataLevelPermissionWhiteListRequest
- * @return AddDataLevelPermissionWhiteListResponse
- */
+// Summary:
+//
+// 43342***435,1553a****41231
+//
+// Description:
+//
+// ROW_LEVEL
+//
+// @param request - AddDataLevelPermissionWhiteListRequest
+//
+// @return AddDataLevelPermissionWhiteListResponse
 func (client *Client) AddDataLevelPermissionWhiteList(request *AddDataLevelPermissionWhiteListRequest) (_result *AddDataLevelPermissionWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDataLevelPermissionWhiteListResponse{}
@@ -13233,6 +16839,15 @@ func (client *Client) AddDataLevelPermissionWhiteList(request *AddDataLevelPermi
 	return _result, _err
 }
 
+// Summary:
+//
+// Add a sharing configuration for data works.
+//
+// @param request - AddShareReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddShareReportResponse
 func (client *Client) AddShareReportWithOptions(request *AddShareReportRequest, runtime *util.RuntimeOptions) (_result *AddShareReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13282,6 +16897,13 @@ func (client *Client) AddShareReportWithOptions(request *AddShareReportRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Add a sharing configuration for data works.
+//
+// @param request - AddShareReportRequest
+//
+// @return AddShareReportResponse
 func (client *Client) AddShareReport(request *AddShareReportRequest) (_result *AddShareReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddShareReportResponse{}
@@ -13293,6 +16915,15 @@ func (client *Client) AddShareReport(request *AddShareReportRequest) (_result *A
 	return _result, _err
 }
 
+// Summary:
+//
+// auditing
+//
+// @param request - AddUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserResponse
 func (client *Client) AddUserWithOptions(request *AddUserRequest, runtime *util.RuntimeOptions) (_result *AddUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13348,6 +16979,13 @@ func (client *Client) AddUserWithOptions(request *AddUserRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// auditing
+//
+// @param request - AddUserRequest
+//
+// @return AddUserResponse
 func (client *Client) AddUser(request *AddUserRequest) (_result *AddUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserResponse{}
@@ -13359,6 +16997,15 @@ func (client *Client) AddUser(request *AddUserRequest) (_result *AddUserResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the request.
+//
+// @param request - AddUserGroupMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserGroupMemberResponse
 func (client *Client) AddUserGroupMemberWithOptions(request *AddUserGroupMemberRequest, runtime *util.RuntimeOptions) (_result *AddUserGroupMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13396,6 +17043,13 @@ func (client *Client) AddUserGroupMemberWithOptions(request *AddUserGroupMemberR
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the request.
+//
+// @param request - AddUserGroupMemberRequest
+//
+// @return AddUserGroupMemberResponse
 func (client *Client) AddUserGroupMember(request *AddUserGroupMemberRequest) (_result *AddUserGroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserGroupMemberResponse{}
@@ -13407,6 +17061,15 @@ func (client *Client) AddUserGroupMember(request *AddUserGroupMemberRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Add users to a specified user group at a time.
+//
+// @param request - AddUserGroupMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserGroupMembersResponse
 func (client *Client) AddUserGroupMembersWithOptions(request *AddUserGroupMembersRequest, runtime *util.RuntimeOptions) (_result *AddUserGroupMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13444,6 +17107,13 @@ func (client *Client) AddUserGroupMembersWithOptions(request *AddUserGroupMember
 	return _result, _err
 }
 
+// Summary:
+//
+// Add users to a specified user group at a time.
+//
+// @param request - AddUserGroupMembersRequest
+//
+// @return AddUserGroupMembersResponse
 func (client *Client) AddUserGroupMembers(request *AddUserGroupMembersRequest) (_result *AddUserGroupMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserGroupMembersResponse{}
@@ -13455,6 +17125,15 @@ func (client *Client) AddUserGroupMembers(request *AddUserGroupMembersRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Add the metadata of an organization member tag.
+//
+// @param request - AddUserTagMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserTagMetaResponse
 func (client *Client) AddUserTagMetaWithOptions(request *AddUserTagMetaRequest, runtime *util.RuntimeOptions) (_result *AddUserTagMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13492,6 +17171,13 @@ func (client *Client) AddUserTagMetaWithOptions(request *AddUserTagMetaRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Add the metadata of an organization member tag.
+//
+// @param request - AddUserTagMetaRequest
+//
+// @return AddUserTagMetaResponse
 func (client *Client) AddUserTagMeta(request *AddUserTagMetaRequest) (_result *AddUserTagMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserTagMetaResponse{}
@@ -13503,6 +17189,11 @@ func (client *Client) AddUserTagMeta(request *AddUserTagMetaRequest) (_result *A
 	return _result, _err
 }
 
+// @param request - AddUserToWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserToWorkspaceResponse
 func (client *Client) AddUserToWorkspaceWithOptions(request *AddUserToWorkspaceRequest, runtime *util.RuntimeOptions) (_result *AddUserToWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13544,6 +17235,9 @@ func (client *Client) AddUserToWorkspaceWithOptions(request *AddUserToWorkspaceR
 	return _result, _err
 }
 
+// @param request - AddUserToWorkspaceRequest
+//
+// @return AddUserToWorkspaceResponse
 func (client *Client) AddUserToWorkspace(request *AddUserToWorkspaceRequest) (_result *AddUserToWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserToWorkspaceResponse{}
@@ -13555,6 +17249,11 @@ func (client *Client) AddUserToWorkspace(request *AddUserToWorkspaceRequest) (_r
 	return _result, _err
 }
 
+// @param request - AddWorkspaceUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddWorkspaceUsersResponse
 func (client *Client) AddWorkspaceUsersWithOptions(request *AddWorkspaceUsersRequest, runtime *util.RuntimeOptions) (_result *AddWorkspaceUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13596,6 +17295,9 @@ func (client *Client) AddWorkspaceUsersWithOptions(request *AddWorkspaceUsersReq
 	return _result, _err
 }
 
+// @param request - AddWorkspaceUsersRequest
+//
+// @return AddWorkspaceUsersResponse
 func (client *Client) AddWorkspaceUsers(request *AddWorkspaceUsersRequest) (_result *AddWorkspaceUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddWorkspaceUsersResponse{}
@@ -13607,6 +17309,15 @@ func (client *Client) AddWorkspaceUsers(request *AddWorkspaceUsersRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 触发数据集抽取加速
+//
+// @param request - AllotDatasetAccelerationTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllotDatasetAccelerationTaskResponse
 func (client *Client) AllotDatasetAccelerationTaskWithOptions(request *AllotDatasetAccelerationTaskRequest, runtime *util.RuntimeOptions) (_result *AllotDatasetAccelerationTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13640,6 +17351,13 @@ func (client *Client) AllotDatasetAccelerationTaskWithOptions(request *AllotData
 	return _result, _err
 }
 
+// Summary:
+//
+// 触发数据集抽取加速
+//
+// @param request - AllotDatasetAccelerationTaskRequest
+//
+// @return AllotDatasetAccelerationTaskResponse
 func (client *Client) AllotDatasetAccelerationTask(request *AllotDatasetAccelerationTaskRequest) (_result *AllotDatasetAccelerationTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AllotDatasetAccelerationTaskResponse{}
@@ -13651,6 +17369,15 @@ func (client *Client) AllotDatasetAccelerationTask(request *AllotDatasetAccelera
 	return _result, _err
 }
 
+// Summary:
+//
+// Batch authorization of BI portal menu will be skipped automatically.
+//
+// @param request - AuthorizeMenuRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeMenuResponse
 func (client *Client) AuthorizeMenuWithOptions(request *AuthorizeMenuRequest, runtime *util.RuntimeOptions) (_result *AuthorizeMenuResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13700,6 +17427,13 @@ func (client *Client) AuthorizeMenuWithOptions(request *AuthorizeMenuRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Batch authorization of BI portal menu will be skipped automatically.
+//
+// @param request - AuthorizeMenuRequest
+//
+// @return AuthorizeMenuResponse
 func (client *Client) AuthorizeMenu(request *AuthorizeMenuRequest) (_result *AuthorizeMenuResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AuthorizeMenuResponse{}
@@ -13711,6 +17445,15 @@ func (client *Client) AuthorizeMenu(request *AuthorizeMenuRequest) (_result *Aut
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量添加飞书用户
+//
+// @param request - BatchAddFeishuUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchAddFeishuUsersResponse
 func (client *Client) BatchAddFeishuUsersWithOptions(request *BatchAddFeishuUsersRequest, runtime *util.RuntimeOptions) (_result *BatchAddFeishuUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13760,6 +17503,13 @@ func (client *Client) BatchAddFeishuUsersWithOptions(request *BatchAddFeishuUser
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量添加飞书用户
+//
+// @param request - BatchAddFeishuUsersRequest
+//
+// @return BatchAddFeishuUsersResponse
 func (client *Client) BatchAddFeishuUsers(request *BatchAddFeishuUsersRequest) (_result *BatchAddFeishuUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchAddFeishuUsersResponse{}
@@ -13771,6 +17521,11 @@ func (client *Client) BatchAddFeishuUsers(request *BatchAddFeishuUsersRequest) (
 	return _result, _err
 }
 
+// @param request - CancelAuthorizationMenuRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelAuthorizationMenuResponse
 func (client *Client) CancelAuthorizationMenuWithOptions(request *CancelAuthorizationMenuRequest, runtime *util.RuntimeOptions) (_result *CancelAuthorizationMenuResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13816,6 +17571,9 @@ func (client *Client) CancelAuthorizationMenuWithOptions(request *CancelAuthoriz
 	return _result, _err
 }
 
+// @param request - CancelAuthorizationMenuRequest
+//
+// @return CancelAuthorizationMenuResponse
 func (client *Client) CancelAuthorizationMenu(request *CancelAuthorizationMenuRequest) (_result *CancelAuthorizationMenuResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelAuthorizationMenuResponse{}
@@ -13827,6 +17585,15 @@ func (client *Client) CancelAuthorizationMenu(request *CancelAuthorizationMenuRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancel the data works from the user\\"s collection.
+//
+// @param request - CancelCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelCollectionResponse
 func (client *Client) CancelCollectionWithOptions(request *CancelCollectionRequest, runtime *util.RuntimeOptions) (_result *CancelCollectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13864,6 +17631,13 @@ func (client *Client) CancelCollectionWithOptions(request *CancelCollectionReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancel the data works from the user\\"s collection.
+//
+// @param request - CancelCollectionRequest
+//
+// @return CancelCollectionResponse
 func (client *Client) CancelCollection(request *CancelCollectionRequest) (_result *CancelCollectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelCollectionResponse{}
@@ -13875,6 +17649,15 @@ func (client *Client) CancelCollection(request *CancelCollectionRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete a share authorization for a data work.
+//
+// @param request - CancelReportShareRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelReportShareResponse
 func (client *Client) CancelReportShareWithOptions(request *CancelReportShareRequest, runtime *util.RuntimeOptions) (_result *CancelReportShareResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13916,6 +17699,13 @@ func (client *Client) CancelReportShareWithOptions(request *CancelReportShareReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete a share authorization for a data work.
+//
+// @param request - CancelReportShareRequest
+//
+// @return CancelReportShareResponse
 func (client *Client) CancelReportShare(request *CancelReportShareRequest) (_result *CancelReportShareResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelReportShareResponse{}
@@ -13927,6 +17717,15 @@ func (client *Client) CancelReportShare(request *CancelReportShareRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the request.
+//
+// @param request - ChangeVisibilityModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeVisibilityModelResponse
 func (client *Client) ChangeVisibilityModelWithOptions(request *ChangeVisibilityModelRequest, runtime *util.RuntimeOptions) (_result *ChangeVisibilityModelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13968,6 +17767,13 @@ func (client *Client) ChangeVisibilityModelWithOptions(request *ChangeVisibility
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the request.
+//
+// @param request - ChangeVisibilityModelRequest
+//
+// @return ChangeVisibilityModelResponse
 func (client *Client) ChangeVisibilityModel(request *ChangeVisibilityModelRequest) (_result *ChangeVisibilityModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeVisibilityModelResponse{}
@@ -13979,6 +17785,15 @@ func (client *Client) ChangeVisibilityModel(request *ChangeVisibilityModelReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether a user has permissions to view data works, such as dashboards and workbooks.
+//
+// @param request - CheckReadableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckReadableResponse
 func (client *Client) CheckReadableWithOptions(request *CheckReadableRequest, runtime *util.RuntimeOptions) (_result *CheckReadableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14016,6 +17831,13 @@ func (client *Client) CheckReadableWithOptions(request *CheckReadableRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether a user has permissions to view data works, such as dashboards and workbooks.
+//
+// @param request - CheckReadableRequest
+//
+// @return CheckReadableResponse
 func (client *Client) CheckReadable(request *CheckReadableRequest) (_result *CheckReadableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckReadableResponse{}
@@ -14027,6 +17849,15 @@ func (client *Client) CheckReadable(request *CheckReadableRequest) (_result *Che
 	return _result, _err
 }
 
+// Summary:
+//
+// 生成三方嵌入的ticket
+//
+// @param request - CreateTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTicketResponse
 func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, runtime *util.RuntimeOptions) (_result *CreateTicketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14092,6 +17923,13 @@ func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 生成三方嵌入的ticket
+//
+// @param request - CreateTicketRequest
+//
+// @return CreateTicketResponse
 func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *CreateTicketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTicketResponse{}
@@ -14103,6 +17941,15 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a user group. You can specify a parent user group.
+//
+// @param request - CreateUserGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserGroupResponse
 func (client *Client) CreateUserGroupWithOptions(request *CreateUserGroupRequest, runtime *util.RuntimeOptions) (_result *CreateUserGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14148,6 +17995,13 @@ func (client *Client) CreateUserGroupWithOptions(request *CreateUserGroupRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a user group. You can specify a parent user group.
+//
+// @param request - CreateUserGroupRequest
+//
+// @return CreateUserGroupResponse
 func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result *CreateUserGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUserGroupResponse{}
@@ -14159,6 +18013,15 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Update the expiration time of the ticket embedded in the report.
+//
+// @param request - DelayTicketExpireTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DelayTicketExpireTimeResponse
 func (client *Client) DelayTicketExpireTimeWithOptions(request *DelayTicketExpireTimeRequest, runtime *util.RuntimeOptions) (_result *DelayTicketExpireTimeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14196,6 +18059,13 @@ func (client *Client) DelayTicketExpireTimeWithOptions(request *DelayTicketExpir
 	return _result, _err
 }
 
+// Summary:
+//
+// Update the expiration time of the ticket embedded in the report.
+//
+// @param request - DelayTicketExpireTimeRequest
+//
+// @return DelayTicketExpireTimeResponse
 func (client *Client) DelayTicketExpireTime(request *DelayTicketExpireTimeRequest) (_result *DelayTicketExpireTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DelayTicketExpireTimeResponse{}
@@ -14207,13 +18077,19 @@ func (client *Client) DelayTicketExpireTime(request *DelayTicketExpireTimeReques
 	return _result, _err
 }
 
-/**
- * {"ruleId":"a5bb24da-***-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
- *
- * @param request DeleteDataLevelPermissionRuleUsersRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteDataLevelPermissionRuleUsersResponse
- */
+// Summary:
+//
+// { "ruleId": "a5bb24da- ***-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223ae- ***-3c744528014b", // The ID of the dataset. "delModel": { "userGroups": [ "0d5fb19b- ***-1248 fc27ca51", // Delete the user group ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": [ "4334 ***358", // Delete the UserID of the user group. "Huang***3fa822" ] } }
+//
+// Description:
+//
+// {"ruleId":"a5bb24da-***-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+//
+// @param request - DeleteDataLevelPermissionRuleUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataLevelPermissionRuleUsersResponse
 func (client *Client) DeleteDataLevelPermissionRuleUsersWithOptions(request *DeleteDataLevelPermissionRuleUsersRequest, runtime *util.RuntimeOptions) (_result *DeleteDataLevelPermissionRuleUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14247,12 +18123,17 @@ func (client *Client) DeleteDataLevelPermissionRuleUsersWithOptions(request *Del
 	return _result, _err
 }
 
-/**
- * {"ruleId":"a5bb24da-***-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
- *
- * @param request DeleteDataLevelPermissionRuleUsersRequest
- * @return DeleteDataLevelPermissionRuleUsersResponse
- */
+// Summary:
+//
+// { "ruleId": "a5bb24da- ***-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223ae- ***-3c744528014b", // The ID of the dataset. "delModel": { "userGroups": [ "0d5fb19b- ***-1248 fc27ca51", // Delete the user group ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": [ "4334 ***358", // Delete the UserID of the user group. "Huang***3fa822" ] } }
+//
+// Description:
+//
+// {"ruleId":"a5bb24da-***-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+//
+// @param request - DeleteDataLevelPermissionRuleUsersRequest
+//
+// @return DeleteDataLevelPermissionRuleUsersResponse
 func (client *Client) DeleteDataLevelPermissionRuleUsers(request *DeleteDataLevelPermissionRuleUsersRequest) (_result *DeleteDataLevelPermissionRuleUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDataLevelPermissionRuleUsersResponse{}
@@ -14264,13 +18145,19 @@ func (client *Client) DeleteDataLevelPermissionRuleUsers(request *DeleteDataLeve
 	return _result, _err
 }
 
-/**
- * The ID of the training dataset that you want to remove from the specified custom linguistic model.
- *
- * @param request DeleteDataLevelRuleConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteDataLevelRuleConfigResponse
- */
+// Summary:
+//
+// The ID of the request.
+//
+// Description:
+//
+// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+//
+// @param request - DeleteDataLevelRuleConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataLevelRuleConfigResponse
 func (client *Client) DeleteDataLevelRuleConfigWithOptions(request *DeleteDataLevelRuleConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteDataLevelRuleConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14308,12 +18195,17 @@ func (client *Client) DeleteDataLevelRuleConfigWithOptions(request *DeleteDataLe
 	return _result, _err
 }
 
-/**
- * The ID of the training dataset that you want to remove from the specified custom linguistic model.
- *
- * @param request DeleteDataLevelRuleConfigRequest
- * @return DeleteDataLevelRuleConfigResponse
- */
+// Summary:
+//
+// The ID of the request.
+//
+// Description:
+//
+// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+//
+// @param request - DeleteDataLevelRuleConfigRequest
+//
+// @return DeleteDataLevelRuleConfigResponse
 func (client *Client) DeleteDataLevelRuleConfig(request *DeleteDataLevelRuleConfigRequest) (_result *DeleteDataLevelRuleConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDataLevelRuleConfigResponse{}
@@ -14325,6 +18217,15 @@ func (client *Client) DeleteDataLevelRuleConfig(request *DeleteDataLevelRuleConf
 	return _result, _err
 }
 
+// Summary:
+//
+// auditing
+//
+// @param request - DeleteTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTicketResponse
 func (client *Client) DeleteTicketWithOptions(request *DeleteTicketRequest, runtime *util.RuntimeOptions) (_result *DeleteTicketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14358,6 +18259,13 @@ func (client *Client) DeleteTicketWithOptions(request *DeleteTicketRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// auditing
+//
+// @param request - DeleteTicketRequest
+//
+// @return DeleteTicketResponse
 func (client *Client) DeleteTicket(request *DeleteTicketRequest) (_result *DeleteTicketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTicketResponse{}
@@ -14369,6 +18277,15 @@ func (client *Client) DeleteTicket(request *DeleteTicketRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// auditing
+//
+// @param request - DeleteUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime *util.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14406,6 +18323,13 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// auditing
+//
+// @param request - DeleteUserRequest
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserResponse{}
@@ -14417,6 +18341,11 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	return _result, _err
 }
 
+// @param request - DeleteUserFromWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserFromWorkspaceResponse
 func (client *Client) DeleteUserFromWorkspaceWithOptions(request *DeleteUserFromWorkspaceRequest, runtime *util.RuntimeOptions) (_result *DeleteUserFromWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14454,6 +18383,9 @@ func (client *Client) DeleteUserFromWorkspaceWithOptions(request *DeleteUserFrom
 	return _result, _err
 }
 
+// @param request - DeleteUserFromWorkspaceRequest
+//
+// @return DeleteUserFromWorkspaceResponse
 func (client *Client) DeleteUserFromWorkspace(request *DeleteUserFromWorkspaceRequest) (_result *DeleteUserFromWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserFromWorkspaceResponse{}
@@ -14465,6 +18397,15 @@ func (client *Client) DeleteUserFromWorkspace(request *DeleteUserFromWorkspaceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a user group in an organization.
+//
+// @param request - DeleteUserGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserGroupResponse
 func (client *Client) DeleteUserGroupWithOptions(request *DeleteUserGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteUserGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14498,6 +18439,13 @@ func (client *Client) DeleteUserGroupWithOptions(request *DeleteUserGroupRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a user group in an organization.
+//
+// @param request - DeleteUserGroupRequest
+//
+// @return DeleteUserGroupResponse
 func (client *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (_result *DeleteUserGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserGroupResponse{}
@@ -14509,6 +18457,15 @@ func (client *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified member from a specified user group.
+//
+// @param request - DeleteUserGroupMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserGroupMemberResponse
 func (client *Client) DeleteUserGroupMemberWithOptions(request *DeleteUserGroupMemberRequest, runtime *util.RuntimeOptions) (_result *DeleteUserGroupMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14546,6 +18503,13 @@ func (client *Client) DeleteUserGroupMemberWithOptions(request *DeleteUserGroupM
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified member from a specified user group.
+//
+// @param request - DeleteUserGroupMemberRequest
+//
+// @return DeleteUserGroupMemberResponse
 func (client *Client) DeleteUserGroupMember(request *DeleteUserGroupMemberRequest) (_result *DeleteUserGroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserGroupMemberResponse{}
@@ -14557,6 +18521,19 @@ func (client *Client) DeleteUserGroupMember(request *DeleteUserGroupMemberReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Indicates whether the request is successful. Valid values:
+//
+// 	- true: The request was successful.
+//
+// 	- false: The request failed.
+//
+// @param request - DeleteUserGroupMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserGroupMembersResponse
 func (client *Client) DeleteUserGroupMembersWithOptions(request *DeleteUserGroupMembersRequest, runtime *util.RuntimeOptions) (_result *DeleteUserGroupMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14594,6 +18571,17 @@ func (client *Client) DeleteUserGroupMembersWithOptions(request *DeleteUserGroup
 	return _result, _err
 }
 
+// Summary:
+//
+// Indicates whether the request is successful. Valid values:
+//
+// 	- true: The request was successful.
+//
+// 	- false: The request failed.
+//
+// @param request - DeleteUserGroupMembersRequest
+//
+// @return DeleteUserGroupMembersResponse
 func (client *Client) DeleteUserGroupMembers(request *DeleteUserGroupMembersRequest) (_result *DeleteUserGroupMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserGroupMembersResponse{}
@@ -14605,6 +18593,15 @@ func (client *Client) DeleteUserGroupMembers(request *DeleteUserGroupMembersRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the tag metadata of an organization member.
+//
+// @param request - DeleteUserTagMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserTagMetaResponse
 func (client *Client) DeleteUserTagMetaWithOptions(request *DeleteUserTagMetaRequest, runtime *util.RuntimeOptions) (_result *DeleteUserTagMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14638,6 +18635,13 @@ func (client *Client) DeleteUserTagMetaWithOptions(request *DeleteUserTagMetaReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the tag metadata of an organization member.
+//
+// @param request - DeleteUserTagMetaRequest
+//
+// @return DeleteUserTagMetaResponse
 func (client *Client) DeleteUserTagMeta(request *DeleteUserTagMetaRequest) (_result *DeleteUserTagMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserTagMetaResponse{}
@@ -14649,6 +18653,15 @@ func (client *Client) DeleteUserTagMeta(request *DeleteUserTagMetaRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Test description
+//
+// @param request - GetUserGroupInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserGroupInfoResponse
 func (client *Client) GetUserGroupInfoWithOptions(request *GetUserGroupInfoRequest, runtime *util.RuntimeOptions) (_result *GetUserGroupInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14682,6 +18695,13 @@ func (client *Client) GetUserGroupInfoWithOptions(request *GetUserGroupInfoReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Test description
+//
+// @param request - GetUserGroupInfoRequest
+//
+// @return GetUserGroupInfoResponse
 func (client *Client) GetUserGroupInfo(request *GetUserGroupInfoRequest) (_result *GetUserGroupInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserGroupInfoResponse{}
@@ -14693,6 +18713,15 @@ func (client *Client) GetUserGroupInfo(request *GetUserGroupInfoRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 概述
+//
+// @param request - ListApiDatasourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApiDatasourceResponse
 func (client *Client) ListApiDatasourceWithOptions(request *ListApiDatasourceRequest, runtime *util.RuntimeOptions) (_result *ListApiDatasourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14738,6 +18767,13 @@ func (client *Client) ListApiDatasourceWithOptions(request *ListApiDatasourceReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 概述
+//
+// @param request - ListApiDatasourceRequest
+//
+// @return ListApiDatasourceResponse
 func (client *Client) ListApiDatasource(request *ListApiDatasourceRequest) (_result *ListApiDatasourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApiDatasourceResponse{}
@@ -14749,6 +18785,15 @@ func (client *Client) ListApiDatasource(request *ListApiDatasourceRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries user group information at a time by user group ID.
+//
+// @param request - ListByUserGroupIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListByUserGroupIdResponse
 func (client *Client) ListByUserGroupIdWithOptions(request *ListByUserGroupIdRequest, runtime *util.RuntimeOptions) (_result *ListByUserGroupIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14782,6 +18827,13 @@ func (client *Client) ListByUserGroupIdWithOptions(request *ListByUserGroupIdReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries user group information at a time by user group ID.
+//
+// @param request - ListByUserGroupIdRequest
+//
+// @return ListByUserGroupIdResponse
 func (client *Client) ListByUserGroupId(request *ListByUserGroupIdRequest) (_result *ListByUserGroupIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListByUserGroupIdResponse{}
@@ -14793,6 +18845,15 @@ func (client *Client) ListByUserGroupId(request *ListByUserGroupIdRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the work.
+//
+// @param request - ListCollectionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCollectionsResponse
 func (client *Client) ListCollectionsWithOptions(request *ListCollectionsRequest, runtime *util.RuntimeOptions) (_result *ListCollectionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14826,6 +18887,13 @@ func (client *Client) ListCollectionsWithOptions(request *ListCollectionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the work.
+//
+// @param request - ListCollectionsRequest
+//
+// @return ListCollectionsResponse
 func (client *Client) ListCollections(request *ListCollectionsRequest) (_result *ListCollectionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCollectionsResponse{}
@@ -14837,13 +18905,19 @@ func (client *Client) ListCollections(request *ListCollectionsRequest) (_result 
 	return _result, _err
 }
 
-/**
- * > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.
- *
- * @param request ListCubeDataLevelPermissionConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListCubeDataLevelPermissionConfigResponse
- */
+// Summary:
+//
+// You can this operation to obtain a list of row and column permission configurations for a specified dataset.
+//
+// Description:
+//
+// > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.
+//
+// @param request - ListCubeDataLevelPermissionConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCubeDataLevelPermissionConfigResponse
 func (client *Client) ListCubeDataLevelPermissionConfigWithOptions(request *ListCubeDataLevelPermissionConfigRequest, runtime *util.RuntimeOptions) (_result *ListCubeDataLevelPermissionConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14881,12 +18955,17 @@ func (client *Client) ListCubeDataLevelPermissionConfigWithOptions(request *List
 	return _result, _err
 }
 
-/**
- * > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.
- *
- * @param request ListCubeDataLevelPermissionConfigRequest
- * @return ListCubeDataLevelPermissionConfigResponse
- */
+// Summary:
+//
+// You can this operation to obtain a list of row and column permission configurations for a specified dataset.
+//
+// Description:
+//
+// > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.
+//
+// @param request - ListCubeDataLevelPermissionConfigRequest
+//
+// @return ListCubeDataLevelPermissionConfigResponse
 func (client *Client) ListCubeDataLevelPermissionConfig(request *ListCubeDataLevelPermissionConfigRequest) (_result *ListCubeDataLevelPermissionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCubeDataLevelPermissionConfigResponse{}
@@ -14898,6 +18977,11 @@ func (client *Client) ListCubeDataLevelPermissionConfig(request *ListCubeDataLev
 	return _result, _err
 }
 
+// @param request - ListDataLevelPermissionWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataLevelPermissionWhiteListResponse
 func (client *Client) ListDataLevelPermissionWhiteListWithOptions(request *ListDataLevelPermissionWhiteListRequest, runtime *util.RuntimeOptions) (_result *ListDataLevelPermissionWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14935,6 +19019,9 @@ func (client *Client) ListDataLevelPermissionWhiteListWithOptions(request *ListD
 	return _result, _err
 }
 
+// @param request - ListDataLevelPermissionWhiteListRequest
+//
+// @return ListDataLevelPermissionWhiteListResponse
 func (client *Client) ListDataLevelPermissionWhiteList(request *ListDataLevelPermissionWhiteListRequest) (_result *ListDataLevelPermissionWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDataLevelPermissionWhiteListResponse{}
@@ -14946,6 +19033,15 @@ func (client *Client) ListDataLevelPermissionWhiteList(request *ListDataLevelPer
 	return _result, _err
 }
 
+// Summary:
+//
+// 概述
+//
+// @param request - ListFavoriteReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFavoriteReportsResponse
 func (client *Client) ListFavoriteReportsWithOptions(request *ListFavoriteReportsRequest, runtime *util.RuntimeOptions) (_result *ListFavoriteReportsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14991,6 +19087,13 @@ func (client *Client) ListFavoriteReportsWithOptions(request *ListFavoriteReport
 	return _result, _err
 }
 
+// Summary:
+//
+// 概述
+//
+// @param request - ListFavoriteReportsRequest
+//
+// @return ListFavoriteReportsResponse
 func (client *Client) ListFavoriteReports(request *ListFavoriteReportsRequest) (_result *ListFavoriteReportsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFavoriteReportsResponse{}
@@ -15002,6 +19105,15 @@ func (client *Client) ListFavoriteReports(request *ListFavoriteReportsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定组织角色下的用户列表
+//
+// @param request - ListOrganizationRoleUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOrganizationRoleUsersResponse
 func (client *Client) ListOrganizationRoleUsersWithOptions(request *ListOrganizationRoleUsersRequest, runtime *util.RuntimeOptions) (_result *ListOrganizationRoleUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15047,6 +19159,13 @@ func (client *Client) ListOrganizationRoleUsersWithOptions(request *ListOrganiza
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定组织角色下的用户列表
+//
+// @param request - ListOrganizationRoleUsersRequest
+//
+// @return ListOrganizationRoleUsersResponse
 func (client *Client) ListOrganizationRoleUsers(request *ListOrganizationRoleUsersRequest) (_result *ListOrganizationRoleUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOrganizationRoleUsersResponse{}
@@ -15058,6 +19177,15 @@ func (client *Client) ListOrganizationRoleUsers(request *ListOrganizationRoleUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取组织级别自定义角色列表
+//
+// @param request - ListOrganizationRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOrganizationRolesResponse
 func (client *Client) ListOrganizationRolesWithOptions(runtime *util.RuntimeOptions) (_result *ListOrganizationRolesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -15080,6 +19208,11 @@ func (client *Client) ListOrganizationRolesWithOptions(runtime *util.RuntimeOpti
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取组织级别自定义角色列表
+//
+// @return ListOrganizationRolesResponse
 func (client *Client) ListOrganizationRoles() (_result *ListOrganizationRolesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOrganizationRolesResponse{}
@@ -15091,6 +19224,15 @@ func (client *Client) ListOrganizationRoles() (_result *ListOrganizationRolesRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the list of authorization details for a BI portal menu.
+//
+// @param request - ListPortalMenuAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPortalMenuAuthorizationResponse
 func (client *Client) ListPortalMenuAuthorizationWithOptions(request *ListPortalMenuAuthorizationRequest, runtime *util.RuntimeOptions) (_result *ListPortalMenuAuthorizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15124,6 +19266,13 @@ func (client *Client) ListPortalMenuAuthorizationWithOptions(request *ListPortal
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the list of authorization details for a BI portal menu.
+//
+// @param request - ListPortalMenuAuthorizationRequest
+//
+// @return ListPortalMenuAuthorizationResponse
 func (client *Client) ListPortalMenuAuthorization(request *ListPortalMenuAuthorizationRequest) (_result *ListPortalMenuAuthorizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPortalMenuAuthorizationResponse{}
@@ -15135,6 +19284,15 @@ func (client *Client) ListPortalMenuAuthorization(request *ListPortalMenuAuthori
 	return _result, _err
 }
 
+// Summary:
+//
+// Gets a hierarchical list of menus under a specific BI portal.
+//
+// @param request - ListPortalMenusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPortalMenusResponse
 func (client *Client) ListPortalMenusWithOptions(request *ListPortalMenusRequest, runtime *util.RuntimeOptions) (_result *ListPortalMenusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15172,6 +19330,13 @@ func (client *Client) ListPortalMenusWithOptions(request *ListPortalMenusRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Gets a hierarchical list of menus under a specific BI portal.
+//
+// @param request - ListPortalMenusRequest
+//
+// @return ListPortalMenusResponse
 func (client *Client) ListPortalMenus(request *ListPortalMenusRequest) (_result *ListPortalMenusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPortalMenusResponse{}
@@ -15183,6 +19348,15 @@ func (client *Client) ListPortalMenus(request *ListPortalMenusRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取首页看板常看和足迹列表
+//
+// @param request - ListRecentViewReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRecentViewReportsResponse
 func (client *Client) ListRecentViewReportsWithOptions(request *ListRecentViewReportsRequest, runtime *util.RuntimeOptions) (_result *ListRecentViewReportsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15236,6 +19410,13 @@ func (client *Client) ListRecentViewReportsWithOptions(request *ListRecentViewRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取首页看板常看和足迹列表
+//
+// @param request - ListRecentViewReportsRequest
+//
+// @return ListRecentViewReportsResponse
 func (client *Client) ListRecentViewReports(request *ListRecentViewReportsRequest) (_result *ListRecentViewReportsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRecentViewReportsResponse{}
@@ -15247,6 +19428,15 @@ func (client *Client) ListRecentViewReports(request *ListRecentViewReportsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 概述
+//
+// @param request - ListSharedReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSharedReportsResponse
 func (client *Client) ListSharedReportsWithOptions(request *ListSharedReportsRequest, runtime *util.RuntimeOptions) (_result *ListSharedReportsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15292,6 +19482,13 @@ func (client *Client) ListSharedReportsWithOptions(request *ListSharedReportsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 概述
+//
+// @param request - ListSharedReportsRequest
+//
+// @return ListSharedReportsResponse
 func (client *Client) ListSharedReports(request *ListSharedReportsRequest) (_result *ListSharedReportsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSharedReportsResponse{}
@@ -15303,6 +19500,15 @@ func (client *Client) ListSharedReports(request *ListSharedReportsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Description
+//
+// @param request - ListUserGroupsByUserIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserGroupsByUserIdResponse
 func (client *Client) ListUserGroupsByUserIdWithOptions(request *ListUserGroupsByUserIdRequest, runtime *util.RuntimeOptions) (_result *ListUserGroupsByUserIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15336,6 +19542,13 @@ func (client *Client) ListUserGroupsByUserIdWithOptions(request *ListUserGroupsB
 	return _result, _err
 }
 
+// Summary:
+//
+// Description
+//
+// @param request - ListUserGroupsByUserIdRequest
+//
+// @return ListUserGroupsByUserIdResponse
 func (client *Client) ListUserGroupsByUserId(request *ListUserGroupsByUserIdRequest) (_result *ListUserGroupsByUserIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserGroupsByUserIdResponse{}
@@ -15347,6 +19560,15 @@ func (client *Client) ListUserGroupsByUserId(request *ListUserGroupsByUserIdRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定空间角色下的用户列表
+//
+// @param request - ListWorkspaceRoleUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspaceRoleUsersResponse
 func (client *Client) ListWorkspaceRoleUsersWithOptions(request *ListWorkspaceRoleUsersRequest, runtime *util.RuntimeOptions) (_result *ListWorkspaceRoleUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15396,6 +19618,13 @@ func (client *Client) ListWorkspaceRoleUsersWithOptions(request *ListWorkspaceRo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定空间角色下的用户列表
+//
+// @param request - ListWorkspaceRoleUsersRequest
+//
+// @return ListWorkspaceRoleUsersResponse
 func (client *Client) ListWorkspaceRoleUsers(request *ListWorkspaceRoleUsersRequest) (_result *ListWorkspaceRoleUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListWorkspaceRoleUsersResponse{}
@@ -15407,6 +19636,15 @@ func (client *Client) ListWorkspaceRoleUsers(request *ListWorkspaceRoleUsersRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取空间角色列表
+//
+// @param request - ListWorkspaceRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspaceRolesResponse
 func (client *Client) ListWorkspaceRolesWithOptions(request *ListWorkspaceRolesRequest, runtime *util.RuntimeOptions) (_result *ListWorkspaceRolesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15440,6 +19678,13 @@ func (client *Client) ListWorkspaceRolesWithOptions(request *ListWorkspaceRolesR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取空间角色列表
+//
+// @param request - ListWorkspaceRolesRequest
+//
+// @return ListWorkspaceRolesResponse
 func (client *Client) ListWorkspaceRoles(request *ListWorkspaceRolesRequest) (_result *ListWorkspaceRolesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListWorkspaceRolesResponse{}
@@ -15451,6 +19696,15 @@ func (client *Client) ListWorkspaceRoles(request *ListWorkspaceRolesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改指定API数据源参数值
+//
+// @param request - ModifyApiDatasourceParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApiDatasourceParametersResponse
 func (client *Client) ModifyApiDatasourceParametersWithOptions(request *ModifyApiDatasourceParametersRequest, runtime *util.RuntimeOptions) (_result *ModifyApiDatasourceParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15492,6 +19746,13 @@ func (client *Client) ModifyApiDatasourceParametersWithOptions(request *ModifyAp
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改指定API数据源参数值
+//
+// @param request - ModifyApiDatasourceParametersRequest
+//
+// @return ModifyApiDatasourceParametersResponse
 func (client *Client) ModifyApiDatasourceParameters(request *ModifyApiDatasourceParametersRequest) (_result *ModifyApiDatasourceParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyApiDatasourceParametersResponse{}
@@ -15503,6 +19764,15 @@ func (client *Client) ModifyApiDatasourceParameters(request *ModifyApiDatasource
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询组件性能列表
+//
+// @param request - QueryComponentPerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryComponentPerformanceResponse
 func (client *Client) QueryComponentPerformanceWithOptions(request *QueryComponentPerformanceRequest, runtime *util.RuntimeOptions) (_result *QueryComponentPerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15560,6 +19830,13 @@ func (client *Client) QueryComponentPerformanceWithOptions(request *QueryCompone
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询组件性能列表
+//
+// @param request - QueryComponentPerformanceRequest
+//
+// @return QueryComponentPerformanceResponse
 func (client *Client) QueryComponentPerformance(request *QueryComponentPerformanceRequest) (_result *QueryComponentPerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryComponentPerformanceResponse{}
@@ -15571,6 +19848,15 @@ func (client *Client) QueryComponentPerformance(request *QueryComponentPerforman
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询数据集优化建议
+//
+// @param request - QueryCubeOptimizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCubeOptimizationResponse
 func (client *Client) QueryCubeOptimizationWithOptions(request *QueryCubeOptimizationRequest, runtime *util.RuntimeOptions) (_result *QueryCubeOptimizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15604,6 +19890,13 @@ func (client *Client) QueryCubeOptimizationWithOptions(request *QueryCubeOptimiz
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询数据集优化建议
+//
+// @param request - QueryCubeOptimizationRequest
+//
+// @return QueryCubeOptimizationResponse
 func (client *Client) QueryCubeOptimization(request *QueryCubeOptimizationRequest) (_result *QueryCubeOptimizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCubeOptimizationResponse{}
@@ -15615,6 +19908,15 @@ func (client *Client) QueryCubeOptimization(request *QueryCubeOptimizationReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询数据集性能
+//
+// @param request - QueryCubePerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCubePerformanceResponse
 func (client *Client) QueryCubePerformanceWithOptions(request *QueryCubePerformanceRequest, runtime *util.RuntimeOptions) (_result *QueryCubePerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15668,6 +19970,13 @@ func (client *Client) QueryCubePerformanceWithOptions(request *QueryCubePerforma
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询数据集性能
+//
+// @param request - QueryCubePerformanceRequest
+//
+// @return QueryCubePerformanceResponse
 func (client *Client) QueryCubePerformance(request *QueryCubePerformanceRequest) (_result *QueryCubePerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCubePerformanceResponse{}
@@ -15679,13 +19988,19 @@ func (client *Client) QueryCubePerformance(request *QueryCubePerformanceRequest)
 	return _result, _err
 }
 
-/**
- * f4cc43bc3***
- *
- * @param request QueryDataServiceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryDataServiceResponse
- */
+// Summary:
+//
+// The operator for the aggregate operation. Metric fields are available, such as SUM, AVG, and MAX.
+//
+// Description:
+//
+// f4cc43bc3***
+//
+// @param request - QueryDataServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDataServiceResponse
 func (client *Client) QueryDataServiceWithOptions(request *QueryDataServiceRequest, runtime *util.RuntimeOptions) (_result *QueryDataServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15727,12 +20042,17 @@ func (client *Client) QueryDataServiceWithOptions(request *QueryDataServiceReque
 	return _result, _err
 }
 
-/**
- * f4cc43bc3***
- *
- * @param request QueryDataServiceRequest
- * @return QueryDataServiceResponse
- */
+// Summary:
+//
+// The operator for the aggregate operation. Metric fields are available, such as SUM, AVG, and MAX.
+//
+// Description:
+//
+// f4cc43bc3***
+//
+// @param request - QueryDataServiceRequest
+//
+// @return QueryDataServiceResponse
 func (client *Client) QueryDataService(request *QueryDataServiceRequest) (_result *QueryDataServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDataServiceResponse{}
@@ -15744,13 +20064,19 @@ func (client *Client) QueryDataService(request *QueryDataServiceRequest) (_resul
 	return _result, _err
 }
 
-/**
- * The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
- *
- * @param request QueryDatasetDetailInfoRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryDatasetDetailInfoResponse
- */
+// Summary:
+//
+// Queries the details of a specified dataset, including the data source, directory, and dataset model.
+//
+// Description:
+//
+// The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
+//
+// @param request - QueryDatasetDetailInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDatasetDetailInfoResponse
 func (client *Client) QueryDatasetDetailInfoWithOptions(request *QueryDatasetDetailInfoRequest, runtime *util.RuntimeOptions) (_result *QueryDatasetDetailInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15784,12 +20110,17 @@ func (client *Client) QueryDatasetDetailInfoWithOptions(request *QueryDatasetDet
 	return _result, _err
 }
 
-/**
- * The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
- *
- * @param request QueryDatasetDetailInfoRequest
- * @return QueryDatasetDetailInfoResponse
- */
+// Summary:
+//
+// Queries the details of a specified dataset, including the data source, directory, and dataset model.
+//
+// Description:
+//
+// The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
+//
+// @param request - QueryDatasetDetailInfoRequest
+//
+// @return QueryDatasetDetailInfoResponse
 func (client *Client) QueryDatasetDetailInfo(request *QueryDatasetDetailInfoRequest) (_result *QueryDatasetDetailInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDatasetDetailInfoResponse{}
@@ -15801,6 +20132,19 @@ func (client *Client) QueryDatasetDetailInfo(request *QueryDatasetDetailInfoRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Indicates whether the table is a custom SQL table. Valid values:
+//
+// 	- true: custom SQL table
+//
+// 	- false: non-custom SQL table
+//
+// @param request - QueryDatasetInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDatasetInfoResponse
 func (client *Client) QueryDatasetInfoWithOptions(request *QueryDatasetInfoRequest, runtime *util.RuntimeOptions) (_result *QueryDatasetInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15834,6 +20178,17 @@ func (client *Client) QueryDatasetInfoWithOptions(request *QueryDatasetInfoReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Indicates whether the table is a custom SQL table. Valid values:
+//
+// 	- true: custom SQL table
+//
+// 	- false: non-custom SQL table
+//
+// @param request - QueryDatasetInfoRequest
+//
+// @return QueryDatasetInfoResponse
 func (client *Client) QueryDatasetInfo(request *QueryDatasetInfoRequest) (_result *QueryDatasetInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDatasetInfoResponse{}
@@ -15845,6 +20200,15 @@ func (client *Client) QueryDatasetInfo(request *QueryDatasetInfoRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// The name of the training dataset.
+//
+// @param request - QueryDatasetListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDatasetListResponse
 func (client *Client) QueryDatasetListWithOptions(request *QueryDatasetListRequest, runtime *util.RuntimeOptions) (_result *QueryDatasetListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15898,6 +20262,13 @@ func (client *Client) QueryDatasetListWithOptions(request *QueryDatasetListReque
 	return _result, _err
 }
 
+// Summary:
+//
+// The name of the training dataset.
+//
+// @param request - QueryDatasetListRequest
+//
+// @return QueryDatasetListResponse
 func (client *Client) QueryDatasetList(request *QueryDatasetListRequest) (_result *QueryDatasetListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDatasetListResponse{}
@@ -15909,6 +20280,11 @@ func (client *Client) QueryDatasetList(request *QueryDatasetListRequest) (_resul
 	return _result, _err
 }
 
+// @param request - QueryDatasetSwitchInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDatasetSwitchInfoResponse
 func (client *Client) QueryDatasetSwitchInfoWithOptions(request *QueryDatasetSwitchInfoRequest, runtime *util.RuntimeOptions) (_result *QueryDatasetSwitchInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15942,6 +20318,9 @@ func (client *Client) QueryDatasetSwitchInfoWithOptions(request *QueryDatasetSwi
 	return _result, _err
 }
 
+// @param request - QueryDatasetSwitchInfoRequest
+//
+// @return QueryDatasetSwitchInfoResponse
 func (client *Client) QueryDatasetSwitchInfo(request *QueryDatasetSwitchInfoRequest) (_result *QueryDatasetSwitchInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDatasetSwitchInfoResponse{}
@@ -15953,6 +20332,15 @@ func (client *Client) QueryDatasetSwitchInfo(request *QueryDatasetSwitchInfoRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// The number of reports that are currently embedded.
+//
+// @param request - QueryEmbeddedInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryEmbeddedInfoResponse
 func (client *Client) QueryEmbeddedInfoWithOptions(runtime *util.RuntimeOptions) (_result *QueryEmbeddedInfoResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -15975,6 +20363,11 @@ func (client *Client) QueryEmbeddedInfoWithOptions(runtime *util.RuntimeOptions)
 	return _result, _err
 }
 
+// Summary:
+//
+// The number of reports that are currently embedded.
+//
+// @return QueryEmbeddedInfoResponse
 func (client *Client) QueryEmbeddedInfo() (_result *QueryEmbeddedInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryEmbeddedInfoResponse{}
@@ -15986,6 +20379,15 @@ func (client *Client) QueryEmbeddedInfo() (_result *QueryEmbeddedInfoResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether embedding is enabled for a report.
+//
+// @param request - QueryEmbeddedStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryEmbeddedStatusResponse
 func (client *Client) QueryEmbeddedStatusWithOptions(request *QueryEmbeddedStatusRequest, runtime *util.RuntimeOptions) (_result *QueryEmbeddedStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16019,6 +20421,13 @@ func (client *Client) QueryEmbeddedStatusWithOptions(request *QueryEmbeddedStatu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether embedding is enabled for a report.
+//
+// @param request - QueryEmbeddedStatusRequest
+//
+// @return QueryEmbeddedStatusResponse
 func (client *Client) QueryEmbeddedStatus(request *QueryEmbeddedStatusRequest) (_result *QueryEmbeddedStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryEmbeddedStatusResponse{}
@@ -16030,6 +20439,15 @@ func (client *Client) QueryEmbeddedStatus(request *QueryEmbeddedStatusRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定组织角色的配置信息
+//
+// @param request - QueryOrganizationRoleConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryOrganizationRoleConfigResponse
 func (client *Client) QueryOrganizationRoleConfigWithOptions(request *QueryOrganizationRoleConfigRequest, runtime *util.RuntimeOptions) (_result *QueryOrganizationRoleConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16063,6 +20481,13 @@ func (client *Client) QueryOrganizationRoleConfigWithOptions(request *QueryOrgan
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定组织角色的配置信息
+//
+// @param request - QueryOrganizationRoleConfigRequest
+//
+// @return QueryOrganizationRoleConfigResponse
 func (client *Client) QueryOrganizationRoleConfig(request *QueryOrganizationRoleConfigRequest) (_result *QueryOrganizationRoleConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryOrganizationRoleConfigResponse{}
@@ -16074,6 +20499,15 @@ func (client *Client) QueryOrganizationRoleConfig(request *QueryOrganizationRole
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取当前组织下的工作空间列表信息。
+//
+// @param request - QueryOrganizationWorkspaceListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryOrganizationWorkspaceListResponse
 func (client *Client) QueryOrganizationWorkspaceListWithOptions(request *QueryOrganizationWorkspaceListRequest, runtime *util.RuntimeOptions) (_result *QueryOrganizationWorkspaceListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16119,6 +20553,13 @@ func (client *Client) QueryOrganizationWorkspaceListWithOptions(request *QueryOr
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取当前组织下的工作空间列表信息。
+//
+// @param request - QueryOrganizationWorkspaceListRequest
+//
+// @return QueryOrganizationWorkspaceListResponse
 func (client *Client) QueryOrganizationWorkspaceList(request *QueryOrganizationWorkspaceListRequest) (_result *QueryOrganizationWorkspaceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryOrganizationWorkspaceListResponse{}
@@ -16130,6 +20571,15 @@ func (client *Client) QueryOrganizationWorkspaceList(request *QueryOrganizationW
 	return _result, _err
 }
 
+// Summary:
+//
+// The Alibaba Cloud account name of the owner.
+//
+// @param request - QueryReadableResourcesListByUserIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryReadableResourcesListByUserIdResponse
 func (client *Client) QueryReadableResourcesListByUserIdWithOptions(request *QueryReadableResourcesListByUserIdRequest, runtime *util.RuntimeOptions) (_result *QueryReadableResourcesListByUserIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16163,6 +20613,13 @@ func (client *Client) QueryReadableResourcesListByUserIdWithOptions(request *Que
 	return _result, _err
 }
 
+// Summary:
+//
+// The Alibaba Cloud account name of the owner.
+//
+// @param request - QueryReadableResourcesListByUserIdRequest
+//
+// @return QueryReadableResourcesListByUserIdResponse
 func (client *Client) QueryReadableResourcesListByUserId(request *QueryReadableResourcesListByUserIdRequest) (_result *QueryReadableResourcesListByUserIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryReadableResourcesListByUserIdResponse{}
@@ -16174,6 +20631,15 @@ func (client *Client) QueryReadableResourcesListByUserId(request *QueryReadableR
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询报表性能列表
+//
+// @param request - QueryReportPerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryReportPerformanceResponse
 func (client *Client) QueryReportPerformanceWithOptions(request *QueryReportPerformanceRequest, runtime *util.RuntimeOptions) (_result *QueryReportPerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16231,6 +20697,13 @@ func (client *Client) QueryReportPerformanceWithOptions(request *QueryReportPerf
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询报表性能列表
+//
+// @param request - QueryReportPerformanceRequest
+//
+// @return QueryReportPerformanceResponse
 func (client *Client) QueryReportPerformance(request *QueryReportPerformanceRequest) (_result *QueryReportPerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryReportPerformanceResponse{}
@@ -16242,6 +20715,15 @@ func (client *Client) QueryReportPerformance(request *QueryReportPerformanceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Xiao Zhang
+//
+// @param request - QueryShareListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryShareListResponse
 func (client *Client) QueryShareListWithOptions(request *QueryShareListRequest, runtime *util.RuntimeOptions) (_result *QueryShareListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16275,6 +20757,13 @@ func (client *Client) QueryShareListWithOptions(request *QueryShareListRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Xiao Zhang
+//
+// @param request - QueryShareListRequest
+//
+// @return QueryShareListResponse
 func (client *Client) QueryShareList(request *QueryShareListRequest) (_result *QueryShareListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryShareListResponse{}
@@ -16286,6 +20775,15 @@ func (client *Client) QueryShareList(request *QueryShareListRequest) (_result *Q
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call this operation to query the list of works authorized to a user.
+//
+// @param request - QuerySharesToUserListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySharesToUserListResponse
 func (client *Client) QuerySharesToUserListWithOptions(request *QuerySharesToUserListRequest, runtime *util.RuntimeOptions) (_result *QuerySharesToUserListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16319,6 +20817,13 @@ func (client *Client) QuerySharesToUserListWithOptions(request *QuerySharesToUse
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call this operation to query the list of works authorized to a user.
+//
+// @param request - QuerySharesToUserListRequest
+//
+// @return QuerySharesToUserListResponse
 func (client *Client) QuerySharesToUserList(request *QuerySharesToUserListRequest) (_result *QuerySharesToUserListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySharesToUserListResponse{}
@@ -16330,6 +20835,15 @@ func (client *Client) QuerySharesToUserList(request *QuerySharesToUserListReques
 	return _result, _err
 }
 
+// Summary:
+//
+// auditing
+//
+// @param request - QueryTicketInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTicketInfoResponse
 func (client *Client) QueryTicketInfoWithOptions(request *QueryTicketInfoRequest, runtime *util.RuntimeOptions) (_result *QueryTicketInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16363,6 +20877,13 @@ func (client *Client) QueryTicketInfoWithOptions(request *QueryTicketInfoRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// auditing
+//
+// @param request - QueryTicketInfoRequest
+//
+// @return QueryTicketInfoResponse
 func (client *Client) QueryTicketInfo(request *QueryTicketInfoRequest) (_result *QueryTicketInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTicketInfoResponse{}
@@ -16374,6 +20895,15 @@ func (client *Client) QueryTicketInfo(request *QueryTicketInfoRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// You can this operation to obtain information about child user groups under a specified parent user group.
+//
+// @param request - QueryUserGroupListByParentIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserGroupListByParentIdResponse
 func (client *Client) QueryUserGroupListByParentIdWithOptions(request *QueryUserGroupListByParentIdRequest, runtime *util.RuntimeOptions) (_result *QueryUserGroupListByParentIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16407,6 +20937,13 @@ func (client *Client) QueryUserGroupListByParentIdWithOptions(request *QueryUser
 	return _result, _err
 }
 
+// Summary:
+//
+// You can this operation to obtain information about child user groups under a specified parent user group.
+//
+// @param request - QueryUserGroupListByParentIdRequest
+//
+// @return QueryUserGroupListByParentIdResponse
 func (client *Client) QueryUserGroupListByParentId(request *QueryUserGroupListByParentIdRequest) (_result *QueryUserGroupListByParentIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryUserGroupListByParentIdResponse{}
@@ -16418,6 +20955,11 @@ func (client *Client) QueryUserGroupListByParentId(request *QueryUserGroupListBy
 	return _result, _err
 }
 
+// @param request - QueryUserGroupMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserGroupMemberResponse
 func (client *Client) QueryUserGroupMemberWithOptions(request *QueryUserGroupMemberRequest, runtime *util.RuntimeOptions) (_result *QueryUserGroupMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16455,6 +20997,9 @@ func (client *Client) QueryUserGroupMemberWithOptions(request *QueryUserGroupMem
 	return _result, _err
 }
 
+// @param request - QueryUserGroupMemberRequest
+//
+// @return QueryUserGroupMemberResponse
 func (client *Client) QueryUserGroupMember(request *QueryUserGroupMemberRequest) (_result *QueryUserGroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryUserGroupMemberResponse{}
@@ -16466,6 +21011,15 @@ func (client *Client) QueryUserGroupMember(request *QueryUserGroupMemberRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries user information based on the Alibaba Cloud ID or Alibaba Cloud account name.
+//
+// @param request - QueryUserInfoByAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserInfoByAccountResponse
 func (client *Client) QueryUserInfoByAccountWithOptions(request *QueryUserInfoByAccountRequest, runtime *util.RuntimeOptions) (_result *QueryUserInfoByAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16503,6 +21057,13 @@ func (client *Client) QueryUserInfoByAccountWithOptions(request *QueryUserInfoBy
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries user information based on the Alibaba Cloud ID or Alibaba Cloud account name.
+//
+// @param request - QueryUserInfoByAccountRequest
+//
+// @return QueryUserInfoByAccountResponse
 func (client *Client) QueryUserInfoByAccount(request *QueryUserInfoByAccountRequest) (_result *QueryUserInfoByAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryUserInfoByAccountResponse{}
@@ -16514,6 +21075,15 @@ func (client *Client) QueryUserInfoByAccount(request *QueryUserInfoByAccountRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries user information based on the user ID.
+//
+// @param request - QueryUserInfoByUserIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserInfoByUserIdResponse
 func (client *Client) QueryUserInfoByUserIdWithOptions(request *QueryUserInfoByUserIdRequest, runtime *util.RuntimeOptions) (_result *QueryUserInfoByUserIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16547,6 +21117,13 @@ func (client *Client) QueryUserInfoByUserIdWithOptions(request *QueryUserInfoByU
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries user information based on the user ID.
+//
+// @param request - QueryUserInfoByUserIdRequest
+//
+// @return QueryUserInfoByUserIdResponse
 func (client *Client) QueryUserInfoByUserId(request *QueryUserInfoByUserIdRequest) (_result *QueryUserInfoByUserIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryUserInfoByUserIdResponse{}
@@ -16558,6 +21135,11 @@ func (client *Client) QueryUserInfoByUserId(request *QueryUserInfoByUserIdReques
 	return _result, _err
 }
 
+// @param request - QueryUserListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserListResponse
 func (client *Client) QueryUserListWithOptions(request *QueryUserListRequest, runtime *util.RuntimeOptions) (_result *QueryUserListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16587,6 +21169,9 @@ func (client *Client) QueryUserListWithOptions(request *QueryUserListRequest, ru
 	return _result, _err
 }
 
+// @param request - QueryUserListRequest
+//
+// @return QueryUserListResponse
 func (client *Client) QueryUserList(request *QueryUserListRequest) (_result *QueryUserListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryUserListResponse{}
@@ -16598,6 +21183,11 @@ func (client *Client) QueryUserList(request *QueryUserListRequest) (_result *Que
 	return _result, _err
 }
 
+// @param request - QueryUserRoleInfoInWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserRoleInfoInWorkspaceResponse
 func (client *Client) QueryUserRoleInfoInWorkspaceWithOptions(request *QueryUserRoleInfoInWorkspaceRequest, runtime *util.RuntimeOptions) (_result *QueryUserRoleInfoInWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16635,6 +21225,9 @@ func (client *Client) QueryUserRoleInfoInWorkspaceWithOptions(request *QueryUser
 	return _result, _err
 }
 
+// @param request - QueryUserRoleInfoInWorkspaceRequest
+//
+// @return QueryUserRoleInfoInWorkspaceResponse
 func (client *Client) QueryUserRoleInfoInWorkspace(request *QueryUserRoleInfoInWorkspaceRequest) (_result *QueryUserRoleInfoInWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryUserRoleInfoInWorkspaceResponse{}
@@ -16646,6 +21239,15 @@ func (client *Client) QueryUserRoleInfoInWorkspace(request *QueryUserRoleInfoInW
 	return _result, _err
 }
 
+// Summary:
+//
+// auditing
+//
+// @param request - QueryUserTagMetaListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserTagMetaListResponse
 func (client *Client) QueryUserTagMetaListWithOptions(runtime *util.RuntimeOptions) (_result *QueryUserTagMetaListResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -16668,6 +21270,11 @@ func (client *Client) QueryUserTagMetaListWithOptions(runtime *util.RuntimeOptio
 	return _result, _err
 }
 
+// Summary:
+//
+// auditing
+//
+// @return QueryUserTagMetaListResponse
 func (client *Client) QueryUserTagMetaList() (_result *QueryUserTagMetaListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryUserTagMetaListResponse{}
@@ -16679,6 +21286,15 @@ func (client *Client) QueryUserTagMetaList() (_result *QueryUserTagMetaListRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of tag values for a specific user.
+//
+// @param request - QueryUserTagValueListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserTagValueListResponse
 func (client *Client) QueryUserTagValueListWithOptions(request *QueryUserTagValueListRequest, runtime *util.RuntimeOptions) (_result *QueryUserTagValueListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16708,6 +21324,13 @@ func (client *Client) QueryUserTagValueListWithOptions(request *QueryUserTagValu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of tag values for a specific user.
+//
+// @param request - QueryUserTagValueListRequest
+//
+// @return QueryUserTagValueListResponse
 func (client *Client) QueryUserTagValueList(request *QueryUserTagValueListRequest) (_result *QueryUserTagValueListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryUserTagValueListResponse{}
@@ -16719,6 +21342,15 @@ func (client *Client) QueryUserTagValueList(request *QueryUserTagValueListReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取报表详情
+//
+// @param request - QueryWorksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryWorksResponse
 func (client *Client) QueryWorksWithOptions(request *QueryWorksRequest, runtime *util.RuntimeOptions) (_result *QueryWorksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16752,6 +21384,13 @@ func (client *Client) QueryWorksWithOptions(request *QueryWorksRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取报表详情
+//
+// @param request - QueryWorksRequest
+//
+// @return QueryWorksResponse
 func (client *Client) QueryWorks(request *QueryWorksRequest) (_result *QueryWorksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryWorksResponse{}
@@ -16763,6 +21402,15 @@ func (client *Client) QueryWorks(request *QueryWorksRequest) (_result *QueryWork
 	return _result, _err
 }
 
+// Summary:
+//
+// abcd****
+//
+// @param request - QueryWorksBloodRelationshipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryWorksBloodRelationshipResponse
 func (client *Client) QueryWorksBloodRelationshipWithOptions(request *QueryWorksBloodRelationshipRequest, runtime *util.RuntimeOptions) (_result *QueryWorksBloodRelationshipResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16796,6 +21444,13 @@ func (client *Client) QueryWorksBloodRelationshipWithOptions(request *QueryWorks
 	return _result, _err
 }
 
+// Summary:
+//
+// abcd****
+//
+// @param request - QueryWorksBloodRelationshipRequest
+//
+// @return QueryWorksBloodRelationshipResponse
 func (client *Client) QueryWorksBloodRelationship(request *QueryWorksBloodRelationshipRequest) (_result *QueryWorksBloodRelationshipResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryWorksBloodRelationshipResponse{}
@@ -16807,6 +21462,15 @@ func (client *Client) QueryWorksBloodRelationship(request *QueryWorksBloodRelati
 	return _result, _err
 }
 
+// Summary:
+//
+// The total number of rows in the table.
+//
+// @param request - QueryWorksByOrganizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryWorksByOrganizationResponse
 func (client *Client) QueryWorksByOrganizationWithOptions(request *QueryWorksByOrganizationRequest, runtime *util.RuntimeOptions) (_result *QueryWorksByOrganizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16856,6 +21520,13 @@ func (client *Client) QueryWorksByOrganizationWithOptions(request *QueryWorksByO
 	return _result, _err
 }
 
+// Summary:
+//
+// The total number of rows in the table.
+//
+// @param request - QueryWorksByOrganizationRequest
+//
+// @return QueryWorksByOrganizationResponse
 func (client *Client) QueryWorksByOrganization(request *QueryWorksByOrganizationRequest) (_result *QueryWorksByOrganizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryWorksByOrganizationResponse{}
@@ -16867,6 +21538,15 @@ func (client *Client) QueryWorksByOrganization(request *QueryWorksByOrganization
 	return _result, _err
 }
 
+// Summary:
+//
+// The name of the directory.
+//
+// @param request - QueryWorksByWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryWorksByWorkspaceResponse
 func (client *Client) QueryWorksByWorkspaceWithOptions(request *QueryWorksByWorkspaceRequest, runtime *util.RuntimeOptions) (_result *QueryWorksByWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16920,6 +21600,13 @@ func (client *Client) QueryWorksByWorkspaceWithOptions(request *QueryWorksByWork
 	return _result, _err
 }
 
+// Summary:
+//
+// The name of the directory.
+//
+// @param request - QueryWorksByWorkspaceRequest
+//
+// @return QueryWorksByWorkspaceResponse
 func (client *Client) QueryWorksByWorkspace(request *QueryWorksByWorkspaceRequest) (_result *QueryWorksByWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryWorksByWorkspaceResponse{}
@@ -16931,6 +21618,15 @@ func (client *Client) QueryWorksByWorkspace(request *QueryWorksByWorkspaceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定空间角色的配置信息
+//
+// @param request - QueryWorkspaceRoleConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryWorkspaceRoleConfigResponse
 func (client *Client) QueryWorkspaceRoleConfigWithOptions(request *QueryWorkspaceRoleConfigRequest, runtime *util.RuntimeOptions) (_result *QueryWorkspaceRoleConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16964,6 +21660,13 @@ func (client *Client) QueryWorkspaceRoleConfigWithOptions(request *QueryWorkspac
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定空间角色的配置信息
+//
+// @param request - QueryWorkspaceRoleConfigRequest
+//
+// @return QueryWorkspaceRoleConfigResponse
 func (client *Client) QueryWorkspaceRoleConfig(request *QueryWorkspaceRoleConfigRequest) (_result *QueryWorkspaceRoleConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryWorkspaceRoleConfigResponse{}
@@ -16975,6 +21678,11 @@ func (client *Client) QueryWorkspaceRoleConfig(request *QueryWorkspaceRoleConfig
 	return _result, _err
 }
 
+// @param request - QueryWorkspaceUserListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryWorkspaceUserListResponse
 func (client *Client) QueryWorkspaceUserListWithOptions(request *QueryWorkspaceUserListRequest, runtime *util.RuntimeOptions) (_result *QueryWorkspaceUserListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17020,6 +21728,9 @@ func (client *Client) QueryWorkspaceUserListWithOptions(request *QueryWorkspaceU
 	return _result, _err
 }
 
+// @param request - QueryWorkspaceUserListRequest
+//
+// @return QueryWorkspaceUserListResponse
 func (client *Client) QueryWorkspaceUserList(request *QueryWorkspaceUserListRequest) (_result *QueryWorkspaceUserListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryWorkspaceUserListResponse{}
@@ -17031,6 +21742,15 @@ func (client *Client) QueryWorkspaceUserList(request *QueryWorkspaceUserListRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 第三方资源审批回调接口
+//
+// @param request - ResultCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResultCallbackResponse
 func (client *Client) ResultCallbackWithOptions(request *ResultCallbackRequest, runtime *util.RuntimeOptions) (_result *ResultCallbackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17072,6 +21792,13 @@ func (client *Client) ResultCallbackWithOptions(request *ResultCallbackRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 第三方资源审批回调接口
+//
+// @param request - ResultCallbackRequest
+//
+// @return ResultCallbackResponse
 func (client *Client) ResultCallback(request *ResultCallbackRequest) (_result *ResultCallbackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResultCallbackResponse{}
@@ -17083,6 +21810,15 @@ func (client *Client) ResultCallback(request *ResultCallbackRequest) (_result *R
 	return _result, _err
 }
 
+// Summary:
+//
+// Add the user\\"s collection data works.
+//
+// @param request - SaveFavoritesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveFavoritesResponse
 func (client *Client) SaveFavoritesWithOptions(request *SaveFavoritesRequest, runtime *util.RuntimeOptions) (_result *SaveFavoritesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17120,6 +21856,13 @@ func (client *Client) SaveFavoritesWithOptions(request *SaveFavoritesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Add the user\\"s collection data works.
+//
+// @param request - SaveFavoritesRequest
+//
+// @return SaveFavoritesResponse
 func (client *Client) SaveFavorites(request *SaveFavoritesRequest) (_result *SaveFavoritesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveFavoritesResponse{}
@@ -17131,6 +21874,11 @@ func (client *Client) SaveFavorites(request *SaveFavoritesRequest) (_result *Sav
 	return _result, _err
 }
 
+// @param request - SetDataLevelPermissionExtraConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetDataLevelPermissionExtraConfigResponse
 func (client *Client) SetDataLevelPermissionExtraConfigWithOptions(request *SetDataLevelPermissionExtraConfigRequest, runtime *util.RuntimeOptions) (_result *SetDataLevelPermissionExtraConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17172,6 +21920,9 @@ func (client *Client) SetDataLevelPermissionExtraConfigWithOptions(request *SetD
 	return _result, _err
 }
 
+// @param request - SetDataLevelPermissionExtraConfigRequest
+//
+// @return SetDataLevelPermissionExtraConfigResponse
 func (client *Client) SetDataLevelPermissionExtraConfig(request *SetDataLevelPermissionExtraConfigRequest) (_result *SetDataLevelPermissionExtraConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDataLevelPermissionExtraConfigResponse{}
@@ -17183,6 +21934,11 @@ func (client *Client) SetDataLevelPermissionExtraConfig(request *SetDataLevelPer
 	return _result, _err
 }
 
+// @param request - SetDataLevelPermissionRuleConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetDataLevelPermissionRuleConfigResponse
 func (client *Client) SetDataLevelPermissionRuleConfigWithOptions(request *SetDataLevelPermissionRuleConfigRequest, runtime *util.RuntimeOptions) (_result *SetDataLevelPermissionRuleConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17216,6 +21972,9 @@ func (client *Client) SetDataLevelPermissionRuleConfigWithOptions(request *SetDa
 	return _result, _err
 }
 
+// @param request - SetDataLevelPermissionRuleConfigRequest
+//
+// @return SetDataLevelPermissionRuleConfigResponse
 func (client *Client) SetDataLevelPermissionRuleConfig(request *SetDataLevelPermissionRuleConfigRequest) (_result *SetDataLevelPermissionRuleConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDataLevelPermissionRuleConfigResponse{}
@@ -17227,13 +21986,19 @@ func (client *Client) SetDataLevelPermissionRuleConfig(request *SetDataLevelPerm
 	return _result, _err
 }
 
-/**
- * > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.
- *
- * @param request SetDataLevelPermissionWhiteListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetDataLevelPermissionWhiteListResponse
- */
+// Summary:
+//
+// Sets the whitelist for the specified row-level permissions.
+//
+// Description:
+//
+// > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.
+//
+// @param request - SetDataLevelPermissionWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetDataLevelPermissionWhiteListResponse
 func (client *Client) SetDataLevelPermissionWhiteListWithOptions(request *SetDataLevelPermissionWhiteListRequest, runtime *util.RuntimeOptions) (_result *SetDataLevelPermissionWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17267,12 +22032,17 @@ func (client *Client) SetDataLevelPermissionWhiteListWithOptions(request *SetDat
 	return _result, _err
 }
 
-/**
- * > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.
- *
- * @param request SetDataLevelPermissionWhiteListRequest
- * @return SetDataLevelPermissionWhiteListResponse
- */
+// Summary:
+//
+// Sets the whitelist for the specified row-level permissions.
+//
+// Description:
+//
+// > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.
+//
+// @param request - SetDataLevelPermissionWhiteListRequest
+//
+// @return SetDataLevelPermissionWhiteListResponse
 func (client *Client) SetDataLevelPermissionWhiteList(request *SetDataLevelPermissionWhiteListRequest) (_result *SetDataLevelPermissionWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDataLevelPermissionWhiteListResponse{}
@@ -17284,15 +22054,27 @@ func (client *Client) SetDataLevelPermissionWhiteList(request *SetDataLevelPermi
 	return _result, _err
 }
 
-/**
- * The execution result of the interface. Valid values:
- * *   true: The request was successful.
- * *   false: The request failed.
- *
- * @param request UpdateDataLevelPermissionStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateDataLevelPermissionStatusResponse
- */
+// Summary:
+//
+// Indicates whether the request is successful. Valid values:
+//
+// 	- true: The request was successful.
+//
+// 	- false: The request failed.
+//
+// Description:
+//
+// The execution result of the interface. Valid values:
+//
+// 	- true: The request was successful.
+//
+// 	- false: The request failed.
+//
+// @param request - UpdateDataLevelPermissionStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataLevelPermissionStatusResponse
 func (client *Client) UpdateDataLevelPermissionStatusWithOptions(request *UpdateDataLevelPermissionStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateDataLevelPermissionStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17334,14 +22116,25 @@ func (client *Client) UpdateDataLevelPermissionStatusWithOptions(request *Update
 	return _result, _err
 }
 
-/**
- * The execution result of the interface. Valid values:
- * *   true: The request was successful.
- * *   false: The request failed.
- *
- * @param request UpdateDataLevelPermissionStatusRequest
- * @return UpdateDataLevelPermissionStatusResponse
- */
+// Summary:
+//
+// Indicates whether the request is successful. Valid values:
+//
+// 	- true: The request was successful.
+//
+// 	- false: The request failed.
+//
+// Description:
+//
+// The execution result of the interface. Valid values:
+//
+// 	- true: The request was successful.
+//
+// 	- false: The request failed.
+//
+// @param request - UpdateDataLevelPermissionStatusRequest
+//
+// @return UpdateDataLevelPermissionStatusResponse
 func (client *Client) UpdateDataLevelPermissionStatus(request *UpdateDataLevelPermissionStatusRequest) (_result *UpdateDataLevelPermissionStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDataLevelPermissionStatusResponse{}
@@ -17353,6 +22146,15 @@ func (client *Client) UpdateDataLevelPermissionStatus(request *UpdateDataLevelPe
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the request.
+//
+// @param request - UpdateEmbeddedStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEmbeddedStatusResponse
 func (client *Client) UpdateEmbeddedStatusWithOptions(request *UpdateEmbeddedStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateEmbeddedStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17390,6 +22192,13 @@ func (client *Client) UpdateEmbeddedStatusWithOptions(request *UpdateEmbeddedSta
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the request.
+//
+// @param request - UpdateEmbeddedStatusRequest
+//
+// @return UpdateEmbeddedStatusResponse
 func (client *Client) UpdateEmbeddedStatus(request *UpdateEmbeddedStatusRequest) (_result *UpdateEmbeddedStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateEmbeddedStatusResponse{}
@@ -17401,6 +22210,15 @@ func (client *Client) UpdateEmbeddedStatus(request *UpdateEmbeddedStatusRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新三方嵌入ticket的票据数量
+//
+// @param request - UpdateTicketNumRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTicketNumResponse
 func (client *Client) UpdateTicketNumWithOptions(request *UpdateTicketNumRequest, runtime *util.RuntimeOptions) (_result *UpdateTicketNumResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17438,6 +22256,13 @@ func (client *Client) UpdateTicketNumWithOptions(request *UpdateTicketNumRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新三方嵌入ticket的票据数量
+//
+// @param request - UpdateTicketNumRequest
+//
+// @return UpdateTicketNumResponse
 func (client *Client) UpdateTicketNum(request *UpdateTicketNumRequest) (_result *UpdateTicketNumResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateTicketNumResponse{}
@@ -17449,6 +22274,15 @@ func (client *Client) UpdateTicketNum(request *UpdateTicketNumRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information of a specified member in an organization.
+//
+// @param request - UpdateUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime *util.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17502,6 +22336,13 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information of a specified member in an organization.
+//
+// @param request - UpdateUserRequest
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserResponse{}
@@ -17513,6 +22354,15 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates information about a specified user group in an organization.
+//
+// @param request - UpdateUserGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserGroupResponse
 func (client *Client) UpdateUserGroupWithOptions(request *UpdateUserGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateUserGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17554,6 +22404,13 @@ func (client *Client) UpdateUserGroupWithOptions(request *UpdateUserGroupRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates information about a specified user group in an organization.
+//
+// @param request - UpdateUserGroupRequest
+//
+// @return UpdateUserGroupResponse
 func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result *UpdateUserGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserGroupResponse{}
@@ -17565,6 +22422,11 @@ func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result 
 	return _result, _err
 }
 
+// @param request - UpdateUserTagMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserTagMetaResponse
 func (client *Client) UpdateUserTagMetaWithOptions(request *UpdateUserTagMetaRequest, runtime *util.RuntimeOptions) (_result *UpdateUserTagMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17606,6 +22468,9 @@ func (client *Client) UpdateUserTagMetaWithOptions(request *UpdateUserTagMetaReq
 	return _result, _err
 }
 
+// @param request - UpdateUserTagMetaRequest
+//
+// @return UpdateUserTagMetaResponse
 func (client *Client) UpdateUserTagMeta(request *UpdateUserTagMetaRequest) (_result *UpdateUserTagMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserTagMetaResponse{}
@@ -17617,6 +22482,11 @@ func (client *Client) UpdateUserTagMeta(request *UpdateUserTagMetaRequest) (_res
 	return _result, _err
 }
 
+// @param request - UpdateUserTagValueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserTagValueResponse
 func (client *Client) UpdateUserTagValueWithOptions(request *UpdateUserTagValueRequest, runtime *util.RuntimeOptions) (_result *UpdateUserTagValueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17658,6 +22528,9 @@ func (client *Client) UpdateUserTagValueWithOptions(request *UpdateUserTagValueR
 	return _result, _err
 }
 
+// @param request - UpdateUserTagValueRequest
+//
+// @return UpdateUserTagValueResponse
 func (client *Client) UpdateUserTagValue(request *UpdateUserTagValueRequest) (_result *UpdateUserTagValueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserTagValueResponse{}
@@ -17669,6 +22542,11 @@ func (client *Client) UpdateUserTagValue(request *UpdateUserTagValueRequest) (_r
 	return _result, _err
 }
 
+// @param request - UpdateWorkspaceUserRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkspaceUserRoleResponse
 func (client *Client) UpdateWorkspaceUserRoleWithOptions(request *UpdateWorkspaceUserRoleRequest, runtime *util.RuntimeOptions) (_result *UpdateWorkspaceUserRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17710,6 +22588,9 @@ func (client *Client) UpdateWorkspaceUserRoleWithOptions(request *UpdateWorkspac
 	return _result, _err
 }
 
+// @param request - UpdateWorkspaceUserRoleRequest
+//
+// @return UpdateWorkspaceUserRoleResponse
 func (client *Client) UpdateWorkspaceUserRole(request *UpdateWorkspaceUserRoleRequest) (_result *UpdateWorkspaceUserRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateWorkspaceUserRoleResponse{}
@@ -17721,6 +22602,11 @@ func (client *Client) UpdateWorkspaceUserRole(request *UpdateWorkspaceUserRoleRe
 	return _result, _err
 }
 
+// @param request - UpdateWorkspaceUsersRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkspaceUsersRoleResponse
 func (client *Client) UpdateWorkspaceUsersRoleWithOptions(request *UpdateWorkspaceUsersRoleRequest, runtime *util.RuntimeOptions) (_result *UpdateWorkspaceUsersRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17762,6 +22648,9 @@ func (client *Client) UpdateWorkspaceUsersRoleWithOptions(request *UpdateWorkspa
 	return _result, _err
 }
 
+// @param request - UpdateWorkspaceUsersRoleRequest
+//
+// @return UpdateWorkspaceUsersRoleResponse
 func (client *Client) UpdateWorkspaceUsersRole(request *UpdateWorkspaceUsersRoleRequest) (_result *UpdateWorkspaceUsersRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateWorkspaceUsersRoleResponse{}
@@ -17773,6 +22662,15 @@ func (client *Client) UpdateWorkspaceUsersRole(request *UpdateWorkspaceUsersRole
 	return _result, _err
 }
 
+// Summary:
+//
+// Make the user exit all user groups. This process is irreversible. Exercise caution when performing this operation.
+//
+// @param request - WithdrawAllUserGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WithdrawAllUserGroupsResponse
 func (client *Client) WithdrawAllUserGroupsWithOptions(request *WithdrawAllUserGroupsRequest, runtime *util.RuntimeOptions) (_result *WithdrawAllUserGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17806,6 +22704,13 @@ func (client *Client) WithdrawAllUserGroupsWithOptions(request *WithdrawAllUserG
 	return _result, _err
 }
 
+// Summary:
+//
+// Make the user exit all user groups. This process is irreversible. Exercise caution when performing this operation.
+//
+// @param request - WithdrawAllUserGroupsRequest
+//
+// @return WithdrawAllUserGroupsResponse
 func (client *Client) WithdrawAllUserGroups(request *WithdrawAllUserGroupsRequest) (_result *WithdrawAllUserGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &WithdrawAllUserGroupsResponse{}
