@@ -1040,6 +1040,93 @@ func (s *TimeRange) SetStartTime(v int64) *TimeRange {
 	return s
 }
 
+type AddMembersRequest struct {
+	// This parameter is required.
+	MemberArns []*string `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// w-975bcfda9625****
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s AddMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddMembersRequest) SetMemberArns(v []*string) *AddMembersRequest {
+	s.MemberArns = v
+	return s
+}
+
+func (s *AddMembersRequest) SetWorkspaceId(v string) *AddMembersRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *AddMembersRequest) SetRegionId(v string) *AddMembersRequest {
+	s.RegionId = &v
+	return s
+}
+
+type AddMembersResponseBody struct {
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s AddMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddMembersResponseBody) SetRequestId(v string) *AddMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddMembersResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddMembersResponse) SetHeaders(v map[string]*string) *AddMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddMembersResponse) SetStatusCode(v int32) *AddMembersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddMembersResponse) SetBody(v *AddMembersResponseBody) *AddMembersResponse {
+	s.Body = v
+	return s
+}
+
 type CancelJobRunRequest struct {
 	// example:
 	//
@@ -1409,6 +1496,90 @@ func (s *GetJobRunResponse) SetStatusCode(v int32) *GetJobRunResponse {
 }
 
 func (s *GetJobRunResponse) SetBody(v *GetJobRunResponseBody) *GetJobRunResponse {
+	s.Body = v
+	return s
+}
+
+type GrantRoleToUsersRequest struct {
+	// example:
+	//
+	// acs:emr::w-975bcfda9625****:role/Owner
+	RoleArn  *string   `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	UserArns []*string `json:"userArns,omitempty" xml:"userArns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s GrantRoleToUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantRoleToUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantRoleToUsersRequest) SetRoleArn(v string) *GrantRoleToUsersRequest {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *GrantRoleToUsersRequest) SetUserArns(v []*string) *GrantRoleToUsersRequest {
+	s.UserArns = v
+	return s
+}
+
+func (s *GrantRoleToUsersRequest) SetRegionId(v string) *GrantRoleToUsersRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GrantRoleToUsersResponseBody struct {
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GrantRoleToUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantRoleToUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GrantRoleToUsersResponseBody) SetRequestId(v string) *GrantRoleToUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GrantRoleToUsersResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GrantRoleToUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GrantRoleToUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantRoleToUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GrantRoleToUsersResponse) SetHeaders(v map[string]*string) *GrantRoleToUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GrantRoleToUsersResponse) SetStatusCode(v int32) *GrantRoleToUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GrantRoleToUsersResponse) SetBody(v *GrantRoleToUsersResponseBody) *GrantRoleToUsersResponse {
 	s.Body = v
 	return s
 }
@@ -3595,6 +3766,80 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 添加用户
+//
+// @param request - AddMembersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddMembersResponse
+func (client *Client) AddMembersWithOptions(request *AddMembersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddMembersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MemberArns)) {
+		body["memberArns"] = request.MemberArns
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddMembers"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/auth/members"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加用户
+//
+// @param request - AddMembersRequest
+//
+// @return AddMembersResponse
+func (client *Client) AddMembers(request *AddMembersRequest) (_result *AddMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddMembersResponse{}
+	_body, _err := client.AddMembersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 取消jobRun作业
 //
 // @param request - CancelJobRunRequest
@@ -3714,6 +3959,80 @@ func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *
 	headers := make(map[string]*string)
 	_result = &GetJobRunResponse{}
 	_body, _err := client.GetJobRunWithOptions(workspaceId, jobRunId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 给用户授权Role列表
+//
+// @param request - GrantRoleToUsersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantRoleToUsersResponse
+func (client *Client) GrantRoleToUsersWithOptions(request *GrantRoleToUsersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GrantRoleToUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleArn)) {
+		body["roleArn"] = request.RoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserArns)) {
+		body["userArns"] = request.UserArns
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GrantRoleToUsers"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/auth/roles/grant"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GrantRoleToUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 给用户授权Role列表
+//
+// @param request - GrantRoleToUsersRequest
+//
+// @return GrantRoleToUsersResponse
+func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_result *GrantRoleToUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GrantRoleToUsersResponse{}
+	_body, _err := client.GrantRoleToUsersWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
