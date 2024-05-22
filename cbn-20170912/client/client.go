@@ -16525,13 +16525,15 @@ type DescribeFlowlogsResponseBodyFlowLogsFlowLog struct {
 	// example:
 	//
 	// myFlowlog
-	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	FlowLogName    *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	FlowLogVersion *string `json:"FlowLogVersion,omitempty" xml:"FlowLogVersion,omitempty"`
 	// The time window for collecting log data. Unit: seconds. Valid values: **60*	- and **600**. Default value: **600**.
 	//
 	// example:
 	//
 	// 60
-	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval        *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	LogFormatString *string `json:"LogFormatString,omitempty" xml:"LogFormatString,omitempty"`
 	// The name of the Logstore where the flow log is stored.
 	//
 	// example:
@@ -16568,6 +16570,7 @@ type DescribeFlowlogsResponseBodyFlowLogsFlowLog struct {
 	//
 	// tr-attach-5x4o4ynzuqbv6g****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterId           *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s DescribeFlowlogsResponseBodyFlowLogsFlowLog) String() string {
@@ -16603,8 +16606,18 @@ func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetFlowLogName(v string) *
 	return s
 }
 
+func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetFlowLogVersion(v string) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
+	s.FlowLogVersion = &v
+	return s
+}
+
 func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetInterval(v int64) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
 	s.Interval = &v
+	return s
+}
+
+func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetLogFormatString(v string) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
+	s.LogFormatString = &v
 	return s
 }
 
@@ -16635,6 +16648,11 @@ func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetTags(v *DescribeFlowlog
 
 func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetTransitRouterAttachmentId(v string) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
 	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLog) SetTransitRouterId(v string) *DescribeFlowlogsResponseBodyFlowLogsFlowLog {
+	s.TransitRouterId = &v
 	return s
 }
 
