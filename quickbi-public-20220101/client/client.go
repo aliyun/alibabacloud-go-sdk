@@ -2436,6 +2436,137 @@ func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicke
 	return s
 }
 
+type CreateTicket4CopilotRequest struct {
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 1
+	AccountType *int32 `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccd3428c-dd23-460c-a608-26bae29dffee
+	CopilotId *string `json:"CopilotId,omitempty" xml:"CopilotId,omitempty"`
+	// example:
+	//
+	// 200
+	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 1
+	TicketNum *int32 `json:"TicketNum,omitempty" xml:"TicketNum,omitempty"`
+	// example:
+	//
+	// 9c-asdawf-casxcasd-asdasd
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateTicket4CopilotRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicket4CopilotRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicket4CopilotRequest) SetAccountName(v string) *CreateTicket4CopilotRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *CreateTicket4CopilotRequest) SetAccountType(v int32) *CreateTicket4CopilotRequest {
+	s.AccountType = &v
+	return s
+}
+
+func (s *CreateTicket4CopilotRequest) SetCopilotId(v string) *CreateTicket4CopilotRequest {
+	s.CopilotId = &v
+	return s
+}
+
+func (s *CreateTicket4CopilotRequest) SetExpireTime(v int32) *CreateTicket4CopilotRequest {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *CreateTicket4CopilotRequest) SetTicketNum(v int32) *CreateTicket4CopilotRequest {
+	s.TicketNum = &v
+	return s
+}
+
+func (s *CreateTicket4CopilotRequest) SetUserId(v string) *CreateTicket4CopilotRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateTicket4CopilotResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// f5eeb52e-d9c2-4a8b-80e3-47ab55c2****
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateTicket4CopilotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicket4CopilotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicket4CopilotResponseBody) SetRequestId(v string) *CreateTicket4CopilotResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTicket4CopilotResponseBody) SetResult(v string) *CreateTicket4CopilotResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *CreateTicket4CopilotResponseBody) SetSuccess(v bool) *CreateTicket4CopilotResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateTicket4CopilotResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTicket4CopilotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTicket4CopilotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicket4CopilotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicket4CopilotResponse) SetHeaders(v map[string]*string) *CreateTicket4CopilotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTicket4CopilotResponse) SetStatusCode(v int32) *CreateTicket4CopilotResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTicket4CopilotResponse) SetBody(v *CreateTicket4CopilotResponseBody) *CreateTicket4CopilotResponse {
+	s.Body = v
+	return s
+}
+
 type CreateUserGroupRequest struct {
 	// The ID of the parent user group. You can add new user groups to this group:
 	//
@@ -8386,7 +8517,8 @@ type QueryDatasetInfoResponseBodyResult struct {
 	// 1629450382000
 	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
 	// The unique ID of the table to which the table belongs, which corresponds to the UniqueId of the CubeTypeList.
-	MeasureList []*QueryDatasetInfoResponseBodyResultMeasureList `json:"MeasureList,omitempty" xml:"MeasureList,omitempty" type:"Repeated"`
+	MeasureList             []*QueryDatasetInfoResponseBodyResultMeasureList `json:"MeasureList,omitempty" xml:"MeasureList,omitempty" type:"Repeated"`
+	OpenOfflineAcceleration *bool                                            `json:"OpenOfflineAcceleration,omitempty" xml:"OpenOfflineAcceleration,omitempty"`
 	// Test Space
 	//
 	// example:
@@ -8488,6 +8620,11 @@ func (s *QueryDatasetInfoResponseBodyResult) SetGmtModify(v string) *QueryDatase
 
 func (s *QueryDatasetInfoResponseBodyResult) SetMeasureList(v []*QueryDatasetInfoResponseBodyResultMeasureList) *QueryDatasetInfoResponseBodyResult {
 	s.MeasureList = v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResult) SetOpenOfflineAcceleration(v bool) *QueryDatasetInfoResponseBodyResult {
+	s.OpenOfflineAcceleration = &v
 	return s
 }
 
@@ -9168,7 +9305,8 @@ type QueryDatasetListResponseBodyResultData struct {
 	// example:
 	//
 	// 2020-11-02 10:36:05
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyTime              *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	OpenOfflineAcceleration *bool   `json:"OpenOfflineAcceleration,omitempty" xml:"OpenOfflineAcceleration,omitempty"`
 	// The creation time.
 	//
 	// example:
@@ -9245,6 +9383,11 @@ func (s *QueryDatasetListResponseBodyResultData) SetDirectory(v *QueryDatasetLis
 
 func (s *QueryDatasetListResponseBodyResultData) SetModifyTime(v string) *QueryDatasetListResponseBodyResultData {
 	s.ModifyTime = &v
+	return s
+}
+
+func (s *QueryDatasetListResponseBodyResultData) SetOpenOfflineAcceleration(v bool) *QueryDatasetListResponseBodyResultData {
+	s.OpenOfflineAcceleration = &v
 	return s
 }
 
@@ -17934,6 +18077,86 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTicketResponse{}
 	_body, _err := client.CreateTicketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成智能小Q嵌入ticket
+//
+// @param request - CreateTicket4CopilotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTicket4CopilotResponse
+func (client *Client) CreateTicket4CopilotWithOptions(request *CreateTicket4CopilotRequest, runtime *util.RuntimeOptions) (_result *CreateTicket4CopilotResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountType)) {
+		query["AccountType"] = request.AccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CopilotId)) {
+		query["CopilotId"] = request.CopilotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpireTime)) {
+		query["ExpireTime"] = request.ExpireTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketNum)) {
+		query["TicketNum"] = request.TicketNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTicket4Copilot"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTicket4CopilotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成智能小Q嵌入ticket
+//
+// @param request - CreateTicket4CopilotRequest
+//
+// @return CreateTicket4CopilotResponse
+func (client *Client) CreateTicket4Copilot(request *CreateTicket4CopilotRequest) (_result *CreateTicket4CopilotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTicket4CopilotResponse{}
+	_body, _err := client.CreateTicket4CopilotWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
