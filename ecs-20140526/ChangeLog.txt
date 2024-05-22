@@ -1,3 +1,7 @@
+2024-05-22 Version: v4.1.7
+- Update API DescribeSnapshots: update response param.
+
+
 2024-05-21 Version: v4.1.6
 - Update API DescribeSecurityGroupAttribute: add param MaxResults.
 - Update API DescribeSecurityGroupAttribute: add param NextToken.
