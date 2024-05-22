@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,25 +10,81 @@ import (
 )
 
 type AddRecordTemplateRequest struct {
-	AppId              *string                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BackgroundColor    *int32                                  `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
-	Backgrounds        []*AddRecordTemplateRequestBackgrounds  `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
-	ClockWidgets       []*AddRecordTemplateRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
-	DelayStopTime      *int32                                  `json:"DelayStopTime,omitempty" xml:"DelayStopTime,omitempty"`
-	EnableM3u8DateTime *bool                                   `json:"EnableM3u8DateTime,omitempty" xml:"EnableM3u8DateTime,omitempty"`
-	FileSplitInterval  *int32                                  `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
-	Formats            []*string                               `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
-	HttpCallbackUrl    *string                                 `json:"HttpCallbackUrl,omitempty" xml:"HttpCallbackUrl,omitempty"`
-	LayoutIds          []*int64                                `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
-	MediaEncode        *int32                                  `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
-	MnsQueue           *string                                 `json:"MnsQueue,omitempty" xml:"MnsQueue,omitempty"`
-	Name               *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	OssBucket          *string                                 `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string                                 `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	OssFilePrefix      *string                                 `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
-	OwnerId            *int64                                  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	TaskProfile        *string                                 `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
-	Watermarks         []*AddRecordTemplateRequestWatermarks   `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 0
+	BackgroundColor *int32                                  `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	Backgrounds     []*AddRecordTemplateRequestBackgrounds  `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	ClockWidgets    []*AddRecordTemplateRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 180
+	DelayStopTime *int32 `json:"DelayStopTime,omitempty" xml:"DelayStopTime,omitempty"`
+	// example:
+	//
+	// false
+	EnableM3u8DateTime *bool `json:"EnableM3u8DateTime,omitempty" xml:"EnableM3u8DateTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1800
+	FileSplitInterval *int32 `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mp4
+	Formats []*string `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://example.com/callback
+	HttpCallbackUrl *string `json:"HttpCallbackUrl,omitempty" xml:"HttpCallbackUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	LayoutIds []*int64 `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// example:
+	//
+	// record-callback-queue
+	MnsQueue *string `json:"MnsQueue,omitempty" xml:"MnsQueue,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rtc-record-oss
+	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// record/{AppId}/{ChannelId_TaskId}/{EscapedStartTime}_{EscapedEndTime}
+	OssFilePrefix *string `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4IN_1080P
+	TaskProfile *string                               `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
+	Watermarks  []*AddRecordTemplateRequestWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
 }
 
 func (s AddRecordTemplateRequest) String() string {
@@ -138,13 +191,34 @@ func (s *AddRecordTemplateRequest) SetWatermarks(v []*AddRecordTemplateRequestWa
 }
 
 type AddRecordTemplateRequestBackgrounds struct {
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s AddRecordTemplateRequestBackgrounds) String() string {
@@ -191,12 +265,30 @@ func (s *AddRecordTemplateRequestBackgrounds) SetZOrder(v int32) *AddRecordTempl
 }
 
 type AddRecordTemplateRequestClockWidgets struct {
-	FontColor *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize  *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	FontType  *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
-	X         *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y         *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder    *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	FontColor *int32 `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// example:
+	//
+	// 1
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// example:
+	//
+	// 0
+	FontType *int32 `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s AddRecordTemplateRequestClockWidgets) String() string {
@@ -238,14 +330,38 @@ func (s *AddRecordTemplateRequestClockWidgets) SetZOrder(v int32) *AddRecordTemp
 }
 
 type AddRecordTemplateRequestWatermarks struct {
-	Alpha   *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s AddRecordTemplateRequestWatermarks) String() string {
@@ -297,7 +413,13 @@ func (s *AddRecordTemplateRequestWatermarks) SetZOrder(v int32) *AddRecordTempla
 }
 
 type AddRecordTemplateResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 76dasgb****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -349,7 +471,13 @@ func (s *AddRecordTemplateResponse) SetBody(v *AddRecordTemplateResponseBody) *A
 }
 
 type CreateAppStreamingOutTemplateRequest struct {
-	AppId                *string                                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	StreamingOutTemplate *CreateAppStreamingOutTemplateRequestStreamingOutTemplate `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty" type:"Struct"`
 }
 
@@ -372,9 +500,20 @@ func (s *CreateAppStreamingOutTemplateRequest) SetStreamingOutTemplate(v *Create
 }
 
 type CreateAppStreamingOutTemplateRequestStreamingOutTemplate struct {
-	LayoutIds   []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
-	MediaEncode *int32    `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	LayoutIds []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 模版
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateAppStreamingOutTemplateRequestStreamingOutTemplate) String() string {
@@ -401,7 +540,13 @@ func (s *CreateAppStreamingOutTemplateRequestStreamingOutTemplate) SetName(v str
 }
 
 type CreateAppStreamingOutTemplateShrinkRequest struct {
-	AppId                      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	StreamingOutTemplateShrink *string `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty"`
 }
 
@@ -425,7 +570,14 @@ func (s *CreateAppStreamingOutTemplateShrinkRequest) SetStreamingOutTemplateShri
 
 type CreateAppStreamingOutTemplateResponseBody struct {
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	//
+	// example:
+	//
+	// 30D41049-D02D-1C21-86AE-B3E5FD805C27
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// bc5v****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -477,14 +629,33 @@ func (s *CreateAppStreamingOutTemplateResponse) SetBody(v *CreateAppStreamingOut
 }
 
 type CreateAutoLiveStreamRuleRequest struct {
-	AppId             *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// http://example.com/callback
 	CallBack          *string   `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
 	ChannelIdPrefixes []*string `json:"ChannelIdPrefixes,omitempty" xml:"ChannelIdPrefixes,omitempty" type:"Repeated"`
 	ChannelIds        []*string `json:"ChannelIds,omitempty" xml:"ChannelIds,omitempty" type:"Repeated"`
-	MediaEncode       *int32    `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
-	OwnerId           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PlayDomain        *string   `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
-	RuleName          *string   `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 20
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rtmp://${domain}/${app}/${stream}
+	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
+	// example:
+	//
+	// testRule
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s CreateAutoLiveStreamRuleRequest) String() string {
@@ -536,8 +707,14 @@ func (s *CreateAutoLiveStreamRuleRequest) SetRuleName(v string) *CreateAutoLiveS
 }
 
 type CreateAutoLiveStreamRuleResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleId    *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// 12
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s CreateAutoLiveStreamRuleResponseBody) String() string {
@@ -588,15 +765,47 @@ func (s *CreateAutoLiveStreamRuleResponse) SetBody(v *CreateAutoLiveStreamRuleRe
 }
 
 type CreateEventSubscribeRequest struct {
-	AppId            *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CallbackUrl      *string   `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	ChannelId        *string   `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ClientToken      *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Events           []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	NeedCallbackAuth *bool     `json:"NeedCallbackAuth,omitempty" xml:"NeedCallbackAuth,omitempty"`
-	OwnerId          *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Role             *int64    `json:"Role,omitempty" xml:"Role,omitempty"`
-	Users            []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9qb1****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://****.com/callback
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// example:
+	//
+	// 123333
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ChannelEvent
+	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	NeedCallbackAuth *bool  `json:"NeedCallbackAuth,omitempty" xml:"NeedCallbackAuth,omitempty"`
+	OwnerId          *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	Role *int64 `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// user1
+	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s CreateEventSubscribeRequest) String() string {
@@ -653,7 +862,13 @@ func (s *CreateEventSubscribeRequest) SetUsers(v []*string) *CreateEventSubscrib
 }
 
 type CreateEventSubscribeResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ad53276431c****
 	SubscribeId *string `json:"SubscribeId,omitempty" xml:"SubscribeId,omitempty"`
 }
 
@@ -705,11 +920,25 @@ func (s *CreateEventSubscribeResponse) SetBody(v *CreateEventSubscribeResponseBo
 }
 
 type CreateMPULayoutRequest struct {
-	AppId         *string                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AudioMixCount *int32                         `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
-	Name          *string                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId       *int64                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Panes         []*CreateMPULayoutRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	AudioMixCount *int32 `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
+	// example:
+	//
+	// LayoutName
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	Panes []*CreateMPULayoutRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
 }
 
 func (s CreateMPULayoutRequest) String() string {
@@ -746,13 +975,34 @@ func (s *CreateMPULayoutRequest) SetPanes(v []*CreateMPULayoutRequestPanes) *Cre
 }
 
 type CreateMPULayoutRequestPanes struct {
-	Height    *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	MajorPane *int32   `json:"MajorPane,omitempty" xml:"MajorPane,omitempty"`
-	PaneId    *int32   `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	Width     *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X         *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y         *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder    *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0.25
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 1
+	MajorPane *int32 `json:"MajorPane,omitempty" xml:"MajorPane,omitempty"`
+	// example:
+	//
+	// 0
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// 0.25
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.25
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.25
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s CreateMPULayoutRequestPanes) String() string {
@@ -799,7 +1049,13 @@ func (s *CreateMPULayoutRequestPanes) SetZOrder(v int32) *CreateMPULayoutRequest
 }
 
 type CreateMPULayoutResponseBody struct {
-	LayoutId  *int64  `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	// example:
+	//
+	// 2
+	LayoutId *int64 `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -851,7 +1107,13 @@ func (s *CreateMPULayoutResponse) SetBody(v *CreateMPULayoutResponseBody) *Creat
 }
 
 type DeleteAppStreamingOutTemplateRequest struct {
-	AppId                *string                                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// wv7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	StreamingOutTemplate *DeleteAppStreamingOutTemplateRequestStreamingOutTemplate `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty" type:"Struct"`
 }
 
@@ -874,6 +1136,11 @@ func (s *DeleteAppStreamingOutTemplateRequest) SetStreamingOutTemplate(v *Delete
 }
 
 type DeleteAppStreamingOutTemplateRequestStreamingOutTemplate struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xd4c****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -891,7 +1158,13 @@ func (s *DeleteAppStreamingOutTemplateRequestStreamingOutTemplate) SetTemplateId
 }
 
 type DeleteAppStreamingOutTemplateShrinkRequest struct {
-	AppId                      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// wv7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	StreamingOutTemplateShrink *string `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty"`
 }
 
@@ -915,6 +1188,10 @@ func (s *DeleteAppStreamingOutTemplateShrinkRequest) SetStreamingOutTemplateShri
 
 type DeleteAppStreamingOutTemplateResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 30D41049-D02D-1C21-86AE-B3E5FD825C17
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -961,9 +1238,19 @@ func (s *DeleteAppStreamingOutTemplateResponse) SetBody(v *DeleteAppStreamingOut
 }
 
 type DeleteAutoLiveStreamRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RuleId  *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DeleteAutoLiveStreamRuleRequest) String() string {
@@ -990,6 +1277,9 @@ func (s *DeleteAutoLiveStreamRuleRequest) SetRuleId(v int64) *DeleteAutoLiveStre
 }
 
 type DeleteAutoLiveStreamRuleResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1036,7 +1326,17 @@ func (s *DeleteAutoLiveStreamRuleResponse) SetBody(v *DeleteAutoLiveStreamRuleRe
 }
 
 type DeleteChannelRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -1065,6 +1365,9 @@ func (s *DeleteChannelRequest) SetOwnerId(v int64) *DeleteChannelRequest {
 }
 
 type DeleteChannelResponseBody struct {
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1111,8 +1414,18 @@ func (s *DeleteChannelResponse) SetBody(v *DeleteChannelResponseBody) *DeleteCha
 }
 
 type DeleteEventSubscribeRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9qb1****
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ad53276431c****
 	SubscribeId *string `json:"SubscribeId,omitempty" xml:"SubscribeId,omitempty"`
 }
 
@@ -1140,6 +1453,9 @@ func (s *DeleteEventSubscribeRequest) SetSubscribeId(v string) *DeleteEventSubsc
 }
 
 type DeleteEventSubscribeResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1186,9 +1502,19 @@ func (s *DeleteEventSubscribeResponse) SetBody(v *DeleteEventSubscribeResponseBo
 }
 
 type DeleteMPULayoutRequest struct {
-	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	LayoutId *int64  `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	LayoutId *int64 `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	OwnerId  *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DeleteMPULayoutRequest) String() string {
@@ -1215,6 +1541,9 @@ func (s *DeleteMPULayoutRequest) SetOwnerId(v int64) *DeleteMPULayoutRequest {
 }
 
 type DeleteMPULayoutResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1261,9 +1590,19 @@ func (s *DeleteMPULayoutResponse) SetBody(v *DeleteMPULayoutResponseBody) *Delet
 }
 
 type DeleteRecordTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 1
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 76dasgb****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -1291,6 +1630,9 @@ func (s *DeleteRecordTemplateRequest) SetTemplateId(v string) *DeleteRecordTempl
 }
 
 type DeleteRecordTemplateResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1337,6 +1679,11 @@ func (s *DeleteRecordTemplateResponse) SetBody(v *DeleteRecordTemplateResponseBo
 }
 
 type DescribeAppKeyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0cho****
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -1361,7 +1708,14 @@ func (s *DescribeAppKeyRequest) SetOwnerId(v int64) *DescribeAppKeyRequest {
 
 type DescribeAppKeyResponseBody struct {
 	// AppKey。
-	AppKey    *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	//
+	// example:
+	//
+	// ba133b2cee4ab9be424674892c33****
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// 154EF5DE-3D08-1F2C-A482-281F78D74B7C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1413,10 +1767,21 @@ func (s *DescribeAppKeyResponse) SetBody(v *DescribeAppKeyResponseBody) *Describ
 }
 
 type DescribeAppStreamingOutTemplatesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ioeh****
 	AppId     *string                                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Condition *DescribeAppStreamingOutTemplatesRequestCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
-	PageNum   *int32                                            `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize  *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeAppStreamingOutTemplatesRequest) String() string {
@@ -1448,7 +1813,13 @@ func (s *DescribeAppStreamingOutTemplatesRequest) SetPageSize(v int32) *Describe
 }
 
 type DescribeAppStreamingOutTemplatesRequestCondition struct {
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Bj6D****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -1471,10 +1842,21 @@ func (s *DescribeAppStreamingOutTemplatesRequestCondition) SetTemplateId(v strin
 }
 
 type DescribeAppStreamingOutTemplatesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ioeh****
 	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ConditionShrink *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	PageNum         *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeAppStreamingOutTemplatesShrinkRequest) String() string {
@@ -1507,10 +1889,20 @@ func (s *DescribeAppStreamingOutTemplatesShrinkRequest) SetPageSize(v int32) *De
 
 type DescribeAppStreamingOutTemplatesResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// B0A2FCBC-43A4-428F-BC1D-3F4F85837F76
 	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Templates []*DescribeAppStreamingOutTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
-	TotalNum  *int64                                                   `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPage *int64                                                   `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 10
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s DescribeAppStreamingOutTemplatesResponseBody) String() string {
@@ -1542,11 +1934,23 @@ func (s *DescribeAppStreamingOutTemplatesResponseBody) SetTotalPage(v int64) *De
 }
 
 type DescribeAppStreamingOutTemplatesResponseBodyTemplates struct {
-	CreateTime  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LayoutIds   []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
-	MediaEncode *int32    `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	TemplateId  *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 2020-09-04T06:22:15Z
+	CreateTime *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LayoutIds  []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// example:
+	//
+	// 模版名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Bj6D****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeAppStreamingOutTemplatesResponseBodyTemplates) String() string {
@@ -1612,12 +2016,31 @@ func (s *DescribeAppStreamingOutTemplatesResponse) SetBody(v *DescribeAppStreami
 }
 
 type DescribeAppsRequest struct {
-	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Order    *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 3.0
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// asc
+	Order   *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeAppsRequest) String() string {
@@ -1630,6 +2053,11 @@ func (s DescribeAppsRequest) GoString() string {
 
 func (s *DescribeAppsRequest) SetAppId(v string) *DescribeAppsRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetAppVersion(v string) *DescribeAppsRequest {
+	s.AppVersion = &v
 	return s
 }
 
@@ -1659,10 +2087,19 @@ func (s *DescribeAppsRequest) SetStatus(v string) *DescribeAppsRequest {
 }
 
 type DescribeAppsResponseBody struct {
-	AppList   *DescribeAppsResponseBodyAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum  *int32                           `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPage *int32                           `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	AppList *DescribeAppsResponseBodyAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 6159ba01-6687-4fb2-a831-f0cd8d188648
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s DescribeAppsResponseBody) String() string {
@@ -1711,14 +2148,32 @@ func (s *DescribeAppsResponseBodyAppList) SetApp(v []*DescribeAppsResponseBodyAp
 }
 
 type DescribeAppsResponseBodyAppListApp struct {
-	AppId        *string                                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName      *string                                         `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppType      *string                                         `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	BillType     *string                                         `json:"BillType,omitempty" xml:"BillType,omitempty"`
+	// example:
+	//
+	// rgf1****"
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// Default AppName
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// universal
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// example:
+	//
+	// paybyduration
+	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
+	// example:
+	//
+	// 2020-01-09T02:02:29Z
 	CreateTime   *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ServiceAreas *DescribeAppsResponseBodyAppListAppServiceAreas `json:"ServiceAreas,omitempty" xml:"ServiceAreas,omitempty" type:"Struct"`
-	Status       *int32                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	Version      *string                                         `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 1
+	Status  *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAppsResponseBodyAppListApp) String() string {
@@ -1816,6 +2271,11 @@ func (s *DescribeAppsResponse) SetBody(v *DescribeAppsResponseBody) *DescribeApp
 }
 
 type DescribeAutoLiveStreamRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -1839,6 +2299,9 @@ func (s *DescribeAutoLiveStreamRuleRequest) SetOwnerId(v int64) *DescribeAutoLiv
 }
 
 type DescribeAutoLiveStreamRuleResponseBody struct {
+	// example:
+	//
+	// 069BCB66-CD80-11E8-A82B-A70F78BBDC00
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Rules     []*DescribeAutoLiveStreamRuleResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
@@ -1862,15 +2325,36 @@ func (s *DescribeAutoLiveStreamRuleResponseBody) SetRules(v []*DescribeAutoLiveS
 }
 
 type DescribeAutoLiveStreamRuleResponseBodyRules struct {
+	// example:
+	//
+	// http://example.com/callBack
 	CallBack          *string   `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
 	ChannelIdPrefixes []*string `json:"ChannelIdPrefixes,omitempty" xml:"ChannelIdPrefixes,omitempty" type:"Repeated"`
 	ChannelIds        []*string `json:"ChannelIds,omitempty" xml:"ChannelIds,omitempty" type:"Repeated"`
-	CreateTime        *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	MediaEncode       *int32    `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
-	PlayDomain        *string   `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
-	RuleId            *int64    `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName          *string   `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Status            *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2021-08-19T02:53:07Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 20
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// example:
+	//
+	// rtmp://${domain}/${app}/${stream}
+	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
+	// example:
+	//
+	// 12
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// testRule
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// disable
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeAutoLiveStreamRuleResponseBodyRules) String() string {
@@ -1957,12 +2441,37 @@ func (s *DescribeAutoLiveStreamRuleResponse) SetBody(v *DescribeAutoLiveStreamRu
 
 type DescribeCallRequest struct {
 	// APP ID。
-	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId    *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs    *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs  *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	ExtDataType  *string `json:"ExtDataType,omitempty" xml:"ExtDataType,omitempty"`
-	QueryExpInfo *bool   `json:"QueryExpInfo,omitempty" xml:"QueryExpInfo,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testappid
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1614936817
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// example:
+	//
+	// USER_DURATION_STAT
+	ExtDataType *string `json:"ExtDataType,omitempty" xml:"ExtDataType,omitempty"`
+	// example:
+	//
+	// false
+	QueryExpInfo *bool `json:"QueryExpInfo,omitempty" xml:"QueryExpInfo,omitempty"`
 }
 
 func (s DescribeCallRequest) String() string {
@@ -2004,7 +2513,10 @@ func (s *DescribeCallRequest) SetQueryExpInfo(v bool) *DescribeCallRequest {
 }
 
 type DescribeCallResponseBody struct {
-	CallInfo       *DescribeCallResponseBodyCallInfo         `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
+	CallInfo *DescribeCallResponseBodyCallInfo `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserDetailList []*DescribeCallResponseBodyUserDetailList `json:"UserDetailList,omitempty" xml:"UserDetailList,omitempty" type:"Repeated"`
 }
@@ -2034,12 +2546,31 @@ func (s *DescribeCallResponseBody) SetUserDetailList(v []*DescribeCallResponseBo
 
 type DescribeCallResponseBodyCallInfo struct {
 	// App ID。
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CallStatus  *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	Duration    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	//
+	// example:
+	//
+	// xxxxxxxx
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// IN
+	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	// example:
+	//
+	// 123456
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1615860711
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1615860811
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// example:
+	//
+	// 100
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
 func (s DescribeCallResponseBodyCallInfo) String() string {
@@ -2081,22 +2612,52 @@ func (s *DescribeCallResponseBodyCallInfo) SetDuration(v int64) *DescribeCallRes
 }
 
 type DescribeCallResponseBodyUserDetailList struct {
-	CallExp           *string                                                  `json:"CallExp,omitempty" xml:"CallExp,omitempty"`
-	CreatedTs         *int64                                                   `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// GOOD
+	CallExp *string `json:"CallExp,omitempty" xml:"CallExp,omitempty"`
+	// example:
+	//
+	// 1614936817
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1614936817
 	DestroyedTs       *int64                                                   `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
 	DurMetricStatData *DescribeCallResponseBodyUserDetailListDurMetricStatData `json:"DurMetricStatData,omitempty" xml:"DurMetricStatData,omitempty" type:"Struct"`
-	Duration          *int64                                                   `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Location          *string                                                  `json:"Location,omitempty" xml:"Location,omitempty"`
-	Network           *string                                                  `json:"Network,omitempty" xml:"Network,omitempty"`
-	NetworkList       []*string                                                `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
-	OnlineDuration    *int64                                                   `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
-	OnlinePeriods     []*DescribeCallResponseBodyUserDetailListOnlinePeriods   `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
-	Os                *string                                                  `json:"Os,omitempty" xml:"Os,omitempty"`
-	OsList            []*string                                                `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
-	Roles             []*string                                                `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	SdkVersion        *string                                                  `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
-	SdkVersionList    []*string                                                `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
-	UserId            *string                                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 0
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 浙江省-杭州市
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// 4G
+	Network     *string   `json:"Network,omitempty" xml:"Network,omitempty"`
+	NetworkList []*string `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	OnlineDuration *int64                                                 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
+	OnlinePeriods  []*DescribeCallResponseBodyUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	// example:
+	//
+	// iOS
+	Os     *string   `json:"Os,omitempty" xml:"Os,omitempty"`
+	OsList []*string `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
+	Roles  []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1.0.0
+	SdkVersion     *string   `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	SdkVersionList []*string `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// testuserid
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeCallResponseBodyUserDetailList) String() string {
@@ -2188,15 +2749,45 @@ func (s *DescribeCallResponseBodyUserDetailList) SetUserId(v string) *DescribeCa
 }
 
 type DescribeCallResponseBodyUserDetailListDurMetricStatData struct {
-	PubAudio            *int64 `json:"PubAudio,omitempty" xml:"PubAudio,omitempty"`
-	PubVideo1080        *int64 `json:"PubVideo1080,omitempty" xml:"PubVideo1080,omitempty"`
-	PubVideo360         *int64 `json:"PubVideo360,omitempty" xml:"PubVideo360,omitempty"`
-	PubVideo720         *int64 `json:"PubVideo720,omitempty" xml:"PubVideo720,omitempty"`
+	// example:
+	//
+	// 0
+	PubAudio *int64 `json:"PubAudio,omitempty" xml:"PubAudio,omitempty"`
+	// example:
+	//
+	// 0
+	PubVideo1080 *int64 `json:"PubVideo1080,omitempty" xml:"PubVideo1080,omitempty"`
+	// example:
+	//
+	// 0
+	PubVideo360 *int64 `json:"PubVideo360,omitempty" xml:"PubVideo360,omitempty"`
+	// example:
+	//
+	// 0
+	PubVideo720 *int64 `json:"PubVideo720,omitempty" xml:"PubVideo720,omitempty"`
+	// example:
+	//
+	// 0
 	PubVideoScreenShare *int64 `json:"PubVideoScreenShare,omitempty" xml:"PubVideoScreenShare,omitempty"`
-	SubAudio            *int64 `json:"SubAudio,omitempty" xml:"SubAudio,omitempty"`
-	SubVideo1080        *int64 `json:"SubVideo1080,omitempty" xml:"SubVideo1080,omitempty"`
-	SubVideo360         *int64 `json:"SubVideo360,omitempty" xml:"SubVideo360,omitempty"`
-	SubVideo720         *int64 `json:"SubVideo720,omitempty" xml:"SubVideo720,omitempty"`
+	// example:
+	//
+	// 0
+	SubAudio *int64 `json:"SubAudio,omitempty" xml:"SubAudio,omitempty"`
+	// example:
+	//
+	// 0
+	SubVideo1080 *int64 `json:"SubVideo1080,omitempty" xml:"SubVideo1080,omitempty"`
+	// example:
+	//
+	// 0
+	SubVideo360 *int64 `json:"SubVideo360,omitempty" xml:"SubVideo360,omitempty"`
+	// example:
+	//
+	// 0
+	SubVideo720 *int64 `json:"SubVideo720,omitempty" xml:"SubVideo720,omitempty"`
+	// example:
+	//
+	// 0
 	SubVideoScreenShare *int64 `json:"SubVideoScreenShare,omitempty" xml:"SubVideoScreenShare,omitempty"`
 }
 
@@ -2259,7 +2850,13 @@ func (s *DescribeCallResponseBodyUserDetailListDurMetricStatData) SetSubVideoScr
 }
 
 type DescribeCallResponseBodyUserDetailListOnlinePeriods struct {
-	JoinTs  *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// example:
+	//
+	// 1614936817
 	LeaveTs *int64 `json:"LeaveTs,omitempty" xml:"LeaveTs,omitempty"`
 }
 
@@ -2312,16 +2909,57 @@ func (s *DescribeCallResponse) SetBody(v *DescribeCallResponseBody) *DescribeCal
 
 type DescribeCallListRequest struct {
 	// APP ID。
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testappid
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// OUT
 	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
-	ChannelId  *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	EndTs      *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryMode  *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
-	StartTs    *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 311
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615892596
+	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// example:
+	//
+	// BAD_EXP_USER_COUNT_DESC
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ALL
+	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615806196
+	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	// example:
+	//
+	// c906531af5f9****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeCallListRequest) String() string {
@@ -2383,11 +3021,23 @@ func (s *DescribeCallListRequest) SetUserId(v string) *DescribeCallListRequest {
 }
 
 type DescribeCallListResponseBody struct {
-	CallList  []*DescribeCallListResponseBodyCallList `json:"CallList,omitempty" xml:"CallList,omitempty" type:"Repeated"`
-	PageNo    *int32                                  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize  *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCnt  *int32                                  `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
+	CallList []*DescribeCallListResponseBodyCallList `json:"CallList,omitempty" xml:"CallList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCnt *int32 `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
 }
 
 func (s DescribeCallListResponseBody) String() string {
@@ -2425,14 +3075,39 @@ func (s *DescribeCallListResponseBody) SetTotalCnt(v int32) *DescribeCallListRes
 
 type DescribeCallListResponseBodyCallList struct {
 	// App ID。
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BadExpUserCnt *int32  `json:"BadExpUserCnt,omitempty" xml:"BadExpUserCnt,omitempty"`
-	CallStatus    *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
-	ChannelId     *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs     *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs   *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	Duration      *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	UserCnt       *int32  `json:"UserCnt,omitempty" xml:"UserCnt,omitempty"`
+	//
+	// example:
+	//
+	// 9qb1****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 0
+	BadExpUserCnt *int32 `json:"BadExpUserCnt,omitempty" xml:"BadExpUserCnt,omitempty"`
+	// example:
+	//
+	// OUT
+	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	// example:
+	//
+	// 904
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1614936817
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// example:
+	//
+	// 10
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 5
+	UserCnt *int32 `json:"UserCnt,omitempty" xml:"UserCnt,omitempty"`
 }
 
 func (s DescribeCallListResponseBodyCallList) String() string {
@@ -2513,7 +3188,17 @@ func (s *DescribeCallListResponse) SetBody(v *DescribeCallListResponseBody) *Des
 }
 
 type DescribeChannelRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 }
 
@@ -2539,7 +3224,10 @@ type DescribeChannelResponseBody struct {
 	// channel
 	Channel      *DescribeChannelResponseBodyChannel `json:"Channel,omitempty" xml:"Channel,omitempty" type:"Struct"`
 	ChannelExist *bool                               `json:"ChannelExist,omitempty" xml:"ChannelExist,omitempty"`
-	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeChannelResponseBody) String() string {
@@ -2566,8 +3254,14 @@ func (s *DescribeChannelResponseBody) SetRequestId(v string) *DescribeChannelRes
 }
 
 type DescribeChannelResponseBodyChannel struct {
+	// example:
+	//
+	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1557909133
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeChannelResponseBodyChannel) String() string {
@@ -2618,7 +3312,17 @@ func (s *DescribeChannelResponse) SetBody(v *DescribeChannelResponseBody) *Descr
 }
 
 type DescribeChannelAllUsersRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 }
 
@@ -2641,9 +3345,12 @@ func (s *DescribeChannelAllUsersRequest) SetChannelId(v string) *DescribeChannel
 }
 
 type DescribeChannelAllUsersResponseBody struct {
-	ChannelExist *bool                                       `json:"ChannelExist,omitempty" xml:"ChannelExist,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Users        []*DescribeChannelAllUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	ChannelExist *bool `json:"ChannelExist,omitempty" xml:"ChannelExist,omitempty"`
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Users     []*DescribeChannelAllUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s DescribeChannelAllUsersResponseBody) String() string {
@@ -2670,6 +3377,9 @@ func (s *DescribeChannelAllUsersResponseBody) SetUsers(v []*DescribeChannelAllUs
 }
 
 type DescribeChannelAllUsersResponseBodyUsers struct {
+	// example:
+	//
+	// 1811****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -2717,9 +3427,28 @@ func (s *DescribeChannelAllUsersResponse) SetBody(v *DescribeChannelAllUsersResp
 
 type DescribeChannelAreaDistributionStatDataRequest struct {
 	// APP ID。
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testappid
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1614936817
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1614936817
 	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
 	ParentArea  *string `json:"ParentArea,omitempty" xml:"ParentArea,omitempty"`
 }
@@ -2759,7 +3488,10 @@ func (s *DescribeChannelAreaDistributionStatDataRequest) SetParentArea(v string)
 
 type DescribeChannelAreaDistributionStatDataResponseBody struct {
 	AreaStatList []*DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList `json:"AreaStatList,omitempty" xml:"AreaStatList,omitempty" type:"Repeated"`
-	RequestId    *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeChannelAreaDistributionStatDataResponseBody) String() string {
@@ -2781,11 +3513,26 @@ func (s *DescribeChannelAreaDistributionStatDataResponseBody) SetRequestId(v str
 }
 
 type DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList struct {
-	AreaName                    *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
-	CallUserCount               *int32  `json:"CallUserCount,omitempty" xml:"CallUserCount,omitempty"`
+	// example:
+	//
+	// 浙江省
+	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
+	// example:
+	//
+	// 1
+	CallUserCount *int32 `json:"CallUserCount,omitempty" xml:"CallUserCount,omitempty"`
+	// example:
+	//
+	// 0.9999
 	HighQualityTransmissionRate *string `json:"HighQualityTransmissionRate,omitempty" xml:"HighQualityTransmissionRate,omitempty"`
-	PubUserCount                *int32  `json:"PubUserCount,omitempty" xml:"PubUserCount,omitempty"`
-	SubUserCount                *int32  `json:"SubUserCount,omitempty" xml:"SubUserCount,omitempty"`
+	// example:
+	//
+	// 1
+	PubUserCount *int32 `json:"PubUserCount,omitempty" xml:"PubUserCount,omitempty"`
+	// example:
+	//
+	// 1
+	SubUserCount *int32 `json:"SubUserCount,omitempty" xml:"SubUserCount,omitempty"`
 }
 
 func (s DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList) String() string {
@@ -2852,11 +3599,35 @@ func (s *DescribeChannelAreaDistributionStatDataResponse) SetBody(v *DescribeCha
 
 type DescribeChannelDistributionStatDataRequest struct {
 	// APP ID。
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	StatDim     *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testappid
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1614936817
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OS
+	StatDim *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
 }
 
 func (s DescribeChannelDistributionStatDataRequest) String() string {
@@ -2893,6 +3664,9 @@ func (s *DescribeChannelDistributionStatDataRequest) SetStatDim(v string) *Descr
 }
 
 type DescribeChannelDistributionStatDataResponseBody struct {
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StatList  []*DescribeChannelDistributionStatDataResponseBodyStatList `json:"StatList,omitempty" xml:"StatList,omitempty" type:"Repeated"`
 }
@@ -2916,9 +3690,18 @@ func (s *DescribeChannelDistributionStatDataResponseBody) SetStatList(v []*Descr
 }
 
 type DescribeChannelDistributionStatDataResponseBodyStatList struct {
-	CallUserCount *int32  `json:"CallUserCount,omitempty" xml:"CallUserCount,omitempty"`
+	// example:
+	//
+	// 1
+	CallUserCount *int32 `json:"CallUserCount,omitempty" xml:"CallUserCount,omitempty"`
+	// example:
+	//
+	// 1.0000
 	CallUserRatio *string `json:"CallUserRatio,omitempty" xml:"CallUserRatio,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// OS
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeChannelDistributionStatDataResponseBodyStatList) String() string {
@@ -2975,10 +3758,29 @@ func (s *DescribeChannelDistributionStatDataResponse) SetBody(v *DescribeChannel
 
 type DescribeChannelOverallDataRequest struct {
 	// APP ID。
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testappid
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615893133
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1615893757
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
 }
 
 func (s DescribeChannelOverallDataRequest) String() string {
@@ -3013,7 +3815,10 @@ type DescribeChannelOverallDataResponseBody struct {
 	CallInfo    *DescribeChannelOverallDataResponseBodyCallInfo      `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
 	MetricDatas []*DescribeChannelOverallDataResponseBodyMetricDatas `json:"MetricDatas,omitempty" xml:"MetricDatas,omitempty" type:"Repeated"`
 	OverallData *DescribeChannelOverallDataResponseBodyOverallData   `json:"OverallData,omitempty" xml:"OverallData,omitempty" type:"Struct"`
-	RequestId   *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeChannelOverallDataResponseBody) String() string {
@@ -3045,12 +3850,30 @@ func (s *DescribeChannelOverallDataResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeChannelOverallDataResponseBodyCallInfo struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CallStatus  *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	Duration    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// rjdhtnqy
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// IN
+	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	// example:
+	//
+	// 123456
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1615860711
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1615860811
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// example:
+	//
+	// 100
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
 func (s DescribeChannelOverallDataResponseBodyCallInfo) String() string {
@@ -3093,7 +3916,10 @@ func (s *DescribeChannelOverallDataResponseBodyCallInfo) SetDuration(v int64) *D
 
 type DescribeChannelOverallDataResponseBodyMetricDatas struct {
 	Nodes []*DescribeChannelOverallDataResponseBodyMetricDatasNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Type  *string                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// CALL_QUALITY
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeChannelOverallDataResponseBodyMetricDatas) String() string {
@@ -3116,8 +3942,14 @@ func (s *DescribeChannelOverallDataResponseBodyMetricDatas) SetType(v string) *D
 
 type DescribeChannelOverallDataResponseBodyMetricDatasNodes struct {
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	X   *string                `json:"X,omitempty" xml:"X,omitempty"`
-	Y   *string                `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 1612418625
+	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 123
+	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribeChannelOverallDataResponseBodyMetricDatasNodes) String() string {
@@ -3144,10 +3976,25 @@ func (s *DescribeChannelOverallDataResponseBodyMetricDatasNodes) SetY(v string) 
 }
 
 type DescribeChannelOverallDataResponseBodyOverallData struct {
-	ConnAvgTime         *float32 `json:"ConnAvgTime,omitempty" xml:"ConnAvgTime,omitempty"`
-	FiveSecJoinRate     *float32 `json:"FiveSecJoinRate,omitempty" xml:"FiveSecJoinRate,omitempty"`
+	// example:
+	//
+	// 0.5
+	ConnAvgTime *float32 `json:"ConnAvgTime,omitempty" xml:"ConnAvgTime,omitempty"`
+	// example:
+	//
+	// 0.91
+	FiveSecJoinRate *float32 `json:"FiveSecJoinRate,omitempty" xml:"FiveSecJoinRate,omitempty"`
+	// example:
+	//
+	// 0.02
 	TotalAudioStuckRate *float32 `json:"TotalAudioStuckRate,omitempty" xml:"TotalAudioStuckRate,omitempty"`
+	// example:
+	//
+	// 0.02
 	TotalVideoStuckRate *float32 `json:"TotalVideoStuckRate,omitempty" xml:"TotalVideoStuckRate,omitempty"`
+	// example:
+	//
+	// 0.02
 	TotalVideoVagueRate *float32 `json:"TotalVideoVagueRate,omitempty" xml:"TotalVideoVagueRate,omitempty"`
 }
 
@@ -3214,12 +4061,31 @@ func (s *DescribeChannelOverallDataResponse) SetBody(v *DescribeChannelOverallDa
 }
 
 type DescribeChannelParticipantsRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aec****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Order     *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNum   *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// asc
+	Order   *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeChannelParticipantsRequest) String() string {
@@ -3261,9 +4127,21 @@ func (s *DescribeChannelParticipantsRequest) SetPageSize(v int32) *DescribeChann
 }
 
 type DescribeChannelParticipantsResponseBody struct {
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Timestamp *int32                                           `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	TotalNum  *int32                                           `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 6159ba01-6687-4fb2-a831-f0cd8d188648
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1557909133
+	Timestamp *int32 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 3
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
 	TotalPage *int32                                           `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 	UserList  *DescribeChannelParticipantsResponseBodyUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Struct"`
 }
@@ -3349,10 +4227,29 @@ func (s *DescribeChannelParticipantsResponse) SetBody(v *DescribeChannelParticip
 
 type DescribeChannelTopPubUserListRequest struct {
 	// APP ID。
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testappid
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615893133
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1615893757
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
 }
 
 func (s DescribeChannelTopPubUserListRequest) String() string {
@@ -3384,6 +4281,9 @@ func (s *DescribeChannelTopPubUserListRequest) SetDestroyedTs(v int64) *Describe
 }
 
 type DescribeChannelTopPubUserListResponseBody struct {
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId            *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TopPubUserDetailList []*DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList `json:"TopPubUserDetailList,omitempty" xml:"TopPubUserDetailList,omitempty" type:"Repeated"`
 }
@@ -3407,13 +4307,31 @@ func (s *DescribeChannelTopPubUserListResponseBody) SetTopPubUserDetailList(v []
 }
 
 type DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList struct {
-	CreatedTs      *int64                                                                        `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs    *int64                                                                        `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	Duration       *int64                                                                        `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Location       *string                                                                       `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// 1615893327
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1615893442
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// example:
+	//
+	// 0
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 浙江省-杭州市
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// 0
 	OnlineDuration *int64                                                                        `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
 	OnlinePeriods  []*DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
-	UserId         *string                                                                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// testuserid
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList) String() string {
@@ -3460,7 +4378,13 @@ func (s *DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList) SetUserI
 }
 
 type DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeriods struct {
-	JoinTs  *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// example:
+	//
+	// 1615893327
+	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// example:
+	//
+	// 1615893442
 	LeaveTs *int64 `json:"LeaveTs,omitempty" xml:"LeaveTs,omitempty"`
 }
 
@@ -3512,9 +4436,24 @@ func (s *DescribeChannelTopPubUserListResponse) SetBody(v *DescribeChannelTopPub
 }
 
 type DescribeChannelUserRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1811****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeChannelUserRequest) String() string {
@@ -3541,10 +4480,13 @@ func (s *DescribeChannelUserRequest) SetUserId(v string) *DescribeChannelUserReq
 }
 
 type DescribeChannelUserResponseBody struct {
-	ChannelExist *bool                                      `json:"ChannelExist,omitempty" xml:"ChannelExist,omitempty"`
-	InChannel    *bool                                      `json:"InChannel,omitempty" xml:"InChannel,omitempty"`
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Sessions     []*DescribeChannelUserResponseBodySessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
+	ChannelExist *bool `json:"ChannelExist,omitempty" xml:"ChannelExist,omitempty"`
+	InChannel    *bool `json:"InChannel,omitempty" xml:"InChannel,omitempty"`
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Sessions  []*DescribeChannelUserResponseBodySessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
 }
 
 func (s DescribeChannelUserResponseBody) String() string {
@@ -3576,9 +4518,18 @@ func (s *DescribeChannelUserResponseBody) SetSessions(v []*DescribeChannelUserRe
 }
 
 type DescribeChannelUserResponseBodySessions struct {
-	Joined    *int64  `json:"Joined,omitempty" xml:"Joined,omitempty"`
+	// example:
+	//
+	// 1557909133
+	Joined *int64 `json:"Joined,omitempty" xml:"Joined,omitempty"`
+	// example:
+	//
+	// xa744sxx8rtobgj****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1811****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeChannelUserResponseBodySessions) String() string {
@@ -3635,10 +4586,29 @@ func (s *DescribeChannelUserResponse) SetBody(v *DescribeChannelUserResponseBody
 
 type DescribeChannelUserMetricsRequest struct {
 	// APP ID。
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testappid
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1614936817
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
 }
 
 func (s DescribeChannelUserMetricsRequest) String() string {
@@ -3672,7 +4642,10 @@ func (s *DescribeChannelUserMetricsRequest) SetDestroyedTs(v int64) *DescribeCha
 type DescribeChannelUserMetricsResponseBody struct {
 	MetricDatas []*DescribeChannelUserMetricsResponseBodyMetricDatas `json:"MetricDatas,omitempty" xml:"MetricDatas,omitempty" type:"Repeated"`
 	OverallData *DescribeChannelUserMetricsResponseBodyOverallData   `json:"OverallData,omitempty" xml:"OverallData,omitempty" type:"Struct"`
-	RequestId   *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeChannelUserMetricsResponseBody) String() string {
@@ -3700,7 +4673,10 @@ func (s *DescribeChannelUserMetricsResponseBody) SetRequestId(v string) *Describ
 
 type DescribeChannelUserMetricsResponseBodyMetricDatas struct {
 	Nodes []*DescribeChannelUserMetricsResponseBodyMetricDatasNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Type  *string                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// ALL_NUM
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeChannelUserMetricsResponseBodyMetricDatas) String() string {
@@ -3723,8 +4699,14 @@ func (s *DescribeChannelUserMetricsResponseBodyMetricDatas) SetType(v string) *D
 
 type DescribeChannelUserMetricsResponseBodyMetricDatasNodes struct {
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	X   *string                `json:"X,omitempty" xml:"X,omitempty"`
-	Y   *string                `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 1612418625
+	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 123
+	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribeChannelUserMetricsResponseBodyMetricDatasNodes) String() string {
@@ -3751,11 +4733,26 @@ func (s *DescribeChannelUserMetricsResponseBodyMetricDatasNodes) SetY(v string) 
 }
 
 type DescribeChannelUserMetricsResponseBodyOverallData struct {
-	TotalBadExpNum   *int64 `json:"TotalBadExpNum,omitempty" xml:"TotalBadExpNum,omitempty"`
+	// example:
+	//
+	// 0
+	TotalBadExpNum *int64 `json:"TotalBadExpNum,omitempty" xml:"TotalBadExpNum,omitempty"`
+	// example:
+	//
+	// 0
 	TotalJoinFailNum *int64 `json:"TotalJoinFailNum,omitempty" xml:"TotalJoinFailNum,omitempty"`
-	TotalPubUserNum  *int64 `json:"TotalPubUserNum,omitempty" xml:"TotalPubUserNum,omitempty"`
-	TotalSubUserNum  *int64 `json:"TotalSubUserNum,omitempty" xml:"TotalSubUserNum,omitempty"`
-	TotalUserNum     *int64 `json:"TotalUserNum,omitempty" xml:"TotalUserNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPubUserNum *int64 `json:"TotalPubUserNum,omitempty" xml:"TotalPubUserNum,omitempty"`
+	// example:
+	//
+	// 3
+	TotalSubUserNum *int64 `json:"TotalSubUserNum,omitempty" xml:"TotalSubUserNum,omitempty"`
+	// example:
+	//
+	// 5
+	TotalUserNum *int64 `json:"TotalUserNum,omitempty" xml:"TotalUserNum,omitempty"`
 }
 
 func (s DescribeChannelUserMetricsResponseBodyOverallData) String() string {
@@ -3821,7 +4818,17 @@ func (s *DescribeChannelUserMetricsResponse) SetBody(v *DescribeChannelUserMetri
 }
 
 type DescribeChannelUsersRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a2hz****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -3850,16 +4857,37 @@ func (s *DescribeChannelUsersRequest) SetOwnerId(v int64) *DescribeChannelUsersR
 }
 
 type DescribeChannelUsersResponseBody struct {
-	ChannelProfile      *int32    `json:"ChannelProfile,omitempty" xml:"ChannelProfile,omitempty"`
+	// example:
+	//
+	// 1
+	ChannelProfile *int32 `json:"ChannelProfile,omitempty" xml:"ChannelProfile,omitempty"`
+	// example:
+	//
+	// 100
 	CommTotalNum        *int32    `json:"CommTotalNum,omitempty" xml:"CommTotalNum,omitempty"`
 	InteractiveUserList []*string `json:"InteractiveUserList,omitempty" xml:"InteractiveUserList,omitempty" type:"Repeated"`
-	InteractiveUserNum  *int32    `json:"InteractiveUserNum,omitempty" xml:"InteractiveUserNum,omitempty"`
-	IsChannelExist      *bool     `json:"IsChannelExist,omitempty" xml:"IsChannelExist,omitempty"`
-	LiveUserList        []*string `json:"LiveUserList,omitempty" xml:"LiveUserList,omitempty" type:"Repeated"`
-	LiveUserNum         *int32    `json:"LiveUserNum,omitempty" xml:"LiveUserNum,omitempty"`
-	RequestId           *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Timestamp           *int32    `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	UserList            []*string `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	InteractiveUserNum *int32 `json:"InteractiveUserNum,omitempty" xml:"InteractiveUserNum,omitempty"`
+	// example:
+	//
+	// true
+	IsChannelExist *bool     `json:"IsChannelExist,omitempty" xml:"IsChannelExist,omitempty"`
+	LiveUserList   []*string `json:"LiveUserList,omitempty" xml:"LiveUserList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	LiveUserNum *int32 `json:"LiveUserNum,omitempty" xml:"LiveUserNum,omitempty"`
+	// example:
+	//
+	// 6159ba01-6687-4fb2-a831-f0cd8d188648
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1557909133
+	Timestamp *int32    `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	UserList  []*string `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeChannelUsersResponseBody) String() string {
@@ -3951,11 +4979,35 @@ func (s *DescribeChannelUsersResponse) SetBody(v *DescribeChannelUsersResponseBo
 
 type DescribeEndPointEventListRequest struct {
 	// APP ID。
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	UserIdList  *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testappid
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1614936817
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testuserid1,testuserid2
+	UserIdList *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
 }
 
 func (s DescribeEndPointEventListRequest) String() string {
@@ -3992,8 +5044,11 @@ func (s *DescribeEndPointEventListRequest) SetUserIdList(v string) *DescribeEndP
 }
 
 type DescribeEndPointEventListResponseBody struct {
-	Nodes     []*DescribeEndPointEventListResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Nodes []*DescribeEndPointEventListResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeEndPointEventListResponseBody) String() string {
@@ -4016,7 +5071,10 @@ func (s *DescribeEndPointEventListResponseBody) SetRequestId(v string) *Describe
 
 type DescribeEndPointEventListResponseBodyNodes struct {
 	EventDataItems []*DescribeEndPointEventListResponseBodyNodesEventDataItems `json:"EventDataItems,omitempty" xml:"EventDataItems,omitempty" type:"Repeated"`
-	UserId         *string                                                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// testuserid
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeEndPointEventListResponseBodyNodes) String() string {
@@ -4039,7 +5097,10 @@ func (s *DescribeEndPointEventListResponseBodyNodes) SetUserId(v string) *Descri
 
 type DescribeEndPointEventListResponseBodyNodesEventDataItems struct {
 	EventList []*DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
-	Ts        *int64                                                               `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	// example:
+	//
+	// 1614936817
+	Ts *int64 `json:"Ts,omitempty" xml:"Ts,omitempty"`
 }
 
 func (s DescribeEndPointEventListResponseBodyNodesEventDataItems) String() string {
@@ -4061,10 +5122,22 @@ func (s *DescribeEndPointEventListResponseBodyNodesEventDataItems) SetTs(v int64
 }
 
 type DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList struct {
+	// example:
+	//
+	// 开始发布
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// example:
+	//
+	// USER
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	Ts        *int64  `json:"Ts,omitempty" xml:"Ts,omitempty"`
-	TsInMs    *string `json:"TsInMs,omitempty" xml:"TsInMs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	Ts *int64 `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	// example:
+	//
+	// 1614936817123
+	TsInMs *string `json:"TsInMs,omitempty" xml:"TsInMs,omitempty"`
 }
 
 func (s DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) String() string {
@@ -4126,14 +5199,47 @@ func (s *DescribeEndPointEventListResponse) SetBody(v *DescribeEndPointEventList
 
 type DescribeEndPointMetricDataRequest struct {
 	// APP ID。
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId     *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs     *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs   *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	Metrics       *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testappid
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1614936817
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VIDEO_STUCK_CAMERA
+	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// example:
+	//
+	// testcall1,testcall2
 	PubCallIdList *string `json:"PubCallIdList,omitempty" xml:"PubCallIdList,omitempty"`
-	PubUserId     *string `json:"PubUserId,omitempty" xml:"PubUserId,omitempty"`
-	SubUserId     *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// example:
+	//
+	// testuserid
+	PubUserId *string `json:"PubUserId,omitempty" xml:"PubUserId,omitempty"`
+	// example:
+	//
+	// testuserid
+	SubUserId *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s DescribeEndPointMetricDataRequest) String() string {
@@ -4186,6 +5292,9 @@ func (s *DescribeEndPointMetricDataRequest) SetSubUserId(v string) *DescribeEndP
 
 type DescribeEndPointMetricDataResponseBody struct {
 	PubMetrics []*DescribeEndPointMetricDataResponseBodyPubMetrics `json:"PubMetrics,omitempty" xml:"PubMetrics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId  *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SubMetrics []*DescribeEndPointMetricDataResponseBodySubMetrics `json:"SubMetrics,omitempty" xml:"SubMetrics,omitempty" type:"Repeated"`
 }
@@ -4214,9 +5323,15 @@ func (s *DescribeEndPointMetricDataResponseBody) SetSubMetrics(v []*DescribeEndP
 }
 
 type DescribeEndPointMetricDataResponseBodyPubMetrics struct {
-	Nodes  []*DescribeEndPointMetricDataResponseBodyPubMetricsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Type   *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserId *string                                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Nodes []*DescribeEndPointMetricDataResponseBodyPubMetricsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// VIDEO_STUCK_CAMERA
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// testuserid
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeEndPointMetricDataResponseBodyPubMetrics) String() string {
@@ -4244,8 +5359,14 @@ func (s *DescribeEndPointMetricDataResponseBodyPubMetrics) SetUserId(v string) *
 
 type DescribeEndPointMetricDataResponseBodyPubMetricsNodes struct {
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	X   *string                `json:"X,omitempty" xml:"X,omitempty"`
-	Y   *string                `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 1548670257
+	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 230100
+	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribeEndPointMetricDataResponseBodyPubMetricsNodes) String() string {
@@ -4272,9 +5393,15 @@ func (s *DescribeEndPointMetricDataResponseBodyPubMetricsNodes) SetY(v string) *
 }
 
 type DescribeEndPointMetricDataResponseBodySubMetrics struct {
-	Nodes  []*DescribeEndPointMetricDataResponseBodySubMetricsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Type   *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserId *string                                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Nodes []*DescribeEndPointMetricDataResponseBodySubMetricsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// VIDEO_STUCK_CAMERA
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// testuserid
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeEndPointMetricDataResponseBodySubMetrics) String() string {
@@ -4302,8 +5429,14 @@ func (s *DescribeEndPointMetricDataResponseBodySubMetrics) SetUserId(v string) *
 
 type DescribeEndPointMetricDataResponseBodySubMetricsNodes struct {
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	X   *string                `json:"X,omitempty" xml:"X,omitempty"`
-	Y   *string                `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 1548670257
+	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 230100
+	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribeEndPointMetricDataResponseBodySubMetricsNodes) String() string {
@@ -4360,9 +5493,25 @@ func (s *DescribeEndPointMetricDataResponse) SetBody(v *DescribeEndPointMetricDa
 
 type DescribeFaultDiagnosisFactorDistributionStatRequest struct {
 	// APP ID。
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndTs   *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	StartTs *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0rbd****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615892596****
+	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615892596
+	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisFactorDistributionStatRequest) String() string {
@@ -4389,6 +5538,9 @@ func (s *DescribeFaultDiagnosisFactorDistributionStatRequest) SetStartTs(v int64
 }
 
 type DescribeFaultDiagnosisFactorDistributionStatResponseBody struct {
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StatList  []*DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList `json:"StatList,omitempty" xml:"StatList,omitempty" type:"Repeated"`
 }
@@ -4412,8 +5564,17 @@ func (s *DescribeFaultDiagnosisFactorDistributionStatResponseBody) SetStatList(v
 }
 
 type DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList struct {
-	FactorId  *string  `json:"FactorId,omitempty" xml:"FactorId,omitempty"`
-	UserCount *int32   `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
+	// example:
+	//
+	// 1
+	FactorId *string `json:"FactorId,omitempty" xml:"FactorId,omitempty"`
+	// example:
+	//
+	// 100
+	UserCount *int32 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
+	// example:
+	//
+	// 0.9239
 	UserRatio *float32 `json:"UserRatio,omitempty" xml:"UserRatio,omitempty"`
 }
 
@@ -4471,9 +5632,30 @@ func (s *DescribeFaultDiagnosisFactorDistributionStatResponse) SetBody(v *Descri
 
 type DescribeFaultDiagnosisOverallDataRequest struct {
 	// APP ID
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndTs   *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	StartTs *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4eah****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615910399
+	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615824000
+	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// JOIN_SLOW_USER
 	StatDim *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
 }
 
@@ -4508,7 +5690,10 @@ func (s *DescribeFaultDiagnosisOverallDataRequest) SetStatDim(v string) *Describ
 type DescribeFaultDiagnosisOverallDataResponseBody struct {
 	MetricData  *DescribeFaultDiagnosisOverallDataResponseBodyMetricData  `json:"MetricData,omitempty" xml:"MetricData,omitempty" type:"Struct"`
 	OverallData *DescribeFaultDiagnosisOverallDataResponseBodyOverallData `json:"OverallData,omitempty" xml:"OverallData,omitempty" type:"Struct"`
-	RequestId   *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisOverallDataResponseBody) String() string {
@@ -4553,8 +5738,14 @@ func (s *DescribeFaultDiagnosisOverallDataResponseBodyMetricData) SetNodes(v []*
 
 type DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes struct {
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	X   *string                `json:"X,omitempty" xml:"X,omitempty"`
-	Y   *string                `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 1615824000
+	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 1
+	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes) String() string {
@@ -4581,9 +5772,18 @@ func (s *DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes) SetY(v st
 }
 
 type DescribeFaultDiagnosisOverallDataResponseBodyOverallData struct {
-	FaultUserCount *int32   `json:"FaultUserCount,omitempty" xml:"FaultUserCount,omitempty"`
+	// example:
+	//
+	// 20
+	FaultUserCount *int32 `json:"FaultUserCount,omitempty" xml:"FaultUserCount,omitempty"`
+	// example:
+	//
+	// 0.1
 	FaultUserRatio *float32 `json:"FaultUserRatio,omitempty" xml:"FaultUserRatio,omitempty"`
-	TotalUserCount *int32   `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
+	// example:
+	//
+	// 40
+	TotalUserCount *int32 `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisOverallDataResponseBodyOverallData) String() string {
@@ -4640,12 +5840,41 @@ func (s *DescribeFaultDiagnosisOverallDataResponse) SetBody(v *DescribeFaultDiag
 
 type DescribeFaultDiagnosisUserDetailRequest struct {
 	// APP ID。
-	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId         *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs         *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	FaultType         *string `json:"FaultType,omitempty" xml:"FaultType,omitempty"`
-	QueryCallUserInfo *bool   `json:"QueryCallUserInfo,omitempty" xml:"QueryCallUserInfo,omitempty"`
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0rbd****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 311
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615892596
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// JOIN_SLOW
+	FaultType *string `json:"FaultType,omitempty" xml:"FaultType,omitempty"`
+	// example:
+	//
+	// true
+	QueryCallUserInfo *bool `json:"QueryCallUserInfo,omitempty" xml:"QueryCallUserInfo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c906531af5f9****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailRequest) String() string {
@@ -4691,8 +5920,11 @@ type DescribeFaultDiagnosisUserDetailResponseBody struct {
 	FactorList       []*DescribeFaultDiagnosisUserDetailResponseBodyFactorList    `json:"FactorList,omitempty" xml:"FactorList,omitempty" type:"Repeated"`
 	FaultMetricData  *DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData `json:"FaultMetricData,omitempty" xml:"FaultMetricData,omitempty" type:"Struct"`
 	NetworkOperators []*string                                                    `json:"NetworkOperators,omitempty" xml:"NetworkOperators,omitempty" type:"Repeated"`
-	RequestId        *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UserDetail       *DescribeFaultDiagnosisUserDetailResponseBodyUserDetail      `json:"UserDetail,omitempty" xml:"UserDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId  *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserDetail *DescribeFaultDiagnosisUserDetailResponseBodyUserDetail `json:"UserDetail,omitempty" xml:"UserDetail,omitempty" type:"Struct"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBody) String() string {
@@ -4735,12 +5967,31 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBody) SetUserDetail(v *Describe
 
 type DescribeFaultDiagnosisUserDetailResponseBodyCallInfo struct {
 	// App ID。
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CallStatus  *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	Duration    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	//
+	// example:
+	//
+	// 0rbd****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// IN
+	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	// example:
+	//
+	// 311
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1620957905
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1620958150
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// example:
+	//
+	// 100
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyCallInfo) String() string {
@@ -4782,7 +6033,13 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyCallInfo) SetDuration(v int
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorList struct {
-	FactorId           *string                                                                     `json:"FactorId,omitempty" xml:"FactorId,omitempty"`
+	// example:
+	//
+	// 1
+	FactorId *string `json:"FactorId,omitempty" xml:"FactorId,omitempty"`
+	// example:
+	//
+	// LOCAL
 	FaultSource        *string                                                                     `json:"FaultSource,omitempty" xml:"FaultSource,omitempty"`
 	RelatedEventDatas  []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas  `json:"RelatedEventDatas,omitempty" xml:"RelatedEventDatas,omitempty" type:"Repeated"`
 	RelatedMetricDatas []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatas `json:"RelatedMetricDatas,omitempty" xml:"RelatedMetricDatas,omitempty" type:"Repeated"`
@@ -4818,8 +6075,14 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorList) SetRelatedMetri
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas struct {
 	EventDataItems []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItems `json:"EventDataItems,omitempty" xml:"EventDataItems,omitempty" type:"Repeated"`
-	Role           *string                                                                                  `json:"Role,omitempty" xml:"Role,omitempty"`
-	UserId         *string                                                                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// SENDER
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// 0a497933****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas) String() string {
@@ -4847,7 +6110,10 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItems struct {
 	EventList []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
-	Ts        *int64                                                                                            `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	// example:
+	//
+	// 1614936817
+	Ts *int64 `json:"Ts,omitempty" xml:"Ts,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItems) String() string {
@@ -4869,9 +6135,18 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList struct {
+	// example:
+	//
+	// 开始发布
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// example:
+	//
+	// USER
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	Ts        *int64  `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	// example:
+	//
+	// 1614936817
+	Ts *int64 `json:"Ts,omitempty" xml:"Ts,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) String() string {
@@ -4898,10 +6173,19 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatas struct {
-	Nodes  []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatasNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Role   *string                                                                          `json:"Role,omitempty" xml:"Role,omitempty"`
-	Type   *string                                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserId *string                                                                          `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Nodes []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatasNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// SENDER
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// AUDIO_STUCK
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 0a497933****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatas) String() string {
@@ -4934,8 +6218,14 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricData
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatasNodes struct {
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	X   *string                `json:"X,omitempty" xml:"X,omitempty"`
-	Y   *string                `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 1615892596
+	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 20
+	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatasNodes) String() string {
@@ -4979,7 +6269,13 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData) SetNodes(v
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricDataNodes struct {
+	// example:
+	//
+	// 1620957900
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.4540
 	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -5002,16 +6298,43 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricDataNodes) SetY(
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyUserDetail struct {
-	CreatedTs      *int64                                                                 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs    *int64                                                                 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	Duration       *int64                                                                 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Location       *string                                                                `json:"Location,omitempty" xml:"Location,omitempty"`
-	Network        *string                                                                `json:"Network,omitempty" xml:"Network,omitempty"`
+	// example:
+	//
+	// 1620957919
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1620958150
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// example:
+	//
+	// 231
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 浙江省-杭州市
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// 4G
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// example:
+	//
+	// 231
 	OnlineDuration *int64                                                                 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
 	OnlinePeriods  []*DescribeFaultDiagnosisUserDetailResponseBodyUserDetailOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
-	Os             *string                                                                `json:"Os,omitempty" xml:"Os,omitempty"`
-	SdkVersion     *string                                                                `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
-	UserId         *string                                                                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// iOS
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	// example:
+	//
+	// 0a497933****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyUserDetail) String() string {
@@ -5073,7 +6396,13 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyUserDetail) SetUserId(v str
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyUserDetailOnlinePeriods struct {
-	JoinTs  *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// example:
+	//
+	// 1620957919
+	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// example:
+	//
+	// 1620958150
 	LeaveTs *int64 `json:"LeaveTs,omitempty" xml:"LeaveTs,omitempty"`
 }
 
@@ -5126,14 +6455,49 @@ func (s *DescribeFaultDiagnosisUserDetailResponse) SetBody(v *DescribeFaultDiagn
 
 type DescribeFaultDiagnosisUserListRequest struct {
 	// APP ID。
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId  *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	EndTs      *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0rbd****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 311
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615892596
+	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// example:
+	//
+	// JOIN_SLOW,AUDIO_STUCK
 	FaultTypes *string `json:"FaultTypes,omitempty" xml:"FaultTypes,omitempty"`
-	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTs    *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615806196
+	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	// example:
+	//
+	// c906531af5f9****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserListRequest) String() string {
@@ -5185,11 +6549,23 @@ func (s *DescribeFaultDiagnosisUserListRequest) SetUserId(v string) *DescribeFau
 }
 
 type DescribeFaultDiagnosisUserListResponseBody struct {
-	PageNo    *int32                                                `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize  *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCnt  *int32                                                `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
-	UserList  []*DescribeFaultDiagnosisUserListResponseBodyUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCnt *int32                                                `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
+	UserList []*DescribeFaultDiagnosisUserListResponseBodyUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeFaultDiagnosisUserListResponseBody) String() string {
@@ -5226,12 +6602,27 @@ func (s *DescribeFaultDiagnosisUserListResponseBody) SetUserList(v []*DescribeFa
 }
 
 type DescribeFaultDiagnosisUserListResponseBodyUserList struct {
-	ChannelCreatedTs *int64                                                         `json:"ChannelCreatedTs,omitempty" xml:"ChannelCreatedTs,omitempty"`
-	ChannelId        *string                                                        `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs        *int64                                                         `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs      *int64                                                         `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	FaultList        []*DescribeFaultDiagnosisUserListResponseBodyUserListFaultList `json:"FaultList,omitempty" xml:"FaultList,omitempty" type:"Repeated"`
-	UserId           *string                                                        `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1614936817
+	ChannelCreatedTs *int64 `json:"ChannelCreatedTs,omitempty" xml:"ChannelCreatedTs,omitempty"`
+	// example:
+	//
+	// 904
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1614936817
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	DestroyedTs *int64                                                         `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	FaultList   []*DescribeFaultDiagnosisUserListResponseBodyUserListFaultList `json:"FaultList,omitempty" xml:"FaultList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123456
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserListResponseBodyUserList) String() string {
@@ -5273,6 +6664,9 @@ func (s *DescribeFaultDiagnosisUserListResponseBodyUserList) SetUserId(v string)
 }
 
 type DescribeFaultDiagnosisUserListResponseBodyUserListFaultList struct {
+	// example:
+	//
+	// JOIN_SLOW
 	FaultType *string `json:"FaultType,omitempty" xml:"FaultType,omitempty"`
 }
 
@@ -5319,12 +6713,29 @@ func (s *DescribeFaultDiagnosisUserListResponse) SetBody(v *DescribeFaultDiagnos
 }
 
 type DescribeMPULayoutInfoListRequest struct {
-	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	LayoutId *int64  `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNum  *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 2
+	LayoutId *int64 `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	// example:
+	//
+	// LayoutName
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeMPULayoutInfoListRequest) String() string {
@@ -5366,10 +6777,19 @@ func (s *DescribeMPULayoutInfoListRequest) SetPageSize(v int64) *DescribeMPULayo
 }
 
 type DescribeMPULayoutInfoListResponseBody struct {
-	Layouts   *DescribeMPULayoutInfoListResponseBodyLayouts `json:"Layouts,omitempty" xml:"Layouts,omitempty" type:"Struct"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum  *int64                                        `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPage *int64                                        `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	Layouts *DescribeMPULayoutInfoListResponseBodyLayouts `json:"Layouts,omitempty" xml:"Layouts,omitempty" type:"Struct"`
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s DescribeMPULayoutInfoListResponseBody) String() string {
@@ -5418,10 +6838,19 @@ func (s *DescribeMPULayoutInfoListResponseBodyLayouts) SetLayout(v []*DescribeMP
 }
 
 type DescribeMPULayoutInfoListResponseBodyLayoutsLayout struct {
-	AudioMixCount *int32                                                   `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
-	LayoutId      *int64                                                   `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
-	Name          *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Panes         *DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3
+	AudioMixCount *int32 `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
+	// example:
+	//
+	// 2
+	LayoutId *int64 `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	// example:
+	//
+	// LayoutName
+	Name  *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Panes *DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Struct"`
 }
 
 func (s DescribeMPULayoutInfoListResponseBodyLayoutsLayout) String() string {
@@ -5470,13 +6899,34 @@ func (s *DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanes) SetPanes(v []*
 }
 
 type DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanesPanes struct {
-	Height    *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	MajorPane *int32   `json:"MajorPane,omitempty" xml:"MajorPane,omitempty"`
-	PaneId    *int32   `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	Width     *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X         *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y         *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder    *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0.5
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	MajorPane *int32 `json:"MajorPane,omitempty" xml:"MajorPane,omitempty"`
+	// example:
+	//
+	// 0
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// 0.5
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.5
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.5
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanesPanes) String() string {
@@ -5553,11 +7003,35 @@ func (s *DescribeMPULayoutInfoListResponse) SetBody(v *DescribeMPULayoutInfoList
 
 type DescribePubUserListBySubUserRequest struct {
 	// APP ID。
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	SubUserId   *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testappid
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1614936817
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testuserid
+	SubUserId *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s DescribePubUserListBySubUserRequest) String() string {
@@ -5594,10 +7068,16 @@ func (s *DescribePubUserListBySubUserRequest) SetSubUserId(v string) *DescribePu
 }
 
 type DescribePubUserListBySubUserResponseBody struct {
+	// example:
+	//
+	// IN
 	CallStatus        *string                                                      `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
 	PubUserDetailList []*DescribePubUserListBySubUserResponseBodyPubUserDetailList `json:"PubUserDetailList,omitempty" xml:"PubUserDetailList,omitempty" type:"Repeated"`
-	RequestId         *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubUserDetail     *DescribePubUserListBySubUserResponseBodySubUserDetail       `json:"SubUserDetail,omitempty" xml:"SubUserDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId     *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubUserDetail *DescribePubUserListBySubUserResponseBodySubUserDetail `json:"SubUserDetail,omitempty" xml:"SubUserDetail,omitempty" type:"Struct"`
 }
 
 func (s DescribePubUserListBySubUserResponseBody) String() string {
@@ -5629,23 +7109,56 @@ func (s *DescribePubUserListBySubUserResponseBody) SetSubUserDetail(v *DescribeP
 }
 
 type DescribePubUserListBySubUserResponseBodyPubUserDetailList struct {
-	CallIdList     []*string                                                                 `json:"CallIdList,omitempty" xml:"CallIdList,omitempty" type:"Repeated"`
-	ClientType     *string                                                                   `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	CreatedTs      *int64                                                                    `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs    *int64                                                                    `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	Duration       *int64                                                                    `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Location       *string                                                                   `json:"Location,omitempty" xml:"Location,omitempty"`
-	Network        *string                                                                   `json:"Network,omitempty" xml:"Network,omitempty"`
-	NetworkList    []*string                                                                 `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	CallIdList []*string `json:"CallIdList,omitempty" xml:"CallIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// NATIVE
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// example:
+	//
+	// 1614936817
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// example:
+	//
+	// 0
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 浙江省-杭州市
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// 4G
+	Network     *string   `json:"Network,omitempty" xml:"Network,omitempty"`
+	NetworkList []*string `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
 	OnlineDuration *int64                                                                    `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
 	OnlinePeriods  []*DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
-	Os             *string                                                                   `json:"Os,omitempty" xml:"Os,omitempty"`
-	OsList         []*string                                                                 `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
-	Roles          []*string                                                                 `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	SdkVersion     *string                                                                   `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
-	SdkVersionList []*string                                                                 `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
-	UserId         *string                                                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserIdAlias    *string                                                                   `json:"UserIdAlias,omitempty" xml:"UserIdAlias,omitempty"`
+	// example:
+	//
+	// iOS
+	Os     *string   `json:"Os,omitempty" xml:"Os,omitempty"`
+	OsList []*string `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
+	Roles  []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1.0.0
+	SdkVersion     *string   `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	SdkVersionList []*string `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// testuserid
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 旁路转推
+	UserIdAlias *string `json:"UserIdAlias,omitempty" xml:"UserIdAlias,omitempty"`
 }
 
 func (s DescribePubUserListBySubUserResponseBodyPubUserDetailList) String() string {
@@ -5742,7 +7255,13 @@ func (s *DescribePubUserListBySubUserResponseBodyPubUserDetailList) SetUserIdAli
 }
 
 type DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods struct {
-	JoinTs  *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// example:
+	//
+	// 1614936817
 	LeaveTs *int64 `json:"LeaveTs,omitempty" xml:"LeaveTs,omitempty"`
 }
 
@@ -5765,22 +7284,55 @@ func (s *DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods)
 }
 
 type DescribePubUserListBySubUserResponseBodySubUserDetail struct {
-	ClientType     *string                                                               `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	CreatedTs      *int64                                                                `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs    *int64                                                                `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	Duration       *int64                                                                `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Location       *string                                                               `json:"Location,omitempty" xml:"Location,omitempty"`
-	Network        *string                                                               `json:"Network,omitempty" xml:"Network,omitempty"`
-	NetworkList    []*string                                                             `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// NATIVE
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// example:
+	//
+	// 1614936817
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// example:
+	//
+	// 0
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 浙江省-杭州市
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// 4G
+	Network     *string   `json:"Network,omitempty" xml:"Network,omitempty"`
+	NetworkList []*string `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
 	OnlineDuration *int64                                                                `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
 	OnlinePeriods  []*DescribePubUserListBySubUserResponseBodySubUserDetailOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
-	Os             *string                                                               `json:"Os,omitempty" xml:"Os,omitempty"`
-	OsList         []*string                                                             `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
-	Roles          []*string                                                             `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	SdkVersion     *string                                                               `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
-	SdkVersionList []*string                                                             `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
-	UserId         *string                                                               `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserIdAlias    *string                                                               `json:"UserIdAlias,omitempty" xml:"UserIdAlias,omitempty"`
+	// example:
+	//
+	// iOS
+	Os     *string   `json:"Os,omitempty" xml:"Os,omitempty"`
+	OsList []*string `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
+	Roles  []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1.0.0
+	SdkVersion     *string   `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	SdkVersionList []*string `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// testuserid
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 旁路转推
+	UserIdAlias *string `json:"UserIdAlias,omitempty" xml:"UserIdAlias,omitempty"`
 }
 
 func (s DescribePubUserListBySubUserResponseBodySubUserDetail) String() string {
@@ -5872,7 +7424,13 @@ func (s *DescribePubUserListBySubUserResponseBodySubUserDetail) SetUserIdAlias(v
 }
 
 type DescribePubUserListBySubUserResponseBodySubUserDetailOnlinePeriods struct {
-	JoinTs  *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// example:
+	//
+	// 1614936817
 	LeaveTs *int64 `json:"LeaveTs,omitempty" xml:"LeaveTs,omitempty"`
 }
 
@@ -5925,11 +7483,35 @@ func (s *DescribePubUserListBySubUserResponse) SetBody(v *DescribePubUserListByS
 
 type DescribeQoeMetricDataRequest struct {
 	// APP ID。
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testappid
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1614936817
+	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// example:
+	//
+	// 1614936817
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testuserid
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeQoeMetricDataRequest) String() string {
@@ -5967,6 +7549,9 @@ func (s *DescribeQoeMetricDataRequest) SetUserId(v string) *DescribeQoeMetricDat
 
 type DescribeQoeMetricDataResponseBody struct {
 	AudioData []*DescribeQoeMetricDataResponseBodyAudioData `json:"AudioData,omitempty" xml:"AudioData,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VideoData []*DescribeQoeMetricDataResponseBodyVideoData `json:"VideoData,omitempty" xml:"VideoData,omitempty" type:"Repeated"`
 }
@@ -5995,9 +7580,15 @@ func (s *DescribeQoeMetricDataResponseBody) SetVideoData(v []*DescribeQoeMetricD
 }
 
 type DescribeQoeMetricDataResponseBodyAudioData struct {
-	Nodes  []*DescribeQoeMetricDataResponseBodyAudioDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Type   *string                                            `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserId *string                                            `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Nodes []*DescribeQoeMetricDataResponseBodyAudioDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AUDIO
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// testuserid
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeQoeMetricDataResponseBodyAudioData) String() string {
@@ -6024,7 +7615,13 @@ func (s *DescribeQoeMetricDataResponseBodyAudioData) SetUserId(v string) *Descri
 }
 
 type DescribeQoeMetricDataResponseBodyAudioDataNodes struct {
+	// example:
+	//
+	// 1548670256
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 123
 	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -6047,9 +7644,15 @@ func (s *DescribeQoeMetricDataResponseBodyAudioDataNodes) SetY(v string) *Descri
 }
 
 type DescribeQoeMetricDataResponseBodyVideoData struct {
-	Nodes  []*DescribeQoeMetricDataResponseBodyVideoDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Type   *string                                            `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserId *string                                            `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Nodes []*DescribeQoeMetricDataResponseBodyVideoDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// VIDEO_CAMERA
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// testuserid
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeQoeMetricDataResponseBodyVideoData) String() string {
@@ -6076,7 +7679,13 @@ func (s *DescribeQoeMetricDataResponseBodyVideoData) SetUserId(v string) *Descri
 }
 
 type DescribeQoeMetricDataResponseBodyVideoDataNodes struct {
+	// example:
+	//
+	// 1548670256
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 123
 	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -6129,10 +7738,29 @@ func (s *DescribeQoeMetricDataResponse) SetBody(v *DescribeQoeMetricDataResponse
 
 type DescribeQualityAreaDistributionStatDataRequest struct {
 	// APP ID
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndDate    *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0rbd****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615910399
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// 中国
 	ParentArea *string `json:"ParentArea,omitempty" xml:"ParentArea,omitempty"`
-	StartDate  *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615824000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeQualityAreaDistributionStatDataRequest) String() string {
@@ -6165,7 +7793,10 @@ func (s *DescribeQualityAreaDistributionStatDataRequest) SetStartDate(v int64) *
 
 type DescribeQualityAreaDistributionStatDataResponseBody struct {
 	QualityStatDataList []*DescribeQualityAreaDistributionStatDataResponseBodyQualityStatDataList `json:"QualityStatDataList,omitempty" xml:"QualityStatDataList,omitempty" type:"Repeated"`
-	RequestId           *string                                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeQualityAreaDistributionStatDataResponseBody) String() string {
@@ -6187,17 +7818,50 @@ func (s *DescribeQualityAreaDistributionStatDataResponseBody) SetRequestId(v str
 }
 
 type DescribeQualityAreaDistributionStatDataResponseBodyQualityStatDataList struct {
-	AudioDelay                       *int64  `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
+	// example:
+	//
+	// 347
+	AudioDelay *int64 `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
+	// example:
+	//
+	// 0.9933
 	AudioHighQualityTransmissionRate *string `json:"AudioHighQualityTransmissionRate,omitempty" xml:"AudioHighQualityTransmissionRate,omitempty"`
-	AudioStuckRate                   *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
-	CallDurationRatio                *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
-	JoinChannelSucFiveSecRate        *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
-	JoinChannelSucRate               *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
-	Name                             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	VideoDelay                       *int64  `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
-	VideoFirstPicDuration            *int64  `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
+	// example:
+	//
+	// 0.0021
+	AudioStuckRate *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
+	// example:
+	//
+	// 0.6654
+	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
+	// example:
+	//
+	// 0.9338
+	JoinChannelSucFiveSecRate *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
+	// example:
+	//
+	// 0.9356
+	JoinChannelSucRate *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
+	// example:
+	//
+	// 中国_浙江省
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 291
+	VideoDelay *int64 `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
+	// example:
+	//
+	// 1363
+	VideoFirstPicDuration *int64 `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
+	// example:
+	//
+	// 0.9967
 	VideoHighQualityTransmissionRate *string `json:"VideoHighQualityTransmissionRate,omitempty" xml:"VideoHighQualityTransmissionRate,omitempty"`
-	VideoStuckRate                   *string `json:"VideoStuckRate,omitempty" xml:"VideoStuckRate,omitempty"`
+	// example:
+	//
+	// 0.0058
+	VideoStuckRate *string `json:"VideoStuckRate,omitempty" xml:"VideoStuckRate,omitempty"`
 }
 
 func (s DescribeQualityAreaDistributionStatDataResponseBodyQualityStatDataList) String() string {
@@ -6294,10 +7958,31 @@ func (s *DescribeQualityAreaDistributionStatDataResponse) SetBody(v *DescribeQua
 
 type DescribeQualityDistributionStatDataRequest struct {
 	// APP ID
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndDate   *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	StatDim   *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0rbd****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615910399
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615824000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CHANNEL_ONLINE
+	StatDim *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
 }
 
 func (s DescribeQualityDistributionStatDataRequest) String() string {
@@ -6330,7 +8015,10 @@ func (s *DescribeQualityDistributionStatDataRequest) SetStatDim(v string) *Descr
 
 type DescribeQualityDistributionStatDataResponseBody struct {
 	QualityStatDataList []*DescribeQualityDistributionStatDataResponseBodyQualityStatDataList `json:"QualityStatDataList,omitempty" xml:"QualityStatDataList,omitempty" type:"Repeated"`
-	RequestId           *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeQualityDistributionStatDataResponseBody) String() string {
@@ -6352,17 +8040,50 @@ func (s *DescribeQualityDistributionStatDataResponseBody) SetRequestId(v string)
 }
 
 type DescribeQualityDistributionStatDataResponseBodyQualityStatDataList struct {
-	AudioDelay                       *int64  `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
+	// example:
+	//
+	// 554
+	AudioDelay *int64 `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
+	// example:
+	//
+	// 0.9953
 	AudioHighQualityTransmissionRate *string `json:"AudioHighQualityTransmissionRate,omitempty" xml:"AudioHighQualityTransmissionRate,omitempty"`
-	AudioStuckRate                   *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
-	CallDurationRatio                *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
-	JoinChannelSucFiveSecRate        *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
-	JoinChannelSucRate               *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
-	Name                             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	VideoDelay                       *int64  `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
-	VideoFirstPicDuration            *int64  `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
+	// example:
+	//
+	// 0.0014
+	AudioStuckRate *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
+	// example:
+	//
+	// 1.0000
+	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
+	// example:
+	//
+	// 0.9560
+	JoinChannelSucFiveSecRate *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
+	// example:
+	//
+	// 0.9575
+	JoinChannelSucRate *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
+	// example:
+	//
+	// ONE_TO_FIVE
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 517
+	VideoDelay *int64 `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
+	// example:
+	//
+	// 1299
+	VideoFirstPicDuration *int64 `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
+	// example:
+	//
+	// 0.9981
 	VideoHighQualityTransmissionRate *string `json:"VideoHighQualityTransmissionRate,omitempty" xml:"VideoHighQualityTransmissionRate,omitempty"`
-	VideoStuckRate                   *string `json:"VideoStuckRate,omitempty" xml:"VideoStuckRate,omitempty"`
+	// example:
+	//
+	// 0.0264
+	VideoStuckRate *string `json:"VideoStuckRate,omitempty" xml:"VideoStuckRate,omitempty"`
 }
 
 func (s DescribeQualityDistributionStatDataResponseBodyQualityStatDataList) String() string {
@@ -6459,9 +8180,25 @@ func (s *DescribeQualityDistributionStatDataResponse) SetBody(v *DescribeQuality
 
 type DescribeQualityOsSdkVersionDistributionStatDataRequest struct {
 	// APP ID
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndDate   *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0rbd****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615910399
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615824000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeQualityOsSdkVersionDistributionStatDataRequest) String() string {
@@ -6489,7 +8226,10 @@ func (s *DescribeQualityOsSdkVersionDistributionStatDataRequest) SetStartDate(v 
 
 type DescribeQualityOsSdkVersionDistributionStatDataResponseBody struct {
 	QualityOsSdkVersionStatDataList []*DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdkVersionStatDataList `json:"QualityOsSdkVersionStatDataList,omitempty" xml:"QualityOsSdkVersionStatDataList,omitempty" type:"Repeated"`
-	RequestId                       *string                                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeQualityOsSdkVersionDistributionStatDataResponseBody) String() string {
@@ -6511,18 +8251,54 @@ func (s *DescribeQualityOsSdkVersionDistributionStatDataResponseBody) SetRequest
 }
 
 type DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdkVersionStatDataList struct {
-	AudioDelay                       *int64  `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
+	// example:
+	//
+	// 248
+	AudioDelay *int64 `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
+	// example:
+	//
+	// 0.9987
 	AudioHighQualityTransmissionRate *string `json:"AudioHighQualityTransmissionRate,omitempty" xml:"AudioHighQualityTransmissionRate,omitempty"`
-	AudioStuckRate                   *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
-	CallDurationRatio                *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
-	JoinChannelSucFiveSecRate        *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
-	JoinChannelSucRate               *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
-	Name                             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Os                               *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	VideoDelay                       *int64  `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
-	VideoFirstPicDuration            *int64  `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
+	// example:
+	//
+	// 0.0011
+	AudioStuckRate *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
+	// example:
+	//
+	// 0.0984
+	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
+	// example:
+	//
+	// 0.8276
+	JoinChannelSucFiveSecRate *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
+	// example:
+	//
+	// 0.8276
+	JoinChannelSucRate *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
+	// example:
+	//
+	// 2.1.0.210316.dev--release/rtcsdk_v2.1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// macOS
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// example:
+	//
+	// 333
+	VideoDelay *int64 `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
+	// example:
+	//
+	// 5643
+	VideoFirstPicDuration *int64 `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
+	// example:
+	//
+	// 0.9997
 	VideoHighQualityTransmissionRate *string `json:"VideoHighQualityTransmissionRate,omitempty" xml:"VideoHighQualityTransmissionRate,omitempty"`
-	VideoStuckRate                   *string `json:"VideoStuckRate,omitempty" xml:"VideoStuckRate,omitempty"`
+	// example:
+	//
+	// 0.0054
+	VideoStuckRate *string `json:"VideoStuckRate,omitempty" xml:"VideoStuckRate,omitempty"`
 }
 
 func (s DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdkVersionStatDataList) String() string {
@@ -6624,10 +8400,31 @@ func (s *DescribeQualityOsSdkVersionDistributionStatDataResponse) SetBody(v *Des
 
 type DescribeQualityOverallDataRequest struct {
 	// APP ID
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndDate   *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Types     *string `json:"Types,omitempty" xml:"Types,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0rbd****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615910399
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615824000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// JOIN_CHANNEL_SUC_RATE
+	Types *string `json:"Types,omitempty" xml:"Types,omitempty"`
 }
 
 func (s DescribeQualityOverallDataRequest) String() string {
@@ -6660,7 +8457,10 @@ func (s *DescribeQualityOverallDataRequest) SetTypes(v string) *DescribeQualityO
 
 type DescribeQualityOverallDataResponseBody struct {
 	QualityOverallData []*DescribeQualityOverallDataResponseBodyQualityOverallData `json:"QualityOverallData,omitempty" xml:"QualityOverallData,omitempty" type:"Repeated"`
-	RequestId          *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeQualityOverallDataResponseBody) String() string {
@@ -6682,9 +8482,15 @@ func (s *DescribeQualityOverallDataResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeQualityOverallDataResponseBodyQualityOverallData struct {
+	// example:
+	//
+	// 0.9376
 	Average *string                                                          `json:"Average,omitempty" xml:"Average,omitempty"`
 	Nodes   []*DescribeQualityOverallDataResponseBodyQualityOverallDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Type    *string                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// JOIN_CHANNEL_SUC_RATE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeQualityOverallDataResponseBodyQualityOverallData) String() string {
@@ -6711,7 +8517,13 @@ func (s *DescribeQualityOverallDataResponseBodyQualityOverallData) SetType(v str
 }
 
 type DescribeQualityOverallDataResponseBodyQualityOverallDataNodes struct {
+	// example:
+	//
+	// 1615831200
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 1.0000
 	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -6763,14 +8575,37 @@ func (s *DescribeQualityOverallDataResponse) SetBody(v *DescribeQualityOverallDa
 }
 
 type DescribeRecordFilesRequest struct {
-	AppId     *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId *string   `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	EndTime   *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId   *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNum   *int32    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize  *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TaskIds   []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// yourChannelId
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 2020-11-02T17:36:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2020-11-01T17:36:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// yourTaskId
+	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRecordFilesRequest) String() string {
@@ -6823,9 +8658,18 @@ func (s *DescribeRecordFilesRequest) SetTaskIds(v []*string) *DescribeRecordFile
 
 type DescribeRecordFilesResponseBody struct {
 	RecordFiles []*DescribeRecordFilesResponseBodyRecordFiles `json:"RecordFiles,omitempty" xml:"RecordFiles,omitempty" type:"Repeated"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum    *int64                                        `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPage   *int64                                        `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s DescribeRecordFilesResponseBody) String() string {
@@ -6857,14 +8701,38 @@ func (s *DescribeRecordFilesResponseBody) SetTotalPage(v int64) *DescribeRecordF
 }
 
 type DescribeRecordFilesResponseBodyRecordFiles struct {
-	AppId      *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId  *string  `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CreateTime *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Duration   *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	StartTime  *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StopTime   *string  `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	TaskId     *string  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Url        *string  `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// yourChannelId
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 2020-10-02T17:36:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1800
+	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 2020-11-01T17:36:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2020-11-02T17:36:00Z
+	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	// example:
+	//
+	// yourTaskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// http://rtc-demo.oss-cn-****.aliyuncs.com/record/10-15-1/****/record-002_yourTaskId/example.m3u8
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeRecordFilesResponseBodyRecordFiles) String() string {
@@ -6945,11 +8813,25 @@ func (s *DescribeRecordFilesResponse) SetBody(v *DescribeRecordFilesResponseBody
 }
 
 type DescribeRecordTemplatesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 1
-	OwnerId     *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNum     *int32    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize    *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 76dasgb****
 	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
 }
 
@@ -6987,10 +8869,19 @@ func (s *DescribeRecordTemplatesRequest) SetTemplateIds(v []*string) *DescribeRe
 }
 
 type DescribeRecordTemplatesResponseBody struct {
+	// example:
+	//
+	// C292B80E-5175-4BA4-8CC292B80E-5175-4BA4-8C1E-2ABEC4D7C2FE1E-2ABEC4D7****
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Templates []*DescribeRecordTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
-	TotalNum  *int64                                          `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPage *int64                                          `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s DescribeRecordTemplatesResponseBody) String() string {
@@ -7022,24 +8913,60 @@ func (s *DescribeRecordTemplatesResponseBody) SetTotalPage(v int64) *DescribeRec
 }
 
 type DescribeRecordTemplatesResponseBodyTemplates struct {
-	BackgroundColor    *int32                                                      `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
-	Backgrounds        []*DescribeRecordTemplatesResponseBodyTemplatesBackgrounds  `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
-	ClockWidgets       []*DescribeRecordTemplatesResponseBodyTemplatesClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
-	CreateTime         *string                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DelayStopTime      *int32                                                      `json:"DelayStopTime,omitempty" xml:"DelayStopTime,omitempty"`
-	EnableM3u8DateTime *bool                                                       `json:"EnableM3u8DateTime,omitempty" xml:"EnableM3u8DateTime,omitempty"`
-	FileSplitInterval  *int32                                                      `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
-	Formats            []*string                                                   `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
-	HttpCallbackUrl    *string                                                     `json:"HttpCallbackUrl,omitempty" xml:"HttpCallbackUrl,omitempty"`
-	LayoutIds          []*int64                                                    `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
-	MediaEncode        *int32                                                      `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
-	MnsQueue           *string                                                     `json:"MnsQueue,omitempty" xml:"MnsQueue,omitempty"`
-	Name               *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	OssBucket          *string                                                     `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssFilePrefix      *string                                                     `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
-	TaskProfile        *string                                                     `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
-	TemplateId         *string                                                     `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Watermarks         []*DescribeRecordTemplatesResponseBodyTemplatesWatermarks   `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	BackgroundColor *int32                                                      `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	Backgrounds     []*DescribeRecordTemplatesResponseBodyTemplatesBackgrounds  `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	ClockWidgets    []*DescribeRecordTemplatesResponseBodyTemplatesClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2020-09-04T06:22:15Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 180
+	DelayStopTime *int32 `json:"DelayStopTime,omitempty" xml:"DelayStopTime,omitempty"`
+	// example:
+	//
+	// false
+	EnableM3u8DateTime *bool `json:"EnableM3u8DateTime,omitempty" xml:"EnableM3u8DateTime,omitempty"`
+	// example:
+	//
+	// 1800
+	FileSplitInterval *int32    `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
+	Formats           []*string `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://example.com/callback
+	HttpCallbackUrl *string  `json:"HttpCallbackUrl,omitempty" xml:"HttpCallbackUrl,omitempty"`
+	LayoutIds       []*int64 `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 50
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// example:
+	//
+	// record-callback-queue
+	MnsQueue *string `json:"MnsQueue,omitempty" xml:"MnsQueue,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// rtc-record-oss
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// example:
+	//
+	// record/pre/{AppId}/{ChannelId_TaskId}/{EscapedStartTime}_{EscapedEndTime}
+	OssFilePrefix *string `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
+	// example:
+	//
+	// 4IN_1080P
+	TaskProfile *string `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
+	// example:
+	//
+	// 1ca698e2-57fa-4314-8e11-00d950d4****
+	TemplateId *string                                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Watermarks []*DescribeRecordTemplatesResponseBodyTemplatesWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRecordTemplatesResponseBodyTemplates) String() string {
@@ -7141,13 +9068,34 @@ func (s *DescribeRecordTemplatesResponseBodyTemplates) SetWatermarks(v []*Descri
 }
 
 type DescribeRecordTemplatesResponseBodyTemplatesBackgrounds struct {
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s DescribeRecordTemplatesResponseBodyTemplatesBackgrounds) String() string {
@@ -7194,12 +9142,30 @@ func (s *DescribeRecordTemplatesResponseBodyTemplatesBackgrounds) SetZOrder(v in
 }
 
 type DescribeRecordTemplatesResponseBodyTemplatesClockWidgets struct {
-	FontColor *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize  *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	FontType  *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
-	X         *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y         *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder    *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	FontColor *int32 `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// example:
+	//
+	// 1
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// example:
+	//
+	// 0
+	FontType *int32 `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s DescribeRecordTemplatesResponseBodyTemplatesClockWidgets) String() string {
@@ -7241,14 +9207,38 @@ func (s *DescribeRecordTemplatesResponseBodyTemplatesClockWidgets) SetZOrder(v i
 }
 
 type DescribeRecordTemplatesResponseBodyTemplatesWatermarks struct {
-	Alpha   *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s DescribeRecordTemplatesResponseBodyTemplatesWatermarks) String() string {
@@ -7329,15 +9319,45 @@ func (s *DescribeRecordTemplatesResponse) SetBody(v *DescribeRecordTemplatesResp
 }
 
 type DescribeRtcChannelListRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo      *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// aoe****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// testChannel
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn
 	ServiceArea *string `json:"ServiceArea,omitempty" xml:"ServiceArea,omitempty"`
-	SortType    *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	TimePoint   *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// desc
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2018-01-29T00:00:00Z
+	TimePoint *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
+	// example:
+	//
+	// testUser
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeRtcChannelListRequest) String() string {
@@ -7395,10 +9415,22 @@ func (s *DescribeRtcChannelListRequest) SetUserId(v string) *DescribeRtcChannelL
 
 type DescribeRtcChannelListResponseBody struct {
 	ChannelList *DescribeRtcChannelListResponseBodyChannelList `json:"ChannelList,omitempty" xml:"ChannelList,omitempty" type:"Struct"`
-	PageNo      *int64                                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize    *int64                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCnt    *int64                                         `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1000
+	TotalCnt *int64 `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
 }
 
 func (s DescribeRtcChannelListResponseBody) String() string {
@@ -7452,11 +9484,23 @@ func (s *DescribeRtcChannelListResponseBodyChannelList) SetChannelList(v []*Desc
 }
 
 type DescribeRtcChannelListResponseBodyChannelListChannelList struct {
-	CallArea     *DescribeRtcChannelListResponseBodyChannelListChannelListCallArea `json:"CallArea,omitempty" xml:"CallArea,omitempty" type:"Struct"`
-	ChannelId    *string                                                           `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	EndTime      *string                                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime    *string                                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TotalUserCnt *int64                                                            `json:"TotalUserCnt,omitempty" xml:"TotalUserCnt,omitempty"`
+	CallArea *DescribeRtcChannelListResponseBodyChannelListChannelListCallArea `json:"CallArea,omitempty" xml:"CallArea,omitempty" type:"Struct"`
+	// example:
+	//
+	// testChannel
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 2018-01-29T02:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2018-01-29T01:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2
+	TotalUserCnt *int64 `json:"TotalUserCnt,omitempty" xml:"TotalUserCnt,omitempty"`
 }
 
 func (s DescribeRtcChannelListResponseBodyChannelListChannelList) String() string {
@@ -7539,9 +9583,24 @@ func (s *DescribeRtcChannelListResponse) SetBody(v *DescribeRtcChannelListRespon
 }
 
 type DescribeRtcChannelMetricRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aoe****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2018-01-29T00:00:00Z
 	TimePoint *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
 }
 
@@ -7575,7 +9634,10 @@ func (s *DescribeRtcChannelMetricRequest) SetTimePoint(v string) *DescribeRtcCha
 
 type DescribeRtcChannelMetricResponseBody struct {
 	ChannelMetricInfo *DescribeRtcChannelMetricResponseBodyChannelMetricInfo `json:"ChannelMetricInfo,omitempty" xml:"ChannelMetricInfo,omitempty" type:"Struct"`
-	RequestId         *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRtcChannelMetricResponseBody) String() string {
@@ -7620,12 +9682,30 @@ func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfo) SetDuration(v *D
 }
 
 type DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric struct {
-	ChannelId    *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PubUserCount *int32  `json:"PubUserCount,omitempty" xml:"PubUserCount,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	SubUserCount *int32  `json:"SubUserCount,omitempty" xml:"SubUserCount,omitempty"`
-	UserCount    *int32  `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
+	// example:
+	//
+	// example_channel
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 2019-06-06T18:57:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 10
+	PubUserCount *int32 `json:"PubUserCount,omitempty" xml:"PubUserCount,omitempty"`
+	// example:
+	//
+	// 2019-06-06T17:57:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 25
+	SubUserCount *int32 `json:"SubUserCount,omitempty" xml:"SubUserCount,omitempty"`
+	// example:
+	//
+	// 30
+	UserCount *int32 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
 }
 
 func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric) String() string {
@@ -7690,11 +9770,26 @@ func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration) SetSubDu
 }
 
 type DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration struct {
-	Audio     *int32 `json:"Audio,omitempty" xml:"Audio,omitempty"`
-	Content   *int32 `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 100
+	Audio *int32 `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	// example:
+	//
+	// 100
+	Content *int32 `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 100
 	Video1080 *int32 `json:"Video1080,omitempty" xml:"Video1080,omitempty"`
-	Video360  *int32 `json:"Video360,omitempty" xml:"Video360,omitempty"`
-	Video720  *int32 `json:"Video720,omitempty" xml:"Video720,omitempty"`
+	// example:
+	//
+	// 100
+	Video360 *int32 `json:"Video360,omitempty" xml:"Video360,omitempty"`
+	// example:
+	//
+	// 100
+	Video720 *int32 `json:"Video720,omitempty" xml:"Video720,omitempty"`
 }
 
 func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration) String() string {
@@ -7731,11 +9826,26 @@ func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuratio
 }
 
 type DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration struct {
-	Audio     *int32 `json:"Audio,omitempty" xml:"Audio,omitempty"`
-	Content   *int32 `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 100
+	Audio *int32 `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	// example:
+	//
+	// 100
+	Content *int32 `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 100
 	Video1080 *int32 `json:"Video1080,omitempty" xml:"Video1080,omitempty"`
-	Video360  *int32 `json:"Video360,omitempty" xml:"Video360,omitempty"`
-	Video720  *int32 `json:"Video720,omitempty" xml:"Video720,omitempty"`
+	// example:
+	//
+	// 100
+	Video360 *int32 `json:"Video360,omitempty" xml:"Video360,omitempty"`
+	// example:
+	//
+	// 100
+	Video720 *int32 `json:"Video720,omitempty" xml:"Video720,omitempty"`
 }
 
 func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration) String() string {
@@ -7801,12 +9911,27 @@ func (s *DescribeRtcChannelMetricResponse) SetBody(v *DescribeRtcChannelMetricRe
 }
 
 type DescribeRtcDurationDataRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval    *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 2020-02-04T07:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 3600
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// CN
 	ServiceArea *string `json:"ServiceArea,omitempty" xml:"ServiceArea,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2020-02-04T05:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeRtcDurationDataRequest) String() string {
@@ -7849,7 +9974,10 @@ func (s *DescribeRtcDurationDataRequest) SetStartTime(v string) *DescribeRtcDura
 
 type DescribeRtcDurationDataResponseBody struct {
 	DurationDataPerInterval *DescribeRtcDurationDataResponseBodyDurationDataPerInterval `json:"DurationDataPerInterval,omitempty" xml:"DurationDataPerInterval,omitempty" type:"Struct"`
-	RequestId               *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRtcDurationDataResponseBody) String() string {
@@ -7888,13 +10016,34 @@ func (s *DescribeRtcDurationDataResponseBodyDurationDataPerInterval) SetDuration
 }
 
 type DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule struct {
-	AudioDuration   *int64  `json:"AudioDuration,omitempty" xml:"AudioDuration,omitempty"`
-	ContentDuration *int64  `json:"ContentDuration,omitempty" xml:"ContentDuration,omitempty"`
-	TimeStamp       *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	TotalDuration   *int64  `json:"TotalDuration,omitempty" xml:"TotalDuration,omitempty"`
-	V1080Duration   *int64  `json:"V1080Duration,omitempty" xml:"V1080Duration,omitempty"`
-	V360Duration    *int64  `json:"V360Duration,omitempty" xml:"V360Duration,omitempty"`
-	V720Duration    *int64  `json:"V720Duration,omitempty" xml:"V720Duration,omitempty"`
+	// example:
+	//
+	// 200
+	AudioDuration *int64 `json:"AudioDuration,omitempty" xml:"AudioDuration,omitempty"`
+	// example:
+	//
+	// 200
+	ContentDuration *int64 `json:"ContentDuration,omitempty" xml:"ContentDuration,omitempty"`
+	// example:
+	//
+	// 2020-02-04T05:00:00Z
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// example:
+	//
+	// 1000
+	TotalDuration *int64 `json:"TotalDuration,omitempty" xml:"TotalDuration,omitempty"`
+	// example:
+	//
+	// 300
+	V1080Duration *int64 `json:"V1080Duration,omitempty" xml:"V1080Duration,omitempty"`
+	// example:
+	//
+	// 300
+	V360Duration *int64 `json:"V360Duration,omitempty" xml:"V360Duration,omitempty"`
+	// example:
+	//
+	// 200
+	V720Duration *int64 `json:"V720Duration,omitempty" xml:"V720Duration,omitempty"`
 }
 
 func (s DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule) String() string {
@@ -7970,12 +10119,27 @@ func (s *DescribeRtcDurationDataResponse) SetBody(v *DescribeRtcDurationDataResp
 }
 
 type DescribeRtcPeakChannelCntDataRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval    *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 2018-01-29T00:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 3600
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// CN
 	ServiceArea *string `json:"ServiceArea,omitempty" xml:"ServiceArea,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2018-01-29T00:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeRtcPeakChannelCntDataRequest) String() string {
@@ -8018,7 +10182,10 @@ func (s *DescribeRtcPeakChannelCntDataRequest) SetStartTime(v string) *DescribeR
 
 type DescribeRtcPeakChannelCntDataResponseBody struct {
 	PeakChannelCntDataPerInterval *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval `json:"PeakChannelCntDataPerInterval,omitempty" xml:"PeakChannelCntDataPerInterval,omitempty" type:"Struct"`
-	RequestId                     *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRtcPeakChannelCntDataResponseBody) String() string {
@@ -8057,9 +10224,18 @@ func (s *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval)
 }
 
 type DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule struct {
-	ActiveChannelPeak     *int64  `json:"ActiveChannelPeak,omitempty" xml:"ActiveChannelPeak,omitempty"`
+	// example:
+	//
+	// 10
+	ActiveChannelPeak *int64 `json:"ActiveChannelPeak,omitempty" xml:"ActiveChannelPeak,omitempty"`
+	// example:
+	//
+	// 2018-01-29T00:01:00Z
 	ActiveChannelPeakTime *string `json:"ActiveChannelPeakTime,omitempty" xml:"ActiveChannelPeakTime,omitempty"`
-	TimeStamp             *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// example:
+	//
+	// 2018-01-29T00:00:00Z
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule) String() string {
@@ -8115,12 +10291,27 @@ func (s *DescribeRtcPeakChannelCntDataResponse) SetBody(v *DescribeRtcPeakChanne
 }
 
 type DescribeRtcUserCntDataRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval    *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 2018-01-29T01:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 3600
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// CN
 	ServiceArea *string `json:"ServiceArea,omitempty" xml:"ServiceArea,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2018-01-29T00:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeRtcUserCntDataRequest) String() string {
@@ -8162,6 +10353,9 @@ func (s *DescribeRtcUserCntDataRequest) SetStartTime(v string) *DescribeRtcUserC
 }
 
 type DescribeRtcUserCntDataResponseBody struct {
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
 	RequestId              *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserCntDataPerInterval *DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval `json:"UserCntDataPerInterval,omitempty" xml:"UserCntDataPerInterval,omitempty" type:"Struct"`
 }
@@ -8202,8 +10396,14 @@ func (s *DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval) SetUserCntMod
 }
 
 type DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule struct {
-	ActiveUserCnt *int64  `json:"ActiveUserCnt,omitempty" xml:"ActiveUserCnt,omitempty"`
-	TimeStamp     *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// example:
+	//
+	// 10
+	ActiveUserCnt *int64 `json:"ActiveUserCnt,omitempty" xml:"ActiveUserCnt,omitempty"`
+	// example:
+	//
+	// 2018-01-29T00:00:00Z
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule) String() string {
@@ -8255,10 +10455,26 @@ func (s *DescribeRtcUserCntDataResponse) SetBody(v *DescribeRtcUserCntDataRespon
 
 type DescribeUsageAreaDistributionStatDataRequest struct {
 	// APP ID
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0rbd****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615910399
 	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	ParentArea *string `json:"ParentArea,omitempty" xml:"ParentArea,omitempty"`
-	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615824000
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeUsageAreaDistributionStatDataRequest) String() string {
@@ -8290,6 +10506,9 @@ func (s *DescribeUsageAreaDistributionStatDataRequest) SetStartDate(v string) *D
 }
 
 type DescribeUsageAreaDistributionStatDataResponseBody struct {
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId         *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UsageAreaStatList []*DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList `json:"UsageAreaStatList,omitempty" xml:"UsageAreaStatList,omitempty" type:"Repeated"`
 }
@@ -8313,10 +10532,22 @@ func (s *DescribeUsageAreaDistributionStatDataResponseBody) SetUsageAreaStatList
 }
 
 type DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList struct {
-	AudioCallDuration *int32  `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TotalCallDuration *int32  `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
-	VideoCallDuration *int32  `json:"VideoCallDuration,omitempty" xml:"VideoCallDuration,omitempty"`
+	// example:
+	//
+	// 45
+	AudioCallDuration *int32 `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
+	// example:
+	//
+	// 中国
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 4821
+	TotalCallDuration *int32 `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
+	// example:
+	//
+	// 4776
+	VideoCallDuration *int32 `json:"VideoCallDuration,omitempty" xml:"VideoCallDuration,omitempty"`
 }
 
 func (s DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList) String() string {
@@ -8378,10 +10609,27 @@ func (s *DescribeUsageAreaDistributionStatDataResponse) SetBody(v *DescribeUsage
 
 type DescribeUsageDistributionStatDataRequest struct {
 	// APP ID
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndDate   *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	StatDim   *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
+	//
+	// This parameter is required.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615910399
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615824000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CHANNEL_ONLINE
+	StatDim *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
 }
 
 func (s DescribeUsageDistributionStatDataRequest) String() string {
@@ -8413,6 +10661,9 @@ func (s *DescribeUsageDistributionStatDataRequest) SetStatDim(v string) *Describ
 }
 
 type DescribeUsageDistributionStatDataResponseBody struct {
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId     *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UsageStatList []*DescribeUsageDistributionStatDataResponseBodyUsageStatList `json:"UsageStatList,omitempty" xml:"UsageStatList,omitempty" type:"Repeated"`
 }
@@ -8436,11 +10687,26 @@ func (s *DescribeUsageDistributionStatDataResponseBody) SetUsageStatList(v []*De
 }
 
 type DescribeUsageDistributionStatDataResponseBodyUsageStatList struct {
-	AudioCallDuration *int64  `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
+	// example:
+	//
+	// 51
+	AudioCallDuration *int64 `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
+	// example:
+	//
+	// 0.9782
 	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TotalCallDuration *int64  `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
-	VideoCallDuration *int64  `json:"VideoCallDuration,omitempty" xml:"VideoCallDuration,omitempty"`
+	// example:
+	//
+	// ONE_TO_FIVE
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 10636
+	TotalCallDuration *int64 `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
+	// example:
+	//
+	// 10585
+	VideoCallDuration *int64 `json:"VideoCallDuration,omitempty" xml:"VideoCallDuration,omitempty"`
 }
 
 func (s DescribeUsageDistributionStatDataResponseBodyUsageStatList) String() string {
@@ -8507,9 +10773,25 @@ func (s *DescribeUsageDistributionStatDataResponse) SetBody(v *DescribeUsageDist
 
 type DescribeUsageOsSdkVersionDistributionStatDataRequest struct {
 	// APP ID
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndDate   *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0rbd****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615910399
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615824000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeUsageOsSdkVersionDistributionStatDataRequest) String() string {
@@ -8536,6 +10818,9 @@ func (s *DescribeUsageOsSdkVersionDistributionStatDataRequest) SetStartDate(v in
 }
 
 type DescribeUsageOsSdkVersionDistributionStatDataResponseBody struct {
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId                 *string                                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UsageOsSdkVersionStatList []*DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVersionStatList `json:"UsageOsSdkVersionStatList,omitempty" xml:"UsageOsSdkVersionStatList,omitempty" type:"Repeated"`
 }
@@ -8559,12 +10844,30 @@ func (s *DescribeUsageOsSdkVersionDistributionStatDataResponseBody) SetUsageOsSd
 }
 
 type DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVersionStatList struct {
-	AudioCallDuration *int64  `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
+	// example:
+	//
+	// 3
+	AudioCallDuration *int64 `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
+	// example:
+	//
+	// 0.0984
 	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Os                *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	TotalCallDuration *int64  `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
-	VideoCallDuration *int64  `json:"VideoCallDuration,omitempty" xml:"VideoCallDuration,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// macOS
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// example:
+	//
+	// 476
+	TotalCallDuration *int64 `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
+	// example:
+	//
+	// 473
+	VideoCallDuration *int64 `json:"VideoCallDuration,omitempty" xml:"VideoCallDuration,omitempty"`
 }
 
 func (s DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVersionStatList) String() string {
@@ -8636,10 +10939,31 @@ func (s *DescribeUsageOsSdkVersionDistributionStatDataResponse) SetBody(v *Descr
 
 type DescribeUsageOverallDataRequest struct {
 	// APP ID
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndDate   *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Types     *string `json:"Types,omitempty" xml:"Types,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a2hz****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615910399
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1615824000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ONLINE_USER_PEAK
+	Types *string `json:"Types,omitempty" xml:"Types,omitempty"`
 }
 
 func (s DescribeUsageOverallDataRequest) String() string {
@@ -8671,6 +10995,9 @@ func (s *DescribeUsageOverallDataRequest) SetTypes(v string) *DescribeUsageOvera
 }
 
 type DescribeUsageOverallDataResponseBody struct {
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UsageOverallData []*DescribeUsageOverallDataResponseBodyUsageOverallData `json:"UsageOverallData,omitempty" xml:"UsageOverallData,omitempty" type:"Repeated"`
 }
@@ -8695,7 +11022,10 @@ func (s *DescribeUsageOverallDataResponseBody) SetUsageOverallData(v []*Describe
 
 type DescribeUsageOverallDataResponseBodyUsageOverallData struct {
 	Nodes []*DescribeUsageOverallDataResponseBodyUsageOverallDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Type  *string                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// ONLINE_USER_PEAK
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeUsageOverallDataResponseBodyUsageOverallData) String() string {
@@ -8717,7 +11047,13 @@ func (s *DescribeUsageOverallDataResponseBodyUsageOverallData) SetType(v string)
 }
 
 type DescribeUsageOverallDataResponseBodyUsageOverallDataNodes struct {
+	// example:
+	//
+	// 1615824000
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 1
 	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -8769,10 +11105,25 @@ func (s *DescribeUsageOverallDataResponse) SetBody(v *DescribeUsageOverallDataRe
 }
 
 type DescribeUserInfoInChannelRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4eah****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testId
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeUserInfoInChannelRequest) String() string {
@@ -8804,11 +11155,23 @@ func (s *DescribeUserInfoInChannelRequest) SetUserId(v string) *DescribeUserInfo
 }
 
 type DescribeUserInfoInChannelResponseBody struct {
-	IsChannelExist *bool                                            `json:"IsChannelExist,omitempty" xml:"IsChannelExist,omitempty"`
-	IsInChannel    *bool                                            `json:"IsInChannel,omitempty" xml:"IsInChannel,omitempty"`
-	Property       []*DescribeUserInfoInChannelResponseBodyProperty `json:"Property,omitempty" xml:"Property,omitempty" type:"Repeated"`
-	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Timestamp      *int32                                           `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// true
+	IsChannelExist *bool `json:"IsChannelExist,omitempty" xml:"IsChannelExist,omitempty"`
+	// example:
+	//
+	// true
+	IsInChannel *bool                                            `json:"IsInChannel,omitempty" xml:"IsInChannel,omitempty"`
+	Property    []*DescribeUserInfoInChannelResponseBodyProperty `json:"Property,omitempty" xml:"Property,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 6159ba01-6687-4fb2-a831-f0cd8d188648
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1557909133
+	Timestamp *int32 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s DescribeUserInfoInChannelResponseBody) String() string {
@@ -8845,8 +11208,17 @@ func (s *DescribeUserInfoInChannelResponseBody) SetTimestamp(v int32) *DescribeU
 }
 
 type DescribeUserInfoInChannelResponseBodyProperty struct {
-	Join    *int32  `json:"Join,omitempty" xml:"Join,omitempty"`
-	Role    *int32  `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// 1557909133
+	Join *int32 `json:"Join,omitempty" xml:"Join,omitempty"`
+	// example:
+	//
+	// 1
+	Role *int32 `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// xa744sxx8rtobgj****
 	Session *string `json:"Session,omitempty" xml:"Session,omitempty"`
 }
 
@@ -8903,9 +11275,19 @@ func (s *DescribeUserInfoInChannelResponse) SetBody(v *DescribeUserInfoInChannel
 }
 
 type DisableAutoLiveStreamRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RuleId  *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DisableAutoLiveStreamRuleRequest) String() string {
@@ -8932,6 +11314,9 @@ func (s *DisableAutoLiveStreamRuleRequest) SetRuleId(v int64) *DisableAutoLiveSt
 }
 
 type DisableAutoLiveStreamRuleResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8978,9 +11363,19 @@ func (s *DisableAutoLiveStreamRuleResponse) SetBody(v *DisableAutoLiveStreamRule
 }
 
 type EnableAutoLiveStreamRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RuleId  *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s EnableAutoLiveStreamRuleRequest) String() string {
@@ -9007,6 +11402,9 @@ func (s *EnableAutoLiveStreamRuleRequest) SetRuleId(v int64) *EnableAutoLiveStre
 }
 
 type EnableAutoLiveStreamRuleResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9053,9 +11451,19 @@ func (s *EnableAutoLiveStreamRuleResponse) SetBody(v *EnableAutoLiveStreamRuleRe
 }
 
 type GetMPUTaskStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	TaskId  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourTaskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetMPUTaskStatusRequest) String() string {
@@ -9082,8 +11490,14 @@ func (s *GetMPUTaskStatusRequest) SetTaskId(v string) *GetMPUTaskStatusRequest {
 }
 
 type GetMPUTaskStatusResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetMPUTaskStatusResponseBody) String() string {
@@ -9134,7 +11548,17 @@ func (s *GetMPUTaskStatusResponse) SetBody(v *GetMPUTaskStatusResponseBody) *Get
 }
 
 type ModifyAppRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ioeh****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// defaultName
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -9163,6 +11587,9 @@ func (s *ModifyAppRequest) SetOwnerId(v int64) *ModifyAppRequest {
 }
 
 type ModifyAppResponseBody struct {
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9209,7 +11636,13 @@ func (s *ModifyAppResponse) SetBody(v *ModifyAppResponseBody) *ModifyAppResponse
 }
 
 type ModifyAppStreamingOutTemplateRequest struct {
-	AppId                *string                                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// wv7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	StreamingOutTemplate *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty" type:"Struct"`
 }
 
@@ -9232,10 +11665,26 @@ func (s *ModifyAppStreamingOutTemplateRequest) SetStreamingOutTemplate(v *Modify
 }
 
 type ModifyAppStreamingOutTemplateRequestStreamingOutTemplate struct {
-	LayoutIds   []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
-	MediaEncode *int32    `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	TemplateId  *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// This parameter is required.
+	LayoutIds []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 模版
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) String() string {
@@ -9267,7 +11716,13 @@ func (s *ModifyAppStreamingOutTemplateRequestStreamingOutTemplate) SetTemplateId
 }
 
 type ModifyAppStreamingOutTemplateShrinkRequest struct {
-	AppId                      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// wv7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
 	StreamingOutTemplateShrink *string `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty"`
 }
 
@@ -9291,7 +11746,14 @@ func (s *ModifyAppStreamingOutTemplateShrinkRequest) SetStreamingOutTemplateShri
 
 type ModifyAppStreamingOutTemplateResponseBody struct {
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	//
+	// example:
+	//
+	// 30D41049-D02D-1C21-86AE-B3E5FD805C27
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ac7N****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -9343,12 +11805,28 @@ func (s *ModifyAppStreamingOutTemplateResponse) SetBody(v *ModifyAppStreamingOut
 }
 
 type ModifyMPULayoutRequest struct {
-	AppId         *string                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AudioMixCount *int32                         `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
-	LayoutId      *int64                         `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
-	Name          *string                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId       *int64                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Panes         []*ModifyMPULayoutRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 3
+	AudioMixCount *int32 `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10117
+	LayoutId *int64 `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	// example:
+	//
+	// LayoutName
+	Name    *string                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *int64                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Panes   []*ModifyMPULayoutRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
 }
 
 func (s ModifyMPULayoutRequest) String() string {
@@ -9390,13 +11868,34 @@ func (s *ModifyMPULayoutRequest) SetPanes(v []*ModifyMPULayoutRequestPanes) *Mod
 }
 
 type ModifyMPULayoutRequestPanes struct {
-	Height    *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	MajorPane *int32   `json:"MajorPane,omitempty" xml:"MajorPane,omitempty"`
-	PaneId    *int32   `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	Width     *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X         *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y         *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder    *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	MajorPane *int32 `json:"MajorPane,omitempty" xml:"MajorPane,omitempty"`
+	// example:
+	//
+	// 0
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s ModifyMPULayoutRequestPanes) String() string {
@@ -9443,6 +11942,9 @@ func (s *ModifyMPULayoutRequestPanes) SetZOrder(v int32) *ModifyMPULayoutRequest
 }
 
 type ModifyMPULayoutResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9489,9 +11991,24 @@ func (s *ModifyMPULayoutResponse) SetBody(v *ModifyMPULayoutResponseBody) *Modif
 }
 
 type RemoveTerminalsRequest struct {
-	AppId       *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId   *string   `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	OwnerId     *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourChannelId
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1811xxxx
 	TerminalIds []*string `json:"TerminalIds,omitempty" xml:"TerminalIds,omitempty" type:"Repeated"`
 }
 
@@ -9524,6 +12041,9 @@ func (s *RemoveTerminalsRequest) SetTerminalIds(v []*string) *RemoveTerminalsReq
 }
 
 type RemoveTerminalsResponseBody struct {
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Terminals *RemoveTerminalsResponseBodyTerminals `json:"Terminals,omitempty" xml:"Terminals,omitempty" type:"Struct"`
 }
@@ -9564,8 +12084,17 @@ func (s *RemoveTerminalsResponseBodyTerminals) SetTerminal(v []*RemoveTerminalsR
 }
 
 type RemoveTerminalsResponseBodyTerminalsTerminal struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1811****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -9622,9 +12151,20 @@ func (s *RemoveTerminalsResponse) SetBody(v *RemoveTerminalsResponseBody) *Remov
 }
 
 type RemoveUsersRequest struct {
-	AppId     *string                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId *string                    `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Users     []*RemoveUsersRequestUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	Users []*RemoveUsersRequestUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s RemoveUsersRequest) String() string {
@@ -9651,6 +12191,11 @@ func (s *RemoveUsersRequest) SetUsers(v []*RemoveUsersRequestUsers) *RemoveUsers
 }
 
 type RemoveUsersRequestUsers struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1811****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -9668,6 +12213,9 @@ func (s *RemoveUsersRequestUsers) SetUserId(v string) *RemoveUsersRequestUsers {
 }
 
 type RemoveUsersResponseBody struct {
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Users     []*RemoveUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -9691,9 +12239,18 @@ func (s *RemoveUsersResponseBody) SetUsers(v []*RemoveUsersResponseBodyUsers) *R
 }
 
 type RemoveUsersResponseBodyUsers struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1811****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s RemoveUsersResponseBodyUsers) String() string {
@@ -9750,16 +12307,40 @@ func (s *RemoveUsersResponse) SetBody(v *RemoveUsersResponseBody) *RemoveUsersRe
 
 type StartCloudRecordRequest struct {
 	// appId
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// channelName
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	// panes
 	Panes []*StartCloudRecordRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
 	// storageConfig
+	//
+	// This parameter is required.
 	StorageConfig *StartCloudRecordRequestStorageConfig `json:"StorageConfig,omitempty" xml:"StorageConfig,omitempty" type:"Struct"`
 	// taskId
+	//
+	// example:
+	//
+	// 123
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// templateId
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 567
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -9803,8 +12384,18 @@ func (s *StartCloudRecordRequest) SetTemplateId(v string) *StartCloudRecordReque
 
 type StartCloudRecordRequestPanes struct {
 	// paneId
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
 	// sourceType
+	//
+	// example:
+	//
+	// video
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -9828,14 +12419,44 @@ func (s *StartCloudRecordRequestPanes) SetSourceType(v string) *StartCloudRecord
 
 type StartCloudRecordRequestStorageConfig struct {
 	// accessKey
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LTAX***
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	// bucket
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-bucket-for-recording
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	// region
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	Region *int32 `json:"Region,omitempty" xml:"Region,omitempty"`
 	// secretKey
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// APb6qWYEzKtYxE***
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	// vendor
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
@@ -9874,8 +12495,16 @@ func (s *StartCloudRecordRequestStorageConfig) SetVendor(v int32) *StartCloudRec
 
 type StartCloudRecordResponseBody struct {
 	// requestId
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// taskId
+	//
+	// example:
+	//
+	// 123
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -9927,36 +12556,99 @@ func (s *StartCloudRecordResponse) SetBody(v *StartCloudRecordResponseBody) *Sta
 }
 
 type StartMPUTaskRequest struct {
-	AppId                     *string                            `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BackgroundColor           *int32                             `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
-	Backgrounds               []*StartMPUTaskRequestBackgrounds  `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
-	ChannelId                 *string                            `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ClockWidgets              []*StartMPUTaskRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
-	CropMode                  *int32                             `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
-	EnhancedParam             *StartMPUTaskRequestEnhancedParam  `json:"EnhancedParam,omitempty" xml:"EnhancedParam,omitempty" type:"Struct"`
-	LayoutIds                 []*int64                           `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
-	MediaEncode               *int32                             `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
-	MixMode                   *int32                             `json:"MixMode,omitempty" xml:"MixMode,omitempty"`
-	OwnerId                   *int64                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PayloadType               *int32                             `json:"PayloadType,omitempty" xml:"PayloadType,omitempty"`
-	ReportVad                 *int32                             `json:"ReportVad,omitempty" xml:"ReportVad,omitempty"`
-	RtpExtInfo                *int32                             `json:"RtpExtInfo,omitempty" xml:"RtpExtInfo,omitempty"`
-	SourceType                *string                            `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StreamType                *int32                             `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	StreamURL                 *string                            `json:"StreamURL,omitempty" xml:"StreamURL,omitempty"`
-	SubSpecAudioUsers         []*string                          `json:"SubSpecAudioUsers,omitempty" xml:"SubSpecAudioUsers,omitempty" type:"Repeated"`
-	SubSpecCameraUsers        []*string                          `json:"SubSpecCameraUsers,omitempty" xml:"SubSpecCameraUsers,omitempty" type:"Repeated"`
-	SubSpecShareScreenUsers   []*string                          `json:"SubSpecShareScreenUsers,omitempty" xml:"SubSpecShareScreenUsers,omitempty" type:"Repeated"`
-	SubSpecUsers              []*string                          `json:"SubSpecUsers,omitempty" xml:"SubSpecUsers,omitempty" type:"Repeated"`
-	TaskId                    *string                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType                  *int32                             `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TimeStampRef              *int64                             `json:"TimeStampRef,omitempty" xml:"TimeStampRef,omitempty"`
-	UnsubSpecAudioUsers       []*string                          `json:"UnsubSpecAudioUsers,omitempty" xml:"UnsubSpecAudioUsers,omitempty" type:"Repeated"`
-	UnsubSpecCameraUsers      []*string                          `json:"UnsubSpecCameraUsers,omitempty" xml:"UnsubSpecCameraUsers,omitempty" type:"Repeated"`
-	UnsubSpecShareScreenUsers []*string                          `json:"UnsubSpecShareScreenUsers,omitempty" xml:"UnsubSpecShareScreenUsers,omitempty" type:"Repeated"`
-	UserPanes                 []*StartMPUTaskRequestUserPanes    `json:"UserPanes,omitempty" xml:"UserPanes,omitempty" type:"Repeated"`
-	VadInterval               *int64                             `json:"VadInterval,omitempty" xml:"VadInterval,omitempty"`
-	Watermarks                []*StartMPUTaskRequestWatermarks   `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 0
+	BackgroundColor *int32                            `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	Backgrounds     []*StartMPUTaskRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourChannelId
+	ChannelId    *string                            `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ClockWidgets []*StartMPUTaskRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CropMode      *int32                            `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	EnhancedParam *StartMPUTaskRequestEnhancedParam `json:"EnhancedParam,omitempty" xml:"EnhancedParam,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	LayoutIds []*int64 `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// example:
+	//
+	// 0
+	MixMode *int32 `json:"MixMode,omitempty" xml:"MixMode,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 0
+	PayloadType *int32 `json:"PayloadType,omitempty" xml:"PayloadType,omitempty"`
+	// example:
+	//
+	// 0
+	ReportVad *int32 `json:"ReportVad,omitempty" xml:"ReportVad,omitempty"`
+	// example:
+	//
+	// 0
+	RtpExtInfo *int32 `json:"RtpExtInfo,omitempty" xml:"RtpExtInfo,omitempty"`
+	// example:
+	//
+	// camera
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// 0
+	StreamType *int32 `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	// example:
+	//
+	// rtmp://example.com/live/stream
+	StreamURL *string `json:"StreamURL,omitempty" xml:"StreamURL,omitempty"`
+	// example:
+	//
+	// audioUserID
+	SubSpecAudioUsers       []*string `json:"SubSpecAudioUsers,omitempty" xml:"SubSpecAudioUsers,omitempty" type:"Repeated"`
+	SubSpecCameraUsers      []*string `json:"SubSpecCameraUsers,omitempty" xml:"SubSpecCameraUsers,omitempty" type:"Repeated"`
+	SubSpecShareScreenUsers []*string `json:"SubSpecShareScreenUsers,omitempty" xml:"SubSpecShareScreenUsers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// userID
+	SubSpecUsers []*string `json:"SubSpecUsers,omitempty" xml:"SubSpecUsers,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourTaskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 0
+	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 15273582735
+	TimeStampRef              *int64                          `json:"TimeStampRef,omitempty" xml:"TimeStampRef,omitempty"`
+	UnsubSpecAudioUsers       []*string                       `json:"UnsubSpecAudioUsers,omitempty" xml:"UnsubSpecAudioUsers,omitempty" type:"Repeated"`
+	UnsubSpecCameraUsers      []*string                       `json:"UnsubSpecCameraUsers,omitempty" xml:"UnsubSpecCameraUsers,omitempty" type:"Repeated"`
+	UnsubSpecShareScreenUsers []*string                       `json:"UnsubSpecShareScreenUsers,omitempty" xml:"UnsubSpecShareScreenUsers,omitempty" type:"Repeated"`
+	UserPanes                 []*StartMPUTaskRequestUserPanes `json:"UserPanes,omitempty" xml:"UserPanes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 86400
+	VadInterval *int64                           `json:"VadInterval,omitempty" xml:"VadInterval,omitempty"`
+	Watermarks  []*StartMPUTaskRequestWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
 }
 
 func (s StartMPUTaskRequest) String() string {
@@ -10118,13 +12810,34 @@ func (s *StartMPUTaskRequest) SetWatermarks(v []*StartMPUTaskRequestWatermarks) 
 }
 
 type StartMPUTaskRequestBackgrounds struct {
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 1
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s StartMPUTaskRequestBackgrounds) String() string {
@@ -10171,18 +12884,54 @@ func (s *StartMPUTaskRequestBackgrounds) SetZOrder(v int32) *StartMPUTaskRequest
 }
 
 type StartMPUTaskRequestClockWidgets struct {
-	Alpha          *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
-	BorderColor    *int64   `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	BorderWidth    *int32   `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	Box            *bool    `json:"Box,omitempty" xml:"Box,omitempty"`
-	BoxBorderWidth *int32   `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
-	BoxColor       *int64   `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
-	FontColor      *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize       *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	FontType       *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
-	X              *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder         *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0
+	BorderColor *int64 `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	// example:
+	//
+	// 1
+	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	// example:
+	//
+	// false
+	Box *bool `json:"Box,omitempty" xml:"Box,omitempty"`
+	// example:
+	//
+	// 0
+	BoxBorderWidth *int32 `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
+	// example:
+	//
+	// 0
+	BoxColor *int64 `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
+	// example:
+	//
+	// 0
+	FontColor *int32 `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// example:
+	//
+	// 1
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// example:
+	//
+	// 0
+	FontType *int32 `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s StartMPUTaskRequestClockWidgets) String() string {
@@ -10254,6 +13003,9 @@ func (s *StartMPUTaskRequestClockWidgets) SetZOrder(v int32) *StartMPUTaskReques
 }
 
 type StartMPUTaskRequestEnhancedParam struct {
+	// example:
+	//
+	// false
 	EnablePortraitSegmentation *bool `json:"EnablePortraitSegmentation,omitempty" xml:"EnablePortraitSegmentation,omitempty"`
 }
 
@@ -10271,12 +13023,24 @@ func (s *StartMPUTaskRequestEnhancedParam) SetEnablePortraitSegmentation(v bool)
 }
 
 type StartMPUTaskRequestUserPanes struct {
-	Images      []*StartMPUTaskRequestUserPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	PaneId      *int32                                `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	SegmentType *int32                                `json:"SegmentType,omitempty" xml:"SegmentType,omitempty"`
-	SourceType  *string                               `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts       []*StartMPUTaskRequestUserPanesTexts  `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
-	UserId      *string                               `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Images []*StartMPUTaskRequestUserPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// 0
+	SegmentType *int32 `json:"SegmentType,omitempty" xml:"SegmentType,omitempty"`
+	// example:
+	//
+	// camera
+	SourceType *string                              `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*StartMPUTaskRequestUserPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// TestId
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s StartMPUTaskRequestUserPanes) String() string {
@@ -10318,13 +13082,34 @@ func (s *StartMPUTaskRequestUserPanes) SetUserId(v string) *StartMPUTaskRequestU
 }
 
 type StartMPUTaskRequestUserPanesImages struct {
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 1
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s StartMPUTaskRequestUserPanesImages) String() string {
@@ -10371,19 +13156,58 @@ func (s *StartMPUTaskRequestUserPanesImages) SetZOrder(v int32) *StartMPUTaskReq
 }
 
 type StartMPUTaskRequestUserPanesTexts struct {
-	Alpha          *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
-	BorderColor    *int64   `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	BorderWidth    *int32   `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	Box            *bool    `json:"Box,omitempty" xml:"Box,omitempty"`
-	BoxBorderWidth *int32   `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
-	BoxColor       *int64   `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
-	FontColor      *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize       *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	FontType       *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
-	Text           *string  `json:"Text,omitempty" xml:"Text,omitempty"`
-	X              *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder         *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0
+	BorderColor *int64 `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	// example:
+	//
+	// 1
+	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	// example:
+	//
+	// false
+	Box *bool `json:"Box,omitempty" xml:"Box,omitempty"`
+	// example:
+	//
+	// 0
+	BoxBorderWidth *int32 `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
+	// example:
+	//
+	// 0
+	BoxColor *int64 `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
+	// example:
+	//
+	// 0
+	FontColor *int32 `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// example:
+	//
+	// 1
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// example:
+	//
+	// 0
+	FontType *int32 `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	// example:
+	//
+	// text
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s StartMPUTaskRequestUserPanesTexts) String() string {
@@ -10460,14 +13284,38 @@ func (s *StartMPUTaskRequestUserPanesTexts) SetZOrder(v int32) *StartMPUTaskRequ
 }
 
 type StartMPUTaskRequestWatermarks struct {
-	Alpha   *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s StartMPUTaskRequestWatermarks) String() string {
@@ -10519,6 +13367,9 @@ func (s *StartMPUTaskRequestWatermarks) SetZOrder(v int32) *StartMPUTaskRequestW
 }
 
 type StartMPUTaskResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10565,24 +13416,86 @@ func (s *StartMPUTaskResponse) SetBody(v *StartMPUTaskResponseBody) *StartMPUTas
 }
 
 type StartRecordTaskRequest struct {
-	AppId                     *string                            `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId                 *string                            `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CropMode                  *int64                             `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
-	LayoutIds                 []*int64                           `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
-	MediaEncode               *int32                             `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
-	MixMode                   *int32                             `json:"MixMode,omitempty" xml:"MixMode,omitempty"`
-	OwnerId                   *int64                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SourceType                *string                            `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StreamType                *int32                             `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	SubSpecAudioUsers         []*string                          `json:"SubSpecAudioUsers,omitempty" xml:"SubSpecAudioUsers,omitempty" type:"Repeated"`
-	SubSpecCameraUsers        []*string                          `json:"SubSpecCameraUsers,omitempty" xml:"SubSpecCameraUsers,omitempty" type:"Repeated"`
-	SubSpecShareScreenUsers   []*string                          `json:"SubSpecShareScreenUsers,omitempty" xml:"SubSpecShareScreenUsers,omitempty" type:"Repeated"`
-	SubSpecUsers              []*string                          `json:"SubSpecUsers,omitempty" xml:"SubSpecUsers,omitempty" type:"Repeated"`
-	TaskId                    *string                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskProfile               *string                            `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
-	TemplateId                *string                            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	UnsubSpecAudioUsers       []*string                          `json:"UnsubSpecAudioUsers,omitempty" xml:"UnsubSpecAudioUsers,omitempty" type:"Repeated"`
-	UnsubSpecCameraUsers      []*string                          `json:"UnsubSpecCameraUsers,omitempty" xml:"UnsubSpecCameraUsers,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourChannelId
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1
+	CropMode *int64 `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	// example:
+	//
+	// 1111
+	LayoutIds []*int64 `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// example:
+	//
+	// 1
+	MixMode *int32 `json:"MixMode,omitempty" xml:"MixMode,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// camera
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// 0
+	StreamType *int32 `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	// example:
+	//
+	// 1
+	SubSpecAudioUsers []*string `json:"SubSpecAudioUsers,omitempty" xml:"SubSpecAudioUsers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SubSpecCameraUsers []*string `json:"SubSpecCameraUsers,omitempty" xml:"SubSpecCameraUsers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SubSpecShareScreenUsers []*string `json:"SubSpecShareScreenUsers,omitempty" xml:"SubSpecShareScreenUsers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// userID
+	SubSpecUsers []*string `json:"SubSpecUsers,omitempty" xml:"SubSpecUsers,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourTaskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 4IN_1080P
+	TaskProfile *string `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 76dasgb****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 1
+	UnsubSpecAudioUsers []*string `json:"UnsubSpecAudioUsers,omitempty" xml:"UnsubSpecAudioUsers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	UnsubSpecCameraUsers []*string `json:"UnsubSpecCameraUsers,omitempty" xml:"UnsubSpecCameraUsers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
 	UnsubSpecShareScreenUsers []*string                          `json:"UnsubSpecShareScreenUsers,omitempty" xml:"UnsubSpecShareScreenUsers,omitempty" type:"Repeated"`
 	UserPanes                 []*StartRecordTaskRequestUserPanes `json:"UserPanes,omitempty" xml:"UserPanes,omitempty" type:"Repeated"`
 }
@@ -10696,11 +13609,20 @@ func (s *StartRecordTaskRequest) SetUserPanes(v []*StartRecordTaskRequestUserPan
 }
 
 type StartRecordTaskRequestUserPanes struct {
-	Images     []*StartRecordTaskRequestUserPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	PaneId     *int32                                   `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	SourceType *string                                  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*StartRecordTaskRequestUserPanesTexts  `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
-	UserId     *string                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Images []*StartRecordTaskRequestUserPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// camera
+	SourceType *string                                 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*StartRecordTaskRequestUserPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// TestId
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s StartRecordTaskRequestUserPanes) String() string {
@@ -10737,13 +13659,34 @@ func (s *StartRecordTaskRequestUserPanes) SetUserId(v string) *StartRecordTaskRe
 }
 
 type StartRecordTaskRequestUserPanesImages struct {
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 1
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s StartRecordTaskRequestUserPanesImages) String() string {
@@ -10790,13 +13733,34 @@ func (s *StartRecordTaskRequestUserPanesImages) SetZOrder(v int32) *StartRecordT
 }
 
 type StartRecordTaskRequestUserPanesTexts struct {
-	FontColor *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize  *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	FontType  *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
-	Text      *string  `json:"Text,omitempty" xml:"Text,omitempty"`
-	X         *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y         *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder    *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 1
+	FontColor *int32 `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// example:
+	//
+	// 1
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// example:
+	//
+	// 0
+	FontType *int32 `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	// example:
+	//
+	// text
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s StartRecordTaskRequestUserPanesTexts) String() string {
@@ -10843,6 +13807,9 @@ func (s *StartRecordTaskRequestUserPanesTexts) SetZOrder(v int32) *StartRecordTa
 }
 
 type StartRecordTaskResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10889,12 +13856,35 @@ func (s *StartRecordTaskResponse) SetBody(v *StartRecordTaskResponseBody) *Start
 }
 
 type StartStreamingOutRequest struct {
-	AppId      *string                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId  *string                          `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Panes      []*StartStreamingOutRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
-	TaskId     *string                          `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TemplateId *string                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Url        *string                          `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId *string                          `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Panes     []*StartStreamingOutRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 567
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rtmp://example.com/live/stream
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s StartStreamingOutRequest) String() string {
@@ -10936,7 +13926,15 @@ func (s *StartStreamingOutRequest) SetUrl(v string) *StartStreamingOutRequest {
 }
 
 type StartStreamingOutRequestPanes struct {
-	PaneId     *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	PaneId *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// Video
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -10959,8 +13957,14 @@ func (s *StartStreamingOutRequestPanes) SetSourceType(v string) *StartStreamingO
 }
 
 type StartStreamingOutResponseBody struct {
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StartStreamingOutResponseBody) String() string {
@@ -11011,7 +14015,17 @@ func (s *StartStreamingOutResponse) SetBody(v *StartStreamingOutResponseBody) *S
 }
 
 type StopChannelRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 }
 
@@ -11034,6 +14048,9 @@ func (s *StopChannelRequest) SetChannelId(v string) *StopChannelRequest {
 }
 
 type StopChannelResponseBody struct {
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11080,9 +14097,24 @@ func (s *StopChannelResponse) SetBody(v *StopChannelResponseBody) *StopChannelRe
 }
 
 type StopCloudRecordRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StopCloudRecordRequest) String() string {
@@ -11109,8 +14141,14 @@ func (s *StopCloudRecordRequest) SetTaskId(v string) *StopCloudRecordRequest {
 }
 
 type StopCloudRecordResponseBody struct {
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StopCloudRecordResponseBody) String() string {
@@ -11161,9 +14199,19 @@ func (s *StopCloudRecordResponse) SetBody(v *StopCloudRecordResponseBody) *StopC
 }
 
 type StopMPUTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	TaskId  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourTaskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StopMPUTaskRequest) String() string {
@@ -11190,6 +14238,9 @@ func (s *StopMPUTaskRequest) SetTaskId(v string) *StopMPUTaskRequest {
 }
 
 type StopMPUTaskResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11236,9 +14287,19 @@ func (s *StopMPUTaskResponse) SetBody(v *StopMPUTaskResponseBody) *StopMPUTaskRe
 }
 
 type StopRecordTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	TaskId  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourTaskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StopRecordTaskRequest) String() string {
@@ -11265,6 +14326,9 @@ func (s *StopRecordTaskRequest) SetTaskId(v string) *StopRecordTaskRequest {
 }
 
 type StopRecordTaskResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11311,9 +14375,24 @@ func (s *StopRecordTaskResponse) SetBody(v *StopRecordTaskResponseBody) *StopRec
 }
 
 type StopStreamingOutRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StopStreamingOutRequest) String() string {
@@ -11340,8 +14419,14 @@ func (s *StopStreamingOutRequest) SetTaskId(v string) *StopStreamingOutRequest {
 }
 
 type StopStreamingOutResponseBody struct {
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StopStreamingOutResponseBody) String() string {
@@ -11392,15 +14477,39 @@ func (s *StopStreamingOutResponse) SetBody(v *StopStreamingOutResponseBody) *Sto
 }
 
 type UpdateAutoLiveStreamRuleRequest struct {
-	AppId             *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// http://example.com/callback
 	CallBack          *string   `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
 	ChannelIdPrefixes []*string `json:"ChannelIdPrefixes,omitempty" xml:"ChannelIdPrefixes,omitempty" type:"Repeated"`
 	ChannelIds        []*string `json:"ChannelIds,omitempty" xml:"ChannelIds,omitempty" type:"Repeated"`
-	MediaEncode       *int32    `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
-	OwnerId           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PlayDomain        *string   `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
-	RuleId            *int32    `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName          *string   `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 20
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rtmp://${domain}/${app}/${stream}
+	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12
+	RuleId *int32 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// testRule
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s UpdateAutoLiveStreamRuleRequest) String() string {
@@ -11457,6 +14566,9 @@ func (s *UpdateAutoLiveStreamRuleRequest) SetRuleName(v string) *UpdateAutoLiveS
 }
 
 type UpdateAutoLiveStreamRuleResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11503,27 +14615,55 @@ func (s *UpdateAutoLiveStreamRuleResponse) SetBody(v *UpdateAutoLiveStreamRuleRe
 }
 
 type UpdateMPUTaskRequest struct {
-	AppId                     *string                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BackgroundColor           *int32                              `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
-	Backgrounds               []*UpdateMPUTaskRequestBackgrounds  `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
-	ClockWidgets              []*UpdateMPUTaskRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
-	CropMode                  *int32                              `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
-	LayoutIds                 []*int64                            `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
-	MediaEncode               *int32                              `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
-	MixMode                   *int32                              `json:"MixMode,omitempty" xml:"MixMode,omitempty"`
-	OwnerId                   *int64                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SourceType                *string                             `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StreamType                *int32                              `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	SubSpecAudioUsers         []*string                           `json:"SubSpecAudioUsers,omitempty" xml:"SubSpecAudioUsers,omitempty" type:"Repeated"`
-	SubSpecCameraUsers        []*string                           `json:"SubSpecCameraUsers,omitempty" xml:"SubSpecCameraUsers,omitempty" type:"Repeated"`
-	SubSpecShareScreenUsers   []*string                           `json:"SubSpecShareScreenUsers,omitempty" xml:"SubSpecShareScreenUsers,omitempty" type:"Repeated"`
-	SubSpecUsers              []*string                           `json:"SubSpecUsers,omitempty" xml:"SubSpecUsers,omitempty" type:"Repeated"`
-	TaskId                    *string                             `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	UnsubSpecAudioUsers       []*string                           `json:"UnsubSpecAudioUsers,omitempty" xml:"UnsubSpecAudioUsers,omitempty" type:"Repeated"`
-	UnsubSpecCameraUsers      []*string                           `json:"UnsubSpecCameraUsers,omitempty" xml:"UnsubSpecCameraUsers,omitempty" type:"Repeated"`
-	UnsubSpecShareScreenUsers []*string                           `json:"UnsubSpecShareScreenUsers,omitempty" xml:"UnsubSpecShareScreenUsers,omitempty" type:"Repeated"`
-	UserPanes                 []*UpdateMPUTaskRequestUserPanes    `json:"UserPanes,omitempty" xml:"UserPanes,omitempty" type:"Repeated"`
-	Watermarks                []*UpdateMPUTaskRequestWatermarks   `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 0
+	BackgroundColor *int32                              `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	Backgrounds     []*UpdateMPUTaskRequestBackgrounds  `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	ClockWidgets    []*UpdateMPUTaskRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CropMode  *int32   `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	LayoutIds []*int64 `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// example:
+	//
+	// 0
+	MixMode *int32 `json:"MixMode,omitempty" xml:"MixMode,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// camera
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// 0
+	StreamType              *int32    `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	SubSpecAudioUsers       []*string `json:"SubSpecAudioUsers,omitempty" xml:"SubSpecAudioUsers,omitempty" type:"Repeated"`
+	SubSpecCameraUsers      []*string `json:"SubSpecCameraUsers,omitempty" xml:"SubSpecCameraUsers,omitempty" type:"Repeated"`
+	SubSpecShareScreenUsers []*string `json:"SubSpecShareScreenUsers,omitempty" xml:"SubSpecShareScreenUsers,omitempty" type:"Repeated"`
+	SubSpecUsers            []*string `json:"SubSpecUsers,omitempty" xml:"SubSpecUsers,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testId
+	TaskId                    *string                           `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	UnsubSpecAudioUsers       []*string                         `json:"UnsubSpecAudioUsers,omitempty" xml:"UnsubSpecAudioUsers,omitempty" type:"Repeated"`
+	UnsubSpecCameraUsers      []*string                         `json:"UnsubSpecCameraUsers,omitempty" xml:"UnsubSpecCameraUsers,omitempty" type:"Repeated"`
+	UnsubSpecShareScreenUsers []*string                         `json:"UnsubSpecShareScreenUsers,omitempty" xml:"UnsubSpecShareScreenUsers,omitempty" type:"Repeated"`
+	UserPanes                 []*UpdateMPUTaskRequestUserPanes  `json:"UserPanes,omitempty" xml:"UserPanes,omitempty" type:"Repeated"`
+	Watermarks                []*UpdateMPUTaskRequestWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
 }
 
 func (s UpdateMPUTaskRequest) String() string {
@@ -11640,13 +14780,34 @@ func (s *UpdateMPUTaskRequest) SetWatermarks(v []*UpdateMPUTaskRequestWatermarks
 }
 
 type UpdateMPUTaskRequestBackgrounds struct {
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 1
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s UpdateMPUTaskRequestBackgrounds) String() string {
@@ -11693,18 +14854,54 @@ func (s *UpdateMPUTaskRequestBackgrounds) SetZOrder(v int32) *UpdateMPUTaskReque
 }
 
 type UpdateMPUTaskRequestClockWidgets struct {
-	Alpha          *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
-	BorderColor    *int64   `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	BorderWidth    *int32   `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	Box            *bool    `json:"Box,omitempty" xml:"Box,omitempty"`
-	BoxBorderWidth *int32   `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
-	BoxColor       *int64   `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
-	FontColor      *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize       *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	FontType       *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
-	X              *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder         *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0
+	BorderColor *int64 `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	// example:
+	//
+	// 1
+	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	// example:
+	//
+	// false
+	Box *bool `json:"Box,omitempty" xml:"Box,omitempty"`
+	// example:
+	//
+	// 0
+	BoxBorderWidth *int32 `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
+	// example:
+	//
+	// 0
+	BoxColor *int64 `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
+	// example:
+	//
+	// 0
+	FontColor *int32 `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// example:
+	//
+	// 1
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// example:
+	//
+	// 0
+	FontType *int32 `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s UpdateMPUTaskRequestClockWidgets) String() string {
@@ -11776,12 +14973,24 @@ func (s *UpdateMPUTaskRequestClockWidgets) SetZOrder(v int32) *UpdateMPUTaskRequ
 }
 
 type UpdateMPUTaskRequestUserPanes struct {
-	Images      []*UpdateMPUTaskRequestUserPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	PaneId      *int32                                 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	SegmentType *int32                                 `json:"SegmentType,omitempty" xml:"SegmentType,omitempty"`
-	SourceType  *string                                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts       []*UpdateMPUTaskRequestUserPanesTexts  `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
-	UserId      *string                                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Images []*UpdateMPUTaskRequestUserPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// 0
+	SegmentType *int32 `json:"SegmentType,omitempty" xml:"SegmentType,omitempty"`
+	// example:
+	//
+	// camera
+	SourceType *string                               `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*UpdateMPUTaskRequestUserPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// TestUserID
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateMPUTaskRequestUserPanes) String() string {
@@ -11823,13 +15032,34 @@ func (s *UpdateMPUTaskRequestUserPanes) SetUserId(v string) *UpdateMPUTaskReques
 }
 
 type UpdateMPUTaskRequestUserPanesImages struct {
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 1
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s UpdateMPUTaskRequestUserPanesImages) String() string {
@@ -11876,19 +15106,58 @@ func (s *UpdateMPUTaskRequestUserPanesImages) SetZOrder(v int32) *UpdateMPUTaskR
 }
 
 type UpdateMPUTaskRequestUserPanesTexts struct {
-	Alpha          *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
-	BorderColor    *int64   `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	BorderWidth    *int32   `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	Box            *bool    `json:"Box,omitempty" xml:"Box,omitempty"`
-	BoxBorderWidth *int32   `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
-	BoxColor       *int64   `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
-	FontColor      *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize       *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	FontType       *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
-	Text           *string  `json:"Text,omitempty" xml:"Text,omitempty"`
-	X              *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder         *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0
+	BorderColor *int64 `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	// example:
+	//
+	// 1
+	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	// example:
+	//
+	// false
+	Box *bool `json:"Box,omitempty" xml:"Box,omitempty"`
+	// example:
+	//
+	// 0
+	BoxBorderWidth *int32 `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
+	// example:
+	//
+	// 0
+	BoxColor *int64 `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
+	// example:
+	//
+	// 0
+	FontColor *int32 `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// example:
+	//
+	// 1
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// example:
+	//
+	// 0
+	FontType *int32 `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	// example:
+	//
+	// text
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s UpdateMPUTaskRequestUserPanesTexts) String() string {
@@ -11965,14 +15234,38 @@ func (s *UpdateMPUTaskRequestUserPanesTexts) SetZOrder(v int32) *UpdateMPUTaskRe
 }
 
 type UpdateMPUTaskRequestWatermarks struct {
-	Alpha   *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 1
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s UpdateMPUTaskRequestWatermarks) String() string {
@@ -12024,6 +15317,9 @@ func (s *UpdateMPUTaskRequestWatermarks) SetZOrder(v int32) *UpdateMPUTaskReques
 }
 
 type UpdateMPUTaskResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12070,18 +15366,41 @@ func (s *UpdateMPUTaskResponse) SetBody(v *UpdateMPUTaskResponseBody) *UpdateMPU
 }
 
 type UpdateRecordTaskRequest struct {
-	AppId                     *string                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId                 *string                             `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CropMode                  *int64                              `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
-	LayoutIds                 []*int64                            `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
-	MediaEncode               *int64                              `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
-	OwnerId                   *int64                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SubSpecAudioUsers         []*string                           `json:"SubSpecAudioUsers,omitempty" xml:"SubSpecAudioUsers,omitempty" type:"Repeated"`
-	SubSpecCameraUsers        []*string                           `json:"SubSpecCameraUsers,omitempty" xml:"SubSpecCameraUsers,omitempty" type:"Repeated"`
-	SubSpecShareScreenUsers   []*string                           `json:"SubSpecShareScreenUsers,omitempty" xml:"SubSpecShareScreenUsers,omitempty" type:"Repeated"`
-	SubSpecUsers              []*string                           `json:"SubSpecUsers,omitempty" xml:"SubSpecUsers,omitempty" type:"Repeated"`
-	TaskId                    *string                             `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskProfile               *string                             `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourChannelId
+	ChannelId               *string   `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CropMode                *int64    `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	LayoutIds               []*int64  `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	MediaEncode             *int64    `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	OwnerId                 *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SubSpecAudioUsers       []*string `json:"SubSpecAudioUsers,omitempty" xml:"SubSpecAudioUsers,omitempty" type:"Repeated"`
+	SubSpecCameraUsers      []*string `json:"SubSpecCameraUsers,omitempty" xml:"SubSpecCameraUsers,omitempty" type:"Repeated"`
+	SubSpecShareScreenUsers []*string `json:"SubSpecShareScreenUsers,omitempty" xml:"SubSpecShareScreenUsers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// userID
+	SubSpecUsers []*string `json:"SubSpecUsers,omitempty" xml:"SubSpecUsers,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourTaskId
+	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskProfile *string `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 76dasgb****
 	TemplateId                *string                             `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	UnsubSpecAudioUsers       []*string                           `json:"UnsubSpecAudioUsers,omitempty" xml:"UnsubSpecAudioUsers,omitempty" type:"Repeated"`
 	UnsubSpecCameraUsers      []*string                           `json:"UnsubSpecCameraUsers,omitempty" xml:"UnsubSpecCameraUsers,omitempty" type:"Repeated"`
@@ -12183,11 +15502,20 @@ func (s *UpdateRecordTaskRequest) SetUserPanes(v []*UpdateRecordTaskRequestUserP
 }
 
 type UpdateRecordTaskRequestUserPanes struct {
-	Images     []*UpdateRecordTaskRequestUserPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	PaneId     *int32                                    `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	SourceType *string                                   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*UpdateRecordTaskRequestUserPanesTexts  `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
-	UserId     *string                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Images []*UpdateRecordTaskRequestUserPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// camera
+	SourceType *string                                  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*UpdateRecordTaskRequestUserPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// TestId
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateRecordTaskRequestUserPanes) String() string {
@@ -12224,13 +15552,34 @@ func (s *UpdateRecordTaskRequestUserPanes) SetUserId(v string) *UpdateRecordTask
 }
 
 type UpdateRecordTaskRequestUserPanesImages struct {
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 1
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s UpdateRecordTaskRequestUserPanesImages) String() string {
@@ -12277,13 +15626,34 @@ func (s *UpdateRecordTaskRequestUserPanesImages) SetZOrder(v int32) *UpdateRecor
 }
 
 type UpdateRecordTaskRequestUserPanesTexts struct {
-	FontColor *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize  *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	FontType  *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
-	Text      *string  `json:"Text,omitempty" xml:"Text,omitempty"`
-	X         *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y         *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder    *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	FontColor *int32 `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// example:
+	//
+	// 1
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// example:
+	//
+	// 0
+	FontType *int32 `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	// example:
+	//
+	// text
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s UpdateRecordTaskRequestUserPanesTexts) String() string {
@@ -12330,6 +15700,9 @@ func (s *UpdateRecordTaskRequestUserPanesTexts) SetZOrder(v int32) *UpdateRecord
 }
 
 type UpdateRecordTaskResponseBody struct {
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12376,26 +15749,87 @@ func (s *UpdateRecordTaskResponse) SetBody(v *UpdateRecordTaskResponseBody) *Upd
 }
 
 type UpdateRecordTemplateRequest struct {
-	AppId              *string                                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BackgroundColor    *int32                                     `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
-	Backgrounds        []*UpdateRecordTemplateRequestBackgrounds  `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
-	ClockWidgets       []*UpdateRecordTemplateRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
-	DelayStopTime      *int32                                     `json:"DelayStopTime,omitempty" xml:"DelayStopTime,omitempty"`
-	EnableM3u8DateTime *bool                                      `json:"EnableM3u8DateTime,omitempty" xml:"EnableM3u8DateTime,omitempty"`
-	FileSplitInterval  *int32                                     `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
-	Formats            []*string                                  `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
-	HttpCallbackUrl    *string                                    `json:"HttpCallbackUrl,omitempty" xml:"HttpCallbackUrl,omitempty"`
-	LayoutIds          []*int64                                   `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
-	MediaEncode        *int32                                     `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
-	MnsQueue           *string                                    `json:"MnsQueue,omitempty" xml:"MnsQueue,omitempty"`
-	Name               *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	OssBucket          *string                                    `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string                                    `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	OssFilePrefix      *string                                    `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
-	OwnerId            *int64                                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	TaskProfile        *string                                    `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
-	TemplateId         *string                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Watermarks         []*UpdateRecordTemplateRequestWatermarks   `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourAppId
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 0
+	BackgroundColor *int32                                     `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	Backgrounds     []*UpdateRecordTemplateRequestBackgrounds  `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	ClockWidgets    []*UpdateRecordTemplateRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 180
+	DelayStopTime *int32 `json:"DelayStopTime,omitempty" xml:"DelayStopTime,omitempty"`
+	// example:
+	//
+	// false
+	EnableM3u8DateTime *bool `json:"EnableM3u8DateTime,omitempty" xml:"EnableM3u8DateTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1800
+	FileSplitInterval *int32 `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mp4
+	Formats []*string `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://example.com/callback
+	HttpCallbackUrl *string `json:"HttpCallbackUrl,omitempty" xml:"HttpCallbackUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1111
+	LayoutIds []*int64 `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// example:
+	//
+	// record-callback-queue
+	MnsQueue *string `json:"MnsQueue,omitempty" xml:"MnsQueue,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rtc-record-pre
+	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// record/{AppId}/{ChannelId_TaskId}/{EscapedStartTime}_{EscapedEndTime}
+	OssFilePrefix *string `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4IN_1080P
+	TaskProfile *string `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 76dasgb****
+	TemplateId *string                                  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Watermarks []*UpdateRecordTemplateRequestWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRecordTemplateRequest) String() string {
@@ -12507,13 +15941,34 @@ func (s *UpdateRecordTemplateRequest) SetWatermarks(v []*UpdateRecordTemplateReq
 }
 
 type UpdateRecordTemplateRequestBackgrounds struct {
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s UpdateRecordTemplateRequestBackgrounds) String() string {
@@ -12560,12 +16015,30 @@ func (s *UpdateRecordTemplateRequestBackgrounds) SetZOrder(v int32) *UpdateRecor
 }
 
 type UpdateRecordTemplateRequestClockWidgets struct {
-	FontColor *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize  *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	FontType  *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
-	X         *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y         *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder    *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	FontColor *int32 `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// example:
+	//
+	// 1
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// example:
+	//
+	// 0
+	FontType *int32 `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s UpdateRecordTemplateRequestClockWidgets) String() string {
@@ -12607,14 +16080,38 @@ func (s *UpdateRecordTemplateRequestClockWidgets) SetZOrder(v int32) *UpdateReco
 }
 
 type UpdateRecordTemplateRequestWatermarks struct {
-	Alpha   *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
-	Display *int32   `json:"Display,omitempty" xml:"Display,omitempty"`
-	Height  *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Url     *string  `json:"Url,omitempty" xml:"Url,omitempty"`
-	Width   *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	X       *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y       *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder  *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	// example:
+	//
+	// 0
+	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0
+	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// https://www.example.com/image.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 0.2456
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.7576
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.7576
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s UpdateRecordTemplateRequestWatermarks) String() string {
@@ -12666,7 +16163,13 @@ func (s *UpdateRecordTemplateRequestWatermarks) SetZOrder(v int32) *UpdateRecord
 }
 
 type UpdateRecordTemplateResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 76dasgb****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -12764,6 +16267,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AddRecordTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddRecordTemplateResponse
 func (client *Client) AddRecordTemplateWithOptions(request *AddRecordTemplateRequest, runtime *util.RuntimeOptions) (_result *AddRecordTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12869,6 +16377,9 @@ func (client *Client) AddRecordTemplateWithOptions(request *AddRecordTemplateReq
 	return _result, _err
 }
 
+// @param request - AddRecordTemplateRequest
+//
+// @return AddRecordTemplateResponse
 func (client *Client) AddRecordTemplate(request *AddRecordTemplateRequest) (_result *AddRecordTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddRecordTemplateResponse{}
@@ -12880,6 +16391,15 @@ func (client *Client) AddRecordTemplate(request *AddRecordTemplateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建应用推流模版
+//
+// @param tmpReq - CreateAppStreamingOutTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppStreamingOutTemplateResponse
 func (client *Client) CreateAppStreamingOutTemplateWithOptions(tmpReq *CreateAppStreamingOutTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateAppStreamingOutTemplateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -12923,6 +16443,13 @@ func (client *Client) CreateAppStreamingOutTemplateWithOptions(tmpReq *CreateApp
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建应用推流模版
+//
+// @param request - CreateAppStreamingOutTemplateRequest
+//
+// @return CreateAppStreamingOutTemplateResponse
 func (client *Client) CreateAppStreamingOutTemplate(request *CreateAppStreamingOutTemplateRequest) (_result *CreateAppStreamingOutTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAppStreamingOutTemplateResponse{}
@@ -12934,6 +16461,11 @@ func (client *Client) CreateAppStreamingOutTemplate(request *CreateAppStreamingO
 	return _result, _err
 }
 
+// @param request - CreateAutoLiveStreamRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAutoLiveStreamRuleResponse
 func (client *Client) CreateAutoLiveStreamRuleWithOptions(request *CreateAutoLiveStreamRuleRequest, runtime *util.RuntimeOptions) (_result *CreateAutoLiveStreamRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12995,6 +16527,9 @@ func (client *Client) CreateAutoLiveStreamRuleWithOptions(request *CreateAutoLiv
 	return _result, _err
 }
 
+// @param request - CreateAutoLiveStreamRuleRequest
+//
+// @return CreateAutoLiveStreamRuleResponse
 func (client *Client) CreateAutoLiveStreamRule(request *CreateAutoLiveStreamRuleRequest) (_result *CreateAutoLiveStreamRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAutoLiveStreamRuleResponse{}
@@ -13006,6 +16541,11 @@ func (client *Client) CreateAutoLiveStreamRule(request *CreateAutoLiveStreamRule
 	return _result, _err
 }
 
+// @param request - CreateEventSubscribeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEventSubscribeResponse
 func (client *Client) CreateEventSubscribeWithOptions(request *CreateEventSubscribeRequest, runtime *util.RuntimeOptions) (_result *CreateEventSubscribeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13071,6 +16611,9 @@ func (client *Client) CreateEventSubscribeWithOptions(request *CreateEventSubscr
 	return _result, _err
 }
 
+// @param request - CreateEventSubscribeRequest
+//
+// @return CreateEventSubscribeResponse
 func (client *Client) CreateEventSubscribe(request *CreateEventSubscribeRequest) (_result *CreateEventSubscribeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEventSubscribeResponse{}
@@ -13082,6 +16625,11 @@ func (client *Client) CreateEventSubscribe(request *CreateEventSubscribeRequest)
 	return _result, _err
 }
 
+// @param request - CreateMPULayoutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMPULayoutResponse
 func (client *Client) CreateMPULayoutWithOptions(request *CreateMPULayoutRequest, runtime *util.RuntimeOptions) (_result *CreateMPULayoutResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13131,6 +16679,9 @@ func (client *Client) CreateMPULayoutWithOptions(request *CreateMPULayoutRequest
 	return _result, _err
 }
 
+// @param request - CreateMPULayoutRequest
+//
+// @return CreateMPULayoutResponse
 func (client *Client) CreateMPULayout(request *CreateMPULayoutRequest) (_result *CreateMPULayoutResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMPULayoutResponse{}
@@ -13142,6 +16693,15 @@ func (client *Client) CreateMPULayout(request *CreateMPULayoutRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除应用推流模版
+//
+// @param tmpReq - DeleteAppStreamingOutTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppStreamingOutTemplateResponse
 func (client *Client) DeleteAppStreamingOutTemplateWithOptions(tmpReq *DeleteAppStreamingOutTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteAppStreamingOutTemplateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -13185,6 +16745,13 @@ func (client *Client) DeleteAppStreamingOutTemplateWithOptions(tmpReq *DeleteApp
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除应用推流模版
+//
+// @param request - DeleteAppStreamingOutTemplateRequest
+//
+// @return DeleteAppStreamingOutTemplateResponse
 func (client *Client) DeleteAppStreamingOutTemplate(request *DeleteAppStreamingOutTemplateRequest) (_result *DeleteAppStreamingOutTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppStreamingOutTemplateResponse{}
@@ -13196,6 +16763,11 @@ func (client *Client) DeleteAppStreamingOutTemplate(request *DeleteAppStreamingO
 	return _result, _err
 }
 
+// @param request - DeleteAutoLiveStreamRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAutoLiveStreamRuleResponse
 func (client *Client) DeleteAutoLiveStreamRuleWithOptions(request *DeleteAutoLiveStreamRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteAutoLiveStreamRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13237,6 +16809,9 @@ func (client *Client) DeleteAutoLiveStreamRuleWithOptions(request *DeleteAutoLiv
 	return _result, _err
 }
 
+// @param request - DeleteAutoLiveStreamRuleRequest
+//
+// @return DeleteAutoLiveStreamRuleResponse
 func (client *Client) DeleteAutoLiveStreamRule(request *DeleteAutoLiveStreamRuleRequest) (_result *DeleteAutoLiveStreamRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAutoLiveStreamRuleResponse{}
@@ -13248,6 +16823,11 @@ func (client *Client) DeleteAutoLiveStreamRule(request *DeleteAutoLiveStreamRule
 	return _result, _err
 }
 
+// @param request - DeleteChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteChannelResponse
 func (client *Client) DeleteChannelWithOptions(request *DeleteChannelRequest, runtime *util.RuntimeOptions) (_result *DeleteChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13289,6 +16869,9 @@ func (client *Client) DeleteChannelWithOptions(request *DeleteChannelRequest, ru
 	return _result, _err
 }
 
+// @param request - DeleteChannelRequest
+//
+// @return DeleteChannelResponse
 func (client *Client) DeleteChannel(request *DeleteChannelRequest) (_result *DeleteChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteChannelResponse{}
@@ -13300,6 +16883,11 @@ func (client *Client) DeleteChannel(request *DeleteChannelRequest) (_result *Del
 	return _result, _err
 }
 
+// @param request - DeleteEventSubscribeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEventSubscribeResponse
 func (client *Client) DeleteEventSubscribeWithOptions(request *DeleteEventSubscribeRequest, runtime *util.RuntimeOptions) (_result *DeleteEventSubscribeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13341,6 +16929,9 @@ func (client *Client) DeleteEventSubscribeWithOptions(request *DeleteEventSubscr
 	return _result, _err
 }
 
+// @param request - DeleteEventSubscribeRequest
+//
+// @return DeleteEventSubscribeResponse
 func (client *Client) DeleteEventSubscribe(request *DeleteEventSubscribeRequest) (_result *DeleteEventSubscribeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEventSubscribeResponse{}
@@ -13352,6 +16943,11 @@ func (client *Client) DeleteEventSubscribe(request *DeleteEventSubscribeRequest)
 	return _result, _err
 }
 
+// @param request - DeleteMPULayoutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMPULayoutResponse
 func (client *Client) DeleteMPULayoutWithOptions(request *DeleteMPULayoutRequest, runtime *util.RuntimeOptions) (_result *DeleteMPULayoutResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13393,6 +16989,9 @@ func (client *Client) DeleteMPULayoutWithOptions(request *DeleteMPULayoutRequest
 	return _result, _err
 }
 
+// @param request - DeleteMPULayoutRequest
+//
+// @return DeleteMPULayoutResponse
 func (client *Client) DeleteMPULayout(request *DeleteMPULayoutRequest) (_result *DeleteMPULayoutResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMPULayoutResponse{}
@@ -13404,6 +17003,11 @@ func (client *Client) DeleteMPULayout(request *DeleteMPULayoutRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DeleteRecordTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRecordTemplateResponse
 func (client *Client) DeleteRecordTemplateWithOptions(request *DeleteRecordTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteRecordTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13445,6 +17049,9 @@ func (client *Client) DeleteRecordTemplateWithOptions(request *DeleteRecordTempl
 	return _result, _err
 }
 
+// @param request - DeleteRecordTemplateRequest
+//
+// @return DeleteRecordTemplateResponse
 func (client *Client) DeleteRecordTemplate(request *DeleteRecordTemplateRequest) (_result *DeleteRecordTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRecordTemplateResponse{}
@@ -13456,6 +17063,15 @@ func (client *Client) DeleteRecordTemplate(request *DeleteRecordTemplateRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看AppKey
+//
+// @param request - DescribeAppKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppKeyResponse
 func (client *Client) DescribeAppKeyWithOptions(request *DescribeAppKeyRequest, runtime *util.RuntimeOptions) (_result *DescribeAppKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13493,6 +17109,13 @@ func (client *Client) DescribeAppKeyWithOptions(request *DescribeAppKeyRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看AppKey
+//
+// @param request - DescribeAppKeyRequest
+//
+// @return DescribeAppKeyResponse
 func (client *Client) DescribeAppKey(request *DescribeAppKeyRequest) (_result *DescribeAppKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAppKeyResponse{}
@@ -13504,6 +17127,15 @@ func (client *Client) DescribeAppKey(request *DescribeAppKeyRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用推流模版列表
+//
+// @param tmpReq - DescribeAppStreamingOutTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppStreamingOutTemplatesResponse
 func (client *Client) DescribeAppStreamingOutTemplatesWithOptions(tmpReq *DescribeAppStreamingOutTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeAppStreamingOutTemplatesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -13555,6 +17187,13 @@ func (client *Client) DescribeAppStreamingOutTemplatesWithOptions(tmpReq *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// 应用推流模版列表
+//
+// @param request - DescribeAppStreamingOutTemplatesRequest
+//
+// @return DescribeAppStreamingOutTemplatesResponse
 func (client *Client) DescribeAppStreamingOutTemplates(request *DescribeAppStreamingOutTemplatesRequest) (_result *DescribeAppStreamingOutTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAppStreamingOutTemplatesResponse{}
@@ -13566,6 +17205,15 @@ func (client *Client) DescribeAppStreamingOutTemplates(request *DescribeAppStrea
 	return _result, _err
 }
 
+// Summary:
+//
+// App列表
+//
+// @param request - DescribeAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppsResponse
 func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runtime *util.RuntimeOptions) (_result *DescribeAppsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13574,6 +17222,10 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppVersion)) {
+		query["AppVersion"] = request.AppVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
@@ -13619,6 +17271,13 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// App列表
+//
+// @param request - DescribeAppsRequest
+//
+// @return DescribeAppsResponse
 func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *DescribeAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAppsResponse{}
@@ -13630,6 +17289,11 @@ func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *Descr
 	return _result, _err
 }
 
+// @param request - DescribeAutoLiveStreamRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAutoLiveStreamRuleResponse
 func (client *Client) DescribeAutoLiveStreamRuleWithOptions(request *DescribeAutoLiveStreamRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeAutoLiveStreamRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13667,6 +17331,9 @@ func (client *Client) DescribeAutoLiveStreamRuleWithOptions(request *DescribeAut
 	return _result, _err
 }
 
+// @param request - DescribeAutoLiveStreamRuleRequest
+//
+// @return DescribeAutoLiveStreamRuleResponse
 func (client *Client) DescribeAutoLiveStreamRule(request *DescribeAutoLiveStreamRuleRequest) (_result *DescribeAutoLiveStreamRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAutoLiveStreamRuleResponse{}
@@ -13678,6 +17345,15 @@ func (client *Client) DescribeAutoLiveStreamRule(request *DescribeAutoLiveStream
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeCall获取单次通信详情。
+//
+// @param request - DescribeCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCallResponse
 func (client *Client) DescribeCallWithOptions(request *DescribeCallRequest, runtime *util.RuntimeOptions) (_result *DescribeCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13731,6 +17407,13 @@ func (client *Client) DescribeCallWithOptions(request *DescribeCallRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeCall获取单次通信详情。
+//
+// @param request - DescribeCallRequest
+//
+// @return DescribeCallResponse
 func (client *Client) DescribeCall(request *DescribeCallRequest) (_result *DescribeCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCallResponse{}
@@ -13742,6 +17425,15 @@ func (client *Client) DescribeCall(request *DescribeCallRequest) (_result *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeCallList分页查询时间范围内创建的通信信息。
+//
+// @param request - DescribeCallListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCallListResponse
 func (client *Client) DescribeCallListWithOptions(request *DescribeCallListRequest, runtime *util.RuntimeOptions) (_result *DescribeCallListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13811,6 +17503,13 @@ func (client *Client) DescribeCallListWithOptions(request *DescribeCallListReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeCallList分页查询时间范围内创建的通信信息。
+//
+// @param request - DescribeCallListRequest
+//
+// @return DescribeCallListResponse
 func (client *Client) DescribeCallList(request *DescribeCallListRequest) (_result *DescribeCallListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCallListResponse{}
@@ -13822,6 +17521,15 @@ func (client *Client) DescribeCallList(request *DescribeCallListRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeChannel
+//
+// @param request - DescribeChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChannelResponse
 func (client *Client) DescribeChannelWithOptions(request *DescribeChannelRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13859,6 +17567,13 @@ func (client *Client) DescribeChannelWithOptions(request *DescribeChannelRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeChannel
+//
+// @param request - DescribeChannelRequest
+//
+// @return DescribeChannelResponse
 func (client *Client) DescribeChannel(request *DescribeChannelRequest) (_result *DescribeChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelResponse{}
@@ -13870,6 +17585,15 @@ func (client *Client) DescribeChannel(request *DescribeChannelRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询频道的所有参会者
+//
+// @param request - DescribeChannelAllUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChannelAllUsersResponse
 func (client *Client) DescribeChannelAllUsersWithOptions(request *DescribeChannelAllUsersRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelAllUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13907,6 +17631,13 @@ func (client *Client) DescribeChannelAllUsersWithOptions(request *DescribeChanne
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询频道的所有参会者
+//
+// @param request - DescribeChannelAllUsersRequest
+//
+// @return DescribeChannelAllUsersResponse
 func (client *Client) DescribeChannelAllUsers(request *DescribeChannelAllUsersRequest) (_result *DescribeChannelAllUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelAllUsersResponse{}
@@ -13918,6 +17649,15 @@ func (client *Client) DescribeChannelAllUsers(request *DescribeChannelAllUsersRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeChannelAreaDistributionStatData获取频道地区分布统计数据。
+//
+// @param request - DescribeChannelAreaDistributionStatDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChannelAreaDistributionStatDataResponse
 func (client *Client) DescribeChannelAreaDistributionStatDataWithOptions(request *DescribeChannelAreaDistributionStatDataRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelAreaDistributionStatDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13967,6 +17707,13 @@ func (client *Client) DescribeChannelAreaDistributionStatDataWithOptions(request
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeChannelAreaDistributionStatData获取频道地区分布统计数据。
+//
+// @param request - DescribeChannelAreaDistributionStatDataRequest
+//
+// @return DescribeChannelAreaDistributionStatDataResponse
 func (client *Client) DescribeChannelAreaDistributionStatData(request *DescribeChannelAreaDistributionStatDataRequest) (_result *DescribeChannelAreaDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelAreaDistributionStatDataResponse{}
@@ -13978,6 +17725,15 @@ func (client *Client) DescribeChannelAreaDistributionStatData(request *DescribeC
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeChannelDistributionStatData获取频道分布统计数据。
+//
+// @param request - DescribeChannelDistributionStatDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChannelDistributionStatDataResponse
 func (client *Client) DescribeChannelDistributionStatDataWithOptions(request *DescribeChannelDistributionStatDataRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelDistributionStatDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14027,6 +17783,13 @@ func (client *Client) DescribeChannelDistributionStatDataWithOptions(request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeChannelDistributionStatData获取频道分布统计数据。
+//
+// @param request - DescribeChannelDistributionStatDataRequest
+//
+// @return DescribeChannelDistributionStatDataResponse
 func (client *Client) DescribeChannelDistributionStatData(request *DescribeChannelDistributionStatDataRequest) (_result *DescribeChannelDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelDistributionStatDataResponse{}
@@ -14038,6 +17801,15 @@ func (client *Client) DescribeChannelDistributionStatData(request *DescribeChann
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeChannelOverallData查询频道概览数据。
+//
+// @param request - DescribeChannelOverallDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChannelOverallDataResponse
 func (client *Client) DescribeChannelOverallDataWithOptions(request *DescribeChannelOverallDataRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelOverallDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14083,6 +17855,13 @@ func (client *Client) DescribeChannelOverallDataWithOptions(request *DescribeCha
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeChannelOverallData查询频道概览数据。
+//
+// @param request - DescribeChannelOverallDataRequest
+//
+// @return DescribeChannelOverallDataResponse
 func (client *Client) DescribeChannelOverallData(request *DescribeChannelOverallDataRequest) (_result *DescribeChannelOverallDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelOverallDataResponse{}
@@ -14094,6 +17873,11 @@ func (client *Client) DescribeChannelOverallData(request *DescribeChannelOverall
 	return _result, _err
 }
 
+// @param request - DescribeChannelParticipantsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChannelParticipantsResponse
 func (client *Client) DescribeChannelParticipantsWithOptions(request *DescribeChannelParticipantsRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelParticipantsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14147,6 +17931,9 @@ func (client *Client) DescribeChannelParticipantsWithOptions(request *DescribeCh
 	return _result, _err
 }
 
+// @param request - DescribeChannelParticipantsRequest
+//
+// @return DescribeChannelParticipantsResponse
 func (client *Client) DescribeChannelParticipants(request *DescribeChannelParticipantsRequest) (_result *DescribeChannelParticipantsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelParticipantsResponse{}
@@ -14158,6 +17945,15 @@ func (client *Client) DescribeChannelParticipants(request *DescribeChannelPartic
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeChannelTopPubUserList获取频道内发布端的用户列表（按用户在线时长降序）。
+//
+// @param request - DescribeChannelTopPubUserListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChannelTopPubUserListResponse
 func (client *Client) DescribeChannelTopPubUserListWithOptions(request *DescribeChannelTopPubUserListRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelTopPubUserListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14203,6 +17999,13 @@ func (client *Client) DescribeChannelTopPubUserListWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeChannelTopPubUserList获取频道内发布端的用户列表（按用户在线时长降序）。
+//
+// @param request - DescribeChannelTopPubUserListRequest
+//
+// @return DescribeChannelTopPubUserListResponse
 func (client *Client) DescribeChannelTopPubUserList(request *DescribeChannelTopPubUserListRequest) (_result *DescribeChannelTopPubUserListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelTopPubUserListResponse{}
@@ -14214,6 +18017,15 @@ func (client *Client) DescribeChannelTopPubUserList(request *DescribeChannelTopP
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeChannelUser
+//
+// @param request - DescribeChannelUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChannelUserResponse
 func (client *Client) DescribeChannelUserWithOptions(request *DescribeChannelUserRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14255,6 +18067,13 @@ func (client *Client) DescribeChannelUserWithOptions(request *DescribeChannelUse
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeChannelUser
+//
+// @param request - DescribeChannelUserRequest
+//
+// @return DescribeChannelUserResponse
 func (client *Client) DescribeChannelUser(request *DescribeChannelUserRequest) (_result *DescribeChannelUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelUserResponse{}
@@ -14266,6 +18085,15 @@ func (client *Client) DescribeChannelUser(request *DescribeChannelUserRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeChannelUserMetrics查询频道总览中的用户数据。
+//
+// @param request - DescribeChannelUserMetricsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChannelUserMetricsResponse
 func (client *Client) DescribeChannelUserMetricsWithOptions(request *DescribeChannelUserMetricsRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelUserMetricsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14311,6 +18139,13 @@ func (client *Client) DescribeChannelUserMetricsWithOptions(request *DescribeCha
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeChannelUserMetrics查询频道总览中的用户数据。
+//
+// @param request - DescribeChannelUserMetricsRequest
+//
+// @return DescribeChannelUserMetricsResponse
 func (client *Client) DescribeChannelUserMetrics(request *DescribeChannelUserMetricsRequest) (_result *DescribeChannelUserMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelUserMetricsResponse{}
@@ -14322,6 +18157,11 @@ func (client *Client) DescribeChannelUserMetrics(request *DescribeChannelUserMet
 	return _result, _err
 }
 
+// @param request - DescribeChannelUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChannelUsersResponse
 func (client *Client) DescribeChannelUsersWithOptions(request *DescribeChannelUsersRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14363,6 +18203,9 @@ func (client *Client) DescribeChannelUsersWithOptions(request *DescribeChannelUs
 	return _result, _err
 }
 
+// @param request - DescribeChannelUsersRequest
+//
+// @return DescribeChannelUsersResponse
 func (client *Client) DescribeChannelUsers(request *DescribeChannelUsersRequest) (_result *DescribeChannelUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelUsersResponse{}
@@ -14374,6 +18217,15 @@ func (client *Client) DescribeChannelUsers(request *DescribeChannelUsersRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeEndPointEventList获取端对端用户事件列表。
+//
+// @param request - DescribeEndPointEventListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEndPointEventListResponse
 func (client *Client) DescribeEndPointEventListWithOptions(request *DescribeEndPointEventListRequest, runtime *util.RuntimeOptions) (_result *DescribeEndPointEventListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14423,6 +18275,13 @@ func (client *Client) DescribeEndPointEventListWithOptions(request *DescribeEndP
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeEndPointEventList获取端对端用户事件列表。
+//
+// @param request - DescribeEndPointEventListRequest
+//
+// @return DescribeEndPointEventListResponse
 func (client *Client) DescribeEndPointEventList(request *DescribeEndPointEventListRequest) (_result *DescribeEndPointEventListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEndPointEventListResponse{}
@@ -14434,6 +18293,15 @@ func (client *Client) DescribeEndPointEventList(request *DescribeEndPointEventLi
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeEndPointMetricData获取端对端指标数据。
+//
+// @param request - DescribeEndPointMetricDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEndPointMetricDataResponse
 func (client *Client) DescribeEndPointMetricDataWithOptions(request *DescribeEndPointMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribeEndPointMetricDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14495,6 +18363,13 @@ func (client *Client) DescribeEndPointMetricDataWithOptions(request *DescribeEnd
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeEndPointMetricData获取端对端指标数据。
+//
+// @param request - DescribeEndPointMetricDataRequest
+//
+// @return DescribeEndPointMetricDataResponse
 func (client *Client) DescribeEndPointMetricData(request *DescribeEndPointMetricDataRequest) (_result *DescribeEndPointMetricDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEndPointMetricDataResponse{}
@@ -14506,6 +18381,15 @@ func (client *Client) DescribeEndPointMetricData(request *DescribeEndPointMetric
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异常诊断影响因素分布
+//
+// @param request - DescribeFaultDiagnosisFactorDistributionStatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFaultDiagnosisFactorDistributionStatResponse
 func (client *Client) DescribeFaultDiagnosisFactorDistributionStatWithOptions(request *DescribeFaultDiagnosisFactorDistributionStatRequest, runtime *util.RuntimeOptions) (_result *DescribeFaultDiagnosisFactorDistributionStatResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14547,6 +18431,13 @@ func (client *Client) DescribeFaultDiagnosisFactorDistributionStatWithOptions(re
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异常诊断影响因素分布
+//
+// @param request - DescribeFaultDiagnosisFactorDistributionStatRequest
+//
+// @return DescribeFaultDiagnosisFactorDistributionStatResponse
 func (client *Client) DescribeFaultDiagnosisFactorDistributionStat(request *DescribeFaultDiagnosisFactorDistributionStatRequest) (_result *DescribeFaultDiagnosisFactorDistributionStatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFaultDiagnosisFactorDistributionStatResponse{}
@@ -14558,6 +18449,15 @@ func (client *Client) DescribeFaultDiagnosisFactorDistributionStat(request *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异常诊断总览数据
+//
+// @param request - DescribeFaultDiagnosisOverallDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFaultDiagnosisOverallDataResponse
 func (client *Client) DescribeFaultDiagnosisOverallDataWithOptions(request *DescribeFaultDiagnosisOverallDataRequest, runtime *util.RuntimeOptions) (_result *DescribeFaultDiagnosisOverallDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14603,6 +18503,13 @@ func (client *Client) DescribeFaultDiagnosisOverallDataWithOptions(request *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异常诊断总览数据
+//
+// @param request - DescribeFaultDiagnosisOverallDataRequest
+//
+// @return DescribeFaultDiagnosisOverallDataResponse
 func (client *Client) DescribeFaultDiagnosisOverallData(request *DescribeFaultDiagnosisOverallDataRequest) (_result *DescribeFaultDiagnosisOverallDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFaultDiagnosisOverallDataResponse{}
@@ -14614,6 +18521,15 @@ func (client *Client) DescribeFaultDiagnosisOverallData(request *DescribeFaultDi
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异常诊断用户详情
+//
+// @param request - DescribeFaultDiagnosisUserDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFaultDiagnosisUserDetailResponse
 func (client *Client) DescribeFaultDiagnosisUserDetailWithOptions(request *DescribeFaultDiagnosisUserDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeFaultDiagnosisUserDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14667,6 +18583,13 @@ func (client *Client) DescribeFaultDiagnosisUserDetailWithOptions(request *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异常诊断用户详情
+//
+// @param request - DescribeFaultDiagnosisUserDetailRequest
+//
+// @return DescribeFaultDiagnosisUserDetailResponse
 func (client *Client) DescribeFaultDiagnosisUserDetail(request *DescribeFaultDiagnosisUserDetailRequest) (_result *DescribeFaultDiagnosisUserDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFaultDiagnosisUserDetailResponse{}
@@ -14678,6 +18601,15 @@ func (client *Client) DescribeFaultDiagnosisUserDetail(request *DescribeFaultDia
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异常诊断用户明细列表
+//
+// @param request - DescribeFaultDiagnosisUserListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFaultDiagnosisUserListResponse
 func (client *Client) DescribeFaultDiagnosisUserListWithOptions(request *DescribeFaultDiagnosisUserListRequest, runtime *util.RuntimeOptions) (_result *DescribeFaultDiagnosisUserListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14739,6 +18671,13 @@ func (client *Client) DescribeFaultDiagnosisUserListWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取异常诊断用户明细列表
+//
+// @param request - DescribeFaultDiagnosisUserListRequest
+//
+// @return DescribeFaultDiagnosisUserListResponse
 func (client *Client) DescribeFaultDiagnosisUserList(request *DescribeFaultDiagnosisUserListRequest) (_result *DescribeFaultDiagnosisUserListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFaultDiagnosisUserListResponse{}
@@ -14750,6 +18689,11 @@ func (client *Client) DescribeFaultDiagnosisUserList(request *DescribeFaultDiagn
 	return _result, _err
 }
 
+// @param request - DescribeMPULayoutInfoListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMPULayoutInfoListResponse
 func (client *Client) DescribeMPULayoutInfoListWithOptions(request *DescribeMPULayoutInfoListRequest, runtime *util.RuntimeOptions) (_result *DescribeMPULayoutInfoListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14803,6 +18747,9 @@ func (client *Client) DescribeMPULayoutInfoListWithOptions(request *DescribeMPUL
 	return _result, _err
 }
 
+// @param request - DescribeMPULayoutInfoListRequest
+//
+// @return DescribeMPULayoutInfoListResponse
 func (client *Client) DescribeMPULayoutInfoList(request *DescribeMPULayoutInfoListRequest) (_result *DescribeMPULayoutInfoListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMPULayoutInfoListResponse{}
@@ -14814,6 +18761,15 @@ func (client *Client) DescribeMPULayoutInfoList(request *DescribeMPULayoutInfoLi
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribePubUserListBySubUser根据订阅端获取通信中发布端用户列表。
+//
+// @param request - DescribePubUserListBySubUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePubUserListBySubUserResponse
 func (client *Client) DescribePubUserListBySubUserWithOptions(request *DescribePubUserListBySubUserRequest, runtime *util.RuntimeOptions) (_result *DescribePubUserListBySubUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14863,6 +18819,13 @@ func (client *Client) DescribePubUserListBySubUserWithOptions(request *DescribeP
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribePubUserListBySubUser根据订阅端获取通信中发布端用户列表。
+//
+// @param request - DescribePubUserListBySubUserRequest
+//
+// @return DescribePubUserListBySubUserResponse
 func (client *Client) DescribePubUserListBySubUser(request *DescribePubUserListBySubUserRequest) (_result *DescribePubUserListBySubUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePubUserListBySubUserResponse{}
@@ -14874,6 +18837,15 @@ func (client *Client) DescribePubUserListBySubUser(request *DescribePubUserListB
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeQoeMetricData获取单次通信中用户的下行体验质量指标。
+//
+// @param request - DescribeQoeMetricDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeQoeMetricDataResponse
 func (client *Client) DescribeQoeMetricDataWithOptions(request *DescribeQoeMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribeQoeMetricDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14923,6 +18895,13 @@ func (client *Client) DescribeQoeMetricDataWithOptions(request *DescribeQoeMetri
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DescribeQoeMetricData获取单次通信中用户的下行体验质量指标。
+//
+// @param request - DescribeQoeMetricDataRequest
+//
+// @return DescribeQoeMetricDataResponse
 func (client *Client) DescribeQoeMetricData(request *DescribeQoeMetricDataRequest) (_result *DescribeQoeMetricDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeQoeMetricDataResponse{}
@@ -14934,6 +18913,15 @@ func (client *Client) DescribeQoeMetricData(request *DescribeQoeMetricDataReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质量统计区域分布统计数据
+//
+// @param request - DescribeQualityAreaDistributionStatDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeQualityAreaDistributionStatDataResponse
 func (client *Client) DescribeQualityAreaDistributionStatDataWithOptions(request *DescribeQualityAreaDistributionStatDataRequest, runtime *util.RuntimeOptions) (_result *DescribeQualityAreaDistributionStatDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14979,6 +18967,13 @@ func (client *Client) DescribeQualityAreaDistributionStatDataWithOptions(request
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质量统计区域分布统计数据
+//
+// @param request - DescribeQualityAreaDistributionStatDataRequest
+//
+// @return DescribeQualityAreaDistributionStatDataResponse
 func (client *Client) DescribeQualityAreaDistributionStatData(request *DescribeQualityAreaDistributionStatDataRequest) (_result *DescribeQualityAreaDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeQualityAreaDistributionStatDataResponse{}
@@ -14990,6 +18985,15 @@ func (client *Client) DescribeQualityAreaDistributionStatData(request *DescribeQ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质量统计分布数据
+//
+// @param request - DescribeQualityDistributionStatDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeQualityDistributionStatDataResponse
 func (client *Client) DescribeQualityDistributionStatDataWithOptions(request *DescribeQualityDistributionStatDataRequest, runtime *util.RuntimeOptions) (_result *DescribeQualityDistributionStatDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15035,6 +19039,13 @@ func (client *Client) DescribeQualityDistributionStatDataWithOptions(request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质量统计分布数据
+//
+// @param request - DescribeQualityDistributionStatDataRequest
+//
+// @return DescribeQualityDistributionStatDataResponse
 func (client *Client) DescribeQualityDistributionStatData(request *DescribeQualityDistributionStatDataRequest) (_result *DescribeQualityDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeQualityDistributionStatDataResponse{}
@@ -15046,6 +19057,15 @@ func (client *Client) DescribeQualityDistributionStatData(request *DescribeQuali
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质量统计各操作系统下SDK版本分布数据
+//
+// @param request - DescribeQualityOsSdkVersionDistributionStatDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeQualityOsSdkVersionDistributionStatDataResponse
 func (client *Client) DescribeQualityOsSdkVersionDistributionStatDataWithOptions(request *DescribeQualityOsSdkVersionDistributionStatDataRequest, runtime *util.RuntimeOptions) (_result *DescribeQualityOsSdkVersionDistributionStatDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15087,6 +19107,13 @@ func (client *Client) DescribeQualityOsSdkVersionDistributionStatDataWithOptions
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质量统计各操作系统下SDK版本分布数据
+//
+// @param request - DescribeQualityOsSdkVersionDistributionStatDataRequest
+//
+// @return DescribeQualityOsSdkVersionDistributionStatDataResponse
 func (client *Client) DescribeQualityOsSdkVersionDistributionStatData(request *DescribeQualityOsSdkVersionDistributionStatDataRequest) (_result *DescribeQualityOsSdkVersionDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeQualityOsSdkVersionDistributionStatDataResponse{}
@@ -15098,6 +19125,15 @@ func (client *Client) DescribeQualityOsSdkVersionDistributionStatData(request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质量统计概览数据
+//
+// @param request - DescribeQualityOverallDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeQualityOverallDataResponse
 func (client *Client) DescribeQualityOverallDataWithOptions(request *DescribeQualityOverallDataRequest, runtime *util.RuntimeOptions) (_result *DescribeQualityOverallDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15143,6 +19179,13 @@ func (client *Client) DescribeQualityOverallDataWithOptions(request *DescribeQua
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质量统计概览数据
+//
+// @param request - DescribeQualityOverallDataRequest
+//
+// @return DescribeQualityOverallDataResponse
 func (client *Client) DescribeQualityOverallData(request *DescribeQualityOverallDataRequest) (_result *DescribeQualityOverallDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeQualityOverallDataResponse{}
@@ -15154,6 +19197,11 @@ func (client *Client) DescribeQualityOverallData(request *DescribeQualityOverall
 	return _result, _err
 }
 
+// @param request - DescribeRecordFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRecordFilesResponse
 func (client *Client) DescribeRecordFilesWithOptions(request *DescribeRecordFilesRequest, runtime *util.RuntimeOptions) (_result *DescribeRecordFilesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15215,6 +19263,9 @@ func (client *Client) DescribeRecordFilesWithOptions(request *DescribeRecordFile
 	return _result, _err
 }
 
+// @param request - DescribeRecordFilesRequest
+//
+// @return DescribeRecordFilesResponse
 func (client *Client) DescribeRecordFiles(request *DescribeRecordFilesRequest) (_result *DescribeRecordFilesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRecordFilesResponse{}
@@ -15226,6 +19277,11 @@ func (client *Client) DescribeRecordFiles(request *DescribeRecordFilesRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeRecordTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRecordTemplatesResponse
 func (client *Client) DescribeRecordTemplatesWithOptions(request *DescribeRecordTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeRecordTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15275,6 +19331,9 @@ func (client *Client) DescribeRecordTemplatesWithOptions(request *DescribeRecord
 	return _result, _err
 }
 
+// @param request - DescribeRecordTemplatesRequest
+//
+// @return DescribeRecordTemplatesResponse
 func (client *Client) DescribeRecordTemplates(request *DescribeRecordTemplatesRequest) (_result *DescribeRecordTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRecordTemplatesResponse{}
@@ -15286,6 +19345,11 @@ func (client *Client) DescribeRecordTemplates(request *DescribeRecordTemplatesRe
 	return _result, _err
 }
 
+// @param request - DescribeRtcChannelListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRtcChannelListResponse
 func (client *Client) DescribeRtcChannelListWithOptions(request *DescribeRtcChannelListRequest, runtime *util.RuntimeOptions) (_result *DescribeRtcChannelListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15351,6 +19415,9 @@ func (client *Client) DescribeRtcChannelListWithOptions(request *DescribeRtcChan
 	return _result, _err
 }
 
+// @param request - DescribeRtcChannelListRequest
+//
+// @return DescribeRtcChannelListResponse
 func (client *Client) DescribeRtcChannelList(request *DescribeRtcChannelListRequest) (_result *DescribeRtcChannelListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRtcChannelListResponse{}
@@ -15362,6 +19429,11 @@ func (client *Client) DescribeRtcChannelList(request *DescribeRtcChannelListRequ
 	return _result, _err
 }
 
+// @param request - DescribeRtcChannelMetricRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRtcChannelMetricResponse
 func (client *Client) DescribeRtcChannelMetricWithOptions(request *DescribeRtcChannelMetricRequest, runtime *util.RuntimeOptions) (_result *DescribeRtcChannelMetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15407,6 +19479,9 @@ func (client *Client) DescribeRtcChannelMetricWithOptions(request *DescribeRtcCh
 	return _result, _err
 }
 
+// @param request - DescribeRtcChannelMetricRequest
+//
+// @return DescribeRtcChannelMetricResponse
 func (client *Client) DescribeRtcChannelMetric(request *DescribeRtcChannelMetricRequest) (_result *DescribeRtcChannelMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRtcChannelMetricResponse{}
@@ -15418,6 +19493,11 @@ func (client *Client) DescribeRtcChannelMetric(request *DescribeRtcChannelMetric
 	return _result, _err
 }
 
+// @param request - DescribeRtcDurationDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRtcDurationDataResponse
 func (client *Client) DescribeRtcDurationDataWithOptions(request *DescribeRtcDurationDataRequest, runtime *util.RuntimeOptions) (_result *DescribeRtcDurationDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15471,6 +19551,9 @@ func (client *Client) DescribeRtcDurationDataWithOptions(request *DescribeRtcDur
 	return _result, _err
 }
 
+// @param request - DescribeRtcDurationDataRequest
+//
+// @return DescribeRtcDurationDataResponse
 func (client *Client) DescribeRtcDurationData(request *DescribeRtcDurationDataRequest) (_result *DescribeRtcDurationDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRtcDurationDataResponse{}
@@ -15482,6 +19565,11 @@ func (client *Client) DescribeRtcDurationData(request *DescribeRtcDurationDataRe
 	return _result, _err
 }
 
+// @param request - DescribeRtcPeakChannelCntDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRtcPeakChannelCntDataResponse
 func (client *Client) DescribeRtcPeakChannelCntDataWithOptions(request *DescribeRtcPeakChannelCntDataRequest, runtime *util.RuntimeOptions) (_result *DescribeRtcPeakChannelCntDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15535,6 +19623,9 @@ func (client *Client) DescribeRtcPeakChannelCntDataWithOptions(request *Describe
 	return _result, _err
 }
 
+// @param request - DescribeRtcPeakChannelCntDataRequest
+//
+// @return DescribeRtcPeakChannelCntDataResponse
 func (client *Client) DescribeRtcPeakChannelCntData(request *DescribeRtcPeakChannelCntDataRequest) (_result *DescribeRtcPeakChannelCntDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRtcPeakChannelCntDataResponse{}
@@ -15546,6 +19637,11 @@ func (client *Client) DescribeRtcPeakChannelCntData(request *DescribeRtcPeakChan
 	return _result, _err
 }
 
+// @param request - DescribeRtcUserCntDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRtcUserCntDataResponse
 func (client *Client) DescribeRtcUserCntDataWithOptions(request *DescribeRtcUserCntDataRequest, runtime *util.RuntimeOptions) (_result *DescribeRtcUserCntDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15599,6 +19695,9 @@ func (client *Client) DescribeRtcUserCntDataWithOptions(request *DescribeRtcUser
 	return _result, _err
 }
 
+// @param request - DescribeRtcUserCntDataRequest
+//
+// @return DescribeRtcUserCntDataResponse
 func (client *Client) DescribeRtcUserCntData(request *DescribeRtcUserCntDataRequest) (_result *DescribeRtcUserCntDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRtcUserCntDataResponse{}
@@ -15610,6 +19709,15 @@ func (client *Client) DescribeRtcUserCntData(request *DescribeRtcUserCntDataRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用量统计地域分布数据
+//
+// @param request - DescribeUsageAreaDistributionStatDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUsageAreaDistributionStatDataResponse
 func (client *Client) DescribeUsageAreaDistributionStatDataWithOptions(request *DescribeUsageAreaDistributionStatDataRequest, runtime *util.RuntimeOptions) (_result *DescribeUsageAreaDistributionStatDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15655,6 +19763,13 @@ func (client *Client) DescribeUsageAreaDistributionStatDataWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用量统计地域分布数据
+//
+// @param request - DescribeUsageAreaDistributionStatDataRequest
+//
+// @return DescribeUsageAreaDistributionStatDataResponse
 func (client *Client) DescribeUsageAreaDistributionStatData(request *DescribeUsageAreaDistributionStatDataRequest) (_result *DescribeUsageAreaDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUsageAreaDistributionStatDataResponse{}
@@ -15666,6 +19781,15 @@ func (client *Client) DescribeUsageAreaDistributionStatData(request *DescribeUsa
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用量统计分布数据
+//
+// @param request - DescribeUsageDistributionStatDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUsageDistributionStatDataResponse
 func (client *Client) DescribeUsageDistributionStatDataWithOptions(request *DescribeUsageDistributionStatDataRequest, runtime *util.RuntimeOptions) (_result *DescribeUsageDistributionStatDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15711,6 +19835,13 @@ func (client *Client) DescribeUsageDistributionStatDataWithOptions(request *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用量统计分布数据
+//
+// @param request - DescribeUsageDistributionStatDataRequest
+//
+// @return DescribeUsageDistributionStatDataResponse
 func (client *Client) DescribeUsageDistributionStatData(request *DescribeUsageDistributionStatDataRequest) (_result *DescribeUsageDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUsageDistributionStatDataResponse{}
@@ -15722,6 +19853,15 @@ func (client *Client) DescribeUsageDistributionStatData(request *DescribeUsageDi
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用量统计各操作系统下SDK版本分布数据
+//
+// @param request - DescribeUsageOsSdkVersionDistributionStatDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUsageOsSdkVersionDistributionStatDataResponse
 func (client *Client) DescribeUsageOsSdkVersionDistributionStatDataWithOptions(request *DescribeUsageOsSdkVersionDistributionStatDataRequest, runtime *util.RuntimeOptions) (_result *DescribeUsageOsSdkVersionDistributionStatDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15763,6 +19903,13 @@ func (client *Client) DescribeUsageOsSdkVersionDistributionStatDataWithOptions(r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用量统计各操作系统下SDK版本分布数据
+//
+// @param request - DescribeUsageOsSdkVersionDistributionStatDataRequest
+//
+// @return DescribeUsageOsSdkVersionDistributionStatDataResponse
 func (client *Client) DescribeUsageOsSdkVersionDistributionStatData(request *DescribeUsageOsSdkVersionDistributionStatDataRequest) (_result *DescribeUsageOsSdkVersionDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUsageOsSdkVersionDistributionStatDataResponse{}
@@ -15774,6 +19921,15 @@ func (client *Client) DescribeUsageOsSdkVersionDistributionStatData(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用量统计概览数据
+//
+// @param request - DescribeUsageOverallDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUsageOverallDataResponse
 func (client *Client) DescribeUsageOverallDataWithOptions(request *DescribeUsageOverallDataRequest, runtime *util.RuntimeOptions) (_result *DescribeUsageOverallDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15819,6 +19975,13 @@ func (client *Client) DescribeUsageOverallDataWithOptions(request *DescribeUsage
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用量统计概览数据
+//
+// @param request - DescribeUsageOverallDataRequest
+//
+// @return DescribeUsageOverallDataResponse
 func (client *Client) DescribeUsageOverallData(request *DescribeUsageOverallDataRequest) (_result *DescribeUsageOverallDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUsageOverallDataResponse{}
@@ -15830,6 +19993,11 @@ func (client *Client) DescribeUsageOverallData(request *DescribeUsageOverallData
 	return _result, _err
 }
 
+// @param request - DescribeUserInfoInChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserInfoInChannelResponse
 func (client *Client) DescribeUserInfoInChannelWithOptions(request *DescribeUserInfoInChannelRequest, runtime *util.RuntimeOptions) (_result *DescribeUserInfoInChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15875,6 +20043,9 @@ func (client *Client) DescribeUserInfoInChannelWithOptions(request *DescribeUser
 	return _result, _err
 }
 
+// @param request - DescribeUserInfoInChannelRequest
+//
+// @return DescribeUserInfoInChannelResponse
 func (client *Client) DescribeUserInfoInChannel(request *DescribeUserInfoInChannelRequest) (_result *DescribeUserInfoInChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserInfoInChannelResponse{}
@@ -15886,6 +20057,11 @@ func (client *Client) DescribeUserInfoInChannel(request *DescribeUserInfoInChann
 	return _result, _err
 }
 
+// @param request - DisableAutoLiveStreamRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableAutoLiveStreamRuleResponse
 func (client *Client) DisableAutoLiveStreamRuleWithOptions(request *DisableAutoLiveStreamRuleRequest, runtime *util.RuntimeOptions) (_result *DisableAutoLiveStreamRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15927,6 +20103,9 @@ func (client *Client) DisableAutoLiveStreamRuleWithOptions(request *DisableAutoL
 	return _result, _err
 }
 
+// @param request - DisableAutoLiveStreamRuleRequest
+//
+// @return DisableAutoLiveStreamRuleResponse
 func (client *Client) DisableAutoLiveStreamRule(request *DisableAutoLiveStreamRuleRequest) (_result *DisableAutoLiveStreamRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableAutoLiveStreamRuleResponse{}
@@ -15938,6 +20117,11 @@ func (client *Client) DisableAutoLiveStreamRule(request *DisableAutoLiveStreamRu
 	return _result, _err
 }
 
+// @param request - EnableAutoLiveStreamRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableAutoLiveStreamRuleResponse
 func (client *Client) EnableAutoLiveStreamRuleWithOptions(request *EnableAutoLiveStreamRuleRequest, runtime *util.RuntimeOptions) (_result *EnableAutoLiveStreamRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15979,6 +20163,9 @@ func (client *Client) EnableAutoLiveStreamRuleWithOptions(request *EnableAutoLiv
 	return _result, _err
 }
 
+// @param request - EnableAutoLiveStreamRuleRequest
+//
+// @return EnableAutoLiveStreamRuleResponse
 func (client *Client) EnableAutoLiveStreamRule(request *EnableAutoLiveStreamRuleRequest) (_result *EnableAutoLiveStreamRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableAutoLiveStreamRuleResponse{}
@@ -15990,6 +20177,11 @@ func (client *Client) EnableAutoLiveStreamRule(request *EnableAutoLiveStreamRule
 	return _result, _err
 }
 
+// @param request - GetMPUTaskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMPUTaskStatusResponse
 func (client *Client) GetMPUTaskStatusWithOptions(request *GetMPUTaskStatusRequest, runtime *util.RuntimeOptions) (_result *GetMPUTaskStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16031,6 +20223,9 @@ func (client *Client) GetMPUTaskStatusWithOptions(request *GetMPUTaskStatusReque
 	return _result, _err
 }
 
+// @param request - GetMPUTaskStatusRequest
+//
+// @return GetMPUTaskStatusResponse
 func (client *Client) GetMPUTaskStatus(request *GetMPUTaskStatusRequest) (_result *GetMPUTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMPUTaskStatusResponse{}
@@ -16042,6 +20237,15 @@ func (client *Client) GetMPUTaskStatus(request *GetMPUTaskStatusRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改App信息
+//
+// @param request - ModifyAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppResponse
 func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *util.RuntimeOptions) (_result *ModifyAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16083,6 +20287,13 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改App信息
+//
+// @param request - ModifyAppRequest
+//
+// @return ModifyAppResponse
 func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAppResponse{}
@@ -16094,6 +20305,15 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新应用推流模版
+//
+// @param tmpReq - ModifyAppStreamingOutTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppStreamingOutTemplateResponse
 func (client *Client) ModifyAppStreamingOutTemplateWithOptions(tmpReq *ModifyAppStreamingOutTemplateRequest, runtime *util.RuntimeOptions) (_result *ModifyAppStreamingOutTemplateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -16137,6 +20357,13 @@ func (client *Client) ModifyAppStreamingOutTemplateWithOptions(tmpReq *ModifyApp
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新应用推流模版
+//
+// @param request - ModifyAppStreamingOutTemplateRequest
+//
+// @return ModifyAppStreamingOutTemplateResponse
 func (client *Client) ModifyAppStreamingOutTemplate(request *ModifyAppStreamingOutTemplateRequest) (_result *ModifyAppStreamingOutTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAppStreamingOutTemplateResponse{}
@@ -16148,6 +20375,11 @@ func (client *Client) ModifyAppStreamingOutTemplate(request *ModifyAppStreamingO
 	return _result, _err
 }
 
+// @param request - ModifyMPULayoutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyMPULayoutResponse
 func (client *Client) ModifyMPULayoutWithOptions(request *ModifyMPULayoutRequest, runtime *util.RuntimeOptions) (_result *ModifyMPULayoutResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16201,6 +20433,9 @@ func (client *Client) ModifyMPULayoutWithOptions(request *ModifyMPULayoutRequest
 	return _result, _err
 }
 
+// @param request - ModifyMPULayoutRequest
+//
+// @return ModifyMPULayoutResponse
 func (client *Client) ModifyMPULayout(request *ModifyMPULayoutRequest) (_result *ModifyMPULayoutResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyMPULayoutResponse{}
@@ -16212,6 +20447,11 @@ func (client *Client) ModifyMPULayout(request *ModifyMPULayoutRequest) (_result 
 	return _result, _err
 }
 
+// @param request - RemoveTerminalsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveTerminalsResponse
 func (client *Client) RemoveTerminalsWithOptions(request *RemoveTerminalsRequest, runtime *util.RuntimeOptions) (_result *RemoveTerminalsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16257,6 +20497,9 @@ func (client *Client) RemoveTerminalsWithOptions(request *RemoveTerminalsRequest
 	return _result, _err
 }
 
+// @param request - RemoveTerminalsRequest
+//
+// @return RemoveTerminalsResponse
 func (client *Client) RemoveTerminals(request *RemoveTerminalsRequest) (_result *RemoveTerminalsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveTerminalsResponse{}
@@ -16268,6 +20511,15 @@ func (client *Client) RemoveTerminals(request *RemoveTerminalsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// RemoveUsers
+//
+// @param request - RemoveUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveUsersResponse
 func (client *Client) RemoveUsersWithOptions(request *RemoveUsersRequest, runtime *util.RuntimeOptions) (_result *RemoveUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16309,6 +20561,13 @@ func (client *Client) RemoveUsersWithOptions(request *RemoveUsersRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// RemoveUsers
+//
+// @param request - RemoveUsersRequest
+//
+// @return RemoveUsersResponse
 func (client *Client) RemoveUsers(request *RemoveUsersRequest) (_result *RemoveUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveUsersResponse{}
@@ -16320,6 +20579,15 @@ func (client *Client) RemoveUsers(request *RemoveUsersRequest) (_result *RemoveU
 	return _result, _err
 }
 
+// Summary:
+//
+// StartCloudRecord
+//
+// @param request - StartCloudRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartCloudRecordResponse
 func (client *Client) StartCloudRecordWithOptions(request *StartCloudRecordRequest, runtime *util.RuntimeOptions) (_result *StartCloudRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16373,6 +20641,13 @@ func (client *Client) StartCloudRecordWithOptions(request *StartCloudRecordReque
 	return _result, _err
 }
 
+// Summary:
+//
+// StartCloudRecord
+//
+// @param request - StartCloudRecordRequest
+//
+// @return StartCloudRecordResponse
 func (client *Client) StartCloudRecord(request *StartCloudRecordRequest) (_result *StartCloudRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartCloudRecordResponse{}
@@ -16384,6 +20659,11 @@ func (client *Client) StartCloudRecord(request *StartCloudRecordRequest) (_resul
 	return _result, _err
 }
 
+// @param request - StartMPUTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartMPUTaskResponse
 func (client *Client) StartMPUTaskWithOptions(request *StartMPUTaskRequest, runtime *util.RuntimeOptions) (_result *StartMPUTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16538,6 +20818,9 @@ func (client *Client) StartMPUTaskWithOptions(request *StartMPUTaskRequest, runt
 	return _result, _err
 }
 
+// @param request - StartMPUTaskRequest
+//
+// @return StartMPUTaskResponse
 func (client *Client) StartMPUTask(request *StartMPUTaskRequest) (_result *StartMPUTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartMPUTaskResponse{}
@@ -16549,6 +20832,11 @@ func (client *Client) StartMPUTask(request *StartMPUTaskRequest) (_result *Start
 	return _result, _err
 }
 
+// @param request - StartRecordTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartRecordTaskResponse
 func (client *Client) StartRecordTaskWithOptions(request *StartRecordTaskRequest, runtime *util.RuntimeOptions) (_result *StartRecordTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16658,6 +20946,9 @@ func (client *Client) StartRecordTaskWithOptions(request *StartRecordTaskRequest
 	return _result, _err
 }
 
+// @param request - StartRecordTaskRequest
+//
+// @return StartRecordTaskResponse
 func (client *Client) StartRecordTask(request *StartRecordTaskRequest) (_result *StartRecordTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartRecordTaskResponse{}
@@ -16669,6 +20960,15 @@ func (client *Client) StartRecordTask(request *StartRecordTaskRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// StartStreamingOut
+//
+// @param request - StartStreamingOutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartStreamingOutResponse
 func (client *Client) StartStreamingOutWithOptions(request *StartStreamingOutRequest, runtime *util.RuntimeOptions) (_result *StartStreamingOutResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16722,6 +21022,13 @@ func (client *Client) StartStreamingOutWithOptions(request *StartStreamingOutReq
 	return _result, _err
 }
 
+// Summary:
+//
+// StartStreamingOut
+//
+// @param request - StartStreamingOutRequest
+//
+// @return StartStreamingOutResponse
 func (client *Client) StartStreamingOut(request *StartStreamingOutRequest) (_result *StartStreamingOutResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartStreamingOutResponse{}
@@ -16733,6 +21040,15 @@ func (client *Client) StartStreamingOut(request *StartStreamingOutRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除频道
+//
+// @param request - StopChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopChannelResponse
 func (client *Client) StopChannelWithOptions(request *StopChannelRequest, runtime *util.RuntimeOptions) (_result *StopChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16770,6 +21086,13 @@ func (client *Client) StopChannelWithOptions(request *StopChannelRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除频道
+//
+// @param request - StopChannelRequest
+//
+// @return StopChannelResponse
 func (client *Client) StopChannel(request *StopChannelRequest) (_result *StopChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopChannelResponse{}
@@ -16781,6 +21104,15 @@ func (client *Client) StopChannel(request *StopChannelRequest) (_result *StopCha
 	return _result, _err
 }
 
+// Summary:
+//
+// StopCloudRecord
+//
+// @param request - StopCloudRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopCloudRecordResponse
 func (client *Client) StopCloudRecordWithOptions(request *StopCloudRecordRequest, runtime *util.RuntimeOptions) (_result *StopCloudRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16822,6 +21154,13 @@ func (client *Client) StopCloudRecordWithOptions(request *StopCloudRecordRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// StopCloudRecord
+//
+// @param request - StopCloudRecordRequest
+//
+// @return StopCloudRecordResponse
 func (client *Client) StopCloudRecord(request *StopCloudRecordRequest) (_result *StopCloudRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopCloudRecordResponse{}
@@ -16833,6 +21172,11 @@ func (client *Client) StopCloudRecord(request *StopCloudRecordRequest) (_result 
 	return _result, _err
 }
 
+// @param request - StopMPUTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopMPUTaskResponse
 func (client *Client) StopMPUTaskWithOptions(request *StopMPUTaskRequest, runtime *util.RuntimeOptions) (_result *StopMPUTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16874,6 +21218,9 @@ func (client *Client) StopMPUTaskWithOptions(request *StopMPUTaskRequest, runtim
 	return _result, _err
 }
 
+// @param request - StopMPUTaskRequest
+//
+// @return StopMPUTaskResponse
 func (client *Client) StopMPUTask(request *StopMPUTaskRequest) (_result *StopMPUTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopMPUTaskResponse{}
@@ -16885,6 +21232,11 @@ func (client *Client) StopMPUTask(request *StopMPUTaskRequest) (_result *StopMPU
 	return _result, _err
 }
 
+// @param request - StopRecordTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopRecordTaskResponse
 func (client *Client) StopRecordTaskWithOptions(request *StopRecordTaskRequest, runtime *util.RuntimeOptions) (_result *StopRecordTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16926,6 +21278,9 @@ func (client *Client) StopRecordTaskWithOptions(request *StopRecordTaskRequest, 
 	return _result, _err
 }
 
+// @param request - StopRecordTaskRequest
+//
+// @return StopRecordTaskResponse
 func (client *Client) StopRecordTask(request *StopRecordTaskRequest) (_result *StopRecordTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopRecordTaskResponse{}
@@ -16937,6 +21292,15 @@ func (client *Client) StopRecordTask(request *StopRecordTaskRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// StopStreamingOut
+//
+// @param request - StopStreamingOutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopStreamingOutResponse
 func (client *Client) StopStreamingOutWithOptions(request *StopStreamingOutRequest, runtime *util.RuntimeOptions) (_result *StopStreamingOutResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16978,6 +21342,13 @@ func (client *Client) StopStreamingOutWithOptions(request *StopStreamingOutReque
 	return _result, _err
 }
 
+// Summary:
+//
+// StopStreamingOut
+//
+// @param request - StopStreamingOutRequest
+//
+// @return StopStreamingOutResponse
 func (client *Client) StopStreamingOut(request *StopStreamingOutRequest) (_result *StopStreamingOutResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopStreamingOutResponse{}
@@ -16989,6 +21360,11 @@ func (client *Client) StopStreamingOut(request *StopStreamingOutRequest) (_resul
 	return _result, _err
 }
 
+// @param request - UpdateAutoLiveStreamRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAutoLiveStreamRuleResponse
 func (client *Client) UpdateAutoLiveStreamRuleWithOptions(request *UpdateAutoLiveStreamRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateAutoLiveStreamRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17054,6 +21430,9 @@ func (client *Client) UpdateAutoLiveStreamRuleWithOptions(request *UpdateAutoLiv
 	return _result, _err
 }
 
+// @param request - UpdateAutoLiveStreamRuleRequest
+//
+// @return UpdateAutoLiveStreamRuleResponse
 func (client *Client) UpdateAutoLiveStreamRule(request *UpdateAutoLiveStreamRuleRequest) (_result *UpdateAutoLiveStreamRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAutoLiveStreamRuleResponse{}
@@ -17065,6 +21444,11 @@ func (client *Client) UpdateAutoLiveStreamRule(request *UpdateAutoLiveStreamRule
 	return _result, _err
 }
 
+// @param request - UpdateMPUTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMPUTaskResponse
 func (client *Client) UpdateMPUTaskWithOptions(request *UpdateMPUTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateMPUTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17178,6 +21562,9 @@ func (client *Client) UpdateMPUTaskWithOptions(request *UpdateMPUTaskRequest, ru
 	return _result, _err
 }
 
+// @param request - UpdateMPUTaskRequest
+//
+// @return UpdateMPUTaskResponse
 func (client *Client) UpdateMPUTask(request *UpdateMPUTaskRequest) (_result *UpdateMPUTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMPUTaskResponse{}
@@ -17189,6 +21576,11 @@ func (client *Client) UpdateMPUTask(request *UpdateMPUTaskRequest) (_result *Upd
 	return _result, _err
 }
 
+// @param request - UpdateRecordTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecordTaskResponse
 func (client *Client) UpdateRecordTaskWithOptions(request *UpdateRecordTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateRecordTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17286,6 +21678,9 @@ func (client *Client) UpdateRecordTaskWithOptions(request *UpdateRecordTaskReque
 	return _result, _err
 }
 
+// @param request - UpdateRecordTaskRequest
+//
+// @return UpdateRecordTaskResponse
 func (client *Client) UpdateRecordTask(request *UpdateRecordTaskRequest) (_result *UpdateRecordTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRecordTaskResponse{}
@@ -17297,6 +21692,11 @@ func (client *Client) UpdateRecordTask(request *UpdateRecordTaskRequest) (_resul
 	return _result, _err
 }
 
+// @param request - UpdateRecordTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecordTemplateResponse
 func (client *Client) UpdateRecordTemplateWithOptions(request *UpdateRecordTemplateRequest, runtime *util.RuntimeOptions) (_result *UpdateRecordTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17406,6 +21806,9 @@ func (client *Client) UpdateRecordTemplateWithOptions(request *UpdateRecordTempl
 	return _result, _err
 }
 
+// @param request - UpdateRecordTemplateRequest
+//
+// @return UpdateRecordTemplateResponse
 func (client *Client) UpdateRecordTemplate(request *UpdateRecordTemplateRequest) (_result *UpdateRecordTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRecordTemplateResponse{}
