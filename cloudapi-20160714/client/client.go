@@ -18839,6 +18839,162 @@ func (s *DescribeAppAttributesResponse) SetBody(v *DescribeAppAttributesResponse
 	return s
 }
 
+type DescribeAppSecuritiesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 110862931
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeAppSecuritiesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppSecuritiesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppSecuritiesRequest) SetAppId(v int64) *DescribeAppSecuritiesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppSecuritiesRequest) SetSecurityToken(v string) *DescribeAppSecuritiesRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeAppSecuritiesResponseBody struct {
+	AppSecuritys *DescribeAppSecuritiesResponseBodyAppSecuritys `json:"AppSecuritys,omitempty" xml:"AppSecuritys,omitempty" type:"Struct"`
+	// example:
+	//
+	// EF924FE4-2EDD-4CD3-89EC-34E4708574E7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAppSecuritiesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppSecuritiesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppSecuritiesResponseBody) SetAppSecuritys(v *DescribeAppSecuritiesResponseBodyAppSecuritys) *DescribeAppSecuritiesResponseBody {
+	s.AppSecuritys = v
+	return s
+}
+
+func (s *DescribeAppSecuritiesResponseBody) SetRequestId(v string) *DescribeAppSecuritiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAppSecuritiesResponseBodyAppSecuritys struct {
+	AppSecurity []*DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity `json:"AppSecurity,omitempty" xml:"AppSecurity,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAppSecuritiesResponseBodyAppSecuritys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppSecuritiesResponseBodyAppSecuritys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppSecuritiesResponseBodyAppSecuritys) SetAppSecurity(v []*DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity) *DescribeAppSecuritiesResponseBodyAppSecuritys {
+	s.AppSecurity = v
+	return s
+}
+
+type DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity struct {
+	// example:
+	//
+	// d2350ecd62c44cbfbe35a7f182e35105
+	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	// example:
+	//
+	// 34379343
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// ea5291a7aff343769eb3139a2f6de8c9
+	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	// example:
+	//
+	// 2021-09-14T18:50:59
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// 2023-08-14T18:03:00+08:00
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+}
+
+func (s DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity) SetAppCode(v string) *DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity {
+	s.AppCode = &v
+	return s
+}
+
+func (s *DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity) SetAppKey(v string) *DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity {
+	s.AppKey = &v
+	return s
+}
+
+func (s *DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity) SetAppSecret(v string) *DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity {
+	s.AppSecret = &v
+	return s
+}
+
+func (s *DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity) SetCreatedTime(v string) *DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity) SetModifiedTime(v string) *DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity {
+	s.ModifiedTime = &v
+	return s
+}
+
+type DescribeAppSecuritiesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppSecuritiesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAppSecuritiesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppSecuritiesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppSecuritiesResponse) SetHeaders(v map[string]*string) *DescribeAppSecuritiesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppSecuritiesResponse) SetStatusCode(v int32) *DescribeAppSecuritiesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAppSecuritiesResponse) SetBody(v *DescribeAppSecuritiesResponseBody) *DescribeAppSecuritiesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAppSecurityRequest struct {
 	// The ID of the app.
 	//
@@ -52003,6 +52159,70 @@ func (client *Client) DescribeAppAttributes(request *DescribeAppAttributesReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAppAttributesResponse{}
 	_body, _err := client.DescribeAppAttributesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询APP的密钥信息
+//
+// @param request - DescribeAppSecuritiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppSecuritiesResponse
+func (client *Client) DescribeAppSecuritiesWithOptions(request *DescribeAppSecuritiesRequest, runtime *util.RuntimeOptions) (_result *DescribeAppSecuritiesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppSecurities"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppSecuritiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询APP的密钥信息
+//
+// @param request - DescribeAppSecuritiesRequest
+//
+// @return DescribeAppSecuritiesResponse
+func (client *Client) DescribeAppSecurities(request *DescribeAppSecuritiesRequest) (_result *DescribeAppSecuritiesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppSecuritiesResponse{}
+	_body, _err := client.DescribeAppSecuritiesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
