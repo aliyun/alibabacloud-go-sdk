@@ -11182,7 +11182,8 @@ type CreateProjectRequest struct {
 	// example:
 	//
 	// AliyunIMMDefaultRole
-	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	ServiceRole *string                    `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	Tag         []*CreateProjectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Official:AllFunction
@@ -11242,7 +11243,140 @@ func (s *CreateProjectRequest) SetServiceRole(v string) *CreateProjectRequest {
 	return s
 }
 
+func (s *CreateProjectRequest) SetTag(v []*CreateProjectRequestTag) *CreateProjectRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateProjectRequest) SetTemplateId(v string) *CreateProjectRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateProjectRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateProjectRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTag) SetKey(v string) *CreateProjectRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateProjectRequestTag) SetValue(v string) *CreateProjectRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateProjectShrinkRequest struct {
+	// example:
+	//
+	// 10
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// example:
+	//
+	// 10000000000
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// example:
+	//
+	// 100000000
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// example:
+	//
+	// 100000000000
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// example:
+	//
+	// 90000000000000000
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// example:
+	//
+	// immtest
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1000000000
+	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// AliyunIMMDefaultRole
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	TagShrink   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// Official:AllFunction
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s CreateProjectShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectShrinkRequest) SetDatasetMaxBindCount(v int64) *CreateProjectShrinkRequest {
+	s.DatasetMaxBindCount = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetDatasetMaxEntityCount(v int64) *CreateProjectShrinkRequest {
+	s.DatasetMaxEntityCount = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetDatasetMaxFileCount(v int64) *CreateProjectShrinkRequest {
+	s.DatasetMaxFileCount = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetDatasetMaxRelationCount(v int64) *CreateProjectShrinkRequest {
+	s.DatasetMaxRelationCount = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetDatasetMaxTotalFileSize(v int64) *CreateProjectShrinkRequest {
+	s.DatasetMaxTotalFileSize = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetDescription(v string) *CreateProjectShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetProjectMaxDatasetCount(v int64) *CreateProjectShrinkRequest {
+	s.ProjectMaxDatasetCount = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetProjectName(v string) *CreateProjectShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetServiceRole(v string) *CreateProjectShrinkRequest {
+	s.ServiceRole = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetTagShrink(v string) *CreateProjectShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetTemplateId(v string) *CreateProjectShrinkRequest {
 	s.TemplateId = &v
 	return s
 }
@@ -18901,7 +19035,8 @@ type ListProjectsRequest struct {
 	// example:
 	//
 	// immtest
-	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Prefix *string                   `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Tag    []*ListProjectsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListProjectsRequest) String() string {
@@ -18924,6 +19059,72 @@ func (s *ListProjectsRequest) SetNextToken(v string) *ListProjectsRequest {
 
 func (s *ListProjectsRequest) SetPrefix(v string) *ListProjectsRequest {
 	s.Prefix = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetTag(v []*ListProjectsRequestTag) *ListProjectsRequest {
+	s.Tag = v
+	return s
+}
+
+type ListProjectsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListProjectsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsRequestTag) SetKey(v string) *ListProjectsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListProjectsRequestTag) SetValue(v string) *ListProjectsRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListProjectsShrinkRequest struct {
+	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// immtest
+	Prefix    *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListProjectsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsShrinkRequest) SetMaxResults(v int64) *ListProjectsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetNextToken(v string) *ListProjectsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetPrefix(v string) *ListProjectsShrinkRequest {
+	s.Prefix = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetTagShrink(v string) *ListProjectsShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -22688,7 +22889,8 @@ type UpdateProjectRequest struct {
 	// example:
 	//
 	// AliyunIMMDefaultRole
-	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	ServiceRole *string                    `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	Tag         []*UpdateProjectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
 	// AliyunIMMDefaultRole
@@ -22748,7 +22950,140 @@ func (s *UpdateProjectRequest) SetServiceRole(v string) *UpdateProjectRequest {
 	return s
 }
 
+func (s *UpdateProjectRequest) SetTag(v []*UpdateProjectRequestTag) *UpdateProjectRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *UpdateProjectRequest) SetTemplateId(v string) *UpdateProjectRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type UpdateProjectRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateProjectRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectRequestTag) SetKey(v string) *UpdateProjectRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateProjectRequestTag) SetValue(v string) *UpdateProjectRequestTag {
+	s.Value = &v
+	return s
+}
+
+type UpdateProjectShrinkRequest struct {
+	// example:
+	//
+	// 10
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// example:
+	//
+	// 10000000000
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// example:
+	//
+	// 100000000
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// example:
+	//
+	// 100000000000
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// example:
+	//
+	// 90000000000000000
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// example:
+	//
+	// immtest
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1000000000
+	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// AliyunIMMDefaultRole
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	TagShrink   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// AliyunIMMDefaultRole
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s UpdateProjectShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectShrinkRequest) SetDatasetMaxBindCount(v int64) *UpdateProjectShrinkRequest {
+	s.DatasetMaxBindCount = &v
+	return s
+}
+
+func (s *UpdateProjectShrinkRequest) SetDatasetMaxEntityCount(v int64) *UpdateProjectShrinkRequest {
+	s.DatasetMaxEntityCount = &v
+	return s
+}
+
+func (s *UpdateProjectShrinkRequest) SetDatasetMaxFileCount(v int64) *UpdateProjectShrinkRequest {
+	s.DatasetMaxFileCount = &v
+	return s
+}
+
+func (s *UpdateProjectShrinkRequest) SetDatasetMaxRelationCount(v int64) *UpdateProjectShrinkRequest {
+	s.DatasetMaxRelationCount = &v
+	return s
+}
+
+func (s *UpdateProjectShrinkRequest) SetDatasetMaxTotalFileSize(v int64) *UpdateProjectShrinkRequest {
+	s.DatasetMaxTotalFileSize = &v
+	return s
+}
+
+func (s *UpdateProjectShrinkRequest) SetDescription(v string) *UpdateProjectShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateProjectShrinkRequest) SetProjectMaxDatasetCount(v int64) *UpdateProjectShrinkRequest {
+	s.ProjectMaxDatasetCount = &v
+	return s
+}
+
+func (s *UpdateProjectShrinkRequest) SetProjectName(v string) *UpdateProjectShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *UpdateProjectShrinkRequest) SetServiceRole(v string) *UpdateProjectShrinkRequest {
+	s.ServiceRole = &v
+	return s
+}
+
+func (s *UpdateProjectShrinkRequest) SetTagShrink(v string) *UpdateProjectShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
+func (s *UpdateProjectShrinkRequest) SetTemplateId(v string) *UpdateProjectShrinkRequest {
 	s.TemplateId = &v
 	return s
 }
@@ -25884,16 +26219,22 @@ func (client *Client) CreateOfficeConversionTask(request *CreateOfficeConversion
 //
 // 创建项目
 //
-// @param request - CreateProjectRequest
+// @param tmpReq - CreateProjectRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateProjectResponse
-func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateProjectShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetMaxBindCount)) {
 		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
@@ -25929,6 +26270,10 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceRole)) {
 		query["ServiceRole"] = request.ServiceRole
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
@@ -29692,16 +30037,22 @@ func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListD
 //
 // 获取项目列表
 //
-// @param request - ListProjectsRequest
+// @param tmpReq - ListProjectsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProjectsResponse
-func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListProjectsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
@@ -29713,6 +30064,10 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
 		query["Prefix"] = request.Prefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -31598,16 +31953,22 @@ func (client *Client) UpdateLocationDateCluster(request *UpdateLocationDateClust
 //
 // 更新项目
 //
-// @param request - UpdateProjectRequest
+// @param tmpReq - UpdateProjectRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateProjectResponse
-func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, runtime *util.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateProjectWithOptions(tmpReq *UpdateProjectRequest, runtime *util.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateProjectShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetMaxBindCount)) {
 		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
@@ -31643,6 +32004,10 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceRole)) {
 		query["ServiceRole"] = request.ServiceRole
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
