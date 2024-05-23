@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,15 +11,20 @@ import (
 
 type CreateAppRequest struct {
 	// 应用名
-	AppName        *string                         `json:"appName,omitempty" xml:"appName,omitempty"`
+	//
+	// This parameter is required.
+	AppName *string `json:"appName,omitempty" xml:"appName,omitempty"`
+	// This parameter is required.
 	Authentication *CreateAppRequestAuthentication `json:"authentication,omitempty" xml:"authentication,omitempty" type:"Struct"`
-	ChargeType     *string                         `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// This parameter is required.
+	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// 应用备注
 	Description    *string                           `json:"description,omitempty" xml:"description,omitempty"`
 	Network        []*CreateAppRequestNetwork        `json:"network,omitempty" xml:"network,omitempty" type:"Repeated"`
 	PrivateNetwork []*CreateAppRequestPrivateNetwork `json:"privateNetwork,omitempty" xml:"privateNetwork,omitempty" type:"Repeated"`
 	QuotaInfo      *CreateAppRequestQuotaInfo        `json:"quotaInfo,omitempty" xml:"quotaInfo,omitempty" type:"Struct"`
 	RegionId       *string                           `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Scenario       *string                           `json:"scenario,omitempty" xml:"scenario,omitempty"`
 	Version        *string                           `json:"version,omitempty" xml:"version,omitempty"`
 	DryRun         *bool                             `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
@@ -72,6 +74,11 @@ func (s *CreateAppRequest) SetQuotaInfo(v *CreateAppRequestQuotaInfo) *CreateApp
 
 func (s *CreateAppRequest) SetRegionId(v string) *CreateAppRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetScenario(v string) *CreateAppRequest {
+	s.Scenario = &v
 	return s
 }
 
@@ -283,6 +290,9 @@ func (s *CreateAppRequestQuotaInfo) SetStorage(v int32) *CreateAppRequestQuotaIn
 }
 
 type CreateAppResponseBody struct {
+	// example:
+	//
+	// 2C5DAA30-****-5181-9B87-9D6181016197
 	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result    *CreateAppResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
@@ -306,6 +316,9 @@ func (s *CreateAppResponseBody) SetResult(v *CreateAppResponseBodyResult) *Creat
 }
 
 type CreateAppResponseBodyResult struct {
+	// example:
+	//
+	// es-serverless-cn-xxx
 	InstaneId *string `json:"instaneId,omitempty" xml:"instaneId,omitempty"`
 }
 
@@ -323,9 +336,9 @@ func (s *CreateAppResponseBodyResult) SetInstaneId(v string) *CreateAppResponseB
 }
 
 type CreateAppResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAppResponse) String() string {
@@ -351,7 +364,163 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 	return s
 }
 
+type CreateEndpointRequest struct {
+	// This parameter is required.
+	EndpointZones []*CreateEndpointRequestEndpointZones `json:"endpointZones,omitempty" xml:"endpointZones,omitempty" type:"Repeated"`
+	// example:
+	//
+	// testendpoint
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-uf664nyle5khp5***
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// example:
+	//
+	// VPC
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateEndpointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEndpointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEndpointRequest) SetEndpointZones(v []*CreateEndpointRequestEndpointZones) *CreateEndpointRequest {
+	s.EndpointZones = v
+	return s
+}
+
+func (s *CreateEndpointRequest) SetName(v string) *CreateEndpointRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateEndpointRequest) SetVpcId(v string) *CreateEndpointRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateEndpointRequest) SetType(v string) *CreateEndpointRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateEndpointRequestEndpointZones struct {
+	// example:
+	//
+	// vsw-uf6qmfkqdcw*****
+	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s CreateEndpointRequestEndpointZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEndpointRequestEndpointZones) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEndpointRequestEndpointZones) SetVswitchId(v string) *CreateEndpointRequestEndpointZones {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *CreateEndpointRequestEndpointZones) SetZoneId(v string) *CreateEndpointRequestEndpointZones {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateEndpointResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 2C5DAA30-****-5181-9B87-9D6181016197
+	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *CreateEndpointResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s CreateEndpointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEndpointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEndpointResponseBody) SetRequestId(v string) *CreateEndpointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateEndpointResponseBody) SetResult(v *CreateEndpointResponseBodyResult) *CreateEndpointResponseBody {
+	s.Result = v
+	return s
+}
+
+type CreateEndpointResponseBodyResult struct {
+	// example:
+	//
+	// essep-abd***dks
+	EndpointId *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
+}
+
+func (s CreateEndpointResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEndpointResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEndpointResponseBodyResult) SetEndpointId(v string) *CreateEndpointResponseBodyResult {
+	s.EndpointId = &v
+	return s
+}
+
+type CreateEndpointResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateEndpointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEndpointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEndpointResponse) SetHeaders(v map[string]*string) *CreateEndpointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEndpointResponse) SetStatusCode(v int32) *CreateEndpointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEndpointResponse) SetBody(v *CreateEndpointResponseBody) *CreateEndpointResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAppResponseBody struct {
+	// example:
+	//
+	// 2C5DAA30-****-5181-9B87-9D6181016197
 	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result    *DeleteAppResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
@@ -392,9 +561,9 @@ func (s *DeleteAppResponseBodyResult) SetInstanceId(v string) *DeleteAppResponse
 }
 
 type DeleteAppResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAppResponse) String() string {
@@ -421,6 +590,9 @@ func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse
 }
 
 type GetAppRequest struct {
+	// example:
+	//
+	// false
 	Detailed *bool `json:"detailed,omitempty" xml:"detailed,omitempty"`
 }
 
@@ -438,6 +610,9 @@ func (s *GetAppRequest) SetDetailed(v bool) *GetAppRequest {
 }
 
 type GetAppResponseBody struct {
+	// example:
+	//
+	// 2C5DAA30-****-5181-9B87-9D6181016197
 	RequestId *string                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result    *GetAppResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
@@ -461,16 +636,42 @@ func (s *GetAppResponseBody) SetResult(v *GetAppResponseBodyResult) *GetAppRespo
 }
 
 type GetAppResponseBodyResult struct {
-	AppId        *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	AppName      *string `json:"appName,omitempty" xml:"appName,omitempty"`
-	CreateTime   *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
-	InstanceId   *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	ModifiedTime *string `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
-	OwnerId      *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
-	RegionId     *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Status       *string `json:"status,omitempty" xml:"status,omitempty"`
-	Version      *string `json:"version,omitempty" xml:"version,omitempty"`
+	// example:
+	//
+	// test-app-abc
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// example:
+	//
+	// es-severless-test-app
+	AppName *string `json:"appName,omitempty" xml:"appName,omitempty"`
+	// example:
+	//
+	// 2022-08-15T11:20:52.370Z
+	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// 2022-08-15T11:21:50.000Z
+	ModifiedTime *string                            `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
+	Network      []*GetAppResponseBodyResultNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Repeated"`
+	// example:
+	//
+	// *******7595
+	OwnerId        *string                                   `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	PrivateNetwork []*GetAppResponseBodyResultPrivateNetwork `json:"privateNetwork,omitempty" xml:"privateNetwork,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 7.10
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetAppResponseBodyResult) String() string {
@@ -511,8 +712,18 @@ func (s *GetAppResponseBodyResult) SetModifiedTime(v string) *GetAppResponseBody
 	return s
 }
 
+func (s *GetAppResponseBodyResult) SetNetwork(v []*GetAppResponseBodyResultNetwork) *GetAppResponseBodyResult {
+	s.Network = v
+	return s
+}
+
 func (s *GetAppResponseBodyResult) SetOwnerId(v string) *GetAppResponseBodyResult {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResult) SetPrivateNetwork(v []*GetAppResponseBodyResultPrivateNetwork) *GetAppResponseBodyResult {
+	s.PrivateNetwork = v
 	return s
 }
 
@@ -531,10 +742,150 @@ func (s *GetAppResponseBodyResult) SetVersion(v string) *GetAppResponseBodyResul
 	return s
 }
 
+type GetAppResponseBodyResultNetwork struct {
+	Domain       *string                                        `json:"domain,omitempty" xml:"domain,omitempty"`
+	Enabled      *bool                                          `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Port         *int32                                         `json:"port,omitempty" xml:"port,omitempty"`
+	Type         *string                                        `json:"type,omitempty" xml:"type,omitempty"`
+	WhiteIpGroup []*GetAppResponseBodyResultNetworkWhiteIpGroup `json:"whiteIpGroup,omitempty" xml:"whiteIpGroup,omitempty" type:"Repeated"`
+}
+
+func (s GetAppResponseBodyResultNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppResponseBodyResultNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppResponseBodyResultNetwork) SetDomain(v string) *GetAppResponseBodyResultNetwork {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResultNetwork) SetEnabled(v bool) *GetAppResponseBodyResultNetwork {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResultNetwork) SetPort(v int32) *GetAppResponseBodyResultNetwork {
+	s.Port = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResultNetwork) SetType(v string) *GetAppResponseBodyResultNetwork {
+	s.Type = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResultNetwork) SetWhiteIpGroup(v []*GetAppResponseBodyResultNetworkWhiteIpGroup) *GetAppResponseBodyResultNetwork {
+	s.WhiteIpGroup = v
+	return s
+}
+
+type GetAppResponseBodyResultNetworkWhiteIpGroup struct {
+	GroupName *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	Ips       []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+}
+
+func (s GetAppResponseBodyResultNetworkWhiteIpGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppResponseBodyResultNetworkWhiteIpGroup) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppResponseBodyResultNetworkWhiteIpGroup) SetGroupName(v string) *GetAppResponseBodyResultNetworkWhiteIpGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResultNetworkWhiteIpGroup) SetIps(v []*string) *GetAppResponseBodyResultNetworkWhiteIpGroup {
+	s.Ips = v
+	return s
+}
+
+type GetAppResponseBodyResultPrivateNetwork struct {
+	Domain        *string                                               `json:"domain,omitempty" xml:"domain,omitempty"`
+	Enabled       *bool                                                 `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Port          *int32                                                `json:"port,omitempty" xml:"port,omitempty"`
+	PvlEndpointId *string                                               `json:"pvlEndpointId,omitempty" xml:"pvlEndpointId,omitempty"`
+	Type          *string                                               `json:"type,omitempty" xml:"type,omitempty"`
+	VpcId         *string                                               `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	WhiteIpGroup  []*GetAppResponseBodyResultPrivateNetworkWhiteIpGroup `json:"whiteIpGroup,omitempty" xml:"whiteIpGroup,omitempty" type:"Repeated"`
+}
+
+func (s GetAppResponseBodyResultPrivateNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppResponseBodyResultPrivateNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppResponseBodyResultPrivateNetwork) SetDomain(v string) *GetAppResponseBodyResultPrivateNetwork {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResultPrivateNetwork) SetEnabled(v bool) *GetAppResponseBodyResultPrivateNetwork {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResultPrivateNetwork) SetPort(v int32) *GetAppResponseBodyResultPrivateNetwork {
+	s.Port = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResultPrivateNetwork) SetPvlEndpointId(v string) *GetAppResponseBodyResultPrivateNetwork {
+	s.PvlEndpointId = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResultPrivateNetwork) SetType(v string) *GetAppResponseBodyResultPrivateNetwork {
+	s.Type = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResultPrivateNetwork) SetVpcId(v string) *GetAppResponseBodyResultPrivateNetwork {
+	s.VpcId = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResultPrivateNetwork) SetWhiteIpGroup(v []*GetAppResponseBodyResultPrivateNetworkWhiteIpGroup) *GetAppResponseBodyResultPrivateNetwork {
+	s.WhiteIpGroup = v
+	return s
+}
+
+type GetAppResponseBodyResultPrivateNetworkWhiteIpGroup struct {
+	GroupName *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	Ips       []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+}
+
+func (s GetAppResponseBodyResultPrivateNetworkWhiteIpGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppResponseBodyResultPrivateNetworkWhiteIpGroup) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppResponseBodyResultPrivateNetworkWhiteIpGroup) SetGroupName(v string) *GetAppResponseBodyResultPrivateNetworkWhiteIpGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResultPrivateNetworkWhiteIpGroup) SetIps(v []*string) *GetAppResponseBodyResultPrivateNetworkWhiteIpGroup {
+	s.Ips = v
+	return s
+}
+
 type GetAppResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAppResponse) String() string {
@@ -561,6 +912,9 @@ func (s *GetAppResponse) SetBody(v *GetAppResponseBody) *GetAppResponse {
 }
 
 type GetAppQuotaResponseBody struct {
+	// example:
+	//
+	// 2C5DAA30-****-5181-9B87-9D6181016197
 	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result    *GetAppQuotaResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
@@ -624,10 +978,22 @@ func (s *GetAppQuotaResponseBodyResultLimiterInfo) SetLimiters(v []*GetAppQuotaR
 }
 
 type GetAppQuotaResponseBodyResultLimiterInfoLimiters struct {
-	Immutable *bool   `json:"immutable,omitempty" xml:"immutable,omitempty"`
-	MaxValue  *int64  `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
-	MinValue  *int64  `json:"minValue,omitempty" xml:"minValue,omitempty"`
-	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// true
+	Immutable *bool `json:"immutable,omitempty" xml:"immutable,omitempty"`
+	// example:
+	//
+	// 10
+	MaxValue *int64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// example:
+	//
+	// 1
+	MinValue *int64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
+	// example:
+	//
+	// INDEX_NUMBER_OF_SHARDS
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetAppQuotaResponseBodyResultLimiterInfoLimiters) String() string {
@@ -659,9 +1025,9 @@ func (s *GetAppQuotaResponseBodyResultLimiterInfoLimiters) SetType(v string) *Ge
 }
 
 type GetAppQuotaResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAppQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAppQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAppQuotaResponse) String() string {
@@ -688,6 +1054,9 @@ func (s *GetAppQuotaResponse) SetBody(v *GetAppQuotaResponseBody) *GetAppQuotaRe
 }
 
 type GetMonitorDataRequest struct {
+	// example:
+	//
+	// {"start":1689245180581,"end":1689246950582,"queries":[{"metric":"aliyunes.elasticsearch.index.docs.count","aggregator":"sum","downsample":"avg","tags":{"resource":"{appName}"},"filters":[],"granularity":"auto"}]}
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -705,11 +1074,23 @@ func (s *GetMonitorDataRequest) SetBody(v string) *GetMonitorDataRequest {
 }
 
 type GetMonitorDataResponseBody struct {
-	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// InternalServerError
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// internal server error
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 2C5DAA30-****-5181-9B87-9D6181016197
 	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result    []*GetMonitorDataResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetMonitorDataResponseBody) String() string {
@@ -746,12 +1127,38 @@ func (s *GetMonitorDataResponseBody) SetSuccess(v bool) *GetMonitorDataResponseB
 }
 
 type GetMonitorDataResponseBodyResult struct {
-	Dps              map[string]interface{} `json:"dps,omitempty" xml:"dps,omitempty"`
-	Integrity        *float32               `json:"integrity,omitempty" xml:"integrity,omitempty"`
-	MessageWatermark *int64                 `json:"messageWatermark,omitempty" xml:"messageWatermark,omitempty"`
-	Metric           *string                `json:"metric,omitempty" xml:"metric,omitempty"`
-	Summary          *float32               `json:"summary,omitempty" xml:"summary,omitempty"`
-	Tags             map[string]interface{} `json:"tags,omitempty" xml:"tags,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//     "1689480600":28676235.104761902
+	//
+	// }
+	Dps map[string]interface{} `json:"dps,omitempty" xml:"dps,omitempty"`
+	// example:
+	//
+	// 1
+	Integrity *float32 `json:"integrity,omitempty" xml:"integrity,omitempty"`
+	// example:
+	//
+	// 1689566839447
+	MessageWatermark *int64 `json:"messageWatermark,omitempty" xml:"messageWatermark,omitempty"`
+	// example:
+	//
+	// elasticsearch-server.logic_cpu.cpu
+	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
+	// example:
+	//
+	// 172455913.18935508
+	Summary *float32 `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//                 "indexName":"test"
+	//
+	//             }
+	Tags map[string]interface{} `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
 func (s GetMonitorDataResponseBodyResult) String() string {
@@ -793,9 +1200,9 @@ func (s *GetMonitorDataResponseBodyResult) SetTags(v map[string]interface{}) *Ge
 }
 
 type GetMonitorDataResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMonitorDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMonitorDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMonitorDataResponse) String() string {
@@ -822,13 +1229,34 @@ func (s *GetMonitorDataResponse) SetBody(v *GetMonitorDataResponseBody) *GetMoni
 }
 
 type ListAppsRequest struct {
-	AppName     *string `json:"appName,omitempty" xml:"appName,omitempty"`
-	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// es-severless-test-app
+	AppName *string `json:"appName,omitempty" xml:"appName,omitempty"`
+	// example:
+	//
+	// 2023-08-29T02:37:22Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// metrics-logs-online
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	OrderType   *string `json:"orderType,omitempty" xml:"orderType,omitempty"`
-	PageNumber  *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// desc
+	OrderType *string `json:"orderType,omitempty" xml:"orderType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListAppsRequest) String() string {
@@ -875,9 +1303,17 @@ func (s *ListAppsRequest) SetStatus(v string) *ListAppsRequest {
 }
 
 type ListAppsResponseBody struct {
-	RequestId  *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result     []*ListAppsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	TotalCount *int32                        `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// example:
+	//
+	// 2C5DAA30-****-5181-9B87-9D6181016197
+	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []*ListAppsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListAppsResponseBody) String() string {
@@ -904,21 +1340,50 @@ func (s *ListAppsResponseBody) SetTotalCount(v int32) *ListAppsResponseBody {
 }
 
 type ListAppsResponseBodyResult struct {
+	// example:
+	//
+	// test-abc
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
 	// 代表资源名称的资源属性字段
+	//
+	// example:
+	//
+	// es-severless-test-app
 	AppName *string `json:"appName,omitempty" xml:"appName,omitempty"`
 	// 代表创建时间的资源属性字段
+	//
+	// example:
+	//
+	// 2022-12-27T07:09:11.000Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// 应用备注
-	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
-	InstanceId   *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// 2022-12-27T07:09:11.000Z
 	ModifiedTime *string `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
 	// OwnerID账号ID
+	//
+	// example:
+	//
+	// *********7595
 	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
 	// 代表region的资源属性字段
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// 代表资源状态的资源属性字段
-	Status  *string `json:"status,omitempty" xml:"status,omitempty"`
+	//
+	// example:
+	//
+	// ACTIVE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 7.10
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -981,9 +1446,9 @@ func (s *ListAppsResponseBodyResult) SetVersion(v string) *ListAppsResponseBodyR
 }
 
 type ListAppsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAppsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAppsResponse) String() string {
@@ -1284,6 +1749,9 @@ func (s *UpdateAppRequestPrivateNetworkWhiteIpGroup) SetIps(v []*string) *Update
 }
 
 type UpdateAppResponseBody struct {
+	// example:
+	//
+	// 2C5DAA30-****-5181-9B87-9D6181016197
 	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result    *UpdateAppResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
@@ -1324,9 +1792,9 @@ func (s *UpdateAppResponseBodyResult) SetInstanceId(v string) *UpdateAppResponse
 }
 
 type UpdateAppResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAppResponse) String() string {
@@ -1399,6 +1867,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建Serverless应用
+//
+// @param request - CreateAppRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppResponse
 func (client *Client) CreateAppWithOptions(request *CreateAppRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1442,6 +1921,10 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, headers ma
 		body["regionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		body["scenario"] = request.Scenario
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Version)) {
 		body["version"] = request.Version
 	}
@@ -1471,6 +1954,13 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建Serverless应用
+//
+// @param request - CreateAppRequest
+//
+// @return CreateAppResponse
 func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1483,6 +1973,93 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建端点
+//
+// @param request - CreateEndpointRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEndpointResponse
+func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateEndpointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointZones)) {
+		body["endpointZones"] = request.EndpointZones
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["vpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEndpoint"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/endpoints"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建端点
+//
+// @param request - CreateEndpointRequest
+//
+// @return CreateEndpointResponse
+func (client *Client) CreateEndpoint(request *CreateEndpointRequest) (_result *CreateEndpointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateEndpointResponse{}
+	_body, _err := client.CreateEndpointWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Serverless应用。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppResponse
 func (client *Client) DeleteAppWithOptions(appName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -1507,6 +2084,11 @@ func (client *Client) DeleteAppWithOptions(appName *string, headers map[string]*
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除Serverless应用。
+//
+// @return DeleteAppResponse
 func (client *Client) DeleteApp(appName *string) (_result *DeleteAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1519,6 +2101,17 @@ func (client *Client) DeleteApp(appName *string) (_result *DeleteAppResponse, _e
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Serverless应用详情
+//
+// @param request - GetAppRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppResponse
 func (client *Client) GetAppWithOptions(appName *string, request *GetAppRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1553,6 +2146,13 @@ func (client *Client) GetAppWithOptions(appName *string, request *GetAppRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Serverless应用详情
+//
+// @param request - GetAppRequest
+//
+// @return GetAppResponse
 func (client *Client) GetApp(appName *string, request *GetAppRequest) (_result *GetAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1565,6 +2165,15 @@ func (client *Client) GetApp(appName *string, request *GetAppRequest) (_result *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Serverless应用配额详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppQuotaResponse
 func (client *Client) GetAppQuotaWithOptions(appName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAppQuotaResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -1589,6 +2198,11 @@ func (client *Client) GetAppQuotaWithOptions(appName *string, headers map[string
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Serverless应用配额详情
+//
+// @return GetAppQuotaResponse
 func (client *Client) GetAppQuota(appName *string) (_result *GetAppQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1601,6 +2215,17 @@ func (client *Client) GetAppQuota(appName *string) (_result *GetAppQuotaResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取监控数据
+//
+// @param request - GetMonitorDataRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMonitorDataResponse
 func (client *Client) GetMonitorDataWithOptions(request *GetMonitorDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMonitorDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1630,6 +2255,13 @@ func (client *Client) GetMonitorDataWithOptions(request *GetMonitorDataRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取监控数据
+//
+// @param request - GetMonitorDataRequest
+//
+// @return GetMonitorDataResponse
 func (client *Client) GetMonitorData(request *GetMonitorDataRequest) (_result *GetMonitorDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1642,6 +2274,17 @@ func (client *Client) GetMonitorData(request *GetMonitorDataRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看Serverless应用列表
+//
+// @param request - ListAppsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppsResponse
 func (client *Client) ListAppsWithOptions(request *ListAppsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAppsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1700,6 +2343,13 @@ func (client *Client) ListAppsWithOptions(request *ListAppsRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看Serverless应用列表
+//
+// @param request - ListAppsRequest
+//
+// @return ListAppsResponse
 func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1712,6 +2362,17 @@ func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 编辑Serverless应用
+//
+// @param request - UpdateAppRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppResponse
 func (client *Client) UpdateAppWithOptions(appName *string, request *UpdateAppRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1770,6 +2431,13 @@ func (client *Client) UpdateAppWithOptions(appName *string, request *UpdateAppRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 编辑Serverless应用
+//
+// @param request - UpdateAppRequest
+//
+// @return UpdateAppResponse
 func (client *Client) UpdateApp(appName *string, request *UpdateAppRequest) (_result *UpdateAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
