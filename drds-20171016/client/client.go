@@ -1,22 +1,35 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type CreateDrdsAccountRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// example:
+	//
+	// testdb
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdsusrzimk2****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	UserName       *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// Test!123
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testaccount
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateDrdsAccountRequest) String() string {
@@ -48,8 +61,14 @@ func (s *CreateDrdsAccountRequest) SetUserName(v string) *CreateDrdsAccountReque
 }
 
 type CreateDrdsAccountResponseBody struct {
+	// example:
+	//
+	// 890BB376-5746-4145-A088-4E610EF3WERT
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDrdsAccountResponseBody) String() string {
@@ -71,8 +90,9 @@ func (s *CreateDrdsAccountResponseBody) SetSuccess(v bool) *CreateDrdsAccountRes
 }
 
 type CreateDrdsAccountResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDrdsAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDrdsAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDrdsAccountResponse) String() string {
@@ -88,17 +108,47 @@ func (s *CreateDrdsAccountResponse) SetHeaders(v map[string]*string) *CreateDrds
 	return s
 }
 
+func (s *CreateDrdsAccountResponse) SetStatusCode(v int32) *CreateDrdsAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateDrdsAccountResponse) SetBody(v *CreateDrdsAccountResponseBody) *CreateDrdsAccountResponse {
 	s.Body = v
 	return s
 }
 
 type CreateDrdsDBRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test123
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdssen12****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	Encode         *string `json:"Encode,omitempty" xml:"Encode,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	RdsInstances   *string `json:"RdsInstances,omitempty" xml:"RdsInstances,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// utf8
+	Encode *string `json:"Encode,omitempty" xml:"Encode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *********
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [“rdsId1”, “rdsId2”]
+	RdsInstances *string `json:"RdsInstances,omitempty" xml:"RdsInstances,omitempty"`
 }
 
 func (s CreateDrdsDBRequest) String() string {
@@ -135,8 +185,14 @@ func (s *CreateDrdsDBRequest) SetRdsInstances(v string) *CreateDrdsDBRequest {
 }
 
 type CreateDrdsDBResponseBody struct {
+	// example:
+	//
+	// 8734773E-7B21-4A22-9106-CBD245F8TG57
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDrdsDBResponseBody) String() string {
@@ -158,8 +214,9 @@ func (s *CreateDrdsDBResponseBody) SetSuccess(v bool) *CreateDrdsDBResponseBody 
 }
 
 type CreateDrdsDBResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDrdsDBResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDrdsDBResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDrdsDBResponse) String() string {
@@ -175,27 +232,89 @@ func (s *CreateDrdsDBResponse) SetHeaders(v map[string]*string) *CreateDrdsDBRes
 	return s
 }
 
+func (s *CreateDrdsDBResponse) SetStatusCode(v int32) *CreateDrdsDBResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateDrdsDBResponse) SetBody(v *CreateDrdsDBResponseBody) *CreateDrdsDBResponse {
 	s.Body = v
 	return s
 }
 
 type CreateDrdsInstanceRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Duration       *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// DEWCEWQA
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// This is a test instance
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 5
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// drds.sn2.4c16g
 	InstanceSeries *string `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
-	IsAutoRenew    *bool   `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
-	IsHa           *bool   `json:"IsHa,omitempty" xml:"IsHa,omitempty"`
-	PayType        *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PricingCycle   *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Quantity       *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Specification  *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	VpcId          *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId      *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// true
+	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
+	// example:
+	//
+	// false
+	IsHa *bool `json:"IsHa,omitempty" xml:"IsHa,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdsPre
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// month
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds.sn2.4c8g.8C16G
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PRIVATE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// vpc-en23cxsel1
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// vsw-ewk32dsk
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-e
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateDrdsInstanceRequest) String() string {
@@ -282,9 +401,15 @@ func (s *CreateDrdsInstanceRequest) SetZoneId(v string) *CreateDrdsInstanceReque
 }
 
 type CreateDrdsInstanceResponseBody struct {
-	Data      *CreateDrdsInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *CreateDrdsInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// FF13E47D-4E38-4A5A-BA68-32A554RTY67H
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDrdsInstanceResponseBody) String() string {
@@ -312,7 +437,10 @@ func (s *CreateDrdsInstanceResponseBody) SetSuccess(v bool) *CreateDrdsInstanceR
 
 type CreateDrdsInstanceResponseBodyData struct {
 	DrdsInstanceIdList *CreateDrdsInstanceResponseBodyDataDrdsInstanceIdList `json:"DrdsInstanceIdList,omitempty" xml:"DrdsInstanceIdList,omitempty" type:"Struct"`
-	OrderId            *int64                                                `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 2334632414
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s CreateDrdsInstanceResponseBodyData) String() string {
@@ -351,8 +479,9 @@ func (s *CreateDrdsInstanceResponseBodyDataDrdsInstanceIdList) SetDrdsInstanceId
 }
 
 type CreateDrdsInstanceResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDrdsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDrdsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDrdsInstanceResponse) String() string {
@@ -368,15 +497,23 @@ func (s *CreateDrdsInstanceResponse) SetHeaders(v map[string]*string) *CreateDrd
 	return s
 }
 
+func (s *CreateDrdsInstanceResponse) SetStatusCode(v int32) *CreateDrdsInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateDrdsInstanceResponse) SetBody(v *CreateDrdsInstanceResponseBody) *CreateDrdsInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type CreateReadOnlyAccountRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	Password       *string `json:"password,omitempty" xml:"password,omitempty"`
+	// This parameter is required.
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
 }
 
 func (s CreateReadOnlyAccountRequest) String() string {
@@ -461,8 +598,9 @@ func (s *CreateReadOnlyAccountResponseBodyData) SetDrdsInstanceId(v string) *Cre
 }
 
 type CreateReadOnlyAccountResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateReadOnlyAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateReadOnlyAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateReadOnlyAccountResponse) String() string {
@@ -478,13 +616,20 @@ func (s *CreateReadOnlyAccountResponse) SetHeaders(v map[string]*string) *Create
 	return s
 }
 
+func (s *CreateReadOnlyAccountResponse) SetStatusCode(v int32) *CreateReadOnlyAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateReadOnlyAccountResponse) SetBody(v *CreateReadOnlyAccountResponseBody) *CreateReadOnlyAccountResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteDrdsDBRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -530,8 +675,9 @@ func (s *DeleteDrdsDBResponseBody) SetSuccess(v bool) *DeleteDrdsDBResponseBody 
 }
 
 type DeleteDrdsDBResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDrdsDBResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDrdsDBResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDrdsDBResponse) String() string {
@@ -547,13 +693,20 @@ func (s *DeleteDrdsDBResponse) SetHeaders(v map[string]*string) *DeleteDrdsDBRes
 	return s
 }
 
+func (s *DeleteDrdsDBResponse) SetStatusCode(v int32) *DeleteDrdsDBResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteDrdsDBResponse) SetBody(v *DeleteDrdsDBResponseBody) *DeleteDrdsDBResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteFailedDrdsDBRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -599,8 +752,9 @@ func (s *DeleteFailedDrdsDBResponseBody) SetSuccess(v bool) *DeleteFailedDrdsDBR
 }
 
 type DeleteFailedDrdsDBResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteFailedDrdsDBResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFailedDrdsDBResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFailedDrdsDBResponse) String() string {
@@ -616,12 +770,18 @@ func (s *DeleteFailedDrdsDBResponse) SetHeaders(v map[string]*string) *DeleteFai
 	return s
 }
 
+func (s *DeleteFailedDrdsDBResponse) SetStatusCode(v int32) *DeleteFailedDrdsDBResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteFailedDrdsDBResponse) SetBody(v *DeleteFailedDrdsDBResponseBody) *DeleteFailedDrdsDBResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeCreateDrdsInstanceStatusRequest struct {
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -685,8 +845,9 @@ func (s *DescribeCreateDrdsInstanceStatusResponseBodyData) SetStatus(v string) *
 }
 
 type DescribeCreateDrdsInstanceStatusResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCreateDrdsInstanceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCreateDrdsInstanceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCreateDrdsInstanceStatusResponse) String() string {
@@ -702,13 +863,20 @@ func (s *DescribeCreateDrdsInstanceStatusResponse) SetHeaders(v map[string]*stri
 	return s
 }
 
+func (s *DescribeCreateDrdsInstanceStatusResponse) SetStatusCode(v int32) *DescribeCreateDrdsInstanceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeCreateDrdsInstanceStatusResponse) SetBody(v *DescribeCreateDrdsInstanceStatusResponseBody) *DescribeCreateDrdsInstanceStatusResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeDrdsDBRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -801,8 +969,9 @@ func (s *DescribeDrdsDBResponseBodyData) SetStatus(v int32) *DescribeDrdsDBRespo
 }
 
 type DescribeDrdsDBResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDrdsDBResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDrdsDBResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDrdsDBResponse) String() string {
@@ -818,13 +987,20 @@ func (s *DescribeDrdsDBResponse) SetHeaders(v map[string]*string) *DescribeDrdsD
 	return s
 }
 
+func (s *DescribeDrdsDBResponse) SetStatusCode(v int32) *DescribeDrdsDBResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDrdsDBResponse) SetBody(v *DescribeDrdsDBResponseBody) *DescribeDrdsDBResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeDrdsDBIpWhiteListRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
@@ -916,8 +1092,9 @@ func (s *DescribeDrdsDBIpWhiteListResponseBodyDataIpWhiteList) SetIp(v []*string
 }
 
 type DescribeDrdsDBIpWhiteListResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDrdsDBIpWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDrdsDBIpWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDrdsDBIpWhiteListResponse) String() string {
@@ -933,12 +1110,18 @@ func (s *DescribeDrdsDBIpWhiteListResponse) SetHeaders(v map[string]*string) *De
 	return s
 }
 
+func (s *DescribeDrdsDBIpWhiteListResponse) SetStatusCode(v int32) *DescribeDrdsDBIpWhiteListResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDrdsDBIpWhiteListResponse) SetBody(v *DescribeDrdsDBIpWhiteListResponseBody) *DescribeDrdsDBIpWhiteListResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeDrdsDBsRequest struct {
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -1043,8 +1226,9 @@ func (s *DescribeDrdsDBsResponseBodyDataDb) SetStatus(v int32) *DescribeDrdsDBsR
 }
 
 type DescribeDrdsDBsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDrdsDBsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDrdsDBsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDrdsDBsResponse) String() string {
@@ -1060,12 +1244,22 @@ func (s *DescribeDrdsDBsResponse) SetHeaders(v map[string]*string) *DescribeDrds
 	return s
 }
 
+func (s *DescribeDrdsDBsResponse) SetStatusCode(v int32) *DescribeDrdsDBsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDrdsDBsResponse) SetBody(v *DescribeDrdsDBsResponseBody) *DescribeDrdsDBsResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeDrdsInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbga33pe****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -1083,9 +1277,15 @@ func (s *DescribeDrdsInstanceRequest) SetDrdsInstanceId(v string) *DescribeDrdsI
 }
 
 type DescribeDrdsInstanceResponseBody struct {
-	Data      *DescribeDrdsInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *DescribeDrdsInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// B4F76641-BA45-4320-BE7C-9C62CFDAC9B2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDrdsInstanceResponseBody) String() string {
@@ -1112,18 +1312,51 @@ func (s *DescribeDrdsInstanceResponseBody) SetSuccess(v bool) *DescribeDrdsInsta
 }
 
 type DescribeDrdsInstanceResponseBodyData struct {
-	CreateTime         *int64                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description        *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DrdsInstanceId     *string                                   `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	NetworkType        *string                                   `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	RegionId           *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Specification      *string                                   `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	Status             *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type               *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
-	Version            *int64                                    `json:"Version,omitempty" xml:"Version,omitempty"`
-	Vips               *DescribeDrdsInstanceResponseBodyDataVips `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
-	VpcCloudInstanceId *string                                   `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	ZoneId             *string                                   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// 1568620311000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 111111
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// drdshbga33pe****
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// example:
+	//
+	// VPC
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// example:
+	//
+	// China (Hangzhou)
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// drds.sn1.4c8g.8C16G
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// example:
+	//
+	// 0
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 0
+	Version *int64                                    `json:"Version,omitempty" xml:"Version,omitempty"`
+	Vips    *DescribeDrdsInstanceResponseBodyDataVips `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
+	// example:
+	//
+	// oogbx6c2atj****
+	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-e
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDrdsInstanceResponseBodyData) String() string {
@@ -1212,10 +1445,25 @@ func (s *DescribeDrdsInstanceResponseBodyDataVips) SetVip(v []*DescribeDrdsInsta
 }
 
 type DescribeDrdsInstanceResponseBodyDataVipsVip struct {
-	IP        *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	Port      *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// 1.2.XX.XX
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// 3306
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// VPC
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// vpc-en23cx****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// vsw-ewk3****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
@@ -1253,8 +1501,9 @@ func (s *DescribeDrdsInstanceResponseBodyDataVipsVip) SetVswitchId(v string) *De
 }
 
 type DescribeDrdsInstanceResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDrdsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDrdsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDrdsInstanceResponse) String() string {
@@ -1270,17 +1519,27 @@ func (s *DescribeDrdsInstanceResponse) SetHeaders(v map[string]*string) *Describ
 	return s
 }
 
+func (s *DescribeDrdsInstanceResponse) SetStatusCode(v int32) *DescribeDrdsInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDrdsInstanceResponse) SetBody(v *DescribeDrdsInstanceResponseBody) *DescribeDrdsInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeDrdsInstanceDbMonitorRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDrdsInstanceDbMonitorRequest) String() string {
@@ -1432,8 +1691,9 @@ func (s *DescribeDrdsInstanceDbMonitorResponseBodyDataPartialPerformanceDataValu
 }
 
 type DescribeDrdsInstanceDbMonitorResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDrdsInstanceDbMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDrdsInstanceDbMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDrdsInstanceDbMonitorResponse) String() string {
@@ -1449,17 +1709,26 @@ func (s *DescribeDrdsInstanceDbMonitorResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *DescribeDrdsInstanceDbMonitorResponse) SetStatusCode(v int32) *DescribeDrdsInstanceDbMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDrdsInstanceDbMonitorResponse) SetBody(v *DescribeDrdsInstanceDbMonitorResponseBody) *DescribeDrdsInstanceDbMonitorResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeDrdsInstanceMonitorRequest struct {
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
 	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	PeriodMultiple *int32  `json:"PeriodMultiple,omitempty" xml:"PeriodMultiple,omitempty"`
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDrdsInstanceMonitorRequest) String() string {
@@ -1611,8 +1880,9 @@ func (s *DescribeDrdsInstanceMonitorResponseBodyDataPartialPerformanceDataValues
 }
 
 type DescribeDrdsInstanceMonitorResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDrdsInstanceMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDrdsInstanceMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDrdsInstanceMonitorResponse) String() string {
@@ -1628,12 +1898,18 @@ func (s *DescribeDrdsInstanceMonitorResponse) SetHeaders(v map[string]*string) *
 	return s
 }
 
+func (s *DescribeDrdsInstanceMonitorResponse) SetStatusCode(v int32) *DescribeDrdsInstanceMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDrdsInstanceMonitorResponse) SetBody(v *DescribeDrdsInstanceMonitorResponseBody) *DescribeDrdsInstanceMonitorResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeDrdsInstanceNetInfoForInnerRequest struct {
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -1744,8 +2020,9 @@ func (s *DescribeDrdsInstanceNetInfoForInnerResponseBodyNetInfosNetInfo) SetType
 }
 
 type DescribeDrdsInstanceNetInfoForInnerResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDrdsInstanceNetInfoForInnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDrdsInstanceNetInfoForInnerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDrdsInstanceNetInfoForInnerResponse) String() string {
@@ -1761,12 +2038,18 @@ func (s *DescribeDrdsInstanceNetInfoForInnerResponse) SetHeaders(v map[string]*s
 	return s
 }
 
+func (s *DescribeDrdsInstanceNetInfoForInnerResponse) SetStatusCode(v int32) *DescribeDrdsInstanceNetInfoForInnerResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDrdsInstanceNetInfoForInnerResponse) SetBody(v *DescribeDrdsInstanceNetInfoForInnerResponseBody) *DescribeDrdsInstanceNetInfoForInnerResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeDrdsInstancesRequest struct {
+	// This parameter is required.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tags     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -2012,8 +2295,9 @@ func (s *DescribeDrdsInstancesResponseBodyDataInstanceVipsVip) SetVswitchId(v st
 }
 
 type DescribeDrdsInstancesResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDrdsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDrdsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDrdsInstancesResponse) String() string {
@@ -2029,13 +2313,20 @@ func (s *DescribeDrdsInstancesResponse) SetHeaders(v map[string]*string) *Descri
 	return s
 }
 
+func (s *DescribeDrdsInstancesResponse) SetStatusCode(v int32) *DescribeDrdsInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDrdsInstancesResponse) SetBody(v *DescribeDrdsInstancesResponseBody) *DescribeDrdsInstancesResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeRdsListRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -2239,8 +2530,9 @@ func (s *DescribeRdsListResponseBodyDataRdsInstanceReadOnlyChildrenChild) SetPor
 }
 
 type DescribeRdsListResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRdsListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRdsListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRdsListResponse) String() string {
@@ -2256,13 +2548,20 @@ func (s *DescribeRdsListResponse) SetHeaders(v map[string]*string) *DescribeRdsL
 	return s
 }
 
+func (s *DescribeRdsListResponse) SetStatusCode(v int32) *DescribeRdsListResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeRdsListResponse) SetBody(v *DescribeRdsListResponseBody) *DescribeRdsListResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeReadOnlyAccountRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -2343,8 +2642,9 @@ func (s *DescribeReadOnlyAccountResponseBodyData) SetDrdsInstanceId(v string) *D
 }
 
 type DescribeReadOnlyAccountResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeReadOnlyAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeReadOnlyAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeReadOnlyAccountResponse) String() string {
@@ -2357,6 +2657,11 @@ func (s DescribeReadOnlyAccountResponse) GoString() string {
 
 func (s *DescribeReadOnlyAccountResponse) SetHeaders(v map[string]*string) *DescribeReadOnlyAccountResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeReadOnlyAccountResponse) SetStatusCode(v int32) *DescribeReadOnlyAccountResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2539,8 +2844,9 @@ func (s *DescribeRegionsResponseBodyDrdsRegionsDrdsRegionInstanceSeriesListInsta
 }
 
 type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -2556,13 +2862,20 @@ func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegi
 	return s
 }
 
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeShardDBsRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -2660,8 +2973,9 @@ func (s *DescribeShardDBsResponseBodyDataDbIntancePair) SetSubDbName(v string) *
 }
 
 type DescribeShardDBsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeShardDBsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeShardDBsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeShardDBsResponse) String() string {
@@ -2677,15 +2991,23 @@ func (s *DescribeShardDBsResponse) SetHeaders(v map[string]*string) *DescribeSha
 	return s
 }
 
+func (s *DescribeShardDBsResponse) SetStatusCode(v int32) *DescribeShardDBsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeShardDBsResponse) SetBody(v *DescribeShardDBsResponseBody) *DescribeShardDBsResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeShardDbConnectionInfoRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	SubDbName      *string `json:"SubDbName,omitempty" xml:"SubDbName,omitempty"`
+	// This parameter is required.
+	SubDbName *string `json:"SubDbName,omitempty" xml:"SubDbName,omitempty"`
 }
 
 func (s DescribeShardDbConnectionInfoRequest) String() string {
@@ -2824,8 +3146,9 @@ func (s *DescribeShardDbConnectionInfoResponseBodyConnectionInfo) SetUserName(v 
 }
 
 type DescribeShardDbConnectionInfoResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeShardDbConnectionInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeShardDbConnectionInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeShardDbConnectionInfoResponse) String() string {
@@ -2841,6 +3164,11 @@ func (s *DescribeShardDbConnectionInfoResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *DescribeShardDbConnectionInfoResponse) SetStatusCode(v int32) *DescribeShardDbConnectionInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeShardDbConnectionInfoResponse) SetBody(v *DescribeShardDbConnectionInfoResponseBody) *DescribeShardDbConnectionInfoResponse {
 	s.Body = v
 	return s
@@ -2853,10 +3181,11 @@ type EnableInstanceRequest struct {
 	DrdsInstanceId  *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	EngineVersion   *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	RestoreTime     *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	SourceDbInstId  *string `json:"SourceDbInstId,omitempty" xml:"SourceDbInstId,omitempty"`
-	SwitchId        *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// This parameter is required.
+	SourceDbInstId *string `json:"SourceDbInstId,omitempty" xml:"SourceDbInstId,omitempty"`
+	SwitchId       *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	VpcId          *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s EnableInstanceRequest) String() string {
@@ -2947,8 +3276,9 @@ func (s *EnableInstanceResponseBody) SetSuccess(v bool) *EnableInstanceResponseB
 }
 
 type EnableInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableInstanceResponse) String() string {
@@ -2964,15 +3294,23 @@ func (s *EnableInstanceResponse) SetHeaders(v map[string]*string) *EnableInstanc
 	return s
 }
 
+func (s *EnableInstanceResponse) SetStatusCode(v int32) *EnableInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *EnableInstanceResponse) SetBody(v *EnableInstanceResponseBody) *EnableInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyDrdsDBPasswdRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	NewPasswd      *string `json:"NewPasswd,omitempty" xml:"NewPasswd,omitempty"`
+	// This parameter is required.
+	NewPasswd *string `json:"NewPasswd,omitempty" xml:"NewPasswd,omitempty"`
 }
 
 func (s ModifyDrdsDBPasswdRequest) String() string {
@@ -3022,8 +3360,9 @@ func (s *ModifyDrdsDBPasswdResponseBody) SetSuccess(v bool) *ModifyDrdsDBPasswdR
 }
 
 type ModifyDrdsDBPasswdResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDrdsDBPasswdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDrdsDBPasswdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDrdsDBPasswdResponse) String() string {
@@ -3039,13 +3378,28 @@ func (s *ModifyDrdsDBPasswdResponse) SetHeaders(v map[string]*string) *ModifyDrd
 	return s
 }
 
+func (s *ModifyDrdsDBPasswdResponse) SetStatusCode(v int32) *ModifyDrdsDBPasswdResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyDrdsDBPasswdResponse) SetBody(v *ModifyDrdsDBPasswdResponseBody) *ModifyDrdsDBPasswdResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyDrdsInstanceDescriptionRequest struct {
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// This is a test instance.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbga33pe****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -3068,8 +3422,14 @@ func (s *ModifyDrdsInstanceDescriptionRequest) SetDrdsInstanceId(v string) *Modi
 }
 
 type ModifyDrdsInstanceDescriptionResponseBody struct {
+	// example:
+	//
+	// B4F76641-BA45-4320-BE7C-9C62CFDAR56T
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyDrdsInstanceDescriptionResponseBody) String() string {
@@ -3091,8 +3451,9 @@ func (s *ModifyDrdsInstanceDescriptionResponseBody) SetSuccess(v bool) *ModifyDr
 }
 
 type ModifyDrdsInstanceDescriptionResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDrdsInstanceDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDrdsInstanceDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDrdsInstanceDescriptionResponse) String() string {
@@ -3108,18 +3469,26 @@ func (s *ModifyDrdsInstanceDescriptionResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *ModifyDrdsInstanceDescriptionResponse) SetStatusCode(v int32) *ModifyDrdsInstanceDescriptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyDrdsInstanceDescriptionResponse) SetBody(v *ModifyDrdsInstanceDescriptionResponseBody) *ModifyDrdsInstanceDescriptionResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyDrdsIpWhiteListRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	GroupAttribute *string `json:"GroupAttribute,omitempty" xml:"GroupAttribute,omitempty"`
 	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IpWhiteList    *string `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty"`
-	Mode           *bool   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// This parameter is required.
+	IpWhiteList *string `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty"`
+	Mode        *bool   `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
 func (s ModifyDrdsIpWhiteListRequest) String() string {
@@ -3184,8 +3553,9 @@ func (s *ModifyDrdsIpWhiteListResponseBody) SetSuccess(v bool) *ModifyDrdsIpWhit
 }
 
 type ModifyDrdsIpWhiteListResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDrdsIpWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDrdsIpWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDrdsIpWhiteListResponse) String() string {
@@ -3201,16 +3571,25 @@ func (s *ModifyDrdsIpWhiteListResponse) SetHeaders(v map[string]*string) *Modify
 	return s
 }
 
+func (s *ModifyDrdsIpWhiteListResponse) SetStatusCode(v int32) *ModifyDrdsIpWhiteListResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyDrdsIpWhiteListResponse) SetBody(v *ModifyDrdsIpWhiteListResponseBody) *ModifyDrdsIpWhiteListResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyFullTableScanRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	FullTableScan  *bool   `json:"FullTableScan,omitempty" xml:"FullTableScan,omitempty"`
-	TableNames     *string `json:"TableNames,omitempty" xml:"TableNames,omitempty"`
+	// This parameter is required.
+	FullTableScan *bool `json:"FullTableScan,omitempty" xml:"FullTableScan,omitempty"`
+	// This parameter is required.
+	TableNames *string `json:"TableNames,omitempty" xml:"TableNames,omitempty"`
 }
 
 func (s ModifyFullTableScanRequest) String() string {
@@ -3265,8 +3644,9 @@ func (s *ModifyFullTableScanResponseBody) SetSuccess(v bool) *ModifyFullTableSca
 }
 
 type ModifyFullTableScanResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyFullTableScanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyFullTableScanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyFullTableScanResponse) String() string {
@@ -3282,16 +3662,25 @@ func (s *ModifyFullTableScanResponse) SetHeaders(v map[string]*string) *ModifyFu
 	return s
 }
 
+func (s *ModifyFullTableScanResponse) SetStatusCode(v int32) *ModifyFullTableScanResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyFullTableScanResponse) SetBody(v *ModifyFullTableScanResponseBody) *ModifyFullTableScanResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyRdsReadWeightRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	InstanceNames  *string `json:"InstanceNames,omitempty" xml:"InstanceNames,omitempty"`
-	Weights        *string `json:"Weights,omitempty" xml:"Weights,omitempty"`
+	// This parameter is required.
+	InstanceNames *string `json:"InstanceNames,omitempty" xml:"InstanceNames,omitempty"`
+	// This parameter is required.
+	Weights *string `json:"Weights,omitempty" xml:"Weights,omitempty"`
 }
 
 func (s ModifyRdsReadWeightRequest) String() string {
@@ -3346,8 +3735,9 @@ func (s *ModifyRdsReadWeightResponseBody) SetSuccess(v bool) *ModifyRdsReadWeigh
 }
 
 type ModifyRdsReadWeightResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyRdsReadWeightResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyRdsReadWeightResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyRdsReadWeightResponse) String() string {
@@ -3363,16 +3753,26 @@ func (s *ModifyRdsReadWeightResponse) SetHeaders(v map[string]*string) *ModifyRd
 	return s
 }
 
+func (s *ModifyRdsReadWeightResponse) SetStatusCode(v int32) *ModifyRdsReadWeightResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyRdsReadWeightResponse) SetBody(v *ModifyRdsReadWeightResponseBody) *ModifyRdsReadWeightResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyReadOnlyAccountPasswordRequest struct {
-	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	NewPasswd      *string `json:"NewPasswd,omitempty" xml:"NewPasswd,omitempty"`
+	// This parameter is required.
+	NewPasswd *string `json:"NewPasswd,omitempty" xml:"NewPasswd,omitempty"`
+	// This parameter is required.
 	OriginPassword *string `json:"OriginPassword,omitempty" xml:"OriginPassword,omitempty"`
 }
 
@@ -3433,8 +3833,9 @@ func (s *ModifyReadOnlyAccountPasswordResponseBody) SetSuccess(v bool) *ModifyRe
 }
 
 type ModifyReadOnlyAccountPasswordResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyReadOnlyAccountPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyReadOnlyAccountPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyReadOnlyAccountPasswordResponse) String() string {
@@ -3450,14 +3851,22 @@ func (s *ModifyReadOnlyAccountPasswordResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *ModifyReadOnlyAccountPasswordResponse) SetStatusCode(v int32) *ModifyReadOnlyAccountPasswordResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyReadOnlyAccountPasswordResponse) SetBody(v *ModifyReadOnlyAccountPasswordResponseBody) *ModifyReadOnlyAccountPasswordResponse {
 	s.Body = v
 	return s
 }
 
 type QueryInstanceInfoByConnRequest struct {
-	Host     *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// This parameter is required.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// This parameter is required.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// This parameter is required.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -3667,8 +4076,9 @@ func (s *QueryInstanceInfoByConnResponseBodyDataVipsVip) SetVswitchId(v string) 
 }
 
 type QueryInstanceInfoByConnResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryInstanceInfoByConnResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryInstanceInfoByConnResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryInstanceInfoByConnResponse) String() string {
@@ -3684,12 +4094,18 @@ func (s *QueryInstanceInfoByConnResponse) SetHeaders(v map[string]*string) *Quer
 	return s
 }
 
+func (s *QueryInstanceInfoByConnResponse) SetStatusCode(v int32) *QueryInstanceInfoByConnResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *QueryInstanceInfoByConnResponse) SetBody(v *QueryInstanceInfoByConnResponseBody) *QueryInstanceInfoByConnResponse {
 	s.Body = v
 	return s
 }
 
 type RemoveDrdsInstanceRequest struct {
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -3730,8 +4146,9 @@ func (s *RemoveDrdsInstanceResponseBody) SetSuccess(v bool) *RemoveDrdsInstanceR
 }
 
 type RemoveDrdsInstanceResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveDrdsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveDrdsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveDrdsInstanceResponse) String() string {
@@ -3747,14 +4164,22 @@ func (s *RemoveDrdsInstanceResponse) SetHeaders(v map[string]*string) *RemoveDrd
 	return s
 }
 
+func (s *RemoveDrdsInstanceResponse) SetStatusCode(v int32) *RemoveDrdsInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RemoveDrdsInstanceResponse) SetBody(v *RemoveDrdsInstanceResponseBody) *RemoveDrdsInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type RemoveReadOnlyAccountRequest struct {
-	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -3805,8 +4230,9 @@ func (s *RemoveReadOnlyAccountResponseBody) SetSuccess(v bool) *RemoveReadOnlyAc
 }
 
 type RemoveReadOnlyAccountResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveReadOnlyAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveReadOnlyAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveReadOnlyAccountResponse) String() string {
@@ -3819,6 +4245,11 @@ func (s RemoveReadOnlyAccountResponse) GoString() string {
 
 func (s *RemoveReadOnlyAccountResponse) SetHeaders(v map[string]*string) *RemoveReadOnlyAccountResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveReadOnlyAccountResponse) SetStatusCode(v int32) *RemoveReadOnlyAccountResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3917,19 +4348,35 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - CreateDrdsAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDrdsAccountResponse
 func (client *Client) CreateDrdsAccountWithOptions(request *CreateDrdsAccountRequest, runtime *util.RuntimeOptions) (_result *CreateDrdsAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["Password"] = request.Password
-	query["UserName"] = request.UserName
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDrdsAccount"),
@@ -3939,7 +4386,7 @@ func (client *Client) CreateDrdsAccountWithOptions(request *CreateDrdsAccountReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDrdsAccountResponse{}
@@ -3951,6 +4398,9 @@ func (client *Client) CreateDrdsAccountWithOptions(request *CreateDrdsAccountReq
 	return _result, _err
 }
 
+// @param request - CreateDrdsAccountRequest
+//
+// @return CreateDrdsAccountResponse
 func (client *Client) CreateDrdsAccount(request *CreateDrdsAccountRequest) (_result *CreateDrdsAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDrdsAccountResponse{}
@@ -3962,20 +4412,39 @@ func (client *Client) CreateDrdsAccount(request *CreateDrdsAccountRequest) (_res
 	return _result, _err
 }
 
+// @param request - CreateDrdsDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDrdsDBResponse
 func (client *Client) CreateDrdsDBWithOptions(request *CreateDrdsDBRequest, runtime *util.RuntimeOptions) (_result *CreateDrdsDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["Encode"] = request.Encode
-	query["Password"] = request.Password
-	query["RdsInstances"] = request.RdsInstances
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Encode)) {
+		query["Encode"] = request.Encode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsInstances)) {
+		query["RdsInstances"] = request.RdsInstances
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDrdsDB"),
@@ -3985,7 +4454,7 @@ func (client *Client) CreateDrdsDBWithOptions(request *CreateDrdsDBRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDrdsDBResponse{}
@@ -3997,6 +4466,9 @@ func (client *Client) CreateDrdsDBWithOptions(request *CreateDrdsDBRequest, runt
 	return _result, _err
 }
 
+// @param request - CreateDrdsDBRequest
+//
+// @return CreateDrdsDBResponse
 func (client *Client) CreateDrdsDB(request *CreateDrdsDBRequest) (_result *CreateDrdsDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDrdsDBResponse{}
@@ -4008,30 +4480,79 @@ func (client *Client) CreateDrdsDB(request *CreateDrdsDBRequest) (_result *Creat
 	return _result, _err
 }
 
+// @param request - CreateDrdsInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDrdsInstanceResponse
 func (client *Client) CreateDrdsInstanceWithOptions(request *CreateDrdsInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDrdsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["Duration"] = request.Duration
-	query["InstanceSeries"] = request.InstanceSeries
-	query["IsAutoRenew"] = request.IsAutoRenew
-	query["IsHa"] = request.IsHa
-	query["PayType"] = request.PayType
-	query["PricingCycle"] = request.PricingCycle
-	query["Quantity"] = request.Quantity
-	query["RegionId"] = request.RegionId
-	query["Specification"] = request.Specification
-	query["Type"] = request.Type
-	query["VpcId"] = request.VpcId
-	query["VswitchId"] = request.VswitchId
-	query["ZoneId"] = request.ZoneId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSeries)) {
+		query["InstanceSeries"] = request.InstanceSeries
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAutoRenew)) {
+		query["IsAutoRenew"] = request.IsAutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsHa)) {
+		query["IsHa"] = request.IsHa
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Quantity)) {
+		query["Quantity"] = request.Quantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Specification)) {
+		query["Specification"] = request.Specification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswitchId)) {
+		query["VswitchId"] = request.VswitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDrdsInstance"),
@@ -4041,7 +4562,7 @@ func (client *Client) CreateDrdsInstanceWithOptions(request *CreateDrdsInstanceR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDrdsInstanceResponse{}
@@ -4053,6 +4574,9 @@ func (client *Client) CreateDrdsInstanceWithOptions(request *CreateDrdsInstanceR
 	return _result, _err
 }
 
+// @param request - CreateDrdsInstanceRequest
+//
+// @return CreateDrdsInstanceResponse
 func (client *Client) CreateDrdsInstance(request *CreateDrdsInstanceRequest) (_result *CreateDrdsInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDrdsInstanceResponse{}
@@ -4064,18 +4588,31 @@ func (client *Client) CreateDrdsInstance(request *CreateDrdsInstanceRequest) (_r
 	return _result, _err
 }
 
+// @param request - CreateReadOnlyAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateReadOnlyAccountResponse
 func (client *Client) CreateReadOnlyAccountWithOptions(request *CreateReadOnlyAccountRequest, runtime *util.RuntimeOptions) (_result *CreateReadOnlyAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["password"] = request.Password
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["password"] = request.Password
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateReadOnlyAccount"),
@@ -4085,7 +4622,7 @@ func (client *Client) CreateReadOnlyAccountWithOptions(request *CreateReadOnlyAc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateReadOnlyAccountResponse{}
@@ -4097,6 +4634,9 @@ func (client *Client) CreateReadOnlyAccountWithOptions(request *CreateReadOnlyAc
 	return _result, _err
 }
 
+// @param request - CreateReadOnlyAccountRequest
+//
+// @return CreateReadOnlyAccountResponse
 func (client *Client) CreateReadOnlyAccount(request *CreateReadOnlyAccountRequest) (_result *CreateReadOnlyAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateReadOnlyAccountResponse{}
@@ -4108,17 +4648,27 @@ func (client *Client) CreateReadOnlyAccount(request *CreateReadOnlyAccountReques
 	return _result, _err
 }
 
+// @param request - DeleteDrdsDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDrdsDBResponse
 func (client *Client) DeleteDrdsDBWithOptions(request *DeleteDrdsDBRequest, runtime *util.RuntimeOptions) (_result *DeleteDrdsDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDrdsDB"),
@@ -4128,7 +4678,7 @@ func (client *Client) DeleteDrdsDBWithOptions(request *DeleteDrdsDBRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDrdsDBResponse{}
@@ -4140,6 +4690,9 @@ func (client *Client) DeleteDrdsDBWithOptions(request *DeleteDrdsDBRequest, runt
 	return _result, _err
 }
 
+// @param request - DeleteDrdsDBRequest
+//
+// @return DeleteDrdsDBResponse
 func (client *Client) DeleteDrdsDB(request *DeleteDrdsDBRequest) (_result *DeleteDrdsDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDrdsDBResponse{}
@@ -4151,17 +4704,27 @@ func (client *Client) DeleteDrdsDB(request *DeleteDrdsDBRequest) (_result *Delet
 	return _result, _err
 }
 
+// @param request - DeleteFailedDrdsDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFailedDrdsDBResponse
 func (client *Client) DeleteFailedDrdsDBWithOptions(request *DeleteFailedDrdsDBRequest, runtime *util.RuntimeOptions) (_result *DeleteFailedDrdsDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteFailedDrdsDB"),
@@ -4171,7 +4734,7 @@ func (client *Client) DeleteFailedDrdsDBWithOptions(request *DeleteFailedDrdsDBR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteFailedDrdsDBResponse{}
@@ -4183,6 +4746,9 @@ func (client *Client) DeleteFailedDrdsDBWithOptions(request *DeleteFailedDrdsDBR
 	return _result, _err
 }
 
+// @param request - DeleteFailedDrdsDBRequest
+//
+// @return DeleteFailedDrdsDBResponse
 func (client *Client) DeleteFailedDrdsDB(request *DeleteFailedDrdsDBRequest) (_result *DeleteFailedDrdsDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFailedDrdsDBResponse{}
@@ -4194,16 +4760,23 @@ func (client *Client) DeleteFailedDrdsDB(request *DeleteFailedDrdsDBRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribeCreateDrdsInstanceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCreateDrdsInstanceStatusResponse
 func (client *Client) DescribeCreateDrdsInstanceStatusWithOptions(request *DescribeCreateDrdsInstanceStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeCreateDrdsInstanceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCreateDrdsInstanceStatus"),
@@ -4213,7 +4786,7 @@ func (client *Client) DescribeCreateDrdsInstanceStatusWithOptions(request *Descr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCreateDrdsInstanceStatusResponse{}
@@ -4225,6 +4798,9 @@ func (client *Client) DescribeCreateDrdsInstanceStatusWithOptions(request *Descr
 	return _result, _err
 }
 
+// @param request - DescribeCreateDrdsInstanceStatusRequest
+//
+// @return DescribeCreateDrdsInstanceStatusResponse
 func (client *Client) DescribeCreateDrdsInstanceStatus(request *DescribeCreateDrdsInstanceStatusRequest) (_result *DescribeCreateDrdsInstanceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCreateDrdsInstanceStatusResponse{}
@@ -4236,17 +4812,27 @@ func (client *Client) DescribeCreateDrdsInstanceStatus(request *DescribeCreateDr
 	return _result, _err
 }
 
+// @param request - DescribeDrdsDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsDBResponse
 func (client *Client) DescribeDrdsDBWithOptions(request *DescribeDrdsDBRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsDB"),
@@ -4256,7 +4842,7 @@ func (client *Client) DescribeDrdsDBWithOptions(request *DescribeDrdsDBRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDBResponse{}
@@ -4268,6 +4854,9 @@ func (client *Client) DescribeDrdsDBWithOptions(request *DescribeDrdsDBRequest, 
 	return _result, _err
 }
 
+// @param request - DescribeDrdsDBRequest
+//
+// @return DescribeDrdsDBResponse
 func (client *Client) DescribeDrdsDB(request *DescribeDrdsDBRequest) (_result *DescribeDrdsDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsDBResponse{}
@@ -4279,18 +4868,31 @@ func (client *Client) DescribeDrdsDB(request *DescribeDrdsDBRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DescribeDrdsDBIpWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsDBIpWhiteListResponse
 func (client *Client) DescribeDrdsDBIpWhiteListWithOptions(request *DescribeDrdsDBIpWhiteListRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsDBIpWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["GroupName"] = request.GroupName
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsDBIpWhiteList"),
@@ -4300,7 +4902,7 @@ func (client *Client) DescribeDrdsDBIpWhiteListWithOptions(request *DescribeDrds
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDBIpWhiteListResponse{}
@@ -4312,6 +4914,9 @@ func (client *Client) DescribeDrdsDBIpWhiteListWithOptions(request *DescribeDrds
 	return _result, _err
 }
 
+// @param request - DescribeDrdsDBIpWhiteListRequest
+//
+// @return DescribeDrdsDBIpWhiteListResponse
 func (client *Client) DescribeDrdsDBIpWhiteList(request *DescribeDrdsDBIpWhiteListRequest) (_result *DescribeDrdsDBIpWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsDBIpWhiteListResponse{}
@@ -4323,16 +4928,23 @@ func (client *Client) DescribeDrdsDBIpWhiteList(request *DescribeDrdsDBIpWhiteLi
 	return _result, _err
 }
 
+// @param request - DescribeDrdsDBsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsDBsResponse
 func (client *Client) DescribeDrdsDBsWithOptions(request *DescribeDrdsDBsRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsDBsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsDBs"),
@@ -4342,7 +4954,7 @@ func (client *Client) DescribeDrdsDBsWithOptions(request *DescribeDrdsDBsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDBsResponse{}
@@ -4354,6 +4966,9 @@ func (client *Client) DescribeDrdsDBsWithOptions(request *DescribeDrdsDBsRequest
 	return _result, _err
 }
 
+// @param request - DescribeDrdsDBsRequest
+//
+// @return DescribeDrdsDBsResponse
 func (client *Client) DescribeDrdsDBs(request *DescribeDrdsDBsRequest) (_result *DescribeDrdsDBsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsDBsResponse{}
@@ -4365,16 +4980,23 @@ func (client *Client) DescribeDrdsDBs(request *DescribeDrdsDBsRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsInstanceResponse
 func (client *Client) DescribeDrdsInstanceWithOptions(request *DescribeDrdsInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsInstance"),
@@ -4384,7 +5006,7 @@ func (client *Client) DescribeDrdsInstanceWithOptions(request *DescribeDrdsInsta
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceResponse{}
@@ -4396,6 +5018,9 @@ func (client *Client) DescribeDrdsInstanceWithOptions(request *DescribeDrdsInsta
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstanceRequest
+//
+// @return DescribeDrdsInstanceResponse
 func (client *Client) DescribeDrdsInstance(request *DescribeDrdsInstanceRequest) (_result *DescribeDrdsInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsInstanceResponse{}
@@ -4407,20 +5032,39 @@ func (client *Client) DescribeDrdsInstance(request *DescribeDrdsInstanceRequest)
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstanceDbMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsInstanceDbMonitorResponse
 func (client *Client) DescribeDrdsInstanceDbMonitorWithOptions(request *DescribeDrdsInstanceDbMonitorRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsInstanceDbMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["EndTime"] = request.EndTime
-	query["Key"] = request.Key
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsInstanceDbMonitor"),
@@ -4430,7 +5074,7 @@ func (client *Client) DescribeDrdsInstanceDbMonitorWithOptions(request *Describe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceDbMonitorResponse{}
@@ -4442,6 +5086,9 @@ func (client *Client) DescribeDrdsInstanceDbMonitorWithOptions(request *Describe
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstanceDbMonitorRequest
+//
+// @return DescribeDrdsInstanceDbMonitorResponse
 func (client *Client) DescribeDrdsInstanceDbMonitor(request *DescribeDrdsInstanceDbMonitorRequest) (_result *DescribeDrdsInstanceDbMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsInstanceDbMonitorResponse{}
@@ -4453,20 +5100,39 @@ func (client *Client) DescribeDrdsInstanceDbMonitor(request *DescribeDrdsInstanc
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstanceMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsInstanceMonitorResponse
 func (client *Client) DescribeDrdsInstanceMonitorWithOptions(request *DescribeDrdsInstanceMonitorRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsInstanceMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["EndTime"] = request.EndTime
-	query["Key"] = request.Key
-	query["PeriodMultiple"] = request.PeriodMultiple
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodMultiple)) {
+		query["PeriodMultiple"] = request.PeriodMultiple
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsInstanceMonitor"),
@@ -4476,7 +5142,7 @@ func (client *Client) DescribeDrdsInstanceMonitorWithOptions(request *DescribeDr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceMonitorResponse{}
@@ -4488,6 +5154,9 @@ func (client *Client) DescribeDrdsInstanceMonitorWithOptions(request *DescribeDr
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstanceMonitorRequest
+//
+// @return DescribeDrdsInstanceMonitorResponse
 func (client *Client) DescribeDrdsInstanceMonitor(request *DescribeDrdsInstanceMonitorRequest) (_result *DescribeDrdsInstanceMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsInstanceMonitorResponse{}
@@ -4499,16 +5168,23 @@ func (client *Client) DescribeDrdsInstanceMonitor(request *DescribeDrdsInstanceM
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstanceNetInfoForInnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsInstanceNetInfoForInnerResponse
 func (client *Client) DescribeDrdsInstanceNetInfoForInnerWithOptions(request *DescribeDrdsInstanceNetInfoForInnerRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsInstanceNetInfoForInnerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsInstanceNetInfoForInner"),
@@ -4518,7 +5194,7 @@ func (client *Client) DescribeDrdsInstanceNetInfoForInnerWithOptions(request *De
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceNetInfoForInnerResponse{}
@@ -4530,6 +5206,9 @@ func (client *Client) DescribeDrdsInstanceNetInfoForInnerWithOptions(request *De
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstanceNetInfoForInnerRequest
+//
+// @return DescribeDrdsInstanceNetInfoForInnerResponse
 func (client *Client) DescribeDrdsInstanceNetInfoForInner(request *DescribeDrdsInstanceNetInfoForInnerRequest) (_result *DescribeDrdsInstanceNetInfoForInnerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsInstanceNetInfoForInnerResponse{}
@@ -4541,18 +5220,31 @@ func (client *Client) DescribeDrdsInstanceNetInfoForInner(request *DescribeDrdsI
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsInstancesResponse
 func (client *Client) DescribeDrdsInstancesWithOptions(request *DescribeDrdsInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["Tags"] = request.Tags
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsInstances"),
@@ -4562,7 +5254,7 @@ func (client *Client) DescribeDrdsInstancesWithOptions(request *DescribeDrdsInst
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstancesResponse{}
@@ -4574,6 +5266,9 @@ func (client *Client) DescribeDrdsInstancesWithOptions(request *DescribeDrdsInst
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstancesRequest
+//
+// @return DescribeDrdsInstancesResponse
 func (client *Client) DescribeDrdsInstances(request *DescribeDrdsInstancesRequest) (_result *DescribeDrdsInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsInstancesResponse{}
@@ -4585,18 +5280,31 @@ func (client *Client) DescribeDrdsInstances(request *DescribeDrdsInstancesReques
 	return _result, _err
 }
 
+// @param request - DescribeRdsListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRdsListResponse
 func (client *Client) DescribeRdsListWithOptions(request *DescribeRdsListRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRdsList"),
@@ -4606,7 +5314,7 @@ func (client *Client) DescribeRdsListWithOptions(request *DescribeRdsListRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRdsListResponse{}
@@ -4618,6 +5326,9 @@ func (client *Client) DescribeRdsListWithOptions(request *DescribeRdsListRequest
 	return _result, _err
 }
 
+// @param request - DescribeRdsListRequest
+//
+// @return DescribeRdsListResponse
 func (client *Client) DescribeRdsList(request *DescribeRdsListRequest) (_result *DescribeRdsListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRdsListResponse{}
@@ -4629,17 +5340,27 @@ func (client *Client) DescribeRdsList(request *DescribeRdsListRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DescribeReadOnlyAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeReadOnlyAccountResponse
 func (client *Client) DescribeReadOnlyAccountWithOptions(request *DescribeReadOnlyAccountRequest, runtime *util.RuntimeOptions) (_result *DescribeReadOnlyAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeReadOnlyAccount"),
@@ -4649,7 +5370,7 @@ func (client *Client) DescribeReadOnlyAccountWithOptions(request *DescribeReadOn
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeReadOnlyAccountResponse{}
@@ -4661,6 +5382,9 @@ func (client *Client) DescribeReadOnlyAccountWithOptions(request *DescribeReadOn
 	return _result, _err
 }
 
+// @param request - DescribeReadOnlyAccountRequest
+//
+// @return DescribeReadOnlyAccountResponse
 func (client *Client) DescribeReadOnlyAccount(request *DescribeReadOnlyAccountRequest) (_result *DescribeReadOnlyAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeReadOnlyAccountResponse{}
@@ -4672,6 +5396,11 @@ func (client *Client) DescribeReadOnlyAccount(request *DescribeReadOnlyAccountRe
 	return _result, _err
 }
 
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -4682,7 +5411,7 @@ func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
@@ -4694,6 +5423,7 @@ func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -4705,17 +5435,27 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 	return _result, _err
 }
 
+// @param request - DescribeShardDBsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeShardDBsResponse
 func (client *Client) DescribeShardDBsWithOptions(request *DescribeShardDBsRequest, runtime *util.RuntimeOptions) (_result *DescribeShardDBsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeShardDBs"),
@@ -4725,7 +5465,7 @@ func (client *Client) DescribeShardDBsWithOptions(request *DescribeShardDBsReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeShardDBsResponse{}
@@ -4737,6 +5477,9 @@ func (client *Client) DescribeShardDBsWithOptions(request *DescribeShardDBsReque
 	return _result, _err
 }
 
+// @param request - DescribeShardDBsRequest
+//
+// @return DescribeShardDBsResponse
 func (client *Client) DescribeShardDBs(request *DescribeShardDBsRequest) (_result *DescribeShardDBsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeShardDBsResponse{}
@@ -4748,18 +5491,31 @@ func (client *Client) DescribeShardDBs(request *DescribeShardDBsRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DescribeShardDbConnectionInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeShardDbConnectionInfoResponse
 func (client *Client) DescribeShardDbConnectionInfoWithOptions(request *DescribeShardDbConnectionInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeShardDbConnectionInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["SubDbName"] = request.SubDbName
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubDbName)) {
+		query["SubDbName"] = request.SubDbName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeShardDbConnectionInfo"),
@@ -4769,7 +5525,7 @@ func (client *Client) DescribeShardDbConnectionInfoWithOptions(request *Describe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeShardDbConnectionInfoResponse{}
@@ -4781,6 +5537,9 @@ func (client *Client) DescribeShardDbConnectionInfoWithOptions(request *Describe
 	return _result, _err
 }
 
+// @param request - DescribeShardDbConnectionInfoRequest
+//
+// @return DescribeShardDbConnectionInfoResponse
 func (client *Client) DescribeShardDbConnectionInfo(request *DescribeShardDbConnectionInfoRequest) (_result *DescribeShardDbConnectionInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeShardDbConnectionInfoResponse{}
@@ -4792,25 +5551,59 @@ func (client *Client) DescribeShardDbConnectionInfo(request *DescribeShardDbConn
 	return _result, _err
 }
 
+// @param request - EnableInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableInstanceResponse
 func (client *Client) EnableInstanceWithOptions(request *EnableInstanceRequest, runtime *util.RuntimeOptions) (_result *EnableInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BackupId"] = request.BackupId
-	query["ClientToken"] = request.ClientToken
-	query["DbInstanceClass"] = request.DbInstanceClass
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["EngineVersion"] = request.EngineVersion
-	query["RestoreTime"] = request.RestoreTime
-	query["SourceDbInstId"] = request.SourceDbInstId
-	query["SwitchId"] = request.SwitchId
-	query["VpcId"] = request.VpcId
-	query["ZoneId"] = request.ZoneId
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceClass)) {
+		query["DbInstanceClass"] = request.DbInstanceClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreTime)) {
+		query["RestoreTime"] = request.RestoreTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDbInstId)) {
+		query["SourceDbInstId"] = request.SourceDbInstId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchId)) {
+		query["SwitchId"] = request.SwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EnableInstance"),
@@ -4820,7 +5613,7 @@ func (client *Client) EnableInstanceWithOptions(request *EnableInstanceRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableInstanceResponse{}
@@ -4832,6 +5625,9 @@ func (client *Client) EnableInstanceWithOptions(request *EnableInstanceRequest, 
 	return _result, _err
 }
 
+// @param request - EnableInstanceRequest
+//
+// @return EnableInstanceResponse
 func (client *Client) EnableInstance(request *EnableInstanceRequest) (_result *EnableInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableInstanceResponse{}
@@ -4843,18 +5639,31 @@ func (client *Client) EnableInstance(request *EnableInstanceRequest) (_result *E
 	return _result, _err
 }
 
+// @param request - ModifyDrdsDBPasswdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDrdsDBPasswdResponse
 func (client *Client) ModifyDrdsDBPasswdWithOptions(request *ModifyDrdsDBPasswdRequest, runtime *util.RuntimeOptions) (_result *ModifyDrdsDBPasswdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["NewPasswd"] = request.NewPasswd
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewPasswd)) {
+		query["NewPasswd"] = request.NewPasswd
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyDrdsDBPasswd"),
@@ -4864,7 +5673,7 @@ func (client *Client) ModifyDrdsDBPasswdWithOptions(request *ModifyDrdsDBPasswdR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDrdsDBPasswdResponse{}
@@ -4876,6 +5685,9 @@ func (client *Client) ModifyDrdsDBPasswdWithOptions(request *ModifyDrdsDBPasswdR
 	return _result, _err
 }
 
+// @param request - ModifyDrdsDBPasswdRequest
+//
+// @return ModifyDrdsDBPasswdResponse
 func (client *Client) ModifyDrdsDBPasswd(request *ModifyDrdsDBPasswdRequest) (_result *ModifyDrdsDBPasswdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDrdsDBPasswdResponse{}
@@ -4887,17 +5699,27 @@ func (client *Client) ModifyDrdsDBPasswd(request *ModifyDrdsDBPasswdRequest) (_r
 	return _result, _err
 }
 
+// @param request - ModifyDrdsInstanceDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDrdsInstanceDescriptionResponse
 func (client *Client) ModifyDrdsInstanceDescriptionWithOptions(request *ModifyDrdsInstanceDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyDrdsInstanceDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyDrdsInstanceDescription"),
@@ -4907,7 +5729,7 @@ func (client *Client) ModifyDrdsInstanceDescriptionWithOptions(request *ModifyDr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDrdsInstanceDescriptionResponse{}
@@ -4919,6 +5741,9 @@ func (client *Client) ModifyDrdsInstanceDescriptionWithOptions(request *ModifyDr
 	return _result, _err
 }
 
+// @param request - ModifyDrdsInstanceDescriptionRequest
+//
+// @return ModifyDrdsInstanceDescriptionResponse
 func (client *Client) ModifyDrdsInstanceDescription(request *ModifyDrdsInstanceDescriptionRequest) (_result *ModifyDrdsInstanceDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDrdsInstanceDescriptionResponse{}
@@ -4930,21 +5755,43 @@ func (client *Client) ModifyDrdsInstanceDescription(request *ModifyDrdsInstanceD
 	return _result, _err
 }
 
+// @param request - ModifyDrdsIpWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDrdsIpWhiteListResponse
 func (client *Client) ModifyDrdsIpWhiteListWithOptions(request *ModifyDrdsIpWhiteListRequest, runtime *util.RuntimeOptions) (_result *ModifyDrdsIpWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["GroupAttribute"] = request.GroupAttribute
-	query["GroupName"] = request.GroupName
-	query["IpWhiteList"] = request.IpWhiteList
-	query["Mode"] = request.Mode
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupAttribute)) {
+		query["GroupAttribute"] = request.GroupAttribute
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpWhiteList)) {
+		query["IpWhiteList"] = request.IpWhiteList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyDrdsIpWhiteList"),
@@ -4954,7 +5801,7 @@ func (client *Client) ModifyDrdsIpWhiteListWithOptions(request *ModifyDrdsIpWhit
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDrdsIpWhiteListResponse{}
@@ -4966,6 +5813,9 @@ func (client *Client) ModifyDrdsIpWhiteListWithOptions(request *ModifyDrdsIpWhit
 	return _result, _err
 }
 
+// @param request - ModifyDrdsIpWhiteListRequest
+//
+// @return ModifyDrdsIpWhiteListResponse
 func (client *Client) ModifyDrdsIpWhiteList(request *ModifyDrdsIpWhiteListRequest) (_result *ModifyDrdsIpWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDrdsIpWhiteListResponse{}
@@ -4977,19 +5827,35 @@ func (client *Client) ModifyDrdsIpWhiteList(request *ModifyDrdsIpWhiteListReques
 	return _result, _err
 }
 
+// @param request - ModifyFullTableScanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyFullTableScanResponse
 func (client *Client) ModifyFullTableScanWithOptions(request *ModifyFullTableScanRequest, runtime *util.RuntimeOptions) (_result *ModifyFullTableScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["FullTableScan"] = request.FullTableScan
-	query["TableNames"] = request.TableNames
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FullTableScan)) {
+		query["FullTableScan"] = request.FullTableScan
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableNames)) {
+		query["TableNames"] = request.TableNames
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyFullTableScan"),
@@ -4999,7 +5865,7 @@ func (client *Client) ModifyFullTableScanWithOptions(request *ModifyFullTableSca
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyFullTableScanResponse{}
@@ -5011,6 +5877,9 @@ func (client *Client) ModifyFullTableScanWithOptions(request *ModifyFullTableSca
 	return _result, _err
 }
 
+// @param request - ModifyFullTableScanRequest
+//
+// @return ModifyFullTableScanResponse
 func (client *Client) ModifyFullTableScan(request *ModifyFullTableScanRequest) (_result *ModifyFullTableScanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyFullTableScanResponse{}
@@ -5022,19 +5891,35 @@ func (client *Client) ModifyFullTableScan(request *ModifyFullTableScanRequest) (
 	return _result, _err
 }
 
+// @param request - ModifyRdsReadWeightRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyRdsReadWeightResponse
 func (client *Client) ModifyRdsReadWeightWithOptions(request *ModifyRdsReadWeightRequest, runtime *util.RuntimeOptions) (_result *ModifyRdsReadWeightResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["InstanceNames"] = request.InstanceNames
-	query["Weights"] = request.Weights
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceNames)) {
+		query["InstanceNames"] = request.InstanceNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Weights)) {
+		query["Weights"] = request.Weights
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyRdsReadWeight"),
@@ -5044,7 +5929,7 @@ func (client *Client) ModifyRdsReadWeightWithOptions(request *ModifyRdsReadWeigh
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyRdsReadWeightResponse{}
@@ -5056,6 +5941,9 @@ func (client *Client) ModifyRdsReadWeightWithOptions(request *ModifyRdsReadWeigh
 	return _result, _err
 }
 
+// @param request - ModifyRdsReadWeightRequest
+//
+// @return ModifyRdsReadWeightResponse
 func (client *Client) ModifyRdsReadWeight(request *ModifyRdsReadWeightRequest) (_result *ModifyRdsReadWeightResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyRdsReadWeightResponse{}
@@ -5067,20 +5955,39 @@ func (client *Client) ModifyRdsReadWeight(request *ModifyRdsReadWeightRequest) (
 	return _result, _err
 }
 
+// @param request - ModifyReadOnlyAccountPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyReadOnlyAccountPasswordResponse
 func (client *Client) ModifyReadOnlyAccountPasswordWithOptions(request *ModifyReadOnlyAccountPasswordRequest, runtime *util.RuntimeOptions) (_result *ModifyReadOnlyAccountPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountName"] = request.AccountName
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["NewPasswd"] = request.NewPasswd
-	query["OriginPassword"] = request.OriginPassword
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewPasswd)) {
+		query["NewPasswd"] = request.NewPasswd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginPassword)) {
+		query["OriginPassword"] = request.OriginPassword
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyReadOnlyAccountPassword"),
@@ -5090,7 +5997,7 @@ func (client *Client) ModifyReadOnlyAccountPasswordWithOptions(request *ModifyRe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyReadOnlyAccountPasswordResponse{}
@@ -5102,6 +6009,9 @@ func (client *Client) ModifyReadOnlyAccountPasswordWithOptions(request *ModifyRe
 	return _result, _err
 }
 
+// @param request - ModifyReadOnlyAccountPasswordRequest
+//
+// @return ModifyReadOnlyAccountPasswordResponse
 func (client *Client) ModifyReadOnlyAccountPassword(request *ModifyReadOnlyAccountPasswordRequest) (_result *ModifyReadOnlyAccountPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyReadOnlyAccountPasswordResponse{}
@@ -5113,18 +6023,31 @@ func (client *Client) ModifyReadOnlyAccountPassword(request *ModifyReadOnlyAccou
 	return _result, _err
 }
 
+// @param request - QueryInstanceInfoByConnRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInstanceInfoByConnResponse
 func (client *Client) QueryInstanceInfoByConnWithOptions(request *QueryInstanceInfoByConnRequest, runtime *util.RuntimeOptions) (_result *QueryInstanceInfoByConnResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Host"] = request.Host
-	query["Port"] = request.Port
-	query["UserName"] = request.UserName
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryInstanceInfoByConn"),
@@ -5134,7 +6057,7 @@ func (client *Client) QueryInstanceInfoByConnWithOptions(request *QueryInstanceI
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryInstanceInfoByConnResponse{}
@@ -5146,6 +6069,9 @@ func (client *Client) QueryInstanceInfoByConnWithOptions(request *QueryInstanceI
 	return _result, _err
 }
 
+// @param request - QueryInstanceInfoByConnRequest
+//
+// @return QueryInstanceInfoByConnResponse
 func (client *Client) QueryInstanceInfoByConn(request *QueryInstanceInfoByConnRequest) (_result *QueryInstanceInfoByConnResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryInstanceInfoByConnResponse{}
@@ -5157,16 +6083,23 @@ func (client *Client) QueryInstanceInfoByConn(request *QueryInstanceInfoByConnRe
 	return _result, _err
 }
 
+// @param request - RemoveDrdsInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveDrdsInstanceResponse
 func (client *Client) RemoveDrdsInstanceWithOptions(request *RemoveDrdsInstanceRequest, runtime *util.RuntimeOptions) (_result *RemoveDrdsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveDrdsInstance"),
@@ -5176,7 +6109,7 @@ func (client *Client) RemoveDrdsInstanceWithOptions(request *RemoveDrdsInstanceR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveDrdsInstanceResponse{}
@@ -5188,6 +6121,9 @@ func (client *Client) RemoveDrdsInstanceWithOptions(request *RemoveDrdsInstanceR
 	return _result, _err
 }
 
+// @param request - RemoveDrdsInstanceRequest
+//
+// @return RemoveDrdsInstanceResponse
 func (client *Client) RemoveDrdsInstance(request *RemoveDrdsInstanceRequest) (_result *RemoveDrdsInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveDrdsInstanceResponse{}
@@ -5199,18 +6135,31 @@ func (client *Client) RemoveDrdsInstance(request *RemoveDrdsInstanceRequest) (_r
 	return _result, _err
 }
 
+// @param request - RemoveReadOnlyAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveReadOnlyAccountResponse
 func (client *Client) RemoveReadOnlyAccountWithOptions(request *RemoveReadOnlyAccountRequest, runtime *util.RuntimeOptions) (_result *RemoveReadOnlyAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountName"] = request.AccountName
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveReadOnlyAccount"),
@@ -5220,7 +6169,7 @@ func (client *Client) RemoveReadOnlyAccountWithOptions(request *RemoveReadOnlyAc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveReadOnlyAccountResponse{}
@@ -5232,6 +6181,9 @@ func (client *Client) RemoveReadOnlyAccountWithOptions(request *RemoveReadOnlyAc
 	return _result, _err
 }
 
+// @param request - RemoveReadOnlyAccountRequest
+//
+// @return RemoveReadOnlyAccountResponse
 func (client *Client) RemoveReadOnlyAccount(request *RemoveReadOnlyAccountRequest) (_result *RemoveReadOnlyAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveReadOnlyAccountResponse{}
