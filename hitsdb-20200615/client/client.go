@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,7 +10,8 @@ import (
 )
 
 type CreateLdpsComputeGroupRequest struct {
-	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -124,6 +122,7 @@ func (s *CreateLdpsComputeGroupResponse) SetBody(v *CreateLdpsComputeGroupRespon
 }
 
 type CreateLdpsNamespaceRequest struct {
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -230,174 +229,371 @@ func (s *CreateLdpsNamespaceResponse) SetBody(v *CreateLdpsNamespaceResponseBody
 
 type CreateLindormInstanceRequest struct {
 	// The ID of the vSwitch that is specified for the zone for the coordinate node of the instance. The vSwitch must be deployed in the zone specified by the ArbiterZoneId parameter. **This parameter is required if you want to create a multi-zone instance**.
+	//
+	// example:
+	//
+	// vsw-uf6664pqjawb87k36****
 	ArbiterVSwitchId *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
 	// The ID of the zone for the coordinate node of the instance. **This parameter is required if you want to create a multi-zone instance**.
+	//
+	// example:
+	//
+	// cn-shanghai-g
 	ArbiterZoneId *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
 	// The architecture of the instance. Valid values:
 	//
-	// *   **1.0**: The instance that you want to create is a single-zone instance.
-	// *   **2.0**: The instance that you want to create is a multi-zone instance.
+	// 	- **1.0**: The instance that you want to create is a single-zone instance.
+	//
+	// 	- **2.0**: The instance that you want to create is a multi-zone instance.
 	//
 	// By default, the value of this parameter is 1.0. To create a multi-zone instance, set this parameter to 2.0. **This parameter is required if you want to create a multi-zone instance**.
+	//
+	// example:
+	//
+	// 2.0
 	ArchVersion       *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
 	AutoRenewDuration *string `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
 	AutoRenewal       *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The cold storage capacity of the instance. By default, if you leave this parameter unspecified, cold storage is not enabled for the instance. Unit: GB. Valid values: **800** to **1000000**.
+	// The cold storage capacity of the instance. By default, if you leave this parameter unspecified, cold storage is not enabled for the instance. Unit: GB. Valid values: **800*	- to **1000000**.
+	//
+	// example:
+	//
+	// 800
 	ColdStorage *int32 `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
 	// The storage capacity of the disk of a single core node. Valid values: 400 to 64000. Unit: GB. **This parameter is required if you want to create a multi-zone instance**.
+	//
+	// example:
+	//
+	// 400
 	CoreSingleStorage *int32 `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
 	// The specification of the nodes in the instance if you set DiskCategory to local_ssd_pro or local_hdd_pro.
 	//
 	// When DiskCategory is set to local_ssd_pro, you can set this parameter to the following values:
 	//
-	// *   **lindorm.i2.xlarge**: Each node has 4 dedicated CPU cores and 32 GB of dedicated memory.
-	// *   **lindorm.i2.2xlarge**: Each node has 8 dedicated CPU cores and 64 GB of dedicated memory.
-	// *   **lindorm.i2.4xlarge**: Each node has 16 dedicated CPU cores and 128 GB of dedicated memory.
-	// *   **lindorm.i2.8xlarge**: Each node has 32 dedicated CPU cores and 256 GB of dedicated memory.
+	// 	- **lindorm.i2.xlarge**: Each node has 4 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// 	- **lindorm.i2.2xlarge**: Each node has 8 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// 	- **lindorm.i2.4xlarge**: Each node has 16 dedicated CPU cores and 128 GB of dedicated memory.
+	//
+	// 	- **lindorm.i2.8xlarge**: Each node has 32 dedicated CPU cores and 256 GB of dedicated memory.
 	//
 	// When DiskCategory is set to local_hdd_pro, you can set this parameter to the following values:
 	//
-	// *   **lindorm.d1.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
-	// *   **lindorm.d1.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
-	// *   **lindorm.d1.6xlarge**: Each node has 24 dedicated CPU cores and 96 GB of dedicated memory.
+	// 	- **lindorm.d1.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// 	- **lindorm.d1.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// 	- **lindorm.d1.6xlarge**: Each node has 24 dedicated CPU cores and 96 GB of dedicated memory.
+	//
+	// example:
+	//
+	// lindorm.i2.xlarge
 	CoreSpec *string `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
-	// *   **cloud_efficiency**: This instance uses the Standard type of storage.
-	// *   **cloud_ssd**: This instance uses the Performance type of storage.
-	// *   **capacity_cloud_storage**: This instance uses the Capacity type of storage.
-	// *   **local_ssd_pro**: This instance uses local SSDs.
-	// *   **local_hdd_pro**: This instance uses local HDDs.
+	// 	- **cloud_efficiency**: This instance uses the Standard type of storage.
+	//
+	// 	- **cloud_ssd**: This instance uses the Performance type of storage.
+	//
+	// 	- **capacity_cloud_storage**: This instance uses the Capacity type of storage.
+	//
+	// 	- **local_ssd_pro**: This instance uses local SSDs.
+	//
+	// 	- **local_hdd_pro**: This instance uses local HDDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cloud_efficiency
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
 	// The subscription period of the instance. The valid values of this parameter depend on the value of the PricingCycle parameter.
 	//
-	// *   If PricingCycle is set to **Month**, set this parameter to an integer that ranges from **1** to **9**.
-	// *   If PricingCycle is set to **Year**, set this parameter to an integer that ranges from **1** to **3**.
+	// 	- If PricingCycle is set to **Month**, set this parameter to an integer that ranges from **1*	- to **9**.
+	//
+	// 	- If PricingCycle is set to **Year**, set this parameter to an integer that ranges from **1*	- to **3**.
 	//
 	// > This parameter is available and required when the PayType parameter is set to **PREPAY**.
+	//
+	// example:
+	//
+	// 1
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The number of LindormDFS nodes in the instance. The valid values of this parameter depend on the value of the PayType parameter.
 	//
-	// *   If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0** to **60**.
-	// *   If the PayType parameter is set to **POSTPAY**, set this parameter to an integer that ranges from **0** to **8**.
+	// 	- If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0*	- to **60**.
+	//
+	// 	- If the PayType parameter is set to **POSTPAY**, set this parameter to an integer that ranges from **0*	- to **8**.
+	//
+	// example:
+	//
+	// 2
 	FilestoreNum *int32 `json:"FilestoreNum,omitempty" xml:"FilestoreNum,omitempty"`
 	// The specification of LindormDFS nodes in the instance. Set the value of this parameter to **lindorm.c.xlarge**, which indicates that each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+	//
+	// example:
+	//
+	// lindorm.c.xlarge
 	FilestoreSpec *string `json:"FilestoreSpec,omitempty" xml:"FilestoreSpec,omitempty"`
 	// The name of the instance that you want to create.
+	//
+	// example:
+	//
+	// lindorm_test
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
 	// The storage capacity of the instance you want to create. Unit: GB.
+	//
+	// example:
+	//
+	// 480
 	InstanceStorage *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
 	// The number of LindormTable nodes in the instance. The valid values of this parameter depend on the value of the PayType parameter.
 	//
-	// *   If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0** to **90**.
-	// *   If the PayType parameter is set to **POSTPAY**, set this parameter to an integer that ranges from **0** to **400**.
+	// 	- If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0*	- to **90**.
+	//
+	// 	- If the PayType parameter is set to **POSTPAY**, set this parameter to an integer that ranges from **0*	- to **400**.
 	//
 	// **This parameter is required if you want to create a multi-zone instance**.  The valid values of this parameter range from 4 to 400 if you want to create a multi-zone instance.
+	//
+	// example:
+	//
+	// 2
 	LindormNum *int32 `json:"LindormNum,omitempty" xml:"LindormNum,omitempty"`
 	// The specification of LindormTable nodes in the instance. Valid values:
 	//
-	// *   **lindorm.c.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
-	// *   **lindorm.c.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
-	// *   **lindorm.c.4xlarge**: Each node has 16 dedicated CPU cores and 32 GB of dedicated memory.
-	// *   **lindorm.c.8xlarge**: Each node has 32 dedicated CPU cores and 64 GB of dedicated memory.
+	// 	- **lindorm.c.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+	//
+	// 	- **lindorm.c.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// 	- **lindorm.c.4xlarge**: Each node has 16 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// 	- **lindorm.c.8xlarge**: Each node has 32 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// example:
+	//
+	// lindorm.c.xlarge
 	LindormSpec *string `json:"LindormSpec,omitempty" xml:"LindormSpec,omitempty"`
 	// The disk type of the log nodes. Valid values:
 	//
-	// *   **cloud_efficiency**: This instance uses the Standard type of storage.
-	// *   **cloud_ssd**: This instance uses the Performance type of storage.
+	// 	- **cloud_efficiency**: This instance uses the Standard type of storage.
+	//
+	// 	- **cloud_ssd**: This instance uses the Performance type of storage.
 	//
 	// **This parameter is required if you want to create a multi-zone instance**.
+	//
+	// example:
+	//
+	// cloud_ssd
 	LogDiskCategory *string `json:"LogDiskCategory,omitempty" xml:"LogDiskCategory,omitempty"`
 	// The number of the log nodes. Valid values: 4 to 400. **This parameter is required if you want to create a multi-zone instance**.
+	//
+	// example:
+	//
+	// 4
 	LogNum *int32 `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
 	// The storage capacity of the disk of a single log node. Valid values: 400 to 64000. Unit: GB. **This parameter is required if you want to create a multi-zone instance**.
+	//
+	// example:
+	//
+	// 400
 	LogSingleStorage *int32 `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
 	// The type of the log nodes. Valid values:
 	//
-	// *   **lindorm.sn1.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
-	// *   **lindorm.sn1.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+	// 	- **lindorm.sn1.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+	//
+	// 	- **lindorm.sn1.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
 	//
 	// **This parameter is required if you want to create a multi-zone instance**.
+	//
+	// example:
+	//
+	// lindorm.sn1.large
 	LogSpec *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
+	LtsNum  *string `json:"LtsNum,omitempty" xml:"LtsNum,omitempty"`
+	LtsSpec *string `json:"LtsSpec,omitempty" xml:"LtsSpec,omitempty"`
 	// The combinations of zones that are available for the multi-zone instance. You can go to the purchase page of Lindorm to view the supported zone combinations.
 	//
-	// *   **ap-southeast-5abc-aliyun**: Zone A+B+C in the Indonesia (Jakarta) region.
-	// *   **cn-hangzhou-ehi-aliyun**: Zone E+H+I in the China (Hangzhou) region.
-	// *   **cn-beijing-acd-aliyun**: Zone A+C+D in the China (Beijing) region.
-	// *   **ap-southeast-1-abc-aliyun**: Zone A+B+C in the Singapore region.
-	// *   **cn-zhangjiakou-abc-aliyun**: Zone A+B+C in the China (Zhangjiakou) region.
-	// *   **cn-shanghai-efg-aliyun**: Zone E+F+G in the China (Shanghai) region.
-	// *   **cn-shanghai-abd-aliyun**: Zone A+B+D in the China (Shanghai) region.
-	// *   **cn-hangzhou-bef-aliyun**: Zone B+E+F in the China (Hangzhou) region.
-	// *   **cn-hangzhou-bce-aliyun**: Zone B+C+E in the China (Hangzhou) region.
-	// *   **cn-beijing-fgh-aliyun**: Zone F+G+H in the China (Beijing) region.
-	// *   **cn-shenzhen-abc-aliyun**: Zone A+B+C in the China (Shenzhen) region.
+	// 	- **ap-southeast-5abc-aliyun**: Zone A+B+C in the Indonesia (Jakarta) region.
+	//
+	// 	- **cn-hangzhou-ehi-aliyun**: Zone E+H+I in the China (Hangzhou) region.
+	//
+	// 	- **cn-beijing-acd-aliyun**: Zone A+C+D in the China (Beijing) region.
+	//
+	// 	- **ap-southeast-1-abc-aliyun**: Zone A+B+C in the Singapore region.
+	//
+	// 	- **cn-zhangjiakou-abc-aliyun**: Zone A+B+C in the China (Zhangjiakou) region.
+	//
+	// 	- **cn-shanghai-efg-aliyun**: Zone E+F+G in the China (Shanghai) region.
+	//
+	// 	- **cn-shanghai-abd-aliyun**: Zone A+B+D in the China (Shanghai) region.
+	//
+	// 	- **cn-hangzhou-bef-aliyun**: Zone B+E+F in the China (Hangzhou) region.
+	//
+	// 	- **cn-hangzhou-bce-aliyun**: Zone B+C+E in the China (Hangzhou) region.
+	//
+	// 	- **cn-beijing-fgh-aliyun**: Zone F+G+H in the China (Beijing) region.
+	//
+	// 	- **cn-shenzhen-abc-aliyun**: Zone A+B+C in the China (Shenzhen) region.
 	//
 	// **This parameter is required if you want to create a multi-zone instance**.
+	//
+	// example:
+	//
+	// cn-shanghai-efg-aliyun
 	MultiZoneCombination *string `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The billing method of the instance you want to create. Valid values:
 	//
-	// *   **PREPAY**: subscription.
-	// *   **POSTPAY**: pay-as-you-go.
+	// 	- **PREPAY**: subscription.
+	//
+	// 	- **POSTPAY**: pay-as-you-go.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The period based on which you are charged for the instance. Valid values:
 	//
-	// *   **Month**: You are charged for the instance on a monthly basis.
-	// *   **Year**: You are charged for the instance on a yearly basis.
+	// 	- **Month**: You are charged for the instance on a monthly basis.
+	//
+	// 	- **Year**: You are charged for the instance on a yearly basis.
 	//
 	// > This parameter is available and required when the PayType parameter is set to **PREPAY**.
+	//
+	// example:
+	//
+	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// The ID of the vSwitch that is specified for the secondary zone of the instance. The vSwitch must be deployed in the zone specified by the StandbyZoneId parameter. **This parameter is required if you want to create a multi-zone instance**.
+	//
+	// example:
+	//
+	// vsw-uf6fdqa7c0pipnqzq****
 	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	PrimaryZoneId    *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
-	// The ID of the region in which you want to create the instance. You can call the [DescribeRegions](~~426062~~) operation to query the region in which you can create the instance.
+	// example:
+	//
+	// cn-shanghai-e
+	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// The ID of the region in which you want to create the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region in which you can create the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Lindorm instance belongs.
+	//
+	// example:
+	//
+	// rg-aek2i6weeb4nfii
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The number of LindormSearch nodes in the instance. Valid values: integers from **0** to **60**.
+	// The number of LindormSearch nodes in the instance. Valid values: integers from **0*	- to **60**.
+	//
+	// example:
+	//
+	// 2
 	SolrNum *int32 `json:"SolrNum,omitempty" xml:"SolrNum,omitempty"`
 	// The specification of the LindormSearch nodes in the instance. Valid values:
 	//
-	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
-	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
-	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
-	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	// 	- **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	//
+	// example:
+	//
+	// lindorm.g.xlarge
 	SolrSpec *string `json:"SolrSpec,omitempty" xml:"SolrSpec,omitempty"`
 	// The ID of the vSwitch that is specified for the secondary zone of the instance. The vSwitch must be deployed in the zone specified by the StandbyZoneId parameter. **This parameter is required if you want to create a multi-zone instance**.
+	//
+	// example:
+	//
+	// vsw-2zec0kcn08cgdtr6****
 	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
 	// The ID of the secondary zone of the instance. **This parameter is required if you want to create a multi-zone instance**.
+	//
+	// example:
+	//
+	// cn-shanghai-f
 	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	// The number of LindormStream nodes in the instance. Valid values: integers from **0** to **60**.
+	// The number of LindormStream nodes in the instance. Valid values: integers from **0*	- to **60**.
+	//
+	// example:
+	//
+	// 2
 	StreamNum *int32 `json:"StreamNum,omitempty" xml:"StreamNum,omitempty"`
 	// The specification of the LindormStream nodes in the instance. Valid values:
 	//
-	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
-	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
-	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
-	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	// 	- **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	//
+	// example:
+	//
+	// lindorm.g.xlarge
 	StreamSpec *string `json:"StreamSpec,omitempty" xml:"StreamSpec,omitempty"`
 	// The number of the LindormTSDB nodes in the instance. The valid values of this parameter depend on the value of the PayType parameter.
 	//
-	// *   If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0** to **24**.
-	// *   If the PayType parameter is set to **POSTPAY**, set this parameter to an integer that ranges from **0** to **32**.
+	// 	- If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0*	- to **24**.
+	//
+	// 	- If the PayType parameter is set to **POSTPAY**, set this parameter to an integer that ranges from **0*	- to **32**.
+	//
+	// example:
+	//
+	// 2
 	TsdbNum *int32 `json:"TsdbNum,omitempty" xml:"TsdbNum,omitempty"`
 	// The specification of the LindormTSDB nodes in the instance. Valid values:
 	//
-	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
-	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
-	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
-	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	// 	- **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	//
+	// example:
+	//
+	// lindorm.g.xlarge
 	TsdbSpec *string `json:"TsdbSpec,omitempty" xml:"TsdbSpec,omitempty"`
 	// The ID of the VPC in which you want to create the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp1nme44gek34slfc****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The ID of the vSwitch to which you want the instance to connect.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-bp1e7clcw529l773d****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the zone in which you want to create the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai-f
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -506,6 +702,16 @@ func (s *CreateLindormInstanceRequest) SetLogSingleStorage(v int32) *CreateLindo
 
 func (s *CreateLindormInstanceRequest) SetLogSpec(v string) *CreateLindormInstanceRequest {
 	s.LogSpec = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetLtsNum(v string) *CreateLindormInstanceRequest {
+	s.LtsNum = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetLtsSpec(v string) *CreateLindormInstanceRequest {
+	s.LtsSpec = &v
 	return s
 }
 
@@ -626,10 +832,22 @@ func (s *CreateLindormInstanceRequest) SetZoneId(v string) *CreateLindormInstanc
 
 type CreateLindormInstanceResponseBody struct {
 	// The ID of the Lindorm instance that is created.
+	//
+	// example:
+	//
+	// ld-bp1o3y0yme2i2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 111111111111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 93BE8227-3406-4D7A-883D-9A421D42****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -686,7 +904,9 @@ func (s *CreateLindormInstanceResponse) SetBody(v *CreateLindormInstanceResponse
 }
 
 type DeleteLdpsComputeGroupRequest struct {
-	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -793,8 +1013,13 @@ func (s *DeleteLdpsComputeGroupResponse) SetBody(v *DeleteLdpsComputeGroupRespon
 type DescribeRegionsRequest struct {
 	// The display language of the regions in the returned results. Valid values:
 	//
-	// *   **zh-CN** (default): Chinese.
-	// *   **en-US**: English.
+	// 	- **zh-CN*	- (default): Chinese.
+	//
+	// 	- **en-US**: English.
+	//
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -845,6 +1070,10 @@ type DescribeRegionsResponseBody struct {
 	// The regions supported by Lindorm.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 73F6E6DA-9AE5-5548-9E07-761A554DAF2E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -870,8 +1099,16 @@ type DescribeRegionsResponseBodyRegions struct {
 	// The name of the region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The endpoint for the region.
+	//
+	// example:
+	//
+	// hitsdb.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -928,6 +1165,7 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type GetClientSourceIpRequest struct {
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1033,6 +1271,7 @@ func (s *GetClientSourceIpResponse) SetBody(v *GetClientSourceIpResponseBody) *G
 }
 
 type GetEngineDefaultAuthRequest struct {
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1173,7 +1412,13 @@ func (s *GetEngineDefaultAuthResponse) SetBody(v *GetEngineDefaultAuthResponseBo
 }
 
 type GetInstanceIpWhiteListRequest struct {
-	// The ID of the instance whose whitelists you want to query. You can call the [GetLindormInstanceList](~~426068~~) operation to obtain the instance ID.
+	// The ID of the instance whose whitelists you want to query. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426068.html) operation to obtain the instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp1z3506imz2f****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1223,9 +1468,17 @@ func (s *GetInstanceIpWhiteListRequest) SetSecurityToken(v string) *GetInstanceI
 type GetInstanceIpWhiteListResponseBody struct {
 	GroupList []*GetInstanceIpWhiteListResponseBodyGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
 	// The ID of the Lindorm instance.
+	//
+	// example:
+	//
+	// ld-bp1z3506imz2f****
 	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IpList     []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1D1F6F4D-9203-53E7-84E9-5376B4657E63
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1258,7 +1511,13 @@ func (s *GetInstanceIpWhiteListResponseBody) SetRequestId(v string) *GetInstance
 }
 
 type GetInstanceIpWhiteListResponseBodyGroupList struct {
-	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// test
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// 192.168.1.0/24
 	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
 }
 
@@ -1310,6 +1569,7 @@ func (s *GetInstanceIpWhiteListResponse) SetBody(v *GetInstanceIpWhiteListRespon
 }
 
 type GetInstanceSecurityGroupsRequest struct {
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1415,7 +1675,8 @@ func (s *GetInstanceSecurityGroupsResponse) SetBody(v *GetInstanceSecurityGroups
 }
 
 type GetLdpsComputeGroupRequest struct {
-	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1532,6 +1793,7 @@ func (s *GetLdpsComputeGroupResponse) SetBody(v *GetLdpsComputeGroupResponseBody
 }
 
 type GetLdpsNamespacedQuotaRequest struct {
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -1684,7 +1946,8 @@ func (s *GetLdpsNamespacedQuotaResponse) SetBody(v *GetLdpsNamespacedQuotaRespon
 }
 
 type GetLdpsResourceCostRequest struct {
-	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -1833,8 +2096,15 @@ func (s *GetLdpsResourceCostResponse) SetBody(v *GetLdpsResourceCostResponseBody
 type GetLindormInstanceRequest struct {
 	// The disk type of the log nodes. This parameter is returned only for multi-zone instances. Valid values:
 	//
-	// *   **cloud_efficiency**: The nodes use the Standard type of storage.
-	// *   **cloud_ssd**: The nodes use the Performance type of storage.
+	// 	- **cloud_efficiency**: The nodes use the Standard type of storage.
+	//
+	// 	- **cloud_ssd**: The nodes use the Performance type of storage.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp1o3y0yme2i2****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1882,113 +2152,308 @@ func (s *GetLindormInstanceRequest) SetSecurityToken(v string) *GetLindormInstan
 }
 
 type GetLindormInstanceResponseBody struct {
-	AliUid           *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// 164901546557****
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// vsw-uf6664pqjawb87k36****
 	ArbiterVSwitchId *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
-	ArbiterZoneId    *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	// example:
+	//
+	// cn-shanghai-g
+	ArbiterZoneId *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
 	// 部署架构，取值：
 	//
 	// - **1.0**：单可用区。
+	//
 	// - **2.0**：多可用区。
+	//
+	// example:
+	//
+	// 1.0
 	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
-	AutoRenew   *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The Capacity storage size of the instance.
+	//
+	// example:
+	//
+	// 0GB
 	ColdStorage *int32 `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
 	// The disk type of the core nodes. This parameter is returned only for multi-zone instances. Valid values:
 	//
-	// *   **cloud_efficiency**: This instance uses the Standard type of storage.
-	// *   **cloud_ssd**: This instance uses the Performance type of storage.
-	// *   **cloud_essd**: This instance uses ESSDs for storage.
-	// *   **cloud_essd_pl0**: This instance uses PL0 ESSDs for storage.
-	CoreDiskCategory   *string `json:"CoreDiskCategory,omitempty" xml:"CoreDiskCategory,omitempty"`
-	CoreNum            *int32  `json:"CoreNum,omitempty" xml:"CoreNum,omitempty"`
-	CoreSingleStorage  *int32  `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
-	CoreSpec           *string `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
-	CreateMilliseconds *int64  `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
+	// 	- **cloud_efficiency**: This instance uses the Standard type of storage.
+	//
+	// 	- **cloud_ssd**: This instance uses the Performance type of storage.
+	//
+	// 	- **cloud_essd**: This instance uses ESSDs for storage.
+	//
+	// 	- **cloud_essd_pl0**: This instance uses PL0 ESSDs for storage.
+	//
+	// example:
+	//
+	// cloud_efficiency
+	CoreDiskCategory *string `json:"CoreDiskCategory,omitempty" xml:"CoreDiskCategory,omitempty"`
+	// example:
+	//
+	// 4
+	CoreNum *int32 `json:"CoreNum,omitempty" xml:"CoreNum,omitempty"`
+	// example:
+	//
+	// 400
+	CoreSingleStorage *int32 `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
+	// example:
+	//
+	// lindorm.g.xlarge
+	CoreSpec *string `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
+	// example:
+	//
+	// 1627290664000
+	CreateMilliseconds *int64 `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
 	// The storage capacity of the disk of a single log node. This parameter is returned only for multi-zone instances.
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	//
+	// example:
+	//
+	// 2021-07-26 17:10:26
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// false
 	DeletionProtection *string `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
-	// *   **cloud_efficiency**: This instance uses the Standard type of storage.
-	// *   **cloud_ssd**: This instance uses the Performance type of storage.
-	// *   **cloud_essd**: This instance uses ESSDs for storage.
-	// *   **cloud_essd_pl0**: This instance uses PL0 ESSDs for storage.
-	// *   **capacity_cloud_storage**: This instance uses the Capacity type of storage.
-	// *   **local_ssd_pro**: This instance uses local SSDs for storage.
-	// *   **local_hdd_pro**: This instance uses local HDDs for storage.
-	DiskCategory  *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	// 	- **cloud_efficiency**: This instance uses the Standard type of storage.
+	//
+	// 	- **cloud_ssd**: This instance uses the Performance type of storage.
+	//
+	// 	- **cloud_essd**: This instance uses ESSDs for storage.
+	//
+	// 	- **cloud_essd_pl0**: This instance uses PL0 ESSDs for storage.
+	//
+	// 	- **capacity_cloud_storage**: This instance uses the Capacity type of storage.
+	//
+	// 	- **local_ssd_pro**: This instance uses local SSDs for storage.
+	//
+	// 	- **local_hdd_pro**: This instance uses local HDDs for storage.
+	//
+	// example:
+	//
+	// cloud_efficiency
+	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	// example:
+	//
+	// 80%
 	DiskThreshold *string `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
-	DiskUsage     *string `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
-	EnableBlob    *bool   `json:"EnableBlob,omitempty" xml:"EnableBlob,omitempty"`
-	EnableCdc     *bool   `json:"EnableCdc,omitempty" xml:"EnableCdc,omitempty"`
-	EnableCompute *bool   `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
-	EnableKms     *bool   `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
+	// example:
+	//
+	// 0.0%
+	DiskUsage *string `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	// example:
+	//
+	// true
+	EnableBlob *bool `json:"EnableBlob,omitempty" xml:"EnableBlob,omitempty"`
+	// example:
+	//
+	// false
+	EnableCdc *bool `json:"EnableCdc,omitempty" xml:"EnableCdc,omitempty"`
+	// example:
+	//
+	// true
+	EnableCompute *bool `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
+	// example:
+	//
+	// false
+	EnableKms *bool `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
 	// 实例是否开通LTS引擎，返回值：
 	//
 	// - **true**：开通LTS引擎。
+	//
 	// - **false**：未开通LTS引擎。
+	//
+	// example:
+	//
+	// true
 	EnableLTS           *bool `json:"EnableLTS,omitempty" xml:"EnableLTS,omitempty"`
 	EnableLsqlVersionV3 *bool `json:"EnableLsqlVersionV3,omitempty" xml:"EnableLsqlVersionV3,omitempty"`
 	EnableMLCtrl        *bool `json:"EnableMLCtrl,omitempty" xml:"EnableMLCtrl,omitempty"`
-	EnableSSL           *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
-	EnableShs           *bool `json:"EnableShs,omitempty" xml:"EnableShs,omitempty"`
-	EnableStream        *bool `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
+	// example:
+	//
+	// false
+	EnableSSL *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	// example:
+	//
+	// true
+	EnableShs *bool `json:"EnableShs,omitempty" xml:"EnableShs,omitempty"`
+	// example:
+	//
+	// true
+	EnableStream *bool `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
 	// The latest version number of the engine.
-	EngineList          []*GetLindormInstanceResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
-	EngineType          *int32                                      `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	ExpireTime          *string                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpiredMilliseconds *int64                                      `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
-	InstanceAlias       *string                                     `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	InstanceId          *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	EngineList []*GetLindormInstanceResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 15
+	EngineType *int32 `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// example:
+	//
+	// 2021-08-27 00:00:00
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 1629993600000
+	ExpiredMilliseconds *int64 `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
+	// example:
+	//
+	// test0726
+	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	// example:
+	//
+	// ld-bp1o3y0yme2i2****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// *   **CREATING**: The instance is being created.
-	// *   **ACTIVATION**: The instance is running.
-	// *   **COLD_EXPANDING**: The Capacity storage of the instance is being scaled up.
-	// *   **MINOR_VERSION_TRANSING**: The minor version of the instance is being updated.
-	// *   **RESIZING**: The nodes in the instance are being scaled up.
-	// *   **SHRINKING**: The nodes in the instance are being scaled down.
-	// *   **CLASS_CHANGING**: The specification of the instance is being changed.
-	// *   **SSL_SWITCHING: SSL**: The SSL configurations of the instance are being changed.
-	// *   **CDC_OPENING**: Data subscription is being enabled for the instance.
-	// *   **TRANSFER**: The data of the instance is being transferred.
-	// *   **DATABASE_TRANSFER**: The data of the instance is being transferred to databases.
-	// *   **GUARD_CREATING**: A disaster recovery instance is being created.
-	// *   **BACKUP_RECOVERING**: The data of the instance is being restored from a backup.
-	// *   **DATABASE_IMPORTING**: Data is being imported to the instance.
-	// *   **NET_MODIFYING**: The network configurations of the instance are being changed.
-	// *   **NET_SWITCHING**: The network of the instance is being switched between a virtual private cloud (VPC) and the Internet.
-	// *   **NET_CREATING**: The connection to the instance is being created.
-	// *   **NET_DELETING**: The connection to the instance is being deleted.
-	// *   **DELETING**: The instance is being deleted.
-	// *   **RESTARTING**: The instance is restarting.
-	// *   **LOCKED**: The instance is locked because it expires.
-	InstanceStatus  *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// 	- **CREATING**: The instance is being created.
+	//
+	// 	- **ACTIVATION**: The instance is running.
+	//
+	// 	- **COLD_EXPANDING**: The Capacity storage of the instance is being scaled up.
+	//
+	// 	- **MINOR_VERSION_TRANSING**: The minor version of the instance is being updated.
+	//
+	// 	- **RESIZING**: The nodes in the instance are being scaled up.
+	//
+	// 	- **SHRINKING**: The nodes in the instance are being scaled down.
+	//
+	// 	- **CLASS_CHANGING**: The specification of the instance is being changed.
+	//
+	// 	- **SSL_SWITCHING: SSL**: The SSL configurations of the instance are being changed.
+	//
+	// 	- **CDC_OPENING**: Data subscription is being enabled for the instance.
+	//
+	// 	- **TRANSFER**: The data of the instance is being transferred.
+	//
+	// 	- **DATABASE_TRANSFER**: The data of the instance is being transferred to databases.
+	//
+	// 	- **GUARD_CREATING**: A disaster recovery instance is being created.
+	//
+	// 	- **BACKUP_RECOVERING**: The data of the instance is being restored from a backup.
+	//
+	// 	- **DATABASE_IMPORTING**: Data is being imported to the instance.
+	//
+	// 	- **NET_MODIFYING**: The network configurations of the instance are being changed.
+	//
+	// 	- **NET_SWITCHING**: The network of the instance is being switched between a virtual private cloud (VPC) and the Internet.
+	//
+	// 	- **NET_CREATING**: The connection to the instance is being created.
+	//
+	// 	- **NET_DELETING**: The connection to the instance is being deleted.
+	//
+	// 	- **DELETING**: The instance is being deleted.
+	//
+	// 	- **RESTARTING**: The instance is restarting.
+	//
+	// 	- **LOCKED**: The instance is locked because it expires.
+	//
+	// example:
+	//
+	// ACTIVATION
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// example:
+	//
+	// 480
 	InstanceStorage *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
+	// example:
+	//
+	// cloud_ssd
 	LogDiskCategory *string `json:"LogDiskCategory,omitempty" xml:"LogDiskCategory,omitempty"`
-	LogNum          *int32  `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
+	// example:
+	//
+	// 4
+	LogNum *int32 `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
 	// The storage capacity of the disk of a single log node. This parameter is returned only for multi-zone instances.
-	LogSingleStorage     *int32  `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
-	LogSpec              *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
-	MaintainEndTime      *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime    *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	//
+	// example:
+	//
+	// 400GB
+	LogSingleStorage *int32 `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
+	// example:
+	//
+	// lindorm.sn1.large
+	LogSpec *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
+	// example:
+	//
+	// 20:00Z
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// example:
+	//
+	// 00:00Z
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// example:
+	//
+	// cn-shanghai-efg-aliyun
 	MultiZoneCombination *string `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
-	NetworkType          *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// example:
+	//
+	// vpc
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// 400
-	PayType          *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	//
+	// example:
+	//
+	// POSTPAY
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// vsw-uf6fdqa7c0pipnqzq****
 	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	PrimaryZoneId    *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceType      *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// example:
+	//
+	// cn-shanghai-e
+	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 633F1BE4-C8DA-5744-8FDF-A3075C3FE37F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-aek2wvd6oia****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// lindorm
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// example:
+	//
+	// vsw-2zec0kcn08cgdtr6****
 	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
-	StandbyZoneId    *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	// example:
+	//
+	// cn-shanghai-f
+	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
 	// The type of the log nodes. This parameter is returned only for multi-zone instances.
+	//
+	// example:
+	//
+	// vpc-bp1n3i15v90el48nx****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The number of the log nodes. This parameter is returned only for multi-zone instances.
+	//
+	// example:
+	//
+	// vsw-bp1vbjzmod9q3l9eo****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetLindormInstanceResponseBody) String() string {
@@ -2270,13 +2735,34 @@ func (s *GetLindormInstanceResponseBody) SetZoneId(v string) *GetLindormInstance
 }
 
 type GetLindormInstanceResponseBodyEngineList struct {
-	CoreCount     *string `json:"CoreCount,omitempty" xml:"CoreCount,omitempty"`
-	CpuCount      *string `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	IsLastVersion *bool   `json:"IsLastVersion,omitempty" xml:"IsLastVersion,omitempty"`
+	// example:
+	//
+	// 2
+	CoreCount *string `json:"CoreCount,omitempty" xml:"CoreCount,omitempty"`
+	// example:
+	//
+	// 4
+	CpuCount *string `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
+	// example:
+	//
+	// lindorm
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// false
+	IsLastVersion *bool `json:"IsLastVersion,omitempty" xml:"IsLastVersion,omitempty"`
+	// example:
+	//
+	// 2.2.19.2
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	MemorySize    *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 8GB
+	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	// example:
+	//
+	// 2.2.3
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetLindormInstanceResponseBodyEngineList) String() string {
@@ -2352,9 +2838,17 @@ func (s *GetLindormInstanceResponse) SetBody(v *GetLindormInstanceResponseBody) 
 }
 
 type GetLindormInstanceEngineListRequest struct {
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp1nq34mv3smk****
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2406,8 +2900,14 @@ func (s *GetLindormInstanceEngineListRequest) SetSecurityToken(v string) *GetLin
 
 type GetLindormInstanceEngineListResponseBody struct {
 	EngineList []*GetLindormInstanceEngineListResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
-	InstanceId *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ld-bp1nq34mv3smk****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// B496BA0E-520C-59FC-BA04-196D8F3B07EF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetLindormInstanceEngineListResponseBody) String() string {
@@ -2434,6 +2934,9 @@ func (s *GetLindormInstanceEngineListResponseBody) SetRequestId(v string) *GetLi
 }
 
 type GetLindormInstanceEngineListResponseBodyEngineList struct {
+	// example:
+	//
+	// lindorm
 	EngineType  *string                                                          `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	NetInfoList []*GetLindormInstanceEngineListResponseBodyEngineListNetInfoList `json:"NetInfoList,omitempty" xml:"NetInfoList,omitempty" type:"Repeated"`
 }
@@ -2457,10 +2960,22 @@ func (s *GetLindormInstanceEngineListResponseBodyEngineList) SetNetInfoList(v []
 }
 
 type GetLindormInstanceEngineListResponseBodyEngineListNetInfoList struct {
-	AccessType       *int32  `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// example:
+	//
+	// 1
+	AccessType *int32 `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// example:
+	//
+	// ld-bp1nq34mv3smk****-proxy-lindorm.lindorm.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	NetType          *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 2
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// example:
+	//
+	// 30020
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s GetLindormInstanceEngineListResponseBodyEngineListNetInfoList) String() string {
@@ -2521,19 +3036,40 @@ func (s *GetLindormInstanceEngineListResponse) SetBody(v *GetLindormInstanceEngi
 }
 
 type GetLindormInstanceListRequest struct {
-	OwnerAccount         *string                             `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryStr             *string                             `json:"QueryStr,omitempty" xml:"QueryStr,omitempty"`
-	RegionId             *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                             `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityToken        *string                             `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	ServiceType          *string                             `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	SupportEngine        *int32                              `json:"SupportEngine,omitempty" xml:"SupportEngine,omitempty"`
-	Tag                  []*GetLindormInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test
+	QueryStr *string `json:"QueryStr,omitempty" xml:"QueryStr,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-aek3b63arvg27vi
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// example:
+	//
+	// lindorm
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// example:
+	//
+	// 15
+	SupportEngine *int32                              `json:"SupportEngine,omitempty" xml:"SupportEngine,omitempty"`
+	Tag           []*GetLindormInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetLindormInstanceListRequest) String() string {
@@ -2610,7 +3146,13 @@ func (s *GetLindormInstanceListRequest) SetTag(v []*GetLindormInstanceListReques
 }
 
 type GetLindormInstanceListRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 2.2.18
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2634,10 +3176,22 @@ func (s *GetLindormInstanceListRequestTag) SetValue(v string) *GetLindormInstanc
 
 type GetLindormInstanceListResponseBody struct {
 	InstanceList []*GetLindormInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	PageNumber   *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total        *int32                                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1CA1FAFD-E8DC-51C2-AA7E-CA6E2D049BA0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetLindormInstanceListResponseBody) String() string {
@@ -2674,29 +3228,87 @@ func (s *GetLindormInstanceListResponseBody) SetTotal(v int32) *GetLindormInstan
 }
 
 type GetLindormInstanceListResponseBodyInstanceList struct {
-	AliUid              *int64                                                `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	CreateMilliseconds  *int64                                                `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
-	CreateTime          *string                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnableCompute       *bool                                                 `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
-	EnableLts           *bool                                                 `json:"EnableLts,omitempty" xml:"EnableLts,omitempty"`
-	EnableMessage       *bool                                                 `json:"EnableMessage,omitempty" xml:"EnableMessage,omitempty"`
-	EnableStream        *bool                                                 `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
-	EnableVector        *bool                                                 `json:"EnableVector,omitempty" xml:"EnableVector,omitempty"`
-	EngineType          *string                                               `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	ExpireTime          *string                                               `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpiredMilliseconds *int64                                                `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
-	InstanceAlias       *string                                               `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	InstanceId          *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceStatus      *string                                               `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceStorage     *string                                               `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
-	NetworkType         *string                                               `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType             *string                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId            *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId     *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceType         *string                                               `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	Tags                []*GetLindormInstanceListResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	VpcId               *string                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId              *string                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// 164901546557****
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// 1631772842000
+	CreateMilliseconds *int64 `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
+	// example:
+	//
+	// 2021-09-16 14:13:13
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableColumn *bool   `json:"EnableColumn,omitempty" xml:"EnableColumn,omitempty"`
+	// example:
+	//
+	// true
+	EnableCompute *bool `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
+	EnableLts     *bool `json:"EnableLts,omitempty" xml:"EnableLts,omitempty"`
+	EnableMessage *bool `json:"EnableMessage,omitempty" xml:"EnableMessage,omitempty"`
+	// example:
+	//
+	// true
+	EnableStream *bool `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
+	EnableVector *bool `json:"EnableVector,omitempty" xml:"EnableVector,omitempty"`
+	// example:
+	//
+	// 15
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// example:
+	//
+	// 2022-04-26 00:00:00
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 1650902400000
+	ExpiredMilliseconds *int64 `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
+	// example:
+	//
+	// test
+	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	// example:
+	//
+	// ld-bp17pwu1541ia****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ACTIVATION
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// example:
+	//
+	// 960
+	InstanceStorage *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
+	// example:
+	//
+	// vpc
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// example:
+	//
+	// PREPAY
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-aekzledqeat****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// lindorm
+	ServiceType *string                                               `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Tags        []*GetLindormInstanceListResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-bp1n3i15v90el48nx****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetLindormInstanceListResponseBodyInstanceList) String() string {
@@ -2719,6 +3331,11 @@ func (s *GetLindormInstanceListResponseBodyInstanceList) SetCreateMilliseconds(v
 
 func (s *GetLindormInstanceListResponseBodyInstanceList) SetCreateTime(v string) *GetLindormInstanceListResponseBodyInstanceList {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetLindormInstanceListResponseBodyInstanceList) SetEnableColumn(v bool) *GetLindormInstanceListResponseBodyInstanceList {
+	s.EnableColumn = &v
 	return s
 }
 
@@ -2823,7 +3440,13 @@ func (s *GetLindormInstanceListResponseBodyInstanceList) SetZoneId(v string) *Ge
 }
 
 type GetLindormInstanceListResponseBodyInstanceListTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 2.2.18
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2875,6 +3498,7 @@ func (s *GetLindormInstanceListResponse) SetBody(v *GetLindormInstanceListRespon
 }
 
 type ListLdpsComputeGroupsRequest struct {
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3005,17 +3629,33 @@ func (s *ListLdpsComputeGroupsResponse) SetBody(v *ListLdpsComputeGroupsResponse
 type ListTagResourcesRequest struct {
 	// The token used to start the next query to retrieve more results.
 	//
-	// > This parameter is not required in the first query. If not all results are returned in one query, you can pass in the **NextToken** value returned for the query to perform the next query.
+	// > This parameter is not required in the first query. If not all results are returned in one query, you can pass in the **NextToken*	- value returned for the query to perform the next query.
+	//
+	// example:
+	//
+	// 212db86****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the instances whose tags you want to query are located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
+	// The ID of the region in which the instances whose tags you want to query are located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The list of resource IDs.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type. Set the value to **INSTANCE**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The list of tags associated with the instances you want to query.
@@ -3084,10 +3724,18 @@ type ListTagResourcesRequestTag struct {
 	// The keys of the tags associated with the instances you want to query.
 	//
 	// > You can specify the keys of multiple tags. For example, you can specify the key of the first tag in the first key-value pair contained in the value of this parameter and specify the key of the second tag in the second key-value pair.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The values of the tags associated with the instances you want to query.
 	//
 	// > You can specify the values of multiple tags. For example, you can specify the value of the first tag in the first key-value pair contained in the value of this parameter and specify the value of the second tag in the second key-value pair.
+	//
+	// example:
+	//
+	// 2.2.8
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3113,8 +3761,16 @@ type ListTagResourcesResponseBody struct {
 	// The token used to start the next query.
 	//
 	// > If not all results are returned in the first query, this parameter is returned. You can pass in the returned value of this parameter for the next query.
+	//
+	// example:
+	//
+	// 212db86****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 05CB115C-91CB-529F-9098-50C1F6CB3BD3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
@@ -3145,12 +3801,28 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 
 type ListTagResourcesResponseBodyTagResources struct {
 	// The ID of the resource, which is the ID of the instance.
+	//
+	// example:
+	//
+	// ld-bp17j28j2y7pm****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resources. The returned value is fixed to **ALIYUN::HITSDB::INSTANCE**.
+	//
+	// example:
+	//
+	// ALIYUN::HITSDB::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The key of the tag associated with the instance.
+	//
+	// example:
+	//
+	// test
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of the tag associated with the instance.
+	//
+	// example:
+	//
+	// 2.2.8
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -3214,22 +3886,45 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 type ModifyInstancePayTypeRequest struct {
 	// The subscription duration of the instance. The parameter is required if the instance is an subscription instance.
 	//
-	// *   If PricingCycle is set to Month, set this parameter to an integer that ranges from 1 to 9.
-	// *   If PricingCycle is set to Year, set this parameter to an integer that ranges from 1 to 3.
+	// 	- If PricingCycle is set to Month, set this parameter to an integer that ranges from 1 to 9.
+	//
+	// 	- If PricingCycle is set to Year, set this parameter to an integer that ranges from 1 to 3.
+	//
+	// example:
+	//
+	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp1z3506imz2f****
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// *   **PREPAY**: subscription.
-	// *   **POSTPAY**: pay-as-you-go.
+	// 	- **PREPAY**: subscription.
+	//
+	// 	- **POSTPAY**: pay-as-you-go.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The unit of the subscription duration for the instance. Valid values:
 	//
-	// *   Month
-	// *   Year
+	// 	- Month
+	//
+	// 	- Year
+	//
+	// example:
+	//
+	// Month
 	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3291,10 +3986,22 @@ func (s *ModifyInstancePayTypeRequest) SetSecurityToken(v string) *ModifyInstanc
 
 type ModifyInstancePayTypeResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ld-bp1z3506imz2f****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 211662251220224
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 587BCA54-50DA-4885-ADE9-80A848339151
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3351,7 +4058,8 @@ func (s *ModifyInstancePayTypeResponse) SetBody(v *ModifyInstancePayTypeResponse
 }
 
 type OpenComputeEngineRequest struct {
-	CpuLimit             *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	CpuLimit *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MemoryLimit          *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -3456,7 +4164,8 @@ func (s *OpenComputeEngineResponse) SetBody(v *OpenComputeEngineResponseBody) *O
 }
 
 type OpenComputePreCheckRequest struct {
-	CpuLimit             *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	CpuLimit *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MemoryLimit          *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -3562,7 +4271,16 @@ func (s *OpenComputePreCheckResponse) SetBody(v *OpenComputePreCheckResponseBody
 
 type ReleaseLindormInstanceRequest struct {
 	// Specifies whether to release the instance immediately. If you set this parameter to false, data in the released instance is retained for seven days before it is completely deleted. If you set this parameter to true, data in the released instance is immediately deleted. The default value is false.
-	Immediately          *bool   `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
+	//
+	// example:
+	//
+	// false
+	Immediately *bool `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp1z3506imz2f****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3615,6 +4333,9 @@ func (s *ReleaseLindormInstanceRequest) SetSecurityToken(v string) *ReleaseLindo
 }
 
 type ReleaseLindormInstanceResponseBody struct {
+	// example:
+	//
+	// F67BFFF3-F5C2-45B5-9C28-6E4A1E51****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3663,19 +4384,45 @@ func (s *ReleaseLindormInstanceResponse) SetBody(v *ReleaseLindormInstanceRespon
 type RenewLindormInstanceRequest struct {
 	// The subscription duration of the instance. The valid values of this parameter depend on the value of the PricingCycle parameter.
 	//
-	// *   If PricingCycle is set to **Month**, set this parameter to an integer that ranges from **1** to **9**.
-	// *   If PricingCycle is set to **Year**, set this parameter to an integer that ranges from **1** to **3**.
+	// 	- If PricingCycle is set to **Month**, set this parameter to an integer that ranges from **1*	- to **9**.
+	//
+	// 	- If PricingCycle is set to **Year**, set this parameter to an integer that ranges from **1*	- to **3**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The ID of the instance that you want to renew. You can call the [GetLindormInstanceList](~~426069~~) operation to obtain the instance ID.
+	// The ID of the instance that you want to renew. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain the instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp1z3506imz2f****
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The period based on which you are charged for the instance. Valid values:
 	//
-	// *   **Month**: You are charged for the instance based on months.
-	// *   **Year**: You are charged for the instance based on years.
+	// 	- **Month**: You are charged for the instance based on months.
+	//
+	// 	- **Year**: You are charged for the instance based on years.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The ID of the region in which the instance that you want to renew is located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
+	// The ID of the region in which the instance that you want to renew is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3737,10 +4484,22 @@ func (s *RenewLindormInstanceRequest) SetSecurityToken(v string) *RenewLindormIn
 
 type RenewLindormInstanceResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ld-bp1z3506imz2f****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+	//
+	// example:
+	//
+	// 213465921640411
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1556DCB0-043A-4444-8BD9-CF4A68E7EE64
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3797,7 +4556,9 @@ func (s *RenewLindormInstanceResponse) SetBody(v *RenewLindormInstanceResponseBo
 }
 
 type RestartLdpsComputeGroupRequest struct {
-	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3904,10 +4665,23 @@ func (s *RestartLdpsComputeGroupResponse) SetBody(v *RestartLdpsComputeGroupResp
 type SwitchLSQLV3MySQLServiceRequest struct {
 	// The type of the operation. Valid value:
 	//
-	// *   1: enables the MySQL compatibility feature.
-	// *   0: disables the MySQL compatibility feature.
+	// 	- 1: enables the MySQL compatibility feature.
+	//
+	// 	- 0: disables the MySQL compatibility feature.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	ActionType *int32 `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp1o3y0yme2i2****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3961,6 +4735,10 @@ func (s *SwitchLSQLV3MySQLServiceRequest) SetSecurityToken(v string) *SwitchLSQL
 
 type SwitchLSQLV3MySQLServiceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1556DCB0-043A-4444-8BD9-CF4A68E7EE64
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4009,16 +4787,32 @@ func (s *SwitchLSQLV3MySQLServiceResponse) SetBody(v *SwitchLSQLV3MySQLServiceRe
 type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the instances you want to associate tags with are located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
+	// The ID of the region in which the instances you want to associate tags with are located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The list of resource IDs.
+	//
+	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type. Set the value to **INSTANCE**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The tags that you want to associate with the resource.
+	//
+	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -4079,10 +4873,20 @@ type TagResourcesRequestTag struct {
 	// The key of the tag that you want to associate with the resource.
 	//
 	// > You can specify the keys of multiple tags. For example, you can specify the key of the first tag in the first key-value pair contained in the value of this parameter and specify the key of the second tag in the second key-value pair.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag that you want to associate with the resource.
 	//
 	// > You can specify the values of multiple tags. For example, you can specify the value of the first tag in the first key-value pair contained in the value of this parameter and specify the value of the second tag in the second key-value pair.
+	//
+	// example:
+	//
+	// 2.2.8
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4106,6 +4910,10 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4F23D50C-400C-592C-9486-9D1E10179065
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4154,22 +4962,35 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the instance. Valid values:
 	//
-	// *   **true**: Remove all tags from the instances.
-	// *   **false**: Do not remove all tags from the instances.
+	// 	- **true**: Remove all tags from the instances.
+	//
+	// 	- **false**: Do not remove all tags from the instances.
 	//
 	// >
 	//
-	// *   The default value of this parameter is false.
+	// 	- The default value of this parameter is false.
 	//
-	// *   If you specify the TagKey parameter together with this parameter, this parameter does not take effect.
+	// 	- If you specify the TagKey parameter together with this parameter, this parameter does not take effect.
+	//
+	// example:
+	//
+	// false
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The IDs of instances.
+	//
+	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type. Set the value to **INSTANCE**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The list of keys of the tags that you want to remove.
@@ -4231,6 +5052,10 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 
 type UntagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8CACBBCE-7519-545C-8695-86D4F09CED7E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4278,9 +5103,22 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 
 type UpdateInstanceIpWhiteListRequest struct {
 	// Specifies whether to clear all IP addresses and CIDR blocks in the whitelist.
-	Delete    *bool   `json:"Delete,omitempty" xml:"Delete,omitempty"`
+	//
+	// example:
+	//
+	// false
+	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
+	// example:
+	//
+	// test_group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the instance for which you want to configure a whitelist. You can call the [GetLindormInstanceList](~~426069~~) operation to obtain the ID.
+	// The ID of the instance for which you want to configure a whitelist. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain the ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp1z3506imz2f****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -4289,6 +5127,12 @@ type UpdateInstanceIpWhiteListRequest struct {
 	// The IP addresses or CIDR blocks that you want to add to the whitelist.
 	//
 	// >  If you add 127.0.0.1 to the whitelist, all IP addresses cannot be used to access the Lindorm instance. If you add the CIDR block 192.168.0.0/24 to the whitelist, you can use all IP addresses in the CIDR block to access the Lindorm instance. Separate multiple IP addresses or CIDR blocks with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 106.11.XX.XX/24
 	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
 	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -4348,6 +5192,10 @@ func (s *UpdateInstanceIpWhiteListRequest) SetSecurityToken(v string) *UpdateIns
 
 type UpdateInstanceIpWhiteListResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4944539D-D27C-458D-95F1-2DCEB5E0EED5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4394,13 +5242,15 @@ func (s *UpdateInstanceIpWhiteListResponse) SetBody(v *UpdateInstanceIpWhiteList
 }
 
 type UpdateInstanceSecurityGroupsRequest struct {
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityGroups       *string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	SecurityGroups *string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s UpdateInstanceSecurityGroupsRequest) String() string {
@@ -4493,7 +5343,9 @@ func (s *UpdateInstanceSecurityGroupsResponse) SetBody(v *UpdateInstanceSecurity
 }
 
 type UpdateLdpsComputeGroupRequest struct {
-	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -4604,89 +5456,202 @@ func (s *UpdateLdpsComputeGroupResponse) SetBody(v *UpdateLdpsComputeGroupRespon
 }
 
 type UpgradeLindormInstanceRequest struct {
-	// The storage capacity of the instance after it is upgraded. Unit: GB. Valid values: **480** to **1017600**.
+	// The storage capacity of the instance after it is upgraded. Unit: GB. Valid values: **480*	- to **1017600**.
+	//
+	// example:
+	//
+	// 480
 	ClusterStorage *int32 `json:"ClusterStorage,omitempty" xml:"ClusterStorage,omitempty"`
-	// The cold storage capacity of the instance after it is upgraded. Unit: GB. Valid values: **800** to **1000000**.
+	// The cold storage capacity of the instance after it is upgraded. Unit: GB. Valid values: **800*	- to **1000000**.
+	//
+	// example:
+	//
+	// 800
 	ColdStorage *int32 `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
 	// The storage capacity of a single core node in the instance after the instance upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. Unit: GB. Valid values: 400 to 64000. **This parameter is optional**.
+	//
+	// example:
+	//
+	// 400
 	CoreSingleStorage *int32 `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
-	// The number of LindormDFS nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **60**.
+	// The number of LindormDFS nodes in the instance after the instance is upgraded. Valid values: integers from **0*	- to **60**.
+	//
+	// example:
+	//
+	// 2
 	FilestoreNum *int32 `json:"FilestoreNum,omitempty" xml:"FilestoreNum,omitempty"`
 	// The specification of LindormDFS nodes in the instance after the instance is upgraded. Valid values:
 	//
-	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
-	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
-	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
-	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	// 	- **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	//
+	// example:
+	//
+	// lindorm.g.xlarge
 	FilestoreSpec *string `json:"FilestoreSpec,omitempty" xml:"FilestoreSpec,omitempty"`
-	// The ID of the instance that you want to upgrade, scale up, or enable cold storage. You can call the [GetLindormInstanceList](~~426069~~) operation to query the instance ID.
+	// The ID of the instance that you want to upgrade, scale up, or enable cold storage. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to query the instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp1o3y0yme2i2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of LindormTable nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **90**.
+	// The number of LindormTable nodes in the instance after the instance is upgraded. Valid values: integers from **0*	- to **90**.
 	//
 	// > This parameter must be specified together with the LindormSpec parameter.
+	//
+	// example:
+	//
+	// 2
 	LindormNum *int32 `json:"LindormNum,omitempty" xml:"LindormNum,omitempty"`
 	// The specification of LindormTable nodes in the instance after the instance is upgraded. Valid values:
 	//
-	// *   **lindorm.c.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
-	// *   **lindorm.c.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
-	// *   **lindorm.c.4xlarge**: Each node has 16 dedicated CPU cores and 32 GB of dedicated memory.
-	// *   **lindorm.c.8xlarge**: Each node has 32 dedicated CPU cores and 64 GB of dedicated memory.
+	// 	- **lindorm.c.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+	//
+	// 	- **lindorm.c.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// 	- **lindorm.c.4xlarge**: Each node has 16 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// 	- **lindorm.c.8xlarge**: Each node has 32 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// example:
+	//
+	// lindorm.c.xlarge
 	LindormSpec *string `json:"LindormSpec,omitempty" xml:"LindormSpec,omitempty"`
 	// The number of log nodes in the instance after the instance is upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. **This parameter is optional**.
+	//
+	// example:
+	//
+	// 4
 	LogNum *int32 `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
 	// The storage capacity of a single log node in the instance after the instance upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. **This parameter is optional**.
+	//
+	// example:
+	//
+	// 400
 	LogSingleStorage *int32 `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
 	// The specification of log nodes in the instance after the instance is upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. Valid values:
 	//
-	// *   **lindorm.sn1.large**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
-	// *   **lindorm.sn1.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+	// 	- **lindorm.sn1.large**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+	//
+	// 	- **lindorm.sn1.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
 	//
 	// **This parameter is optional**.
+	//
+	// example:
+	//
+	// lindorm.sn1.large
 	LogSpec *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
-	// The number of LTS nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **50**.
+	// The number of LTS nodes in the instance after the instance is upgraded. Valid values: integers from **0*	- to **50**.
+	//
+	// example:
+	//
+	// 2
 	LtsCoreNum *int32 `json:"LtsCoreNum,omitempty" xml:"LtsCoreNum,omitempty"`
 	// The specification of Lindorm Tunnel Service (LTS) nodes in the instance after the instance is upgraded. Valid values:
 	//
-	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
-	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	// 	- **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// example:
+	//
+	// lindorm.g.xlarge
 	LtsCoreSpec  *string `json:"LtsCoreSpec,omitempty" xml:"LtsCoreSpec,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
+	// The ID of the region in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The number of LindormSearch nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **60**.
+	// The number of LindormSearch nodes in the instance after the instance is upgraded. Valid values: integers from **0*	- to **60**.
+	//
+	// example:
+	//
+	// 2
 	SolrNum *int32 `json:"SolrNum,omitempty" xml:"SolrNum,omitempty"`
 	// The specification of LindormSearch nodes in the instance after the instance is upgraded. Valid values:
 	//
-	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
-	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
-	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
-	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	// 	- **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	//
+	// example:
+	//
+	// lindorm.g.xlarge
 	SolrSpec *string `json:"SolrSpec,omitempty" xml:"SolrSpec,omitempty"`
-	// The number of LindormStream nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **60**.
+	// The number of LindormStream nodes in the instance after the instance is upgraded. Valid values: integers from **0*	- to **60**.
+	//
+	// example:
+	//
+	// 2
 	StreamNum *int32 `json:"StreamNum,omitempty" xml:"StreamNum,omitempty"`
 	// The specification of LindormStream nodes in the instance after the instance is upgraded. Valid values:
 	//
-	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
-	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
-	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
-	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	// 	- **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	//
+	// example:
+	//
+	// lindorm.g.xlarge
 	StreamSpec *string `json:"StreamSpec,omitempty" xml:"StreamSpec,omitempty"`
-	// The number of LindormTSDB nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **24**.
+	// The number of LindormTSDB nodes in the instance after the instance is upgraded. Valid values: integers from **0*	- to **24**.
+	//
+	// example:
+	//
+	// 2
 	TsdbNum *int32 `json:"TsdbNum,omitempty" xml:"TsdbNum,omitempty"`
 	// The specification of LindormTSDB nodes in the instance after the instance is upgraded. Valid values:
 	//
-	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
-	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
-	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
-	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	// 	- **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// 	- **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	//
+	// example:
+	//
+	// lindorm.g.xlarge
 	TsdbSpec *string `json:"TsdbSpec,omitempty" xml:"TsdbSpec,omitempty"`
 	// The upgrade type of the operation. For more information about upgrade types, see the UpgradeType parameters section.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// upgrade-cold-storage
 	UpgradeType *string `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
-	// The ID of the zone in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [GetLindormInstance](~~426067~~) operation to query the zone ID.
+	// The ID of the zone in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [GetLindormInstance](https://help.aliyun.com/document_detail/426067.html) operation to query the zone ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai-f
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -4835,8 +5800,16 @@ func (s *UpgradeLindormInstanceRequest) SetZoneId(v string) *UpgradeLindormInsta
 
 type UpgradeLindormInstanceResponseBody struct {
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 111111111111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2A7D4F9D-AA26-4E15-A2B1-3E4792C6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4934,6 +5907,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - CreateLdpsComputeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLdpsComputeGroupResponse
 func (client *Client) CreateLdpsComputeGroupWithOptions(request *CreateLdpsComputeGroupRequest, runtime *util.RuntimeOptions) (_result *CreateLdpsComputeGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4999,6 +5977,9 @@ func (client *Client) CreateLdpsComputeGroupWithOptions(request *CreateLdpsCompu
 	return _result, _err
 }
 
+// @param request - CreateLdpsComputeGroupRequest
+//
+// @return CreateLdpsComputeGroupResponse
 func (client *Client) CreateLdpsComputeGroup(request *CreateLdpsComputeGroupRequest) (_result *CreateLdpsComputeGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLdpsComputeGroupResponse{}
@@ -5010,6 +5991,11 @@ func (client *Client) CreateLdpsComputeGroup(request *CreateLdpsComputeGroupRequ
 	return _result, _err
 }
 
+// @param request - CreateLdpsNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLdpsNamespaceResponse
 func (client *Client) CreateLdpsNamespaceWithOptions(request *CreateLdpsNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateLdpsNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5071,6 +6057,9 @@ func (client *Client) CreateLdpsNamespaceWithOptions(request *CreateLdpsNamespac
 	return _result, _err
 }
 
+// @param request - CreateLdpsNamespaceRequest
+//
+// @return CreateLdpsNamespaceResponse
 func (client *Client) CreateLdpsNamespace(request *CreateLdpsNamespaceRequest) (_result *CreateLdpsNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLdpsNamespaceResponse{}
@@ -5082,13 +6071,19 @@ func (client *Client) CreateLdpsNamespace(request *CreateLdpsNamespaceRequest) (
 	return _result, _err
 }
 
-/**
- * You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
- *
- * @param request CreateLindormInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateLindormInstanceResponse
- */
+// Summary:
+//
+// Creates a Lindorm instance.
+//
+// Description:
+//
+// You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
+//
+// @param request - CreateLindormInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLindormInstanceResponse
 func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateLindormInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5173,6 +6168,14 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 
 	if !tea.BoolValue(util.IsUnset(request.LogSpec)) {
 		query["LogSpec"] = request.LogSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LtsNum)) {
+		query["LtsNum"] = request.LtsNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LtsSpec)) {
+		query["LtsSpec"] = request.LtsSpec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MultiZoneCombination)) {
@@ -5290,12 +6293,17 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 	return _result, _err
 }
 
-/**
- * You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
- *
- * @param request CreateLindormInstanceRequest
- * @return CreateLindormInstanceResponse
- */
+// Summary:
+//
+// Creates a Lindorm instance.
+//
+// Description:
+//
+// You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
+//
+// @param request - CreateLindormInstanceRequest
+//
+// @return CreateLindormInstanceResponse
 func (client *Client) CreateLindormInstance(request *CreateLindormInstanceRequest) (_result *CreateLindormInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLindormInstanceResponse{}
@@ -5307,6 +6315,11 @@ func (client *Client) CreateLindormInstance(request *CreateLindormInstanceReques
 	return _result, _err
 }
 
+// @param request - DeleteLdpsComputeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLdpsComputeGroupResponse
 func (client *Client) DeleteLdpsComputeGroupWithOptions(request *DeleteLdpsComputeGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteLdpsComputeGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5368,6 +6381,9 @@ func (client *Client) DeleteLdpsComputeGroupWithOptions(request *DeleteLdpsCompu
 	return _result, _err
 }
 
+// @param request - DeleteLdpsComputeGroupRequest
+//
+// @return DeleteLdpsComputeGroupResponse
 func (client *Client) DeleteLdpsComputeGroup(request *DeleteLdpsComputeGroupRequest) (_result *DeleteLdpsComputeGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLdpsComputeGroupResponse{}
@@ -5379,6 +6395,15 @@ func (client *Client) DeleteLdpsComputeGroup(request *DeleteLdpsComputeGroupRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the regions supported by Lindorm.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5432,6 +6457,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the regions supported by Lindorm.
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -5443,6 +6475,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// @param request - GetClientSourceIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetClientSourceIpResponse
 func (client *Client) GetClientSourceIpWithOptions(request *GetClientSourceIpRequest, runtime *util.RuntimeOptions) (_result *GetClientSourceIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5500,6 +6537,9 @@ func (client *Client) GetClientSourceIpWithOptions(request *GetClientSourceIpReq
 	return _result, _err
 }
 
+// @param request - GetClientSourceIpRequest
+//
+// @return GetClientSourceIpResponse
 func (client *Client) GetClientSourceIp(request *GetClientSourceIpRequest) (_result *GetClientSourceIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetClientSourceIpResponse{}
@@ -5511,6 +6551,11 @@ func (client *Client) GetClientSourceIp(request *GetClientSourceIpRequest) (_res
 	return _result, _err
 }
 
+// @param request - GetEngineDefaultAuthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEngineDefaultAuthResponse
 func (client *Client) GetEngineDefaultAuthWithOptions(request *GetEngineDefaultAuthRequest, runtime *util.RuntimeOptions) (_result *GetEngineDefaultAuthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5568,6 +6613,9 @@ func (client *Client) GetEngineDefaultAuthWithOptions(request *GetEngineDefaultA
 	return _result, _err
 }
 
+// @param request - GetEngineDefaultAuthRequest
+//
+// @return GetEngineDefaultAuthResponse
 func (client *Client) GetEngineDefaultAuth(request *GetEngineDefaultAuthRequest) (_result *GetEngineDefaultAuthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEngineDefaultAuthResponse{}
@@ -5579,6 +6627,15 @@ func (client *Client) GetEngineDefaultAuth(request *GetEngineDefaultAuthRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the whitelists configured for a Lindorm instance.
+//
+// @param request - GetInstanceIpWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceIpWhiteListResponse
 func (client *Client) GetInstanceIpWhiteListWithOptions(request *GetInstanceIpWhiteListRequest, runtime *util.RuntimeOptions) (_result *GetInstanceIpWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5632,6 +6689,13 @@ func (client *Client) GetInstanceIpWhiteListWithOptions(request *GetInstanceIpWh
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the whitelists configured for a Lindorm instance.
+//
+// @param request - GetInstanceIpWhiteListRequest
+//
+// @return GetInstanceIpWhiteListResponse
 func (client *Client) GetInstanceIpWhiteList(request *GetInstanceIpWhiteListRequest) (_result *GetInstanceIpWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceIpWhiteListResponse{}
@@ -5643,6 +6707,11 @@ func (client *Client) GetInstanceIpWhiteList(request *GetInstanceIpWhiteListRequ
 	return _result, _err
 }
 
+// @param request - GetInstanceSecurityGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceSecurityGroupsResponse
 func (client *Client) GetInstanceSecurityGroupsWithOptions(request *GetInstanceSecurityGroupsRequest, runtime *util.RuntimeOptions) (_result *GetInstanceSecurityGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5696,6 +6765,9 @@ func (client *Client) GetInstanceSecurityGroupsWithOptions(request *GetInstanceS
 	return _result, _err
 }
 
+// @param request - GetInstanceSecurityGroupsRequest
+//
+// @return GetInstanceSecurityGroupsResponse
 func (client *Client) GetInstanceSecurityGroups(request *GetInstanceSecurityGroupsRequest) (_result *GetInstanceSecurityGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceSecurityGroupsResponse{}
@@ -5707,6 +6779,11 @@ func (client *Client) GetInstanceSecurityGroups(request *GetInstanceSecurityGrou
 	return _result, _err
 }
 
+// @param request - GetLdpsComputeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLdpsComputeGroupResponse
 func (client *Client) GetLdpsComputeGroupWithOptions(request *GetLdpsComputeGroupRequest, runtime *util.RuntimeOptions) (_result *GetLdpsComputeGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5768,6 +6845,9 @@ func (client *Client) GetLdpsComputeGroupWithOptions(request *GetLdpsComputeGrou
 	return _result, _err
 }
 
+// @param request - GetLdpsComputeGroupRequest
+//
+// @return GetLdpsComputeGroupResponse
 func (client *Client) GetLdpsComputeGroup(request *GetLdpsComputeGroupRequest) (_result *GetLdpsComputeGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLdpsComputeGroupResponse{}
@@ -5779,6 +6859,11 @@ func (client *Client) GetLdpsComputeGroup(request *GetLdpsComputeGroupRequest) (
 	return _result, _err
 }
 
+// @param request - GetLdpsNamespacedQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLdpsNamespacedQuotaResponse
 func (client *Client) GetLdpsNamespacedQuotaWithOptions(request *GetLdpsNamespacedQuotaRequest, runtime *util.RuntimeOptions) (_result *GetLdpsNamespacedQuotaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5840,6 +6925,9 @@ func (client *Client) GetLdpsNamespacedQuotaWithOptions(request *GetLdpsNamespac
 	return _result, _err
 }
 
+// @param request - GetLdpsNamespacedQuotaRequest
+//
+// @return GetLdpsNamespacedQuotaResponse
 func (client *Client) GetLdpsNamespacedQuota(request *GetLdpsNamespacedQuotaRequest) (_result *GetLdpsNamespacedQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLdpsNamespacedQuotaResponse{}
@@ -5851,6 +6939,11 @@ func (client *Client) GetLdpsNamespacedQuota(request *GetLdpsNamespacedQuotaRequ
 	return _result, _err
 }
 
+// @param request - GetLdpsResourceCostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLdpsResourceCostResponse
 func (client *Client) GetLdpsResourceCostWithOptions(request *GetLdpsResourceCostRequest, runtime *util.RuntimeOptions) (_result *GetLdpsResourceCostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5920,6 +7013,9 @@ func (client *Client) GetLdpsResourceCostWithOptions(request *GetLdpsResourceCos
 	return _result, _err
 }
 
+// @param request - GetLdpsResourceCostRequest
+//
+// @return GetLdpsResourceCostResponse
 func (client *Client) GetLdpsResourceCost(request *GetLdpsResourceCostRequest) (_result *GetLdpsResourceCostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLdpsResourceCostResponse{}
@@ -5931,6 +7027,15 @@ func (client *Client) GetLdpsResourceCost(request *GetLdpsResourceCostRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// The storage capacity of the disk of a single core node. This parameter is returned only for multi-zone instances.
+//
+// @param request - GetLindormInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLindormInstanceResponse
 func (client *Client) GetLindormInstanceWithOptions(request *GetLindormInstanceRequest, runtime *util.RuntimeOptions) (_result *GetLindormInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5984,6 +7089,13 @@ func (client *Client) GetLindormInstanceWithOptions(request *GetLindormInstanceR
 	return _result, _err
 }
 
+// Summary:
+//
+// The storage capacity of the disk of a single core node. This parameter is returned only for multi-zone instances.
+//
+// @param request - GetLindormInstanceRequest
+//
+// @return GetLindormInstanceResponse
 func (client *Client) GetLindormInstance(request *GetLindormInstanceRequest) (_result *GetLindormInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLindormInstanceResponse{}
@@ -5995,6 +7107,11 @@ func (client *Client) GetLindormInstance(request *GetLindormInstanceRequest) (_r
 	return _result, _err
 }
 
+// @param request - GetLindormInstanceEngineListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLindormInstanceEngineListResponse
 func (client *Client) GetLindormInstanceEngineListWithOptions(request *GetLindormInstanceEngineListRequest, runtime *util.RuntimeOptions) (_result *GetLindormInstanceEngineListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6052,6 +7169,9 @@ func (client *Client) GetLindormInstanceEngineListWithOptions(request *GetLindor
 	return _result, _err
 }
 
+// @param request - GetLindormInstanceEngineListRequest
+//
+// @return GetLindormInstanceEngineListResponse
 func (client *Client) GetLindormInstanceEngineList(request *GetLindormInstanceEngineListRequest) (_result *GetLindormInstanceEngineListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLindormInstanceEngineListResponse{}
@@ -6063,6 +7183,11 @@ func (client *Client) GetLindormInstanceEngineList(request *GetLindormInstanceEn
 	return _result, _err
 }
 
+// @param request - GetLindormInstanceListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLindormInstanceListResponse
 func (client *Client) GetLindormInstanceListWithOptions(request *GetLindormInstanceListRequest, runtime *util.RuntimeOptions) (_result *GetLindormInstanceListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6144,6 +7269,9 @@ func (client *Client) GetLindormInstanceListWithOptions(request *GetLindormInsta
 	return _result, _err
 }
 
+// @param request - GetLindormInstanceListRequest
+//
+// @return GetLindormInstanceListResponse
 func (client *Client) GetLindormInstanceList(request *GetLindormInstanceListRequest) (_result *GetLindormInstanceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLindormInstanceListResponse{}
@@ -6155,6 +7283,11 @@ func (client *Client) GetLindormInstanceList(request *GetLindormInstanceListRequ
 	return _result, _err
 }
 
+// @param request - ListLdpsComputeGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLdpsComputeGroupsResponse
 func (client *Client) ListLdpsComputeGroupsWithOptions(request *ListLdpsComputeGroupsRequest, runtime *util.RuntimeOptions) (_result *ListLdpsComputeGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6212,6 +7345,9 @@ func (client *Client) ListLdpsComputeGroupsWithOptions(request *ListLdpsComputeG
 	return _result, _err
 }
 
+// @param request - ListLdpsComputeGroupsRequest
+//
+// @return ListLdpsComputeGroupsResponse
 func (client *Client) ListLdpsComputeGroups(request *ListLdpsComputeGroupsRequest) (_result *ListLdpsComputeGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLdpsComputeGroupsResponse{}
@@ -6223,6 +7359,15 @@ func (client *Client) ListLdpsComputeGroups(request *ListLdpsComputeGroupsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tags associated with the specified Lindorm instances.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6292,6 +7437,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tags associated with the specified Lindorm instances.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -6303,14 +7455,21 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
-/**
- * You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
- * Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
- *
- * @param request ModifyInstancePayTypeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyInstancePayTypeResponse
- */
+// Summary:
+//
+// Changes the billing method of the specified Lindorm instance.
+//
+// Description:
+//
+// You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+//
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
+//
+// @param request - ModifyInstancePayTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstancePayTypeResponse
 func (client *Client) ModifyInstancePayTypeWithOptions(request *ModifyInstancePayTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyInstancePayTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6376,13 +7535,19 @@ func (client *Client) ModifyInstancePayTypeWithOptions(request *ModifyInstancePa
 	return _result, _err
 }
 
-/**
- * You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
- * Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
- *
- * @param request ModifyInstancePayTypeRequest
- * @return ModifyInstancePayTypeResponse
- */
+// Summary:
+//
+// Changes the billing method of the specified Lindorm instance.
+//
+// Description:
+//
+// You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+//
+// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
+//
+// @param request - ModifyInstancePayTypeRequest
+//
+// @return ModifyInstancePayTypeResponse
 func (client *Client) ModifyInstancePayType(request *ModifyInstancePayTypeRequest) (_result *ModifyInstancePayTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstancePayTypeResponse{}
@@ -6394,6 +7559,11 @@ func (client *Client) ModifyInstancePayType(request *ModifyInstancePayTypeReques
 	return _result, _err
 }
 
+// @param request - OpenComputeEngineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenComputeEngineResponse
 func (client *Client) OpenComputeEngineWithOptions(request *OpenComputeEngineRequest, runtime *util.RuntimeOptions) (_result *OpenComputeEngineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6455,6 +7625,9 @@ func (client *Client) OpenComputeEngineWithOptions(request *OpenComputeEngineReq
 	return _result, _err
 }
 
+// @param request - OpenComputeEngineRequest
+//
+// @return OpenComputeEngineResponse
 func (client *Client) OpenComputeEngine(request *OpenComputeEngineRequest) (_result *OpenComputeEngineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenComputeEngineResponse{}
@@ -6466,6 +7639,11 @@ func (client *Client) OpenComputeEngine(request *OpenComputeEngineRequest) (_res
 	return _result, _err
 }
 
+// @param request - OpenComputePreCheckRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenComputePreCheckResponse
 func (client *Client) OpenComputePreCheckWithOptions(request *OpenComputePreCheckRequest, runtime *util.RuntimeOptions) (_result *OpenComputePreCheckResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6527,6 +7705,9 @@ func (client *Client) OpenComputePreCheckWithOptions(request *OpenComputePreChec
 	return _result, _err
 }
 
+// @param request - OpenComputePreCheckRequest
+//
+// @return OpenComputePreCheckResponse
 func (client *Client) OpenComputePreCheck(request *OpenComputePreCheckRequest) (_result *OpenComputePreCheckResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenComputePreCheckResponse{}
@@ -6538,6 +7719,11 @@ func (client *Client) OpenComputePreCheck(request *OpenComputePreCheckRequest) (
 	return _result, _err
 }
 
+// @param request - ReleaseLindormInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseLindormInstanceResponse
 func (client *Client) ReleaseLindormInstanceWithOptions(request *ReleaseLindormInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseLindormInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6595,6 +7781,9 @@ func (client *Client) ReleaseLindormInstanceWithOptions(request *ReleaseLindormI
 	return _result, _err
 }
 
+// @param request - ReleaseLindormInstanceRequest
+//
+// @return ReleaseLindormInstanceResponse
 func (client *Client) ReleaseLindormInstance(request *ReleaseLindormInstanceRequest) (_result *ReleaseLindormInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseLindormInstanceResponse{}
@@ -6606,14 +7795,21 @@ func (client *Client) ReleaseLindormInstance(request *ReleaseLindormInstanceRequ
 	return _result, _err
 }
 
-/**
- * You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
- * Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
- *
- * @param request RenewLindormInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RenewLindormInstanceResponse
- */
+// Summary:
+//
+// Renews a subscription Lindorm instance.
+//
+// Description:
+//
+// You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+//
+// Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
+//
+// @param request - RenewLindormInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewLindormInstanceResponse
 func (client *Client) RenewLindormInstanceWithOptions(request *RenewLindormInstanceRequest, runtime *util.RuntimeOptions) (_result *RenewLindormInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6679,13 +7875,19 @@ func (client *Client) RenewLindormInstanceWithOptions(request *RenewLindormInsta
 	return _result, _err
 }
 
-/**
- * You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
- * Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
- *
- * @param request RenewLindormInstanceRequest
- * @return RenewLindormInstanceResponse
- */
+// Summary:
+//
+// Renews a subscription Lindorm instance.
+//
+// Description:
+//
+// You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+//
+// Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
+//
+// @param request - RenewLindormInstanceRequest
+//
+// @return RenewLindormInstanceResponse
 func (client *Client) RenewLindormInstance(request *RenewLindormInstanceRequest) (_result *RenewLindormInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewLindormInstanceResponse{}
@@ -6697,6 +7899,11 @@ func (client *Client) RenewLindormInstance(request *RenewLindormInstanceRequest)
 	return _result, _err
 }
 
+// @param request - RestartLdpsComputeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartLdpsComputeGroupResponse
 func (client *Client) RestartLdpsComputeGroupWithOptions(request *RestartLdpsComputeGroupRequest, runtime *util.RuntimeOptions) (_result *RestartLdpsComputeGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6758,6 +7965,9 @@ func (client *Client) RestartLdpsComputeGroupWithOptions(request *RestartLdpsCom
 	return _result, _err
 }
 
+// @param request - RestartLdpsComputeGroupRequest
+//
+// @return RestartLdpsComputeGroupResponse
 func (client *Client) RestartLdpsComputeGroup(request *RestartLdpsComputeGroupRequest) (_result *RestartLdpsComputeGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartLdpsComputeGroupResponse{}
@@ -6769,16 +7979,25 @@ func (client *Client) RestartLdpsComputeGroup(request *RestartLdpsComputeGroupRe
 	return _result, _err
 }
 
-/**
- * Prerequisites
- * *   The LindormTable version of your instance is 2.6.0 or later.
- * *   The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
- * You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
- *
- * @param request SwitchLSQLV3MySQLServiceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SwitchLSQLV3MySQLServiceResponse
- */
+// Summary:
+//
+// Enables and disables the MySQL compatibility feature.
+//
+// Description:
+//
+// Prerequisites
+//
+// 	- The LindormTable version of your instance is 2.6.0 or later.
+//
+// 	- The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+//
+// You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
+//
+// @param request - SwitchLSQLV3MySQLServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchLSQLV3MySQLServiceResponse
 func (client *Client) SwitchLSQLV3MySQLServiceWithOptions(request *SwitchLSQLV3MySQLServiceRequest, runtime *util.RuntimeOptions) (_result *SwitchLSQLV3MySQLServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6836,15 +8055,23 @@ func (client *Client) SwitchLSQLV3MySQLServiceWithOptions(request *SwitchLSQLV3M
 	return _result, _err
 }
 
-/**
- * Prerequisites
- * *   The LindormTable version of your instance is 2.6.0 or later.
- * *   The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
- * You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
- *
- * @param request SwitchLSQLV3MySQLServiceRequest
- * @return SwitchLSQLV3MySQLServiceResponse
- */
+// Summary:
+//
+// Enables and disables the MySQL compatibility feature.
+//
+// Description:
+//
+// Prerequisites
+//
+// 	- The LindormTable version of your instance is 2.6.0 or later.
+//
+// 	- The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+//
+// You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
+//
+// @param request - SwitchLSQLV3MySQLServiceRequest
+//
+// @return SwitchLSQLV3MySQLServiceResponse
 func (client *Client) SwitchLSQLV3MySQLService(request *SwitchLSQLV3MySQLServiceRequest) (_result *SwitchLSQLV3MySQLServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchLSQLV3MySQLServiceResponse{}
@@ -6856,6 +8083,15 @@ func (client *Client) SwitchLSQLV3MySQLService(request *SwitchLSQLV3MySQLService
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates tags with a single or multiple Lindorm instances.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6921,6 +8157,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates tags with a single or multiple Lindorm instances.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -6932,6 +8175,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a tag from an instance. If the tag is not associated with another instance, the tag is deleted.
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6997,6 +8249,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a tag from an instance. If the tag is not associated with another instance, the tag is deleted.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
@@ -7008,6 +8267,15 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures an IP address whitelist for a Lindorm instance.
+//
+// @param request - UpdateInstanceIpWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceIpWhiteListResponse
 func (client *Client) UpdateInstanceIpWhiteListWithOptions(request *UpdateInstanceIpWhiteListRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceIpWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7073,6 +8341,13 @@ func (client *Client) UpdateInstanceIpWhiteListWithOptions(request *UpdateInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures an IP address whitelist for a Lindorm instance.
+//
+// @param request - UpdateInstanceIpWhiteListRequest
+//
+// @return UpdateInstanceIpWhiteListResponse
 func (client *Client) UpdateInstanceIpWhiteList(request *UpdateInstanceIpWhiteListRequest) (_result *UpdateInstanceIpWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceIpWhiteListResponse{}
@@ -7084,6 +8359,11 @@ func (client *Client) UpdateInstanceIpWhiteList(request *UpdateInstanceIpWhiteLi
 	return _result, _err
 }
 
+// @param request - UpdateInstanceSecurityGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceSecurityGroupsResponse
 func (client *Client) UpdateInstanceSecurityGroupsWithOptions(request *UpdateInstanceSecurityGroupsRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceSecurityGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7141,6 +8421,9 @@ func (client *Client) UpdateInstanceSecurityGroupsWithOptions(request *UpdateIns
 	return _result, _err
 }
 
+// @param request - UpdateInstanceSecurityGroupsRequest
+//
+// @return UpdateInstanceSecurityGroupsResponse
 func (client *Client) UpdateInstanceSecurityGroups(request *UpdateInstanceSecurityGroupsRequest) (_result *UpdateInstanceSecurityGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceSecurityGroupsResponse{}
@@ -7152,6 +8435,11 @@ func (client *Client) UpdateInstanceSecurityGroups(request *UpdateInstanceSecuri
 	return _result, _err
 }
 
+// @param request - UpdateLdpsComputeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLdpsComputeGroupResponse
 func (client *Client) UpdateLdpsComputeGroupWithOptions(request *UpdateLdpsComputeGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateLdpsComputeGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7217,6 +8505,9 @@ func (client *Client) UpdateLdpsComputeGroupWithOptions(request *UpdateLdpsCompu
 	return _result, _err
 }
 
+// @param request - UpdateLdpsComputeGroupRequest
+//
+// @return UpdateLdpsComputeGroupResponse
 func (client *Client) UpdateLdpsComputeGroup(request *UpdateLdpsComputeGroupRequest) (_result *UpdateLdpsComputeGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateLdpsComputeGroupResponse{}
@@ -7228,13 +8519,19 @@ func (client *Client) UpdateLdpsComputeGroup(request *UpdateLdpsComputeGroupRequ
 	return _result, _err
 }
 
-/**
- * For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](~~181971~~) and [Select storage types](~~174643~~).
- *
- * @param request UpgradeLindormInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpgradeLindormInstanceResponse
- */
+// Summary:
+//
+// Upgrades, scales up, or enable cold storage for a Lindorm instance.
+//
+// Description:
+//
+// For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
+//
+// @param request - UpgradeLindormInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeLindormInstanceResponse
 func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormInstanceRequest, runtime *util.RuntimeOptions) (_result *UpgradeLindormInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7372,12 +8669,17 @@ func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormI
 	return _result, _err
 }
 
-/**
- * For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](~~181971~~) and [Select storage types](~~174643~~).
- *
- * @param request UpgradeLindormInstanceRequest
- * @return UpgradeLindormInstanceResponse
- */
+// Summary:
+//
+// Upgrades, scales up, or enable cold storage for a Lindorm instance.
+//
+// Description:
+//
+// For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
+//
+// @param request - UpgradeLindormInstanceRequest
+//
+// @return UpgradeLindormInstanceResponse
 func (client *Client) UpgradeLindormInstance(request *UpgradeLindormInstanceRequest) (_result *UpgradeLindormInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeLindormInstanceResponse{}
