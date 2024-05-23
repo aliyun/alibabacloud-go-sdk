@@ -7330,7 +7330,11 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	// Alert Rule Demo
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// Alarm Notification Channel Configuration. Used for compatibility with legacy rules.
+	// The configuration of the alert sending channel. This parameter is used to be compatible with the old version of the rule.
+	//
+	// example:
+	//
+	// -
 	AlertPiplines *string `json:"AlertPiplines,omitempty" xml:"AlertPiplines,omitempty"`
 	// The content of the Application Monitoring or Browser Monitoring alert rule. The following code provides an example of the **AlertRuleContent*	- parameter. For more information about the meaning of each field, see the supplementary description.
 	//
@@ -7350,7 +7354,9 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	//                  "Aggregate": "AVG",
 	//
-	//                   "N": 1
+	//                   "N": 10,
+	//
+	//                   "Tolerability": 169
 	//
 	//             }
 	//
@@ -7360,7 +7366,7 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	// ```
 	//
-	// > The conditional fields vary depending on the values of the **MetricsType*	- and **AlertRuleItems.MetricKey*	- parameters. For more information about the types of metrics supported by Application Monitoring and Browser Monitoring and the alert rule fields corresponding to each metric, see the supplementary description.
+	// >  The filter conditions specified by the **AlertRuleItems.MetricKey*	- field depends on the value of the **MetricsType*	- parameter. For more information about the types of metrics supported by Application Monitoring and Browser Monitoring and the alert rule fields corresponding to each metric, see the supplementary description.
 	//
 	// example:
 	//
@@ -7376,27 +7382,19 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	// RUNNING
 	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	// The type of the alert rule. Valid values:
+	// The following alert rule types are available:
 	//
 	// 	- APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
 	//
 	// 	- BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
 	//
-	// 	- PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Prometheus Service
+	// 	- RUM_MONITORING_ALERT_RULE: alert rule for RUM Monitoring
 	//
-	// Valid values:
+	// 	- PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus
 	//
-	// 	- PROMETHEUS_MONITORING_ALERT_RULE
+	// 	- XTRACE_MONITORING_ALERT_RULE: alert rule for Managed Service for OpenTelemetry
 	//
-	// 	- APPLICATION_MONITORING_ALERT_RULE
-	//
-	// 	- BROWSER_MONITORING_ALERT_RULE
-	//
-	// 	- prometheus monitoring alert
-	//
-	// 	- application monitoring alert
-	//
-	// 	- browser monitoring alert
+	// 	- EBPF_MONITORING_ALERT_RULE: alert rule for Application Monitoring eBPF Edition
 	//
 	// This parameter is required.
 	//
@@ -7449,7 +7447,7 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	// 1
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The filter conditions of the Application Monitoring or Browser Monitoring alert rule. The following code shows the format of matching rules:
+	// The filter conditions of the Application Monitoring or Browser Monitoring alert rule. Format:
 	//
 	//     "DimFilters": [
 	//
@@ -7457,9 +7455,9 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	//      "FilterOpt": "ALL",
 	//
-	//      "FilterValues": [],         // The value of the filter condition.
+	//     "FilterValues": [],         //The value of the filter condition.
 	//
-	//      "FilterKey": "rootIp"     // The key of the filter condition.
+	//     "FilterKey": "rootIp"     //The key of the filter condition.
 	//
 	//     }
 	//
@@ -7469,7 +7467,7 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	// 	- STATIC: matches the value of the specified dimension.
 	//
-	// 	- ALL: matches the values of all dimensions.
+	// 	- ALL: traverses all dimension values. Dynamic thresholds do not support traversal.
 	//
 	// 	- DISABLE: aggregates the values of all dimensions.
 	//
@@ -7521,7 +7519,11 @@ type CreateOrUpdateAlertRuleRequest struct {
 	//
 	// jvm
 	MetricsType *string `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
-	// Effective Time and Notification Time. Used for compatibility with legacy rules.
+	// The effective time and notification time. This parameter is used to be compatible with the old version of the rule.
+	//
+	// example:
+	//
+	// -
 	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
 	// Notification Mode. Normal mode or Simplified mode.
 	//
@@ -7544,7 +7546,12 @@ type CreateOrUpdateAlertRuleRequest struct {
 	// example:
 	//
 	// ["b590lhguqs@40d8deedfa9******"]
-	Pids    *string `json:"Pids,omitempty" xml:"Pids,omitempty"`
+	Pids *string `json:"Pids,omitempty" xml:"Pids,omitempty"`
+	// It is determined when creating the underlying rules of Prometheus. The background will verify whether the product exists, which is used to distinguish cloud product filtering queries.
+	//
+	// example:
+	//
+	// xxxx
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	// The PromQL statement of the Prometheus alert rule.
 	//
@@ -23107,6 +23114,7 @@ type DescribeEnvironmentFeatureResponseBodyDataFeatureStatus struct {
 	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
 	// The containers of the feature.
 	FeatureContainers []*DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers `json:"FeatureContainers,omitempty" xml:"FeatureContainers,omitempty" type:"Repeated"`
+	Ips               []*string                                                                   `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
 	// The Kubernetes resource name of the feature.
 	//
 	// example:
@@ -23150,6 +23158,11 @@ func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) SetBindResourc
 
 func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) SetFeatureContainers(v []*DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers) *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus {
 	s.FeatureContainers = v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) SetIps(v []*string) *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus {
+	s.Ips = v
 	return s
 }
 
@@ -43656,6 +43669,7 @@ func (s *ListEnvironmentDashboardsResponse) SetBody(v *ListEnvironmentDashboards
 }
 
 type ListEnvironmentFeaturesRequest struct {
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -43674,6 +43688,11 @@ func (s ListEnvironmentFeaturesRequest) String() string {
 
 func (s ListEnvironmentFeaturesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListEnvironmentFeaturesRequest) SetAliyunLang(v string) *ListEnvironmentFeaturesRequest {
+	s.AliyunLang = &v
+	return s
 }
 
 func (s *ListEnvironmentFeaturesRequest) SetEnvironmentId(v string) *ListEnvironmentFeaturesRequest {
@@ -43925,7 +43944,16 @@ type ListEnvironmentsRequest struct {
 	//
 	// CS
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
-	FeePackage      *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	// The payable resource plan. Valid values:
+	//
+	// 	- If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+	//
+	// 	- Otherwise, leave the parameter empty.
+	//
+	// example:
+	//
+	// CS_Pro
+	FeePackage *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -44075,7 +44103,16 @@ type ListEnvironmentsShrinkRequest struct {
 	//
 	// CS
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
-	FeePackage      *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	// The payable resource plan. Valid values:
+	//
+	// 	- If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+	//
+	// 	- Otherwise, leave the parameter empty.
+	//
+	// example:
+	//
+	// CS_Pro
+	FeePackage *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -44290,8 +44327,17 @@ type ListEnvironmentsResponseBodyDataEnvironments struct {
 	// CS
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
 	// The parameters of the feature.
-	Features   []*ListEnvironmentsResponseBodyDataEnvironmentsFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	FeePackage *string                                                 `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	Features []*ListEnvironmentsResponseBodyDataEnvironmentsFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// The payable resource plan. Valid values:
+	//
+	// 	- If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+	//
+	// 	- Otherwise, leave the parameter empty.
+	//
+	// example:
+	//
+	// CS_Pro
+	FeePackage *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
 	// The unique ID of the Grafana data source.
 	//
 	// example:
@@ -44316,13 +44362,13 @@ type ListEnvironmentsResponseBodyDataEnvironments struct {
 	//
 	// 2023-09-22T16:56:29+08:00
 	LatestReleaseCreateTime *string `json:"LatestReleaseCreateTime,omitempty" xml:"LatestReleaseCreateTime,omitempty"`
-	// type of managed:
+	// Indicates whether agents or exporters are managed. Valid values:
 	//
-	// - none: not managed. default value of prometheus for ACK.
+	// 	- none: No. By default, no managed agents or exporters are provided for ACK clusters.
 	//
-	// - agent: managed agent. default value of promehtues for ASK/ACS/AckOne.
+	// 	- agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
 	//
-	// - agent-exproter: managed agent and exporter. default of prometheus for Cloud.
+	// 	- agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
 	//
 	// example:
 	//
@@ -44340,7 +44386,7 @@ type ListEnvironmentsResponseBodyDataEnvironments struct {
 	//
 	// vpc-m5e4alj2i24ndbn
 	PrometheusInstanceId *string `json:"PrometheusInstanceId,omitempty" xml:"PrometheusInstanceId,omitempty"`
-	// The region ID.
+	// The ID of the region where the Message Queue for RabbitMQ instance resides.
 	//
 	// example:
 	//
@@ -44352,7 +44398,7 @@ type ListEnvironmentsResponseBodyDataEnvironments struct {
 	//
 	// 122
 	ReleaseCount *int32 `json:"ReleaseCount,omitempty" xml:"ReleaseCount,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -44360,7 +44406,7 @@ type ListEnvironmentsResponseBodyDataEnvironments struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags of the environment resource.
 	Tags []*ListEnvironmentsResponseBodyDataEnvironmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//
@@ -78408,6 +78454,10 @@ func (client *Client) ListEnvironmentFeaturesWithOptions(request *ListEnvironmen
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
 		query["EnvironmentId"] = request.EnvironmentId
 	}
