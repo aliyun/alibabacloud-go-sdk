@@ -27557,9 +27557,10 @@ type ListApplicationsResponseBodyDataApplications struct {
 	// example:
 	//
 	// 2
-	Instances  *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	Mem        *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	MseEnabled *bool  `json:"MseEnabled,omitempty" xml:"MseEnabled,omitempty"`
+	Instances      *int32  `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	Mem            *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	MseEnabled     *bool   `json:"MseEnabled,omitempty" xml:"MseEnabled,omitempty"`
+	MseNamespaceId *string `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
 	// demo-app
 	//
 	// example:
@@ -27638,6 +27639,11 @@ func (s *ListApplicationsResponseBodyDataApplications) SetMem(v int32) *ListAppl
 
 func (s *ListApplicationsResponseBodyDataApplications) SetMseEnabled(v bool) *ListApplicationsResponseBodyDataApplications {
 	s.MseEnabled = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplications) SetMseNamespaceId(v string) *ListApplicationsResponseBodyDataApplications {
+	s.MseNamespaceId = &v
 	return s
 }
 
