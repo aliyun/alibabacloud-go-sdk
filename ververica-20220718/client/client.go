@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,7 +10,10 @@ import (
 )
 
 type Artifact struct {
-	JarArtifact    *JarArtifact    `json:"jarArtifact,omitempty" xml:"jarArtifact,omitempty"`
+	JarArtifact *JarArtifact `json:"jarArtifact,omitempty" xml:"jarArtifact,omitempty"`
+	// example:
+	//
+	// SQLSCRIPT
 	Kind           *string         `json:"kind,omitempty" xml:"kind,omitempty"`
 	PythonArtifact *PythonArtifact `json:"pythonArtifact,omitempty" xml:"pythonArtifact,omitempty"`
 	SqlArtifact    *SqlArtifact    `json:"sqlArtifact,omitempty" xml:"sqlArtifact,omitempty"`
@@ -48,8 +48,17 @@ func (s *Artifact) SetSqlArtifact(v *SqlArtifact) *Artifact {
 }
 
 type AsyncResourcePlanOperationResult struct {
-	Message      *string `json:"message,omitempty" xml:"message,omitempty"`
-	Plan         *string `json:"plan,omitempty" xml:"plan,omitempty"`
+	// example:
+	//
+	// ""
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// {\"ssgProfiles\":[{\"name\":\"default\",\"cpu\":1.13,\"heap\":\"1 gb\",\"offHeap\":\"32 mb\",\"managed\":{},\"extended\":{}}],\"nodes\":[{\"id\":1,\"type\":\"StreamExecTableSourceScan\",\"desc\":\"Source: datagen_source[78]\",\"profile\":{\"group\":\"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}},{\"id\":2,\"type\":\"StreamExecSink\",\"desc\":\"Sink: blackhole_sink[79]\",\"profile\":{\"group\":\"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}}],\"edges\":[{\"source\":1,\"target\":2,\"mode\":\"PIPELINED\",\"strategy\":\"FORWARD\"}],\"vertices\":{\"717c7b8afebbfb7137f6f0f99beb2a94\":[1,2]}}
+	Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
+	// example:
+	//
+	// FINISHED
 	TicketStatus *string `json:"ticketStatus,omitempty" xml:"ticketStatus,omitempty"`
 }
 
@@ -77,7 +86,10 @@ func (s *AsyncResourcePlanOperationResult) SetTicketStatus(v string) *AsyncResou
 }
 
 type BasicResourceSetting struct {
-	JobmanagerResourceSettingSpec  *BasicResourceSettingSpec `json:"jobmanagerResourceSettingSpec,omitempty" xml:"jobmanagerResourceSettingSpec,omitempty"`
+	JobmanagerResourceSettingSpec *BasicResourceSettingSpec `json:"jobmanagerResourceSettingSpec,omitempty" xml:"jobmanagerResourceSettingSpec,omitempty"`
+	// example:
+	//
+	// 4
 	Parallelism                    *int64                    `json:"parallelism,omitempty" xml:"parallelism,omitempty"`
 	TaskmanagerResourceSettingSpec *BasicResourceSettingSpec `json:"taskmanagerResourceSettingSpec,omitempty" xml:"taskmanagerResourceSettingSpec,omitempty"`
 }
@@ -106,8 +118,14 @@ func (s *BasicResourceSetting) SetTaskmanagerResourceSettingSpec(v *BasicResourc
 }
 
 type BasicResourceSettingSpec struct {
-	Cpu    *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	Memory *string  `json:"memory,omitempty" xml:"memory,omitempty"`
+	// example:
+	//
+	// 2.0
+	Cpu *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// example:
+	//
+	// 4Gi
+	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
 }
 
 func (s BasicResourceSettingSpec) String() string {
@@ -130,7 +148,10 @@ func (s *BasicResourceSettingSpec) SetMemory(v string) *BasicResourceSettingSpec
 
 type BatchResourceSetting struct {
 	BasicResourceSetting *BasicResourceSetting `json:"basicResourceSetting,omitempty" xml:"basicResourceSetting,omitempty"`
-	MaxSlot              *int64                `json:"maxSlot,omitempty" xml:"maxSlot,omitempty"`
+	// example:
+	//
+	// 10
+	MaxSlot *int64 `json:"maxSlot,omitempty" xml:"maxSlot,omitempty"`
 }
 
 func (s BatchResourceSetting) String() string {
@@ -204,24 +225,67 @@ func (s *BriefResourceSetting) SetStreamingResourceSetting(v *StreamingResourceS
 }
 
 type Deployment struct {
-	Artifact                 *Artifact                 `json:"artifact,omitempty" xml:"artifact,omitempty"`
-	BatchResourceSetting     *BatchResourceSetting     `json:"batchResourceSetting,omitempty" xml:"batchResourceSetting,omitempty"`
-	Creator                  *string                   `json:"creator,omitempty" xml:"creator,omitempty"`
-	CreatorName              *string                   `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	DeploymentHasChanged     *bool                     `json:"deploymentHasChanged,omitempty" xml:"deploymentHasChanged,omitempty"`
-	DeploymentId             *string                   `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	DeploymentTarget         *BriefDeploymentTarget    `json:"deploymentTarget,omitempty" xml:"deploymentTarget,omitempty"`
-	Description              *string                   `json:"description,omitempty" xml:"description,omitempty"`
-	EngineVersion            *string                   `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
-	ExecutionMode            *string                   `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
-	FlinkConf                map[string]interface{}    `json:"flinkConf,omitempty" xml:"flinkConf,omitempty"`
-	JobSummary               *JobSummary               `json:"jobSummary,omitempty" xml:"jobSummary,omitempty"`
-	Logging                  *Logging                  `json:"logging,omitempty" xml:"logging,omitempty"`
-	Modifier                 *string                   `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	ModifierName             *string                   `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
-	Name                     *string                   `json:"name,omitempty" xml:"name,omitempty"`
+	Artifact             *Artifact             `json:"artifact,omitempty" xml:"artifact,omitempty"`
+	BatchResourceSetting *BatchResourceSetting `json:"batchResourceSetting,omitempty" xml:"batchResourceSetting,omitempty"`
+	CreatedAt            *string               `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// 27846363877456****
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// ****@streamcompute.onaliyun.com
+	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// example:
+	//
+	// true
+	DeploymentHasChanged *bool `json:"deploymentHasChanged,omitempty" xml:"deploymentHasChanged,omitempty"`
+	// example:
+	//
+	// 00000000-0000-0000-0000-000000000001
+	DeploymentId     *string                `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	DeploymentTarget *BriefDeploymentTarget `json:"deploymentTarget,omitempty" xml:"deploymentTarget,omitempty"`
+	// example:
+	//
+	// this is a deployment description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// vvr-6.0.0-flink-1.15
+	EngineVersion *string `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
+	// example:
+	//
+	// STREAMING | BATCH
+	ExecutionMode *string `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
+	// example:
+	//
+	// {"taskmanager.numberOfTaskSlots":"1"}
+	FlinkConf      map[string]interface{} `json:"flinkConf,omitempty" xml:"flinkConf,omitempty"`
+	JobSummary     *JobSummary            `json:"jobSummary,omitempty" xml:"jobSummary,omitempty"`
+	LocalVariables []*LocalVariable       `json:"localVariables,omitempty" xml:"localVariables,omitempty" type:"Repeated"`
+	Logging        *Logging               `json:"logging,omitempty" xml:"logging,omitempty"`
+	ModifiedAt     *string                `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// example:
+	//
+	// 27846363877456****
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// example:
+	//
+	// ****@streamcompute.onaliyun.com
+	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
+	// example:
+	//
+	// deploymentName
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// default-namespace
 	Namespace                *string                   `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	StreamingResourceSetting *StreamingResourceSetting `json:"streamingResourceSetting,omitempty" xml:"streamingResourceSetting,omitempty"`
+	// example:
+	//
+	// edcef******b4f
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s Deployment) String() string {
@@ -239,6 +303,11 @@ func (s *Deployment) SetArtifact(v *Artifact) *Deployment {
 
 func (s *Deployment) SetBatchResourceSetting(v *BatchResourceSetting) *Deployment {
 	s.BatchResourceSetting = v
+	return s
+}
+
+func (s *Deployment) SetCreatedAt(v string) *Deployment {
+	s.CreatedAt = &v
 	return s
 }
 
@@ -292,8 +361,18 @@ func (s *Deployment) SetJobSummary(v *JobSummary) *Deployment {
 	return s
 }
 
+func (s *Deployment) SetLocalVariables(v []*LocalVariable) *Deployment {
+	s.LocalVariables = v
+	return s
+}
+
 func (s *Deployment) SetLogging(v *Logging) *Deployment {
 	s.Logging = v
+	return s
+}
+
+func (s *Deployment) SetModifiedAt(v string) *Deployment {
+	s.ModifiedAt = &v
 	return s
 }
 
@@ -322,11 +401,28 @@ func (s *Deployment) SetStreamingResourceSetting(v *StreamingResourceSetting) *D
 	return s
 }
 
+func (s *Deployment) SetWorkspace(v string) *Deployment {
+	s.Workspace = &v
+	return s
+}
+
 type DeploymentRestoreStrategy struct {
-	AllowNonRestoredState *bool   `json:"allowNonRestoredState,omitempty" xml:"allowNonRestoredState,omitempty"`
-	JobStartTimeInMs      *int64  `json:"jobStartTimeInMs,omitempty" xml:"jobStartTimeInMs,omitempty"`
-	Kind                  *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	SavepointId           *string `json:"savepointId,omitempty" xml:"savepointId,omitempty"`
+	// example:
+	//
+	// TRUE
+	AllowNonRestoredState *bool `json:"allowNonRestoredState,omitempty" xml:"allowNonRestoredState,omitempty"`
+	// example:
+	//
+	// 1660293803155
+	JobStartTimeInMs *int64 `json:"jobStartTimeInMs,omitempty" xml:"jobStartTimeInMs,omitempty"`
+	// example:
+	//
+	// LATEST_STATE
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// example:
+	//
+	// 354dde66-a3ae-463e-967a-0b4107fd****
+	SavepointId *string `json:"savepointId,omitempty" xml:"savepointId,omitempty"`
 }
 
 func (s DeploymentRestoreStrategy) String() string {
@@ -358,7 +454,13 @@ func (s *DeploymentRestoreStrategy) SetSavepointId(v string) *DeploymentRestoreS
 }
 
 type DeploymentTarget struct {
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// deployment target
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// namespace
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 }
 
@@ -380,10 +482,49 @@ func (s *DeploymentTarget) SetNamespace(v string) *DeploymentTarget {
 	return s
 }
 
+type EditableNamespace struct {
+	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s EditableNamespace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditableNamespace) GoString() string {
+	return s.String()
+}
+
+func (s *EditableNamespace) SetNamespace(v string) *EditableNamespace {
+	s.Namespace = &v
+	return s
+}
+
+func (s *EditableNamespace) SetRole(v string) *EditableNamespace {
+	s.Role = &v
+	return s
+}
+
+func (s *EditableNamespace) SetWorkspaceId(v string) *EditableNamespace {
+	s.WorkspaceId = &v
+	return s
+}
+
 type EngineVersionMetadata struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vvr-6.0.0-flink-1.15
 	EngineVersion *string                         `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
 	Features      *EngineVersionSupportedFeatures `json:"features,omitempty" xml:"features,omitempty"`
-	Status        *string                         `json:"status,omitempty" xml:"status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STABLE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s EngineVersionMetadata) String() string {
@@ -410,6 +551,9 @@ func (s *EngineVersionMetadata) SetStatus(v string) *EngineVersionMetadata {
 }
 
 type EngineVersionMetadataIndex struct {
+	// example:
+	//
+	// vvr-6.0.1-flink-1.15
 	DefaultEngineVersion  *string                  `json:"defaultEngineVersion,omitempty" xml:"defaultEngineVersion,omitempty"`
 	EngineVersionMetadata []*EngineVersionMetadata `json:"engineVersionMetadata,omitempty" xml:"engineVersionMetadata,omitempty" type:"Repeated"`
 }
@@ -433,8 +577,14 @@ func (s *EngineVersionMetadataIndex) SetEngineVersionMetadata(v []*EngineVersion
 }
 
 type EngineVersionSupportedFeatures struct {
+	// example:
+	//
+	// true
 	SupportNativeSavepoint *bool `json:"supportNativeSavepoint,omitempty" xml:"supportNativeSavepoint,omitempty"`
-	UseForSqlDeployments   *bool `json:"useForSqlDeployments,omitempty" xml:"useForSqlDeployments,omitempty"`
+	// example:
+	//
+	// true
+	UseForSqlDeployments *bool `json:"useForSqlDeployments,omitempty" xml:"useForSqlDeployments,omitempty"`
 }
 
 func (s EngineVersionSupportedFeatures) String() string {
@@ -452,6 +602,53 @@ func (s *EngineVersionSupportedFeatures) SetSupportNativeSavepoint(v bool) *Engi
 
 func (s *EngineVersionSupportedFeatures) SetUseForSqlDeployments(v bool) *EngineVersionSupportedFeatures {
 	s.UseForSqlDeployments = &v
+	return s
+}
+
+type ErrorDetails struct {
+	ColumnNumber     *string   `json:"columnNumber,omitempty" xml:"columnNumber,omitempty"`
+	EndColumnNumber  *string   `json:"endColumnNumber,omitempty" xml:"endColumnNumber,omitempty"`
+	EndLineNumber    *string   `json:"endLineNumber,omitempty" xml:"endLineNumber,omitempty"`
+	InvalidflinkConf []*string `json:"invalidflinkConf,omitempty" xml:"invalidflinkConf,omitempty" type:"Repeated"`
+	LineNumber       *string   `json:"lineNumber,omitempty" xml:"lineNumber,omitempty"`
+	Message          *string   `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s ErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ErrorDetails) SetColumnNumber(v string) *ErrorDetails {
+	s.ColumnNumber = &v
+	return s
+}
+
+func (s *ErrorDetails) SetEndColumnNumber(v string) *ErrorDetails {
+	s.EndColumnNumber = &v
+	return s
+}
+
+func (s *ErrorDetails) SetEndLineNumber(v string) *ErrorDetails {
+	s.EndLineNumber = &v
+	return s
+}
+
+func (s *ErrorDetails) SetInvalidflinkConf(v []*string) *ErrorDetails {
+	s.InvalidflinkConf = v
+	return s
+}
+
+func (s *ErrorDetails) SetLineNumber(v string) *ErrorDetails {
+	s.LineNumber = &v
+	return s
+}
+
+func (s *ErrorDetails) SetMessage(v string) *ErrorDetails {
+	s.Message = &v
 	return s
 }
 
@@ -480,9 +677,15 @@ func (s *ExpertResourceSetting) SetResourcePlan(v string) *ExpertResourceSetting
 
 type JarArtifact struct {
 	AdditionalDependencies []*string `json:"additionalDependencies,omitempty" xml:"additionalDependencies,omitempty" type:"Repeated"`
-	EntryClass             *string   `json:"entryClass,omitempty" xml:"entryClass,omitempty"`
-	JarUri                 *string   `json:"jarUri,omitempty" xml:"jarUri,omitempty"`
-	MainArgs               *string   `json:"mainArgs,omitempty" xml:"mainArgs,omitempty"`
+	// example:
+	//
+	// org.apapche.flink.test
+	EntryClass *string `json:"entryClass,omitempty" xml:"entryClass,omitempty"`
+	// example:
+	//
+	// https://oss//bucket//test.jar
+	JarUri   *string `json:"jarUri,omitempty" xml:"jarUri,omitempty"`
+	MainArgs *string `json:"mainArgs,omitempty" xml:"mainArgs,omitempty"`
 }
 
 func (s JarArtifact) String() string {
@@ -514,28 +717,74 @@ func (s *JarArtifact) SetMainArgs(v string) *JarArtifact {
 }
 
 type Job struct {
-	Artifact                 *Artifact                  `json:"artifact,omitempty" xml:"artifact,omitempty"`
-	BatchResourceSetting     *BatchResourceSetting      `json:"batchResourceSetting,omitempty" xml:"batchResourceSetting,omitempty"`
-	Creator                  *string                    `json:"creator,omitempty" xml:"creator,omitempty"`
-	CreatorName              *string                    `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	DeploymentId             *string                    `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	DeploymentName           *string                    `json:"deploymentName,omitempty" xml:"deploymentName,omitempty"`
-	EndTime                  *int64                     `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	EngineVersion            *string                    `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
-	ExecutionMode            *string                    `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
-	FlinkConf                map[string]interface{}     `json:"flinkConf,omitempty" xml:"flinkConf,omitempty"`
-	JobId                    *string                    `json:"jobId,omitempty" xml:"jobId,omitempty"`
-	Logging                  *Logging                   `json:"logging,omitempty" xml:"logging,omitempty"`
-	Metric                   *JobMetric                 `json:"metric,omitempty" xml:"metric,omitempty"`
-	Modifier                 *string                    `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	ModifierName             *string                    `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
-	Namespace                *string                    `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	RestoreStrategy          *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
-	SessionClusterName       *string                    `json:"sessionClusterName,omitempty" xml:"sessionClusterName,omitempty"`
-	StartTime                *int64                     `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status                   *JobStatus                 `json:"status,omitempty" xml:"status,omitempty"`
-	StreamingResourceSetting *StreamingResourceSetting  `json:"streamingResourceSetting,omitempty" xml:"streamingResourceSetting,omitempty"`
-	UserFlinkConf            map[string]interface{}     `json:"userFlinkConf,omitempty" xml:"userFlinkConf,omitempty"`
+	Artifact             *Artifact             `json:"artifact,omitempty" xml:"artifact,omitempty"`
+	BatchResourceSetting *BatchResourceSetting `json:"batchResourceSetting,omitempty" xml:"batchResourceSetting,omitempty"`
+	CreatedAt            *string               `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// 27846363877456****
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// ****@streamcompute.onaliyun.com
+	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// example:
+	//
+	// 354dde66-a3ae-463e-967a-0b4107fd****
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// example:
+	//
+	// flinktest
+	DeploymentName *string `json:"deploymentName,omitempty" xml:"deploymentName,omitempty"`
+	// example:
+	//
+	// 1660277235
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// vvr-4.0.14-flink-1.13
+	EngineVersion *string `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
+	// example:
+	//
+	// BATCH
+	ExecutionMode *string                `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
+	FlinkConf     map[string]interface{} `json:"flinkConf,omitempty" xml:"flinkConf,omitempty"`
+	// example:
+	//
+	// 354dde66-a3ae-463e-967a-0b4107fd****
+	JobId          *string          `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	LocalVariables []*LocalVariable `json:"localVariables,omitempty" xml:"localVariables,omitempty" type:"Repeated"`
+	Logging        *Logging         `json:"logging,omitempty" xml:"logging,omitempty"`
+	Metric         *JobMetric       `json:"metric,omitempty" xml:"metric,omitempty"`
+	ModifiedAt     *string          `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// example:
+	//
+	// 27846363877456****
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// example:
+	//
+	// ****@streamcompute.onaliyun.com
+	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
+	// example:
+	//
+	// namespacetest
+	Namespace       *string                    `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	RestoreStrategy *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
+	// example:
+	//
+	// preview
+	SessionClusterName *string `json:"sessionClusterName,omitempty" xml:"sessionClusterName,omitempty"`
+	// example:
+	//
+	// 1660190835
+	StartTime                *int64                    `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status                   *JobStatus                `json:"status,omitempty" xml:"status,omitempty"`
+	StreamingResourceSetting *StreamingResourceSetting `json:"streamingResourceSetting,omitempty" xml:"streamingResourceSetting,omitempty"`
+	UserFlinkConf            map[string]interface{}    `json:"userFlinkConf,omitempty" xml:"userFlinkConf,omitempty"`
+	// example:
+	//
+	// edcef******b4f
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s Job) String() string {
@@ -553,6 +802,11 @@ func (s *Job) SetArtifact(v *Artifact) *Job {
 
 func (s *Job) SetBatchResourceSetting(v *BatchResourceSetting) *Job {
 	s.BatchResourceSetting = v
+	return s
+}
+
+func (s *Job) SetCreatedAt(v string) *Job {
+	s.CreatedAt = &v
 	return s
 }
 
@@ -601,6 +855,11 @@ func (s *Job) SetJobId(v string) *Job {
 	return s
 }
 
+func (s *Job) SetLocalVariables(v []*LocalVariable) *Job {
+	s.LocalVariables = v
+	return s
+}
+
 func (s *Job) SetLogging(v *Logging) *Job {
 	s.Logging = v
 	return s
@@ -608,6 +867,11 @@ func (s *Job) SetLogging(v *Logging) *Job {
 
 func (s *Job) SetMetric(v *JobMetric) *Job {
 	s.Metric = v
+	return s
+}
+
+func (s *Job) SetModifiedAt(v string) *Job {
+	s.ModifiedAt = &v
 	return s
 }
 
@@ -656,7 +920,15 @@ func (s *Job) SetUserFlinkConf(v map[string]interface{}) *Job {
 	return s
 }
 
+func (s *Job) SetWorkspace(v string) *Job {
+	s.Workspace = &v
+	return s
+}
+
 type JobFailure struct {
+	// example:
+	//
+	// 1660120062
 	FailedAt *int64  `json:"failedAt,omitempty" xml:"failedAt,omitempty"`
 	Message  *string `json:"message,omitempty" xml:"message,omitempty"`
 	Reason   *string `json:"reason,omitempty" xml:"reason,omitempty"`
@@ -686,8 +958,14 @@ func (s *JobFailure) SetReason(v string) *JobFailure {
 }
 
 type JobMetric struct {
-	TotalCpu        *float64 `json:"totalCpu,omitempty" xml:"totalCpu,omitempty"`
-	TotalMemoryByte *int64   `json:"totalMemoryByte,omitempty" xml:"totalMemoryByte,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCpu *float64 `json:"totalCpu,omitempty" xml:"totalCpu,omitempty"`
+	// example:
+	//
+	// 4096
+	TotalMemoryByte *int64 `json:"totalMemoryByte,omitempty" xml:"totalMemoryByte,omitempty"`
 }
 
 func (s JobMetric) String() string {
@@ -709,7 +987,11 @@ func (s *JobMetric) SetTotalMemoryByte(v int64) *JobMetric {
 }
 
 type JobStartParameters struct {
-	DeploymentId      *string                    `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	DeploymentId   *string          `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	LocalVariables []*LocalVariable `json:"localVariables,omitempty" xml:"localVariables,omitempty" type:"Repeated"`
+	// example:
+	//
+	// default-queue
 	ResourceQueueName *string                    `json:"resourceQueueName,omitempty" xml:"resourceQueueName,omitempty"`
 	RestoreStrategy   *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
 }
@@ -727,6 +1009,11 @@ func (s *JobStartParameters) SetDeploymentId(v string) *JobStartParameters {
 	return s
 }
 
+func (s *JobStartParameters) SetLocalVariables(v []*LocalVariable) *JobStartParameters {
+	s.LocalVariables = v
+	return s
+}
+
 func (s *JobStartParameters) SetResourceQueueName(v string) *JobStartParameters {
 	s.ResourceQueueName = &v
 	return s
@@ -738,6 +1025,9 @@ func (s *JobStartParameters) SetRestoreStrategy(v *DeploymentRestoreStrategy) *J
 }
 
 type JobStatus struct {
+	// example:
+	//
+	// RUNNING
 	CurrentJobStatus *string           `json:"currentJobStatus,omitempty" xml:"currentJobStatus,omitempty"`
 	Failure          *JobFailure       `json:"failure,omitempty" xml:"failure,omitempty"`
 	Running          *JobStatusRunning `json:"running,omitempty" xml:"running,omitempty"`
@@ -767,8 +1057,14 @@ func (s *JobStatus) SetRunning(v *JobStatusRunning) *JobStatus {
 }
 
 type JobStatusRunning struct {
-	ObservedFlinkJobRestarts *int64  `json:"observedFlinkJobRestarts,omitempty" xml:"observedFlinkJobRestarts,omitempty"`
-	ObservedFlinkJobStatus   *string `json:"observedFlinkJobStatus,omitempty" xml:"observedFlinkJobStatus,omitempty"`
+	// example:
+	//
+	// 4
+	ObservedFlinkJobRestarts *int64 `json:"observedFlinkJobRestarts,omitempty" xml:"observedFlinkJobRestarts,omitempty"`
+	// example:
+	//
+	// RUNNING
+	ObservedFlinkJobStatus *string `json:"observedFlinkJobStatus,omitempty" xml:"observedFlinkJobStatus,omitempty"`
 }
 
 func (s JobStatusRunning) String() string {
@@ -790,12 +1086,30 @@ func (s *JobStatusRunning) SetObservedFlinkJobStatus(v string) *JobStatusRunning
 }
 
 type JobSummary struct {
-	Cancelled  *int32 `json:"cancelled,omitempty" xml:"cancelled,omitempty"`
+	// example:
+	//
+	// 1
+	Cancelled *int32 `json:"cancelled,omitempty" xml:"cancelled,omitempty"`
+	// example:
+	//
+	// 1
 	Cancelling *int32 `json:"cancelling,omitempty" xml:"cancelling,omitempty"`
-	Failed     *int32 `json:"failed,omitempty" xml:"failed,omitempty"`
-	Finished   *int32 `json:"finished,omitempty" xml:"finished,omitempty"`
-	Running    *int32 `json:"running,omitempty" xml:"running,omitempty"`
-	Starting   *int32 `json:"starting,omitempty" xml:"starting,omitempty"`
+	// example:
+	//
+	// 1
+	Failed *int32 `json:"failed,omitempty" xml:"failed,omitempty"`
+	// example:
+	//
+	// 1
+	Finished *int32 `json:"finished,omitempty" xml:"finished,omitempty"`
+	// example:
+	//
+	// 1
+	Running *int32 `json:"running,omitempty" xml:"running,omitempty"`
+	// example:
+	//
+	// 1
+	Starting *int32 `json:"starting,omitempty" xml:"starting,omitempty"`
 }
 
 func (s JobSummary) String() string {
@@ -836,9 +1150,44 @@ func (s *JobSummary) SetStarting(v int32) *JobSummary {
 	return s
 }
 
+type LocalVariable struct {
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// datagen
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s LocalVariable) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LocalVariable) GoString() string {
+	return s.String()
+}
+
+func (s *LocalVariable) SetName(v string) *LocalVariable {
+	s.Name = &v
+	return s
+}
+
+func (s *LocalVariable) SetValue(v string) *LocalVariable {
+	s.Value = &v
+	return s
+}
+
 type Log4jLogger struct {
+	// example:
+	//
+	// ERROR
 	LoggerLevel *string `json:"loggerLevel,omitempty" xml:"loggerLevel,omitempty"`
-	LoggerName  *string `json:"loggerName,omitempty" xml:"loggerName,omitempty"`
+	// example:
+	//
+	// StdOutErrConsoleAppender
+	LoggerName *string `json:"loggerName,omitempty" xml:"loggerName,omitempty"`
 }
 
 func (s Log4jLogger) String() string {
@@ -860,8 +1209,14 @@ func (s *Log4jLogger) SetLoggerName(v string) *Log4jLogger {
 }
 
 type LogReservePolicy struct {
+	// example:
+	//
+	// 7
 	ExpirationDays *int64 `json:"expirationDays,omitempty" xml:"expirationDays,omitempty"`
-	OpenHistory    *bool  `json:"openHistory,omitempty" xml:"openHistory,omitempty"`
+	// example:
+	//
+	// true
+	OpenHistory *bool `json:"openHistory,omitempty" xml:"openHistory,omitempty"`
 }
 
 func (s LogReservePolicy) String() string {
@@ -883,10 +1238,16 @@ func (s *LogReservePolicy) SetOpenHistory(v bool) *LogReservePolicy {
 }
 
 type Logging struct {
+	// example:
+	//
+	// xml格式文本
 	Log4j2ConfigurationTemplate *string           `json:"log4j2ConfigurationTemplate,omitempty" xml:"log4j2ConfigurationTemplate,omitempty"`
 	Log4jLoggers                []*Log4jLogger    `json:"log4jLoggers,omitempty" xml:"log4jLoggers,omitempty" type:"Repeated"`
 	LogReservePolicy            *LogReservePolicy `json:"logReservePolicy,omitempty" xml:"logReservePolicy,omitempty"`
-	LoggingProfile              *string           `json:"loggingProfile,omitempty" xml:"loggingProfile,omitempty"`
+	// example:
+	//
+	// oss
+	LoggingProfile *string `json:"loggingProfile,omitempty" xml:"loggingProfile,omitempty"`
 }
 
 func (s Logging) String() string {
@@ -918,8 +1279,16 @@ func (s *Logging) SetLoggingProfile(v string) *Logging {
 }
 
 type Member struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user: 181319557522****
 	Member *string `json:"member,omitempty" xml:"member,omitempty"`
-	Role   *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// VIEWER
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 
 func (s Member) String() string {
@@ -946,7 +1315,10 @@ type PythonArtifact struct {
 	AdditionalPythonLibraries []*string `json:"additionalPythonLibraries,omitempty" xml:"additionalPythonLibraries,omitempty" type:"Repeated"`
 	EntryModule               *string   `json:"entryModule,omitempty" xml:"entryModule,omitempty"`
 	MainArgs                  *string   `json:"mainArgs,omitempty" xml:"mainArgs,omitempty"`
-	PythonArtifactUri         *string   `json:"pythonArtifactUri,omitempty" xml:"pythonArtifactUri,omitempty"`
+	// example:
+	//
+	// https://oss//bucket//test.py
+	PythonArtifactUri *string `json:"pythonArtifactUri,omitempty" xml:"pythonArtifactUri,omitempty"`
 }
 
 func (s PythonArtifact) String() string {
@@ -988,18 +1360,48 @@ func (s *PythonArtifact) SetPythonArtifactUri(v string) *PythonArtifact {
 }
 
 type Savepoint struct {
-	CreatedAt            *int64           `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	DeploymentId         *string          `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	Description          *string          `json:"description,omitempty" xml:"description,omitempty"`
-	JobId                *string          `json:"jobId,omitempty" xml:"jobId,omitempty"`
-	ModifiedAt           *int64           `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
-	Namespace            *string          `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	NativeFormat         *bool            `json:"nativeFormat,omitempty" xml:"nativeFormat,omitempty"`
-	SavepointId          *string          `json:"savepointId,omitempty" xml:"savepointId,omitempty"`
-	SavepointLocation    *string          `json:"savepointLocation,omitempty" xml:"savepointLocation,omitempty"`
-	SavepointOrigin      *string          `json:"savepointOrigin,omitempty" xml:"savepointOrigin,omitempty"`
-	Status               *SavepointStatus `json:"status,omitempty" xml:"status,omitempty"`
-	StopWithDrainEnabled *bool            `json:"stopWithDrainEnabled,omitempty" xml:"stopWithDrainEnabled,omitempty"`
+	// example:
+	//
+	// 1659066711
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// 1d716b22-6aad-4be2-85c2-50cfc757****
+	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 5af678c0-7db0-4650-94c2-d2604f0a****
+	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// example:
+	//
+	// 1659069473
+	ModifiedAt *int64 `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
+	// example:
+	//
+	// namespacetest
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// TRUE
+	NativeFormat *bool `json:"nativeFormat,omitempty" xml:"nativeFormat,omitempty"`
+	// example:
+	//
+	// 354dde66-a3ae-463e-967a-0b4107fd****
+	SavepointId *string `json:"savepointId,omitempty" xml:"savepointId,omitempty"`
+	// example:
+	//
+	// https://oss/bucket/flink/flink-jobs/namespaces/vvp-team/deployments/5a19a71b-1c42-4f34-94fd-86cf60782c81/checkpoints/sp-3285
+	SavepointLocation *string `json:"savepointLocation,omitempty" xml:"savepointLocation,omitempty"`
+	// example:
+	//
+	// USER_REQUEST
+	SavepointOrigin *string          `json:"savepointOrigin,omitempty" xml:"savepointOrigin,omitempty"`
+	Status          *SavepointStatus `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// TRUE
+	StopWithDrainEnabled *bool `json:"stopWithDrainEnabled,omitempty" xml:"stopWithDrainEnabled,omitempty"`
 }
 
 func (s Savepoint) String() string {
@@ -1071,6 +1473,9 @@ func (s *Savepoint) SetStopWithDrainEnabled(v bool) *Savepoint {
 }
 
 type SavepointFailure struct {
+	// example:
+	//
+	// 1655006835
 	FailedAt *int64  `json:"failedAt,omitempty" xml:"failedAt,omitempty"`
 	Message  *string `json:"message,omitempty" xml:"message,omitempty"`
 	Reason   *string `json:"reason,omitempty" xml:"reason,omitempty"`
@@ -1101,7 +1506,10 @@ func (s *SavepointFailure) SetReason(v string) *SavepointFailure {
 
 type SavepointStatus struct {
 	Failure *SavepointFailure `json:"failure,omitempty" xml:"failure,omitempty"`
-	State   *string           `json:"state,omitempty" xml:"state,omitempty"`
+	// example:
+	//
+	// COMPLETED
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
 }
 
 func (s SavepointStatus) String() string {
@@ -1145,7 +1553,100 @@ func (s *SqlArtifact) SetSqlScript(v string) *SqlArtifact {
 	return s
 }
 
+type SqlStatementValidationResult struct {
+	ErrorDetails     *ErrorDetails `json:"errorDetails,omitempty" xml:"errorDetails,omitempty"`
+	Message          *string       `json:"message,omitempty" xml:"message,omitempty"`
+	Success          *bool         `json:"success,omitempty" xml:"success,omitempty"`
+	ValidationResult *string       `json:"validationResult,omitempty" xml:"validationResult,omitempty"`
+}
+
+func (s SqlStatementValidationResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SqlStatementValidationResult) GoString() string {
+	return s.String()
+}
+
+func (s *SqlStatementValidationResult) SetErrorDetails(v *ErrorDetails) *SqlStatementValidationResult {
+	s.ErrorDetails = v
+	return s
+}
+
+func (s *SqlStatementValidationResult) SetMessage(v string) *SqlStatementValidationResult {
+	s.Message = &v
+	return s
+}
+
+func (s *SqlStatementValidationResult) SetSuccess(v bool) *SqlStatementValidationResult {
+	s.Success = &v
+	return s
+}
+
+func (s *SqlStatementValidationResult) SetValidationResult(v string) *SqlStatementValidationResult {
+	s.ValidationResult = &v
+	return s
+}
+
+type SqlStatementWithContext struct {
+	AdditionalDependencies []*string `json:"additionalDependencies,omitempty" xml:"additionalDependencies,omitempty" type:"Repeated"`
+	// This parameter is required.
+	BatchMode          *bool                  `json:"batchMode,omitempty" xml:"batchMode,omitempty"`
+	Catalog            *string                `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	Database           *string                `json:"database,omitempty" xml:"database,omitempty"`
+	FlinkConfiguration map[string]interface{} `json:"flinkConfiguration,omitempty" xml:"flinkConfiguration,omitempty"`
+	// This parameter is required.
+	Statement   *string `json:"statement,omitempty" xml:"statement,omitempty"`
+	VersionName *string `json:"versionName,omitempty" xml:"versionName,omitempty"`
+}
+
+func (s SqlStatementWithContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SqlStatementWithContext) GoString() string {
+	return s.String()
+}
+
+func (s *SqlStatementWithContext) SetAdditionalDependencies(v []*string) *SqlStatementWithContext {
+	s.AdditionalDependencies = v
+	return s
+}
+
+func (s *SqlStatementWithContext) SetBatchMode(v bool) *SqlStatementWithContext {
+	s.BatchMode = &v
+	return s
+}
+
+func (s *SqlStatementWithContext) SetCatalog(v string) *SqlStatementWithContext {
+	s.Catalog = &v
+	return s
+}
+
+func (s *SqlStatementWithContext) SetDatabase(v string) *SqlStatementWithContext {
+	s.Database = &v
+	return s
+}
+
+func (s *SqlStatementWithContext) SetFlinkConfiguration(v map[string]interface{}) *SqlStatementWithContext {
+	s.FlinkConfiguration = v
+	return s
+}
+
+func (s *SqlStatementWithContext) SetStatement(v string) *SqlStatementWithContext {
+	s.Statement = &v
+	return s
+}
+
+func (s *SqlStatementWithContext) SetVersionName(v string) *SqlStatementWithContext {
+	s.VersionName = &v
+	return s
+}
+
 type StartJobRequestBody struct {
+	// example:
+	//
+	// 5a19a71b-1c42-4f34-94fd-86cf60782c81
 	DeploymentId        *string                    `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
 	ResourceSettingSpec *BriefResourceSetting      `json:"resourceSettingSpec,omitempty" xml:"resourceSettingSpec,omitempty"`
 	RestoreStrategy     *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
@@ -1175,6 +1676,11 @@ func (s *StartJobRequestBody) SetRestoreStrategy(v *DeploymentRestoreStrategy) *
 }
 
 type StopJobRequestBody struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// NONE
 	StopStrategy *string `json:"stopStrategy,omitempty" xml:"stopStrategy,omitempty"`
 }
 
@@ -1194,7 +1700,10 @@ func (s *StopJobRequestBody) SetStopStrategy(v string) *StopJobRequestBody {
 type StreamingResourceSetting struct {
 	BasicResourceSetting  *BasicResourceSetting  `json:"basicResourceSetting,omitempty" xml:"basicResourceSetting,omitempty"`
 	ExpertResourceSetting *ExpertResourceSetting `json:"expertResourceSetting,omitempty" xml:"expertResourceSetting,omitempty"`
-	ResourceSettingMode   *string                `json:"resourceSettingMode,omitempty" xml:"resourceSettingMode,omitempty"`
+	// example:
+	//
+	// EXPERT
+	ResourceSettingMode *string `json:"resourceSettingMode,omitempty" xml:"resourceSettingMode,omitempty"`
 }
 
 func (s StreamingResourceSetting) String() string {
@@ -1221,10 +1730,28 @@ func (s *StreamingResourceSetting) SetResourceSettingMode(v string) *StreamingRe
 }
 
 type Variable struct {
+	// example:
+	//
+	// This is a variable description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Kind        *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
-	Value       *string `json:"value,omitempty" xml:"value,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Plain
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// variableName
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// variableValue
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s Variable) String() string {
@@ -1257,7 +1784,12 @@ func (s *Variable) SetValue(v string) *Variable {
 
 type CreateDeploymentHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s CreateDeploymentHeaders) String() string {
@@ -1279,6 +1811,7 @@ func (s *CreateDeploymentHeaders) SetWorkspace(v string) *CreateDeploymentHeader
 }
 
 type CreateDeploymentRequest struct {
+	// This parameter is required.
 	Body *Deployment `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1296,12 +1829,27 @@ func (s *CreateDeploymentRequest) SetBody(v *Deployment) *CreateDeploymentReques
 }
 
 type CreateDeploymentResponseBody struct {
-	Data         *Deployment `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string     `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32      `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string     `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool       `json:"success,omitempty" xml:"success,omitempty"`
+	Data *Deployment `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateDeploymentResponseBody) String() string {
@@ -1343,9 +1891,9 @@ func (s *CreateDeploymentResponseBody) SetSuccess(v bool) *CreateDeploymentRespo
 }
 
 type CreateDeploymentResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDeploymentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDeploymentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDeploymentResponse) String() string {
@@ -1373,7 +1921,12 @@ func (s *CreateDeploymentResponse) SetBody(v *CreateDeploymentResponseBody) *Cre
 
 type CreateMemberHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ca84d539167d4d
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s CreateMemberHeaders) String() string {
@@ -1412,12 +1965,27 @@ func (s *CreateMemberRequest) SetBody(v *Member) *CreateMemberRequest {
 }
 
 type CreateMemberResponseBody struct {
-	Data         *Member `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	Data *Member `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// F989CA70-2925-5A94-92B7-20F5762B71C8
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateMemberResponseBody) String() string {
@@ -1459,9 +2027,9 @@ func (s *CreateMemberResponseBody) SetSuccess(v bool) *CreateMemberResponseBody 
 }
 
 type CreateMemberResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateMemberResponse) String() string {
@@ -1489,7 +2057,12 @@ func (s *CreateMemberResponse) SetBody(v *CreateMemberResponseBody) *CreateMembe
 
 type CreateSavepointHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s CreateSavepointHeaders) String() string {
@@ -1511,9 +2084,17 @@ func (s *CreateSavepointHeaders) SetWorkspace(v string) *CreateSavepointHeaders 
 }
 
 type CreateSavepointRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 58718c99-3b29-4c5e-93bb-c9fc4ec6****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
 	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
-	NativeFormat *bool   `json:"nativeFormat,omitempty" xml:"nativeFormat,omitempty"`
+	// example:
+	//
+	// true
+	NativeFormat *bool `json:"nativeFormat,omitempty" xml:"nativeFormat,omitempty"`
 }
 
 func (s CreateSavepointRequest) String() string {
@@ -1540,12 +2121,27 @@ func (s *CreateSavepointRequest) SetNativeFormat(v bool) *CreateSavepointRequest
 }
 
 type CreateSavepointResponseBody struct {
-	Data         *Savepoint `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string    `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string    `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32     `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool      `json:"success,omitempty" xml:"success,omitempty"`
+	Data *Savepoint `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateSavepointResponseBody) String() string {
@@ -1587,9 +2183,9 @@ func (s *CreateSavepointResponseBody) SetSuccess(v bool) *CreateSavepointRespons
 }
 
 type CreateSavepointResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSavepointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSavepointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSavepointResponse) String() string {
@@ -1617,7 +2213,12 @@ func (s *CreateSavepointResponse) SetBody(v *CreateSavepointResponseBody) *Creat
 
 type CreateVariableHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bda1c4a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s CreateVariableHeaders) String() string {
@@ -1639,6 +2240,7 @@ func (s *CreateVariableHeaders) SetWorkspace(v string) *CreateVariableHeaders {
 }
 
 type CreateVariableRequest struct {
+	// This parameter is required.
 	Body *Variable `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1656,12 +2258,27 @@ func (s *CreateVariableRequest) SetBody(v *Variable) *CreateVariableRequest {
 }
 
 type CreateVariableResponseBody struct {
-	Data         *Variable `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string   `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32    `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool     `json:"success,omitempty" xml:"success,omitempty"`
+	Data *Variable `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-ABCD-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateVariableResponseBody) String() string {
@@ -1703,9 +2320,9 @@ func (s *CreateVariableResponseBody) SetSuccess(v bool) *CreateVariableResponseB
 }
 
 type CreateVariableResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVariableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVariableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVariableResponse) String() string {
@@ -1733,7 +2350,12 @@ func (s *CreateVariableResponse) SetBody(v *CreateVariableResponseBody) *CreateV
 
 type DeleteDeploymentHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s DeleteDeploymentHeaders) String() string {
@@ -1755,11 +2377,26 @@ func (s *DeleteDeploymentHeaders) SetWorkspace(v string) *DeleteDeploymentHeader
 }
 
 type DeleteDeploymentResponseBody struct {
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteDeploymentResponseBody) String() string {
@@ -1796,9 +2433,9 @@ func (s *DeleteDeploymentResponseBody) SetSuccess(v bool) *DeleteDeploymentRespo
 }
 
 type DeleteDeploymentResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDeploymentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDeploymentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDeploymentResponse) String() string {
@@ -1826,7 +2463,12 @@ func (s *DeleteDeploymentResponse) SetBody(v *DeleteDeploymentResponseBody) *Del
 
 type DeleteJobHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s DeleteJobHeaders) String() string {
@@ -1848,11 +2490,26 @@ func (s *DeleteJobHeaders) SetWorkspace(v string) *DeleteJobHeaders {
 }
 
 type DeleteJobResponseBody struct {
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteJobResponseBody) String() string {
@@ -1889,9 +2546,9 @@ func (s *DeleteJobResponseBody) SetSuccess(v bool) *DeleteJobResponseBody {
 }
 
 type DeleteJobResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteJobResponse) String() string {
@@ -1919,7 +2576,12 @@ func (s *DeleteJobResponse) SetBody(v *DeleteJobResponseBody) *DeleteJobResponse
 
 type DeleteMemberHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 710d6a64d8c34d
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s DeleteMemberHeaders) String() string {
@@ -1941,11 +2603,26 @@ func (s *DeleteMemberHeaders) SetWorkspace(v string) *DeleteMemberHeaders {
 }
 
 type DeleteMemberResponseBody struct {
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteMemberResponseBody) String() string {
@@ -1982,9 +2659,9 @@ func (s *DeleteMemberResponseBody) SetSuccess(v bool) *DeleteMemberResponseBody 
 }
 
 type DeleteMemberResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteMemberResponse) String() string {
@@ -2012,7 +2689,12 @@ func (s *DeleteMemberResponse) SetBody(v *DeleteMemberResponseBody) *DeleteMembe
 
 type DeleteSavepointHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s DeleteSavepointHeaders) String() string {
@@ -2034,11 +2716,26 @@ func (s *DeleteSavepointHeaders) SetWorkspace(v string) *DeleteSavepointHeaders 
 }
 
 type DeleteSavepointResponseBody struct {
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteSavepointResponseBody) String() string {
@@ -2075,9 +2772,9 @@ func (s *DeleteSavepointResponseBody) SetSuccess(v bool) *DeleteSavepointRespons
 }
 
 type DeleteSavepointResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSavepointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSavepointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSavepointResponse) String() string {
@@ -2105,7 +2802,12 @@ func (s *DeleteSavepointResponse) SetBody(v *DeleteSavepointResponseBody) *Delet
 
 type DeleteVariableHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s DeleteVariableHeaders) String() string {
@@ -2127,11 +2829,26 @@ func (s *DeleteVariableHeaders) SetWorkspace(v string) *DeleteVariableHeaders {
 }
 
 type DeleteVariableResponseBody struct {
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteVariableResponseBody) String() string {
@@ -2168,9 +2885,9 @@ func (s *DeleteVariableResponseBody) SetSuccess(v bool) *DeleteVariableResponseB
 }
 
 type DeleteVariableResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVariableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVariableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVariableResponse) String() string {
@@ -2198,7 +2915,12 @@ func (s *DeleteVariableResponse) SetBody(v *DeleteVariableResponseBody) *DeleteV
 
 type FlinkApiProxyHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s FlinkApiProxyHeaders) String() string {
@@ -2220,9 +2942,29 @@ func (s *FlinkApiProxyHeaders) SetWorkspace(v string) *FlinkApiProxyHeaders {
 }
 
 type FlinkApiProxyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /jobs/4df35f8e54554b23bf7dcd38a151****
 	FlinkApiPath *string `json:"flinkApiPath,omitempty" xml:"flinkApiPath,omitempty"`
-	Namespace    *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	ResourceId   *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default-namespace
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5a27a3aa-c5b9-4dc1-8c86-be57d2d6****
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// jobs
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -2255,12 +2997,30 @@ func (s *FlinkApiProxyRequest) SetResourceType(v string) *FlinkApiProxyRequest {
 }
 
 type FlinkApiProxyResponseBody struct {
-	Data         *string `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// { "jobs": [ { "jid": "4df35f8e54554b23bf7dcd38a151****", "name": "69d001d5-419a-4bfc-9c2e-849cacd3****", "state": "RUNNING", "start-time": 1659154942068, "end-time": -1, "duration": 188161756, "last-modification": 1659154968305, "tasks": { "total": 2, "created": 0, "scheduled": 0, "deploying": 0, "running": 2, "finished": 0, "canceling": 0, "canceled": 0, "failed": 0, "reconciling": 0, "initializing": 0 } } ] }
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s FlinkApiProxyResponseBody) String() string {
@@ -2302,9 +3062,9 @@ func (s *FlinkApiProxyResponseBody) SetSuccess(v bool) *FlinkApiProxyResponseBod
 }
 
 type FlinkApiProxyResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FlinkApiProxyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FlinkApiProxyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FlinkApiProxyResponse) String() string {
@@ -2332,7 +3092,12 @@ func (s *FlinkApiProxyResponse) SetBody(v *FlinkApiProxyResponseBody) *FlinkApiP
 
 type GenerateResourcePlanWithFlinkConfAsyncHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s GenerateResourcePlanWithFlinkConfAsyncHeaders) String() string {
@@ -2371,12 +3136,27 @@ func (s *GenerateResourcePlanWithFlinkConfAsyncRequest) SetBody(v map[string]int
 }
 
 type GenerateResourcePlanWithFlinkConfAsyncResponseBody struct {
-	Data         *GenerateResourcePlanWithFlinkConfAsyncResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrorCode    *string                                                 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string                                                 `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32                                                  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string                                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool                                                   `json:"success,omitempty" xml:"success,omitempty"`
+	Data *GenerateResourcePlanWithFlinkConfAsyncResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GenerateResourcePlanWithFlinkConfAsyncResponseBody) String() string {
@@ -2418,6 +3198,9 @@ func (s *GenerateResourcePlanWithFlinkConfAsyncResponseBody) SetSuccess(v bool) 
 }
 
 type GenerateResourcePlanWithFlinkConfAsyncResponseBodyData struct {
+	// example:
+	//
+	// b3dcdb25-bf36-457d-92ba-a36077e8****
 	TicketId *string `json:"ticketId,omitempty" xml:"ticketId,omitempty"`
 }
 
@@ -2435,9 +3218,9 @@ func (s *GenerateResourcePlanWithFlinkConfAsyncResponseBodyData) SetTicketId(v s
 }
 
 type GenerateResourcePlanWithFlinkConfAsyncResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateResourcePlanWithFlinkConfAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateResourcePlanWithFlinkConfAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateResourcePlanWithFlinkConfAsyncResponse) String() string {
@@ -2465,7 +3248,12 @@ func (s *GenerateResourcePlanWithFlinkConfAsyncResponse) SetBody(v *GenerateReso
 
 type GetDeploymentHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s GetDeploymentHeaders) String() string {
@@ -2487,12 +3275,27 @@ func (s *GetDeploymentHeaders) SetWorkspace(v string) *GetDeploymentHeaders {
 }
 
 type GetDeploymentResponseBody struct {
-	Data         *Deployment `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string     `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32      `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string     `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool       `json:"success,omitempty" xml:"success,omitempty"`
+	Data *Deployment `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetDeploymentResponseBody) String() string {
@@ -2534,9 +3337,9 @@ func (s *GetDeploymentResponseBody) SetSuccess(v bool) *GetDeploymentResponseBod
 }
 
 type GetDeploymentResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDeploymentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeploymentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDeploymentResponse) String() string {
@@ -2564,7 +3367,12 @@ func (s *GetDeploymentResponse) SetBody(v *GetDeploymentResponseBody) *GetDeploy
 
 type GetGenerateResourcePlanResultHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s GetGenerateResourcePlanResultHeaders) String() string {
@@ -2586,12 +3394,27 @@ func (s *GetGenerateResourcePlanResultHeaders) SetWorkspace(v string) *GetGenera
 }
 
 type GetGenerateResourcePlanResultResponseBody struct {
-	Data         *AsyncResourcePlanOperationResult `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string                           `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32                            `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+	Data *AsyncResourcePlanOperationResult `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetGenerateResourcePlanResultResponseBody) String() string {
@@ -2633,9 +3456,9 @@ func (s *GetGenerateResourcePlanResultResponseBody) SetSuccess(v bool) *GetGener
 }
 
 type GetGenerateResourcePlanResultResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetGenerateResourcePlanResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGenerateResourcePlanResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetGenerateResourcePlanResultResponse) String() string {
@@ -2663,7 +3486,12 @@ func (s *GetGenerateResourcePlanResultResponse) SetBody(v *GetGenerateResourcePl
 
 type GetJobHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s GetJobHeaders) String() string {
@@ -2685,12 +3513,27 @@ func (s *GetJobHeaders) SetWorkspace(v string) *GetJobHeaders {
 }
 
 type GetJobResponseBody struct {
-	Data         *Job    `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	Data *Job `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetJobResponseBody) String() string {
@@ -2732,9 +3575,9 @@ func (s *GetJobResponseBody) SetSuccess(v bool) *GetJobResponseBody {
 }
 
 type GetJobResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetJobResponse) String() string {
@@ -2762,7 +3605,12 @@ func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
 
 type GetMemberHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s GetMemberHeaders) String() string {
@@ -2784,12 +3632,27 @@ func (s *GetMemberHeaders) SetWorkspace(v string) *GetMemberHeaders {
 }
 
 type GetMemberResponseBody struct {
-	Data         *Member `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	Data *Member `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetMemberResponseBody) String() string {
@@ -2831,9 +3694,9 @@ func (s *GetMemberResponseBody) SetSuccess(v bool) *GetMemberResponseBody {
 }
 
 type GetMemberResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMemberResponse) String() string {
@@ -2861,7 +3724,12 @@ func (s *GetMemberResponse) SetBody(v *GetMemberResponseBody) *GetMemberResponse
 
 type GetSavepointHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s GetSavepointHeaders) String() string {
@@ -2883,12 +3751,27 @@ func (s *GetSavepointHeaders) SetWorkspace(v string) *GetSavepointHeaders {
 }
 
 type GetSavepointResponseBody struct {
-	Data         *Savepoint `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string    `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string    `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32     `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool      `json:"success,omitempty" xml:"success,omitempty"`
+	Data *Savepoint `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetSavepointResponseBody) String() string {
@@ -2930,9 +3813,9 @@ func (s *GetSavepointResponseBody) SetSuccess(v bool) *GetSavepointResponseBody 
 }
 
 type GetSavepointResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSavepointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSavepointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSavepointResponse) String() string {
@@ -2960,7 +3843,12 @@ func (s *GetSavepointResponse) SetBody(v *GetSavepointResponseBody) *GetSavepoin
 
 type ListDeploymentTargetsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListDeploymentTargetsHeaders) String() string {
@@ -2982,8 +3870,14 @@ func (s *ListDeploymentTargetsHeaders) SetWorkspace(v string) *ListDeploymentTar
 }
 
 type ListDeploymentTargetsRequest struct {
+	// example:
+	//
+	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	PageSize  *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListDeploymentTargetsRequest) String() string {
@@ -3005,15 +3899,39 @@ func (s *ListDeploymentTargetsRequest) SetPageSize(v int32) *ListDeploymentTarge
 }
 
 type ListDeploymentTargetsResponseBody struct {
-	Data         []*DeploymentTarget `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	ErrorCode    *string             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string             `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32              `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	PageIndex    *int32              `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	PageSize     *int32              `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId    *string             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool               `json:"success,omitempty" xml:"success,omitempty"`
-	TotalSize    *int32              `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+	Data []*DeploymentTarget `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 1
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
 func (s ListDeploymentTargetsResponseBody) String() string {
@@ -3070,9 +3988,9 @@ func (s *ListDeploymentTargetsResponseBody) SetTotalSize(v int32) *ListDeploymen
 }
 
 type ListDeploymentTargetsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDeploymentTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDeploymentTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDeploymentTargetsResponse) String() string {
@@ -3100,7 +4018,12 @@ func (s *ListDeploymentTargetsResponse) SetBody(v *ListDeploymentTargetsResponse
 
 type ListDeploymentsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListDeploymentsHeaders) String() string {
@@ -3122,10 +4045,21 @@ func (s *ListDeploymentsHeaders) SetWorkspace(v string) *ListDeploymentsHeaders 
 }
 
 type ListDeploymentsRequest struct {
-	ExecutionMode *string `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
-	PageIndex     *int32  `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	PageSize      *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Creator         *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	ExecutionMode   *string `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
+	LabelKey        *string `json:"labelKey,omitempty" xml:"labelKey,omitempty"`
+	LabelValueArray *string `json:"labelValueArray,omitempty" xml:"labelValueArray,omitempty"`
+	Modifier        *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Status   *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListDeploymentsRequest) String() string {
@@ -3136,8 +4070,28 @@ func (s ListDeploymentsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDeploymentsRequest) SetCreator(v string) *ListDeploymentsRequest {
+	s.Creator = &v
+	return s
+}
+
 func (s *ListDeploymentsRequest) SetExecutionMode(v string) *ListDeploymentsRequest {
 	s.ExecutionMode = &v
+	return s
+}
+
+func (s *ListDeploymentsRequest) SetLabelKey(v string) *ListDeploymentsRequest {
+	s.LabelKey = &v
+	return s
+}
+
+func (s *ListDeploymentsRequest) SetLabelValueArray(v string) *ListDeploymentsRequest {
+	s.LabelValueArray = &v
+	return s
+}
+
+func (s *ListDeploymentsRequest) SetModifier(v string) *ListDeploymentsRequest {
+	s.Modifier = &v
 	return s
 }
 
@@ -3156,16 +4110,45 @@ func (s *ListDeploymentsRequest) SetPageSize(v int32) *ListDeploymentsRequest {
 	return s
 }
 
+func (s *ListDeploymentsRequest) SetStatus(v string) *ListDeploymentsRequest {
+	s.Status = &v
+	return s
+}
+
 type ListDeploymentsResponseBody struct {
-	Data         []*Deployment `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	ErrorCode    *string       `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string       `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32        `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	PageIndex    *int32        `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	PageSize     *int32        `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId    *string       `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool         `json:"success,omitempty" xml:"success,omitempty"`
-	TotalSize    *int32        `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+	Data []*Deployment `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 1
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
 func (s ListDeploymentsResponseBody) String() string {
@@ -3222,9 +4205,9 @@ func (s *ListDeploymentsResponseBody) SetTotalSize(v int32) *ListDeploymentsResp
 }
 
 type ListDeploymentsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDeploymentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDeploymentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDeploymentsResponse) String() string {
@@ -3250,9 +4233,167 @@ func (s *ListDeploymentsResponse) SetBody(v *ListDeploymentsResponseBody) *ListD
 	return s
 }
 
+type ListEditableNamespaceRequest struct {
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	PageIndex *string `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	PageSize  *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// This parameter is required.
+	RegionId    *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListEditableNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEditableNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEditableNamespaceRequest) SetNamespace(v string) *ListEditableNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListEditableNamespaceRequest) SetPageIndex(v string) *ListEditableNamespaceRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListEditableNamespaceRequest) SetPageSize(v string) *ListEditableNamespaceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEditableNamespaceRequest) SetRegionId(v string) *ListEditableNamespaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListEditableNamespaceRequest) SetWorkspaceId(v string) *ListEditableNamespaceRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListEditableNamespaceResponseBody struct {
+	Data      *ListEditableNamespaceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	HttpCode  *int32                                 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Reason    *string                                `json:"reason,omitempty" xml:"reason,omitempty"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListEditableNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEditableNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEditableNamespaceResponseBody) SetData(v *ListEditableNamespaceResponseBodyData) *ListEditableNamespaceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEditableNamespaceResponseBody) SetHttpCode(v int32) *ListEditableNamespaceResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListEditableNamespaceResponseBody) SetMessage(v string) *ListEditableNamespaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEditableNamespaceResponseBody) SetReason(v string) *ListEditableNamespaceResponseBody {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListEditableNamespaceResponseBody) SetRequestId(v string) *ListEditableNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEditableNamespaceResponseBody) SetSuccess(v bool) *ListEditableNamespaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEditableNamespaceResponseBodyData struct {
+	EditableNamespaces []*EditableNamespace `json:"editableNamespaces,omitempty" xml:"editableNamespaces,omitempty" type:"Repeated"`
+	PageIndex          *string              `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	PageSize           *string              `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total              *string              `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListEditableNamespaceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEditableNamespaceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEditableNamespaceResponseBodyData) SetEditableNamespaces(v []*EditableNamespace) *ListEditableNamespaceResponseBodyData {
+	s.EditableNamespaces = v
+	return s
+}
+
+func (s *ListEditableNamespaceResponseBodyData) SetPageIndex(v string) *ListEditableNamespaceResponseBodyData {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListEditableNamespaceResponseBodyData) SetPageSize(v string) *ListEditableNamespaceResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEditableNamespaceResponseBodyData) SetTotal(v string) *ListEditableNamespaceResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListEditableNamespaceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEditableNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEditableNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEditableNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEditableNamespaceResponse) SetHeaders(v map[string]*string) *ListEditableNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEditableNamespaceResponse) SetStatusCode(v int32) *ListEditableNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEditableNamespaceResponse) SetBody(v *ListEditableNamespaceResponseBody) *ListEditableNamespaceResponse {
+	s.Body = v
+	return s
+}
+
 type ListEngineVersionMetadataHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListEngineVersionMetadataHeaders) String() string {
@@ -3274,12 +4415,27 @@ func (s *ListEngineVersionMetadataHeaders) SetWorkspace(v string) *ListEngineVer
 }
 
 type ListEngineVersionMetadataResponseBody struct {
-	Data         *EngineVersionMetadataIndex `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string                     `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32                      `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool                       `json:"success,omitempty" xml:"success,omitempty"`
+	Data *EngineVersionMetadataIndex `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListEngineVersionMetadataResponseBody) String() string {
@@ -3321,9 +4477,9 @@ func (s *ListEngineVersionMetadataResponseBody) SetSuccess(v bool) *ListEngineVe
 }
 
 type ListEngineVersionMetadataResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEngineVersionMetadataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEngineVersionMetadataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEngineVersionMetadataResponse) String() string {
@@ -3351,7 +4507,12 @@ func (s *ListEngineVersionMetadataResponse) SetBody(v *ListEngineVersionMetadata
 
 type ListJobsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListJobsHeaders) String() string {
@@ -3373,9 +4534,21 @@ func (s *ListJobsHeaders) SetWorkspace(v string) *ListJobsHeaders {
 }
 
 type ListJobsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 58718c99-3b29-4c5e-93bb-c9fc4ec6****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	PageIndex    *int32  `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	PageSize     *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	SortName *string `json:"sortName,omitempty" xml:"sortName,omitempty"`
 }
 
 func (s ListJobsRequest) String() string {
@@ -3401,16 +4574,45 @@ func (s *ListJobsRequest) SetPageSize(v int32) *ListJobsRequest {
 	return s
 }
 
+func (s *ListJobsRequest) SetSortName(v string) *ListJobsRequest {
+	s.SortName = &v
+	return s
+}
+
 type ListJobsResponseBody struct {
-	Data         []*Job  `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	Data []*Job `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	PageIndex    *int32  `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	PageSize     *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TotalSize    *int32  `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 1
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
 func (s ListJobsResponseBody) String() string {
@@ -3467,9 +4669,9 @@ func (s *ListJobsResponseBody) SetTotalSize(v int32) *ListJobsResponseBody {
 }
 
 type ListJobsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListJobsResponse) String() string {
@@ -3497,7 +4699,12 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 
 type ListMembersHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListMembersHeaders) String() string {
@@ -3519,8 +4726,14 @@ func (s *ListMembersHeaders) SetWorkspace(v string) *ListMembersHeaders {
 }
 
 type ListMembersRequest struct {
+	// example:
+	//
+	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	PageSize  *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListMembersRequest) String() string {
@@ -3542,15 +4755,39 @@ func (s *ListMembersRequest) SetPageSize(v int32) *ListMembersRequest {
 }
 
 type ListMembersResponseBody struct {
-	Data         []*Member `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	ErrorCode    *string   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string   `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32    `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	PageIndex    *int32    `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	PageSize     *int32    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId    *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool     `json:"success,omitempty" xml:"success,omitempty"`
-	TotalSize    *int32    `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+	Data []*Member `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 50
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
 func (s ListMembersResponseBody) String() string {
@@ -3607,9 +4844,9 @@ func (s *ListMembersResponseBody) SetTotalSize(v int32) *ListMembersResponseBody
 }
 
 type ListMembersResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListMembersResponse) String() string {
@@ -3637,7 +4874,12 @@ func (s *ListMembersResponse) SetBody(v *ListMembersResponseBody) *ListMembersRe
 
 type ListSavepointsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListSavepointsHeaders) String() string {
@@ -3659,10 +4901,22 @@ func (s *ListSavepointsHeaders) SetWorkspace(v string) *ListSavepointsHeaders {
 }
 
 type ListSavepointsRequest struct {
+	// example:
+	//
+	// 88a8fc49-e090-430a-85d8-3ee8c79c****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	JobId        *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
-	PageIndex    *int32  `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	PageSize     *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 99a8fc49-e090-430a-85d8-3ee8c79c****
+	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListSavepointsRequest) String() string {
@@ -3694,15 +4948,39 @@ func (s *ListSavepointsRequest) SetPageSize(v int32) *ListSavepointsRequest {
 }
 
 type ListSavepointsResponseBody struct {
-	Data         []*Savepoint `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	ErrorCode    *string      `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string      `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32       `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	PageIndex    *int32       `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	PageSize     *int32       `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId    *string      `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool        `json:"success,omitempty" xml:"success,omitempty"`
-	TotalSize    *int32       `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+	Data []*Savepoint `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 1
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
 func (s ListSavepointsResponseBody) String() string {
@@ -3759,9 +5037,9 @@ func (s *ListSavepointsResponseBody) SetTotalSize(v int32) *ListSavepointsRespon
 }
 
 type ListSavepointsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSavepointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSavepointsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSavepointsResponse) String() string {
@@ -3789,7 +5067,12 @@ func (s *ListSavepointsResponse) SetBody(v *ListSavepointsResponseBody) *ListSav
 
 type ListVariablesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bda1c4a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListVariablesHeaders) String() string {
@@ -3811,8 +5094,14 @@ func (s *ListVariablesHeaders) SetWorkspace(v string) *ListVariablesHeaders {
 }
 
 type ListVariablesRequest struct {
+	// example:
+	//
+	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	PageSize  *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListVariablesRequest) String() string {
@@ -3834,15 +5123,39 @@ func (s *ListVariablesRequest) SetPageSize(v int32) *ListVariablesRequest {
 }
 
 type ListVariablesResponseBody struct {
-	Data         []*Variable `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	ErrorCode    *string     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string     `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32      `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	PageIndex    *int32      `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	PageSize     *int32      `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId    *string     `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool       `json:"success,omitempty" xml:"success,omitempty"`
-	TotalSize    *int32      `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+	Data []*Variable `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// CBC799F0-ABCF-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 1
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
 func (s ListVariablesResponseBody) String() string {
@@ -3899,9 +5212,9 @@ func (s *ListVariablesResponseBody) SetTotalSize(v int32) *ListVariablesResponse
 }
 
 type ListVariablesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListVariablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVariablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListVariablesResponse) String() string {
@@ -3929,7 +5242,12 @@ func (s *ListVariablesResponse) SetBody(v *ListVariablesResponseBody) *ListVaria
 
 type StartJobHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s StartJobHeaders) String() string {
@@ -3951,6 +5269,7 @@ func (s *StartJobHeaders) SetWorkspace(v string) *StartJobHeaders {
 }
 
 type StartJobRequest struct {
+	// This parameter is required.
 	Body *StartJobRequestBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3968,12 +5287,27 @@ func (s *StartJobRequest) SetBody(v *StartJobRequestBody) *StartJobRequest {
 }
 
 type StartJobResponseBody struct {
-	Data         *Job    `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	Data *Job `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s StartJobResponseBody) String() string {
@@ -4015,9 +5349,9 @@ func (s *StartJobResponseBody) SetSuccess(v bool) *StartJobResponseBody {
 }
 
 type StartJobResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartJobResponse) String() string {
@@ -4045,7 +5379,12 @@ func (s *StartJobResponse) SetBody(v *StartJobResponseBody) *StartJobResponse {
 
 type StartJobWithParamsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s StartJobWithParamsHeaders) String() string {
@@ -4084,12 +5423,27 @@ func (s *StartJobWithParamsRequest) SetBody(v *JobStartParameters) *StartJobWith
 }
 
 type StartJobWithParamsResponseBody struct {
-	Data         *Job    `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	Data *Job `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s StartJobWithParamsResponseBody) String() string {
@@ -4131,9 +5485,9 @@ func (s *StartJobWithParamsResponseBody) SetSuccess(v bool) *StartJobWithParamsR
 }
 
 type StartJobWithParamsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartJobWithParamsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartJobWithParamsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartJobWithParamsResponse) String() string {
@@ -4161,7 +5515,12 @@ func (s *StartJobWithParamsResponse) SetBody(v *StartJobWithParamsResponseBody) 
 
 type StopJobHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s StopJobHeaders) String() string {
@@ -4183,6 +5542,7 @@ func (s *StopJobHeaders) SetWorkspace(v string) *StopJobHeaders {
 }
 
 type StopJobRequest struct {
+	// This parameter is required.
 	Body *StopJobRequestBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4200,12 +5560,27 @@ func (s *StopJobRequest) SetBody(v *StopJobRequestBody) *StopJobRequest {
 }
 
 type StopJobResponseBody struct {
-	Data         *Job    `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	Data *Job `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s StopJobResponseBody) String() string {
@@ -4247,9 +5622,9 @@ func (s *StopJobResponseBody) SetSuccess(v bool) *StopJobResponseBody {
 }
 
 type StopJobResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopJobResponse) String() string {
@@ -4277,7 +5652,12 @@ func (s *StopJobResponse) SetBody(v *StopJobResponseBody) *StopJobResponse {
 
 type UpdateDeploymentHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s UpdateDeploymentHeaders) String() string {
@@ -4299,6 +5679,7 @@ func (s *UpdateDeploymentHeaders) SetWorkspace(v string) *UpdateDeploymentHeader
 }
 
 type UpdateDeploymentRequest struct {
+	// This parameter is required.
 	Body *Deployment `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4316,12 +5697,27 @@ func (s *UpdateDeploymentRequest) SetBody(v *Deployment) *UpdateDeploymentReques
 }
 
 type UpdateDeploymentResponseBody struct {
-	Data         *Deployment `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string     `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32      `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string     `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool       `json:"success,omitempty" xml:"success,omitempty"`
+	Data *Deployment `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateDeploymentResponseBody) String() string {
@@ -4363,9 +5759,9 @@ func (s *UpdateDeploymentResponseBody) SetSuccess(v bool) *UpdateDeploymentRespo
 }
 
 type UpdateDeploymentResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateDeploymentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDeploymentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateDeploymentResponse) String() string {
@@ -4393,7 +5789,12 @@ func (s *UpdateDeploymentResponse) SetBody(v *UpdateDeploymentResponseBody) *Upd
 
 type UpdateMemberHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s UpdateMemberHeaders) String() string {
@@ -4432,12 +5833,27 @@ func (s *UpdateMemberRequest) SetBody(v *Member) *UpdateMemberRequest {
 }
 
 type UpdateMemberResponseBody struct {
-	Data         *Member `json:"data,omitempty" xml:"data,omitempty"`
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	Data *Member `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateMemberResponseBody) String() string {
@@ -4479,9 +5895,9 @@ func (s *UpdateMemberResponseBody) SetSuccess(v bool) *UpdateMemberResponseBody 
 }
 
 type UpdateMemberResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateMemberResponse) String() string {
@@ -4554,6 +5970,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// create a deployment
+//
+// @param request - CreateDeploymentRequest
+//
+// @param headers - CreateDeploymentHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDeploymentResponse
 func (client *Client) CreateDeploymentWithOptions(namespace *string, request *CreateDeploymentRequest, headers *CreateDeploymentHeaders, runtime *util.RuntimeOptions) (_result *CreateDeploymentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4592,6 +6019,13 @@ func (client *Client) CreateDeploymentWithOptions(namespace *string, request *Cr
 	return _result, _err
 }
 
+// Summary:
+//
+// create a deployment
+//
+// @param request - CreateDeploymentRequest
+//
+// @return CreateDeploymentResponse
 func (client *Client) CreateDeployment(namespace *string, request *CreateDeploymentRequest) (_result *CreateDeploymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateDeploymentHeaders{}
@@ -4604,6 +6038,17 @@ func (client *Client) CreateDeployment(namespace *string, request *CreateDeploym
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用CreateMember创建成员。
+//
+// @param request - CreateMemberRequest
+//
+// @param headers - CreateMemberHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMemberResponse
 func (client *Client) CreateMemberWithOptions(namespace *string, request *CreateMemberRequest, headers *CreateMemberHeaders, runtime *util.RuntimeOptions) (_result *CreateMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4642,6 +6087,13 @@ func (client *Client) CreateMemberWithOptions(namespace *string, request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用CreateMember创建成员。
+//
+// @param request - CreateMemberRequest
+//
+// @return CreateMemberResponse
 func (client *Client) CreateMember(namespace *string, request *CreateMemberRequest) (_result *CreateMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateMemberHeaders{}
@@ -4654,6 +6106,17 @@ func (client *Client) CreateMember(namespace *string, request *CreateMemberReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用CreateSavepoint触发一次savepoint。
+//
+// @param request - CreateSavepointRequest
+//
+// @param headers - CreateSavepointHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSavepointResponse
 func (client *Client) CreateSavepointWithOptions(namespace *string, request *CreateSavepointRequest, headers *CreateSavepointHeaders, runtime *util.RuntimeOptions) (_result *CreateSavepointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4705,6 +6168,13 @@ func (client *Client) CreateSavepointWithOptions(namespace *string, request *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用CreateSavepoint触发一次savepoint。
+//
+// @param request - CreateSavepointRequest
+//
+// @return CreateSavepointResponse
 func (client *Client) CreateSavepoint(namespace *string, request *CreateSavepointRequest) (_result *CreateSavepointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateSavepointHeaders{}
@@ -4717,6 +6187,17 @@ func (client *Client) CreateSavepoint(namespace *string, request *CreateSavepoin
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用CreateVariable创建变量。
+//
+// @param request - CreateVariableRequest
+//
+// @param headers - CreateVariableHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVariableResponse
 func (client *Client) CreateVariableWithOptions(namespace *string, request *CreateVariableRequest, headers *CreateVariableHeaders, runtime *util.RuntimeOptions) (_result *CreateVariableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4755,6 +6236,13 @@ func (client *Client) CreateVariableWithOptions(namespace *string, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用CreateVariable创建变量。
+//
+// @param request - CreateVariableRequest
+//
+// @return CreateVariableResponse
 func (client *Client) CreateVariable(namespace *string, request *CreateVariableRequest) (_result *CreateVariableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateVariableHeaders{}
@@ -4767,6 +6255,15 @@ func (client *Client) CreateVariable(namespace *string, request *CreateVariableR
 	return _result, _err
 }
 
+// Summary:
+//
+// delete deployment
+//
+// @param headers - DeleteDeploymentHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDeploymentResponse
 func (client *Client) DeleteDeploymentWithOptions(namespace *string, deploymentId *string, headers *DeleteDeploymentHeaders, runtime *util.RuntimeOptions) (_result *DeleteDeploymentResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -4800,6 +6297,11 @@ func (client *Client) DeleteDeploymentWithOptions(namespace *string, deploymentI
 	return _result, _err
 }
 
+// Summary:
+//
+// delete deployment
+//
+// @return DeleteDeploymentResponse
 func (client *Client) DeleteDeployment(namespace *string, deploymentId *string) (_result *DeleteDeploymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteDeploymentHeaders{}
@@ -4812,6 +6314,15 @@ func (client *Client) DeleteDeployment(namespace *string, deploymentId *string) 
 	return _result, _err
 }
 
+// Summary:
+//
+// delete job
+//
+// @param headers - DeleteJobHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteJobResponse
 func (client *Client) DeleteJobWithOptions(namespace *string, jobId *string, headers *DeleteJobHeaders, runtime *util.RuntimeOptions) (_result *DeleteJobResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -4845,6 +6356,11 @@ func (client *Client) DeleteJobWithOptions(namespace *string, jobId *string, hea
 	return _result, _err
 }
 
+// Summary:
+//
+// delete job
+//
+// @return DeleteJobResponse
 func (client *Client) DeleteJob(namespace *string, jobId *string) (_result *DeleteJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteJobHeaders{}
@@ -4857,6 +6373,15 @@ func (client *Client) DeleteJob(namespace *string, jobId *string) (_result *Dele
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DeleteMember删除成员。
+//
+// @param headers - DeleteMemberHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMemberResponse
 func (client *Client) DeleteMemberWithOptions(namespace *string, member *string, headers *DeleteMemberHeaders, runtime *util.RuntimeOptions) (_result *DeleteMemberResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -4890,6 +6415,11 @@ func (client *Client) DeleteMemberWithOptions(namespace *string, member *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DeleteMember删除成员。
+//
+// @return DeleteMemberResponse
 func (client *Client) DeleteMember(namespace *string, member *string) (_result *DeleteMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteMemberHeaders{}
@@ -4902,6 +6432,15 @@ func (client *Client) DeleteMember(namespace *string, member *string) (_result *
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DeleteSavepoint删除savepoint。
+//
+// @param headers - DeleteSavepointHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSavepointResponse
 func (client *Client) DeleteSavepointWithOptions(namespace *string, savepointId *string, headers *DeleteSavepointHeaders, runtime *util.RuntimeOptions) (_result *DeleteSavepointResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -4935,6 +6474,11 @@ func (client *Client) DeleteSavepointWithOptions(namespace *string, savepointId 
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用DeleteSavepoint删除savepoint。
+//
+// @return DeleteSavepointResponse
 func (client *Client) DeleteSavepoint(namespace *string, savepointId *string) (_result *DeleteSavepointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteSavepointHeaders{}
@@ -4947,6 +6491,15 @@ func (client *Client) DeleteSavepoint(namespace *string, savepointId *string) (_
 	return _result, _err
 }
 
+// Summary:
+//
+// deleta variable
+//
+// @param headers - DeleteVariableHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVariableResponse
 func (client *Client) DeleteVariableWithOptions(namespace *string, name *string, headers *DeleteVariableHeaders, runtime *util.RuntimeOptions) (_result *DeleteVariableResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -4980,6 +6533,11 @@ func (client *Client) DeleteVariableWithOptions(namespace *string, name *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// deleta variable
+//
+// @return DeleteVariableResponse
 func (client *Client) DeleteVariable(namespace *string, name *string) (_result *DeleteVariableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteVariableHeaders{}
@@ -4992,6 +6550,17 @@ func (client *Client) DeleteVariable(namespace *string, name *string) (_result *
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用FlinkApiProxy代理Flink请求。
+//
+// @param request - FlinkApiProxyRequest
+//
+// @param headers - FlinkApiProxyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlinkApiProxyResponse
 func (client *Client) FlinkApiProxyWithOptions(request *FlinkApiProxyRequest, headers *FlinkApiProxyHeaders, runtime *util.RuntimeOptions) (_result *FlinkApiProxyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5047,6 +6616,13 @@ func (client *Client) FlinkApiProxyWithOptions(request *FlinkApiProxyRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用FlinkApiProxy代理Flink请求。
+//
+// @param request - FlinkApiProxyRequest
+//
+// @return FlinkApiProxyResponse
 func (client *Client) FlinkApiProxy(request *FlinkApiProxyRequest) (_result *FlinkApiProxyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlinkApiProxyHeaders{}
@@ -5059,6 +6635,17 @@ func (client *Client) FlinkApiProxy(request *FlinkApiProxyRequest) (_result *Fli
 	return _result, _err
 }
 
+// Summary:
+//
+// generate resource plan with flink conf async.
+//
+// @param request - GenerateResourcePlanWithFlinkConfAsyncRequest
+//
+// @param headers - GenerateResourcePlanWithFlinkConfAsyncHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateResourcePlanWithFlinkConfAsyncResponse
 func (client *Client) GenerateResourcePlanWithFlinkConfAsyncWithOptions(namespace *string, deploymentId *string, request *GenerateResourcePlanWithFlinkConfAsyncRequest, headers *GenerateResourcePlanWithFlinkConfAsyncHeaders, runtime *util.RuntimeOptions) (_result *GenerateResourcePlanWithFlinkConfAsyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5097,6 +6684,13 @@ func (client *Client) GenerateResourcePlanWithFlinkConfAsyncWithOptions(namespac
 	return _result, _err
 }
 
+// Summary:
+//
+// generate resource plan with flink conf async.
+//
+// @param request - GenerateResourcePlanWithFlinkConfAsyncRequest
+//
+// @return GenerateResourcePlanWithFlinkConfAsyncResponse
 func (client *Client) GenerateResourcePlanWithFlinkConfAsync(namespace *string, deploymentId *string, request *GenerateResourcePlanWithFlinkConfAsyncRequest) (_result *GenerateResourcePlanWithFlinkConfAsyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GenerateResourcePlanWithFlinkConfAsyncHeaders{}
@@ -5109,6 +6703,15 @@ func (client *Client) GenerateResourcePlanWithFlinkConfAsync(namespace *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// get a deployment
+//
+// @param headers - GetDeploymentHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeploymentResponse
 func (client *Client) GetDeploymentWithOptions(namespace *string, deploymentId *string, headers *GetDeploymentHeaders, runtime *util.RuntimeOptions) (_result *GetDeploymentResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -5142,6 +6745,11 @@ func (client *Client) GetDeploymentWithOptions(namespace *string, deploymentId *
 	return _result, _err
 }
 
+// Summary:
+//
+// get a deployment
+//
+// @return GetDeploymentResponse
 func (client *Client) GetDeployment(namespace *string, deploymentId *string) (_result *GetDeploymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetDeploymentHeaders{}
@@ -5154,6 +6762,15 @@ func (client *Client) GetDeployment(namespace *string, deploymentId *string) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取生成ResourcePlan异步操作的结果。
+//
+// @param headers - GetGenerateResourcePlanResultHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGenerateResourcePlanResultResponse
 func (client *Client) GetGenerateResourcePlanResultWithOptions(namespace *string, ticketId *string, headers *GetGenerateResourcePlanResultHeaders, runtime *util.RuntimeOptions) (_result *GetGenerateResourcePlanResultResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -5187,6 +6804,11 @@ func (client *Client) GetGenerateResourcePlanResultWithOptions(namespace *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取生成ResourcePlan异步操作的结果。
+//
+// @return GetGenerateResourcePlanResultResponse
 func (client *Client) GetGenerateResourcePlanResult(namespace *string, ticketId *string) (_result *GetGenerateResourcePlanResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetGenerateResourcePlanResultHeaders{}
@@ -5199,6 +6821,15 @@ func (client *Client) GetGenerateResourcePlanResult(namespace *string, ticketId 
 	return _result, _err
 }
 
+// Summary:
+//
+// get job
+//
+// @param headers - GetJobHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobResponse
 func (client *Client) GetJobWithOptions(namespace *string, jobId *string, headers *GetJobHeaders, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -5232,6 +6863,11 @@ func (client *Client) GetJobWithOptions(namespace *string, jobId *string, header
 	return _result, _err
 }
 
+// Summary:
+//
+// get job
+//
+// @return GetJobResponse
 func (client *Client) GetJob(namespace *string, jobId *string) (_result *GetJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetJobHeaders{}
@@ -5244,6 +6880,15 @@ func (client *Client) GetJob(namespace *string, jobId *string) (_result *GetJobR
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用GetMember获取成员。
+//
+// @param headers - GetMemberHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemberResponse
 func (client *Client) GetMemberWithOptions(namespace *string, member *string, headers *GetMemberHeaders, runtime *util.RuntimeOptions) (_result *GetMemberResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -5277,6 +6922,11 @@ func (client *Client) GetMemberWithOptions(namespace *string, member *string, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用GetMember获取成员。
+//
+// @return GetMemberResponse
 func (client *Client) GetMember(namespace *string, member *string) (_result *GetMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetMemberHeaders{}
@@ -5289,6 +6939,15 @@ func (client *Client) GetMember(namespace *string, member *string) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用GetSavepoint获取savepoint信息。
+//
+// @param headers - GetSavepointHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSavepointResponse
 func (client *Client) GetSavepointWithOptions(namespace *string, savepointId *string, headers *GetSavepointHeaders, runtime *util.RuntimeOptions) (_result *GetSavepointResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -5322,6 +6981,11 @@ func (client *Client) GetSavepointWithOptions(namespace *string, savepointId *st
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用GetSavepoint获取savepoint信息。
+//
+// @return GetSavepointResponse
 func (client *Client) GetSavepoint(namespace *string, savepointId *string) (_result *GetSavepointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetSavepointHeaders{}
@@ -5334,6 +6998,17 @@ func (client *Client) GetSavepoint(namespace *string, savepointId *string) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// list deployment targets
+//
+// @param request - ListDeploymentTargetsRequest
+//
+// @param headers - ListDeploymentTargetsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDeploymentTargetsResponse
 func (client *Client) ListDeploymentTargetsWithOptions(namespace *string, request *ListDeploymentTargetsRequest, headers *ListDeploymentTargetsHeaders, runtime *util.RuntimeOptions) (_result *ListDeploymentTargetsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5381,6 +7056,13 @@ func (client *Client) ListDeploymentTargetsWithOptions(namespace *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// list deployment targets
+//
+// @param request - ListDeploymentTargetsRequest
+//
+// @return ListDeploymentTargetsResponse
 func (client *Client) ListDeploymentTargets(namespace *string, request *ListDeploymentTargetsRequest) (_result *ListDeploymentTargetsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListDeploymentTargetsHeaders{}
@@ -5393,14 +7075,41 @@ func (client *Client) ListDeploymentTargets(namespace *string, request *ListDepl
 	return _result, _err
 }
 
+// Summary:
+//
+// list deployments
+//
+// @param request - ListDeploymentsRequest
+//
+// @param headers - ListDeploymentsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDeploymentsResponse
 func (client *Client) ListDeploymentsWithOptions(namespace *string, request *ListDeploymentsRequest, headers *ListDeploymentsHeaders, runtime *util.RuntimeOptions) (_result *ListDeploymentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Creator)) {
+		query["creator"] = request.Creator
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExecutionMode)) {
 		query["executionMode"] = request.ExecutionMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelKey)) {
+		query["labelKey"] = request.LabelKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelValueArray)) {
+		query["labelValueArray"] = request.LabelValueArray
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Modifier)) {
+		query["modifier"] = request.Modifier
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -5413,6 +7122,10 @@ func (client *Client) ListDeploymentsWithOptions(namespace *string, request *Lis
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["status"] = request.Status
 	}
 
 	realHeaders := make(map[string]*string)
@@ -5448,6 +7161,13 @@ func (client *Client) ListDeploymentsWithOptions(namespace *string, request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// list deployments
+//
+// @param request - ListDeploymentsRequest
+//
+// @return ListDeploymentsResponse
 func (client *Client) ListDeployments(namespace *string, request *ListDeploymentsRequest) (_result *ListDeploymentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListDeploymentsHeaders{}
@@ -5460,6 +7180,95 @@ func (client *Client) ListDeployments(namespace *string, request *ListDeployment
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出有编辑权限的项目空间。
+//
+// @param request - ListEditableNamespaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEditableNamespaceResponse
+func (client *Client) ListEditableNamespaceWithOptions(request *ListEditableNamespaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEditableNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEditableNamespace"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gateway/v2/namespaces/editable"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEditableNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出有编辑权限的项目空间。
+//
+// @param request - ListEditableNamespaceRequest
+//
+// @return ListEditableNamespaceResponse
+func (client *Client) ListEditableNamespace(request *ListEditableNamespaceRequest) (_result *ListEditableNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEditableNamespaceResponse{}
+	_body, _err := client.ListEditableNamespaceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取系统支持的引擎版本信息。
+//
+// @param headers - ListEngineVersionMetadataHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEngineVersionMetadataResponse
 func (client *Client) ListEngineVersionMetadataWithOptions(headers *ListEngineVersionMetadataHeaders, runtime *util.RuntimeOptions) (_result *ListEngineVersionMetadataResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -5493,6 +7302,11 @@ func (client *Client) ListEngineVersionMetadataWithOptions(headers *ListEngineVe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取系统支持的引擎版本信息。
+//
+// @return ListEngineVersionMetadataResponse
 func (client *Client) ListEngineVersionMetadata() (_result *ListEngineVersionMetadataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListEngineVersionMetadataHeaders{}
@@ -5505,6 +7319,17 @@ func (client *Client) ListEngineVersionMetadata() (_result *ListEngineVersionMet
 	return _result, _err
 }
 
+// Summary:
+//
+// list jobs
+//
+// @param request - ListJobsRequest
+//
+// @param headers - ListJobsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobsResponse
 func (client *Client) ListJobsWithOptions(namespace *string, request *ListJobsRequest, headers *ListJobsHeaders, runtime *util.RuntimeOptions) (_result *ListJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5521,6 +7346,10 @@ func (client *Client) ListJobsWithOptions(namespace *string, request *ListJobsRe
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortName)) {
+		query["sortName"] = request.SortName
 	}
 
 	realHeaders := make(map[string]*string)
@@ -5556,6 +7385,13 @@ func (client *Client) ListJobsWithOptions(namespace *string, request *ListJobsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// list jobs
+//
+// @param request - ListJobsRequest
+//
+// @return ListJobsResponse
 func (client *Client) ListJobs(namespace *string, request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListJobsHeaders{}
@@ -5568,6 +7404,17 @@ func (client *Client) ListJobs(namespace *string, request *ListJobsRequest) (_re
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用ListMembers接口获取成员列表。
+//
+// @param request - ListMembersRequest
+//
+// @param headers - ListMembersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMembersResponse
 func (client *Client) ListMembersWithOptions(namespace *string, request *ListMembersRequest, headers *ListMembersHeaders, runtime *util.RuntimeOptions) (_result *ListMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5615,6 +7462,13 @@ func (client *Client) ListMembersWithOptions(namespace *string, request *ListMem
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用ListMembers接口获取成员列表。
+//
+// @param request - ListMembersRequest
+//
+// @return ListMembersResponse
 func (client *Client) ListMembers(namespace *string, request *ListMembersRequest) (_result *ListMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListMembersHeaders{}
@@ -5627,6 +7481,17 @@ func (client *Client) ListMembers(namespace *string, request *ListMembersRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用ListSavepoints获取满足查询条件的savepoint列表。
+//
+// @param request - ListSavepointsRequest
+//
+// @param headers - ListSavepointsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSavepointsResponse
 func (client *Client) ListSavepointsWithOptions(namespace *string, request *ListSavepointsRequest, headers *ListSavepointsHeaders, runtime *util.RuntimeOptions) (_result *ListSavepointsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5682,6 +7547,13 @@ func (client *Client) ListSavepointsWithOptions(namespace *string, request *List
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用ListSavepoints获取满足查询条件的savepoint列表。
+//
+// @param request - ListSavepointsRequest
+//
+// @return ListSavepointsResponse
 func (client *Client) ListSavepoints(namespace *string, request *ListSavepointsRequest) (_result *ListSavepointsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListSavepointsHeaders{}
@@ -5694,6 +7566,17 @@ func (client *Client) ListSavepoints(namespace *string, request *ListSavepointsR
 	return _result, _err
 }
 
+// Summary:
+//
+// list variables
+//
+// @param request - ListVariablesRequest
+//
+// @param headers - ListVariablesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVariablesResponse
 func (client *Client) ListVariablesWithOptions(namespace *string, request *ListVariablesRequest, headers *ListVariablesHeaders, runtime *util.RuntimeOptions) (_result *ListVariablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5741,6 +7624,13 @@ func (client *Client) ListVariablesWithOptions(namespace *string, request *ListV
 	return _result, _err
 }
 
+// Summary:
+//
+// list variables
+//
+// @param request - ListVariablesRequest
+//
+// @return ListVariablesResponse
 func (client *Client) ListVariables(namespace *string, request *ListVariablesRequest) (_result *ListVariablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListVariablesHeaders{}
@@ -5753,14 +7643,19 @@ func (client *Client) ListVariables(namespace *string, request *ListVariablesReq
 	return _result, _err
 }
 
-/**
- * @deprecated
- *
- * @param request StartJobRequest
- * @param headers StartJobHeaders
- * @param runtime runtime options for this request RuntimeOptions
- * @return StartJobResponse
- */
+// Deprecated: OpenAPI StartJob is deprecated
+//
+// Summary:
+//
+// start job
+//
+// @param request - StartJobRequest
+//
+// @param headers - StartJobHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartJobResponse
 // Deprecated
 func (client *Client) StartJobWithOptions(namespace *string, request *StartJobRequest, headers *StartJobHeaders, runtime *util.RuntimeOptions) (_result *StartJobResponse, _err error) {
 	_err = util.ValidateModel(request)
@@ -5800,12 +7695,15 @@ func (client *Client) StartJobWithOptions(namespace *string, request *StartJobRe
 	return _result, _err
 }
 
-/**
- * @deprecated
- *
- * @param request StartJobRequest
- * @return StartJobResponse
- */
+// Deprecated: OpenAPI StartJob is deprecated
+//
+// Summary:
+//
+// start job
+//
+// @param request - StartJobRequest
+//
+// @return StartJobResponse
 // Deprecated
 func (client *Client) StartJob(namespace *string, request *StartJobRequest) (_result *StartJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -5819,6 +7717,17 @@ func (client *Client) StartJob(namespace *string, request *StartJobRequest) (_re
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动作业实例。
+//
+// @param request - StartJobWithParamsRequest
+//
+// @param headers - StartJobWithParamsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartJobWithParamsResponse
 func (client *Client) StartJobWithParamsWithOptions(namespace *string, request *StartJobWithParamsRequest, headers *StartJobWithParamsHeaders, runtime *util.RuntimeOptions) (_result *StartJobWithParamsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5857,6 +7766,13 @@ func (client *Client) StartJobWithParamsWithOptions(namespace *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动作业实例。
+//
+// @param request - StartJobWithParamsRequest
+//
+// @return StartJobWithParamsResponse
 func (client *Client) StartJobWithParams(namespace *string, request *StartJobWithParamsRequest) (_result *StartJobWithParamsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &StartJobWithParamsHeaders{}
@@ -5869,6 +7785,17 @@ func (client *Client) StartJobWithParams(namespace *string, request *StartJobWit
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用StopJob停止实例。
+//
+// @param request - StopJobRequest
+//
+// @param headers - StopJobHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopJobResponse
 func (client *Client) StopJobWithOptions(namespace *string, jobId *string, request *StopJobRequest, headers *StopJobHeaders, runtime *util.RuntimeOptions) (_result *StopJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5907,6 +7834,13 @@ func (client *Client) StopJobWithOptions(namespace *string, jobId *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用StopJob停止实例。
+//
+// @param request - StopJobRequest
+//
+// @return StopJobResponse
 func (client *Client) StopJob(namespace *string, jobId *string, request *StopJobRequest) (_result *StopJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &StopJobHeaders{}
@@ -5919,6 +7853,17 @@ func (client *Client) StopJob(namespace *string, jobId *string, request *StopJob
 	return _result, _err
 }
 
+// Summary:
+//
+// update a deployment using patch
+//
+// @param request - UpdateDeploymentRequest
+//
+// @param headers - UpdateDeploymentHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDeploymentResponse
 func (client *Client) UpdateDeploymentWithOptions(namespace *string, deploymentId *string, request *UpdateDeploymentRequest, headers *UpdateDeploymentHeaders, runtime *util.RuntimeOptions) (_result *UpdateDeploymentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5957,6 +7902,13 @@ func (client *Client) UpdateDeploymentWithOptions(namespace *string, deploymentI
 	return _result, _err
 }
 
+// Summary:
+//
+// update a deployment using patch
+//
+// @param request - UpdateDeploymentRequest
+//
+// @return UpdateDeploymentResponse
 func (client *Client) UpdateDeployment(namespace *string, deploymentId *string, request *UpdateDeploymentRequest) (_result *UpdateDeploymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateDeploymentHeaders{}
@@ -5969,6 +7921,17 @@ func (client *Client) UpdateDeployment(namespace *string, deploymentId *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用UpdateMember更新成员。
+//
+// @param request - UpdateMemberRequest
+//
+// @param headers - UpdateMemberHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMemberResponse
 func (client *Client) UpdateMemberWithOptions(namespace *string, request *UpdateMemberRequest, headers *UpdateMemberHeaders, runtime *util.RuntimeOptions) (_result *UpdateMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6007,6 +7970,13 @@ func (client *Client) UpdateMemberWithOptions(namespace *string, request *Update
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用UpdateMember更新成员。
+//
+// @param request - UpdateMemberRequest
+//
+// @return UpdateMemberResponse
 func (client *Client) UpdateMember(namespace *string, request *UpdateMemberRequest) (_result *UpdateMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateMemberHeaders{}
