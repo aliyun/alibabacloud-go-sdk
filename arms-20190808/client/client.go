@@ -10471,6 +10471,10 @@ type CreateOrUpdateSilencePolicyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// enable
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s CreateOrUpdateSilencePolicyRequest) String() string {
@@ -10498,6 +10502,11 @@ func (s *CreateOrUpdateSilencePolicyRequest) SetName(v string) *CreateOrUpdateSi
 
 func (s *CreateOrUpdateSilencePolicyRequest) SetRegionId(v string) *CreateOrUpdateSilencePolicyRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSilencePolicyRequest) SetState(v string) *CreateOrUpdateSilencePolicyRequest {
+	s.State = &v
 	return s
 }
 
@@ -10545,6 +10554,10 @@ type CreateOrUpdateSilencePolicyResponseBodySilencePolicy struct {
 	//
 	// silencepolicy_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// enable
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s CreateOrUpdateSilencePolicyResponseBodySilencePolicy) String() string {
@@ -10567,6 +10580,11 @@ func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicy) SetMatchingRules(
 
 func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicy) SetName(v string) *CreateOrUpdateSilencePolicyResponseBodySilencePolicy {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSilencePolicyResponseBodySilencePolicy) SetState(v string) *CreateOrUpdateSilencePolicyResponseBodySilencePolicy {
+	s.State = &v
 	return s
 }
 
@@ -28567,6 +28585,7 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// http://cn-beijing-intranet.arms.aliyuncs.com/prometheus/xxx/api/v2
 	PushGatewayIntraUrl *string `json:"PushGatewayIntraUrl,omitempty" xml:"PushGatewayIntraUrl,omitempty"`
+	ReadOnly            *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -28709,6 +28728,11 @@ func (s *GetPrometheusInstanceResponseBodyData) SetPushGatewayInterUrl(v string)
 
 func (s *GetPrometheusInstanceResponseBodyData) SetPushGatewayIntraUrl(v string) *GetPrometheusInstanceResponseBodyData {
 	s.PushGatewayIntraUrl = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetReadOnly(v bool) *GetPrometheusInstanceResponseBodyData {
+	s.ReadOnly = &v
 	return s
 }
 
@@ -49560,7 +49584,8 @@ type ListSilencePoliciesResponseBodyPageBeanSilencePolicies struct {
 	// example:
 	//
 	// silencepolicy_test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListSilencePoliciesResponseBodyPageBeanSilencePolicies) String() string {
@@ -49583,6 +49608,11 @@ func (s *ListSilencePoliciesResponseBodyPageBeanSilencePolicies) SetMatchingRule
 
 func (s *ListSilencePoliciesResponseBodyPageBeanSilencePolicies) SetName(v string) *ListSilencePoliciesResponseBodyPageBeanSilencePolicies {
 	s.Name = &v
+	return s
+}
+
+func (s *ListSilencePoliciesResponseBodyPageBeanSilencePolicies) SetState(v string) *ListSilencePoliciesResponseBodyPageBeanSilencePolicies {
+	s.State = &v
 	return s
 }
 
@@ -69606,6 +69636,10 @@ func (client *Client) CreateOrUpdateSilencePolicyWithOptions(request *CreateOrUp
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		body["State"] = request.State
 	}
 
 	req := &openapi.OpenApiRequest{
