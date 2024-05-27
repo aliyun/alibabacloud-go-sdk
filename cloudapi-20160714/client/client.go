@@ -8143,7 +8143,8 @@ type DescribeApiResponseBodyRequestConfig struct {
 	// example:
 	//
 	// https://apigateway.aliyun.com/models/3a240a127dcc4afd9ab1bf7e947b4095/9e2df550e85b4121a79ec33e2619eaab
-	BodyModel *string `json:"BodyModel,omitempty" xml:"BodyModel,omitempty"`
+	BodyModel       *string `json:"BodyModel,omitempty" xml:"BodyModel,omitempty"`
+	EscapePathParam *bool   `json:"EscapePathParam,omitempty" xml:"EscapePathParam,omitempty"`
 	// The description of the request body.
 	//
 	// example:
@@ -8191,6 +8192,11 @@ func (s *DescribeApiResponseBodyRequestConfig) SetBodyFormat(v string) *Describe
 
 func (s *DescribeApiResponseBodyRequestConfig) SetBodyModel(v string) *DescribeApiResponseBodyRequestConfig {
 	s.BodyModel = &v
+	return s
+}
+
+func (s *DescribeApiResponseBodyRequestConfig) SetEscapePathParam(v bool) *DescribeApiResponseBodyRequestConfig {
+	s.EscapePathParam = &v
 	return s
 }
 
@@ -9619,7 +9625,8 @@ type DescribeApiDocResponseBodyRequestConfig struct {
 	// example:
 	//
 	// STREAM
-	BodyFormat *string `json:"BodyFormat,omitempty" xml:"BodyFormat,omitempty"`
+	BodyFormat      *string `json:"BodyFormat,omitempty" xml:"BodyFormat,omitempty"`
+	EscapePathParam *bool   `json:"EscapePathParam,omitempty" xml:"EscapePathParam,omitempty"`
 	// The description of the request body.
 	//
 	// example:
@@ -9668,6 +9675,11 @@ func (s DescribeApiDocResponseBodyRequestConfig) GoString() string {
 
 func (s *DescribeApiDocResponseBodyRequestConfig) SetBodyFormat(v string) *DescribeApiDocResponseBodyRequestConfig {
 	s.BodyFormat = &v
+	return s
+}
+
+func (s *DescribeApiDocResponseBodyRequestConfig) SetEscapePathParam(v bool) *DescribeApiDocResponseBodyRequestConfig {
+	s.EscapePathParam = &v
 	return s
 }
 
@@ -12378,7 +12390,8 @@ type DescribeApiHistoryResponseBodyRequestConfig struct {
 	// example:
 	//
 	// https://apigateway.aliyun.com/models/3a240a1XXXXXXXXd9ab1bf7e947b4095/9e2df550e85b4XXXXXXXX619eaab
-	BodyModel *string `json:"BodyModel,omitempty" xml:"BodyModel,omitempty"`
+	BodyModel       *string `json:"BodyModel,omitempty" xml:"BodyModel,omitempty"`
+	EscapePathParam *bool   `json:"EscapePathParam,omitempty" xml:"EscapePathParam,omitempty"`
 	// The description of the request body.
 	//
 	// example:
@@ -12432,6 +12445,11 @@ func (s *DescribeApiHistoryResponseBodyRequestConfig) SetBodyFormat(v string) *D
 
 func (s *DescribeApiHistoryResponseBodyRequestConfig) SetBodyModel(v string) *DescribeApiHistoryResponseBodyRequestConfig {
 	s.BodyModel = &v
+	return s
+}
+
+func (s *DescribeApiHistoryResponseBodyRequestConfig) SetEscapePathParam(v bool) *DescribeApiHistoryResponseBodyRequestConfig {
+	s.EscapePathParam = &v
 	return s
 }
 
