@@ -5165,6 +5165,505 @@ func (s *DescribeBatchResultDetailResponse) SetBody(v *DescribeBatchResultDetail
 	return s
 }
 
+type DescribeCloudGtmAddressPoolRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// pool-89564674533755**96
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressPoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressPoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressPoolRequest) SetAcceptLanguage(v string) *DescribeCloudGtmAddressPoolRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolRequest) SetAddressPoolId(v string) *DescribeCloudGtmAddressPoolRequest {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolRequest) SetClientToken(v string) *DescribeCloudGtmAddressPoolRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type DescribeCloudGtmAddressPoolResponseBody struct {
+	// example:
+	//
+	// round_robin
+	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// example:
+	//
+	// pool-89564674533755**96
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// AddressPool-1
+	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// example:
+	//
+	// IPv4
+	AddressPoolType *string                                           `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	Addresses       *DescribeCloudGtmAddressPoolResponseBodyAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// any_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressPoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressPoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetAddressLbStrategy(v string) *DescribeCloudGtmAddressPoolResponseBody {
+	s.AddressLbStrategy = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetAddressPoolId(v string) *DescribeCloudGtmAddressPoolResponseBody {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetAddressPoolName(v string) *DescribeCloudGtmAddressPoolResponseBody {
+	s.AddressPoolName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetAddressPoolType(v string) *DescribeCloudGtmAddressPoolResponseBody {
+	s.AddressPoolType = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetAddresses(v *DescribeCloudGtmAddressPoolResponseBodyAddresses) *DescribeCloudGtmAddressPoolResponseBody {
+	s.Addresses = v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetAvailableStatus(v string) *DescribeCloudGtmAddressPoolResponseBody {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetCreateTime(v string) *DescribeCloudGtmAddressPoolResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetCreateTimestamp(v int64) *DescribeCloudGtmAddressPoolResponseBody {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetEnableStatus(v string) *DescribeCloudGtmAddressPoolResponseBody {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetHealthJudgement(v string) *DescribeCloudGtmAddressPoolResponseBody {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetHealthStatus(v string) *DescribeCloudGtmAddressPoolResponseBody {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetRemark(v string) *DescribeCloudGtmAddressPoolResponseBody {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetRequestId(v string) *DescribeCloudGtmAddressPoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetSequenceLbStrategyMode(v string) *DescribeCloudGtmAddressPoolResponseBody {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetUpdateTime(v string) *DescribeCloudGtmAddressPoolResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBody) SetUpdateTimestamp(v int64) *DescribeCloudGtmAddressPoolResponseBody {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type DescribeCloudGtmAddressPoolResponseBodyAddresses struct {
+	Address []*DescribeCloudGtmAddressPoolResponseBodyAddressesAddress `json:"Address,omitempty" xml:"Address,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmAddressPoolResponseBodyAddresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressPoolResponseBodyAddresses) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddresses) SetAddress(v []*DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) *DescribeCloudGtmAddressPoolResponseBodyAddresses {
+	s.Address = v
+	return s
+}
+
+type DescribeCloudGtmAddressPoolResponseBodyAddressesAddress struct {
+	// example:
+	//
+	// 223.5.XX.XX
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// addr-89518218114368**92
+	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// example:
+	//
+	// auto
+	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// any_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string                                                             `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	HealthTasks  *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	// example:
+	//
+	// available
+	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// example:
+	//
+	// Address-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test
+	Remark        *string                                                               `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RequestSource *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	SeqNonPreemptiveSchedule *bool `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	// example:
+	//
+	// 1
+	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// IPv4
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// 1
+	WeightValue *int32 `json:"WeightValue,omitempty" xml:"WeightValue,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetAddress(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetAddressId(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.AddressId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetAttributeInfo(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.AttributeInfo = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetAvailableMode(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.AvailableMode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetAvailableStatus(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetCreateTime(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetCreateTimestamp(v int64) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetEnableStatus(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetHealthJudgement(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetHealthStatus(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetHealthTasks(v *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasks) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.HealthTasks = v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetManualAvailableStatus(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.ManualAvailableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetName(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetRemark(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetRequestSource(v *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressRequestSource) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.RequestSource = v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetSeqNonPreemptiveSchedule(v bool) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.SeqNonPreemptiveSchedule = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetSerialNumber(v int32) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetType(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetUpdateTime(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetUpdateTimestamp(v int64) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetWeightValue(v int32) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress {
+	s.WeightValue = &v
+	return s
+}
+
+type DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasks struct {
+	HealthTask []*DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTask `json:"HealthTask,omitempty" xml:"HealthTask,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasks) SetHealthTask(v []*DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTask) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasks {
+	s.HealthTask = v
+	return s
+}
+
+type DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTask struct {
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// IPv4-Ping
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTask) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTask) SetPort(v int32) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTask {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTask) SetTemplateId(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTask {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTask) SetTemplateName(v string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTask {
+	s.TemplateName = &v
+	return s
+}
+
+type DescribeCloudGtmAddressPoolResponseBodyAddressesAddressRequestSource struct {
+	RequestSource []*string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmAddressPoolResponseBodyAddressesAddressRequestSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressPoolResponseBodyAddressesAddressRequestSource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressRequestSource) SetRequestSource(v []*string) *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressRequestSource {
+	s.RequestSource = v
+	return s
+}
+
+type DescribeCloudGtmAddressPoolResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudGtmAddressPoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressPoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressPoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressPoolResponse) SetHeaders(v map[string]*string) *DescribeCloudGtmAddressPoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponse) SetStatusCode(v int32) *DescribeCloudGtmAddressPoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolResponse) SetBody(v *DescribeCloudGtmAddressPoolResponseBody) *DescribeCloudGtmAddressPoolResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCustomLineRequest struct {
 	// The language.
 	//
@@ -35764,6 +36263,66 @@ func (client *Client) DescribeBatchResultDetail(request *DescribeBatchResultDeta
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBatchResultDetailResponse{}
 	_body, _err := client.DescribeBatchResultDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmAddressPoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudGtmAddressPoolResponse
+func (client *Client) DescribeCloudGtmAddressPoolWithOptions(request *DescribeCloudGtmAddressPoolRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudGtmAddressPoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolId)) {
+		query["AddressPoolId"] = request.AddressPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudGtmAddressPool"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudGtmAddressPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmAddressPoolRequest
+//
+// @return DescribeCloudGtmAddressPoolResponse
+func (client *Client) DescribeCloudGtmAddressPool(request *DescribeCloudGtmAddressPoolRequest) (_result *DescribeCloudGtmAddressPoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudGtmAddressPoolResponse{}
+	_body, _err := client.DescribeCloudGtmAddressPoolWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
