@@ -384,18 +384,24 @@ func (s *DataExtraInfoSubDbsValueTablesColumns) SetIsGenerateField(v bool) *Data
 }
 
 type BatchKillProcessListRequest struct {
+	// The ID of the OceanBase cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of sessions to close.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [{"ProxySessId":"752113700739156671","SessionId":3221555062,"ServerIp":"10.***.**.***"}]
 	SessionList *string `json:"SessionList,omitempty" xml:"SessionList,omitempty"`
+	// The ID of the tenant.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -428,7 +434,10 @@ func (s *BatchKillProcessListRequest) SetTenantId(v string) *BatchKillProcessLis
 }
 
 type BatchKillProcessListResponseBody struct {
+	// The array of the return result.
 	Data []*BatchKillProcessListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
@@ -454,6 +463,8 @@ func (s *BatchKillProcessListResponseBody) SetRequestId(v string) *BatchKillProc
 }
 
 type BatchKillProcessListResponseBodyData struct {
+	// Indicates whether the calling is successful.
+	//
 	// example:
 	//
 	// true
@@ -6118,6 +6129,195 @@ func (s *CreateSecurityIpGroupResponse) SetBody(v *CreateSecurityIpGroupResponse
 	return s
 }
 
+type CreateTagRequest struct {
+	// The identifier of the client.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the tag group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Tag group 1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s CreateTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagRequest) SetClientToken(v string) *CreateTagRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateTagRequest) SetKey(v string) *CreateTagRequest {
+	s.Key = &v
+	return s
+}
+
+type CreateTagResponseBody struct {
+	// The tag group creation result.
+	//
+	// example:
+	//
+	// Create tag success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 4C91F7BA-xxxx-xxxx-xxxx-846ECA1A9908
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagResponseBody) SetMessage(v string) *CreateTagResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateTagResponseBody) SetRequestId(v string) *CreateTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateTagResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagResponse) SetHeaders(v map[string]*string) *CreateTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTagResponse) SetStatusCode(v int32) *CreateTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTagResponse) SetBody(v *CreateTagResponseBody) *CreateTagResponse {
+	s.Body = v
+	return s
+}
+
+type CreateTagValueRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateTagValueRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagValueRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagValueRequest) SetClientToken(v string) *CreateTagValueRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateTagValueRequest) SetKey(v string) *CreateTagValueRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateTagValueRequest) SetValue(v string) *CreateTagValueRequest {
+	s.Value = &v
+	return s
+}
+
+type CreateTagValueResponseBody struct {
+	// example:
+	//
+	// create tag value success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 4C91F7BA-xxxx-xxxx-xxxx-846ECA1A9908
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateTagValueResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagValueResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagValueResponseBody) SetMessage(v string) *CreateTagValueResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateTagValueResponseBody) SetRequestId(v string) *CreateTagValueResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateTagValueResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTagValueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTagValueResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTagValueResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTagValueResponse) SetHeaders(v map[string]*string) *CreateTagValueResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTagValueResponse) SetStatusCode(v int32) *CreateTagValueResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTagValueResponse) SetBody(v *CreateTagValueResponseBody) *CreateTagValueResponse {
+	s.Body = v
+	return s
+}
+
 type CreateTenantRequest struct {
 	// The character set.
 	//
@@ -8062,6 +8262,191 @@ func (s *DeleteSecurityIpGroupResponse) SetStatusCode(v int32) *DeleteSecurityIp
 }
 
 func (s *DeleteSecurityIpGroupResponse) SetBody(v *DeleteSecurityIpGroupResponseBody) *DeleteSecurityIpGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTagRequest struct {
+	// The name of the tag group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Tag group 2
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s DeleteTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTagRequest) SetKey(v string) *DeleteTagRequest {
+	s.Key = &v
+	return s
+}
+
+type DeleteTagResponseBody struct {
+	// The tag group deletion result.
+	//
+	// example:
+	//
+	// delete tag success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 4C91F7BA-xxxx-xxxx-xxxx-846ECA1A9908
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTagResponseBody) SetMessage(v string) *DeleteTagResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteTagResponseBody) SetRequestId(v string) *DeleteTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTagResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTagResponse) SetHeaders(v map[string]*string) *DeleteTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTagResponse) SetStatusCode(v int32) *DeleteTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTagResponse) SetBody(v *DeleteTagResponseBody) *DeleteTagResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTagValueRequest struct {
+	// The name of the tag group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Tag group 1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the tag.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Tag 2
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DeleteTagValueRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTagValueRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTagValueRequest) SetKey(v string) *DeleteTagValueRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *DeleteTagValueRequest) SetValue(v string) *DeleteTagValueRequest {
+	s.Value = &v
+	return s
+}
+
+type DeleteTagValueResponseBody struct {
+	// The tag deletion result.
+	//
+	// example:
+	//
+	// delete tag-value success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 4C91F7BA-xxxx-xxxx-xxxx-846ECA1A9908
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTagValueResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTagValueResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTagValueResponseBody) SetMessage(v string) *DeleteTagValueResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteTagValueResponseBody) SetRequestId(v string) *DeleteTagValueResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTagValueResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTagValueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteTagValueResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTagValueResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTagValueResponse) SetHeaders(v map[string]*string) *DeleteTagValueResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTagValueResponse) SetStatusCode(v int32) *DeleteTagValueResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTagValueResponse) SetBody(v *DeleteTagValueResponseBody) *DeleteTagValueResponse {
 	s.Body = v
 	return s
 }
@@ -12943,13 +13328,13 @@ func (s *DescribeInstanceSecurityConfigsResponse) SetBody(v *DescribeInstanceSec
 }
 
 type DescribeInstanceTagsRequest struct {
-	// The list of tags.
+	// The list of cluster IDs.
 	//
 	// example:
 	//
 	// ["ob3za5w73as8rk"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The returned response.
+	// The tags.
 	//
 	// example:
 	//
@@ -12976,13 +13361,13 @@ func (s *DescribeInstanceTagsRequest) SetTags(v string) *DescribeInstanceTagsReq
 }
 
 type DescribeInstanceTagsResponseBody struct {
-	// The resource ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request ID.
+	// The list of tags.
 	TagResources []*DescribeInstanceTagsResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -13005,16 +13390,20 @@ func (s *DescribeInstanceTagsResponseBody) SetTagResources(v []*DescribeInstance
 }
 
 type DescribeInstanceTagsResponseBodyTagResources struct {
-	// You can call this operation to view the tag value of a cluster.
+	// The resource ID.
 	//
 	// example:
 	//
 	// ob317v4uif****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag of the resource.
+	//
 	// example:
 	//
 	// [{"Key": "xxx", "Value", "xxx"},{}]
@@ -21742,36 +22131,52 @@ func (s *DescribeParametersHistoryResponse) SetBody(v *DescribeParametersHistory
 }
 
 type DescribeProcessStatsCompositionRequest struct {
+	// The IP address of the client.
+	//
 	// example:
 	//
 	// 127.*.*.*
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The ID of the OceanBase cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the server.
+	//
 	// example:
 	//
 	// 127.*.*.*
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// The SQL statement. It supports LIKE clauses, and you may specify only part of the clauses in the SQL statement.
+	//
 	// example:
 	//
 	// SELECT  ***	- FROM ***	- WHERE ***	- = ? AND ***	- = ?   ORDER BY ***	- ASC
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	// The state of the session.
+	//
 	// example:
 	//
-	// RUNNING
+	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
 	// example:
 	//
 	// t33h8y08k****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The user identifier (UID) of OceanBase Database.
+	//
 	// example:
 	//
 	// 139*************
 	UId *string `json:"UId,omitempty" xml:"UId,omitempty"`
+	// The username that you use to log in to the database.
+	//
 	// example:
 	//
 	// test1
@@ -21827,7 +22232,10 @@ func (s *DescribeProcessStatsCompositionRequest) SetUsers(v string) *DescribePro
 }
 
 type DescribeProcessStatsCompositionResponseBody struct {
+	// The return result.
 	Data []*DescribeProcessStatsCompositionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// EE205C00-30E4-****-****-87E3A8A2AA0C
@@ -21853,20 +22261,30 @@ func (s *DescribeProcessStatsCompositionResponseBody) SetRequestId(v string) *De
 }
 
 type DescribeProcessStatsCompositionResponseBodyData struct {
+	// The number of active sessions.
+	//
 	// example:
 	//
 	// 25
-	ActiveSessionCount *int32                                                           `json:"ActiveSessionCount,omitempty" xml:"ActiveSessionCount,omitempty"`
-	AllProcessList     []*DescribeProcessStatsCompositionResponseBodyDataAllProcessList `json:"AllProcessList,omitempty" xml:"AllProcessList,omitempty" type:"Repeated"`
+	ActiveSessionCount *int32 `json:"ActiveSessionCount,omitempty" xml:"ActiveSessionCount,omitempty"`
+	// The list of all processes in the system.
+	AllProcessList []*DescribeProcessStatsCompositionResponseBodyDataAllProcessList `json:"AllProcessList,omitempty" xml:"AllProcessList,omitempty" type:"Repeated"`
+	// The number of idle sessions.
+	//
 	// example:
 	//
 	// 8
 	IdleSessionCount *int32 `json:"IdleSessionCount,omitempty" xml:"IdleSessionCount,omitempty"`
+	// The version of OceanBase Database.
+	//
 	// example:
 	//
 	// 4.2.1.0
-	ObVersion         *string                                                           `json:"ObVersion,omitempty" xml:"ObVersion,omitempty"`
+	ObVersion *string `json:"ObVersion,omitempty" xml:"ObVersion,omitempty"`
+	// The session statistics.
 	SessionStatistics *DescribeProcessStatsCompositionResponseBodyDataSessionStatistics `json:"SessionStatistics,omitempty" xml:"SessionStatistics,omitempty" type:"Struct"`
+	// The total number of sessions.
+	//
 	// example:
 	//
 	// 500
@@ -21912,64 +22330,92 @@ func (s *DescribeProcessStatsCompositionResponseBodyData) SetTotalSessionCount(v
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataAllProcessList struct {
+	// The IP address of the client.
+	//
 	// example:
 	//
 	// 127.*.*.*
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The type of command executed on the current session.
+	//
 	// example:
 	//
 	// Sleep
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The CPU time.
+	//
 	// example:
 	//
 	// 257.943
 	CpuTime *int64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// database1
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The execution time.
+	//
 	// example:
 	//
 	// 18.23
 	ExecuteTime *int64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// The ID of the plan.
+	//
 	// example:
 	//
 	// af621fe01e064743bd37e7c9a41aa139
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The ID of the proxy session.
+	//
 	// example:
 	//
 	// ab***-********-90ab-c***-***********b
 	ProxySessId *string `json:"ProxySessId,omitempty" xml:"ProxySessId,omitempty"`
+	// The IP address of the server.
+	//
 	// example:
 	//
 	// 127.*.*.*
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// The ID of the session.
+	//
 	// example:
 	//
 	// 1***************90L
 	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// SQL ID。
+	// The ID of the SQL statement.
 	//
 	// example:
 	//
 	// 8D6E84****0B8FB1823D199E2CA1****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// The SQL statement.
+	//
 	// example:
 	//
 	// SELECT 	- FROM table_name;
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	// The state of the session.
+	//
 	// example:
 	//
-	// RUNNING
+	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
 	// example:
 	//
 	// t33h8y08k****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the trace.
+	//
 	// example:
 	//
 	// 3c6e****-cb**-11**-a5**-4201ac1****f
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The username that you use to log in to the database.
+	//
 	// example:
 	//
 	// test1
@@ -22060,9 +22506,12 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessList) SetUser(
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataSessionStatistics struct {
+	// The database statistics.
 	DataBaseStatistics []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBaseStatistics `json:"DataBaseStatistics,omitempty" xml:"DataBaseStatistics,omitempty" type:"Repeated"`
-	SourceStatistics   []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics   `json:"SourceStatistics,omitempty" xml:"SourceStatistics,omitempty" type:"Repeated"`
-	UserStatistics     []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics     `json:"UserStatistics,omitempty" xml:"UserStatistics,omitempty" type:"Repeated"`
+	// The data source statistics.
+	SourceStatistics []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics `json:"SourceStatistics,omitempty" xml:"SourceStatistics,omitempty" type:"Repeated"`
+	// The user statistics.
+	UserStatistics []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics `json:"UserStatistics,omitempty" xml:"UserStatistics,omitempty" type:"Repeated"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyDataSessionStatistics) String() string {
@@ -22089,21 +22538,29 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataSessionStatistics) SetUs
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBaseStatistics struct {
+	// The number of active sessions.
+	//
 	// example:
 	//
 	// 1
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	// The value of the database metric.
+	//
 	// example:
 	//
-	// online
+	// test_database
 	MetricValue *string `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
+	// The total number of sessions.
+	//
 	// example:
 	//
 	// 9
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The type of the database statistics.
+	//
 	// example:
 	//
-	// sys
+	// database
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -22136,21 +22593,29 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBas
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics struct {
+	// The number of active sessions.
+	//
 	// example:
 	//
 	// 2
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	// The value of the data source metric.
+	//
 	// example:
 	//
-	// united states
+	// 127.*.*.*
 	MetricValue *string `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
+	// The total number of sessions.
+	//
 	// example:
 	//
 	// 12
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The type of the data source.
+	//
 	// example:
 	//
-	// sys
+	// client
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -22183,21 +22648,29 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceS
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics struct {
+	// The number of active sessions.
+	//
 	// example:
 	//
 	// 5
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	// The value of the user metric.
+	//
 	// example:
 	//
-	// active
+	// admin
 	MetricValue *string `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
+	// The total number of sessions.
+	//
 	// example:
 	//
 	// 15
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The type of the user.
+	//
 	// example:
 	//
-	// admin
+	// user
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -32123,6 +32596,92 @@ func (s *DescribeSlowSQLListResponse) SetStatusCode(v int32) *DescribeSlowSQLLis
 }
 
 func (s *DescribeSlowSQLListResponse) SetBody(v *DescribeSlowSQLListResponseBody) *DescribeSlowSQLListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTagValuesRequest struct {
+	// The type of the resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tag
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s DescribeTagValuesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagValuesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagValuesRequest) SetResourceType(v string) *DescribeTagValuesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type DescribeTagValuesResponseBody struct {
+	// The mappings between tag groups and tags.
+	//
+	// example:
+	//
+	// "{\\"Tag group 2\\":[\\"Tag 2-1\\",\\"Tag 2-2\\"],\\"Tag group 1\\":[\\"Tag 1-1\\"]}"
+	Map *string `json:"Map,omitempty" xml:"Map,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 4C91F7BA-xxxx-xxxx-xxxx-846ECA1A9908
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeTagValuesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagValuesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagValuesResponseBody) SetMap(v string) *DescribeTagValuesResponseBody {
+	s.Map = &v
+	return s
+}
+
+func (s *DescribeTagValuesResponseBody) SetRequestId(v string) *DescribeTagValuesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeTagValuesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeTagValuesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagValuesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagValuesResponse) SetHeaders(v map[string]*string) *DescribeTagValuesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTagValuesResponse) SetStatusCode(v int32) *DescribeTagValuesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTagValuesResponse) SetBody(v *DescribeTagValuesResponseBody) *DescribeTagValuesResponse {
 	s.Body = v
 	return s
 }
@@ -44538,6 +45097,217 @@ func (s *ModifySecurityIpsResponse) SetBody(v *ModifySecurityIpsResponseBody) *M
 	return s
 }
 
+type ModifyTagNameRequest struct {
+	// The name of the tag group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Tag group 1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The new name of the tag group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Tag group 2
+	NewKey *string `json:"NewKey,omitempty" xml:"NewKey,omitempty"`
+}
+
+func (s ModifyTagNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTagNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTagNameRequest) SetKey(v string) *ModifyTagNameRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *ModifyTagNameRequest) SetNewKey(v string) *ModifyTagNameRequest {
+	s.NewKey = &v
+	return s
+}
+
+type ModifyTagNameResponseBody struct {
+	// The tag group renaming result.
+	//
+	// example:
+	//
+	// update tag name success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 4C91F7BA-xxxx-xxxx-xxxx-846ECA1A9908
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyTagNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTagNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTagNameResponseBody) SetMessage(v string) *ModifyTagNameResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyTagNameResponseBody) SetRequestId(v string) *ModifyTagNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyTagNameResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyTagNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyTagNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTagNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTagNameResponse) SetHeaders(v map[string]*string) *ModifyTagNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTagNameResponse) SetStatusCode(v int32) *ModifyTagNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyTagNameResponse) SetBody(v *ModifyTagNameResponseBody) *ModifyTagNameResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyTagValueNameRequest struct {
+	// The name of the tag group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Tag group 1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The new name of the tag.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Tag 2
+	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
+	// The name of the tag.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Tag 1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ModifyTagValueNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTagValueNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTagValueNameRequest) SetKey(v string) *ModifyTagValueNameRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *ModifyTagValueNameRequest) SetNewValue(v string) *ModifyTagValueNameRequest {
+	s.NewValue = &v
+	return s
+}
+
+func (s *ModifyTagValueNameRequest) SetValue(v string) *ModifyTagValueNameRequest {
+	s.Value = &v
+	return s
+}
+
+type ModifyTagValueNameResponseBody struct {
+	// The tag renaming result.
+	//
+	// example:
+	//
+	// update tag-value name success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 4C91F7BA-xxxx-xxxx-xxxx-846ECA1A9908
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyTagValueNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTagValueNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTagValueNameResponseBody) SetMessage(v string) *ModifyTagValueNameResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyTagValueNameResponseBody) SetRequestId(v string) *ModifyTagValueNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyTagValueNameResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyTagValueNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyTagValueNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTagValueNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTagValueNameResponse) SetHeaders(v map[string]*string) *ModifyTagValueNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTagValueNameResponse) SetStatusCode(v int32) *ModifyTagValueNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyTagValueNameResponse) SetBody(v *ModifyTagValueNameResponseBody) *ModifyTagValueNameResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyTenantEncryptionRequest struct {
 	// example:
 	//
@@ -49158,7 +49928,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// BatchKillProcessList
+// You can call this operation to close sessions in batches. Please note that this operation is executed asynchronously. After calling this operation, you need to verify it by calling DescribeProcessStatsComposition.
 //
 // @param request - BatchKillProcessListRequest
 //
@@ -49208,7 +49978,7 @@ func (client *Client) BatchKillProcessListWithOptions(request *BatchKillProcessL
 
 // Summary:
 //
-// BatchKillProcessList
+// You can call this operation to close sessions in batches. Please note that this operation is executed asynchronously. After calling this operation, you need to verify it by calling DescribeProcessStatsComposition.
 //
 // @param request - BatchKillProcessListRequest
 //
@@ -50338,6 +51108,130 @@ func (client *Client) CreateSecurityIpGroup(request *CreateSecurityIpGroupReques
 
 // Summary:
 //
+// You can call this operation to create a tag group.
+//
+// @param request - CreateTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTagResponse
+func (client *Client) CreateTagWithOptions(request *CreateTagRequest, runtime *util.RuntimeOptions) (_result *CreateTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		body["Key"] = request.Key
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTag"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to create a tag group.
+//
+// @param request - CreateTagRequest
+//
+// @return CreateTagResponse
+func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTagResponse{}
+	_body, _err := client.CreateTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CreateTagValueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTagValueResponse
+func (client *Client) CreateTagValueWithOptions(request *CreateTagValueRequest, runtime *util.RuntimeOptions) (_result *CreateTagValueResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		body["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		body["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTagValue"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTagValueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateTagValueRequest
+//
+// @return CreateTagValueResponse
+func (client *Client) CreateTagValue(request *CreateTagValueRequest) (_result *CreateTagValueResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTagValueResponse{}
+	_body, _err := client.CreateTagValueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // You can call this operation to create a tenant.
 //
 // @param tmpReq - CreateTenantRequest
@@ -51027,6 +51921,130 @@ func (client *Client) DeleteSecurityIpGroup(request *DeleteSecurityIpGroupReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSecurityIpGroupResponse{}
 	_body, _err := client.DeleteSecurityIpGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to delete a tag group.
+//
+// @param request - DeleteTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTagResponse
+func (client *Client) DeleteTagWithOptions(request *DeleteTagRequest, runtime *util.RuntimeOptions) (_result *DeleteTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		body["Key"] = request.Key
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTag"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to delete a tag group.
+//
+// @param request - DeleteTagRequest
+//
+// @return DeleteTagResponse
+func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTagResponse{}
+	_body, _err := client.DeleteTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to delete a tag from a tag group.
+//
+// @param request - DeleteTagValueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTagValueResponse
+func (client *Client) DeleteTagValueWithOptions(request *DeleteTagValueRequest, runtime *util.RuntimeOptions) (_result *DeleteTagValueResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		body["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		body["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTagValue"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTagValueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to delete a tag from a tag group.
+//
+// @param request - DeleteTagValueRequest
+//
+// @return DeleteTagValueResponse
+func (client *Client) DeleteTagValue(request *DeleteTagValueRequest) (_result *DeleteTagValueResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTagValueResponse{}
+	_body, _err := client.DeleteTagValueWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -52202,7 +53220,7 @@ func (client *Client) DescribeInstanceSecurityConfigs(request *DescribeInstanceS
 
 // Summary:
 //
-// The tag of the resource.
+// You can call this operation to query the tags of clusters.
 //
 // @param request - DescribeInstanceTagsRequest
 //
@@ -52248,7 +53266,7 @@ func (client *Client) DescribeInstanceTagsWithOptions(request *DescribeInstanceT
 
 // Summary:
 //
-// The tag of the resource.
+// You can call this operation to query the tags of clusters.
 //
 // @param request - DescribeInstanceTagsRequest
 //
@@ -53528,7 +54546,7 @@ func (client *Client) DescribeParametersHistory(request *DescribeParametersHisto
 
 // Summary:
 //
-// DescribeProcessStatsComposition
+// You can call this operation to query session information.
 //
 // @param request - DescribeProcessStatsCompositionRequest
 //
@@ -53598,7 +54616,7 @@ func (client *Client) DescribeProcessStatsCompositionWithOptions(request *Descri
 
 // Summary:
 //
-// DescribeProcessStatsComposition
+// You can call this operation to query session information.
 //
 // @param request - DescribeProcessStatsCompositionRequest
 //
@@ -54649,6 +55667,66 @@ func (client *Client) DescribeSlowSQLList(request *DescribeSlowSQLListRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlowSQLListResponse{}
 	_body, _err := client.DescribeSlowSQLListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to query tags.
+//
+// @param request - DescribeTagValuesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTagValuesResponse
+func (client *Client) DescribeTagValuesWithOptions(request *DescribeTagValuesRequest, runtime *util.RuntimeOptions) (_result *DescribeTagValuesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTagValues"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTagValuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to query tags.
+//
+// @param request - DescribeTagValuesRequest
+//
+// @return DescribeTagValuesResponse
+func (client *Client) DescribeTagValues(request *DescribeTagValuesRequest) (_result *DescribeTagValuesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTagValuesResponse{}
+	_body, _err := client.DescribeTagValuesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -56853,6 +57931,130 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySecurityIpsResponse{}
 	_body, _err := client.ModifySecurityIpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ModifyTagNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTagNameResponse
+func (client *Client) ModifyTagNameWithOptions(request *ModifyTagNameRequest, runtime *util.RuntimeOptions) (_result *ModifyTagNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		body["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewKey)) {
+		body["NewKey"] = request.NewKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTagName"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTagNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ModifyTagNameRequest
+//
+// @return ModifyTagNameResponse
+func (client *Client) ModifyTagName(request *ModifyTagNameRequest) (_result *ModifyTagNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTagNameResponse{}
+	_body, _err := client.ModifyTagNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to rename a tag.
+//
+// @param request - ModifyTagValueNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTagValueNameResponse
+func (client *Client) ModifyTagValueNameWithOptions(request *ModifyTagValueNameRequest, runtime *util.RuntimeOptions) (_result *ModifyTagValueNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		body["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewValue)) {
+		body["NewValue"] = request.NewValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		body["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTagValueName"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTagValueNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to rename a tag.
+//
+// @param request - ModifyTagValueNameRequest
+//
+// @return ModifyTagValueNameResponse
+func (client *Client) ModifyTagValueName(request *ModifyTagValueNameRequest) (_result *ModifyTagValueNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTagValueNameResponse{}
+	_body, _err := client.ModifyTagValueNameWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
