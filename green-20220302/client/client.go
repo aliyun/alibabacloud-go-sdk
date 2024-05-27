@@ -1892,7 +1892,9 @@ type TextModerationPlusResponseBodyDataAdvice struct {
 	// example:
 	//
 	// XXX
-	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	Answer     *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	HitLabel   *string `json:"HitLabel,omitempty" xml:"HitLabel,omitempty"`
+	HitLibName *string `json:"HitLibName,omitempty" xml:"HitLibName,omitempty"`
 }
 
 func (s TextModerationPlusResponseBodyDataAdvice) String() string {
@@ -1905,6 +1907,16 @@ func (s TextModerationPlusResponseBodyDataAdvice) GoString() string {
 
 func (s *TextModerationPlusResponseBodyDataAdvice) SetAnswer(v string) *TextModerationPlusResponseBodyDataAdvice {
 	s.Answer = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataAdvice) SetHitLabel(v string) *TextModerationPlusResponseBodyDataAdvice {
+	s.HitLabel = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataAdvice) SetHitLibName(v string) *TextModerationPlusResponseBodyDataAdvice {
+	s.HitLibName = &v
 	return s
 }
 
