@@ -23291,7 +23291,8 @@ type RepairClusterNodePoolRequest struct {
 	// true
 	AutoRestart *bool `json:"auto_restart,omitempty" xml:"auto_restart,omitempty"`
 	// The list of nodes. If you do not specify nodes, all nodes in the node pool are selected.
-	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
+	Nodes      []*string                                 `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
+	Operations []*RepairClusterNodePoolRequestOperations `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
 }
 
 func (s RepairClusterNodePoolRequest) String() string {
@@ -23309,6 +23310,34 @@ func (s *RepairClusterNodePoolRequest) SetAutoRestart(v bool) *RepairClusterNode
 
 func (s *RepairClusterNodePoolRequest) SetNodes(v []*string) *RepairClusterNodePoolRequest {
 	s.Nodes = v
+	return s
+}
+
+func (s *RepairClusterNodePoolRequest) SetOperations(v []*RepairClusterNodePoolRequestOperations) *RepairClusterNodePoolRequest {
+	s.Operations = v
+	return s
+}
+
+type RepairClusterNodePoolRequestOperations struct {
+	Args        []*string `json:"args,omitempty" xml:"args,omitempty" type:"Repeated"`
+	OperationId *string   `json:"operation_id,omitempty" xml:"operation_id,omitempty"`
+}
+
+func (s RepairClusterNodePoolRequestOperations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RepairClusterNodePoolRequestOperations) GoString() string {
+	return s.String()
+}
+
+func (s *RepairClusterNodePoolRequestOperations) SetArgs(v []*string) *RepairClusterNodePoolRequestOperations {
+	s.Args = v
+	return s
+}
+
+func (s *RepairClusterNodePoolRequestOperations) SetOperationId(v string) *RepairClusterNodePoolRequestOperations {
+	s.OperationId = &v
 	return s
 }
 
@@ -33277,6 +33306,10 @@ func (client *Client) RepairClusterNodePoolWithOptions(clusterId *string, nodepo
 
 	if !tea.BoolValue(util.IsUnset(request.Nodes)) {
 		body["nodes"] = request.Nodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operations)) {
+		body["operations"] = request.Operations
 	}
 
 	req := &openapi.OpenApiRequest{
