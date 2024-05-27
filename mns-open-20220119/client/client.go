@@ -30,10 +30,13 @@ type CreateQueueRequest struct {
 	//
 	// 0
 	PollingWaitSeconds *int64 `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
-	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	QueueName *string                  `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	Tag       []*CreateQueueRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 60
@@ -78,8 +81,36 @@ func (s *CreateQueueRequest) SetQueueName(v string) *CreateQueueRequest {
 	return s
 }
 
+func (s *CreateQueueRequest) SetTag(v []*CreateQueueRequestTag) *CreateQueueRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateQueueRequest) SetVisibilityTimeout(v int64) *CreateQueueRequest {
 	s.VisibilityTimeout = &v
+	return s
+}
+
+type CreateQueueRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateQueueRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQueueRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQueueRequestTag) SetKey(v string) *CreateQueueRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateQueueRequestTag) SetValue(v string) *CreateQueueRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -217,7 +248,10 @@ type CreateTopicRequest struct {
 	// example:
 	//
 	// 10240
-	MaxMessageSize *int64 `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
+	MaxMessageSize *int64                   `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
+	Tag            []*CreateTopicRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test
@@ -242,8 +276,36 @@ func (s *CreateTopicRequest) SetMaxMessageSize(v int64) *CreateTopicRequest {
 	return s
 }
 
+func (s *CreateTopicRequest) SetTag(v []*CreateTopicRequestTag) *CreateTopicRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateTopicRequest) SetTopicName(v string) *CreateTopicRequest {
 	s.TopicName = &v
+	return s
+}
+
+type CreateTopicRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateTopicRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTopicRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTopicRequestTag) SetKey(v string) *CreateTopicRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateTopicRequestTag) SetValue(v string) *CreateTopicRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -374,6 +436,8 @@ func (s *CreateTopicResponse) SetBody(v *CreateTopicResponseBody) *CreateTopicRe
 }
 
 type DeleteQueueRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// tf-testAccMNSQueue-525478433321945943
@@ -520,6 +584,8 @@ func (s *DeleteQueueResponse) SetBody(v *DeleteQueueResponseBody) *DeleteQueueRe
 }
 
 type DeleteTopicRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// tf-testAccMNSTopic-112965059402264645
@@ -631,10 +697,13 @@ func (s *DeleteTopicResponse) SetBody(v *DeleteTopicResponseBody) *DeleteTopicRe
 }
 
 type GetQueueAttributesRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// demo-queue
-	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	QueueName *string                         `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	Tag       []*GetQueueAttributesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetQueueAttributesRequest) String() string {
@@ -647,6 +716,34 @@ func (s GetQueueAttributesRequest) GoString() string {
 
 func (s *GetQueueAttributesRequest) SetQueueName(v string) *GetQueueAttributesRequest {
 	s.QueueName = &v
+	return s
+}
+
+func (s *GetQueueAttributesRequest) SetTag(v []*GetQueueAttributesRequestTag) *GetQueueAttributesRequest {
+	s.Tag = v
+	return s
+}
+
+type GetQueueAttributesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetQueueAttributesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueueAttributesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueueAttributesRequestTag) SetKey(v string) *GetQueueAttributesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *GetQueueAttributesRequestTag) SetValue(v string) *GetQueueAttributesRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -756,7 +853,8 @@ type GetQueueAttributesResponseBodyData struct {
 	// example:
 	//
 	// demo-queue
-	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	QueueName *string                                   `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	Tags      []*GetQueueAttributesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 60
@@ -826,8 +924,36 @@ func (s *GetQueueAttributesResponseBodyData) SetQueueName(v string) *GetQueueAtt
 	return s
 }
 
+func (s *GetQueueAttributesResponseBodyData) SetTags(v []*GetQueueAttributesResponseBodyDataTags) *GetQueueAttributesResponseBodyData {
+	s.Tags = v
+	return s
+}
+
 func (s *GetQueueAttributesResponseBodyData) SetVisibilityTimeout(v int64) *GetQueueAttributesResponseBodyData {
 	s.VisibilityTimeout = &v
+	return s
+}
+
+type GetQueueAttributesResponseBodyDataTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetQueueAttributesResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueueAttributesResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueueAttributesResponseBodyDataTags) SetTagKey(v string) *GetQueueAttributesResponseBodyDataTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetQueueAttributesResponseBodyDataTags) SetTagValue(v string) *GetQueueAttributesResponseBodyDataTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -861,10 +987,14 @@ func (s *GetQueueAttributesResponse) SetBody(v *GetQueueAttributesResponseBody) 
 }
 
 type GetSubscriptionAttributesRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MySubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MyTopic
@@ -1073,6 +1203,9 @@ func (s *GetSubscriptionAttributesResponse) SetBody(v *GetSubscriptionAttributes
 }
 
 type GetTopicAttributesRequest struct {
+	Tag []*GetTopicAttributesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// demo-topic
@@ -1087,8 +1220,36 @@ func (s GetTopicAttributesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetTopicAttributesRequest) SetTag(v []*GetTopicAttributesRequestTag) *GetTopicAttributesRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *GetTopicAttributesRequest) SetTopicName(v string) *GetTopicAttributesRequest {
 	s.TopicName = &v
+	return s
+}
+
+type GetTopicAttributesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTopicAttributesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicAttributesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicAttributesRequestTag) SetKey(v string) *GetTopicAttributesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *GetTopicAttributesRequestTag) SetValue(v string) *GetTopicAttributesRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1178,7 +1339,8 @@ type GetTopicAttributesResponseBodyData struct {
 	// example:
 	//
 	// 86400
-	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	MessageRetentionPeriod *int64                                    `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	Tags                   []*GetTopicAttributesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// demo-topic
@@ -1223,8 +1385,36 @@ func (s *GetTopicAttributesResponseBodyData) SetMessageRetentionPeriod(v int64) 
 	return s
 }
 
+func (s *GetTopicAttributesResponseBodyData) SetTags(v []*GetTopicAttributesResponseBodyDataTags) *GetTopicAttributesResponseBodyData {
+	s.Tags = v
+	return s
+}
+
 func (s *GetTopicAttributesResponseBodyData) SetTopicName(v string) *GetTopicAttributesResponseBodyData {
 	s.TopicName = &v
+	return s
+}
+
+type GetTopicAttributesResponseBodyDataTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetTopicAttributesResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTopicAttributesResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetTopicAttributesResponseBodyDataTags) SetTagKey(v string) *GetTopicAttributesResponseBodyDataTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetTopicAttributesResponseBodyDataTags) SetTagValue(v string) *GetTopicAttributesResponseBodyDataTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -1269,7 +1459,8 @@ type ListQueueRequest struct {
 	// example:
 	//
 	// demo-queue
-	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	QueueName *string                `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	Tag       []*ListQueueRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListQueueRequest) String() string {
@@ -1292,6 +1483,34 @@ func (s *ListQueueRequest) SetPageSize(v int64) *ListQueueRequest {
 
 func (s *ListQueueRequest) SetQueueName(v string) *ListQueueRequest {
 	s.QueueName = &v
+	return s
+}
+
+func (s *ListQueueRequest) SetTag(v []*ListQueueRequestTag) *ListQueueRequest {
+	s.Tag = v
+	return s
+}
+
+type ListQueueRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListQueueRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQueueRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListQueueRequestTag) SetKey(v string) *ListQueueRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListQueueRequestTag) SetValue(v string) *ListQueueRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1463,7 +1682,8 @@ type ListQueueResponseBodyDataPageData struct {
 	// example:
 	//
 	// demo-queue
-	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	QueueName *string                                  `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	Tags      []*ListQueueResponseBodyDataPageDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 60
@@ -1533,8 +1753,36 @@ func (s *ListQueueResponseBodyDataPageData) SetQueueName(v string) *ListQueueRes
 	return s
 }
 
+func (s *ListQueueResponseBodyDataPageData) SetTags(v []*ListQueueResponseBodyDataPageDataTags) *ListQueueResponseBodyDataPageData {
+	s.Tags = v
+	return s
+}
+
 func (s *ListQueueResponseBodyDataPageData) SetVisibilityTimeout(v int64) *ListQueueResponseBodyDataPageData {
 	s.VisibilityTimeout = &v
+	return s
+}
+
+type ListQueueResponseBodyDataPageDataTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListQueueResponseBodyDataPageDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQueueResponseBodyDataPageDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListQueueResponseBodyDataPageDataTags) SetTagKey(v string) *ListQueueResponseBodyDataPageDataTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListQueueResponseBodyDataPageDataTags) SetTagValue(v string) *ListQueueResponseBodyDataPageDataTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -1580,6 +1828,8 @@ type ListSubscriptionByTopicRequest struct {
 	//
 	// demo-subscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test
@@ -1867,7 +2117,8 @@ type ListTopicRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tag      []*ListTopicRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
 	// test
@@ -1892,8 +2143,36 @@ func (s *ListTopicRequest) SetPageSize(v int64) *ListTopicRequest {
 	return s
 }
 
+func (s *ListTopicRequest) SetTag(v []*ListTopicRequestTag) *ListTopicRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *ListTopicRequest) SetTopicName(v string) *ListTopicRequest {
 	s.TopicName = &v
+	return s
+}
+
+type ListTopicRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTopicRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTopicRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTopicRequestTag) SetKey(v string) *ListTopicRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTopicRequestTag) SetValue(v string) *ListTopicRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -2027,8 +2306,9 @@ type ListTopicResponseBodyDataPageData struct {
 	// example:
 	//
 	// 86400
-	MessageRetentionPeriod *int64  `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	TopicInnerUrl          *string `json:"TopicInnerUrl,omitempty" xml:"TopicInnerUrl,omitempty"`
+	MessageRetentionPeriod *int64                                   `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	Tags                   []*ListTopicResponseBodyDataPageDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TopicInnerUrl          *string                                  `json:"TopicInnerUrl,omitempty" xml:"TopicInnerUrl,omitempty"`
 	// example:
 	//
 	// demo-topic
@@ -2074,6 +2354,11 @@ func (s *ListTopicResponseBodyDataPageData) SetMessageRetentionPeriod(v int64) *
 	return s
 }
 
+func (s *ListTopicResponseBodyDataPageData) SetTags(v []*ListTopicResponseBodyDataPageDataTags) *ListTopicResponseBodyDataPageData {
+	s.Tags = v
+	return s
+}
+
 func (s *ListTopicResponseBodyDataPageData) SetTopicInnerUrl(v string) *ListTopicResponseBodyDataPageData {
 	s.TopicInnerUrl = &v
 	return s
@@ -2086,6 +2371,29 @@ func (s *ListTopicResponseBodyDataPageData) SetTopicName(v string) *ListTopicRes
 
 func (s *ListTopicResponseBodyDataPageData) SetTopicUrl(v string) *ListTopicResponseBodyDataPageData {
 	s.TopicUrl = &v
+	return s
+}
+
+type ListTopicResponseBodyDataPageDataTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTopicResponseBodyDataPageDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTopicResponseBodyDataPageDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTopicResponseBodyDataPageDataTags) SetTagKey(v string) *ListTopicResponseBodyDataPageDataTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTopicResponseBodyDataPageDataTags) SetTagValue(v string) *ListTopicResponseBodyDataPageDataTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -2139,6 +2447,8 @@ type SetQueueAttributesRequest struct {
 	//
 	// 0
 	PollingWaitSeconds *int64 `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testqueue
@@ -2323,10 +2633,14 @@ type SetSubscriptionAttributesRequest struct {
 	//
 	// BACKOFF_RETRY
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MySubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test
@@ -2491,6 +2805,8 @@ type SetTopicAttributesRequest struct {
 	//
 	// 65536
 	MaxMessageSize *int64 `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test
@@ -2647,6 +2963,8 @@ func (s *SetTopicAttributesResponse) SetBody(v *SetTopicAttributesResponseBody) 
 }
 
 type SubscribeRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// http://example.com
@@ -2663,14 +2981,20 @@ type SubscribeRequest struct {
 	//
 	// BACKOFF_RETRY
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// queue
 	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testSubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test
@@ -2727,7 +3051,7 @@ type SubscribeResponseBody struct {
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
-	// {\"Code\": 200, \"Success\": True}
+	// {\\"Code\\": 200, \\"Success\\": True}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// example:
 	//
@@ -2815,10 +3139,14 @@ func (s *SubscribeResponse) SetBody(v *SubscribeResponseBody) *SubscribeResponse
 }
 
 type UnsubscribeRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MySubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test
@@ -3016,6 +3344,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// CreateQueue
+//
+// @param request - CreateQueueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateQueueResponse
 func (client *Client) CreateQueueWithOptions(request *CreateQueueRequest, runtime *util.RuntimeOptions) (_result *CreateQueueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3046,6 +3383,10 @@ func (client *Client) CreateQueueWithOptions(request *CreateQueueRequest, runtim
 		query["QueueName"] = request.QueueName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VisibilityTimeout)) {
 		query["VisibilityTimeout"] = request.VisibilityTimeout
 	}
@@ -3073,6 +3414,13 @@ func (client *Client) CreateQueueWithOptions(request *CreateQueueRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// CreateQueue
+//
+// @param request - CreateQueueRequest
+//
+// @return CreateQueueResponse
 func (client *Client) CreateQueue(request *CreateQueueRequest) (_result *CreateQueueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateQueueResponse{}
@@ -3084,11 +3432,25 @@ func (client *Client) CreateQueue(request *CreateQueueRequest) (_result *CreateQ
 	return _result, _err
 }
 
+// Summary:
+//
+// CreateTopic
+//
+// @param request - CreateTopicRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTopicResponse
 func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtime *util.RuntimeOptions) (_result *CreateTopicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnableLogging)) {
 		body["EnableLogging"] = request.EnableLogging
@@ -3103,7 +3465,8 @@ func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtim
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateTopic"),
@@ -3125,6 +3488,13 @@ func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// CreateTopic
+//
+// @param request - CreateTopicRequest
+//
+// @return CreateTopicResponse
 func (client *Client) CreateTopic(request *CreateTopicRequest) (_result *CreateTopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTopicResponse{}
@@ -3136,6 +3506,15 @@ func (client *Client) CreateTopic(request *CreateTopicRequest) (_result *CreateT
 	return _result, _err
 }
 
+// Summary:
+//
+// DeleteQueue
+//
+// @param request - DeleteQueueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteQueueResponse
 func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtime *util.RuntimeOptions) (_result *DeleteQueueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3169,6 +3548,13 @@ func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// DeleteQueue
+//
+// @param request - DeleteQueueRequest
+//
+// @return DeleteQueueResponse
 func (client *Client) DeleteQueue(request *DeleteQueueRequest) (_result *DeleteQueueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteQueueResponse{}
@@ -3180,6 +3566,15 @@ func (client *Client) DeleteQueue(request *DeleteQueueRequest) (_result *DeleteQ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除订阅主题
+//
+// @param request - DeleteTopicRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTopicResponse
 func (client *Client) DeleteTopicWithOptions(request *DeleteTopicRequest, runtime *util.RuntimeOptions) (_result *DeleteTopicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3213,6 +3608,13 @@ func (client *Client) DeleteTopicWithOptions(request *DeleteTopicRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除订阅主题
+//
+// @param request - DeleteTopicRequest
+//
+// @return DeleteTopicResponse
 func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteTopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTopicResponse{}
@@ -3224,6 +3626,15 @@ func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteT
 	return _result, _err
 }
 
+// Summary:
+//
+// GetQueueAttributes
+//
+// @param request - GetQueueAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQueueAttributesResponse
 func (client *Client) GetQueueAttributesWithOptions(request *GetQueueAttributesRequest, runtime *util.RuntimeOptions) (_result *GetQueueAttributesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3232,6 +3643,10 @@ func (client *Client) GetQueueAttributesWithOptions(request *GetQueueAttributesR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.QueueName)) {
 		query["QueueName"] = request.QueueName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3257,6 +3672,13 @@ func (client *Client) GetQueueAttributesWithOptions(request *GetQueueAttributesR
 	return _result, _err
 }
 
+// Summary:
+//
+// GetQueueAttributes
+//
+// @param request - GetQueueAttributesRequest
+//
+// @return GetQueueAttributesResponse
 func (client *Client) GetQueueAttributes(request *GetQueueAttributesRequest) (_result *GetQueueAttributesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQueueAttributesResponse{}
@@ -3268,6 +3690,15 @@ func (client *Client) GetQueueAttributes(request *GetQueueAttributesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// GetSubscription
+//
+// @param request - GetSubscriptionAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSubscriptionAttributesResponse
 func (client *Client) GetSubscriptionAttributesWithOptions(request *GetSubscriptionAttributesRequest, runtime *util.RuntimeOptions) (_result *GetSubscriptionAttributesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3305,6 +3736,13 @@ func (client *Client) GetSubscriptionAttributesWithOptions(request *GetSubscript
 	return _result, _err
 }
 
+// Summary:
+//
+// GetSubscription
+//
+// @param request - GetSubscriptionAttributesRequest
+//
+// @return GetSubscriptionAttributesResponse
 func (client *Client) GetSubscriptionAttributes(request *GetSubscriptionAttributesRequest) (_result *GetSubscriptionAttributesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSubscriptionAttributesResponse{}
@@ -3316,12 +3754,25 @@ func (client *Client) GetSubscriptionAttributes(request *GetSubscriptionAttribut
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询主题
+//
+// @param request - GetTopicAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTopicAttributesResponse
 func (client *Client) GetTopicAttributesWithOptions(request *GetTopicAttributesRequest, runtime *util.RuntimeOptions) (_result *GetTopicAttributesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TopicName)) {
 		query["TopicName"] = request.TopicName
 	}
@@ -3349,6 +3800,13 @@ func (client *Client) GetTopicAttributesWithOptions(request *GetTopicAttributesR
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询主题
+//
+// @param request - GetTopicAttributesRequest
+//
+// @return GetTopicAttributesResponse
 func (client *Client) GetTopicAttributes(request *GetTopicAttributesRequest) (_result *GetTopicAttributesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTopicAttributesResponse{}
@@ -3360,6 +3818,15 @@ func (client *Client) GetTopicAttributes(request *GetTopicAttributesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// ListQueue
+//
+// @param request - ListQueueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQueueResponse
 func (client *Client) ListQueueWithOptions(request *ListQueueRequest, runtime *util.RuntimeOptions) (_result *ListQueueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3376,6 +3843,10 @@ func (client *Client) ListQueueWithOptions(request *ListQueueRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.QueueName)) {
 		query["QueueName"] = request.QueueName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3401,6 +3872,13 @@ func (client *Client) ListQueueWithOptions(request *ListQueueRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// ListQueue
+//
+// @param request - ListQueueRequest
+//
+// @return ListQueueResponse
 func (client *Client) ListQueue(request *ListQueueRequest) (_result *ListQueueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListQueueResponse{}
@@ -3412,6 +3890,15 @@ func (client *Client) ListQueue(request *ListQueueRequest) (_result *ListQueueRe
 	return _result, _err
 }
 
+// Summary:
+//
+// ListSubscription
+//
+// @param request - ListSubscriptionByTopicRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSubscriptionByTopicResponse
 func (client *Client) ListSubscriptionByTopicWithOptions(request *ListSubscriptionByTopicRequest, runtime *util.RuntimeOptions) (_result *ListSubscriptionByTopicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3457,6 +3944,13 @@ func (client *Client) ListSubscriptionByTopicWithOptions(request *ListSubscripti
 	return _result, _err
 }
 
+// Summary:
+//
+// ListSubscription
+//
+// @param request - ListSubscriptionByTopicRequest
+//
+// @return ListSubscriptionByTopicResponse
 func (client *Client) ListSubscriptionByTopic(request *ListSubscriptionByTopicRequest) (_result *ListSubscriptionByTopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSubscriptionByTopicResponse{}
@@ -3468,6 +3962,15 @@ func (client *Client) ListSubscriptionByTopic(request *ListSubscriptionByTopicRe
 	return _result, _err
 }
 
+// Summary:
+//
+// ListTopic
+//
+// @param request - ListTopicRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTopicResponse
 func (client *Client) ListTopicWithOptions(request *ListTopicRequest, runtime *util.RuntimeOptions) (_result *ListTopicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3480,6 +3983,10 @@ func (client *Client) ListTopicWithOptions(request *ListTopicRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TopicName)) {
@@ -3509,6 +4016,13 @@ func (client *Client) ListTopicWithOptions(request *ListTopicRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// ListTopic
+//
+// @param request - ListTopicRequest
+//
+// @return ListTopicResponse
 func (client *Client) ListTopic(request *ListTopicRequest) (_result *ListTopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTopicResponse{}
@@ -3520,6 +4034,15 @@ func (client *Client) ListTopic(request *ListTopicRequest) (_result *ListTopicRe
 	return _result, _err
 }
 
+// Summary:
+//
+// SetQueueAttributes
+//
+// @param request - SetQueueAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetQueueAttributesResponse
 func (client *Client) SetQueueAttributesWithOptions(request *SetQueueAttributesRequest, runtime *util.RuntimeOptions) (_result *SetQueueAttributesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3577,6 +4100,13 @@ func (client *Client) SetQueueAttributesWithOptions(request *SetQueueAttributesR
 	return _result, _err
 }
 
+// Summary:
+//
+// SetQueueAttributes
+//
+// @param request - SetQueueAttributesRequest
+//
+// @return SetQueueAttributesResponse
 func (client *Client) SetQueueAttributes(request *SetQueueAttributesRequest) (_result *SetQueueAttributesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetQueueAttributesResponse{}
@@ -3588,6 +4118,15 @@ func (client *Client) SetQueueAttributes(request *SetQueueAttributesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// ModifySubscription
+//
+// @param request - SetSubscriptionAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetSubscriptionAttributesResponse
 func (client *Client) SetSubscriptionAttributesWithOptions(request *SetSubscriptionAttributesRequest, runtime *util.RuntimeOptions) (_result *SetSubscriptionAttributesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3629,6 +4168,13 @@ func (client *Client) SetSubscriptionAttributesWithOptions(request *SetSubscript
 	return _result, _err
 }
 
+// Summary:
+//
+// ModifySubscription
+//
+// @param request - SetSubscriptionAttributesRequest
+//
+// @return SetSubscriptionAttributesResponse
 func (client *Client) SetSubscriptionAttributes(request *SetSubscriptionAttributesRequest) (_result *SetSubscriptionAttributesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetSubscriptionAttributesResponse{}
@@ -3640,6 +4186,15 @@ func (client *Client) SetSubscriptionAttributes(request *SetSubscriptionAttribut
 	return _result, _err
 }
 
+// Summary:
+//
+// 编辑订阅主题
+//
+// @param request - SetTopicAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetTopicAttributesResponse
 func (client *Client) SetTopicAttributesWithOptions(request *SetTopicAttributesRequest, runtime *util.RuntimeOptions) (_result *SetTopicAttributesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3681,6 +4236,13 @@ func (client *Client) SetTopicAttributesWithOptions(request *SetTopicAttributesR
 	return _result, _err
 }
 
+// Summary:
+//
+// 编辑订阅主题
+//
+// @param request - SetTopicAttributesRequest
+//
+// @return SetTopicAttributesResponse
 func (client *Client) SetTopicAttributes(request *SetTopicAttributesRequest) (_result *SetTopicAttributesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetTopicAttributesResponse{}
@@ -3692,6 +4254,15 @@ func (client *Client) SetTopicAttributes(request *SetTopicAttributesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// CreateSubscription
+//
+// @param request - SubscribeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubscribeResponse
 func (client *Client) SubscribeWithOptions(request *SubscribeRequest, runtime *util.RuntimeOptions) (_result *SubscribeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3749,6 +4320,13 @@ func (client *Client) SubscribeWithOptions(request *SubscribeRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// CreateSubscription
+//
+// @param request - SubscribeRequest
+//
+// @return SubscribeResponse
 func (client *Client) Subscribe(request *SubscribeRequest) (_result *SubscribeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubscribeResponse{}
@@ -3760,6 +4338,15 @@ func (client *Client) Subscribe(request *SubscribeRequest) (_result *SubscribeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// DeleteSubscription
+//
+// @param request - UnsubscribeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnsubscribeResponse
 func (client *Client) UnsubscribeWithOptions(request *UnsubscribeRequest, runtime *util.RuntimeOptions) (_result *UnsubscribeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3797,6 +4384,13 @@ func (client *Client) UnsubscribeWithOptions(request *UnsubscribeRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// DeleteSubscription
+//
+// @param request - UnsubscribeRequest
+//
+// @return UnsubscribeResponse
 func (client *Client) Unsubscribe(request *UnsubscribeRequest) (_result *UnsubscribeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnsubscribeResponse{}
