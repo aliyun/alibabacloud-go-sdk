@@ -8735,7 +8735,8 @@ type DescribeInternetTrafficTrendResponseBody struct {
 	// example:
 	//
 	// 1672736400
-	MaxBandwidthTime *int64 `json:"MaxBandwidthTime,omitempty" xml:"MaxBandwidthTime,omitempty"`
+	MaxBandwidthTime  *int64 `json:"MaxBandwidthTime,omitempty" xml:"MaxBandwidthTime,omitempty"`
+	MaxDayExceedBytes *int64 `json:"MaxDayExceedBytes,omitempty" xml:"MaxDayExceedBytes,omitempty"`
 	// The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
 	//
 	// example:
@@ -8771,7 +8772,8 @@ type DescribeInternetTrafficTrendResponseBody struct {
 	// example:
 	//
 	// 963227674958
-	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	TotalBytes       *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	TotalExceedBytes *int64 `json:"TotalExceedBytes,omitempty" xml:"TotalExceedBytes,omitempty"`
 	// The inbound network throughput, which indicates the total number of bytes that are sent inbound. Unit: bytes.
 	//
 	// example:
@@ -8830,6 +8832,11 @@ func (s *DescribeInternetTrafficTrendResponseBody) SetMaxBandwidthTime(v int64) 
 	return s
 }
 
+func (s *DescribeInternetTrafficTrendResponseBody) SetMaxDayExceedBytes(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.MaxDayExceedBytes = &v
+	return s
+}
+
 func (s *DescribeInternetTrafficTrendResponseBody) SetMaxInBps(v int64) *DescribeInternetTrafficTrendResponseBody {
 	s.MaxInBps = &v
 	return s
@@ -8857,6 +8864,11 @@ func (s *DescribeInternetTrafficTrendResponseBody) SetRequestId(v string) *Descr
 
 func (s *DescribeInternetTrafficTrendResponseBody) SetTotalBytes(v int64) *DescribeInternetTrafficTrendResponseBody {
 	s.TotalBytes = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetTotalExceedBytes(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.TotalExceedBytes = &v
 	return s
 }
 
@@ -9812,7 +9824,7 @@ type DescribeNatFirewallControlPolicyRequest struct {
 	//
 	// 	- **Permanent*	- (default): The policy always takes effect.
 	//
-	// 	- **None**: The policy takes effect for only once.
+	// 	- **None**: The policy takes effect only once.
 	//
 	// 	- **Daily**: The policy takes effect on a daily basis.
 	//
@@ -10583,8 +10595,9 @@ type DescribeNatFirewallListResponseBodyNatFirewallList struct {
 	// example:
 	//
 	// ngw-uf6tnblxip4qcxg******
-	NatGatewayId   *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
+	NatGatewayId      *string                                                                `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NatGatewayName    *string                                                                `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
+	NatRouteEntryList []*DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList `json:"NatRouteEntryList,omitempty" xml:"NatRouteEntryList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// proxy-nat30******
@@ -10642,6 +10655,11 @@ func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetNatGatewayName(v
 	return s
 }
 
+func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetNatRouteEntryList(v []*DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList) *DescribeNatFirewallListResponseBodyNatFirewallList {
+	s.NatRouteEntryList = v
+	return s
+}
+
 func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetProxyId(v string) *DescribeNatFirewallListResponseBodyNatFirewallList {
 	s.ProxyId = &v
 	return s
@@ -10674,6 +10692,41 @@ func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetVpcId(v string) 
 
 func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetVpcName(v string) *DescribeNatFirewallListResponseBodyNatFirewallList {
 	s.VpcName = &v
+	return s
+}
+
+type DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList struct {
+	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
+	NextHopId       *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	NextHopType     *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	RouteTableId    *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+}
+
+func (s DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList) SetDestinationCidr(v string) *DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList {
+	s.DestinationCidr = &v
+	return s
+}
+
+func (s *DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList) SetNextHopId(v string) *DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList {
+	s.NextHopId = &v
+	return s
+}
+
+func (s *DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList) SetNextHopType(v string) *DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList {
+	s.NextHopType = &v
+	return s
+}
+
+func (s *DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList) SetRouteTableId(v string) *DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList {
+	s.RouteTableId = &v
 	return s
 }
 
@@ -25165,9 +25218,9 @@ type PutDisableAllFwSwitchRequest struct {
 	//
 	// i-2ze8v2x5kd9qyvp2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The natural language of the request and response. Valid values:
+	// The language of the content within the request and response. Valid values: Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// 	- **zh*	- (default): Chinese
 	//
 	// 	- **en**: English
 	//
@@ -34717,9 +34770,9 @@ func (client *Client) ModifyVpcFirewallSwitchStatus(request *ModifyVpcFirewallSw
 //
 // You can call the PutDisableAllFwSwitch operation to turn off all firewall switches.
 //
-// ## Limits
+// ## [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - PutDisableAllFwSwitchRequest
 //
@@ -34775,9 +34828,9 @@ func (client *Client) PutDisableAllFwSwitchWithOptions(request *PutDisableAllFwS
 //
 // You can call the PutDisableAllFwSwitch operation to turn off all firewall switches.
 //
-// ## Limits
+// ## [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - PutDisableAllFwSwitchRequest
 //
