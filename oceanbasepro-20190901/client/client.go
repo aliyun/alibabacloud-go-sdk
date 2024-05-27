@@ -22233,7 +22233,7 @@ func (s *DescribeProcessStatsCompositionRequest) SetUsers(v string) *DescribePro
 
 type DescribeProcessStatsCompositionResponseBody struct {
 	// The return result.
-	Data []*DescribeProcessStatsCompositionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Data *DescribeProcessStatsCompositionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -22250,7 +22250,7 @@ func (s DescribeProcessStatsCompositionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeProcessStatsCompositionResponseBody) SetData(v []*DescribeProcessStatsCompositionResponseBodyData) *DescribeProcessStatsCompositionResponseBody {
+func (s *DescribeProcessStatsCompositionResponseBody) SetData(v *DescribeProcessStatsCompositionResponseBodyData) *DescribeProcessStatsCompositionResponseBody {
 	s.Data = v
 	return s
 }
@@ -22261,34 +22261,12 @@ func (s *DescribeProcessStatsCompositionResponseBody) SetRequestId(v string) *De
 }
 
 type DescribeProcessStatsCompositionResponseBodyData struct {
-	// The number of active sessions.
-	//
-	// example:
-	//
-	// 25
-	ActiveSessionCount *int32 `json:"ActiveSessionCount,omitempty" xml:"ActiveSessionCount,omitempty"`
-	// The list of all processes in the system.
-	AllProcessList []*DescribeProcessStatsCompositionResponseBodyDataAllProcessList `json:"AllProcessList,omitempty" xml:"AllProcessList,omitempty" type:"Repeated"`
-	// The number of idle sessions.
-	//
-	// example:
-	//
-	// 8
-	IdleSessionCount *int32 `json:"IdleSessionCount,omitempty" xml:"IdleSessionCount,omitempty"`
-	// The version of OceanBase Database.
-	//
-	// example:
-	//
-	// 4.2.1.0
-	ObVersion *string `json:"ObVersion,omitempty" xml:"ObVersion,omitempty"`
-	// The session statistics.
-	SessionStatistics *DescribeProcessStatsCompositionResponseBodyDataSessionStatistics `json:"SessionStatistics,omitempty" xml:"SessionStatistics,omitempty" type:"Struct"`
-	// The total number of sessions.
-	//
-	// example:
-	//
-	// 500
-	TotalSessionCount *int32 `json:"TotalSessionCount,omitempty" xml:"TotalSessionCount,omitempty"`
+	ActiveSessionCount *int32                                                            `json:"ActiveSessionCount,omitempty" xml:"ActiveSessionCount,omitempty"`
+	AllProcessList     []*DescribeProcessStatsCompositionResponseBodyDataAllProcessList  `json:"AllProcessList,omitempty" xml:"AllProcessList,omitempty" type:"Repeated"`
+	IdleSessionCount   *int32                                                            `json:"IdleSessionCount,omitempty" xml:"IdleSessionCount,omitempty"`
+	ObVersion          *string                                                           `json:"ObVersion,omitempty" xml:"ObVersion,omitempty"`
+	SessionStatistics  *DescribeProcessStatsCompositionResponseBodyDataSessionStatistics `json:"SessionStatistics,omitempty" xml:"SessionStatistics,omitempty" type:"Struct"`
+	TotalSessionCount  *int32                                                            `json:"TotalSessionCount,omitempty" xml:"TotalSessionCount,omitempty"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyData) String() string {
@@ -22330,96 +22308,21 @@ func (s *DescribeProcessStatsCompositionResponseBodyData) SetTotalSessionCount(v
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataAllProcessList struct {
-	// The IP address of the client.
-	//
-	// example:
-	//
-	// 127.*.*.*
-	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The type of command executed on the current session.
-	//
-	// example:
-	//
-	// Sleep
-	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The CPU time.
-	//
-	// example:
-	//
-	// 257.943
-	CpuTime *int64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// database1
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The execution time.
-	//
-	// example:
-	//
-	// 18.23
-	ExecuteTime *int64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The ID of the plan.
-	//
-	// example:
-	//
-	// af621fe01e064743bd37e7c9a41aa139
-	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// The ID of the proxy session.
-	//
-	// example:
-	//
-	// ab***-********-90ab-c***-***********b
+	ClientIp    *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	Command     *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	CpuTime     *int64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	Database    *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	ExecuteTime *int64  `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	PlanId      *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	ProxySessId *string `json:"ProxySessId,omitempty" xml:"ProxySessId,omitempty"`
-	// The IP address of the server.
-	//
-	// example:
-	//
-	// 127.*.*.*
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// The ID of the session.
-	//
-	// example:
-	//
-	// 1***************90L
-	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The ID of the SQL statement.
-	//
-	// example:
-	//
-	// 8D6E84****0B8FB1823D199E2CA1****
-	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	// The SQL statement.
-	//
-	// example:
-	//
-	// SELECT 	- FROM table_name;
-	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
-	// The state of the session.
-	//
-	// example:
-	//
-	// ACTIVE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the tenant.
-	//
-	// example:
-	//
-	// t33h8y08k****
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The ID of the trace.
-	//
-	// example:
-	//
-	// 3c6e****-cb**-11**-a5**-4201ac1****f
-	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	// The username that you use to log in to the database.
-	//
-	// example:
-	//
-	// test1
-	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	SessionId   *int64  `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SqlId       *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlText     *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TraceId     *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	User        *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyDataAllProcessList) String() string {
@@ -22506,12 +22409,9 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessList) SetUser(
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataSessionStatistics struct {
-	// The database statistics.
 	DataBaseStatistics []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBaseStatistics `json:"DataBaseStatistics,omitempty" xml:"DataBaseStatistics,omitempty" type:"Repeated"`
-	// The data source statistics.
-	SourceStatistics []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics `json:"SourceStatistics,omitempty" xml:"SourceStatistics,omitempty" type:"Repeated"`
-	// The user statistics.
-	UserStatistics []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics `json:"UserStatistics,omitempty" xml:"UserStatistics,omitempty" type:"Repeated"`
+	SourceStatistics   []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics   `json:"SourceStatistics,omitempty" xml:"SourceStatistics,omitempty" type:"Repeated"`
+	UserStatistics     []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics     `json:"UserStatistics,omitempty" xml:"UserStatistics,omitempty" type:"Repeated"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyDataSessionStatistics) String() string {
@@ -22538,30 +22438,10 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataSessionStatistics) SetUs
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBaseStatistics struct {
-	// The number of active sessions.
-	//
-	// example:
-	//
-	// 1
-	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
-	// The value of the database metric.
-	//
-	// example:
-	//
-	// test_database
+	ActiveCount *int64  `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
 	MetricValue *string `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
-	// The total number of sessions.
-	//
-	// example:
-	//
-	// 9
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The type of the database statistics.
-	//
-	// example:
-	//
-	// database
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	TotalCount  *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBaseStatistics) String() string {
@@ -22593,30 +22473,10 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBas
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics struct {
-	// The number of active sessions.
-	//
-	// example:
-	//
-	// 2
-	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
-	// The value of the data source metric.
-	//
-	// example:
-	//
-	// 127.*.*.*
+	ActiveCount *int64  `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
 	MetricValue *string `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
-	// The total number of sessions.
-	//
-	// example:
-	//
-	// 12
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The type of the data source.
-	//
-	// example:
-	//
-	// client
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	TotalCount  *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics) String() string {
@@ -22648,30 +22508,10 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceS
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics struct {
-	// The number of active sessions.
-	//
-	// example:
-	//
-	// 5
-	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
-	// The value of the user metric.
-	//
-	// example:
-	//
-	// admin
+	ActiveCount *int64  `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
 	MetricValue *string `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
-	// The total number of sessions.
-	//
-	// example:
-	//
-	// 15
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The type of the user.
-	//
-	// example:
-	//
-	// user
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	TotalCount  *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics) String() string {
