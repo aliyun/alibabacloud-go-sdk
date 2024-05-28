@@ -41781,8 +41781,11 @@ type ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummary
 	// example:
 	//
 	// 0
-	CallsOffered        *int64 `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
-	CallsQueuingTimeout *int64 `json:"CallsQueuingTimeout,omitempty" xml:"CallsQueuingTimeout,omitempty"`
+	CallsOffered         *int64  `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	CallsQueuingCanceled *string `json:"CallsQueuingCanceled,omitempty" xml:"CallsQueuingCanceled,omitempty"`
+	CallsQueuingFailure  *string `json:"CallsQueuingFailure,omitempty" xml:"CallsQueuingFailure,omitempty"`
+	CallsQueuingRerouted *string `json:"CallsQueuingRerouted,omitempty" xml:"CallsQueuingRerouted,omitempty"`
+	CallsQueuingTimeout  *int64  `json:"CallsQueuingTimeout,omitempty" xml:"CallsQueuingTimeout,omitempty"`
 	// example:
 	//
 	// 0
@@ -41922,6 +41925,21 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSum
 
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsOffered(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
 	s.CallsOffered = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsQueuingCanceled(v string) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
+	s.CallsQueuingCanceled = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsQueuingFailure(v string) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
+	s.CallsQueuingFailure = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsQueuingRerouted(v string) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
+	s.CallsQueuingRerouted = &v
 	return s
 }
 
