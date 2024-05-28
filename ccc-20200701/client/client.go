@@ -18239,6 +18239,132 @@ func (s *ImportAdminsResponse) SetBody(v *ImportAdminsResponseBody) *ImportAdmin
 	return s
 }
 
+type ImportCorpNumbersRequest struct {
+	City     *string `json:"City,omitempty" xml:"City,omitempty"`
+	CorpName *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [\\"02912345678\\"]
+	NumberList *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
+	// This parameter is required.
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	TagList  *string `json:"TagList,omitempty" xml:"TagList,omitempty"`
+}
+
+func (s ImportCorpNumbersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportCorpNumbersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportCorpNumbersRequest) SetCity(v string) *ImportCorpNumbersRequest {
+	s.City = &v
+	return s
+}
+
+func (s *ImportCorpNumbersRequest) SetCorpName(v string) *ImportCorpNumbersRequest {
+	s.CorpName = &v
+	return s
+}
+
+func (s *ImportCorpNumbersRequest) SetNumberList(v string) *ImportCorpNumbersRequest {
+	s.NumberList = &v
+	return s
+}
+
+func (s *ImportCorpNumbersRequest) SetProvider(v string) *ImportCorpNumbersRequest {
+	s.Provider = &v
+	return s
+}
+
+func (s *ImportCorpNumbersRequest) SetProvince(v string) *ImportCorpNumbersRequest {
+	s.Province = &v
+	return s
+}
+
+func (s *ImportCorpNumbersRequest) SetTagList(v string) *ImportCorpNumbersRequest {
+	s.TagList = &v
+	return s
+}
+
+type ImportCorpNumbersResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// C42981C7-93D9-55CD-B078-784F8522E0E1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImportCorpNumbersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportCorpNumbersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportCorpNumbersResponseBody) SetCode(v string) *ImportCorpNumbersResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImportCorpNumbersResponseBody) SetHttpStatusCode(v int32) *ImportCorpNumbersResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ImportCorpNumbersResponseBody) SetMessage(v string) *ImportCorpNumbersResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImportCorpNumbersResponseBody) SetRequestId(v string) *ImportCorpNumbersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImportCorpNumbersResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportCorpNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImportCorpNumbersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportCorpNumbersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportCorpNumbersResponse) SetHeaders(v map[string]*string) *ImportCorpNumbersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportCorpNumbersResponse) SetStatusCode(v int32) *ImportCorpNumbersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportCorpNumbersResponse) SetBody(v *ImportCorpNumbersResponseBody) *ImportCorpNumbersResponse {
+	s.Body = v
+	return s
+}
+
 type ImportCustomCallTaggingRequest struct {
 	// This parameter is required.
 	//
@@ -62015,6 +62141,78 @@ func (client *Client) ImportAdmins(request *ImportAdminsRequest) (_result *Impor
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportAdminsResponse{}
 	_body, _err := client.ImportAdminsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ImportCorpNumbersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportCorpNumbersResponse
+func (client *Client) ImportCorpNumbersWithOptions(request *ImportCorpNumbersRequest, runtime *util.RuntimeOptions) (_result *ImportCorpNumbersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.City)) {
+		query["City"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CorpName)) {
+		query["CorpName"] = request.CorpName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberList)) {
+		query["NumberList"] = request.NumberList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Provider)) {
+		query["Provider"] = request.Provider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Province)) {
+		query["Province"] = request.Province
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagList)) {
+		query["TagList"] = request.TagList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportCorpNumbers"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportCorpNumbersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ImportCorpNumbersRequest
+//
+// @return ImportCorpNumbersResponse
+func (client *Client) ImportCorpNumbers(request *ImportCorpNumbersRequest) (_result *ImportCorpNumbersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportCorpNumbersResponse{}
+	_body, _err := client.ImportCorpNumbersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
