@@ -10147,7 +10147,8 @@ type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
 	// example:
 	//
 	// on
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclId  *string                                                      `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclIds *DescribeLoadBalancerHTTPListenerAttributeResponseBodyAclIds `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Struct"`
 	// Indicates whether access control is enabled. Valid values:
 	//
 	// 	- **on**
@@ -10487,6 +10488,11 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetAclId(v strin
 	return s
 }
 
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetAclIds(v *DescribeLoadBalancerHTTPListenerAttributeResponseBodyAclIds) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.AclIds = v
+	return s
+}
+
 func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetAclStatus(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
 	s.AclStatus = &v
 	return s
@@ -10679,6 +10685,23 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor
 
 func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor_proto(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
 	s.XForwardedFor_proto = &v
+	return s
+}
+
+type DescribeLoadBalancerHTTPListenerAttributeResponseBodyAclIds struct {
+	AclId []*string `json:"AclId,omitempty" xml:"AclId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLoadBalancerHTTPListenerAttributeResponseBodyAclIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerHTTPListenerAttributeResponseBodyAclIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyAclIds) SetAclId(v []*string) *DescribeLoadBalancerHTTPListenerAttributeResponseBodyAclIds {
+	s.AclId = v
 	return s
 }
 
@@ -10926,7 +10949,8 @@ type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
 	// example:
 	//
 	// nacl-a2do9e413e0spzasx****
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclId  *string                                                       `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclIds *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyAclIds `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Struct"`
 	// Indicates whether access control is enabled. Valid values:
 	//
 	// 	- **on**
@@ -11338,6 +11362,11 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetAclId(v stri
 	return s
 }
 
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetAclIds(v *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyAclIds) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
+	s.AclIds = v
+	return s
+}
+
 func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetAclStatus(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
 	s.AclStatus = &v
 	return s
@@ -11565,6 +11594,23 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFo
 
 func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBody) SetXForwardedFor_proto(v string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBody {
 	s.XForwardedFor_proto = &v
+	return s
+}
+
+type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyAclIds struct {
+	AclId []*string `json:"AclId,omitempty" xml:"AclId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyAclIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBodyAclIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyAclIds) SetAclId(v []*string) *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyAclIds {
+	s.AclId = v
 	return s
 }
 
@@ -12045,7 +12091,8 @@ type DescribeLoadBalancerListenersResponseBodyListeners struct {
 	// example:
 	//
 	// nacl-a2do9e413e0spzasx****
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclId  *string   `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 	// Indicates whether access control is enabled. Valid values:
 	//
 	// 	- **on**: yes
@@ -12160,6 +12207,11 @@ func (s DescribeLoadBalancerListenersResponseBodyListeners) GoString() string {
 
 func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetAclId(v string) *DescribeLoadBalancerListenersResponseBodyListeners {
 	s.AclId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetAclIds(v []*string) *DescribeLoadBalancerListenersResponseBodyListeners {
+	s.AclIds = v
 	return s
 }
 
@@ -13610,7 +13662,8 @@ type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
 	// example:
 	//
 	// 12
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclId  *string                                                     `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclIds *DescribeLoadBalancerTCPListenerAttributeResponseBodyAclIds `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Struct"`
 	// Indicates whether access control is enabled. Valid values:
 	//
 	// 	- **on**: yes
@@ -13860,6 +13913,11 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetAclId(v string
 	return s
 }
 
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetAclIds(v *DescribeLoadBalancerTCPListenerAttributeResponseBodyAclIds) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
+	s.AclIds = v
+	return s
+}
+
 func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetAclStatus(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
 	s.AclStatus = &v
 	return s
@@ -14007,6 +14065,23 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetUnhealthyThres
 
 func (s *DescribeLoadBalancerTCPListenerAttributeResponseBody) SetVServerGroupId(v string) *DescribeLoadBalancerTCPListenerAttributeResponseBody {
 	s.VServerGroupId = &v
+	return s
+}
+
+type DescribeLoadBalancerTCPListenerAttributeResponseBodyAclIds struct {
+	AclId []*string `json:"AclId,omitempty" xml:"AclId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLoadBalancerTCPListenerAttributeResponseBodyAclIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerTCPListenerAttributeResponseBodyAclIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerTCPListenerAttributeResponseBodyAclIds) SetAclId(v []*string) *DescribeLoadBalancerTCPListenerAttributeResponseBodyAclIds {
+	s.AclId = v
 	return s
 }
 
@@ -14169,7 +14244,8 @@ type DescribeLoadBalancerUDPListenerAttributeResponseBody struct {
 	// example:
 	//
 	// 123943****
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclId  *string                                                     `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclIds *DescribeLoadBalancerUDPListenerAttributeResponseBodyAclIds `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Struct"`
 	// Indicates whether access control is enabled. Valid values: **on*	- and **off**. Default value: off.
 	//
 	// example:
@@ -14345,6 +14421,11 @@ func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetAclId(v string
 	return s
 }
 
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetAclIds(v *DescribeLoadBalancerUDPListenerAttributeResponseBodyAclIds) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
+	s.AclIds = v
+	return s
+}
+
 func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetAclStatus(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
 	s.AclStatus = &v
 	return s
@@ -14452,6 +14533,23 @@ func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetUnhealthyThres
 
 func (s *DescribeLoadBalancerUDPListenerAttributeResponseBody) SetVServerGroupId(v string) *DescribeLoadBalancerUDPListenerAttributeResponseBody {
 	s.VServerGroupId = &v
+	return s
+}
+
+type DescribeLoadBalancerUDPListenerAttributeResponseBodyAclIds struct {
+	AclId []*string `json:"AclId,omitempty" xml:"AclId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLoadBalancerUDPListenerAttributeResponseBodyAclIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerUDPListenerAttributeResponseBodyAclIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerUDPListenerAttributeResponseBodyAclIds) SetAclId(v []*string) *DescribeLoadBalancerUDPListenerAttributeResponseBodyAclIds {
+	s.AclId = v
 	return s
 }
 
