@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,9 +10,22 @@ import (
 )
 
 type GetRealTimeRiskInfoRequest struct {
-	Atoken       *string `json:"atoken,omitempty" xml:"atoken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ab63aqUKx9TmYRhPV7LnRLybLRQOEG6GQsr-oGlT8bo6-_z_oYxTqqutBz6R0dBognMN1DBvZImDadsKb8k_Hfcj8A8nrXtxch_nKVg5xARkRmMU2SU=
+	Atoken *string `json:"atoken,omitempty" xml:"atoken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 62c792d188ccdf4b7ec1aa38
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	Extra        *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// example:
+	//
+	// 360risk
+	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
 }
 
 func (s GetRealTimeRiskInfoRequest) String() string {
@@ -42,12 +52,22 @@ func (s *GetRealTimeRiskInfoRequest) SetExtra(v string) *GetRealTimeRiskInfoRequ
 }
 
 type GetRealTimeRiskInfoResponseBody struct {
-	Msg  *string                              `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 200
 	Code *int64                               `json:"code,omitempty" xml:"code,omitempty"`
 	Data *GetRealTimeRiskInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// 2343535353DF8984565
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetRealTimeRiskInfoResponseBody) String() string {
@@ -84,14 +104,38 @@ func (s *GetRealTimeRiskInfoResponseBody) SetSuccess(v bool) *GetRealTimeRiskInf
 }
 
 type GetRealTimeRiskInfoResponseBodyData struct {
-	AppChannel  *string `json:"appChannel,omitempty" xml:"appChannel,omitempty"`
-	FakeDevice  *string `json:"fakeDevice,omitempty" xml:"fakeDevice,omitempty"`
-	Idfa        *string `json:"idfa,omitempty" xml:"idfa,omitempty"`
-	Oaid        *string `json:"oaid,omitempty" xml:"oaid,omitempty"`
+	// example:
+	//
+	// 360market
+	AppChannel *string `json:"appChannel,omitempty" xml:"appChannel,omitempty"`
+	// example:
+	//
+	// 1
+	FakeDevice *string `json:"fakeDevice,omitempty" xml:"fakeDevice,omitempty"`
+	// example:
+	//
+	// 00000000-0000-0000-0000-000000000000
+	Idfa *string `json:"idfa,omitempty" xml:"idfa,omitempty"`
+	// example:
+	//
+	// sf58rw7erdfdgdgseeg2434
+	Oaid *string `json:"oaid,omitempty" xml:"oaid,omitempty"`
+	// example:
+	//
+	// 0
 	ProxyDevice *string `json:"proxyDevice,omitempty" xml:"proxyDevice,omitempty"`
-	RiskLevel   *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
-	RiskScore   *string `json:"riskScore,omitempty" xml:"riskScore,omitempty"`
-	Zid         *string `json:"zid,omitempty" xml:"zid,omitempty"`
+	// example:
+	//
+	// RISK
+	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
+	// example:
+	//
+	// 60
+	RiskScore *string `json:"riskScore,omitempty" xml:"riskScore,omitempty"`
+	// example:
+	//
+	// 815E045B-4A9E-AA76-BEFF-048C9B9F651A
+	Zid *string `json:"zid,omitempty" xml:"zid,omitempty"`
 }
 
 func (s GetRealTimeRiskInfoResponseBodyData) String() string {
@@ -143,9 +187,9 @@ func (s *GetRealTimeRiskInfoResponseBodyData) SetZid(v string) *GetRealTimeRiskI
 }
 
 type GetRealTimeRiskInfoResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRealTimeRiskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRealTimeRiskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRealTimeRiskInfoResponse) String() string {
@@ -173,7 +217,18 @@ func (s *GetRealTimeRiskInfoResponse) SetBody(v *GetRealTimeRiskInfoResponseBody
 
 type GetZidTagByAtokenRequest struct {
 	// atoken
-	Atoken       *string `json:"atoken,omitempty" xml:"atoken,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AcNh1pZFEJ9wEO1RkqK2S9Qt0DHxZR6riGmx4CpGrxCpf3_LxvQNQQGaLjGWRg_-Un1yC47qfEiwRysoCJgQrBSa7b274rzhuIW4QDer7J41X18PiHI=
+	Atoken *string `json:"atoken,omitempty" xml:"atoken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 59892ebcaed179694b000104
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
 }
 
@@ -198,10 +253,21 @@ func (s *GetZidTagByAtokenRequest) SetDataSourceId(v string) *GetZidTagByAtokenR
 type GetZidTagByAtokenResponseBody struct {
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// code
-	Code      *int64                             `json:"code,omitempty" xml:"code,omitempty"`
-	Data      *GetZidTagByAtokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	//
+	// example:
+	//
+	// 200
+	Code *int64                             `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetZidTagByAtokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2343535353DF8984565
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -240,17 +306,49 @@ func (s *GetZidTagByAtokenResponseBody) SetSuccess(v bool) *GetZidTagByAtokenRes
 
 type GetZidTagByAtokenResponseBodyData struct {
 	// aHook
-	AHook      *string `json:"aHook,omitempty" xml:"aHook,omitempty"`
-	Debug      *string `json:"debug,omitempty" xml:"debug,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	AHook *string `json:"aHook,omitempty" xml:"aHook,omitempty"`
+	// example:
+	//
+	// 1
+	Debug *string `json:"debug,omitempty" xml:"debug,omitempty"`
+	// example:
+	//
+	// 0
 	DoubleOpen *string `json:"doubleOpen,omitempty" xml:"doubleOpen,omitempty"`
 	// javaHook
-	JavaHook   *string `json:"javaHook,omitempty" xml:"javaHook,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	JavaHook *string `json:"javaHook,omitempty" xml:"javaHook,omitempty"`
+	// example:
+	//
+	// 1
 	NativeHook *string `json:"nativeHook,omitempty" xml:"nativeHook,omitempty"`
-	Root       *string `json:"root,omitempty" xml:"root,omitempty"`
-	Simulator  *string `json:"simulator,omitempty" xml:"simulator,omitempty"`
-	VpnProxy   *string `json:"vpnProxy,omitempty" xml:"vpnProxy,omitempty"`
-	WifiProxy  *string `json:"wifiProxy,omitempty" xml:"wifiProxy,omitempty"`
-	Zid        *string `json:"zid,omitempty" xml:"zid,omitempty"`
+	// example:
+	//
+	// 1
+	Root *string `json:"root,omitempty" xml:"root,omitempty"`
+	// example:
+	//
+	// 1
+	Simulator *string `json:"simulator,omitempty" xml:"simulator,omitempty"`
+	// example:
+	//
+	// 0
+	VpnProxy *string `json:"vpnProxy,omitempty" xml:"vpnProxy,omitempty"`
+	// example:
+	//
+	// 1
+	WifiProxy *string `json:"wifiProxy,omitempty" xml:"wifiProxy,omitempty"`
+	// example:
+	//
+	// F6DD4AD2-B7B8-AA3A-34B8-EDE55FC82FC6
+	Zid *string `json:"zid,omitempty" xml:"zid,omitempty"`
 }
 
 func (s GetZidTagByAtokenResponseBodyData) String() string {
@@ -312,9 +410,9 @@ func (s *GetZidTagByAtokenResponseBodyData) SetZid(v string) *GetZidTagByAtokenR
 }
 
 type GetZidTagByAtokenResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetZidTagByAtokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetZidTagByAtokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetZidTagByAtokenResponse) String() string {
@@ -342,7 +440,18 @@ func (s *GetZidTagByAtokenResponse) SetBody(v *GetZidTagByAtokenResponseBody) *G
 
 type GetZidTagScoreByAtokenRequest struct {
 	// atoken
-	Atoken       *string `json:"atoken,omitempty" xml:"atoken,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AcNh1pZFEJ9wEO1RkqK2S9Qt0DHxZR6riGmx4CpGrxCpf3_LxvQNQQGaLjGWRg_-Un1yC47qfEiwRysoCJgQrBSa7b274rzhuIW4QDer7J41X18PiHI=
+	Atoken *string `json:"atoken,omitempty" xml:"atoken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 59892ebcaed179694b000104
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
 }
 
@@ -366,12 +475,24 @@ func (s *GetZidTagScoreByAtokenRequest) SetDataSourceId(v string) *GetZidTagScor
 
 type GetZidTagScoreByAtokenResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// OK
 	Code *int64                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Msg  *string                                 `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	Data *GetZidTagScoreByAtokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// 2343535353DF8984565
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -410,19 +531,57 @@ func (s *GetZidTagScoreByAtokenResponseBody) SetSuccess(v bool) *GetZidTagScoreB
 
 type GetZidTagScoreByAtokenResponseBodyData struct {
 	// aHook
-	AHook      *string `json:"aHook,omitempty" xml:"aHook,omitempty"`
-	Debug      *string `json:"debug,omitempty" xml:"debug,omitempty"`
+	//
+	// example:
+	//
+	// 0
+	AHook *string `json:"aHook,omitempty" xml:"aHook,omitempty"`
+	// example:
+	//
+	// 1
+	Debug *string `json:"debug,omitempty" xml:"debug,omitempty"`
+	// example:
+	//
+	// 1
 	DoubleOpen *string `json:"doubleOpen,omitempty" xml:"doubleOpen,omitempty"`
 	// javaHook
-	JavaHook   *string `json:"javaHook,omitempty" xml:"javaHook,omitempty"`
+	//
+	// example:
+	//
+	// 0
+	JavaHook *string `json:"javaHook,omitempty" xml:"javaHook,omitempty"`
+	// example:
+	//
+	// 0
 	NativeHook *string `json:"nativeHook,omitempty" xml:"nativeHook,omitempty"`
-	RiskLevel  *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
-	RiskScore  *string `json:"riskScore,omitempty" xml:"riskScore,omitempty"`
-	Root       *string `json:"root,omitempty" xml:"root,omitempty"`
-	Simulator  *string `json:"simulator,omitempty" xml:"simulator,omitempty"`
-	VpnProxy   *string `json:"vpnProxy,omitempty" xml:"vpnProxy,omitempty"`
-	WifiProxy  *string `json:"wifiProxy,omitempty" xml:"wifiProxy,omitempty"`
-	Zid        *string `json:"zid,omitempty" xml:"zid,omitempty"`
+	// example:
+	//
+	// RISK
+	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
+	// example:
+	//
+	// 60
+	RiskScore *string `json:"riskScore,omitempty" xml:"riskScore,omitempty"`
+	// example:
+	//
+	// 0
+	Root *string `json:"root,omitempty" xml:"root,omitempty"`
+	// example:
+	//
+	// 1
+	Simulator *string `json:"simulator,omitempty" xml:"simulator,omitempty"`
+	// example:
+	//
+	// 0
+	VpnProxy *string `json:"vpnProxy,omitempty" xml:"vpnProxy,omitempty"`
+	// example:
+	//
+	// 0
+	WifiProxy *string `json:"wifiProxy,omitempty" xml:"wifiProxy,omitempty"`
+	// example:
+	//
+	// F6DD4AD2-B7B8-AA3A-34B8-EDE55FC82FC6
+	Zid *string `json:"zid,omitempty" xml:"zid,omitempty"`
 }
 
 func (s GetZidTagScoreByAtokenResponseBodyData) String() string {
@@ -494,9 +653,9 @@ func (s *GetZidTagScoreByAtokenResponseBodyData) SetZid(v string) *GetZidTagScor
 }
 
 type GetZidTagScoreByAtokenResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetZidTagScoreByAtokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetZidTagScoreByAtokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetZidTagScoreByAtokenResponse) String() string {
@@ -523,11 +682,32 @@ func (s *GetZidTagScoreByAtokenResponse) SetBody(v *GetZidTagScoreByAtokenRespon
 }
 
 type ListChannelRiskDetailsRequest struct {
-	Channel      *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// example:
+	//
+	// 360market
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 59892ebcaed179694b000104
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	End          *string `json:"end,omitempty" xml:"end,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20230418
+	End *string `json:"end,omitempty" xml:"end,omitempty"`
+	// example:
+	//
+	// 1
 	IsAllChannel *string `json:"isAllChannel,omitempty" xml:"isAllChannel,omitempty"`
-	Start        *string `json:"start,omitempty" xml:"start,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20230418
+	Start *string `json:"start,omitempty" xml:"start,omitempty"`
 }
 
 func (s ListChannelRiskDetailsRequest) String() string {
@@ -564,11 +744,20 @@ func (s *ListChannelRiskDetailsRequest) SetStart(v string) *ListChannelRiskDetai
 }
 
 type ListChannelRiskDetailsResponseBody struct {
-	Msg       *string                                 `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	Code      *int64                                  `json:"code,omitempty" xml:"code,omitempty"`
-	Data      *ListChannelRiskDetailsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListChannelRiskDetailsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2343535353DF8984565
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListChannelRiskDetailsResponseBody) String() string {
@@ -628,19 +817,58 @@ func (s *ListChannelRiskDetailsResponseBodyData) SetRiskSumary(v []*ListChannelR
 }
 
 type ListChannelRiskDetailsResponseBodyDataRiskDetails struct {
-	An   *string `json:"an,omitempty" xml:"an,omitempty"`
-	Av   *string `json:"av,omitempty" xml:"av,omitempty"`
-	Bn   *string `json:"bn,omitempty" xml:"bn,omitempty"`
-	C    *string `json:"c,omitempty" xml:"c,omitempty"`
+	// example:
+	//
+	// 0
+	An *string `json:"an,omitempty" xml:"an,omitempty"`
+	// example:
+	//
+	// v1.1.0
+	Av *string `json:"av,omitempty" xml:"av,omitempty"`
+	// example:
+	//
+	// 1
+	Bn *string `json:"bn,omitempty" xml:"bn,omitempty"`
+	// example:
+	//
+	// 360market
+	C *string `json:"c,omitempty" xml:"c,omitempty"`
+	// example:
+	//
+	// 20230410
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	Fd   *string `json:"fd,omitempty" xml:"fd,omitempty"`
+	// example:
+	//
+	// 1
+	Fd *string `json:"fd,omitempty" xml:"fd,omitempty"`
+	// example:
+	//
+	// 0000-0000-0000000
 	Idfa *string `json:"idfa,omitempty" xml:"idfa,omitempty"`
-	Jb   *string `json:"jb,omitempty" xml:"jb,omitempty"`
+	// example:
+	//
+	// 0
+	Jb *string `json:"jb,omitempty" xml:"jb,omitempty"`
+	// example:
+	//
+	// 343rUFD834343KJDDFS
 	Oaid *string `json:"oaid,omitempty" xml:"oaid,omitempty"`
-	Py   *string `json:"py,omitempty" xml:"py,omitempty"`
-	Rl   *string `json:"rl,omitempty" xml:"rl,omitempty"`
-	Rs   *string `json:"rs,omitempty" xml:"rs,omitempty"`
-	Zid  *string `json:"zid,omitempty" xml:"zid,omitempty"`
+	// example:
+	//
+	// 1
+	Py *string `json:"py,omitempty" xml:"py,omitempty"`
+	// example:
+	//
+	// RISK
+	Rl *string `json:"rl,omitempty" xml:"rl,omitempty"`
+	// example:
+	//
+	// 60
+	Rs *string `json:"rs,omitempty" xml:"rs,omitempty"`
+	// example:
+	//
+	// 815E045B-4A9E-AA76-BEFF-048C9B9F651A
+	Zid *string `json:"zid,omitempty" xml:"zid,omitempty"`
 }
 
 func (s ListChannelRiskDetailsResponseBodyDataRiskDetails) String() string {
@@ -717,7 +945,13 @@ func (s *ListChannelRiskDetailsResponseBodyDataRiskDetails) SetZid(v string) *Li
 }
 
 type ListChannelRiskDetailsResponseBodyDataRiskSumary struct {
-	Date                  *string `json:"date,omitempty" xml:"date,omitempty"`
+	// example:
+	//
+	// 20230418
+	Date *string `json:"date,omitempty" xml:"date,omitempty"`
+	// example:
+	//
+	// 2
 	RiskZidEmuDistinctNew *string `json:"riskZidEmuDistinctNew,omitempty" xml:"riskZidEmuDistinctNew,omitempty"`
 }
 
@@ -740,9 +974,9 @@ func (s *ListChannelRiskDetailsResponseBodyDataRiskSumary) SetRiskZidEmuDistinct
 }
 
 type ListChannelRiskDetailsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListChannelRiskDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChannelRiskDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListChannelRiskDetailsResponse) String() string {
@@ -769,9 +1003,24 @@ func (s *ListChannelRiskDetailsResponse) SetBody(v *ListChannelRiskDetailsRespon
 }
 
 type ListUninstallDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 62c792d188ccdf4b7ec1aa38
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	EndDs        *string `json:"endDs,omitempty" xml:"endDs,omitempty"`
-	StartDs      *string `json:"startDs,omitempty" xml:"startDs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20231120
+	EndDs *string `json:"endDs,omitempty" xml:"endDs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20231120
+	StartDs *string `json:"startDs,omitempty" xml:"startDs,omitempty"`
 }
 
 func (s ListUninstallDetailRequest) String() string {
@@ -801,11 +1050,23 @@ type ListUninstallDetailResponseBody struct {
 	// msg
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// code
+	//
+	// example:
+	//
+	// 200
 	Code *int64                               `json:"code,omitempty" xml:"code,omitempty"`
 	Data *ListUninstallDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// requestId
+	//
+	// example:
+	//
+	// 8797ddc1857a66deb6b5d14
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -860,32 +1121,91 @@ func (s *ListUninstallDetailResponseBodyData) SetDetails(v []*ListUninstallDetai
 }
 
 type ListUninstallDetailResponseBodyDataDetails struct {
+	// example:
+	//
+	// 1700278078773
 	ActiveDatetime *string `json:"activeDatetime,omitempty" xml:"activeDatetime,omitempty"`
-	City           *string `json:"city,omitempty" xml:"city,omitempty"`
+	// example:
+	//
+	// 阳江市
+	City *string `json:"city,omitempty" xml:"city,omitempty"`
 	// deviceBrand
+	//
+	// example:
+	//
+	// HONOR
 	DeviceBrand *string `json:"deviceBrand,omitempty" xml:"deviceBrand,omitempty"`
 	// deviceModel
+	//
+	// example:
+	//
+	// KOZ-AL00
 	DeviceModel *string `json:"deviceModel,omitempty" xml:"deviceModel,omitempty"`
 	// firstActiveDatetime
+	//
+	// example:
+	//
+	// 2023-11-12 22:41:46
 	FirstActiveDatetime *string `json:"firstActiveDatetime,omitempty" xml:"firstActiveDatetime,omitempty"`
 	// idfa
+	//
+	// example:
+	//
+	// 5ce253a8-2917-44da-a1fe-9d21051f9015
 	Idfa *string `json:"idfa,omitempty" xml:"idfa,omitempty"`
 	// imei
+	//
+	// example:
+	//
+	// None
 	Imei *string `json:"imei,omitempty" xml:"imei,omitempty"`
 	// installAppVersion
+	//
+	// example:
+	//
+	// 23.05.06
 	InstallAppVersion *string `json:"installAppVersion,omitempty" xml:"installAppVersion,omitempty"`
 	// installChannel
+	//
+	// example:
+	//
+	// umeng
 	InstallChannel *string `json:"installChannel,omitempty" xml:"installChannel,omitempty"`
 	// oaid
+	//
+	// example:
+	//
+	// ai357e2b5358797ddc
 	Oaid *string `json:"oaid,omitempty" xml:"oaid,omitempty"`
 	// osVersion
+	//
+	// example:
+	//
+	// 10
 	OsVersion *string `json:"osVersion,omitempty" xml:"osVersion,omitempty"`
 	// puid
-	Puid              *string `json:"puid,omitempty" xml:"puid,omitempty"`
-	Umid              *string `json:"umid,omitempty" xml:"umid,omitempty"`
-	UninstallCount    *int32  `json:"uninstallCount,omitempty" xml:"uninstallCount,omitempty"`
+	//
+	// example:
+	//
+	// zhangfei
+	Puid *string `json:"puid,omitempty" xml:"puid,omitempty"`
+	// example:
+	//
+	// ai357e2b5358797ddc1857a66deb6b5d14
+	Umid *string `json:"umid,omitempty" xml:"umid,omitempty"`
+	// example:
+	//
+	// 3
+	UninstallCount *int32 `json:"uninstallCount,omitempty" xml:"uninstallCount,omitempty"`
+	// example:
+	//
+	// 20231118
 	UninstallDatetime *string `json:"uninstallDatetime,omitempty" xml:"uninstallDatetime,omitempty"`
 	// zid
+	//
+	// example:
+	//
+	// ddc1857a66deb6b5
 	Zid *string `json:"zid,omitempty" xml:"zid,omitempty"`
 }
 
@@ -978,9 +1298,9 @@ func (s *ListUninstallDetailResponseBodyDataDetails) SetZid(v string) *ListUnins
 }
 
 type ListUninstallDetailResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUninstallDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUninstallDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUninstallDetailResponse) String() string {
@@ -1053,6 +1373,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实时反作弊信息
+//
+// @param request - GetRealTimeRiskInfoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRealTimeRiskInfoResponse
 func (client *Client) GetRealTimeRiskInfoWithOptions(request *GetRealTimeRiskInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRealTimeRiskInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1095,6 +1426,13 @@ func (client *Client) GetRealTimeRiskInfoWithOptions(request *GetRealTimeRiskInf
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实时反作弊信息
+//
+// @param request - GetRealTimeRiskInfoRequest
+//
+// @return GetRealTimeRiskInfoResponse
 func (client *Client) GetRealTimeRiskInfo(request *GetRealTimeRiskInfoRequest) (_result *GetRealTimeRiskInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1107,6 +1445,17 @@ func (client *Client) GetRealTimeRiskInfo(request *GetRealTimeRiskInfoRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// atoken换zid+tags
+//
+// @param request - GetZidTagByAtokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetZidTagByAtokenResponse
 func (client *Client) GetZidTagByAtokenWithOptions(request *GetZidTagByAtokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetZidTagByAtokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1145,6 +1494,13 @@ func (client *Client) GetZidTagByAtokenWithOptions(request *GetZidTagByAtokenReq
 	return _result, _err
 }
 
+// Summary:
+//
+// atoken换zid+tags
+//
+// @param request - GetZidTagByAtokenRequest
+//
+// @return GetZidTagByAtokenResponse
 func (client *Client) GetZidTagByAtoken(request *GetZidTagByAtokenRequest) (_result *GetZidTagByAtokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1157,6 +1513,17 @@ func (client *Client) GetZidTagByAtoken(request *GetZidTagByAtokenRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// atoken换zid+tags+风险分
+//
+// @param request - GetZidTagScoreByAtokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetZidTagScoreByAtokenResponse
 func (client *Client) GetZidTagScoreByAtokenWithOptions(request *GetZidTagScoreByAtokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetZidTagScoreByAtokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1195,6 +1562,13 @@ func (client *Client) GetZidTagScoreByAtokenWithOptions(request *GetZidTagScoreB
 	return _result, _err
 }
 
+// Summary:
+//
+// atoken换zid+tags+风险分
+//
+// @param request - GetZidTagScoreByAtokenRequest
+//
+// @return GetZidTagScoreByAtokenResponse
 func (client *Client) GetZidTagScoreByAtoken(request *GetZidTagScoreByAtokenRequest) (_result *GetZidTagScoreByAtokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1207,6 +1581,17 @@ func (client *Client) GetZidTagScoreByAtoken(request *GetZidTagScoreByAtokenRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 渠道风险明细
+//
+// @param request - ListChannelRiskDetailsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChannelRiskDetailsResponse
 func (client *Client) ListChannelRiskDetailsWithOptions(request *ListChannelRiskDetailsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListChannelRiskDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1257,6 +1642,13 @@ func (client *Client) ListChannelRiskDetailsWithOptions(request *ListChannelRisk
 	return _result, _err
 }
 
+// Summary:
+//
+// 渠道风险明细
+//
+// @param request - ListChannelRiskDetailsRequest
+//
+// @return ListChannelRiskDetailsResponse
 func (client *Client) ListChannelRiskDetails(request *ListChannelRiskDetailsRequest) (_result *ListChannelRiskDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1269,6 +1661,17 @@ func (client *Client) ListChannelRiskDetails(request *ListChannelRiskDetailsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 卸载明细列表
+//
+// @param request - ListUninstallDetailRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUninstallDetailResponse
 func (client *Client) ListUninstallDetailWithOptions(request *ListUninstallDetailRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUninstallDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1311,6 +1714,13 @@ func (client *Client) ListUninstallDetailWithOptions(request *ListUninstallDetai
 	return _result, _err
 }
 
+// Summary:
+//
+// 卸载明细列表
+//
+// @param request - ListUninstallDetailRequest
+//
+// @return ListUninstallDetailResponse
 func (client *Client) ListUninstallDetail(request *ListUninstallDetailRequest) (_result *ListUninstallDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
