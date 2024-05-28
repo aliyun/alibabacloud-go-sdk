@@ -3400,6 +3400,1001 @@ func (s *CopyGtmConfigResponse) SetBody(v *CopyGtmConfigResponseBody) *CopyGtmCo
 	return s
 }
 
+type CreateCloudGtmAddressRequest struct {
+	// example:
+	//
+	// zh-CN
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 223.5.XX.XX
+	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// auto
+	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// p50_ok
+	HealthJudgement *string                                    `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	HealthTasks     []*CreateCloudGtmAddressRequestHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// available
+	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Address-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// IPv4
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateCloudGtmAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmAddressRequest) SetAcceptLanguage(v string) *CreateCloudGtmAddressRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressRequest) SetAddress(v string) *CreateCloudGtmAddressRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressRequest) SetAttributeInfo(v string) *CreateCloudGtmAddressRequest {
+	s.AttributeInfo = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressRequest) SetAvailableMode(v string) *CreateCloudGtmAddressRequest {
+	s.AvailableMode = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressRequest) SetClientToken(v string) *CreateCloudGtmAddressRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressRequest) SetEnableStatus(v string) *CreateCloudGtmAddressRequest {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressRequest) SetHealthJudgement(v string) *CreateCloudGtmAddressRequest {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressRequest) SetHealthTasks(v []*CreateCloudGtmAddressRequestHealthTasks) *CreateCloudGtmAddressRequest {
+	s.HealthTasks = v
+	return s
+}
+
+func (s *CreateCloudGtmAddressRequest) SetManualAvailableStatus(v string) *CreateCloudGtmAddressRequest {
+	s.ManualAvailableStatus = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressRequest) SetName(v string) *CreateCloudGtmAddressRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressRequest) SetRemark(v string) *CreateCloudGtmAddressRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressRequest) SetType(v string) *CreateCloudGtmAddressRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateCloudGtmAddressRequestHealthTasks struct {
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s CreateCloudGtmAddressRequestHealthTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmAddressRequestHealthTasks) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmAddressRequestHealthTasks) SetPort(v int32) *CreateCloudGtmAddressRequestHealthTasks {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressRequestHealthTasks) SetTemplateId(v string) *CreateCloudGtmAddressRequestHealthTasks {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateCloudGtmAddressShrinkRequest struct {
+	// example:
+	//
+	// zh-CN
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 223.5.XX.XX
+	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// auto
+	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// p50_ok
+	HealthJudgement   *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	HealthTasksShrink *string `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty"`
+	// example:
+	//
+	// available
+	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Address-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// IPv4
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateCloudGtmAddressShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmAddressShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmAddressShrinkRequest) SetAcceptLanguage(v string) *CreateCloudGtmAddressShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressShrinkRequest) SetAddress(v string) *CreateCloudGtmAddressShrinkRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressShrinkRequest) SetAttributeInfo(v string) *CreateCloudGtmAddressShrinkRequest {
+	s.AttributeInfo = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressShrinkRequest) SetAvailableMode(v string) *CreateCloudGtmAddressShrinkRequest {
+	s.AvailableMode = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressShrinkRequest) SetClientToken(v string) *CreateCloudGtmAddressShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressShrinkRequest) SetEnableStatus(v string) *CreateCloudGtmAddressShrinkRequest {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressShrinkRequest) SetHealthJudgement(v string) *CreateCloudGtmAddressShrinkRequest {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressShrinkRequest) SetHealthTasksShrink(v string) *CreateCloudGtmAddressShrinkRequest {
+	s.HealthTasksShrink = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressShrinkRequest) SetManualAvailableStatus(v string) *CreateCloudGtmAddressShrinkRequest {
+	s.ManualAvailableStatus = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressShrinkRequest) SetName(v string) *CreateCloudGtmAddressShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressShrinkRequest) SetRemark(v string) *CreateCloudGtmAddressShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressShrinkRequest) SetType(v string) *CreateCloudGtmAddressShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateCloudGtmAddressResponseBody struct {
+	// example:
+	//
+	// addr-8951821811436**192
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// example:
+	//
+	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateCloudGtmAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmAddressResponseBody) SetAddressId(v string) *CreateCloudGtmAddressResponseBody {
+	s.AddressId = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressResponseBody) SetRequestId(v string) *CreateCloudGtmAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressResponseBody) SetSuccess(v bool) *CreateCloudGtmAddressResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateCloudGtmAddressResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCloudGtmAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCloudGtmAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmAddressResponse) SetHeaders(v map[string]*string) *CreateCloudGtmAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCloudGtmAddressResponse) SetStatusCode(v int32) *CreateCloudGtmAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressResponse) SetBody(v *CreateCloudGtmAddressResponseBody) *CreateCloudGtmAddressResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCloudGtmAddressPoolRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// Address pool-1
+	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// example:
+	//
+	// IPv4
+	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// any_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// app
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+}
+
+func (s CreateCloudGtmAddressPoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmAddressPoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmAddressPoolRequest) SetAcceptLanguage(v string) *CreateCloudGtmAddressPoolRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressPoolRequest) SetAddressPoolName(v string) *CreateCloudGtmAddressPoolRequest {
+	s.AddressPoolName = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressPoolRequest) SetAddressPoolType(v string) *CreateCloudGtmAddressPoolRequest {
+	s.AddressPoolType = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressPoolRequest) SetClientToken(v string) *CreateCloudGtmAddressPoolRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressPoolRequest) SetEnableStatus(v string) *CreateCloudGtmAddressPoolRequest {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressPoolRequest) SetHealthJudgement(v string) *CreateCloudGtmAddressPoolRequest {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressPoolRequest) SetRemark(v string) *CreateCloudGtmAddressPoolRequest {
+	s.Remark = &v
+	return s
+}
+
+type CreateCloudGtmAddressPoolResponseBody struct {
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateCloudGtmAddressPoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmAddressPoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmAddressPoolResponseBody) SetAddressPoolId(v string) *CreateCloudGtmAddressPoolResponseBody {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressPoolResponseBody) SetRequestId(v string) *CreateCloudGtmAddressPoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressPoolResponseBody) SetSuccess(v bool) *CreateCloudGtmAddressPoolResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateCloudGtmAddressPoolResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCloudGtmAddressPoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCloudGtmAddressPoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmAddressPoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmAddressPoolResponse) SetHeaders(v map[string]*string) *CreateCloudGtmAddressPoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCloudGtmAddressPoolResponse) SetStatusCode(v int32) *CreateCloudGtmAddressPoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCloudGtmAddressPoolResponse) SetBody(v *CreateCloudGtmAddressPoolResponseBody) *CreateCloudGtmAddressPoolResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCloudGtmInstanceConfigRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// gtm-cn-jmp3qnw**03
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// www
+	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	// example:
+	//
+	// A
+	ScheduleRrType *string `json:"ScheduleRrType,omitempty" xml:"ScheduleRrType,omitempty"`
+	// example:
+	//
+	// custom
+	ScheduleZoneMode *string `json:"ScheduleZoneMode,omitempty" xml:"ScheduleZoneMode,omitempty"`
+	// example:
+	//
+	// example.com
+	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+	// example:
+	//
+	// 30
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+}
+
+func (s CreateCloudGtmInstanceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmInstanceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmInstanceConfigRequest) SetAcceptLanguage(v string) *CreateCloudGtmInstanceConfigRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigRequest) SetClientToken(v string) *CreateCloudGtmInstanceConfigRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigRequest) SetEnableStatus(v string) *CreateCloudGtmInstanceConfigRequest {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigRequest) SetInstanceId(v string) *CreateCloudGtmInstanceConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigRequest) SetRemark(v string) *CreateCloudGtmInstanceConfigRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigRequest) SetScheduleHostname(v string) *CreateCloudGtmInstanceConfigRequest {
+	s.ScheduleHostname = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigRequest) SetScheduleRrType(v string) *CreateCloudGtmInstanceConfigRequest {
+	s.ScheduleRrType = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigRequest) SetScheduleZoneMode(v string) *CreateCloudGtmInstanceConfigRequest {
+	s.ScheduleZoneMode = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigRequest) SetScheduleZoneName(v string) *CreateCloudGtmInstanceConfigRequest {
+	s.ScheduleZoneName = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigRequest) SetTtl(v int32) *CreateCloudGtmInstanceConfigRequest {
+	s.Ttl = &v
+	return s
+}
+
+type CreateCloudGtmInstanceConfigResponseBody struct {
+	// example:
+	//
+	// config-000**1
+	ConfigId *bool `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateCloudGtmInstanceConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmInstanceConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmInstanceConfigResponseBody) SetConfigId(v bool) *CreateCloudGtmInstanceConfigResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigResponseBody) SetRequestId(v string) *CreateCloudGtmInstanceConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigResponseBody) SetSuccess(v bool) *CreateCloudGtmInstanceConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateCloudGtmInstanceConfigResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCloudGtmInstanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCloudGtmInstanceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmInstanceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmInstanceConfigResponse) SetHeaders(v map[string]*string) *CreateCloudGtmInstanceConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigResponse) SetStatusCode(v int32) *CreateCloudGtmInstanceConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigResponse) SetBody(v *CreateCloudGtmInstanceConfigResponseBody) *CreateCloudGtmInstanceConfigResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCloudGtmMonitorTemplateRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// example:
+	//
+	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
+	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 50
+	FailureRate *int32 `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// IPv4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// This parameter is required.
+	IspCityNodes []*CreateCloudGtmMonitorTemplateRequestIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ping-IPv4
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ping
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5000
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s CreateCloudGtmMonitorTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmMonitorTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmMonitorTemplateRequest) SetAcceptLanguage(v string) *CreateCloudGtmMonitorTemplateRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateRequest) SetClientToken(v string) *CreateCloudGtmMonitorTemplateRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateRequest) SetEvaluationCount(v int32) *CreateCloudGtmMonitorTemplateRequest {
+	s.EvaluationCount = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateRequest) SetExtendInfo(v string) *CreateCloudGtmMonitorTemplateRequest {
+	s.ExtendInfo = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateRequest) SetFailureRate(v int32) *CreateCloudGtmMonitorTemplateRequest {
+	s.FailureRate = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateRequest) SetInterval(v int32) *CreateCloudGtmMonitorTemplateRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateRequest) SetIpVersion(v string) *CreateCloudGtmMonitorTemplateRequest {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateRequest) SetIspCityNodes(v []*CreateCloudGtmMonitorTemplateRequestIspCityNodes) *CreateCloudGtmMonitorTemplateRequest {
+	s.IspCityNodes = v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateRequest) SetName(v string) *CreateCloudGtmMonitorTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateRequest) SetProtocol(v string) *CreateCloudGtmMonitorTemplateRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateRequest) SetTimeout(v int32) *CreateCloudGtmMonitorTemplateRequest {
+	s.Timeout = &v
+	return s
+}
+
+type CreateCloudGtmMonitorTemplateRequestIspCityNodes struct {
+	// example:
+	//
+	// 503
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// example:
+	//
+	// 465
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+}
+
+func (s CreateCloudGtmMonitorTemplateRequestIspCityNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmMonitorTemplateRequestIspCityNodes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmMonitorTemplateRequestIspCityNodes) SetCityCode(v string) *CreateCloudGtmMonitorTemplateRequestIspCityNodes {
+	s.CityCode = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateRequestIspCityNodes) SetIspCode(v string) *CreateCloudGtmMonitorTemplateRequestIspCityNodes {
+	s.IspCode = &v
+	return s
+}
+
+type CreateCloudGtmMonitorTemplateShrinkRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// example:
+	//
+	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
+	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 50
+	FailureRate *int32 `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// IPv4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// This parameter is required.
+	IspCityNodesShrink *string `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ping-IPv4
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ping
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5000
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s CreateCloudGtmMonitorTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmMonitorTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmMonitorTemplateShrinkRequest) SetAcceptLanguage(v string) *CreateCloudGtmMonitorTemplateShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateShrinkRequest) SetClientToken(v string) *CreateCloudGtmMonitorTemplateShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateShrinkRequest) SetEvaluationCount(v int32) *CreateCloudGtmMonitorTemplateShrinkRequest {
+	s.EvaluationCount = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateShrinkRequest) SetExtendInfo(v string) *CreateCloudGtmMonitorTemplateShrinkRequest {
+	s.ExtendInfo = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateShrinkRequest) SetFailureRate(v int32) *CreateCloudGtmMonitorTemplateShrinkRequest {
+	s.FailureRate = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateShrinkRequest) SetInterval(v int32) *CreateCloudGtmMonitorTemplateShrinkRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateShrinkRequest) SetIpVersion(v string) *CreateCloudGtmMonitorTemplateShrinkRequest {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateShrinkRequest) SetIspCityNodesShrink(v string) *CreateCloudGtmMonitorTemplateShrinkRequest {
+	s.IspCityNodesShrink = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateShrinkRequest) SetName(v string) *CreateCloudGtmMonitorTemplateShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateShrinkRequest) SetProtocol(v string) *CreateCloudGtmMonitorTemplateShrinkRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateShrinkRequest) SetTimeout(v int32) *CreateCloudGtmMonitorTemplateShrinkRequest {
+	s.Timeout = &v
+	return s
+}
+
+type CreateCloudGtmMonitorTemplateResponseBody struct {
+	// example:
+	//
+	// B57C121B-A45F-44D8-A9B2-13E5A5044195
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s CreateCloudGtmMonitorTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmMonitorTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmMonitorTemplateResponseBody) SetRequestId(v string) *CreateCloudGtmMonitorTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateResponseBody) SetSuccess(v bool) *CreateCloudGtmMonitorTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateResponseBody) SetTemplateId(v string) *CreateCloudGtmMonitorTemplateResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateCloudGtmMonitorTemplateResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCloudGtmMonitorTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCloudGtmMonitorTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudGtmMonitorTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudGtmMonitorTemplateResponse) SetHeaders(v map[string]*string) *CreateCloudGtmMonitorTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateResponse) SetStatusCode(v int32) *CreateCloudGtmMonitorTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCloudGtmMonitorTemplateResponse) SetBody(v *CreateCloudGtmMonitorTemplateResponseBody) *CreateCloudGtmMonitorTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePdnsAppKeyRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
@@ -3540,6 +4535,412 @@ func (s *CreatePdnsUdpIpSegmentResponse) SetStatusCode(v int32) *CreatePdnsUdpIp
 }
 
 func (s *CreatePdnsUdpIpSegmentResponse) SetBody(v *CreatePdnsUdpIpSegmentResponseBody) *CreatePdnsUdpIpSegmentResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCloudGtmAddressRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// addr-895182181143688192
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s DeleteCloudGtmAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudGtmAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudGtmAddressRequest) SetAcceptLanguage(v string) *DeleteCloudGtmAddressRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteCloudGtmAddressRequest) SetAddressId(v string) *DeleteCloudGtmAddressRequest {
+	s.AddressId = &v
+	return s
+}
+
+func (s *DeleteCloudGtmAddressRequest) SetClientToken(v string) *DeleteCloudGtmAddressRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type DeleteCloudGtmAddressResponseBody struct {
+	// example:
+	//
+	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCloudGtmAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudGtmAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudGtmAddressResponseBody) SetRequestId(v string) *DeleteCloudGtmAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCloudGtmAddressResponseBody) SetSuccess(v bool) *DeleteCloudGtmAddressResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCloudGtmAddressResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCloudGtmAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCloudGtmAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudGtmAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudGtmAddressResponse) SetHeaders(v map[string]*string) *DeleteCloudGtmAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCloudGtmAddressResponse) SetStatusCode(v int32) *DeleteCloudGtmAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCloudGtmAddressResponse) SetBody(v *DeleteCloudGtmAddressResponseBody) *DeleteCloudGtmAddressResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCloudGtmAddressPoolRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s DeleteCloudGtmAddressPoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudGtmAddressPoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudGtmAddressPoolRequest) SetAcceptLanguage(v string) *DeleteCloudGtmAddressPoolRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteCloudGtmAddressPoolRequest) SetAddressPoolId(v string) *DeleteCloudGtmAddressPoolRequest {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *DeleteCloudGtmAddressPoolRequest) SetClientToken(v string) *DeleteCloudGtmAddressPoolRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type DeleteCloudGtmAddressPoolResponseBody struct {
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCloudGtmAddressPoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudGtmAddressPoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudGtmAddressPoolResponseBody) SetAddressPoolId(v string) *DeleteCloudGtmAddressPoolResponseBody {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *DeleteCloudGtmAddressPoolResponseBody) SetRequestId(v string) *DeleteCloudGtmAddressPoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCloudGtmAddressPoolResponseBody) SetSuccess(v bool) *DeleteCloudGtmAddressPoolResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCloudGtmAddressPoolResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCloudGtmAddressPoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCloudGtmAddressPoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudGtmAddressPoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudGtmAddressPoolResponse) SetHeaders(v map[string]*string) *DeleteCloudGtmAddressPoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCloudGtmAddressPoolResponse) SetStatusCode(v int32) *DeleteCloudGtmAddressPoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCloudGtmAddressPoolResponse) SetBody(v *DeleteCloudGtmAddressPoolResponseBody) *DeleteCloudGtmAddressPoolResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCloudGtmInstanceConfigRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// config-000**1
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// gtm-cn-jmp3qnw**03
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteCloudGtmInstanceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudGtmInstanceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudGtmInstanceConfigRequest) SetAcceptLanguage(v string) *DeleteCloudGtmInstanceConfigRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteCloudGtmInstanceConfigRequest) SetClientToken(v string) *DeleteCloudGtmInstanceConfigRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteCloudGtmInstanceConfigRequest) SetConfigId(v string) *DeleteCloudGtmInstanceConfigRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteCloudGtmInstanceConfigRequest) SetInstanceId(v string) *DeleteCloudGtmInstanceConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteCloudGtmInstanceConfigResponseBody struct {
+	// example:
+	//
+	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCloudGtmInstanceConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudGtmInstanceConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudGtmInstanceConfigResponseBody) SetRequestId(v string) *DeleteCloudGtmInstanceConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCloudGtmInstanceConfigResponseBody) SetSuccess(v bool) *DeleteCloudGtmInstanceConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCloudGtmInstanceConfigResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCloudGtmInstanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCloudGtmInstanceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudGtmInstanceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudGtmInstanceConfigResponse) SetHeaders(v map[string]*string) *DeleteCloudGtmInstanceConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCloudGtmInstanceConfigResponse) SetStatusCode(v int32) *DeleteCloudGtmInstanceConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCloudGtmInstanceConfigResponse) SetBody(v *DeleteCloudGtmInstanceConfigResponseBody) *DeleteCloudGtmInstanceConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCloudGtmMonitorTemplateRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DeleteCloudGtmMonitorTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudGtmMonitorTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudGtmMonitorTemplateRequest) SetAcceptLanguage(v string) *DeleteCloudGtmMonitorTemplateRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteCloudGtmMonitorTemplateRequest) SetClientToken(v string) *DeleteCloudGtmMonitorTemplateRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteCloudGtmMonitorTemplateRequest) SetTemplateId(v string) *DeleteCloudGtmMonitorTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DeleteCloudGtmMonitorTemplateResponseBody struct {
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCloudGtmMonitorTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudGtmMonitorTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudGtmMonitorTemplateResponseBody) SetRequestId(v string) *DeleteCloudGtmMonitorTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCloudGtmMonitorTemplateResponseBody) SetSuccess(v bool) *DeleteCloudGtmMonitorTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCloudGtmMonitorTemplateResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCloudGtmMonitorTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCloudGtmMonitorTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudGtmMonitorTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudGtmMonitorTemplateResponse) SetHeaders(v map[string]*string) *DeleteCloudGtmMonitorTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCloudGtmMonitorTemplateResponse) SetStatusCode(v int32) *DeleteCloudGtmMonitorTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCloudGtmMonitorTemplateResponse) SetBody(v *DeleteCloudGtmMonitorTemplateResponseBody) *DeleteCloudGtmMonitorTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -5165,6 +6566,306 @@ func (s *DescribeBatchResultDetailResponse) SetBody(v *DescribeBatchResultDetail
 	return s
 }
 
+type DescribeCloudGtmAddressRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// addr-89518218114368**92
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressRequest) SetAcceptLanguage(v string) *DescribeCloudGtmAddressRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressRequest) SetAddressId(v string) *DescribeCloudGtmAddressRequest {
+	s.AddressId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressRequest) SetClientToken(v string) *DescribeCloudGtmAddressRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type DescribeCloudGtmAddressResponseBody struct {
+	// example:
+	//
+	// 223.5.XX.XX
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// addr-89518218114368**92
+	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// example:
+	//
+	// auto
+	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 2024-03-23T13:09Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// p50_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string                                         `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	HealthTasks  *DescribeCloudGtmAddressResponseBodyHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	// example:
+	//
+	// available
+	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test1
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// B57C121B-A45F-44D8-A9B2-13E5A5044195
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// IPv4
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2024-03-29T13:20Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetAddress(v string) *DescribeCloudGtmAddressResponseBody {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetAddressId(v string) *DescribeCloudGtmAddressResponseBody {
+	s.AddressId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetAttributeInfo(v string) *DescribeCloudGtmAddressResponseBody {
+	s.AttributeInfo = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetAvailableMode(v string) *DescribeCloudGtmAddressResponseBody {
+	s.AvailableMode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetAvailableStatus(v string) *DescribeCloudGtmAddressResponseBody {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetCreateTime(v string) *DescribeCloudGtmAddressResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetCreateTimestamp(v int64) *DescribeCloudGtmAddressResponseBody {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetEnableStatus(v string) *DescribeCloudGtmAddressResponseBody {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetHealthJudgement(v string) *DescribeCloudGtmAddressResponseBody {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetHealthStatus(v string) *DescribeCloudGtmAddressResponseBody {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetHealthTasks(v *DescribeCloudGtmAddressResponseBodyHealthTasks) *DescribeCloudGtmAddressResponseBody {
+	s.HealthTasks = v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetManualAvailableStatus(v string) *DescribeCloudGtmAddressResponseBody {
+	s.ManualAvailableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetName(v string) *DescribeCloudGtmAddressResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetRemark(v string) *DescribeCloudGtmAddressResponseBody {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetRequestId(v string) *DescribeCloudGtmAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetType(v string) *DescribeCloudGtmAddressResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetUpdateTime(v string) *DescribeCloudGtmAddressResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBody) SetUpdateTimestamp(v int64) *DescribeCloudGtmAddressResponseBody {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type DescribeCloudGtmAddressResponseBodyHealthTasks struct {
+	HealthTask []*DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask `json:"HealthTask,omitempty" xml:"HealthTask,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmAddressResponseBodyHealthTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressResponseBodyHealthTasks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressResponseBodyHealthTasks) SetHealthTask(v []*DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask) *DescribeCloudGtmAddressResponseBodyHealthTasks {
+	s.HealthTask = v
+	return s
+}
+
+type DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask struct {
+	// example:
+	//
+	// ok
+	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// Ping-IPv4
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask) SetMonitorStatus(v string) *DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask {
+	s.MonitorStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask) SetPort(v int32) *DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask) SetTemplateId(v string) *DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask) SetTemplateName(v string) *DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask {
+	s.TemplateName = &v
+	return s
+}
+
+type DescribeCloudGtmAddressResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudGtmAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressResponse) SetHeaders(v map[string]*string) *DescribeCloudGtmAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponse) SetStatusCode(v int32) *DescribeCloudGtmAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressResponse) SetBody(v *DescribeCloudGtmAddressResponseBody) *DescribeCloudGtmAddressResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCloudGtmAddressPoolRequest struct {
 	// example:
 	//
@@ -5660,6 +7361,2324 @@ func (s *DescribeCloudGtmAddressPoolResponse) SetStatusCode(v int32) *DescribeCl
 }
 
 func (s *DescribeCloudGtmAddressPoolResponse) SetBody(v *DescribeCloudGtmAddressPoolResponseBody) *DescribeCloudGtmAddressPoolResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCloudGtmAddressPoolReferenceRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressPoolReferenceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressPoolReferenceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceRequest) SetAcceptLanguage(v string) *DescribeCloudGtmAddressPoolReferenceRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceRequest) SetAddressPoolId(v string) *DescribeCloudGtmAddressPoolReferenceRequest {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceRequest) SetClientToken(v string) *DescribeCloudGtmAddressPoolReferenceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type DescribeCloudGtmAddressPoolReferenceResponseBody struct {
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// app
+	AddressPoolName *string                                                          `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	InstanceConfigs *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs `json:"InstanceConfigs,omitempty" xml:"InstanceConfigs,omitempty" type:"Struct"`
+	// example:
+	//
+	// 853805EA-3D47-47D5-9A1A-A45C24313ABD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressPoolReferenceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressPoolReferenceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBody) SetAddressPoolId(v string) *DescribeCloudGtmAddressPoolReferenceResponseBody {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBody) SetAddressPoolName(v string) *DescribeCloudGtmAddressPoolReferenceResponseBody {
+	s.AddressPoolName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBody) SetInstanceConfigs(v *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs) *DescribeCloudGtmAddressPoolReferenceResponseBody {
+	s.InstanceConfigs = v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBody) SetRequestId(v string) *DescribeCloudGtmAddressPoolReferenceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs struct {
+	InstanceConfig []*DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs) SetInstanceConfig(v []*DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs {
+	s.InstanceConfig = v
+	return s
+}
+
+type DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig struct {
+	// example:
+	//
+	// round_robin
+	AddressPoolLbStrategy *string `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// config-000**1
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// example:
+	//
+	// gtm-cn-jmp3qnw**03
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// www.example.com
+	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// example:
+	//
+	// www
+	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	// example:
+	//
+	// A
+	ScheduleRrType *string `json:"ScheduleRrType,omitempty" xml:"ScheduleRrType,omitempty"`
+	// example:
+	//
+	// example.com
+	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// example:
+	//
+	// 30
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// example:
+	//
+	// ultimate
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetAddressPoolLbStrategy(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.AddressPoolLbStrategy = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetAvailableStatus(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetConfigId(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetEnableStatus(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetHealthStatus(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetInstanceId(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetInstanceName(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetRemark(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetScheduleDomainName(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleDomainName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetScheduleHostname(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleHostname = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetScheduleRrType(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleRrType = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetScheduleZoneName(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleZoneName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetSequenceLbStrategyMode(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetTtl(v int32) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.Ttl = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig) SetVersionCode(v string) *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig {
+	s.VersionCode = &v
+	return s
+}
+
+type DescribeCloudGtmAddressPoolReferenceResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudGtmAddressPoolReferenceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressPoolReferenceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressPoolReferenceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponse) SetHeaders(v map[string]*string) *DescribeCloudGtmAddressPoolReferenceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponse) SetStatusCode(v int32) *DescribeCloudGtmAddressPoolReferenceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressPoolReferenceResponse) SetBody(v *DescribeCloudGtmAddressPoolReferenceResponseBody) *DescribeCloudGtmAddressPoolReferenceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCloudGtmAddressReferenceRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// addr-89518218114368**92
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressReferenceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressReferenceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressReferenceRequest) SetAcceptLanguage(v string) *DescribeCloudGtmAddressReferenceRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceRequest) SetAddressId(v string) *DescribeCloudGtmAddressReferenceRequest {
+	s.AddressId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceRequest) SetClientToken(v string) *DescribeCloudGtmAddressReferenceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type DescribeCloudGtmAddressReferenceResponseBody struct {
+	// example:
+	//
+	// 223.5.XX.XX
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// addr-89564584963974**40
+	AddressId    *string                                                   `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AddressPools *DescribeCloudGtmAddressReferenceResponseBodyAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	// example:
+	//
+	// Address-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressReferenceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressReferenceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBody) SetAddress(v string) *DescribeCloudGtmAddressReferenceResponseBody {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBody) SetAddressId(v string) *DescribeCloudGtmAddressReferenceResponseBody {
+	s.AddressId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBody) SetAddressPools(v *DescribeCloudGtmAddressReferenceResponseBodyAddressPools) *DescribeCloudGtmAddressReferenceResponseBody {
+	s.AddressPools = v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBody) SetName(v string) *DescribeCloudGtmAddressReferenceResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBody) SetRequestId(v string) *DescribeCloudGtmAddressReferenceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCloudGtmAddressReferenceResponseBodyAddressPools struct {
+	AddressPool []*DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool `json:"AddressPool,omitempty" xml:"AddressPool,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmAddressReferenceResponseBodyAddressPools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressReferenceResponseBodyAddressPools) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPools) SetAddressPool(v []*DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) *DescribeCloudGtmAddressReferenceResponseBodyAddressPools {
+	s.AddressPool = v
+	return s
+}
+
+type DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool struct {
+	// example:
+	//
+	// round_robin
+	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// example:
+	//
+	// pool-895280232254422016
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// AddressPool-1
+	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// example:
+	//
+	// IPv4
+	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// any_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus    *string                                                                             `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	InstanceConfigs *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigs `json:"InstanceConfigs,omitempty" xml:"InstanceConfigs,omitempty" type:"Struct"`
+	// example:
+	//
+	// pool-1
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) SetAddressLbStrategy(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool {
+	s.AddressLbStrategy = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) SetAddressPoolId(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) SetAddressPoolName(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool {
+	s.AddressPoolName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) SetAddressPoolType(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool {
+	s.AddressPoolType = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) SetAvailableStatus(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) SetEnableStatus(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) SetHealthJudgement(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) SetHealthStatus(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) SetInstanceConfigs(v *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigs) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool {
+	s.InstanceConfigs = v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) SetRemark(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool) SetSequenceLbStrategyMode(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+type DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigs struct {
+	InstanceConfig []*DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigs) SetInstanceConfig(v []*DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigs {
+	s.InstanceConfig = v
+	return s
+}
+
+type DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig struct {
+	// example:
+	//
+	// round_robin
+	AddressPoolLbStrategy *string `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// config-00**01
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// example:
+	//
+	// gtm-cn-zz11t58**0k
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// www.example.com
+	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// example:
+	//
+	// www
+	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	// example:
+	//
+	// A
+	ScheduleRrType *string `json:"ScheduleRrType,omitempty" xml:"ScheduleRrType,omitempty"`
+	// example:
+	//
+	// example.com
+	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// example:
+	//
+	// 30
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// example:
+	//
+	// ultimate
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetAddressPoolLbStrategy(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.AddressPoolLbStrategy = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetAvailableStatus(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetConfigId(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetEnableStatus(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetHealthStatus(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetInstanceId(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetInstanceName(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetRemark(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetScheduleDomainName(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.ScheduleDomainName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetScheduleHostname(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.ScheduleHostname = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetScheduleRrType(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.ScheduleRrType = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetScheduleZoneName(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.ScheduleZoneName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetSequenceLbStrategyMode(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetTtl(v int32) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.Ttl = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig) SetVersionCode(v string) *DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig {
+	s.VersionCode = &v
+	return s
+}
+
+type DescribeCloudGtmAddressReferenceResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudGtmAddressReferenceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudGtmAddressReferenceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmAddressReferenceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponse) SetHeaders(v map[string]*string) *DescribeCloudGtmAddressReferenceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponse) SetStatusCode(v int32) *DescribeCloudGtmAddressReferenceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmAddressReferenceResponse) SetBody(v *DescribeCloudGtmAddressReferenceResponseBody) *DescribeCloudGtmAddressReferenceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCloudGtmGlobalAlertRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s DescribeCloudGtmGlobalAlertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmGlobalAlertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmGlobalAlertRequest) SetAcceptLanguage(v string) *DescribeCloudGtmGlobalAlertRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeCloudGtmGlobalAlertRequest) SetClientToken(v string) *DescribeCloudGtmGlobalAlertRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type DescribeCloudGtmGlobalAlertResponseBody struct {
+	AlertConfig *DescribeCloudGtmGlobalAlertResponseBodyAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
+	AlertGroup  *DescribeCloudGtmGlobalAlertResponseBodyAlertGroup  `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Struct"`
+	// example:
+	//
+	// B57C121B-A45F-44D8-A9B2-13E5A5044195
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCloudGtmGlobalAlertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmGlobalAlertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponseBody) SetAlertConfig(v *DescribeCloudGtmGlobalAlertResponseBodyAlertConfig) *DescribeCloudGtmGlobalAlertResponseBody {
+	s.AlertConfig = v
+	return s
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponseBody) SetAlertGroup(v *DescribeCloudGtmGlobalAlertResponseBodyAlertGroup) *DescribeCloudGtmGlobalAlertResponseBody {
+	s.AlertGroup = v
+	return s
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponseBody) SetRequestId(v string) *DescribeCloudGtmGlobalAlertResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCloudGtmGlobalAlertResponseBodyAlertConfig struct {
+	AlertConfig []*DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmGlobalAlertResponseBodyAlertConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmGlobalAlertResponseBodyAlertConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfig) SetAlertConfig(v []*DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) *DescribeCloudGtmGlobalAlertResponseBodyAlertConfig {
+	s.AlertConfig = v
+	return s
+}
+
+type DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig struct {
+	// example:
+	//
+	// false
+	DingtalkNotice *bool `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
+	// example:
+	//
+	// true
+	EmailNotice *bool `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
+	// example:
+	//
+	// addr_alert
+	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// example:
+	//
+	// true
+	SmsNotice *bool `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
+}
+
+func (s DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) SetDingtalkNotice(v bool) *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig {
+	s.DingtalkNotice = &v
+	return s
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) SetEmailNotice(v bool) *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig {
+	s.EmailNotice = &v
+	return s
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) SetNoticeType(v string) *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig {
+	s.NoticeType = &v
+	return s
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) SetSmsNotice(v bool) *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig {
+	s.SmsNotice = &v
+	return s
+}
+
+type DescribeCloudGtmGlobalAlertResponseBodyAlertGroup struct {
+	AlertGroup []*string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmGlobalAlertResponseBodyAlertGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmGlobalAlertResponseBodyAlertGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertGroup) SetAlertGroup(v []*string) *DescribeCloudGtmGlobalAlertResponseBodyAlertGroup {
+	s.AlertGroup = v
+	return s
+}
+
+type DescribeCloudGtmGlobalAlertResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudGtmGlobalAlertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudGtmGlobalAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmGlobalAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponse) SetHeaders(v map[string]*string) *DescribeCloudGtmGlobalAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponse) SetStatusCode(v int32) *DescribeCloudGtmGlobalAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponse) SetBody(v *DescribeCloudGtmGlobalAlertResponseBody) *DescribeCloudGtmGlobalAlertResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigAlertRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeCloudGtmInstanceConfigAlertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigAlertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertRequest) SetAcceptLanguage(v string) *DescribeCloudGtmInstanceConfigAlertRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertRequest) SetClientToken(v string) *DescribeCloudGtmInstanceConfigAlertRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertRequest) SetConfigId(v string) *DescribeCloudGtmInstanceConfigAlertRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertRequest) SetInstanceId(v string) *DescribeCloudGtmInstanceConfigAlertRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigAlertResponseBody struct {
+	AlertConfig *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
+	AlertGroup  *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup  `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Struct"`
+	// example:
+	//
+	// global
+	AlertMode *string `json:"AlertMode,omitempty" xml:"AlertMode,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 0F32959D-417B-4D66-8463-68606605E3E2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCloudGtmInstanceConfigAlertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigAlertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponseBody) SetAlertConfig(v *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig) *DescribeCloudGtmInstanceConfigAlertResponseBody {
+	s.AlertConfig = v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponseBody) SetAlertGroup(v *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup) *DescribeCloudGtmInstanceConfigAlertResponseBody {
+	s.AlertGroup = v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponseBody) SetAlertMode(v string) *DescribeCloudGtmInstanceConfigAlertResponseBody {
+	s.AlertMode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponseBody) SetConfigId(v string) *DescribeCloudGtmInstanceConfigAlertResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponseBody) SetInstanceId(v string) *DescribeCloudGtmInstanceConfigAlertResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponseBody) SetRequestId(v string) *DescribeCloudGtmInstanceConfigAlertResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig struct {
+	AlertConfig []*DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig) SetAlertConfig(v []*DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig) *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig {
+	s.AlertConfig = v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig struct {
+	// example:
+	//
+	// true
+	DingtalkNotice *bool `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
+	// example:
+	//
+	// true
+	EmailNotice *bool `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
+	// example:
+	//
+	// addr_alert
+	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// example:
+	//
+	// true
+	SmsNotice *bool `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
+}
+
+func (s DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig) SetDingtalkNotice(v bool) *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig {
+	s.DingtalkNotice = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig) SetEmailNotice(v bool) *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig {
+	s.EmailNotice = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig) SetNoticeType(v string) *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig {
+	s.NoticeType = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig) SetSmsNotice(v bool) *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig {
+	s.SmsNotice = &v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup struct {
+	AlertGroup []*string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup) SetAlertGroup(v []*string) *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup {
+	s.AlertGroup = v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigAlertResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudGtmInstanceConfigAlertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudGtmInstanceConfigAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponse) SetHeaders(v map[string]*string) *DescribeCloudGtmInstanceConfigAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponse) SetStatusCode(v int32) *DescribeCloudGtmInstanceConfigAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigAlertResponse) SetBody(v *DescribeCloudGtmInstanceConfigAlertResponseBody) *DescribeCloudGtmInstanceConfigAlertResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigFullInfoRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoRequest) SetAcceptLanguage(v string) *DescribeCloudGtmInstanceConfigFullInfoRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoRequest) SetClientToken(v string) *DescribeCloudGtmInstanceConfigFullInfoRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoRequest) SetConfigId(v string) *DescribeCloudGtmInstanceConfigFullInfoRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoRequest) SetInstanceId(v string) *DescribeCloudGtmInstanceConfigFullInfoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigFullInfoResponseBody struct {
+	// example:
+	//
+	// round_robin
+	AddressPoolLbStrategy *string                                                         `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
+	AddressPools          *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	// example:
+	//
+	// [{\\"NoticeType\\":\\"addr_alert\\",\\"SmsNotice\\":true,\\"EmailNotice\\":true,\\"DingtalkNotice\\":true},{\\"NoticeType\\":\\"addr_resume\\",\\"SmsNotice\\":true,\\"EmailNotice\\":true,\\"DingtalkNotice\\":true},{\\"NoticeType\\":\\"addr_pool_unavailable\\",\\"SmsNotice\\":true,\\"EmailNotice\\":true,\\"DingtalkNotice\\":true},{\\"NoticeType\\":\\"addr_pool_available\\",\\"SmsNotice\\":true,\\"EmailNotice\\":true,\\"DingtalkNotice\\":true}]"
+	AlertConfig *string `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty"`
+	AlertGroup  *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// dns_gtm_public_cn
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 29D0F8F8-5499-4F6C-9FDC-1EE13BF55925
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// www.example.com
+	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// example:
+	//
+	// www
+	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	// example:
+	//
+	// A
+	ScheduleRrType *string `json:"ScheduleRrType,omitempty" xml:"ScheduleRrType,omitempty"`
+	// example:
+	//
+	// custom
+	ScheduleZoneMode *string `json:"ScheduleZoneMode,omitempty" xml:"ScheduleZoneMode,omitempty"`
+	// example:
+	//
+	// example.com
+	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// example:
+	//
+	// 60
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// ultimate
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetAddressPoolLbStrategy(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.AddressPoolLbStrategy = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetAddressPools(v *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPools) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.AddressPools = v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetAlertConfig(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.AlertConfig = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetAlertGroup(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.AlertGroup = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetAvailableStatus(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetCommodityCode(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetConfigId(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetCreateTime(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetCreateTimestamp(v int64) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetEnableStatus(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetHealthStatus(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetInstanceId(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetInstanceName(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetRemark(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetRequestId(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetScheduleDomainName(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.ScheduleDomainName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetScheduleHostname(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.ScheduleHostname = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetScheduleRrType(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.ScheduleRrType = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetScheduleZoneMode(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.ScheduleZoneMode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetScheduleZoneName(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.ScheduleZoneName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetSequenceLbStrategyMode(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetTtl(v int32) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.Ttl = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetUpdateTime(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetUpdateTimestamp(v int64) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetVersionCode(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBody {
+	s.VersionCode = &v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPools struct {
+	AddressPool []*DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool `json:"AddressPool,omitempty" xml:"AddressPool,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPools) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPools) SetAddressPool(v []*DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPools {
+	s.AddressPool = v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool struct {
+	// example:
+	//
+	// round_robin
+	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// AddressPool-1
+	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// example:
+	//
+	// IPv4
+	AddressPoolType *string                                                                             `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	Addresses       *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// any_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus  *string                                                                                 `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	RequestSource *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	SeqNonPreemptiveSchedule *bool `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// example:
+	//
+	// 1
+	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// 1
+	WeightValue *int32 `json:"WeightValue,omitempty" xml:"WeightValue,omitempty"`
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetAddressLbStrategy(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.AddressLbStrategy = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetAddressPoolId(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetAddressPoolName(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.AddressPoolName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetAddressPoolType(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.AddressPoolType = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetAddresses(v *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddresses) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.Addresses = v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetAvailableStatus(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetCreateTime(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetCreateTimestamp(v int64) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetEnableStatus(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetHealthJudgement(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetHealthStatus(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetRequestSource(v *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolRequestSource) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.RequestSource = v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetSeqNonPreemptiveSchedule(v bool) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.SeqNonPreemptiveSchedule = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetSequenceLbStrategyMode(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetSerialNumber(v int32) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetUpdateTime(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetUpdateTimestamp(v int64) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) SetWeightValue(v int32) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool {
+	s.WeightValue = &v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddresses struct {
+	Address []*DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress `json:"Address,omitempty" xml:"Address,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddresses) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddresses) SetAddress(v []*DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddresses {
+	s.Address = v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress struct {
+	// example:
+	//
+	// 223.5.XX.XX
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// addr-89564712295703**96
+	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// example:
+	//
+	// auto
+	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// any_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// example:
+	//
+	// available
+	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// example:
+	//
+	// Address-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test
+	Remark        *string                                                                                                 `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RequestSource *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	SeqNonPreemptiveSchedule *bool `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	// example:
+	//
+	// 1
+	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// IPv4
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// 1
+	WeightValue *int32 `json:"WeightValue,omitempty" xml:"WeightValue,omitempty"`
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAddress(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAddressId(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.AddressId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAttributeInfo(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.AttributeInfo = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAvailableMode(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.AvailableMode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAvailableStatus(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetCreateTime(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetCreateTimestamp(v int64) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetEnableStatus(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetHealthJudgement(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetHealthStatus(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetManualAvailableStatus(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.ManualAvailableStatus = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetName(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetRemark(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetRequestSource(v *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.RequestSource = v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetSeqNonPreemptiveSchedule(v bool) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.SeqNonPreemptiveSchedule = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetSerialNumber(v int32) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetType(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetUpdateTime(v string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetUpdateTimestamp(v int64) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) SetWeightValue(v int32) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.WeightValue = &v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource struct {
+	RequestSource []*string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource) SetRequestSource(v []*string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource {
+	s.RequestSource = v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolRequestSource struct {
+	RequestSource []*string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolRequestSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolRequestSource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolRequestSource) SetRequestSource(v []*string) *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolRequestSource {
+	s.RequestSource = v
+	return s
+}
+
+type DescribeCloudGtmInstanceConfigFullInfoResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudGtmInstanceConfigFullInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmInstanceConfigFullInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponse) SetHeaders(v map[string]*string) *DescribeCloudGtmInstanceConfigFullInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponse) SetStatusCode(v int32) *DescribeCloudGtmInstanceConfigFullInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmInstanceConfigFullInfoResponse) SetBody(v *DescribeCloudGtmInstanceConfigFullInfoResponseBody) *DescribeCloudGtmInstanceConfigFullInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCloudGtmMonitorTemplateRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeCloudGtmMonitorTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmMonitorTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmMonitorTemplateRequest) SetAcceptLanguage(v string) *DescribeCloudGtmMonitorTemplateRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateRequest) SetTemplateId(v string) *DescribeCloudGtmMonitorTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeCloudGtmMonitorTemplateResponseBody struct {
+	// example:
+	//
+	// 2024-03-23T13:09Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// 2
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// example:
+	//
+	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
+	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// example:
+	//
+	// 50
+	FailureRate *int32 `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// IPv4
+	IpVersion    *string                                                  `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IspCityNodes *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
+	// example:
+	//
+	// Ping-IPv4
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ping
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 6AEC7A64-3CB1-4C49-8B35-0B901F1E26BF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 5000
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// 2024-03-29T13:20Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+}
+
+func (s DescribeCloudGtmMonitorTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmMonitorTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetCreateTime(v string) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetCreateTimestamp(v int64) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetEvaluationCount(v int32) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.EvaluationCount = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetExtendInfo(v string) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.ExtendInfo = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetFailureRate(v int32) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.FailureRate = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetInterval(v int32) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetIpVersion(v string) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetIspCityNodes(v *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.IspCityNodes = v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetName(v string) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetProtocol(v string) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetRemark(v string) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetRequestId(v string) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetTemplateId(v string) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetTimeout(v int32) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.Timeout = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetUpdateTime(v string) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetUpdateTimestamp(v int64) *DescribeCloudGtmMonitorTemplateResponseBody {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes struct {
+	IspCityNode []*DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes) SetIspCityNode(v []*DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode) *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes {
+	s.IspCityNode = v
+	return s
+}
+
+type DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode struct {
+	// example:
+	//
+	// 503
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// example:
+	//
+	// 001
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// BGP
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// example:
+	//
+	// 465
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+}
+
+func (s DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode) SetCityCode(v string) *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode {
+	s.CityCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode) SetCityName(v string) *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode {
+	s.CityName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode) SetCountryCode(v string) *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode) SetCountryName(v string) *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode {
+	s.CountryName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode) SetGroupName(v string) *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode) SetGroupType(v string) *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode {
+	s.GroupType = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode) SetIspCode(v string) *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode {
+	s.IspCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode) SetIspName(v string) *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode {
+	s.IspName = &v
+	return s
+}
+
+type DescribeCloudGtmMonitorTemplateResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudGtmMonitorTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudGtmMonitorTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmMonitorTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponse) SetHeaders(v map[string]*string) *DescribeCloudGtmMonitorTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponse) SetStatusCode(v int32) *DescribeCloudGtmMonitorTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmMonitorTemplateResponse) SetBody(v *DescribeCloudGtmMonitorTemplateResponseBody) *DescribeCloudGtmMonitorTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCloudGtmSummaryRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+}
+
+func (s DescribeCloudGtmSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmSummaryRequest) SetAcceptLanguage(v string) *DescribeCloudGtmSummaryRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+type DescribeCloudGtmSummaryResponseBody struct {
+	// example:
+	//
+	// 10
+	InstanceTotalCount *int32 `json:"InstanceTotalCount,omitempty" xml:"InstanceTotalCount,omitempty"`
+	// example:
+	//
+	// 101
+	MonitorTaskTotalCount *int32 `json:"MonitorTaskTotalCount,omitempty" xml:"MonitorTaskTotalCount,omitempty"`
+	// example:
+	//
+	// 20
+	MonitorTaskTotalQuota *int32 `json:"MonitorTaskTotalQuota,omitempty" xml:"MonitorTaskTotalQuota,omitempty"`
+	// example:
+	//
+	// 199C3699-9A7B-41A1-BB5A-F1E862D3CB38
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCloudGtmSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmSummaryResponseBody) SetInstanceTotalCount(v int32) *DescribeCloudGtmSummaryResponseBody {
+	s.InstanceTotalCount = &v
+	return s
+}
+
+func (s *DescribeCloudGtmSummaryResponseBody) SetMonitorTaskTotalCount(v int32) *DescribeCloudGtmSummaryResponseBody {
+	s.MonitorTaskTotalCount = &v
+	return s
+}
+
+func (s *DescribeCloudGtmSummaryResponseBody) SetMonitorTaskTotalQuota(v int32) *DescribeCloudGtmSummaryResponseBody {
+	s.MonitorTaskTotalQuota = &v
+	return s
+}
+
+func (s *DescribeCloudGtmSummaryResponseBody) SetRequestId(v string) *DescribeCloudGtmSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCloudGtmSummaryResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudGtmSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudGtmSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmSummaryResponse) SetHeaders(v map[string]*string) *DescribeCloudGtmSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudGtmSummaryResponse) SetStatusCode(v int32) *DescribeCloudGtmSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmSummaryResponse) SetBody(v *DescribeCloudGtmSummaryResponseBody) *DescribeCloudGtmSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCloudGtmSystemLinesResponseBody struct {
+	// example:
+	//
+	// 389DFFA3-77A5-4A9E-BF3D-147C6F98A5BA
+	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SystemLines     *DescribeCloudGtmSystemLinesResponseBodySystemLines `json:"SystemLines,omitempty" xml:"SystemLines,omitempty" type:"Struct"`
+	SystemLinesTree *string                                             `json:"SystemLinesTree,omitempty" xml:"SystemLinesTree,omitempty"`
+}
+
+func (s DescribeCloudGtmSystemLinesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmSystemLinesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmSystemLinesResponseBody) SetRequestId(v string) *DescribeCloudGtmSystemLinesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCloudGtmSystemLinesResponseBody) SetSystemLines(v *DescribeCloudGtmSystemLinesResponseBodySystemLines) *DescribeCloudGtmSystemLinesResponseBody {
+	s.SystemLines = v
+	return s
+}
+
+func (s *DescribeCloudGtmSystemLinesResponseBody) SetSystemLinesTree(v string) *DescribeCloudGtmSystemLinesResponseBody {
+	s.SystemLinesTree = &v
+	return s
+}
+
+type DescribeCloudGtmSystemLinesResponseBodySystemLines struct {
+	SystemLine []*DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine `json:"SystemLine,omitempty" xml:"SystemLine,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudGtmSystemLinesResponseBodySystemLines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmSystemLinesResponseBodySystemLines) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmSystemLinesResponseBodySystemLines) SetSystemLine(v []*DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine) *DescribeCloudGtmSystemLinesResponseBodySystemLines {
+	s.SystemLine = v
+	return s
+}
+
+type DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine struct {
+	// example:
+	//
+	// aliyun_r_ap-south-1
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// true
+	IsAvailable *bool   `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// String	aliyun
+	ParentCode *string `json:"ParentCode,omitempty" xml:"ParentCode,omitempty"`
+}
+
+func (s DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine) SetCode(v string) *DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine) SetDisplayName(v string) *DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine) SetIsAvailable(v bool) *DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine {
+	s.IsAvailable = &v
+	return s
+}
+
+func (s *DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine) SetName(v string) *DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine) SetParentCode(v string) *DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine {
+	s.ParentCode = &v
+	return s
+}
+
+type DescribeCloudGtmSystemLinesResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudGtmSystemLinesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudGtmSystemLinesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudGtmSystemLinesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudGtmSystemLinesResponse) SetHeaders(v map[string]*string) *DescribeCloudGtmSystemLinesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudGtmSystemLinesResponse) SetStatusCode(v int32) *DescribeCloudGtmSystemLinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudGtmSystemLinesResponse) SetBody(v *DescribeCloudGtmSystemLinesResponseBody) *DescribeCloudGtmSystemLinesResponse {
 	s.Body = v
 	return s
 }
@@ -27545,6 +31564,3077 @@ func (s *GetTxtRecordForVerifyResponse) SetBody(v *GetTxtRecordForVerifyResponse
 	return s
 }
 
+type ListCloudGtmAddressPoolsRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// AddressPool-1
+	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// example:
+	//
+	// IPv4
+	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+}
+
+func (s ListCloudGtmAddressPoolsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressPoolsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressPoolsRequest) SetAcceptLanguage(v string) *ListCloudGtmAddressPoolsRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsRequest) SetAddressPoolName(v string) *ListCloudGtmAddressPoolsRequest {
+	s.AddressPoolName = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsRequest) SetAddressPoolType(v string) *ListCloudGtmAddressPoolsRequest {
+	s.AddressPoolType = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsRequest) SetClientToken(v string) *ListCloudGtmAddressPoolsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsRequest) SetEnableStatus(v string) *ListCloudGtmAddressPoolsRequest {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsRequest) SetPageNumber(v int32) *ListCloudGtmAddressPoolsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsRequest) SetPageSize(v int32) *ListCloudGtmAddressPoolsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsRequest) SetRemark(v string) *ListCloudGtmAddressPoolsRequest {
+	s.Remark = &v
+	return s
+}
+
+type ListCloudGtmAddressPoolsResponseBody struct {
+	AddressPools *ListCloudGtmAddressPoolsResponseBodyAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 11
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s ListCloudGtmAddressPoolsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressPoolsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBody) SetAddressPools(v *ListCloudGtmAddressPoolsResponseBodyAddressPools) *ListCloudGtmAddressPoolsResponseBody {
+	s.AddressPools = v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBody) SetPageNumber(v int32) *ListCloudGtmAddressPoolsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBody) SetPageSize(v int32) *ListCloudGtmAddressPoolsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBody) SetRequestId(v string) *ListCloudGtmAddressPoolsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBody) SetTotalItems(v int32) *ListCloudGtmAddressPoolsResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBody) SetTotalPages(v int32) *ListCloudGtmAddressPoolsResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type ListCloudGtmAddressPoolsResponseBodyAddressPools struct {
+	AddressPool []*ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool `json:"AddressPool,omitempty" xml:"AddressPool,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPools) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPools) SetAddressPool(v []*ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) *ListCloudGtmAddressPoolsResponseBodyAddressPools {
+	s.AddressPool = v
+	return s
+}
+
+type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool struct {
+	// example:
+	//
+	// round_robin
+	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// AddressPool-1
+	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// example:
+	//
+	// IPv4
+	AddressPoolType *string                                                               `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	Addresses       *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// any_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetAddressLbStrategy(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.AddressLbStrategy = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetAddressPoolId(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetAddressPoolName(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.AddressPoolName = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetAddressPoolType(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.AddressPoolType = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetAddresses(v *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.Addresses = v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetAvailableStatus(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetCreateTime(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetCreateTimestamp(v int64) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetEnableStatus(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetHealthJudgement(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetHealthStatus(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetRemark(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetSequenceLbStrategyMode(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetUpdateTime(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetUpdateTimestamp(v int64) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses struct {
+	Address []*ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress `json:"Address,omitempty" xml:"Address,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses) SetAddress(v []*ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses {
+	s.Address = v
+	return s
+}
+
+type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress struct {
+	// example:
+	//
+	// 223.5.XX.XX
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// addr-895182181143688192
+	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// example:
+	//
+	// auto
+	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// any_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string                                                                                 `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	HealthTasks  *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	// example:
+	//
+	// available
+	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// example:
+	//
+	// Address-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test
+	Remark                   *string                                                                                   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RequestSource            *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
+	SeqNonPreemptiveSchedule *bool                                                                                     `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	// example:
+	//
+	// 1
+	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// IPv4
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// 1
+	WeightValue *int32 `json:"WeightValue,omitempty" xml:"WeightValue,omitempty"`
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAddress(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.Address = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAddressId(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.AddressId = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAttributeInfo(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.AttributeInfo = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAvailableMode(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.AvailableMode = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAvailableStatus(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetCreateTime(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetCreateTimestamp(v int64) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetEnableStatus(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetHealthJudgement(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetHealthStatus(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetHealthTasks(v *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.HealthTasks = v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetManualAvailableStatus(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.ManualAvailableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetName(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetRemark(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetRequestSource(v *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.RequestSource = v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetSeqNonPreemptiveSchedule(v bool) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.SeqNonPreemptiveSchedule = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetSerialNumber(v int32) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetType(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.Type = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetUpdateTime(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetUpdateTimestamp(v int64) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetWeightValue(v int32) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.WeightValue = &v
+	return s
+}
+
+type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks struct {
+	HealthTask []*ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask `json:"HealthTask,omitempty" xml:"HealthTask,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks) SetHealthTask(v []*ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks {
+	s.HealthTask = v
+	return s
+}
+
+type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask struct {
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// mtp-895180524251002880
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// IPv4-Ping
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask) SetPort(v int32) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask {
+	s.Port = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask) SetTemplateId(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask) SetTemplateName(v string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask {
+	s.TemplateName = &v
+	return s
+}
+
+type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource struct {
+	RequestSource []*string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource) SetRequestSource(v []*string) *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource {
+	s.RequestSource = v
+	return s
+}
+
+type ListCloudGtmAddressPoolsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCloudGtmAddressPoolsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCloudGtmAddressPoolsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressPoolsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressPoolsResponse) SetHeaders(v map[string]*string) *ListCloudGtmAddressPoolsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponse) SetStatusCode(v int32) *ListCloudGtmAddressPoolsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressPoolsResponse) SetBody(v *ListCloudGtmAddressPoolsResponseBody) *ListCloudGtmAddressPoolsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCloudGtmAddressesRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 223.5.XX.XX
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// addr-89518218114368**92
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// example:
+	//
+	// mtp-89518052425100**80
+	MonitorTemplateId *string `json:"MonitorTemplateId,omitempty" xml:"MonitorTemplateId,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// IPv4
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListCloudGtmAddressesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressesRequest) SetAcceptLanguage(v string) *ListCloudGtmAddressesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesRequest) SetAddress(v string) *ListCloudGtmAddressesRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesRequest) SetAddressId(v string) *ListCloudGtmAddressesRequest {
+	s.AddressId = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesRequest) SetClientToken(v string) *ListCloudGtmAddressesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesRequest) SetEnableStatus(v string) *ListCloudGtmAddressesRequest {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesRequest) SetHealthStatus(v string) *ListCloudGtmAddressesRequest {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesRequest) SetMonitorTemplateId(v string) *ListCloudGtmAddressesRequest {
+	s.MonitorTemplateId = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesRequest) SetName(v string) *ListCloudGtmAddressesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesRequest) SetPageNumber(v int32) *ListCloudGtmAddressesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesRequest) SetPageSize(v int32) *ListCloudGtmAddressesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesRequest) SetType(v string) *ListCloudGtmAddressesRequest {
+	s.Type = &v
+	return s
+}
+
+type ListCloudGtmAddressesResponseBody struct {
+	Addresses *ListCloudGtmAddressesResponseBodyAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 30
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s ListCloudGtmAddressesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressesResponseBody) SetAddresses(v *ListCloudGtmAddressesResponseBodyAddresses) *ListCloudGtmAddressesResponseBody {
+	s.Addresses = v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBody) SetPageNumber(v int32) *ListCloudGtmAddressesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBody) SetPageSize(v int32) *ListCloudGtmAddressesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBody) SetRequestId(v string) *ListCloudGtmAddressesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBody) SetTotalItems(v int32) *ListCloudGtmAddressesResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBody) SetTotalPages(v int32) *ListCloudGtmAddressesResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type ListCloudGtmAddressesResponseBodyAddresses struct {
+	Address []*ListCloudGtmAddressesResponseBodyAddressesAddress `json:"Address,omitempty" xml:"Address,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmAddressesResponseBodyAddresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressesResponseBodyAddresses) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddresses) SetAddress(v []*ListCloudGtmAddressesResponseBodyAddressesAddress) *ListCloudGtmAddressesResponseBodyAddresses {
+	s.Address = v
+	return s
+}
+
+type ListCloudGtmAddressesResponseBodyAddressesAddress struct {
+	// example:
+	//
+	// 223.5.XX.XX
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// addr-89518218114368**92
+	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// example:
+	//
+	// auto
+	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 2024-03-23T13:09Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// p50_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string                                                       `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	HealthTasks  *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	// example:
+	//
+	// available
+	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// example:
+	//
+	// Address-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// app
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// IPv4
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2024-03-29T13:20Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690824357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+}
+
+func (s ListCloudGtmAddressesResponseBodyAddressesAddress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressesResponseBodyAddressesAddress) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetAddress(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.Address = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetAddressId(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.AddressId = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetAttributeInfo(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.AttributeInfo = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetAvailableMode(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.AvailableMode = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetAvailableStatus(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetCreateTime(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetCreateTimestamp(v int64) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetEnableStatus(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetHealthJudgement(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetHealthStatus(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetHealthTasks(v *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.HealthTasks = v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetManualAvailableStatus(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.ManualAvailableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetName(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetRemark(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetType(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.Type = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetUpdateTime(v string) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetUpdateTimestamp(v int64) *ListCloudGtmAddressesResponseBodyAddressesAddress {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks struct {
+	HealthTask []*ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask `json:"HealthTask,omitempty" xml:"HealthTask,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks) SetHealthTask(v []*ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks {
+	s.HealthTask = v
+	return s
+}
+
+type ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask struct {
+	// example:
+	//
+	// ok
+	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// Ping-IPv4
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) SetMonitorStatus(v string) *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask {
+	s.MonitorStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) SetPort(v int32) *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask {
+	s.Port = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) SetTemplateId(v string) *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) SetTemplateName(v string) *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask {
+	s.TemplateName = &v
+	return s
+}
+
+type ListCloudGtmAddressesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCloudGtmAddressesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCloudGtmAddressesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAddressesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAddressesResponse) SetHeaders(v map[string]*string) *ListCloudGtmAddressesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponse) SetStatusCode(v int32) *ListCloudGtmAddressesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCloudGtmAddressesResponse) SetBody(v *ListCloudGtmAddressesResponseBody) *ListCloudGtmAddressesResponse {
+	s.Body = v
+	return s
+}
+
+type ListCloudGtmAlertLogsRequest struct {
+	// example:
+	//
+	// ALERT
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1711328826977
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// example:
+	//
+	// GTM_ADDRESS
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// example:
+	//
+	// pool-895280232254422016
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// zh-CN
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1611328826977
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+}
+
+func (s ListCloudGtmAlertLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAlertLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAlertLogsRequest) SetActionType(v string) *ListCloudGtmAlertLogsRequest {
+	s.ActionType = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsRequest) SetEndTimestamp(v int64) *ListCloudGtmAlertLogsRequest {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsRequest) SetEntityType(v string) *ListCloudGtmAlertLogsRequest {
+	s.EntityType = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsRequest) SetKeyword(v string) *ListCloudGtmAlertLogsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsRequest) SetLang(v string) *ListCloudGtmAlertLogsRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsRequest) SetPageNumber(v int32) *ListCloudGtmAlertLogsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsRequest) SetPageSize(v int32) *ListCloudGtmAlertLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsRequest) SetStartTimestamp(v int64) *ListCloudGtmAlertLogsRequest {
+	s.StartTimestamp = &v
+	return s
+}
+
+type ListCloudGtmAlertLogsResponseBody struct {
+	Logs *ListCloudGtmAlertLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 15
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s ListCloudGtmAlertLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAlertLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAlertLogsResponseBody) SetLogs(v *ListCloudGtmAlertLogsResponseBodyLogs) *ListCloudGtmAlertLogsResponseBody {
+	s.Logs = v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsResponseBody) SetPageNumber(v int32) *ListCloudGtmAlertLogsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsResponseBody) SetPageSize(v int32) *ListCloudGtmAlertLogsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsResponseBody) SetRequestId(v string) *ListCloudGtmAlertLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsResponseBody) SetTotalItems(v int32) *ListCloudGtmAlertLogsResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsResponseBody) SetTotalPages(v int32) *ListCloudGtmAlertLogsResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type ListCloudGtmAlertLogsResponseBodyLogs struct {
+	Log []*ListCloudGtmAlertLogsResponseBodyLogsLog `json:"Log,omitempty" xml:"Log,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmAlertLogsResponseBodyLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAlertLogsResponseBodyLogs) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAlertLogsResponseBodyLogs) SetLog(v []*ListCloudGtmAlertLogsResponseBodyLogsLog) *ListCloudGtmAlertLogsResponseBodyLogs {
+	s.Log = v
+	return s
+}
+
+type ListCloudGtmAlertLogsResponseBodyLogsLog struct {
+	// example:
+	//
+	// ALERT
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// GTM_ADDRESS
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// example:
+	//
+	// 1711328826977
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s ListCloudGtmAlertLogsResponseBodyLogsLog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAlertLogsResponseBodyLogsLog) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAlertLogsResponseBodyLogsLog) SetActionType(v string) *ListCloudGtmAlertLogsResponseBodyLogsLog {
+	s.ActionType = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsResponseBodyLogsLog) SetContent(v string) *ListCloudGtmAlertLogsResponseBodyLogsLog {
+	s.Content = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsResponseBodyLogsLog) SetEntityType(v string) *ListCloudGtmAlertLogsResponseBodyLogsLog {
+	s.EntityType = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsResponseBodyLogsLog) SetTimestamp(v int64) *ListCloudGtmAlertLogsResponseBodyLogsLog {
+	s.Timestamp = &v
+	return s
+}
+
+type ListCloudGtmAlertLogsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCloudGtmAlertLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCloudGtmAlertLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAlertLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAlertLogsResponse) SetHeaders(v map[string]*string) *ListCloudGtmAlertLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsResponse) SetStatusCode(v int32) *ListCloudGtmAlertLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCloudGtmAlertLogsResponse) SetBody(v *ListCloudGtmAlertLogsResponseBody) *ListCloudGtmAlertLogsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCloudGtmAvailableAlertGroupsRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+}
+
+func (s ListCloudGtmAvailableAlertGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAvailableAlertGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAvailableAlertGroupsRequest) SetAcceptLanguage(v string) *ListCloudGtmAvailableAlertGroupsRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+type ListCloudGtmAvailableAlertGroupsResponseBody struct {
+	AlertGroups *ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups `json:"AlertGroups,omitempty" xml:"AlertGroups,omitempty" type:"Struct"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCloudGtmAvailableAlertGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAvailableAlertGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAvailableAlertGroupsResponseBody) SetAlertGroups(v *ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups) *ListCloudGtmAvailableAlertGroupsResponseBody {
+	s.AlertGroups = v
+	return s
+}
+
+func (s *ListCloudGtmAvailableAlertGroupsResponseBody) SetRequestId(v string) *ListCloudGtmAvailableAlertGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups struct {
+	AlertGroup []*ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups) SetAlertGroup(v []*ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup) *ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups {
+	s.AlertGroup = v
+	return s
+}
+
+type ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup struct {
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup) SetGroupName(v string) *ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup {
+	s.GroupName = &v
+	return s
+}
+
+type ListCloudGtmAvailableAlertGroupsResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCloudGtmAvailableAlertGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCloudGtmAvailableAlertGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmAvailableAlertGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmAvailableAlertGroupsResponse) SetHeaders(v map[string]*string) *ListCloudGtmAvailableAlertGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCloudGtmAvailableAlertGroupsResponse) SetStatusCode(v int32) *ListCloudGtmAvailableAlertGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCloudGtmAvailableAlertGroupsResponse) SetBody(v *ListCloudGtmAvailableAlertGroupsResponseBody) *ListCloudGtmAvailableAlertGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCloudGtmInstanceConfigsRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// www.example.com
+	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// example:
+	//
+	// example.com
+	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+}
+
+func (s ListCloudGtmInstanceConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmInstanceConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmInstanceConfigsRequest) SetAcceptLanguage(v string) *ListCloudGtmInstanceConfigsRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsRequest) SetClientToken(v string) *ListCloudGtmInstanceConfigsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsRequest) SetEnableStatus(v string) *ListCloudGtmInstanceConfigsRequest {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsRequest) SetInstanceId(v string) *ListCloudGtmInstanceConfigsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsRequest) SetPageNumber(v int32) *ListCloudGtmInstanceConfigsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsRequest) SetPageSize(v int32) *ListCloudGtmInstanceConfigsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsRequest) SetRemark(v string) *ListCloudGtmInstanceConfigsRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsRequest) SetScheduleDomainName(v string) *ListCloudGtmInstanceConfigsRequest {
+	s.ScheduleDomainName = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsRequest) SetScheduleZoneName(v string) *ListCloudGtmInstanceConfigsRequest {
+	s.ScheduleZoneName = &v
+	return s
+}
+
+type ListCloudGtmInstanceConfigsResponseBody struct {
+	InstanceConfigs *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs `json:"InstanceConfigs,omitempty" xml:"InstanceConfigs,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s ListCloudGtmInstanceConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmInstanceConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBody) SetInstanceConfigs(v *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs) *ListCloudGtmInstanceConfigsResponseBody {
+	s.InstanceConfigs = v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBody) SetPageNumber(v int32) *ListCloudGtmInstanceConfigsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBody) SetPageSize(v int32) *ListCloudGtmInstanceConfigsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBody) SetRequestId(v string) *ListCloudGtmInstanceConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBody) SetTotalItems(v int32) *ListCloudGtmInstanceConfigsResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBody) SetTotalPages(v int32) *ListCloudGtmInstanceConfigsResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs struct {
+	InstanceConfig []*ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs) SetInstanceConfig(v []*ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs {
+	s.InstanceConfig = v
+	return s
+}
+
+type ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig struct {
+	// example:
+	//
+	// round_robin
+	AddressPoolLbStrategy *string                                                                           `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
+	AddressPools          *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// dns_gtm_public_cn
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// www.example.com
+	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// example:
+	//
+	// www
+	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	// example:
+	//
+	// A
+	ScheduleRrType *string `json:"ScheduleRrType,omitempty" xml:"ScheduleRrType,omitempty"`
+	// example:
+	//
+	// custom
+	ScheduleZoneMode *string `json:"ScheduleZoneMode,omitempty" xml:"ScheduleZoneMode,omitempty"`
+	// example:
+	//
+	// example.com
+	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// example:
+	//
+	// 60
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// ultimate
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+}
+
+func (s ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetAddressPoolLbStrategy(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.AddressPoolLbStrategy = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetAddressPools(v *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.AddressPools = v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetAvailableStatus(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetCommodityCode(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetConfigId(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetCreateTime(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetCreateTimestamp(v int64) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetEnableStatus(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetHealthStatus(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetInstanceId(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetRemark(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetScheduleDomainName(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleDomainName = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetScheduleHostname(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleHostname = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetScheduleRrType(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleRrType = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetScheduleZoneMode(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleZoneMode = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetScheduleZoneName(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleZoneName = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetSequenceLbStrategyMode(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetTtl(v int32) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.Ttl = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetUpdateTime(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetUpdateTimestamp(v int64) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetVersionCode(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.VersionCode = &v
+	return s
+}
+
+type ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools struct {
+	AddressPool []*ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool `json:"AddressPool,omitempty" xml:"AddressPool,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools) SetAddressPool(v []*ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools {
+	s.AddressPool = v
+	return s
+}
+
+type ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool struct {
+	// example:
+	//
+	// round_robin
+	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// AddressPool-1
+	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// example:
+	//
+	// IPv4
+	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus             *string                                                                                                   `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	RequestSource            *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
+	SeqNonPreemptiveSchedule *bool                                                                                                     `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// example:
+	//
+	// 1
+	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// 1
+	WeightValue *int32 `json:"WeightValue,omitempty" xml:"WeightValue,omitempty"`
+}
+
+func (s ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetAddressLbStrategy(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.AddressLbStrategy = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetAddressPoolId(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetAddressPoolName(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.AddressPoolName = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetAddressPoolType(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.AddressPoolType = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetAvailableStatus(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetCreateTime(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetCreateTimestamp(v int64) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetEnableStatus(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetHealthJudgement(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetHealthStatus(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetRequestSource(v *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.RequestSource = v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetSeqNonPreemptiveSchedule(v bool) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.SeqNonPreemptiveSchedule = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetSequenceLbStrategyMode(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetSerialNumber(v int32) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetUpdateTime(v string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetUpdateTimestamp(v int64) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetWeightValue(v int32) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.WeightValue = &v
+	return s
+}
+
+type ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource struct {
+	RequestSource []*string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource) SetRequestSource(v []*string) *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource {
+	s.RequestSource = v
+	return s
+}
+
+type ListCloudGtmInstanceConfigsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCloudGtmInstanceConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCloudGtmInstanceConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmInstanceConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmInstanceConfigsResponse) SetHeaders(v map[string]*string) *ListCloudGtmInstanceConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponse) SetStatusCode(v int32) *ListCloudGtmInstanceConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCloudGtmInstanceConfigsResponse) SetBody(v *ListCloudGtmInstanceConfigsResponseBody) *ListCloudGtmInstanceConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCloudGtmInstancesRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// gtm-cn-jmp3qnw**03
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListCloudGtmInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmInstancesRequest) SetAcceptLanguage(v string) *ListCloudGtmInstancesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesRequest) SetClientToken(v string) *ListCloudGtmInstancesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesRequest) SetInstanceId(v string) *ListCloudGtmInstancesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesRequest) SetInstanceName(v string) *ListCloudGtmInstancesRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesRequest) SetPageNumber(v int32) *ListCloudGtmInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesRequest) SetPageSize(v int32) *ListCloudGtmInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListCloudGtmInstancesResponseBody struct {
+	Instances *ListCloudGtmInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 15
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s ListCloudGtmInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmInstancesResponseBody) SetInstances(v *ListCloudGtmInstancesResponseBodyInstances) *ListCloudGtmInstancesResponseBody {
+	s.Instances = v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBody) SetPageNumber(v int32) *ListCloudGtmInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBody) SetPageSize(v int32) *ListCloudGtmInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBody) SetRequestId(v string) *ListCloudGtmInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBody) SetTotalItems(v int32) *ListCloudGtmInstancesResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBody) SetTotalPages(v int32) *ListCloudGtmInstancesResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type ListCloudGtmInstancesResponseBodyInstances struct {
+	Instance []*ListCloudGtmInstancesResponseBodyInstancesInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmInstancesResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmInstancesResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstances) SetInstance(v []*ListCloudGtmInstancesResponseBodyInstancesInstance) *ListCloudGtmInstancesResponseBodyInstances {
+	s.Instance = v
+	return s
+}
+
+type ListCloudGtmInstancesResponseBodyInstancesInstance struct {
+	// example:
+	//
+	// dns_gtm_public_cn
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1231298343343
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 1231298343343
+	ExpireTimestamp *int64 `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
+	// example:
+	//
+	// gtm-cn-jmp3qnw**03
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 100
+	MonitorTaskQuota *int32 `json:"MonitorTaskQuota,omitempty" xml:"MonitorTaskQuota,omitempty"`
+	// example:
+	//
+	// 50
+	MonthlyEmailUsed *int32 `json:"MonthlyEmailUsed,omitempty" xml:"MonthlyEmailUsed,omitempty"`
+	// example:
+	//
+	// 1000
+	MonthlySmsQuota *int32 `json:"MonthlySmsQuota,omitempty" xml:"MonthlySmsQuota,omitempty"`
+	// example:
+	//
+	// 100
+	MonthlySmsUsed *int32 `json:"MonthlySmsUsed,omitempty" xml:"MonthlySmsUsed,omitempty"`
+	// example:
+	//
+	// 80
+	MonthlyWebhookUsed *int32 `json:"MonthlyWebhookUsed,omitempty" xml:"MonthlyWebhookUsed,omitempty"`
+	// example:
+	//
+	// www.example.com
+	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1231298343343
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// ultimate
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+}
+
+func (s ListCloudGtmInstancesResponseBodyInstancesInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmInstancesResponseBodyInstancesInstance) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetCommodityCode(v string) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetCreateTime(v string) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetCreateTimestamp(v int64) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetExpireTime(v string) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetExpireTimestamp(v int64) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.ExpireTimestamp = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetInstanceId(v string) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetInstanceName(v string) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetMonitorTaskQuota(v int32) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.MonitorTaskQuota = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetMonthlyEmailUsed(v int32) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.MonthlyEmailUsed = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetMonthlySmsQuota(v int32) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.MonthlySmsQuota = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetMonthlySmsUsed(v int32) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.MonthlySmsUsed = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetMonthlyWebhookUsed(v int32) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.MonthlyWebhookUsed = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetScheduleDomainName(v string) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.ScheduleDomainName = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetUpdateTime(v string) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetUpdateTimestamp(v int64) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetVersionCode(v string) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.VersionCode = &v
+	return s
+}
+
+type ListCloudGtmInstancesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCloudGtmInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCloudGtmInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmInstancesResponse) SetHeaders(v map[string]*string) *ListCloudGtmInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponse) SetStatusCode(v int32) *ListCloudGtmInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesResponse) SetBody(v *ListCloudGtmInstancesResponseBody) *ListCloudGtmInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListCloudGtmMonitorNodesRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+}
+
+func (s ListCloudGtmMonitorNodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorNodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorNodesRequest) SetAcceptLanguage(v string) *ListCloudGtmMonitorNodesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+type ListCloudGtmMonitorNodesResponseBody struct {
+	Ipv4IspCityNodes *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes `json:"Ipv4IspCityNodes,omitempty" xml:"Ipv4IspCityNodes,omitempty" type:"Struct"`
+	Ipv6IspCityNodes *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes `json:"Ipv6IspCityNodes,omitempty" xml:"Ipv6IspCityNodes,omitempty" type:"Struct"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCloudGtmMonitorNodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorNodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBody) SetIpv4IspCityNodes(v *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes) *ListCloudGtmMonitorNodesResponseBody {
+	s.Ipv4IspCityNodes = v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBody) SetIpv6IspCityNodes(v *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes) *ListCloudGtmMonitorNodesResponseBody {
+	s.Ipv6IspCityNodes = v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBody) SetRequestId(v string) *ListCloudGtmMonitorNodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes struct {
+	Ipv4IspCityNode []*ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode `json:"Ipv4IspCityNode,omitempty" xml:"Ipv4IspCityNode,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes) SetIpv4IspCityNode(v []*ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes {
+	s.Ipv4IspCityNode = v
+	return s
+}
+
+type ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode struct {
+	// example:
+	//
+	// 503
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// example:
+	//
+	// 001
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	// example:
+	//
+	// true
+	DefaultSelected *bool   `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	GroupName       *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// BGP
+	GroupType *string                                                                 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Ips       *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// example:
+	//
+	// 465
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// example:
+	//
+	// node-ewze1bysndy4gf**j8
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) SetCityCode(v string) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) SetCityName(v string) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode {
+	s.CityName = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) SetCountryCode(v string) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) SetCountryName(v string) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode {
+	s.CountryName = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) SetDefaultSelected(v bool) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode {
+	s.DefaultSelected = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) SetGroupName(v string) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) SetGroupType(v string) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode {
+	s.GroupType = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) SetIps(v *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode {
+	s.Ips = v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) SetIspCode(v string) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode {
+	s.IspCode = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) SetIspName(v string) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode {
+	s.IspName = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) SetNodeId(v string) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode {
+	s.NodeId = &v
+	return s
+}
+
+type ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps struct {
+	Ip []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps) SetIp(v []*string) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps {
+	s.Ip = v
+	return s
+}
+
+type ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes struct {
+	Ipv6IspCityNode []*ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode `json:"Ipv6IspCityNode,omitempty" xml:"Ipv6IspCityNode,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes) SetIpv6IspCityNode(v []*ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes {
+	s.Ipv6IspCityNode = v
+	return s
+}
+
+type ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode struct {
+	// example:
+	//
+	// 503
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// example:
+	//
+	// 001
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	// example:
+	//
+	// true
+	DefaultSelected *bool   `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	GroupName       *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// BGP
+	GroupType *string                                                                 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Ips       *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// example:
+	//
+	// 465
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// example:
+	//
+	// node-ewze1bysndy4gf**j8
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) SetCityCode(v string) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) SetCityName(v string) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode {
+	s.CityName = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) SetCountryCode(v string) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) SetCountryName(v string) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode {
+	s.CountryName = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) SetDefaultSelected(v bool) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode {
+	s.DefaultSelected = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) SetGroupName(v string) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) SetGroupType(v string) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode {
+	s.GroupType = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) SetIps(v *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode {
+	s.Ips = v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) SetIspCode(v string) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode {
+	s.IspCode = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) SetIspName(v string) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode {
+	s.IspName = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) SetNodeId(v string) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode {
+	s.NodeId = &v
+	return s
+}
+
+type ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps struct {
+	Ip []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps) SetIp(v []*string) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps {
+	s.Ip = v
+	return s
+}
+
+type ListCloudGtmMonitorNodesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCloudGtmMonitorNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCloudGtmMonitorNodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorNodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorNodesResponse) SetHeaders(v map[string]*string) *ListCloudGtmMonitorNodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponse) SetStatusCode(v int32) *ListCloudGtmMonitorNodesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponse) SetBody(v *ListCloudGtmMonitorNodesResponseBody) *ListCloudGtmMonitorNodesResponse {
+	s.Body = v
+	return s
+}
+
+type ListCloudGtmMonitorTemplatesRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// IPv4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// example:
+	//
+	// IPv4-Ping
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ping
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s ListCloudGtmMonitorTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorTemplatesRequest) SetAcceptLanguage(v string) *ListCloudGtmMonitorTemplatesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesRequest) SetIpVersion(v string) *ListCloudGtmMonitorTemplatesRequest {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesRequest) SetName(v string) *ListCloudGtmMonitorTemplatesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesRequest) SetPageNumber(v int32) *ListCloudGtmMonitorTemplatesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesRequest) SetPageSize(v int32) *ListCloudGtmMonitorTemplatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesRequest) SetProtocol(v string) *ListCloudGtmMonitorTemplatesRequest {
+	s.Protocol = &v
+	return s
+}
+
+type ListCloudGtmMonitorTemplatesResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 75446CC1-FC9A-4595-8D96-089D73D7A63D
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Templates *ListCloudGtmMonitorTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Struct"`
+	// example:
+	//
+	// 30
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s ListCloudGtmMonitorTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBody) SetPageNumber(v int32) *ListCloudGtmMonitorTemplatesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBody) SetPageSize(v int32) *ListCloudGtmMonitorTemplatesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBody) SetRequestId(v string) *ListCloudGtmMonitorTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBody) SetTemplates(v *ListCloudGtmMonitorTemplatesResponseBodyTemplates) *ListCloudGtmMonitorTemplatesResponseBody {
+	s.Templates = v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBody) SetTotalItems(v int32) *ListCloudGtmMonitorTemplatesResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBody) SetTotalPages(v int32) *ListCloudGtmMonitorTemplatesResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type ListCloudGtmMonitorTemplatesResponseBodyTemplates struct {
+	Template []*ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmMonitorTemplatesResponseBodyTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorTemplatesResponseBodyTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplates) SetTemplate(v []*ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) *ListCloudGtmMonitorTemplatesResponseBodyTemplates {
+	s.Template = v
+	return s
+}
+
+type ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate struct {
+	// example:
+	//
+	// 2024-03-23T13:09Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// 2
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// example:
+	//
+	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
+	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// example:
+	//
+	// 50
+	FailureRate *int32 `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// IPv4
+	IpVersion    *string                                                                `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IspCityNodes *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
+	// example:
+	//
+	// IPv4-Ping
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ping
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 5000
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// 2024-03-29T13:20Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+}
+
+func (s ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetCreateTime(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetCreateTimestamp(v int64) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetEvaluationCount(v int32) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.EvaluationCount = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetExtendInfo(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.ExtendInfo = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetFailureRate(v int32) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.FailureRate = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetInterval(v int32) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.Interval = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetIpVersion(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetIspCityNodes(v *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.IspCityNodes = v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetName(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetProtocol(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetRemark(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetTemplateId(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetTimeout(v int32) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetUpdateTime(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetUpdateTimestamp(v int64) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes struct {
+	IspCityNode []*ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
+}
+
+func (s ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes) SetIspCityNode(v []*ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes {
+	s.IspCityNode = v
+	return s
+}
+
+type ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode struct {
+	// example:
+	//
+	// 503
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// example:
+	//
+	// 001
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// BGP
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// example:
+	//
+	// 465
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+}
+
+func (s ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetCityCode(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetCityName(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.CityName = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetCountryCode(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetCountryName(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.CountryName = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetGroupName(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetGroupType(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.GroupType = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetIspCode(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.IspCode = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetIspName(v string) *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.IspName = &v
+	return s
+}
+
+type ListCloudGtmMonitorTemplatesResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCloudGtmMonitorTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCloudGtmMonitorTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudGtmMonitorTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponse) SetHeaders(v map[string]*string) *ListCloudGtmMonitorTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponse) SetStatusCode(v int32) *ListCloudGtmMonitorTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorTemplatesResponse) SetBody(v *ListCloudGtmMonitorTemplatesResponseBody) *ListCloudGtmMonitorTemplatesResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
 	// The language in which you want some response parameters to be returned.
 	//
@@ -28818,6 +35908,413 @@ func (s *RemovePdnsUdpIpSegmentResponse) SetBody(v *RemovePdnsUdpIpSegmentRespon
 	return s
 }
 
+type ReplaceCloudGtmAddressPoolAddressRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// pool-89618921167339**24
+	AddressPoolId *string                                              `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	Addresses     []*ReplaceCloudGtmAddressPoolAddressRequestAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s ReplaceCloudGtmAddressPoolAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceCloudGtmAddressPoolAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressRequest) SetAcceptLanguage(v string) *ReplaceCloudGtmAddressPoolAddressRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressRequest) SetAddressPoolId(v string) *ReplaceCloudGtmAddressPoolAddressRequest {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressRequest) SetAddresses(v []*ReplaceCloudGtmAddressPoolAddressRequestAddresses) *ReplaceCloudGtmAddressPoolAddressRequest {
+	s.Addresses = v
+	return s
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressRequest) SetClientToken(v string) *ReplaceCloudGtmAddressPoolAddressRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type ReplaceCloudGtmAddressPoolAddressRequestAddresses struct {
+	// example:
+	//
+	// addr-89636516932803**44
+	AddressId     *string   `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	RequestSource []*string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// 1
+	WeightValue *int32 `json:"WeightValue,omitempty" xml:"WeightValue,omitempty"`
+}
+
+func (s ReplaceCloudGtmAddressPoolAddressRequestAddresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceCloudGtmAddressPoolAddressRequestAddresses) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressRequestAddresses) SetAddressId(v string) *ReplaceCloudGtmAddressPoolAddressRequestAddresses {
+	s.AddressId = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressRequestAddresses) SetRequestSource(v []*string) *ReplaceCloudGtmAddressPoolAddressRequestAddresses {
+	s.RequestSource = v
+	return s
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressRequestAddresses) SetSerialNumber(v int32) *ReplaceCloudGtmAddressPoolAddressRequestAddresses {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressRequestAddresses) SetWeightValue(v int32) *ReplaceCloudGtmAddressPoolAddressRequestAddresses {
+	s.WeightValue = &v
+	return s
+}
+
+type ReplaceCloudGtmAddressPoolAddressShrinkRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// pool-89618921167339**24
+	AddressPoolId   *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	AddressesShrink *string `json:"Addresses,omitempty" xml:"Addresses,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s ReplaceCloudGtmAddressPoolAddressShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceCloudGtmAddressPoolAddressShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressShrinkRequest) SetAcceptLanguage(v string) *ReplaceCloudGtmAddressPoolAddressShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressShrinkRequest) SetAddressPoolId(v string) *ReplaceCloudGtmAddressPoolAddressShrinkRequest {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressShrinkRequest) SetAddressesShrink(v string) *ReplaceCloudGtmAddressPoolAddressShrinkRequest {
+	s.AddressesShrink = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressShrinkRequest) SetClientToken(v string) *ReplaceCloudGtmAddressPoolAddressShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type ReplaceCloudGtmAddressPoolAddressResponseBody struct {
+	// example:
+	//
+	// pool-89618921167339**24
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// B57C121B-A45F-44D8-A9B2-13E5A5044195
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReplaceCloudGtmAddressPoolAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceCloudGtmAddressPoolAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressResponseBody) SetAddressPoolId(v string) *ReplaceCloudGtmAddressPoolAddressResponseBody {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressResponseBody) SetRequestId(v string) *ReplaceCloudGtmAddressPoolAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressResponseBody) SetSuccess(v bool) *ReplaceCloudGtmAddressPoolAddressResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReplaceCloudGtmAddressPoolAddressResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReplaceCloudGtmAddressPoolAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReplaceCloudGtmAddressPoolAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceCloudGtmAddressPoolAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressResponse) SetHeaders(v map[string]*string) *ReplaceCloudGtmAddressPoolAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressResponse) SetStatusCode(v int32) *ReplaceCloudGtmAddressPoolAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmAddressPoolAddressResponse) SetBody(v *ReplaceCloudGtmAddressPoolAddressResponseBody) *ReplaceCloudGtmAddressPoolAddressResponse {
+	s.Body = v
+	return s
+}
+
+type ReplaceCloudGtmInstanceConfigAddressPoolRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string                                                        `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AddressPools   []*ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ReplaceCloudGtmInstanceConfigAddressPoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceCloudGtmInstanceConfigAddressPoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolRequest) SetAcceptLanguage(v string) *ReplaceCloudGtmInstanceConfigAddressPoolRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolRequest) SetAddressPools(v []*ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools) *ReplaceCloudGtmInstanceConfigAddressPoolRequest {
+	s.AddressPools = v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolRequest) SetClientToken(v string) *ReplaceCloudGtmInstanceConfigAddressPoolRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolRequest) SetConfigId(v string) *ReplaceCloudGtmInstanceConfigAddressPoolRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolRequest) SetInstanceId(v string) *ReplaceCloudGtmInstanceConfigAddressPoolRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools struct {
+	// example:
+	//
+	// pool-89564542105737**12
+	AddressPoolId *string   `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	RequestSource []*string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// 1
+	WeightValue *int32 `json:"WeightValue,omitempty" xml:"WeightValue,omitempty"`
+}
+
+func (s ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools) SetAddressPoolId(v string) *ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools) SetRequestSource(v []*string) *ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools {
+	s.RequestSource = v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools) SetSerialNumber(v int32) *ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools) SetWeightValue(v int32) *ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools {
+	s.WeightValue = &v
+	return s
+}
+
+type ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage     *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AddressPoolsShrink *string `json:"AddressPools,omitempty" xml:"AddressPools,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest) SetAcceptLanguage(v string) *ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest) SetAddressPoolsShrink(v string) *ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest {
+	s.AddressPoolsShrink = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest) SetClientToken(v string) *ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest) SetConfigId(v string) *ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest) SetInstanceId(v string) *ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ReplaceCloudGtmInstanceConfigAddressPoolResponseBody struct {
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReplaceCloudGtmInstanceConfigAddressPoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceCloudGtmInstanceConfigAddressPoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolResponseBody) SetRequestId(v string) *ReplaceCloudGtmInstanceConfigAddressPoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolResponseBody) SetSuccess(v bool) *ReplaceCloudGtmInstanceConfigAddressPoolResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReplaceCloudGtmInstanceConfigAddressPoolResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReplaceCloudGtmInstanceConfigAddressPoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReplaceCloudGtmInstanceConfigAddressPoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReplaceCloudGtmInstanceConfigAddressPoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolResponse) SetHeaders(v map[string]*string) *ReplaceCloudGtmInstanceConfigAddressPoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolResponse) SetStatusCode(v int32) *ReplaceCloudGtmInstanceConfigAddressPoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReplaceCloudGtmInstanceConfigAddressPoolResponse) SetBody(v *ReplaceCloudGtmInstanceConfigAddressPoolResponseBody) *ReplaceCloudGtmInstanceConfigAddressPoolResponse {
+	s.Body = v
+	return s
+}
+
 type ResumePdnsServiceRequest struct {
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
@@ -29055,6 +36552,2429 @@ func (s *RollbackGtmRecoveryPlanResponse) SetStatusCode(v int32) *RollbackGtmRec
 }
 
 func (s *RollbackGtmRecoveryPlanResponse) SetBody(v *RollbackGtmRecoveryPlanResponseBody) *RollbackGtmRecoveryPlanResponse {
+	s.Body = v
+	return s
+}
+
+type SearchCloudGtmAddressPoolsRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// AddressPool-1
+	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// example:
+	//
+	// IPv4
+	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+}
+
+func (s SearchCloudGtmAddressPoolsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressPoolsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressPoolsRequest) SetAcceptLanguage(v string) *SearchCloudGtmAddressPoolsRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsRequest) SetAddressPoolName(v string) *SearchCloudGtmAddressPoolsRequest {
+	s.AddressPoolName = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsRequest) SetAddressPoolType(v string) *SearchCloudGtmAddressPoolsRequest {
+	s.AddressPoolType = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsRequest) SetAvailableStatus(v string) *SearchCloudGtmAddressPoolsRequest {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsRequest) SetClientToken(v string) *SearchCloudGtmAddressPoolsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsRequest) SetEnableStatus(v string) *SearchCloudGtmAddressPoolsRequest {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsRequest) SetHealthStatus(v string) *SearchCloudGtmAddressPoolsRequest {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsRequest) SetPageNumber(v int32) *SearchCloudGtmAddressPoolsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsRequest) SetPageSize(v int32) *SearchCloudGtmAddressPoolsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsRequest) SetRemark(v string) *SearchCloudGtmAddressPoolsRequest {
+	s.Remark = &v
+	return s
+}
+
+type SearchCloudGtmAddressPoolsResponseBody struct {
+	AddressPools *SearchCloudGtmAddressPoolsResponseBodyAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 11
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBody) SetAddressPools(v *SearchCloudGtmAddressPoolsResponseBodyAddressPools) *SearchCloudGtmAddressPoolsResponseBody {
+	s.AddressPools = v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBody) SetPageNumber(v int32) *SearchCloudGtmAddressPoolsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBody) SetPageSize(v int32) *SearchCloudGtmAddressPoolsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBody) SetRequestId(v string) *SearchCloudGtmAddressPoolsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBody) SetTotalItems(v int32) *SearchCloudGtmAddressPoolsResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBody) SetTotalPages(v int32) *SearchCloudGtmAddressPoolsResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type SearchCloudGtmAddressPoolsResponseBodyAddressPools struct {
+	AddressPool []*SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool `json:"AddressPool,omitempty" xml:"AddressPool,omitempty" type:"Repeated"`
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBodyAddressPools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBodyAddressPools) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPools) SetAddressPool(v []*SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) *SearchCloudGtmAddressPoolsResponseBodyAddressPools {
+	s.AddressPool = v
+	return s
+}
+
+type SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool struct {
+	// example:
+	//
+	// round_robin
+	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// example:
+	//
+	// pool-895280232254422016
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// AddressPool-1
+	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// example:
+	//
+	// IPv4
+	AddressPoolType *string                                                                 `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	Addresses       *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// any_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// example:
+	//
+	// 024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetAddressLbStrategy(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.AddressLbStrategy = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetAddressPoolId(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetAddressPoolName(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.AddressPoolName = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetAddressPoolType(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.AddressPoolType = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetAddresses(v *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.Addresses = v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetAvailableStatus(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetCreateTime(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetCreateTimestamp(v int64) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetEnableStatus(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetHealthJudgement(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetHealthStatus(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetRemark(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.Remark = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetSequenceLbStrategyMode(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetUpdateTime(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetUpdateTimestamp(v int64) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses struct {
+	Address []*SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress `json:"Address,omitempty" xml:"Address,omitempty" type:"Repeated"`
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses) SetAddress(v []*SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses {
+	s.Address = v
+	return s
+}
+
+type SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress struct {
+	// example:
+	//
+	// 223.5.XX.XX
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// addr-895182181143688192
+	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// example:
+	//
+	// auto
+	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// any_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string                                                                                   `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	HealthTasks  *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	// example:
+	//
+	// available
+	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// example:
+	//
+	// Address-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// default
+	RequestSource *string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty"`
+	// example:
+	//
+	// 1
+	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// IPv4
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// 1
+	WeightValue *int32 `json:"WeightValue,omitempty" xml:"WeightValue,omitempty"`
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAddress(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.Address = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAddressId(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.AddressId = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAttributeInfo(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.AttributeInfo = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAvailableMode(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.AvailableMode = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetAvailableStatus(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetCreateTime(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetCreateTimestamp(v int64) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetEnableStatus(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetHealthJudgement(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetHealthStatus(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetHealthTasks(v *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.HealthTasks = v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetManualAvailableStatus(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.ManualAvailableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetName(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.Name = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetRemark(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.Remark = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetRequestSource(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.RequestSource = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetSerialNumber(v int32) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetType(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.Type = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetUpdateTime(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetUpdateTimestamp(v int64) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) SetWeightValue(v int32) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress {
+	s.WeightValue = &v
+	return s
+}
+
+type SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks struct {
+	HealthTask []*SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask `json:"HealthTask,omitempty" xml:"HealthTask,omitempty" type:"Repeated"`
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks) SetHealthTask(v []*SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks {
+	s.HealthTask = v
+	return s
+}
+
+type SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask struct {
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// IPv4-Ping
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask) SetPort(v int32) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask {
+	s.Port = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask) SetTemplateId(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask) SetTemplateName(v string) *SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask {
+	s.TemplateName = &v
+	return s
+}
+
+type SearchCloudGtmAddressPoolsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchCloudGtmAddressPoolsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SearchCloudGtmAddressPoolsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressPoolsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressPoolsResponse) SetHeaders(v map[string]*string) *SearchCloudGtmAddressPoolsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponse) SetStatusCode(v int32) *SearchCloudGtmAddressPoolsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressPoolsResponse) SetBody(v *SearchCloudGtmAddressPoolsResponseBody) *SearchCloudGtmAddressPoolsResponse {
+	s.Body = v
+	return s
+}
+
+type SearchCloudGtmAddressesRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 223.5.XX.XX
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// addr-89518218114368**92
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// example:
+	//
+	// Ping-IPv4
+	MonitorTemplateName *string `json:"MonitorTemplateName,omitempty" xml:"MonitorTemplateName,omitempty"`
+	// example:
+	//
+	// or
+	NameSearchCondition *string   `json:"NameSearchCondition,omitempty" xml:"NameSearchCondition,omitempty"`
+	Names               []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// or
+	RemarkSearchCondition *string   `json:"RemarkSearchCondition,omitempty" xml:"RemarkSearchCondition,omitempty"`
+	Remarks               []*string `json:"Remarks,omitempty" xml:"Remarks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// IPv4
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SearchCloudGtmAddressesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetAcceptLanguage(v string) *SearchCloudGtmAddressesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetAddress(v string) *SearchCloudGtmAddressesRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetAddressId(v string) *SearchCloudGtmAddressesRequest {
+	s.AddressId = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetAvailableStatus(v string) *SearchCloudGtmAddressesRequest {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetEnableStatus(v string) *SearchCloudGtmAddressesRequest {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetHealthStatus(v string) *SearchCloudGtmAddressesRequest {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetMonitorTemplateName(v string) *SearchCloudGtmAddressesRequest {
+	s.MonitorTemplateName = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetNameSearchCondition(v string) *SearchCloudGtmAddressesRequest {
+	s.NameSearchCondition = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetNames(v []*string) *SearchCloudGtmAddressesRequest {
+	s.Names = v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetPageNumber(v int32) *SearchCloudGtmAddressesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetPageSize(v int32) *SearchCloudGtmAddressesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetRemarkSearchCondition(v string) *SearchCloudGtmAddressesRequest {
+	s.RemarkSearchCondition = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetRemarks(v []*string) *SearchCloudGtmAddressesRequest {
+	s.Remarks = v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesRequest) SetType(v string) *SearchCloudGtmAddressesRequest {
+	s.Type = &v
+	return s
+}
+
+type SearchCloudGtmAddressesResponseBody struct {
+	Addresses *SearchCloudGtmAddressesResponseBodyAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 15
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s SearchCloudGtmAddressesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressesResponseBody) SetAddresses(v *SearchCloudGtmAddressesResponseBodyAddresses) *SearchCloudGtmAddressesResponseBody {
+	s.Addresses = v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBody) SetPageNumber(v int32) *SearchCloudGtmAddressesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBody) SetPageSize(v int32) *SearchCloudGtmAddressesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBody) SetRequestId(v string) *SearchCloudGtmAddressesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBody) SetTotalItems(v int32) *SearchCloudGtmAddressesResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBody) SetTotalPages(v int32) *SearchCloudGtmAddressesResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type SearchCloudGtmAddressesResponseBodyAddresses struct {
+	Address []*SearchCloudGtmAddressesResponseBodyAddressesAddress `json:"Address,omitempty" xml:"Address,omitempty" type:"Repeated"`
+}
+
+func (s SearchCloudGtmAddressesResponseBodyAddresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressesResponseBodyAddresses) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddresses) SetAddress(v []*SearchCloudGtmAddressesResponseBodyAddressesAddress) *SearchCloudGtmAddressesResponseBodyAddresses {
+	s.Address = v
+	return s
+}
+
+type SearchCloudGtmAddressesResponseBodyAddressesAddress struct {
+	// example:
+	//
+	// 223.5.XX.XX
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// addr-89518218114368**92
+	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// example:
+	//
+	// auto
+	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 2024-03-23T13:09Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// p50_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string                                                         `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	HealthTasks  *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	// example:
+	//
+	// available
+	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	// example:
+	//
+	// Address-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// IPv4
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2024-03-29T13:20Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+}
+
+func (s SearchCloudGtmAddressesResponseBodyAddressesAddress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressesResponseBodyAddressesAddress) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetAddress(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.Address = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetAddressId(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.AddressId = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetAttributeInfo(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.AttributeInfo = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetAvailableMode(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.AvailableMode = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetAvailableStatus(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetCreateTime(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetCreateTimestamp(v int64) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetEnableStatus(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetHealthJudgement(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetHealthStatus(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetHealthTasks(v *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasks) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.HealthTasks = v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetManualAvailableStatus(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.ManualAvailableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetName(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.Name = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetRemark(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.Remark = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetType(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.Type = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetUpdateTime(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddress) SetUpdateTimestamp(v int64) *SearchCloudGtmAddressesResponseBodyAddressesAddress {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasks struct {
+	HealthTask []*SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask `json:"HealthTask,omitempty" xml:"HealthTask,omitempty" type:"Repeated"`
+}
+
+func (s SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasks) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasks) SetHealthTask(v []*SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasks {
+	s.HealthTask = v
+	return s
+}
+
+type SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask struct {
+	// example:
+	//
+	// ok
+	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// mtp-895180524251002880
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// IPv4-Ping
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) SetMonitorStatus(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask {
+	s.MonitorStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) SetPort(v int32) *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask {
+	s.Port = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) SetTemplateId(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) SetTemplateName(v string) *SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask {
+	s.TemplateName = &v
+	return s
+}
+
+type SearchCloudGtmAddressesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchCloudGtmAddressesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SearchCloudGtmAddressesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmAddressesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmAddressesResponse) SetHeaders(v map[string]*string) *SearchCloudGtmAddressesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponse) SetStatusCode(v int32) *SearchCloudGtmAddressesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchCloudGtmAddressesResponse) SetBody(v *SearchCloudGtmAddressesResponseBody) *SearchCloudGtmAddressesResponse {
+	s.Body = v
+	return s
+}
+
+type SearchCloudGtmInstanceConfigsRequest struct {
+	// example:
+	//
+	// zh-CN
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// www.example.com
+	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// example:
+	//
+	// example.com
+	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+}
+
+func (s SearchCloudGtmInstanceConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmInstanceConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmInstanceConfigsRequest) SetAcceptLanguage(v string) *SearchCloudGtmInstanceConfigsRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsRequest) SetAvailableStatus(v string) *SearchCloudGtmInstanceConfigsRequest {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsRequest) SetClientToken(v string) *SearchCloudGtmInstanceConfigsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsRequest) SetEnableStatus(v string) *SearchCloudGtmInstanceConfigsRequest {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsRequest) SetHealthStatus(v string) *SearchCloudGtmInstanceConfigsRequest {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsRequest) SetInstanceId(v string) *SearchCloudGtmInstanceConfigsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsRequest) SetPageNumber(v int32) *SearchCloudGtmInstanceConfigsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsRequest) SetPageSize(v int32) *SearchCloudGtmInstanceConfigsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsRequest) SetRemark(v string) *SearchCloudGtmInstanceConfigsRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsRequest) SetScheduleDomainName(v string) *SearchCloudGtmInstanceConfigsRequest {
+	s.ScheduleDomainName = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsRequest) SetScheduleZoneName(v string) *SearchCloudGtmInstanceConfigsRequest {
+	s.ScheduleZoneName = &v
+	return s
+}
+
+type SearchCloudGtmInstanceConfigsResponseBody struct {
+	InstanceConfigs *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs `json:"InstanceConfigs,omitempty" xml:"InstanceConfigs,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 6AEC7A64-3CB1-4C49-8B35-0B901F1E26BF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 15
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s SearchCloudGtmInstanceConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmInstanceConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBody) SetInstanceConfigs(v *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs) *SearchCloudGtmInstanceConfigsResponseBody {
+	s.InstanceConfigs = v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBody) SetPageNumber(v int32) *SearchCloudGtmInstanceConfigsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBody) SetPageSize(v int32) *SearchCloudGtmInstanceConfigsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBody) SetRequestId(v string) *SearchCloudGtmInstanceConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBody) SetTotalItems(v int32) *SearchCloudGtmInstanceConfigsResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBody) SetTotalPages(v int32) *SearchCloudGtmInstanceConfigsResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs struct {
+	InstanceConfig []*SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty" type:"Repeated"`
+}
+
+func (s SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs) SetInstanceConfig(v []*SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs {
+	s.InstanceConfig = v
+	return s
+}
+
+type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig struct {
+	// example:
+	//
+	// round_robin
+	AddressPoolLbStrategy *string                                                                             `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
+	AddressPools          *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// dns_gtm_public_cn
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// example:
+	//
+	// gtm-cn-x0r38e0**03
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// www.example.com
+	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// example:
+	//
+	// www
+	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	// example:
+	//
+	// A
+	ScheduleRrType *string `json:"ScheduleRrType,omitempty" xml:"ScheduleRrType,omitempty"`
+	// example:
+	//
+	// custom
+	ScheduleZoneMode *string `json:"ScheduleZoneMode,omitempty" xml:"ScheduleZoneMode,omitempty"`
+	// example:
+	//
+	// example.com
+	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// example:
+	//
+	// 60
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// ultimate
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+}
+
+func (s SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetAddressPoolLbStrategy(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.AddressPoolLbStrategy = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetAddressPools(v *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.AddressPools = v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetAvailableStatus(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetCommodityCode(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetConfigId(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetCreateTime(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetCreateTimestamp(v int64) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetEnableStatus(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetHealthStatus(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetInstanceId(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetRemark(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.Remark = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetScheduleDomainName(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleDomainName = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetScheduleHostname(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleHostname = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetScheduleRrType(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleRrType = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetScheduleZoneMode(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleZoneMode = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetScheduleZoneName(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.ScheduleZoneName = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetSequenceLbStrategyMode(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetTtl(v int32) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.Ttl = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetUpdateTime(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetUpdateTimestamp(v int64) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) SetVersionCode(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig {
+	s.VersionCode = &v
+	return s
+}
+
+type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools struct {
+	AddressPool []*SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool `json:"AddressPool,omitempty" xml:"AddressPool,omitempty" type:"Repeated"`
+}
+
+func (s SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools) SetAddressPool(v []*SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools {
+	s.AddressPool = v
+	return s
+}
+
+type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool struct {
+	// example:
+	//
+	// round_robin
+	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// example:
+	//
+	// pool-89564504435014**60
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// AddressPool-1
+	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// example:
+	//
+	// IPv4
+	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	// example:
+	//
+	// available
+	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// any_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	// example:
+	//
+	// ok
+	HealthStatus  *string                                                                                                     `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	RequestSource *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	SeqNonPreemptiveSchedule *bool `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	// example:
+	//
+	// 1
+	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// 1
+	WeightValue *int32 `json:"WeightValue,omitempty" xml:"WeightValue,omitempty"`
+}
+
+func (s SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetAddressLbStrategy(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.AddressLbStrategy = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetAddressPoolId(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetAddressPoolName(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.AddressPoolName = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetAddressPoolType(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.AddressPoolType = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetAvailableStatus(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.AvailableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetCreateTime(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetCreateTimestamp(v int64) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetEnableStatus(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetHealthJudgement(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetHealthStatus(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetRequestSource(v *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.RequestSource = v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetSeqNonPreemptiveSchedule(v bool) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.SeqNonPreemptiveSchedule = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetSequenceLbStrategyMode(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetSerialNumber(v int32) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetUpdateTime(v string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetUpdateTimestamp(v int64) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) SetWeightValue(v int32) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool {
+	s.WeightValue = &v
+	return s
+}
+
+type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource struct {
+	RequestSource []*string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Repeated"`
+}
+
+func (s SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource) SetRequestSource(v []*string) *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource {
+	s.RequestSource = v
+	return s
+}
+
+type SearchCloudGtmInstanceConfigsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchCloudGtmInstanceConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SearchCloudGtmInstanceConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmInstanceConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponse) SetHeaders(v map[string]*string) *SearchCloudGtmInstanceConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponse) SetStatusCode(v int32) *SearchCloudGtmInstanceConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstanceConfigsResponse) SetBody(v *SearchCloudGtmInstanceConfigsResponseBody) *SearchCloudGtmInstanceConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type SearchCloudGtmInstancesRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s SearchCloudGtmInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmInstancesRequest) SetAcceptLanguage(v string) *SearchCloudGtmInstancesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesRequest) SetClientToken(v string) *SearchCloudGtmInstancesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesRequest) SetInstanceId(v string) *SearchCloudGtmInstancesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesRequest) SetInstanceName(v string) *SearchCloudGtmInstancesRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesRequest) SetPageNumber(v int32) *SearchCloudGtmInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesRequest) SetPageSize(v int32) *SearchCloudGtmInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type SearchCloudGtmInstancesResponseBody struct {
+	Instances *SearchCloudGtmInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s SearchCloudGtmInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmInstancesResponseBody) SetInstances(v *SearchCloudGtmInstancesResponseBodyInstances) *SearchCloudGtmInstancesResponseBody {
+	s.Instances = v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBody) SetPageNumber(v int32) *SearchCloudGtmInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBody) SetPageSize(v int32) *SearchCloudGtmInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBody) SetRequestId(v string) *SearchCloudGtmInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBody) SetTotalItems(v int32) *SearchCloudGtmInstancesResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBody) SetTotalPages(v int32) *SearchCloudGtmInstancesResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type SearchCloudGtmInstancesResponseBodyInstances struct {
+	Instance []*SearchCloudGtmInstancesResponseBodyInstancesInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Repeated"`
+}
+
+func (s SearchCloudGtmInstancesResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmInstancesResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstances) SetInstance(v []*SearchCloudGtmInstancesResponseBodyInstancesInstance) *SearchCloudGtmInstancesResponseBodyInstances {
+	s.Instance = v
+	return s
+}
+
+type SearchCloudGtmInstancesResponseBodyInstancesInstance struct {
+	// example:
+	//
+	// dns_gtm_public_cn
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1710467214858
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// 2024-09-05T16:00Z
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 1725552000000
+	ExpireTimestamp *string `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 100
+	MonitorTaskQuota *int32 `json:"MonitorTaskQuota,omitempty" xml:"MonitorTaskQuota,omitempty"`
+	// example:
+	//
+	// 200
+	MonthlyEmailUsed *int32 `json:"MonthlyEmailUsed,omitempty" xml:"MonthlyEmailUsed,omitempty"`
+	// example:
+	//
+	// 2000
+	MonthlySmsQuota *int32 `json:"MonthlySmsQuota,omitempty" xml:"MonthlySmsQuota,omitempty"`
+	// example:
+	//
+	// 200
+	MonthlySmsUsed *int32 `json:"MonthlySmsUsed,omitempty" xml:"MonthlySmsUsed,omitempty"`
+	// example:
+	//
+	// 100
+	MonthlyWebhookUsed *int32 `json:"MonthlyWebhookUsed,omitempty" xml:"MonthlyWebhookUsed,omitempty"`
+	// example:
+	//
+	// www.example.com
+	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	// example:
+	//
+	// 2024-03-15T01:46Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1710467214858
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// ultimate
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+}
+
+func (s SearchCloudGtmInstancesResponseBodyInstancesInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmInstancesResponseBodyInstancesInstance) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetCommodityCode(v string) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetCreateTime(v string) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetCreateTimestamp(v int64) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetExpireTime(v int64) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetExpireTimestamp(v string) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.ExpireTimestamp = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetInstanceId(v string) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetInstanceName(v string) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetMonitorTaskQuota(v int32) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.MonitorTaskQuota = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetMonthlyEmailUsed(v int32) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.MonthlyEmailUsed = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetMonthlySmsQuota(v int32) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.MonthlySmsQuota = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetMonthlySmsUsed(v int32) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.MonthlySmsUsed = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetMonthlyWebhookUsed(v int32) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.MonthlyWebhookUsed = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetScheduleDomainName(v string) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.ScheduleDomainName = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetUpdateTime(v string) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetUpdateTimestamp(v int64) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponseBodyInstancesInstance) SetVersionCode(v string) *SearchCloudGtmInstancesResponseBodyInstancesInstance {
+	s.VersionCode = &v
+	return s
+}
+
+type SearchCloudGtmInstancesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchCloudGtmInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SearchCloudGtmInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmInstancesResponse) SetHeaders(v map[string]*string) *SearchCloudGtmInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponse) SetStatusCode(v int32) *SearchCloudGtmInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesResponse) SetBody(v *SearchCloudGtmInstancesResponseBody) *SearchCloudGtmInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type SearchCloudGtmMonitorTemplatesRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// IPv4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// example:
+	//
+	// IPv4-Ping
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ping
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s SearchCloudGtmMonitorTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmMonitorTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmMonitorTemplatesRequest) SetAcceptLanguage(v string) *SearchCloudGtmMonitorTemplatesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesRequest) SetIpVersion(v string) *SearchCloudGtmMonitorTemplatesRequest {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesRequest) SetName(v string) *SearchCloudGtmMonitorTemplatesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesRequest) SetPageNumber(v int32) *SearchCloudGtmMonitorTemplatesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesRequest) SetPageSize(v int32) *SearchCloudGtmMonitorTemplatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesRequest) SetProtocol(v string) *SearchCloudGtmMonitorTemplatesRequest {
+	s.Protocol = &v
+	return s
+}
+
+type SearchCloudGtmMonitorTemplatesResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Templates *SearchCloudGtmMonitorTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s SearchCloudGtmMonitorTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmMonitorTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBody) SetPageNumber(v int32) *SearchCloudGtmMonitorTemplatesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBody) SetPageSize(v int32) *SearchCloudGtmMonitorTemplatesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBody) SetRequestId(v string) *SearchCloudGtmMonitorTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBody) SetTemplates(v *SearchCloudGtmMonitorTemplatesResponseBodyTemplates) *SearchCloudGtmMonitorTemplatesResponseBody {
+	s.Templates = v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBody) SetTotalItems(v int32) *SearchCloudGtmMonitorTemplatesResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBody) SetTotalPages(v int32) *SearchCloudGtmMonitorTemplatesResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type SearchCloudGtmMonitorTemplatesResponseBodyTemplates struct {
+	Template []*SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Repeated"`
+}
+
+func (s SearchCloudGtmMonitorTemplatesResponseBodyTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmMonitorTemplatesResponseBodyTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplates) SetTemplate(v []*SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) *SearchCloudGtmMonitorTemplatesResponseBodyTemplates {
+	s.Template = v
+	return s
+}
+
+type SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate struct {
+	// example:
+	//
+	// 2024-03-23T13:09Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// 2
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// example:
+	//
+	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
+	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// example:
+	//
+	// 50
+	FailureRate *int32 `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// IPv4
+	IpVersion    *string                                                                  `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IspCityNodes *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
+	// example:
+	//
+	// IPv4-Ping
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ping
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 5000
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// 2024-03-29T13:20Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1527690629357
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+}
+
+func (s SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetCreateTime(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetCreateTimestamp(v int64) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetEvaluationCount(v int32) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.EvaluationCount = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetExtendInfo(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.ExtendInfo = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetFailureRate(v int32) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.FailureRate = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetInterval(v int32) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.Interval = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetIpVersion(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetIspCityNodes(v *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.IspCityNodes = v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetName(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.Name = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetProtocol(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.Protocol = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetRemark(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.Remark = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetTemplateId(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetTimeout(v int32) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.Timeout = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetUpdateTime(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetUpdateTimestamp(v int64) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes struct {
+	IspCityNode []*SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
+}
+
+func (s SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes) SetIspCityNode(v []*SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes {
+	s.IspCityNode = v
+	return s
+}
+
+type SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode struct {
+	// example:
+	//
+	// 503
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// example:
+	//
+	// 001
+	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	// example:
+	//
+	// BGP
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// BGP
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// example:
+	//
+	// 465
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+}
+
+func (s SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetCityCode(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.CityCode = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetCityName(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.CityName = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetCountryCode(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetCountryName(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.CountryName = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetGroupName(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.GroupName = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetGroupType(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.GroupType = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetIspCode(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.IspCode = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) SetIspName(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode {
+	s.IspName = &v
+	return s
+}
+
+type SearchCloudGtmMonitorTemplatesResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchCloudGtmMonitorTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SearchCloudGtmMonitorTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCloudGtmMonitorTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponse) SetHeaders(v map[string]*string) *SearchCloudGtmMonitorTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponse) SetStatusCode(v int32) *SearchCloudGtmMonitorTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponse) SetBody(v *SearchCloudGtmMonitorTemplatesResponseBody) *SearchCloudGtmMonitorTemplatesResponse {
 	s.Body = v
 	return s
 }
@@ -30649,6 +40569,2464 @@ func (s *UpdateAppKeyStateResponse) SetStatusCode(v int32) *UpdateAppKeyStateRes
 }
 
 func (s *UpdateAppKeyStateResponse) SetBody(v *UpdateAppKeyStateResponseBody) *UpdateAppKeyStateResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmAddressRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 223.5.XX.XX
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// addr-89518218114368**92
+	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// p50_ok
+	HealthJudgement *string                                    `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	HealthTasks     []*UpdateCloudGtmAddressRequestHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Address-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressRequest) SetAcceptLanguage(v string) *UpdateCloudGtmAddressRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRequest) SetAddress(v string) *UpdateCloudGtmAddressRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRequest) SetAddressId(v string) *UpdateCloudGtmAddressRequest {
+	s.AddressId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRequest) SetAttributeInfo(v string) *UpdateCloudGtmAddressRequest {
+	s.AttributeInfo = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRequest) SetClientToken(v string) *UpdateCloudGtmAddressRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRequest) SetHealthJudgement(v string) *UpdateCloudGtmAddressRequest {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRequest) SetHealthTasks(v []*UpdateCloudGtmAddressRequestHealthTasks) *UpdateCloudGtmAddressRequest {
+	s.HealthTasks = v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRequest) SetName(v string) *UpdateCloudGtmAddressRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateCloudGtmAddressRequestHealthTasks struct {
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressRequestHealthTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressRequestHealthTasks) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressRequestHealthTasks) SetPort(v int32) *UpdateCloudGtmAddressRequestHealthTasks {
+	s.Port = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRequestHealthTasks) SetTemplateId(v string) *UpdateCloudGtmAddressRequestHealthTasks {
+	s.TemplateId = &v
+	return s
+}
+
+type UpdateCloudGtmAddressShrinkRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 223.5.XX.XX
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// addr-89518218114368**92
+	AddressId     *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// p50_ok
+	HealthJudgement   *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	HealthTasksShrink *string `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty"`
+	// example:
+	//
+	// Address-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressShrinkRequest) SetAcceptLanguage(v string) *UpdateCloudGtmAddressShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressShrinkRequest) SetAddress(v string) *UpdateCloudGtmAddressShrinkRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressShrinkRequest) SetAddressId(v string) *UpdateCloudGtmAddressShrinkRequest {
+	s.AddressId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressShrinkRequest) SetAttributeInfo(v string) *UpdateCloudGtmAddressShrinkRequest {
+	s.AttributeInfo = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressShrinkRequest) SetClientToken(v string) *UpdateCloudGtmAddressShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressShrinkRequest) SetHealthJudgement(v string) *UpdateCloudGtmAddressShrinkRequest {
+	s.HealthJudgement = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressShrinkRequest) SetHealthTasksShrink(v string) *UpdateCloudGtmAddressShrinkRequest {
+	s.HealthTasksShrink = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressShrinkRequest) SetName(v string) *UpdateCloudGtmAddressShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateCloudGtmAddressResponseBody struct {
+	// example:
+	//
+	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressResponseBody) SetRequestId(v string) *UpdateCloudGtmAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressResponseBody) SetSuccess(v bool) *UpdateCloudGtmAddressResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmAddressResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmAddressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressResponse) SetStatusCode(v int32) *UpdateCloudGtmAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressResponse) SetBody(v *UpdateCloudGtmAddressResponseBody) *UpdateCloudGtmAddressResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmAddressEnableStatusRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// addr-89518218114368**92
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressEnableStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressEnableStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressEnableStatusRequest) SetAcceptLanguage(v string) *UpdateCloudGtmAddressEnableStatusRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressEnableStatusRequest) SetAddressId(v string) *UpdateCloudGtmAddressEnableStatusRequest {
+	s.AddressId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressEnableStatusRequest) SetClientToken(v string) *UpdateCloudGtmAddressEnableStatusRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressEnableStatusRequest) SetEnableStatus(v string) *UpdateCloudGtmAddressEnableStatusRequest {
+	s.EnableStatus = &v
+	return s
+}
+
+type UpdateCloudGtmAddressEnableStatusResponseBody struct {
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressEnableStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressEnableStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressEnableStatusResponseBody) SetRequestId(v string) *UpdateCloudGtmAddressEnableStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressEnableStatusResponseBody) SetSuccess(v bool) *UpdateCloudGtmAddressEnableStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmAddressEnableStatusResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmAddressEnableStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressEnableStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressEnableStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressEnableStatusResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmAddressEnableStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressEnableStatusResponse) SetStatusCode(v int32) *UpdateCloudGtmAddressEnableStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressEnableStatusResponse) SetBody(v *UpdateCloudGtmAddressEnableStatusResponseBody) *UpdateCloudGtmAddressEnableStatusResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmAddressManualAvailableStatusRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// addr-89518218114368**92
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// example:
+	//
+	// manual
+	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// available
+	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressManualAvailableStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressManualAvailableStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressManualAvailableStatusRequest) SetAcceptLanguage(v string) *UpdateCloudGtmAddressManualAvailableStatusRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressManualAvailableStatusRequest) SetAddressId(v string) *UpdateCloudGtmAddressManualAvailableStatusRequest {
+	s.AddressId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressManualAvailableStatusRequest) SetAvailableMode(v string) *UpdateCloudGtmAddressManualAvailableStatusRequest {
+	s.AvailableMode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressManualAvailableStatusRequest) SetClientToken(v string) *UpdateCloudGtmAddressManualAvailableStatusRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressManualAvailableStatusRequest) SetManualAvailableStatus(v string) *UpdateCloudGtmAddressManualAvailableStatusRequest {
+	s.ManualAvailableStatus = &v
+	return s
+}
+
+type UpdateCloudGtmAddressManualAvailableStatusResponseBody struct {
+	// example:
+	//
+	// 0F32959D-417B-4D66-8463-68606605E3E2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressManualAvailableStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressManualAvailableStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressManualAvailableStatusResponseBody) SetRequestId(v string) *UpdateCloudGtmAddressManualAvailableStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressManualAvailableStatusResponseBody) SetSuccess(v bool) *UpdateCloudGtmAddressManualAvailableStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmAddressManualAvailableStatusResponse struct {
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmAddressManualAvailableStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressManualAvailableStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressManualAvailableStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressManualAvailableStatusResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmAddressManualAvailableStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressManualAvailableStatusResponse) SetStatusCode(v int32) *UpdateCloudGtmAddressManualAvailableStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressManualAvailableStatusResponse) SetBody(v *UpdateCloudGtmAddressManualAvailableStatusResponseBody) *UpdateCloudGtmAddressManualAvailableStatusResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmAddressPoolBasicConfigRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// app
+	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// any_ok
+	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressPoolBasicConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressPoolBasicConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressPoolBasicConfigRequest) SetAcceptLanguage(v string) *UpdateCloudGtmAddressPoolBasicConfigRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolBasicConfigRequest) SetAddressPoolId(v string) *UpdateCloudGtmAddressPoolBasicConfigRequest {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolBasicConfigRequest) SetAddressPoolName(v string) *UpdateCloudGtmAddressPoolBasicConfigRequest {
+	s.AddressPoolName = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolBasicConfigRequest) SetClientToken(v string) *UpdateCloudGtmAddressPoolBasicConfigRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolBasicConfigRequest) SetHealthJudgement(v string) *UpdateCloudGtmAddressPoolBasicConfigRequest {
+	s.HealthJudgement = &v
+	return s
+}
+
+type UpdateCloudGtmAddressPoolBasicConfigResponseBody struct {
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressPoolBasicConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressPoolBasicConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressPoolBasicConfigResponseBody) SetAddressPoolId(v string) *UpdateCloudGtmAddressPoolBasicConfigResponseBody {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolBasicConfigResponseBody) SetRequestId(v string) *UpdateCloudGtmAddressPoolBasicConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolBasicConfigResponseBody) SetSuccess(v bool) *UpdateCloudGtmAddressPoolBasicConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmAddressPoolBasicConfigResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmAddressPoolBasicConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressPoolBasicConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressPoolBasicConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressPoolBasicConfigResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmAddressPoolBasicConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolBasicConfigResponse) SetStatusCode(v int32) *UpdateCloudGtmAddressPoolBasicConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolBasicConfigResponse) SetBody(v *UpdateCloudGtmAddressPoolBasicConfigResponseBody) *UpdateCloudGtmAddressPoolBasicConfigResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmAddressPoolEnableStatusRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressPoolEnableStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressPoolEnableStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressPoolEnableStatusRequest) SetAcceptLanguage(v string) *UpdateCloudGtmAddressPoolEnableStatusRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolEnableStatusRequest) SetAddressPoolId(v string) *UpdateCloudGtmAddressPoolEnableStatusRequest {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolEnableStatusRequest) SetClientToken(v string) *UpdateCloudGtmAddressPoolEnableStatusRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolEnableStatusRequest) SetEnableStatus(v string) *UpdateCloudGtmAddressPoolEnableStatusRequest {
+	s.EnableStatus = &v
+	return s
+}
+
+type UpdateCloudGtmAddressPoolEnableStatusResponseBody struct {
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// 89184F33-48A1-4401-9C0F-40E45DB091AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressPoolEnableStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressPoolEnableStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressPoolEnableStatusResponseBody) SetAddressPoolId(v string) *UpdateCloudGtmAddressPoolEnableStatusResponseBody {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolEnableStatusResponseBody) SetRequestId(v string) *UpdateCloudGtmAddressPoolEnableStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolEnableStatusResponseBody) SetSuccess(v bool) *UpdateCloudGtmAddressPoolEnableStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmAddressPoolEnableStatusResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmAddressPoolEnableStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressPoolEnableStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressPoolEnableStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressPoolEnableStatusResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmAddressPoolEnableStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolEnableStatusResponse) SetStatusCode(v int32) *UpdateCloudGtmAddressPoolEnableStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolEnableStatusResponse) SetBody(v *UpdateCloudGtmAddressPoolEnableStatusResponseBody) *UpdateCloudGtmAddressPoolEnableStatusResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmAddressPoolLbStrategyRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// sequence
+	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressPoolLbStrategyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressPoolLbStrategyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressPoolLbStrategyRequest) SetAcceptLanguage(v string) *UpdateCloudGtmAddressPoolLbStrategyRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolLbStrategyRequest) SetAddressLbStrategy(v string) *UpdateCloudGtmAddressPoolLbStrategyRequest {
+	s.AddressLbStrategy = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolLbStrategyRequest) SetAddressPoolId(v string) *UpdateCloudGtmAddressPoolLbStrategyRequest {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolLbStrategyRequest) SetClientToken(v string) *UpdateCloudGtmAddressPoolLbStrategyRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolLbStrategyRequest) SetSequenceLbStrategyMode(v string) *UpdateCloudGtmAddressPoolLbStrategyRequest {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+type UpdateCloudGtmAddressPoolLbStrategyResponseBody struct {
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// B57C121B-A45F-44D8-A9B2-13E5A5044195
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressPoolLbStrategyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressPoolLbStrategyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressPoolLbStrategyResponseBody) SetAddressPoolId(v string) *UpdateCloudGtmAddressPoolLbStrategyResponseBody {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolLbStrategyResponseBody) SetRequestId(v string) *UpdateCloudGtmAddressPoolLbStrategyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolLbStrategyResponseBody) SetSuccess(v bool) *UpdateCloudGtmAddressPoolLbStrategyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmAddressPoolLbStrategyResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmAddressPoolLbStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressPoolLbStrategyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressPoolLbStrategyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressPoolLbStrategyResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmAddressPoolLbStrategyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolLbStrategyResponse) SetStatusCode(v int32) *UpdateCloudGtmAddressPoolLbStrategyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolLbStrategyResponse) SetBody(v *UpdateCloudGtmAddressPoolLbStrategyResponseBody) *UpdateCloudGtmAddressPoolLbStrategyResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmAddressPoolRemarkRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressPoolRemarkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressPoolRemarkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressPoolRemarkRequest) SetAcceptLanguage(v string) *UpdateCloudGtmAddressPoolRemarkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolRemarkRequest) SetAddressPoolId(v string) *UpdateCloudGtmAddressPoolRemarkRequest {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolRemarkRequest) SetClientToken(v string) *UpdateCloudGtmAddressPoolRemarkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolRemarkRequest) SetRemark(v string) *UpdateCloudGtmAddressPoolRemarkRequest {
+	s.Remark = &v
+	return s
+}
+
+type UpdateCloudGtmAddressPoolRemarkResponseBody struct {
+	// example:
+	//
+	// pool-89528023225442**16
+	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressPoolRemarkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressPoolRemarkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressPoolRemarkResponseBody) SetAddressPoolId(v string) *UpdateCloudGtmAddressPoolRemarkResponseBody {
+	s.AddressPoolId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolRemarkResponseBody) SetRequestId(v string) *UpdateCloudGtmAddressPoolRemarkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolRemarkResponseBody) SetSuccess(v bool) *UpdateCloudGtmAddressPoolRemarkResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmAddressPoolRemarkResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmAddressPoolRemarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressPoolRemarkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressPoolRemarkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressPoolRemarkResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmAddressPoolRemarkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolRemarkResponse) SetStatusCode(v int32) *UpdateCloudGtmAddressPoolRemarkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressPoolRemarkResponse) SetBody(v *UpdateCloudGtmAddressPoolRemarkResponseBody) *UpdateCloudGtmAddressPoolRemarkResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmAddressRemarkRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// addr-89518218114368**92
+	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressRemarkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressRemarkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressRemarkRequest) SetAcceptLanguage(v string) *UpdateCloudGtmAddressRemarkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRemarkRequest) SetAddressId(v string) *UpdateCloudGtmAddressRemarkRequest {
+	s.AddressId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRemarkRequest) SetClientToken(v string) *UpdateCloudGtmAddressRemarkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRemarkRequest) SetRemark(v string) *UpdateCloudGtmAddressRemarkRequest {
+	s.Remark = &v
+	return s
+}
+
+type UpdateCloudGtmAddressRemarkResponseBody struct {
+	// example:
+	//
+	// B57C121B-A45F-44D8-A9B2-13E5A5044195
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressRemarkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressRemarkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressRemarkResponseBody) SetRequestId(v string) *UpdateCloudGtmAddressRemarkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRemarkResponseBody) SetSuccess(v bool) *UpdateCloudGtmAddressRemarkResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmAddressRemarkResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmAddressRemarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmAddressRemarkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmAddressRemarkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmAddressRemarkResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmAddressRemarkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRemarkResponse) SetStatusCode(v int32) *UpdateCloudGtmAddressRemarkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmAddressRemarkResponse) SetBody(v *UpdateCloudGtmAddressRemarkResponseBody) *UpdateCloudGtmAddressRemarkResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmGlobalAlertRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string                                        `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AlertConfig    []*UpdateCloudGtmGlobalAlertRequestAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
+	AlertGroup     []*string                                      `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s UpdateCloudGtmGlobalAlertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmGlobalAlertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmGlobalAlertRequest) SetAcceptLanguage(v string) *UpdateCloudGtmGlobalAlertRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertRequest) SetAlertConfig(v []*UpdateCloudGtmGlobalAlertRequestAlertConfig) *UpdateCloudGtmGlobalAlertRequest {
+	s.AlertConfig = v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertRequest) SetAlertGroup(v []*string) *UpdateCloudGtmGlobalAlertRequest {
+	s.AlertGroup = v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertRequest) SetClientToken(v string) *UpdateCloudGtmGlobalAlertRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type UpdateCloudGtmGlobalAlertRequestAlertConfig struct {
+	// example:
+	//
+	// false
+	DingtalkNotice *bool `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
+	// example:
+	//
+	// true
+	EmailNotice *bool `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
+	// example:
+	//
+	// addr_alert
+	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// example:
+	//
+	// true
+	SmsNotice *bool `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
+}
+
+func (s UpdateCloudGtmGlobalAlertRequestAlertConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmGlobalAlertRequestAlertConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) SetDingtalkNotice(v bool) *UpdateCloudGtmGlobalAlertRequestAlertConfig {
+	s.DingtalkNotice = &v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) SetEmailNotice(v bool) *UpdateCloudGtmGlobalAlertRequestAlertConfig {
+	s.EmailNotice = &v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) SetNoticeType(v string) *UpdateCloudGtmGlobalAlertRequestAlertConfig {
+	s.NoticeType = &v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) SetSmsNotice(v bool) *UpdateCloudGtmGlobalAlertRequestAlertConfig {
+	s.SmsNotice = &v
+	return s
+}
+
+type UpdateCloudGtmGlobalAlertShrinkRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AlertConfigShrink *string `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty"`
+	AlertGroupShrink  *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s UpdateCloudGtmGlobalAlertShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmGlobalAlertShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmGlobalAlertShrinkRequest) SetAcceptLanguage(v string) *UpdateCloudGtmGlobalAlertShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertShrinkRequest) SetAlertConfigShrink(v string) *UpdateCloudGtmGlobalAlertShrinkRequest {
+	s.AlertConfigShrink = &v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertShrinkRequest) SetAlertGroupShrink(v string) *UpdateCloudGtmGlobalAlertShrinkRequest {
+	s.AlertGroupShrink = &v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertShrinkRequest) SetClientToken(v string) *UpdateCloudGtmGlobalAlertShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type UpdateCloudGtmGlobalAlertResponseBody struct {
+	// example:
+	//
+	// B57C121B-A45F-44D8-A9B2-13E5A5044195
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmGlobalAlertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmGlobalAlertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmGlobalAlertResponseBody) SetRequestId(v string) *UpdateCloudGtmGlobalAlertResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertResponseBody) SetSuccess(v bool) *UpdateCloudGtmGlobalAlertResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmGlobalAlertResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmGlobalAlertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmGlobalAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmGlobalAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmGlobalAlertResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmGlobalAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertResponse) SetStatusCode(v int32) *UpdateCloudGtmGlobalAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertResponse) SetBody(v *UpdateCloudGtmGlobalAlertResponseBody) *UpdateCloudGtmGlobalAlertResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigAlertRequest struct {
+	// example:
+	//
+	// zh-CN
+	AcceptLanguage *string                                                `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AlertConfig    []*UpdateCloudGtmInstanceConfigAlertRequestAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
+	AlertGroup     []*string                                              `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Repeated"`
+	// example:
+	//
+	// global
+	AlertMode *string `json:"AlertMode,omitempty" xml:"AlertMode,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// gtm-cn-zz11t58**0s
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigAlertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigAlertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertRequest) SetAcceptLanguage(v string) *UpdateCloudGtmInstanceConfigAlertRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertRequest) SetAlertConfig(v []*UpdateCloudGtmInstanceConfigAlertRequestAlertConfig) *UpdateCloudGtmInstanceConfigAlertRequest {
+	s.AlertConfig = v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertRequest) SetAlertGroup(v []*string) *UpdateCloudGtmInstanceConfigAlertRequest {
+	s.AlertGroup = v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertRequest) SetAlertMode(v string) *UpdateCloudGtmInstanceConfigAlertRequest {
+	s.AlertMode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertRequest) SetClientToken(v string) *UpdateCloudGtmInstanceConfigAlertRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertRequest) SetConfigId(v string) *UpdateCloudGtmInstanceConfigAlertRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertRequest) SetInstanceId(v string) *UpdateCloudGtmInstanceConfigAlertRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigAlertRequestAlertConfig struct {
+	// example:
+	//
+	// true
+	DingtalkNotice *bool `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
+	// example:
+	//
+	// true
+	EmailNotice *bool `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
+	// example:
+	//
+	// addr_alert
+	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// example:
+	//
+	// true
+	SmsNotice *bool `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigAlertRequestAlertConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigAlertRequestAlertConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertRequestAlertConfig) SetDingtalkNotice(v bool) *UpdateCloudGtmInstanceConfigAlertRequestAlertConfig {
+	s.DingtalkNotice = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertRequestAlertConfig) SetEmailNotice(v bool) *UpdateCloudGtmInstanceConfigAlertRequestAlertConfig {
+	s.EmailNotice = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertRequestAlertConfig) SetNoticeType(v string) *UpdateCloudGtmInstanceConfigAlertRequestAlertConfig {
+	s.NoticeType = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertRequestAlertConfig) SetSmsNotice(v bool) *UpdateCloudGtmInstanceConfigAlertRequestAlertConfig {
+	s.SmsNotice = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigAlertShrinkRequest struct {
+	// example:
+	//
+	// zh-CN
+	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AlertConfigShrink *string `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty"`
+	AlertGroupShrink  *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// example:
+	//
+	// global
+	AlertMode *string `json:"AlertMode,omitempty" xml:"AlertMode,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// gtm-cn-zz11t58**0s
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigAlertShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigAlertShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertShrinkRequest) SetAcceptLanguage(v string) *UpdateCloudGtmInstanceConfigAlertShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertShrinkRequest) SetAlertConfigShrink(v string) *UpdateCloudGtmInstanceConfigAlertShrinkRequest {
+	s.AlertConfigShrink = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertShrinkRequest) SetAlertGroupShrink(v string) *UpdateCloudGtmInstanceConfigAlertShrinkRequest {
+	s.AlertGroupShrink = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertShrinkRequest) SetAlertMode(v string) *UpdateCloudGtmInstanceConfigAlertShrinkRequest {
+	s.AlertMode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertShrinkRequest) SetClientToken(v string) *UpdateCloudGtmInstanceConfigAlertShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertShrinkRequest) SetConfigId(v string) *UpdateCloudGtmInstanceConfigAlertShrinkRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertShrinkRequest) SetInstanceId(v string) *UpdateCloudGtmInstanceConfigAlertShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigAlertResponseBody struct {
+	// example:
+	//
+	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigAlertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigAlertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertResponseBody) SetRequestId(v string) *UpdateCloudGtmInstanceConfigAlertResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertResponseBody) SetSuccess(v bool) *UpdateCloudGtmInstanceConfigAlertResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigAlertResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmInstanceConfigAlertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmInstanceConfigAlertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertResponse) SetStatusCode(v int32) *UpdateCloudGtmInstanceConfigAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigAlertResponse) SetBody(v *UpdateCloudGtmInstanceConfigAlertResponseBody) *UpdateCloudGtmInstanceConfigAlertResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigBasicRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// www
+	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	// example:
+	//
+	// example.com
+	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+	Ttl              *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigBasicRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigBasicRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigBasicRequest) SetAcceptLanguage(v string) *UpdateCloudGtmInstanceConfigBasicRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigBasicRequest) SetClientToken(v string) *UpdateCloudGtmInstanceConfigBasicRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigBasicRequest) SetConfigId(v string) *UpdateCloudGtmInstanceConfigBasicRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigBasicRequest) SetInstanceId(v string) *UpdateCloudGtmInstanceConfigBasicRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigBasicRequest) SetScheduleHostname(v string) *UpdateCloudGtmInstanceConfigBasicRequest {
+	s.ScheduleHostname = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigBasicRequest) SetScheduleZoneName(v string) *UpdateCloudGtmInstanceConfigBasicRequest {
+	s.ScheduleZoneName = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigBasicRequest) SetTtl(v int32) *UpdateCloudGtmInstanceConfigBasicRequest {
+	s.Ttl = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigBasicResponseBody struct {
+	// example:
+	//
+	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigBasicResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigBasicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigBasicResponseBody) SetRequestId(v string) *UpdateCloudGtmInstanceConfigBasicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigBasicResponseBody) SetSuccess(v bool) *UpdateCloudGtmInstanceConfigBasicResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigBasicResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmInstanceConfigBasicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigBasicResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigBasicResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigBasicResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmInstanceConfigBasicResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigBasicResponse) SetStatusCode(v int32) *UpdateCloudGtmInstanceConfigBasicResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigBasicResponse) SetBody(v *UpdateCloudGtmInstanceConfigBasicResponseBody) *UpdateCloudGtmInstanceConfigBasicResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigEnableStatusRequest struct {
+	// example:
+	//
+	// zh-CN
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigEnableStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigEnableStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigEnableStatusRequest) SetAcceptLanguage(v string) *UpdateCloudGtmInstanceConfigEnableStatusRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigEnableStatusRequest) SetClientToken(v string) *UpdateCloudGtmInstanceConfigEnableStatusRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigEnableStatusRequest) SetConfigId(v string) *UpdateCloudGtmInstanceConfigEnableStatusRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigEnableStatusRequest) SetEnableStatus(v string) *UpdateCloudGtmInstanceConfigEnableStatusRequest {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigEnableStatusRequest) SetInstanceId(v string) *UpdateCloudGtmInstanceConfigEnableStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigEnableStatusResponseBody struct {
+	// example:
+	//
+	// 29D0F8F8-5499-4F6C-9FDC-1EE13BF55925
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigEnableStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigEnableStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigEnableStatusResponseBody) SetRequestId(v string) *UpdateCloudGtmInstanceConfigEnableStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigEnableStatusResponseBody) SetSuccess(v bool) *UpdateCloudGtmInstanceConfigEnableStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigEnableStatusResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmInstanceConfigEnableStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigEnableStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigEnableStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigEnableStatusResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmInstanceConfigEnableStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigEnableStatusResponse) SetStatusCode(v int32) *UpdateCloudGtmInstanceConfigEnableStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigEnableStatusResponse) SetBody(v *UpdateCloudGtmInstanceConfigEnableStatusResponseBody) *UpdateCloudGtmInstanceConfigEnableStatusResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigLbStrategyRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// sequence
+	AddressPoolLbStrategy *string `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// preemptive
+	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigLbStrategyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigLbStrategyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigLbStrategyRequest) SetAcceptLanguage(v string) *UpdateCloudGtmInstanceConfigLbStrategyRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigLbStrategyRequest) SetAddressPoolLbStrategy(v string) *UpdateCloudGtmInstanceConfigLbStrategyRequest {
+	s.AddressPoolLbStrategy = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigLbStrategyRequest) SetClientToken(v string) *UpdateCloudGtmInstanceConfigLbStrategyRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigLbStrategyRequest) SetConfigId(v string) *UpdateCloudGtmInstanceConfigLbStrategyRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigLbStrategyRequest) SetInstanceId(v string) *UpdateCloudGtmInstanceConfigLbStrategyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigLbStrategyRequest) SetSequenceLbStrategyMode(v string) *UpdateCloudGtmInstanceConfigLbStrategyRequest {
+	s.SequenceLbStrategyMode = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigLbStrategyResponseBody struct {
+	// example:
+	//
+	// 0F32959D-417B-4D66-8463-68606605E3E2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigLbStrategyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigLbStrategyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigLbStrategyResponseBody) SetRequestId(v string) *UpdateCloudGtmInstanceConfigLbStrategyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigLbStrategyResponseBody) SetSuccess(v bool) *UpdateCloudGtmInstanceConfigLbStrategyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigLbStrategyResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmInstanceConfigLbStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigLbStrategyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigLbStrategyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigLbStrategyResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmInstanceConfigLbStrategyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigLbStrategyResponse) SetStatusCode(v int32) *UpdateCloudGtmInstanceConfigLbStrategyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigLbStrategyResponse) SetBody(v *UpdateCloudGtmInstanceConfigLbStrategyResponseBody) *UpdateCloudGtmInstanceConfigLbStrategyResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigRemarkRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// Config-000**11
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// gtm-cn-wwo3a3hbz**
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// API
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigRemarkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigRemarkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigRemarkRequest) SetAcceptLanguage(v string) *UpdateCloudGtmInstanceConfigRemarkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigRemarkRequest) SetClientToken(v string) *UpdateCloudGtmInstanceConfigRemarkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigRemarkRequest) SetConfigId(v string) *UpdateCloudGtmInstanceConfigRemarkRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigRemarkRequest) SetInstanceId(v string) *UpdateCloudGtmInstanceConfigRemarkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigRemarkRequest) SetRemark(v string) *UpdateCloudGtmInstanceConfigRemarkRequest {
+	s.Remark = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigRemarkResponseBody struct {
+	// example:
+	//
+	// B57C121B-A45F-44D8-A9B2-13E5A5044195
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigRemarkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigRemarkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigRemarkResponseBody) SetRequestId(v string) *UpdateCloudGtmInstanceConfigRemarkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigRemarkResponseBody) SetSuccess(v bool) *UpdateCloudGtmInstanceConfigRemarkResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceConfigRemarkResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmInstanceConfigRemarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceConfigRemarkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceConfigRemarkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceConfigRemarkResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmInstanceConfigRemarkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigRemarkResponse) SetStatusCode(v int32) *UpdateCloudGtmInstanceConfigRemarkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceConfigRemarkResponse) SetBody(v *UpdateCloudGtmInstanceConfigRemarkResponseBody) *UpdateCloudGtmInstanceConfigRemarkResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmInstanceNameRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// gtm-cn-jmp3qnw**03
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceNameRequest) SetAcceptLanguage(v string) *UpdateCloudGtmInstanceNameRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceNameRequest) SetClientToken(v string) *UpdateCloudGtmInstanceNameRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceNameRequest) SetInstanceId(v string) *UpdateCloudGtmInstanceNameRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceNameRequest) SetInstanceName(v string) *UpdateCloudGtmInstanceNameRequest {
+	s.InstanceName = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceNameResponseBody struct {
+	// example:
+	//
+	// 29D0F8F8-5499-4F6C-9FDC-1EE13BF55925
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceNameResponseBody) SetRequestId(v string) *UpdateCloudGtmInstanceNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceNameResponseBody) SetSuccess(v bool) *UpdateCloudGtmInstanceNameResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmInstanceNameResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmInstanceNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmInstanceNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmInstanceNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmInstanceNameResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmInstanceNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceNameResponse) SetStatusCode(v int32) *UpdateCloudGtmInstanceNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmInstanceNameResponse) SetBody(v *UpdateCloudGtmInstanceNameResponseBody) *UpdateCloudGtmInstanceNameResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmMonitorTemplateRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 2
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// example:
+	//
+	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
+	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// example:
+	//
+	// 50
+	FailureRate *int32 `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
+	// example:
+	//
+	// 60
+	Interval     *int32                                              `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IspCityNodes []*UpdateCloudGtmMonitorTemplateRequestIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Ping-IPv4
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 5000
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s UpdateCloudGtmMonitorTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmMonitorTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRequest) SetAcceptLanguage(v string) *UpdateCloudGtmMonitorTemplateRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRequest) SetClientToken(v string) *UpdateCloudGtmMonitorTemplateRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRequest) SetEvaluationCount(v int32) *UpdateCloudGtmMonitorTemplateRequest {
+	s.EvaluationCount = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRequest) SetExtendInfo(v string) *UpdateCloudGtmMonitorTemplateRequest {
+	s.ExtendInfo = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRequest) SetFailureRate(v int32) *UpdateCloudGtmMonitorTemplateRequest {
+	s.FailureRate = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRequest) SetInterval(v int32) *UpdateCloudGtmMonitorTemplateRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRequest) SetIspCityNodes(v []*UpdateCloudGtmMonitorTemplateRequestIspCityNodes) *UpdateCloudGtmMonitorTemplateRequest {
+	s.IspCityNodes = v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRequest) SetName(v string) *UpdateCloudGtmMonitorTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRequest) SetTemplateId(v string) *UpdateCloudGtmMonitorTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRequest) SetTimeout(v int32) *UpdateCloudGtmMonitorTemplateRequest {
+	s.Timeout = &v
+	return s
+}
+
+type UpdateCloudGtmMonitorTemplateRequestIspCityNodes struct {
+	// example:
+	//
+	// 503
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// example:
+	//
+	// 465
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+}
+
+func (s UpdateCloudGtmMonitorTemplateRequestIspCityNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmMonitorTemplateRequestIspCityNodes) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRequestIspCityNodes) SetCityCode(v string) *UpdateCloudGtmMonitorTemplateRequestIspCityNodes {
+	s.CityCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRequestIspCityNodes) SetIspCode(v string) *UpdateCloudGtmMonitorTemplateRequestIspCityNodes {
+	s.IspCode = &v
+	return s
+}
+
+type UpdateCloudGtmMonitorTemplateShrinkRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 2
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// example:
+	//
+	// {\\"code\\":200,\\"path\\":\\"\\\\index.htm\\",\\"host\\":\\"aliyun.com\\"}
+	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// example:
+	//
+	// 50
+	FailureRate *int32 `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
+	// example:
+	//
+	// 60
+	Interval           *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IspCityNodesShrink *string `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty"`
+	// example:
+	//
+	// Ping-IPv4
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mtp-89518052425100**80
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 5000
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s UpdateCloudGtmMonitorTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmMonitorTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmMonitorTemplateShrinkRequest) SetAcceptLanguage(v string) *UpdateCloudGtmMonitorTemplateShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateShrinkRequest) SetClientToken(v string) *UpdateCloudGtmMonitorTemplateShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateShrinkRequest) SetEvaluationCount(v int32) *UpdateCloudGtmMonitorTemplateShrinkRequest {
+	s.EvaluationCount = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateShrinkRequest) SetExtendInfo(v string) *UpdateCloudGtmMonitorTemplateShrinkRequest {
+	s.ExtendInfo = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateShrinkRequest) SetFailureRate(v int32) *UpdateCloudGtmMonitorTemplateShrinkRequest {
+	s.FailureRate = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateShrinkRequest) SetInterval(v int32) *UpdateCloudGtmMonitorTemplateShrinkRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateShrinkRequest) SetIspCityNodesShrink(v string) *UpdateCloudGtmMonitorTemplateShrinkRequest {
+	s.IspCityNodesShrink = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateShrinkRequest) SetName(v string) *UpdateCloudGtmMonitorTemplateShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateShrinkRequest) SetTemplateId(v string) *UpdateCloudGtmMonitorTemplateShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateShrinkRequest) SetTimeout(v int32) *UpdateCloudGtmMonitorTemplateShrinkRequest {
+	s.Timeout = &v
+	return s
+}
+
+type UpdateCloudGtmMonitorTemplateResponseBody struct {
+	// example:
+	//
+	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmMonitorTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmMonitorTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmMonitorTemplateResponseBody) SetRequestId(v string) *UpdateCloudGtmMonitorTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateResponseBody) SetSuccess(v bool) *UpdateCloudGtmMonitorTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmMonitorTemplateResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmMonitorTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmMonitorTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmMonitorTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmMonitorTemplateResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmMonitorTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateResponse) SetStatusCode(v int32) *UpdateCloudGtmMonitorTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateResponse) SetBody(v *UpdateCloudGtmMonitorTemplateResponseBody) *UpdateCloudGtmMonitorTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudGtmMonitorTemplateRemarkRequest struct {
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// 1ae05db4-10e7-11ef-b126-00163e24**22
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mtp-89518052455928**00
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s UpdateCloudGtmMonitorTemplateRemarkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmMonitorTemplateRemarkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRemarkRequest) SetAcceptLanguage(v string) *UpdateCloudGtmMonitorTemplateRemarkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRemarkRequest) SetClientToken(v string) *UpdateCloudGtmMonitorTemplateRemarkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRemarkRequest) SetRemark(v string) *UpdateCloudGtmMonitorTemplateRemarkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRemarkRequest) SetTemplateId(v string) *UpdateCloudGtmMonitorTemplateRemarkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type UpdateCloudGtmMonitorTemplateRemarkResponseBody struct {
+	// example:
+	//
+	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCloudGtmMonitorTemplateRemarkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmMonitorTemplateRemarkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRemarkResponseBody) SetRequestId(v string) *UpdateCloudGtmMonitorTemplateRemarkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRemarkResponseBody) SetSuccess(v bool) *UpdateCloudGtmMonitorTemplateRemarkResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCloudGtmMonitorTemplateRemarkResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudGtmMonitorTemplateRemarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudGtmMonitorTemplateRemarkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudGtmMonitorTemplateRemarkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRemarkResponse) SetHeaders(v map[string]*string) *UpdateCloudGtmMonitorTemplateRemarkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRemarkResponse) SetStatusCode(v int32) *UpdateCloudGtmMonitorTemplateRemarkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudGtmMonitorTemplateRemarkResponse) SetBody(v *UpdateCloudGtmMonitorTemplateRemarkResponseBody) *UpdateCloudGtmMonitorTemplateRemarkResponse {
 	s.Body = v
 	return s
 }
@@ -35314,6 +47692,370 @@ func (client *Client) CopyGtmConfig(request *CopyGtmConfigRequest) (_result *Cop
 	return _result, _err
 }
 
+// @param tmpReq - CreateCloudGtmAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudGtmAddressResponse
+func (client *Client) CreateCloudGtmAddressWithOptions(tmpReq *CreateCloudGtmAddressRequest, runtime *util.RuntimeOptions) (_result *CreateCloudGtmAddressResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateCloudGtmAddressShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HealthTasks)) {
+		request.HealthTasksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HealthTasks, tea.String("HealthTasks"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttributeInfo)) {
+		query["AttributeInfo"] = request.AttributeInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvailableMode)) {
+		query["AvailableMode"] = request.AvailableMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStatus)) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthJudgement)) {
+		query["HealthJudgement"] = request.HealthJudgement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthTasksShrink)) {
+		query["HealthTasks"] = request.HealthTasksShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManualAvailableStatus)) {
+		query["ManualAvailableStatus"] = request.ManualAvailableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCloudGtmAddress"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCloudGtmAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateCloudGtmAddressRequest
+//
+// @return CreateCloudGtmAddressResponse
+func (client *Client) CreateCloudGtmAddress(request *CreateCloudGtmAddressRequest) (_result *CreateCloudGtmAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCloudGtmAddressResponse{}
+	_body, _err := client.CreateCloudGtmAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CreateCloudGtmAddressPoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudGtmAddressPoolResponse
+func (client *Client) CreateCloudGtmAddressPoolWithOptions(request *CreateCloudGtmAddressPoolRequest, runtime *util.RuntimeOptions) (_result *CreateCloudGtmAddressPoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolName)) {
+		query["AddressPoolName"] = request.AddressPoolName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolType)) {
+		query["AddressPoolType"] = request.AddressPoolType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStatus)) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthJudgement)) {
+		query["HealthJudgement"] = request.HealthJudgement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCloudGtmAddressPool"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCloudGtmAddressPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateCloudGtmAddressPoolRequest
+//
+// @return CreateCloudGtmAddressPoolResponse
+func (client *Client) CreateCloudGtmAddressPool(request *CreateCloudGtmAddressPoolRequest) (_result *CreateCloudGtmAddressPoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCloudGtmAddressPoolResponse{}
+	_body, _err := client.CreateCloudGtmAddressPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CreateCloudGtmInstanceConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudGtmInstanceConfigResponse
+func (client *Client) CreateCloudGtmInstanceConfigWithOptions(request *CreateCloudGtmInstanceConfigRequest, runtime *util.RuntimeOptions) (_result *CreateCloudGtmInstanceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStatus)) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleHostname)) {
+		query["ScheduleHostname"] = request.ScheduleHostname
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleRrType)) {
+		query["ScheduleRrType"] = request.ScheduleRrType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleZoneMode)) {
+		query["ScheduleZoneMode"] = request.ScheduleZoneMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleZoneName)) {
+		query["ScheduleZoneName"] = request.ScheduleZoneName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
+		query["Ttl"] = request.Ttl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCloudGtmInstanceConfig"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCloudGtmInstanceConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateCloudGtmInstanceConfigRequest
+//
+// @return CreateCloudGtmInstanceConfigResponse
+func (client *Client) CreateCloudGtmInstanceConfig(request *CreateCloudGtmInstanceConfigRequest) (_result *CreateCloudGtmInstanceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCloudGtmInstanceConfigResponse{}
+	_body, _err := client.CreateCloudGtmInstanceConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - CreateCloudGtmMonitorTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudGtmMonitorTemplateResponse
+func (client *Client) CreateCloudGtmMonitorTemplateWithOptions(tmpReq *CreateCloudGtmMonitorTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateCloudGtmMonitorTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateCloudGtmMonitorTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IspCityNodes)) {
+		request.IspCityNodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IspCityNodes, tea.String("IspCityNodes"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EvaluationCount)) {
+		query["EvaluationCount"] = request.EvaluationCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendInfo)) {
+		query["ExtendInfo"] = request.ExtendInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailureRate)) {
+		query["FailureRate"] = request.FailureRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpVersion)) {
+		query["IpVersion"] = request.IpVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspCityNodesShrink)) {
+		query["IspCityNodes"] = request.IspCityNodesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCloudGtmMonitorTemplate"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCloudGtmMonitorTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateCloudGtmMonitorTemplateRequest
+//
+// @return CreateCloudGtmMonitorTemplateResponse
+func (client *Client) CreateCloudGtmMonitorTemplate(request *CreateCloudGtmMonitorTemplateRequest) (_result *CreateCloudGtmMonitorTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCloudGtmMonitorTemplateResponse{}
+	_body, _err := client.CreateCloudGtmMonitorTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 创建公共DNS AppKey
@@ -35435,6 +48177,250 @@ func (client *Client) CreatePdnsUdpIpSegment(request *CreatePdnsUdpIpSegmentRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePdnsUdpIpSegmentResponse{}
 	_body, _err := client.CreatePdnsUdpIpSegmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteCloudGtmAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudGtmAddressResponse
+func (client *Client) DeleteCloudGtmAddressWithOptions(request *DeleteCloudGtmAddressRequest, runtime *util.RuntimeOptions) (_result *DeleteCloudGtmAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressId)) {
+		query["AddressId"] = request.AddressId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCloudGtmAddress"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCloudGtmAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteCloudGtmAddressRequest
+//
+// @return DeleteCloudGtmAddressResponse
+func (client *Client) DeleteCloudGtmAddress(request *DeleteCloudGtmAddressRequest) (_result *DeleteCloudGtmAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCloudGtmAddressResponse{}
+	_body, _err := client.DeleteCloudGtmAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteCloudGtmAddressPoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudGtmAddressPoolResponse
+func (client *Client) DeleteCloudGtmAddressPoolWithOptions(request *DeleteCloudGtmAddressPoolRequest, runtime *util.RuntimeOptions) (_result *DeleteCloudGtmAddressPoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolId)) {
+		query["AddressPoolId"] = request.AddressPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCloudGtmAddressPool"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCloudGtmAddressPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteCloudGtmAddressPoolRequest
+//
+// @return DeleteCloudGtmAddressPoolResponse
+func (client *Client) DeleteCloudGtmAddressPool(request *DeleteCloudGtmAddressPoolRequest) (_result *DeleteCloudGtmAddressPoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCloudGtmAddressPoolResponse{}
+	_body, _err := client.DeleteCloudGtmAddressPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteCloudGtmInstanceConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudGtmInstanceConfigResponse
+func (client *Client) DeleteCloudGtmInstanceConfigWithOptions(request *DeleteCloudGtmInstanceConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteCloudGtmInstanceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCloudGtmInstanceConfig"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCloudGtmInstanceConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteCloudGtmInstanceConfigRequest
+//
+// @return DeleteCloudGtmInstanceConfigResponse
+func (client *Client) DeleteCloudGtmInstanceConfig(request *DeleteCloudGtmInstanceConfigRequest) (_result *DeleteCloudGtmInstanceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCloudGtmInstanceConfigResponse{}
+	_body, _err := client.DeleteCloudGtmInstanceConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteCloudGtmMonitorTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudGtmMonitorTemplateResponse
+func (client *Client) DeleteCloudGtmMonitorTemplateWithOptions(request *DeleteCloudGtmMonitorTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteCloudGtmMonitorTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCloudGtmMonitorTemplate"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCloudGtmMonitorTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteCloudGtmMonitorTemplateRequest
+//
+// @return DeleteCloudGtmMonitorTemplateResponse
+func (client *Client) DeleteCloudGtmMonitorTemplate(request *DeleteCloudGtmMonitorTemplateRequest) (_result *DeleteCloudGtmMonitorTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCloudGtmMonitorTemplateResponse{}
+	_body, _err := client.DeleteCloudGtmMonitorTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36270,6 +49256,66 @@ func (client *Client) DescribeBatchResultDetail(request *DescribeBatchResultDeta
 	return _result, _err
 }
 
+// @param request - DescribeCloudGtmAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudGtmAddressResponse
+func (client *Client) DescribeCloudGtmAddressWithOptions(request *DescribeCloudGtmAddressRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudGtmAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressId)) {
+		query["AddressId"] = request.AddressId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudGtmAddress"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudGtmAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmAddressRequest
+//
+// @return DescribeCloudGtmAddressResponse
+func (client *Client) DescribeCloudGtmAddress(request *DescribeCloudGtmAddressRequest) (_result *DescribeCloudGtmAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudGtmAddressResponse{}
+	_body, _err := client.DescribeCloudGtmAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DescribeCloudGtmAddressPoolRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -36323,6 +49369,457 @@ func (client *Client) DescribeCloudGtmAddressPool(request *DescribeCloudGtmAddre
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudGtmAddressPoolResponse{}
 	_body, _err := client.DescribeCloudGtmAddressPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmAddressPoolReferenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudGtmAddressPoolReferenceResponse
+func (client *Client) DescribeCloudGtmAddressPoolReferenceWithOptions(request *DescribeCloudGtmAddressPoolReferenceRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudGtmAddressPoolReferenceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolId)) {
+		query["AddressPoolId"] = request.AddressPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudGtmAddressPoolReference"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudGtmAddressPoolReferenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmAddressPoolReferenceRequest
+//
+// @return DescribeCloudGtmAddressPoolReferenceResponse
+func (client *Client) DescribeCloudGtmAddressPoolReference(request *DescribeCloudGtmAddressPoolReferenceRequest) (_result *DescribeCloudGtmAddressPoolReferenceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudGtmAddressPoolReferenceResponse{}
+	_body, _err := client.DescribeCloudGtmAddressPoolReferenceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmAddressReferenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudGtmAddressReferenceResponse
+func (client *Client) DescribeCloudGtmAddressReferenceWithOptions(request *DescribeCloudGtmAddressReferenceRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudGtmAddressReferenceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressId)) {
+		query["AddressId"] = request.AddressId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudGtmAddressReference"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudGtmAddressReferenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmAddressReferenceRequest
+//
+// @return DescribeCloudGtmAddressReferenceResponse
+func (client *Client) DescribeCloudGtmAddressReference(request *DescribeCloudGtmAddressReferenceRequest) (_result *DescribeCloudGtmAddressReferenceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudGtmAddressReferenceResponse{}
+	_body, _err := client.DescribeCloudGtmAddressReferenceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmGlobalAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudGtmGlobalAlertResponse
+func (client *Client) DescribeCloudGtmGlobalAlertWithOptions(request *DescribeCloudGtmGlobalAlertRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudGtmGlobalAlertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudGtmGlobalAlert"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudGtmGlobalAlertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmGlobalAlertRequest
+//
+// @return DescribeCloudGtmGlobalAlertResponse
+func (client *Client) DescribeCloudGtmGlobalAlert(request *DescribeCloudGtmGlobalAlertRequest) (_result *DescribeCloudGtmGlobalAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudGtmGlobalAlertResponse{}
+	_body, _err := client.DescribeCloudGtmGlobalAlertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmInstanceConfigAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudGtmInstanceConfigAlertResponse
+func (client *Client) DescribeCloudGtmInstanceConfigAlertWithOptions(request *DescribeCloudGtmInstanceConfigAlertRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudGtmInstanceConfigAlertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudGtmInstanceConfigAlert"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudGtmInstanceConfigAlertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmInstanceConfigAlertRequest
+//
+// @return DescribeCloudGtmInstanceConfigAlertResponse
+func (client *Client) DescribeCloudGtmInstanceConfigAlert(request *DescribeCloudGtmInstanceConfigAlertRequest) (_result *DescribeCloudGtmInstanceConfigAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudGtmInstanceConfigAlertResponse{}
+	_body, _err := client.DescribeCloudGtmInstanceConfigAlertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmInstanceConfigFullInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudGtmInstanceConfigFullInfoResponse
+func (client *Client) DescribeCloudGtmInstanceConfigFullInfoWithOptions(request *DescribeCloudGtmInstanceConfigFullInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudGtmInstanceConfigFullInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudGtmInstanceConfigFullInfo"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudGtmInstanceConfigFullInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmInstanceConfigFullInfoRequest
+//
+// @return DescribeCloudGtmInstanceConfigFullInfoResponse
+func (client *Client) DescribeCloudGtmInstanceConfigFullInfo(request *DescribeCloudGtmInstanceConfigFullInfoRequest) (_result *DescribeCloudGtmInstanceConfigFullInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudGtmInstanceConfigFullInfoResponse{}
+	_body, _err := client.DescribeCloudGtmInstanceConfigFullInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmMonitorTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudGtmMonitorTemplateResponse
+func (client *Client) DescribeCloudGtmMonitorTemplateWithOptions(request *DescribeCloudGtmMonitorTemplateRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudGtmMonitorTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudGtmMonitorTemplate"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudGtmMonitorTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmMonitorTemplateRequest
+//
+// @return DescribeCloudGtmMonitorTemplateResponse
+func (client *Client) DescribeCloudGtmMonitorTemplate(request *DescribeCloudGtmMonitorTemplateRequest) (_result *DescribeCloudGtmMonitorTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudGtmMonitorTemplateResponse{}
+	_body, _err := client.DescribeCloudGtmMonitorTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudGtmSummaryResponse
+func (client *Client) DescribeCloudGtmSummaryWithOptions(request *DescribeCloudGtmSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudGtmSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudGtmSummary"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudGtmSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmSummaryRequest
+//
+// @return DescribeCloudGtmSummaryResponse
+func (client *Client) DescribeCloudGtmSummary(request *DescribeCloudGtmSummaryRequest) (_result *DescribeCloudGtmSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudGtmSummaryResponse{}
+	_body, _err := client.DescribeCloudGtmSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeCloudGtmSystemLinesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudGtmSystemLinesResponse
+func (client *Client) DescribeCloudGtmSystemLinesWithOptions(runtime *util.RuntimeOptions) (_result *DescribeCloudGtmSystemLinesResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudGtmSystemLines"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudGtmSystemLinesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @return DescribeCloudGtmSystemLinesResponse
+func (client *Client) DescribeCloudGtmSystemLines() (_result *DescribeCloudGtmSystemLinesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudGtmSystemLinesResponse{}
+	_body, _err := client.DescribeCloudGtmSystemLinesWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -42370,6 +55867,590 @@ func (client *Client) GetTxtRecordForVerify(request *GetTxtRecordForVerifyReques
 	return _result, _err
 }
 
+// @param request - ListCloudGtmAddressPoolsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudGtmAddressPoolsResponse
+func (client *Client) ListCloudGtmAddressPoolsWithOptions(request *ListCloudGtmAddressPoolsRequest, runtime *util.RuntimeOptions) (_result *ListCloudGtmAddressPoolsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolName)) {
+		query["AddressPoolName"] = request.AddressPoolName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolType)) {
+		query["AddressPoolType"] = request.AddressPoolType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStatus)) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCloudGtmAddressPools"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCloudGtmAddressPoolsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListCloudGtmAddressPoolsRequest
+//
+// @return ListCloudGtmAddressPoolsResponse
+func (client *Client) ListCloudGtmAddressPools(request *ListCloudGtmAddressPoolsRequest) (_result *ListCloudGtmAddressPoolsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCloudGtmAddressPoolsResponse{}
+	_body, _err := client.ListCloudGtmAddressPoolsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListCloudGtmAddressesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudGtmAddressesResponse
+func (client *Client) ListCloudGtmAddressesWithOptions(request *ListCloudGtmAddressesRequest, runtime *util.RuntimeOptions) (_result *ListCloudGtmAddressesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressId)) {
+		query["AddressId"] = request.AddressId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStatus)) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthStatus)) {
+		query["HealthStatus"] = request.HealthStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorTemplateId)) {
+		query["MonitorTemplateId"] = request.MonitorTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCloudGtmAddresses"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCloudGtmAddressesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListCloudGtmAddressesRequest
+//
+// @return ListCloudGtmAddressesResponse
+func (client *Client) ListCloudGtmAddresses(request *ListCloudGtmAddressesRequest) (_result *ListCloudGtmAddressesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCloudGtmAddressesResponse{}
+	_body, _err := client.ListCloudGtmAddressesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListCloudGtmAlertLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudGtmAlertLogsResponse
+func (client *Client) ListCloudGtmAlertLogsWithOptions(request *ListCloudGtmAlertLogsRequest, runtime *util.RuntimeOptions) (_result *ListCloudGtmAlertLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActionType)) {
+		query["ActionType"] = request.ActionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTimestamp)) {
+		query["EndTimestamp"] = request.EndTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
+		query["StartTimestamp"] = request.StartTimestamp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCloudGtmAlertLogs"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCloudGtmAlertLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListCloudGtmAlertLogsRequest
+//
+// @return ListCloudGtmAlertLogsResponse
+func (client *Client) ListCloudGtmAlertLogs(request *ListCloudGtmAlertLogsRequest) (_result *ListCloudGtmAlertLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCloudGtmAlertLogsResponse{}
+	_body, _err := client.ListCloudGtmAlertLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListCloudGtmAvailableAlertGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudGtmAvailableAlertGroupsResponse
+func (client *Client) ListCloudGtmAvailableAlertGroupsWithOptions(request *ListCloudGtmAvailableAlertGroupsRequest, runtime *util.RuntimeOptions) (_result *ListCloudGtmAvailableAlertGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCloudGtmAvailableAlertGroups"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCloudGtmAvailableAlertGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListCloudGtmAvailableAlertGroupsRequest
+//
+// @return ListCloudGtmAvailableAlertGroupsResponse
+func (client *Client) ListCloudGtmAvailableAlertGroups(request *ListCloudGtmAvailableAlertGroupsRequest) (_result *ListCloudGtmAvailableAlertGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCloudGtmAvailableAlertGroupsResponse{}
+	_body, _err := client.ListCloudGtmAvailableAlertGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListCloudGtmInstanceConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudGtmInstanceConfigsResponse
+func (client *Client) ListCloudGtmInstanceConfigsWithOptions(request *ListCloudGtmInstanceConfigsRequest, runtime *util.RuntimeOptions) (_result *ListCloudGtmInstanceConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStatus)) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleDomainName)) {
+		query["ScheduleDomainName"] = request.ScheduleDomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleZoneName)) {
+		query["ScheduleZoneName"] = request.ScheduleZoneName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCloudGtmInstanceConfigs"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCloudGtmInstanceConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListCloudGtmInstanceConfigsRequest
+//
+// @return ListCloudGtmInstanceConfigsResponse
+func (client *Client) ListCloudGtmInstanceConfigs(request *ListCloudGtmInstanceConfigsRequest) (_result *ListCloudGtmInstanceConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCloudGtmInstanceConfigsResponse{}
+	_body, _err := client.ListCloudGtmInstanceConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListCloudGtmInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudGtmInstancesResponse
+func (client *Client) ListCloudGtmInstancesWithOptions(request *ListCloudGtmInstancesRequest, runtime *util.RuntimeOptions) (_result *ListCloudGtmInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCloudGtmInstances"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCloudGtmInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListCloudGtmInstancesRequest
+//
+// @return ListCloudGtmInstancesResponse
+func (client *Client) ListCloudGtmInstances(request *ListCloudGtmInstancesRequest) (_result *ListCloudGtmInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCloudGtmInstancesResponse{}
+	_body, _err := client.ListCloudGtmInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListCloudGtmMonitorNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudGtmMonitorNodesResponse
+func (client *Client) ListCloudGtmMonitorNodesWithOptions(request *ListCloudGtmMonitorNodesRequest, runtime *util.RuntimeOptions) (_result *ListCloudGtmMonitorNodesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCloudGtmMonitorNodes"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCloudGtmMonitorNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListCloudGtmMonitorNodesRequest
+//
+// @return ListCloudGtmMonitorNodesResponse
+func (client *Client) ListCloudGtmMonitorNodes(request *ListCloudGtmMonitorNodesRequest) (_result *ListCloudGtmMonitorNodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCloudGtmMonitorNodesResponse{}
+	_body, _err := client.ListCloudGtmMonitorNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListCloudGtmMonitorTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudGtmMonitorTemplatesResponse
+func (client *Client) ListCloudGtmMonitorTemplatesWithOptions(request *ListCloudGtmMonitorTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListCloudGtmMonitorTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpVersion)) {
+		query["IpVersion"] = request.IpVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCloudGtmMonitorTemplates"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCloudGtmMonitorTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListCloudGtmMonitorTemplatesRequest
+//
+// @return ListCloudGtmMonitorTemplatesResponse
+func (client *Client) ListCloudGtmMonitorTemplates(request *ListCloudGtmMonitorTemplatesRequest) (_result *ListCloudGtmMonitorTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCloudGtmMonitorTemplatesResponse{}
+	_body, _err := client.ListCloudGtmMonitorTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries the tags that are added to a specified resource.
@@ -43014,6 +57095,150 @@ func (client *Client) RemovePdnsUdpIpSegment(request *RemovePdnsUdpIpSegmentRequ
 	return _result, _err
 }
 
+// @param tmpReq - ReplaceCloudGtmAddressPoolAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReplaceCloudGtmAddressPoolAddressResponse
+func (client *Client) ReplaceCloudGtmAddressPoolAddressWithOptions(tmpReq *ReplaceCloudGtmAddressPoolAddressRequest, runtime *util.RuntimeOptions) (_result *ReplaceCloudGtmAddressPoolAddressResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ReplaceCloudGtmAddressPoolAddressShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Addresses)) {
+		request.AddressesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Addresses, tea.String("Addresses"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolId)) {
+		query["AddressPoolId"] = request.AddressPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressesShrink)) {
+		query["Addresses"] = request.AddressesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReplaceCloudGtmAddressPoolAddress"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReplaceCloudGtmAddressPoolAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ReplaceCloudGtmAddressPoolAddressRequest
+//
+// @return ReplaceCloudGtmAddressPoolAddressResponse
+func (client *Client) ReplaceCloudGtmAddressPoolAddress(request *ReplaceCloudGtmAddressPoolAddressRequest) (_result *ReplaceCloudGtmAddressPoolAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReplaceCloudGtmAddressPoolAddressResponse{}
+	_body, _err := client.ReplaceCloudGtmAddressPoolAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - ReplaceCloudGtmInstanceConfigAddressPoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReplaceCloudGtmInstanceConfigAddressPoolResponse
+func (client *Client) ReplaceCloudGtmInstanceConfigAddressPoolWithOptions(tmpReq *ReplaceCloudGtmInstanceConfigAddressPoolRequest, runtime *util.RuntimeOptions) (_result *ReplaceCloudGtmInstanceConfigAddressPoolResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AddressPools)) {
+		request.AddressPoolsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AddressPools, tea.String("AddressPools"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolsShrink)) {
+		query["AddressPools"] = request.AddressPoolsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReplaceCloudGtmInstanceConfigAddressPool"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReplaceCloudGtmInstanceConfigAddressPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ReplaceCloudGtmInstanceConfigAddressPoolRequest
+//
+// @return ReplaceCloudGtmInstanceConfigAddressPoolResponse
+func (client *Client) ReplaceCloudGtmInstanceConfigAddressPool(request *ReplaceCloudGtmInstanceConfigAddressPoolRequest) (_result *ReplaceCloudGtmInstanceConfigAddressPoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReplaceCloudGtmInstanceConfigAddressPoolResponse{}
+	_body, _err := client.ReplaceCloudGtmInstanceConfigAddressPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 恢复公共DNS服务
@@ -43199,6 +57424,434 @@ func (client *Client) RollbackGtmRecoveryPlan(request *RollbackGtmRecoveryPlanRe
 	runtime := &util.RuntimeOptions{}
 	_result = &RollbackGtmRecoveryPlanResponse{}
 	_body, _err := client.RollbackGtmRecoveryPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - SearchCloudGtmAddressPoolsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchCloudGtmAddressPoolsResponse
+func (client *Client) SearchCloudGtmAddressPoolsWithOptions(request *SearchCloudGtmAddressPoolsRequest, runtime *util.RuntimeOptions) (_result *SearchCloudGtmAddressPoolsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolName)) {
+		query["AddressPoolName"] = request.AddressPoolName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolType)) {
+		query["AddressPoolType"] = request.AddressPoolType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvailableStatus)) {
+		query["AvailableStatus"] = request.AvailableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStatus)) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthStatus)) {
+		query["HealthStatus"] = request.HealthStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchCloudGtmAddressPools"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchCloudGtmAddressPoolsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - SearchCloudGtmAddressPoolsRequest
+//
+// @return SearchCloudGtmAddressPoolsResponse
+func (client *Client) SearchCloudGtmAddressPools(request *SearchCloudGtmAddressPoolsRequest) (_result *SearchCloudGtmAddressPoolsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchCloudGtmAddressPoolsResponse{}
+	_body, _err := client.SearchCloudGtmAddressPoolsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - SearchCloudGtmAddressesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchCloudGtmAddressesResponse
+func (client *Client) SearchCloudGtmAddressesWithOptions(request *SearchCloudGtmAddressesRequest, runtime *util.RuntimeOptions) (_result *SearchCloudGtmAddressesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressId)) {
+		query["AddressId"] = request.AddressId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvailableStatus)) {
+		query["AvailableStatus"] = request.AvailableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStatus)) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthStatus)) {
+		query["HealthStatus"] = request.HealthStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorTemplateName)) {
+		query["MonitorTemplateName"] = request.MonitorTemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSearchCondition)) {
+		query["NameSearchCondition"] = request.NameSearchCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Names)) {
+		query["Names"] = request.Names
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemarkSearchCondition)) {
+		query["RemarkSearchCondition"] = request.RemarkSearchCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remarks)) {
+		query["Remarks"] = request.Remarks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchCloudGtmAddresses"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchCloudGtmAddressesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - SearchCloudGtmAddressesRequest
+//
+// @return SearchCloudGtmAddressesResponse
+func (client *Client) SearchCloudGtmAddresses(request *SearchCloudGtmAddressesRequest) (_result *SearchCloudGtmAddressesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchCloudGtmAddressesResponse{}
+	_body, _err := client.SearchCloudGtmAddressesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - SearchCloudGtmInstanceConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchCloudGtmInstanceConfigsResponse
+func (client *Client) SearchCloudGtmInstanceConfigsWithOptions(request *SearchCloudGtmInstanceConfigsRequest, runtime *util.RuntimeOptions) (_result *SearchCloudGtmInstanceConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvailableStatus)) {
+		query["AvailableStatus"] = request.AvailableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStatus)) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthStatus)) {
+		query["HealthStatus"] = request.HealthStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleDomainName)) {
+		query["ScheduleDomainName"] = request.ScheduleDomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleZoneName)) {
+		query["ScheduleZoneName"] = request.ScheduleZoneName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchCloudGtmInstanceConfigs"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchCloudGtmInstanceConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - SearchCloudGtmInstanceConfigsRequest
+//
+// @return SearchCloudGtmInstanceConfigsResponse
+func (client *Client) SearchCloudGtmInstanceConfigs(request *SearchCloudGtmInstanceConfigsRequest) (_result *SearchCloudGtmInstanceConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchCloudGtmInstanceConfigsResponse{}
+	_body, _err := client.SearchCloudGtmInstanceConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - SearchCloudGtmInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchCloudGtmInstancesResponse
+func (client *Client) SearchCloudGtmInstancesWithOptions(request *SearchCloudGtmInstancesRequest, runtime *util.RuntimeOptions) (_result *SearchCloudGtmInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchCloudGtmInstances"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchCloudGtmInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - SearchCloudGtmInstancesRequest
+//
+// @return SearchCloudGtmInstancesResponse
+func (client *Client) SearchCloudGtmInstances(request *SearchCloudGtmInstancesRequest) (_result *SearchCloudGtmInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchCloudGtmInstancesResponse{}
+	_body, _err := client.SearchCloudGtmInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - SearchCloudGtmMonitorTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchCloudGtmMonitorTemplatesResponse
+func (client *Client) SearchCloudGtmMonitorTemplatesWithOptions(request *SearchCloudGtmMonitorTemplatesRequest, runtime *util.RuntimeOptions) (_result *SearchCloudGtmMonitorTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpVersion)) {
+		query["IpVersion"] = request.IpVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchCloudGtmMonitorTemplates"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchCloudGtmMonitorTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - SearchCloudGtmMonitorTemplatesRequest
+//
+// @return SearchCloudGtmMonitorTemplatesResponse
+func (client *Client) SearchCloudGtmMonitorTemplates(request *SearchCloudGtmMonitorTemplatesRequest) (_result *SearchCloudGtmMonitorTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchCloudGtmMonitorTemplatesResponse{}
+	_body, _err := client.SearchCloudGtmMonitorTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44187,6 +58840,1218 @@ func (client *Client) UpdateAppKeyState(request *UpdateAppKeyStateRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAppKeyStateResponse{}
 	_body, _err := client.UpdateAppKeyStateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - UpdateCloudGtmAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmAddressResponse
+func (client *Client) UpdateCloudGtmAddressWithOptions(tmpReq *UpdateCloudGtmAddressRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmAddressResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateCloudGtmAddressShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HealthTasks)) {
+		request.HealthTasksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HealthTasks, tea.String("HealthTasks"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressId)) {
+		query["AddressId"] = request.AddressId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttributeInfo)) {
+		query["AttributeInfo"] = request.AttributeInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthJudgement)) {
+		query["HealthJudgement"] = request.HealthJudgement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthTasksShrink)) {
+		query["HealthTasks"] = request.HealthTasksShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmAddress"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressRequest
+//
+// @return UpdateCloudGtmAddressResponse
+func (client *Client) UpdateCloudGtmAddress(request *UpdateCloudGtmAddressRequest) (_result *UpdateCloudGtmAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmAddressResponse{}
+	_body, _err := client.UpdateCloudGtmAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressEnableStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmAddressEnableStatusResponse
+func (client *Client) UpdateCloudGtmAddressEnableStatusWithOptions(request *UpdateCloudGtmAddressEnableStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmAddressEnableStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressId)) {
+		query["AddressId"] = request.AddressId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStatus)) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmAddressEnableStatus"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmAddressEnableStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressEnableStatusRequest
+//
+// @return UpdateCloudGtmAddressEnableStatusResponse
+func (client *Client) UpdateCloudGtmAddressEnableStatus(request *UpdateCloudGtmAddressEnableStatusRequest) (_result *UpdateCloudGtmAddressEnableStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmAddressEnableStatusResponse{}
+	_body, _err := client.UpdateCloudGtmAddressEnableStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressManualAvailableStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmAddressManualAvailableStatusResponse
+func (client *Client) UpdateCloudGtmAddressManualAvailableStatusWithOptions(request *UpdateCloudGtmAddressManualAvailableStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmAddressManualAvailableStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressId)) {
+		query["AddressId"] = request.AddressId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvailableMode)) {
+		query["AvailableMode"] = request.AvailableMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManualAvailableStatus)) {
+		query["ManualAvailableStatus"] = request.ManualAvailableStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmAddressManualAvailableStatus"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmAddressManualAvailableStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressManualAvailableStatusRequest
+//
+// @return UpdateCloudGtmAddressManualAvailableStatusResponse
+func (client *Client) UpdateCloudGtmAddressManualAvailableStatus(request *UpdateCloudGtmAddressManualAvailableStatusRequest) (_result *UpdateCloudGtmAddressManualAvailableStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmAddressManualAvailableStatusResponse{}
+	_body, _err := client.UpdateCloudGtmAddressManualAvailableStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressPoolBasicConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmAddressPoolBasicConfigResponse
+func (client *Client) UpdateCloudGtmAddressPoolBasicConfigWithOptions(request *UpdateCloudGtmAddressPoolBasicConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmAddressPoolBasicConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolId)) {
+		query["AddressPoolId"] = request.AddressPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolName)) {
+		query["AddressPoolName"] = request.AddressPoolName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthJudgement)) {
+		query["HealthJudgement"] = request.HealthJudgement
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmAddressPoolBasicConfig"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmAddressPoolBasicConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressPoolBasicConfigRequest
+//
+// @return UpdateCloudGtmAddressPoolBasicConfigResponse
+func (client *Client) UpdateCloudGtmAddressPoolBasicConfig(request *UpdateCloudGtmAddressPoolBasicConfigRequest) (_result *UpdateCloudGtmAddressPoolBasicConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmAddressPoolBasicConfigResponse{}
+	_body, _err := client.UpdateCloudGtmAddressPoolBasicConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressPoolEnableStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmAddressPoolEnableStatusResponse
+func (client *Client) UpdateCloudGtmAddressPoolEnableStatusWithOptions(request *UpdateCloudGtmAddressPoolEnableStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmAddressPoolEnableStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolId)) {
+		query["AddressPoolId"] = request.AddressPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStatus)) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmAddressPoolEnableStatus"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmAddressPoolEnableStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressPoolEnableStatusRequest
+//
+// @return UpdateCloudGtmAddressPoolEnableStatusResponse
+func (client *Client) UpdateCloudGtmAddressPoolEnableStatus(request *UpdateCloudGtmAddressPoolEnableStatusRequest) (_result *UpdateCloudGtmAddressPoolEnableStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmAddressPoolEnableStatusResponse{}
+	_body, _err := client.UpdateCloudGtmAddressPoolEnableStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressPoolLbStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmAddressPoolLbStrategyResponse
+func (client *Client) UpdateCloudGtmAddressPoolLbStrategyWithOptions(request *UpdateCloudGtmAddressPoolLbStrategyRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmAddressPoolLbStrategyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressLbStrategy)) {
+		query["AddressLbStrategy"] = request.AddressLbStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolId)) {
+		query["AddressPoolId"] = request.AddressPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SequenceLbStrategyMode)) {
+		query["SequenceLbStrategyMode"] = request.SequenceLbStrategyMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmAddressPoolLbStrategy"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmAddressPoolLbStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressPoolLbStrategyRequest
+//
+// @return UpdateCloudGtmAddressPoolLbStrategyResponse
+func (client *Client) UpdateCloudGtmAddressPoolLbStrategy(request *UpdateCloudGtmAddressPoolLbStrategyRequest) (_result *UpdateCloudGtmAddressPoolLbStrategyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmAddressPoolLbStrategyResponse{}
+	_body, _err := client.UpdateCloudGtmAddressPoolLbStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressPoolRemarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmAddressPoolRemarkResponse
+func (client *Client) UpdateCloudGtmAddressPoolRemarkWithOptions(request *UpdateCloudGtmAddressPoolRemarkRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmAddressPoolRemarkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolId)) {
+		query["AddressPoolId"] = request.AddressPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmAddressPoolRemark"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmAddressPoolRemarkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressPoolRemarkRequest
+//
+// @return UpdateCloudGtmAddressPoolRemarkResponse
+func (client *Client) UpdateCloudGtmAddressPoolRemark(request *UpdateCloudGtmAddressPoolRemarkRequest) (_result *UpdateCloudGtmAddressPoolRemarkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmAddressPoolRemarkResponse{}
+	_body, _err := client.UpdateCloudGtmAddressPoolRemarkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressRemarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmAddressRemarkResponse
+func (client *Client) UpdateCloudGtmAddressRemarkWithOptions(request *UpdateCloudGtmAddressRemarkRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmAddressRemarkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressId)) {
+		query["AddressId"] = request.AddressId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmAddressRemark"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmAddressRemarkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmAddressRemarkRequest
+//
+// @return UpdateCloudGtmAddressRemarkResponse
+func (client *Client) UpdateCloudGtmAddressRemark(request *UpdateCloudGtmAddressRemarkRequest) (_result *UpdateCloudGtmAddressRemarkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmAddressRemarkResponse{}
+	_body, _err := client.UpdateCloudGtmAddressRemarkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - UpdateCloudGtmGlobalAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmGlobalAlertResponse
+func (client *Client) UpdateCloudGtmGlobalAlertWithOptions(tmpReq *UpdateCloudGtmGlobalAlertRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmGlobalAlertResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateCloudGtmGlobalAlertShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AlertConfig)) {
+		request.AlertConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlertConfig, tea.String("AlertConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.AlertGroup)) {
+		request.AlertGroupShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlertGroup, tea.String("AlertGroup"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertConfigShrink)) {
+		query["AlertConfig"] = request.AlertConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertGroupShrink)) {
+		query["AlertGroup"] = request.AlertGroupShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmGlobalAlert"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmGlobalAlertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmGlobalAlertRequest
+//
+// @return UpdateCloudGtmGlobalAlertResponse
+func (client *Client) UpdateCloudGtmGlobalAlert(request *UpdateCloudGtmGlobalAlertRequest) (_result *UpdateCloudGtmGlobalAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmGlobalAlertResponse{}
+	_body, _err := client.UpdateCloudGtmGlobalAlertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - UpdateCloudGtmInstanceConfigAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmInstanceConfigAlertResponse
+func (client *Client) UpdateCloudGtmInstanceConfigAlertWithOptions(tmpReq *UpdateCloudGtmInstanceConfigAlertRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmInstanceConfigAlertResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateCloudGtmInstanceConfigAlertShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AlertConfig)) {
+		request.AlertConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlertConfig, tea.String("AlertConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.AlertGroup)) {
+		request.AlertGroupShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlertGroup, tea.String("AlertGroup"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertConfigShrink)) {
+		query["AlertConfig"] = request.AlertConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertGroupShrink)) {
+		query["AlertGroup"] = request.AlertGroupShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertMode)) {
+		query["AlertMode"] = request.AlertMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmInstanceConfigAlert"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmInstanceConfigAlertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmInstanceConfigAlertRequest
+//
+// @return UpdateCloudGtmInstanceConfigAlertResponse
+func (client *Client) UpdateCloudGtmInstanceConfigAlert(request *UpdateCloudGtmInstanceConfigAlertRequest) (_result *UpdateCloudGtmInstanceConfigAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmInstanceConfigAlertResponse{}
+	_body, _err := client.UpdateCloudGtmInstanceConfigAlertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmInstanceConfigBasicRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmInstanceConfigBasicResponse
+func (client *Client) UpdateCloudGtmInstanceConfigBasicWithOptions(request *UpdateCloudGtmInstanceConfigBasicRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmInstanceConfigBasicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleHostname)) {
+		query["ScheduleHostname"] = request.ScheduleHostname
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleZoneName)) {
+		query["ScheduleZoneName"] = request.ScheduleZoneName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
+		query["Ttl"] = request.Ttl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmInstanceConfigBasic"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmInstanceConfigBasicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmInstanceConfigBasicRequest
+//
+// @return UpdateCloudGtmInstanceConfigBasicResponse
+func (client *Client) UpdateCloudGtmInstanceConfigBasic(request *UpdateCloudGtmInstanceConfigBasicRequest) (_result *UpdateCloudGtmInstanceConfigBasicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmInstanceConfigBasicResponse{}
+	_body, _err := client.UpdateCloudGtmInstanceConfigBasicWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmInstanceConfigEnableStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmInstanceConfigEnableStatusResponse
+func (client *Client) UpdateCloudGtmInstanceConfigEnableStatusWithOptions(request *UpdateCloudGtmInstanceConfigEnableStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmInstanceConfigEnableStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStatus)) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmInstanceConfigEnableStatus"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmInstanceConfigEnableStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmInstanceConfigEnableStatusRequest
+//
+// @return UpdateCloudGtmInstanceConfigEnableStatusResponse
+func (client *Client) UpdateCloudGtmInstanceConfigEnableStatus(request *UpdateCloudGtmInstanceConfigEnableStatusRequest) (_result *UpdateCloudGtmInstanceConfigEnableStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmInstanceConfigEnableStatusResponse{}
+	_body, _err := client.UpdateCloudGtmInstanceConfigEnableStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmInstanceConfigLbStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmInstanceConfigLbStrategyResponse
+func (client *Client) UpdateCloudGtmInstanceConfigLbStrategyWithOptions(request *UpdateCloudGtmInstanceConfigLbStrategyRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmInstanceConfigLbStrategyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressPoolLbStrategy)) {
+		query["AddressPoolLbStrategy"] = request.AddressPoolLbStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SequenceLbStrategyMode)) {
+		query["SequenceLbStrategyMode"] = request.SequenceLbStrategyMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmInstanceConfigLbStrategy"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmInstanceConfigLbStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmInstanceConfigLbStrategyRequest
+//
+// @return UpdateCloudGtmInstanceConfigLbStrategyResponse
+func (client *Client) UpdateCloudGtmInstanceConfigLbStrategy(request *UpdateCloudGtmInstanceConfigLbStrategyRequest) (_result *UpdateCloudGtmInstanceConfigLbStrategyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmInstanceConfigLbStrategyResponse{}
+	_body, _err := client.UpdateCloudGtmInstanceConfigLbStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmInstanceConfigRemarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmInstanceConfigRemarkResponse
+func (client *Client) UpdateCloudGtmInstanceConfigRemarkWithOptions(request *UpdateCloudGtmInstanceConfigRemarkRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmInstanceConfigRemarkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmInstanceConfigRemark"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmInstanceConfigRemarkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmInstanceConfigRemarkRequest
+//
+// @return UpdateCloudGtmInstanceConfigRemarkResponse
+func (client *Client) UpdateCloudGtmInstanceConfigRemark(request *UpdateCloudGtmInstanceConfigRemarkRequest) (_result *UpdateCloudGtmInstanceConfigRemarkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmInstanceConfigRemarkResponse{}
+	_body, _err := client.UpdateCloudGtmInstanceConfigRemarkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmInstanceNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmInstanceNameResponse
+func (client *Client) UpdateCloudGtmInstanceNameWithOptions(request *UpdateCloudGtmInstanceNameRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmInstanceNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmInstanceName"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmInstanceNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmInstanceNameRequest
+//
+// @return UpdateCloudGtmInstanceNameResponse
+func (client *Client) UpdateCloudGtmInstanceName(request *UpdateCloudGtmInstanceNameRequest) (_result *UpdateCloudGtmInstanceNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmInstanceNameResponse{}
+	_body, _err := client.UpdateCloudGtmInstanceNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - UpdateCloudGtmMonitorTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmMonitorTemplateResponse
+func (client *Client) UpdateCloudGtmMonitorTemplateWithOptions(tmpReq *UpdateCloudGtmMonitorTemplateRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmMonitorTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateCloudGtmMonitorTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IspCityNodes)) {
+		request.IspCityNodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IspCityNodes, tea.String("IspCityNodes"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EvaluationCount)) {
+		query["EvaluationCount"] = request.EvaluationCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendInfo)) {
+		query["ExtendInfo"] = request.ExtendInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailureRate)) {
+		query["FailureRate"] = request.FailureRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspCityNodesShrink)) {
+		query["IspCityNodes"] = request.IspCityNodesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmMonitorTemplate"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmMonitorTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmMonitorTemplateRequest
+//
+// @return UpdateCloudGtmMonitorTemplateResponse
+func (client *Client) UpdateCloudGtmMonitorTemplate(request *UpdateCloudGtmMonitorTemplateRequest) (_result *UpdateCloudGtmMonitorTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmMonitorTemplateResponse{}
+	_body, _err := client.UpdateCloudGtmMonitorTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmMonitorTemplateRemarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudGtmMonitorTemplateRemarkResponse
+func (client *Client) UpdateCloudGtmMonitorTemplateRemarkWithOptions(request *UpdateCloudGtmMonitorTemplateRemarkRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudGtmMonitorTemplateRemarkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudGtmMonitorTemplateRemark"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudGtmMonitorTemplateRemarkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCloudGtmMonitorTemplateRemarkRequest
+//
+// @return UpdateCloudGtmMonitorTemplateRemarkResponse
+func (client *Client) UpdateCloudGtmMonitorTemplateRemark(request *UpdateCloudGtmMonitorTemplateRemarkRequest) (_result *UpdateCloudGtmMonitorTemplateRemarkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudGtmMonitorTemplateRemarkResponse{}
+	_body, _err := client.UpdateCloudGtmMonitorTemplateRemarkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
