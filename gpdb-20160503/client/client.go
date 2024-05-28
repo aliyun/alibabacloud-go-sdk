@@ -154,6 +154,128 @@ func (s *AllocateInstancePublicConnectionResponse) SetBody(v *AllocateInstancePu
 	return s
 }
 
+type BindDBResourceGroupWithRoleRequest struct {
+	// This parameter is required.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// This parameter is required.
+	RoleList []*string `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
+}
+
+func (s BindDBResourceGroupWithRoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindDBResourceGroupWithRoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindDBResourceGroupWithRoleRequest) SetDBInstanceId(v string) *BindDBResourceGroupWithRoleRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *BindDBResourceGroupWithRoleRequest) SetOwnerId(v int64) *BindDBResourceGroupWithRoleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BindDBResourceGroupWithRoleRequest) SetResourceGroupName(v string) *BindDBResourceGroupWithRoleRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *BindDBResourceGroupWithRoleRequest) SetRoleList(v []*string) *BindDBResourceGroupWithRoleRequest {
+	s.RoleList = v
+	return s
+}
+
+type BindDBResourceGroupWithRoleShrinkRequest struct {
+	// This parameter is required.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// This parameter is required.
+	RoleListShrink *string `json:"RoleList,omitempty" xml:"RoleList,omitempty"`
+}
+
+func (s BindDBResourceGroupWithRoleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindDBResourceGroupWithRoleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindDBResourceGroupWithRoleShrinkRequest) SetDBInstanceId(v string) *BindDBResourceGroupWithRoleShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *BindDBResourceGroupWithRoleShrinkRequest) SetOwnerId(v int64) *BindDBResourceGroupWithRoleShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BindDBResourceGroupWithRoleShrinkRequest) SetResourceGroupName(v string) *BindDBResourceGroupWithRoleShrinkRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *BindDBResourceGroupWithRoleShrinkRequest) SetRoleListShrink(v string) *BindDBResourceGroupWithRoleShrinkRequest {
+	s.RoleListShrink = &v
+	return s
+}
+
+type BindDBResourceGroupWithRoleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BindDBResourceGroupWithRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindDBResourceGroupWithRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindDBResourceGroupWithRoleResponseBody) SetRequestId(v string) *BindDBResourceGroupWithRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BindDBResourceGroupWithRoleResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindDBResourceGroupWithRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BindDBResourceGroupWithRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindDBResourceGroupWithRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindDBResourceGroupWithRoleResponse) SetHeaders(v map[string]*string) *BindDBResourceGroupWithRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindDBResourceGroupWithRoleResponse) SetStatusCode(v int32) *BindDBResourceGroupWithRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindDBResourceGroupWithRoleResponse) SetBody(v *BindDBResourceGroupWithRoleResponseBody) *BindDBResourceGroupWithRoleResponse {
+	s.Body = v
+	return s
+}
+
 type CancelUploadDocumentJobRequest struct {
 	// This parameter is required.
 	//
@@ -2209,6 +2331,105 @@ func (s *CreateDBInstancePlanResponse) SetStatusCode(v int32) *CreateDBInstanceP
 }
 
 func (s *CreateDBInstancePlanResponse) SetBody(v *CreateDBInstancePlanResponseBody) *CreateDBInstancePlanResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDBResourceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"CpuRateLimit":"10","MemoryLimit":"12","MemorySharedQuota":"20","MemorySpillRatio":"75","Concurrency":"3"}
+	ResourceGroupConfig *string `json:"ResourceGroupConfig,omitempty" xml:"ResourceGroupConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testgroup
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+}
+
+func (s CreateDBResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBResourceGroupRequest) SetDBInstanceId(v string) *CreateDBResourceGroupRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetOwnerId(v int64) *CreateDBResourceGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetResourceGroupConfig(v string) *CreateDBResourceGroupRequest {
+	s.ResourceGroupConfig = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetResourceGroupName(v string) *CreateDBResourceGroupRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type CreateDBResourceGroupResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDBResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBResourceGroupResponseBody) SetRequestId(v string) *CreateDBResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDBResourceGroupResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDBResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDBResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBResourceGroupResponse) SetHeaders(v map[string]*string) *CreateDBResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDBResourceGroupResponse) SetStatusCode(v int32) *CreateDBResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupResponse) SetBody(v *CreateDBResourceGroupResponseBody) *CreateDBResourceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -4838,6 +5059,94 @@ func (s *DeleteDBInstancePlanResponse) SetStatusCode(v int32) *DeleteDBInstanceP
 }
 
 func (s *DeleteDBInstancePlanResponse) SetBody(v *DeleteDBInstancePlanResponseBody) *DeleteDBInstancePlanResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDBResourceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testgroup
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+}
+
+func (s DeleteDBResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDBResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDBResourceGroupRequest) SetDBInstanceId(v string) *DeleteDBResourceGroupRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteDBResourceGroupRequest) SetOwnerId(v int64) *DeleteDBResourceGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteDBResourceGroupRequest) SetResourceGroupName(v string) *DeleteDBResourceGroupRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type DeleteDBResourceGroupResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDBResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDBResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDBResourceGroupResponseBody) SetRequestId(v string) *DeleteDBResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDBResourceGroupResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDBResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDBResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDBResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDBResourceGroupResponse) SetHeaders(v map[string]*string) *DeleteDBResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDBResourceGroupResponse) SetStatusCode(v int32) *DeleteDBResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDBResourceGroupResponse) SetBody(v *DeleteDBResourceGroupResponseBody) *DeleteDBResourceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -12494,6 +12803,167 @@ func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody
 	return s
 }
 
+type DescribeDBResourceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// testgroup
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+}
+
+func (s DescribeDBResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupRequest) SetDBInstanceId(v string) *DescribeDBResourceGroupRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupRequest) SetOwnerId(v int64) *DescribeDBResourceGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupRequest) SetResourceGroupName(v string) *DescribeDBResourceGroupRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type DescribeDBResourceGroupResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId          *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupItems *DescribeDBResourceGroupResponseBodyResourceGroupItems `json:"ResourceGroupItems,omitempty" xml:"ResourceGroupItems,omitempty" type:"Struct"`
+}
+
+func (s DescribeDBResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBody) SetRequestId(v string) *DescribeDBResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBody) SetResourceGroupItems(v *DescribeDBResourceGroupResponseBodyResourceGroupItems) *DescribeDBResourceGroupResponseBody {
+	s.ResourceGroupItems = v
+	return s
+}
+
+type DescribeDBResourceGroupResponseBodyResourceGroupItems struct {
+	ResourceGroupItem []*DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem `json:"ResourceGroupItem,omitempty" xml:"ResourceGroupItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBResourceGroupResponseBodyResourceGroupItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupResponseBodyResourceGroupItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyResourceGroupItems) SetResourceGroupItem(v []*DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem) *DescribeDBResourceGroupResponseBodyResourceGroupItems {
+	s.ResourceGroupItem = v
+	return s
+}
+
+type DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem struct {
+	// example:
+	//
+	// {"CpuRateLimit":"10","MemoryLimit":"12","MemorySharedQuota":"20","MemorySpillRatio":"75","Concurrency":"3"}
+	ResourceGroupConfig *string `json:"ResourceGroupConfig,omitempty" xml:"ResourceGroupConfig,omitempty"`
+	// example:
+	//
+	// testgroup
+	ResourceGroupName *string                                                                         `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	RoleList          *DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItemRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Struct"`
+}
+
+func (s DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem) SetResourceGroupConfig(v string) *DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem {
+	s.ResourceGroupConfig = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem) SetResourceGroupName(v string) *DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem) SetRoleList(v *DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItemRoleList) *DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem {
+	s.RoleList = v
+	return s
+}
+
+type DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItemRoleList struct {
+	Role []*string `json:"Role,omitempty" xml:"Role,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItemRoleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItemRoleList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItemRoleList) SetRole(v []*string) *DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItemRoleList {
+	s.Role = v
+	return s
+}
+
+type DescribeDBResourceGroupResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDBResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponse) SetHeaders(v map[string]*string) *DescribeDBResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponse) SetStatusCode(v int32) *DescribeDBResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponse) SetBody(v *DescribeDBResourceGroupResponseBody) *DescribeDBResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDBResourceManagementModeRequest struct {
 	// This parameter is required.
 	//
@@ -18839,6 +19309,106 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 	return s
 }
 
+type DescribeRolesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeRolesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRolesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRolesRequest) SetDBInstanceId(v string) *DescribeRolesRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeRolesRequest) SetOwnerId(v int64) *DescribeRolesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeRolesResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RoleList  *DescribeRolesResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Struct"`
+}
+
+func (s DescribeRolesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRolesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRolesResponseBody) SetRequestId(v string) *DescribeRolesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRolesResponseBody) SetRoleList(v *DescribeRolesResponseBodyRoleList) *DescribeRolesResponseBody {
+	s.RoleList = v
+	return s
+}
+
+type DescribeRolesResponseBodyRoleList struct {
+	Role []*string `json:"Role,omitempty" xml:"Role,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRolesResponseBodyRoleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRolesResponseBodyRoleList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRolesResponseBodyRoleList) SetRole(v []*string) *DescribeRolesResponseBodyRoleList {
+	s.Role = v
+	return s
+}
+
+type DescribeRolesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRolesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRolesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRolesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRolesResponse) SetHeaders(v map[string]*string) *DescribeRolesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRolesResponse) SetStatusCode(v int32) *DescribeRolesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRolesResponse) SetBody(v *DescribeRolesResponseBody) *DescribeRolesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSQLLogCountRequest struct {
 	// The instance ID.
 	//
@@ -21827,6 +22397,83 @@ func (s *DescribeWaitingSQLRecordsResponse) SetBody(v *DescribeWaitingSQLRecords
 	return s
 }
 
+type DisableDBResourceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DisableDBResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDBResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDBResourceGroupRequest) SetDBInstanceId(v string) *DisableDBResourceGroupRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DisableDBResourceGroupRequest) SetOwnerId(v int64) *DisableDBResourceGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DisableDBResourceGroupResponseBody struct {
+	// example:
+	//
+	// 53EA07B7-FC2A-521B-AB7C-27**********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableDBResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDBResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDBResourceGroupResponseBody) SetRequestId(v string) *DisableDBResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableDBResourceGroupResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableDBResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisableDBResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDBResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDBResourceGroupResponse) SetHeaders(v map[string]*string) *DisableDBResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableDBResourceGroupResponse) SetStatusCode(v int32) *DisableDBResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableDBResourceGroupResponse) SetBody(v *DisableDBResourceGroupResponseBody) *DisableDBResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DownloadDiagnosisRecordsRequest struct {
 	// The ID of the instance.
 	//
@@ -22300,6 +22947,83 @@ func (s *DownloadSQLLogsRecordsResponse) SetStatusCode(v int32) *DownloadSQLLogs
 }
 
 func (s *DownloadSQLLogsRecordsResponse) SetBody(v *DownloadSQLLogsRecordsResponseBody) *DownloadSQLLogsRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type EnableDBResourceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s EnableDBResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDBResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDBResourceGroupRequest) SetDBInstanceId(v string) *EnableDBResourceGroupRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *EnableDBResourceGroupRequest) SetOwnerId(v int64) *EnableDBResourceGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type EnableDBResourceGroupResponseBody struct {
+	// example:
+	//
+	// 5850BF81-1A2B-5ACE-AF41-57**********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableDBResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDBResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDBResourceGroupResponseBody) SetRequestId(v string) *EnableDBResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableDBResourceGroupResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableDBResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableDBResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDBResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDBResourceGroupResponse) SetHeaders(v map[string]*string) *EnableDBResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableDBResourceGroupResponse) SetStatusCode(v int32) *EnableDBResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableDBResourceGroupResponse) SetBody(v *EnableDBResourceGroupResponseBody) *EnableDBResourceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -26829,6 +27553,158 @@ func (s *ModifyDBInstanceSSLResponse) SetBody(v *ModifyDBInstanceSSLResponseBody
 	return s
 }
 
+type ModifyDBResourceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	ResourceGroupItems []*ModifyDBResourceGroupRequestResourceGroupItems `json:"ResourceGroupItems,omitempty" xml:"ResourceGroupItems,omitempty" type:"Repeated"`
+}
+
+func (s ModifyDBResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBResourceGroupRequest) SetDBInstanceId(v string) *ModifyDBResourceGroupRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequest) SetOwnerId(v int64) *ModifyDBResourceGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequest) SetResourceGroupItems(v []*ModifyDBResourceGroupRequestResourceGroupItems) *ModifyDBResourceGroupRequest {
+	s.ResourceGroupItems = v
+	return s
+}
+
+type ModifyDBResourceGroupRequestResourceGroupItems struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"CpuRateLimit":"10","MemoryLimit":"12","MemorySharedQuota":"20","MemorySpillRatio":"75","Concurrency":"3"}
+	ResourceGroupConfig *string `json:"ResourceGroupConfig,omitempty" xml:"ResourceGroupConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testgroup
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+}
+
+func (s ModifyDBResourceGroupRequestResourceGroupItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBResourceGroupRequestResourceGroupItems) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBResourceGroupRequestResourceGroupItems) SetResourceGroupConfig(v string) *ModifyDBResourceGroupRequestResourceGroupItems {
+	s.ResourceGroupConfig = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestResourceGroupItems) SetResourceGroupName(v string) *ModifyDBResourceGroupRequestResourceGroupItems {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type ModifyDBResourceGroupShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	ResourceGroupItemsShrink *string `json:"ResourceGroupItems,omitempty" xml:"ResourceGroupItems,omitempty"`
+}
+
+func (s ModifyDBResourceGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBResourceGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetDBInstanceId(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetOwnerId(v int64) *ModifyDBResourceGroupShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetResourceGroupItemsShrink(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.ResourceGroupItemsShrink = &v
+	return s
+}
+
+type ModifyDBResourceGroupResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBResourceGroupResponseBody) SetRequestId(v string) *ModifyDBResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBResourceGroupResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDBResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBResourceGroupResponse) SetHeaders(v map[string]*string) *ModifyDBResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBResourceGroupResponse) SetStatusCode(v int32) *ModifyDBResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupResponse) SetBody(v *ModifyDBResourceGroupResponseBody) *ModifyDBResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyExternalDataServiceRequest struct {
 	// This parameter is required.
 	//
@@ -28446,6 +29322,83 @@ func (s *ModifyVectorConfigurationResponse) SetStatusCode(v int32) *ModifyVector
 }
 
 func (s *ModifyVectorConfigurationResponse) SetBody(v *ModifyVectorConfigurationResponseBody) *ModifyVectorConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type PauseDataRedistributeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s PauseDataRedistributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseDataRedistributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PauseDataRedistributeRequest) SetDBInstanceId(v string) *PauseDataRedistributeRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *PauseDataRedistributeRequest) SetOwnerId(v int64) *PauseDataRedistributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type PauseDataRedistributeResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PauseDataRedistributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseDataRedistributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PauseDataRedistributeResponseBody) SetRequestId(v string) *PauseDataRedistributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PauseDataRedistributeResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PauseDataRedistributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PauseDataRedistributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseDataRedistributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PauseDataRedistributeResponse) SetHeaders(v map[string]*string) *PauseDataRedistributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PauseDataRedistributeResponse) SetStatusCode(v int32) *PauseDataRedistributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PauseDataRedistributeResponse) SetBody(v *PauseDataRedistributeResponseBody) *PauseDataRedistributeResponse {
 	s.Body = v
 	return s
 }
@@ -30304,6 +31257,83 @@ func (s *RestartDBInstanceResponse) SetBody(v *RestartDBInstanceResponseBody) *R
 	return s
 }
 
+type ResumeDataRedistributeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s ResumeDataRedistributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeDataRedistributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeDataRedistributeRequest) SetDBInstanceId(v string) *ResumeDataRedistributeRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ResumeDataRedistributeRequest) SetOwnerId(v int64) *ResumeDataRedistributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type ResumeDataRedistributeResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResumeDataRedistributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeDataRedistributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeDataRedistributeResponseBody) SetRequestId(v string) *ResumeDataRedistributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResumeDataRedistributeResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResumeDataRedistributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ResumeDataRedistributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeDataRedistributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeDataRedistributeResponse) SetHeaders(v map[string]*string) *ResumeDataRedistributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResumeDataRedistributeResponse) SetStatusCode(v int32) *ResumeDataRedistributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResumeDataRedistributeResponse) SetBody(v *ResumeDataRedistributeResponseBody) *ResumeDataRedistributeResponse {
+	s.Body = v
+	return s
+}
+
 type ResumeInstanceRequest struct {
 	// The ID of the instance.
 	//
@@ -31053,6 +32083,147 @@ func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
 }
 
 func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UnbindDBResourceGroupWithRoleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testgroup
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// This parameter is required.
+	RoleList []*string `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
+}
+
+func (s UnbindDBResourceGroupWithRoleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindDBResourceGroupWithRoleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindDBResourceGroupWithRoleRequest) SetDBInstanceId(v string) *UnbindDBResourceGroupWithRoleRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UnbindDBResourceGroupWithRoleRequest) SetOwnerId(v int64) *UnbindDBResourceGroupWithRoleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UnbindDBResourceGroupWithRoleRequest) SetResourceGroupName(v string) *UnbindDBResourceGroupWithRoleRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *UnbindDBResourceGroupWithRoleRequest) SetRoleList(v []*string) *UnbindDBResourceGroupWithRoleRequest {
+	s.RoleList = v
+	return s
+}
+
+type UnbindDBResourceGroupWithRoleShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testgroup
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// This parameter is required.
+	RoleListShrink *string `json:"RoleList,omitempty" xml:"RoleList,omitempty"`
+}
+
+func (s UnbindDBResourceGroupWithRoleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindDBResourceGroupWithRoleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindDBResourceGroupWithRoleShrinkRequest) SetDBInstanceId(v string) *UnbindDBResourceGroupWithRoleShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UnbindDBResourceGroupWithRoleShrinkRequest) SetOwnerId(v int64) *UnbindDBResourceGroupWithRoleShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UnbindDBResourceGroupWithRoleShrinkRequest) SetResourceGroupName(v string) *UnbindDBResourceGroupWithRoleShrinkRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *UnbindDBResourceGroupWithRoleShrinkRequest) SetRoleListShrink(v string) *UnbindDBResourceGroupWithRoleShrinkRequest {
+	s.RoleListShrink = &v
+	return s
+}
+
+type UnbindDBResourceGroupWithRoleResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnbindDBResourceGroupWithRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindDBResourceGroupWithRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindDBResourceGroupWithRoleResponseBody) SetRequestId(v string) *UnbindDBResourceGroupWithRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnbindDBResourceGroupWithRoleResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindDBResourceGroupWithRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnbindDBResourceGroupWithRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindDBResourceGroupWithRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindDBResourceGroupWithRoleResponse) SetHeaders(v map[string]*string) *UnbindDBResourceGroupWithRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnbindDBResourceGroupWithRoleResponse) SetStatusCode(v int32) *UnbindDBResourceGroupWithRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnbindDBResourceGroupWithRoleResponse) SetBody(v *UnbindDBResourceGroupWithRoleResponseBody) *UnbindDBResourceGroupWithRoleResponse {
 	s.Body = v
 	return s
 }
@@ -33863,6 +35034,84 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 
 // Summary:
 //
+// 将资源组与数据库角色进行绑定
+//
+// @param tmpReq - BindDBResourceGroupWithRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindDBResourceGroupWithRoleResponse
+func (client *Client) BindDBResourceGroupWithRoleWithOptions(tmpReq *BindDBResourceGroupWithRoleRequest, runtime *util.RuntimeOptions) (_result *BindDBResourceGroupWithRoleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BindDBResourceGroupWithRoleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RoleList)) {
+		request.RoleListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoleList, tea.String("RoleList"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleListShrink)) {
+		query["RoleList"] = request.RoleListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindDBResourceGroupWithRole"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindDBResourceGroupWithRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将资源组与数据库角色进行绑定
+//
+// @param request - BindDBResourceGroupWithRoleRequest
+//
+// @return BindDBResourceGroupWithRoleResponse
+func (client *Client) BindDBResourceGroupWithRole(request *BindDBResourceGroupWithRoleRequest) (_result *BindDBResourceGroupWithRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindDBResourceGroupWithRoleResponse{}
+	_body, _err := client.BindDBResourceGroupWithRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 取消上传文档任务
 //
 // @param request - CancelUploadDocumentJobRequest
@@ -34858,6 +36107,78 @@ func (client *Client) CreateDBInstancePlan(request *CreateDBInstancePlanRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBInstancePlanResponse{}
 	_body, _err := client.CreateDBInstancePlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建资源组
+//
+// @param request - CreateDBResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBResourceGroupResponse
+func (client *Client) CreateDBResourceGroupWithOptions(request *CreateDBResourceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateDBResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupConfig)) {
+		query["ResourceGroupConfig"] = request.ResourceGroupConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDBResourceGroup"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDBResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建资源组
+//
+// @param request - CreateDBResourceGroupRequest
+//
+// @return CreateDBResourceGroupResponse
+func (client *Client) CreateDBResourceGroup(request *CreateDBResourceGroupRequest) (_result *CreateDBResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDBResourceGroupResponse{}
+	_body, _err := client.CreateDBResourceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36336,6 +37657,74 @@ func (client *Client) DeleteDBInstancePlan(request *DeleteDBInstancePlanRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBInstancePlanResponse{}
 	_body, _err := client.DeleteDBInstancePlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除资源组
+//
+// @param request - DeleteDBResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBResourceGroupResponse
+func (client *Client) DeleteDBResourceGroupWithOptions(request *DeleteDBResourceGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteDBResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDBResourceGroup"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDBResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除资源组
+//
+// @param request - DeleteDBResourceGroupRequest
+//
+// @return DeleteDBResourceGroupResponse
+func (client *Client) DeleteDBResourceGroup(request *DeleteDBResourceGroupRequest) (_result *DeleteDBResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDBResourceGroupResponse{}
+	_body, _err := client.DeleteDBResourceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38867,6 +40256,74 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 
 // Summary:
 //
+// 获取资源组信息
+//
+// @param request - DescribeDBResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBResourceGroupResponse
+func (client *Client) DescribeDBResourceGroupWithOptions(request *DescribeDBResourceGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeDBResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBResourceGroup"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取资源组信息
+//
+// @param request - DescribeDBResourceGroupRequest
+//
+// @return DescribeDBResourceGroupResponse
+func (client *Client) DescribeDBResourceGroup(request *DescribeDBResourceGroupRequest) (_result *DescribeDBResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBResourceGroupResponse{}
+	_body, _err := client.DescribeDBResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取资源管理模式
 //
 // @param request - DescribeDBResourceManagementModeRequest
@@ -41003,6 +42460,70 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
+// 获取角色列表
+//
+// @param request - DescribeRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRolesResponse
+func (client *Client) DescribeRolesWithOptions(request *DescribeRolesRequest, runtime *util.RuntimeOptions) (_result *DescribeRolesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRoles"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取角色列表
+//
+// @param request - DescribeRolesRequest
+//
+// @return DescribeRolesResponse
+func (client *Client) DescribeRoles(request *DescribeRolesRequest) (_result *DescribeRolesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRolesResponse{}
+	_body, _err := client.DescribeRolesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the number of audit logs for an AnalyticDB for PostgreSQL instance.
 //
 // Description:
@@ -42071,6 +43592,70 @@ func (client *Client) DescribeWaitingSQLRecords(request *DescribeWaitingSQLRecor
 
 // Summary:
 //
+// 关闭资源组
+//
+// @param request - DisableDBResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableDBResourceGroupResponse
+func (client *Client) DisableDBResourceGroupWithOptions(request *DisableDBResourceGroupRequest, runtime *util.RuntimeOptions) (_result *DisableDBResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableDBResourceGroup"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableDBResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭资源组
+//
+// @param request - DisableDBResourceGroupRequest
+//
+// @return DisableDBResourceGroupResponse
+func (client *Client) DisableDBResourceGroup(request *DisableDBResourceGroupRequest) (_result *DisableDBResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableDBResourceGroupResponse{}
+	_body, _err := client.DisableDBResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Downloads the query diagnostic information of an AnalyticDB for PostgreSQL instance.
 //
 // Description:
@@ -42290,6 +43875,70 @@ func (client *Client) DownloadSQLLogsRecords(request *DownloadSQLLogsRecordsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DownloadSQLLogsRecordsResponse{}
 	_body, _err := client.DownloadSQLLogsRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启资源组
+//
+// @param request - EnableDBResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableDBResourceGroupResponse
+func (client *Client) EnableDBResourceGroupWithOptions(request *EnableDBResourceGroupRequest, runtime *util.RuntimeOptions) (_result *EnableDBResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableDBResourceGroup"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableDBResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启资源组
+//
+// @param request - EnableDBResourceGroupRequest
+//
+// @return EnableDBResourceGroupResponse
+func (client *Client) EnableDBResourceGroup(request *EnableDBResourceGroupRequest) (_result *EnableDBResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableDBResourceGroupResponse{}
+	_body, _err := client.EnableDBResourceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44175,6 +45824,80 @@ func (client *Client) ModifyDBInstanceSSL(request *ModifyDBInstanceSSLRequest) (
 
 // Summary:
 //
+// 修改资源组
+//
+// @param tmpReq - ModifyDBResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBResourceGroupResponse
+func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyDBResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyDBResourceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceGroupItems)) {
+		request.ResourceGroupItemsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceGroupItems, tea.String("ResourceGroupItems"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupItemsShrink)) {
+		query["ResourceGroupItems"] = request.ResourceGroupItemsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBResourceGroup"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改资源组
+//
+// @param request - ModifyDBResourceGroupRequest
+//
+// @return ModifyDBResourceGroupResponse
+func (client *Client) ModifyDBResourceGroup(request *ModifyDBResourceGroupRequest) (_result *ModifyDBResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBResourceGroupResponse{}
+	_body, _err := client.ModifyDBResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改外部数据服务
 //
 // @param request - ModifyExternalDataServiceRequest
@@ -45137,6 +46860,70 @@ func (client *Client) ModifyVectorConfiguration(request *ModifyVectorConfigurati
 
 // Summary:
 //
+// 暂停数据重分布
+//
+// @param request - PauseDataRedistributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseDataRedistributeResponse
+func (client *Client) PauseDataRedistributeWithOptions(request *PauseDataRedistributeRequest, runtime *util.RuntimeOptions) (_result *PauseDataRedistributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PauseDataRedistribute"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PauseDataRedistributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 暂停数据重分布
+//
+// @param request - PauseDataRedistributeRequest
+//
+// @return PauseDataRedistributeResponse
+func (client *Client) PauseDataRedistribute(request *PauseDataRedistributeRequest) (_result *PauseDataRedistributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PauseDataRedistributeResponse{}
+	_body, _err := client.PauseDataRedistributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Pauses an AnalyticDB for PostgreSQL instance.
 //
 // Description:
@@ -45518,7 +47305,7 @@ func (client *Client) QueryContentAdvance(request *QueryContentAdvanceRequest, r
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -45546,12 +47333,17 @@ func (client *Client) QueryContentAdvance(request *QueryContentAdvanceRequest, r
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -45942,6 +47734,70 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartDBInstanceResponse{}
 	_body, _err := client.RestartDBInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复数据重分布
+//
+// @param request - ResumeDataRedistributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeDataRedistributeResponse
+func (client *Client) ResumeDataRedistributeWithOptions(request *ResumeDataRedistributeRequest, runtime *util.RuntimeOptions) (_result *ResumeDataRedistributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeDataRedistribute"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResumeDataRedistributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复数据重分布
+//
+// @param request - ResumeDataRedistributeRequest
+//
+// @return ResumeDataRedistributeResponse
+func (client *Client) ResumeDataRedistribute(request *ResumeDataRedistributeRequest) (_result *ResumeDataRedistributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResumeDataRedistributeResponse{}
+	_body, _err := client.ResumeDataRedistributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -46368,6 +48224,84 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
 	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将资源组与数据库角色进行解绑
+//
+// @param tmpReq - UnbindDBResourceGroupWithRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindDBResourceGroupWithRoleResponse
+func (client *Client) UnbindDBResourceGroupWithRoleWithOptions(tmpReq *UnbindDBResourceGroupWithRoleRequest, runtime *util.RuntimeOptions) (_result *UnbindDBResourceGroupWithRoleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UnbindDBResourceGroupWithRoleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RoleList)) {
+		request.RoleListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoleList, tea.String("RoleList"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleListShrink)) {
+		query["RoleList"] = request.RoleListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindDBResourceGroupWithRole"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnbindDBResourceGroupWithRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将资源组与数据库角色进行解绑
+//
+// @param request - UnbindDBResourceGroupWithRoleRequest
+//
+// @return UnbindDBResourceGroupWithRoleResponse
+func (client *Client) UnbindDBResourceGroupWithRole(request *UnbindDBResourceGroupWithRoleRequest) (_result *UnbindDBResourceGroupWithRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnbindDBResourceGroupWithRoleResponse{}
+	_body, _err := client.UnbindDBResourceGroupWithRoleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47180,7 +49114,7 @@ func (client *Client) UploadDocumentAsyncAdvance(request *UploadDocumentAsyncAdv
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -47208,12 +49142,17 @@ func (client *Client) UploadDocumentAsyncAdvance(request *UploadDocumentAsyncAdv
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -47560,7 +49499,7 @@ func (client *Client) UpsertCollectionDataAsyncAdvance(request *UpsertCollection
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -47588,12 +49527,17 @@ func (client *Client) UpsertCollectionDataAsyncAdvance(request *UpsertCollection
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
