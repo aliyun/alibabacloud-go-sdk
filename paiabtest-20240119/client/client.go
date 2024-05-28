@@ -1755,6 +1755,7 @@ func (s *GetDomainRequest) SetProjectId(v string) *GetDomainRequest {
 
 type GetDomainResponseBody struct {
 	BucketType      *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
+	Buckets         *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
 	Condition       *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	CrowdIds        *string `json:"CrowdIds,omitempty" xml:"CrowdIds,omitempty"`
 	DebugUsers      *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
@@ -1783,6 +1784,11 @@ func (s GetDomainResponseBody) GoString() string {
 
 func (s *GetDomainResponseBody) SetBucketType(v string) *GetDomainResponseBody {
 	s.BucketType = &v
+	return s
+}
+
+func (s *GetDomainResponseBody) SetBuckets(v string) *GetDomainResponseBody {
+	s.Buckets = &v
 	return s
 }
 
@@ -3235,6 +3241,7 @@ func (s *ListDomainsResponseBody) SetTotalCount(v string) *ListDomainsResponseBo
 
 type ListDomainsResponseBodyDomains struct {
 	BucketType      *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
+	Buckets         *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
 	Condition       *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	CrowdIds        *string `json:"CrowdIds,omitempty" xml:"CrowdIds,omitempty"`
 	DebugUsers      *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
@@ -3262,6 +3269,11 @@ func (s ListDomainsResponseBodyDomains) GoString() string {
 
 func (s *ListDomainsResponseBodyDomains) SetBucketType(v string) *ListDomainsResponseBodyDomains {
 	s.BucketType = &v
+	return s
+}
+
+func (s *ListDomainsResponseBodyDomains) SetBuckets(v string) *ListDomainsResponseBodyDomains {
+	s.Buckets = &v
 	return s
 }
 
