@@ -46479,6 +46479,330 @@ func (s *QueryOrgTodoTasksResponse) SetBody(v *QueryOrgTodoTasksResponseBody) *Q
 	return s
 }
 
+type QueryReportDetailHeaders struct {
+	CommonHeaders  map[string]*string                      `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *QueryReportDetailHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s QueryReportDetailHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReportDetailHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReportDetailHeaders) SetCommonHeaders(v map[string]*string) *QueryReportDetailHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryReportDetailHeaders) SetAccountContext(v *QueryReportDetailHeadersAccountContext) *QueryReportDetailHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type QueryReportDetailHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s QueryReportDetailHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReportDetailHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReportDetailHeadersAccountContext) SetAccountId(v string) *QueryReportDetailHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type QueryReportDetailShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s QueryReportDetailShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReportDetailShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReportDetailShrinkHeaders) SetCommonHeaders(v map[string]*string) *QueryReportDetailShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryReportDetailShrinkHeaders) SetAccountContextShrink(v string) *QueryReportDetailShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type QueryReportDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 18054XXX
+	ReportId      *string                                `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	TenantContext *QueryReportDetailRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s QueryReportDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReportDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReportDetailRequest) SetReportId(v string) *QueryReportDetailRequest {
+	s.ReportId = &v
+	return s
+}
+
+func (s *QueryReportDetailRequest) SetTenantContext(v *QueryReportDetailRequestTenantContext) *QueryReportDetailRequest {
+	s.TenantContext = v
+	return s
+}
+
+type QueryReportDetailRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s QueryReportDetailRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReportDetailRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReportDetailRequestTenantContext) SetTenantId(v string) *QueryReportDetailRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type QueryReportDetailShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 18054XXX
+	ReportId            *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s QueryReportDetailShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReportDetailShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReportDetailShrinkRequest) SetReportId(v string) *QueryReportDetailShrinkRequest {
+	s.ReportId = &v
+	return s
+}
+
+func (s *QueryReportDetailShrinkRequest) SetTenantContextShrink(v string) *QueryReportDetailShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type QueryReportDetailResponseBody struct {
+	Content []*QueryReportDetailResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1691980997000
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 012345
+	CreatorId   *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	DeptName    *string `json:"deptName,omitempty" xml:"deptName,omitempty"`
+	// example:
+	//
+	// 1691980997000
+	ModifiedTime *int64  `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
+	Remark       *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// example:
+	//
+	// 1231232134
+	ReportId *string `json:"reportId,omitempty" xml:"reportId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s QueryReportDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReportDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReportDetailResponseBody) SetContent(v []*QueryReportDetailResponseBodyContent) *QueryReportDetailResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *QueryReportDetailResponseBody) SetCreateTime(v int64) *QueryReportDetailResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryReportDetailResponseBody) SetCreatorId(v string) *QueryReportDetailResponseBody {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *QueryReportDetailResponseBody) SetCreatorName(v string) *QueryReportDetailResponseBody {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *QueryReportDetailResponseBody) SetDeptName(v string) *QueryReportDetailResponseBody {
+	s.DeptName = &v
+	return s
+}
+
+func (s *QueryReportDetailResponseBody) SetModifiedTime(v int64) *QueryReportDetailResponseBody {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *QueryReportDetailResponseBody) SetRemark(v string) *QueryReportDetailResponseBody {
+	s.Remark = &v
+	return s
+}
+
+func (s *QueryReportDetailResponseBody) SetReportId(v string) *QueryReportDetailResponseBody {
+	s.ReportId = &v
+	return s
+}
+
+func (s *QueryReportDetailResponseBody) SetRequestId(v string) *QueryReportDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryReportDetailResponseBody) SetTemplateName(v string) *QueryReportDetailResponseBody {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *QueryReportDetailResponseBody) SetVendorRequestId(v string) *QueryReportDetailResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *QueryReportDetailResponseBody) SetVendorType(v string) *QueryReportDetailResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type QueryReportDetailResponseBodyContent struct {
+	Images []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 0
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// example:
+	//
+	// 1
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s QueryReportDetailResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReportDetailResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReportDetailResponseBodyContent) SetImages(v []*string) *QueryReportDetailResponseBodyContent {
+	s.Images = v
+	return s
+}
+
+func (s *QueryReportDetailResponseBodyContent) SetKey(v string) *QueryReportDetailResponseBodyContent {
+	s.Key = &v
+	return s
+}
+
+func (s *QueryReportDetailResponseBodyContent) SetSort(v string) *QueryReportDetailResponseBodyContent {
+	s.Sort = &v
+	return s
+}
+
+func (s *QueryReportDetailResponseBodyContent) SetType(v string) *QueryReportDetailResponseBodyContent {
+	s.Type = &v
+	return s
+}
+
+func (s *QueryReportDetailResponseBodyContent) SetValue(v string) *QueryReportDetailResponseBodyContent {
+	s.Value = &v
+	return s
+}
+
+type QueryReportDetailResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryReportDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryReportDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryReportDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryReportDetailResponse) SetHeaders(v map[string]*string) *QueryReportDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryReportDetailResponse) SetStatusCode(v int32) *QueryReportDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryReportDetailResponse) SetBody(v *QueryReportDetailResponseBody) *QueryReportDetailResponse {
+	s.Body = v
+	return s
+}
+
 type QueryScheduleConferenceHeaders struct {
 	CommonHeaders  map[string]*string                            `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *QueryScheduleConferenceHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -57318,6 +57642,7 @@ func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModel) SetScreenSha
 }
 
 type UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting struct {
+	CloudRecordOwnerUserId *string `json:"CloudRecordOwnerUserId,omitempty" xml:"CloudRecordOwnerUserId,omitempty"`
 	// example:
 	//
 	// 1
@@ -57334,7 +57659,11 @@ type UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExt
 	// example:
 	//
 	// 1
-	LockNick *int32 `json:"LockNick,omitempty" xml:"LockNick,omitempty"`
+	LockNick              *int32  `json:"LockNick,omitempty" xml:"LockNick,omitempty"`
+	MinutesOwnerUserId    *string `json:"MinutesOwnerUserId,omitempty" xml:"MinutesOwnerUserId,omitempty"`
+	PushAllMeetingRecords *bool   `json:"PushAllMeetingRecords,omitempty" xml:"PushAllMeetingRecords,omitempty"`
+	PushCloudRecordCard   *bool   `json:"PushCloudRecordCard,omitempty" xml:"PushCloudRecordCard,omitempty"`
+	PushMinutesCard       *bool   `json:"PushMinutesCard,omitempty" xml:"PushMinutesCard,omitempty"`
 	// example:
 	//
 	// 1
@@ -57347,6 +57676,11 @@ func (s UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtual
 
 func (s UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetCloudRecordOwnerUserId(v string) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.CloudRecordOwnerUserId = &v
+	return s
 }
 
 func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetEnableChat(v int32) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
@@ -57371,6 +57705,26 @@ func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtua
 
 func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetLockNick(v int32) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
 	s.LockNick = &v
+	return s
+}
+
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetMinutesOwnerUserId(v string) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.MinutesOwnerUserId = &v
+	return s
+}
+
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetPushAllMeetingRecords(v bool) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.PushAllMeetingRecords = &v
+	return s
+}
+
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetPushCloudRecordCard(v bool) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.PushCloudRecordCard = &v
+	return s
+}
+
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetPushMinutesCard(v bool) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.PushMinutesCard = &v
 	return s
 }
 
@@ -73500,6 +73854,95 @@ func (client *Client) QueryOrgTodoTasks(request *QueryOrgTodoTasksRequest) (_res
 	headers := &QueryOrgTodoTasksHeaders{}
 	_result = &QueryOrgTodoTasksResponse{}
 	_body, _err := client.QueryOrgTodoTasksWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取日志详情
+//
+// @param tmpReq - QueryReportDetailRequest
+//
+// @param tmpHeader - QueryReportDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryReportDetailResponse
+func (client *Client) QueryReportDetailWithOptions(tmpReq *QueryReportDetailRequest, tmpHeader *QueryReportDetailHeaders, runtime *util.RuntimeOptions) (_result *QueryReportDetailResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryReportDetailShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &QueryReportDetailShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		body["ReportId"] = request.ReportId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryReportDetail"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/log/queryReportDetail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryReportDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取日志详情
+//
+// @param request - QueryReportDetailRequest
+//
+// @return QueryReportDetailResponse
+func (client *Client) QueryReportDetail(request *QueryReportDetailRequest) (_result *QueryReportDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QueryReportDetailHeaders{}
+	_result = &QueryReportDetailResponse{}
+	_body, _err := client.QueryReportDetailWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
