@@ -3799,6 +3799,95 @@ func (s *DeleteWebCCRuleResponse) SetBody(v *DeleteWebCCRuleResponseBody) *Delet
 	return s
 }
 
+type DeleteWebCCRuleV2Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// manual
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// [\\"trdsss\\"]
+	RuleNames *string `json:"RuleNames,omitempty" xml:"RuleNames,omitempty"`
+}
+
+func (s DeleteWebCCRuleV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWebCCRuleV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWebCCRuleV2Request) SetDomain(v string) *DeleteWebCCRuleV2Request {
+	s.Domain = &v
+	return s
+}
+
+func (s *DeleteWebCCRuleV2Request) SetOwner(v string) *DeleteWebCCRuleV2Request {
+	s.Owner = &v
+	return s
+}
+
+func (s *DeleteWebCCRuleV2Request) SetRuleNames(v string) *DeleteWebCCRuleV2Request {
+	s.RuleNames = &v
+	return s
+}
+
+type DeleteWebCCRuleV2ResponseBody struct {
+	// example:
+	//
+	// 6D48AED0-41DB-5D9B-B484-3B6AAD312AD1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteWebCCRuleV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWebCCRuleV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWebCCRuleV2ResponseBody) SetRequestId(v string) *DeleteWebCCRuleV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteWebCCRuleV2Response struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteWebCCRuleV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteWebCCRuleV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWebCCRuleV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWebCCRuleV2Response) SetHeaders(v map[string]*string) *DeleteWebCCRuleV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteWebCCRuleV2Response) SetStatusCode(v int32) *DeleteWebCCRuleV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteWebCCRuleV2Response) SetBody(v *DeleteWebCCRuleV2ResponseBody) *DeleteWebCCRuleV2Response {
+	s.Body = v
+	return s
+}
+
 type DeleteWebCacheCustomRuleRequest struct {
 	// The domain name for which you want to delete the custom rules of the Static Page Caching policy.
 	//
@@ -25834,6 +25923,88 @@ func (s *ModifyWebAreaBlockSwitchResponse) SetBody(v *ModifyWebAreaBlockSwitchRe
 	return s
 }
 
+type ModifyWebCCGlobalSwitchRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// open
+	CcGlobalSwitch *string `json:"CcGlobalSwitch,omitempty" xml:"CcGlobalSwitch,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+}
+
+func (s ModifyWebCCGlobalSwitchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyWebCCGlobalSwitchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyWebCCGlobalSwitchRequest) SetCcGlobalSwitch(v string) *ModifyWebCCGlobalSwitchRequest {
+	s.CcGlobalSwitch = &v
+	return s
+}
+
+func (s *ModifyWebCCGlobalSwitchRequest) SetDomain(v string) *ModifyWebCCGlobalSwitchRequest {
+	s.Domain = &v
+	return s
+}
+
+type ModifyWebCCGlobalSwitchResponseBody struct {
+	// example:
+	//
+	// 5AE2FC86-C840-41AE-9F1A-3A2747C7C1DF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyWebCCGlobalSwitchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyWebCCGlobalSwitchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyWebCCGlobalSwitchResponseBody) SetRequestId(v string) *ModifyWebCCGlobalSwitchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyWebCCGlobalSwitchResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyWebCCGlobalSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyWebCCGlobalSwitchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyWebCCGlobalSwitchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyWebCCGlobalSwitchResponse) SetHeaders(v map[string]*string) *ModifyWebCCGlobalSwitchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyWebCCGlobalSwitchResponse) SetStatusCode(v int32) *ModifyWebCCGlobalSwitchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyWebCCGlobalSwitchResponse) SetBody(v *ModifyWebCCGlobalSwitchResponseBody) *ModifyWebCCGlobalSwitchResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyWebCCRuleRequest struct {
 	// This parameter is required.
 	//
@@ -29415,6 +29586,74 @@ func (client *Client) DeleteWebCCRule(request *DeleteWebCCRuleRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteWebCCRuleResponse{}
 	_body, _err := client.DeleteWebCCRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除新版cc规则
+//
+// @param request - DeleteWebCCRuleV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWebCCRuleV2Response
+func (client *Client) DeleteWebCCRuleV2WithOptions(request *DeleteWebCCRuleV2Request, runtime *util.RuntimeOptions) (_result *DeleteWebCCRuleV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		query["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleNames)) {
+		query["RuleNames"] = request.RuleNames
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWebCCRuleV2"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteWebCCRuleV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除新版cc规则
+//
+// @param request - DeleteWebCCRuleV2Request
+//
+// @return DeleteWebCCRuleV2Response
+func (client *Client) DeleteWebCCRuleV2(request *DeleteWebCCRuleV2Request) (_result *DeleteWebCCRuleV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteWebCCRuleV2Response{}
+	_body, _err := client.DeleteWebCCRuleV2WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38875,6 +39114,70 @@ func (client *Client) ModifyWebAreaBlockSwitch(request *ModifyWebAreaBlockSwitch
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebAreaBlockSwitchResponse{}
 	_body, _err := client.ModifyWebAreaBlockSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 统一全局CC开关
+//
+// @param request - ModifyWebCCGlobalSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebCCGlobalSwitchResponse
+func (client *Client) ModifyWebCCGlobalSwitchWithOptions(request *ModifyWebCCGlobalSwitchRequest, runtime *util.RuntimeOptions) (_result *ModifyWebCCGlobalSwitchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CcGlobalSwitch)) {
+		query["CcGlobalSwitch"] = request.CcGlobalSwitch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyWebCCGlobalSwitch"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyWebCCGlobalSwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 统一全局CC开关
+//
+// @param request - ModifyWebCCGlobalSwitchRequest
+//
+// @return ModifyWebCCGlobalSwitchResponse
+func (client *Client) ModifyWebCCGlobalSwitch(request *ModifyWebCCGlobalSwitchRequest) (_result *ModifyWebCCGlobalSwitchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyWebCCGlobalSwitchResponse{}
+	_body, _err := client.ModifyWebCCGlobalSwitchWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
