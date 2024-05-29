@@ -26104,6 +26104,661 @@ func (s *DescribeImportOASTaskResponse) SetBody(v *DescribeImportOASTaskResponse
 	return s
 }
 
+type DescribeInstanceClusterInfoRequest struct {
+	// example:
+	//
+	// testvpc
+	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
+	SecurityToken       *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeInstanceClusterInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceClusterInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceClusterInfoRequest) SetInstanceClusterName(v string) *DescribeInstanceClusterInfoRequest {
+	s.InstanceClusterName = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoRequest) SetSecurityToken(v string) *DescribeInstanceClusterInfoRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeInstanceClusterInfoResponseBody struct {
+	// example:
+	//
+	// 2022-10-10T18:29:27
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// v0.0.4
+	Description              *string                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceClusterAttribute *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute `json:"InstanceClusterAttribute,omitempty" xml:"InstanceClusterAttribute,omitempty" type:"Struct"`
+	// example:
+	//
+	// apigateway-ht-04e41d95e9c1
+	InstanceClusterId *string `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
+	// example:
+	//
+	// RUNNING
+	InstanceClusterStatus *string `json:"InstanceClusterStatus,omitempty" xml:"InstanceClusterStatus,omitempty"`
+	// example:
+	//
+	// normal
+	InstanceClusterType *string `json:"InstanceClusterType,omitempty" xml:"InstanceClusterType,omitempty"`
+	// example:
+	//
+	// 3.5.3.856
+	InstanceClusterVersion *string                                              `json:"InstanceClusterVersion,omitempty" xml:"InstanceClusterVersion,omitempty"`
+	InstanceList           *DescribeInstanceClusterInfoResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2023-06-19 10:40:29 +0800
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BZ015
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceClusterInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceClusterInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceClusterInfoResponseBody) SetCreatedTime(v string) *DescribeInstanceClusterInfoResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBody) SetDescription(v string) *DescribeInstanceClusterInfoResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBody) SetInstanceClusterAttribute(v *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) *DescribeInstanceClusterInfoResponseBody {
+	s.InstanceClusterAttribute = v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBody) SetInstanceClusterId(v string) *DescribeInstanceClusterInfoResponseBody {
+	s.InstanceClusterId = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBody) SetInstanceClusterName(v string) *DescribeInstanceClusterInfoResponseBody {
+	s.InstanceClusterName = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBody) SetInstanceClusterStatus(v string) *DescribeInstanceClusterInfoResponseBody {
+	s.InstanceClusterStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBody) SetInstanceClusterType(v string) *DescribeInstanceClusterInfoResponseBody {
+	s.InstanceClusterType = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBody) SetInstanceClusterVersion(v string) *DescribeInstanceClusterInfoResponseBody {
+	s.InstanceClusterVersion = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBody) SetInstanceList(v *DescribeInstanceClusterInfoResponseBodyInstanceList) *DescribeInstanceClusterInfoResponseBody {
+	s.InstanceList = v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBody) SetModifiedTime(v string) *DescribeInstanceClusterInfoResponseBody {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBody) SetRegionId(v string) *DescribeInstanceClusterInfoResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBody) SetRequestId(v string) *DescribeInstanceClusterInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute struct {
+	// example:
+	//
+	// ["192.168.1.0/24","192.168.0.0/24"]
+	ConnectCidrBlocks *string `json:"ConnectCidrBlocks,omitempty" xml:"ConnectCidrBlocks,omitempty"`
+	// example:
+	//
+	// vpc-p0w3kxxxxxxxxxxxxxxxx
+	ConnectVpcId *string `json:"ConnectVpcId,omitempty" xml:"ConnectVpcId,omitempty"`
+	// example:
+	//
+	// true
+	EgressIpv6Enable *bool `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
+	// example:
+	//
+	// HTTPS2_TLS1_0
+	HttpsPolicies *string `json:"HttpsPolicies,omitempty" xml:"HttpsPolicies,omitempty"`
+	// example:
+	//
+	// acl-t4n8i4rvvp70kcyuoXXXX
+	IPV4AclId *string `json:"IPV4AclId,omitempty" xml:"IPV4AclId,omitempty"`
+	// example:
+	//
+	// test-black
+	IPV4AclName *string `json:"IPV4AclName,omitempty" xml:"IPV4AclName,omitempty"`
+	// example:
+	//
+	// on
+	IPV4AclStatus *string `json:"IPV4AclStatus,omitempty" xml:"IPV4AclStatus,omitempty"`
+	// example:
+	//
+	// black
+	IPV4AclType *string `json:"IPV4AclType,omitempty" xml:"IPV4AclType,omitempty"`
+	// example:
+	//
+	// acl-t4nevzhwbpe7cup18XXXX
+	IPV6AclId *string `json:"IPV6AclId,omitempty" xml:"IPV6AclId,omitempty"`
+	// example:
+	//
+	// test
+	IPV6AclName *string `json:"IPV6AclName,omitempty" xml:"IPV6AclName,omitempty"`
+	// example:
+	//
+	// on
+	IPV6AclStatus *string `json:"IPV6AclStatus,omitempty" xml:"IPV6AclStatus,omitempty"`
+	// example:
+	//
+	// white
+	IPV6AclType *string `json:"IPV6AclType,omitempty" xml:"IPV6AclType,omitempty"`
+	// example:
+	//
+	// 39.106.XX.XX
+	InternetEgressAddress *string `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
+	// example:
+	//
+	// 100.104.XX.XX/26
+	IntranetEgressAddress *string `json:"IntranetEgressAddress,omitempty" xml:"IntranetEgressAddress,omitempty"`
+	// example:
+	//
+	// 123.0.0.1
+	IntranetSegments *string `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
+	// example:
+	//
+	// true
+	SupportIpv6 *bool `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
+	// example:
+	//
+	// vpc-2zew2v4vcg78mXXXX
+	UserVpcId *string `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
+	// example:
+	//
+	// vsw-2zecr5r7ao44tslsXXXX
+	UserVswitchId *string `json:"UserVswitchId,omitempty" xml:"UserVswitchId,omitempty"`
+	// example:
+	//
+	// VPC_INTERNET_IPV6
+	VipTypeList       *string `json:"VipTypeList,omitempty" xml:"VipTypeList,omitempty"`
+	VpcIntranetEnable *bool   `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
+	// example:
+	//
+	// 165438596694XXXX
+	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+	// example:
+	//
+	// false
+	VpcSlbIntranetEnable *bool `json:"VpcSlbIntranetEnable,omitempty" xml:"VpcSlbIntranetEnable,omitempty"`
+}
+
+func (s DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetConnectCidrBlocks(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.ConnectCidrBlocks = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetConnectVpcId(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.ConnectVpcId = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetEgressIpv6Enable(v bool) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.EgressIpv6Enable = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetHttpsPolicies(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.HttpsPolicies = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetIPV4AclId(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.IPV4AclId = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetIPV4AclName(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.IPV4AclName = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetIPV4AclStatus(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.IPV4AclStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetIPV4AclType(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.IPV4AclType = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetIPV6AclId(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.IPV6AclId = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetIPV6AclName(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.IPV6AclName = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetIPV6AclStatus(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.IPV6AclStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetIPV6AclType(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.IPV6AclType = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetInternetEgressAddress(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.InternetEgressAddress = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetIntranetEgressAddress(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.IntranetEgressAddress = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetIntranetSegments(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.IntranetSegments = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetSupportIpv6(v bool) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.SupportIpv6 = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetUserVpcId(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.UserVpcId = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetUserVswitchId(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.UserVswitchId = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetVipTypeList(v string) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.VipTypeList = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetVpcIntranetEnable(v bool) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.VpcIntranetEnable = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetVpcOwnerId(v int64) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.VpcOwnerId = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute) SetVpcSlbIntranetEnable(v bool) *DescribeInstanceClusterInfoResponseBodyInstanceClusterAttribute {
+	s.VpcSlbIntranetEnable = &v
+	return s
+}
+
+type DescribeInstanceClusterInfoResponseBodyInstanceList struct {
+	Instance []*DescribeInstanceClusterInfoResponseBodyInstanceListInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceClusterInfoResponseBodyInstanceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceClusterInfoResponseBodyInstanceList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceList) SetInstance(v []*DescribeInstanceClusterInfoResponseBodyInstanceListInstance) *DescribeInstanceClusterInfoResponseBodyInstanceList {
+	s.Instance = v
+	return s
+}
+
+type DescribeInstanceClusterInfoResponseBodyInstanceListInstance struct {
+	// example:
+	//
+	// Instance not found.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// apigateway-ht-04e41d95e9c1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// tf-testacceu-central-1apigatewayinstance8752
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeInstanceClusterInfoResponseBodyInstanceListInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceClusterInfoResponseBodyInstanceListInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceListInstance) SetErrorMessage(v string) *DescribeInstanceClusterInfoResponseBodyInstanceListInstance {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceListInstance) SetInstanceId(v string) *DescribeInstanceClusterInfoResponseBodyInstanceListInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceListInstance) SetInstanceName(v string) *DescribeInstanceClusterInfoResponseBodyInstanceListInstance {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponseBodyInstanceListInstance) SetStatus(v string) *DescribeInstanceClusterInfoResponseBodyInstanceListInstance {
+	s.Status = &v
+	return s
+}
+
+type DescribeInstanceClusterInfoResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceClusterInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInstanceClusterInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceClusterInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceClusterInfoResponse) SetHeaders(v map[string]*string) *DescribeInstanceClusterInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponse) SetStatusCode(v int32) *DescribeInstanceClusterInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterInfoResponse) SetBody(v *DescribeInstanceClusterInfoResponseBody) *DescribeInstanceClusterInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceClusterListRequest struct {
+	InstanceClusterId   *string `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
+	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeInstanceClusterListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceClusterListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceClusterListRequest) SetInstanceClusterId(v string) *DescribeInstanceClusterListRequest {
+	s.InstanceClusterId = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListRequest) SetInstanceClusterName(v string) *DescribeInstanceClusterListRequest {
+	s.InstanceClusterName = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListRequest) SetPageNumber(v int32) *DescribeInstanceClusterListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListRequest) SetPageSize(v int32) *DescribeInstanceClusterListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListRequest) SetSecurityToken(v string) *DescribeInstanceClusterListRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeInstanceClusterListResponseBody struct {
+	InstanceClusters *DescribeInstanceClusterListResponseBodyInstanceClusters `json:"InstanceClusters,omitempty" xml:"InstanceClusters,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BZ015
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeInstanceClusterListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceClusterListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceClusterListResponseBody) SetInstanceClusters(v *DescribeInstanceClusterListResponseBodyInstanceClusters) *DescribeInstanceClusterListResponseBody {
+	s.InstanceClusters = v
+	return s
+}
+
+func (s *DescribeInstanceClusterListResponseBody) SetPageNumber(v int32) *DescribeInstanceClusterListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListResponseBody) SetPageSize(v int32) *DescribeInstanceClusterListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListResponseBody) SetRequestId(v string) *DescribeInstanceClusterListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListResponseBody) SetTotalCount(v int32) *DescribeInstanceClusterListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeInstanceClusterListResponseBodyInstanceClusters struct {
+	InstanceCluster []*DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster `json:"InstanceCluster,omitempty" xml:"InstanceCluster,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceClusterListResponseBodyInstanceClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceClusterListResponseBodyInstanceClusters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceClusterListResponseBodyInstanceClusters) SetInstanceCluster(v []*DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster) *DescribeInstanceClusterListResponseBodyInstanceClusters {
+	s.InstanceCluster = v
+	return s
+}
+
+type DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster struct {
+	// example:
+	//
+	// 2023-08-14T17:46:59+08:00
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// Test TrafficControl
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceClusterId     *string `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
+	InstanceClusterName   *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
+	InstanceClusterStatus *string `json:"InstanceClusterStatus,omitempty" xml:"InstanceClusterStatus,omitempty"`
+	InstanceClusterType   *string `json:"InstanceClusterType,omitempty" xml:"InstanceClusterType,omitempty"`
+	// example:
+	//
+	// 2024-01-12T10:11:08+08:00
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster) SetCreatedTime(v string) *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster) SetDescription(v string) *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster) SetInstanceClusterId(v string) *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster {
+	s.InstanceClusterId = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster) SetInstanceClusterName(v string) *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster {
+	s.InstanceClusterName = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster) SetInstanceClusterStatus(v string) *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster {
+	s.InstanceClusterStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster) SetInstanceClusterType(v string) *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster {
+	s.InstanceClusterType = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster) SetModifiedTime(v string) *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster) SetRegionId(v string) *DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeInstanceClusterListResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceClusterListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInstanceClusterListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceClusterListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceClusterListResponse) SetHeaders(v map[string]*string) *DescribeInstanceClusterListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceClusterListResponse) SetStatusCode(v int32) *DescribeInstanceClusterListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceClusterListResponse) SetBody(v *DescribeInstanceClusterListResponseBody) *DescribeInstanceClusterListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstanceDropConnectionsRequest struct {
 	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
 	//
@@ -53785,6 +54440,146 @@ func (client *Client) DescribeImportOASTask(request *DescribeImportOASTaskReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeImportOASTaskResponse{}
 	_body, _err := client.DescribeImportOASTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询专享实例集群的详情
+//
+// @param request - DescribeInstanceClusterInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceClusterInfoResponse
+func (client *Client) DescribeInstanceClusterInfoWithOptions(request *DescribeInstanceClusterInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceClusterInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceClusterName)) {
+		query["InstanceClusterName"] = request.InstanceClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceClusterInfo"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceClusterInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询专享实例集群的详情
+//
+// @param request - DescribeInstanceClusterInfoRequest
+//
+// @return DescribeInstanceClusterInfoResponse
+func (client *Client) DescribeInstanceClusterInfo(request *DescribeInstanceClusterInfoRequest) (_result *DescribeInstanceClusterInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceClusterInfoResponse{}
+	_body, _err := client.DescribeInstanceClusterInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询专享实例集群列表
+//
+// @param request - DescribeInstanceClusterListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceClusterListResponse
+func (client *Client) DescribeInstanceClusterListWithOptions(request *DescribeInstanceClusterListRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceClusterListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceClusterId)) {
+		query["InstanceClusterId"] = request.InstanceClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceClusterName)) {
+		query["InstanceClusterName"] = request.InstanceClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceClusterList"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceClusterListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询专享实例集群列表
+//
+// @param request - DescribeInstanceClusterListRequest
+//
+// @return DescribeInstanceClusterListResponse
+func (client *Client) DescribeInstanceClusterList(request *DescribeInstanceClusterListRequest) (_result *DescribeInstanceClusterListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceClusterListResponse{}
+	_body, _err := client.DescribeInstanceClusterListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
