@@ -716,6 +716,10 @@ type CreateAppGroupRequest struct {
 	//
 	// false
 	ScheduleBusyWorkers *bool `json:"ScheduleBusyWorkers,omitempty" xml:"ScheduleBusyWorkers,omitempty"`
+	// example:
+	//
+	// 2
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateAppGroupRequest) String() string {
@@ -793,6 +797,11 @@ func (s *CreateAppGroupRequest) SetRegionId(v string) *CreateAppGroupRequest {
 
 func (s *CreateAppGroupRequest) SetScheduleBusyWorkers(v bool) *CreateAppGroupRequest {
 	s.ScheduleBusyWorkers = &v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetVersion(v int32) *CreateAppGroupRequest {
+	s.Version = &v
 	return s
 }
 
@@ -7872,6 +7881,7 @@ type ListGroupsResponseBodyDataAppGroups struct {
 	//
 	// DocTest.Group
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Version *int32  `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListGroupsResponseBodyDataAppGroups) String() string {
@@ -7904,6 +7914,11 @@ func (s *ListGroupsResponseBodyDataAppGroups) SetDescription(v string) *ListGrou
 
 func (s *ListGroupsResponseBodyDataAppGroups) SetGroupId(v string) *ListGroupsResponseBodyDataAppGroups {
 	s.GroupId = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataAppGroups) SetVersion(v int32) *ListGroupsResponseBodyDataAppGroups {
+	s.Version = &v
 	return s
 }
 
@@ -10229,6 +10244,10 @@ type UpdateAppGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s UpdateAppGroupRequest) String() string {
@@ -10261,6 +10280,11 @@ func (s *UpdateAppGroupRequest) SetNamespace(v string) *UpdateAppGroupRequest {
 
 func (s *UpdateAppGroupRequest) SetRegionId(v string) *UpdateAppGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateAppGroupRequest) SetVersion(v int32) *UpdateAppGroupRequest {
+	s.Version = &v
 	return s
 }
 
@@ -14482,6 +14506,10 @@ func (client *Client) UpdateAppGroupWithOptions(request *UpdateAppGroupRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
