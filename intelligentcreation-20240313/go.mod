@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/intelligentcreation-20240313
+module github.com/alibabacloud-go/intelligentcreation-20240313/v2
 
 go 1.15
 

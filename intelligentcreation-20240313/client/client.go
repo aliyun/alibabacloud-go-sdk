@@ -262,6 +262,7 @@ type Text struct {
 	GmtCreate              *string  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	GmtModified            *string  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	IllustrationTaskIdList []*int64 `json:"illustrationTaskIdList,omitempty" xml:"illustrationTaskIdList,omitempty" type:"Repeated"`
+	PublishStatus          *string  `json:"publishStatus,omitempty" xml:"publishStatus,omitempty"`
 	TextContent            *string  `json:"textContent,omitempty" xml:"textContent,omitempty"`
 	// This parameter is required.
 	//
@@ -279,13 +280,15 @@ type Text struct {
 	// example:
 	//
 	// Generating
-	TextStatus *string `json:"textStatus,omitempty" xml:"textStatus,omitempty"`
+	TextStatus    *string `json:"textStatus,omitempty" xml:"textStatus,omitempty"`
+	TextStyleType *string `json:"textStyleType,omitempty" xml:"textStyleType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
-	TextTaskId *int64 `json:"textTaskId,omitempty" xml:"textTaskId,omitempty"`
+	TextTaskId *int64    `json:"textTaskId,omitempty" xml:"textTaskId,omitempty"`
+	TextThemes []*string `json:"textThemes,omitempty" xml:"textThemes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xxx
@@ -332,6 +335,11 @@ func (s *Text) SetIllustrationTaskIdList(v []*int64) *Text {
 	return s
 }
 
+func (s *Text) SetPublishStatus(v string) *Text {
+	s.PublishStatus = &v
+	return s
+}
+
 func (s *Text) SetTextContent(v string) *Text {
 	s.TextContent = &v
 	return s
@@ -357,8 +365,18 @@ func (s *Text) SetTextStatus(v string) *Text {
 	return s
 }
 
+func (s *Text) SetTextStyleType(v string) *Text {
+	s.TextStyleType = &v
+	return s
+}
+
 func (s *Text) SetTextTaskId(v int64) *Text {
 	s.TextTaskId = &v
+	return s
+}
+
+func (s *Text) SetTextThemes(v []*string) *Text {
+	s.TextThemes = v
 	return s
 }
 
@@ -374,6 +392,38 @@ func (s *Text) SetUserNameCreate(v string) *Text {
 
 func (s *Text) SetUserNameModified(v string) *Text {
 	s.UserNameModified = &v
+	return s
+}
+
+type TextQueryResult struct {
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Texts     []*Text `json:"texts,omitempty" xml:"texts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s TextQueryResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextQueryResult) GoString() string {
+	return s.String()
+}
+
+func (s *TextQueryResult) SetRequestId(v string) *TextQueryResult {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TextQueryResult) SetTexts(v []*Text) *TextQueryResult {
+	s.Texts = v
+	return s
+}
+
+func (s *TextQueryResult) SetTotal(v int32) *TextQueryResult {
+	s.Total = &v
 	return s
 }
 
@@ -536,6 +586,7 @@ type TextTaskCreateCmd struct {
 	//
 	// 28274623764834
 	IdempotentId *string `json:"idempotentId,omitempty" xml:"idempotentId,omitempty"`
+	Industry     *string `json:"industry,omitempty" xml:"industry,omitempty"`
 	// example:
 	//
 	// xxx
@@ -563,7 +614,8 @@ type TextTaskCreateCmd struct {
 	// example:
 	//
 	// 旅游路线
-	Theme *string `json:"theme,omitempty" xml:"theme,omitempty"`
+	Theme  *string   `json:"theme,omitempty" xml:"theme,omitempty"`
+	Themes []*string `json:"themes,omitempty" xml:"themes,omitempty" type:"Repeated"`
 }
 
 func (s TextTaskCreateCmd) String() string {
@@ -581,6 +633,11 @@ func (s *TextTaskCreateCmd) SetContentRequirement(v string) *TextTaskCreateCmd {
 
 func (s *TextTaskCreateCmd) SetIdempotentId(v string) *TextTaskCreateCmd {
 	s.IdempotentId = &v
+	return s
+}
+
+func (s *TextTaskCreateCmd) SetIndustry(v string) *TextTaskCreateCmd {
+	s.Industry = &v
 	return s
 }
 
@@ -626,6 +683,11 @@ func (s *TextTaskCreateCmd) SetTextModeType(v string) *TextTaskCreateCmd {
 
 func (s *TextTaskCreateCmd) SetTheme(v string) *TextTaskCreateCmd {
 	s.Theme = &v
+	return s
+}
+
+func (s *TextTaskCreateCmd) SetThemes(v []*string) *TextTaskCreateCmd {
+	s.Themes = v
 	return s
 }
 
@@ -1041,6 +1103,23 @@ func (s *GetTextTaskResponse) SetBody(v *TextTaskResult) *GetTextTaskResponse {
 	return s
 }
 
+type ListTextThemesRequest struct {
+	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+}
+
+func (s ListTextThemesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextThemesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextThemesRequest) SetIndustry(v string) *ListTextThemesRequest {
+	s.Industry = &v
+	return s
+}
+
 type ListTextThemesResponse struct {
 	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -1066,6 +1145,109 @@ func (s *ListTextThemesResponse) SetStatusCode(v int32) *ListTextThemesResponse 
 }
 
 func (s *ListTextThemesResponse) SetBody(v *TextThemeListResult) *ListTextThemesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTextsRequest struct {
+	// example:
+	//
+	// API
+	GenerationSource *string `json:"generationSource,omitempty" xml:"generationSource,omitempty"`
+	// example:
+	//
+	// Common
+	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// PUBLISH
+	PublishStatus *string `json:"publishStatus,omitempty" xml:"publishStatus,omitempty"`
+	// example:
+	//
+	// WECHAT_MOMENT
+	TextStyleType *string `json:"textStyleType,omitempty" xml:"textStyleType,omitempty"`
+	// example:
+	//
+	// xxx
+	TextTheme *string `json:"textTheme,omitempty" xml:"textTheme,omitempty"`
+}
+
+func (s ListTextsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextsRequest) SetGenerationSource(v string) *ListTextsRequest {
+	s.GenerationSource = &v
+	return s
+}
+
+func (s *ListTextsRequest) SetIndustry(v string) *ListTextsRequest {
+	s.Industry = &v
+	return s
+}
+
+func (s *ListTextsRequest) SetPageNumber(v int32) *ListTextsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTextsRequest) SetPageSize(v int32) *ListTextsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTextsRequest) SetPublishStatus(v string) *ListTextsRequest {
+	s.PublishStatus = &v
+	return s
+}
+
+func (s *ListTextsRequest) SetTextStyleType(v string) *ListTextsRequest {
+	s.TextStyleType = &v
+	return s
+}
+
+func (s *ListTextsRequest) SetTextTheme(v string) *ListTextsRequest {
+	s.TextTheme = &v
+	return s
+}
+
+type ListTextsResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TextQueryResult   `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTextsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextsResponse) SetHeaders(v map[string]*string) *ListTextsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTextsResponse) SetStatusCode(v int32) *ListTextsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTextsResponse) SetBody(v *TextQueryResult) *ListTextsResponse {
 	s.Body = v
 	return s
 }
@@ -1507,14 +1689,26 @@ func (client *Client) GetTextTask(textTaskId *string) (_result *GetTextTaskRespo
 //
 // 查询文案主题列表
 //
+// @param request - ListTextThemesRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTextThemesResponse
-func (client *Client) ListTextThemesWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTextThemesResponse, _err error) {
+func (client *Client) ListTextThemesWithOptions(request *ListTextThemesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTextThemesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Industry)) {
+		query["industry"] = request.Industry
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTextThemes"),
@@ -1540,12 +1734,102 @@ func (client *Client) ListTextThemesWithOptions(headers map[string]*string, runt
 //
 // 查询文案主题列表
 //
+// @param request - ListTextThemesRequest
+//
 // @return ListTextThemesResponse
-func (client *Client) ListTextThemes() (_result *ListTextThemesResponse, _err error) {
+func (client *Client) ListTextThemes(request *ListTextThemesRequest) (_result *ListTextThemesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListTextThemesResponse{}
-	_body, _err := client.ListTextThemesWithOptions(headers, runtime)
+	_body, _err := client.ListTextThemesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举文案
+//
+// @param request - ListTextsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTextsResponse
+func (client *Client) ListTextsWithOptions(request *ListTextsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTextsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GenerationSource)) {
+		query["generationSource"] = request.GenerationSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Industry)) {
+		query["industry"] = request.Industry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublishStatus)) {
+		query["publishStatus"] = request.PublishStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TextStyleType)) {
+		query["textStyleType"] = request.TextStyleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TextTheme)) {
+		query["textTheme"] = request.TextTheme
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTexts"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/texts"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTextsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举文案
+//
+// @param request - ListTextsRequest
+//
+// @return ListTextsResponse
+func (client *Client) ListTexts(request *ListTextsRequest) (_result *ListTextsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTextsResponse{}
+	_body, _err := client.ListTextsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
