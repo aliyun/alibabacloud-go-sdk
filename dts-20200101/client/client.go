@@ -31,13 +31,17 @@ type ConfigureDtsJobRequest struct {
 	//
 	// {"fullCheckModel":1,"fullCheckRatio":20,"checkMaximumHourEnable":1,"checkMaximumHour":1,"fullCheckErrorNotice":true,"fullCheckValidFailNotice":true,"fullCheckNoticeValue":8,"incrementalCheckErrorNotice":true,"incrementalCheckValidFailNotice":true,"incrementalCheckValidFailNoticeTimes":2,"incrementalCheckValidFailNoticePeriod":1,"incrementalCheckValidFailNoticeValue":1,"incrementalCheckDelayNotice":true,"incrementalCheckDelayNoticeTimes":2,"incrementalCheckDelayNoticePeriod":1,"incrementalCheckDelayNoticeValue":60,"fullDataCheck":true,"incrementalDataCheck":true,"dataCheckNoticePhone":"13126800****","dataCheckDbList":"{"dts":{"name":"dts","all":true}}"}
 	DataCheckConfigure *string `json:"DataCheckConfigure,omitempty" xml:"DataCheckConfigure,omitempty"`
-	// The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+	// The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	DataInitialization *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [Reserve](~~273111~~).
+	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -49,7 +53,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// {"dtstest":{"name":"dtstest","all":true}}
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
-	// The data verification task for a data migration or synchronization instance. The value is a JSON string that indicates parameter limits or alert configurations. For more information, see [DataCheckConfigure](~~459023~~).
+	// The data verification task for a data migration or synchronization instance. The value is a JSON string that indicates parameter limits or alert configurations. For more information, see [DataCheckConfigure](https://help.aliyun.com/document_detail/459023.html).
 	//
 	// example:
 	//
@@ -81,7 +85,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// 	- This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
 	//
-	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
@@ -91,7 +95,7 @@ type ConfigureDtsJobRequest struct {
 	DestCaCertificatePassword *string `json:"DestCaCertificatePassword,omitempty" xml:"DestCaCertificatePassword,omitempty"`
 	// The password of the destination database account.
 	//
-	// >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
+	// >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
 	//
 	// example:
 	//
@@ -115,9 +119,9 @@ type ConfigureDtsJobRequest struct {
 	//
 	// example:
 	//
-	// 172.16.**.***
+	// 172.16.\*\*.***
 	DestinationEndpointIP *string `json:"DestinationEndpointIP,omitempty" xml:"DestinationEndpointIP,omitempty"`
-	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// >  If the destination instance is an Alibaba Cloud database instance, this parameter is required.
 	//
@@ -173,7 +177,9 @@ type ConfigureDtsJobRequest struct {
 	//
 	// 	- Default value: **MYSQL**.
 	//
-	// 	- If the DestinationEndpointEngineName parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+	// 	- If the DestinationEndpointEngineName parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -181,7 +187,7 @@ type ConfigureDtsJobRequest struct {
 	DestinationEndpointInstanceType *string `json:"DestinationEndpointInstanceType,omitempty" xml:"DestinationEndpointInstanceType,omitempty"`
 	// The ID of the data migration or synchronization task.
 	//
-	// >  You must specify at least one of the DtsJobId and **DtsInstanceId*	- parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// >  You must specify at least one of the DtsJobId and **DtsInstanceId*	- parameters. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// example:
 	//
@@ -204,9 +210,9 @@ type ConfigureDtsJobRequest struct {
 	//
 	// 	- In most cases, this parameter is required.
 	//
-	// 	- The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](~~175878~~) or [Prepare the database accounts for data synchronization](~~213152~~).
+	// 	- The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
 	//
-	// 	- If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
+	// 	- If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
 	//
 	// example:
 	//
@@ -252,7 +258,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// 	- This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
 	//
-	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
@@ -270,13 +276,15 @@ type ConfigureDtsJobRequest struct {
 	//
 	// 	- If the SourceEndpointInstanceType parameter is set to **EXPRESS*	- or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
 	//
-	// >  If the SourceEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+	// >  If the SourceEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// rdsmysql_to_mysql
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -310,7 +318,9 @@ type ConfigureDtsJobRequest struct {
 	FileOssUrl *string `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
 	// The ID of the data migration or synchronization instance.
 	//
-	// >  You must specify at least one of the **DtsJobId*	- and DtsInstanceId parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+	// >  You must specify at least one of the **DtsJobId*	- and DtsInstanceId parameters. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -354,9 +364,9 @@ type ConfigureDtsJobRequest struct {
 	//
 	// example:
 	//
-	// 172.16.**.***
+	// 172.16.\*\*.***
 	SourceEndpointIP *string `json:"SourceEndpointIP,omitempty" xml:"SourceEndpointIP,omitempty"`
-	// The ID of the region in which the source instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// >  If the source instance is an Alibaba Cloud database instance, this parameter is required.
 	//
@@ -404,7 +414,9 @@ type ConfigureDtsJobRequest struct {
 	//
 	// 	- Default value: **MYSQL**.
 	//
-	// 	- If the SourceEndpointEngineName parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+	// 	- If the SourceEndpointEngineName parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -416,7 +428,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// 	- In most cases, this parameter is required.
 	//
-	// 	- The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](~~175878~~) or [Prepare the database accounts for data synchronization](~~213152~~).
+	// 	- The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
 	//
 	// example:
 	//
@@ -468,9 +480,9 @@ type ConfigureDtsJobRequest struct {
 	//
 	// 	- If the destination instance is a Message Queue for Apache Kafka instance, you must set this parameter to **ECS*	- or **EXPRESS*	- because you can use a Message Queue for Apache Kafka instance only as a self-managed database connected over ECS or Express Connect.
 	//
-	// 	- For more information, see [Supported databases](~~176064~~).
+	// 	- For more information, see [Supported databases](https://help.aliyun.com/document_detail/176064.html).
 	//
-	// 	- If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](~~146958~~).
+	// 	- If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](https://help.aliyun.com/document_detail/146958.html).
 	//
 	// example:
 	//
@@ -478,7 +490,7 @@ type ConfigureDtsJobRequest struct {
 	SourceEndpointOwnerID *string `json:"SourceEndpointOwnerID,omitempty" xml:"SourceEndpointOwnerID,omitempty"`
 	// The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
 	//
-	// >  This parameter is required when you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+	// >  This parameter is required when you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
 	//
 	// example:
 	//
@@ -512,7 +524,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// 	- If the DestinationEndpointInstanceType parameter is set to **EXPRESS*	- or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
 	//
-	// >  If the DestinationEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+	// >  If the DestinationEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
 	//
 	// example:
 	//
@@ -535,6 +547,8 @@ type ConfigureDtsJobRequest struct {
 	// 	- **false**: does not perform incremental data migration or synchronization.
 	//
 	// 	- **true**: performs incremental data migration or synchronization.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -850,13 +864,17 @@ type ConfigureDtsJobAdvanceRequest struct {
 	//
 	// {"fullCheckModel":1,"fullCheckRatio":20,"checkMaximumHourEnable":1,"checkMaximumHour":1,"fullCheckErrorNotice":true,"fullCheckValidFailNotice":true,"fullCheckNoticeValue":8,"incrementalCheckErrorNotice":true,"incrementalCheckValidFailNotice":true,"incrementalCheckValidFailNoticeTimes":2,"incrementalCheckValidFailNoticePeriod":1,"incrementalCheckValidFailNoticeValue":1,"incrementalCheckDelayNotice":true,"incrementalCheckDelayNoticeTimes":2,"incrementalCheckDelayNoticePeriod":1,"incrementalCheckDelayNoticeValue":60,"fullDataCheck":true,"incrementalDataCheck":true,"dataCheckNoticePhone":"13126800****","dataCheckDbList":"{"dts":{"name":"dts","all":true}}"}
 	DataCheckConfigure *string `json:"DataCheckConfigure,omitempty" xml:"DataCheckConfigure,omitempty"`
-	// The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+	// The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	DataInitialization *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [Reserve](~~273111~~).
+	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -868,7 +886,7 @@ type ConfigureDtsJobAdvanceRequest struct {
 	//
 	// {"dtstest":{"name":"dtstest","all":true}}
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
-	// The data verification task for a data migration or synchronization instance. The value is a JSON string that indicates parameter limits or alert configurations. For more information, see [DataCheckConfigure](~~459023~~).
+	// The data verification task for a data migration or synchronization instance. The value is a JSON string that indicates parameter limits or alert configurations. For more information, see [DataCheckConfigure](https://help.aliyun.com/document_detail/459023.html).
 	//
 	// example:
 	//
@@ -900,7 +918,7 @@ type ConfigureDtsJobAdvanceRequest struct {
 	//
 	// 	- This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
 	//
-	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
@@ -910,7 +928,7 @@ type ConfigureDtsJobAdvanceRequest struct {
 	DestCaCertificatePassword *string `json:"DestCaCertificatePassword,omitempty" xml:"DestCaCertificatePassword,omitempty"`
 	// The password of the destination database account.
 	//
-	// >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
+	// >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
 	//
 	// example:
 	//
@@ -934,9 +952,9 @@ type ConfigureDtsJobAdvanceRequest struct {
 	//
 	// example:
 	//
-	// 172.16.**.***
+	// 172.16.\*\*.***
 	DestinationEndpointIP *string `json:"DestinationEndpointIP,omitempty" xml:"DestinationEndpointIP,omitempty"`
-	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// >  If the destination instance is an Alibaba Cloud database instance, this parameter is required.
 	//
@@ -992,7 +1010,9 @@ type ConfigureDtsJobAdvanceRequest struct {
 	//
 	// 	- Default value: **MYSQL**.
 	//
-	// 	- If the DestinationEndpointEngineName parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+	// 	- If the DestinationEndpointEngineName parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1000,7 +1020,7 @@ type ConfigureDtsJobAdvanceRequest struct {
 	DestinationEndpointInstanceType *string `json:"DestinationEndpointInstanceType,omitempty" xml:"DestinationEndpointInstanceType,omitempty"`
 	// The ID of the data migration or synchronization task.
 	//
-	// >  You must specify at least one of the DtsJobId and **DtsInstanceId*	- parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// >  You must specify at least one of the DtsJobId and **DtsInstanceId*	- parameters. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// example:
 	//
@@ -1023,9 +1043,9 @@ type ConfigureDtsJobAdvanceRequest struct {
 	//
 	// 	- In most cases, this parameter is required.
 	//
-	// 	- The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](~~175878~~) or [Prepare the database accounts for data synchronization](~~213152~~).
+	// 	- The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
 	//
-	// 	- If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
+	// 	- If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
 	//
 	// example:
 	//
@@ -1071,7 +1091,7 @@ type ConfigureDtsJobAdvanceRequest struct {
 	//
 	// 	- This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
 	//
-	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
@@ -1089,13 +1109,15 @@ type ConfigureDtsJobAdvanceRequest struct {
 	//
 	// 	- If the SourceEndpointInstanceType parameter is set to **EXPRESS*	- or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
 	//
-	// >  If the SourceEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+	// >  If the SourceEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// rdsmysql_to_mysql
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -1129,7 +1151,9 @@ type ConfigureDtsJobAdvanceRequest struct {
 	FileOssUrlObject io.Reader `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
 	// The ID of the data migration or synchronization instance.
 	//
-	// >  You must specify at least one of the **DtsJobId*	- and DtsInstanceId parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+	// >  You must specify at least one of the **DtsJobId*	- and DtsInstanceId parameters. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1173,9 +1197,9 @@ type ConfigureDtsJobAdvanceRequest struct {
 	//
 	// example:
 	//
-	// 172.16.**.***
+	// 172.16.\*\*.***
 	SourceEndpointIP *string `json:"SourceEndpointIP,omitempty" xml:"SourceEndpointIP,omitempty"`
-	// The ID of the region in which the source instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// >  If the source instance is an Alibaba Cloud database instance, this parameter is required.
 	//
@@ -1223,7 +1247,9 @@ type ConfigureDtsJobAdvanceRequest struct {
 	//
 	// 	- Default value: **MYSQL**.
 	//
-	// 	- If the SourceEndpointEngineName parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+	// 	- If the SourceEndpointEngineName parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1235,7 +1261,7 @@ type ConfigureDtsJobAdvanceRequest struct {
 	//
 	// 	- In most cases, this parameter is required.
 	//
-	// 	- The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](~~175878~~) or [Prepare the database accounts for data synchronization](~~213152~~).
+	// 	- The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
 	//
 	// example:
 	//
@@ -1287,9 +1313,9 @@ type ConfigureDtsJobAdvanceRequest struct {
 	//
 	// 	- If the destination instance is a Message Queue for Apache Kafka instance, you must set this parameter to **ECS*	- or **EXPRESS*	- because you can use a Message Queue for Apache Kafka instance only as a self-managed database connected over ECS or Express Connect.
 	//
-	// 	- For more information, see [Supported databases](~~176064~~).
+	// 	- For more information, see [Supported databases](https://help.aliyun.com/document_detail/176064.html).
 	//
-	// 	- If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](~~146958~~).
+	// 	- If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](https://help.aliyun.com/document_detail/146958.html).
 	//
 	// example:
 	//
@@ -1297,7 +1323,7 @@ type ConfigureDtsJobAdvanceRequest struct {
 	SourceEndpointOwnerID *string `json:"SourceEndpointOwnerID,omitempty" xml:"SourceEndpointOwnerID,omitempty"`
 	// The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
 	//
-	// >  This parameter is required when you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+	// >  This parameter is required when you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
 	//
 	// example:
 	//
@@ -1331,7 +1357,7 @@ type ConfigureDtsJobAdvanceRequest struct {
 	//
 	// 	- If the DestinationEndpointInstanceType parameter is set to **EXPRESS*	- or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
 	//
-	// >  If the DestinationEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+	// >  If the DestinationEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
 	//
 	// example:
 	//
@@ -1354,6 +1380,8 @@ type ConfigureDtsJobAdvanceRequest struct {
 	// 	- **false**: does not perform incremental data migration or synchronization.
 	//
 	// 	- **true**: performs incremental data migration or synchronization.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1783,11 +1811,15 @@ type ConfigureMigrationJobRequest struct {
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query the instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsl3m1213ye7l****
 	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
 	// The name of the data migration task. The name can be up to 32 characters in length. We recommend that you specify an informative name to identify the task. You do not need to use a unique task name.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1795,20 +1827,22 @@ type ConfigureMigrationJobRequest struct {
 	MigrationJobName *string `json:"MigrationJobName,omitempty" xml:"MigrationJobName,omitempty"`
 	// The objects that you want to migrate. The value is a JSON string and can contain regular expressions.
 	//
-	// For more information, see [MigrationObject](~~141227~~).
+	// For more information, see [MigrationObject](https://help.aliyun.com/document_detail/141227.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// [{"DBName":"dtstestdata","TableIncludes":[{"TableName":"customer"}]}]
 	MigrationObject *string `json:"MigrationObject,omitempty" xml:"MigrationObject,omitempty"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
 	// {     "autoStartModulesAfterConfig": "none",     "targetTableMode": 2 }
 	MigrationReserved *string `json:"MigrationReserved,omitempty" xml:"MigrationReserved,omitempty"`
 	OwnerId           *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the data migration instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the data migration instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// >  The region ID of the data migration instance is the same as that of the destination database.
 	//
@@ -1948,6 +1982,8 @@ type ConfigureMigrationJobRequestDestinationEndpoint struct {
 	//
 	// 	- **Greenplum**: AnalyticDB for PostgreSQL instance
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RDS
@@ -1976,7 +2012,7 @@ type ConfigureMigrationJobRequestDestinationEndpoint struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The region ID of the destination database.
 	//
-	// >  If the **DestinationEndpoint.InstanceType*	- parameter is set to **LocalInstance**, you can enter **cn-hangzhou*	- or the ID of the region closest to the self-managed database. For more information, see [List of supported regions](~~141033~~).
+	// >  If the **DestinationEndpoint.InstanceType*	- parameter is set to **LocalInstance**, you can enter **cn-hangzhou*	- or the ID of the region closest to the self-managed database. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -1984,7 +2020,7 @@ type ConfigureMigrationJobRequestDestinationEndpoint struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The database account of the destination database.
 	//
-	// >  The permissions that are required for database accounts vary with the migration scenario. For more information, see [Overview of data migration scenarios](~~26618~~).
+	// >  The permissions that are required for database accounts vary with the migration scenario. For more information, see [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html).
 	//
 	// example:
 	//
@@ -2057,7 +2093,9 @@ type ConfigureMigrationJobRequestMigrationMode struct {
 	//
 	// 	- **false**: no
 	//
-	// >  For more information about databases that support full data migration, see [Supported databases and migration types](~~26618~~).
+	// >  For more information about databases that support full data migration, see [Supported databases and migration types](https://help.aliyun.com/document_detail/26618.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2069,7 +2107,9 @@ type ConfigureMigrationJobRequestMigrationMode struct {
 	//
 	// 	- **false**: no
 	//
-	// >  For more information about databases that support incremental data migration, see [Supported databases and migration types](~~26618~~).
+	// >  For more information about databases that support incremental data migration, see [Supported databases and migration types](https://help.aliyun.com/document_detail/26618.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2081,7 +2121,9 @@ type ConfigureMigrationJobRequestMigrationMode struct {
 	//
 	// 	- **false**: no
 	//
-	// >  For more information about databases that support schema migration, see [Supported databases and migration types](~~26618~~).
+	// >  For more information about databases that support schema migration, see [Supported databases and migration types](https://help.aliyun.com/document_detail/26618.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2173,6 +2215,8 @@ type ConfigureMigrationJobRequestSourceEndpoint struct {
 	//
 	// 	- **PolarDB_o**: PolarDB O Edition cluster
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RDS
@@ -2209,7 +2253,7 @@ type ConfigureMigrationJobRequestSourceEndpoint struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The region ID of the source database.
 	//
-	// >  If the **SourceEndpoint.InstanceType*	- parameter is set to **LocalInstance**, you can enter **cn-hangzhou*	- or the ID of the region closest to the self-managed database. For more information, see [List of supported regions](~~141033~~).
+	// >  If the **SourceEndpoint.InstanceType*	- parameter is set to **LocalInstance**, you can enter **cn-hangzhou*	- or the ID of the region closest to the self-managed database. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -2217,7 +2261,7 @@ type ConfigureMigrationJobRequestSourceEndpoint struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The authorized RAM role of the source instance. You must specify the RAM role only if the source instance and the destination instance belong to different Alibaba Cloud accounts. You can use the RAM role to allow the Alibaba Cloud account that owns the destination instance to access the source instance.
 	//
-	// >  For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+	// >  For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
 	//
 	// example:
 	//
@@ -2225,7 +2269,7 @@ type ConfigureMigrationJobRequestSourceEndpoint struct {
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The database account of the source database.
 	//
-	// >  The permissions that are required for database accounts vary with the migration scenario. For more information, see [Overview of data migration scenarios](~~26618~~).
+	// >  The permissions that are required for database accounts vary with the migration scenario. For more information, see [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html).
 	//
 	// example:
 	//
@@ -2398,7 +2442,7 @@ type ConfigureMigrationJobAlertRequest struct {
 	//
 	// 	- This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
 	//
-	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
+	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
@@ -2434,7 +2478,7 @@ type ConfigureMigrationJobAlertRequest struct {
 	//
 	// 	- This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
 	//
-	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
+	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
@@ -2459,6 +2503,8 @@ type ConfigureMigrationJobAlertRequest struct {
 	// enable
 	ErrorAlertStatus *string `json:"ErrorAlertStatus,omitempty" xml:"ErrorAlertStatus,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2620,7 +2666,9 @@ type ConfigureSubscriptionRequest struct {
 	//
 	// 1616902385
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// The objects for which you want to track data changes. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+	// The objects for which you want to track data changes. The value must be a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2648,7 +2696,7 @@ type ConfigureSubscriptionRequest struct {
 	//
 	// 	- This parameter is available only for users of the China site (aliyun.com). Only mobile numbers in the Chinese mainland are supported. You can specify up to 10 mobile numbers.
 	//
-	// 	- Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+	// 	- Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
@@ -2663,13 +2711,13 @@ type ConfigureSubscriptionRequest struct {
 	// 10
 	DelayRuleTime *int64  `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
 	DtsBisLabel   *string `json:"DtsBisLabel,omitempty" xml:"DtsBisLabel,omitempty"`
-	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
 	//
 	// example:
 	//
 	// dtsy0zz3t13h7d****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// example:
 	//
@@ -2678,6 +2726,8 @@ type ConfigureSubscriptionRequest struct {
 	// The name of the change tracking task.
 	//
 	// >  We recommend that you specify a descriptive name for easy identification. You do not need to use a unique name.
+	//
+	// This parameter is required.
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
 	// Specifies whether to monitor the task status. Valid values:
 	//
@@ -2695,7 +2745,7 @@ type ConfigureSubscriptionRequest struct {
 	//
 	// 	- This parameter is available only for users of the China site (aliyun.com). Only mobile numbers in the Chinese mainland are supported. You can specify up to 10 mobile numbers.
 	//
-	// 	- Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+	// 	- Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
@@ -2703,13 +2753,15 @@ type ConfigureSubscriptionRequest struct {
 	ErrorPhone *string  `json:"ErrorPhone,omitempty" xml:"ErrorPhone,omitempty"`
 	MaxDu      *float64 `json:"MaxDu,omitempty" xml:"MaxDu,omitempty"`
 	MinDu      *float64 `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
-	// The ID of the region in which the Data Transmission Service (DTS) instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the Data Transmission Service (DTS) instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The reserved parameter of DTS. The value must be a JSON string. You can specify this parameter to add more configurations of the source or destination database to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [MigrationReserved](~~176470~~).
+	// The reserved parameter of DTS. The value must be a JSON string. You can specify this parameter to add more configurations of the source or destination database to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
@@ -2798,7 +2850,7 @@ type ConfigureSubscriptionRequest struct {
 	//
 	// 3306
 	SourceEndpointPort *string `json:"SourceEndpointPort,omitempty" xml:"SourceEndpointPort,omitempty"`
-	// The ID of the region in which the source database resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the source database resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// >  If the source database is a self-managed database with a public IP address, you can set the value of this parameter to **cn-hangzhou*	- or the ID of the region that is closest to the region in which the self-managed database resides.
 	//
@@ -2808,7 +2860,7 @@ type ConfigureSubscriptionRequest struct {
 	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
 	// The RAM role that is authorized to access the source database. This parameter is required if the source database does not belong to the Alibaba Cloud account that you use to configure the change tracking task. In this case, you must authorize the Alibaba Cloud account to access the source database by using a RAM role.
 	//
-	// >  For more information about the permissions that are required for the RAM role and how to grant the permissions to the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+	// >  For more information about the permissions that are required for the RAM role and how to grant the permissions to the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
 	//
 	// example:
 	//
@@ -2816,7 +2868,7 @@ type ConfigureSubscriptionRequest struct {
 	SourceEndpointRole *string `json:"SourceEndpointRole,omitempty" xml:"SourceEndpointRole,omitempty"`
 	// The username of the account that is used to connect to the source database.
 	//
-	// >  The permissions that are required for the database account vary with the change tracking scenario. For more information, see [Prepare the source database account for change tracking](~~212653~~).
+	// >  The permissions that are required for the database account vary with the change tracking scenario. For more information, see [Prepare the source database account for change tracking](https://help.aliyun.com/document_detail/212653.html).
 	//
 	// example:
 	//
@@ -2849,6 +2901,8 @@ type ConfigureSubscriptionRequest struct {
 	// 	- To use the new version of the change tracking feature, you must specify the SubscriptionInstanceNetworkType parameter. You must also specify the **SubscriptionInstanceVPCId*	- and **SubscriptionInstanceVSwitchID*	- parameters. If you do not specify the SubscriptionInstanceNetworkType parameter, the previous version of the change tracking feature is used.
 	//
 	// 	- The previous version of the change tracking feature supports self-managed MySQL databases, ApsaraDB RDS for MySQL instances, and PolarDB-X 1.0 instances. The new version of the change tracking feature supports self-managed MySQL databases, ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and Oracle databases.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3180,13 +3234,15 @@ type ConfigureSubscriptionInstanceRequest struct {
 	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// dtshp8n2ze4r5x****
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
-	// The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
+	// The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html) operation to query the instance ID.
 	//
 	// example:
 	//
@@ -3206,7 +3262,9 @@ type ConfigureSubscriptionInstanceRequest struct {
 	//
 	// vpc
 	SubscriptionInstanceNetworkType *string `json:"SubscriptionInstanceNetworkType,omitempty" xml:"SubscriptionInstanceNetworkType,omitempty"`
-	// The objects for which you want to track data changes. The value is a JSON string and can contain regular expressions. For more information, see [SubscriptionObjects](~~141902~~).
+	// The objects for which you want to track data changes. The value is a JSON string and can contain regular expressions. For more information, see [SubscriptionObjects](https://help.aliyun.com/document_detail/141902.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3316,7 +3374,7 @@ type ConfigureSubscriptionInstanceRequestSourceEndpoint struct {
 	//
 	// 	- **dg**: self-managed database connected over Database Gateway
 	//
-	// >  The engine of a self-managed database can be MySQL or Oracle. You must specify the engine type when you call the [CreateSubscriptionInstance](~~49436~~) operation.
+	// >  The engine of a self-managed database can be MySQL or Oracle. You must specify the engine type when you call the [CreateSubscriptionInstance](https://help.aliyun.com/document_detail/49436.html) operation.
 	//
 	// example:
 	//
@@ -3354,7 +3412,7 @@ type ConfigureSubscriptionInstanceRequestSourceEndpoint struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The RAM role that is authorized to access the source database. This parameter is required if the source database does not belong to the Alibaba Cloud account that you use to configure the change tracking instance. In this case, you must authorize the Alibaba Cloud account to access the source database by using a RAM role.
 	//
-	// >  For more information about the permissions that are required for the RAM role and how to grant permissions to the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+	// >  For more information about the permissions that are required for the RAM role and how to grant permissions to the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
 	//
 	// example:
 	//
@@ -3362,7 +3420,7 @@ type ConfigureSubscriptionInstanceRequestSourceEndpoint struct {
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The username of the account that is used to connect to the source database.
 	//
-	// >  The permissions that are required for the database account vary with the change tracking scenario. For more information, see [Overview of change tracking scenarios](~~145715~~).
+	// >  The permissions that are required for the database account vary with the change tracking scenario. For more information, see [Overview of change tracking scenarios](https://help.aliyun.com/document_detail/145715.html).
 	//
 	// example:
 	//
@@ -3435,6 +3493,8 @@ type ConfigureSubscriptionInstanceRequestSubscriptionDataType struct {
 	//
 	// 	- **false**: does not track DDL statements.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// true
@@ -3444,6 +3504,8 @@ type ConfigureSubscriptionInstanceRequestSubscriptionDataType struct {
 	// 	- **true**: tracks DML statements.
 	//
 	// 	- **false**: does not tack DML statements.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3603,7 +3665,7 @@ type ConfigureSubscriptionInstanceAlertRequest struct {
 	//
 	// 	- This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
 	//
-	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
+	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
@@ -3639,7 +3701,7 @@ type ConfigureSubscriptionInstanceAlertRequest struct {
 	//
 	// 	- This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
 	//
-	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
+	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
@@ -3667,6 +3729,8 @@ type ConfigureSubscriptionInstanceAlertRequest struct {
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3840,13 +3904,15 @@ type ConfigureSynchronizationJobRequest struct {
 	//
 	// >  Default value: **true**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// true
 	DataInitialization *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
 	//
-	// >  This parameter can be used for data synchronization between ApsaraDB for Redis Enterprise Edition instances. For more information, see [Use OpenAPI Explorer to configure one-way or two-way data synchronization between ApsaraDB for Redis Enterprise Edition instances](~~155967~~).
+	// >  This parameter can be used for data synchronization between ApsaraDB for Redis Enterprise Edition instances. For more information, see [Use OpenAPI Explorer to configure one-way or two-way data synchronization between ApsaraDB for Redis Enterprise Edition instances](https://help.aliyun.com/document_detail/155967.html).
 	//
 	// example:
 	//
@@ -3862,6 +3928,8 @@ type ConfigureSynchronizationJobRequest struct {
 	// 	- **false**: no
 	//
 	// >  Default value: **true**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3883,7 +3951,9 @@ type ConfigureSynchronizationJobRequest struct {
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
+	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3893,7 +3963,9 @@ type ConfigureSynchronizationJobRequest struct {
 	//
 	// >  We recommend that you specify an informative name for easy identification. You do not need to use a unique task name.
 	SynchronizationJobName *string `json:"SynchronizationJobName,omitempty" xml:"SynchronizationJobName,omitempty"`
-	// The objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see [SynchronizationObjects](~~141901~~).
+	// The objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see [SynchronizationObjects](https://help.aliyun.com/document_detail/141901.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4057,7 +4129,7 @@ type ConfigureSynchronizationJobRequestDestinationEndpoint struct {
 	//
 	// >
 	//
-	// 	- The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](~~140954~~).
+	// 	- The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/140954.html).
 	//
 	// 	- If the **DestinationEndpoint.InstanceType*	- parameter is set to **ECS**, **Express**, **dg**, or **cen**, you must specify the DestinationEndpoint.UserName parameter.
 	//
@@ -4259,7 +4331,7 @@ type ConfigureSynchronizationJobRequestSourceEndpoint struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
 	//
-	// >  You must specify this parameter when you synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+	// >  You must specify this parameter when you synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
 	//
 	// example:
 	//
@@ -4273,7 +4345,7 @@ type ConfigureSynchronizationJobRequestSourceEndpoint struct {
 	//
 	// 	- If the **SourceEndpoint.InstanceType*	- parameter is set to **Redis**, you do not need to specify the database account.
 	//
-	// 	- The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](~~140954~~).
+	// 	- The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/140954.html).
 	//
 	// example:
 	//
@@ -4431,7 +4503,7 @@ type ConfigureSynchronizationJobAlertRequest struct {
 	//
 	// 	- This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
 	//
-	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
+	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
@@ -4467,7 +4539,7 @@ type ConfigureSynchronizationJobAlertRequest struct {
 	//
 	// 	- This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
 	//
-	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
+	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
@@ -4507,6 +4579,8 @@ type ConfigureSynchronizationJobAlertRequest struct {
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 	// The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4693,7 +4767,9 @@ type ConfigureSynchronizationJobReplicatorCompareRequest struct {
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
+	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4874,13 +4950,17 @@ type CountJobByConditionRequest struct {
 	//
 	// dtspk3f13r731m****
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// One of the query conditions. The ID of the region. For more information, see [Supported regions](~~141033~~).
+	// One of the query conditions. The ID of the region. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [Supported regions](~~141033~~).
+	// The ID of the region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5195,6 +5275,8 @@ func (s *CountJobByConditionResponse) SetBody(v *CountJobByConditionResponseBody
 
 type CreateConsumerChannelRequest struct {
 	// The name of the consumer group. The name can be up to 128 characters in length. We recommend that you use an informative name for easy identification.
+	//
+	// This parameter is required.
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
 	// The password of the consumer group.
 	//
@@ -5202,21 +5284,25 @@ type CreateConsumerChannelRequest struct {
 	//
 	// 	- A password must be 8 to 32 characters in length.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Test123456
 	ConsumerGroupPassword *string `json:"ConsumerGroupPassword,omitempty" xml:"ConsumerGroupPassword,omitempty"`
 	// The username of the consumer group.
 	//
-	// 	- A username must contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (\_).
+	// 	- A username must contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
 	//
 	// 	- A username cannot exceed 16 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// dtstest
 	ConsumerGroupUserName *string `json:"ConsumerGroupUserName,omitempty" xml:"ConsumerGroupUserName,omitempty"`
-	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
 	//
 	// >  You must specify at least one of the **DtsInstanceId*	- and **DtsJobId**. parameters.
 	//
@@ -5224,7 +5310,7 @@ type CreateConsumerChannelRequest struct {
 	//
 	// dtsboss6pn1w******
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// >  You must specify at least one of the **DtsInstanceId*	- and **DtsJobId**. parameters.
 	//
@@ -5232,7 +5318,9 @@ type CreateConsumerChannelRequest struct {
 	//
 	// boss6pn1w******
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5398,6 +5486,8 @@ type CreateConsumerGroupRequest struct {
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The name of the consumer group. The name cannot exceed 128 characters in length. We recommend that you use an informative name for easy identification.
+	//
+	// This parameter is required.
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
 	// The password that corresponds to the username of the consumer group.
 	//
@@ -5405,15 +5495,19 @@ type CreateConsumerGroupRequest struct {
 	//
 	// 	- A password must be 8 to 32 characters in length.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Test123456
 	ConsumerGroupPassword *string `json:"ConsumerGroupPassword,omitempty" xml:"ConsumerGroupPassword,omitempty"`
 	// The username of the consumer group.
 	//
-	// 	- A username must contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (\_).
+	// 	- A username must contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
 	//
 	// 	- A username cannot exceed 16 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5423,6 +5517,8 @@ type CreateConsumerGroupRequest struct {
 	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5582,6 +5678,8 @@ type CreateDedicatedClusterMonitorRuleRequest struct {
 	CpuAlarmThreshold *int64 `json:"CpuAlarmThreshold,omitempty" xml:"CpuAlarmThreshold,omitempty"`
 	// The ID of the cluster.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dts-dasd22******
@@ -5622,6 +5720,8 @@ type CreateDedicatedClusterMonitorRuleRequest struct {
 	NoticeSwitch *int64  `json:"NoticeSwitch,omitempty" xml:"NoticeSwitch,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5875,7 +5975,7 @@ type CreateDtsInstanceRequest struct {
 	//
 	// 	- The default value is **MySQL**.
 	//
-	// 	- For more information about the supported source and destination databases, see [Overview of data synchronization scenarios](~~130744~~) and [Overview of data migration scenarios](~~26618~~).
+	// 	- For more information about the supported source and destination databases, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/130744.html) and [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html).
 	//
 	// 	- You must specify one of this parameter and the **JobId*	- parameter.
 	//
@@ -5883,7 +5983,7 @@ type CreateDtsInstanceRequest struct {
 	//
 	// MySQL
 	DestinationEndpointEngineName *string `json:"DestinationEndpointEngineName,omitempty" xml:"DestinationEndpointEngineName,omitempty"`
-	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// >  You must specify one of this parameter and the **JobId*	- parameter.
 	//
@@ -5913,7 +6013,7 @@ type CreateDtsInstanceRequest struct {
 	//
 	// 	- DTS supports the following instance classes for a data synchronization instance: **large**, **medium**, **small**, and **micro**.
 	//
-	// >  For more information about the test performance of each instance class, see [Specifications of data migration instances](~~26606~~) and [Specifications of data synchronization instances](~~26605~~).
+	// >  For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// example:
 	//
@@ -5957,7 +6057,7 @@ type CreateDtsInstanceRequest struct {
 	//
 	// 1
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -6015,7 +6115,7 @@ type CreateDtsInstanceRequest struct {
 	//
 	// 	- The default value is **MySQL**.
 	//
-	// 	- For more information about the supported source and destination databases, see [Overview of data synchronization scenarios](~~130744~~) and [Overview of data migration scenarios](~~26618~~).
+	// 	- For more information about the supported source and destination databases, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/130744.html) and [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html).
 	//
 	// 	- You must specify one of this parameter and the **JobId*	- parameter.
 	//
@@ -6023,7 +6123,7 @@ type CreateDtsInstanceRequest struct {
 	//
 	// MYSQL
 	SourceEndpointEngineName *string `json:"SourceEndpointEngineName,omitempty" xml:"SourceEndpointEngineName,omitempty"`
-	// The ID of the region in which the source instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// >  You must specify one of this parameter and the **JobId*	- parameter.
 	//
@@ -6308,7 +6408,9 @@ type CreateJobMonitorRuleRequest struct {
 	//
 	// 11
 	DelayRuleTime *int64 `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
-	// The ID of the data migration, data synchronization, or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the data migration, data synchronization, or change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6334,13 +6436,13 @@ type CreateJobMonitorRuleRequest struct {
 	//
 	// 	- This parameter is available only for users of the China site (aliyun.com). Only mobile numbers in the Chinese mainland are supported. You can specify up to 10 mobile numbers.
 	//
-	// 	- Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+	// 	- Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
 	// 1361234****,1371234****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -6590,16 +6692,20 @@ type CreateMigrationJobRequest struct {
 	//
 	// >
 	//
-	// 	- For more information about the test performance of each specification, see [Specifications of data migration instances](~~26606~~).
+	// 	- For more information about the test performance of each specification, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html).
 	//
-	// 	- For more information about the pricing of data migration instances, see [Pricing](~~117780~~).
+	// 	- For more information about the pricing of data migration instances, see [Pricing](https://help.aliyun.com/document_detail/117780.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// 2xlarge
 	MigrationJobClass *string `json:"MigrationJobClass,omitempty" xml:"MigrationJobClass,omitempty"`
 	OwnerId           *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the data migration instance resides. The region ID of the data migration instance is the same as that of the destination database. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the data migration instance resides. The region ID of the data migration instance is the same as that of the destination database. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6753,6 +6859,8 @@ func (s *CreateMigrationJobResponse) SetBody(v *CreateMigrationJobResponseBody) 
 }
 
 type CreateReverseDtsJobRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// n99m9jx822k****
@@ -6930,7 +7038,9 @@ type CreateSubscriptionInstanceRequest struct {
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The region ID of the change tracking instance. The region ID is the same as that of the source instance. For more information, see [List of supported regions](~~141033~~).
+	// The region ID of the change tracking instance. The region ID is the same as that of the source instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7150,9 +7260,11 @@ type CreateSynchronizationJobRequest struct {
 	//
 	// 3
 	DBInstanceCount *int32 `json:"DBInstanceCount,omitempty" xml:"DBInstanceCount,omitempty"`
-	// The ID of the region where the destination database resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the destination database resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// >  If the **SourceRegion*	- parameter is set to the China (Hong Kong) region or a region outside the Chinese mainland, you must set the DestRegion parameter to the same region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7164,6 +7276,8 @@ type CreateSynchronizationJobRequest struct {
 	// 	- **PrePaid**: subscription
 	//
 	// 	- **PostPaid*	- (default value): pay-as-you-go
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7183,7 +7297,9 @@ type CreateSynchronizationJobRequest struct {
 	Period          *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the region where the source database resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the source database resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7191,7 +7307,9 @@ type CreateSynchronizationJobRequest struct {
 	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
 	// The specification of the data synchronization instance. Valid values: **micro**, **small**, **medium**, and **large**.
 	//
-	// >  For more information about the test performance of each specification, see [Specifications of data synchronization instances](~~26605~~).
+	// >  For more information about the test performance of each specification, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7336,7 +7454,7 @@ type CreateSynchronizationJobRequestDestinationEndpoint struct {
 	//
 	// 	- Default value: **MySQL**.
 	//
-	// 	- For more information about the supported source and destination databases, see [Database types, initial synchronization types, and synchronization topologies](~~130744~~).
+	// 	- For more information about the supported source and destination databases, see [Database types, initial synchronization types, and synchronization topologies](https://help.aliyun.com/document_detail/130744.html).
 	//
 	// example:
 	//
@@ -7372,7 +7490,7 @@ type CreateSynchronizationJobRequestSourceEndpoint struct {
 	//
 	// 	- Default value: **MySQL**.
 	//
-	// 	- For more information about the supported source and destination databases, see [Database types, initial synchronization types, and synchronization topologies](~~130744~~).
+	// 	- For more information about the supported source and destination databases, see [Database types, initial synchronization types, and synchronization topologies](https://help.aliyun.com/document_detail/130744.html).
 	//
 	// example:
 	//
@@ -7489,13 +7607,15 @@ func (s *CreateSynchronizationJobResponse) SetBody(v *CreateSynchronizationJobRe
 }
 
 type DeleteConsumerChannelRequest struct {
-	// The ID of the consumer group. You can call the [DescribeConsumerChannel](~~264169~~) operation to query the consumer group ID.
+	// The ID of the consumer group. You can call the [DescribeConsumerChannel](https://help.aliyun.com/document_detail/264169.html) operation to query the consumer group ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// dtsktbb6jdn2******
 	ConsumerGroupId *string `json:"ConsumerGroupId,omitempty" xml:"ConsumerGroupId,omitempty"`
-	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
 	//
 	// >  You must specify at least one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
 	//
@@ -7503,7 +7623,7 @@ type DeleteConsumerChannelRequest struct {
 	//
 	// dtsboss6pn1w73****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// >  You must specify at least one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
 	//
@@ -7511,7 +7631,9 @@ type DeleteConsumerChannelRequest struct {
 	//
 	// boss6pn1w73****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7655,7 +7777,9 @@ type DeleteConsumerGroupRequest struct {
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the consumer group. You can call the [DescribeConsumerGroup](~~122886~~) operation to query the consumer group ID.
+	// The ID of the consumer group. You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the consumer group ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7665,6 +7789,8 @@ type DeleteConsumerGroupRequest struct {
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the **DescribeSubscriptionInstances*	- operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7916,7 +8042,7 @@ type DeleteDtsJobResponseBody struct {
 	//
 	// 01B6F25-21E7-4484-99D5-3EF2625C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the region in which the data migration or synchronization task resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the data migration or synchronization task resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -8001,13 +8127,15 @@ type DeleteDtsJobsRequest struct {
 	//
 	// > 	- Separate multiple task IDs with commas (,).
 	//
-	// > 	- You can call the [DescribeDtsJobs](~~209702~~) operation to query task IDs.
+	// > 	- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query task IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// l5o11f9029c****
 	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -8052,7 +8180,7 @@ type DeleteDtsJobsResponseBody struct {
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\	- variable in the **ErrMessage*	- parameter.
+	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
 	//
 	// > If the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified **DtsJobId*	- parameter is invalid.
 	//
@@ -8172,6 +8300,8 @@ type DeleteMigrationJobRequest struct {
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query all data migration instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8311,6 +8441,8 @@ type DeleteSubscriptionInstanceRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsmxg11pfp231****
@@ -8446,6 +8578,8 @@ type DeleteSynchronizationJobRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtshn6107ve264****
@@ -8570,6 +8704,7 @@ func (s *DeleteSynchronizationJobResponse) SetBody(v *DeleteSynchronizationJobRe
 }
 
 type DescribeChannelAccountRequest struct {
+	// This parameter is required.
 	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -8991,6 +9126,8 @@ type DescribeClusterOperateLogsRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the DTS dedicated cluster on which a DTS task runs.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsxxxxx
@@ -9357,6 +9494,8 @@ type DescribeClusterUsedUtilizationRequest struct {
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the cluster. If the **MetricType*	- parameter is set to **CLUSTER**, enter the ID of the exclusive cluster. Otherwise, set this parameter to a node ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9755,6 +9894,8 @@ type DescribeConnectionStatusRequest struct {
 	//
 	// 	- **Greenplum**: AnalyticDB for PostgreSQL instance
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// PolarDB_o
@@ -9785,7 +9926,7 @@ type DescribeConnectionStatusRequest struct {
 	//
 	// 3306
 	DestinationEndpointPort *string `json:"DestinationEndpointPort,omitempty" xml:"DestinationEndpointPort,omitempty"`
-	// The ID of the region where the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -9793,13 +9934,13 @@ type DescribeConnectionStatusRequest struct {
 	DestinationEndpointRegion *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
 	// The database account of the destination database.
 	//
-	// >  The permissions that are required for database accounts vary with the migration or synchronization scenario. For more information, see [Overview of data migration scenarios](~~26618~~) and [Overview of data synchronization scenarios](~~130744~~).
+	// >  The permissions that are required for database accounts vary with the migration or synchronization scenario. For more information, see [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html) and [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/130744.html).
 	//
 	// example:
 	//
 	// dtstest
 	DestinationEndpointUserName *string `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
-	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -9872,6 +10013,8 @@ type DescribeConnectionStatusRequest struct {
 	//
 	// 	- **PolarDB_o**: PolarDB for Oracle cluster
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RDS
@@ -9898,7 +10041,7 @@ type DescribeConnectionStatusRequest struct {
 	//
 	// 3306
 	SourceEndpointPort *string `json:"SourceEndpointPort,omitempty" xml:"SourceEndpointPort,omitempty"`
-	// The ID of the region where the source instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -9906,7 +10049,7 @@ type DescribeConnectionStatusRequest struct {
 	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
 	// The database account of the source database.
 	//
-	// >  The permissions that are required for database accounts vary with the migration or synchronization scenario. For more information, see [Overview of data migration scenarios](~~26618~~) and [Overview of data synchronization scenarios](~~130744~~).
+	// >  The permissions that are required for database accounts vary with the migration or synchronization scenario. For more information, see [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html) and [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/130744.html).
 	//
 	// example:
 	//
@@ -10149,7 +10292,7 @@ func (s *DescribeConnectionStatusResponse) SetBody(v *DescribeConnectionStatusRe
 }
 
 type DescribeConsumerChannelRequest struct {
-	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
 	//
 	// >  You must specify at least one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
 	//
@@ -10157,7 +10300,7 @@ type DescribeConsumerChannelRequest struct {
 	//
 	// dtsboss6pn1w******
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// >  You must specify at least one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
 	//
@@ -10183,7 +10326,9 @@ type DescribeConsumerChannelRequest struct {
 	//
 	// dtsan5114c52******
 	ParentChannelId *string `json:"ParentChannelId,omitempty" xml:"ParentChannelId,omitempty"`
-	// The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10473,6 +10618,8 @@ type DescribeConsumerGroupRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtso5xx5t9u19e****
@@ -10745,7 +10892,7 @@ func (s *DescribeConsumerGroupResponse) SetBody(v *DescribeConsumerGroupResponse
 }
 
 type DescribeDTSIPRequest struct {
-	// The ID of the region where the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// >  If the destination instance is a self-managed database with a public IP address, you can set the parameter to **cn-hangzhou*	- or the ID of the closest region.
 	//
@@ -10755,9 +10902,11 @@ type DescribeDTSIPRequest struct {
 	DestinationEndpointRegion *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
 	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId           *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the region where the source instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// >  If the source instance is a self-managed database with a public IP address, you can set the parameter to **cn-hangzhou*	- or the ID of the closest region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10906,17 +11055,23 @@ type DescribeDataCheckReportUrlRequest struct {
 	//
 	// 	- **2**: incremental data verification.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
 	// The name of the verified source database.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsdb
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The ID of the Data Transmission Service (DTS) task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the Data Transmission Service (DTS) task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10924,6 +11079,8 @@ type DescribeDataCheckReportUrlRequest struct {
 	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the table verified in the source database.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11077,11 +11234,15 @@ type DescribeDataCheckTableDetailsRequest struct {
 	//
 	// 	- **2**: incremental data verification.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11185,7 +11346,7 @@ type DescribeDataCheckTableDetailsResponseBody struct {
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\	- variable in the **ErrMessage*	- parameter.
+	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
 	//
 	// > For example, if the returned value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **Type**, the specified **Type*	- parameter is invalid.
 	//
@@ -11491,14 +11652,20 @@ func (s *DescribeDataCheckTableDetailsResponse) SetBody(v *DescribeDataCheckTabl
 }
 
 type DescribeDataCheckTableDiffDetailsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// db_dtstest
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// xd4e4xb419q****
@@ -11512,6 +11679,8 @@ type DescribeDataCheckTableDiffDetailsRequest struct {
 	// 10
 	PageSize        *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test_person
@@ -11737,6 +11906,8 @@ func (s *DescribeDataCheckTableDiffDetailsResponse) SetBody(v *DescribeDataCheck
 
 type DescribeDedicatedClusterRequest struct {
 	// The ID of the cluster.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12312,13 +12483,15 @@ func (s *DescribeDedicatedClusterMonitorRuleResponse) SetBody(v *DescribeDedicat
 }
 
 type DescribeDtsEtlJobVersionInfoRequest struct {
-	// The ID of the Data Transmission Service (DTS) instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+	// The ID of the Data Transmission Service (DTS) instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// dtsggk12iwya1a****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the ETL task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the ETL task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// example:
 	//
@@ -12336,7 +12509,7 @@ type DescribeDtsEtlJobVersionInfoRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the DTS instance resides. You can call the [DescribeRegions](~~25609~~) operation to query the available Alibaba Cloud regions.
+	// The ID of the region in which the DTS instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the available Alibaba Cloud regions.
 	//
 	// example:
 	//
@@ -12794,13 +12967,13 @@ type DescribeDtsJobDetailResponseBody struct {
 	Checkpoint *int64 `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
 	// The topic of the change tracking instance.
 	//
-	// >  This parameter is returned only if your change tracking instances are of the new version and you have called the [CreateConsumerGroup](~~122863~~) operation to create a consumer group.
+	// >  This parameter is returned only if your change tracking instances are of the new version and you have called the [CreateConsumerGroup](https://help.aliyun.com/document_detail/122863.html) operation to create a consumer group.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The downstream client information in the following format: \<IP address of the downstream client>:\<Random ID generated by DTS>.
+	// The downstream client information in the following format: \\<IP address of the downstream client>:\\<Random ID generated by DTS>.
 	//
 	// example:
 	//
@@ -12830,7 +13003,7 @@ type DescribeDtsJobDetailResponseBody struct {
 	//
 	// example:
 	//
-	// {\"dtstestdata\":{\"all\":true,\"name\":\"dtstestdata\",\"state\":\"normal\"}}
+	// {\\"dtstestdata\\":{\\"all\\":true,\\"name\\":\\"dtstestdata\\",\\"state\\":\\"normal\\"}}
 	DbObject           *string `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	// The ID of the request.
@@ -12842,7 +13015,7 @@ type DescribeDtsJobDetailResponseBody struct {
 	DemoJob *bool  `json:"DemoJob,omitempty" xml:"DemoJob,omitempty"`
 	// The instance class.
 	//
-	// >  For more information about the test performance of each instance class, see [Specifications of data migration instances](~~26606~~) and [Specifications of data synchronization instances](~~26605~~).
+	// >  For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// example:
 	//
@@ -12895,7 +13068,7 @@ type DescribeDtsJobDetailResponseBody struct {
 	//
 	// example:
 	//
-	// The ID of the region in which the Data Transmission Service (DTS) instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the Data Transmission Service (DTS) instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
 	// The error message returned if the request failed.
 	//
@@ -12903,7 +13076,7 @@ type DescribeDtsJobDetailResponseBody struct {
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
@@ -12927,13 +13100,13 @@ type DescribeDtsJobDetailResponseBody struct {
 	//
 	// example:
 	//
-	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\n\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
+	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The objects of the data migration, data synchronization, or change tracking task. For more information, see [Objects of DTS tasks](~~209545~~).
+	// The objects of the data migration, data synchronization, or change tracking task. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
 	//
 	// example:
 	//
-	// { 	"cells ": [{\"shape\":\"edge\",\"attrs\":{\"line\":{\"stroke\":\"#b1b1b1\",\"strokeWidth\":1,\"targetMarker\":{\"name\":\"block\",\"args\":{\"size\":\"8\"}},\"strokeDasharray\":\"\"}},\"id\":\"cd1ec473-f9b9-4e9b-a742-ac23f44299e1\",\"source\":{\"cell\":\"8b261182-bfab-4803-ad8e-6bb08e3e0a99\",\"port\":\"out1\"},\"target\":{\"cell\":\"b36770df-f48c-4d6b-9644-54c5e9242987\",\"port\":\"in1\"},\"zIndex\":7 	}] }
+	// { 	"cells ": [{\\"shape\\":\\"edge\\",\\"attrs\\":{\\"line\\":{\\"stroke\\":\\"#b1b1b1\\",\\"strokeWidth\\":1,\\"targetMarker\\":{\\"name\\":\\"block\\",\\"args\\":{\\"size\\":\\"8\\"}},\\"strokeDasharray\\":\\"\\"}},\\"id\\":\\"cd1ec473-f9b9-4e9b-a742-ac23f44299e1\\",\\"source\\":{\\"cell\\":\\"8b261182-bfab-4803-ad8e-6bb08e3e0a99\\",\\"port\\":\\"out1\\"},\\"target\\":{\\"cell\\":\\"b36770df-f48c-4d6b-9644-54c5e9242987\\",\\"port\\":\\"in1\\"},\\"zIndex\\":7 	}] }
 	EtlCalculator *string `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
 	// The error code. This parameter will be removed in the future.
 	//
@@ -12987,7 +13160,7 @@ type DescribeDtsJobDetailResponseBody struct {
 	//
 	// i03e3zty16i****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\	- variable in the **ErrMessage*	- parameter.
+	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
 	//
 	// >  If the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified **DtsJobId*	- parameter is invalid.
 	//
@@ -13021,7 +13194,7 @@ type DescribeDtsJobDetailResponseBody struct {
 	//
 	// example:
 	//
-	// {\"srcHostPorts\":\"\",\"whitelist.dms.online.ddl.enable\":false,\"filterDDL\":false,\"sqlparser.dms.original.ddl\":true,\"srcOracleType\":\"sid\",\"maxRetryTime\":43200,\"destSSL\":\"0\",\"destOracleType\":\"sid\",\"srcSSL\":\"0\",\"dbListCaseChangeMode\":\"default\",\"SourceEngineVersion\":\"8.0.18\",\"srcNetType\":\"VPC\",\"destNetType\":\"VPC\",\"srcVpcNetMappingInst\":\"172.16.1**.**:10803\",\"destVpcNetMappingInst\":\"172.16.1**.**:11077\",\"useJobTask\":\"1\"}
+	// {\\"srcHostPorts\\":\\"\\",\\"whitelist.dms.online.ddl.enable\\":false,\\"filterDDL\\":false,\\"sqlparser.dms.original.ddl\\":true,\\"srcOracleType\\":\\"sid\\",\\"maxRetryTime\\":43200,\\"destSSL\\":\\"0\\",\\"destOracleType\\":\\"sid\\",\\"srcSSL\\":\\"0\\",\\"dbListCaseChangeMode\\":\\"default\\",\\"SourceEngineVersion\\":\\"8.0.18\\",\\"srcNetType\\":\\"VPC\\",\\"destNetType\\":\\"VPC\\",\\"srcVpcNetMappingInst\\":\\"172.16.1**.**:10803\\",\\"destVpcNetMappingInst\\":\\"172.16.1**.**:11077\\",\\"useJobTask\\":\\"1\\"}
 	Reserved                 *string                                     `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
 	ResourceGroupDisplayName *string                                     `json:"ResourceGroupDisplayName,omitempty" xml:"ResourceGroupDisplayName,omitempty"`
 	ResourceGroupId          *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -13482,7 +13655,7 @@ type DescribeDtsJobDetailResponseBodyDestinationEndpoint struct {
 	//
 	// testsid
 	OracleSID *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -13494,9 +13667,9 @@ type DescribeDtsJobDetailResponseBodyDestinationEndpoint struct {
 	//
 	// 	- **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled, and the CA certificate is uploaded.
 	//
-	// 	- **ENABLE_ONLY\_4\_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
+	// 	- **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
 	//
-	// 	- **ENABLE_ONLY\_4\_KAFKA_SCRAM_SHA\_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
+	// 	- **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
 	//
 	// example:
 	//
@@ -13765,9 +13938,9 @@ type DescribeDtsJobDetailResponseBodySourceEndpoint struct {
 	//
 	// 	- **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled, and the CA certificate is uploaded.
 	//
-	// 	- **ENABLE_ONLY\_4\_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
+	// 	- **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
 	//
-	// 	- **ENABLE_ONLY\_4\_KAFKA_SCRAM_SHA\_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
+	// 	- **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
 	//
 	// example:
 	//
@@ -13785,7 +13958,7 @@ type DescribeDtsJobDetailResponseBodySourceEndpoint struct {
 	//
 	// DISABLE
 	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
-	// The ID of the region in which the source instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -17892,7 +18065,7 @@ type DescribeDtsJobsRequest struct {
 	//
 	// dtspk3f13r731m****
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -18010,7 +18183,7 @@ type DescribeDtsJobsRequest struct {
 	//
 	// example:
 	//
-	// [     {         \"key\": \"testK\",         \"value\": \"testV\"     }  ]
+	// [     {         \\"key\\": \\"testK\\",         \\"value\\": \\"testV\\"     }  ]
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the query condition. Valid values:
 	//
@@ -18323,7 +18496,7 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	//
 	// 2021-03-23T07:30:31Z
 	ConsumptionCheckpoint *string `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	// The downstream client information, in the following format: \<IP address of the downstream client>:\<Random ID generated by DTS>.
+	// The downstream client information, in the following format: \\<IP address of the downstream client>:\\<Random ID generated by DTS>.
 	//
 	// example:
 	//
@@ -18389,7 +18562,7 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
 	// The instance class.
 	//
-	// >  For more information about the test performance of each instance class, see [Specifications of data synchronization instances](~~26605~~).
+	// >  For more information about the test performance of each instance class, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// example:
 	//
@@ -18431,7 +18604,7 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	//
 	// example:
 	//
-	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\n\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
+	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The checkpoint of the ETL task.
 	//
@@ -18535,11 +18708,11 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	Performance *DescribeDtsJobsResponseBodyDtsJobListPerformance `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
 	// The precheck state.
 	PrecheckStatus *DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
-	// {\"srcHostPorts\":\"\",\"whitelist.dms.online.ddl.enable\":false,\"filterDDL\":false,\"sqlparser.dms.original.ddl\":true,\"srcOracleType\":\"sid\",\"maxRetryTime\":43200,\"destSSL\":\"0\",\"destOracleType\":\"sid\",\"srcSSL\":\"0\",\"dbListCaseChangeMode\":\"default\",\"SourceEngineVersion\":\"8.0.18\",\"srcNetType\":\"VPC\",\"destNetType\":\"VPC\",\"srcVpcNetMappingInst\":\"172.16.1**.**:10803\",\"destVpcNetMappingInst\":\"172.16.1**.**:11077\",\"useJobTask\":\"1\"}
+	// {\\"srcHostPorts\\":\\"\\",\\"whitelist.dms.online.ddl.enable\\":false,\\"filterDDL\\":false,\\"sqlparser.dms.original.ddl\\":true,\\"srcOracleType\\":\\"sid\\",\\"maxRetryTime\\":43200,\\"destSSL\\":\\"0\\",\\"destOracleType\\":\\"sid\\",\\"srcSSL\\":\\"0\\",\\"dbListCaseChangeMode\\":\\"default\\",\\"SourceEngineVersion\\":\\"8.0.18\\",\\"srcNetType\\":\\"VPC\\",\\"destNetType\\":\\"VPC\\",\\"srcVpcNetMappingInst\\":\\"172.16.1**.**:10803\\",\\"destVpcNetMappingInst\\":\\"172.16.1**.**:11077\\",\\"useJobTask\\":\\"1\\"}
 	Reserved *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
 	// The name of the resource group.
 	//
@@ -19057,7 +19230,7 @@ type DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus struct {
 	//
 	// 	- **false**: no
 	//
-	// >  To upgrade a DTS instance, call the [TransferInstanceClass](~~281093~~) operation.
+	// >  To upgrade a DTS instance, call the [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html) operation.
 	//
 	// example:
 	//
@@ -19171,7 +19344,7 @@ type DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint struct {
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -19183,9 +19356,9 @@ type DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint struct {
 	//
 	// 	- **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled, and the CA certificate is uploaded.
 	//
-	// 	- **ENABLE_ONLY\_4\_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
+	// 	- **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
 	//
-	// 	- **ENABLE_ONLY\_4\_KAFKA_SCRAM_SHA\_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
+	// 	- **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
 	//
 	// example:
 	//
@@ -19625,7 +19798,7 @@ type DescribeDtsJobsResponseBodyDtsJobListPrecheckStatusDetail struct {
 	//
 	// example:
 	//
-	// Original error: Access denied for user \"dtstest\"@\"100.104.***.**\" (using password: YES)
+	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.***.**\\" (using password: YES)
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
 	// The method to fix the precheck failure.
 	//
@@ -19896,7 +20069,7 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJob struct {
 	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
 	// The instance class.
 	//
-	// > For more information about the test performance of each instance class, see [Specifications of data synchronization instances](~~26605~~).
+	// > For more information about the test performance of each instance class, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// example:
 	//
@@ -19932,7 +20105,7 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJob struct {
 	//
 	// example:
 	//
-	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\n\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
+	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The checkpoint of the ETL task.
 	//
@@ -19976,11 +20149,11 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJob struct {
 	Performance *DescribeDtsJobsResponseBodyDtsJobListReverseJobPerformance `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
 	// The precheck state.
 	PrecheckStatus *DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatus `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
-	// {\"srcHostPorts\":\"\",\"whitelist.dms.online.ddl.enable\":false,\"filterDDL\":false,\"sqlparser.dms.original.ddl\":true,\"srcOracleType\":\"sid\",\"maxRetryTime\":43200,\"destSSL\":\"0\",\"destOracleType\":\"sid\",\"srcSSL\":\"0\",\"dbListCaseChangeMode\":\"default\",\"SourceEngineVersion\":\"8.0.18\",\"srcNetType\":\"VPC\",\"destNetType\":\"VPC\",\"srcVpcNetMappingInst\":\"172.16.1**.**:10803\",\"destVpcNetMappingInst\":\"172.16.1**.**:11077\",\"useJobTask\":\"1\"}
+	// {\\"srcHostPorts\\":\\"\\",\\"whitelist.dms.online.ddl.enable\\":false,\\"filterDDL\\":false,\\"sqlparser.dms.original.ddl\\":true,\\"srcOracleType\\":\\"sid\\",\\"maxRetryTime\\":43200,\\"destSSL\\":\\"0\\",\\"destOracleType\\":\\"sid\\",\\"srcSSL\\":\\"0\\",\\"dbListCaseChangeMode\\":\\"default\\",\\"SourceEngineVersion\\":\\"8.0.18\\",\\"srcNetType\\":\\"VPC\\",\\"destNetType\\":\\"VPC\\",\\"srcVpcNetMappingInst\\":\\"172.16.1**.**:10803\\",\\"destVpcNetMappingInst\\":\\"172.16.1**.**:11077\\",\\"useJobTask\\":\\"1\\"}
 	Reserved *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
 	// The connection settings of the source instance.
 	SourceEndpoint *DescribeDtsJobsResponseBodyDtsJobListReverseJobSourceEndpoint `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
@@ -20238,7 +20411,7 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobDataSynchronizationStatus st
 	//
 	// - **false**
 	//
-	// > To upgrade a DTS instance, call the [TransferInstanceClass](~~281093~~) operation.
+	// > To upgrade a DTS instance, call the [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html) operation.
 	//
 	// example:
 	//
@@ -20342,7 +20515,7 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint struct {
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -20794,7 +20967,7 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatusDetail struct 
 	//
 	// example:
 	//
-	// Original error: Access denied for user \"dtstest\"@\"100.104.***.**\" (using password: YES)
+	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.***.**\\" (using password: YES)
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
 	// The method to fix a precheck failure.
 	//
@@ -20882,7 +21055,7 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobSourceEndpoint struct {
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the source instance resides. For more information, see [Supported regions](~~141033~~).
+	// The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -21076,7 +21249,7 @@ type DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint struct {
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the source instance resides. For more information, see [Supported regions](~~141033~~).
+	// The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -21305,7 +21478,7 @@ type DescribeDtsJobsResponseBodyEtlDemoList struct {
 	DataInitializationStatus *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
 	// The state of incremental data migration or synchronization.
 	DataSynchronizationStatus *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	// The objects of the data migration, data synchronization, or change tracking task. For more information, see [Objects of DTS tasks](~~209545~~).
+	// The objects of the data migration, data synchronization, or change tracking task. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
 	//
 	// example:
 	//
@@ -21329,7 +21502,7 @@ type DescribeDtsJobsResponseBodyEtlDemoList struct {
 	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
 	// The instance class.
 	//
-	// > For more information about the test performance of each instance class, see [Specifications of data migration instances](~~26606~~) and [Specifications of data synchronization instances](~~26605~~).
+	// > For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// example:
 	//
@@ -21369,7 +21542,7 @@ type DescribeDtsJobsResponseBodyEtlDemoList struct {
 	//
 	// example:
 	//
-	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\n\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
+	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The checkpoint of the ETL task.
 	//
@@ -21425,11 +21598,11 @@ type DescribeDtsJobsResponseBodyEtlDemoList struct {
 	Performance *DescribeDtsJobsResponseBodyEtlDemoListPerformance `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
 	// The precheck state.
 	PrecheckStatus *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
-	// {\"srcHostPorts\":\"\",\"whitelist.dms.online.ddl.enable\":false,\"filterDDL\":false,\"sqlparser.dms.original.ddl\":true,\"srcOracleType\":\"sid\",\"maxRetryTime\":43200,\"destSSL\":\"0\",\"destOracleType\":\"sid\",\"srcSSL\":\"0\",\"dbListCaseChangeMode\":\"default\",\"SourceEngineVersion\":\"8.0.18\",\"srcNetType\":\"VPC\",\"destNetType\":\"VPC\",\"srcVpcNetMappingInst\":\"172.16.1**.**:10803\",\"destVpcNetMappingInst\":\"172.16.1**.**:11077\",\"useJobTask\":\"1\"}
+	// {\\"srcHostPorts\\":\\"\\",\\"whitelist.dms.online.ddl.enable\\":false,\\"filterDDL\\":false,\\"sqlparser.dms.original.ddl\\":true,\\"srcOracleType\\":\\"sid\\",\\"maxRetryTime\\":43200,\\"destSSL\\":\\"0\\",\\"destOracleType\\":\\"sid\\",\\"srcSSL\\":\\"0\\",\\"dbListCaseChangeMode\\":\\"default\\",\\"SourceEngineVersion\\":\\"8.0.18\\",\\"srcNetType\\":\\"VPC\\",\\"destNetType\\":\\"VPC\\",\\"srcVpcNetMappingInst\\":\\"172.16.1**.**:10803\\",\\"destVpcNetMappingInst\\":\\"172.16.1**.**:11077\\",\\"useJobTask\\":\\"1\\"}
 	Reserved *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
 	// The name of the resource group.
 	//
@@ -21792,7 +21965,7 @@ type DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus struct {
 	//
 	// - **false**
 	//
-	// > To upgrade a DTS instance, call the [TransferInstanceClass](~~281093~~) operation.
+	// > To upgrade a DTS instance, call the [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html) operation.
 	//
 	// example:
 	//
@@ -21906,7 +22079,7 @@ type DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint struct {
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the destination instance resides. For more information, see [Supported regions](~~141033~~).
+	// The ID of the region in which the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -22171,7 +22344,7 @@ type DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail struct {
 	//
 	// example:
 	//
-	// Original error: Access denied for user \"dtstest\"@\"100.104.***.**\" (using password: YES)
+	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.***.**\\" (using password: YES)
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
 	// The method to fix a precheck failure.
 	//
@@ -22364,7 +22537,7 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJob struct {
 	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
 	// The instance class.
 	//
-	// > For more information about the test performance of each instance class, see [Specifications of data synchronization instances](~~26605~~).
+	// > For more information about the test performance of each instance class, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// example:
 	//
@@ -22392,7 +22565,7 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJob struct {
 	//
 	// example:
 	//
-	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\n\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
+	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The checkpoint of the ETL task.
 	//
@@ -22424,11 +22597,11 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJob struct {
 	Performance *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
 	// The precheck state.
 	PrecheckStatus *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
-	// {\"srcHostPorts\":\"\",\"whitelist.dms.online.ddl.enable\":false,\"filterDDL\":false,\"sqlparser.dms.original.ddl\":true,\"srcOracleType\":\"sid\",\"maxRetryTime\":43200,\"destSSL\":\"0\",\"destOracleType\":\"sid\",\"srcSSL\":\"0\",\"dbListCaseChangeMode\":\"default\",\"SourceEngineVersion\":\"8.0.18\",\"srcNetType\":\"VPC\",\"destNetType\":\"VPC\",\"srcVpcNetMappingInst\":\"172.16.1**.**:10803\",\"destVpcNetMappingInst\":\"172.16.1**.**:11077\",\"useJobTask\":\"1\"}
+	// {\\"srcHostPorts\\":\\"\\",\\"whitelist.dms.online.ddl.enable\\":false,\\"filterDDL\\":false,\\"sqlparser.dms.original.ddl\\":true,\\"srcOracleType\\":\\"sid\\",\\"maxRetryTime\\":43200,\\"destSSL\\":\\"0\\",\\"destOracleType\\":\\"sid\\",\\"srcSSL\\":\\"0\\",\\"dbListCaseChangeMode\\":\\"default\\",\\"SourceEngineVersion\\":\\"8.0.18\\",\\"srcNetType\\":\\"VPC\\",\\"destNetType\\":\\"VPC\\",\\"srcVpcNetMappingInst\\":\\"172.16.1**.**:10803\\",\\"destVpcNetMappingInst\\":\\"172.16.1**.**:11077\\",\\"useJobTask\\":\\"1\\"}
 	Reserved *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
 	// The connection settings of the source instance.
 	SourceEndpoint *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
@@ -22641,7 +22814,7 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus s
 	//
 	// - **false**
 	//
-	// > To upgrade a DTS instance, call the [TransferInstanceClass](~~281093~~) operation.
+	// > To upgrade a DTS instance, call the [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html) operation.
 	//
 	// example:
 	//
@@ -22745,7 +22918,7 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint struct 
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the destination instance resides. For more information, see [Supported regions](~~141033~~).
+	// The ID of the region in which the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -23010,7 +23183,7 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail struct
 	//
 	// example:
 	//
-	// Original error: Access denied for user \"dtstest\"@\"100.104.***.**\" (using password: YES)
+	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.***.**\\" (using password: YES)
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
 	// The method to fix a precheck failure.
 	//
@@ -23100,7 +23273,7 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint struct {
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the source instance resides. For more information, see [Supported regions](~~141033~~).
+	// The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -23294,7 +23467,7 @@ type DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint struct {
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the source instance resides. For more information, see [Supported regions](~~141033~~).
+	// The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -23512,9 +23685,9 @@ type DescribeDtsServiceLogRequest struct {
 	//
 	// c1yr56py103****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The end of the time range to query. You can call the [DescribePreCheckStatus](~~209718~~) operation to query the execution time of the subtasks.
+	// The end of the time range to query. You can call the [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) operation to query the execution time of the subtasks.
 	//
-	// > 	- To obtain the logs that are generated for DTS subtasks within a specific period of time, you can call the [DescribePreCheckStatus](~~209718~~) operation to query the execution time of the subtasks.
+	// > 	- To obtain the logs that are generated for DTS subtasks within a specific period of time, you can call the [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) operation to query the execution time of the subtasks.
 	//
 	// >	- Specify the time in the 13-digit UNIX timestamp format. Unit: milliseconds. You can use a search engine to obtain a UNIX timestamp converter.
 	//
@@ -23542,7 +23715,7 @@ type DescribeDtsServiceLogRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -23551,7 +23724,7 @@ type DescribeDtsServiceLogRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query.
 	//
-	// > 	- To obtain the logs that are generated for Data Transmission Service (DTS) subtasks within a specific period of time, you can call the [DescribePreCheckStatus](~~209718~~) operation to query the execution time of the subtasks.
+	// > 	- To obtain the logs that are generated for Data Transmission Service (DTS) subtasks within a specific period of time, you can call the [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) operation to query the execution time of the subtasks.
 	//
 	// >	- Specify the time in the 13-digit UNIX timestamp format. Unit: milliseconds. You can use a search engine to obtain a UNIX timestamp converter.
 	//
@@ -23656,7 +23829,7 @@ type DescribeDtsServiceLogResponseBody struct {
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\	- variable in the **ErrMessage*	- parameter.
+	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
 	//
 	// example:
 	//
@@ -23866,7 +24039,9 @@ type DescribeEndpointSwitchStatusRequest struct {
 	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The task ID, which is returned after you call the [SwitchSynchronizationEndpoint](~~201858~~) operation.
+	// The task ID, which is returned after you call the [SwitchSynchronizationEndpoint](https://help.aliyun.com/document_detail/201858.html) operation.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24029,13 +24204,15 @@ func (s *DescribeEndpointSwitchStatusResponse) SetBody(v *DescribeEndpointSwitch
 }
 
 type DescribeEtlJobLogsRequest struct {
-	// The ID of the ETL task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the ETL task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// l5512es7w15****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The ID of the region in which the Data Transmission Service (DTS) instance resides. You can call the [DescribeRegions](~~25609~~) operation to query the available Alibaba Cloud regions.
+	// The ID of the region in which the Data Transmission Service (DTS) instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the available Alibaba Cloud regions.
 	//
 	// example:
 	//
@@ -24290,7 +24467,9 @@ type DescribeInitializationStatusRequest struct {
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
+	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24615,13 +24794,13 @@ type DescribeInitializationStatusResponseBodyStructureInitializationDetails stru
 	//
 	// example:
 	//
-	// DTS-1020042 Execute sql error sql: Table \"customer\" already exists
+	// DTS-1020042 Execute sql error sql: Table \\"customer\\" already exists
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The schema of the object.
 	//
 	// example:
 	//
-	// CREATE TABLE `dtstestdata`.`customer` (\n`customer_id`  int(10) unsigned   auto_increment  COMMENT \"\"   NOT NULL   , \n`customer_title`  varchar(100)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \"\"   NOT NULL   , \n`customer_company1216`  varchar(40)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \"\"   NOT NULL   , \n`submission_date1216`  date     COMMENT \"\"   NULL   \n, PRIMARY KEY (`customer_id`)) engine=InnoDB AUTO_INCREMENT=200001 DEFAULT CHARSET=`utf8` DEFAULT COLLATE `utf8_general_ci` ROW_FORMAT= Dynamic comment = \"\" ;\n
+	// CREATE TABLE `dtstestdata`.`customer` (\\n`customer_id`  int(10) unsigned   auto_increment  COMMENT \\"\\"   NOT NULL   , \\n`customer_title`  varchar(100)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NOT NULL   , \\n`customer_company1216`  varchar(40)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NOT NULL   , \\n`submission_date1216`  date     COMMENT \\"\\"   NULL   \\n, PRIMARY KEY (`customer_id`)) engine=InnoDB AUTO_INCREMENT=200001 DEFAULT CHARSET=`utf8` DEFAULT COLLATE `utf8_general_ci` ROW_FORMAT= Dynamic comment = \\"\\" ;\\n
 	ObjectDefinition *string `json:"ObjectDefinition,omitempty" xml:"ObjectDefinition,omitempty"`
 	// The name of the object.
 	//
@@ -24833,13 +25012,15 @@ func (s *DescribeInitializationStatusResponse) SetBody(v *DescribeInitialization
 }
 
 type DescribeJobMonitorRuleRequest struct {
-	// The ID of the data migration, data synchronization, or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the data migration, data synchronization, or change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// ta7w132u12h****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -24993,9 +25174,9 @@ func (s *DescribeJobMonitorRuleResponseBody) SetTopics(v []*string) *DescribeJob
 type DescribeJobMonitorRuleResponseBodyMonitorRules struct {
 	// The threshold that triggers the alert.
 	//
-	// 	- If the request parameter **Type*	- of the [CreateJobMonitorRule](~~212332~~) operation is set to **delay**, the unit of DelayRuleTime is seconds.
+	// 	- If the request parameter **Type*	- of the [CreateJobMonitorRule](https://help.aliyun.com/document_detail/212332.html) operation is set to **delay**, the unit of DelayRuleTime is seconds.
 	//
-	// 	- If the request parameter **Type*	- of the [CreateJobMonitorRule](~~212332~~) operation is set to **full_timeout**, the unit of DelayRuleTime is hours.
+	// 	- If the request parameter **Type*	- of the [CreateJobMonitorRule](https://help.aliyun.com/document_detail/212332.html) operation is set to **full_timeout**, the unit of DelayRuleTime is hours.
 	//
 	// example:
 	//
@@ -25161,6 +25342,8 @@ type DescribeMetricListRequest struct {
 	//
 	// 	- **IntranetOutRate**: the outbound traffic over the internal network. Unit: byte.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cpu_total
@@ -25177,6 +25360,8 @@ type DescribeMetricListRequest struct {
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	OwnerID    *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	// The monitored object. If the **MetricType*	- parameter is set to **NODE**, set this parameter to the ID of the node that is monitored.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25501,6 +25686,8 @@ type DescribeMigrationJobAlertRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query the instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtslb9113qq11n****
@@ -25733,6 +25920,8 @@ type DescribeMigrationJobDetailRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query the instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsta7w132u12h****
@@ -25750,7 +25939,7 @@ type DescribeMigrationJobDetailRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the data migration instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the data migration instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -26226,13 +26415,13 @@ type DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStru
 	//
 	// example:
 	//
-	// DTS-1020042 Execute sql error sql: DTS-1020042 Execute sql error sql: ERROR: column \"id\" named in key does not exist
+	// DTS-1020042 Execute sql error sql: DTS-1020042 Execute sql error sql: ERROR: column \\"id\\" named in key does not exist
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The schema of the migration object.
 	//
 	// example:
 	//
-	// CREATE TABLE `dtstestdata`.`customer` (\n`runoob_id`  int(10) unsigned   auto_increment  COMMENT \"\"   NOT NULL   , \n`runoob_title`  varchar(100)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \"\"   NOT NULL   , \n`runoob_author1216`  varchar(40)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \"\"   NOT NULL   , \n`submission_date1216`  date     COMMENT \"\"   NULL   \n, PRIMARY KEY (`runoob_id`)) engine=InnoDB AUTO_INCREMENT=200001 DEFAULT CHARSET=`utf8` DEFAULT COLLATE `utf8_general_ci` ROW_FORMAT= Dynamic comment = \"\" ;\n
+	// CREATE TABLE `dtstestdata`.`customer` (\\n`runoob_id`  int(10) unsigned   auto_increment  COMMENT \\"\\"   NOT NULL   , \\n`runoob_title`  varchar(100)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NOT NULL   , \\n`runoob_author1216`  varchar(40)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NOT NULL   , \\n`submission_date1216`  date     COMMENT \\"\\"   NULL   \\n, PRIMARY KEY (`runoob_id`)) engine=InnoDB AUTO_INCREMENT=200001 DEFAULT CHARSET=`utf8` DEFAULT COLLATE `utf8_general_ci` ROW_FORMAT= Dynamic comment = \\"\\" ;\\n
 	ObjectDefinition *string `json:"ObjectDefinition,omitempty" xml:"ObjectDefinition,omitempty"`
 	// The name of migration object.
 	//
@@ -26473,6 +26662,8 @@ type DescribeMigrationJobStatusRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query the instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsz2v12jfo309****
@@ -26539,7 +26730,7 @@ type DescribeMigrationJobStatusResponseBody struct {
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**. For more information, see [Specifications of data migration instances](~~26606~~).
+	// The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**. For more information, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html).
 	//
 	// example:
 	//
@@ -26579,7 +26770,7 @@ type DescribeMigrationJobStatusResponseBody struct {
 	//
 	// example:
 	//
-	// [{\"DBName\":\"dtstestdata\",\"TableIncludes\":[{\"TableName\":\"customer\"}]}]
+	// [{\\"DBName\\":\\"dtstestdata\\",\\"TableIncludes\\":[{\\"TableName\\":\\"customer\\"}]}]
 	MigrationObject *string `json:"MigrationObject,omitempty" xml:"MigrationObject,omitempty"`
 	// The billing method of the data migration instance. The value is **PostPaid*	- (pay-as-you-go).
 	//
@@ -27085,7 +27276,7 @@ type DescribeMigrationJobStatusResponseBodyPrecheckStatusDetailCheckItem struct 
 	//
 	// example:
 	//
-	// Original error: Access denied for user \"dtstest\"@\"100.104.***.**\" (using password: YES)
+	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.***.**\\" (using password: YES)
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The name of the precheck item.
 	//
@@ -27360,7 +27551,7 @@ type DescribeMigrationJobsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the data migration instances reside. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the data migration instances reside. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -27419,7 +27610,7 @@ func (s *DescribeMigrationJobsRequest) SetTag(v []*DescribeMigrationJobsRequestT
 }
 
 type DescribeMigrationJobsRequestTag struct {
-	// The tag key. You can call the [ListTagResources](~~191187~~) operation to query the tag key.
+	// The tag key. You can call the [ListTagResources](https://help.aliyun.com/document_detail/191187.html) operation to query the tag key.
 	//
 	// >
 	//
@@ -27427,11 +27618,13 @@ type DescribeMigrationJobsRequestTag struct {
 	//
 	// 	- This parameter cannot be an empty string.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can call the [ListTagResources](~~191187~~) operation to query the tag value.
+	// The tag value. You can call the [ListTagResources](https://help.aliyun.com/document_detail/191187.html) operation to query the tag value.
 	//
 	// >
 	//
@@ -27594,7 +27787,7 @@ type DescribeMigrationJobsResponseBodyMigrationJobsMigrationJob struct {
 	//
 	// 2021-06-22T08:53:55Z
 	JobCreateTime *string `json:"JobCreateTime,omitempty" xml:"JobCreateTime,omitempty"`
-	// The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**. For more information, see [Specifications of data migration instances](~~26606~~).
+	// The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**. For more information, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html).
 	//
 	// example:
 	//
@@ -28374,6 +28567,8 @@ func (s *DescribeMigrationJobsResponse) SetBody(v *DescribeMigrationJobsResponse
 type DescribePreCheckStatusRequest struct {
 	// The ID of the data migration, data synchronization, or change tracking task.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// i03e3zty16i****
@@ -28387,6 +28582,8 @@ type DescribePreCheckStatusRequest struct {
 	// 	- **03**: full data migration or initial full data synchronization
 	//
 	// 	- **04**: incremental data migration or synchronization
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -28410,7 +28607,7 @@ type DescribePreCheckStatusRequest struct {
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -29203,7 +29400,7 @@ type DescribePreCheckStatusResponseBodyJobProgress struct {
 	//
 	// example:
 	//
-	// CREATE TABLE `dtstestdata`.`order` (\n`orderid`  int(11)     COMMENT \"\"   NOT NULL   , \n`username`  char(32)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \"\"   NULL   , \n`ordertime`  datetime     COMMENT \"\"   NULL   , \n`commodity`  varchar(32)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \"\"   NULL   , \n`phonenumber`  int(11)     COMMENT \"\"   NULL   , \n`address`  text  CHARSET `utf8mb4` COLLATE `utf8mb4_general_ci`    COMMENT \"\"   NULL   \n, PRIMARY KEY (`orderid`)) engine=InnoDB DEFAULT CHARSET=`gbk` DEFAULT COLLATE `gbk_chinese_ci` ROW_FORMAT= Dynamic comment = \"\" ;\n
+	// CREATE TABLE `dtstestdata`.`order` (\\n`orderid`  int(11)     COMMENT \\"\\"   NOT NULL   , \\n`username`  char(32)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NULL   , \\n`ordertime`  datetime     COMMENT \\"\\"   NULL   , \\n`commodity`  varchar(32)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NULL   , \\n`phonenumber`  int(11)     COMMENT \\"\\"   NULL   , \\n`address`  text  CHARSET `utf8mb4` COLLATE `utf8mb4_general_ci`    COMMENT \\"\\"   NULL   \\n, PRIMARY KEY (`orderid`)) engine=InnoDB DEFAULT CHARSET=`gbk` DEFAULT COLLATE `gbk_chinese_ci` ROW_FORMAT= Dynamic comment = \\"\\" ;\\n
 	DdlSql *string `json:"DdlSql,omitempty" xml:"DdlSql,omitempty"`
 	// The latency of incremental data migration or synchronization.
 	//
@@ -29333,7 +29530,7 @@ type DescribePreCheckStatusResponseBodyJobProgress struct {
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The sub-item progress of the subtask.
 	//
-	// >  If **\[]*	- is returned, the subtask has no sub-items.
+	// >  If **[]*	- is returned, the subtask has no sub-items.
 	//
 	// example:
 	//
@@ -29491,13 +29688,13 @@ type DescribePreCheckStatusResponseBodyJobProgressLogs struct {
 	//
 	// example:
 	//
-	// CREATE TABLE `dtstestdata`.`customer` (\n`runoob_id`  int(10) unsigned   auto_increment  COMMENT \"\"   NOT NULL   , \n`runoob_title`  varchar(100)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \"\"   NOT NULL   , \n`runoob_author1216`  varchar(40)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \"\"   NOT NULL   , \n`submission_date1216`  date     COMMENT \"\"   NULL   \n, PRIMARY KEY (`runoob_id`)) engine=InnoDB AUTO_INCREMENT=200001 DEFAULT CHARSET=`utf8` DEFAULT COLLATE `utf8_general_ci` ROW_FORMAT= Dynamic comment = \"\" ;\n
+	// CREATE TABLE `dtstestdata`.`customer` (\\n`runoob_id`  int(10) unsigned   auto_increment  COMMENT \\"\\"   NOT NULL   , \\n`runoob_title`  varchar(100)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NOT NULL   , \\n`runoob_author1216`  varchar(40)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NOT NULL   , \\n`submission_date1216`  date     COMMENT \\"\\"   NULL   \\n, PRIMARY KEY (`runoob_id`)) engine=InnoDB AUTO_INCREMENT=200001 DEFAULT CHARSET=`utf8` DEFAULT COLLATE `utf8_general_ci` ROW_FORMAT= Dynamic comment = \\"\\" ;\\n
 	ErrData *string `json:"ErrData,omitempty" xml:"ErrData,omitempty"`
 	// The error message returned when an error occurs on the subtask.
 	//
 	// example:
 	//
-	// DTS-1020042 Execute sql error sql: Table \"customer\" already exists
+	// DTS-1020042 Execute sql error sql: Table \\"customer\\" already exists
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
 	// The error type.
 	//
@@ -29868,7 +30065,7 @@ type DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress struct
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The sub-item progress of the subtask.
 	//
-	// >  If **\[]*	- is returned, the subtask has no sub-items.
+	// >  If **[]*	- is returned, the subtask has no sub-items.
 	//
 	// example:
 	//
@@ -30026,7 +30223,7 @@ type DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgressLogs st
 	//
 	// example:
 	//
-	// CREATE TABLE `dtstestdata`.`customer` (\n`runoob_id` int(10) unsigned auto_increment COMMENT \"\" NOT NULL , \n`runoob_title` varchar(100) CHARSET `utf8` COLLATE `utf8_general_ci` COMMENT \"\" NOT NULL , \n`runoob_author1216` varchar(40) CHARSET `utf8` COLLATE `utf8_general_ci` COMMENT \"\" NOT NULL , \n`submission_date1216` date COMMENT \"\" NULL \n, PRIMARY KEY (`runoob_id`)) engine=InnoDB AUTO_INCREMENT=200001 DEFAULT CHARSET=`utf8` DEFAULT COLLATE `utf8_general_ci` ROW_FORMAT= Dynamic comment = \"\" ;\n
+	// CREATE TABLE `dtstestdata`.`customer` (\\n`runoob_id` int(10) unsigned auto_increment COMMENT \\"\\" NOT NULL , \\n`runoob_title` varchar(100) CHARSET `utf8` COLLATE `utf8_general_ci` COMMENT \\"\\" NOT NULL , \\n`runoob_author1216` varchar(40) CHARSET `utf8` COLLATE `utf8_general_ci` COMMENT \\"\\" NOT NULL , \\n`submission_date1216` date COMMENT \\"\\" NULL \\n, PRIMARY KEY (`runoob_id`)) engine=InnoDB AUTO_INCREMENT=200001 DEFAULT CHARSET=`utf8` DEFAULT COLLATE `utf8_general_ci` ROW_FORMAT= Dynamic comment = \\"\\" ;\\n
 	ErrData *string `json:"ErrData,omitempty" xml:"ErrData,omitempty"`
 	// The error message.
 	//
@@ -30122,6 +30319,8 @@ type DescribeSubscriptionInstanceAlertRequest struct {
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -30346,7 +30545,9 @@ type DescribeSubscriptionInstanceStatusRequest struct {
 	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
+	// The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html) operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -30400,7 +30601,7 @@ type DescribeSubscriptionInstanceStatusResponseBody struct {
 	//
 	// 2021-03-23T07:30:31Z
 	ConsumptionCheckpoint *string `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	// The downstream client information, in the following format: \<IP address of the downstream client>:\<Random ID generated by DTS>.
+	// The downstream client information, in the following format: \\<IP address of the downstream client>:\\<Random ID generated by DTS>.
 	//
 	// example:
 	//
@@ -30468,7 +30669,7 @@ type DescribeSubscriptionInstanceStatusResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The topic of the change tracking instance.
 	//
-	// >  This parameter is returned only if your change tracking instance is of the new version and you have called the [CreateConsumerGroup](~~122863~~) operation to create a consumer group.
+	// >  This parameter is returned only if your change tracking instance is of the new version and you have called the [CreateConsumerGroup](https://help.aliyun.com/document_detail/122863.html) operation to create a consumer group.
 	//
 	// example:
 	//
@@ -30858,7 +31059,7 @@ type DescribeSubscriptionInstancesRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~49442~~).
+	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/49442.html).
 	//
 	// example:
 	//
@@ -30933,6 +31134,8 @@ type DescribeSubscriptionInstancesRequestTag struct {
 	// 	- N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag. You can specify 1 to 20 tag keys at a time.
 	//
 	// 	- This parameter cannot be an empty string.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -31095,7 +31298,7 @@ type DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscriptionI
 	//
 	// 2021-06-21T09:30:31Z
 	ConsumptionCheckpoint *string `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	// The downstream client information, in the following format: \<IP address of the downstream client>:\<Random ID generated by DTS>.
+	// The downstream client information, in the following format: \\<IP address of the downstream client>:\\<Random ID generated by DTS>.
 	//
 	// example:
 	//
@@ -31157,7 +31360,7 @@ type DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscriptionI
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The topic of the change tracking instance.
 	//
-	// >  This parameter is returned only if your change tracking instances are of the new version and you have called the [CreateConsumerGroup](~~122863~~) operation to create a consumer group.
+	// >  This parameter is returned only if your change tracking instances are of the new version and you have called the [CreateConsumerGroup](https://help.aliyun.com/document_detail/122863.html) operation to create a consumer group.
 	//
 	// example:
 	//
@@ -31567,6 +31770,8 @@ type DescribeSubscriptionMetaRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the consumer group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// z38m91gg2******
@@ -31642,6 +31847,8 @@ type DescribeSubscriptionMetaShrinkRequest struct {
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the consumer group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -31785,11 +31992,11 @@ type DescribeSubscriptionMetaResponseBodySubscriptionMetaList struct {
 	//
 	// 1610524452
 	Checkpoint *int64 `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// The objects of the subtask. For more information, see [Objects of DTS tasks](~~209545~~).
+	// The objects of the subtask. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
 	//
 	// example:
 	//
-	// {\"dtstestdata\":{\"name\":\"dtstestdata\",\"all\":false,\"Table\":{\"order\":{\"name\":\"order\",\"all\":true}}}}
+	// {\\"dtstestdata\\":{\\"name\\":\\"dtstestdata\\",\\"all\\":false,\\"Table\\":{\\"order\\":{\\"name\\":\\"order\\",\\"all\\":true}}}}
 	DBList *string `json:"DBList,omitempty" xml:"DBList,omitempty"`
 	// The endpoint and port number of the change tracking instance.
 	//
@@ -32085,6 +32292,8 @@ type DescribeSynchronizationJobAlertRequest struct {
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 	// The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs*	- operation to query the instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtskxz1170c10p****
@@ -32352,7 +32561,9 @@ type DescribeSynchronizationJobReplicatorCompareRequest struct {
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
+	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -32516,7 +32727,7 @@ type DescribeSynchronizationJobStatusRequest struct {
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -32537,7 +32748,9 @@ type DescribeSynchronizationJobStatusRequest struct {
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
+	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -32641,7 +32854,7 @@ type DescribeSynchronizationJobStatusResponseBody struct {
 	//
 	// example:
 	//
-	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\n\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
+	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The time when the data synchronization instance expires. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
 	//
@@ -33202,7 +33415,7 @@ type DescribeSynchronizationJobStatusResponseBodyPrecheckStatusDetail struct {
 	//
 	// example:
 	//
-	// Original error: Access denied for user \"dtstest\"@\"100.104.***.**\" (using password: YES)
+	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.***.**\\" (using password: YES)
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The name of the precheck item.
 	//
@@ -33524,7 +33737,9 @@ type DescribeSynchronizationJobStatusListRequest struct {
 	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The IDs of the data synchronization instances. The value is a JSON array. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance IDs.
+	// The IDs of the data synchronization instances. The value is a JSON array. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -33800,7 +34015,7 @@ type DescribeSynchronizationJobsRequest struct {
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The tag value. You can call the [ListTagResources](~~191187~~) operation to query the tag value.
+	// The tag value. You can call the [ListTagResources](https://help.aliyun.com/document_detail/191187.html) operation to query the tag value.
 	//
 	// >
 	//
@@ -33834,7 +34049,7 @@ type DescribeSynchronizationJobsRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tag key. You can call the [ListTagResources](~~191187~~) operation to query the tag key.
+	// The tag key. You can call the [ListTagResources](https://help.aliyun.com/document_detail/191187.html) operation to query the tag key.
 	//
 	// >
 	//
@@ -33900,6 +34115,8 @@ func (s *DescribeSynchronizationJobsRequest) SetTag(v []*DescribeSynchronization
 
 type DescribeSynchronizationJobsRequestTag struct {
 	// The ID of the request.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -34052,7 +34269,7 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstances struct {
 	//
 	// example:
 	//
-	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\n\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
+	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// Indicates whether schema synchronization is performed. Valid values:
 	//
@@ -34544,7 +34761,7 @@ type DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckStat
 	//
 	// example:
 	//
-	// Original error: Access denied for user \"dtstest\"@\"100.104.***.**\" (using password: YES)
+	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.***.**\\" (using password: YES)
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the source instance.
 	//
@@ -34897,14 +35114,16 @@ type DescribeSynchronizationObjectModifyStatusRequest struct {
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The task ID, which is returned after you call the [ModifySynchronizationObject](~~49451~~) operation to modify the objects to be synchronized.
+	// The task ID, which is returned after you call the [ModifySynchronizationObject](https://help.aliyun.com/document_detail/49451.html) operation to modify the objects to be synchronized.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -34973,7 +35192,7 @@ type DescribeSynchronizationObjectModifyStatusResponseBody struct {
 	//
 	// example:
 	//
-	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\n\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
+	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The precheck status.
 	PrecheckStatus *DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatus `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
@@ -35248,7 +35467,7 @@ type DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatusDetail s
 	//
 	// example:
 	//
-	// Original error: Access denied for user \"dtstest\"@\"100.104.xxx.xx\" (using password: YES)
+	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.xxx.xx\\" (using password: YES)
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The name of the precheck item.
 	//
@@ -35299,7 +35518,7 @@ type DescribeSynchronizationObjectModifyStatusResponseBodyStructureInitializatio
 	//
 	// example:
 	//
-	// DTS-1020042 Execute sql error sql: Table \"customer\" already exists
+	// DTS-1020042 Execute sql error sql: Table \\"customer\\" already exists
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The progress of schema synchronization. Unit: %.
 	//
@@ -35411,14 +35630,14 @@ type DescribeTagKeysRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+	// The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
 	//
 	// example:
 	//
@@ -35610,14 +35829,14 @@ type DescribeTagValuesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+	// The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
 	//
 	// >  If this parameter is left empty, the values of all tag keys of the current user are returned.
 	//
@@ -36550,7 +36769,9 @@ type ListTagResourcesRequest struct {
 	//
 	// 212db86sca4384811e0b5e8707ec2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -36562,6 +36783,8 @@ type ListTagResourcesRequest struct {
 	// dtsntk10k6r12v****
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -36830,7 +37053,9 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyConsumerChannelRequest struct {
-	// The ID of the consumer group. You can call the [DescribeConsumerChannel](~~264169~~) operation to query the consumer group ID.
+	// The ID of the consumer group. You can call the [DescribeConsumerChannel](https://help.aliyun.com/document_detail/264169.html) operation to query the consumer group ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -36850,7 +37075,7 @@ type ModifyConsumerChannelRequest struct {
 	ConsumerGroupPassword *string `json:"ConsumerGroupPassword,omitempty" xml:"ConsumerGroupPassword,omitempty"`
 	// The new username of the consumer group.
 	//
-	// 	- A username can contain one or more of the following character types: uppercase letters, lowercase letters, digits, and underscores (\_).
+	// 	- A username can contain one or more of the following character types: uppercase letters, lowercase letters, digits, and underscores (_).
 	//
 	// 	- A username cannot exceed 16 characters in length.
 	//
@@ -36858,7 +37083,7 @@ type ModifyConsumerChannelRequest struct {
 	//
 	// dtstest
 	ConsumerGroupUserName *string `json:"ConsumerGroupUserName,omitempty" xml:"ConsumerGroupUserName,omitempty"`
-	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
 	//
 	// >  You must specify at least one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
 	//
@@ -36866,7 +37091,7 @@ type ModifyConsumerChannelRequest struct {
 	//
 	// dtsboss6pn1w73****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// >  You must specify at least one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
 	//
@@ -36874,7 +37099,9 @@ type ModifyConsumerChannelRequest struct {
 	//
 	// boss6pn1w73****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -37035,21 +37262,25 @@ type ModifyConsumerGroupPasswordRequest struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The ID of the consumer group.
 	//
-	// You can call the [DescribeConsumerGroup](~~122886~~) operation to query the consumer group ID.
+	// You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the consumer group ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// dtswc411cg617p****
 	ConsumerGroupID *string `json:"ConsumerGroupID,omitempty" xml:"ConsumerGroupID,omitempty"`
-	// The name of the consumer group. You can call the [DescribeConsumerGroup](~~122886~~) operation to query the consumer group name.
+	// The name of the consumer group. You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the consumer group name.
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
 	// The current password of the consumer group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// Test123456
 	ConsumerGroupPassword *string `json:"ConsumerGroupPassword,omitempty" xml:"ConsumerGroupPassword,omitempty"`
-	// The username of the consumer group. You can call the [DescribeConsumerGroup](~~122886~~) operation to query the username.
+	// The username of the consumer group. You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the username.
 	//
 	// example:
 	//
@@ -37060,6 +37291,8 @@ type ModifyConsumerGroupPasswordRequest struct {
 	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsg2m10r1x15a****
@@ -37069,6 +37302,8 @@ type ModifyConsumerGroupPasswordRequest struct {
 	// 	- A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
 	//
 	// 	- A password must be 8 to 32 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -37227,6 +37462,8 @@ type ModifyConsumptionTimestampRequest struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The consumption checkpoint. The format is *yyyy-MM-dd*T*HH:mm:ss*Z. The time is displayed in UTC.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2019-10-15T17:20:03Z
@@ -37235,6 +37472,8 @@ type ModifyConsumptionTimestampRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the **DescribeSubscriptionInstances*	- operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -37579,13 +37818,13 @@ type ModifyDtsJobRequest struct {
 	//
 	// true
 	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
-	// The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+	// The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
 	//
 	// >
 	//
 	// 	- The new value of DbList overwrites the original value. Make sure that all the objects that you want to synchronize are specified. Otherwise, some objects may be lost. Specify this parameter with caution.
 	//
-	// 	- Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
+	// 	- Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
 	//
 	// example:
 	//
@@ -37593,11 +37832,13 @@ type ModifyDtsJobRequest struct {
 	DbList map[string]interface{} `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	// The ID of the data synchronization instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsbi6e22ay243****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The synchronization task ID. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The synchronization task ID. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// example:
 	//
@@ -37703,17 +37944,17 @@ type ModifyDtsJobRequest struct {
 	//
 	// UPDATE_RESERVED
 	ModifyTypeEnum *string `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
-	// The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
+	// The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
-	// {\"srcHostPorts\":\"\",\"whitelist.dms.online.ddl.enable\":false,\"filterDDL\":false,\"sqlparser.dms.original.ddl\":true,\"srcOracleType\":\"sid\",\"maxRetryTime\":43200,\"destSSL\":\"0\",\"destOracleType\":\"sid\",\"srcSSL\":\"0\",\"dbListCaseChangeMode\":\"default\",\"SourceEngineVersion\":\"8.0.18\",\"srcNetType\":\"VPC\",\"destNetType\":\"VPC\",\"srcVpcNetMappingInst\":\"172.16.1**.**:10803\",\"destVpcNetMappingInst\":\"172.16.1**.**:11077\",\"useJobTask\":\"1\"}
+	// {\\"srcHostPorts\\":\\"\\",\\"whitelist.dms.online.ddl.enable\\":false,\\"filterDDL\\":false,\\"sqlparser.dms.original.ddl\\":true,\\"srcOracleType\\":\\"sid\\",\\"maxRetryTime\\":43200,\\"destSSL\\":\\"0\\",\\"destOracleType\\":\\"sid\\",\\"srcSSL\\":\\"0\\",\\"dbListCaseChangeMode\\":\\"default\\",\\"SourceEngineVersion\\":\\"8.0.18\\",\\"srcNetType\\":\\"VPC\\",\\"destNetType\\":\\"VPC\\",\\"srcVpcNetMappingInst\\":\\"172.16.1**.**:10803\\",\\"destVpcNetMappingInst\\":\\"172.16.1**.**:11077\\",\\"useJobTask\\":\\"1\\"}
 	Reserved        *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to perform schema migration or synchronization. Valid values:
@@ -37860,13 +38101,13 @@ type ModifyDtsJobAdvanceRequest struct {
 	//
 	// true
 	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
-	// The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+	// The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
 	//
 	// >
 	//
 	// 	- The new value of DbList overwrites the original value. Make sure that all the objects that you want to synchronize are specified. Otherwise, some objects may be lost. Specify this parameter with caution.
 	//
-	// 	- Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
+	// 	- Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
 	//
 	// example:
 	//
@@ -37874,11 +38115,13 @@ type ModifyDtsJobAdvanceRequest struct {
 	DbList map[string]interface{} `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	// The ID of the data synchronization instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsbi6e22ay243****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The synchronization task ID. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The synchronization task ID. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// example:
 	//
@@ -37984,17 +38227,17 @@ type ModifyDtsJobAdvanceRequest struct {
 	//
 	// UPDATE_RESERVED
 	ModifyTypeEnum *string `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
-	// The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
+	// The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
-	// {\"srcHostPorts\":\"\",\"whitelist.dms.online.ddl.enable\":false,\"filterDDL\":false,\"sqlparser.dms.original.ddl\":true,\"srcOracleType\":\"sid\",\"maxRetryTime\":43200,\"destSSL\":\"0\",\"destOracleType\":\"sid\",\"srcSSL\":\"0\",\"dbListCaseChangeMode\":\"default\",\"SourceEngineVersion\":\"8.0.18\",\"srcNetType\":\"VPC\",\"destNetType\":\"VPC\",\"srcVpcNetMappingInst\":\"172.16.1**.**:10803\",\"destVpcNetMappingInst\":\"172.16.1**.**:11077\",\"useJobTask\":\"1\"}
+	// {\\"srcHostPorts\\":\\"\\",\\"whitelist.dms.online.ddl.enable\\":false,\\"filterDDL\\":false,\\"sqlparser.dms.original.ddl\\":true,\\"srcOracleType\\":\\"sid\\",\\"maxRetryTime\\":43200,\\"destSSL\\":\\"0\\",\\"destOracleType\\":\\"sid\\",\\"srcSSL\\":\\"0\\",\\"dbListCaseChangeMode\\":\\"default\\",\\"SourceEngineVersion\\":\\"8.0.18\\",\\"srcNetType\\":\\"VPC\\",\\"destNetType\\":\\"VPC\\",\\"srcVpcNetMappingInst\\":\\"172.16.1**.**:10803\\",\\"destVpcNetMappingInst\\":\\"172.16.1**.**:11077\\",\\"useJobTask\\":\\"1\\"}
 	Reserved        *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to perform schema migration or synchronization. Valid values:
@@ -38141,13 +38384,13 @@ type ModifyDtsJobShrinkRequest struct {
 	//
 	// true
 	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
-	// The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+	// The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
 	//
 	// >
 	//
 	// 	- The new value of DbList overwrites the original value. Make sure that all the objects that you want to synchronize are specified. Otherwise, some objects may be lost. Specify this parameter with caution.
 	//
-	// 	- Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
+	// 	- Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
 	//
 	// example:
 	//
@@ -38155,11 +38398,13 @@ type ModifyDtsJobShrinkRequest struct {
 	DbListShrink *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	// The ID of the data synchronization instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsbi6e22ay243****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The synchronization task ID. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The synchronization task ID. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// example:
 	//
@@ -38265,17 +38510,17 @@ type ModifyDtsJobShrinkRequest struct {
 	//
 	// UPDATE_RESERVED
 	ModifyTypeEnum *string `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
-	// The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
+	// The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
-	// {\"srcHostPorts\":\"\",\"whitelist.dms.online.ddl.enable\":false,\"filterDDL\":false,\"sqlparser.dms.original.ddl\":true,\"srcOracleType\":\"sid\",\"maxRetryTime\":43200,\"destSSL\":\"0\",\"destOracleType\":\"sid\",\"srcSSL\":\"0\",\"dbListCaseChangeMode\":\"default\",\"SourceEngineVersion\":\"8.0.18\",\"srcNetType\":\"VPC\",\"destNetType\":\"VPC\",\"srcVpcNetMappingInst\":\"172.16.1**.**:10803\",\"destVpcNetMappingInst\":\"172.16.1**.**:11077\",\"useJobTask\":\"1\"}
+	// {\\"srcHostPorts\\":\\"\\",\\"whitelist.dms.online.ddl.enable\\":false,\\"filterDDL\\":false,\\"sqlparser.dms.original.ddl\\":true,\\"srcOracleType\\":\\"sid\\",\\"maxRetryTime\\":43200,\\"destSSL\\":\\"0\\",\\"destOracleType\\":\\"sid\\",\\"srcSSL\\":\\"0\\",\\"dbListCaseChangeMode\\":\\"default\\",\\"SourceEngineVersion\\":\\"8.0.18\\",\\"srcNetType\\":\\"VPC\\",\\"destNetType\\":\\"VPC\\",\\"srcVpcNetMappingInst\\":\\"172.16.1**.**:10803\\",\\"destVpcNetMappingInst\\":\\"172.16.1**.**:11077\\",\\"useJobTask\\":\\"1\\"}
 	Reserved        *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to perform schema migration or synchronization. Valid values:
@@ -38511,7 +38756,7 @@ type ModifyDtsJobConfigRequest struct {
 	OwnerId  *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
 	//
-	// [{\"module\":\"07\",\"name\":\"sink.connection.idle.second\",\"value\":60},{\"module\":\"07\",\"name\":\"sink.batch.size.maximum\",\"value\":64}]
+	// [{\\"module\\":\\"07\\",\\"name\\":\\"sink.connection.idle.second\\",\\"value\\":60},{\\"module\\":\\"07\\",\\"name\\":\\"sink.batch.size.maximum\\",\\"value\\":64}]
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// example:
 	//
@@ -38758,6 +39003,8 @@ func (s *ModifyDtsJobDedicatedClusterResponse) SetBody(v *ModifyDtsJobDedicatedC
 type ModifyDtsJobDuLimitRequest struct {
 	// The ID of the data migration, data synchronization, or change tracking task.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsxxx
@@ -38765,6 +39012,8 @@ type ModifyDtsJobDuLimitRequest struct {
 	// The upper limit of DUs for the DTS task.
 	//
 	// >  Minimum value: **1**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -38951,6 +39200,8 @@ type ModifyDtsJobEndpointRequest struct {
 	//
 	// m4312mab158****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// src
@@ -38959,6 +39210,8 @@ type ModifyDtsJobEndpointRequest struct {
 	//
 	// rm-bp10k50h8374w****
 	EndpointInstanceId *string `json:"EndpointInstanceId,omitempty" xml:"EndpointInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// rds
@@ -39200,6 +39453,8 @@ func (s *ModifyDtsJobEndpointResponse) SetBody(v *ModifyDtsJobEndpointResponseBo
 type ModifyDtsJobNameRequest struct {
 	// The ID of the data migration, data synchronization, or change tracking task.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// l3m1213ye7l****
@@ -39207,8 +39462,10 @@ type ModifyDtsJobNameRequest struct {
 	// The new name of the DTS task.
 	//
 	// >  We recommend that you specify a descriptive name for easy identification. You do not need to use a unique name.
+	//
+	// This parameter is required.
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -39373,6 +39630,8 @@ func (s *ModifyDtsJobNameResponse) SetBody(v *ModifyDtsJobNameResponseBody) *Mod
 type ModifyDtsJobPasswordRequest struct {
 	// The ID of the data migration, data synchronization, or change tracking task.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// l3m1213ye7l****
@@ -39397,7 +39656,7 @@ type ModifyDtsJobPasswordRequest struct {
 	//
 	// Test123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -39580,8 +39839,10 @@ func (s *ModifyDtsJobPasswordResponse) SetBody(v *ModifyDtsJobPasswordResponseBo
 type ModifyDynamicConfigRequest struct {
 	// example:
 	//
-	// {\"dts.datamove.source.rps.max\":5000,\"dts.datamove.source.bps.max\":10485760}
+	// {\\"dts.datamove.source.rps.max\\":5000,\\"dts.datamove.source.bps.max\\":10485760}
 	ConfigList *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ta7w132u12h****
@@ -39590,6 +39851,8 @@ type ModifyDynamicConfigRequest struct {
 	//
 	// true
 	EnableLimit *bool `json:"EnableLimit,omitempty" xml:"EnableLimit,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 07
@@ -39743,27 +40006,29 @@ func (s *ModifyDynamicConfigResponse) SetBody(v *ModifyDynamicConfigResponseBody
 }
 
 type ModifySubscriptionRequest struct {
-	// The objects of the change tracking task. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+	// The objects of the change tracking task. The value is a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
 	//
-	// >  You can call the [DescribeDtsJobDetail](~~208925~~) operation to query the original objects of the task.
+	// >  You can call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the original objects of the task.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// {"dtstest":{"name":"dtstest","all":true}}
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
-	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
 	//
 	// example:
 	//
 	// dtsboss6pn1w******
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
 	//
 	// example:
 	//
 	// boss6pn1w******
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -39776,6 +40041,8 @@ type ModifySubscriptionRequest struct {
 	//
 	// 	- **false**: no
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// true
@@ -39785,6 +40052,8 @@ type ModifySubscriptionRequest struct {
 	// 	- **true**: yes
 	//
 	// 	- **false**: no
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -39940,13 +40209,17 @@ type ModifySubscriptionObjectRequest struct {
 	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
+	// The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html) operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// dtsl8zl9ek6292****
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
-	// The objects from which you want to track data changes. The value is a JSON string and can contain regular expressions. For more information, see [SubscriptionObjects](~~141902~~).
+	// The objects from which you want to track data changes. The value is a JSON string and can contain regular expressions. For more information, see [SubscriptionObjects](https://help.aliyun.com/document_detail/141902.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40104,10 +40377,13 @@ type ModifySynchronizationObjectRequest struct {
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 	// The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtskfq1149w254****
-	SynchronizationJobId   *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
+	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
+	// This parameter is required.
 	SynchronizationObjects *string `json:"SynchronizationObjects,omitempty" xml:"SynchronizationObjects,omitempty"`
 }
 
@@ -40262,11 +40538,15 @@ type RenewInstanceRequest struct {
 	BuyCount *string `json:"BuyCount,omitempty" xml:"BuyCount,omitempty"`
 	// The billing method of the DTS instance. Set the value to **PREPAY**, which indicates the subscription billing method.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -40282,7 +40562,7 @@ type RenewInstanceRequest struct {
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -40713,6 +40993,8 @@ type ResetSynchronizationJobRequest struct {
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 	// The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs*	- operation to query the instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsm761239l27m****
@@ -40850,6 +41132,8 @@ type ReverseTwoWayDirectionRequest struct {
 	//
 	// false
 	IgnoreErrorSubJob *bool `json:"IgnoreErrorSubJob,omitempty" xml:"IgnoreErrorSubJob,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -40991,6 +41275,8 @@ func (s *ReverseTwoWayDirectionResponse) SetBody(v *ReverseTwoWayDirectionRespon
 type ShieldPrecheckRequest struct {
 	// The ID of the data migration or data synchronization instance. You can call the **DescribeMigrationJobs*	- or DescribeSynchronizationJobs operation to query the instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsi76118o3w92****
@@ -41005,9 +41291,11 @@ type ShieldPrecheckRequest struct {
 	//
 	// 	- **CHECK_TOPOLOGY**: topology
 	//
-	// > For more information about the topologies supported by DTS, see [Synchronization topologies](~~124115~~).
+	// > For more information about the topologies supported by DTS, see [Synchronization topologies](https://help.aliyun.com/document_detail/124115.html).
 	//
 	// 	- **CHECK_SERVER_ID**: value of server_id in the source database
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -41132,6 +41420,8 @@ func (s *ShieldPrecheckResponse) SetBody(v *ShieldPrecheckResponseBody) *ShieldP
 type SkipPreCheckRequest struct {
 	// The ID of the data migration, data synchronization, or change tracking task.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c7412z57g8k****
@@ -41142,7 +41432,7 @@ type SkipPreCheckRequest struct {
 	//
 	// b4my3zg929a****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -41156,6 +41446,8 @@ type SkipPreCheckRequest struct {
 	// 	- **false**: does not skip the precheck item.
 	//
 	// >  This parameter is required.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -41171,7 +41463,7 @@ type SkipPreCheckRequest struct {
 	//
 	// 	- **CHECK_TOPOLOGY**: topology type
 	//
-	// > For more information about the topologies supported by DTS, see [Synchronization topologies](~~124115~~).
+	// > For more information about the topologies supported by DTS, see [Synchronization topologies](https://help.aliyun.com/document_detail/124115.html).
 	//
 	// 	- **CHECK_SERVER_ID**: the server ID of the source database
 	//
@@ -41191,7 +41483,7 @@ type SkipPreCheckRequest struct {
 	//
 	// 	- **CHECK_TOPOLOGY_DETAIL**: topology type
 	//
-	// > For more information about the topologies supported by DTS, see [Synchronization topologies](~~124115~~).
+	// > For more information about the topologies supported by DTS, see [Synchronization topologies](https://help.aliyun.com/document_detail/124115.html).
 	//
 	// 	- **CHECK_SERVER_ID_DETAIL**: the server ID of the source database
 	//
@@ -41412,7 +41704,7 @@ func (s *SkipPreCheckResponse) SetBody(v *SkipPreCheckResponseBody) *SkipPreChec
 type StartDtsJobRequest struct {
 	// The ID of the data migration, data synchronization, or change tracking instance.
 	//
-	// >  You can call the [DescribeMigrationJobs](~~208139~~), [DescribeSubscriptionInstances](~~49442~~), or [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID
+	// >  You can call the [DescribeMigrationJobs](https://help.aliyun.com/document_detail/208139.html), [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html), or [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID
 	//
 	// example:
 	//
@@ -41424,7 +41716,7 @@ type StartDtsJobRequest struct {
 	//
 	// l3m1213ye7l****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The region ID of the Data Transmission Service (DTS) instance. For more information, see [List of supported regions](~~141033~~).
+	// The region ID of the Data Transmission Service (DTS) instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -41610,13 +41902,15 @@ type StartDtsJobsRequest struct {
 	//
 	// 	- For multiple tasks, separate them with commas (**,**).
 	//
-	// 	- You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// 	- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// l5o11f9029c****
 	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -41782,6 +42076,8 @@ type StartMigrationJobRequest struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query all data migration instances.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtss0611o8vv90****
@@ -41919,6 +42215,8 @@ type StartReverseWriterRequest struct {
 	CheckPoint *string `json:"CheckPoint,omitempty" xml:"CheckPoint,omitempty"`
 	// The ID of the reverse task that was created by calling the CreateReverseDtsJob operation.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// n99m9jx822k****
@@ -42044,6 +42342,8 @@ type StartSubscriptionInstanceRequest struct {
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -42206,6 +42506,8 @@ type StartSynchronizationJobRequest struct {
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 	// The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs*	- operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -42699,13 +43001,15 @@ type StopDtsJobsRequest struct {
 	//
 	// 	- Separate multiple task IDs by **,*	- (commas).
 	//
-	// 	- You can call the [DescribeDtsJobs](~~209702~~) operation to query task IDs.
+	// 	- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query task IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// l5o11f9029c****
 	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -42877,6 +43181,8 @@ type StopMigrationJobRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query all data migration instances.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsb2c11sxpi3j****
@@ -43021,6 +43327,8 @@ type SummaryJobDetailRequest struct {
 	//
 	// >  You must specify at least one of the DtsJobId and DtsInstanceId parameters.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// l3m1213ye7l****
@@ -43031,11 +43339,13 @@ type SummaryJobDetailRequest struct {
 	//
 	// 	- **03**: The task is in the incremental migration phase.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 02
 	JobCode *string `json:"JobCode,omitempty" xml:"JobCode,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -43140,7 +43450,7 @@ type SummaryJobDetailResponseBody struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The returned information about the migrated or synchronized objects in arrays.
 	//
-	// >  The arrays are in the following format: \[{"key":"Function","state":5,"totalCount":22},{"key":"Procedure","state":5,"totalCount":26},{"key":"Table","state":0,"totalCount":68},{"key":"View","state":5,"totalCount":100}].
+	// >  The arrays are in the following format: [{"key":"Function","state":5,"totalCount":22},{"key":"Procedure","state":5,"totalCount":26},{"key":"Table","state":0,"totalCount":68},{"key":"View","state":5,"totalCount":100}].
 	ProgressSummaryDetails []*SummaryJobDetailResponseBodyProgressSummaryDetails `json:"ProgressSummaryDetails,omitempty" xml:"ProgressSummaryDetails,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -43292,13 +43602,13 @@ type SuspendDtsJobRequest struct {
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	// The ID of the data migration, data synchronization, or change tracking task.
 	//
-	// >  You can call the [DescribeDtsJobs](~~209702~~) operation to obtain the task ID.
+	// >  You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to obtain the task ID.
 	//
 	// example:
 	//
 	// l3m1213ye7l****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -43488,13 +43798,15 @@ type SuspendDtsJobsRequest struct {
 	//
 	// 	- For multiple tasks, separate them with commas (,).
 	//
-	// 	- You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// 	- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// hfi12iv4z7e****
 	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -43666,6 +43978,8 @@ type SuspendMigrationJobRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query all data migration instances.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsj1x11y51g3b****
@@ -43824,6 +44138,8 @@ type SuspendSynchronizationJobRequest struct {
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 	// The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs*	- operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -44104,6 +44420,8 @@ type SwitchSynchronizationEndpointRequest struct {
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 	// The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsexjk1alb116****
@@ -44175,6 +44493,8 @@ type SwitchSynchronizationEndpointRequestEndpoint struct {
 	//
 	// 	- If the **Endpoint.InstanceType*	- parameter is set to **Express**, you must specify the ID of the VPC.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// i-bp11haem1kpkhoup****
@@ -44187,11 +44507,15 @@ type SwitchSynchronizationEndpointRequestEndpoint struct {
 	//
 	// 	- **Express**: self-managed database that is connected over Express Connect
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ECS
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The service port number of the database.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -44202,6 +44526,8 @@ type SwitchSynchronizationEndpointRequestEndpoint struct {
 	// 	- **Source**
 	//
 	// 	- **Destination**
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -44251,7 +44577,7 @@ type SwitchSynchronizationEndpointRequestSourceEndpoint struct {
 	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	// The authorized Resource Access Management (RAM) role of the source instance. You must specify the RAM role only if the source instance and the destination instance belong to different Alibaba Cloud accounts. You can use the RAM role to allow the Alibaba Cloud account that owns the destination instance to access the source instance.
 	//
-	// >  For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+	// >  For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
 	//
 	// example:
 	//
@@ -44302,7 +44628,7 @@ type SwitchSynchronizationEndpointResponseBody struct {
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The task ID. You must specify the task ID when you call the [DescribeEndpointSwitchStatus](~~135598~~) operation to query the execution status of the task.
+	// The task ID. You must specify the task ID when you call the [DescribeEndpointSwitchStatus](https://help.aliyun.com/document_detail/135598.html) operation to query the execution status of the task.
 	//
 	// example:
 	//
@@ -44373,13 +44699,17 @@ func (s *SwitchSynchronizationEndpointResponse) SetBody(v *SwitchSynchronization
 }
 
 type TagResourcesRequest struct {
-	// The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsntk10k6r12v****
@@ -44389,8 +44719,9 @@ type TagResourcesRequest struct {
 	// example:
 	//
 	// ALIYUN::DTS::INSTANCE
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -44435,6 +44766,8 @@ type TagResourcesRequestTag struct {
 	//
 	// 	- This parameter cannot be an empty string.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testkey1
@@ -44446,6 +44779,8 @@ type TagResourcesRequestTag struct {
 	// 	- N specifies the serial number of the tag. For example, Tag.1.Value specifies the value of the first tag and Tag.2.Value specifies the value of the second tag.
 	//
 	// 	- This parameter can be an empty string.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -44556,19 +44891,23 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type TransferInstanceClassRequest struct {
-	// The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// r4yr723m199****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The new instance class of the DTS instance. You can call the [DescribeDtsJobDetail](~~208925~~) operation to query the original instance class of the DTS instance.
+	// The new instance class of the DTS instance. You can call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the original instance class of the DTS instance.
 	//
 	// 	- DTS supports the following instance classes for a data migration instance: **xxlarge**, **xlarge**, **large**, **medium**, and **small**.
 	//
 	// 	- DTS supports the following instance classes for a data synchronization instance: **large**, **medium**, **small**, and **micro**.
 	//
-	// >  For more information about the test performance of each instance class, see [Specifications of data migration instances](~~26606~~) and [Specifications of data synchronization instances](~~26605~~).
+	// >  For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -44580,11 +44919,13 @@ type TransferInstanceClassRequest struct {
 	//
 	// 	- **DOWNGRADE**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// UPGRADE
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -44800,6 +45141,7 @@ func (s *TransferInstanceClassResponse) SetBody(v *TransferInstanceClassResponse
 }
 
 type TransferPayTypeRequest struct {
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The subscription length.
 	//
 	// 	- If the **Period*	- parameter is set to **Year**, the value range is **1*	- to **5**.
@@ -44824,11 +45166,15 @@ type TransferPayTypeRequest struct {
 	//
 	// 	- If you do not need to change the billing method, specify the current billing method.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+	// The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -44848,7 +45194,7 @@ type TransferPayTypeRequest struct {
 	//
 	// Year
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -44863,6 +45209,11 @@ func (s TransferPayTypeRequest) String() string {
 
 func (s TransferPayTypeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *TransferPayTypeRequest) SetAutoPay(v bool) *TransferPayTypeRequest {
+	s.AutoPay = &v
+	return s
 }
 
 func (s *TransferPayTypeRequest) SetBuyCount(v string) *TransferPayTypeRequest {
@@ -45099,13 +45450,17 @@ type UntagResourcesRequest struct {
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dtsntk10k6r12v****
@@ -45247,19 +45602,23 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 type UpgradeTwoWayRequest struct {
 	// The instance class of the two-way synchronization task. Valid values: **large**, **medium**, **micro**, and **small**.
 	//
-	// >  For more information, see [Specifications of data synchronization instances](~~26605~~).
+	// >  For more information, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// large
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The ID of the data synchronization instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+	// The ID of the data synchronization instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// dtsh77p49x4k28****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -45426,13 +45785,15 @@ type WhiteIpListRequest struct {
 	//
 	// cn-hangzhou
 	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
-	// The ID of the region where the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// >
 	//
 	// 	- If the destination instance is a self-managed database with a public IP address or a third-party cloud database, you can set the parameter to **cn-hangzhou*	- or the ID of the closest region.
 	//
 	// 	- If the DTS task is a data migration or data synchronization task, you must specify this parameter.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -45443,9 +45804,11 @@ type WhiteIpListRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the region where the source instance resides. For more information, see [List of supported regions](~~141033~~).
+	// The ID of the region where the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// >  If the source instance is a self-managed database with a public IP address or a third-party cloud database, you can set the parameter to **cn-hangzhou*	- or the ID of the closest region.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -45726,6 +46089,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 配置DTS任务
+//
 // Description:
 //
 // The name of the DTS instance.
@@ -45986,6 +46353,10 @@ func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 配置DTS任务
+//
 // Description:
 //
 // The name of the DTS instance.
@@ -46023,7 +46394,7 @@ func (client *Client) ConfigureDtsJobAdvance(request *ConfigureDtsJobAdvanceRequ
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -46051,12 +46422,17 @@ func (client *Client) ConfigureDtsJobAdvance(request *ConfigureDtsJobAdvanceRequ
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -46110,11 +46486,15 @@ func (client *Client) ConfigureDtsJobAdvance(request *ConfigureDtsJobAdvanceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a data migration task.
+//
 // Description:
 //
-// After you call this operation to configure a data migration task, the task will be automatically started. You do not need to call the [StartMigrationJob](~~49429~~) operation to start the task.
+// After you call this operation to configure a data migration task, the task will be automatically started. You do not need to call the [StartMigrationJob](https://help.aliyun.com/document_detail/49429.html) operation to start the task.
 //
-// A data migration task may fail to be started due to precheck failures. You can call the [DescribeMigrationJobStatus](~~49433~~) operation to query the error messages about precheck failures. Then, you can fix the issue based on the error messages. After you fix the issue, you must call the [StartMigrationJob](~~49429~~) operation to restart the data migration task.
+// A data migration task may fail to be started due to precheck failures. You can call the [DescribeMigrationJobStatus](https://help.aliyun.com/document_detail/49433.html) operation to query the error messages about precheck failures. Then, you can fix the issue based on the error messages. After you fix the issue, you must call the [StartMigrationJob](https://help.aliyun.com/document_detail/49429.html) operation to restart the data migration task.
 //
 // @param request - ConfigureMigrationJobRequest
 //
@@ -46200,11 +46580,15 @@ func (client *Client) ConfigureMigrationJobWithOptions(request *ConfigureMigrati
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a data migration task.
+//
 // Description:
 //
-// After you call this operation to configure a data migration task, the task will be automatically started. You do not need to call the [StartMigrationJob](~~49429~~) operation to start the task.
+// After you call this operation to configure a data migration task, the task will be automatically started. You do not need to call the [StartMigrationJob](https://help.aliyun.com/document_detail/49429.html) operation to start the task.
 //
-// A data migration task may fail to be started due to precheck failures. You can call the [DescribeMigrationJobStatus](~~49433~~) operation to query the error messages about precheck failures. Then, you can fix the issue based on the error messages. After you fix the issue, you must call the [StartMigrationJob](~~49429~~) operation to restart the data migration task.
+// A data migration task may fail to be started due to precheck failures. You can call the [DescribeMigrationJobStatus](https://help.aliyun.com/document_detail/49433.html) operation to query the error messages about precheck failures. Then, you can fix the issue based on the error messages. After you fix the issue, you must call the [StartMigrationJob](https://help.aliyun.com/document_detail/49429.html) operation to restart the data migration task.
 //
 // @param request - ConfigureMigrationJobRequest
 //
@@ -46220,6 +46604,11 @@ func (client *Client) ConfigureMigrationJob(request *ConfigureMigrationJobReques
 	return _result, _err
 }
 
+// @param request - ConfigureMigrationJobAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigureMigrationJobAlertResponse
 func (client *Client) ConfigureMigrationJobAlertWithOptions(request *ConfigureMigrationJobAlertRequest, runtime *util.RuntimeOptions) (_result *ConfigureMigrationJobAlertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46289,6 +46678,9 @@ func (client *Client) ConfigureMigrationJobAlertWithOptions(request *ConfigureMi
 	return _result, _err
 }
 
+// @param request - ConfigureMigrationJobAlertRequest
+//
+// @return ConfigureMigrationJobAlertResponse
 func (client *Client) ConfigureMigrationJobAlert(request *ConfigureMigrationJobAlertRequest) (_result *ConfigureMigrationJobAlertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigureMigrationJobAlertResponse{}
@@ -46300,6 +46692,11 @@ func (client *Client) ConfigureMigrationJobAlert(request *ConfigureMigrationJobA
 	return _result, _err
 }
 
+// @param request - ConfigureSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigureSubscriptionResponse
 func (client *Client) ConfigureSubscriptionWithOptions(request *ConfigureSubscriptionRequest, runtime *util.RuntimeOptions) (_result *ConfigureSubscriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46465,6 +46862,9 @@ func (client *Client) ConfigureSubscriptionWithOptions(request *ConfigureSubscri
 	return _result, _err
 }
 
+// @param request - ConfigureSubscriptionRequest
+//
+// @return ConfigureSubscriptionResponse
 func (client *Client) ConfigureSubscription(request *ConfigureSubscriptionRequest) (_result *ConfigureSubscriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigureSubscriptionResponse{}
@@ -46476,6 +46876,10 @@ func (client *Client) ConfigureSubscription(request *ConfigureSubscriptionReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Before you call this operation, you must call the [CreateSubscriptionInstance](https://help.aliyun.com/document_detail/49436.html) operation to create a change tracking instance.
+//
 // Description:
 //
 // The operation that you want to perform. Set the value to **ConfigureSubscriptionInstance**.
@@ -46560,6 +46964,10 @@ func (client *Client) ConfigureSubscriptionInstanceWithOptions(request *Configur
 	return _result, _err
 }
 
+// Summary:
+//
+// Before you call this operation, you must call the [CreateSubscriptionInstance](https://help.aliyun.com/document_detail/49436.html) operation to create a change tracking instance.
+//
 // Description:
 //
 // The operation that you want to perform. Set the value to **ConfigureSubscriptionInstance**.
@@ -46578,6 +46986,11 @@ func (client *Client) ConfigureSubscriptionInstance(request *ConfigureSubscripti
 	return _result, _err
 }
 
+// @param request - ConfigureSubscriptionInstanceAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigureSubscriptionInstanceAlertResponse
 func (client *Client) ConfigureSubscriptionInstanceAlertWithOptions(request *ConfigureSubscriptionInstanceAlertRequest, runtime *util.RuntimeOptions) (_result *ConfigureSubscriptionInstanceAlertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46647,6 +47060,9 @@ func (client *Client) ConfigureSubscriptionInstanceAlertWithOptions(request *Con
 	return _result, _err
 }
 
+// @param request - ConfigureSubscriptionInstanceAlertRequest
+//
+// @return ConfigureSubscriptionInstanceAlertResponse
 func (client *Client) ConfigureSubscriptionInstanceAlert(request *ConfigureSubscriptionInstanceAlertRequest) (_result *ConfigureSubscriptionInstanceAlertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigureSubscriptionInstanceAlertResponse{}
@@ -46660,13 +47076,13 @@ func (client *Client) ConfigureSubscriptionInstanceAlert(request *ConfigureSubsc
 
 // Description:
 //
-// Before you call this operation, you must call the [CreateSynchronizationJob](~~49446~~) operation to create a data synchronization instance.
+// Before you call this operation, you must call the [CreateSynchronizationJob](https://help.aliyun.com/document_detail/49446.html) operation to create a data synchronization instance.
 //
 // >
 //
-// 	- After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](~~49448~~) operation to start the task.
+// 	- After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to start the task.
 //
-// 	- A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](~~49453~~) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](~~49448~~) operation to restart the data synchronization task.
+// 	- A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](https://help.aliyun.com/document_detail/49453.html) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to restart the data synchronization task.
 //
 // @param request - ConfigureSynchronizationJobRequest
 //
@@ -46766,13 +47182,13 @@ func (client *Client) ConfigureSynchronizationJobWithOptions(request *ConfigureS
 
 // Description:
 //
-// Before you call this operation, you must call the [CreateSynchronizationJob](~~49446~~) operation to create a data synchronization instance.
+// Before you call this operation, you must call the [CreateSynchronizationJob](https://help.aliyun.com/document_detail/49446.html) operation to create a data synchronization instance.
 //
 // >
 //
-// 	- After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](~~49448~~) operation to start the task.
+// 	- After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to start the task.
 //
-// 	- A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](~~49453~~) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](~~49448~~) operation to restart the data synchronization task.
+// 	- A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](https://help.aliyun.com/document_detail/49453.html) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to restart the data synchronization task.
 //
 // @param request - ConfigureSynchronizationJobRequest
 //
@@ -46788,6 +47204,11 @@ func (client *Client) ConfigureSynchronizationJob(request *ConfigureSynchronizat
 	return _result, _err
 }
 
+// @param request - ConfigureSynchronizationJobAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigureSynchronizationJobAlertResponse
 func (client *Client) ConfigureSynchronizationJobAlertWithOptions(request *ConfigureSynchronizationJobAlertRequest, runtime *util.RuntimeOptions) (_result *ConfigureSynchronizationJobAlertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46861,6 +47282,9 @@ func (client *Client) ConfigureSynchronizationJobAlertWithOptions(request *Confi
 	return _result, _err
 }
 
+// @param request - ConfigureSynchronizationJobAlertRequest
+//
+// @return ConfigureSynchronizationJobAlertResponse
 func (client *Client) ConfigureSynchronizationJobAlert(request *ConfigureSynchronizationJobAlertRequest) (_result *ConfigureSynchronizationJobAlertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigureSynchronizationJobAlertResponse{}
@@ -46876,7 +47300,7 @@ func (client *Client) ConfigureSynchronizationJobAlert(request *ConfigureSynchro
 //
 // When you use Data Transmission Service (DTS) to synchronize data, other data sources may write data to the destination instance. In this case, data may become inconsistent between the source and destination instances. To ensure data consistency, you can enable image matching.
 //
-// After you call this operation, you can call the [DescribeSynchronizationJobReplicatorCompare](~~199183~~) operation to verify whether image matching is enabled for the data synchronization instance.
+// After you call this operation, you can call the [DescribeSynchronizationJobReplicatorCompare](https://help.aliyun.com/document_detail/199183.html) operation to verify whether image matching is enabled for the data synchronization instance.
 //
 // @param request - ConfigureSynchronizationJobReplicatorCompareRequest
 //
@@ -46948,7 +47372,7 @@ func (client *Client) ConfigureSynchronizationJobReplicatorCompareWithOptions(re
 //
 // When you use Data Transmission Service (DTS) to synchronize data, other data sources may write data to the destination instance. In this case, data may become inconsistent between the source and destination instances. To ensure data consistency, you can enable image matching.
 //
-// After you call this operation, you can call the [DescribeSynchronizationJobReplicatorCompare](~~199183~~) operation to verify whether image matching is enabled for the data synchronization instance.
+// After you call this operation, you can call the [DescribeSynchronizationJobReplicatorCompare](https://help.aliyun.com/document_detail/199183.html) operation to verify whether image matching is enabled for the data synchronization instance.
 //
 // @param request - ConfigureSynchronizationJobReplicatorCompareRequest
 //
@@ -46964,6 +47388,15 @@ func (client *Client) ConfigureSynchronizationJobReplicatorCompare(request *Conf
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询符合条件的任务数
+//
+// @param request - CountJobByConditionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CountJobByConditionResponse
 func (client *Client) CountJobByConditionWithOptions(request *CountJobByConditionRequest, runtime *util.RuntimeOptions) (_result *CountJobByConditionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47033,6 +47466,13 @@ func (client *Client) CountJobByConditionWithOptions(request *CountJobByConditio
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询符合条件的任务数
+//
+// @param request - CountJobByConditionRequest
+//
+// @return CountJobByConditionResponse
 func (client *Client) CountJobByCondition(request *CountJobByConditionRequest) (_result *CountJobByConditionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CountJobByConditionResponse{}
@@ -47044,6 +47484,11 @@ func (client *Client) CountJobByCondition(request *CountJobByConditionRequest) (
 	return _result, _err
 }
 
+// @param request - CreateConsumerChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConsumerChannelResponse
 func (client *Client) CreateConsumerChannelWithOptions(request *CreateConsumerChannelRequest, runtime *util.RuntimeOptions) (_result *CreateConsumerChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47101,6 +47546,9 @@ func (client *Client) CreateConsumerChannelWithOptions(request *CreateConsumerCh
 	return _result, _err
 }
 
+// @param request - CreateConsumerChannelRequest
+//
+// @return CreateConsumerChannelResponse
 func (client *Client) CreateConsumerChannel(request *CreateConsumerChannelRequest) (_result *CreateConsumerChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateConsumerChannelResponse{}
@@ -47112,6 +47560,11 @@ func (client *Client) CreateConsumerChannel(request *CreateConsumerChannelReques
 	return _result, _err
 }
 
+// @param request - CreateConsumerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConsumerGroupResponse
 func (client *Client) CreateConsumerGroupWithOptions(request *CreateConsumerGroupRequest, runtime *util.RuntimeOptions) (_result *CreateConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47173,6 +47626,9 @@ func (client *Client) CreateConsumerGroupWithOptions(request *CreateConsumerGrou
 	return _result, _err
 }
 
+// @param request - CreateConsumerGroupRequest
+//
+// @return CreateConsumerGroupResponse
 func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (_result *CreateConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateConsumerGroupResponse{}
@@ -47184,6 +47640,15 @@ func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an alert rule.
+//
+// @param request - CreateDedicatedClusterMonitorRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDedicatedClusterMonitorRuleResponse
 func (client *Client) CreateDedicatedClusterMonitorRuleWithOptions(request *CreateDedicatedClusterMonitorRuleRequest, runtime *util.RuntimeOptions) (_result *CreateDedicatedClusterMonitorRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47257,6 +47722,13 @@ func (client *Client) CreateDedicatedClusterMonitorRuleWithOptions(request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an alert rule.
+//
+// @param request - CreateDedicatedClusterMonitorRuleRequest
+//
+// @return CreateDedicatedClusterMonitorRuleResponse
 func (client *Client) CreateDedicatedClusterMonitorRule(request *CreateDedicatedClusterMonitorRuleRequest) (_result *CreateDedicatedClusterMonitorRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDedicatedClusterMonitorRuleResponse{}
@@ -47270,9 +47742,9 @@ func (client *Client) CreateDedicatedClusterMonitorRule(request *CreateDedicated
 
 // Description:
 //
-// 	- Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
+//   Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
 //
-// 	- If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](~~208399~~) operation to configure a DTS task.
+// 	- If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to configure a DTS task.
 //
 // @param request - CreateDtsInstanceRequest
 //
@@ -47398,9 +47870,9 @@ func (client *Client) CreateDtsInstanceWithOptions(request *CreateDtsInstanceReq
 
 // Description:
 //
-// 	- Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
+//   Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
 //
-// 	- If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](~~208399~~) operation to configure a DTS task.
+// 	- If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to configure a DTS task.
 //
 // @param request - CreateDtsInstanceRequest
 //
@@ -47526,11 +47998,11 @@ func (client *Client) CreateJobMonitorRule(request *CreateJobMonitorRuleRequest)
 
 // Description:
 //
-// >  This API operation is outdated. We recommend that you use the new version. For more information, see [CreateDtsInstance](~~208270~~).
+// >  This API operation is outdated. We recommend that you use the new version. For more information, see [CreateDtsInstance](https://help.aliyun.com/document_detail/208270.html).
 //
 // Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
 //
-// After you purchase a data migration instance, you must call the [ConfigureMigrationJob](~~324260~~) operation to configure a data migration task.
+// After you purchase a data migration instance, you must call the [ConfigureMigrationJob](https://help.aliyun.com/document_detail/324260.html) operation to configure a data migration task.
 //
 // @param request - CreateMigrationJobRequest
 //
@@ -47596,11 +48068,11 @@ func (client *Client) CreateMigrationJobWithOptions(request *CreateMigrationJobR
 
 // Description:
 //
-// >  This API operation is outdated. We recommend that you use the new version. For more information, see [CreateDtsInstance](~~208270~~).
+// >  This API operation is outdated. We recommend that you use the new version. For more information, see [CreateDtsInstance](https://help.aliyun.com/document_detail/208270.html).
 //
 // Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
 //
-// After you purchase a data migration instance, you must call the [ConfigureMigrationJob](~~324260~~) operation to configure a data migration task.
+// After you purchase a data migration instance, you must call the [ConfigureMigrationJob](https://help.aliyun.com/document_detail/324260.html) operation to configure a data migration task.
 //
 // @param request - CreateMigrationJobRequest
 //
@@ -47616,6 +48088,15 @@ func (client *Client) CreateMigrationJob(request *CreateMigrationJobRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建DTS反向增量同步任务
+//
+// @param request - CreateReverseDtsJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateReverseDtsJobResponse
 func (client *Client) CreateReverseDtsJobWithOptions(request *CreateReverseDtsJobRequest, runtime *util.RuntimeOptions) (_result *CreateReverseDtsJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47661,6 +48142,13 @@ func (client *Client) CreateReverseDtsJobWithOptions(request *CreateReverseDtsJo
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建DTS反向增量同步任务
+//
+// @param request - CreateReverseDtsJobRequest
+//
+// @return CreateReverseDtsJobResponse
 func (client *Client) CreateReverseDtsJob(request *CreateReverseDtsJobRequest) (_result *CreateReverseDtsJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateReverseDtsJobResponse{}
@@ -47772,7 +48260,7 @@ func (client *Client) CreateSubscriptionInstance(request *CreateSubscriptionInst
 //
 // Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
 //
-// After you purchase a data synchronization instance, you must call the [ConfigureSynchronizationJob](~~49447~~) operation to configure a data synchronization task. Then, the task is automatically started.
+// After you purchase a data synchronization instance, you must call the [ConfigureSynchronizationJob](https://help.aliyun.com/document_detail/49447.html) operation to configure a data synchronization task. Then, the task is automatically started.
 //
 // @param request - CreateSynchronizationJobRequest
 //
@@ -47876,7 +48364,7 @@ func (client *Client) CreateSynchronizationJobWithOptions(request *CreateSynchro
 //
 // Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
 //
-// After you purchase a data synchronization instance, you must call the [ConfigureSynchronizationJob](~~49447~~) operation to configure a data synchronization task. Then, the task is automatically started.
+// After you purchase a data synchronization instance, you must call the [ConfigureSynchronizationJob](https://help.aliyun.com/document_detail/49447.html) operation to configure a data synchronization task. Then, the task is automatically started.
 //
 // @param request - CreateSynchronizationJobRequest
 //
@@ -47892,6 +48380,11 @@ func (client *Client) CreateSynchronizationJob(request *CreateSynchronizationJob
 	return _result, _err
 }
 
+// @param request - DeleteConsumerChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConsumerChannelResponse
 func (client *Client) DeleteConsumerChannelWithOptions(request *DeleteConsumerChannelRequest, runtime *util.RuntimeOptions) (_result *DeleteConsumerChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47941,6 +48434,9 @@ func (client *Client) DeleteConsumerChannelWithOptions(request *DeleteConsumerCh
 	return _result, _err
 }
 
+// @param request - DeleteConsumerChannelRequest
+//
+// @return DeleteConsumerChannelResponse
 func (client *Client) DeleteConsumerChannel(request *DeleteConsumerChannelRequest) (_result *DeleteConsumerChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteConsumerChannelResponse{}
@@ -47952,6 +48448,11 @@ func (client *Client) DeleteConsumerChannel(request *DeleteConsumerChannelReques
 	return _result, _err
 }
 
+// @param request - DeleteConsumerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConsumerGroupResponse
 func (client *Client) DeleteConsumerGroupWithOptions(request *DeleteConsumerGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48005,6 +48506,9 @@ func (client *Client) DeleteConsumerGroupWithOptions(request *DeleteConsumerGrou
 	return _result, _err
 }
 
+// @param request - DeleteConsumerGroupRequest
+//
+// @return DeleteConsumerGroupResponse
 func (client *Client) DeleteConsumerGroup(request *DeleteConsumerGroupRequest) (_result *DeleteConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteConsumerGroupResponse{}
@@ -48016,6 +48520,15 @@ func (client *Client) DeleteConsumerGroup(request *DeleteConsumerGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// The HTTP status code.
+//
+// @param request - DeleteDtsJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDtsJobResponse
 func (client *Client) DeleteDtsJobWithOptions(request *DeleteDtsJobRequest, runtime *util.RuntimeOptions) (_result *DeleteDtsJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48073,6 +48586,13 @@ func (client *Client) DeleteDtsJobWithOptions(request *DeleteDtsJobRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// The HTTP status code.
+//
+// @param request - DeleteDtsJobRequest
+//
+// @return DeleteDtsJobResponse
 func (client *Client) DeleteDtsJob(request *DeleteDtsJobRequest) (_result *DeleteDtsJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDtsJobResponse{}
@@ -48084,6 +48604,15 @@ func (client *Client) DeleteDtsJob(request *DeleteDtsJobRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes multiple data migration, data synchronization, or change tracking tasks.
+//
+// @param request - DeleteDtsJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDtsJobsResponse
 func (client *Client) DeleteDtsJobsWithOptions(request *DeleteDtsJobsRequest, runtime *util.RuntimeOptions) (_result *DeleteDtsJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48129,6 +48658,13 @@ func (client *Client) DeleteDtsJobsWithOptions(request *DeleteDtsJobsRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes multiple data migration, data synchronization, or change tracking tasks.
+//
+// @param request - DeleteDtsJobsRequest
+//
+// @return DeleteDtsJobsResponse
 func (client *Client) DeleteDtsJobs(request *DeleteDtsJobsRequest) (_result *DeleteDtsJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDtsJobsResponse{}
@@ -48368,6 +48904,15 @@ func (client *Client) DeleteSynchronizationJob(request *DeleteSynchronizationJob
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询数据投递链路store账号
+//
+// @param request - DescribeChannelAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChannelAccountResponse
 func (client *Client) DescribeChannelAccountWithOptions(request *DescribeChannelAccountRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48425,6 +48970,13 @@ func (client *Client) DescribeChannelAccountWithOptions(request *DescribeChannel
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询数据投递链路store账号
+//
+// @param request - DescribeChannelAccountRequest
+//
+// @return DescribeChannelAccountResponse
 func (client *Client) DescribeChannelAccount(request *DescribeChannelAccountRequest) (_result *DescribeChannelAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelAccountResponse{}
@@ -48436,6 +48988,15 @@ func (client *Client) DescribeChannelAccount(request *DescribeChannelAccountRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 请求所有数据校验任务数据
+//
+// @param request - DescribeCheckJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCheckJobsResponse
 func (client *Client) DescribeCheckJobsWithOptions(request *DescribeCheckJobsRequest, runtime *util.RuntimeOptions) (_result *DescribeCheckJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48489,6 +49050,13 @@ func (client *Client) DescribeCheckJobsWithOptions(request *DescribeCheckJobsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 请求所有数据校验任务数据
+//
+// @param request - DescribeCheckJobsRequest
+//
+// @return DescribeCheckJobsResponse
 func (client *Client) DescribeCheckJobs(request *DescribeCheckJobsRequest) (_result *DescribeCheckJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCheckJobsResponse{}
@@ -48500,6 +49068,15 @@ func (client *Client) DescribeCheckJobs(request *DescribeCheckJobsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries operation logs of a Data Transmission Service (DTS) dedicated cluster.
+//
+// @param request - DescribeClusterOperateLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClusterOperateLogsResponse
 func (client *Client) DescribeClusterOperateLogsWithOptions(request *DescribeClusterOperateLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterOperateLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48571,6 +49148,13 @@ func (client *Client) DescribeClusterOperateLogsWithOptions(request *DescribeClu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries operation logs of a Data Transmission Service (DTS) dedicated cluster.
+//
+// @param request - DescribeClusterOperateLogsRequest
+//
+// @return DescribeClusterOperateLogsResponse
 func (client *Client) DescribeClusterOperateLogs(request *DescribeClusterOperateLogsRequest) (_result *DescribeClusterOperateLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeClusterOperateLogsResponse{}
@@ -48582,6 +49166,15 @@ func (client *Client) DescribeClusterOperateLogs(request *DescribeClusterOperate
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resource usage of a cluster.
+//
+// @param request - DescribeClusterUsedUtilizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClusterUsedUtilizationResponse
 func (client *Client) DescribeClusterUsedUtilizationWithOptions(request *DescribeClusterUsedUtilizationRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterUsedUtilizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48653,6 +49246,13 @@ func (client *Client) DescribeClusterUsedUtilizationWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resource usage of a cluster.
+//
+// @param request - DescribeClusterUsedUtilizationRequest
+//
+// @return DescribeClusterUsedUtilizationResponse
 func (client *Client) DescribeClusterUsedUtilization(request *DescribeClusterUsedUtilizationRequest) (_result *DescribeClusterUsedUtilizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeClusterUsedUtilizationResponse{}
@@ -48664,6 +49264,11 @@ func (client *Client) DescribeClusterUsedUtilization(request *DescribeClusterUse
 	return _result, _err
 }
 
+// @param request - DescribeConnectionStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeConnectionStatusResponse
 func (client *Client) DescribeConnectionStatusWithOptions(request *DescribeConnectionStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeConnectionStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48789,6 +49394,9 @@ func (client *Client) DescribeConnectionStatusWithOptions(request *DescribeConne
 	return _result, _err
 }
 
+// @param request - DescribeConnectionStatusRequest
+//
+// @return DescribeConnectionStatusResponse
 func (client *Client) DescribeConnectionStatus(request *DescribeConnectionStatusRequest) (_result *DescribeConnectionStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeConnectionStatusResponse{}
@@ -48800,6 +49408,11 @@ func (client *Client) DescribeConnectionStatus(request *DescribeConnectionStatus
 	return _result, _err
 }
 
+// @param request - DescribeConsumerChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeConsumerChannelResponse
 func (client *Client) DescribeConsumerChannelWithOptions(request *DescribeConsumerChannelRequest, runtime *util.RuntimeOptions) (_result *DescribeConsumerChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48857,6 +49470,9 @@ func (client *Client) DescribeConsumerChannelWithOptions(request *DescribeConsum
 	return _result, _err
 }
 
+// @param request - DescribeConsumerChannelRequest
+//
+// @return DescribeConsumerChannelResponse
 func (client *Client) DescribeConsumerChannel(request *DescribeConsumerChannelRequest) (_result *DescribeConsumerChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeConsumerChannelResponse{}
@@ -48868,6 +49484,15 @@ func (client *Client) DescribeConsumerChannel(request *DescribeConsumerChannelRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of consumer groups in a change tracking instance.
+//
+// @param request - DescribeConsumerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeConsumerGroupResponse
 func (client *Client) DescribeConsumerGroupWithOptions(request *DescribeConsumerGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48925,6 +49550,13 @@ func (client *Client) DescribeConsumerGroupWithOptions(request *DescribeConsumer
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of consumer groups in a change tracking instance.
+//
+// @param request - DescribeConsumerGroupRequest
+//
+// @return DescribeConsumerGroupResponse
 func (client *Client) DescribeConsumerGroup(request *DescribeConsumerGroupRequest) (_result *DescribeConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeConsumerGroupResponse{}
@@ -48938,7 +49570,7 @@ func (client *Client) DescribeConsumerGroup(request *DescribeConsumerGroupReques
 
 // Description:
 //
-// If the **source or destination instance*	- is an **on-premises database**, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see [Add the CIDR blocks of DTS servers to the security settings of on-premises databases](~~176627~~).
+// If the **source or destination instance*	- is an **on-premises database**, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see [Add the CIDR blocks of DTS servers to the security settings of on-premises databases](https://help.aliyun.com/document_detail/176627.html).
 //
 // >  If the **source or destination database*	- is an **ApsaraDB database instance*	- (such as RDS instance and ApsaraDB for MongoDB instance) or a **self-managed database hosted on ECS**, you do not need to add the CIDR blocks. When you click **Set Whitelist and Next*	- in the DTS console, DTS automatically add the CIDR blocks of DTS servers to the security settings of the source or destination instance.
 //
@@ -48994,7 +49626,7 @@ func (client *Client) DescribeDTSIPWithOptions(request *DescribeDTSIPRequest, ru
 
 // Description:
 //
-// If the **source or destination instance*	- is an **on-premises database**, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see [Add the CIDR blocks of DTS servers to the security settings of on-premises databases](~~176627~~).
+// If the **source or destination instance*	- is an **on-premises database**, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see [Add the CIDR blocks of DTS servers to the security settings of on-premises databases](https://help.aliyun.com/document_detail/176627.html).
 //
 // >  If the **source or destination database*	- is an **ApsaraDB database instance*	- (such as RDS instance and ApsaraDB for MongoDB instance) or a **self-managed database hosted on ECS**, you do not need to add the CIDR blocks. When you click **Set Whitelist and Next*	- in the DTS console, DTS automatically add the CIDR blocks of DTS servers to the security settings of the source or destination instance.
 //
@@ -49012,6 +49644,15 @@ func (client *Client) DescribeDTSIP(request *DescribeDTSIPRequest) (_result *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the download URL of the data consistency verification report.
+//
+// @param request - DescribeDataCheckReportUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataCheckReportUrlResponse
 func (client *Client) DescribeDataCheckReportUrlWithOptions(request *DescribeDataCheckReportUrlRequest, runtime *util.RuntimeOptions) (_result *DescribeDataCheckReportUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49061,6 +49702,13 @@ func (client *Client) DescribeDataCheckReportUrlWithOptions(request *DescribeDat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the download URL of the data consistency verification report.
+//
+// @param request - DescribeDataCheckReportUrlRequest
+//
+// @return DescribeDataCheckReportUrlResponse
 func (client *Client) DescribeDataCheckReportUrl(request *DescribeDataCheckReportUrlRequest) (_result *DescribeDataCheckReportUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataCheckReportUrlResponse{}
@@ -49072,6 +49720,15 @@ func (client *Client) DescribeDataCheckReportUrl(request *DescribeDataCheckRepor
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a data verification task.
+//
+// @param request - DescribeDataCheckTableDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataCheckTableDetailsResponse
 func (client *Client) DescribeDataCheckTableDetailsWithOptions(request *DescribeDataCheckTableDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeDataCheckTableDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49133,6 +49790,13 @@ func (client *Client) DescribeDataCheckTableDetailsWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a data verification task.
+//
+// @param request - DescribeDataCheckTableDetailsRequest
+//
+// @return DescribeDataCheckTableDetailsResponse
 func (client *Client) DescribeDataCheckTableDetails(request *DescribeDataCheckTableDetailsRequest) (_result *DescribeDataCheckTableDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataCheckTableDetailsResponse{}
@@ -49144,6 +49808,11 @@ func (client *Client) DescribeDataCheckTableDetails(request *DescribeDataCheckTa
 	return _result, _err
 }
 
+// @param request - DescribeDataCheckTableDiffDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataCheckTableDiffDetailsResponse
 func (client *Client) DescribeDataCheckTableDiffDetailsWithOptions(request *DescribeDataCheckTableDiffDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeDataCheckTableDiffDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49201,6 +49870,9 @@ func (client *Client) DescribeDataCheckTableDiffDetailsWithOptions(request *Desc
 	return _result, _err
 }
 
+// @param request - DescribeDataCheckTableDiffDetailsRequest
+//
+// @return DescribeDataCheckTableDiffDetailsResponse
 func (client *Client) DescribeDataCheckTableDiffDetails(request *DescribeDataCheckTableDiffDetailsRequest) (_result *DescribeDataCheckTableDiffDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataCheckTableDiffDetailsResponse{}
@@ -49212,6 +49884,15 @@ func (client *Client) DescribeDataCheckTableDiffDetails(request *DescribeDataChe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a dedicated cluster.
+//
+// @param request - DescribeDedicatedClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDedicatedClusterResponse
 func (client *Client) DescribeDedicatedClusterWithOptions(request *DescribeDedicatedClusterRequest, runtime *util.RuntimeOptions) (_result *DescribeDedicatedClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49257,6 +49938,13 @@ func (client *Client) DescribeDedicatedClusterWithOptions(request *DescribeDedic
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a dedicated cluster.
+//
+// @param request - DescribeDedicatedClusterRequest
+//
+// @return DescribeDedicatedClusterResponse
 func (client *Client) DescribeDedicatedCluster(request *DescribeDedicatedClusterRequest) (_result *DescribeDedicatedClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDedicatedClusterResponse{}
@@ -49268,6 +49956,15 @@ func (client *Client) DescribeDedicatedCluster(request *DescribeDedicatedCluster
 	return _result, _err
 }
 
+// Summary:
+//
+// The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+//
+// @param request - DescribeDedicatedClusterMonitorRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDedicatedClusterMonitorRuleResponse
 func (client *Client) DescribeDedicatedClusterMonitorRuleWithOptions(request *DescribeDedicatedClusterMonitorRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeDedicatedClusterMonitorRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49313,6 +50010,13 @@ func (client *Client) DescribeDedicatedClusterMonitorRuleWithOptions(request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+//
+// @param request - DescribeDedicatedClusterMonitorRuleRequest
+//
+// @return DescribeDedicatedClusterMonitorRuleResponse
 func (client *Client) DescribeDedicatedClusterMonitorRule(request *DescribeDedicatedClusterMonitorRuleRequest) (_result *DescribeDedicatedClusterMonitorRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDedicatedClusterMonitorRuleResponse{}
@@ -49324,6 +50028,15 @@ func (client *Client) DescribeDedicatedClusterMonitorRule(request *DescribeDedic
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询ETL任务版本信息
+//
+// @param request - DescribeDtsEtlJobVersionInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDtsEtlJobVersionInfoResponse
 func (client *Client) DescribeDtsEtlJobVersionInfoWithOptions(request *DescribeDtsEtlJobVersionInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDtsEtlJobVersionInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49377,6 +50090,13 @@ func (client *Client) DescribeDtsEtlJobVersionInfoWithOptions(request *DescribeD
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询ETL任务版本信息
+//
+// @param request - DescribeDtsEtlJobVersionInfoRequest
+//
+// @return DescribeDtsEtlJobVersionInfoResponse
 func (client *Client) DescribeDtsEtlJobVersionInfo(request *DescribeDtsEtlJobVersionInfoRequest) (_result *DescribeDtsEtlJobVersionInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDtsEtlJobVersionInfoResponse{}
@@ -49388,6 +50108,17 @@ func (client *Client) DescribeDtsEtlJobVersionInfo(request *DescribeDtsEtlJobVer
 	return _result, _err
 }
 
+// Summary:
+//
+// The latency of incremental data migration or synchronization.
+//
+// >  If you query data migration tasks, the unit of this parameter is milliseconds. If you query data synchronization tasks, the unit of this parameter is seconds.
+//
+// @param request - DescribeDtsJobDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDtsJobDetailResponse
 func (client *Client) DescribeDtsJobDetailWithOptions(request *DescribeDtsJobDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeDtsJobDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49445,6 +50176,15 @@ func (client *Client) DescribeDtsJobDetailWithOptions(request *DescribeDtsJobDet
 	return _result, _err
 }
 
+// Summary:
+//
+// The latency of incremental data migration or synchronization.
+//
+// >  If you query data migration tasks, the unit of this parameter is milliseconds. If you query data synchronization tasks, the unit of this parameter is seconds.
+//
+// @param request - DescribeDtsJobDetailRequest
+//
+// @return DescribeDtsJobDetailResponse
 func (client *Client) DescribeDtsJobDetail(request *DescribeDtsJobDetailRequest) (_result *DescribeDtsJobDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDtsJobDetailResponse{}
@@ -49456,6 +50196,10 @@ func (client *Client) DescribeDtsJobDetail(request *DescribeDtsJobDetailRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of Data Transmission Service (DTS) tasks and the details of each task.
+//
 // Description:
 //
 // ## Debugging
@@ -49584,6 +50328,10 @@ func (client *Client) DescribeDtsJobsWithOptions(request *DescribeDtsJobsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of Data Transmission Service (DTS) tasks and the details of each task.
+//
 // Description:
 //
 // ## Debugging
@@ -49604,6 +50352,15 @@ func (client *Client) DescribeDtsJobs(request *DescribeDtsJobsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logs of a data migration or synchronization task.
+//
+// @param request - DescribeDtsServiceLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDtsServiceLogResponse
 func (client *Client) DescribeDtsServiceLogWithOptions(request *DescribeDtsServiceLogRequest, runtime *util.RuntimeOptions) (_result *DescribeDtsServiceLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49677,6 +50434,13 @@ func (client *Client) DescribeDtsServiceLogWithOptions(request *DescribeDtsServi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logs of a data migration or synchronization task.
+//
+// @param request - DescribeDtsServiceLogRequest
+//
+// @return DescribeDtsServiceLogResponse
 func (client *Client) DescribeDtsServiceLog(request *DescribeDtsServiceLogRequest) (_result *DescribeDtsServiceLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDtsServiceLogResponse{}
@@ -49690,7 +50454,7 @@ func (client *Client) DescribeDtsServiceLog(request *DescribeDtsServiceLogReques
 
 // Description:
 //
-// Before you call this operation, you must call the [SwitchSynchronizationEndpoint](~~201858~~) operation to change the database connection settings.
+// Before you call this operation, you must call the [SwitchSynchronizationEndpoint](https://help.aliyun.com/document_detail/201858.html) operation to change the database connection settings.
 //
 // @param request - DescribeEndpointSwitchStatusRequest
 //
@@ -49752,7 +50516,7 @@ func (client *Client) DescribeEndpointSwitchStatusWithOptions(request *DescribeE
 
 // Description:
 //
-// Before you call this operation, you must call the [SwitchSynchronizationEndpoint](~~201858~~) operation to change the database connection settings.
+// Before you call this operation, you must call the [SwitchSynchronizationEndpoint](https://help.aliyun.com/document_detail/201858.html) operation to change the database connection settings.
 //
 // @param request - DescribeEndpointSwitchStatusRequest
 //
@@ -49768,6 +50532,11 @@ func (client *Client) DescribeEndpointSwitchStatus(request *DescribeEndpointSwit
 	return _result, _err
 }
 
+// @param request - DescribeEtlJobLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEtlJobLogsResponse
 func (client *Client) DescribeEtlJobLogsWithOptions(request *DescribeEtlJobLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeEtlJobLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49809,6 +50578,9 @@ func (client *Client) DescribeEtlJobLogsWithOptions(request *DescribeEtlJobLogsR
 	return _result, _err
 }
 
+// @param request - DescribeEtlJobLogsRequest
+//
+// @return DescribeEtlJobLogsResponse
 func (client *Client) DescribeEtlJobLogs(request *DescribeEtlJobLogsRequest) (_result *DescribeEtlJobLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEtlJobLogsResponse{}
@@ -49820,6 +50592,11 @@ func (client *Client) DescribeEtlJobLogs(request *DescribeEtlJobLogsRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribeInitializationStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInitializationStatusResponse
 func (client *Client) DescribeInitializationStatusWithOptions(request *DescribeInitializationStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeInitializationStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49877,6 +50654,9 @@ func (client *Client) DescribeInitializationStatusWithOptions(request *DescribeI
 	return _result, _err
 }
 
+// @param request - DescribeInitializationStatusRequest
+//
+// @return DescribeInitializationStatusResponse
 func (client *Client) DescribeInitializationStatus(request *DescribeInitializationStatusRequest) (_result *DescribeInitializationStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInitializationStatusResponse{}
@@ -49888,6 +50668,11 @@ func (client *Client) DescribeInitializationStatus(request *DescribeInitializati
 	return _result, _err
 }
 
+// @param request - DescribeJobMonitorRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeJobMonitorRuleResponse
 func (client *Client) DescribeJobMonitorRuleWithOptions(request *DescribeJobMonitorRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeJobMonitorRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49929,6 +50714,9 @@ func (client *Client) DescribeJobMonitorRuleWithOptions(request *DescribeJobMoni
 	return _result, _err
 }
 
+// @param request - DescribeJobMonitorRuleRequest
+//
+// @return DescribeJobMonitorRuleResponse
 func (client *Client) DescribeJobMonitorRule(request *DescribeJobMonitorRuleRequest) (_result *DescribeJobMonitorRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeJobMonitorRuleResponse{}
@@ -49940,6 +50728,15 @@ func (client *Client) DescribeJobMonitorRule(request *DescribeJobMonitorRuleRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the metrics of a cluster.
+//
+// @param request - DescribeMetricListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMetricListResponse
 func (client *Client) DescribeMetricListWithOptions(request *DescribeMetricListRequest, runtime *util.RuntimeOptions) (_result *DescribeMetricListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50019,6 +50816,13 @@ func (client *Client) DescribeMetricListWithOptions(request *DescribeMetricListR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the metrics of a cluster.
+//
+// @param request - DescribeMetricListRequest
+//
+// @return DescribeMetricListResponse
 func (client *Client) DescribeMetricList(request *DescribeMetricListRequest) (_result *DescribeMetricListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMetricListResponse{}
@@ -50030,6 +50834,11 @@ func (client *Client) DescribeMetricList(request *DescribeMetricListRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribeMigrationJobAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMigrationJobAlertResponse
 func (client *Client) DescribeMigrationJobAlertWithOptions(request *DescribeMigrationJobAlertRequest, runtime *util.RuntimeOptions) (_result *DescribeMigrationJobAlertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50083,6 +50892,9 @@ func (client *Client) DescribeMigrationJobAlertWithOptions(request *DescribeMigr
 	return _result, _err
 }
 
+// @param request - DescribeMigrationJobAlertRequest
+//
+// @return DescribeMigrationJobAlertResponse
 func (client *Client) DescribeMigrationJobAlert(request *DescribeMigrationJobAlertRequest) (_result *DescribeMigrationJobAlertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMigrationJobAlertResponse{}
@@ -50094,6 +50906,10 @@ func (client *Client) DescribeMigrationJobAlert(request *DescribeMigrationJobAle
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a data migration task.
+//
 // Description:
 //
 // When you call this operation, the data migration task must be in the Migrating, Failed, Paused, or Finished state.
@@ -50168,6 +50984,10 @@ func (client *Client) DescribeMigrationJobDetailWithOptions(request *DescribeMig
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a data migration task.
+//
 // Description:
 //
 // When you call this operation, the data migration task must be in the Migrating, Failed, Paused, or Finished state.
@@ -50186,6 +51006,15 @@ func (client *Client) DescribeMigrationJobDetail(request *DescribeMigrationJobDe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a data migration task.
+//
+// @param request - DescribeMigrationJobStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMigrationJobStatusResponse
 func (client *Client) DescribeMigrationJobStatusWithOptions(request *DescribeMigrationJobStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeMigrationJobStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50239,6 +51068,13 @@ func (client *Client) DescribeMigrationJobStatusWithOptions(request *DescribeMig
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a data migration task.
+//
+// @param request - DescribeMigrationJobStatusRequest
+//
+// @return DescribeMigrationJobStatusResponse
 func (client *Client) DescribeMigrationJobStatus(request *DescribeMigrationJobStatusRequest) (_result *DescribeMigrationJobStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMigrationJobStatusResponse{}
@@ -50250,6 +51086,15 @@ func (client *Client) DescribeMigrationJobStatus(request *DescribeMigrationJobSt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of data migration instances and the details of each instance.
+//
+// @param request - DescribeMigrationJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMigrationJobsResponse
 func (client *Client) DescribeMigrationJobsWithOptions(request *DescribeMigrationJobsRequest, runtime *util.RuntimeOptions) (_result *DescribeMigrationJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50311,6 +51156,13 @@ func (client *Client) DescribeMigrationJobsWithOptions(request *DescribeMigratio
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of data migration instances and the details of each instance.
+//
+// @param request - DescribeMigrationJobsRequest
+//
+// @return DescribeMigrationJobsResponse
 func (client *Client) DescribeMigrationJobs(request *DescribeMigrationJobsRequest) (_result *DescribeMigrationJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMigrationJobsResponse{}
@@ -50322,6 +51174,11 @@ func (client *Client) DescribeMigrationJobs(request *DescribeMigrationJobsReques
 	return _result, _err
 }
 
+// @param request - DescribePreCheckStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePreCheckStatusResponse
 func (client *Client) DescribePreCheckStatusWithOptions(request *DescribePreCheckStatusRequest, runtime *util.RuntimeOptions) (_result *DescribePreCheckStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50391,6 +51248,9 @@ func (client *Client) DescribePreCheckStatusWithOptions(request *DescribePreChec
 	return _result, _err
 }
 
+// @param request - DescribePreCheckStatusRequest
+//
+// @return DescribePreCheckStatusResponse
 func (client *Client) DescribePreCheckStatus(request *DescribePreCheckStatusRequest) (_result *DescribePreCheckStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePreCheckStatusResponse{}
@@ -50402,6 +51262,11 @@ func (client *Client) DescribePreCheckStatus(request *DescribePreCheckStatusRequ
 	return _result, _err
 }
 
+// @param request - DescribeSubscriptionInstanceAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSubscriptionInstanceAlertResponse
 func (client *Client) DescribeSubscriptionInstanceAlertWithOptions(request *DescribeSubscriptionInstanceAlertRequest, runtime *util.RuntimeOptions) (_result *DescribeSubscriptionInstanceAlertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50455,6 +51320,9 @@ func (client *Client) DescribeSubscriptionInstanceAlertWithOptions(request *Desc
 	return _result, _err
 }
 
+// @param request - DescribeSubscriptionInstanceAlertRequest
+//
+// @return DescribeSubscriptionInstanceAlertResponse
 func (client *Client) DescribeSubscriptionInstanceAlert(request *DescribeSubscriptionInstanceAlertRequest) (_result *DescribeSubscriptionInstanceAlertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSubscriptionInstanceAlertResponse{}
@@ -50466,6 +51334,15 @@ func (client *Client) DescribeSubscriptionInstanceAlert(request *DescribeSubscri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a change tracking instance.
+//
+// @param request - DescribeSubscriptionInstanceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSubscriptionInstanceStatusResponse
 func (client *Client) DescribeSubscriptionInstanceStatusWithOptions(request *DescribeSubscriptionInstanceStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeSubscriptionInstanceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50515,6 +51392,13 @@ func (client *Client) DescribeSubscriptionInstanceStatusWithOptions(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a change tracking instance.
+//
+// @param request - DescribeSubscriptionInstanceStatusRequest
+//
+// @return DescribeSubscriptionInstanceStatusResponse
 func (client *Client) DescribeSubscriptionInstanceStatus(request *DescribeSubscriptionInstanceStatusRequest) (_result *DescribeSubscriptionInstanceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSubscriptionInstanceStatusResponse{}
@@ -50526,6 +51410,15 @@ func (client *Client) DescribeSubscriptionInstanceStatus(request *DescribeSubscr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of change tracking instances and the details of each instance.
+//
+// @param request - DescribeSubscriptionInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSubscriptionInstancesResponse
 func (client *Client) DescribeSubscriptionInstancesWithOptions(request *DescribeSubscriptionInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeSubscriptionInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50591,6 +51484,13 @@ func (client *Client) DescribeSubscriptionInstancesWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of change tracking instances and the details of each instance.
+//
+// @param request - DescribeSubscriptionInstancesRequest
+//
+// @return DescribeSubscriptionInstancesResponse
 func (client *Client) DescribeSubscriptionInstances(request *DescribeSubscriptionInstancesRequest) (_result *DescribeSubscriptionInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSubscriptionInstancesResponse{}
@@ -50604,9 +51504,9 @@ func (client *Client) DescribeSubscriptionInstances(request *DescribeSubscriptio
 
 // Description:
 //
-// 	- When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
+//   When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
 //
-// 	- You can call the [DescribeDtsJobs](~~209702~~) operation to query the ID of the change tracking instance and the ID of the consumer group.
+// 	- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID of the change tracking instance and the ID of the consumer group.
 //
 // @param tmpReq - DescribeSubscriptionMetaRequest
 //
@@ -50678,9 +51578,9 @@ func (client *Client) DescribeSubscriptionMetaWithOptions(tmpReq *DescribeSubscr
 
 // Description:
 //
-// 	- When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
+//   When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
 //
-// 	- You can call the [DescribeDtsJobs](~~209702~~) operation to query the ID of the change tracking instance and the ID of the consumer group.
+// 	- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID of the change tracking instance and the ID of the consumer group.
 //
 // @param request - DescribeSubscriptionMetaRequest
 //
@@ -50696,6 +51596,15 @@ func (client *Client) DescribeSubscriptionMeta(request *DescribeSubscriptionMeta
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看同步和迁移任务的增量写入延迟信息
+//
+// @param request - DescribeSyncStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSyncStatusResponse
 func (client *Client) DescribeSyncStatusWithOptions(request *DescribeSyncStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeSyncStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50745,6 +51654,13 @@ func (client *Client) DescribeSyncStatusWithOptions(request *DescribeSyncStatusR
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看同步和迁移任务的增量写入延迟信息
+//
+// @param request - DescribeSyncStatusRequest
+//
+// @return DescribeSyncStatusResponse
 func (client *Client) DescribeSyncStatus(request *DescribeSyncStatusRequest) (_result *DescribeSyncStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSyncStatusResponse{}
@@ -50756,6 +51672,11 @@ func (client *Client) DescribeSyncStatus(request *DescribeSyncStatusRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribeSynchronizationJobAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSynchronizationJobAlertResponse
 func (client *Client) DescribeSynchronizationJobAlertWithOptions(request *DescribeSynchronizationJobAlertRequest, runtime *util.RuntimeOptions) (_result *DescribeSynchronizationJobAlertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50813,6 +51734,9 @@ func (client *Client) DescribeSynchronizationJobAlertWithOptions(request *Descri
 	return _result, _err
 }
 
+// @param request - DescribeSynchronizationJobAlertRequest
+//
+// @return DescribeSynchronizationJobAlertResponse
 func (client *Client) DescribeSynchronizationJobAlert(request *DescribeSynchronizationJobAlertRequest) (_result *DescribeSynchronizationJobAlertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSynchronizationJobAlertResponse{}
@@ -50824,6 +51748,11 @@ func (client *Client) DescribeSynchronizationJobAlert(request *DescribeSynchroni
 	return _result, _err
 }
 
+// @param request - DescribeSynchronizationJobReplicatorCompareRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSynchronizationJobReplicatorCompareResponse
 func (client *Client) DescribeSynchronizationJobReplicatorCompareWithOptions(request *DescribeSynchronizationJobReplicatorCompareRequest, runtime *util.RuntimeOptions) (_result *DescribeSynchronizationJobReplicatorCompareResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50881,6 +51810,9 @@ func (client *Client) DescribeSynchronizationJobReplicatorCompareWithOptions(req
 	return _result, _err
 }
 
+// @param request - DescribeSynchronizationJobReplicatorCompareRequest
+//
+// @return DescribeSynchronizationJobReplicatorCompareResponse
 func (client *Client) DescribeSynchronizationJobReplicatorCompare(request *DescribeSynchronizationJobReplicatorCompareRequest) (_result *DescribeSynchronizationJobReplicatorCompareResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSynchronizationJobReplicatorCompareResponse{}
@@ -50892,6 +51824,15 @@ func (client *Client) DescribeSynchronizationJobReplicatorCompare(request *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a data synchronization instance.
+//
+// @param request - DescribeSynchronizationJobStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSynchronizationJobStatusResponse
 func (client *Client) DescribeSynchronizationJobStatusWithOptions(request *DescribeSynchronizationJobStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeSynchronizationJobStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50949,6 +51890,13 @@ func (client *Client) DescribeSynchronizationJobStatusWithOptions(request *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a data synchronization instance.
+//
+// @param request - DescribeSynchronizationJobStatusRequest
+//
+// @return DescribeSynchronizationJobStatusResponse
 func (client *Client) DescribeSynchronizationJobStatus(request *DescribeSynchronizationJobStatusRequest) (_result *DescribeSynchronizationJobStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSynchronizationJobStatusResponse{}
@@ -50960,6 +51908,11 @@ func (client *Client) DescribeSynchronizationJobStatus(request *DescribeSynchron
 	return _result, _err
 }
 
+// @param request - DescribeSynchronizationJobStatusListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSynchronizationJobStatusListResponse
 func (client *Client) DescribeSynchronizationJobStatusListWithOptions(request *DescribeSynchronizationJobStatusListRequest, runtime *util.RuntimeOptions) (_result *DescribeSynchronizationJobStatusListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51013,6 +51966,9 @@ func (client *Client) DescribeSynchronizationJobStatusListWithOptions(request *D
 	return _result, _err
 }
 
+// @param request - DescribeSynchronizationJobStatusListRequest
+//
+// @return DescribeSynchronizationJobStatusListResponse
 func (client *Client) DescribeSynchronizationJobStatusList(request *DescribeSynchronizationJobStatusListRequest) (_result *DescribeSynchronizationJobStatusListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSynchronizationJobStatusListResponse{}
@@ -51024,6 +51980,15 @@ func (client *Client) DescribeSynchronizationJobStatusList(request *DescribeSync
 	return _result, _err
 }
 
+// Summary:
+//
+// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
+//
+// @param request - DescribeSynchronizationJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSynchronizationJobsResponse
 func (client *Client) DescribeSynchronizationJobsWithOptions(request *DescribeSynchronizationJobsRequest, runtime *util.RuntimeOptions) (_result *DescribeSynchronizationJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51089,6 +52054,13 @@ func (client *Client) DescribeSynchronizationJobsWithOptions(request *DescribeSy
 	return _result, _err
 }
 
+// Summary:
+//
+// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
+//
+// @param request - DescribeSynchronizationJobsRequest
+//
+// @return DescribeSynchronizationJobsResponse
 func (client *Client) DescribeSynchronizationJobs(request *DescribeSynchronizationJobsRequest) (_result *DescribeSynchronizationJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSynchronizationJobsResponse{}
@@ -51102,7 +52074,7 @@ func (client *Client) DescribeSynchronizationJobs(request *DescribeSynchronizati
 
 // Description:
 //
-// Before you call this operation, you must call the [ModifySynchronizationObject](~~49451~~) operation to obtain the task ID.
+// Before you call this operation, you must call the [ModifySynchronizationObject](https://help.aliyun.com/document_detail/49451.html) operation to obtain the task ID.
 //
 // @param request - DescribeSynchronizationObjectModifyStatusRequest
 //
@@ -51164,7 +52136,7 @@ func (client *Client) DescribeSynchronizationObjectModifyStatusWithOptions(reque
 
 // Description:
 //
-// Before you call this operation, you must call the [ModifySynchronizationObject](~~49451~~) operation to obtain the task ID.
+// Before you call this operation, you must call the [ModifySynchronizationObject](https://help.aliyun.com/document_detail/49451.html) operation to obtain the task ID.
 //
 // @param request - DescribeSynchronizationObjectModifyStatusRequest
 //
@@ -51180,6 +52152,11 @@ func (client *Client) DescribeSynchronizationObjectModifyStatus(request *Describ
 	return _result, _err
 }
 
+// @param request - DescribeTagKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTagKeysResponse
 func (client *Client) DescribeTagKeysWithOptions(request *DescribeTagKeysRequest, runtime *util.RuntimeOptions) (_result *DescribeTagKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51237,6 +52214,9 @@ func (client *Client) DescribeTagKeysWithOptions(request *DescribeTagKeysRequest
 	return _result, _err
 }
 
+// @param request - DescribeTagKeysRequest
+//
+// @return DescribeTagKeysResponse
 func (client *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (_result *DescribeTagKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTagKeysResponse{}
@@ -51248,6 +52228,11 @@ func (client *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DescribeTagValuesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTagValuesResponse
 func (client *Client) DescribeTagValuesWithOptions(request *DescribeTagValuesRequest, runtime *util.RuntimeOptions) (_result *DescribeTagValuesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51309,6 +52294,9 @@ func (client *Client) DescribeTagValuesWithOptions(request *DescribeTagValuesReq
 	return _result, _err
 }
 
+// @param request - DescribeTagValuesRequest
+//
+// @return DescribeTagValuesResponse
 func (client *Client) DescribeTagValues(request *DescribeTagValuesRequest) (_result *DescribeTagValuesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTagValuesResponse{}
@@ -51320,9 +52308,13 @@ func (client *Client) DescribeTagValues(request *DescribeTagValuesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Initializes a built-in account on a node of an active geo-redundancy database cluster. Data Transmission Service (DTS) uses the built-in account to connect to the node and perform data synchronization tasks.
+//
 // Description:
 //
-// 	- The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
+//   The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
 //
 // 	- This operation is used to initialize the built-in account named rdsdt_dtsacct on a node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform data synchronization tasks.
 //
@@ -51388,9 +52380,13 @@ func (client *Client) InitDtsRdsInstanceWithOptions(request *InitDtsRdsInstanceR
 	return _result, _err
 }
 
+// Summary:
+//
+// Initializes a built-in account on a node of an active geo-redundancy database cluster. Data Transmission Service (DTS) uses the built-in account to connect to the node and perform data synchronization tasks.
+//
 // Description:
 //
-// 	- The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
+//   The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
 //
 // 	- This operation is used to initialize the built-in account named rdsdt_dtsacct on a node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform data synchronization tasks.
 //
@@ -51408,6 +52404,15 @@ func (client *Client) InitDtsRdsInstance(request *InitDtsRdsInstanceRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all clusters that are created within an Alibaba Cloud account. You can also query clusters based on the specified conditions.
+//
+// @param request - ListDedicatedClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDedicatedClusterResponse
 func (client *Client) ListDedicatedClusterWithOptions(request *ListDedicatedClusterRequest, runtime *util.RuntimeOptions) (_result *ListDedicatedClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51477,6 +52482,13 @@ func (client *Client) ListDedicatedClusterWithOptions(request *ListDedicatedClus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all clusters that are created within an Alibaba Cloud account. You can also query clusters based on the specified conditions.
+//
+// @param request - ListDedicatedClusterRequest
+//
+// @return ListDedicatedClusterResponse
 func (client *Client) ListDedicatedCluster(request *ListDedicatedClusterRequest) (_result *ListDedicatedClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDedicatedClusterResponse{}
@@ -51490,7 +52502,7 @@ func (client *Client) ListDedicatedCluster(request *ListDedicatedClusterRequest)
 
 // Description:
 //
-// ****
+// ***
 //
 // @param request - ListTagResourcesRequest
 //
@@ -51552,7 +52564,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Description:
 //
-// ****
+// ***
 //
 // @param request - ListTagResourcesRequest
 //
@@ -51568,6 +52580,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ModifyConsumerChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyConsumerChannelResponse
 func (client *Client) ModifyConsumerChannelWithOptions(request *ModifyConsumerChannelRequest, runtime *util.RuntimeOptions) (_result *ModifyConsumerChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51629,6 +52646,9 @@ func (client *Client) ModifyConsumerChannelWithOptions(request *ModifyConsumerCh
 	return _result, _err
 }
 
+// @param request - ModifyConsumerChannelRequest
+//
+// @return ModifyConsumerChannelResponse
 func (client *Client) ModifyConsumerChannel(request *ModifyConsumerChannelRequest) (_result *ModifyConsumerChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyConsumerChannelResponse{}
@@ -51748,7 +52768,7 @@ func (client *Client) ModifyConsumerGroupPassword(request *ModifyConsumerGroupPa
 //
 // >
 //
-// 	- This operation is applicable to only the previous version of the change tracking feature. To use the new version, you must specify the SubscriptionInstanceNetworkType parameter when you call the [ConfigureSubscriptionInstance](~~49437~~) operation. If you use the previous version, you do not need to specify the **SubscriptionInstanceNetworkType*	- parameter.
+// 	- This operation is applicable to only the previous version of the change tracking feature. To use the new version, you must specify the SubscriptionInstanceNetworkType parameter when you call the [ConfigureSubscriptionInstance](https://help.aliyun.com/document_detail/49437.html) operation. If you use the previous version, you do not need to specify the **SubscriptionInstanceNetworkType*	- parameter.
 //
 // 	- If you use the new version, you need to set the consumption checkpoint on the change tracking client.
 //
@@ -51816,7 +52836,7 @@ func (client *Client) ModifyConsumptionTimestampWithOptions(request *ModifyConsu
 //
 // >
 //
-// 	- This operation is applicable to only the previous version of the change tracking feature. To use the new version, you must specify the SubscriptionInstanceNetworkType parameter when you call the [ConfigureSubscriptionInstance](~~49437~~) operation. If you use the previous version, you do not need to specify the **SubscriptionInstanceNetworkType*	- parameter.
+// 	- This operation is applicable to only the previous version of the change tracking feature. To use the new version, you must specify the SubscriptionInstanceNetworkType parameter when you call the [ConfigureSubscriptionInstance](https://help.aliyun.com/document_detail/49437.html) operation. If you use the previous version, you do not need to specify the **SubscriptionInstanceNetworkType*	- parameter.
 //
 // 	- If you use the new version, you need to set the consumption checkpoint on the change tracking client.
 //
@@ -51836,6 +52856,10 @@ func (client *Client) ModifyConsumptionTimestamp(request *ModifyConsumptionTimes
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configuration of a cluster.
+//
 // Description:
 //
 // You can modify only the overcommit ratio.
@@ -51902,6 +52926,10 @@ func (client *Client) ModifyDedicatedClusterWithOptions(request *ModifyDedicated
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configuration of a cluster.
+//
 // Description:
 //
 // You can modify only the overcommit ratio.
@@ -51920,6 +52948,10 @@ func (client *Client) ModifyDedicatedCluster(request *ModifyDedicatedClusterRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a data synchronization task.
+//
 // Description:
 //
 // When you configure a data synchronization task in the Data Transmission Service (DTS) console, you can move the pointer over **Next: Save Task Settings and Precheck*	- in the **Advanced Settings*	- step and click **Preview OpenAPI parameters*	- to view the parameters that are used to configure the task by calling an API operation.
@@ -52030,6 +53062,10 @@ func (client *Client) ModifyDtsJobWithOptions(tmpReq *ModifyDtsJobRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a data synchronization task.
+//
 // Description:
 //
 // When you configure a data synchronization task in the Data Transmission Service (DTS) console, you can move the pointer over **Next: Save Task Settings and Precheck*	- in the **Advanced Settings*	- step and click **Preview OpenAPI parameters*	- to view the parameters that are used to configure the task by calling an API operation.
@@ -52067,7 +53103,7 @@ func (client *Client) ModifyDtsJobAdvance(request *ModifyDtsJobAdvanceRequest, r
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -52095,12 +53131,17 @@ func (client *Client) ModifyDtsJobAdvance(request *ModifyDtsJobAdvanceRequest, r
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -52154,6 +53195,15 @@ func (client *Client) ModifyDtsJobAdvance(request *ModifyDtsJobAdvanceRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改DTS任务配置
+//
+// @param request - ModifyDtsJobConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDtsJobConfigResponse
 func (client *Client) ModifyDtsJobConfigWithOptions(request *ModifyDtsJobConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyDtsJobConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52203,6 +53253,13 @@ func (client *Client) ModifyDtsJobConfigWithOptions(request *ModifyDtsJobConfigR
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改DTS任务配置
+//
+// @param request - ModifyDtsJobConfigRequest
+//
+// @return ModifyDtsJobConfigResponse
 func (client *Client) ModifyDtsJobConfig(request *ModifyDtsJobConfigRequest) (_result *ModifyDtsJobConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDtsJobConfigResponse{}
@@ -52214,6 +53271,15 @@ func (client *Client) ModifyDtsJobConfig(request *ModifyDtsJobConfigRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 迁移专属集群任务
+//
+// @param request - ModifyDtsJobDedicatedClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDtsJobDedicatedClusterResponse
 func (client *Client) ModifyDtsJobDedicatedClusterWithOptions(request *ModifyDtsJobDedicatedClusterRequest, runtime *util.RuntimeOptions) (_result *ModifyDtsJobDedicatedClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52263,6 +53329,13 @@ func (client *Client) ModifyDtsJobDedicatedClusterWithOptions(request *ModifyDts
 	return _result, _err
 }
 
+// Summary:
+//
+// 迁移专属集群任务
+//
+// @param request - ModifyDtsJobDedicatedClusterRequest
+//
+// @return ModifyDtsJobDedicatedClusterResponse
 func (client *Client) ModifyDtsJobDedicatedCluster(request *ModifyDtsJobDedicatedClusterRequest) (_result *ModifyDtsJobDedicatedClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDtsJobDedicatedClusterResponse{}
@@ -52274,9 +53347,13 @@ func (client *Client) ModifyDtsJobDedicatedCluster(request *ModifyDtsJobDedicate
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the upper limit of DTS units (DUs) for a Data Transmission Service (DTS) task.
+//
 // Description:
 //
-// 	- DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
+//   DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
 //
 // 	- Before you modify the upper limit of DUs for a DTS task, make sure that sufficient DUs are available.
 //
@@ -52334,9 +53411,13 @@ func (client *Client) ModifyDtsJobDuLimitWithOptions(request *ModifyDtsJobDuLimi
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the upper limit of DTS units (DUs) for a Data Transmission Service (DTS) task.
+//
 // Description:
 //
-// 	- DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
+//   DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
 //
 // 	- Before you modify the upper limit of DUs for a DTS task, make sure that sufficient DUs are available.
 //
@@ -52354,6 +53435,15 @@ func (client *Client) ModifyDtsJobDuLimit(request *ModifyDtsJobDuLimitRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 替换源端或目标端实例
+//
+// @param request - ModifyDtsJobEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDtsJobEndpointResponse
 func (client *Client) ModifyDtsJobEndpointWithOptions(request *ModifyDtsJobEndpointRequest, runtime *util.RuntimeOptions) (_result *ModifyDtsJobEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52463,6 +53553,13 @@ func (client *Client) ModifyDtsJobEndpointWithOptions(request *ModifyDtsJobEndpo
 	return _result, _err
 }
 
+// Summary:
+//
+// 替换源端或目标端实例
+//
+// @param request - ModifyDtsJobEndpointRequest
+//
+// @return ModifyDtsJobEndpointResponse
 func (client *Client) ModifyDtsJobEndpoint(request *ModifyDtsJobEndpointRequest) (_result *ModifyDtsJobEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDtsJobEndpointResponse{}
@@ -52474,6 +53571,11 @@ func (client *Client) ModifyDtsJobEndpoint(request *ModifyDtsJobEndpointRequest)
 	return _result, _err
 }
 
+// @param request - ModifyDtsJobNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDtsJobNameResponse
 func (client *Client) ModifyDtsJobNameWithOptions(request *ModifyDtsJobNameRequest, runtime *util.RuntimeOptions) (_result *ModifyDtsJobNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52523,6 +53625,9 @@ func (client *Client) ModifyDtsJobNameWithOptions(request *ModifyDtsJobNameReque
 	return _result, _err
 }
 
+// @param request - ModifyDtsJobNameRequest
+//
+// @return ModifyDtsJobNameResponse
 func (client *Client) ModifyDtsJobName(request *ModifyDtsJobNameRequest) (_result *ModifyDtsJobNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDtsJobNameResponse{}
@@ -52534,6 +53639,11 @@ func (client *Client) ModifyDtsJobName(request *ModifyDtsJobNameRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ModifyDtsJobPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDtsJobPasswordResponse
 func (client *Client) ModifyDtsJobPasswordWithOptions(request *ModifyDtsJobPasswordRequest, runtime *util.RuntimeOptions) (_result *ModifyDtsJobPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52591,6 +53701,9 @@ func (client *Client) ModifyDtsJobPasswordWithOptions(request *ModifyDtsJobPassw
 	return _result, _err
 }
 
+// @param request - ModifyDtsJobPasswordRequest
+//
+// @return ModifyDtsJobPasswordResponse
 func (client *Client) ModifyDtsJobPassword(request *ModifyDtsJobPasswordRequest) (_result *ModifyDtsJobPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDtsJobPasswordResponse{}
@@ -52602,6 +53715,11 @@ func (client *Client) ModifyDtsJobPassword(request *ModifyDtsJobPasswordRequest)
 	return _result, _err
 }
 
+// @param request - ModifyDynamicConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDynamicConfigResponse
 func (client *Client) ModifyDynamicConfigWithOptions(request *ModifyDynamicConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyDynamicConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52655,6 +53773,9 @@ func (client *Client) ModifyDynamicConfigWithOptions(request *ModifyDynamicConfi
 	return _result, _err
 }
 
+// @param request - ModifyDynamicConfigRequest
+//
+// @return ModifyDynamicConfigResponse
 func (client *Client) ModifyDynamicConfig(request *ModifyDynamicConfigRequest) (_result *ModifyDynamicConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDynamicConfigResponse{}
@@ -52666,6 +53787,11 @@ func (client *Client) ModifyDynamicConfig(request *ModifyDynamicConfigRequest) (
 	return _result, _err
 }
 
+// @param request - ModifySubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySubscriptionResponse
 func (client *Client) ModifySubscriptionWithOptions(request *ModifySubscriptionRequest, runtime *util.RuntimeOptions) (_result *ModifySubscriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52723,6 +53849,9 @@ func (client *Client) ModifySubscriptionWithOptions(request *ModifySubscriptionR
 	return _result, _err
 }
 
+// @param request - ModifySubscriptionRequest
+//
+// @return ModifySubscriptionResponse
 func (client *Client) ModifySubscription(request *ModifySubscriptionRequest) (_result *ModifySubscriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySubscriptionResponse{}
@@ -52740,9 +53869,9 @@ func (client *Client) ModifySubscription(request *ModifySubscriptionRequest) (_r
 //
 // >
 //
-// 	- If you call this operation to modify the objects of a change tracking task that is in the Normal state, DTS automatically calls the [StartSubscriptionInstance](~~49438~~) to restart the task.
+// 	- If you call this operation to modify the objects of a change tracking task that is in the Normal state, DTS automatically calls the [StartSubscriptionInstance](https://help.aliyun.com/document_detail/49438.html) to restart the task.
 //
-// 	- If you call this operation to modify the objects of a change tracking task that is in the NotStarted or Failed state, DTS does not automatically start the task. You must call the [StartSubscriptionInstance](~~49438~~) to restart the task.
+// 	- If you call this operation to modify the objects of a change tracking task that is in the NotStarted or Failed state, DTS does not automatically start the task. You must call the [StartSubscriptionInstance](https://help.aliyun.com/document_detail/49438.html) to restart the task.
 //
 // @param request - ModifySubscriptionObjectRequest
 //
@@ -52808,9 +53937,9 @@ func (client *Client) ModifySubscriptionObjectWithOptions(request *ModifySubscri
 //
 // >
 //
-// 	- If you call this operation to modify the objects of a change tracking task that is in the Normal state, DTS automatically calls the [StartSubscriptionInstance](~~49438~~) to restart the task.
+// 	- If you call this operation to modify the objects of a change tracking task that is in the Normal state, DTS automatically calls the [StartSubscriptionInstance](https://help.aliyun.com/document_detail/49438.html) to restart the task.
 //
-// 	- If you call this operation to modify the objects of a change tracking task that is in the NotStarted or Failed state, DTS does not automatically start the task. You must call the [StartSubscriptionInstance](~~49438~~) to restart the task.
+// 	- If you call this operation to modify the objects of a change tracking task that is in the NotStarted or Failed state, DTS does not automatically start the task. You must call the [StartSubscriptionInstance](https://help.aliyun.com/document_detail/49438.html) to restart the task.
 //
 // @param request - ModifySubscriptionObjectRequest
 //
@@ -52912,6 +54041,11 @@ func (client *Client) ModifySynchronizationObject(request *ModifySynchronization
 	return _result, _err
 }
 
+// @param request - RenewInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewInstanceResponse
 func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, runtime *util.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52965,6 +54099,9 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 	return _result, _err
 }
 
+// @param request - RenewInstanceRequest
+//
+// @return RenewInstanceResponse
 func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *RenewInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewInstanceResponse{}
@@ -52978,7 +54115,7 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 
 // Description:
 //
-// >  If you clear the configurations of a data synchronization or change tracking task, DTS deletes the task. Then, DTS creates another task. The task is in the Not Configured state. You must call the [ConfigureDtsJob](~~208399~~) operation reconfigure the task.
+// >  If you clear the configurations of a data synchronization or change tracking task, DTS deletes the task. Then, DTS creates another task. The task is in the Not Configured state. You must call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation reconfigure the task.
 //
 // @param request - ResetDtsJobRequest
 //
@@ -53036,7 +54173,7 @@ func (client *Client) ResetDtsJobWithOptions(request *ResetDtsJobRequest, runtim
 
 // Description:
 //
-// >  If you clear the configurations of a data synchronization or change tracking task, DTS deletes the task. Then, DTS creates another task. The task is in the Not Configured state. You must call the [ConfigureDtsJob](~~208399~~) operation reconfigure the task.
+// >  If you clear the configurations of a data synchronization or change tracking task, DTS deletes the task. Then, DTS creates another task. The task is in the Not Configured state. You must call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation reconfigure the task.
 //
 // @param request - ResetDtsJobRequest
 //
@@ -53132,6 +54269,15 @@ func (client *Client) ResetSynchronizationJob(request *ResetSynchronizationJobRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 调转双向任务的方向
+//
+// @param request - ReverseTwoWayDirectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReverseTwoWayDirectionResponse
 func (client *Client) ReverseTwoWayDirectionWithOptions(request *ReverseTwoWayDirectionRequest, runtime *util.RuntimeOptions) (_result *ReverseTwoWayDirectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53177,6 +54323,13 @@ func (client *Client) ReverseTwoWayDirectionWithOptions(request *ReverseTwoWayDi
 	return _result, _err
 }
 
+// Summary:
+//
+// 调转双向任务的方向
+//
+// @param request - ReverseTwoWayDirectionRequest
+//
+// @return ReverseTwoWayDirectionResponse
 func (client *Client) ReverseTwoWayDirection(request *ReverseTwoWayDirectionRequest) (_result *ReverseTwoWayDirectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReverseTwoWayDirectionResponse{}
@@ -53188,6 +54341,10 @@ func (client *Client) ReverseTwoWayDirection(request *ReverseTwoWayDirectionRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Ignores the precheck items that a data migration or synchronization task may fail to pass.
+//
 // Description:
 //
 // If you call this operation to ignore all precheck items, you must call the [StartMigrationJob](https://www.alibabacloud.com/help/zh/doc-detail/49429.htm) or [StartSynchronizationJob](https://www.alibabacloud.com/help/zh/doc-detail/49448.htm) operation. DTS performs a precheck again. After the data migration or synchronization task passes the precheck, the task will be automatically started.
@@ -53242,6 +54399,10 @@ func (client *Client) ShieldPrecheckWithOptions(request *ShieldPrecheckRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Ignores the precheck items that a data migration or synchronization task may fail to pass.
+//
 // Description:
 //
 // If you call this operation to ignore all precheck items, you must call the [StartMigrationJob](https://www.alibabacloud.com/help/zh/doc-detail/49429.htm) or [StartSynchronizationJob](https://www.alibabacloud.com/help/zh/doc-detail/49448.htm) operation. DTS performs a precheck again. After the data migration or synchronization task passes the precheck, the task will be automatically started.
@@ -53260,6 +54421,15 @@ func (client *Client) ShieldPrecheck(request *ShieldPrecheckRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// Skips one or more precheck items.
+//
+// @param request - SkipPreCheckRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SkipPreCheckResponse
 func (client *Client) SkipPreCheckWithOptions(request *SkipPreCheckRequest, runtime *util.RuntimeOptions) (_result *SkipPreCheckResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53317,6 +54487,13 @@ func (client *Client) SkipPreCheckWithOptions(request *SkipPreCheckRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Skips one or more precheck items.
+//
+// @param request - SkipPreCheckRequest
+//
+// @return SkipPreCheckResponse
 func (client *Client) SkipPreCheck(request *SkipPreCheckRequest) (_result *SkipPreCheckResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SkipPreCheckResponse{}
@@ -53328,6 +54505,11 @@ func (client *Client) SkipPreCheck(request *SkipPreCheckRequest) (_result *SkipP
 	return _result, _err
 }
 
+// @param request - StartDtsJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartDtsJobResponse
 func (client *Client) StartDtsJobWithOptions(request *StartDtsJobRequest, runtime *util.RuntimeOptions) (_result *StartDtsJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53381,6 +54563,9 @@ func (client *Client) StartDtsJobWithOptions(request *StartDtsJobRequest, runtim
 	return _result, _err
 }
 
+// @param request - StartDtsJobRequest
+//
+// @return StartDtsJobResponse
 func (client *Client) StartDtsJob(request *StartDtsJobRequest) (_result *StartDtsJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartDtsJobResponse{}
@@ -53392,6 +54577,11 @@ func (client *Client) StartDtsJob(request *StartDtsJobRequest) (_result *StartDt
 	return _result, _err
 }
 
+// @param request - StartDtsJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartDtsJobsResponse
 func (client *Client) StartDtsJobsWithOptions(request *StartDtsJobsRequest, runtime *util.RuntimeOptions) (_result *StartDtsJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53437,6 +54627,9 @@ func (client *Client) StartDtsJobsWithOptions(request *StartDtsJobsRequest, runt
 	return _result, _err
 }
 
+// @param request - StartDtsJobsRequest
+//
+// @return StartDtsJobsResponse
 func (client *Client) StartDtsJobs(request *StartDtsJobsRequest) (_result *StartDtsJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartDtsJobsResponse{}
@@ -53524,9 +54717,13 @@ func (client *Client) StartMigrationJob(request *StartMigrationJobRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts the reverse task that is created by calling the CreateReverseDtsJob operation.
+//
 // Description:
 //
-// Before you call this operation, make sure that your instance is not released and is paused. You can check the status of the instance in the Data Transmission Service (DTS) console or by calling the [DescribeDtsJobDetail](~~208925~~) operation.
+// Before you call this operation, make sure that your instance is not released and is paused. You can check the status of the instance in the Data Transmission Service (DTS) console or by calling the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation.
 //
 // @param request - StartReverseWriterRequest
 //
@@ -53574,9 +54771,13 @@ func (client *Client) StartReverseWriterWithOptions(request *StartReverseWriterR
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts the reverse task that is created by calling the CreateReverseDtsJob operation.
+//
 // Description:
 //
-// Before you call this operation, make sure that your instance is not released and is paused. You can check the status of the instance in the Data Transmission Service (DTS) console or by calling the [DescribeDtsJobDetail](~~208925~~) operation.
+// Before you call this operation, make sure that your instance is not released and is paused. You can check the status of the instance in the Data Transmission Service (DTS) console or by calling the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation.
 //
 // @param request - StartReverseWriterRequest
 //
@@ -53668,6 +54869,15 @@ func (client *Client) StartSubscriptionInstance(request *StartSubscriptionInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts a data synchronization task.
+//
+// @param request - StartSynchronizationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartSynchronizationJobResponse
 func (client *Client) StartSynchronizationJobWithOptions(request *StartSynchronizationJobRequest, runtime *util.RuntimeOptions) (_result *StartSynchronizationJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53721,6 +54931,13 @@ func (client *Client) StartSynchronizationJobWithOptions(request *StartSynchroni
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts a data synchronization task.
+//
+// @param request - StartSynchronizationJobRequest
+//
+// @return StartSynchronizationJobResponse
 func (client *Client) StartSynchronizationJob(request *StartSynchronizationJobRequest) (_result *StartSynchronizationJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartSynchronizationJobResponse{}
@@ -53732,6 +54949,15 @@ func (client *Client) StartSynchronizationJob(request *StartSynchronizationJobRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a cluster.
+//
+// @param request - StopDedicatedClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopDedicatedClusterResponse
 func (client *Client) StopDedicatedClusterWithOptions(request *StopDedicatedClusterRequest, runtime *util.RuntimeOptions) (_result *StopDedicatedClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53785,6 +55011,13 @@ func (client *Client) StopDedicatedClusterWithOptions(request *StopDedicatedClus
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a cluster.
+//
+// @param request - StopDedicatedClusterRequest
+//
+// @return StopDedicatedClusterResponse
 func (client *Client) StopDedicatedCluster(request *StopDedicatedClusterRequest) (_result *StopDedicatedClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopDedicatedClusterResponse{}
@@ -53796,6 +55029,11 @@ func (client *Client) StopDedicatedCluster(request *StopDedicatedClusterRequest)
 	return _result, _err
 }
 
+// @param request - StopDtsJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopDtsJobResponse
 func (client *Client) StopDtsJobWithOptions(request *StopDtsJobRequest, runtime *util.RuntimeOptions) (_result *StopDtsJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53849,6 +55087,9 @@ func (client *Client) StopDtsJobWithOptions(request *StopDtsJobRequest, runtime 
 	return _result, _err
 }
 
+// @param request - StopDtsJobRequest
+//
+// @return StopDtsJobResponse
 func (client *Client) StopDtsJob(request *StopDtsJobRequest) (_result *StopDtsJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopDtsJobResponse{}
@@ -53860,6 +55101,11 @@ func (client *Client) StopDtsJob(request *StopDtsJobRequest) (_result *StopDtsJo
 	return _result, _err
 }
 
+// @param request - StopDtsJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopDtsJobsResponse
 func (client *Client) StopDtsJobsWithOptions(request *StopDtsJobsRequest, runtime *util.RuntimeOptions) (_result *StopDtsJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53905,6 +55151,9 @@ func (client *Client) StopDtsJobsWithOptions(request *StopDtsJobsRequest, runtim
 	return _result, _err
 }
 
+// @param request - StopDtsJobsRequest
+//
+// @return StopDtsJobsResponse
 func (client *Client) StopDtsJobs(request *StopDtsJobsRequest) (_result *StopDtsJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopDtsJobsResponse{}
@@ -53918,7 +55167,7 @@ func (client *Client) StopDtsJobs(request *StopDtsJobsRequest) (_result *StopDts
 
 // Description:
 //
-// >  After you call this operation to stop a data migration task, the status of the task changes to Finished and you cannot restart the task by calling the [StartMigrationJob](~~49429~~) operation.
+// >  After you call this operation to stop a data migration task, the status of the task changes to Finished and you cannot restart the task by calling the [StartMigrationJob](https://help.aliyun.com/document_detail/49429.html) operation.
 //
 // @param request - StopMigrationJobRequest
 //
@@ -53980,7 +55229,7 @@ func (client *Client) StopMigrationJobWithOptions(request *StopMigrationJobReque
 
 // Description:
 //
-// >  After you call this operation to stop a data migration task, the status of the task changes to Finished and you cannot restart the task by calling the [StartMigrationJob](~~49429~~) operation.
+// >  After you call this operation to stop a data migration task, the status of the task changes to Finished and you cannot restart the task by calling the [StartMigrationJob](https://help.aliyun.com/document_detail/49429.html) operation.
 //
 // @param request - StopMigrationJobRequest
 //
@@ -53996,6 +55245,11 @@ func (client *Client) StopMigrationJob(request *StopMigrationJobRequest) (_resul
 	return _result, _err
 }
 
+// @param request - SummaryJobDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SummaryJobDetailResponse
 func (client *Client) SummaryJobDetailWithOptions(request *SummaryJobDetailRequest, runtime *util.RuntimeOptions) (_result *SummaryJobDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54057,6 +55311,9 @@ func (client *Client) SummaryJobDetailWithOptions(request *SummaryJobDetailReque
 	return _result, _err
 }
 
+// @param request - SummaryJobDetailRequest
+//
+// @return SummaryJobDetailResponse
 func (client *Client) SummaryJobDetail(request *SummaryJobDetailRequest) (_result *SummaryJobDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SummaryJobDetailResponse{}
@@ -54070,7 +55327,7 @@ func (client *Client) SummaryJobDetail(request *SummaryJobDetailRequest) (_resul
 
 // Description:
 //
-// ****
+// ***
 //
 // @param request - SuspendDtsJobRequest
 //
@@ -54132,7 +55389,7 @@ func (client *Client) SuspendDtsJobWithOptions(request *SuspendDtsJobRequest, ru
 
 // Description:
 //
-// ****
+// ***
 //
 // @param request - SuspendDtsJobRequest
 //
@@ -54148,6 +55405,11 @@ func (client *Client) SuspendDtsJob(request *SuspendDtsJobRequest) (_result *Sus
 	return _result, _err
 }
 
+// @param request - SuspendDtsJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SuspendDtsJobsResponse
 func (client *Client) SuspendDtsJobsWithOptions(request *SuspendDtsJobsRequest, runtime *util.RuntimeOptions) (_result *SuspendDtsJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54193,6 +55455,9 @@ func (client *Client) SuspendDtsJobsWithOptions(request *SuspendDtsJobsRequest, 
 	return _result, _err
 }
 
+// @param request - SuspendDtsJobsRequest
+//
+// @return SuspendDtsJobsResponse
 func (client *Client) SuspendDtsJobs(request *SuspendDtsJobsRequest) (_result *SuspendDtsJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SuspendDtsJobsResponse{}
@@ -54208,7 +55473,7 @@ func (client *Client) SuspendDtsJobs(request *SuspendDtsJobsRequest) (_result *S
 //
 // >
 //
-// 	- If a data migration task is performing incremental data migration, we recommend that you do not pause the task for more than 6 hours. Otherwise, you will not be able to call the [StartMigrationJob](~~49429~~) operation to restart the task.
+// 	- If a data migration task is performing incremental data migration, we recommend that you do not pause the task for more than 6 hours. Otherwise, you will not be able to call the [StartMigrationJob](https://help.aliyun.com/document_detail/49429.html) operation to restart the task.
 //
 // 	- If you select incremental data migration as the migration type for a pay-as-you-go instance, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, incremental data migration consumes resources such as the bandwidth of the source database.
 //
@@ -54274,7 +55539,7 @@ func (client *Client) SuspendMigrationJobWithOptions(request *SuspendMigrationJo
 //
 // >
 //
-// 	- If a data migration task is performing incremental data migration, we recommend that you do not pause the task for more than 6 hours. Otherwise, you will not be able to call the [StartMigrationJob](~~49429~~) operation to restart the task.
+// 	- If a data migration task is performing incremental data migration, we recommend that you do not pause the task for more than 6 hours. Otherwise, you will not be able to call the [StartMigrationJob](https://help.aliyun.com/document_detail/49429.html) operation to restart the task.
 //
 // 	- If you select incremental data migration as the migration type for a pay-as-you-go instance, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, incremental data migration consumes resources such as the bandwidth of the source database.
 //
@@ -54384,6 +55649,15 @@ func (client *Client) SuspendSynchronizationJob(request *SuspendSynchronizationJ
 	return _result, _err
 }
 
+// Summary:
+//
+// 物理迁移任务切换上云
+//
+// @param request - SwitchPhysicalDtsJobToCloudRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchPhysicalDtsJobToCloudResponse
 func (client *Client) SwitchPhysicalDtsJobToCloudWithOptions(request *SwitchPhysicalDtsJobToCloudRequest, runtime *util.RuntimeOptions) (_result *SwitchPhysicalDtsJobToCloudResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54433,6 +55707,13 @@ func (client *Client) SwitchPhysicalDtsJobToCloudWithOptions(request *SwitchPhys
 	return _result, _err
 }
 
+// Summary:
+//
+// 物理迁移任务切换上云
+//
+// @param request - SwitchPhysicalDtsJobToCloudRequest
+//
+// @return SwitchPhysicalDtsJobToCloudResponse
 func (client *Client) SwitchPhysicalDtsJobToCloud(request *SwitchPhysicalDtsJobToCloudRequest) (_result *SwitchPhysicalDtsJobToCloudResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchPhysicalDtsJobToCloudResponse{}
@@ -54446,7 +55727,7 @@ func (client *Client) SwitchPhysicalDtsJobToCloud(request *SwitchPhysicalDtsJobT
 
 // Description:
 //
-// 	- If the source or destination database is a self-managed MySQL database connected over the Internet, Elastic Compute Service (ECS) or Express Connect, you must call this operation to update the connection settings.
+//   If the source or destination database is a self-managed MySQL database connected over the Internet, Elastic Compute Service (ECS) or Express Connect, you must call this operation to update the connection settings.
 //
 // 	- If the source or destination database is hosted on an ApsaraDB instance (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance), DTS automatically updates the connection settings. You do not need to call this operation.
 //
@@ -54522,7 +55803,7 @@ func (client *Client) SwitchSynchronizationEndpointWithOptions(request *SwitchSy
 
 // Description:
 //
-// 	- If the source or destination database is a self-managed MySQL database connected over the Internet, Elastic Compute Service (ECS) or Express Connect, you must call this operation to update the connection settings.
+//   If the source or destination database is a self-managed MySQL database connected over the Internet, Elastic Compute Service (ECS) or Express Connect, you must call this operation to update the connection settings.
 //
 // 	- If the source or destination database is hosted on an ApsaraDB instance (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance), DTS automatically updates the connection settings. You do not need to call this operation.
 //
@@ -54640,6 +55921,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// @param request - TransferInstanceClassRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferInstanceClassResponse
 func (client *Client) TransferInstanceClassWithOptions(request *TransferInstanceClassRequest, runtime *util.RuntimeOptions) (_result *TransferInstanceClassResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54689,6 +55975,9 @@ func (client *Client) TransferInstanceClassWithOptions(request *TransferInstance
 	return _result, _err
 }
 
+// @param request - TransferInstanceClassRequest
+//
+// @return TransferInstanceClassResponse
 func (client *Client) TransferInstanceClass(request *TransferInstanceClassRequest) (_result *TransferInstanceClassResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TransferInstanceClassResponse{}
@@ -54721,6 +56010,10 @@ func (client *Client) TransferPayTypeWithOptions(request *TransferPayTypeRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BuyCount)) {
 		query["BuyCount"] = request.BuyCount
 	}
@@ -54972,6 +56265,12 @@ func (client *Client) UpgradeTwoWay(request *UpgradeTwoWayRequest) (_result *Upg
 	return _result, _err
 }
 
+// Summary:
+//
+// If the **source or destination instance*	- is a **self-managed database*	- or a **third-party cloud database**, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see [Add the CIDR blocks of DTS servers to the security settings of on-premises databases](https://help.aliyun.com/document_detail/176627.html).
+//
+// >  If the **source or destination database*	- is an **ApsaraDB database instance*	- (such as RDS instance and ApsaraDB for MongoDB instance) or a **self-managed database hosted on Elastic Compute Service (ECS)**, you do not need to add the CIDR blocks. When you click **Set Whitelist and Next*	- in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source or destination instance.
+//
 // Description:
 //
 // The operation that you want to perform. Set the value to **WhiteIpList**.
@@ -55034,6 +56333,12 @@ func (client *Client) WhiteIpListWithOptions(request *WhiteIpListRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// If the **source or destination instance*	- is a **self-managed database*	- or a **third-party cloud database**, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see [Add the CIDR blocks of DTS servers to the security settings of on-premises databases](https://help.aliyun.com/document_detail/176627.html).
+//
+// >  If the **source or destination database*	- is an **ApsaraDB database instance*	- (such as RDS instance and ApsaraDB for MongoDB instance) or a **self-managed database hosted on Elastic Compute Service (ECS)**, you do not need to add the CIDR blocks. When you click **Set Whitelist and Next*	- in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source or destination instance.
+//
 // Description:
 //
 // The operation that you want to perform. Set the value to **WhiteIpList**.
