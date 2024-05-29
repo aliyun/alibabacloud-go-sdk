@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,10 +11,24 @@ import (
 
 type AddUserToOrganizationalUnitsRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The organization IDs. You can add an account to a maximum of 100 organizations.
+	//
+	// This parameter is required.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
 	// The account ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -46,6 +57,10 @@ func (s *AddUserToOrganizationalUnitsRequest) SetUserId(v string) *AddUserToOrga
 
 type AddUserToOrganizationalUnitsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -93,10 +108,28 @@ func (s *AddUserToOrganizationalUnitsResponse) SetBody(v *AddUserToOrganizationa
 
 type AddUsersToGroupRequest struct {
 	// The group ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The account IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [ou_001]
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
@@ -125,6 +158,10 @@ func (s *AddUsersToGroupRequest) SetUserIds(v []*string) *AddUsersToGroupRequest
 
 type AddUsersToGroupResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -172,10 +209,28 @@ func (s *AddUsersToGroupResponse) SetBody(v *AddUsersToGroupResponseBody) *AddUs
 
 type AuthorizeApplicationToGroupsRequest struct {
 	// The application ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The group IDs. You can specify up to 100 group IDs at a time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group_miu8e4t4d7i4u7uwezgr54xxxx
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk2676xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -204,6 +259,10 @@ func (s *AuthorizeApplicationToGroupsRequest) SetInstanceId(v string) *Authorize
 
 type AuthorizeApplicationToGroupsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -251,10 +310,28 @@ func (s *AuthorizeApplicationToGroupsResponse) SetBody(v *AuthorizeApplicationTo
 
 type AuthorizeApplicationToOrganizationalUnitsRequest struct {
 	// The ID of the application on which you want to grant permissions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk2676xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IDs of the organizations to which you want to grant permissions. You can grant permissions to a maximum of 100 organizations at a time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
 }
 
@@ -283,6 +360,10 @@ func (s *AuthorizeApplicationToOrganizationalUnitsRequest) SetOrganizationalUnit
 
 type AuthorizeApplicationToOrganizationalUnitsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -330,10 +411,28 @@ func (s *AuthorizeApplicationToOrganizationalUnitsResponse) SetBody(v *Authorize
 
 type AuthorizeApplicationToUsersRequest struct {
 	// The ID of the application on which you want to grant permissions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk2676xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IDs of the accounts to which you want to grant permissions. You can grant permissions to a maximum of 100 accounts at a time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
@@ -362,6 +461,10 @@ func (s *AuthorizeApplicationToUsersRequest) SetUserIds(v []*string) *AuthorizeA
 
 type AuthorizeApplicationToUsersResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -409,24 +512,62 @@ func (s *AuthorizeApplicationToUsersResponse) SetBody(v *AuthorizeApplicationToU
 
 type CreateApplicationRequest struct {
 	// The name of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ram Account SSO
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The type of the application source. Valid values:
 	//
-	// *   urn:alibaba:idaas:app:source:template: application template
-	// *   urn:alibaba:idaas:app:source:standard: standard protocol
+	// 	- urn:alibaba:idaas:app:source:template: application template
+	//
+	// 	- urn:alibaba:idaas:app:source:standard: standard protocol
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// urn:alibaba:idaas:app:source:standard
 	ApplicationSourceType *string `json:"ApplicationSourceType,omitempty" xml:"ApplicationSourceType,omitempty"`
 	// The ID of the application template. This parameter is required if you set the ApplicationSourceType parameter to urn:alibaba:idaas:app:source:template.
+	//
+	// example:
+	//
+	// template_cloud_ram
 	ApplicationTemplateId *string `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// RAM user SSO application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk2676xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The URL of the application logo.
+	//
+	// example:
+	//
+	// https://oss.cn-hangzhou.aliyuncs.com/logo.png
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
 	// The SSO protocol. Valid values:
 	//
-	// *   saml2: the SAML 2.0 protocol.
-	// *   oidc: the OpenID Connect protocol.
+	// 	- saml2: the SAML 2.0 protocol.
+	//
+	// 	- oidc: the OpenID Connect protocol.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// saml2
 	SsoType *string `json:"SsoType,omitempty" xml:"SsoType,omitempty"`
 }
 
@@ -475,8 +616,16 @@ func (s *CreateApplicationRequest) SetSsoType(v string) *CreateApplicationReques
 
 type CreateApplicationResponseBody struct {
 	// The ID of the application.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mnkom
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -529,8 +678,20 @@ func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *C
 
 type CreateApplicationClientSecretRequest struct {
 	// The ID of the application for which you want to create a client key.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -556,6 +717,10 @@ type CreateApplicationClientSecretResponseBody struct {
 	// The information about the client key.
 	ApplicationClientSecret *CreateApplicationClientSecretResponseBodyApplicationClientSecret `json:"ApplicationClientSecret,omitempty" xml:"ApplicationClientSecret,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -579,10 +744,22 @@ func (s *CreateApplicationClientSecretResponseBody) SetRequestId(v string) *Crea
 
 type CreateApplicationClientSecretResponseBodyApplicationClientSecret struct {
 	// The client ID of the application.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The client key secret of the application.
+	//
+	// example:
+	//
+	// CSEHDcHcrUKHw1CuxkJEHPveWRXBGqVqRsxxxx
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
 	// The client key ID of the application.
+	//
+	// example:
+	//
+	// sci_k52x2ru63rlkflina5utgkxxxx
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 }
 
@@ -640,10 +817,22 @@ func (s *CreateApplicationClientSecretResponse) SetBody(v *CreateApplicationClie
 
 type CreateDomainRequest struct {
 	// 域名。最大长度限制255，格式由数字、字母、横线（-）点（.）组成;
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// 备案信息参数。
 	Filing *CreateDomainRequestFiling `json:"Filing,omitempty" xml:"Filing,omitempty" type:"Struct"`
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -672,6 +861,10 @@ func (s *CreateDomainRequest) SetInstanceId(v string) *CreateDomainRequest {
 
 type CreateDomainRequestFiling struct {
 	// 域名关联的备案号，长度最大限制64。
+	//
+	// example:
+	//
+	// 浙xx-xxxxxx
 	IcpNumber *string `json:"IcpNumber,omitempty" xml:"IcpNumber,omitempty"`
 }
 
@@ -689,7 +882,13 @@ func (s *CreateDomainRequestFiling) SetIcpNumber(v string) *CreateDomainRequestF
 }
 
 type CreateDomainResponseBody struct {
-	DomainId  *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// example:
+	//
+	// dm_mtohn6mltdz3ibtly2rxvnvxxx
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -742,8 +941,20 @@ func (s *CreateDomainResponse) SetBody(v *CreateDomainResponseBody) *CreateDomai
 
 type CreateDomainProxyTokenRequest struct {
 	// 域名ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -766,8 +977,14 @@ func (s *CreateDomainProxyTokenRequest) SetInstanceId(v string) *CreateDomainPro
 }
 
 type CreateDomainProxyTokenResponseBody struct {
+	// example:
+	//
+	// pt_mtohn73423stghoivjmi4jwxxx
 	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDomainProxyTokenResponseBody) String() string {
@@ -819,12 +1036,32 @@ func (s *CreateDomainProxyTokenResponse) SetBody(v *CreateDomainProxyTokenRespon
 
 type CreateGroupRequest struct {
 	// The description of the group. The value can be up to 256 characters in length.
+	//
+	// example:
+	//
+	// this is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The external ID of the group, which can be used to associate the group with an external system. By default, the external ID is the group ID. The value can be up to 64 characters in length.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupExternalId *string `json:"GroupExternalId,omitempty" xml:"GroupExternalId,omitempty"`
 	// The name of the group. The name can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// name_test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -858,8 +1095,16 @@ func (s *CreateGroupRequest) SetInstanceId(v string) *CreateGroupRequest {
 
 type CreateGroupResponseBody struct {
 	// The group ID.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -912,6 +1157,10 @@ func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupRe
 
 type CreateInstanceRequest struct {
 	// The description of the instance. The description can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// instance_for_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -930,8 +1179,16 @@ func (s *CreateInstanceRequest) SetDescription(v string) *CreateInstanceRequest 
 
 type CreateInstanceResponseBody struct {
 	// The ID of the instance that is created.
+	//
+	// example:
+	//
+	// idaas_wj5htncdvoc4q5xxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -984,16 +1241,48 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 
 type CreateNetworkAccessEndpointRequest struct {
 	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+	//
+	// example:
+	//
+	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 专属网络端点名称。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xx业务VPC访问端点
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
 	// 专属网络端点连接的指定vSwitch。
+	//
+	// example:
+	//
+	// vsw-examplexxx
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// 专属网络端点连接的VpcID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-examplexxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// 专属网络端点连接的VpcID所属地域，该地域取值必须在ListNetworkAccessEndpointAvailableRegions接口中返回。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
 }
 
@@ -1036,8 +1325,14 @@ func (s *CreateNetworkAccessEndpointRequest) SetVpcRegionId(v string) *CreateNet
 }
 
 type CreateNetworkAccessEndpointResponseBody struct {
+	// example:
+	//
+	// nae_examplexxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateNetworkAccessEndpointResponseBody) String() string {
@@ -1089,14 +1384,40 @@ func (s *CreateNetworkAccessEndpointResponse) SetBody(v *CreateNetworkAccessEndp
 
 type CreateOrganizationalUnitRequest struct {
 	// The description of the organization. The value can be up to 256 characters in length.
+	//
+	// example:
+	//
+	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The external ID of the organization, which can be used to associate the organization with an external system. By default, the external ID is the organization ID. The value can be up to 64 characters in length.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitExternalId *string `json:"OrganizationalUnitExternalId,omitempty" xml:"OrganizationalUnitExternalId,omitempty"`
 	// The name of the organization. The name can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_ou_name
 	OrganizationalUnitName *string `json:"OrganizationalUnitName,omitempty" xml:"OrganizationalUnitName,omitempty"`
 	// The parent organization ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 }
 
@@ -1135,8 +1456,16 @@ func (s *CreateOrganizationalUnitRequest) SetParentId(v string) *CreateOrganizat
 
 type CreateOrganizationalUnitResponseBody struct {
 	// The organization ID.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1189,34 +1518,92 @@ func (s *CreateOrganizationalUnitResponse) SetBody(v *CreateOrganizationalUnitRe
 
 type CreateUserRequest struct {
 	// The extended fields.
+	//
+	// example:
+	//
+	// description
 	CustomFields []*CreateUserRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
 	// The description of the organizational unit. The description can be up to 256 characters in length.
+	//
+	// example:
+	//
+	// description text
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the account. The display name can be up to 64 characters in length.
+	//
+	// example:
+	//
+	// name_001
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The email address of the user who owns the account. The email address prefix can contain letters, digits, underscores (\_), periods (.), and hyphens (-).
+	// The email address of the user who owns the account. The email address prefix can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+	//
+	// example:
+	//
+	// example@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// Specifies whether the email address is a trusted email address. This parameter is required if the Email parameter is specified. If you have no special business requirements, set this parameter to true.
+	//
+	// example:
+	//
+	// true
 	EmailVerified *bool `json:"EmailVerified,omitempty" xml:"EmailVerified,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IDs of organizational units to which the account belongs. An account can belong to multiple organizational units.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
 	// The password of the account. For more information, view the password policy of the instance in the IDaaS console.
+	//
+	// example:
+	//
+	// 123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The configurations for password initialization.
 	PasswordInitializationConfig *CreateUserRequestPasswordInitializationConfig `json:"PasswordInitializationConfig,omitempty" xml:"PasswordInitializationConfig,omitempty" type:"Struct"`
 	// The mobile phone number, which contains 6 to 15 digits.
+	//
+	// example:
+	//
+	// 12345678901
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// Specifies whether the mobile phone number is a trusted mobile phone number. This parameter is required if the PhoneNumber parameter is specified. If you have no special business requirements, set this parameter to true.
+	//
+	// example:
+	//
+	// true
 	PhoneNumberVerified *bool `json:"PhoneNumberVerified,omitempty" xml:"PhoneNumberVerified,omitempty"`
 	// The country code of the mobile phone number. The country code contains only digits and does not contain a plus sign (+).
+	//
+	// example:
+	//
+	// 86
 	PhoneRegion *string `json:"PhoneRegion,omitempty" xml:"PhoneRegion,omitempty"`
 	// The ID of the primary organizational unit to which the account belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	PrimaryOrganizationalUnitId *string `json:"PrimaryOrganizationalUnitId,omitempty" xml:"PrimaryOrganizationalUnitId,omitempty"`
 	// The external ID of the account. The external ID can be used to associate the account with an external system. The external ID can be up to 64 characters in length. If you do not specify an external ID for the account, the ID of the account is used as the external ID by default.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
-	// The name of the account. The name can be up to 64 characters in length and can contain letters, digits, underscores (\_), periods (.), at signs (@), and hyphens (-).
+	// The name of the account. The name can be up to 64 characters in length and can contain letters, digits, underscores (_), periods (.), at signs (@), and hyphens (-).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_001
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -1305,8 +1692,16 @@ func (s *CreateUserRequest) SetUsername(v string) *CreateUserRequest {
 
 type CreateUserRequestCustomFields struct {
 	// The name of the extended field. You must create the extended field in advance. To create an extended field, log on to the IDaaS console. In the left-side navigation pane, choose Accounts > Extended Fields, and then click Create Field on the Extended Fields page.
+	//
+	// example:
+	//
+	// age
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	// The value of the extended field. The value follows the limits on the properties of the extended field.
+	//
+	// example:
+	//
+	// 10
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
 }
 
@@ -1331,19 +1726,37 @@ func (s *CreateUserRequestCustomFields) SetFieldValue(v string) *CreateUserReque
 type CreateUserRequestPasswordInitializationConfig struct {
 	// Specifies whether to forcibly change the password status. Default value: disabled. Valid values:
 	//
-	// *   enabled: forcibly changes the password status.
-	// *   disabled: does not forcibly change the password status.
+	// 	- enabled: forcibly changes the password status.
+	//
+	// 	- disabled: does not forcibly change the password status.
+	//
+	// example:
+	//
+	// enabled
 	PasswordForcedUpdateStatus *string `json:"PasswordForcedUpdateStatus,omitempty" xml:"PasswordForcedUpdateStatus,omitempty"`
 	// The priority of the password initialization policy. By default, this parameter does not take effect. Valid values:
 	//
-	// *   global: The password initialization policy globally takes effect.
-	// *   custom: The password initialization policy takes effect based on custom settings.
+	// 	- global: The password initialization policy globally takes effect.
+	//
+	// 	- custom: The password initialization policy takes effect based on custom settings.
+	//
+	// example:
+	//
+	// global
 	PasswordInitializationPolicyPriority *string `json:"PasswordInitializationPolicyPriority,omitempty" xml:"PasswordInitializationPolicyPriority,omitempty"`
 	// The password initialization method. Set the value to random,
 	//
-	// *   which indicates that the password is randomly generated.
+	// 	- which indicates that the password is randomly generated.
+	//
+	// example:
+	//
+	// random
 	PasswordInitializationType *string `json:"PasswordInitializationType,omitempty" xml:"PasswordInitializationType,omitempty"`
 	// The password notification methods.
+	//
+	// example:
+	//
+	// sms
 	UserNotificationChannels []*string `json:"UserNotificationChannels,omitempty" xml:"UserNotificationChannels,omitempty" type:"Repeated"`
 }
 
@@ -1377,8 +1790,16 @@ func (s *CreateUserRequestPasswordInitializationConfig) SetUserNotificationChann
 
 type CreateUserResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the account.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -1431,8 +1852,20 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 
 type DeleteApplicationRequest struct {
 	// The ID of the application that you want to delete.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1456,6 +1889,10 @@ func (s *DeleteApplicationRequest) SetInstanceId(v string) *DeleteApplicationReq
 
 type DeleteApplicationResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1503,10 +1940,28 @@ func (s *DeleteApplicationResponse) SetBody(v *DeleteApplicationResponseBody) *D
 
 type DeleteApplicationClientSecretRequest struct {
 	// The ID of the application for which you want to delete a client key.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the client key that you want to delete for the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sci_k52x2ru63rlkflina5utgkxxxx
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 }
 
@@ -1535,6 +1990,10 @@ func (s *DeleteApplicationClientSecretRequest) SetSecretId(v string) *DeleteAppl
 
 type DeleteApplicationClientSecretResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1582,8 +2041,20 @@ func (s *DeleteApplicationClientSecretResponse) SetBody(v *DeleteApplicationClie
 
 type DeleteDomainRequest struct {
 	// 域名ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dm_examplexxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1606,6 +2077,9 @@ func (s *DeleteDomainRequest) SetInstanceId(v string) *DeleteDomainRequest {
 }
 
 type DeleteDomainResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1653,10 +2127,28 @@ func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomai
 
 type DeleteDomainProxyTokenRequest struct {
 	// 域名ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// 域名代理Token ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pt_examplexxxx
 	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1684,6 +2176,9 @@ func (s *DeleteDomainProxyTokenRequest) SetInstanceId(v string) *DeleteDomainPro
 }
 
 type DeleteDomainProxyTokenResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1731,8 +2226,20 @@ func (s *DeleteDomainProxyTokenResponse) SetBody(v *DeleteDomainProxyTokenRespon
 
 type DeleteGroupRequest struct {
 	// The group ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1756,6 +2263,10 @@ func (s *DeleteGroupRequest) SetInstanceId(v string) *DeleteGroupRequest {
 
 type DeleteGroupResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1803,6 +2314,12 @@ func (s *DeleteGroupResponse) SetBody(v *DeleteGroupResponseBody) *DeleteGroupRe
 
 type DeleteInstanceRequest struct {
 	// The ID of the instance to be deleted.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1821,6 +2338,10 @@ func (s *DeleteInstanceRequest) SetInstanceId(v string) *DeleteInstanceRequest {
 
 type DeleteInstanceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1868,8 +2389,20 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 
 type DeleteNetworkAccessEndpointRequest struct {
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 专属网络端点ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nae_examplexxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
 }
 
@@ -1892,6 +2425,9 @@ func (s *DeleteNetworkAccessEndpointRequest) SetNetworkAccessEndpointId(v string
 }
 
 type DeleteNetworkAccessEndpointResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1939,8 +2475,20 @@ func (s *DeleteNetworkAccessEndpointResponse) SetBody(v *DeleteNetworkAccessEndp
 
 type DeleteOrganizationalUnitRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The organization ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 }
 
@@ -1964,6 +2512,10 @@ func (s *DeleteOrganizationalUnitRequest) SetOrganizationalUnitId(v string) *Del
 
 type DeleteOrganizationalUnitResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2011,8 +2563,20 @@ func (s *DeleteOrganizationalUnitResponse) SetBody(v *DeleteOrganizationalUnitRe
 
 type DeleteUserRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The account ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -2036,6 +2600,10 @@ func (s *DeleteUserRequest) SetUserId(v string) *DeleteUserRequest {
 
 type DeleteUserResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2083,8 +2651,20 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 
 type DisableApplicationRequest struct {
 	// The ID of the application that you want to disable.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2108,6 +2688,10 @@ func (s *DisableApplicationRequest) SetInstanceId(v string) *DisableApplicationR
 
 type DisableApplicationResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2155,8 +2739,20 @@ func (s *DisableApplicationResponse) SetBody(v *DisableApplicationResponseBody) 
 
 type DisableApplicationApiInvokeRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2180,6 +2776,10 @@ func (s *DisableApplicationApiInvokeRequest) SetInstanceId(v string) *DisableApp
 
 type DisableApplicationApiInvokeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2227,10 +2827,28 @@ func (s *DisableApplicationApiInvokeResponse) SetBody(v *DisableApplicationApiIn
 
 type DisableApplicationClientSecretRequest struct {
 	// The ID of the application for which you want to disable a client key.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The client key ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sci_k52x2ru63rlkflina5utgkxxxx
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 }
 
@@ -2259,6 +2877,10 @@ func (s *DisableApplicationClientSecretRequest) SetSecretId(v string) *DisableAp
 
 type DisableApplicationClientSecretResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2306,8 +2928,20 @@ func (s *DisableApplicationClientSecretResponse) SetBody(v *DisableApplicationCl
 
 type DisableApplicationProvisioningRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2331,6 +2965,10 @@ func (s *DisableApplicationProvisioningRequest) SetInstanceId(v string) *Disable
 
 type DisableApplicationProvisioningResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2378,8 +3016,20 @@ func (s *DisableApplicationProvisioningResponse) SetBody(v *DisableApplicationPr
 
 type DisableApplicationSsoRequest struct {
 	// IDaaS的应用主键id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// IDaaS EIAM的实例id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2402,6 +3052,9 @@ func (s *DisableApplicationSsoRequest) SetInstanceId(v string) *DisableApplicati
 }
 
 type DisableApplicationSsoResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2449,10 +3102,28 @@ func (s *DisableApplicationSsoResponse) SetBody(v *DisableApplicationSsoResponse
 
 type DisableDomainProxyTokenRequest struct {
 	// 域名ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// 域名代理Token ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pt_examplexxxx
 	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2480,6 +3151,9 @@ func (s *DisableDomainProxyTokenRequest) SetInstanceId(v string) *DisableDomainP
 }
 
 type DisableDomainProxyTokenResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2527,6 +3201,12 @@ func (s *DisableDomainProxyTokenResponse) SetBody(v *DisableDomainProxyTokenResp
 
 type DisableInitDomainAutoRedirectRequest struct {
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2544,6 +3224,9 @@ func (s *DisableInitDomainAutoRedirectRequest) SetInstanceId(v string) *DisableI
 }
 
 type DisableInitDomainAutoRedirectResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2591,8 +3274,20 @@ func (s *DisableInitDomainAutoRedirectResponse) SetBody(v *DisableInitDomainAuto
 
 type DisableUserRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -2616,6 +3311,10 @@ func (s *DisableUserRequest) SetUserId(v string) *DisableUserRequest {
 
 type DisableUserResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2663,8 +3362,20 @@ func (s *DisableUserResponse) SetBody(v *DisableUserResponseBody) *DisableUserRe
 
 type EnableApplicationRequest struct {
 	// The ID of the application that you want to enable.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2688,6 +3399,10 @@ func (s *EnableApplicationRequest) SetInstanceId(v string) *EnableApplicationReq
 
 type EnableApplicationResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2735,8 +3450,20 @@ func (s *EnableApplicationResponse) SetBody(v *EnableApplicationResponseBody) *E
 
 type EnableApplicationApiInvokeRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2760,6 +3487,10 @@ func (s *EnableApplicationApiInvokeRequest) SetInstanceId(v string) *EnableAppli
 
 type EnableApplicationApiInvokeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2807,10 +3538,28 @@ func (s *EnableApplicationApiInvokeResponse) SetBody(v *EnableApplicationApiInvo
 
 type EnableApplicationClientSecretRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The client key ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sci_k52x2ru63rlkflina5utgkxxxx
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 }
 
@@ -2839,6 +3588,10 @@ func (s *EnableApplicationClientSecretRequest) SetSecretId(v string) *EnableAppl
 
 type EnableApplicationClientSecretResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2886,8 +3639,20 @@ func (s *EnableApplicationClientSecretResponse) SetBody(v *EnableApplicationClie
 
 type EnableApplicationProvisioningRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2911,6 +3676,10 @@ func (s *EnableApplicationProvisioningRequest) SetInstanceId(v string) *EnableAp
 
 type EnableApplicationProvisioningResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2958,8 +3727,20 @@ func (s *EnableApplicationProvisioningResponse) SetBody(v *EnableApplicationProv
 
 type EnableApplicationSsoRequest struct {
 	// IDaaS的应用主键id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// IDaaS EIAM的实例id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2982,6 +3763,9 @@ func (s *EnableApplicationSsoRequest) SetInstanceId(v string) *EnableApplication
 }
 
 type EnableApplicationSsoResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3029,10 +3813,28 @@ func (s *EnableApplicationSsoResponse) SetBody(v *EnableApplicationSsoResponseBo
 
 type EnableDomainProxyTokenRequest struct {
 	// 域名ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// 域名代理Token ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pt_examplexxxx
 	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3060,6 +3862,9 @@ func (s *EnableDomainProxyTokenRequest) SetInstanceId(v string) *EnableDomainPro
 }
 
 type EnableDomainProxyTokenResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3107,6 +3912,12 @@ func (s *EnableDomainProxyTokenResponse) SetBody(v *EnableDomainProxyTokenRespon
 
 type EnableInitDomainAutoRedirectRequest struct {
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3124,6 +3935,9 @@ func (s *EnableInitDomainAutoRedirectRequest) SetInstanceId(v string) *EnableIni
 }
 
 type EnableInitDomainAutoRedirectResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3171,8 +3985,20 @@ func (s *EnableInitDomainAutoRedirectResponse) SetBody(v *EnableInitDomainAutoRe
 
 type EnableUserRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The account ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -3196,6 +4022,10 @@ func (s *EnableUserRequest) SetUserId(v string) *EnableUserRequest {
 
 type EnableUserResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3243,8 +4073,20 @@ func (s *EnableUserResponse) SetBody(v *EnableUserResponseBody) *EnableUserRespo
 
 type GetApplicationRequest struct {
 	// The ID of the application that you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3270,6 +4112,10 @@ type GetApplicationResponseBody struct {
 	// The details of the application.
 	Application *GetApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3294,56 +4140,131 @@ func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationRespo
 type GetApplicationResponseBodyApplication struct {
 	// The status of the Developer API feature. Valid values:
 	//
-	// *   Enabled: The Developer API feature is enabled.
-	// *   Disabled: The Developer API feature is disabled.
+	// 	- Enabled: The Developer API feature is enabled.
+	//
+	// 	- Disabled: The Developer API feature is disabled.
+	//
+	// example:
+	//
+	// disabled
 	ApiInvokeStatus *string `json:"ApiInvokeStatus,omitempty" xml:"ApiInvokeStatus,omitempty"`
 	// The ID of the application.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The name of the application.
+	//
+	// example:
+	//
+	// SAML Application
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The origin of the application. Valid values:
 	//
-	// *   urn:alibaba:idaas:app:source:template: The application is created based on a template.
-	// *   urn:alibaba:idaas: The application is created based on the standard protocol.
+	// 	- urn:alibaba:idaas:app:source:template: The application is created based on a template.
+	//
+	// 	- urn:alibaba:idaas: The application is created based on the standard protocol.
+	//
+	// example:
+	//
+	// urn:alibaba:idaas:app:source:template
 	ApplicationSourceType *string `json:"ApplicationSourceType,omitempty" xml:"ApplicationSourceType,omitempty"`
 	// The ID of the template based on which the application is created. This parameter is returned only if the application is created based on a template.
+	//
+	// example:
+	//
+	// apt_rpa_tdsxxx
 	ApplicationTemplateId *string `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
 	// The authorization type of the EIAM application. Valid values:
 	//
-	// *   authorize_required: Only the user with explicit authorization can access the application.
-	// *   default_all: By default, all users can access the application.
+	// 	- authorize_required: Only the user with explicit authorization can access the application.
+	//
+	// 	- default_all: By default, all users can access the application.
+	//
+	// example:
+	//
+	// authorize_required
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
 	// The client ID of the application.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The time when the application was created. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// The application is applicable to the test environment.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The features that are supported by the application. The value is a JSON array. Valid values:
 	//
-	// *   sso: The application supports SSO.
-	// *   provision: The application supports account synchronization.
-	// *   api_invoke: The application supports custom APIs.
+	// 	- sso: The application supports SSO.
+	//
+	// 	- provision: The application supports account synchronization.
+	//
+	// 	- api_invoke: The application supports custom APIs.
+	//
+	// example:
+	//
+	// ["sso", "provision"]
 	Features *string `json:"Features,omitempty" xml:"Features,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The URL of the application icon.
+	//
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i4/O1CN01lvYwpv1aGowQXDML9_!!6000000003303-0-tps-580-580.jpg
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
 	// The service code of the cloud service that manages the application template.
+	//
+	// example:
+	//
+	// rpa
 	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
 	// Indicates whether the application template is managed by a cloud service.
+	//
+	// example:
+	//
+	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The type of the single sign-on (SSO) protocol. Valid values:
 	//
-	// *   saml2: the Security Assertion Markup Language (SAML) 2.0 protocol.
-	// *   oidc: the OpenID Connect (OIDC) protocol.
+	// 	- saml2: the Security Assertion Markup Language (SAML) 2.0 protocol.
+	//
+	// 	- oidc: the OpenID Connect (OIDC) protocol.
+	//
+	// example:
+	//
+	// saml2
 	SsoType *string `json:"SsoType,omitempty" xml:"SsoType,omitempty"`
 	// The status of the application. Valid values:
 	//
-	// *   Enabled: The application is enabled.
-	// *   Disabled: The application is disabled.
+	// 	- Enabled: The application is enabled.
+	//
+	// 	- Disabled: The application is disabled.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time when the application was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -3471,8 +4392,20 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 
 type GetApplicationGrantScopeRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3498,6 +4431,10 @@ type GetApplicationGrantScopeResponseBody struct {
 	// The permissions of the Developer API feature.
 	ApplicationGrantScope *GetApplicationGrantScopeResponseBodyApplicationGrantScope `json:"ApplicationGrantScope,omitempty" xml:"ApplicationGrantScope,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3568,8 +4505,20 @@ func (s *GetApplicationGrantScopeResponse) SetBody(v *GetApplicationGrantScopeRe
 
 type GetApplicationProvisioningConfigRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3595,6 +4544,10 @@ type GetApplicationProvisioningConfigResponseBody struct {
 	// The configuration of the account synchronization feature for the application.
 	ApplicationProvisioningConfig *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig `json:"ApplicationProvisioningConfig,omitempty" xml:"ApplicationProvisioningConfig,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3618,33 +4571,66 @@ func (s *GetApplicationProvisioningConfigResponseBody) SetRequestId(v string) *G
 
 type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig struct {
 	// The ID of the application.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The configuration of the custom event callback protocol of IDaaS.
 	CallbackProvisioningConfig *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigCallbackProvisioningConfig `json:"CallbackProvisioningConfig,omitempty" xml:"CallbackProvisioningConfig,omitempty" type:"Struct"`
 	// Client-side rendering, Valid values:
+	//
 	// - standard：standard mode.
+	//
 	// - template：template mode.
+	//
+	// example:
+	//
+	// standard
 	ConfigOperateMode *string `json:"ConfigOperateMode,omitempty" xml:"ConfigOperateMode,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The public key endpoint for signature verification of the synchronization callback information.
+	//
+	// example:
+	//
+	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk267xxxxx/app_mkv7rgt4d7i4u7zqtzev2mxxxx/provisioning/jwks
 	ProvisionJwksEndpoint *string `json:"ProvisionJwksEndpoint,omitempty" xml:"ProvisionJwksEndpoint,omitempty"`
 	// Indicates whether the password is synchronized in IDaaS user event callbacks. Valid values:
 	//
-	// *   true: The password is synchronized.
-	// *   false: The password is not synchronized.
+	// 	- true: The password is synchronized.
+	//
+	// 	- false: The password is not synchronized.
+	//
+	// example:
+	//
+	// true
 	ProvisionPassword *bool `json:"ProvisionPassword,omitempty" xml:"ProvisionPassword,omitempty"`
 	// The synchronization protocol type of the application. Valid values:
 	//
-	// *   idaas_callback: custom event callback protocol of IDaaS.
-	// *   scim2: System for Cross-domain Identity Management (SCIM) protocol.
+	// 	- idaas_callback: custom event callback protocol of IDaaS.
+	//
+	// 	- scim2: System for Cross-domain Identity Management (SCIM) protocol.
+	//
+	// example:
+	//
+	// idaas_callback
 	ProvisionProtocolType *string `json:"ProvisionProtocolType,omitempty" xml:"ProvisionProtocolType,omitempty"`
 	// The configuration of SCIM-based IDaaS synchronization.
 	ScimProvisioningConfig *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfig `json:"ScimProvisioningConfig,omitempty" xml:"ScimProvisioningConfig,omitempty" type:"Struct"`
 	// The status of the IDaaS account synchronization feature. Valid values:
 	//
-	// *   enabled: The feature is enabled.
-	// *   disabled: The feature is disabled.
+	// 	- enabled: The feature is enabled.
+	//
+	// 	- disabled: The feature is disabled.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3703,13 +4689,26 @@ func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConf
 
 type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigCallbackProvisioningConfig struct {
 	// The URL that the application uses to receive IDaaS event callbacks.
+	//
+	// example:
+	//
+	// https://example.com/event/callback
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// The symmetric key for IDaaS event callbacks. The key is an AES-256 encryption key in the HEX format.
+	//
+	// example:
+	//
+	// 1adfdfdfd******111
 	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
 	// Indicates whether IDaaS event callback messages are encrypted. Valid values:
 	//
-	// *   true: The messages are encrypted.
-	// *   false: The messages are transmitted in plaintext.
+	// 	- true: The messages are encrypted.
+	//
+	// 	- false: The messages are transmitted in plaintext.
+	//
+	// example:
+	//
+	// true
 	EncryptRequired *bool `json:"EncryptRequired,omitempty" xml:"EncryptRequired,omitempty"`
 	// The list of types of IDaaS event callback messages that are supported by the listener.
 	ListenEventScopes []*string `json:"ListenEventScopes,omitempty" xml:"ListenEventScopes,omitempty" type:"Repeated"`
@@ -3748,15 +4747,21 @@ type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigSc
 	AuthnConfiguration *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfigAuthnConfiguration `json:"AuthnConfiguration,omitempty" xml:"AuthnConfiguration,omitempty" type:"Struct"`
 	// The full synchronization scope of the SCIM protocol. Valid value:
 	//
-	// *   urn:alibaba:idaas:app:scim:User:PUSH: full account data synchronization.
+	// 	- urn:alibaba:idaas:app:scim:User:PUSH: full account data synchronization.
 	FullPushScopes []*string `json:"FullPushScopes,omitempty" xml:"FullPushScopes,omitempty" type:"Repeated"`
 	// The resource operations of the SCIM protocol. Valid values:
 	//
-	// *   urn:alibaba:idaas:app:scim:User:CREATE: account creation.
-	// *   urn:alibaba:idaas:app:scim:User:UPDATE: account update.
-	// *   urn:alibaba:idaas:app:scim:User:DELETE: account deletion.
+	// 	- urn:alibaba:idaas:app:scim:User:CREATE: account creation.
+	//
+	// 	- urn:alibaba:idaas:app:scim:User:UPDATE: account update.
+	//
+	// 	- urn:alibaba:idaas:app:scim:User:DELETE: account deletion.
 	ProvisioningActions []*string `json:"ProvisioningActions,omitempty" xml:"ProvisioningActions,omitempty" type:"Repeated"`
 	// The base URL that the application uses to receive the SCIM protocol for IDaaS synchronization.
+	//
+	// example:
+	//
+	// https://example.com/scim
 	ScimBaseUrl *string `json:"ScimBaseUrl,omitempty" xml:"ScimBaseUrl,omitempty"`
 }
 
@@ -3791,17 +4796,27 @@ func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConf
 type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfigAuthnConfiguration struct {
 	// The authentication mode of the SCIM protocol. Valid value:
 	//
-	// *   oauth2: OAuth2.0 mode.
+	// 	- oauth2: OAuth2.0 mode.
+	//
+	// example:
+	//
+	// oauth2
 	AuthnMode *string `json:"AuthnMode,omitempty" xml:"AuthnMode,omitempty"`
 	// The configuration parameters related to authorization.
 	//
-	// *   If the GrantType parameter is set to client_credentials, the configuration parameters ClientId, ClientSecret, and AuthnMethod are returned.
-	// *   If the GrantType parameter is set to bearer_token, the configuration parameter AccessToken is returned.
+	// 	- If the GrantType parameter is set to client_credentials, the configuration parameters ClientId, ClientSecret, and AuthnMethod are returned.
+	//
+	// 	- If the GrantType parameter is set to bearer_token, the configuration parameter AccessToken is returned.
 	AuthnParam *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfigAuthnConfigurationAuthnParam `json:"AuthnParam,omitempty" xml:"AuthnParam,omitempty" type:"Struct"`
 	// The grant type of the SCIM protocol. Valid values:
 	//
-	// *   client_credentials: client mode.
-	// *   bearer_token: key mode.
+	// 	- client_credentials: client mode.
+	//
+	// 	- bearer_token: key mode.
+	//
+	// example:
+	//
+	// bearer_token
 	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
 }
 
@@ -3830,17 +4845,38 @@ func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConf
 
 type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfigAuthnConfigurationAuthnParam struct {
 	// The access token. This parameter is returned when the GrantType parameter is set to bearer_token.
+	//
+	// example:
+	//
+	// k52x2ru63rlkflina5utgkxxxx
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	// The authentication mode of the SCIM protocol. Valid values:
 	//
-	// *   client_secret_basic: The client secret is passed in the request header.
-	// *   client_secret_post: The client secret is passed in the request body.
+	// 	- client_secret_basic: The client secret is passed in the request header.
+	//
+	// 	- client_secret_post: The client secret is passed in the request body.
+	//
+	// example:
+	//
+	// client_secret_basic
 	AuthnMethod *string `json:"AuthnMethod,omitempty" xml:"AuthnMethod,omitempty"`
 	// The client ID of the application.
+	//
+	// example:
+	//
+	// mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The client secret of the application.
+	//
+	// example:
+	//
+	// CSEHDcHcrUKHw1CuxkJEHPveWRXBGqVqRsxxxx
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
 	// The token endpoint.
+	//
+	// example:
+	//
+	// https://www.example.com/oauth/token
 	TokenEndpoint *string `json:"TokenEndpoint,omitempty" xml:"TokenEndpoint,omitempty"`
 }
 
@@ -3908,8 +4944,20 @@ func (s *GetApplicationProvisioningConfigResponse) SetBody(v *GetApplicationProv
 
 type GetApplicationProvisioningScopeRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3935,6 +4983,10 @@ type GetApplicationProvisioningScopeResponseBody struct {
 	// The scope of account synchronization.
 	ApplicationProvisioningScope *GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope `json:"ApplicationProvisioningScope,omitempty" xml:"ApplicationProvisioningScope,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3957,8 +5009,14 @@ func (s *GetApplicationProvisioningScopeResponseBody) SetRequestId(v string) *Ge
 }
 
 type GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope struct {
+	// 同步授权的组列表
+	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
+	// 租户最大授权主体quota数量
+	MaxQuota *int32 `json:"MaxQuota,omitempty" xml:"MaxQuota,omitempty"`
 	// The list of organizational units that are authorized for account synchronization.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
+	// 已使用授权主体quota数量
+	UsedQuota *int32 `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
 }
 
 func (s GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope) String() string {
@@ -3969,8 +5027,23 @@ func (s GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope)
 	return s.String()
 }
 
+func (s *GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope) SetGroupIds(v []*string) *GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope {
+	s.GroupIds = v
+	return s
+}
+
+func (s *GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope) SetMaxQuota(v int32) *GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope {
+	s.MaxQuota = &v
+	return s
+}
+
 func (s *GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope) SetOrganizationalUnitIds(v []*string) *GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope {
 	s.OrganizationalUnitIds = v
+	return s
+}
+
+func (s *GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope) SetUsedQuota(v int32) *GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope {
+	s.UsedQuota = &v
 	return s
 }
 
@@ -4005,8 +5078,20 @@ func (s *GetApplicationProvisioningScopeResponse) SetBody(v *GetApplicationProvi
 
 type GetApplicationSsoConfigRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4032,6 +5117,10 @@ type GetApplicationSsoConfigResponseBody struct {
 	// The SSO configuration information of the application.
 	ApplicationSsoConfig *GetApplicationSsoConfigResponseBodyApplicationSsoConfig `json:"ApplicationSsoConfig,omitempty" xml:"ApplicationSsoConfig,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4056,10 +5145,19 @@ func (s *GetApplicationSsoConfigResponseBody) SetRequestId(v string) *GetApplica
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfig struct {
 	// The initial SSO method. Valid values:
 	//
-	// *   only_app_init_sso: Only application-initiated SSO is allowed. This method is selected by default when the SSO protocol of the application is an OIDC protocol. If this method is selected when the SSO protocol of the application is SAML, the InitLoginUrl parameter is required.
-	// *   idaas_or_app_init_sso: IDaaS-initiated SSO and application-initiated SSO are allowed. This method is selected by default when the SSO protocol of the application is SAML. If this method is selected when the SSO protocol of the application is an OIDC protocol, the InitLoginUrl parameter is required.
+	// 	- only_app_init_sso: Only application-initiated SSO is allowed. This method is selected by default when the SSO protocol of the application is an OIDC protocol. If this method is selected when the SSO protocol of the application is SAML, the InitLoginUrl parameter is required.
+	//
+	// 	- idaas_or_app_init_sso: IDaaS-initiated SSO and application-initiated SSO are allowed. This method is selected by default when the SSO protocol of the application is SAML. If this method is selected when the SSO protocol of the application is an OIDC protocol, the InitLoginUrl parameter is required.
+	//
+	// example:
+	//
+	// only_app_init_sso
 	InitLoginType *string `json:"InitLoginType,omitempty" xml:"InitLoginType,omitempty"`
 	// The initial webhook URL of SSO. This parameter is required when the SSO protocol of the application is an OIDC protocol and the InitLoginType parameters is set to idaas_or_app_init_sso or when the SSO protocol of the application is SAML and the InitLoginType parameter is set to only_app_init_sso.
+	//
+	// example:
+	//
+	// http://127.0.0.1:8000/start_login?enterprise_code=ABCDEF
 	InitLoginUrl *string `json:"InitLoginUrl,omitempty" xml:"InitLoginUrl,omitempty"`
 	// The Open ID Connect (OIDC)-based SSO configuration attributes of the application. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
 	OidcSsoConfig *GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig `json:"OidcSsoConfig,omitempty" xml:"OidcSsoConfig,omitempty" type:"Struct"`
@@ -4069,8 +5167,13 @@ type GetApplicationSsoConfigResponseBodyApplicationSsoConfig struct {
 	SamlSsoConfig *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig `json:"SamlSsoConfig,omitempty" xml:"SamlSsoConfig,omitempty" type:"Struct"`
 	// The SSO feature status of the application. Valid values:
 	//
-	// *   enabled: The feature is enabled.
-	// *   disabled: The feature is disabled.
+	// 	- enabled: The feature is enabled.
+	//
+	// 	- disabled: The feature is disabled.
+	//
+	// example:
+	//
+	// enabled
 	SsoStatus *string `json:"SsoStatus,omitempty" xml:"SsoStatus,omitempty"`
 }
 
@@ -4114,34 +5217,82 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfig) SetSsoStatus(v
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig struct {
 	// The validity period of the issued access token. Unit: seconds. Default value: 1200.
+	//
+	// example:
+	//
+	// 1200
 	AccessTokenEffectiveTime *int64 `json:"AccessTokenEffectiveTime,omitempty" xml:"AccessTokenEffectiveTime,omitempty"`
 	// The validity period of the issued code. Unit: seconds. Default value: 60.
+	//
+	// example:
+	//
+	// 60
 	CodeEffectiveTime *int64 `json:"CodeEffectiveTime,omitempty" xml:"CodeEffectiveTime,omitempty"`
 	// The custom claims that are returned for the ID token.
 	CustomClaims []*GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfigCustomClaims `json:"CustomClaims,omitempty" xml:"CustomClaims,omitempty" type:"Repeated"`
 	// The scopes of user attributes that can be returned for the UserInfo endpoint or ID token.
+	//
+	// example:
+	//
+	// profile，email
 	GrantScopes []*string `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
 	// The list of grant types that are supported for OIDC protocols.
+	//
+	// example:
+	//
+	// authorization_code
 	GrantTypes []*string `json:"GrantTypes,omitempty" xml:"GrantTypes,omitempty" type:"Repeated"`
 	// The validity period of the issued ID token. Unit: seconds. Default value: 300.
+	//
+	// example:
+	//
+	// 1200
 	IdTokenEffectiveTime *int64 `json:"IdTokenEffectiveTime,omitempty" xml:"IdTokenEffectiveTime,omitempty"`
 	// The ID of the identity authentication source in password mode. This parameter is returned only when the value of the GrantTypes parameter includes the password mode.
+	//
+	// example:
+	//
+	// ia_password
 	PasswordAuthenticationSourceId *string `json:"PasswordAuthenticationSourceId,omitempty" xml:"PasswordAuthenticationSourceId,omitempty"`
 	// Indicates whether time-based one-time password (TOTP) authentication is required in password mode. This parameter is returned only when the value of the GrantTypes parameter includes the password mode.
+	//
+	// example:
+	//
+	// true
 	PasswordTotpMfaRequired *bool `json:"PasswordTotpMfaRequired,omitempty" xml:"PasswordTotpMfaRequired,omitempty"`
 	// The algorithms that are used to calculate the code challenge for PKCE.
+	//
+	// example:
+	//
+	// S256
 	PkceChallengeMethods []*string `json:"PkceChallengeMethods,omitempty" xml:"PkceChallengeMethods,omitempty" type:"Repeated"`
 	// Indicates whether the SSO of the application requires Proof Key for Code Exchange (PKCE) (RFC 7636).
+	//
+	// example:
+	//
+	// true
 	PkceRequired *bool `json:"PkceRequired,omitempty" xml:"PkceRequired,omitempty"`
 	// The list of logout redirect URIs that are supported by the application.
 	PostLogoutRedirectUris []*string `json:"PostLogoutRedirectUris,omitempty" xml:"PostLogoutRedirectUris,omitempty" type:"Repeated"`
 	// The list of redirect URIs that are supported by the application.
 	RedirectUris []*string `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Repeated"`
 	// The validity period of the issued refresh token. Unit: seconds. Default value: 86400.
+	//
+	// example:
+	//
+	// 86400
 	RefreshTokenEffective *int64 `json:"RefreshTokenEffective,omitempty" xml:"RefreshTokenEffective,omitempty"`
 	// The response types that are supported by the application. This parameter is returned when the value of the GrantTypes parameter includes the implicit mode.
+	//
+	// example:
+	//
+	// token id_token
 	ResponseTypes []*string `json:"ResponseTypes,omitempty" xml:"ResponseTypes,omitempty" type:"Repeated"`
 	// The custom expression that is used to generate the subject ID returned for the ID token.
+	//
+	// example:
+	//
+	// user.userid
 	SubjectIdExpression *string `json:"SubjectIdExpression,omitempty" xml:"SubjectIdExpression,omitempty"`
 }
 
@@ -4230,8 +5381,16 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig) S
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfigCustomClaims struct {
 	// The claim name.
+	//
+	// example:
+	//
+	// userOuIds
 	ClaimName *string `json:"ClaimName,omitempty" xml:"ClaimName,omitempty"`
 	// The expression that is used to generate the value of the claim.
+	//
+	// example:
+	//
+	// ObjectToJsonString(user.organizationalUnits)
 	ClaimValueExpression *string `json:"ClaimValueExpression,omitempty" xml:"ClaimValueExpression,omitempty"`
 }
 
@@ -4255,24 +5414,64 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfigCus
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigProtocolEndpointDomain struct {
 	// The OAuth2.0 authorization endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	//
+	// example:
+	//
+	// https://l1seshcn.aliyunidaas.com/login/app/app_mltta64q65enci54slingvvsgq/oauth2/authorize
 	Oauth2AuthorizationEndpoint *string `json:"Oauth2AuthorizationEndpoint,omitempty" xml:"Oauth2AuthorizationEndpoint,omitempty"`
 	// The OAuth2.0 device authorization endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	//
+	// example:
+	//
+	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk2676rypm/app_mltta64q65enci54slingvvsgq/oauth2/device/code
 	Oauth2DeviceAuthorizationEndpoint *string `json:"Oauth2DeviceAuthorizationEndpoint,omitempty" xml:"Oauth2DeviceAuthorizationEndpoint,omitempty"`
 	// The OAuth2.0 token revocation endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	//
+	// example:
+	//
+	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk2676rypm/app_mltta64q65enci54slingvvsgq/oauth2/revoke
 	Oauth2RevokeEndpoint *string `json:"Oauth2RevokeEndpoint,omitempty" xml:"Oauth2RevokeEndpoint,omitempty"`
 	// The OAuth2.0 token endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	//
+	// example:
+	//
+	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk2676rypm/app_mltta64q65enci54slingvvsgq/oauth2/token
 	Oauth2TokenEndpoint *string `json:"Oauth2TokenEndpoint,omitempty" xml:"Oauth2TokenEndpoint,omitempty"`
 	// The OIDC UserInfo endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	//
+	// example:
+	//
+	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk2676rypm/app_mltta64q65enci54slingvvsgq/oauth2/userinfo
 	Oauth2UserinfoEndpoint *string `json:"Oauth2UserinfoEndpoint,omitempty" xml:"Oauth2UserinfoEndpoint,omitempty"`
 	// The information about the OIDC issuer. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	//
+	// example:
+	//
+	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk2676rypm/app_mltta64q65enci54slingvvsgq/oidc
 	OidcIssuer *string `json:"OidcIssuer,omitempty" xml:"OidcIssuer,omitempty"`
 	// The JSON Web Key Set (JWKS) URL of the OIDC issuer. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	//
+	// example:
+	//
+	// https://eiam-api-cn-hangzhou.aliyuncs.com/v2/idaas_ue2jvisn35ea5lmthk2676rypm/app_mltta64q65enci54slingvvsgq/oidc/jwks
 	OidcJwksEndpoint *string `json:"OidcJwksEndpoint,omitempty" xml:"OidcJwksEndpoint,omitempty"`
 	// The OIDC relying party (RP)-initiated logout endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+	//
+	// example:
+	//
+	// https://l1seshcn.aliyunidaas.com/login/app/app_mltta64q65enci54slingvvsgq/oauth2/logout
 	OidcLogoutEndpoint *string `json:"OidcLogoutEndpoint,omitempty" xml:"OidcLogoutEndpoint,omitempty"`
 	// The metadata URL of the SAML protocol. This parameter is returned only when the SSO protocol of the application is SAML 2.0.
+	//
+	// example:
+	//
+	// https://l1seshcn.aliyunidaas.com/api/v2/app_mltuxdwd4lq4eer6tmtlmaxm5e/saml2/meta
 	SamlMetaEndpoint *string `json:"SamlMetaEndpoint,omitempty" xml:"SamlMetaEndpoint,omitempty"`
 	// The request receiving URL of the SAML protocol. This parameter is returned only when the SSO protocol of the application is SAML 2.0.
+	//
+	// example:
+	//
+	// https://l1seshcn.aliyunidaas.com/login/app/app_mltuxdwd4lq4eer6tmtlmaxm5e/saml2/sso
 	SamlSsoEndpoint *string `json:"SamlSsoEndpoint,omitempty" xml:"SamlSsoEndpoint,omitempty"`
 }
 
@@ -4336,27 +5535,62 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigProtocolEndpoint
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig struct {
 	// assertion是否签名
+	//
+	// example:
+	//
+	// true
 	AssertionSigned *bool `json:"AssertionSigned,omitempty" xml:"AssertionSigned,omitempty"`
 	// The additional user attributes in the SAML assertion.
 	AttributeStatements []*GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigAttributeStatements `json:"AttributeStatements,omitempty" xml:"AttributeStatements,omitempty" type:"Repeated"`
 	// The default value of the RelayState attribute. If the SSO request is initiated in EIAM, the RelayState attribute in the SAML response is set to this default value.
+	//
+	// example:
+	//
+	// https://home.console.aliyun.com
 	DefaultRelayState *string `json:"DefaultRelayState,omitempty" xml:"DefaultRelayState,omitempty"`
 	// The Format attribute of the NameID element in the SAML assertion. Valid values:
 	//
-	// *   urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: No format is specified. How to resolve the NameID element depends on the application.
-	// *   urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress: The NameID element must be an email address.
-	// *   urn:oasis:names:tc:SAML:2.0:nameid-format:persistent: The NameID element must be persistent.
-	// *   urn:oasis:names:tc:SAML:2.0:nameid-format:transient: The NameID element must be transient.
+	// 	- urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: No format is specified. How to resolve the NameID element depends on the application.
+	//
+	// 	- urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress: The NameID element must be an email address.
+	//
+	// 	- urn:oasis:names:tc:SAML:2.0:nameid-format:persistent: The NameID element must be persistent.
+	//
+	// 	- urn:oasis:names:tc:SAML:2.0:nameid-format:transient: The NameID element must be transient.
+	//
+	// example:
+	//
+	// urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
 	NameIdFormat *string `json:"NameIdFormat,omitempty" xml:"NameIdFormat,omitempty"`
 	// The expression that is used to generate the value of NameID in the SAML assertion.
+	//
+	// example:
+	//
+	// user.username
 	NameIdValueExpression *string `json:"NameIdValueExpression,omitempty" xml:"NameIdValueExpression,omitempty"`
 	// response是否签名
+	//
+	// example:
+	//
+	// true
 	ResponseSigned *bool `json:"ResponseSigned,omitempty" xml:"ResponseSigned,omitempty"`
 	// The algorithm that is used to calculate the signature for the SAML assertion.
+	//
+	// example:
+	//
+	// RSA-SHA256
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
 	// The entity ID of the application in SAML. The application assumes the role of service provider.
+	//
+	// example:
+	//
+	// urn:alibaba:cloudcomputing
 	SpEntityId *string `json:"SpEntityId,omitempty" xml:"SpEntityId,omitempty"`
 	// The Assertion Consumer Service (ACS) URL of the application in SAML. The application assumes the role of service provider.
+	//
+	// example:
+	//
+	// https://signin.aliyun.com/saml-role/sso
 	SpSsoAcsUrl *string `json:"SpSsoAcsUrl,omitempty" xml:"SpSsoAcsUrl,omitempty"`
 }
 
@@ -4415,8 +5649,16 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig) S
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigAttributeStatements struct {
 	// The attribute name.
+	//
+	// example:
+	//
+	// https://www.aliyun.com/SAML-Role/Attributes/RoleSessionName
 	AttributeName *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
 	// The expression that is used to generate the value of the attribute.
+	//
+	// example:
+	//
+	// user.username
 	AttributeValueExpression *string `json:"AttributeValueExpression,omitempty" xml:"AttributeValueExpression,omitempty"`
 }
 
@@ -4469,8 +5711,20 @@ func (s *GetApplicationSsoConfigResponse) SetBody(v *GetApplicationSsoConfigResp
 
 type GetDomainRequest struct {
 	// 域名ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4493,8 +5747,11 @@ func (s *GetDomainRequest) SetInstanceId(v string) *GetDomainRequest {
 }
 
 type GetDomainResponseBody struct {
-	Domain    *GetDomainResponseBodyDomain `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Domain *GetDomainResponseBodyDomain `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDomainResponseBody) String() string {
@@ -4517,22 +5774,54 @@ func (s *GetDomainResponseBody) SetRequestId(v string) *GetDomainResponseBody {
 
 type GetDomainResponseBodyDomain struct {
 	// 域名创建时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 是否默认域名。true表示实例默认域名，false表示非默认域名
+	//
+	// example:
+	//
+	// false
 	DefaultDomain *bool `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
 	// 域名。
+	//
+	// example:
+	//
+	// login.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// 域名ID。
+	//
+	// example:
+	//
+	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// 域名类型。枚举取值:system_init(系统初始化)、user_custom(用户自定义)。
+	//
+	// example:
+	//
+	// system_init
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 	// 域名备案信息。
 	Filing *GetDomainResponseBodyDomainFiling `json:"Filing,omitempty" xml:"Filing,omitempty" type:"Struct"`
 	// 实例ID。
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 域名锁定状态。枚举取值:unlock(正常)、lockByLicense(因License限制不可用)。
+	//
+	// example:
+	//
+	// unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// 域名最近更新时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -4638,8 +5927,20 @@ func (s *GetDomainResponse) SetBody(v *GetDomainResponseBody) *GetDomainResponse
 
 type GetDomainDnsChallengeRequest struct {
 	// 域名。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dm_examplexxxx
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4663,7 +5964,10 @@ func (s *GetDomainDnsChallengeRequest) SetInstanceId(v string) *GetDomainDnsChal
 
 type GetDomainDnsChallengeResponseBody struct {
 	DomainDnsChallenge *GetDomainDnsChallengeResponseBodyDomainDnsChallenge `json:"DomainDnsChallenge,omitempty" xml:"DomainDnsChallenge,omitempty" type:"Struct"`
-	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDomainDnsChallengeResponseBody) String() string {
@@ -4686,10 +5990,22 @@ func (s *GetDomainDnsChallengeResponseBody) SetRequestId(v string) *GetDomainDns
 
 type GetDomainDnsChallengeResponseBodyDomainDnsChallenge struct {
 	// DNS challenge名称。
+	//
+	// example:
+	//
+	// _idaas-challenge.${domain}
 	DnsChallengeName *string `json:"DnsChallengeName,omitempty" xml:"DnsChallengeName,omitempty"`
 	// DNS challenge值。
+	//
+	// example:
+	//
+	// exmple123xxx
 	DnsChallengeValue *string `json:"DnsChallengeValue,omitempty" xml:"DnsChallengeValue,omitempty"`
 	// DNS记录类型。
+	//
+	// example:
+	//
+	// 枚举，目前只支持TXT类型
 	DnsType *string `json:"DnsType,omitempty" xml:"DnsType,omitempty"`
 }
 
@@ -4747,6 +6063,12 @@ func (s *GetDomainDnsChallengeResponse) SetBody(v *GetDomainDnsChallengeResponse
 
 type GetForgetPasswordConfigurationRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4767,6 +6089,10 @@ type GetForgetPasswordConfigurationResponseBody struct {
 	// The forgot password configurations.
 	OpenForgetPasswordConfiguration *GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration `json:"OpenForgetPasswordConfiguration,omitempty" xml:"OpenForgetPasswordConfiguration,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4792,10 +6118,22 @@ type GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration s
 	// 表示忘记密码认证渠道。枚举取值:email(邮件)、sms(短信)
 	AuthenticationChannels []*string `json:"AuthenticationChannels,omitempty" xml:"AuthenticationChannels,omitempty" type:"Repeated"`
 	// Indicates whether the forgot password feature is enabled.
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// Indicates whether email authentication is enabled for the forgot password feature.
+	//
+	// example:
+	//
+	// true
 	EnableEmail *bool `json:"EnableEmail,omitempty" xml:"EnableEmail,omitempty"`
 	// Indicates whether Short Message Service (SMS) authentication is enabled for the forgot password feature.
+	//
+	// example:
+	//
+	// true
 	EnableSms *bool `json:"EnableSms,omitempty" xml:"EnableSms,omitempty"`
 	// 表示忘记密码配置状态。枚举取值:enabled(开启)、disabled(禁用)
 	ForgetPasswordStatus *string `json:"ForgetPasswordStatus,omitempty" xml:"ForgetPasswordStatus,omitempty"`
@@ -4865,8 +6203,20 @@ func (s *GetForgetPasswordConfigurationResponse) SetBody(v *GetForgetPasswordCon
 
 type GetGroupRequest struct {
 	// The group ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4892,6 +6242,10 @@ type GetGroupResponseBody struct {
 	// The information about the account group.
 	Group *GetGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4915,24 +6269,60 @@ func (s *GetGroupResponseBody) SetRequestId(v string) *GetGroupResponseBody {
 
 type GetGroupResponseBodyGroup struct {
 	// The time at which the group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the group.
+	//
+	// example:
+	//
+	// test_group
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The external ID of the group, which can be used to associate the group with an external system. By default, the external ID is the group ID.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupExternalId *string `json:"GroupExternalId,omitempty" xml:"GroupExternalId,omitempty"`
 	// The group ID.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the group.
+	//
+	// example:
+	//
+	// group_name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The source ID of the group. By default, the source ID is the instance ID.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	GroupSourceId *string `json:"GroupSourceId,omitempty" xml:"GroupSourceId,omitempty"`
 	// The source type of the group. Only build_in may be returned, which indicates that the group was created in IDaaS.
 	//
 	// *build_in：Create By Self。
+	//
+	// example:
+	//
+	// build_in
 	GroupSourceType *string `json:"GroupSourceType,omitempty" xml:"GroupSourceType,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time at which the group was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -5020,6 +6410,12 @@ func (s *GetGroupResponse) SetBody(v *GetGroupResponseBody) *GetGroupResponse {
 
 type GetInstanceRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5040,6 +6436,10 @@ type GetInstanceResponseBody struct {
 	// The details of the instance.
 	Instance *GetInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5063,21 +6463,38 @@ func (s *GetInstanceResponseBody) SetRequestId(v string) *GetInstanceResponseBod
 
 type GetInstanceResponseBodyInstance struct {
 	// The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1550115455000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The default endpoint of the instance.
 	DefaultEndpoint *GetInstanceResponseBodyInstanceDefaultEndpoint `json:"DefaultEndpoint,omitempty" xml:"DefaultEndpoint,omitempty" type:"Struct"`
 	// The description of the instance.
+	//
+	// example:
+	//
+	// test_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The default domain of the instance.
 	DomainConfig *GetInstanceResponseBodyInstanceDomainConfig `json:"DomainConfig,omitempty" xml:"DomainConfig,omitempty" type:"Struct"`
 	// The outbound public CIDR blocks of the instance. For example, when you synchronize Active Directory (AD) accounts, the IDaaS EIAM instance accesses your AD service by using the outbound public CIDR blocks.
 	EgressAddresses []*string `json:"EgressAddresses,omitempty" xml:"EgressAddresses,omitempty" type:"Repeated"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// idaas_abt3pfwojojcq323si6g5xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// *   creating
-	// *   running
+	// 	- creating
+	//
+	// 	- running
+	//
+	// example:
+	//
+	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -5126,11 +6543,20 @@ func (s *GetInstanceResponseBodyInstance) SetStatus(v string) *GetInstanceRespon
 
 type GetInstanceResponseBodyInstanceDefaultEndpoint struct {
 	// The endpoint of the instance.
+	//
+	// example:
+	//
+	// example-xxx.aliyunidaas.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The status of the endpoint. Valid values:
 	//
-	// *   resolved
-	// *   unresolved
+	// 	- resolved
+	//
+	// 	- unresolved
+	//
+	// example:
+	//
+	// resolved
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -5154,13 +6580,26 @@ func (s *GetInstanceResponseBodyInstanceDefaultEndpoint) SetStatus(v string) *Ge
 
 type GetInstanceResponseBodyInstanceDomainConfig struct {
 	// The default domain of the instance.
+	//
+	// example:
+	//
+	// example-xxx.example.com
 	DefaultDomain *string `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
 	// The init domain of the instance.
+	//
+	// example:
+	//
+	// example-xxx.aliyunidaas.com
 	InitDomain *string `json:"InitDomain,omitempty" xml:"InitDomain,omitempty"`
 	// Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	InitDomainAutoRedirectStatus *string `json:"InitDomainAutoRedirectStatus,omitempty" xml:"InitDomainAutoRedirectStatus,omitempty"`
 }
 
@@ -5218,8 +6657,20 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 
 type GetNetworkAccessEndpointRequest struct {
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 专属网络端点ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nae-examplexxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
 }
 
@@ -5243,7 +6694,10 @@ func (s *GetNetworkAccessEndpointRequest) SetNetworkAccessEndpointId(v string) *
 
 type GetNetworkAccessEndpointResponseBody struct {
 	NetworkAccessEndpoint *GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint `json:"NetworkAccessEndpoint,omitempty" xml:"NetworkAccessEndpoint,omitempty" type:"Struct"`
-	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetNetworkAccessEndpointResponseBody) String() string {
@@ -5266,30 +6720,82 @@ func (s *GetNetworkAccessEndpointResponseBody) SetRequestId(v string) *GetNetwor
 
 type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {
 	// 专属网络端点创建时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 网络访问端私网出口IP地址列表。
+	//
+	// example:
+	//
+	// 172.168.x.x
 	EgressPrivateIpAddresses []*string `json:"EgressPrivateIpAddresses,omitempty" xml:"EgressPrivateIpAddresses,omitempty" type:"Repeated"`
 	// 网络访问端点公网出口IP地址段
+	//
+	// example:
+	//
+	// 8.xx.xx.xxx/27
 	EgressPublicIpAddresses []*string `json:"EgressPublicIpAddresses,omitempty" xml:"EgressPublicIpAddresses,omitempty" type:"Repeated"`
 	// 实例ID。
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 专属网络端点ID。
+	//
+	// example:
+	//
+	// nae_examplexxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
 	// 专属网络端点名称。
+	//
+	// example:
+	//
+	// xx业务VPC访问端点
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
 	// 专属网络端点连接的类型。
+	//
+	// example:
+	//
+	// private
 	NetworkAccessEndpointType *string `json:"NetworkAccessEndpointType,omitempty" xml:"NetworkAccessEndpointType,omitempty"`
 	// 专属网络端点使用的安全组ID。
+	//
+	// example:
+	//
+	// sg-examplexxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// 专属网络端点状态。
+	//
+	// example:
+	//
+	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 专属网络端点最近更新时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// 专属网络端点连接的指定vSwitch列表。
+	//
+	// example:
+	//
+	// vsw-examplexxx
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// 专属网络端点连接的VpcID。
+	//
+	// example:
+	//
+	// vpc-examplexxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// 专属网络端点连接的Vpc所属地域。
+	//
+	// example:
+	//
+	// cn-hangzhou
 	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
 }
 
@@ -5397,8 +6903,20 @@ func (s *GetNetworkAccessEndpointResponse) SetBody(v *GetNetworkAccessEndpointRe
 
 type GetOrganizationalUnitRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the organizational unit.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 }
 
@@ -5424,6 +6942,10 @@ type GetOrganizationalUnitResponseBody struct {
 	// The data object of the organizational unit.
 	OrganizationalUnit *GetOrganizationalUnitResponseBodyOrganizationalUnit `json:"OrganizationalUnit,omitempty" xml:"OrganizationalUnit,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5447,35 +6969,82 @@ func (s *GetOrganizationalUnitResponseBody) SetRequestId(v string) *GetOrganizat
 
 type GetOrganizationalUnitResponseBodyOrganizationalUnit struct {
 	// The time when the organizational unit was created. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the organizational unit.
+	//
+	// example:
+	//
+	// Test organizational unit
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the node is a leaf node.
+	//
+	// example:
+	//
+	// false
 	Leaf *bool `json:"Leaf,omitempty" xml:"Leaf,omitempty"`
 	// The external ID of the organizational unit. The external ID can be used by external data to map the data of the organizational unit in IDaaS EIAM. By default, the external ID is the organizational unit ID.
 	//
 	// For organizational units with the same source type and source ID, each organizational unit has a unique external ID.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitExternalId *string `json:"OrganizationalUnitExternalId,omitempty" xml:"OrganizationalUnitExternalId,omitempty"`
 	// The ID of the organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 	// 组织名称。
+	//
+	// example:
+	//
+	// test_organizationalUnit_name
 	OrganizationalUnitName *string `json:"OrganizationalUnitName,omitempty" xml:"OrganizationalUnitName,omitempty"`
 	// The source ID of the organizational unit.
 	//
 	// If the organizational unit was created in IDaaS, its source ID is the ID of the IDaaS instance. If the organizational unit was imported, its source ID is the enterprise ID in the source. For example, if the organizational unit was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	OrganizationalUnitSourceId *string `json:"OrganizationalUnitSourceId,omitempty" xml:"OrganizationalUnitSourceId,omitempty"`
 	// The source type of the organizational unit. Valid values:
 	//
-	// *   build_in: The organizational unit was created in IDaaS.
-	// *   ding_talk: The organizational unit was imported from DingTalk.
-	// *   ad: The organizational unit was imported from Microsoft Active Directory (AD).
-	// *   ldap: The organizational unit was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	// 	- build_in: The organizational unit was created in IDaaS.
+	//
+	// 	- ding_talk: The organizational unit was imported from DingTalk.
+	//
+	// 	- ad: The organizational unit was imported from Microsoft Active Directory (AD).
+	//
+	// 	- ldap: The organizational unit was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	//
+	// example:
+	//
+	// build_in
 	OrganizationalUnitSourceType *string `json:"OrganizationalUnitSourceType,omitempty" xml:"OrganizationalUnitSourceType,omitempty"`
 	// The ID of the parent organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The time when the organizational unit was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -5573,6 +7142,12 @@ func (s *GetOrganizationalUnitResponse) SetBody(v *GetOrganizationalUnitResponse
 
 type GetPasswordComplexityConfigurationRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5593,6 +7168,10 @@ type GetPasswordComplexityConfigurationResponseBody struct {
 	// The password complexity configurations.
 	PasswordComplexityConfiguration *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration `json:"PasswordComplexityConfiguration,omitempty" xml:"PasswordComplexityConfiguration,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5618,6 +7197,10 @@ type GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurati
 	// The password complexity rules.
 	PasswordComplexityRules []*GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurationPasswordComplexityRules `json:"PasswordComplexityRules,omitempty" xml:"PasswordComplexityRules,omitempty" type:"Repeated"`
 	// The minimum number of characters in a password.
+	//
+	// example:
+	//
+	// 3
 	PasswordMinLength *int32 `json:"PasswordMinLength,omitempty" xml:"PasswordMinLength,omitempty"`
 }
 
@@ -5642,14 +7225,25 @@ func (s *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigu
 type GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurationPasswordComplexityRules struct {
 	// The type of the password check. Valid values:
 	//
-	// *   inclusion_upper_case: The password must contain uppercase letters.
-	// *   inclusion_lower_case: The password must contain lowercase letters.
-	// *   inclusion_special_case: The password must contain one or more of the following special characters: @ % + \ / \" ! # $ ^ ? : , ( ) { } \[ ] ~ - \_ .
-	// *   inclusion_number: The password must contain digits.
-	// *   exclusion_username: The password cannot contain a username.
-	// *   exclusion_email: The password cannot contain an email prefix.
-	// *   exclusion_phone_number: The password cannot contain a mobile number.
-	// *   exclusion_display_name: The password cannot contain a display name.
+	// 	- inclusion_upper_case: The password must contain uppercase letters.
+	//
+	// 	- inclusion_lower_case: The password must contain lowercase letters.
+	//
+	// 	- inclusion_special_case: The password must contain one or more of the following special characters: @ % + \\ / \\" ! # $ ^ ? : , ( ) { } [ ] ~ - _ .
+	//
+	// 	- inclusion_number: The password must contain digits.
+	//
+	// 	- exclusion_username: The password cannot contain a username.
+	//
+	// 	- exclusion_email: The password cannot contain an email prefix.
+	//
+	// 	- exclusion_phone_number: The password cannot contain a mobile number.
+	//
+	// 	- exclusion_display_name: The password cannot contain a display name.
+	//
+	// example:
+	//
+	// inclusion_upper_case
 	PasswordCheckType *string `json:"PasswordCheckType,omitempty" xml:"PasswordCheckType,omitempty"`
 }
 
@@ -5697,6 +7291,12 @@ func (s *GetPasswordComplexityConfigurationResponse) SetBody(v *GetPasswordCompl
 
 type GetPasswordExpirationConfigurationRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5717,6 +7317,10 @@ type GetPasswordExpirationConfigurationResponseBody struct {
 	// The password expiration configurations.
 	PasswordExpirationConfiguration *GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration `json:"PasswordExpirationConfiguration,omitempty" xml:"PasswordExpirationConfiguration,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5741,27 +7345,59 @@ func (s *GetPasswordExpirationConfigurationResponseBody) SetRequestId(v string) 
 type GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration struct {
 	// The action to take when a password expires. Valid values:
 	//
-	// *   forbid_login: Prohibit the user from using the password to log on to IDaaS.
-	// *   force_update_password: Force the user to change the password.
-	// *   remind_update_password: Remind the user to change the password.
+	// 	- forbid_login: Prohibit the user from using the password to log on to IDaaS.
+	//
+	// 	- force_update_password: Force the user to change the password.
+	//
+	// 	- remind_update_password: Remind the user to change the password.
+	//
+	// example:
+	//
+	// forbid_login
 	PasswordExpirationAction *string `json:"PasswordExpirationAction,omitempty" xml:"PasswordExpirationAction,omitempty"`
 	// The methods for receiving password expiration notifications.
+	//
+	// example:
+	//
+	// login
 	PasswordExpirationNotificationChannels []*string `json:"PasswordExpirationNotificationChannels,omitempty" xml:"PasswordExpirationNotificationChannels,omitempty" type:"Repeated"`
 	// The number of days before the expiration date during which password expiration notifications are sent. Unit: day.
+	//
+	// example:
+	//
+	// 7
 	PasswordExpirationNotificationDuration *int32 `json:"PasswordExpirationNotificationDuration,omitempty" xml:"PasswordExpirationNotificationDuration,omitempty"`
 	// Indicates whether the password expiration notification feature is enabled. Valid values:
 	//
-	// *   enabled
-	// *   disabled
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// example:
+	//
+	// enabled
 	PasswordExpirationNotificationStatus *string `json:"PasswordExpirationNotificationStatus,omitempty" xml:"PasswordExpirationNotificationStatus,omitempty"`
 	// Indicates whether the password expiration feature is enabled. Valid values:
 	//
-	// *   enabled
-	// *   disabled
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// example:
+	//
+	// enabled
 	PasswordExpirationStatus *string `json:"PasswordExpirationStatus,omitempty" xml:"PasswordExpirationStatus,omitempty"`
 	// The number of days before which users must change the password to prevent password expiration. Unit: day.
+	//
+	// example:
+	//
+	// 3
 	PasswordForcedUpdateDuration *int32 `json:"PasswordForcedUpdateDuration,omitempty" xml:"PasswordForcedUpdateDuration,omitempty"`
 	// The validity period of a password. Unit: day.
+	//
+	// example:
+	//
+	// 180
 	PasswordValidMaxDay *int32 `json:"PasswordValidMaxDay,omitempty" xml:"PasswordValidMaxDay,omitempty"`
 }
 
@@ -5839,6 +7475,12 @@ func (s *GetPasswordExpirationConfigurationResponse) SetBody(v *GetPasswordExpir
 
 type GetPasswordHistoryConfigurationRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5859,6 +7501,10 @@ type GetPasswordHistoryConfigurationResponseBody struct {
 	// The password history configurations.
 	PasswordHistoryConfiguration *GetPasswordHistoryConfigurationResponseBodyPasswordHistoryConfiguration `json:"PasswordHistoryConfiguration,omitempty" xml:"PasswordHistoryConfiguration,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5882,11 +7528,20 @@ func (s *GetPasswordHistoryConfigurationResponseBody) SetRequestId(v string) *Ge
 
 type GetPasswordHistoryConfigurationResponseBodyPasswordHistoryConfiguration struct {
 	// The maximum number of recent passwords that are retained.
+	//
+	// example:
+	//
+	// 3
 	PasswordHistoryMaxRetention *int32 `json:"PasswordHistoryMaxRetention,omitempty" xml:"PasswordHistoryMaxRetention,omitempty"`
 	// Indicates whether the password history feature is enabled. Valid values:
 	//
-	// *   enabled
-	// *   disabled
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// example:
+	//
+	// enabled
 	PasswordHistoryStatus *string `json:"PasswordHistoryStatus,omitempty" xml:"PasswordHistoryStatus,omitempty"`
 }
 
@@ -5939,6 +7594,12 @@ func (s *GetPasswordHistoryConfigurationResponse) SetBody(v *GetPasswordHistoryC
 
 type GetPasswordInitializationConfigurationRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5959,6 +7620,10 @@ type GetPasswordInitializationConfigurationResponseBody struct {
 	// The password initialization configurations.
 	PasswordInitializationConfiguration *GetPasswordInitializationConfigurationResponseBodyPasswordInitializationConfiguration `json:"PasswordInitializationConfiguration,omitempty" xml:"PasswordInitializationConfiguration,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5983,19 +7648,37 @@ func (s *GetPasswordInitializationConfigurationResponseBody) SetRequestId(v stri
 type GetPasswordInitializationConfigurationResponseBodyPasswordInitializationConfiguration struct {
 	// Indicates whether forcible password change upon first logon is enabled. Valid values:
 	//
-	// *   enabled
-	// *   disabled
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// example:
+	//
+	// enabled
 	PasswordForcedUpdateStatus *string `json:"PasswordForcedUpdateStatus,omitempty" xml:"PasswordForcedUpdateStatus,omitempty"`
 	// The methods for receiving password initialization notifications.
+	//
+	// example:
+	//
+	// email
 	PasswordInitializationNotificationChannels []*string `json:"PasswordInitializationNotificationChannels,omitempty" xml:"PasswordInitializationNotificationChannels,omitempty" type:"Repeated"`
 	// Indicates whether the password initialization feature is enabled. Valid values:
 	//
-	// *   enabled
-	// *   disabled
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// example:
+	//
+	// enabled
 	PasswordInitializationStatus *string `json:"PasswordInitializationStatus,omitempty" xml:"PasswordInitializationStatus,omitempty"`
 	// The password initialization method. Set the value to random.
 	//
-	// *   random: A randomly generated password is used.
+	// 	- random: A randomly generated password is used.
+	//
+	// example:
+	//
+	// random
 	PasswordInitializationType *string `json:"PasswordInitializationType,omitempty" xml:"PasswordInitializationType,omitempty"`
 }
 
@@ -6058,6 +7741,12 @@ func (s *GetPasswordInitializationConfigurationResponse) SetBody(v *GetPasswordI
 
 type GetRootOrganizationalUnitRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -6078,6 +7767,10 @@ type GetRootOrganizationalUnitResponseBody struct {
 	// The data object of the organizational unit.
 	OrganizationalUnit *GetRootOrganizationalUnitResponseBodyOrganizationalUnit `json:"OrganizationalUnit,omitempty" xml:"OrganizationalUnit,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6101,16 +7794,40 @@ func (s *GetRootOrganizationalUnitResponseBody) SetRequestId(v string) *GetRootO
 
 type GetRootOrganizationalUnitResponseBodyOrganizationalUnit struct {
 	// The time when the organizational unit was created. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the organizational unit.
+	//
+	// example:
+	//
+	// Test organizational unit
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 	// The name of the organization.
+	//
+	// example:
+	//
+	// name001
 	OrganizationalUnitName *string `json:"OrganizationalUnitName,omitempty" xml:"OrganizationalUnitName,omitempty"`
 	// The time when the organizational unit was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -6183,8 +7900,20 @@ func (s *GetRootOrganizationalUnitResponse) SetBody(v *GetRootOrganizationalUnit
 
 type GetUserRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -6208,6 +7937,10 @@ func (s *GetUserRequest) SetUserId(v string) *GetUserRequest {
 
 type GetUserResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The data object of the account.
 	User *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
@@ -6233,71 +7966,168 @@ func (s *GetUserResponseBody) SetUser(v *GetUserResponseBodyUser) *GetUserRespon
 
 type GetUserResponseBodyUser struct {
 	// The time when the account expires. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	AccountExpireTime *int64 `json:"AccountExpireTime,omitempty" xml:"AccountExpireTime,omitempty"`
 	// The time when the account was created. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The list of custom fields that describe the account.
 	CustomFields []*GetUserResponseBodyUserCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
 	// The description of the account.
+	//
+	// example:
+	//
+	// Test account
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the account.
+	//
+	// example:
+	//
+	// display_name001
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the user who owns the account.
+	//
+	// example:
+	//
+	// user@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// Indicates whether the email address has been verified. A value of true indicates that the email address has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the email address has not been verified.
+	//
+	// example:
+	//
+	// true
 	EmailVerified *bool `json:"EmailVerified,omitempty" xml:"EmailVerified,omitempty"`
 	// The organizational units to which the account belongs.
 	Groups []*GetUserResponseBodyUserGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The ID of the instance
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time when the account lock expires. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	LockExpireTime *int64 `json:"LockExpireTime,omitempty" xml:"LockExpireTime,omitempty"`
 	// The organizational units to which the account belongs.
 	OrganizationalUnits []*GetUserResponseBodyUserOrganizationalUnits `json:"OrganizationalUnits,omitempty" xml:"OrganizationalUnits,omitempty" type:"Repeated"`
 	// The time when the password of the account expires. This value is a UNIX timestamp. Unit: milliseconds.
 	//
-	// *   If the value -1 is returned, the password does not expire.
-	// *   If no value is returned, the password does not expire.
-	// *   If a UNIX timestamp is returned, the password expires at the indicated point of time.
+	// 	- If the value -1 is returned, the password does not expire.
+	//
+	// 	- If no value is returned, the password does not expire.
+	//
+	// 	- If a UNIX timestamp is returned, the password expires at the indicated point of time.
+	//
+	// example:
+	//
+	// 1652085686179
 	PasswordExpireTime *int64 `json:"PasswordExpireTime,omitempty" xml:"PasswordExpireTime,omitempty"`
 	// Indicates whether a password is set.
+	//
+	// example:
+	//
+	// false
 	PasswordSet *bool `json:"PasswordSet,omitempty" xml:"PasswordSet,omitempty"`
 	// The mobile number of the user who owns the account.
+	//
+	// example:
+	//
+	// 156xxxxxxx
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// Indicates whether the mobile number has been verified. A value of true indicates that the mobile number has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the mobile number has not been verified.
+	//
+	// example:
+	//
+	// true
 	PhoneNumberVerified *bool `json:"PhoneNumberVerified,omitempty" xml:"PhoneNumberVerified,omitempty"`
 	// The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
-	PhoneRegion       *string `json:"PhoneRegion,omitempty" xml:"PhoneRegion,omitempty"`
+	//
+	// example:
+	//
+	// 86
+	PhoneRegion *string `json:"PhoneRegion,omitempty" xml:"PhoneRegion,omitempty"`
+	// example:
+	//
+	// en-US
 	PreferredLanguage *string `json:"PreferredLanguage,omitempty" xml:"PreferredLanguage,omitempty"`
 	// The ID of the primary organizational unit to which the account belongs.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	PrimaryOrganizationalUnitId *string `json:"PrimaryOrganizationalUnitId,omitempty" xml:"PrimaryOrganizationalUnitId,omitempty"`
 	// The time when the account was registered. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	RegisterTime *int64 `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
 	// The status of the account. Valid values:
 	//
-	// *   enabled: The account is enabled.
-	// *   disabled: The account is disabled.
+	// 	- enabled: The account is enabled.
+	//
+	// 	- disabled: The account is disabled.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time when the account was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The external ID of the account. The external ID can be used by external data to map the data of the account in IDaaS EIAM. By default, the external ID is the account ID.
 	//
 	// For accounts with the same source type and source ID, each account has a unique external ID.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
 	// The ID of the account.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The source ID of the account.
 	//
 	// If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
 	// The source type of the account. Valid values:
 	//
-	// *   build_in: The account was created in IDaaS.
-	// *   ding_talk: The account was imported from DingTalk.
-	// *   ad: The account was imported from Microsoft Active Directory (AD).
-	// *   ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	// 	- build_in: The account was created in IDaaS.
+	//
+	// 	- ding_talk: The account was imported from DingTalk.
+	//
+	// 	- ad: The account was imported from Microsoft Active Directory (AD).
+	//
+	// 	- ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	//
+	// example:
+	//
+	// build_in
 	UserSourceType *string `json:"UserSourceType,omitempty" xml:"UserSourceType,omitempty"`
 	// The username of the account.
+	//
+	// example:
+	//
+	// name001
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -6441,8 +8271,16 @@ func (s *GetUserResponseBodyUser) SetUsername(v string) *GetUserResponseBodyUser
 
 type GetUserResponseBodyUserCustomFields struct {
 	// The identifier of the custom field.
+	//
+	// example:
+	//
+	// age
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	// The value of the custom field.
+	//
+	// example:
+	//
+	// 10
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
 }
 
@@ -6466,10 +8304,22 @@ func (s *GetUserResponseBodyUserCustomFields) SetFieldValue(v string) *GetUserRe
 
 type GetUserResponseBodyUserGroups struct {
 	// The description of the organizational unit.
+	//
+	// example:
+	//
+	// this is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the organizational unit.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the organizational unit.
+	//
+	// example:
+	//
+	// group_test_name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -6498,10 +8348,22 @@ func (s *GetUserResponseBodyUserGroups) SetGroupName(v string) *GetUserResponseB
 
 type GetUserResponseBodyUserOrganizationalUnits struct {
 	// The ID of the organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 	// The name of the organizational unit.
+	//
+	// example:
+	//
+	// test_ou_name
 	OrganizationalUnitName *string `json:"OrganizationalUnitName,omitempty" xml:"OrganizationalUnitName,omitempty"`
 	// Indicates whether the organization is the primary organization.
+	//
+	// example:
+	//
+	// true
 	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
 }
 
@@ -6559,8 +8421,20 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 
 type ListApplicationClientSecretsRequest struct {
 	// The ID of the application that you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -6586,8 +8460,16 @@ type ListApplicationClientSecretsResponseBody struct {
 	// The information about the client keys.
 	ApplicationClientSecrets []*ListApplicationClientSecretsResponseBodyApplicationClientSecrets `json:"ApplicationClientSecrets,omitempty" xml:"ApplicationClientSecrets,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6616,21 +8498,50 @@ func (s *ListApplicationClientSecretsResponseBody) SetTotalCount(v int64) *ListA
 
 type ListApplicationClientSecretsResponseBodyApplicationClientSecrets struct {
 	// The ID of the application that you want to query.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The client ID of the application.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The client key secret of the application. The value is not masked.
+	//
+	// example:
+	//
+	// eyJh*****************************************************************************************************OQ
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// idaas_wdziy4vnjt33ehhf7z2o2nxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time when the client key was last used. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1649830226000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
 	// The client key ID of the application.
+	//
+	// example:
+	//
+	// sci_k52x2ru63rlkflina5utgkxxxx
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 	// The status of the client key. Valid values:
 	//
-	// *   Enabled: The client key is enabled.
-	// *   Disabled: The client key is disabled.
+	// 	- Enabled: The client key is enabled.
+	//
+	// 	- Disabled: The client key is disabled.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -6708,24 +8619,56 @@ func (s *ListApplicationClientSecretsResponse) SetBody(v *ListApplicationClientS
 
 type ListApplicationsRequest struct {
 	// The IDs of the applications.
+	//
+	// example:
+	//
+	// Ram Account SSO
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	// The name of the application. Only fuzzy match from the leftmost character is supported.
+	//
+	// example:
+	//
+	// Ram Account SSO
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The authorization of the application. Valid values:
 	//
-	// *   authorize_required: Only the user with explicit authorization can access the application.
-	// *   default_all: By default, all users can access the application.
+	// 	- authorize_required: Only the user with explicit authorization can access the application.
+	//
+	// 	- default_all: By default, all users can access the application.
+	//
+	// example:
+	//
+	// authorize_required
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The status of the application. Valid values:
 	//
-	// *   Enabled: The application is enabled.
-	// *   Disabled: The application is disabled.
+	// 	- Enabled: The application is enabled.
+	//
+	// 	- Disabled: The application is disabled.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -6776,8 +8719,16 @@ type ListApplicationsResponseBody struct {
 	// The details of the applications.
 	Applications []*ListApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of the returned entries.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6806,47 +8757,108 @@ func (s *ListApplicationsResponseBody) SetTotalCount(v int64) *ListApplicationsR
 
 type ListApplicationsResponseBodyApplications struct {
 	// The ID of the application.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The name of the application.
+	//
+	// example:
+	//
+	// SAML Application
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The origin of the application. Valid values:
 	//
-	// *   urn:alibaba:idaas:app:source:template: The application is created based on a template.
-	// *   urn:alibaba:idaas: The application is created based on the standard protocol.
+	// 	- urn:alibaba:idaas:app:source:template: The application is created based on a template.
+	//
+	// 	- urn:alibaba:idaas: The application is created based on the standard protocol.
+	//
+	// example:
+	//
+	// urn:alibaba:idaas:app:source:standard
 	ApplicationSourceType *string `json:"ApplicationSourceType,omitempty" xml:"ApplicationSourceType,omitempty"`
 	// 应用模板ID
 	ApplicationTemplateId *string `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
 	// The client ID of the application.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The time when the application was created. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// A single application. The code is pkces.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The features that are supported by the application. The value is a JSON array. Valid values:
 	//
-	// *   sso: The application supports SSO.
-	// *   provision: The application supports account synchronization.
-	// *   api_invoke: The application supports custom APIs.
+	// 	- sso: The application supports SSO.
+	//
+	// 	- provision: The application supports account synchronization.
+	//
+	// 	- api_invoke: The application supports custom APIs.
+	//
+	// example:
+	//
+	// ["sso", "provision"]
 	Features *string `json:"Features,omitempty" xml:"Features,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The URL of the application icon.
+	//
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i4/O1CN01lvYwpv1aGowQXDML9_!!6000000003303-0-tps-580-580.jpg
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
 	// The service code of the cloud service that manages the application template.
+	//
+	// example:
+	//
+	// rpa
 	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
 	// Indicates whether the application template is managed by a cloud service.
+	//
+	// example:
+	//
+	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The type of the single sign-on (SSO) protocol. Valid values:
 	//
-	// *   saml2: the Security Assertion Markup Language (SAML) 2.0 protocol.
-	// *   oidc: the OpenID Connect (OIDC) protocol.
+	// 	- saml2: the Security Assertion Markup Language (SAML) 2.0 protocol.
+	//
+	// 	- oidc: the OpenID Connect (OIDC) protocol.
+	//
+	// example:
+	//
+	// saml2
 	SsoType *string `json:"SsoType,omitempty" xml:"SsoType,omitempty"`
 	// The status of the application. Valid values:
 	//
-	// *   Enabled: The application is enabled.
-	// *   Disabled: The application is disabled.
+	// 	- Enabled: The application is enabled.
+	//
+	// 	- Disabled: The application is disabled.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time when the application was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -6964,14 +8976,38 @@ func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *Lis
 
 type ListApplicationsForOrganizationalUnitRequest struct {
 	// The IDs of the applications that the EIAM organization can access. You can query a maximum of 100 application IDs at a time.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the EIAM organization.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -7012,8 +9048,16 @@ type ListApplicationsForOrganizationalUnitResponseBody struct {
 	// The applications that the EIAM organization can access.
 	Applications []*ListApplicationsForOrganizationalUnitResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of the returned entries.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7042,6 +9086,10 @@ func (s *ListApplicationsForOrganizationalUnitResponseBody) SetTotalCount(v int6
 
 type ListApplicationsForOrganizationalUnitResponseBodyApplications struct {
 	// The ID of the application that the EIAM organization can access.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 }
 
@@ -7089,19 +9137,48 @@ func (s *ListApplicationsForOrganizationalUnitResponse) SetBody(v *ListApplicati
 
 type ListApplicationsForUserRequest struct {
 	// The IDs of the applications that the EIAM account can access. You can query a maximum of 100 application IDs at a time.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query mode. Default value: **OnlyDirect**. Valid values:
 	//
-	// *   OnlyDirect: Only the direct permissions are queried. Direct permissions are the permissions that are directly granted to the account.
-	// *   IncludeInherit: Both the permissions that are directly granted to the account and the inherited permissions are queried. Inherited permissions are the permissions that an account inherits from the parent organization or the group to which the account belongs.
+	// 	- OnlyDirect: Only the direct permissions are queried. Direct permissions are the permissions that are directly granted to the account.
+	//
+	// 	- IncludeInherit: Both the permissions that are directly granted to the account and the inherited permissions are queried. Inherited permissions are the permissions that an account inherits from the parent organization or the group to which the account belongs.
+	//
+	// example:
+	//
+	// OnlyDirect
 	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
 	// The ID of the EIAM account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -7147,8 +9224,16 @@ type ListApplicationsForUserResponseBody struct {
 	// The applications that the EIAM account can access.
 	Applications []*ListApplicationsForUserResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of the returned entries.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7177,16 +9262,30 @@ func (s *ListApplicationsForUserResponseBody) SetTotalCount(v int64) *ListApplic
 
 type ListApplicationsForUserResponseBodyApplications struct {
 	// The ID of the application that the EIAM account can access.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// Indicates whether the EIAM account has direct permissions on the application. Valid values:
 	//
-	// *   true: The EIAM account has direct permissions on the application.
-	// *   false: The EIAM account does not have direct permissions on the application.
+	// 	- true: The EIAM account has direct permissions on the application.
+	//
+	// 	- false: The EIAM account does not have direct permissions on the application.
+	//
+	// example:
+	//
+	// true
 	HasDirectAuthorization *bool `json:"HasDirectAuthorization,omitempty" xml:"HasDirectAuthorization,omitempty"`
 	// Indicates whether the EIAM account has inherited permissions on the application. Valid values:
 	//
-	// *   true: A parent organization or an organization to which the EIAM account belongs has direct permissions on the application.
-	// *   false: A parent organization or an organization to which the EIAM account belongs does not have direct permissions on the application.
+	// 	- true: A parent organization or an organization to which the EIAM account belongs has direct permissions on the application.
+	//
+	// 	- false: A parent organization or an organization to which the EIAM account belongs does not have direct permissions on the application.
+	//
+	// example:
+	//
+	// false
 	HasInheritAuthorization *bool `json:"HasInheritAuthorization,omitempty" xml:"HasInheritAuthorization,omitempty"`
 }
 
@@ -7244,8 +9343,20 @@ func (s *ListApplicationsForUserResponse) SetBody(v *ListApplicationsForUserResp
 
 type ListDomainProxyTokensRequest struct {
 	// 域名ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -7269,7 +9380,10 @@ func (s *ListDomainProxyTokensRequest) SetInstanceId(v string) *ListDomainProxyT
 
 type ListDomainProxyTokensResponseBody struct {
 	DomainProxyTokens []*ListDomainProxyTokensResponseBodyDomainProxyTokens `json:"DomainProxyTokens,omitempty" xml:"DomainProxyTokens,omitempty" type:"Repeated"`
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDomainProxyTokensResponseBody) String() string {
@@ -7292,20 +9406,52 @@ func (s *ListDomainProxyTokensResponseBody) SetRequestId(v string) *ListDomainPr
 
 type ListDomainProxyTokensResponseBodyDomainProxyTokens struct {
 	// 域名代理Token创建时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 域名ID。
+	//
+	// example:
+	//
+	// dm_examplexxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// 域名代理Token。
+	//
+	// example:
+	//
+	// PTxxxxxxxx
 	DomainProxyToken *string `json:"DomainProxyToken,omitempty" xml:"DomainProxyToken,omitempty"`
 	// 域名代理Token ID。
+	//
+	// example:
+	//
+	// pt_examplexxxx
 	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
 	// 实例ID。
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 域名代理Token最近使用时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
 	// token状态，枚举类型：(enabled）启用,（disabled）禁用。
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 域名代理Token最近更新时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -7388,6 +9534,12 @@ func (s *ListDomainProxyTokensResponse) SetBody(v *ListDomainProxyTokensResponse
 
 type ListDomainsRequest struct {
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -7405,8 +9557,11 @@ func (s *ListDomainsRequest) SetInstanceId(v string) *ListDomainsRequest {
 }
 
 type ListDomainsResponseBody struct {
-	Domains   []*ListDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Domains []*ListDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDomainsResponseBody) String() string {
@@ -7429,22 +9584,54 @@ func (s *ListDomainsResponseBody) SetRequestId(v string) *ListDomainsResponseBod
 
 type ListDomainsResponseBodyDomains struct {
 	// 域名创建时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 是否默认域名。true表示实例默认域名，false表示非默认域名
+	//
+	// example:
+	//
+	// false
 	DefaultDomain *bool `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
 	// 域名。
+	//
+	// example:
+	//
+	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// 域名ID。
+	//
+	// example:
+	//
+	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// 域名类型。枚举取值:system_init(系统初始化)、user_custom(用户自定义)。
+	//
+	// example:
+	//
+	// system_init
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 	// 域名备案信息。
 	Filing *ListDomainsResponseBodyDomainsFiling `json:"Filing,omitempty" xml:"Filing,omitempty" type:"Struct"`
 	// 实例ID。
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 域名锁定状态。枚举取值:unlock(正常)、lockByLicense(因License限制不可用)。
+	//
+	// example:
+	//
+	// unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// 域名最近更新时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -7552,6 +9739,10 @@ type ListEiamInstancesRequest struct {
 	// 实例ID列表，支持0到100个
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// 实例所属Region
+	//
+	// example:
+	//
+	// cn-hangzhou
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
 }
 
@@ -7575,7 +9766,10 @@ func (s *ListEiamInstancesRequest) SetInstanceRegionId(v string) *ListEiamInstan
 
 type ListEiamInstancesResponseBody struct {
 	Instances []*ListEiamInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListEiamInstancesResponseBody) String() string {
@@ -7600,22 +9794,58 @@ type ListEiamInstancesResponseBodyInstances struct {
 	// 实例描述信息
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// 实例developer私网域名地址
+	//
+	// example:
+	//
+	// eiam-developerapi-cn.vpc-proxy.aliyuncs.com
 	DeveloperAPIPrivateDomain *string `json:"DeveloperAPIPrivateDomain,omitempty" xml:"DeveloperAPIPrivateDomain,omitempty"`
 	// 实例developer公网域名地址
+	//
+	// example:
+	//
+	// eiam-developerapi.cn-hangzhou.aliyuncs.com
 	DeveloperAPIPublicDomain *string `json:"DeveloperAPIPublicDomain,omitempty" xml:"DeveloperAPIPublicDomain,omitempty"`
 	// 实例id
+	//
+	// example:
+	//
+	// idaas_eypq6ljgyeuwmlw672sulxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 实例状态，Pending(初始状态)、Creating(创建中)、Running(运行中)、Disabled(禁用)、CreateFailed(创建失败)
+	//
+	// example:
+	//
+	// RUNNING
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// 实例版本，EIAM2.0/ EIAM1.0
+	//
+	// example:
+	//
+	// EIAM 2.0
 	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
 	// 实例openApi私网域名地址
+	//
+	// example:
+	//
+	// eiam-cn.vpc-proxy.aliyuncs.com
 	OpenAPIPrivateDomain *string `json:"OpenAPIPrivateDomain,omitempty" xml:"OpenAPIPrivateDomain,omitempty"`
 	// 实例openApi公网域名地址
+	//
+	// example:
+	//
+	// eiam.cn-hangzhou.aliyuncs.com
 	OpenAPIPublicDomain *string `json:"OpenAPIPublicDomain,omitempty" xml:"OpenAPIPublicDomain,omitempty"`
 	// 实例域名地址
+	//
+	// example:
+	//
+	// xxxx.aliyunidaas.com
 	SSODomain *string `json:"SSODomain,omitempty" xml:"SSODomain,omitempty"`
 	// 实例的创建时间
+	//
+	// example:
+	//
+	// 1677810869300
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -7707,8 +9937,11 @@ func (s *ListEiamInstancesResponse) SetBody(v *ListEiamInstancesResponseBody) *L
 }
 
 type ListEiamRegionsResponseBody struct {
-	Regions   []*ListEiamRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions []*ListEiamRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListEiamRegionsResponseBody) String() string {
@@ -7731,8 +9964,16 @@ func (s *ListEiamRegionsResponseBody) SetRequestId(v string) *ListEiamRegionsRes
 
 type ListEiamRegionsResponseBodyRegions struct {
 	// 地域名称
+	//
+	// example:
+	//
+	// 华东1（杭州）
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// 地域ID
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -7785,18 +10026,44 @@ func (s *ListEiamRegionsResponse) SetBody(v *ListEiamRegionsResponseBody) *ListE
 
 type ListGroupsRequest struct {
 	// The external ID of the group.
+	//
+	// example:
+	//
+	// group_external_id
 	GroupExternalId *string `json:"GroupExternalId,omitempty" xml:"GroupExternalId,omitempty"`
 	// The group IDs.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 	// The name of the group. If you specify this parameter, the query is based on an exact match.
+	//
+	// example:
+	//
+	// name_test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The prefix of the group name. If you specify this parameter, the query follows the leftmost matching principle.
+	//
+	// example:
+	//
+	// name
 	GroupNameStartsWith *string `json:"GroupNameStartsWith,omitempty" xml:"GroupNameStartsWith,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -7847,8 +10114,16 @@ type ListGroupsResponseBody struct {
 	// The queried account groups.
 	Groups []*ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned. The maximum number of entries returned at a time depends on the value of PageSize.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7877,24 +10152,60 @@ func (s *ListGroupsResponseBody) SetTotalCount(v int64) *ListGroupsResponseBody 
 
 type ListGroupsResponseBodyGroups struct {
 	// The time at which the group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the group.
+	//
+	// example:
+	//
+	// test group
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The external ID of the group, which can be used to associate the group with an external system. By default, the external ID is the group ID.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupExternalId *string `json:"GroupExternalId,omitempty" xml:"GroupExternalId,omitempty"`
 	// The group ID.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the group.
+	//
+	// example:
+	//
+	// group_name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The source ID of the group. If the group was imported from other services, this value indicates the external source ID. By default, the source ID is the instance ID.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	GroupSourceId *string `json:"GroupSourceId,omitempty" xml:"GroupSourceId,omitempty"`
 	// The source type of the group. Only build_in may be returned, which indicates that the group was created in IDaaS.
 	//
 	// *
+	//
+	// example:
+	//
+	// build_in
 	GroupSourceType *string `json:"GroupSourceType,omitempty" xml:"GroupSourceType,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time at which the group was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -7982,14 +10293,38 @@ func (s *ListGroupsResponse) SetBody(v *ListGroupsResponseBody) *ListGroupsRespo
 
 type ListGroupsForApplicationRequest struct {
 	// The application ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The group IDs. You can specify up to 100 group IDs at a time.
+	//
+	// example:
+	//
+	// group_miu8e4t4d7i4u7uwezgr54xxxx
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -8030,8 +10365,16 @@ type ListGroupsForApplicationResponseBody struct {
 	// The group IDs.
 	Groups []*ListGroupsForApplicationResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8060,6 +10403,10 @@ func (s *ListGroupsForApplicationResponseBody) SetTotalCount(v int64) *ListGroup
 
 type ListGroupsForApplicationResponseBodyGroups struct {
 	// The group ID.
+	//
+	// example:
+	//
+	// group_miu8e4t4d7i4u7uwezgr54xxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
@@ -8107,12 +10454,32 @@ func (s *ListGroupsForApplicationResponse) SetBody(v *ListGroupsForApplicationRe
 
 type ListGroupsForUserRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The account ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -8148,8 +10515,16 @@ type ListGroupsForUserResponseBody struct {
 	// The queried account groups.
 	Groups []*ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned. The maximum number of entries returned at a time depends on the value of PageSize.
+	//
+	// example:
+	//
+	// 1000
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8178,7 +10553,13 @@ func (s *ListGroupsForUserResponseBody) SetTotalCount(v int64) *ListGroupsForUse
 
 type ListGroupsForUserResponseBodyGroups struct {
 	// The group ID.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
+	GroupId                       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupMemberRelationSourceId   *string `json:"GroupMemberRelationSourceId,omitempty" xml:"GroupMemberRelationSourceId,omitempty"`
+	GroupMemberRelationSourceType *string `json:"GroupMemberRelationSourceType,omitempty" xml:"GroupMemberRelationSourceType,omitempty"`
 }
 
 func (s ListGroupsForUserResponseBodyGroups) String() string {
@@ -8191,6 +10572,16 @@ func (s ListGroupsForUserResponseBodyGroups) GoString() string {
 
 func (s *ListGroupsForUserResponseBodyGroups) SetGroupId(v string) *ListGroupsForUserResponseBodyGroups {
 	s.GroupId = &v
+	return s
+}
+
+func (s *ListGroupsForUserResponseBodyGroups) SetGroupMemberRelationSourceId(v string) *ListGroupsForUserResponseBodyGroups {
+	s.GroupMemberRelationSourceId = &v
+	return s
+}
+
+func (s *ListGroupsForUserResponseBodyGroups) SetGroupMemberRelationSourceType(v string) *ListGroupsForUserResponseBodyGroups {
+	s.GroupMemberRelationSourceType = &v
 	return s
 }
 
@@ -8227,13 +10618,26 @@ type ListInstancesRequest struct {
 	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// *   creating
-	// *   running
+	// 	- creating
+	//
+	// 	- running
+	//
+	// example:
+	//
+	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8269,8 +10673,16 @@ type ListInstancesResponseBody struct {
 	// The information of instances.
 	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8299,17 +10711,30 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int64) *ListInstancesRespons
 
 type ListInstancesResponseBodyInstances struct {
 	// The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1550115455000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The default endpoint of the instance.
 	DefaultEndpoint *ListInstancesResponseBodyInstancesDefaultEndpoint `json:"DefaultEndpoint,omitempty" xml:"DefaultEndpoint,omitempty" type:"Struct"`
 	// The description of the instance.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// idaas_eypq6ljgyeuwmlw672sulxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// *   creating
-	// *   running
+	// 	- creating
+	//
+	// 	- running
+	//
+	// example:
+	//
+	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8348,11 +10773,20 @@ func (s *ListInstancesResponseBodyInstances) SetStatus(v string) *ListInstancesR
 
 type ListInstancesResponseBodyInstancesDefaultEndpoint struct {
 	// The endpoint of the instance.
+	//
+	// example:
+	//
+	// example-xxx.aliyunidaas.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The status of the endpoint. Valid values:
 	//
-	// *   resolved
-	// *   unresolved
+	// 	- resolved
+	//
+	// 	- unresolved
+	//
+	// example:
+	//
+	// resolved
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8404,8 +10838,11 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListNetworkAccessEndpointAvailableRegionsResponseBody struct {
-	Regions   []*ListNetworkAccessEndpointAvailableRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions []*ListNetworkAccessEndpointAvailableRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListNetworkAccessEndpointAvailableRegionsResponseBody) String() string {
@@ -8428,8 +10865,16 @@ func (s *ListNetworkAccessEndpointAvailableRegionsResponseBody) SetRequestId(v s
 
 type ListNetworkAccessEndpointAvailableRegionsResponseBodyRegions struct {
 	// 地域名称。
+	//
+	// example:
+	//
+	// 华东1（杭州）
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// 地域ID。
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -8482,6 +10927,12 @@ func (s *ListNetworkAccessEndpointAvailableRegionsResponse) SetBody(v *ListNetwo
 
 type ListNetworkAccessEndpointAvailableZonesRequest struct {
 	// 专属网络端点支持的地域
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	NaeRegionId *string `json:"NaeRegionId,omitempty" xml:"NaeRegionId,omitempty"`
 }
 
@@ -8499,6 +10950,9 @@ func (s *ListNetworkAccessEndpointAvailableZonesRequest) SetNaeRegionId(v string
 }
 
 type ListNetworkAccessEndpointAvailableZonesResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Zones     []*ListNetworkAccessEndpointAvailableZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
@@ -8523,8 +10977,16 @@ func (s *ListNetworkAccessEndpointAvailableZonesResponseBody) SetZones(v []*List
 
 type ListNetworkAccessEndpointAvailableZonesResponseBodyZones struct {
 	// 可用区名称。
+	//
+	// example:
+	//
+	// 华东1（杭州）可用区J
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// 可用区ID。
+	//
+	// example:
+	//
+	// cn-hangzhou-j
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -8577,18 +11039,48 @@ func (s *ListNetworkAccessEndpointAvailableZonesResponse) SetBody(v *ListNetwork
 
 type ListNetworkAccessEndpointsRequest struct {
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 分页查询时每页行数。默认值为20，最大值为100。
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// 专属网络端点连接的状态。NetworkAccessEndpointType取值为shared时不生效。
+	//
+	// example:
+	//
+	// running
 	NetworkAccessEndpointStatus *string `json:"NetworkAccessEndpointStatus,omitempty" xml:"NetworkAccessEndpointStatus,omitempty"`
 	// 专属网络端点连接的类型。取值可选范围：1. private - 专属网络端点；2. shared - 共享网络端点
+	//
+	// example:
+	//
+	// private
 	NetworkAccessEndpointType *string `json:"NetworkAccessEndpointType,omitempty" xml:"NetworkAccessEndpointType,omitempty"`
 	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	//
+	// example:
+	//
+	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// 专属网络端点连接的Vpc ID。NetworkAccessEndpointType取值为shared时不生效。
+	//
+	// example:
+	//
+	// vpc-examplexxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// 专属网络端点连接的Vpc所属地域，该地域取值必须在ListNetworkAccessEndpointAvailableRegions接口中返回。NetworkAccessEndpointType取值为shared时不生效。
+	//
+	// example:
+	//
+	// cn-hangzhou
 	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
 }
 
@@ -8638,9 +11130,19 @@ func (s *ListNetworkAccessEndpointsRequest) SetVpcRegionId(v string) *ListNetwor
 type ListNetworkAccessEndpointsResponseBody struct {
 	NetworkAccessEndpoints []*ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpoints `json:"NetworkAccessEndpoints,omitempty" xml:"NetworkAccessEndpoints,omitempty" type:"Repeated"`
 	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// NTxxxexample
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListNetworkAccessEndpointsResponseBody) String() string {
@@ -8673,26 +11175,70 @@ func (s *ListNetworkAccessEndpointsResponseBody) SetTotalCount(v int64) *ListNet
 
 type ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpoints struct {
 	// 专属网络端点创建时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 实例ID。
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 专属网络端点ID。
+	//
+	// example:
+	//
+	// nae_examplexxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
 	// 专属网络端点名称。
+	//
+	// example:
+	//
+	// xx业务VPC访问端点
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
 	// 专属网络端点连接的类型。
+	//
+	// example:
+	//
+	// private
 	NetworkAccessEndpointType *string `json:"NetworkAccessEndpointType,omitempty" xml:"NetworkAccessEndpointType,omitempty"`
 	// 专属网络端点使用的安全组ID。
+	//
+	// example:
+	//
+	// sg-examplexxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// 专属网络端点状态。
+	//
+	// example:
+	//
+	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 专属网络端点最近更新时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// 专属网络端点连接的指定vSwitch列表。
+	//
+	// example:
+	//
+	// vsw-examplexxx
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// 专属网络端点连接的VpcID。
+	//
+	// example:
+	//
+	// vpc-examplexxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// 专属网络端点连接的Vpc所属地域。
+	//
+	// example:
+	//
+	// cn-hangzhou
 	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
 }
 
@@ -8790,8 +11336,20 @@ func (s *ListNetworkAccessEndpointsResponse) SetBody(v *ListNetworkAccessEndpoin
 
 type ListNetworkAccessPathsRequest struct {
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 专属网络端点ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nae_examplexxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
 }
 
@@ -8815,7 +11373,10 @@ func (s *ListNetworkAccessPathsRequest) SetNetworkAccessEndpointId(v string) *Li
 
 type ListNetworkAccessPathsResponseBody struct {
 	NetworkAccessPaths []*ListNetworkAccessPathsResponseBodyNetworkAccessPaths `json:"NetworkAccessPaths,omitempty" xml:"NetworkAccessPaths,omitempty" type:"Repeated"`
-	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListNetworkAccessPathsResponseBody) String() string {
@@ -8838,22 +11399,58 @@ func (s *ListNetworkAccessPathsResponseBody) SetRequestId(v string) *ListNetwork
 
 type ListNetworkAccessPathsResponseBodyNetworkAccessPaths struct {
 	// 专属网络端点访问路径创建时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 实例ID。
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 专属网络端点ID。
+	//
+	// example:
+	//
+	// nae_examplexxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
 	// 专属网络端点访问路径ID。
+	//
+	// example:
+	//
+	// nap_examplexxx
 	NetworkAccessPathId *string `json:"NetworkAccessPathId,omitempty" xml:"NetworkAccessPathId,omitempty"`
 	// 专属网络端点访问路径使用的ENI ID。
+	//
+	// example:
+	//
+	// eni-examplexxx
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	// 专属网络端点访问路径使用的ENI私网地址。
+	//
+	// example:
+	//
+	// cn-hangzhou
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// 专属网络端点访问路径状态。
+	//
+	// example:
+	//
+	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 专属网络端点访问路径最近更新时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// 专属网络端点访问路径的ENI归属的交换机ID。
+	//
+	// example:
+	//
+	// vsw-examplexxx
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -8941,8 +11538,20 @@ func (s *ListNetworkAccessPathsResponse) SetBody(v *ListNetworkAccessPathsRespon
 
 type ListOrganizationalUnitParentsRequest struct {
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 组织ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 }
 
@@ -8965,8 +11574,11 @@ func (s *ListOrganizationalUnitParentsRequest) SetOrganizationalUnitId(v string)
 }
 
 type ListOrganizationalUnitParentsResponseBody struct {
-	Parents   []*ListOrganizationalUnitParentsResponseBodyParents `json:"Parents,omitempty" xml:"Parents,omitempty" type:"Repeated"`
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Parents []*ListOrganizationalUnitParentsResponseBodyParents `json:"Parents,omitempty" xml:"Parents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListOrganizationalUnitParentsResponseBody) String() string {
@@ -8989,8 +11601,16 @@ func (s *ListOrganizationalUnitParentsResponseBody) SetRequestId(v string) *List
 
 type ListOrganizationalUnitParentsResponseBodyParents struct {
 	// 组织ID
+	//
+	// example:
+	//
+	// ou_4lag76zc2km5ssg5vsmm2lznvu
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 	// 父组织ID
+	//
+	// example:
+	//
+	// ou_x3beoyepv2ls5iwuge3xhjkwbm
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 }
 
@@ -9043,18 +11663,48 @@ func (s *ListOrganizationalUnitParentsResponse) SetBody(v *ListOrganizationalUni
 
 type ListOrganizationalUnitsRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 组织ID列表。size限制最大100。
+	//
+	// example:
+	//
+	// [ou_wovwffm62xifdziem7an7xxxxx]
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
 	// The name of the organizational unit.
+	//
+	// example:
+	//
+	// name_001
 	OrganizationalUnitName *string `json:"OrganizationalUnitName,omitempty" xml:"OrganizationalUnitName,omitempty"`
 	// 组织名称，左匹配
+	//
+	// example:
+	//
+	// name
 	OrganizationalUnitNameStartsWith *string `json:"OrganizationalUnitNameStartsWith,omitempty" xml:"OrganizationalUnitNameStartsWith,omitempty"`
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 20.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the parent organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 }
 
@@ -9105,8 +11755,16 @@ type ListOrganizationalUnitsResponseBody struct {
 	// The list of data objects of organizational units.
 	OrganizationalUnits []*ListOrganizationalUnitsResponseBodyOrganizationalUnits `json:"OrganizationalUnits,omitempty" xml:"OrganizationalUnits,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of entries in the list.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9135,33 +11793,80 @@ func (s *ListOrganizationalUnitsResponseBody) SetTotalCount(v int64) *ListOrgani
 
 type ListOrganizationalUnitsResponseBodyOrganizationalUnits struct {
 	// The time when the organizational unit was created. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the organizational unit.
+	//
+	// example:
+	//
+	// Test organizational unit
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the node is a leaf node.
+	//
+	// example:
+	//
+	// false
 	Leaf *bool `json:"Leaf,omitempty" xml:"Leaf,omitempty"`
 	// The external ID of the organizational unit. The external ID can be used by external data to map the data of the organizational unit in IDaaS EIAM. By default, the external ID is the organizational unit ID.
 	//
 	// For organizational units with the same source type and source ID, each organizational unit has a unique external ID.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitExternalId *string `json:"OrganizationalUnitExternalId,omitempty" xml:"OrganizationalUnitExternalId,omitempty"`
 	// The ID of the organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 	// 组织名称。
+	//
+	// example:
+	//
+	// test_organizationalUnit_name
 	OrganizationalUnitName *string `json:"OrganizationalUnitName,omitempty" xml:"OrganizationalUnitName,omitempty"`
 	// The source ID of the organizational unit.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	OrganizationalUnitSourceId *string `json:"OrganizationalUnitSourceId,omitempty" xml:"OrganizationalUnitSourceId,omitempty"`
 	// The source type of the organizational unit. Valid values:
 	//
-	// *   build_in: The organizational unit was created in IDaaS.
-	// *   ding_talk: The organizational unit was imported from DingTalk.
-	// *   ad: The organizational unit was imported from Microsoft Active Directory (AD).
-	// *   ldap: The organizational unit was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	// 	- build_in: The organizational unit was created in IDaaS.
+	//
+	// 	- ding_talk: The organizational unit was imported from DingTalk.
+	//
+	// 	- ad: The organizational unit was imported from Microsoft Active Directory (AD).
+	//
+	// 	- ldap: The organizational unit was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	//
+	// example:
+	//
+	// build_in
 	OrganizationalUnitSourceType *string `json:"OrganizationalUnitSourceType,omitempty" xml:"OrganizationalUnitSourceType,omitempty"`
 	// The ID of the parent organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The time when the organizational unit was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -9259,14 +11964,38 @@ func (s *ListOrganizationalUnitsResponse) SetBody(v *ListOrganizationalUnitsResp
 
 type ListOrganizationalUnitsForApplicationRequest struct {
 	// The ID of the application that you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IDs of the organizations that are allowed to access the application. You can query a maximum of 100 organization IDs at a time.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -9307,8 +12036,16 @@ type ListOrganizationalUnitsForApplicationResponseBody struct {
 	// The IDs of the organizations that are allowed to access the application.
 	OrganizationalUnits []*ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits `json:"OrganizationalUnits,omitempty" xml:"OrganizationalUnits,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of the returned entries.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9337,6 +12074,10 @@ func (s *ListOrganizationalUnitsForApplicationResponseBody) SetTotalCount(v int6
 
 type ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits struct {
 	// The ID of the organization that is allowed to access the application.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 }
 
@@ -9386,6 +12127,10 @@ type ListRegionsResponseBody struct {
 	// The supported regions.
 	Regions []*ListRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9409,10 +12154,22 @@ func (s *ListRegionsResponseBody) SetRequestId(v string) *ListRegionsResponseBod
 
 type ListRegionsResponseBodyRegions struct {
 	// The name of the region.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The endpoint of the region.
+	//
+	// example:
+	//
+	// eiam.cn-hangzhou.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -9470,44 +12227,102 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 
 type ListUsersRequest struct {
 	// 账户展示名，模糊匹配
+	//
+	// example:
+	//
+	// name_001
 	DisplayNameStartsWith *string `json:"DisplayNameStartsWith,omitempty" xml:"DisplayNameStartsWith,omitempty"`
 	// The email address of the user who owns the account.
+	//
+	// example:
+	//
+	// user@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 20.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The mobile number of the user who owns the account.
+	//
+	// example:
+	//
+	// 156xxxxxxx
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
+	//
+	// example:
+	//
+	// 86
 	PhoneRegion *string `json:"PhoneRegion,omitempty" xml:"PhoneRegion,omitempty"`
 	// The status of the account. Valid values:
 	//
-	// *   enabled: The account is enabled.
-	// *   disabled: The account is disabled.
+	// 	- enabled: The account is enabled.
+	//
+	// 	- disabled: The account is disabled.
+	//
+	// example:
+	//
+	// enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The external ID of the account. The external ID can be used by external data to map the data of the account in IDaaS EIAM.
 	//
 	// For accounts with the same source type and source ID, each account has a unique external ID.
+	//
+	// example:
+	//
+	// id_wovwffm62xifdziem7an7xxxxx
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
 	// 账户的ID集合
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 	// The source ID of the account.
 	//
 	// If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
 	// The source type of the account. Valid values:
 	//
-	// *   build_in: The account was created in IDaaS.
-	// *   ding_talk: The account was imported from DingTalk.
-	// *   ad: The account was imported from Microsoft Active Directory (AD).
-	// *   ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	// 	- build_in: The account was created in IDaaS.
+	//
+	// 	- ding_talk: The account was imported from DingTalk.
+	//
+	// 	- ad: The account was imported from Microsoft Active Directory (AD).
+	//
+	// 	- ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	//
+	// example:
+	//
+	// build_in
 	UserSourceType *string `json:"UserSourceType,omitempty" xml:"UserSourceType,omitempty"`
 	// 账户名，左模糊匹配
+	//
+	// example:
+	//
+	// name_001
 	UsernameStartsWith *string `json:"UsernameStartsWith,omitempty" xml:"UsernameStartsWith,omitempty"`
 }
 
@@ -9591,8 +12406,16 @@ func (s *ListUsersRequest) SetUsernameStartsWith(v string) *ListUsersRequest {
 
 type ListUsersResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of entries in the list.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The list of data objects of accounts.
 	Users []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -9623,58 +12446,146 @@ func (s *ListUsersResponseBody) SetUsers(v []*ListUsersResponseBodyUsers) *ListU
 
 type ListUsersResponseBodyUsers struct {
 	// The time when the account expires. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	AccountExpireTime *int64 `json:"AccountExpireTime,omitempty" xml:"AccountExpireTime,omitempty"`
 	// The time when the account was created. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the account.
+	//
+	// example:
+	//
+	// Test account
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the account.
+	//
+	// example:
+	//
+	// display_name001
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the user who owns the account.
+	//
+	// example:
+	//
+	// user@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// Indicates whether the email address has been verified. A value of true indicates that the email address has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the email address has not been verified.
+	//
+	// example:
+	//
+	// true
 	EmailVerified *bool `json:"EmailVerified,omitempty" xml:"EmailVerified,omitempty"`
 	// The ID of the instance
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time when the account lock expires. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	LockExpireTime *int64 `json:"LockExpireTime,omitempty" xml:"LockExpireTime,omitempty"`
 	// Time When Password Expires
+	//
+	// example:
+	//
+	// 1652085686179
 	PasswordExpireTime *int64 `json:"PasswordExpireTime,omitempty" xml:"PasswordExpireTime,omitempty"`
 	// Indicates whether a password is set.
+	//
+	// example:
+	//
+	// false
 	PasswordSet *bool `json:"PasswordSet,omitempty" xml:"PasswordSet,omitempty"`
 	// The mobile number of the user who owns the account.
+	//
+	// example:
+	//
+	// 156xxxxxxx
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// Indicates whether the mobile number has been verified. A value of true indicates that the mobile number has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the mobile number has not been verified.
+	//
+	// example:
+	//
+	// true
 	PhoneNumberVerified *bool `json:"PhoneNumberVerified,omitempty" xml:"PhoneNumberVerified,omitempty"`
 	// The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
+	//
+	// example:
+	//
+	// 86
 	PhoneRegion *string `json:"PhoneRegion,omitempty" xml:"PhoneRegion,omitempty"`
 	// The time when the account was registered. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	RegisterTime *int64 `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
 	// The status of the account. Valid values:
 	//
-	// *   enabled: The account is enabled.
-	// *   disabled: The account is disabled.
+	// 	- enabled: The account is enabled.
+	//
+	// 	- disabled: The account is disabled.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time when the account was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652085686179
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The external ID of the account. The external ID can be used by external data to map the data of the account in IDaaS EIAM. By default, the external ID is the account ID.
 	//
 	// For accounts with the same source type and source ID, each account has a unique external ID.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
 	// The ID of the account.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The source ID of the account.
 	//
 	// If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
 	// The source type of the account. Valid values:
 	//
-	// *   build_in: The account was created in IDaaS.
-	// *   ding_talk: The account was imported from DingTalk.
-	// *   ad: The account was imported from Microsoft Active Directory (AD).
-	// *   ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	// 	- build_in: The account was created in IDaaS.
+	//
+	// 	- ding_talk: The account was imported from DingTalk.
+	//
+	// 	- ad: The account was imported from Microsoft Active Directory (AD).
+	//
+	// 	- ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	//
+	// example:
+	//
+	// build_in
 	UserSourceType *string `json:"UserSourceType,omitempty" xml:"UserSourceType,omitempty"`
 	// The username of the account.
+	//
+	// example:
+	//
+	// name001
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -9822,14 +12733,38 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 
 type ListUsersForApplicationRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The IDs of the accounts. You can query a maximum of 100 accounts at a time.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
@@ -9868,8 +12803,16 @@ func (s *ListUsersForApplicationRequest) SetUserIds(v []*string) *ListUsersForAp
 
 type ListUsersForApplicationResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The IDs of the accounts.
 	Users []*ListUsersForApplicationResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -9900,6 +12843,10 @@ func (s *ListUsersForApplicationResponseBody) SetUsers(v []*ListUsersForApplicat
 
 type ListUsersForApplicationResponseBodyUsers struct {
 	// The ID of the account.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -9947,14 +12894,38 @@ func (s *ListUsersForApplicationResponse) SetBody(v *ListUsersForApplicationResp
 
 type ListUsersForGroupRequest struct {
 	// The group ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 20. Maximum value: 100.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The account IDs. A maximum of 100 accounts can be queried.
+	//
+	// example:
+	//
+	// [ou_001]
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
@@ -9993,8 +12964,16 @@ func (s *ListUsersForGroupRequest) SetUserIds(v []*string) *ListUsersForGroupReq
 
 type ListUsersForGroupResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned. The maximum number of entries that can be returned per page is specified by PageSize.
+	//
+	// example:
+	//
+	// 1000
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The information about accounts.
 	Users []*ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -10024,7 +13003,13 @@ func (s *ListUsersForGroupResponseBody) SetUsers(v []*ListUsersForGroupResponseB
 }
 
 type ListUsersForGroupResponseBodyUsers struct {
+	GroupMemberRelationSourceId   *string `json:"GroupMemberRelationSourceId,omitempty" xml:"GroupMemberRelationSourceId,omitempty"`
+	GroupMemberRelationSourceType *string `json:"GroupMemberRelationSourceType,omitempty" xml:"GroupMemberRelationSourceType,omitempty"`
 	// The account ID.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -10034,6 +13019,16 @@ func (s ListUsersForGroupResponseBodyUsers) String() string {
 
 func (s ListUsersForGroupResponseBodyUsers) GoString() string {
 	return s.String()
+}
+
+func (s *ListUsersForGroupResponseBodyUsers) SetGroupMemberRelationSourceId(v string) *ListUsersForGroupResponseBodyUsers {
+	s.GroupMemberRelationSourceId = &v
+	return s
+}
+
+func (s *ListUsersForGroupResponseBodyUsers) SetGroupMemberRelationSourceType(v string) *ListUsersForGroupResponseBodyUsers {
+	s.GroupMemberRelationSourceType = &v
+	return s
 }
 
 func (s *ListUsersForGroupResponseBodyUsers) SetUserId(v string) *ListUsersForGroupResponseBodyUsers {
@@ -10072,10 +13067,28 @@ func (s *ListUsersForGroupResponse) SetBody(v *ListUsersForGroupResponseBody) *L
 
 type ObtainApplicationClientSecretRequest struct {
 	// The ID of the application whose client key you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The client key ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sci_k52x2ru63rlkflina5utgkxxxx
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 }
 
@@ -10106,6 +13119,10 @@ type ObtainApplicationClientSecretResponseBody struct {
 	// The information about the client key.
 	ApplicationClientSecret *ObtainApplicationClientSecretResponseBodyApplicationClientSecret `json:"ApplicationClientSecret,omitempty" xml:"ApplicationClientSecret,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10129,21 +13146,50 @@ func (s *ObtainApplicationClientSecretResponseBody) SetRequestId(v string) *Obta
 
 type ObtainApplicationClientSecretResponseBodyApplicationClientSecret struct {
 	// The ID of the application whose client key you want to query.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The client ID of the application.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The client key secret of the application.
+	//
+	// example:
+	//
+	// CSEHDcHcrUKHw1CuxkJEHPveWRXBGqVqRsxxxx
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time when the client key was last used. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1649830226000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
 	// The client key ID of the application.
+	//
+	// example:
+	//
+	// sci_k52x2ru63rlkflina5utgkxxxx
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 	// The status of the client key. Valid values:
 	//
-	// *   Enabled: The client key is enabled.
-	// *   Disabled: The client key is disabled.
+	// 	- Enabled: The client key is enabled.
+	//
+	// 	- Disabled: The client key is disabled.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -10221,10 +13267,28 @@ func (s *ObtainApplicationClientSecretResponse) SetBody(v *ObtainApplicationClie
 
 type ObtainDomainProxyTokenRequest struct {
 	// 域名ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// 域名代理Token ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pt_examplexxxx
 	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -10253,7 +13317,10 @@ func (s *ObtainDomainProxyTokenRequest) SetInstanceId(v string) *ObtainDomainPro
 
 type ObtainDomainProxyTokenResponseBody struct {
 	DomainProxyToken *ObtainDomainProxyTokenResponseBodyDomainProxyToken `json:"DomainProxyToken,omitempty" xml:"DomainProxyToken,omitempty" type:"Struct"`
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ObtainDomainProxyTokenResponseBody) String() string {
@@ -10276,20 +13343,52 @@ func (s *ObtainDomainProxyTokenResponseBody) SetRequestId(v string) *ObtainDomai
 
 type ObtainDomainProxyTokenResponseBodyDomainProxyToken struct {
 	// 域名代理Token创建时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 域名ID。
+	//
+	// example:
+	//
+	// dm_examplexxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// 域名代理Token。
+	//
+	// example:
+	//
+	// PTxxxxxxxx
 	DomainProxyToken *string `json:"DomainProxyToken,omitempty" xml:"DomainProxyToken,omitempty"`
 	// 域名代理Token ID。
+	//
+	// example:
+	//
+	// pt_examplexxxx
 	DomainProxyTokenId *string `json:"DomainProxyTokenId,omitempty" xml:"DomainProxyTokenId,omitempty"`
 	// 实例ID。
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 域名代理Token最近使用时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
 	// token状态，枚举类型：(enabled）启用,（disabled）禁用。
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 域名代理Token最近更新时间，Unix时间戳格式，单位为毫秒。
+	//
+	// example:
+	//
+	// 1649830226000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -10372,10 +13471,24 @@ func (s *ObtainDomainProxyTokenResponse) SetBody(v *ObtainDomainProxyTokenRespon
 
 type RemoveUserFromOrganizationalUnitsRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The organization IDs. You can remove an account from a maximum of 100 organizations.
+	//
+	// This parameter is required.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
 	// The account ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -10404,6 +13517,10 @@ func (s *RemoveUserFromOrganizationalUnitsRequest) SetUserId(v string) *RemoveUs
 
 type RemoveUserFromOrganizationalUnitsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10451,10 +13568,28 @@ func (s *RemoveUserFromOrganizationalUnitsResponse) SetBody(v *RemoveUserFromOrg
 
 type RemoveUsersFromGroupRequest struct {
 	// The group ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The account IDs. A maximum of 100 accounts can be removed from a group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [ou_001]
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
@@ -10483,6 +13618,10 @@ func (s *RemoveUsersFromGroupRequest) SetUserIds(v []*string) *RemoveUsersFromGr
 
 type RemoveUsersFromGroupResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10530,10 +13669,28 @@ func (s *RemoveUsersFromGroupResponse) SetBody(v *RemoveUsersFromGroupResponseBo
 
 type RevokeApplicationFromGroupsRequest struct {
 	// The application ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The group IDs. You can specify up to 100 group IDs at a time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group_miu8e4t4d7i4u7uwezgr54xxxx
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -10562,6 +13719,10 @@ func (s *RevokeApplicationFromGroupsRequest) SetInstanceId(v string) *RevokeAppl
 
 type RevokeApplicationFromGroupsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10609,10 +13770,28 @@ func (s *RevokeApplicationFromGroupsResponse) SetBody(v *RevokeApplicationFromGr
 
 type RevokeApplicationFromOrganizationalUnitsRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IDs of the organizations. You can revoke the access permissions from a maximum of 100 organizations at a time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
 }
 
@@ -10641,6 +13820,10 @@ func (s *RevokeApplicationFromOrganizationalUnitsRequest) SetOrganizationalUnitI
 
 type RevokeApplicationFromOrganizationalUnitsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10688,10 +13871,28 @@ func (s *RevokeApplicationFromOrganizationalUnitsResponse) SetBody(v *RevokeAppl
 
 type RevokeApplicationFromUsersRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IDs of the accounts. You can revoke the access permissions from a maximum of 100 accounts at a time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
@@ -10720,6 +13921,10 @@ func (s *RevokeApplicationFromUsersRequest) SetUserIds(v []*string) *RevokeAppli
 
 type RevokeApplicationFromUsersResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10767,10 +13972,22 @@ func (s *RevokeApplicationFromUsersResponse) SetBody(v *RevokeApplicationFromUse
 
 type SetApplicationGrantScopeRequest struct {
 	// The ID of the application that you want to configure.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The permissions of the Developer API feature.
 	GrantScopes []*string `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -10799,6 +14016,10 @@ func (s *SetApplicationGrantScopeRequest) SetInstanceId(v string) *SetApplicatio
 
 type SetApplicationGrantScopeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10846,20 +14067,44 @@ func (s *SetApplicationGrantScopeResponse) SetBody(v *SetApplicationGrantScopeRe
 
 type SetApplicationProvisioningConfigRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The configuration of event callback synchronization. This parameter is required when the ProvisionProtocolType parameter is set to idaas_callback.
 	CallbackProvisioningConfig *SetApplicationProvisioningConfigRequestCallbackProvisioningConfig `json:"CallbackProvisioningConfig,omitempty" xml:"CallbackProvisioningConfig,omitempty" type:"Struct"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether to synchronize the password in IDaaS user event callbacks. Valid values:
 	//
-	// *   true: synchronize the password.
-	// *   false: do not synchronize the password.
+	// 	- true: synchronize the password.
+	//
+	// 	- false: do not synchronize the password.
+	//
+	// example:
+	//
+	// true
 	ProvisionPassword *bool `json:"ProvisionPassword,omitempty" xml:"ProvisionPassword,omitempty"`
 	// The synchronization protocol type of the application. Valid values:
 	//
-	// *   idaas_callback: custom event callback protocol of IDaaS.
-	// *   scim2: System for Cross-domain Identity Management (SCIM) protocol.
+	// 	- idaas_callback: custom event callback protocol of IDaaS.
+	//
+	// 	- scim2: System for Cross-domain Identity Management (SCIM) protocol.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_callback
 	ProvisionProtocolType *string `json:"ProvisionProtocolType,omitempty" xml:"ProvisionProtocolType,omitempty"`
 	// The configuration of SCIM-based IDaaS synchronization. This parameter is required when the ProvisionProtocolType parameter is set to scim2.
 	ScimProvisioningConfig *SetApplicationProvisioningConfigRequestScimProvisioningConfig `json:"ScimProvisioningConfig,omitempty" xml:"ScimProvisioningConfig,omitempty" type:"Struct"`
@@ -10905,13 +14150,26 @@ func (s *SetApplicationProvisioningConfigRequest) SetScimProvisioningConfig(v *S
 
 type SetApplicationProvisioningConfigRequestCallbackProvisioningConfig struct {
 	// The URL that the application uses to receive IDaaS event callbacks.
+	//
+	// example:
+	//
+	// https://example.com/event/callback
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// The symmetric key for IDaaS event callbacks. The key is an AES-256 encryption key in the HEX format.
+	//
+	// example:
+	//
+	// ad3b248**************************b3561a73d7
 	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
 	// Specifies whether to encrypt IDaaS event callback messages. Valid values:
 	//
-	// *   true: encrypt the messages.
-	// *   false: transmit the messages in plaintext.
+	// 	- true: encrypt the messages.
+	//
+	// 	- false: transmit the messages in plaintext.
+	//
+	// example:
+	//
+	// true
 	EncryptRequired *bool `json:"EncryptRequired,omitempty" xml:"EncryptRequired,omitempty"`
 	// The list of types of IDaaS event callback messages that are supported by the listener.
 	ListenEventScopes []*string `json:"ListenEventScopes,omitempty" xml:"ListenEventScopes,omitempty" type:"Repeated"`
@@ -10950,15 +14208,21 @@ type SetApplicationProvisioningConfigRequestScimProvisioningConfig struct {
 	AuthnConfiguration *SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfiguration `json:"AuthnConfiguration,omitempty" xml:"AuthnConfiguration,omitempty" type:"Struct"`
 	// The full synchronization scope of the SCIM protocol. Valid value:
 	//
-	// *   urn:alibaba:idaas:app:scim:User:PUSH: full account data synchronization.
+	// 	- urn:alibaba:idaas:app:scim:User:PUSH: full account data synchronization.
 	FullPushScopes []*string `json:"FullPushScopes,omitempty" xml:"FullPushScopes,omitempty" type:"Repeated"`
 	// The resource operations of the SCIM protocol. Valid values:
 	//
-	// *   urn:alibaba:idaas:app:scim:User:CREATE: account creation.
-	// *   urn:alibaba:idaas:app:scim:User:UPDATE: account update.
-	// *   urn:alibaba:idaas:app:scim:User:DELETE: account deletion.
+	// 	- urn:alibaba:idaas:app:scim:User:CREATE: account creation.
+	//
+	// 	- urn:alibaba:idaas:app:scim:User:UPDATE: account update.
+	//
+	// 	- urn:alibaba:idaas:app:scim:User:DELETE: account deletion.
 	ProvisioningActions []*string `json:"ProvisioningActions,omitempty" xml:"ProvisioningActions,omitempty" type:"Repeated"`
 	// The base URL that the application uses to receive the SCIM protocol for IDaaS synchronization.
+	//
+	// example:
+	//
+	// https://example.com/scim
 	ScimBaseUrl *string `json:"ScimBaseUrl,omitempty" xml:"ScimBaseUrl,omitempty"`
 }
 
@@ -10993,17 +14257,27 @@ func (s *SetApplicationProvisioningConfigRequestScimProvisioningConfig) SetScimB
 type SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfiguration struct {
 	// The authentication mode of the SCIM protocol. Valid value:
 	//
-	// *   oauth2: OAuth2.0 mode.
+	// 	- oauth2: OAuth2.0 mode.
+	//
+	// example:
+	//
+	// oauth2
 	AuthnMode *string `json:"AuthnMode,omitempty" xml:"AuthnMode,omitempty"`
 	// The configuration parameters related to authorization.
 	//
-	// *   If the GrantType parameter is set to client_credentials, you can set the configuration parameters ClientId, ClientSecret, and AuthnMethod.
-	// *   If the GrantType parameter is set to bearer_token, you can set the configuration parameter AccessToken.
+	// 	- If the GrantType parameter is set to client_credentials, you can set the configuration parameters ClientId, ClientSecret, and AuthnMethod.
+	//
+	// 	- If the GrantType parameter is set to bearer_token, you can set the configuration parameter AccessToken.
 	AuthnParam *SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfigurationAuthnParam `json:"AuthnParam,omitempty" xml:"AuthnParam,omitempty" type:"Struct"`
 	// The grant type of the SCIM protocol. Valid values:
 	//
-	// *   client_credentials: client mode.
-	// *   bearer_token: key mode.
+	// 	- client_credentials: client mode.
+	//
+	// 	- bearer_token: key mode.
+	//
+	// example:
+	//
+	// bearer_token
 	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
 }
 
@@ -11032,17 +14306,38 @@ func (s *SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfi
 
 type SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfigurationAuthnParam struct {
 	// The access token. If the GrantType parameter is set to bearer_token, you can set this parameter.
+	//
+	// example:
+	//
+	// k52x2ru63rlkflina5utgkxxxx
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	// The authentication mode of the SCIM protocol. Valid values:
 	//
-	// *   client_secret_basic: The client secret is passed in the request header.
-	// *   client_secret_post: The client secret is passed in the request body.
+	// 	- client_secret_basic: The client secret is passed in the request header.
+	//
+	// 	- client_secret_post: The client secret is passed in the request body.
+	//
+	// example:
+	//
+	// client_secret_basic
 	AuthnMethod *string `json:"AuthnMethod,omitempty" xml:"AuthnMethod,omitempty"`
 	// The client ID of the application.
+	//
+	// example:
+	//
+	// mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The client secret of the application.
+	//
+	// example:
+	//
+	// CSEHDcHcrUKHw1CuxkJEHPveWRXBGqVqRsxxxx
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
 	// The token endpoint.
+	//
+	// example:
+	//
+	// https://www.example.com/oauth/token
 	TokenEndpoint *string `json:"TokenEndpoint,omitempty" xml:"TokenEndpoint,omitempty"`
 }
 
@@ -11081,6 +14376,10 @@ func (s *SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfi
 
 type SetApplicationProvisioningConfigResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11128,8 +14427,22 @@ func (s *SetApplicationProvisioningConfigResponse) SetBody(v *SetApplicationProv
 
 type SetApplicationProvisioningScopeRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// 授权同步出的组列表
+	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The list of organizational units that are authorized for account synchronization.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
@@ -11148,6 +14461,11 @@ func (s *SetApplicationProvisioningScopeRequest) SetApplicationId(v string) *Set
 	return s
 }
 
+func (s *SetApplicationProvisioningScopeRequest) SetGroupIds(v []*string) *SetApplicationProvisioningScopeRequest {
+	s.GroupIds = v
+	return s
+}
+
 func (s *SetApplicationProvisioningScopeRequest) SetInstanceId(v string) *SetApplicationProvisioningScopeRequest {
 	s.InstanceId = &v
 	return s
@@ -11160,6 +14478,10 @@ func (s *SetApplicationProvisioningScopeRequest) SetOrganizationalUnitIds(v []*s
 
 type SetApplicationProvisioningScopeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11207,15 +14529,36 @@ func (s *SetApplicationProvisioningScopeResponse) SetBody(v *SetApplicationProvi
 
 type SetApplicationSsoConfigRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The initial SSO method. Valid values:
 	//
-	// *   only_app_init_sso: Only application-initiated SSO is allowed. This method is selected by default when the SSO protocol of the application is an OIDC protocol. If this method is selected when the SSO protocol of the application is SAML, the InitLoginUrl parameter is required.
-	// *   idaas_or_app_init_sso: IDaaS-initiated SSO and application-initiated SSO are allowed. This method is selected by default when the SSO protocol of the application is SAML. If this method is selected when the SSO protocol of the application is an OIDC protocol, the InitLoginUrl parameter is required.
+	// 	- only_app_init_sso: Only application-initiated SSO is allowed. This method is selected by default when the SSO protocol of the application is an OIDC protocol. If this method is selected when the SSO protocol of the application is SAML, the InitLoginUrl parameter is required.
+	//
+	// 	- idaas_or_app_init_sso: IDaaS-initiated SSO and application-initiated SSO are allowed. This method is selected by default when the SSO protocol of the application is SAML. If this method is selected when the SSO protocol of the application is an OIDC protocol, the InitLoginUrl parameter is required.
+	//
+	// example:
+	//
+	// only_app_init_sso
 	InitLoginType *string `json:"InitLoginType,omitempty" xml:"InitLoginType,omitempty"`
 	// The initial webhook URL of SSO. This parameter is required when the SSO protocol of the application is an OIDC protocol and the InitLoginType parameters is set to idaas_or_app_init_sso or when the SSO protocol of the application is SAML and the InitLoginType parameter is set to only_app_init_sso.
+	//
+	// example:
+	//
+	// http://127.0.0.1:8000/start_login?enterprise_code=ABCDEF
 	InitLoginUrl *string `json:"InitLoginUrl,omitempty" xml:"InitLoginUrl,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The Open ID Connect (OIDC)-based SSO configuration attributes of the application.
 	OidcSsoConfig *SetApplicationSsoConfigRequestOidcSsoConfig `json:"OidcSsoConfig,omitempty" xml:"OidcSsoConfig,omitempty" type:"Struct"`
@@ -11263,34 +14606,82 @@ func (s *SetApplicationSsoConfigRequest) SetSamlSsoConfig(v *SetApplicationSsoCo
 
 type SetApplicationSsoConfigRequestOidcSsoConfig struct {
 	// The validity period of the issued access token. Unit: seconds. Default value: 1200.
+	//
+	// example:
+	//
+	// 1200
 	AccessTokenEffectiveTime *int64 `json:"AccessTokenEffectiveTime,omitempty" xml:"AccessTokenEffectiveTime,omitempty"`
 	// The validity period of the issued code. Unit: seconds. Default value: 60.
+	//
+	// example:
+	//
+	// 60
 	CodeEffectiveTime *int64 `json:"CodeEffectiveTime,omitempty" xml:"CodeEffectiveTime,omitempty"`
 	// The custom claims that are returned for the ID token.
 	CustomClaims []*SetApplicationSsoConfigRequestOidcSsoConfigCustomClaims `json:"CustomClaims,omitempty" xml:"CustomClaims,omitempty" type:"Repeated"`
 	// The scopes of user attributes that can be returned for the UserInfo endpoint or ID token.
+	//
+	// example:
+	//
+	// profile，email
 	GrantScopes []*string `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
 	// The list of grant types that are supported for OIDC protocols.
+	//
+	// example:
+	//
+	// authorization_code
 	GrantTypes []*string `json:"GrantTypes,omitempty" xml:"GrantTypes,omitempty" type:"Repeated"`
 	// The validity period of the issued ID token. Unit: seconds. Default value: 300.
+	//
+	// example:
+	//
+	// 300
 	IdTokenEffectiveTime *int64 `json:"IdTokenEffectiveTime,omitempty" xml:"IdTokenEffectiveTime,omitempty"`
 	// The ID of the identity authentication source in password mode. Specify this parameter only when the value of the GrantTypes parameter includes the password mode.
+	//
+	// example:
+	//
+	// ia_password
 	PasswordAuthenticationSourceId *string `json:"PasswordAuthenticationSourceId,omitempty" xml:"PasswordAuthenticationSourceId,omitempty"`
 	// Specifies whether time-based one-time password (TOTP) authentication is required in password mode. Specify this parameter only when the value of the GrantTypes parameter includes the password mode.
+	//
+	// example:
+	//
+	// true
 	PasswordTotpMfaRequired *bool `json:"PasswordTotpMfaRequired,omitempty" xml:"PasswordTotpMfaRequired,omitempty"`
 	// The algorithms that are used to calculate the code challenge for PKCE.
+	//
+	// example:
+	//
+	// S256
 	PkceChallengeMethods []*string `json:"PkceChallengeMethods,omitempty" xml:"PkceChallengeMethods,omitempty" type:"Repeated"`
 	// Specifies whether the SSO of the application requires Proof Key for Code Exchange (PKCE) (RFC 7636).
+	//
+	// example:
+	//
+	// true
 	PkceRequired *bool `json:"PkceRequired,omitempty" xml:"PkceRequired,omitempty"`
 	// The list of logout redirect URIs that are supported by the application.
 	PostLogoutRedirectUris []*string `json:"PostLogoutRedirectUris,omitempty" xml:"PostLogoutRedirectUris,omitempty" type:"Repeated"`
 	// The list of redirect URIs that are supported by the application.
 	RedirectUris []*string `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Repeated"`
 	// The validity period of the issued refresh token. Unit: seconds. Default value: 86400.
+	//
+	// example:
+	//
+	// 86400
 	RefreshTokenEffective *int64 `json:"RefreshTokenEffective,omitempty" xml:"RefreshTokenEffective,omitempty"`
 	// The response types that are supported by the application. Specify this parameter when the value of the GrantTypes parameter includes the implicit mode.
+	//
+	// example:
+	//
+	// token id_token
 	ResponseTypes []*string `json:"ResponseTypes,omitempty" xml:"ResponseTypes,omitempty" type:"Repeated"`
 	// The custom expression that is used to generate the subject ID returned for the ID token.
+	//
+	// example:
+	//
+	// user.userid
 	SubjectIdExpression *string `json:"SubjectIdExpression,omitempty" xml:"SubjectIdExpression,omitempty"`
 }
 
@@ -11379,8 +14770,16 @@ func (s *SetApplicationSsoConfigRequestOidcSsoConfig) SetSubjectIdExpression(v s
 
 type SetApplicationSsoConfigRequestOidcSsoConfigCustomClaims struct {
 	// The claim name.
+	//
+	// example:
+	//
+	// "Role"
 	ClaimName *string `json:"ClaimName,omitempty" xml:"ClaimName,omitempty"`
 	// The expression that is used to generate the value of the claim.
+	//
+	// example:
+	//
+	// user.dict.applicationRole
 	ClaimValueExpression *string `json:"ClaimValueExpression,omitempty" xml:"ClaimValueExpression,omitempty"`
 }
 
@@ -11404,27 +14803,62 @@ func (s *SetApplicationSsoConfigRequestOidcSsoConfigCustomClaims) SetClaimValueE
 
 type SetApplicationSsoConfigRequestSamlSsoConfig struct {
 	// assertion是否签名
+	//
+	// example:
+	//
+	// true
 	AssertionSigned *bool `json:"AssertionSigned,omitempty" xml:"AssertionSigned,omitempty"`
 	// The additional user attributes in the SAML assertion.
 	AttributeStatements []*SetApplicationSsoConfigRequestSamlSsoConfigAttributeStatements `json:"AttributeStatements,omitempty" xml:"AttributeStatements,omitempty" type:"Repeated"`
 	// The default value of the RelayState attribute. If the SSO request is initiated in EIAM, the RelayState attribute in the SAML response is set to this default value.
+	//
+	// example:
+	//
+	// https://home.console.aliyun.com
 	DefaultRelayState *string `json:"DefaultRelayState,omitempty" xml:"DefaultRelayState,omitempty"`
 	// The Format attribute of the NameID element in the SAML assertion. Valid values:
 	//
-	// *   urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: No format is specified. How to resolve the NameID element depends on the application.
-	// *   urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress: The NameID element must be an email address.
-	// *   urn:oasis:names:tc:SAML:2.0:nameid-format:persistent: The NameID element must be persistent.
-	// *   urn:oasis:names:tc:SAML:2.0:nameid-format:transient: The NameID element must be transient.
+	// 	- urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: No format is specified. How to resolve the NameID element depends on the application.
+	//
+	// 	- urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress: The NameID element must be an email address.
+	//
+	// 	- urn:oasis:names:tc:SAML:2.0:nameid-format:persistent: The NameID element must be persistent.
+	//
+	// 	- urn:oasis:names:tc:SAML:2.0:nameid-format:transient: The NameID element must be transient.
+	//
+	// example:
+	//
+	// urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
 	NameIdFormat *string `json:"NameIdFormat,omitempty" xml:"NameIdFormat,omitempty"`
 	// The expression that is used to generate the value of NameID in the SAML assertion.
+	//
+	// example:
+	//
+	// user.email
 	NameIdValueExpression *string `json:"NameIdValueExpression,omitempty" xml:"NameIdValueExpression,omitempty"`
 	// response是否签名
+	//
+	// example:
+	//
+	// true
 	ResponseSigned *bool `json:"ResponseSigned,omitempty" xml:"ResponseSigned,omitempty"`
 	// The algorithm that is used to calculate the signature for the SAML assertion.
+	//
+	// example:
+	//
+	// RSA-SHA256
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
 	// The entity ID of the application in SAML. The application assumes the role of service provider.
+	//
+	// example:
+	//
+	// urn:alibaba:cloudcomputing
 	SpEntityId *string `json:"SpEntityId,omitempty" xml:"SpEntityId,omitempty"`
 	// The Assertion Consumer Service (ACS) URL of the application in SAML. The application assumes the role of service provider.
+	//
+	// example:
+	//
+	// https://signin.aliyun.com/saml-role/sso
 	SpSsoAcsUrl *string `json:"SpSsoAcsUrl,omitempty" xml:"SpSsoAcsUrl,omitempty"`
 }
 
@@ -11483,8 +14917,16 @@ func (s *SetApplicationSsoConfigRequestSamlSsoConfig) SetSpSsoAcsUrl(v string) *
 
 type SetApplicationSsoConfigRequestSamlSsoConfigAttributeStatements struct {
 	// The attribute name.
+	//
+	// example:
+	//
+	// https://www.aliyun.com/SAML-Role/Attributes/RoleSessionName
 	AttributeName *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
 	// The expression that is used to generate the value of the attribute.
+	//
+	// example:
+	//
+	// user.username
 	AttributeValueExpression *string `json:"AttributeValueExpression,omitempty" xml:"AttributeValueExpression,omitempty"`
 }
 
@@ -11508,6 +14950,10 @@ func (s *SetApplicationSsoConfigRequestSamlSsoConfigAttributeStatements) SetAttr
 
 type SetApplicationSsoConfigResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11555,8 +15001,20 @@ func (s *SetApplicationSsoConfigResponse) SetBody(v *SetApplicationSsoConfigResp
 
 type SetDefaultDomainRequest struct {
 	// 域名ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dm_examplexxxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -11579,6 +15037,9 @@ func (s *SetDefaultDomainRequest) SetInstanceId(v string) *SetDefaultDomainReque
 }
 
 type SetDefaultDomainResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11626,10 +15087,26 @@ func (s *SetDefaultDomainResponse) SetBody(v *SetDefaultDomainResponseBody) *Set
 
 type SetForgetPasswordConfigurationRequest struct {
 	// 身份认证渠道。枚举取值:email(邮件)、sms(短信)
+	//
+	// example:
+	//
+	// email
 	AuthenticationChannels []*string `json:"AuthenticationChannels,omitempty" xml:"AuthenticationChannels,omitempty" type:"Repeated"`
 	// 忘记密码配置状态。枚举取值:enabled(开启)、disabled(禁用)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enabled
 	ForgetPasswordStatus *string `json:"ForgetPasswordStatus,omitempty" xml:"ForgetPasswordStatus,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eiam-111ccc1111
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -11658,6 +15135,10 @@ func (s *SetForgetPasswordConfigurationRequest) SetInstanceId(v string) *SetForg
 
 type SetForgetPasswordConfigurationResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11705,10 +15186,22 @@ func (s *SetForgetPasswordConfigurationResponse) SetBody(v *SetForgetPasswordCon
 
 type SetPasswordComplexityConfigurationRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The password complexity rules.
 	PasswordComplexityRules []*SetPasswordComplexityConfigurationRequestPasswordComplexityRules `json:"PasswordComplexityRules,omitempty" xml:"PasswordComplexityRules,omitempty" type:"Repeated"`
 	// The minimum number of characters in a password.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PasswordMinLength *int32 `json:"PasswordMinLength,omitempty" xml:"PasswordMinLength,omitempty"`
 }
 
@@ -11738,14 +15231,25 @@ func (s *SetPasswordComplexityConfigurationRequest) SetPasswordMinLength(v int32
 type SetPasswordComplexityConfigurationRequestPasswordComplexityRules struct {
 	// The type of the password check. Valid values:
 	//
-	// *   inclusion_upper_case: The password must contain uppercase letters.
-	// *   inclusion_lower_case: The password must contain lowercase letters.
-	// *   inclusion_special_case: The password must contain one or more of the following special characters: @ % + \ / \" ! # $ ^ ? : , ( ) { } \[ ] ~ - \_ .
-	// *   inclusion_number: The password must contain digits.
-	// *   exclusion_username: The password cannot contain a username.
-	// *   exclusion_email: The password cannot contain an email prefix.
-	// *   exclusion_phone_number: The password cannot contain a mobile number.
-	// *   exclusion_display_name: The password cannot contain a display name.
+	// 	- inclusion_upper_case: The password must contain uppercase letters.
+	//
+	// 	- inclusion_lower_case: The password must contain lowercase letters.
+	//
+	// 	- inclusion_special_case: The password must contain one or more of the following special characters: @ % + \\ / \\" ! # $ ^ ? : , ( ) { } [ ] ~ - _ .
+	//
+	// 	- inclusion_number: The password must contain digits.
+	//
+	// 	- exclusion_username: The password cannot contain a username.
+	//
+	// 	- exclusion_email: The password cannot contain an email prefix.
+	//
+	// 	- exclusion_phone_number: The password cannot contain a mobile number.
+	//
+	// 	- exclusion_display_name: The password cannot contain a display name.
+	//
+	// example:
+	//
+	// inclusion_upper_case
 	PasswordCheckType *string `json:"PasswordCheckType,omitempty" xml:"PasswordCheckType,omitempty"`
 }
 
@@ -11764,6 +15268,10 @@ func (s *SetPasswordComplexityConfigurationRequestPasswordComplexityRules) SetPa
 
 type SetPasswordComplexityConfigurationResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11811,30 +15319,70 @@ func (s *SetPasswordComplexityConfigurationResponse) SetBody(v *SetPasswordCompl
 
 type SetPasswordExpirationConfigurationRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The action to take upon password expiration. This parameter must be specified when PasswordExpirationStatus is set to enabled. Valid values:
 	//
-	// *   forbid_login: Users cannot log on to IDaaS.
-	// *   force_update_password: Users must change the password.
-	// *   remind_update_password: IDaaS reminds users to change the password upon each logon.
+	// 	- forbid_login: Users cannot log on to IDaaS.
+	//
+	// 	- force_update_password: Users must change the password.
+	//
+	// 	- remind_update_password: IDaaS reminds users to change the password upon each logon.
+	//
+	// example:
+	//
+	// force_update_password
 	PasswordExpirationAction *string `json:"PasswordExpirationAction,omitempty" xml:"PasswordExpirationAction,omitempty"`
 	// The methods for receiving password expiration notifications. This parameter must be specified when PasswordExpirationNotificationStatus is set to enabled.
+	//
+	// example:
+	//
+	// login
 	PasswordExpirationNotificationChannels []*string `json:"PasswordExpirationNotificationChannels,omitempty" xml:"PasswordExpirationNotificationChannels,omitempty" type:"Repeated"`
 	// The number of days before the expiration date during which password expiration notifications are sent. Unit: day. This parameter must be specified when PasswordExpirationNotificationStatus is set to enabled.
+	//
+	// example:
+	//
+	// 7
 	PasswordExpirationNotificationDuration *int32 `json:"PasswordExpirationNotificationDuration,omitempty" xml:"PasswordExpirationNotificationDuration,omitempty"`
 	// Specifies whether to enable the password expiration notification feature. Valid values:
 	//
-	// *   enabled
-	// *   disabled
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// example:
+	//
+	// enabled
 	PasswordExpirationNotificationStatus *string `json:"PasswordExpirationNotificationStatus,omitempty" xml:"PasswordExpirationNotificationStatus,omitempty"`
 	// Specifies whether to enable the password expiration feature. Valid values:
 	//
-	// *   enabled
-	// *   disabled
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enabled
 	PasswordExpirationStatus *string `json:"PasswordExpirationStatus,omitempty" xml:"PasswordExpirationStatus,omitempty"`
 	// The number of days before which users must change the password to prevent password expiration. Unit: day. You must set this parameter to a value greater than the value of PasswordExpirationNotificationDuration.
+	//
+	// example:
+	//
+	// 7
 	PasswordForcedUpdateDuration *int32 `json:"PasswordForcedUpdateDuration,omitempty" xml:"PasswordForcedUpdateDuration,omitempty"`
 	// The validity period of a password. Unit: day. This parameter must be specified when PasswordExpirationStatus is set to enabled.
+	//
+	// example:
+	//
+	// 180
 	PasswordValidMaxDay *int32 `json:"PasswordValidMaxDay,omitempty" xml:"PasswordValidMaxDay,omitempty"`
 }
 
@@ -11888,6 +15436,10 @@ func (s *SetPasswordExpirationConfigurationRequest) SetPasswordValidMaxDay(v int
 
 type SetPasswordExpirationConfigurationResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11935,13 +15487,30 @@ func (s *SetPasswordExpirationConfigurationResponse) SetBody(v *SetPasswordExpir
 
 type SetPasswordHistoryConfigurationRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The maximum number of recent passwords that can be retained. This parameter must be specified when PasswordHistoryStatus is set to enabled.
+	//
+	// example:
+	//
+	// 3
 	PasswordHistoryMaxRetention *int32 `json:"PasswordHistoryMaxRetention,omitempty" xml:"PasswordHistoryMaxRetention,omitempty"`
 	// Specifies whether to enable the password history feature. Valid values:
 	//
-	// *   enabled
-	// *   disabled
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enabled
 	PasswordHistoryStatus *string `json:"PasswordHistoryStatus,omitempty" xml:"PasswordHistoryStatus,omitempty"`
 }
 
@@ -11970,6 +15539,10 @@ func (s *SetPasswordHistoryConfigurationRequest) SetPasswordHistoryStatus(v stri
 
 type SetPasswordHistoryConfigurationResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12017,22 +15590,48 @@ func (s *SetPasswordHistoryConfigurationResponse) SetBody(v *SetPasswordHistoryC
 
 type SetPasswordInitializationConfigurationRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether to enable forcible password change upon first logon. Valid values:
 	//
-	// *   enabled
-	// *   disabled
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// example:
+	//
+	// enabled
 	PasswordForcedUpdateStatus *string `json:"PasswordForcedUpdateStatus,omitempty" xml:"PasswordForcedUpdateStatus,omitempty"`
 	// The methods for receiving password initialization notifications.
+	//
+	// example:
+	//
+	// email
 	PasswordInitializationNotificationChannels []*string `json:"PasswordInitializationNotificationChannels,omitempty" xml:"PasswordInitializationNotificationChannels,omitempty" type:"Repeated"`
 	// Specifies whether to enable password initialization. Valid values:
 	//
-	// *   enabled
-	// *   disabled
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enabled
 	PasswordInitializationStatus *string `json:"PasswordInitializationStatus,omitempty" xml:"PasswordInitializationStatus,omitempty"`
 	// The password initialization method. This parameter is required when PasswordInitializationStatus is set to enabled. Set the value to random.
 	//
-	// *   random: A randomly generated password is used.
+	// 	- random: A randomly generated password is used.
+	//
+	// example:
+	//
+	// random
 	PasswordInitializationType *string `json:"PasswordInitializationType,omitempty" xml:"PasswordInitializationType,omitempty"`
 }
 
@@ -12071,6 +15670,10 @@ func (s *SetPasswordInitializationConfigurationRequest) SetPasswordInitializatio
 
 type SetPasswordInitializationConfigurationResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12118,10 +15721,28 @@ func (s *SetPasswordInitializationConfigurationResponse) SetBody(v *SetPasswordI
 
 type SetUserPrimaryOrganizationalUnitRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the new primary organizational unit.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 	// The ID of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -12150,6 +15771,10 @@ func (s *SetUserPrimaryOrganizationalUnitRequest) SetUserId(v string) *SetUserPr
 
 type SetUserPrimaryOrganizationalUnitResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12197,8 +15822,20 @@ func (s *SetUserPrimaryOrganizationalUnitResponse) SetBody(v *SetUserPrimaryOrga
 
 type UnlockUserRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The account ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -12222,6 +15859,10 @@ func (s *UnlockUserRequest) SetUserId(v string) *UnlockUserRequest {
 
 type UnlockUserResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12269,13 +15910,32 @@ func (s *UnlockUserResponse) SetBody(v *UnlockUserResponseBody) *UnlockUserRespo
 
 type UpdateApplicationAuthorizationTypeRequest struct {
 	// The ID of the application that you want to modify.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The authorization type of the application. Valid values:
 	//
-	// *   authorize_required: Only the user with explicit authorization can access the application.
-	// *   default_all: By default, all users can access the application.
+	// 	- authorize_required: Only the user with explicit authorization can access the application.
+	//
+	// 	- default_all: By default, all users can access the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// authorize_required
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -12304,6 +15964,10 @@ func (s *UpdateApplicationAuthorizationTypeRequest) SetInstanceId(v string) *Upd
 
 type UpdateApplicationAuthorizationTypeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12351,10 +16015,26 @@ func (s *UpdateApplicationAuthorizationTypeResponse) SetBody(v *UpdateApplicatio
 
 type UpdateApplicationDescriptionRequest struct {
 	// The ID of the application that you want to modify.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// A demo application that is used for test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk2676xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -12383,6 +16063,10 @@ func (s *UpdateApplicationDescriptionRequest) SetInstanceId(v string) *UpdateApp
 
 type UpdateApplicationDescriptionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12430,12 +16114,32 @@ func (s *UpdateApplicationDescriptionResponse) SetBody(v *UpdateApplicationDescr
 
 type UpdateGroupRequest struct {
 	// The external ID of the group.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupExternalId *string `json:"GroupExternalId,omitempty" xml:"GroupExternalId,omitempty"`
 	// The group ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the group.
+	//
+	// example:
+	//
+	// name_test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -12469,6 +16173,10 @@ func (s *UpdateGroupRequest) SetInstanceId(v string) *UpdateGroupRequest {
 
 type UpdateGroupResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12516,10 +16224,26 @@ func (s *UpdateGroupResponse) SetBody(v *UpdateGroupResponseBody) *UpdateGroupRe
 
 type UpdateGroupDescriptionRequest struct {
 	// The description of the account group. The value can be up to 256 characters in length.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the account group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -12548,6 +16272,10 @@ func (s *UpdateGroupDescriptionRequest) SetInstanceId(v string) *UpdateGroupDesc
 
 type UpdateGroupDescriptionResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12595,8 +16323,18 @@ func (s *UpdateGroupDescriptionResponse) SetBody(v *UpdateGroupDescriptionRespon
 
 type UpdateInstanceDescriptionRequest struct {
 	// The new description of the instance.
+	//
+	// example:
+	//
+	// 测试实例
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance whose description you want to modify.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -12620,6 +16358,10 @@ func (s *UpdateInstanceDescriptionRequest) SetInstanceId(v string) *UpdateInstan
 
 type UpdateInstanceDescriptionResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12667,10 +16409,28 @@ func (s *UpdateInstanceDescriptionResponse) SetBody(v *UpdateInstanceDescription
 
 type UpdateNetworkAccessEndpointNameRequest struct {
 	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 专属网络端点ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nae_examplexxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
 	// 专属网络端点名称。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xx业务VPC访问端点
 	NetworkAccessEndpointName *string `json:"NetworkAccessEndpointName,omitempty" xml:"NetworkAccessEndpointName,omitempty"`
 }
 
@@ -12698,6 +16458,9 @@ func (s *UpdateNetworkAccessEndpointNameRequest) SetNetworkAccessEndpointName(v 
 }
 
 type UpdateNetworkAccessEndpointNameResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12745,10 +16508,26 @@ func (s *UpdateNetworkAccessEndpointNameResponse) SetBody(v *UpdateNetworkAccess
 
 type UpdateOrganizationalUnitRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The organization ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 	// The name of the organization. The name can be up to 64 characters in length and must be unique in the same parent organization.
+	//
+	// example:
+	//
+	// ou_name
 	OrganizationalUnitName *string `json:"OrganizationalUnitName,omitempty" xml:"OrganizationalUnitName,omitempty"`
 }
 
@@ -12777,6 +16556,10 @@ func (s *UpdateOrganizationalUnitRequest) SetOrganizationalUnitName(v string) *U
 
 type UpdateOrganizationalUnitResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12824,10 +16607,26 @@ func (s *UpdateOrganizationalUnitResponse) SetBody(v *UpdateOrganizationalUnitRe
 
 type UpdateOrganizationalUnitDescriptionRequest struct {
 	// The description of the organization. The value can be up to 256 characters in length.
+	//
+	// example:
+	//
+	// organizationalUnit_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The organization ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 }
 
@@ -12856,6 +16655,10 @@ func (s *UpdateOrganizationalUnitDescriptionRequest) SetOrganizationalUnitId(v s
 
 type UpdateOrganizationalUnitDescriptionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12903,10 +16706,28 @@ func (s *UpdateOrganizationalUnitDescriptionResponse) SetBody(v *UpdateOrganizat
 
 type UpdateOrganizationalUnitParentIdRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The organization ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
 	// The parent organization ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 }
 
@@ -12935,6 +16756,10 @@ func (s *UpdateOrganizationalUnitParentIdRequest) SetParentId(v string) *UpdateO
 
 type UpdateOrganizationalUnitParentIdResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12984,22 +16809,62 @@ type UpdateUserRequest struct {
 	// The custom extended fields.
 	CustomFields []*UpdateUserRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
 	// The display name of the account. The display name can be up to 64 characters in length.
+	//
+	// example:
+	//
+	// test_name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The email address. The prefix of the email address can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+	// The email address. The prefix of the email address can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// example@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// Specifies whether the email address is verified. This parameter must be specified if you specify Email. You can set this parameter to true if you have no special business requirements.
+	//
+	// example:
+	//
+	// true
 	EmailVerified *bool `json:"EmailVerified,omitempty" xml:"EmailVerified,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The mobile number. The mobile number must be 6 to 15 digits in length.
+	//
+	// example:
+	//
+	// 156xxxxxxxxx
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// Specifies whether the mobile number is verified. This parameter must be specified if you specify PhoneNumber. You can set this parameter to true if you have no special business requirements.
+	//
+	// example:
+	//
+	// true
 	PhoneNumberVerified *bool `json:"PhoneNumberVerified,omitempty" xml:"PhoneNumberVerified,omitempty"`
 	// The area code of the mobile number. For example, the area code of a mobile number in the Chinese mainland is 86 without 00 or the plus sign (+). This parameter must be specified if you specify PhoneNumber.
+	//
+	// example:
+	//
+	// 86
 	PhoneRegion *string `json:"PhoneRegion,omitempty" xml:"PhoneRegion,omitempty"`
 	// The account ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The name of the account. The name can be up to 64 characters in length. It can contain letters, digits, and the following special characters: \_ . @ -
+	// The name of the account. The name can be up to 64 characters in length. It can contain letters, digits, and the following special characters: _ . @ -
+	//
+	// example:
+	//
+	// username_test
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -13063,14 +16928,28 @@ func (s *UpdateUserRequest) SetUsername(v string) *UpdateUserRequest {
 
 type UpdateUserRequestCustomFields struct {
 	// The name of the extended field. You must create an extended field before you specify this parameter. To create an extended field, go to the Extended Fields page of the specified EIAM instance in the IDaaS console.
+	//
+	// example:
+	//
+	// nick_name
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	// The value of the extended field. The value follows the limits on the properties of the extended field.
+	//
+	// example:
+	//
+	// test_value
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
 	// The operation type of the extended field. Valid values:
 	//
-	// *   add: adds a value to the extended field of the account.
-	// *   replace: replaces the existing value of the extended field of the account. If the existing value to be replaced does not exist, this operation changes to the add operation.
-	// *   remove: removes a value from the extended field of the account.
+	// 	- add: adds a value to the extended field of the account.
+	//
+	// 	- replace: replaces the existing value of the extended field of the account. If the existing value to be replaced does not exist, this operation changes to the add operation.
+	//
+	// 	- remove: removes a value from the extended field of the account.
+	//
+	// example:
+	//
+	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 }
 
@@ -13099,6 +16978,10 @@ func (s *UpdateUserRequestCustomFields) SetOperation(v string) *UpdateUserReques
 
 type UpdateUserResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13146,10 +17029,26 @@ func (s *UpdateUserResponse) SetBody(v *UpdateUserResponseBody) *UpdateUserRespo
 
 type UpdateUserDescriptionRequest struct {
 	// The description of the account. The value can be up to 256 characters in length.
+	//
+	// example:
+	//
+	// this is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -13178,6 +17077,10 @@ func (s *UpdateUserDescriptionRequest) SetUserId(v string) *UpdateUserDescriptio
 
 type UpdateUserDescriptionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13225,17 +17128,44 @@ func (s *UpdateUserDescriptionResponse) SetBody(v *UpdateUserDescriptionResponse
 
 type UpdateUserPasswordRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The new password of the account. For more information about the password format, see the "Password Policies" topic.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// Specifies whether to enable forcible password change upon first logon. Default value: disabled. Valid values:
 	//
-	// *   enabled
-	// *   disabled
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// example:
+	//
+	// enabled
 	PasswordForcedUpdateStatus *string `json:"PasswordForcedUpdateStatus,omitempty" xml:"PasswordForcedUpdateStatus,omitempty"`
 	// The account ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The methods for receiving password notifications.
+	//
+	// example:
+	//
+	// sms
 	UserNotificationChannels []*string `json:"UserNotificationChannels,omitempty" xml:"UserNotificationChannels,omitempty" type:"Repeated"`
 }
 
@@ -13274,6 +17204,10 @@ func (s *UpdateUserPasswordRequest) SetUserNotificationChannels(v []*string) *Up
 
 type UpdateUserPasswordResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13366,6 +17300,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an Employee Identity and Access Management (EIAM) account to multiple EIAM organizations of Identity as a Service (IDaaS). If the account already exists in the organizational unit, the system directly returns a success response.
+//
+// @param request - AddUserToOrganizationalUnitsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserToOrganizationalUnitsResponse
 func (client *Client) AddUserToOrganizationalUnitsWithOptions(request *AddUserToOrganizationalUnitsRequest, runtime *util.RuntimeOptions) (_result *AddUserToOrganizationalUnitsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13407,6 +17350,13 @@ func (client *Client) AddUserToOrganizationalUnitsWithOptions(request *AddUserTo
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an Employee Identity and Access Management (EIAM) account to multiple EIAM organizations of Identity as a Service (IDaaS). If the account already exists in the organizational unit, the system directly returns a success response.
+//
+// @param request - AddUserToOrganizationalUnitsRequest
+//
+// @return AddUserToOrganizationalUnitsResponse
 func (client *Client) AddUserToOrganizationalUnits(request *AddUserToOrganizationalUnitsRequest) (_result *AddUserToOrganizationalUnitsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserToOrganizationalUnitsResponse{}
@@ -13418,6 +17368,15 @@ func (client *Client) AddUserToOrganizationalUnits(request *AddUserToOrganizatio
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds Employee Identity and Access Management (EIAM) accounts to an EIAM group of Identity as a Service (IDaaS).
+//
+// @param request - AddUsersToGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUsersToGroupResponse
 func (client *Client) AddUsersToGroupWithOptions(request *AddUsersToGroupRequest, runtime *util.RuntimeOptions) (_result *AddUsersToGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13459,6 +17418,13 @@ func (client *Client) AddUsersToGroupWithOptions(request *AddUsersToGroupRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds Employee Identity and Access Management (EIAM) accounts to an EIAM group of Identity as a Service (IDaaS).
+//
+// @param request - AddUsersToGroupRequest
+//
+// @return AddUsersToGroupResponse
 func (client *Client) AddUsersToGroup(request *AddUsersToGroupRequest) (_result *AddUsersToGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUsersToGroupResponse{}
@@ -13470,6 +17436,15 @@ func (client *Client) AddUsersToGroup(request *AddUsersToGroupRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants the permissions to access an application to multiple account groups at a time in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - AuthorizeApplicationToGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeApplicationToGroupsResponse
 func (client *Client) AuthorizeApplicationToGroupsWithOptions(request *AuthorizeApplicationToGroupsRequest, runtime *util.RuntimeOptions) (_result *AuthorizeApplicationToGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13511,6 +17486,13 @@ func (client *Client) AuthorizeApplicationToGroupsWithOptions(request *Authorize
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants the permissions to access an application to multiple account groups at a time in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - AuthorizeApplicationToGroupsRequest
+//
+// @return AuthorizeApplicationToGroupsResponse
 func (client *Client) AuthorizeApplicationToGroups(request *AuthorizeApplicationToGroupsRequest) (_result *AuthorizeApplicationToGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AuthorizeApplicationToGroupsResponse{}
@@ -13522,6 +17504,15 @@ func (client *Client) AuthorizeApplicationToGroups(request *AuthorizeApplication
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants the access permissions on an application to multiple Employee Identity and Access Management (EIAM) organizations at a time.
+//
+// @param request - AuthorizeApplicationToOrganizationalUnitsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeApplicationToOrganizationalUnitsResponse
 func (client *Client) AuthorizeApplicationToOrganizationalUnitsWithOptions(request *AuthorizeApplicationToOrganizationalUnitsRequest, runtime *util.RuntimeOptions) (_result *AuthorizeApplicationToOrganizationalUnitsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13563,6 +17554,13 @@ func (client *Client) AuthorizeApplicationToOrganizationalUnitsWithOptions(reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants the access permissions on an application to multiple Employee Identity and Access Management (EIAM) organizations at a time.
+//
+// @param request - AuthorizeApplicationToOrganizationalUnitsRequest
+//
+// @return AuthorizeApplicationToOrganizationalUnitsResponse
 func (client *Client) AuthorizeApplicationToOrganizationalUnits(request *AuthorizeApplicationToOrganizationalUnitsRequest) (_result *AuthorizeApplicationToOrganizationalUnitsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AuthorizeApplicationToOrganizationalUnitsResponse{}
@@ -13574,6 +17572,15 @@ func (client *Client) AuthorizeApplicationToOrganizationalUnits(request *Authori
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants the access permissions on an application to multiple Employee Identity and Access Management (EIAM) accounts at a time.
+//
+// @param request - AuthorizeApplicationToUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeApplicationToUsersResponse
 func (client *Client) AuthorizeApplicationToUsersWithOptions(request *AuthorizeApplicationToUsersRequest, runtime *util.RuntimeOptions) (_result *AuthorizeApplicationToUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13615,6 +17622,13 @@ func (client *Client) AuthorizeApplicationToUsersWithOptions(request *AuthorizeA
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants the access permissions on an application to multiple Employee Identity and Access Management (EIAM) accounts at a time.
+//
+// @param request - AuthorizeApplicationToUsersRequest
+//
+// @return AuthorizeApplicationToUsersResponse
 func (client *Client) AuthorizeApplicationToUsers(request *AuthorizeApplicationToUsersRequest) (_result *AuthorizeApplicationToUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AuthorizeApplicationToUsersResponse{}
@@ -13626,13 +17640,19 @@ func (client *Client) AuthorizeApplicationToUsers(request *AuthorizeApplicationT
 	return _result, _err
 }
 
-/**
- * IDaaS EIAM supports the following two standard single sign-on (SSO) protocols for adding applications: SAML 2.0 and OIDC. You can select an SSO protocol based on your business requirements when you add an application. You cannot change the SSO protocol that you selected after the application is added.
- *
- * @param request CreateApplicationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateApplicationResponse
- */
+// Summary:
+//
+// Adds an application to an Enterprise Identity Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// Description:
+//
+// IDaaS EIAM supports the following two standard single sign-on (SSO) protocols for adding applications: SAML 2.0 and OIDC. You can select an SSO protocol based on your business requirements when you add an application. You cannot change the SSO protocol that you selected after the application is added.
+//
+// @param request - CreateApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationResponse
 func (client *Client) CreateApplicationWithOptions(request *CreateApplicationRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13690,12 +17710,17 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 	return _result, _err
 }
 
-/**
- * IDaaS EIAM supports the following two standard single sign-on (SSO) protocols for adding applications: SAML 2.0 and OIDC. You can select an SSO protocol based on your business requirements when you add an application. You cannot change the SSO protocol that you selected after the application is added.
- *
- * @param request CreateApplicationRequest
- * @return CreateApplicationResponse
- */
+// Summary:
+//
+// Adds an application to an Enterprise Identity Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// Description:
+//
+// IDaaS EIAM supports the following two standard single sign-on (SSO) protocols for adding applications: SAML 2.0 and OIDC. You can select an SSO protocol based on your business requirements when you add an application. You cannot change the SSO protocol that you selected after the application is added.
+//
+// @param request - CreateApplicationRequest
+//
+// @return CreateApplicationResponse
 func (client *Client) CreateApplication(request *CreateApplicationRequest) (_result *CreateApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateApplicationResponse{}
@@ -13707,6 +17732,15 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a client key for an Employee Identity and Access Management (EIAM) application. An EIAM application can have up to two client keys.
+//
+// @param request - CreateApplicationClientSecretRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationClientSecretResponse
 func (client *Client) CreateApplicationClientSecretWithOptions(request *CreateApplicationClientSecretRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationClientSecretResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13744,6 +17778,13 @@ func (client *Client) CreateApplicationClientSecretWithOptions(request *CreateAp
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a client key for an Employee Identity and Access Management (EIAM) application. An EIAM application can have up to two client keys.
+//
+// @param request - CreateApplicationClientSecretRequest
+//
+// @return CreateApplicationClientSecretResponse
 func (client *Client) CreateApplicationClientSecret(request *CreateApplicationClientSecretRequest) (_result *CreateApplicationClientSecretResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateApplicationClientSecretResponse{}
@@ -13755,6 +17796,15 @@ func (client *Client) CreateApplicationClientSecret(request *CreateApplicationCl
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建域名。
+//
+// @param request - CreateDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDomainResponse
 func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runtime *util.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13796,6 +17846,13 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建域名。
+//
+// @param request - CreateDomainRequest
+//
+// @return CreateDomainResponse
 func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *CreateDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDomainResponse{}
@@ -13807,6 +17864,15 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建域名代理Token。
+//
+// @param request - CreateDomainProxyTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDomainProxyTokenResponse
 func (client *Client) CreateDomainProxyTokenWithOptions(request *CreateDomainProxyTokenRequest, runtime *util.RuntimeOptions) (_result *CreateDomainProxyTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13844,6 +17910,13 @@ func (client *Client) CreateDomainProxyTokenWithOptions(request *CreateDomainPro
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建域名代理Token。
+//
+// @param request - CreateDomainProxyTokenRequest
+//
+// @return CreateDomainProxyTokenResponse
 func (client *Client) CreateDomainProxyToken(request *CreateDomainProxyTokenRequest) (_result *CreateDomainProxyTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDomainProxyTokenResponse{}
@@ -13855,6 +17928,15 @@ func (client *Client) CreateDomainProxyToken(request *CreateDomainProxyTokenRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - CreateGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupResponse
 func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtime *util.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13900,6 +17982,13 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - CreateGroupRequest
+//
+// @return CreateGroupResponse
 func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGroupResponse{}
@@ -13911,6 +18000,15 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an instance based on which all capabilities of Identity as a Service (IDaaS) Enterprise Identity and Access Management (EIAM) are provided.
+//
+// @param request - CreateInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13944,6 +18042,13 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an instance based on which all capabilities of Identity as a Service (IDaaS) Enterprise Identity and Access Management (EIAM) are provided.
+//
+// @param request - CreateInstanceRequest
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceResponse{}
@@ -13955,6 +18060,15 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个专属网络端点。
+//
+// @param request - CreateNetworkAccessEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNetworkAccessEndpointResponse
 func (client *Client) CreateNetworkAccessEndpointWithOptions(request *CreateNetworkAccessEndpointRequest, runtime *util.RuntimeOptions) (_result *CreateNetworkAccessEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14008,6 +18122,13 @@ func (client *Client) CreateNetworkAccessEndpointWithOptions(request *CreateNetw
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个专属网络端点。
+//
+// @param request - CreateNetworkAccessEndpointRequest
+//
+// @return CreateNetworkAccessEndpointResponse
 func (client *Client) CreateNetworkAccessEndpoint(request *CreateNetworkAccessEndpointRequest) (_result *CreateNetworkAccessEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNetworkAccessEndpointResponse{}
@@ -14019,6 +18140,15 @@ func (client *Client) CreateNetworkAccessEndpoint(request *CreateNetworkAccessEn
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - CreateOrganizationalUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrganizationalUnitResponse
 func (client *Client) CreateOrganizationalUnitWithOptions(request *CreateOrganizationalUnitRequest, runtime *util.RuntimeOptions) (_result *CreateOrganizationalUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14068,6 +18198,13 @@ func (client *Client) CreateOrganizationalUnitWithOptions(request *CreateOrganiz
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - CreateOrganizationalUnitRequest
+//
+// @return CreateOrganizationalUnitResponse
 func (client *Client) CreateOrganizationalUnit(request *CreateOrganizationalUnitRequest) (_result *CreateOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrganizationalUnitResponse{}
@@ -14079,6 +18216,15 @@ func (client *Client) CreateOrganizationalUnit(request *CreateOrganizationalUnit
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an account in an Identity as a Service (IDaaS) Enterprise Identity Access Management (EIAM) instance.
+//
+// @param request - CreateUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserResponse
 func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime *util.RuntimeOptions) (_result *CreateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14168,6 +18314,13 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an account in an Identity as a Service (IDaaS) Enterprise Identity Access Management (EIAM) instance.
+//
+// @param request - CreateUserRequest
+//
+// @return CreateUserResponse
 func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUserResponse{}
@@ -14179,13 +18332,19 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 	return _result, _err
 }
 
-/**
- * Make sure that the EIAM application that you want to delete is not used before you delete the EIAM application. After you delete the EIAM application, all configurations are deleted and cannot be restored.
- *
- * @param request DeleteApplicationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteApplicationResponse
- */
+// Summary:
+//
+// Deletes an Employee Identity and Access Management (EIAM) application.
+//
+// Description:
+//
+// Make sure that the EIAM application that you want to delete is not used before you delete the EIAM application. After you delete the EIAM application, all configurations are deleted and cannot be restored.
+//
+// @param request - DeleteApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApplicationResponse
 func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationRequest, runtime *util.RuntimeOptions) (_result *DeleteApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14223,12 +18382,17 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 	return _result, _err
 }
 
-/**
- * Make sure that the EIAM application that you want to delete is not used before you delete the EIAM application. After you delete the EIAM application, all configurations are deleted and cannot be restored.
- *
- * @param request DeleteApplicationRequest
- * @return DeleteApplicationResponse
- */
+// Summary:
+//
+// Deletes an Employee Identity and Access Management (EIAM) application.
+//
+// Description:
+//
+// Make sure that the EIAM application that you want to delete is not used before you delete the EIAM application. After you delete the EIAM application, all configurations are deleted and cannot be restored.
+//
+// @param request - DeleteApplicationRequest
+//
+// @return DeleteApplicationResponse
 func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_result *DeleteApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteApplicationResponse{}
@@ -14240,6 +18404,15 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a client key for an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - DeleteApplicationClientSecretRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApplicationClientSecretResponse
 func (client *Client) DeleteApplicationClientSecretWithOptions(request *DeleteApplicationClientSecretRequest, runtime *util.RuntimeOptions) (_result *DeleteApplicationClientSecretResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14281,6 +18454,13 @@ func (client *Client) DeleteApplicationClientSecretWithOptions(request *DeleteAp
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a client key for an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - DeleteApplicationClientSecretRequest
+//
+// @return DeleteApplicationClientSecretResponse
 func (client *Client) DeleteApplicationClientSecret(request *DeleteApplicationClientSecretRequest) (_result *DeleteApplicationClientSecretResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteApplicationClientSecretResponse{}
@@ -14292,6 +18472,15 @@ func (client *Client) DeleteApplicationClientSecret(request *DeleteApplicationCl
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除域名。
+//
+// @param request - DeleteDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDomainResponse
 func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14329,6 +18518,13 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除域名。
+//
+// @param request - DeleteDomainRequest
+//
+// @return DeleteDomainResponse
 func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *DeleteDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDomainResponse{}
@@ -14340,6 +18536,15 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定域名代理Token，删除之前请保证代理Token处于禁用状态。
+//
+// @param request - DeleteDomainProxyTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDomainProxyTokenResponse
 func (client *Client) DeleteDomainProxyTokenWithOptions(request *DeleteDomainProxyTokenRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainProxyTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14381,6 +18586,13 @@ func (client *Client) DeleteDomainProxyTokenWithOptions(request *DeleteDomainPro
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定域名代理Token，删除之前请保证代理Token处于禁用状态。
+//
+// @param request - DeleteDomainProxyTokenRequest
+//
+// @return DeleteDomainProxyTokenResponse
 func (client *Client) DeleteDomainProxyToken(request *DeleteDomainProxyTokenRequest) (_result *DeleteDomainProxyTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDomainProxyTokenResponse{}
@@ -14392,6 +18604,15 @@ func (client *Client) DeleteDomainProxyToken(request *DeleteDomainProxyTokenRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the information of an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - DeleteGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGroupResponse
 func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14429,6 +18650,13 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the information of an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - DeleteGroupRequest
+//
+// @return DeleteGroupResponse
 func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGroupResponse{}
@@ -14440,13 +18668,19 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 	return _result, _err
 }
 
-/**
- * Make sure that the instance to be deleted is no longer used. If the instance is deleted, all data related to the instance will be deleted.
- *
- * @param request DeleteInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteInstanceResponse
- */
+// Summary:
+//
+// Deletes an Enterprise Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS) that you do not need.
+//
+// Description:
+//
+// Make sure that the instance to be deleted is no longer used. If the instance is deleted, all data related to the instance will be deleted.
+//
+// @param request - DeleteInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14480,12 +18714,17 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
-/**
- * Make sure that the instance to be deleted is no longer used. If the instance is deleted, all data related to the instance will be deleted.
- *
- * @param request DeleteInstanceRequest
- * @return DeleteInstanceResponse
- */
+// Summary:
+//
+// Deletes an Enterprise Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS) that you do not need.
+//
+// Description:
+//
+// Make sure that the instance to be deleted is no longer used. If the instance is deleted, all data related to the instance will be deleted.
+//
+// @param request - DeleteInstanceRequest
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteInstanceResponse{}
@@ -14497,6 +18736,15 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除一个专属网络端点。
+//
+// @param request - DeleteNetworkAccessEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNetworkAccessEndpointResponse
 func (client *Client) DeleteNetworkAccessEndpointWithOptions(request *DeleteNetworkAccessEndpointRequest, runtime *util.RuntimeOptions) (_result *DeleteNetworkAccessEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14534,6 +18782,13 @@ func (client *Client) DeleteNetworkAccessEndpointWithOptions(request *DeleteNetw
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除一个专属网络端点。
+//
+// @param request - DeleteNetworkAccessEndpointRequest
+//
+// @return DeleteNetworkAccessEndpointResponse
 func (client *Client) DeleteNetworkAccessEndpoint(request *DeleteNetworkAccessEndpointRequest) (_result *DeleteNetworkAccessEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNetworkAccessEndpointResponse{}
@@ -14545,6 +18800,15 @@ func (client *Client) DeleteNetworkAccessEndpoint(request *DeleteNetworkAccessEn
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). If the organization has EIAM accounts or child organizations, the delete operation fails.
+//
+// @param request - DeleteOrganizationalUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOrganizationalUnitResponse
 func (client *Client) DeleteOrganizationalUnitWithOptions(request *DeleteOrganizationalUnitRequest, runtime *util.RuntimeOptions) (_result *DeleteOrganizationalUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14582,6 +18846,13 @@ func (client *Client) DeleteOrganizationalUnitWithOptions(request *DeleteOrganiz
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). If the organization has EIAM accounts or child organizations, the delete operation fails.
+//
+// @param request - DeleteOrganizationalUnitRequest
+//
+// @return DeleteOrganizationalUnitResponse
 func (client *Client) DeleteOrganizationalUnit(request *DeleteOrganizationalUnitRequest) (_result *DeleteOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteOrganizationalUnitResponse{}
@@ -14593,6 +18864,15 @@ func (client *Client) DeleteOrganizationalUnit(request *DeleteOrganizationalUnit
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS). The information related to the account is cleared.
+//
+// @param request - DeleteUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime *util.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14630,6 +18910,13 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS). The information related to the account is cleared.
+//
+// @param request - DeleteUserRequest
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserResponse{}
@@ -14641,13 +18928,19 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	return _result, _err
 }
 
-/**
- * All features of the EIAM application cannot be used if you disable the EIAM application, such as single sign-on (SSO) and account synchronization. Make sure that you acknowledge the risks of the delete operation.
- *
- * @param request DisableApplicationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableApplicationResponse
- */
+// Summary:
+//
+// Disables an enabled Employee Identity and Access Management (EIAM) application. All features of the EIAM application cannot be used if you disable the EIAM application.
+//
+// Description:
+//
+// All features of the EIAM application cannot be used if you disable the EIAM application, such as single sign-on (SSO) and account synchronization. Make sure that you acknowledge the risks of the delete operation.
+//
+// @param request - DisableApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableApplicationResponse
 func (client *Client) DisableApplicationWithOptions(request *DisableApplicationRequest, runtime *util.RuntimeOptions) (_result *DisableApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14685,12 +18978,17 @@ func (client *Client) DisableApplicationWithOptions(request *DisableApplicationR
 	return _result, _err
 }
 
-/**
- * All features of the EIAM application cannot be used if you disable the EIAM application, such as single sign-on (SSO) and account synchronization. Make sure that you acknowledge the risks of the delete operation.
- *
- * @param request DisableApplicationRequest
- * @return DisableApplicationResponse
- */
+// Summary:
+//
+// Disables an enabled Employee Identity and Access Management (EIAM) application. All features of the EIAM application cannot be used if you disable the EIAM application.
+//
+// Description:
+//
+// All features of the EIAM application cannot be used if you disable the EIAM application, such as single sign-on (SSO) and account synchronization. Make sure that you acknowledge the risks of the delete operation.
+//
+// @param request - DisableApplicationRequest
+//
+// @return DisableApplicationResponse
 func (client *Client) DisableApplication(request *DisableApplicationRequest) (_result *DisableApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableApplicationResponse{}
@@ -14702,6 +19000,15 @@ func (client *Client) DisableApplication(request *DisableApplicationRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - DisableApplicationApiInvokeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableApplicationApiInvokeResponse
 func (client *Client) DisableApplicationApiInvokeWithOptions(request *DisableApplicationApiInvokeRequest, runtime *util.RuntimeOptions) (_result *DisableApplicationApiInvokeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14739,6 +19046,13 @@ func (client *Client) DisableApplicationApiInvokeWithOptions(request *DisableApp
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - DisableApplicationApiInvokeRequest
+//
+// @return DisableApplicationApiInvokeResponse
 func (client *Client) DisableApplicationApiInvoke(request *DisableApplicationApiInvokeRequest) (_result *DisableApplicationApiInvokeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableApplicationApiInvokeResponse{}
@@ -14750,6 +19064,15 @@ func (client *Client) DisableApplicationApiInvoke(request *DisableApplicationApi
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a client key of an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - DisableApplicationClientSecretRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableApplicationClientSecretResponse
 func (client *Client) DisableApplicationClientSecretWithOptions(request *DisableApplicationClientSecretRequest, runtime *util.RuntimeOptions) (_result *DisableApplicationClientSecretResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14791,6 +19114,13 @@ func (client *Client) DisableApplicationClientSecretWithOptions(request *Disable
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a client key of an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - DisableApplicationClientSecretRequest
+//
+// @return DisableApplicationClientSecretResponse
 func (client *Client) DisableApplicationClientSecret(request *DisableApplicationClientSecretRequest) (_result *DisableApplicationClientSecretResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableApplicationClientSecretResponse{}
@@ -14802,6 +19132,15 @@ func (client *Client) DisableApplicationClientSecret(request *DisableApplication
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - DisableApplicationProvisioningRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableApplicationProvisioningResponse
 func (client *Client) DisableApplicationProvisioningWithOptions(request *DisableApplicationProvisioningRequest, runtime *util.RuntimeOptions) (_result *DisableApplicationProvisioningResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14839,6 +19178,13 @@ func (client *Client) DisableApplicationProvisioningWithOptions(request *Disable
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - DisableApplicationProvisioningRequest
+//
+// @return DisableApplicationProvisioningResponse
 func (client *Client) DisableApplicationProvisioning(request *DisableApplicationProvisioningRequest) (_result *DisableApplicationProvisioningResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableApplicationProvisioningResponse{}
@@ -14850,6 +19196,15 @@ func (client *Client) DisableApplicationProvisioning(request *DisableApplication
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用应用SSO能力
+//
+// @param request - DisableApplicationSsoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableApplicationSsoResponse
 func (client *Client) DisableApplicationSsoWithOptions(request *DisableApplicationSsoRequest, runtime *util.RuntimeOptions) (_result *DisableApplicationSsoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14887,6 +19242,13 @@ func (client *Client) DisableApplicationSsoWithOptions(request *DisableApplicati
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用应用SSO能力
+//
+// @param request - DisableApplicationSsoRequest
+//
+// @return DisableApplicationSsoResponse
 func (client *Client) DisableApplicationSso(request *DisableApplicationSsoRequest) (_result *DisableApplicationSsoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableApplicationSsoResponse{}
@@ -14898,6 +19260,15 @@ func (client *Client) DisableApplicationSso(request *DisableApplicationSsoReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用指定域名代理Token。
+//
+// @param request - DisableDomainProxyTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableDomainProxyTokenResponse
 func (client *Client) DisableDomainProxyTokenWithOptions(request *DisableDomainProxyTokenRequest, runtime *util.RuntimeOptions) (_result *DisableDomainProxyTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14939,6 +19310,13 @@ func (client *Client) DisableDomainProxyTokenWithOptions(request *DisableDomainP
 	return _result, _err
 }
 
+// Summary:
+//
+// 禁用指定域名代理Token。
+//
+// @param request - DisableDomainProxyTokenRequest
+//
+// @return DisableDomainProxyTokenResponse
 func (client *Client) DisableDomainProxyToken(request *DisableDomainProxyTokenRequest) (_result *DisableDomainProxyTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableDomainProxyTokenResponse{}
@@ -14950,6 +19328,15 @@ func (client *Client) DisableDomainProxyToken(request *DisableDomainProxyTokenRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭初始化域名自动跳转。
+//
+// @param request - DisableInitDomainAutoRedirectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableInitDomainAutoRedirectResponse
 func (client *Client) DisableInitDomainAutoRedirectWithOptions(request *DisableInitDomainAutoRedirectRequest, runtime *util.RuntimeOptions) (_result *DisableInitDomainAutoRedirectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14983,6 +19370,13 @@ func (client *Client) DisableInitDomainAutoRedirectWithOptions(request *DisableI
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭初始化域名自动跳转。
+//
+// @param request - DisableInitDomainAutoRedirectRequest
+//
+// @return DisableInitDomainAutoRedirectResponse
 func (client *Client) DisableInitDomainAutoRedirect(request *DisableInitDomainAutoRedirectRequest) (_result *DisableInitDomainAutoRedirectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableInitDomainAutoRedirectResponse{}
@@ -14994,6 +19388,15 @@ func (client *Client) DisableInitDomainAutoRedirect(request *DisableInitDomainAu
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account. If the account is disabled, a success message is returned.
+//
+// @param request - DisableUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableUserResponse
 func (client *Client) DisableUserWithOptions(request *DisableUserRequest, runtime *util.RuntimeOptions) (_result *DisableUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15031,6 +19434,13 @@ func (client *Client) DisableUserWithOptions(request *DisableUserRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account. If the account is disabled, a success message is returned.
+//
+// @param request - DisableUserRequest
+//
+// @return DisableUserResponse
 func (client *Client) DisableUser(request *DisableUserRequest) (_result *DisableUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableUserResponse{}
@@ -15042,6 +19452,15 @@ func (client *Client) DisableUser(request *DisableUserRequest) (_result *Disable
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables a disabled Employee Identity and Access Management (EIAM) application.
+//
+// @param request - EnableApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableApplicationResponse
 func (client *Client) EnableApplicationWithOptions(request *EnableApplicationRequest, runtime *util.RuntimeOptions) (_result *EnableApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15079,6 +19498,13 @@ func (client *Client) EnableApplicationWithOptions(request *EnableApplicationReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables a disabled Employee Identity and Access Management (EIAM) application.
+//
+// @param request - EnableApplicationRequest
+//
+// @return EnableApplicationResponse
 func (client *Client) EnableApplication(request *EnableApplicationRequest) (_result *EnableApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableApplicationResponse{}
@@ -15090,6 +19516,15 @@ func (client *Client) EnableApplication(request *EnableApplicationRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - EnableApplicationApiInvokeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableApplicationApiInvokeResponse
 func (client *Client) EnableApplicationApiInvokeWithOptions(request *EnableApplicationApiInvokeRequest, runtime *util.RuntimeOptions) (_result *EnableApplicationApiInvokeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15127,6 +19562,13 @@ func (client *Client) EnableApplicationApiInvokeWithOptions(request *EnableAppli
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - EnableApplicationApiInvokeRequest
+//
+// @return EnableApplicationApiInvokeResponse
 func (client *Client) EnableApplicationApiInvoke(request *EnableApplicationApiInvokeRequest) (_result *EnableApplicationApiInvokeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableApplicationApiInvokeResponse{}
@@ -15138,6 +19580,15 @@ func (client *Client) EnableApplicationApiInvoke(request *EnableApplicationApiIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the client key of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - EnableApplicationClientSecretRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableApplicationClientSecretResponse
 func (client *Client) EnableApplicationClientSecretWithOptions(request *EnableApplicationClientSecretRequest, runtime *util.RuntimeOptions) (_result *EnableApplicationClientSecretResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15179,6 +19630,13 @@ func (client *Client) EnableApplicationClientSecretWithOptions(request *EnableAp
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the client key of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - EnableApplicationClientSecretRequest
+//
+// @return EnableApplicationClientSecretResponse
 func (client *Client) EnableApplicationClientSecret(request *EnableApplicationClientSecretRequest) (_result *EnableApplicationClientSecretResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableApplicationClientSecretResponse{}
@@ -15190,6 +19648,15 @@ func (client *Client) EnableApplicationClientSecret(request *EnableApplicationCl
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - EnableApplicationProvisioningRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableApplicationProvisioningResponse
 func (client *Client) EnableApplicationProvisioningWithOptions(request *EnableApplicationProvisioningRequest, runtime *util.RuntimeOptions) (_result *EnableApplicationProvisioningResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15227,6 +19694,13 @@ func (client *Client) EnableApplicationProvisioningWithOptions(request *EnableAp
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - EnableApplicationProvisioningRequest
+//
+// @return EnableApplicationProvisioningResponse
 func (client *Client) EnableApplicationProvisioning(request *EnableApplicationProvisioningRequest) (_result *EnableApplicationProvisioningResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableApplicationProvisioningResponse{}
@@ -15238,6 +19712,15 @@ func (client *Client) EnableApplicationProvisioning(request *EnableApplicationPr
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用应用SSO能力
+//
+// @param request - EnableApplicationSsoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableApplicationSsoResponse
 func (client *Client) EnableApplicationSsoWithOptions(request *EnableApplicationSsoRequest, runtime *util.RuntimeOptions) (_result *EnableApplicationSsoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15275,6 +19758,13 @@ func (client *Client) EnableApplicationSsoWithOptions(request *EnableApplication
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用应用SSO能力
+//
+// @param request - EnableApplicationSsoRequest
+//
+// @return EnableApplicationSsoResponse
 func (client *Client) EnableApplicationSso(request *EnableApplicationSsoRequest) (_result *EnableApplicationSsoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableApplicationSsoResponse{}
@@ -15286,6 +19776,15 @@ func (client *Client) EnableApplicationSso(request *EnableApplicationSsoRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用指定域名代理Token。
+//
+// @param request - EnableDomainProxyTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableDomainProxyTokenResponse
 func (client *Client) EnableDomainProxyTokenWithOptions(request *EnableDomainProxyTokenRequest, runtime *util.RuntimeOptions) (_result *EnableDomainProxyTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15327,6 +19826,13 @@ func (client *Client) EnableDomainProxyTokenWithOptions(request *EnableDomainPro
 	return _result, _err
 }
 
+// Summary:
+//
+// 启用指定域名代理Token。
+//
+// @param request - EnableDomainProxyTokenRequest
+//
+// @return EnableDomainProxyTokenResponse
 func (client *Client) EnableDomainProxyToken(request *EnableDomainProxyTokenRequest) (_result *EnableDomainProxyTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableDomainProxyTokenResponse{}
@@ -15338,6 +19844,15 @@ func (client *Client) EnableDomainProxyToken(request *EnableDomainProxyTokenRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启初始化域名自动跳转。开启后，访问初始化域名将会自动跳转至默认域名。
+//
+// @param request - EnableInitDomainAutoRedirectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableInitDomainAutoRedirectResponse
 func (client *Client) EnableInitDomainAutoRedirectWithOptions(request *EnableInitDomainAutoRedirectRequest, runtime *util.RuntimeOptions) (_result *EnableInitDomainAutoRedirectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15371,6 +19886,13 @@ func (client *Client) EnableInitDomainAutoRedirectWithOptions(request *EnableIni
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启初始化域名自动跳转。开启后，访问初始化域名将会自动跳转至默认域名。
+//
+// @param request - EnableInitDomainAutoRedirectRequest
+//
+// @return EnableInitDomainAutoRedirectResponse
 func (client *Client) EnableInitDomainAutoRedirect(request *EnableInitDomainAutoRedirectRequest) (_result *EnableInitDomainAutoRedirectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableInitDomainAutoRedirectResponse{}
@@ -15382,6 +19904,15 @@ func (client *Client) EnableInitDomainAutoRedirect(request *EnableInitDomainAuto
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
+//
+// @param request - EnableUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableUserResponse
 func (client *Client) EnableUserWithOptions(request *EnableUserRequest, runtime *util.RuntimeOptions) (_result *EnableUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15419,6 +19950,13 @@ func (client *Client) EnableUserWithOptions(request *EnableUserRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
+//
+// @param request - EnableUserRequest
+//
+// @return EnableUserResponse
 func (client *Client) EnableUser(request *EnableUserRequest) (_result *EnableUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableUserResponse{}
@@ -15430,6 +19968,15 @@ func (client *Client) EnableUser(request *EnableUserRequest) (_result *EnableUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - GetApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationResponse
 func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, runtime *util.RuntimeOptions) (_result *GetApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15467,6 +20014,13 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - GetApplicationRequest
+//
+// @return GetApplicationResponse
 func (client *Client) GetApplication(request *GetApplicationRequest) (_result *GetApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetApplicationResponse{}
@@ -15478,6 +20032,15 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the permissions of the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - GetApplicationGrantScopeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationGrantScopeResponse
 func (client *Client) GetApplicationGrantScopeWithOptions(request *GetApplicationGrantScopeRequest, runtime *util.RuntimeOptions) (_result *GetApplicationGrantScopeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15515,6 +20078,13 @@ func (client *Client) GetApplicationGrantScopeWithOptions(request *GetApplicatio
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the permissions of the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - GetApplicationGrantScopeRequest
+//
+// @return GetApplicationGrantScopeResponse
 func (client *Client) GetApplicationGrantScope(request *GetApplicationGrantScopeRequest) (_result *GetApplicationGrantScopeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetApplicationGrantScopeResponse{}
@@ -15526,6 +20096,15 @@ func (client *Client) GetApplicationGrantScope(request *GetApplicationGrantScope
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - GetApplicationProvisioningConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationProvisioningConfigResponse
 func (client *Client) GetApplicationProvisioningConfigWithOptions(request *GetApplicationProvisioningConfigRequest, runtime *util.RuntimeOptions) (_result *GetApplicationProvisioningConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15563,6 +20142,13 @@ func (client *Client) GetApplicationProvisioningConfigWithOptions(request *GetAp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - GetApplicationProvisioningConfigRequest
+//
+// @return GetApplicationProvisioningConfigResponse
 func (client *Client) GetApplicationProvisioningConfig(request *GetApplicationProvisioningConfigRequest) (_result *GetApplicationProvisioningConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetApplicationProvisioningConfigResponse{}
@@ -15574,6 +20160,15 @@ func (client *Client) GetApplicationProvisioningConfig(request *GetApplicationPr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the account synchronization scope of applications in Identity as a Service (IDaaS) Employee IAM (EIAM). This scope is the same as the scope within which developers can call the DeveloperAPI to query and manage accounts.
+//
+// @param request - GetApplicationProvisioningScopeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationProvisioningScopeResponse
 func (client *Client) GetApplicationProvisioningScopeWithOptions(request *GetApplicationProvisioningScopeRequest, runtime *util.RuntimeOptions) (_result *GetApplicationProvisioningScopeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15611,6 +20206,13 @@ func (client *Client) GetApplicationProvisioningScopeWithOptions(request *GetApp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the account synchronization scope of applications in Identity as a Service (IDaaS) Employee IAM (EIAM). This scope is the same as the scope within which developers can call the DeveloperAPI to query and manage accounts.
+//
+// @param request - GetApplicationProvisioningScopeRequest
+//
+// @return GetApplicationProvisioningScopeResponse
 func (client *Client) GetApplicationProvisioningScope(request *GetApplicationProvisioningScopeRequest) (_result *GetApplicationProvisioningScopeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetApplicationProvisioningScopeResponse{}
@@ -15622,6 +20224,15 @@ func (client *Client) GetApplicationProvisioningScope(request *GetApplicationPro
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the single sign-on (SSO) configuration attributes of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - GetApplicationSsoConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationSsoConfigResponse
 func (client *Client) GetApplicationSsoConfigWithOptions(request *GetApplicationSsoConfigRequest, runtime *util.RuntimeOptions) (_result *GetApplicationSsoConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15659,6 +20270,13 @@ func (client *Client) GetApplicationSsoConfigWithOptions(request *GetApplication
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the single sign-on (SSO) configuration attributes of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - GetApplicationSsoConfigRequest
+//
+// @return GetApplicationSsoConfigResponse
 func (client *Client) GetApplicationSsoConfig(request *GetApplicationSsoConfigRequest) (_result *GetApplicationSsoConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetApplicationSsoConfigResponse{}
@@ -15670,6 +20288,15 @@ func (client *Client) GetApplicationSsoConfig(request *GetApplicationSsoConfigRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询一个域名的详细信息。
+//
+// @param request - GetDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDomainResponse
 func (client *Client) GetDomainWithOptions(request *GetDomainRequest, runtime *util.RuntimeOptions) (_result *GetDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15707,6 +20334,13 @@ func (client *Client) GetDomainWithOptions(request *GetDomainRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询一个域名的详细信息。
+//
+// @param request - GetDomainRequest
+//
+// @return GetDomainResponse
 func (client *Client) GetDomain(request *GetDomainRequest) (_result *GetDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDomainResponse{}
@@ -15718,6 +20352,15 @@ func (client *Client) GetDomain(request *GetDomainRequest) (_result *GetDomainRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看域名的DNS Challenge记录。
+//
+// @param request - GetDomainDnsChallengeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDomainDnsChallengeResponse
 func (client *Client) GetDomainDnsChallengeWithOptions(request *GetDomainDnsChallengeRequest, runtime *util.RuntimeOptions) (_result *GetDomainDnsChallengeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15755,6 +20398,13 @@ func (client *Client) GetDomainDnsChallengeWithOptions(request *GetDomainDnsChal
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看域名的DNS Challenge记录。
+//
+// @param request - GetDomainDnsChallengeRequest
+//
+// @return GetDomainDnsChallengeResponse
 func (client *Client) GetDomainDnsChallenge(request *GetDomainDnsChallengeRequest) (_result *GetDomainDnsChallengeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDomainDnsChallengeResponse{}
@@ -15766,6 +20416,15 @@ func (client *Client) GetDomainDnsChallenge(request *GetDomainDnsChallengeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the forgot password configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - GetForgetPasswordConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetForgetPasswordConfigurationResponse
 func (client *Client) GetForgetPasswordConfigurationWithOptions(request *GetForgetPasswordConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetForgetPasswordConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15799,6 +20458,13 @@ func (client *Client) GetForgetPasswordConfigurationWithOptions(request *GetForg
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the forgot password configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - GetForgetPasswordConfigurationRequest
+//
+// @return GetForgetPasswordConfigurationResponse
 func (client *Client) GetForgetPasswordConfiguration(request *GetForgetPasswordConfigurationRequest) (_result *GetForgetPasswordConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetForgetPasswordConfigurationResponse{}
@@ -15810,6 +20476,15 @@ func (client *Client) GetForgetPasswordConfiguration(request *GetForgetPasswordC
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - GetGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGroupResponse
 func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *util.RuntimeOptions) (_result *GetGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15847,6 +20522,13 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - GetGroupRequest
+//
+// @return GetGroupResponse
 func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetGroupResponse{}
@@ -15858,6 +20540,15 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of an Enterprise Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - GetInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15891,6 +20582,13 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of an Enterprise Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - GetInstanceRequest
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceResponse{}
@@ -15902,6 +20600,15 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询一个专属网络端点的详细信息。
+//
+// @param request - GetNetworkAccessEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNetworkAccessEndpointResponse
 func (client *Client) GetNetworkAccessEndpointWithOptions(request *GetNetworkAccessEndpointRequest, runtime *util.RuntimeOptions) (_result *GetNetworkAccessEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15939,6 +20646,13 @@ func (client *Client) GetNetworkAccessEndpointWithOptions(request *GetNetworkAcc
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询一个专属网络端点的详细信息。
+//
+// @param request - GetNetworkAccessEndpointRequest
+//
+// @return GetNetworkAccessEndpointResponse
 func (client *Client) GetNetworkAccessEndpoint(request *GetNetworkAccessEndpointRequest) (_result *GetNetworkAccessEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNetworkAccessEndpointResponse{}
@@ -15950,6 +20664,15 @@ func (client *Client) GetNetworkAccessEndpoint(request *GetNetworkAccessEndpoint
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an organizational unit in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - GetOrganizationalUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOrganizationalUnitResponse
 func (client *Client) GetOrganizationalUnitWithOptions(request *GetOrganizationalUnitRequest, runtime *util.RuntimeOptions) (_result *GetOrganizationalUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15987,6 +20710,13 @@ func (client *Client) GetOrganizationalUnitWithOptions(request *GetOrganizationa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an organizational unit in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - GetOrganizationalUnitRequest
+//
+// @return GetOrganizationalUnitResponse
 func (client *Client) GetOrganizationalUnit(request *GetOrganizationalUnitRequest) (_result *GetOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOrganizationalUnitResponse{}
@@ -15998,6 +20728,15 @@ func (client *Client) GetOrganizationalUnit(request *GetOrganizationalUnitReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the password complexity configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - GetPasswordComplexityConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPasswordComplexityConfigurationResponse
 func (client *Client) GetPasswordComplexityConfigurationWithOptions(request *GetPasswordComplexityConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetPasswordComplexityConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16031,6 +20770,13 @@ func (client *Client) GetPasswordComplexityConfigurationWithOptions(request *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the password complexity configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - GetPasswordComplexityConfigurationRequest
+//
+// @return GetPasswordComplexityConfigurationResponse
 func (client *Client) GetPasswordComplexityConfiguration(request *GetPasswordComplexityConfigurationRequest) (_result *GetPasswordComplexityConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPasswordComplexityConfigurationResponse{}
@@ -16042,6 +20788,15 @@ func (client *Client) GetPasswordComplexityConfiguration(request *GetPasswordCom
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the password expiration configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - GetPasswordExpirationConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPasswordExpirationConfigurationResponse
 func (client *Client) GetPasswordExpirationConfigurationWithOptions(request *GetPasswordExpirationConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetPasswordExpirationConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16075,6 +20830,13 @@ func (client *Client) GetPasswordExpirationConfigurationWithOptions(request *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the password expiration configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - GetPasswordExpirationConfigurationRequest
+//
+// @return GetPasswordExpirationConfigurationResponse
 func (client *Client) GetPasswordExpirationConfiguration(request *GetPasswordExpirationConfigurationRequest) (_result *GetPasswordExpirationConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPasswordExpirationConfigurationResponse{}
@@ -16086,6 +20848,15 @@ func (client *Client) GetPasswordExpirationConfiguration(request *GetPasswordExp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the password history configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - GetPasswordHistoryConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPasswordHistoryConfigurationResponse
 func (client *Client) GetPasswordHistoryConfigurationWithOptions(request *GetPasswordHistoryConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetPasswordHistoryConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16119,6 +20890,13 @@ func (client *Client) GetPasswordHistoryConfigurationWithOptions(request *GetPas
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the password history configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - GetPasswordHistoryConfigurationRequest
+//
+// @return GetPasswordHistoryConfigurationResponse
 func (client *Client) GetPasswordHistoryConfiguration(request *GetPasswordHistoryConfigurationRequest) (_result *GetPasswordHistoryConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPasswordHistoryConfigurationResponse{}
@@ -16130,6 +20908,15 @@ func (client *Client) GetPasswordHistoryConfiguration(request *GetPasswordHistor
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the password initialization configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - GetPasswordInitializationConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPasswordInitializationConfigurationResponse
 func (client *Client) GetPasswordInitializationConfigurationWithOptions(request *GetPasswordInitializationConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetPasswordInitializationConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16163,6 +20950,13 @@ func (client *Client) GetPasswordInitializationConfigurationWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the password initialization configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - GetPasswordInitializationConfigurationRequest
+//
+// @return GetPasswordInitializationConfigurationResponse
 func (client *Client) GetPasswordInitializationConfiguration(request *GetPasswordInitializationConfigurationRequest) (_result *GetPasswordInitializationConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPasswordInitializationConfigurationResponse{}
@@ -16174,6 +20968,15 @@ func (client *Client) GetPasswordInitializationConfiguration(request *GetPasswor
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the root organizational unit in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - GetRootOrganizationalUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRootOrganizationalUnitResponse
 func (client *Client) GetRootOrganizationalUnitWithOptions(request *GetRootOrganizationalUnitRequest, runtime *util.RuntimeOptions) (_result *GetRootOrganizationalUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16207,6 +21010,13 @@ func (client *Client) GetRootOrganizationalUnitWithOptions(request *GetRootOrgan
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the root organizational unit in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - GetRootOrganizationalUnitRequest
+//
+// @return GetRootOrganizationalUnitResponse
 func (client *Client) GetRootOrganizationalUnit(request *GetRootOrganizationalUnitRequest) (_result *GetRootOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRootOrganizationalUnitResponse{}
@@ -16218,6 +21028,15 @@ func (client *Client) GetRootOrganizationalUnit(request *GetRootOrganizationalUn
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an account in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - GetUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserResponse
 func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16255,6 +21074,13 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an account in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - GetUserRequest
+//
+// @return GetUserResponse
 func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserResponse{}
@@ -16266,6 +21092,15 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all client keys of an Employee Identity and Access Management (EIAM) application. The returned key secret is not masked. If you want to query the key secret that is masked, call the ObtainApplicationClientSecret operation.
+//
+// @param request - ListApplicationClientSecretsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationClientSecretsResponse
 func (client *Client) ListApplicationClientSecretsWithOptions(request *ListApplicationClientSecretsRequest, runtime *util.RuntimeOptions) (_result *ListApplicationClientSecretsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16303,6 +21138,13 @@ func (client *Client) ListApplicationClientSecretsWithOptions(request *ListAppli
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all client keys of an Employee Identity and Access Management (EIAM) application. The returned key secret is not masked. If you want to query the key secret that is masked, call the ObtainApplicationClientSecret operation.
+//
+// @param request - ListApplicationClientSecretsRequest
+//
+// @return ListApplicationClientSecretsResponse
 func (client *Client) ListApplicationClientSecrets(request *ListApplicationClientSecretsRequest) (_result *ListApplicationClientSecretsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationClientSecretsResponse{}
@@ -16314,6 +21156,15 @@ func (client *Client) ListApplicationClientSecrets(request *ListApplicationClien
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or multiple Employee Identity and Access Management (EIAM) applications by page.
+//
+// @param request - ListApplicationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationsResponse
 func (client *Client) ListApplicationsWithOptions(request *ListApplicationsRequest, runtime *util.RuntimeOptions) (_result *ListApplicationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16371,6 +21222,13 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or multiple Employee Identity and Access Management (EIAM) applications by page.
+//
+// @param request - ListApplicationsRequest
+//
+// @return ListApplicationsResponse
 func (client *Client) ListApplications(request *ListApplicationsRequest) (_result *ListApplicationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationsResponse{}
@@ -16382,13 +21240,19 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 	return _result, _err
 }
 
-/**
- * You can only query the permissions that are directly granted to the EIAM organization by calling the ListApplicationsForOrganizationalUnit operation. You can filter applications by configuring the **ApplicationIds** parameter when you call this operation.
- *
- * @param request ListApplicationsForOrganizationalUnitRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListApplicationsForOrganizationalUnitResponse
- */
+// Summary:
+//
+// Queries the applications that an Employee Identity and Access Management (EIAM) organization can access. The return result includes the IDs of the applications. If you want to obtain the details of the applications, call the GetApplication operation.
+//
+// Description:
+//
+// You can only query the permissions that are directly granted to the EIAM organization by calling the ListApplicationsForOrganizationalUnit operation. You can filter applications by configuring the **ApplicationIds*	- parameter when you call this operation.
+//
+// @param request - ListApplicationsForOrganizationalUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationsForOrganizationalUnitResponse
 func (client *Client) ListApplicationsForOrganizationalUnitWithOptions(request *ListApplicationsForOrganizationalUnitRequest, runtime *util.RuntimeOptions) (_result *ListApplicationsForOrganizationalUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16438,12 +21302,17 @@ func (client *Client) ListApplicationsForOrganizationalUnitWithOptions(request *
 	return _result, _err
 }
 
-/**
- * You can only query the permissions that are directly granted to the EIAM organization by calling the ListApplicationsForOrganizationalUnit operation. You can filter applications by configuring the **ApplicationIds** parameter when you call this operation.
- *
- * @param request ListApplicationsForOrganizationalUnitRequest
- * @return ListApplicationsForOrganizationalUnitResponse
- */
+// Summary:
+//
+// Queries the applications that an Employee Identity and Access Management (EIAM) organization can access. The return result includes the IDs of the applications. If you want to obtain the details of the applications, call the GetApplication operation.
+//
+// Description:
+//
+// You can only query the permissions that are directly granted to the EIAM organization by calling the ListApplicationsForOrganizationalUnit operation. You can filter applications by configuring the **ApplicationIds*	- parameter when you call this operation.
+//
+// @param request - ListApplicationsForOrganizationalUnitRequest
+//
+// @return ListApplicationsForOrganizationalUnitResponse
 func (client *Client) ListApplicationsForOrganizationalUnit(request *ListApplicationsForOrganizationalUnitRequest) (_result *ListApplicationsForOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationsForOrganizationalUnitResponse{}
@@ -16455,6 +21324,15 @@ func (client *Client) ListApplicationsForOrganizationalUnit(request *ListApplica
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the applications that an Employee Identity and Access Management (EIAM) account can access. The return result includes the IDs of the applications. If you want to obtain the details of the applications, call the GetApplication operation.
+//
+// @param request - ListApplicationsForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationsForUserResponse
 func (client *Client) ListApplicationsForUserWithOptions(request *ListApplicationsForUserRequest, runtime *util.RuntimeOptions) (_result *ListApplicationsForUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16508,6 +21386,13 @@ func (client *Client) ListApplicationsForUserWithOptions(request *ListApplicatio
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the applications that an Employee Identity and Access Management (EIAM) account can access. The return result includes the IDs of the applications. If you want to obtain the details of the applications, call the GetApplication operation.
+//
+// @param request - ListApplicationsForUserRequest
+//
+// @return ListApplicationsForUserResponse
 func (client *Client) ListApplicationsForUser(request *ListApplicationsForUserRequest) (_result *ListApplicationsForUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationsForUserResponse{}
@@ -16519,6 +21404,15 @@ func (client *Client) ListApplicationsForUser(request *ListApplicationsForUserRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询域名代理Token信息。
+//
+// @param request - ListDomainProxyTokensRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDomainProxyTokensResponse
 func (client *Client) ListDomainProxyTokensWithOptions(request *ListDomainProxyTokensRequest, runtime *util.RuntimeOptions) (_result *ListDomainProxyTokensResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16556,6 +21450,13 @@ func (client *Client) ListDomainProxyTokensWithOptions(request *ListDomainProxyT
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询域名代理Token信息。
+//
+// @param request - ListDomainProxyTokensRequest
+//
+// @return ListDomainProxyTokensResponse
 func (client *Client) ListDomainProxyTokens(request *ListDomainProxyTokensRequest) (_result *ListDomainProxyTokensResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDomainProxyTokensResponse{}
@@ -16567,6 +21468,15 @@ func (client *Client) ListDomainProxyTokens(request *ListDomainProxyTokensReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询域名记录。
+//
+// @param request - ListDomainsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDomainsResponse
 func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, runtime *util.RuntimeOptions) (_result *ListDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16600,6 +21510,13 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询域名记录。
+//
+// @param request - ListDomainsRequest
+//
+// @return ListDomainsResponse
 func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDomainsResponse{}
@@ -16611,6 +21528,15 @@ func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDom
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询EIAM2.0/EIAM1.0实例列表
+//
+// @param request - ListEiamInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEiamInstancesResponse
 func (client *Client) ListEiamInstancesWithOptions(request *ListEiamInstancesRequest, runtime *util.RuntimeOptions) (_result *ListEiamInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16648,6 +21574,13 @@ func (client *Client) ListEiamInstancesWithOptions(request *ListEiamInstancesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询EIAM2.0/EIAM1.0实例列表
+//
+// @param request - ListEiamInstancesRequest
+//
+// @return ListEiamInstancesResponse
 func (client *Client) ListEiamInstances(request *ListEiamInstancesRequest) (_result *ListEiamInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEiamInstancesResponse{}
@@ -16659,6 +21592,15 @@ func (client *Client) ListEiamInstances(request *ListEiamInstancesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询EIAM2.0/EIAM1.0地域列表
+//
+// @param request - ListEiamRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEiamRegionsResponse
 func (client *Client) ListEiamRegionsWithOptions(runtime *util.RuntimeOptions) (_result *ListEiamRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -16681,6 +21623,11 @@ func (client *Client) ListEiamRegionsWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询EIAM2.0/EIAM1.0地域列表
+//
+// @return ListEiamRegionsResponse
 func (client *Client) ListEiamRegions() (_result *ListEiamRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEiamRegionsResponse{}
@@ -16692,6 +21639,15 @@ func (client *Client) ListEiamRegions() (_result *ListEiamRegionsResponse, _err 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of account groups in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - ListGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupsResponse
 func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime *util.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16749,6 +21705,13 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of account groups in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - ListGroupsRequest
+//
+// @return ListGroupsResponse
 func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupsResponse{}
@@ -16760,6 +21723,15 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of account groups to which the permissions to access an application are granted. The returned results contain the group IDs. You can call the GetGroup operation to query the information about an account group based on the group ID.
+//
+// @param request - ListGroupsForApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupsForApplicationResponse
 func (client *Client) ListGroupsForApplicationWithOptions(request *ListGroupsForApplicationRequest, runtime *util.RuntimeOptions) (_result *ListGroupsForApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16809,6 +21781,13 @@ func (client *Client) ListGroupsForApplicationWithOptions(request *ListGroupsFor
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of account groups to which the permissions to access an application are granted. The returned results contain the group IDs. You can call the GetGroup operation to query the information about an account group based on the group ID.
+//
+// @param request - ListGroupsForApplicationRequest
+//
+// @return ListGroupsForApplicationResponse
 func (client *Client) ListGroupsForApplication(request *ListGroupsForApplicationRequest) (_result *ListGroupsForApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupsForApplicationResponse{}
@@ -16820,6 +21799,15 @@ func (client *Client) ListGroupsForApplication(request *ListGroupsForApplication
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of account groups to which an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) belongs.
+//
+// @param request - ListGroupsForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupsForUserResponse
 func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserRequest, runtime *util.RuntimeOptions) (_result *ListGroupsForUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16865,6 +21853,13 @@ func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of account groups to which an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) belongs.
+//
+// @param request - ListGroupsForUserRequest
+//
+// @return ListGroupsForUserResponse
 func (client *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (_result *ListGroupsForUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupsForUserResponse{}
@@ -16876,6 +21871,15 @@ func (client *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of one or more Enterprise Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
+//
+// @param request - ListInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16921,6 +21925,13 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of one or more Enterprise Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
+//
+// @param request - ListInstancesRequest
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstancesResponse{}
@@ -16932,6 +21943,15 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取支持专属端点的region列表
+//
+// @param request - ListNetworkAccessEndpointAvailableRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNetworkAccessEndpointAvailableRegionsResponse
 func (client *Client) ListNetworkAccessEndpointAvailableRegionsWithOptions(runtime *util.RuntimeOptions) (_result *ListNetworkAccessEndpointAvailableRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -16954,6 +21974,11 @@ func (client *Client) ListNetworkAccessEndpointAvailableRegionsWithOptions(runti
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取支持专属端点的region列表
+//
+// @return ListNetworkAccessEndpointAvailableRegionsResponse
 func (client *Client) ListNetworkAccessEndpointAvailableRegions() (_result *ListNetworkAccessEndpointAvailableRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNetworkAccessEndpointAvailableRegionsResponse{}
@@ -16965,6 +21990,15 @@ func (client *Client) ListNetworkAccessEndpointAvailableRegions() (_result *List
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取支持NAE的可用区列表
+//
+// @param request - ListNetworkAccessEndpointAvailableZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNetworkAccessEndpointAvailableZonesResponse
 func (client *Client) ListNetworkAccessEndpointAvailableZonesWithOptions(request *ListNetworkAccessEndpointAvailableZonesRequest, runtime *util.RuntimeOptions) (_result *ListNetworkAccessEndpointAvailableZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16998,6 +22032,13 @@ func (client *Client) ListNetworkAccessEndpointAvailableZonesWithOptions(request
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取支持NAE的可用区列表
+//
+// @param request - ListNetworkAccessEndpointAvailableZonesRequest
+//
+// @return ListNetworkAccessEndpointAvailableZonesResponse
 func (client *Client) ListNetworkAccessEndpointAvailableZones(request *ListNetworkAccessEndpointAvailableZonesRequest) (_result *ListNetworkAccessEndpointAvailableZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNetworkAccessEndpointAvailableZonesResponse{}
@@ -17009,6 +22050,15 @@ func (client *Client) ListNetworkAccessEndpointAvailableZones(request *ListNetwo
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询专属网络端点。
+//
+// @param request - ListNetworkAccessEndpointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNetworkAccessEndpointsResponse
 func (client *Client) ListNetworkAccessEndpointsWithOptions(request *ListNetworkAccessEndpointsRequest, runtime *util.RuntimeOptions) (_result *ListNetworkAccessEndpointsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17066,6 +22116,13 @@ func (client *Client) ListNetworkAccessEndpointsWithOptions(request *ListNetwork
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询专属网络端点。
+//
+// @param request - ListNetworkAccessEndpointsRequest
+//
+// @return ListNetworkAccessEndpointsResponse
 func (client *Client) ListNetworkAccessEndpoints(request *ListNetworkAccessEndpointsRequest) (_result *ListNetworkAccessEndpointsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNetworkAccessEndpointsResponse{}
@@ -17077,6 +22134,15 @@ func (client *Client) ListNetworkAccessEndpoints(request *ListNetworkAccessEndpo
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表某个网络访问端点下的访问路径。
+//
+// @param request - ListNetworkAccessPathsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNetworkAccessPathsResponse
 func (client *Client) ListNetworkAccessPathsWithOptions(request *ListNetworkAccessPathsRequest, runtime *util.RuntimeOptions) (_result *ListNetworkAccessPathsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17114,6 +22180,13 @@ func (client *Client) ListNetworkAccessPathsWithOptions(request *ListNetworkAcce
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表某个网络访问端点下的访问路径。
+//
+// @param request - ListNetworkAccessPathsRequest
+//
+// @return ListNetworkAccessPathsResponse
 func (client *Client) ListNetworkAccessPaths(request *ListNetworkAccessPathsRequest) (_result *ListNetworkAccessPathsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNetworkAccessPathsResponse{}
@@ -17125,6 +22198,15 @@ func (client *Client) ListNetworkAccessPaths(request *ListNetworkAccessPathsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询组织的所有父级路径
+//
+// @param request - ListOrganizationalUnitParentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOrganizationalUnitParentsResponse
 func (client *Client) ListOrganizationalUnitParentsWithOptions(request *ListOrganizationalUnitParentsRequest, runtime *util.RuntimeOptions) (_result *ListOrganizationalUnitParentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17162,6 +22244,13 @@ func (client *Client) ListOrganizationalUnitParentsWithOptions(request *ListOrga
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询组织的所有父级路径
+//
+// @param request - ListOrganizationalUnitParentsRequest
+//
+// @return ListOrganizationalUnitParentsResponse
 func (client *Client) ListOrganizationalUnitParents(request *ListOrganizationalUnitParentsRequest) (_result *ListOrganizationalUnitParentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOrganizationalUnitParentsResponse{}
@@ -17173,6 +22262,15 @@ func (client *Client) ListOrganizationalUnitParents(request *ListOrganizationalU
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about organizational units in Identity as a Service (IDaaS) Employee IAM (EIAM) by page.
+//
+// @param request - ListOrganizationalUnitsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOrganizationalUnitsResponse
 func (client *Client) ListOrganizationalUnitsWithOptions(request *ListOrganizationalUnitsRequest, runtime *util.RuntimeOptions) (_result *ListOrganizationalUnitsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17230,6 +22328,13 @@ func (client *Client) ListOrganizationalUnitsWithOptions(request *ListOrganizati
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about organizational units in Identity as a Service (IDaaS) Employee IAM (EIAM) by page.
+//
+// @param request - ListOrganizationalUnitsRequest
+//
+// @return ListOrganizationalUnitsResponse
 func (client *Client) ListOrganizationalUnits(request *ListOrganizationalUnitsRequest) (_result *ListOrganizationalUnitsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOrganizationalUnitsResponse{}
@@ -17241,6 +22346,15 @@ func (client *Client) ListOrganizationalUnits(request *ListOrganizationalUnitsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the organizations that are allowed to access an Employee Identity and Access Management (EIAM) application by page. The return result includes the IDs of the organizations. If you want to obtain the details of the organizations, call the GetOrganizationalUnit operation.
+//
+// @param request - ListOrganizationalUnitsForApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOrganizationalUnitsForApplicationResponse
 func (client *Client) ListOrganizationalUnitsForApplicationWithOptions(request *ListOrganizationalUnitsForApplicationRequest, runtime *util.RuntimeOptions) (_result *ListOrganizationalUnitsForApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17290,6 +22404,13 @@ func (client *Client) ListOrganizationalUnitsForApplicationWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the organizations that are allowed to access an Employee Identity and Access Management (EIAM) application by page. The return result includes the IDs of the organizations. If you want to obtain the details of the organizations, call the GetOrganizationalUnit operation.
+//
+// @param request - ListOrganizationalUnitsForApplicationRequest
+//
+// @return ListOrganizationalUnitsForApplicationResponse
 func (client *Client) ListOrganizationalUnitsForApplication(request *ListOrganizationalUnitsForApplicationRequest) (_result *ListOrganizationalUnitsForApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOrganizationalUnitsForApplicationResponse{}
@@ -17301,6 +22422,15 @@ func (client *Client) ListOrganizationalUnitsForApplication(request *ListOrganiz
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the supported Alibaba Cloud regions.
+//
+// @param request - ListRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRegionsResponse
 func (client *Client) ListRegionsWithOptions(runtime *util.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -17323,6 +22453,11 @@ func (client *Client) ListRegionsWithOptions(runtime *util.RuntimeOptions) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the supported Alibaba Cloud regions.
+//
+// @return ListRegionsResponse
 func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRegionsResponse{}
@@ -17334,6 +22469,15 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of accounts in Identity as a Service (IDaaS) Employee IAM (EIAM) by page.
+//
+// @param request - ListUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersResponse
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *util.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17419,6 +22563,13 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of accounts in Identity as a Service (IDaaS) Employee IAM (EIAM) by page.
+//
+// @param request - ListUsersRequest
+//
+// @return ListUsersResponse
 func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersResponse{}
@@ -17430,6 +22581,15 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the accounts that are allowed to access an Employee Identity and Access Management (EIAM) application. The return results include the IDs of the accounts. If you need to obtain the details of the accounts, call the GetUser operation.
+//
+// @param request - ListUsersForApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersForApplicationResponse
 func (client *Client) ListUsersForApplicationWithOptions(request *ListUsersForApplicationRequest, runtime *util.RuntimeOptions) (_result *ListUsersForApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17479,6 +22639,13 @@ func (client *Client) ListUsersForApplicationWithOptions(request *ListUsersForAp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the accounts that are allowed to access an Employee Identity and Access Management (EIAM) application. The return results include the IDs of the accounts. If you need to obtain the details of the accounts, call the GetUser operation.
+//
+// @param request - ListUsersForApplicationRequest
+//
+// @return ListUsersForApplicationResponse
 func (client *Client) ListUsersForApplication(request *ListUsersForApplicationRequest) (_result *ListUsersForApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersForApplicationResponse{}
@@ -17490,6 +22657,15 @@ func (client *Client) ListUsersForApplication(request *ListUsersForApplicationRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of accounts in an Employee Identity and Access Management (EIAM) group of Identity as a Service (IDaaS).
+//
+// @param request - ListUsersForGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersForGroupResponse
 func (client *Client) ListUsersForGroupWithOptions(request *ListUsersForGroupRequest, runtime *util.RuntimeOptions) (_result *ListUsersForGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17539,6 +22715,13 @@ func (client *Client) ListUsersForGroupWithOptions(request *ListUsersForGroupReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of accounts in an Employee Identity and Access Management (EIAM) group of Identity as a Service (IDaaS).
+//
+// @param request - ListUsersForGroupRequest
+//
+// @return ListUsersForGroupResponse
 func (client *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (_result *ListUsersForGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersForGroupResponse{}
@@ -17550,6 +22733,15 @@ func (client *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a client key of an Employee Identity and Access Management (EIAM) application. The returned key secret is masked. If you want to query the key secret that is not masked, call the ListApplicationClientSecrets operation.
+//
+// @param request - ObtainApplicationClientSecretRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ObtainApplicationClientSecretResponse
 func (client *Client) ObtainApplicationClientSecretWithOptions(request *ObtainApplicationClientSecretRequest, runtime *util.RuntimeOptions) (_result *ObtainApplicationClientSecretResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17591,6 +22783,13 @@ func (client *Client) ObtainApplicationClientSecretWithOptions(request *ObtainAp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a client key of an Employee Identity and Access Management (EIAM) application. The returned key secret is masked. If you want to query the key secret that is not masked, call the ListApplicationClientSecrets operation.
+//
+// @param request - ObtainApplicationClientSecretRequest
+//
+// @return ObtainApplicationClientSecretResponse
 func (client *Client) ObtainApplicationClientSecret(request *ObtainApplicationClientSecretRequest) (_result *ObtainApplicationClientSecretResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ObtainApplicationClientSecretResponse{}
@@ -17602,6 +22801,15 @@ func (client *Client) ObtainApplicationClientSecret(request *ObtainApplicationCl
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看指定域名安全代理Token。
+//
+// @param request - ObtainDomainProxyTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ObtainDomainProxyTokenResponse
 func (client *Client) ObtainDomainProxyTokenWithOptions(request *ObtainDomainProxyTokenRequest, runtime *util.RuntimeOptions) (_result *ObtainDomainProxyTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17643,6 +22851,13 @@ func (client *Client) ObtainDomainProxyTokenWithOptions(request *ObtainDomainPro
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看指定域名安全代理Token。
+//
+// @param request - ObtainDomainProxyTokenRequest
+//
+// @return ObtainDomainProxyTokenResponse
 func (client *Client) ObtainDomainProxyToken(request *ObtainDomainProxyTokenRequest) (_result *ObtainDomainProxyTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ObtainDomainProxyTokenResponse{}
@@ -17654,6 +22869,15 @@ func (client *Client) ObtainDomainProxyToken(request *ObtainDomainProxyTokenRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes an Employee Identity and Access Management (EIAM) account from multiple EIAM organizations of Identity as a Service (IDaaS). You cannot remove an account from a primary organization.
+//
+// @param request - RemoveUserFromOrganizationalUnitsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveUserFromOrganizationalUnitsResponse
 func (client *Client) RemoveUserFromOrganizationalUnitsWithOptions(request *RemoveUserFromOrganizationalUnitsRequest, runtime *util.RuntimeOptions) (_result *RemoveUserFromOrganizationalUnitsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17695,6 +22919,13 @@ func (client *Client) RemoveUserFromOrganizationalUnitsWithOptions(request *Remo
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes an Employee Identity and Access Management (EIAM) account from multiple EIAM organizations of Identity as a Service (IDaaS). You cannot remove an account from a primary organization.
+//
+// @param request - RemoveUserFromOrganizationalUnitsRequest
+//
+// @return RemoveUserFromOrganizationalUnitsResponse
 func (client *Client) RemoveUserFromOrganizationalUnits(request *RemoveUserFromOrganizationalUnitsRequest) (_result *RemoveUserFromOrganizationalUnitsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveUserFromOrganizationalUnitsResponse{}
@@ -17706,6 +22937,15 @@ func (client *Client) RemoveUserFromOrganizationalUnits(request *RemoveUserFromO
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes Employee Identity and Access Management (EIAM) accounts from an EIAM group of Identity as a Service (IDaaS).
+//
+// @param request - RemoveUsersFromGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveUsersFromGroupResponse
 func (client *Client) RemoveUsersFromGroupWithOptions(request *RemoveUsersFromGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveUsersFromGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17747,6 +22987,13 @@ func (client *Client) RemoveUsersFromGroupWithOptions(request *RemoveUsersFromGr
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes Employee Identity and Access Management (EIAM) accounts from an EIAM group of Identity as a Service (IDaaS).
+//
+// @param request - RemoveUsersFromGroupRequest
+//
+// @return RemoveUsersFromGroupResponse
 func (client *Client) RemoveUsersFromGroup(request *RemoveUsersFromGroupRequest) (_result *RemoveUsersFromGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveUsersFromGroupResponse{}
@@ -17758,6 +23005,15 @@ func (client *Client) RemoveUsersFromGroup(request *RemoveUsersFromGroupRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes the permissions to access an application from multiple account groups at a time in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - RevokeApplicationFromGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeApplicationFromGroupsResponse
 func (client *Client) RevokeApplicationFromGroupsWithOptions(request *RevokeApplicationFromGroupsRequest, runtime *util.RuntimeOptions) (_result *RevokeApplicationFromGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17799,6 +23055,13 @@ func (client *Client) RevokeApplicationFromGroupsWithOptions(request *RevokeAppl
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes the permissions to access an application from multiple account groups at a time in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+//
+// @param request - RevokeApplicationFromGroupsRequest
+//
+// @return RevokeApplicationFromGroupsResponse
 func (client *Client) RevokeApplicationFromGroups(request *RevokeApplicationFromGroupsRequest) (_result *RevokeApplicationFromGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeApplicationFromGroupsResponse{}
@@ -17810,6 +23073,15 @@ func (client *Client) RevokeApplicationFromGroups(request *RevokeApplicationFrom
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes the permissions to access an application from multiple Employee Identity and Access Management (EIAM) organizations at a time.
+//
+// @param request - RevokeApplicationFromOrganizationalUnitsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeApplicationFromOrganizationalUnitsResponse
 func (client *Client) RevokeApplicationFromOrganizationalUnitsWithOptions(request *RevokeApplicationFromOrganizationalUnitsRequest, runtime *util.RuntimeOptions) (_result *RevokeApplicationFromOrganizationalUnitsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17851,6 +23123,13 @@ func (client *Client) RevokeApplicationFromOrganizationalUnitsWithOptions(reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes the permissions to access an application from multiple Employee Identity and Access Management (EIAM) organizations at a time.
+//
+// @param request - RevokeApplicationFromOrganizationalUnitsRequest
+//
+// @return RevokeApplicationFromOrganizationalUnitsResponse
 func (client *Client) RevokeApplicationFromOrganizationalUnits(request *RevokeApplicationFromOrganizationalUnitsRequest) (_result *RevokeApplicationFromOrganizationalUnitsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeApplicationFromOrganizationalUnitsResponse{}
@@ -17862,6 +23141,15 @@ func (client *Client) RevokeApplicationFromOrganizationalUnits(request *RevokeAp
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes the permissions to access an application from multiple Employee Identity and Access Management (EIAM) accounts at a time.
+//
+// @param request - RevokeApplicationFromUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeApplicationFromUsersResponse
 func (client *Client) RevokeApplicationFromUsersWithOptions(request *RevokeApplicationFromUsersRequest, runtime *util.RuntimeOptions) (_result *RevokeApplicationFromUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17903,6 +23191,13 @@ func (client *Client) RevokeApplicationFromUsersWithOptions(request *RevokeAppli
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes the permissions to access an application from multiple Employee Identity and Access Management (EIAM) accounts at a time.
+//
+// @param request - RevokeApplicationFromUsersRequest
+//
+// @return RevokeApplicationFromUsersResponse
 func (client *Client) RevokeApplicationFromUsers(request *RevokeApplicationFromUsersRequest) (_result *RevokeApplicationFromUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeApplicationFromUsersResponse{}
@@ -17914,6 +23209,15 @@ func (client *Client) RevokeApplicationFromUsers(request *RevokeApplicationFromU
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the permissions of the Developer API feature of an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - SetApplicationGrantScopeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetApplicationGrantScopeResponse
 func (client *Client) SetApplicationGrantScopeWithOptions(request *SetApplicationGrantScopeRequest, runtime *util.RuntimeOptions) (_result *SetApplicationGrantScopeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17955,6 +23259,13 @@ func (client *Client) SetApplicationGrantScopeWithOptions(request *SetApplicatio
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the permissions of the Developer API feature of an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - SetApplicationGrantScopeRequest
+//
+// @return SetApplicationGrantScopeResponse
 func (client *Client) SetApplicationGrantScope(request *SetApplicationGrantScopeRequest) (_result *SetApplicationGrantScopeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetApplicationGrantScopeResponse{}
@@ -17966,6 +23277,15 @@ func (client *Client) SetApplicationGrantScope(request *SetApplicationGrantScope
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - SetApplicationProvisioningConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetApplicationProvisioningConfigResponse
 func (client *Client) SetApplicationProvisioningConfigWithOptions(request *SetApplicationProvisioningConfigRequest, runtime *util.RuntimeOptions) (_result *SetApplicationProvisioningConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18019,6 +23339,13 @@ func (client *Client) SetApplicationProvisioningConfigWithOptions(request *SetAp
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// @param request - SetApplicationProvisioningConfigRequest
+//
+// @return SetApplicationProvisioningConfigResponse
 func (client *Client) SetApplicationProvisioningConfig(request *SetApplicationProvisioningConfigRequest) (_result *SetApplicationProvisioningConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetApplicationProvisioningConfigResponse{}
@@ -18030,6 +23357,15 @@ func (client *Client) SetApplicationProvisioningConfig(request *SetApplicationPr
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets the account synchronization scope of applications in Identity as a Service (IDaaS) Employee IAM (EIAM). This scope is the same as the scope within which developers can call the DeveloperAPI to query and manage accounts.
+//
+// @param request - SetApplicationProvisioningScopeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetApplicationProvisioningScopeResponse
 func (client *Client) SetApplicationProvisioningScopeWithOptions(request *SetApplicationProvisioningScopeRequest, runtime *util.RuntimeOptions) (_result *SetApplicationProvisioningScopeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18038,6 +23374,10 @@ func (client *Client) SetApplicationProvisioningScopeWithOptions(request *SetApp
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
 		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupIds)) {
+		query["GroupIds"] = request.GroupIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
@@ -18071,6 +23411,13 @@ func (client *Client) SetApplicationProvisioningScopeWithOptions(request *SetApp
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets the account synchronization scope of applications in Identity as a Service (IDaaS) Employee IAM (EIAM). This scope is the same as the scope within which developers can call the DeveloperAPI to query and manage accounts.
+//
+// @param request - SetApplicationProvisioningScopeRequest
+//
+// @return SetApplicationProvisioningScopeResponse
 func (client *Client) SetApplicationProvisioningScope(request *SetApplicationProvisioningScopeRequest) (_result *SetApplicationProvisioningScopeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetApplicationProvisioningScopeResponse{}
@@ -18082,13 +23429,19 @@ func (client *Client) SetApplicationProvisioningScope(request *SetApplicationPro
 	return _result, _err
 }
 
-/**
- * In IDaaS EIAM, the application management feature supports multiple SSO protocols for applications, including SAML 2.0 and OIDC protocols. Each application supports only one protocol, and the protocol cannot be changed after the application is created. You can specify the SSO configuration attributes of an application based on the supported SSO protocol.
- *
- * @param request SetApplicationSsoConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetApplicationSsoConfigResponse
- */
+// Summary:
+//
+// Specifies the single sign-on (SSO) configuration attributes of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// Description:
+//
+// In IDaaS EIAM, the application management feature supports multiple SSO protocols for applications, including SAML 2.0 and OIDC protocols. Each application supports only one protocol, and the protocol cannot be changed after the application is created. You can specify the SSO configuration attributes of an application based on the supported SSO protocol.
+//
+// @param request - SetApplicationSsoConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetApplicationSsoConfigResponse
 func (client *Client) SetApplicationSsoConfigWithOptions(request *SetApplicationSsoConfigRequest, runtime *util.RuntimeOptions) (_result *SetApplicationSsoConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18142,12 +23495,17 @@ func (client *Client) SetApplicationSsoConfigWithOptions(request *SetApplication
 	return _result, _err
 }
 
-/**
- * In IDaaS EIAM, the application management feature supports multiple SSO protocols for applications, including SAML 2.0 and OIDC protocols. Each application supports only one protocol, and the protocol cannot be changed after the application is created. You can specify the SSO configuration attributes of an application based on the supported SSO protocol.
- *
- * @param request SetApplicationSsoConfigRequest
- * @return SetApplicationSsoConfigResponse
- */
+// Summary:
+//
+// Specifies the single sign-on (SSO) configuration attributes of an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+//
+// Description:
+//
+// In IDaaS EIAM, the application management feature supports multiple SSO protocols for applications, including SAML 2.0 and OIDC protocols. Each application supports only one protocol, and the protocol cannot be changed after the application is created. You can specify the SSO configuration attributes of an application based on the supported SSO protocol.
+//
+// @param request - SetApplicationSsoConfigRequest
+//
+// @return SetApplicationSsoConfigResponse
 func (client *Client) SetApplicationSsoConfig(request *SetApplicationSsoConfigRequest) (_result *SetApplicationSsoConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetApplicationSsoConfigResponse{}
@@ -18159,6 +23517,15 @@ func (client *Client) SetApplicationSsoConfig(request *SetApplicationSsoConfigRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置默认域名。
+//
+// @param request - SetDefaultDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetDefaultDomainResponse
 func (client *Client) SetDefaultDomainWithOptions(request *SetDefaultDomainRequest, runtime *util.RuntimeOptions) (_result *SetDefaultDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18196,6 +23563,13 @@ func (client *Client) SetDefaultDomainWithOptions(request *SetDefaultDomainReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置默认域名。
+//
+// @param request - SetDefaultDomainRequest
+//
+// @return SetDefaultDomainResponse
 func (client *Client) SetDefaultDomain(request *SetDefaultDomainRequest) (_result *SetDefaultDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDefaultDomainResponse{}
@@ -18207,6 +23581,15 @@ func (client *Client) SetDefaultDomain(request *SetDefaultDomainRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a forgot password policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - SetForgetPasswordConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetForgetPasswordConfigurationResponse
 func (client *Client) SetForgetPasswordConfigurationWithOptions(request *SetForgetPasswordConfigurationRequest, runtime *util.RuntimeOptions) (_result *SetForgetPasswordConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18248,6 +23631,13 @@ func (client *Client) SetForgetPasswordConfigurationWithOptions(request *SetForg
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a forgot password policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - SetForgetPasswordConfigurationRequest
+//
+// @return SetForgetPasswordConfigurationResponse
 func (client *Client) SetForgetPasswordConfiguration(request *SetForgetPasswordConfigurationRequest) (_result *SetForgetPasswordConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetForgetPasswordConfigurationResponse{}
@@ -18259,6 +23649,15 @@ func (client *Client) SetForgetPasswordConfiguration(request *SetForgetPasswordC
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a password complexity policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - SetPasswordComplexityConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetPasswordComplexityConfigurationResponse
 func (client *Client) SetPasswordComplexityConfigurationWithOptions(request *SetPasswordComplexityConfigurationRequest, runtime *util.RuntimeOptions) (_result *SetPasswordComplexityConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18300,6 +23699,13 @@ func (client *Client) SetPasswordComplexityConfigurationWithOptions(request *Set
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a password complexity policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - SetPasswordComplexityConfigurationRequest
+//
+// @return SetPasswordComplexityConfigurationResponse
 func (client *Client) SetPasswordComplexityConfiguration(request *SetPasswordComplexityConfigurationRequest) (_result *SetPasswordComplexityConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetPasswordComplexityConfigurationResponse{}
@@ -18311,6 +23717,15 @@ func (client *Client) SetPasswordComplexityConfiguration(request *SetPasswordCom
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a password expiration policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - SetPasswordExpirationConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetPasswordExpirationConfigurationResponse
 func (client *Client) SetPasswordExpirationConfigurationWithOptions(request *SetPasswordExpirationConfigurationRequest, runtime *util.RuntimeOptions) (_result *SetPasswordExpirationConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18372,6 +23787,13 @@ func (client *Client) SetPasswordExpirationConfigurationWithOptions(request *Set
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a password expiration policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - SetPasswordExpirationConfigurationRequest
+//
+// @return SetPasswordExpirationConfigurationResponse
 func (client *Client) SetPasswordExpirationConfiguration(request *SetPasswordExpirationConfigurationRequest) (_result *SetPasswordExpirationConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetPasswordExpirationConfigurationResponse{}
@@ -18383,6 +23805,15 @@ func (client *Client) SetPasswordExpirationConfiguration(request *SetPasswordExp
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a password history policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - SetPasswordHistoryConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetPasswordHistoryConfigurationResponse
 func (client *Client) SetPasswordHistoryConfigurationWithOptions(request *SetPasswordHistoryConfigurationRequest, runtime *util.RuntimeOptions) (_result *SetPasswordHistoryConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18424,6 +23855,13 @@ func (client *Client) SetPasswordHistoryConfigurationWithOptions(request *SetPas
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a password history policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - SetPasswordHistoryConfigurationRequest
+//
+// @return SetPasswordHistoryConfigurationResponse
 func (client *Client) SetPasswordHistoryConfiguration(request *SetPasswordHistoryConfigurationRequest) (_result *SetPasswordHistoryConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetPasswordHistoryConfigurationResponse{}
@@ -18435,6 +23873,15 @@ func (client *Client) SetPasswordHistoryConfiguration(request *SetPasswordHistor
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets the password initialization configurations for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - SetPasswordInitializationConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetPasswordInitializationConfigurationResponse
 func (client *Client) SetPasswordInitializationConfigurationWithOptions(request *SetPasswordInitializationConfigurationRequest, runtime *util.RuntimeOptions) (_result *SetPasswordInitializationConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18484,6 +23931,13 @@ func (client *Client) SetPasswordInitializationConfigurationWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets the password initialization configurations for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - SetPasswordInitializationConfigurationRequest
+//
+// @return SetPasswordInitializationConfigurationResponse
 func (client *Client) SetPasswordInitializationConfiguration(request *SetPasswordInitializationConfigurationRequest) (_result *SetPasswordInitializationConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetPasswordInitializationConfigurationResponse{}
@@ -18495,6 +23949,15 @@ func (client *Client) SetPasswordInitializationConfiguration(request *SetPasswor
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the primary organizational unit to which an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account belongs. This account will be removed from the previous primary organizational unit and added to the new primary organization.
+//
+// @param request - SetUserPrimaryOrganizationalUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetUserPrimaryOrganizationalUnitResponse
 func (client *Client) SetUserPrimaryOrganizationalUnitWithOptions(request *SetUserPrimaryOrganizationalUnitRequest, runtime *util.RuntimeOptions) (_result *SetUserPrimaryOrganizationalUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18536,6 +23999,13 @@ func (client *Client) SetUserPrimaryOrganizationalUnitWithOptions(request *SetUs
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the primary organizational unit to which an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account belongs. This account will be removed from the previous primary organizational unit and added to the new primary organization.
+//
+// @param request - SetUserPrimaryOrganizationalUnitRequest
+//
+// @return SetUserPrimaryOrganizationalUnitResponse
 func (client *Client) SetUserPrimaryOrganizationalUnit(request *SetUserPrimaryOrganizationalUnitRequest) (_result *SetUserPrimaryOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetUserPrimaryOrganizationalUnitResponse{}
@@ -18547,6 +24017,15 @@ func (client *Client) SetUserPrimaryOrganizationalUnit(request *SetUserPrimaryOr
 	return _result, _err
 }
 
+// Summary:
+//
+// Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) that is locked.
+//
+// @param request - UnlockUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnlockUserResponse
 func (client *Client) UnlockUserWithOptions(request *UnlockUserRequest, runtime *util.RuntimeOptions) (_result *UnlockUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18584,6 +24063,13 @@ func (client *Client) UnlockUserWithOptions(request *UnlockUserRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) that is locked.
+//
+// @param request - UnlockUserRequest
+//
+// @return UnlockUserResponse
 func (client *Client) UnlockUser(request *UnlockUserRequest) (_result *UnlockUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnlockUserResponse{}
@@ -18595,6 +24081,15 @@ func (client *Client) UnlockUser(request *UnlockUserRequest) (_result *UnlockUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the authorization type of an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - UpdateApplicationAuthorizationTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationAuthorizationTypeResponse
 func (client *Client) UpdateApplicationAuthorizationTypeWithOptions(request *UpdateApplicationAuthorizationTypeRequest, runtime *util.RuntimeOptions) (_result *UpdateApplicationAuthorizationTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18636,6 +24131,13 @@ func (client *Client) UpdateApplicationAuthorizationTypeWithOptions(request *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the authorization type of an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - UpdateApplicationAuthorizationTypeRequest
+//
+// @return UpdateApplicationAuthorizationTypeResponse
 func (client *Client) UpdateApplicationAuthorizationType(request *UpdateApplicationAuthorizationTypeRequest) (_result *UpdateApplicationAuthorizationTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateApplicationAuthorizationTypeResponse{}
@@ -18647,6 +24149,15 @@ func (client *Client) UpdateApplicationAuthorizationType(request *UpdateApplicat
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - UpdateApplicationDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationDescriptionResponse
 func (client *Client) UpdateApplicationDescriptionWithOptions(request *UpdateApplicationDescriptionRequest, runtime *util.RuntimeOptions) (_result *UpdateApplicationDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18688,6 +24199,13 @@ func (client *Client) UpdateApplicationDescriptionWithOptions(request *UpdateApp
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of an Employee Identity and Access Management (EIAM) application.
+//
+// @param request - UpdateApplicationDescriptionRequest
+//
+// @return UpdateApplicationDescriptionResponse
 func (client *Client) UpdateApplicationDescription(request *UpdateApplicationDescriptionRequest) (_result *UpdateApplicationDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateApplicationDescriptionResponse{}
@@ -18699,6 +24217,15 @@ func (client *Client) UpdateApplicationDescription(request *UpdateApplicationDes
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). If the information is empty, the information is not updated by default.
+//
+// @param request - UpdateGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGroupResponse
 func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18744,6 +24271,13 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). If the information is empty, the information is not updated by default.
+//
+// @param request - UpdateGroupRequest
+//
+// @return UpdateGroupResponse
 func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGroupResponse{}
@@ -18755,6 +24289,15 @@ func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateG
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the description of an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account group.
+//
+// @param request - UpdateGroupDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGroupDescriptionResponse
 func (client *Client) UpdateGroupDescriptionWithOptions(request *UpdateGroupDescriptionRequest, runtime *util.RuntimeOptions) (_result *UpdateGroupDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18796,6 +24339,13 @@ func (client *Client) UpdateGroupDescriptionWithOptions(request *UpdateGroupDesc
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the description of an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account group.
+//
+// @param request - UpdateGroupDescriptionRequest
+//
+// @return UpdateGroupDescriptionResponse
 func (client *Client) UpdateGroupDescription(request *UpdateGroupDescriptionRequest) (_result *UpdateGroupDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGroupDescriptionResponse{}
@@ -18807,6 +24357,15 @@ func (client *Client) UpdateGroupDescription(request *UpdateGroupDescriptionRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of an Enterprise Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - UpdateInstanceDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceDescriptionResponse
 func (client *Client) UpdateInstanceDescriptionWithOptions(request *UpdateInstanceDescriptionRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18844,6 +24403,13 @@ func (client *Client) UpdateInstanceDescriptionWithOptions(request *UpdateInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of an Enterprise Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
+//
+// @param request - UpdateInstanceDescriptionRequest
+//
+// @return UpdateInstanceDescriptionResponse
 func (client *Client) UpdateInstanceDescription(request *UpdateInstanceDescriptionRequest) (_result *UpdateInstanceDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceDescriptionResponse{}
@@ -18855,6 +24421,15 @@ func (client *Client) UpdateInstanceDescription(request *UpdateInstanceDescripti
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新一个专属网络端点的名称。
+//
+// @param request - UpdateNetworkAccessEndpointNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNetworkAccessEndpointNameResponse
 func (client *Client) UpdateNetworkAccessEndpointNameWithOptions(request *UpdateNetworkAccessEndpointNameRequest, runtime *util.RuntimeOptions) (_result *UpdateNetworkAccessEndpointNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18896,6 +24471,13 @@ func (client *Client) UpdateNetworkAccessEndpointNameWithOptions(request *Update
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新一个专属网络端点的名称。
+//
+// @param request - UpdateNetworkAccessEndpointNameRequest
+//
+// @return UpdateNetworkAccessEndpointNameResponse
 func (client *Client) UpdateNetworkAccessEndpointName(request *UpdateNetworkAccessEndpointNameRequest) (_result *UpdateNetworkAccessEndpointNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateNetworkAccessEndpointNameResponse{}
@@ -18907,6 +24489,15 @@ func (client *Client) UpdateNetworkAccessEndpointName(request *UpdateNetworkAcce
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the basic information about an Employee Identity and Access Management (EIAM) organization. The basic information about the organization is not updated by default if no parameter is specified.
+//
+// @param request - UpdateOrganizationalUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOrganizationalUnitResponse
 func (client *Client) UpdateOrganizationalUnitWithOptions(request *UpdateOrganizationalUnitRequest, runtime *util.RuntimeOptions) (_result *UpdateOrganizationalUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18948,6 +24539,13 @@ func (client *Client) UpdateOrganizationalUnitWithOptions(request *UpdateOrganiz
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the basic information about an Employee Identity and Access Management (EIAM) organization. The basic information about the organization is not updated by default if no parameter is specified.
+//
+// @param request - UpdateOrganizationalUnitRequest
+//
+// @return UpdateOrganizationalUnitResponse
 func (client *Client) UpdateOrganizationalUnit(request *UpdateOrganizationalUnitRequest) (_result *UpdateOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateOrganizationalUnitResponse{}
@@ -18959,6 +24557,15 @@ func (client *Client) UpdateOrganizationalUnit(request *UpdateOrganizationalUnit
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of an Employee Identity and Access Management (EIAM) organization.
+//
+// @param request - UpdateOrganizationalUnitDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOrganizationalUnitDescriptionResponse
 func (client *Client) UpdateOrganizationalUnitDescriptionWithOptions(request *UpdateOrganizationalUnitDescriptionRequest, runtime *util.RuntimeOptions) (_result *UpdateOrganizationalUnitDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19000,6 +24607,13 @@ func (client *Client) UpdateOrganizationalUnitDescriptionWithOptions(request *Up
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of an Employee Identity and Access Management (EIAM) organization.
+//
+// @param request - UpdateOrganizationalUnitDescriptionRequest
+//
+// @return UpdateOrganizationalUnitDescriptionResponse
 func (client *Client) UpdateOrganizationalUnitDescription(request *UpdateOrganizationalUnitDescriptionRequest) (_result *UpdateOrganizationalUnitDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateOrganizationalUnitDescriptionResponse{}
@@ -19011,6 +24625,15 @@ func (client *Client) UpdateOrganizationalUnitDescription(request *UpdateOrganiz
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the parent organization ID of an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). In this case, the organization is moved from a parent node to a new node.
+//
+// @param request - UpdateOrganizationalUnitParentIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOrganizationalUnitParentIdResponse
 func (client *Client) UpdateOrganizationalUnitParentIdWithOptions(request *UpdateOrganizationalUnitParentIdRequest, runtime *util.RuntimeOptions) (_result *UpdateOrganizationalUnitParentIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19052,6 +24675,13 @@ func (client *Client) UpdateOrganizationalUnitParentIdWithOptions(request *Updat
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the parent organization ID of an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). In this case, the organization is moved from a parent node to a new node.
+//
+// @param request - UpdateOrganizationalUnitParentIdRequest
+//
+// @return UpdateOrganizationalUnitParentIdResponse
 func (client *Client) UpdateOrganizationalUnitParentId(request *UpdateOrganizationalUnitParentIdRequest) (_result *UpdateOrganizationalUnitParentIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateOrganizationalUnitParentIdResponse{}
@@ -19063,6 +24693,15 @@ func (client *Client) UpdateOrganizationalUnitParentId(request *UpdateOrganizati
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the basic information about an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
+//
+// @param request - UpdateUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime *util.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19132,6 +24771,13 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the basic information about an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
+//
+// @param request - UpdateUserRequest
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserResponse{}
@@ -19143,6 +24789,15 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account.
+//
+// @param request - UpdateUserDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserDescriptionResponse
 func (client *Client) UpdateUserDescriptionWithOptions(request *UpdateUserDescriptionRequest, runtime *util.RuntimeOptions) (_result *UpdateUserDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19184,6 +24839,13 @@ func (client *Client) UpdateUserDescriptionWithOptions(request *UpdateUserDescri
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account.
+//
+// @param request - UpdateUserDescriptionRequest
+//
+// @return UpdateUserDescriptionResponse
 func (client *Client) UpdateUserDescription(request *UpdateUserDescriptionRequest) (_result *UpdateUserDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserDescriptionResponse{}
@@ -19195,6 +24857,15 @@ func (client *Client) UpdateUserDescription(request *UpdateUserDescriptionReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the password information of an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS). The password must meet the requirements of the password policies that are configured in the IDaaS console.
+//
+// @param request - UpdateUserPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserPasswordResponse
 func (client *Client) UpdateUserPasswordWithOptions(request *UpdateUserPasswordRequest, runtime *util.RuntimeOptions) (_result *UpdateUserPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19244,6 +24915,13 @@ func (client *Client) UpdateUserPasswordWithOptions(request *UpdateUserPasswordR
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the password information of an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS). The password must meet the requirements of the password policies that are configured in the IDaaS console.
+//
+// @param request - UpdateUserPasswordRequest
+//
+// @return UpdateUserPasswordResponse
 func (client *Client) UpdateUserPassword(request *UpdateUserPasswordRequest) (_result *UpdateUserPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserPasswordResponse{}
