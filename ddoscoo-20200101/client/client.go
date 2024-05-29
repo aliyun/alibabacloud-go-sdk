@@ -10,14 +10,20 @@ import (
 )
 
 type AddAutoCcBlacklistRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [{"src":"198.51.XX.XX"},{"src":"198.52.XX.XX"}]
 	Blacklist *string `json:"Blacklist,omitempty" xml:"Blacklist,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 300
 	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
@@ -107,7 +113,9 @@ type AddAutoCcWhitelistRequest struct {
 	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -116,6 +124,8 @@ type AddAutoCcWhitelistRequest struct {
 	// The configuration of the IP addresses that you want to add to the whitelist. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
 	//
 	// 	- **src**: the IP address that you want to add. This parameter is required. Data type: string.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -198,48 +208,14 @@ func (s *AddAutoCcWhitelistResponse) SetBody(v *AddAutoCcWhitelistResponseBody) 
 }
 
 type AssociateWebCertRequest struct {
-	// The public key of the certificate that you want to associate. This parameter must be used together with **CertName*	- and **Key**.
-	//
-	// > If you specify **CertName**, **Cert**, and **Key**, you do not need to specify **CertId**.
-	//
-	// example:
-	//
-	// -----BEGIN CERTIFICATE----- 62EcYPWd2Oy1vs6MTXcJSfN9Z7rZ9fmxWr2BFN2XbahgnsSXM48ixZJ4krc+1M+j2kcubVpsE2cgHdj4v8H6jUz9Ji4mr7vMNS6dXv8PUkl/qoDeNGCNdyTS5NIL5ir+g92cL8IGOkjgvhlqt9vc65Cgb4mL+n5+DV9uOyTZTW/MojmlgfUekC2xiXa54nxJf17Y1TADGSbyJbsC0Q9nIrHsPl8YKkvRWvIAqYxXZ7wRwWWmv4TMxFhWRiNY7yZIo2ZUhl02SIDNggIEeg== -----END CERTIFICATE-----
-	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
-	// The ID of the certificate that you want to associate. If the certificate that you want to associate has been issued in Certificate Management Service, you can specify the certificate ID to associate the certificate.
-	//
-	// > If you specify the certificate ID, you do not need to specify a value for the **CertName**, **Cert**, and **Key*	- parameters.
-	//
-	// example:
-	//
-	// 2404693
+	Cert           *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
 	CertId         *int32  `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The name of the certificate that you want to associate. This parameter must be used together with the **Cert*	- and **Key*	- parameters.
-	//
-	// > If you specify a value for the **CertName**, **Cert**, and **Key*	- parameters, you do not need to specify a value for the **CertId*	- parameter.
-	//
-	// example:
-	//
-	// example-cert
-	CertName   *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
-	// The domain name of the website.
-	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
-	//
-	// example:
-	//
-	// www.aliyun.com
+	CertName       *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertRegion     *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	// This parameter is required.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The private key of the certificate that you want to associate. This parameter must be used together with **CertName*	- and **Cert**.
-	//
-	// > If you specify **CertName**, **Cert**, and **Key**, you do not need to specify **CertId**.
-	//
-	// example:
-	//
-	// -----BEGIN RSA PRIVATE KEY----- DADTPZoOHd9WtZ3UKHJTRgNQmioPQn2bqdKHop+B/dn/4VZL7Jt8zSDGM9sTMThLyvsmLQKBgQCr+ujntC1kN6pGBj2Fw2l/EA/W3rYEce2tyhjgmG7rZ+A/jVE9fld5sQra6ZdwBcQJaiygoIYoaMF2EjRwc0qwHaluq0C15f6ujSoHh2e+D5zdmkTg/3NKNjqNv6xA2gYpinVDzFdZ9Zujxvuh9o4Vqf0YF8bv5UK5G04RtKadOw== -----END RSA PRIVATE KEY-----
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key    *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// example:
@@ -350,11 +326,15 @@ func (s *AssociateWebCertResponse) SetBody(v *AssociateWebCertResponseBody) *Ass
 type AttachSceneDefenseObjectRequest struct {
 	// The type of the object. Set the value to **Domain**, which indicates a domain name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Domain
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	// The object that you want to add to the policy. Separate multiple objects with commas (,).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -362,7 +342,9 @@ type AttachSceneDefenseObjectRequest struct {
 	Objects *string `json:"Objects,omitempty" xml:"Objects,omitempty"`
 	// The ID of the policy.
 	//
-	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	// > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -462,7 +444,9 @@ func (s *AttachSceneDefenseObjectResponse) SetBody(v *AttachSceneDefenseObjectRe
 type ConfigL7RsPolicyRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query the domain names for which forwarding rules are configured.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names for which forwarding rules are configured.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -486,13 +470,15 @@ type ConfigL7RsPolicyRequest struct {
 	//
 	//         	- **Weight**: the weight of the server. This field is optional and must be an integer. This field takes effect only when **ProxyMode*	- is set to **rr**. Valid values: **1*	- to **100**. Default value: **100**. An origin server with a higher weight receives more requests.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"ProxyMode":"rr","Attributes":[{"RealServer":"1.***.***.1","Attribute":{"Weight":100}},{"RealServer":"2.***.***.2","Attribute":{"Weight":100}}]}
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -583,13 +569,17 @@ func (s *ConfigL7RsPolicyResponse) SetBody(v *ConfigL7RsPolicyResponseBody) *Con
 type ConfigLayer4RealLimitRequest struct {
 	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// ddoscoo-cn-XXXXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies the threshold of the clean bandwidth. Valid values: 0 to 15360. The value 0 indicates that rate limiting is never triggered. Unit: Mbit/s
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -671,7 +661,7 @@ type ConfigLayer4RemarkRequest struct {
 	//
 	// This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can perform this operation only on one port forwarding rule at a time.
 	//
-	// > You can call the [DescribeNetworkRules](~~157484~~) to query existing port forwarding rules.
+	// > You can call the [DescribeNetworkRules](https://help.aliyun.com/document_detail/157484.html) to query existing port forwarding rules.
 	//
 	// Each port forwarding rule contains the following fields:
 	//
@@ -683,9 +673,11 @@ type ConfigLayer4RemarkRequest struct {
 	//
 	// 	- **Remark**: the remarks of the port forwarding rule. This field is required and must be of the STRING type. The value can contain letters, digits, and some special characters, such as `, . + - 	- / _`. The value can be up to 200 characters in length.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// [{\"InstanceId\":\"ddosDip-sg-4hr2b3l****\",\"FrontendPort\":2020,\"Protocol\":\"udp\",\"Remark\":\"test\"}]
+	// [{\\"InstanceId\\":\\"ddosDip-sg-4hr2b3l****\\",\\"FrontendPort\\":2020,\\"Protocol\\":\\"udp\\",\\"Remark\\":\\"test\\"}]
 	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
 }
 
@@ -756,9 +748,11 @@ func (s *ConfigLayer4RemarkResponse) SetBody(v *ConfigLayer4RemarkResponseBody) 
 type ConfigLayer4RuleBakModeRequest struct {
 	// The mode that you want to use to forward service traffic. Valid values:
 	//
-	// 	- **0**: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](~~157482~~) operation to create a port forwarding rule.
+	// 	- **0**: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](https://help.aliyun.com/document_detail/157482.html) operation to create a port forwarding rule.
 	//
-	// 	- **1**: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](~~312684~~) operation to configure IP addresses.
+	// 	- **1**: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](https://help.aliyun.com/document_detail/312684.html) operation to configure IP addresses.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -768,7 +762,7 @@ type ConfigLayer4RuleBakModeRequest struct {
 	//
 	// This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can perform this operation only on one port forwarding rule at a time.
 	//
-	// > You can call the [DescribeNetworkRules](~~157484~~) to query existing port forwarding rules.
+	// > You can call the [DescribeNetworkRules](https://help.aliyun.com/document_detail/157484.html) to query existing port forwarding rules.
 	//
 	// Each port forwarding rule contains the following fields:
 	//
@@ -778,9 +772,11 @@ type ConfigLayer4RuleBakModeRequest struct {
 	//
 	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// [{\"InstanceId\":\"ddosDip-sg-4hr2b3l****\",\"FrontendPort\":2020,\"Protocol\":\"udp\"}]
+	// [{\\"InstanceId\\":\\"ddosDip-sg-4hr2b3l****\\",\\"FrontendPort\\":2020,\\"Protocol\\":\\"udp\\"}]
 	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
 }
 
@@ -858,7 +854,7 @@ type ConfigLayer4RulePolicyRequest struct {
 	//
 	// This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can perform this operation only on one port forwarding rule at a time.
 	//
-	// > You can call the [DescribeNetworkRules](~~157484~~) to query existing port forwarding rules.
+	// > You can call the [DescribeNetworkRules](https://help.aliyun.com/document_detail/157484.html) to query existing port forwarding rules.
 	//
 	// Each port forwarding rule contains the following fields:
 	//
@@ -888,9 +884,11 @@ type ConfigLayer4RulePolicyRequest struct {
 	//
 	//     	- **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// [{\"InstanceId\":\"ddosDip-sg-4hr2b3l****\",\"Protocol\":\"udp\",\"FrontendPort\":2020,\"BackendPort\":2022,\"PriRealServers\":[{\"RealServer\":\"192.0.2.1\"},{\"RealServer\":\"192.0.2.2\"}],\"SecRealServers\":[{\"RealServer\":\"192.0.2.3\"},{\"RealServer\":\"192.0.2.4\"}],\"CurrentRsIndex\":1}]
+	// [{\\"InstanceId\\":\\"ddosDip-sg-4hr2b3l****\\",\\"Protocol\\":\\"udp\\",\\"FrontendPort\\":2020,\\"BackendPort\\":2022,\\"PriRealServers\\":[{\\"RealServer\\":\\"192.0.2.1\\"},{\\"RealServer\\":\\"192.0.2.2\\"}],\\"SecRealServers\\":[{\\"RealServer\\":\\"192.0.2.3\\"},{\\"RealServer\\":\\"192.0.2.4\\"}],\\"CurrentRsIndex\\":1}]
 	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
 }
 
@@ -971,16 +969,18 @@ type ConfigNetworkRegionBlockRequest struct {
 	//
 	//     **
 	//
-	//     **Note**For more information, see the **Codes of countries and areas*	- section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic.
+	//     **Note**For more information, see the **Codes of countries and areas*	- section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic.
 	//
 	//
 	// 	- **Provinces**: the codes of the administrative regions in China from which you want to block requests. This field is optional and must be of the array type.
 	//
 	//     **
 	//
-	//     **Note**For more information, see the **Codes of administrative regions in China*	- section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic.
+	//     **Note**For more information, see the **Codes of administrative regions in China*	- section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic.
 	//
 	//     For example, `[11,12]` specifies Beijing and Tianjin.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -988,7 +988,9 @@ type ConfigNetworkRegionBlockRequest struct {
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1079,6 +1081,8 @@ type ConfigNetworkRulesRequest struct {
 	// 	- **RealServers**: the IP addresses of the origin server. This field is required and must be a JSON array. You can specify up to 20 IP addresses.
 	//
 	// > You can modify only the value of **RealServers*	- when you modify a port forwarding rule.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1183,13 +1187,17 @@ type ConfigUdpReflectRequest struct {
 	//
 	//     	- UDP 11211: memcached reflection attacks
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// {\"UdpSports\":[17,19]}
+	// {\\"UdpSports\\":[17,19]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1284,7 +1292,9 @@ func (s *ConfigUdpReflectResponse) SetBody(v *ConfigUdpReflectResponseBody) *Con
 type ConfigWebCCTemplateRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1305,6 +1315,8 @@ type ConfigWebCCTemplateRequest struct {
 	// 	- **gf_sos_verify**: Strict
 	//
 	// 	- **gf_sos_enhance**: Super Strict
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1395,7 +1407,9 @@ type ConfigWebIpSetRequest struct {
 	BlackList []*string `json:"BlackList,omitempty" xml:"BlackList,omitempty" type:"Repeated"`
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1511,6 +1525,8 @@ type CreateAsyncTaskRequest struct {
 	//
 	// 	- **domain**: the domain name of the website, which must be of the STRING type. If you do not specify this field, the forwarding rules of all websites are exported.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"instanceId": "ddoscoo-cn-mp91j1ao****"}
@@ -1528,6 +1544,8 @@ type CreateAsyncTaskRequest struct {
 	// 	- **5**: the task to download the blacklist for destination IP addresses of an instance
 	//
 	// 	- **6**: the task to download the whitelist for destination IP addresses of an instance
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1612,6 +1630,8 @@ func (s *CreateAsyncTaskResponse) SetBody(v *CreateAsyncTaskResponseBody) *Creat
 type CreateDomainResourceRequest struct {
 	// The domain name of the website that you want to add to the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// www.example.com
@@ -1635,10 +1655,16 @@ type CreateDomainResourceRequest struct {
 	// {"Http2":1,"Http2https":1,"Https2http":1}
 	HttpsExt *string `json:"HttpsExt,omitempty" xml:"HttpsExt,omitempty"`
 	// An array consisting of the IDs of instances that you want to associate.
+	//
+	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// An array that consists of the details of the protocol type and port number.
+	//
+	// This parameter is required.
 	ProxyTypes []*CreateDomainResourceRequestProxyTypes `json:"ProxyTypes,omitempty" xml:"ProxyTypes,omitempty" type:"Repeated"`
 	// An array that consists of the addresses of origin servers.
+	//
+	// This parameter is required.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
 	// The address type of the origin server. Valid values:
 	//
@@ -1647,6 +1673,8 @@ type CreateDomainResourceRequest struct {
 	// 	- **1**: domain name
 	//
 	//     If you deploy proxies, such as a Web Application Firewall (WAF) instance, between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance, set the value to 1. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1694,6 +1722,8 @@ func (s *CreateDomainResourceRequest) SetRsType(v int32) *CreateDomainResourceRe
 
 type CreateDomainResourceRequestProxyTypes struct {
 	// An array that consists of port numbers.
+	//
+	// This parameter is required.
 	ProxyPorts []*int32 `json:"ProxyPorts,omitempty" xml:"ProxyPorts,omitempty" type:"Repeated"`
 	// The type of the protocol. Valid values:
 	//
@@ -1793,6 +1823,8 @@ type CreateNetworkRulesRequest struct {
 	//
 	// 	- **RealServers**: the IP addresses of the origin server. This field is required and must be a JSON array. You can specify up to 20 IP addresses.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [{"InstanceId":"ddoscoo-cn-mp91j1ao****","Protocol":"tcp","FrontendPort":8080,"BackendPort":8080,"RealServers":["1.1.1.1","2.2.2.2"]}]
@@ -1872,6 +1904,8 @@ type CreatePortRequest struct {
 	BackendPort *string `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
 	// The forwarding port. Valid values: **0*	- to **65535**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 55
@@ -1882,19 +1916,25 @@ type CreatePortRequest struct {
 	//
 	// 	- **udp**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// tcp
 	FrontendProtocol *string `json:"FrontendProtocol,omitempty" xml:"FrontendProtocol,omitempty"`
 	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// ddoscoo-cn-st21zbyq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// An array that consists of the IP addresses of origin servers.
+	//
+	// This parameter is required.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
 }
 
@@ -1985,17 +2025,23 @@ func (s *CreatePortResponse) SetBody(v *CreatePortResponseBody) *CreatePortRespo
 type CreateSceneDefensePolicyRequest struct {
 	// The end time of the policy. This value is a UNIX timestamp. Units: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1586016000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the policy.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testpolicy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The start time of the policy. This value is a UNIX timestamp. Units: milliseconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2006,6 +2052,8 @@ type CreateSceneDefensePolicyRequest struct {
 	// 	- **promotion**: important activity
 	//
 	// 	- **bypass**: all traffic forwarded
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2134,6 +2182,8 @@ type CreateSchedulerRuleRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the rule.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testrule
@@ -2147,6 +2197,8 @@ type CreateSchedulerRuleRequest struct {
 	// 	- **5**: CDN interaction
 	//
 	// 	- **6**: cloud service interaction
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2177,6 +2229,8 @@ type CreateSchedulerRuleRequest struct {
 	//     	- **6*	- the IP address of the interaction resource in the cloud service interaction scenario
 	//
 	// 	- **RegionId**: the region where the interaction resource is deployed. This parameter must be specified when **ValueType*	- is set to **2**. The value must be of the string type.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2295,6 +2349,8 @@ func (s *CreateSchedulerRuleResponse) SetBody(v *CreateSchedulerRuleResponseBody
 type CreateTagResourcesRequest struct {
 	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -2309,11 +2365,15 @@ type CreateTagResourcesRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// An array consisting of the IDs of the Anti-DDoS Pro instances to which you want to add the tag.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2441,32 +2501,47 @@ func (s *CreateTagResourcesResponse) SetBody(v *CreateTagResourcesResponseBody) 
 }
 
 type CreateWebCCRuleRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// close
 	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 60
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// prefix
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testrule
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Ttl             *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// This parameter is required.
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// /abc/a.php
@@ -2590,6 +2665,8 @@ type CreateWebRuleRequest struct {
 	DefenseId *string `json:"DefenseId,omitempty" xml:"DefenseId,omitempty"`
 	// The domain name of the website that you want to add to the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
@@ -2620,7 +2697,7 @@ type CreateWebRuleRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -2631,6 +2708,8 @@ type CreateWebRuleRequest struct {
 	// 	- **0**: IP address
 	//
 	// 	- **1**: domain name The domain name of the origin server is returned if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the instance. In this case, the address of the proxy, such as the CNAME provided by WAF, is returned.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2645,6 +2724,8 @@ type CreateWebRuleRequest struct {
 	//     	- **RealServers**: the IP address. This field is required and must be a string array.
 	//
 	// 	- **ProxyType**: the protocol type. This field is required and must be a string. Valid values: **http**, **https**, **websocket**, and **websockets**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2755,7 +2836,9 @@ type DeleteAsyncTaskRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the task that you want to delete.
 	//
-	// > You can call the [DescribeAsyncTasks](~~159405~~) operation to query the IDs of all asynchronous export tasks.
+	// > You can call the [DescribeAsyncTasks](https://help.aliyun.com/document_detail/159405.html) operation to query the IDs of all asynchronous export tasks.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2837,13 +2920,17 @@ type DeleteAutoCcBlacklistRequest struct {
 	//
 	// 	- **src**: the IP address. This field is required and must be of the STRING type.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [{"src":"198.51.XX.XX"},{"src":"198.52.XX.XX"}]
 	Blacklist *string `json:"Blacklist,omitempty" xml:"Blacklist,omitempty"`
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2923,7 +3010,9 @@ func (s *DeleteAutoCcBlacklistResponse) SetBody(v *DeleteAutoCcBlacklistResponse
 type DeleteAutoCcWhitelistRequest struct {
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2932,6 +3021,8 @@ type DeleteAutoCcWhitelistRequest struct {
 	// The IP addresses that you want to manage. This parameter is a JSON string. This parameter is a JSON string. The string contains the following field:
 	//
 	// 	- **src**: the IP address. This field is required and must be of the string type.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3010,6 +3101,8 @@ func (s *DeleteAutoCcWhitelistResponse) SetBody(v *DeleteAutoCcWhitelistResponse
 
 type DeleteDomainResourceRequest struct {
 	// The domain name for which the forwarding rule is configured.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3090,6 +3183,8 @@ type DeleteNetworkRuleRequest struct {
 	//
 	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [{"InstanceId":"ddoscoo-cn-mp91j1ao****","Protocol":"tcp","FrontendPort":8080}]
@@ -3169,6 +3264,8 @@ type DeletePortRequest struct {
 	BackendPort *string `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
 	// The forwarding port. Valid values: **0*	- to **65535**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 55
@@ -3179,13 +3276,17 @@ type DeletePortRequest struct {
 	//
 	// 	- **udp**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// tcp
 	FrontendProtocol *string `json:"FrontendProtocol,omitempty" xml:"FrontendProtocol,omitempty"`
 	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3282,7 +3383,9 @@ func (s *DeletePortResponse) SetBody(v *DeletePortResponseBody) *DeletePortRespo
 type DeleteSceneDefensePolicyRequest struct {
 	// The ID of the policy that you want to delete.
 	//
-	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	// > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3378,6 +3481,8 @@ type DeleteSchedulerRuleRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the scheduling rule that you want to delete.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testrule
@@ -3466,6 +3571,8 @@ type DeleteTagResourcesRequest struct {
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3480,11 +3587,15 @@ type DeleteTagResourcesRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// An array consisting of the IDs of instances from which you want to remove tags.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3590,13 +3701,17 @@ func (s *DeleteTagResourcesResponse) SetBody(v *DeleteTagResourcesResponseBody) 
 type DeleteWebCCRuleRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The name of the custom frequency control rule that you want to delete.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3687,7 +3802,9 @@ func (s *DeleteWebCCRuleResponse) SetBody(v *DeleteWebCCRuleResponseBody) *Delet
 type DeleteWebCacheCustomRuleRequest struct {
 	// The domain name for which you want to delete the custom rules of the Static Page Caching policy.
 	//
-	// > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	// > You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3702,6 +3819,8 @@ type DeleteWebCacheCustomRuleRequest struct {
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// An array consisting of the names of the rules that you want to delete.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3786,7 +3905,9 @@ func (s *DeleteWebCacheCustomRuleResponse) SetBody(v *DeleteWebCacheCustomRuleRe
 type DeleteWebPreciseAccessRuleRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3799,6 +3920,8 @@ type DeleteWebPreciseAccessRuleRequest struct {
 	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// An array that consists of the names of rules to delete.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3883,7 +4006,9 @@ func (s *DeleteWebPreciseAccessRuleResponse) SetBody(v *DeleteWebPreciseAccessRu
 type DeleteWebRuleRequest struct {
 	// The domain name of the website from which you want to delete the forwarding rule.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query the domain names for which forwarding rules are configured.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names for which forwarding rules are configured.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3891,7 +4016,7 @@ type DeleteWebRuleRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -3971,11 +4096,15 @@ func (s *DeleteWebRuleResponse) SetBody(v *DeleteWebRuleResponseBody) *DeleteWeb
 type DescribeAsyncTasksRequest struct {
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4214,11 +4343,15 @@ func (s *DescribeAsyncTasksResponse) SetBody(v *DescribeAsyncTasksResponseBody) 
 type DescribeAttackAnalysisMaxQpsRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1619798400
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4309,7 +4442,9 @@ func (s *DescribeAttackAnalysisMaxQpsResponse) SetBody(v *DescribeAttackAnalysis
 type DescribeAutoCcBlacklistRequest struct {
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4325,11 +4460,15 @@ type DescribeAutoCcBlacklistRequest struct {
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4498,6 +4637,8 @@ type DescribeAutoCcListCountRequest struct {
 	//
 	// > You can call the **DescribeInstanceIds*	- operation to query the IDs of all instances.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
@@ -4608,7 +4749,9 @@ func (s *DescribeAutoCcListCountResponse) SetBody(v *DescribeAutoCcListCountResp
 type DescribeAutoCcWhitelistRequest struct {
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4624,11 +4767,15 @@ type DescribeAutoCcWhitelistRequest struct {
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4901,7 +5048,9 @@ func (s *DescribeBackSourceCidrResponse) SetBody(v *DescribeBackSourceCidrRespon
 type DescribeBlackholeStatusRequest struct {
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5042,7 +5191,9 @@ func (s *DescribeBlackholeStatusResponse) SetBody(v *DescribeBlackholeStatusResp
 type DescribeBlockStatusRequest struct {
 	// An array consisting of information about the IDs of the instances that you want to query.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5229,7 +5380,7 @@ func (s *DescribeBlockStatusResponse) SetBody(v *DescribeBlockStatusResponseBody
 type DescribeCertsRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
 	//
 	// example:
 	//
@@ -5418,6 +5569,8 @@ func (s *DescribeCertsResponse) SetBody(v *DescribeCertsResponseBody) *DescribeC
 }
 
 type DescribeCnameReusesRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// www.aliyun.com
@@ -5550,7 +5703,9 @@ type DescribeDDoSEventsRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5558,11 +5713,15 @@ type DescribeDDoSEventsRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5577,6 +5736,8 @@ type DescribeDDoSEventsRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5811,6 +5972,8 @@ func (s *DescribeDDoSEventsResponse) SetBody(v *DescribeDDoSEventsResponseBody) 
 type DescribeDDosAllEventListRequest struct {
 	// The end of the time range to query. The DDoS attack events occur before **EndTime*	- are queried. This value is a UNIX timestamp. Unit: seconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1640966399
@@ -5835,17 +5998,23 @@ type DescribeDDosAllEventListRequest struct {
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. The DDoS attack events occur after **StartTime*	- are queried. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6095,11 +6264,15 @@ type DescribeDDosEventAreaRequest struct {
 	//
 	// 	- **blackhole**: attack events that trigger blackhole filtering
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// defense
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6107,7 +6280,9 @@ type DescribeDDosEventAreaRequest struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The UNIX timestamp when the query starts. Unit: seconds.
 	//
-	// > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
+	// > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6168,7 +6343,7 @@ func (s *DescribeDDosEventAreaResponseBody) SetRequestId(v string) *DescribeDDos
 }
 
 type DescribeDDosEventAreaResponseBodyAreas struct {
-	// The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](~~167926~~). For example, **110000*	- indicates Beijing, China, and **us*	- indicates the United States.
+	// The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html). For example, **110000*	- indicates Beijing, China, and **us*	- indicates the United States.
 	//
 	// example:
 	//
@@ -6236,11 +6411,15 @@ type DescribeDDosEventAttackTypeRequest struct {
 	//
 	// 	- **blackhole**: attack events that trigger blackhole filtering
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// defense
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6248,7 +6427,9 @@ type DescribeDDosEventAttackTypeRequest struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The UNIX timestamp when the query starts. Unit: seconds.
 	//
-	// > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
+	// > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6459,11 +6640,15 @@ type DescribeDDosEventIspRequest struct {
 	//
 	// 	- **blackhole**: attack events that trigger blackhole filtering
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// defense
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6471,7 +6656,9 @@ type DescribeDDosEventIspRequest struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The UNIX timestamp when the query starts. Unit: seconds.
 	//
-	// > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
+	// > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6632,11 +6819,15 @@ func (s *DescribeDDosEventIspResponse) SetBody(v *DescribeDDosEventIspResponseBo
 type DescribeDDosEventMaxRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1604073600
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6753,11 +6944,15 @@ type DescribeDDosEventSrcIpRequest struct {
 	//
 	// 	- **blackhole**: attack events that trigger blackhole filtering
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// defense
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6765,13 +6960,17 @@ type DescribeDDosEventSrcIpRequest struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The number of source IP addresses that you want to return. The source IP addresses are returned in descending order of attack traffic. By default, the top **five*	- source IP addresses are returned.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2
 	Range *int64 `json:"Range,omitempty" xml:"Range,omitempty"`
 	// The UNIX timestamp when the query starts. Unit: seconds.
 	//
-	// > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
+	// > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6837,7 +7036,7 @@ func (s *DescribeDDosEventSrcIpResponseBody) SetRequestId(v string) *DescribeDDo
 }
 
 type DescribeDDosEventSrcIpResponseBodyIps struct {
-	// The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](~~167926~~). For example, **110000*	- indicates Beijing, China, and **us*	- indicates the United States.
+	// The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html). For example, **110000*	- indicates Beijing, China, and **us*	- indicates the United States.
 	//
 	// example:
 	//
@@ -7087,13 +7286,15 @@ type DescribeDefenseRecordsRequest struct {
 	//
 	// > The time must be in the latest 90 days.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1583683200000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
 	//
 	// example:
 	//
@@ -7101,11 +7302,15 @@ type DescribeDefenseRecordsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Maximum value: **50**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7120,6 +7325,8 @@ type DescribeDefenseRecordsRequest struct {
 	// The beginning of the time range to query. This value is a UNIX timestamp. Units: miliseconds.
 	//
 	// > The time must be in the latest 90 days.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7318,7 +7525,7 @@ func (s *DescribeDefenseRecordsResponse) SetBody(v *DescribeDefenseRecordsRespon
 type DescribeDomainAttackEventsRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
 	//
 	// example:
 	//
@@ -7328,17 +7535,23 @@ type DescribeDomainAttackEventsRequest struct {
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7353,6 +7566,8 @@ type DescribeDomainAttackEventsRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7525,7 +7740,7 @@ func (s *DescribeDomainAttackEventsResponse) SetBody(v *DescribeDomainAttackEven
 type DescribeDomainOverviewRequest struct {
 	// The domain name of the website that you want to query. If you leave this parameter unspecified, the statistics on all domain names are queried.
 	//
-	// > The domain name must be added to Anti-DDoS Pro or Anti-DDoS Premium. You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	// > The domain name must be added to Anti-DDoS Pro or Anti-DDoS Premium. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
 	//
 	// example:
 	//
@@ -7541,7 +7756,7 @@ type DescribeDomainOverviewRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -7550,6 +7765,8 @@ type DescribeDomainOverviewRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7661,7 +7878,7 @@ func (s *DescribeDomainOverviewResponse) SetBody(v *DescribeDomainOverviewRespon
 type DescribeDomainQPSListRequest struct {
 	// The domain name of the website. If you do not specify this parameter, the statistics on the QPS of all domain names are queried.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
 	//
 	// example:
 	//
@@ -7671,11 +7888,15 @@ type DescribeDomainQPSListRequest struct {
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The interval for returning data. Unit: seconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7690,6 +7911,8 @@ type DescribeDomainQPSListRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7914,6 +8137,8 @@ type DescribeDomainResourceRequest struct {
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8413,7 +8638,9 @@ func (s *DescribeDomainResourceResponse) SetBody(v *DescribeDomainResourceRespon
 type DescribeDomainSecurityProfileRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8534,7 +8761,7 @@ func (s *DescribeDomainSecurityProfileResponse) SetBody(v *DescribeDomainSecurit
 type DescribeDomainStatusCodeCountRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
 	//
 	// example:
 	//
@@ -8543,6 +8770,8 @@ type DescribeDomainStatusCodeCountRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8557,6 +8786,8 @@ type DescribeDomainStatusCodeCountRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8778,7 +9009,7 @@ func (s *DescribeDomainStatusCodeCountResponse) SetBody(v *DescribeDomainStatusC
 type DescribeDomainStatusCodeListRequest struct {
 	// The domain name of the website. If you do not specify this parameter, the statistics on response status codes of all domain names are queried.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
 	//
 	// example:
 	//
@@ -8794,6 +9025,8 @@ type DescribeDomainStatusCodeListRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The interval for returning data. Unit: seconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1000
@@ -8803,6 +9036,8 @@ type DescribeDomainStatusCodeListRequest struct {
 	// 	- **gf**: Anti-DDoS Pro or Anti-DDoS Premium
 	//
 	// 	- **upstrem**: origin server
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8817,6 +9052,8 @@ type DescribeDomainStatusCodeListRequest struct {
 	// The start time of the event. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9090,6 +9327,8 @@ type DescribeDomainTopAttackListRequest struct {
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1583683200
@@ -9103,6 +9342,8 @@ type DescribeDomainTopAttackListRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9238,7 +9479,7 @@ func (s *DescribeDomainTopAttackListResponse) SetBody(v *DescribeDomainTopAttack
 type DescribeDomainViewSourceCountriesRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
 	//
 	// example:
 	//
@@ -9247,6 +9488,8 @@ type DescribeDomainViewSourceCountriesRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9261,6 +9504,8 @@ type DescribeDomainViewSourceCountriesRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9332,7 +9577,7 @@ type DescribeDomainViewSourceCountriesResponseBodySourceCountrys struct {
 	//
 	// 3390671
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The abbreviation of the country or area. For more information, see the **Codes of countries and areas*	- section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic. For example, **cn*	- indicates China, and **us*	- indicates the United States.
+	// The abbreviation of the country or area. For more information, see the **Codes of countries and areas*	- section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic. For example, **cn*	- indicates China, and **us*	- indicates the United States.
 	//
 	// example:
 	//
@@ -9390,7 +9635,7 @@ func (s *DescribeDomainViewSourceCountriesResponse) SetBody(v *DescribeDomainVie
 type DescribeDomainViewSourceProvincesRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
 	//
 	// example:
 	//
@@ -9399,6 +9644,8 @@ type DescribeDomainViewSourceProvincesRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9413,6 +9660,8 @@ type DescribeDomainViewSourceProvincesRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9484,7 +9733,7 @@ type DescribeDomainViewSourceProvincesResponseBodySourceProvinces struct {
 	//
 	// 3390671
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the region inside China. For more information, see the **Codes of administrative regions in China*	- section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic. For example, **110000*	- indicates Beijing, and **120000*	- indicates Tianjin.
+	// The ID of the region inside China. For more information, see the **Codes of administrative regions in China*	- section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic. For example, **110000*	- indicates Beijing, and **120000*	- indicates Tianjin.
 	//
 	// example:
 	//
@@ -9542,7 +9791,7 @@ func (s *DescribeDomainViewSourceProvincesResponse) SetBody(v *DescribeDomainVie
 type DescribeDomainViewTopCostTimeRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
 	//
 	// example:
 	//
@@ -9551,6 +9800,8 @@ type DescribeDomainViewTopCostTimeRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9566,11 +9817,15 @@ type DescribeDomainViewTopCostTimeRequest struct {
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The number of URLs to query. Valid values: **1*	- to **100**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9716,7 +9971,7 @@ func (s *DescribeDomainViewTopCostTimeResponse) SetBody(v *DescribeDomainViewTop
 type DescribeDomainViewTopUrlRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
 	//
 	// example:
 	//
@@ -9725,6 +9980,8 @@ type DescribeDomainViewTopUrlRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9740,11 +9997,15 @@ type DescribeDomainViewTopUrlRequest struct {
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The number of URLs to query. Valid values: **1*	- to **100**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9890,7 +10151,7 @@ func (s *DescribeDomainViewTopUrlResponse) SetBody(v *DescribeDomainViewTopUrlRe
 type DescribeDomainsRequest struct {
 	// The ID of the instance that you want to query.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
 	//
 	// example:
 	//
@@ -9898,7 +10159,7 @@ type DescribeDomainsRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -9985,7 +10246,9 @@ func (s *DescribeDomainsResponse) SetBody(v *DescribeDomainsResponseBody) *Descr
 type DescribeElasticBandwidthSpecRequest struct {
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10065,6 +10328,8 @@ func (s *DescribeElasticBandwidthSpecResponse) SetBody(v *DescribeElasticBandwid
 }
 
 type DescribeElasticQpsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1684339200
@@ -10077,10 +10342,14 @@ type DescribeElasticQpsRequest struct {
 	//
 	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1684252800
@@ -10268,14 +10537,20 @@ func (s *DescribeElasticQpsResponse) SetBody(v *DescribeElasticQpsResponseBody) 
 }
 
 type DescribeElasticQpsRecordRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1688140799999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1684252800000
@@ -10455,7 +10730,9 @@ func (s *DescribeElasticQpsRecordResponse) SetBody(v *DescribeElasticQpsRecordRe
 type DescribeHeadersRequest struct {
 	// The domain name that you want to query.
 	//
-	// > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	// > You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10586,6 +10863,8 @@ type DescribeHealthCheckListRequest struct {
 	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
 	//
 	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10835,6 +11114,8 @@ type DescribeHealthCheckStatusRequest struct {
 	//
 	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [{"InstanceId":"ddoscoo-cn-mp91j1ao****","Protocol":"tcp","FrontendPort":8080}]
@@ -11021,6 +11302,8 @@ func (s *DescribeHealthCheckStatusResponse) SetBody(v *DescribeHealthCheckStatus
 
 type DescribeInstanceDetailsRequest struct {
 	// An array that consists of the IDs of instances to query.
+	//
+	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 
@@ -11211,7 +11494,7 @@ func (s *DescribeInstanceDetailsResponse) SetBody(v *DescribeInstanceDetailsResp
 type DescribeInstanceExtRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// >  You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
 	//
 	// example:
 	//
@@ -11554,6 +11837,8 @@ func (s *DescribeInstanceIdsResponse) SetBody(v *DescribeInstanceIdsResponseBody
 
 type DescribeInstanceSpecsRequest struct {
 	// An array that consists of the IDs of instances to query.
+	//
+	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 
@@ -11835,7 +12120,9 @@ func (s *DescribeInstanceSpecsResponse) SetBody(v *DescribeInstanceSpecsResponse
 type DescribeInstanceStatisticsRequest struct {
 	// The ID of the instance that you want to query.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11985,7 +12272,9 @@ func (s *DescribeInstanceStatisticsResponse) SetBody(v *DescribeInstanceStatisti
 type DescribeInstanceStatusRequest struct {
 	// The ID of the instance to query.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11996,6 +12285,8 @@ type DescribeInstanceStatusRequest struct {
 	// 	- **1**: an Anti-DDoS Pro instance
 	//
 	// 	- **2**: an Anti-DDoS Premium instance
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12148,11 +12439,15 @@ type DescribeInstancesRequest struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12547,7 +12842,9 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 type DescribeL7RsPolicyRequest struct {
 	// The domain name of the website to query.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query the domain names for which forwarding rules are configured.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names for which forwarding rules are configured.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12561,7 +12858,7 @@ type DescribeL7RsPolicyRequest struct {
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -12782,7 +13079,7 @@ type DescribeLayer4RulePolicyRequest struct {
 	//
 	// This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can query only one port forwarding rule at a time.
 	//
-	// > You can call the [DescribeNetworkRules](~~157484~~) to query existing port forwarding rules.
+	// > You can call the [DescribeNetworkRules](https://help.aliyun.com/document_detail/157484.html) to query existing port forwarding rules.
 	//
 	// Each port forwarding rule contains the following fields:
 	//
@@ -12792,9 +13089,11 @@ type DescribeLayer4RulePolicyRequest struct {
 	//
 	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the integer type.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// [{\"InstanceId\":\"ddosDip-sg-4hr2b3l****\",\"FrontendPort\":2020,\"Protocol\":\"udp\"}]
+	// [{\\"InstanceId\\":\\"ddosDip-sg-4hr2b3l****\\",\\"FrontendPort\\":2020,\\"Protocol\\":\\"udp\\"}]
 	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
 }
 
@@ -12820,9 +13119,9 @@ type DescribeLayer4RulePolicyResponseBody struct {
 	BackendPort *int32 `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
 	// The mode that is used to forward service traffic. Valid values:
 	//
-	// 	- 0: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](~~157482~~) operation to create a port forwarding rule.
+	// 	- 0: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](https://help.aliyun.com/document_detail/157482.html) operation to create a port forwarding rule.
 	//
-	// 	- 1: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](~~312684~~) operation to configure IP addresses.
+	// 	- 1: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](https://help.aliyun.com/document_detail/312684.html) operation to configure IP addresses.
 	//
 	// example:
 	//
@@ -13203,7 +13502,9 @@ func (s *DescribeLogStoreExistStatusResponse) SetBody(v *DescribeLogStoreExistSt
 type DescribeNetworkRegionBlockRequest struct {
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13330,6 +13631,8 @@ type DescribeNetworkRuleAttributesRequest struct {
 	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
 	//
 	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13839,7 +14142,9 @@ type DescribeNetworkRulesRequest struct {
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13847,11 +14152,15 @@ type DescribeNetworkRulesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14053,6 +14362,8 @@ type DescribeOpEntitiesRequest struct {
 	//
 	// > The time must be in the latest 30 days.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1583683200000
@@ -14079,11 +14390,15 @@ type DescribeOpEntitiesRequest struct {
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Maximum value: **50**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14098,6 +14413,8 @@ type DescribeOpEntitiesRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// > The time must be in the latest 30 days.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14395,7 +14712,9 @@ type DescribePortRequest struct {
 	FrontendProtocol *string `json:"FrontendProtocol,omitempty" xml:"FrontendProtocol,omitempty"`
 	// The ID of the instance to query.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14403,11 +14722,15 @@ type DescribePortRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. For example, if you want to obtain results on the first page, set the value to **1**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14603,11 +14926,15 @@ type DescribePortAttackMaxFlowRequest struct {
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// An array that consists of the IDs of instances to query.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14624,6 +14951,8 @@ type DescribePortAttackMaxFlowRequest struct {
 	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14735,7 +15064,9 @@ func (s *DescribePortAttackMaxFlowResponse) SetBody(v *DescribePortAttackMaxFlow
 type DescribePortAutoCcStatusRequest struct {
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14890,6 +15221,8 @@ func (s *DescribePortAutoCcStatusResponse) SetBody(v *DescribePortAutoCcStatusRe
 }
 
 type DescribePortCcAttackTopIPRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 203.107.XX.XX
@@ -14898,10 +15231,14 @@ type DescribePortCcAttackTopIPRequest struct {
 	//
 	// 10
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 6663
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1678017453
@@ -15034,13 +15371,17 @@ type DescribePortConnsCountRequest struct {
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// An array that consists of the IDs of instances.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15061,6 +15402,8 @@ type DescribePortConnsCountRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15201,19 +15544,25 @@ type DescribePortConnsListRequest struct {
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The interval for returning data. Unit: seconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15234,6 +15583,8 @@ type DescribePortConnsListRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15410,11 +15761,15 @@ type DescribePortFlowListRequest struct {
 	//
 	// **This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// An array that consists of the IDs of instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15434,13 +15789,15 @@ type DescribePortFlowListRequest struct {
 	//
 	// 	- If the time range to query is greater than 15 days, we recommend that you specify the interval from 43,200 seconds to the time range to query.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1000
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -15451,6 +15808,8 @@ type DescribePortFlowListRequest struct {
 	// **
 	//
 	// **This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15726,13 +16085,17 @@ type DescribePortMaxConnsRequest struct {
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15747,6 +16110,8 @@ type DescribePortMaxConnsRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15889,11 +16254,15 @@ type DescribePortViewSourceCountriesRequest struct {
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// An array that consists of the IDs of instances to query.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15901,7 +16270,7 @@ type DescribePortViewSourceCountriesRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -15910,6 +16279,8 @@ type DescribePortViewSourceCountriesRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15983,7 +16354,7 @@ type DescribePortViewSourceCountriesResponseBodySourceCountrys struct {
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The abbreviation of the country or area. For example, **cn*	- indicates China and **us*	- indicates the United States.
 	//
-	// > For more information, see [Location parameters](~~167926~~).
+	// > For more information, see [Location parameters](https://help.aliyun.com/document_detail/167926.html).
 	//
 	// example:
 	//
@@ -16043,11 +16414,15 @@ type DescribePortViewSourceIspsRequest struct {
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// An array that consists of the IDs of instances to query.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16064,6 +16439,8 @@ type DescribePortViewSourceIspsRequest struct {
 	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16203,13 +16580,15 @@ type DescribePortViewSourceProvincesRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IDs of instances to query.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -16218,6 +16597,8 @@ type DescribePortViewSourceProvincesRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16293,7 +16674,7 @@ type DescribePortViewSourceProvincesResponseBodySourceProvinces struct {
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The ID of the administrative region in China from which the requests are sent. For example, **110000*	- indicates Beijing, and **120000*	- indicates Tianjin.
 	//
-	// > For more information, see [Location parameters](~~167926~~).
+	// > For more information, see [Location parameters](https://help.aliyun.com/document_detail/167926.html).
 	//
 	// example:
 	//
@@ -16351,7 +16732,9 @@ func (s *DescribePortViewSourceProvincesResponse) SetBody(v *DescribePortViewSou
 type DescribeSceneDefenseObjectsRequest struct {
 	// The ID of the policy that you want to query.
 	//
-	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	// > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16843,6 +17226,8 @@ type DescribeSchedulerRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -17127,6 +17512,8 @@ type DescribeSlaEventListRequest struct {
 	//
 	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3289457398
@@ -17155,6 +17542,8 @@ type DescribeSlaEventListRequest struct {
 	//
 	// 	- **cn-hongkong**: Anti-DDoS Premium
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn
@@ -17162,6 +17551,8 @@ type DescribeSlaEventListRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17654,6 +18045,8 @@ type DescribeStsGrantStatusRequest struct {
 	//
 	// > Anti-DDoS Pro or Anti-DDoS Premium uses the default role to access other cloud services.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// AliyunDDoSCOODefaultRole
@@ -17765,13 +18158,15 @@ func (s *DescribeStsGrantStatusResponse) SetBody(v *DescribeStsGrantStatusRespon
 type DescribeSystemLogRequest struct {
 	// The end of the time range to query. The bills of the burstable clean bandwidth that are issued before this point in time are queried. The value is a UNIX timestamp. Unit: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1640966400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP address of the instance.
 	//
-	// > You can call the [DescribeInstanceDetails](~~91490~~) operation to query the IP addresses of all instances.
+	// > You can call the [DescribeInstanceDetails](https://help.aliyun.com/document_detail/91490.html) operation to query the IP addresses of all instances.
 	//
 	// example:
 	//
@@ -17787,17 +18182,23 @@ type DescribeSystemLogRequest struct {
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The number of the page to return.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. The bills of the burstable clean bandwidth that are issued after this point in time are queried. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18050,6 +18451,8 @@ type DescribeTagKeysRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -18063,6 +18466,8 @@ type DescribeTagKeysRequest struct {
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18238,6 +18643,8 @@ type DescribeTagResourcesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -18257,6 +18664,8 @@ type DescribeTagResourcesRequest struct {
 	// ddoscoo-cn-mp91j1ao****
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18311,7 +18720,7 @@ type DescribeTagResourcesRequestTags struct {
 	//
 	// 	- You must specify at least one of the **ResourceIds.N*	- and **Tags.N.Key*	- parameters.
 	//
-	// 	- You can call the [DescribeTagKeys](~~159785~~) operation to query all tag keys.
+	// 	- You can call the [DescribeTagKeys](https://help.aliyun.com/document_detail/159785.html) operation to query all tag keys.
 	//
 	// example:
 	//
@@ -18489,11 +18898,15 @@ type DescribeTotalAttackMaxFlowRequest struct {
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1659697200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IDs of the instances. Separate multiple instance IDs with commas (,). Example: InstanceIds.1, InstanceIds.2, InstanceIds.3.
+	//
+	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. If you do not configure this parameter, the instance belongs to the default resource group.
 	//
@@ -18504,6 +18917,8 @@ type DescribeTotalAttackMaxFlowRequest struct {
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18615,7 +19030,9 @@ func (s *DescribeTotalAttackMaxFlowResponse) SetBody(v *DescribeTotalAttackMaxFl
 type DescribeUdpReflectRequest struct {
 	// The ID of the instance to query.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19138,7 +19555,9 @@ func (s *DescribeWebAccessLogEmptyCountResponse) SetBody(v *DescribeWebAccessLog
 type DescribeWebAccessLogStatusRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19261,7 +19680,9 @@ func (s *DescribeWebAccessLogStatusResponse) SetBody(v *DescribeWebAccessLogStat
 type DescribeWebAccessModeRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19382,7 +19803,9 @@ func (s *DescribeWebAccessModeResponse) SetBody(v *DescribeWebAccessModeResponse
 type DescribeWebAreaBlockConfigsRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19541,7 +19964,9 @@ func (s *DescribeWebAreaBlockConfigsResponse) SetBody(v *DescribeWebAreaBlockCon
 type DescribeWebCCRulesRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19554,6 +19979,8 @@ type DescribeWebCCRulesRequest struct {
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19762,6 +20189,8 @@ func (s *DescribeWebCCRulesResponse) SetBody(v *DescribeWebCCRulesResponseBody) 
 
 type DescribeWebCacheConfigsRequest struct {
 	// An array consisting of domain names for which you want to query the Static Page Caching configurations.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19978,7 +20407,9 @@ func (s *DescribeWebCacheConfigsResponse) SetBody(v *DescribeWebCacheConfigsResp
 type DescribeWebCcProtectSwitchRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20353,7 +20784,9 @@ func (s *DescribeWebCustomPortsResponse) SetBody(v *DescribeWebCustomPortsRespon
 type DescribeWebInstanceRelationsRequest struct {
 	// The domain names of the website. list
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20519,7 +20952,9 @@ func (s *DescribeWebInstanceRelationsResponse) SetBody(v *DescribeWebInstanceRel
 type DescribeWebPreciseAccessRuleRequest struct {
 	// An array that consists of the domain names of websites.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20778,18 +21213,26 @@ type DescribeWebReportTopIpRequest struct {
 	//
 	// app.bmjqxvb.cn
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1687228200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 300
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// block
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1680424200
@@ -20957,6 +21400,8 @@ type DescribeWebRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -21386,13 +21831,17 @@ type DetachSceneDefenseObjectRequest struct {
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	// The protection asset that you want to remove from a policy. Separate multiple protection assets with commas (,).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// www.aliyun.com
 	Objects *string `json:"Objects,omitempty" xml:"Objects,omitempty"`
 	// The ID of the policy.
 	//
-	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	// > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21492,7 +21941,9 @@ func (s *DetachSceneDefenseObjectResponse) SetBody(v *DetachSceneDefenseObjectRe
 type DisableSceneDefensePolicyRequest struct {
 	// The ID of the policy that you want to disable.
 	//
-	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	// > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21582,7 +22033,9 @@ func (s *DisableSceneDefensePolicyResponse) SetBody(v *DisableSceneDefensePolicy
 type DisableWebAccessLogConfigRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21668,7 +22121,9 @@ func (s *DisableWebAccessLogConfigResponse) SetBody(v *DisableWebAccessLogConfig
 type DisableWebCCRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21754,7 +22209,9 @@ func (s *DisableWebCCResponse) SetBody(v *DisableWebCCResponseBody) *DisableWebC
 type DisableWebCCRuleRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21840,7 +22297,9 @@ func (s *DisableWebCCRuleResponse) SetBody(v *DisableWebCCRuleResponseBody) *Dis
 type EmptyAutoCcBlacklistRequest struct {
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21915,7 +22374,9 @@ func (s *EmptyAutoCcBlacklistResponse) SetBody(v *EmptyAutoCcBlacklistResponseBo
 type EmptyAutoCcWhitelistRequest struct {
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22063,7 +22524,9 @@ func (s *EmptySlsLogstoreResponse) SetBody(v *EmptySlsLogstoreResponseBody) *Emp
 type EnableSceneDefensePolicyRequest struct {
 	// The ID of the policy that you want to enable.
 	//
-	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	// > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22153,7 +22616,9 @@ func (s *EnableSceneDefensePolicyResponse) SetBody(v *EnableSceneDefensePolicyRe
 type EnableWebAccessLogConfigRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22239,7 +22704,9 @@ func (s *EnableWebAccessLogConfigResponse) SetBody(v *EnableWebAccessLogConfigRe
 type EnableWebCCRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22325,7 +22792,9 @@ func (s *EnableWebCCResponse) SetBody(v *EnableWebCCResponseBody) *EnableWebCCRe
 type EnableWebCCRuleRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22411,7 +22880,9 @@ func (s *EnableWebCCRuleResponse) SetBody(v *EnableWebCCRuleResponseBody) *Enabl
 type ModifyBizBandWidthModeRequest struct {
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22422,6 +22893,8 @@ type ModifyBizBandWidthModeRequest struct {
 	// 	- **month**: the metering method of monthly 95th percentile
 	//
 	// 	- **day**: the metering method of daily 95th percentile
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22501,13 +22974,17 @@ func (s *ModifyBizBandWidthModeResponse) SetBody(v *ModifyBizBandWidthModeRespon
 type ModifyBlackholeStatusRequest struct {
 	// The action that you want to perform on the instance. Set the value to **undo**, which indicates that you want to deactivate blackhole filtering.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// undo
 	BlackholeStatus *string `json:"BlackholeStatus,omitempty" xml:"BlackholeStatus,omitempty"`
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22595,13 +23072,17 @@ type ModifyBlockStatusRequest struct {
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The ID of the Anti-DDoS Pro instance to manage.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// An array consisting of the Internet service provider (ISP) lines from which traffic is blocked.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22612,6 +23093,8 @@ type ModifyBlockStatusRequest struct {
 	// 	- **do**: enables the policy.
 	//
 	// 	- **undo**: disables the policy.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22707,7 +23190,9 @@ type ModifyCnameReuseRequest struct {
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22718,6 +23203,8 @@ type ModifyCnameReuseRequest struct {
 	// 	- **1**: enables CNAME reuse.
 	//
 	// 	- **2**: disables CNAME reuse.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22813,6 +23300,8 @@ func (s *ModifyCnameReuseResponse) SetBody(v *ModifyCnameReuseResponseBody) *Mod
 type ModifyDomainResourceRequest struct {
 	// The domain name that is added to the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// www.example.com
@@ -22836,10 +23325,16 @@ type ModifyDomainResourceRequest struct {
 	// {"Http2":1,"Http2https":1,"Https2http":1}
 	HttpsExt *string `json:"HttpsExt,omitempty" xml:"HttpsExt,omitempty"`
 	// An array consisting of the IDs of instances that you want to associate.
+	//
+	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// An array that consists of the details of the protocol type and port number.
+	//
+	// This parameter is required.
 	ProxyTypes []*ModifyDomainResourceRequestProxyTypes `json:"ProxyTypes,omitempty" xml:"ProxyTypes,omitempty" type:"Repeated"`
 	// An array that consists of the addresses of origin servers.
+	//
+	// This parameter is required.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
 	// The address type of the origin server. Valid values:
 	//
@@ -22848,6 +23343,8 @@ type ModifyDomainResourceRequest struct {
 	// 	- **1**: domain name
 	//
 	//     If you deploy proxies, such as a Web Application Firewall (WAF) instance, between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance, set the value to 1. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22895,6 +23392,8 @@ func (s *ModifyDomainResourceRequest) SetRsType(v int32) *ModifyDomainResourceRe
 
 type ModifyDomainResourceRequestProxyTypes struct {
 	// An array that consists of port numbers.
+	//
+	// This parameter is required.
 	ProxyPorts []*int32 `json:"ProxyPorts,omitempty" xml:"ProxyPorts,omitempty" type:"Repeated"`
 	// The type of the protocol. Valid values:
 	//
@@ -22984,7 +23483,9 @@ func (s *ModifyDomainResourceResponse) SetBody(v *ModifyDomainResourceResponseBo
 type ModifyElasticBandWidthRequest struct {
 	// The new burstable protection bandwidth that you want to use. Unit: Gbit/s.
 	//
-	// > You can call the [DescribeElasticBandwidthSpec](~~91502~~) operation to query the available burstable protection bandwidth of the instance.
+	// > You can call the [DescribeElasticBandwidthSpec](https://help.aliyun.com/document_detail/91502.html) operation to query the available burstable protection bandwidth of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22992,7 +23493,9 @@ type ModifyElasticBandWidthRequest struct {
 	ElasticBandwidth *int32 `json:"ElasticBandwidth,omitempty" xml:"ElasticBandwidth,omitempty"`
 	// The ID of the instance.
 	//
-	// >  The instance must be in a normal state. You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// >  The instance must be in a normal state. You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23072,13 +23575,17 @@ func (s *ModifyElasticBandWidthResponse) SetBody(v *ModifyElasticBandWidthRespon
 type ModifyElasticBizBandWidthRequest struct {
 	// The burstable clean bandwidth. Unit: Mbit/s. The burstable clean bandwidth cannot exceed nine times the clean bandwidth of your Anti-DDoS Pro or Anti-DDoS Premium instance, and the sum of the clean bandwidth and the burstable clean bandwidth cannot exceed the maximum clean bandwidth that is supported by your instance. The value 0 indicates that the burstable clean bandwidth feature is disabled. You can disable the burstable clean bandwidth feature once a month.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	ElasticBizBandwidth *int32 `json:"ElasticBizBandwidth,omitempty" xml:"ElasticBizBandwidth,omitempty"`
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23171,10 +23678,14 @@ func (s *ModifyElasticBizBandWidthResponse) SetBody(v *ModifyElasticBizBandWidth
 }
 
 type ModifyElasticBizQpsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// month
@@ -23266,6 +23777,8 @@ type ModifyFullLogTtlRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The log storage duration of a website. Valid values: **30*	- to **180**. Unit: days.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 30
@@ -23352,13 +23865,17 @@ type ModifyHeadersRequest struct {
 	//
 	// > If you set Key to X-Forwarded-ClientSrcPort, the actual source port of the client that accesses Anti-DDoS Pro or Anti-DDoS Premium (a Layer 7 proxy) is obtained. In this case, the Value is "".
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// {\"X-Forwarded-ClientSrcPort\":\"\"}
+	// {\\"X-Forwarded-ClientSrcPort\\":\\"\\"}
 	CustomHeaders *string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty"`
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23368,9 +23885,9 @@ type ModifyHeadersRequest struct {
 	//
 	// >
 	//
-	// 	- You can query resource group IDs in the Anti-DDoS Pro or Anti-DDoS Premium console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
+	// 	- You can query resource group IDs in the Anti-DDoS Pro or Anti-DDoS Premium console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
-	// 	- Before you modify the resource group to which an instance belongs, you can call the [ListResources](~~158866~~) operation to view the current resource group of the instance.
+	// 	- Before you modify the resource group to which an instance belongs, you can call the [ListResources](https://help.aliyun.com/document_detail/158866.html) operation to view the current resource group of the instance.
 	//
 	// example:
 	//
@@ -23459,11 +23976,15 @@ type ModifyHealthCheckConfigRequest struct {
 	//
 	// 	- **udp**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// tcp
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" xml:"ForwardProtocol,omitempty"`
 	// The forwarding port.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23495,13 +24016,17 @@ type ModifyHealthCheckConfigRequest struct {
 	//
 	// 	- **Down**: the number of consecutive failed health checks that must occur before declaring a port unhealthy, which must be of the INTEGER type. Valid values: **1*	- to **10**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"Type":"tcp","Timeout":10,"Port":8080,"Interval":10,"Up":10,"Down":40}
 	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23591,7 +24116,9 @@ func (s *ModifyHealthCheckConfigResponse) SetBody(v *ModifyHealthCheckConfigResp
 type ModifyHttp2EnableRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23602,6 +24129,8 @@ type ModifyHttp2EnableRequest struct {
 	// 	- **0**: disables HTTP/2.
 	//
 	// 	- **1**: enables HTTP/2.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23692,7 +24221,9 @@ func (s *ModifyHttp2EnableResponse) SetBody(v *ModifyHttp2EnableResponseBody) *M
 type ModifyInstanceRemarkRequest struct {
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23701,6 +24232,8 @@ type ModifyInstanceRemarkRequest struct {
 	// The description of the instance.
 	//
 	// The value can contain letters, digits, and some special characters, such as`, . + - 	- / _` The value can be up to 500 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23782,6 +24315,8 @@ type ModifyNetworkRuleAttributeRequest struct {
 	//
 	// 	- **PersistenceTimeout**: The timeout period of session persistence. This field is required and must be of the integer type. Valid values: **30*	- to **3600**. Unit: seconds. Default value: **0**. A value of 0 indicates that session persistence is disabled.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"PersistenceTimeout":900}
@@ -23792,11 +24327,15 @@ type ModifyNetworkRuleAttributeRequest struct {
 	//
 	// 	- **udp**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// tcp
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" xml:"ForwardProtocol,omitempty"`
 	// The forwarding port.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23804,7 +24343,9 @@ type ModifyNetworkRuleAttributeRequest struct {
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23894,7 +24435,9 @@ func (s *ModifyNetworkRuleAttributeResponse) SetBody(v *ModifyNetworkRuleAttribu
 type ModifyOcspStatusRequest struct {
 	// The domain name for which you want to configure the Static Page Caching policy.
 	//
-	// > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	// > You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23905,6 +24448,8 @@ type ModifyOcspStatusRequest struct {
 	// 	- **1**: yes
 	//
 	// 	- **0**: no
+	//
+	// This parameter is required.
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -23980,11 +24525,15 @@ func (s *ModifyOcspStatusResponse) SetBody(v *ModifyOcspStatusResponseBody) *Mod
 type ModifyPortRequest struct {
 	// The port of the origin server. Valid values: **0*	- to **65535**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 55
 	BackendPort *string `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
 	// The forwarding port. Valid values: **0*	- to **65535**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23996,19 +24545,25 @@ type ModifyPortRequest struct {
 	//
 	// 	- **udp**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// tcp
 	FrontendProtocol *string `json:"FrontendProtocol,omitempty" xml:"FrontendProtocol,omitempty"`
 	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// ddoscoo-cn-st21zbyq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// An array that consists of the IP addresses of origin servers.
+	//
+	// This parameter is required.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
 }
 
@@ -24099,7 +24654,9 @@ func (s *ModifyPortResponse) SetBody(v *ModifyPortResponseBody) *ModifyPortRespo
 type ModifyPortAutoCcStatusRequest struct {
 	// The ID of the instance.
 	//
-	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24113,6 +24670,8 @@ type ModifyPortAutoCcStatusRequest struct {
 	//
 	// 	- **strict**
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// normal
@@ -24122,6 +24681,8 @@ type ModifyPortAutoCcStatusRequest struct {
 	// 	- **on**: enables the policy.
 	//
 	// 	- **off**: disables the policy.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24204,10 +24765,14 @@ func (s *ModifyPortAutoCcStatusResponse) SetBody(v *ModifyPortAutoCcStatusRespon
 }
 
 type ModifyQpsModeRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ddoscoo-cn-7e225i41****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// month
@@ -24284,11 +24849,15 @@ func (s *ModifyQpsModeResponse) SetBody(v *ModifyQpsModeResponseBody) *ModifyQps
 type ModifySceneDefensePolicyRequest struct {
 	// The end time of the policy. The value is a UNIX timestamp. Unit: milliseconds.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1586016000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the policy.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24296,13 +24865,17 @@ type ModifySceneDefensePolicyRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the policy that you want to modify.
 	//
-	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	// > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// 321a-fd31-df51-****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The start time of the policy. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24313,6 +24886,8 @@ type ModifySceneDefensePolicyRequest struct {
 	// 	- **promotion**: important activity
 	//
 	// 	- **bypass**: all traffic forwarded
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24446,6 +25021,8 @@ type ModifySchedulerRuleRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the rule that you want to modify.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testrule
@@ -24459,6 +25036,8 @@ type ModifySchedulerRuleRequest struct {
 	// 	- **5**: Alibaba Cloud CDN (CDN) interaction
 	//
 	// 	- **6**: cloud service interaction
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24489,6 +25068,8 @@ type ModifySchedulerRuleRequest struct {
 	//     	- **6*	- the IP address of the interaction resource in the cloud service interaction scenario
 	//
 	// 	- **RegionId**: the region where the interaction resource is deployed. This parameter must be specified when **ValueType*	- is set to **2**. The value must be of the string type.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24625,13 +25206,17 @@ type ModifyTlsConfigRequest struct {
 	//
 	//     	- **default**: default cipher suites, which include only strong cipher suites
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"ssl_protocols":"tls1.0","ssl_ciphers":"all"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24736,13 +25321,17 @@ type ModifyWebAIProtectModeRequest struct {
 	//
 	//     	- **defense**: the Defense mode
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"AiTemplate":"level60","AiMode":"defense"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24839,13 +25428,17 @@ type ModifyWebAIProtectSwitchRequest struct {
 	//
 	//     	- **1**: enabled
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"AiRuleEnable": 1}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24942,13 +25535,17 @@ type ModifyWebAccessModeRequest struct {
 	//
 	// 	- **2**: origin redundancy mode
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2
 	AccessMode *int32 `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25028,7 +25625,9 @@ func (s *ModifyWebAccessModeResponse) SetBody(v *ModifyWebAccessModeResponseBody
 type ModifyWebAreaBlockRequest struct {
 	// The domain name whose configurations you want to modify.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25044,7 +25643,7 @@ type ModifyWebAreaBlockRequest struct {
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -25135,13 +25734,17 @@ type ModifyWebAreaBlockSwitchRequest struct {
 	//
 	//     	- **0**: disables the policy.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"RegionblockEnable": 1}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The domain name for which you want to enable or disable the Location Blacklist policy.
 	//
-	// > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	// > You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25232,26 +25835,38 @@ func (s *ModifyWebAreaBlockSwitchResponse) SetBody(v *ModifyWebAreaBlockSwitchRe
 }
 
 type ModifyWebCCRuleRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// close
 	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 30
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// prefix
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// testrule
@@ -25260,7 +25875,10 @@ type ModifyWebCCRuleRequest struct {
 	//
 	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Ttl             *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// This parameter is required.
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// /abc
@@ -25372,7 +25990,9 @@ func (s *ModifyWebCCRuleResponse) SetBody(v *ModifyWebCCRuleResponseBody) *Modif
 type ModifyWebCacheCustomRuleRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25399,6 +26019,8 @@ type ModifyWebCacheCustomRuleRequest struct {
 	//     	- **bypass**: No data is cached.
 	//
 	// 	- **CacheTtl**: the expiration time of the page cache. This field is required and must be of the INTEGER type. Unit: seconds.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25483,7 +26105,9 @@ func (s *ModifyWebCacheCustomRuleResponse) SetBody(v *ModifyWebCacheCustomRuleRe
 type ModifyWebCacheModeRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25496,6 +26120,8 @@ type ModifyWebCacheModeRequest struct {
 	// 	- **aggressive**: uses the enhanced cache mode.
 	//
 	// 	- **bypass**: caches no data.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25586,7 +26212,9 @@ func (s *ModifyWebCacheModeResponse) SetBody(v *ModifyWebCacheModeResponseBody) 
 type ModifyWebCacheSwitchRequest struct {
 	// The domain name for which you want to configure the Static Page Caching policy.
 	//
-	// > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	// > You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25597,6 +26225,8 @@ type ModifyWebCacheSwitchRequest struct {
 	// 	- **1**: enables the policy.
 	//
 	// 	- **0**: disables the policy.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25695,13 +26325,17 @@ type ModifyWebIpSetSwitchRequest struct {
 	//
 	//     	- **1**: enabled
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"BwlistEnable":1}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25792,7 +26426,9 @@ func (s *ModifyWebIpSetSwitchResponse) SetBody(v *ModifyWebIpSetSwitchResponseBo
 type ModifyWebPreciseAccessRuleRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25839,6 +26475,8 @@ type ModifyWebPreciseAccessRuleRequest struct {
 	//     	- **content**: the match content. This parameter is required and must be of the string type.
 	//
 	// 	- **header_name**: the HTTP header. This parameter is optional and must be of the string type. This parameter takes effect only when **field*	- is **header**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25934,13 +26572,17 @@ type ModifyWebPreciseAccessSwitchRequest struct {
 	//
 	//     	- **1**: enables the policy.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"PreciseRuleEnable":0}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26029,6 +26671,8 @@ func (s *ModifyWebPreciseAccessSwitchResponse) SetBody(v *ModifyWebPreciseAccess
 }
 
 type ModifyWebRuleRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// www.aliyun.com
@@ -26041,10 +26685,14 @@ type ModifyWebRuleRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [{"ProxyType":"https","ProxyPorts":[443]}]
 	ProxyTypes *string `json:"ProxyTypes,omitempty" xml:"ProxyTypes,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1.xxx.xxx.1
@@ -26053,6 +26701,8 @@ type ModifyWebRuleRequest struct {
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -26152,6 +26802,8 @@ func (s *ModifyWebRuleResponse) SetBody(v *ModifyWebRuleResponseBody) *ModifyWeb
 }
 
 type ReleaseInstanceRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
@@ -26223,7 +26875,9 @@ func (s *ReleaseInstanceResponse) SetBody(v *ReleaseInstanceResponseBody) *Relea
 type SwitchSchedulerRuleRequest struct {
 	// The name of the scheduling rule to manage.
 	//
-	// > You can call the [DescribeSchedulerRules](~~157481~~) operation to query the names of all scheduling rules.
+	// > You can call the [DescribeSchedulerRules](https://help.aliyun.com/document_detail/157481.html) operation to query the names of all scheduling rules.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26238,6 +26892,8 @@ type SwitchSchedulerRuleRequest struct {
 	// 	- **5**: Alibaba Cloud CDN (CDN) interaction rule
 	//
 	// 	- **6**: cloud service interaction rule
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26255,9 +26911,11 @@ type SwitchSchedulerRuleRequest struct {
 	//
 	// 	- **Interval**: optional. The waiting time that is required before the service traffic is switched back. Unit: minutes. Data type: integer. Usage notes:
 	//
-	//     	- If the **State*	- parameter is set to **0**, you must set this parameter to \*\*-1\*\*. Otherwise, the call fails.
+	//     	- If the **State*	- parameter is set to **0**, you must set this parameter to \\*\\*-1\\*\\*. Otherwise, the call fails.
 	//
 	//     	- If the **State*	- parameter is set to **1**, you do not need to set this parameter.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26386,6 +27044,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AddAutoCcBlacklistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAutoCcBlacklistResponse
 func (client *Client) AddAutoCcBlacklistWithOptions(request *AddAutoCcBlacklistRequest, runtime *util.RuntimeOptions) (_result *AddAutoCcBlacklistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26427,6 +27090,9 @@ func (client *Client) AddAutoCcBlacklistWithOptions(request *AddAutoCcBlacklistR
 	return _result, _err
 }
 
+// @param request - AddAutoCcBlacklistRequest
+//
+// @return AddAutoCcBlacklistResponse
 func (client *Client) AddAutoCcBlacklist(request *AddAutoCcBlacklistRequest) (_result *AddAutoCcBlacklistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddAutoCcBlacklistResponse{}
@@ -26438,11 +27104,15 @@ func (client *Client) AddAutoCcBlacklist(request *AddAutoCcBlacklistRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds IP addresses to the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
 // Description:
 //
 // You can call the AddAutoCcWhitelist operation to add IP addresses to the whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance. This way, the Anti-DDoS Pro or Anti-DDoS Premium instance allows traffic from the IP addresses.
 //
-// By default, the traffic from the IP addresses that you add to the whitelist is always allowed. If you no longer use the whitelist, you can call the [EmptyAutoCcWhitelist](~~157505~~) operation to remove the IP addresses from the whitelist.
+// By default, the traffic from the IP addresses that you add to the whitelist is always allowed. If you no longer use the whitelist, you can call the [EmptyAutoCcWhitelist](https://help.aliyun.com/document_detail/157505.html) operation to remove the IP addresses from the whitelist.
 //
 // ### Limits
 //
@@ -26494,11 +27164,15 @@ func (client *Client) AddAutoCcWhitelistWithOptions(request *AddAutoCcWhitelistR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds IP addresses to the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
 // Description:
 //
 // You can call the AddAutoCcWhitelist operation to add IP addresses to the whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance. This way, the Anti-DDoS Pro or Anti-DDoS Premium instance allows traffic from the IP addresses.
 //
-// By default, the traffic from the IP addresses that you add to the whitelist is always allowed. If you no longer use the whitelist, you can call the [EmptyAutoCcWhitelist](~~157505~~) operation to remove the IP addresses from the whitelist.
+// By default, the traffic from the IP addresses that you add to the whitelist is always allowed. If you no longer use the whitelist, you can call the [EmptyAutoCcWhitelist](https://help.aliyun.com/document_detail/157505.html) operation to remove the IP addresses from the whitelist.
 //
 // ### Limits
 //
@@ -26518,46 +27192,57 @@ func (client *Client) AddAutoCcWhitelist(request *AddAutoCcWhitelistRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates an SSL certificate with the forwarding rule of a website.
+//
+// @param request - AssociateWebCertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateWebCertResponse
 func (client *Client) AssociateWebCertWithOptions(request *AssociateWebCertRequest, runtime *util.RuntimeOptions) (_result *AssociateWebCertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Cert)) {
-		query["Cert"] = request.Cert
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CertId)) {
-		query["CertId"] = request.CertId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CertIdentifier)) {
-		query["CertIdentifier"] = request.CertIdentifier
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CertName)) {
-		query["CertName"] = request.CertName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CertRegion)) {
-		query["CertRegion"] = request.CertRegion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Domain)) {
-		query["Domain"] = request.Domain
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Key)) {
-		query["Key"] = request.Key
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cert)) {
+		body["Cert"] = request.Cert
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertId)) {
+		body["CertId"] = request.CertId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertIdentifier)) {
+		body["CertIdentifier"] = request.CertIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		body["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertRegion)) {
+		body["CertRegion"] = request.CertRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		body["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		body["Key"] = request.Key
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AssociateWebCert"),
@@ -26579,6 +27264,13 @@ func (client *Client) AssociateWebCertWithOptions(request *AssociateWebCertReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates an SSL certificate with the forwarding rule of a website.
+//
+// @param request - AssociateWebCertRequest
+//
+// @return AssociateWebCertResponse
 func (client *Client) AssociateWebCert(request *AssociateWebCertRequest) (_result *AssociateWebCertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssociateWebCertResponse{}
@@ -26590,6 +27282,15 @@ func (client *Client) AssociateWebCert(request *AssociateWebCertRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an object to a scenario-specific custom policy for protection.
+//
+// @param request - AttachSceneDefenseObjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachSceneDefenseObjectResponse
 func (client *Client) AttachSceneDefenseObjectWithOptions(request *AttachSceneDefenseObjectRequest, runtime *util.RuntimeOptions) (_result *AttachSceneDefenseObjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26631,6 +27332,13 @@ func (client *Client) AttachSceneDefenseObjectWithOptions(request *AttachSceneDe
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an object to a scenario-specific custom policy for protection.
+//
+// @param request - AttachSceneDefenseObjectRequest
+//
+// @return AttachSceneDefenseObjectResponse
 func (client *Client) AttachSceneDefenseObject(request *AttachSceneDefenseObjectRequest) (_result *AttachSceneDefenseObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachSceneDefenseObjectResponse{}
@@ -26642,6 +27350,10 @@ func (client *Client) AttachSceneDefenseObject(request *AttachSceneDefenseObject
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a back-to-origin policy for the forwarding rule of a website.
+//
 // Description:
 //
 // If multiple origin servers are configured for a website that is added to Anti-DDoS Pro or Anti-DDoS Premium, you can modify the load balancing algorithms for back-to-origin traffic based on back-to-origin policies. The IP hash algorithm is used by default. You can change the algorithm to the round-robin or least response time algorithm. For more information, see the description of the **Policy*	- parameter in the "Request parameters" section of this topic.
@@ -26696,6 +27408,10 @@ func (client *Client) ConfigL7RsPolicyWithOptions(request *ConfigL7RsPolicyReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a back-to-origin policy for the forwarding rule of a website.
+//
 // Description:
 //
 // If multiple origin servers are configured for a website that is added to Anti-DDoS Pro or Anti-DDoS Premium, you can modify the load balancing algorithms for back-to-origin traffic based on back-to-origin policies. The IP hash algorithm is used by default. You can change the algorithm to the round-robin or least response time algorithm. For more information, see the description of the **Policy*	- parameter in the "Request parameters" section of this topic.
@@ -26714,6 +27430,15 @@ func (client *Client) ConfigL7RsPolicy(request *ConfigL7RsPolicyRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Specifies a threshold for the clean bandwidth of an Anti-DDoS Pro or Anti-DDoS premium instance. If the threshold is reached, rate limiting is triggered.
+//
+// @param request - ConfigLayer4RealLimitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigLayer4RealLimitResponse
 func (client *Client) ConfigLayer4RealLimitWithOptions(request *ConfigLayer4RealLimitRequest, runtime *util.RuntimeOptions) (_result *ConfigLayer4RealLimitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26751,6 +27476,13 @@ func (client *Client) ConfigLayer4RealLimitWithOptions(request *ConfigLayer4Real
 	return _result, _err
 }
 
+// Summary:
+//
+// Specifies a threshold for the clean bandwidth of an Anti-DDoS Pro or Anti-DDoS premium instance. If the threshold is reached, rate limiting is triggered.
+//
+// @param request - ConfigLayer4RealLimitRequest
+//
+// @return ConfigLayer4RealLimitResponse
 func (client *Client) ConfigLayer4RealLimit(request *ConfigLayer4RealLimitRequest) (_result *ConfigLayer4RealLimitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigLayer4RealLimitResponse{}
@@ -26762,6 +27494,15 @@ func (client *Client) ConfigLayer4RealLimit(request *ConfigLayer4RealLimitReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a description to a port forwarding rule.
+//
+// @param request - ConfigLayer4RemarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigLayer4RemarkResponse
 func (client *Client) ConfigLayer4RemarkWithOptions(request *ConfigLayer4RemarkRequest, runtime *util.RuntimeOptions) (_result *ConfigLayer4RemarkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26795,6 +27536,13 @@ func (client *Client) ConfigLayer4RemarkWithOptions(request *ConfigLayer4RemarkR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a description to a port forwarding rule.
+//
+// @param request - ConfigLayer4RemarkRequest
+//
+// @return ConfigLayer4RemarkResponse
 func (client *Client) ConfigLayer4Remark(request *ConfigLayer4RemarkRequest) (_result *ConfigLayer4RemarkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigLayer4RemarkResponse{}
@@ -26806,6 +27554,15 @@ func (client *Client) ConfigLayer4Remark(request *ConfigLayer4RemarkRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the origin redundancy mode for a port forwarding rule.
+//
+// @param request - ConfigLayer4RuleBakModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigLayer4RuleBakModeResponse
 func (client *Client) ConfigLayer4RuleBakModeWithOptions(request *ConfigLayer4RuleBakModeRequest, runtime *util.RuntimeOptions) (_result *ConfigLayer4RuleBakModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26843,6 +27600,13 @@ func (client *Client) ConfigLayer4RuleBakModeWithOptions(request *ConfigLayer4Ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the origin redundancy mode for a port forwarding rule.
+//
+// @param request - ConfigLayer4RuleBakModeRequest
+//
+// @return ConfigLayer4RuleBakModeResponse
 func (client *Client) ConfigLayer4RuleBakMode(request *ConfigLayer4RuleBakModeRequest) (_result *ConfigLayer4RuleBakModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigLayer4RuleBakModeResponse{}
@@ -26854,6 +27618,15 @@ func (client *Client) ConfigLayer4RuleBakMode(request *ConfigLayer4RuleBakModeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the IP addresses of the primary and secondary origin servers for a port forwarding rule.
+//
+// @param request - ConfigLayer4RulePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigLayer4RulePolicyResponse
 func (client *Client) ConfigLayer4RulePolicyWithOptions(request *ConfigLayer4RulePolicyRequest, runtime *util.RuntimeOptions) (_result *ConfigLayer4RulePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26887,6 +27660,13 @@ func (client *Client) ConfigLayer4RulePolicyWithOptions(request *ConfigLayer4Rul
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the IP addresses of the primary and secondary origin servers for a port forwarding rule.
+//
+// @param request - ConfigLayer4RulePolicyRequest
+//
+// @return ConfigLayer4RulePolicyResponse
 func (client *Client) ConfigLayer4RulePolicy(request *ConfigLayer4RulePolicyRequest) (_result *ConfigLayer4RulePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigLayer4RulePolicyResponse{}
@@ -26898,6 +27678,15 @@ func (client *Client) ConfigLayer4RulePolicy(request *ConfigLayer4RulePolicyRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures blocked locations for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - ConfigNetworkRegionBlockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigNetworkRegionBlockResponse
 func (client *Client) ConfigNetworkRegionBlockWithOptions(request *ConfigNetworkRegionBlockRequest, runtime *util.RuntimeOptions) (_result *ConfigNetworkRegionBlockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26935,6 +27724,13 @@ func (client *Client) ConfigNetworkRegionBlockWithOptions(request *ConfigNetwork
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures blocked locations for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - ConfigNetworkRegionBlockRequest
+//
+// @return ConfigNetworkRegionBlockResponse
 func (client *Client) ConfigNetworkRegionBlock(request *ConfigNetworkRegionBlockRequest) (_result *ConfigNetworkRegionBlockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigNetworkRegionBlockResponse{}
@@ -26946,6 +27742,15 @@ func (client *Client) ConfigNetworkRegionBlock(request *ConfigNetworkRegionBlock
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP addresses of the origin server that is configured in a port forwarding rule.
+//
+// @param request - ConfigNetworkRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigNetworkRulesResponse
 func (client *Client) ConfigNetworkRulesWithOptions(request *ConfigNetworkRulesRequest, runtime *util.RuntimeOptions) (_result *ConfigNetworkRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26979,6 +27784,13 @@ func (client *Client) ConfigNetworkRulesWithOptions(request *ConfigNetworkRulesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP addresses of the origin server that is configured in a port forwarding rule.
+//
+// @param request - ConfigNetworkRulesRequest
+//
+// @return ConfigNetworkRulesResponse
 func (client *Client) ConfigNetworkRules(request *ConfigNetworkRulesRequest) (_result *ConfigNetworkRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigNetworkRulesResponse{}
@@ -26990,6 +27802,10 @@ func (client *Client) ConfigNetworkRules(request *ConfigNetworkRulesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds the filtering policies for UDP reflection attacks on an Anti-DDoS Pro or Anti-DDoS Premium instance to filter out the source ports of UDP traffic.
+//
 // Description:
 //
 // You can call this operation to configure filtering policies to filter out UDP traffic from specific ports. This helps defend against UDP reflection attacks.
@@ -27044,6 +27860,10 @@ func (client *Client) ConfigUdpReflectWithOptions(request *ConfigUdpReflectReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds the filtering policies for UDP reflection attacks on an Anti-DDoS Pro or Anti-DDoS Premium instance to filter out the source ports of UDP traffic.
+//
 // Description:
 //
 // You can call this operation to configure filtering policies to filter out UDP traffic from specific ports. This helps defend against UDP reflection attacks.
@@ -27066,6 +27886,15 @@ func (client *Client) ConfigUdpReflect(request *ConfigUdpReflectRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the mode of the Frequency Control policy for a website.
+//
+// @param request - ConfigWebCCTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigWebCCTemplateResponse
 func (client *Client) ConfigWebCCTemplateWithOptions(request *ConfigWebCCTemplateRequest, runtime *util.RuntimeOptions) (_result *ConfigWebCCTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27107,6 +27936,13 @@ func (client *Client) ConfigWebCCTemplateWithOptions(request *ConfigWebCCTemplat
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the mode of the Frequency Control policy for a website.
+//
+// @param request - ConfigWebCCTemplateRequest
+//
+// @return ConfigWebCCTemplateResponse
 func (client *Client) ConfigWebCCTemplate(request *ConfigWebCCTemplateRequest) (_result *ConfigWebCCTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigWebCCTemplateResponse{}
@@ -27118,6 +27954,15 @@ func (client *Client) ConfigWebCCTemplate(request *ConfigWebCCTemplateRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the IP address whitelist and blacklist for a website.
+//
+// @param request - ConfigWebIpSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigWebIpSetResponse
 func (client *Client) ConfigWebIpSetWithOptions(request *ConfigWebIpSetRequest, runtime *util.RuntimeOptions) (_result *ConfigWebIpSetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27163,6 +28008,13 @@ func (client *Client) ConfigWebIpSetWithOptions(request *ConfigWebIpSetRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the IP address whitelist and blacklist for a website.
+//
+// @param request - ConfigWebIpSetRequest
+//
+// @return ConfigWebIpSetResponse
 func (client *Client) ConfigWebIpSet(request *ConfigWebIpSetRequest) (_result *ConfigWebIpSetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigWebIpSetResponse{}
@@ -27174,6 +28026,15 @@ func (client *Client) ConfigWebIpSet(request *ConfigWebIpSetRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an asynchronous export task to export forwarding rules for websites, port forwarding rules, session persistence and health check settings, DDoS mitigation policies, the IP address blacklist, or the IP address whitelist.
+//
+// @param request - CreateAsyncTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAsyncTaskResponse
 func (client *Client) CreateAsyncTaskWithOptions(request *CreateAsyncTaskRequest, runtime *util.RuntimeOptions) (_result *CreateAsyncTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27215,6 +28076,13 @@ func (client *Client) CreateAsyncTaskWithOptions(request *CreateAsyncTaskRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an asynchronous export task to export forwarding rules for websites, port forwarding rules, session persistence and health check settings, DDoS mitigation policies, the IP address blacklist, or the IP address whitelist.
+//
+// @param request - CreateAsyncTaskRequest
+//
+// @return CreateAsyncTaskResponse
 func (client *Client) CreateAsyncTask(request *CreateAsyncTaskRequest) (_result *CreateAsyncTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAsyncTaskResponse{}
@@ -27226,6 +28094,15 @@ func (client *Client) CreateAsyncTask(request *CreateAsyncTaskRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a forwarding rule for a website.
+//
+// @param request - CreateDomainResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDomainResourceResponse
 func (client *Client) CreateDomainResourceWithOptions(request *CreateDomainResourceRequest, runtime *util.RuntimeOptions) (_result *CreateDomainResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27279,6 +28156,13 @@ func (client *Client) CreateDomainResourceWithOptions(request *CreateDomainResou
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a forwarding rule for a website.
+//
+// @param request - CreateDomainResourceRequest
+//
+// @return CreateDomainResourceResponse
 func (client *Client) CreateDomainResource(request *CreateDomainResourceRequest) (_result *CreateDomainResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDomainResourceResponse{}
@@ -27290,6 +28174,15 @@ func (client *Client) CreateDomainResource(request *CreateDomainResourceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a port forwarding rule.
+//
+// @param request - CreateNetworkRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNetworkRulesResponse
 func (client *Client) CreateNetworkRulesWithOptions(request *CreateNetworkRulesRequest, runtime *util.RuntimeOptions) (_result *CreateNetworkRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27323,6 +28216,13 @@ func (client *Client) CreateNetworkRulesWithOptions(request *CreateNetworkRulesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a port forwarding rule.
+//
+// @param request - CreateNetworkRulesRequest
+//
+// @return CreateNetworkRulesResponse
 func (client *Client) CreateNetworkRules(request *CreateNetworkRulesRequest) (_result *CreateNetworkRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNetworkRulesResponse{}
@@ -27334,9 +28234,13 @@ func (client *Client) CreateNetworkRules(request *CreateNetworkRulesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a port forwarding rule.
+//
 // Description:
 //
-// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - CreatePortRequest
 //
@@ -27392,9 +28296,13 @@ func (client *Client) CreatePortWithOptions(request *CreatePortRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a port forwarding rule.
+//
 // Description:
 //
-// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - CreatePortRequest
 //
@@ -27410,6 +28318,15 @@ func (client *Client) CreatePort(request *CreatePortRequest) (_result *CreatePor
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a scenario-specific custom policy.
+//
+// @param request - CreateSceneDefensePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSceneDefensePolicyResponse
 func (client *Client) CreateSceneDefensePolicyWithOptions(request *CreateSceneDefensePolicyRequest, runtime *util.RuntimeOptions) (_result *CreateSceneDefensePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27455,6 +28372,13 @@ func (client *Client) CreateSceneDefensePolicyWithOptions(request *CreateSceneDe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a scenario-specific custom policy.
+//
+// @param request - CreateSceneDefensePolicyRequest
+//
+// @return CreateSceneDefensePolicyResponse
 func (client *Client) CreateSceneDefensePolicy(request *CreateSceneDefensePolicyRequest) (_result *CreateSceneDefensePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSceneDefensePolicyResponse{}
@@ -27466,6 +28390,15 @@ func (client *Client) CreateSceneDefensePolicy(request *CreateSceneDefensePolicy
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a scheduling rule for Sec-Traffic Manager.
+//
+// @param request - CreateSchedulerRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSchedulerRuleResponse
 func (client *Client) CreateSchedulerRuleWithOptions(request *CreateSchedulerRuleRequest, runtime *util.RuntimeOptions) (_result *CreateSchedulerRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27515,6 +28448,13 @@ func (client *Client) CreateSchedulerRuleWithOptions(request *CreateSchedulerRul
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a scheduling rule for Sec-Traffic Manager.
+//
+// @param request - CreateSchedulerRuleRequest
+//
+// @return CreateSchedulerRuleResponse
 func (client *Client) CreateSchedulerRule(request *CreateSchedulerRuleRequest) (_result *CreateSchedulerRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSchedulerRuleResponse{}
@@ -27526,6 +28466,10 @@ func (client *Client) CreateSchedulerRule(request *CreateSchedulerRuleRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to multiple Anti-DDoS Pro instances at a time.
+//
 // Description:
 //
 // You can call the CreateTagResources operation to add a tag to multiple Anti-DDoS Pro instances at a time.
@@ -27590,6 +28534,10 @@ func (client *Client) CreateTagResourcesWithOptions(request *CreateTagResourcesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to multiple Anti-DDoS Pro instances at a time.
+//
 // Description:
 //
 // You can call the CreateTagResources operation to add a tag to multiple Anti-DDoS Pro instances at a time.
@@ -27614,6 +28562,11 @@ func (client *Client) CreateTagResources(request *CreateTagResourcesRequest) (_r
 	return _result, _err
 }
 
+// @param request - CreateWebCCRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWebCCRuleResponse
 func (client *Client) CreateWebCCRuleWithOptions(request *CreateWebCCRuleRequest, runtime *util.RuntimeOptions) (_result *CreateWebCCRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27679,6 +28632,9 @@ func (client *Client) CreateWebCCRuleWithOptions(request *CreateWebCCRuleRequest
 	return _result, _err
 }
 
+// @param request - CreateWebCCRuleRequest
+//
+// @return CreateWebCCRuleResponse
 func (client *Client) CreateWebCCRule(request *CreateWebCCRuleRequest) (_result *CreateWebCCRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateWebCCRuleResponse{}
@@ -27690,6 +28646,15 @@ func (client *Client) CreateWebCCRule(request *CreateWebCCRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a forwarding rule for a website.
+//
+// @param request - CreateWebRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWebRuleResponse
 func (client *Client) CreateWebRuleWithOptions(request *CreateWebRuleRequest, runtime *util.RuntimeOptions) (_result *CreateWebRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27747,6 +28712,13 @@ func (client *Client) CreateWebRuleWithOptions(request *CreateWebRuleRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a forwarding rule for a website.
+//
+// @param request - CreateWebRuleRequest
+//
+// @return CreateWebRuleResponse
 func (client *Client) CreateWebRule(request *CreateWebRuleRequest) (_result *CreateWebRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateWebRuleResponse{}
@@ -27758,6 +28730,15 @@ func (client *Client) CreateWebRule(request *CreateWebRuleRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an asynchronous export task.
+//
+// @param request - DeleteAsyncTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAsyncTaskResponse
 func (client *Client) DeleteAsyncTaskWithOptions(request *DeleteAsyncTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteAsyncTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27795,6 +28776,13 @@ func (client *Client) DeleteAsyncTaskWithOptions(request *DeleteAsyncTaskRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an asynchronous export task.
+//
+// @param request - DeleteAsyncTaskRequest
+//
+// @return DeleteAsyncTaskResponse
 func (client *Client) DeleteAsyncTask(request *DeleteAsyncTaskRequest) (_result *DeleteAsyncTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAsyncTaskResponse{}
@@ -27806,6 +28794,15 @@ func (client *Client) DeleteAsyncTask(request *DeleteAsyncTaskRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes IP addresses from the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DeleteAutoCcBlacklistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAutoCcBlacklistResponse
 func (client *Client) DeleteAutoCcBlacklistWithOptions(request *DeleteAutoCcBlacklistRequest, runtime *util.RuntimeOptions) (_result *DeleteAutoCcBlacklistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27843,6 +28840,13 @@ func (client *Client) DeleteAutoCcBlacklistWithOptions(request *DeleteAutoCcBlac
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes IP addresses from the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DeleteAutoCcBlacklistRequest
+//
+// @return DeleteAutoCcBlacklistResponse
 func (client *Client) DeleteAutoCcBlacklist(request *DeleteAutoCcBlacklistRequest) (_result *DeleteAutoCcBlacklistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAutoCcBlacklistResponse{}
@@ -27854,6 +28858,15 @@ func (client *Client) DeleteAutoCcBlacklist(request *DeleteAutoCcBlacklistReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes IP addresses from the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DeleteAutoCcWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAutoCcWhitelistResponse
 func (client *Client) DeleteAutoCcWhitelistWithOptions(request *DeleteAutoCcWhitelistRequest, runtime *util.RuntimeOptions) (_result *DeleteAutoCcWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27891,6 +28904,13 @@ func (client *Client) DeleteAutoCcWhitelistWithOptions(request *DeleteAutoCcWhit
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes IP addresses from the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DeleteAutoCcWhitelistRequest
+//
+// @return DeleteAutoCcWhitelistResponse
 func (client *Client) DeleteAutoCcWhitelist(request *DeleteAutoCcWhitelistRequest) (_result *DeleteAutoCcWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAutoCcWhitelistResponse{}
@@ -27902,6 +28922,15 @@ func (client *Client) DeleteAutoCcWhitelist(request *DeleteAutoCcWhitelistReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified forwarding rule of a website.
+//
+// @param request - DeleteDomainResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDomainResourceResponse
 func (client *Client) DeleteDomainResourceWithOptions(request *DeleteDomainResourceRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27935,6 +28964,13 @@ func (client *Client) DeleteDomainResourceWithOptions(request *DeleteDomainResou
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified forwarding rule of a website.
+//
+// @param request - DeleteDomainResourceRequest
+//
+// @return DeleteDomainResourceResponse
 func (client *Client) DeleteDomainResource(request *DeleteDomainResourceRequest) (_result *DeleteDomainResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDomainResourceResponse{}
@@ -27946,6 +28982,15 @@ func (client *Client) DeleteDomainResource(request *DeleteDomainResourceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a port forwarding rule. You can delete only one port forwarding rule at a time.
+//
+// @param request - DeleteNetworkRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNetworkRuleResponse
 func (client *Client) DeleteNetworkRuleWithOptions(request *DeleteNetworkRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteNetworkRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27979,6 +29024,13 @@ func (client *Client) DeleteNetworkRuleWithOptions(request *DeleteNetworkRuleReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a port forwarding rule. You can delete only one port forwarding rule at a time.
+//
+// @param request - DeleteNetworkRuleRequest
+//
+// @return DeleteNetworkRuleResponse
 func (client *Client) DeleteNetworkRule(request *DeleteNetworkRuleRequest) (_result *DeleteNetworkRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNetworkRuleResponse{}
@@ -27990,11 +29042,15 @@ func (client *Client) DeleteNetworkRule(request *DeleteNetworkRuleRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the specified port forwarding rule.
+//
 // Description:
 //
 // After you delete a port forwarding rule, the Anti-DDoS Pro or Anti-DDoS Premium instance no longer forwards service traffic on the Layer 4 port. Before you delete a specific port forwarding rule, make sure that the service traffic destined for the Layer 4 port is redirected to the origin server. This can prevent negative impacts on your services.
 //
-// > You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+// > You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - DeletePortRequest
 //
@@ -28050,11 +29106,15 @@ func (client *Client) DeletePortWithOptions(request *DeletePortRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the specified port forwarding rule.
+//
 // Description:
 //
 // After you delete a port forwarding rule, the Anti-DDoS Pro or Anti-DDoS Premium instance no longer forwards service traffic on the Layer 4 port. Before you delete a specific port forwarding rule, make sure that the service traffic destined for the Layer 4 port is redirected to the origin server. This can prevent negative impacts on your services.
 //
-// > You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+// > You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - DeletePortRequest
 //
@@ -28070,6 +29130,15 @@ func (client *Client) DeletePort(request *DeletePortRequest) (_result *DeletePor
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a scenario-specific custom policy.
+//
+// @param request - DeleteSceneDefensePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSceneDefensePolicyResponse
 func (client *Client) DeleteSceneDefensePolicyWithOptions(request *DeleteSceneDefensePolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteSceneDefensePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28103,6 +29172,13 @@ func (client *Client) DeleteSceneDefensePolicyWithOptions(request *DeleteSceneDe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a scenario-specific custom policy.
+//
+// @param request - DeleteSceneDefensePolicyRequest
+//
+// @return DeleteSceneDefensePolicyResponse
 func (client *Client) DeleteSceneDefensePolicy(request *DeleteSceneDefensePolicyRequest) (_result *DeleteSceneDefensePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSceneDefensePolicyResponse{}
@@ -28114,6 +29190,15 @@ func (client *Client) DeleteSceneDefensePolicy(request *DeleteSceneDefensePolicy
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a scheduling rule of Sec-Traffic Manager.
+//
+// @param request - DeleteSchedulerRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSchedulerRuleResponse
 func (client *Client) DeleteSchedulerRuleWithOptions(request *DeleteSchedulerRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteSchedulerRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28151,6 +29236,13 @@ func (client *Client) DeleteSchedulerRuleWithOptions(request *DeleteSchedulerRul
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a scheduling rule of Sec-Traffic Manager.
+//
+// @param request - DeleteSchedulerRuleRequest
+//
+// @return DeleteSchedulerRuleResponse
 func (client *Client) DeleteSchedulerRule(request *DeleteSchedulerRuleRequest) (_result *DeleteSchedulerRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSchedulerRuleResponse{}
@@ -28162,6 +29254,10 @@ func (client *Client) DeleteSchedulerRule(request *DeleteSchedulerRuleRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from Anti-DDoS Pro instances.
+//
 // Description:
 //
 // You can call the DeleteTagResources operation to remove tags from Anti-DDoS Pro instances.
@@ -28230,6 +29326,10 @@ func (client *Client) DeleteTagResourcesWithOptions(request *DeleteTagResourcesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from Anti-DDoS Pro instances.
+//
 // Description:
 //
 // You can call the DeleteTagResources operation to remove tags from Anti-DDoS Pro instances.
@@ -28254,6 +29354,15 @@ func (client *Client) DeleteTagResources(request *DeleteTagResourcesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom frequency control rule of a website.
+//
+// @param request - DeleteWebCCRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWebCCRuleResponse
 func (client *Client) DeleteWebCCRuleWithOptions(request *DeleteWebCCRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteWebCCRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28295,6 +29404,13 @@ func (client *Client) DeleteWebCCRuleWithOptions(request *DeleteWebCCRuleRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom frequency control rule of a website.
+//
+// @param request - DeleteWebCCRuleRequest
+//
+// @return DeleteWebCCRuleResponse
 func (client *Client) DeleteWebCCRule(request *DeleteWebCCRuleRequest) (_result *DeleteWebCCRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteWebCCRuleResponse{}
@@ -28306,6 +29422,10 @@ func (client *Client) DeleteWebCCRule(request *DeleteWebCCRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the custom rules of the Static Page Caching policy for a website.
+//
 // Description:
 //
 // You can call the DeleteWebCacheCustomRule operation to delete the custom rules of the Static Page Caching policy for a website.
@@ -28360,6 +29480,10 @@ func (client *Client) DeleteWebCacheCustomRuleWithOptions(request *DeleteWebCach
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the custom rules of the Static Page Caching policy for a website.
+//
 // Description:
 //
 // You can call the DeleteWebCacheCustomRule operation to delete the custom rules of the Static Page Caching policy for a website.
@@ -28382,6 +29506,15 @@ func (client *Client) DeleteWebCacheCustomRule(request *DeleteWebCacheCustomRule
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the accurate access control rules that are created for a website.
+//
+// @param request - DeleteWebPreciseAccessRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWebPreciseAccessRuleResponse
 func (client *Client) DeleteWebPreciseAccessRuleWithOptions(request *DeleteWebPreciseAccessRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteWebPreciseAccessRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28423,6 +29556,13 @@ func (client *Client) DeleteWebPreciseAccessRuleWithOptions(request *DeleteWebPr
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the accurate access control rules that are created for a website.
+//
+// @param request - DeleteWebPreciseAccessRuleRequest
+//
+// @return DeleteWebPreciseAccessRuleResponse
 func (client *Client) DeleteWebPreciseAccessRule(request *DeleteWebPreciseAccessRuleRequest) (_result *DeleteWebPreciseAccessRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteWebPreciseAccessRuleResponse{}
@@ -28434,6 +29574,15 @@ func (client *Client) DeleteWebPreciseAccessRule(request *DeleteWebPreciseAccess
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a forwarding rule of a website.
+//
+// @param request - DeleteWebRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWebRuleResponse
 func (client *Client) DeleteWebRuleWithOptions(request *DeleteWebRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteWebRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28471,6 +29620,13 @@ func (client *Client) DeleteWebRuleWithOptions(request *DeleteWebRuleRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a forwarding rule of a website.
+//
+// @param request - DeleteWebRuleRequest
+//
+// @return DeleteWebRuleResponse
 func (client *Client) DeleteWebRule(request *DeleteWebRuleRequest) (_result *DeleteWebRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteWebRuleResponse{}
@@ -28482,6 +29638,10 @@ func (client *Client) DeleteWebRule(request *DeleteWebRuleRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of asynchronous export tasks, such as the IDs, start time, end time, status, parameters, and results.
+//
 // Description:
 //
 // You can call the DescribeAsyncTasks operation to query the details of asynchronous export tasks, such as the IDs, start time, end time, status, parameters, and results.
@@ -28536,6 +29696,10 @@ func (client *Client) DescribeAsyncTasksWithOptions(request *DescribeAsyncTasksR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of asynchronous export tasks, such as the IDs, start time, end time, status, parameters, and results.
+//
 // Description:
 //
 // You can call the DescribeAsyncTasks operation to query the details of asynchronous export tasks, such as the IDs, start time, end time, status, parameters, and results.
@@ -28558,6 +29722,15 @@ func (client *Client) DescribeAsyncTasks(request *DescribeAsyncTasksRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the peak QPS of DDoS attacks within the specific period of time.
+//
+// @param request - DescribeAttackAnalysisMaxQpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAttackAnalysisMaxQpsResponse
 func (client *Client) DescribeAttackAnalysisMaxQpsWithOptions(request *DescribeAttackAnalysisMaxQpsRequest, runtime *util.RuntimeOptions) (_result *DescribeAttackAnalysisMaxQpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28595,6 +29768,13 @@ func (client *Client) DescribeAttackAnalysisMaxQpsWithOptions(request *DescribeA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the peak QPS of DDoS attacks within the specific period of time.
+//
+// @param request - DescribeAttackAnalysisMaxQpsRequest
+//
+// @return DescribeAttackAnalysisMaxQpsResponse
 func (client *Client) DescribeAttackAnalysisMaxQps(request *DescribeAttackAnalysisMaxQpsRequest) (_result *DescribeAttackAnalysisMaxQpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAttackAnalysisMaxQpsResponse{}
@@ -28606,6 +29786,15 @@ func (client *Client) DescribeAttackAnalysisMaxQps(request *DescribeAttackAnalys
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries IP addresses in the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DescribeAutoCcBlacklistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAutoCcBlacklistResponse
 func (client *Client) DescribeAutoCcBlacklistWithOptions(request *DescribeAutoCcBlacklistRequest, runtime *util.RuntimeOptions) (_result *DescribeAutoCcBlacklistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28651,6 +29840,13 @@ func (client *Client) DescribeAutoCcBlacklistWithOptions(request *DescribeAutoCc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries IP addresses in the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DescribeAutoCcBlacklistRequest
+//
+// @return DescribeAutoCcBlacklistResponse
 func (client *Client) DescribeAutoCcBlacklist(request *DescribeAutoCcBlacklistRequest) (_result *DescribeAutoCcBlacklistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAutoCcBlacklistResponse{}
@@ -28662,6 +29858,15 @@ func (client *Client) DescribeAutoCcBlacklist(request *DescribeAutoCcBlacklistRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DescribeAutoCcListCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAutoCcListCountResponse
 func (client *Client) DescribeAutoCcListCountWithOptions(request *DescribeAutoCcListCountRequest, runtime *util.RuntimeOptions) (_result *DescribeAutoCcListCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28699,6 +29904,13 @@ func (client *Client) DescribeAutoCcListCountWithOptions(request *DescribeAutoCc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DescribeAutoCcListCountRequest
+//
+// @return DescribeAutoCcListCountResponse
 func (client *Client) DescribeAutoCcListCount(request *DescribeAutoCcListCountRequest) (_result *DescribeAutoCcListCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAutoCcListCountResponse{}
@@ -28710,6 +29922,15 @@ func (client *Client) DescribeAutoCcListCount(request *DescribeAutoCcListCountRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries IP addresses in the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DescribeAutoCcWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAutoCcWhitelistResponse
 func (client *Client) DescribeAutoCcWhitelistWithOptions(request *DescribeAutoCcWhitelistRequest, runtime *util.RuntimeOptions) (_result *DescribeAutoCcWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28755,6 +29976,13 @@ func (client *Client) DescribeAutoCcWhitelistWithOptions(request *DescribeAutoCc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries IP addresses in the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DescribeAutoCcWhitelistRequest
+//
+// @return DescribeAutoCcWhitelistResponse
 func (client *Client) DescribeAutoCcWhitelist(request *DescribeAutoCcWhitelistRequest) (_result *DescribeAutoCcWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAutoCcWhitelistResponse{}
@@ -28766,6 +29994,15 @@ func (client *Client) DescribeAutoCcWhitelist(request *DescribeAutoCcWhitelistRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the back-to-origin CIDR blocks of Anti-DDoS Pro or Anti-DDoS Premium.
+//
+// @param request - DescribeBackSourceCidrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackSourceCidrResponse
 func (client *Client) DescribeBackSourceCidrWithOptions(request *DescribeBackSourceCidrRequest, runtime *util.RuntimeOptions) (_result *DescribeBackSourceCidrResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28807,6 +30044,13 @@ func (client *Client) DescribeBackSourceCidrWithOptions(request *DescribeBackSou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the back-to-origin CIDR blocks of Anti-DDoS Pro or Anti-DDoS Premium.
+//
+// @param request - DescribeBackSourceCidrRequest
+//
+// @return DescribeBackSourceCidrResponse
 func (client *Client) DescribeBackSourceCidr(request *DescribeBackSourceCidrRequest) (_result *DescribeBackSourceCidrResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackSourceCidrResponse{}
@@ -28818,6 +30062,15 @@ func (client *Client) DescribeBackSourceCidr(request *DescribeBackSourceCidrRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the blackhole filtering status of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// @param request - DescribeBlackholeStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBlackholeStatusResponse
 func (client *Client) DescribeBlackholeStatusWithOptions(request *DescribeBlackholeStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeBlackholeStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28851,6 +30104,13 @@ func (client *Client) DescribeBlackholeStatusWithOptions(request *DescribeBlackh
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the blackhole filtering status of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// @param request - DescribeBlackholeStatusRequest
+//
+// @return DescribeBlackholeStatusResponse
 func (client *Client) DescribeBlackholeStatus(request *DescribeBlackholeStatusRequest) (_result *DescribeBlackholeStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBlackholeStatusResponse{}
@@ -28862,6 +30122,10 @@ func (client *Client) DescribeBlackholeStatus(request *DescribeBlackholeStatusRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Diversion from Origin Server configurations of one or more Anti-DDoS Pro instances.
+//
 // Description:
 //
 // This operation is used to query the Diversion from Origin Server configurations of one or more Anti-DDoS Pro instances.
@@ -28914,6 +30178,10 @@ func (client *Client) DescribeBlockStatusWithOptions(request *DescribeBlockStatu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Diversion from Origin Server configurations of one or more Anti-DDoS Pro instances.
+//
 // Description:
 //
 // This operation is used to query the Diversion from Origin Server configurations of one or more Anti-DDoS Pro instances.
@@ -28938,6 +30206,15 @@ func (client *Client) DescribeBlockStatus(request *DescribeBlockStatusRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the certificate information about a website.
+//
+// @param request - DescribeCertsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCertsResponse
 func (client *Client) DescribeCertsWithOptions(request *DescribeCertsRequest, runtime *util.RuntimeOptions) (_result *DescribeCertsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28975,6 +30252,13 @@ func (client *Client) DescribeCertsWithOptions(request *DescribeCertsRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the certificate information about a website.
+//
+// @param request - DescribeCertsRequest
+//
+// @return DescribeCertsResponse
 func (client *Client) DescribeCerts(request *DescribeCertsRequest) (_result *DescribeCertsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCertsResponse{}
@@ -28986,6 +30270,11 @@ func (client *Client) DescribeCerts(request *DescribeCertsRequest) (_result *Des
 	return _result, _err
 }
 
+// @param request - DescribeCnameReusesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCnameReusesResponse
 func (client *Client) DescribeCnameReusesWithOptions(request *DescribeCnameReusesRequest, runtime *util.RuntimeOptions) (_result *DescribeCnameReusesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29023,6 +30312,9 @@ func (client *Client) DescribeCnameReusesWithOptions(request *DescribeCnameReuse
 	return _result, _err
 }
 
+// @param request - DescribeCnameReusesRequest
+//
+// @return DescribeCnameReusesResponse
 func (client *Client) DescribeCnameReuses(request *DescribeCnameReusesRequest) (_result *DescribeCnameReusesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCnameReusesResponse{}
@@ -29034,6 +30326,15 @@ func (client *Client) DescribeCnameReuses(request *DescribeCnameReusesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attack events launched against one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// @param request - DescribeDDoSEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDoSEventsResponse
 func (client *Client) DescribeDDoSEventsWithOptions(request *DescribeDDoSEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeDDoSEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29087,6 +30388,13 @@ func (client *Client) DescribeDDoSEventsWithOptions(request *DescribeDDoSEventsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attack events launched against one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// @param request - DescribeDDoSEventsRequest
+//
+// @return DescribeDDoSEventsResponse
 func (client *Client) DescribeDDoSEvents(request *DescribeDDoSEventsRequest) (_result *DescribeDDoSEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDDoSEventsResponse{}
@@ -29098,6 +30406,10 @@ func (client *Client) DescribeDDoSEvents(request *DescribeDDoSEventsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Query DDoS attacks by IP address.
+//
 // Description:
 //
 // You can call the DescribeDDosAllEventList operation to query DDoS attack events within a specific time range by page. The information about a DDoS attack event includes the start time and end time of the attack, attack event type, attacked object, peak bandwidth of attack traffic, and peak packet forwarding rate.
@@ -29160,6 +30472,10 @@ func (client *Client) DescribeDDosAllEventListWithOptions(request *DescribeDDosA
 	return _result, _err
 }
 
+// Summary:
+//
+// Query DDoS attacks by IP address.
+//
 // Description:
 //
 // You can call the DescribeDDosAllEventList operation to query DDoS attack events within a specific time range by page. The information about a DDoS attack event includes the start time and end time of the attack, attack event type, attacked object, peak bandwidth of attack traffic, and peak packet forwarding rate.
@@ -29182,6 +30498,10 @@ func (client *Client) DescribeDDosAllEventList(request *DescribeDDosAllEventList
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the source region from which a volumetric attack is initiated.
+//
 // Description:
 //
 // > This operation is suitable only for volumetric attacks.
@@ -29232,6 +30552,10 @@ func (client *Client) DescribeDDosEventAreaWithOptions(request *DescribeDDosEven
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the source region from which a volumetric attack is initiated.
+//
 // Description:
 //
 // > This operation is suitable only for volumetric attacks.
@@ -29250,6 +30574,10 @@ func (client *Client) DescribeDDosEventArea(request *DescribeDDosEventAreaReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attack type details of a volumetric attack.
+//
 // Description:
 //
 // > This operation is suitable only for volumetric attacks.
@@ -29300,6 +30628,10 @@ func (client *Client) DescribeDDosEventAttackTypeWithOptions(request *DescribeDD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attack type details of a volumetric attack.
+//
 // Description:
 //
 // > This operation is suitable only for volumetric attacks.
@@ -29318,6 +30650,10 @@ func (client *Client) DescribeDDosEventAttackType(request *DescribeDDosEventAtta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Internet service provider (ISP) information about a volumetric attack.
+//
 // Description:
 //
 // > This operation is suitable only for volumetric attacks.
@@ -29368,6 +30704,10 @@ func (client *Client) DescribeDDosEventIspWithOptions(request *DescribeDDosEvent
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Internet service provider (ISP) information about a volumetric attack.
+//
 // Description:
 //
 // > This operation is suitable only for volumetric attacks.
@@ -29386,6 +30726,15 @@ func (client *Client) DescribeDDosEventIsp(request *DescribeDDosEventIspRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the peaks of volumetric attacks (bit/s), connection flood attacks (CPS), and resource exhaustion attacks on websites (QPS).
+//
+// @param request - DescribeDDosEventMaxRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDosEventMaxResponse
 func (client *Client) DescribeDDosEventMaxWithOptions(request *DescribeDDosEventMaxRequest, runtime *util.RuntimeOptions) (_result *DescribeDDosEventMaxResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29423,6 +30772,13 @@ func (client *Client) DescribeDDosEventMaxWithOptions(request *DescribeDDosEvent
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the peaks of volumetric attacks (bit/s), connection flood attacks (CPS), and resource exhaustion attacks on websites (QPS).
+//
+// @param request - DescribeDDosEventMaxRequest
+//
+// @return DescribeDDosEventMaxResponse
 func (client *Client) DescribeDDosEventMax(request *DescribeDDosEventMaxRequest) (_result *DescribeDDosEventMaxResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDDosEventMaxResponse{}
@@ -29434,6 +30790,10 @@ func (client *Client) DescribeDDosEventMax(request *DescribeDDosEventMaxRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the source IP address from which a volumetric attack is initiated.
+//
 // Description:
 //
 // > This operation is suitable only for volumetric attacks.
@@ -29488,6 +30848,10 @@ func (client *Client) DescribeDDosEventSrcIpWithOptions(request *DescribeDDosEve
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the source IP address from which a volumetric attack is initiated.
+//
 // Description:
 //
 // > This operation is suitable only for volumetric attacks.
@@ -29506,6 +30870,10 @@ func (client *Client) DescribeDDosEventSrcIp(request *DescribeDDosEventSrcIpRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on advanced mitigation sessions of an Anti-DDoS Premium instance.
+//
 // Description:
 //
 // You can call the DescribeDefenseCountStatistics operation to query the information about advanced mitigation sessions of an Anti-DDoS Premium instance. For example, you can query the number of advanced mitigation sessions that are used within the current calendar month and the number of available global advanced mitigation sessions.
@@ -29554,6 +30922,10 @@ func (client *Client) DescribeDefenseCountStatisticsWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on advanced mitigation sessions of an Anti-DDoS Premium instance.
+//
 // Description:
 //
 // You can call the DescribeDefenseCountStatistics operation to query the information about advanced mitigation sessions of an Anti-DDoS Premium instance. For example, you can query the number of advanced mitigation sessions that are used within the current calendar month and the number of available global advanced mitigation sessions.
@@ -29578,6 +30950,10 @@ func (client *Client) DescribeDefenseCountStatistics(request *DescribeDefenseCou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the advanced mitigation logs of Anti-DDoS Premium.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Premium.
@@ -29640,6 +31016,10 @@ func (client *Client) DescribeDefenseRecordsWithOptions(request *DescribeDefense
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the advanced mitigation logs of Anti-DDoS Premium.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Premium.
@@ -29658,6 +31038,15 @@ func (client *Client) DescribeDefenseRecords(request *DescribeDefenseRecordsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attack events launched against a website.
+//
+// @param request - DescribeDomainAttackEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainAttackEventsResponse
 func (client *Client) DescribeDomainAttackEventsWithOptions(request *DescribeDomainAttackEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainAttackEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29711,6 +31100,13 @@ func (client *Client) DescribeDomainAttackEventsWithOptions(request *DescribeDom
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attack events launched against a website.
+//
+// @param request - DescribeDomainAttackEventsRequest
+//
+// @return DescribeDomainAttackEventsResponse
 func (client *Client) DescribeDomainAttackEvents(request *DescribeDomainAttackEventsRequest) (_result *DescribeDomainAttackEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainAttackEventsResponse{}
@@ -29722,6 +31118,15 @@ func (client *Client) DescribeDomainAttackEvents(request *DescribeDomainAttackEv
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attack overview of a website, such as the peak HTTP and HTTPS traffic.
+//
+// @param request - DescribeDomainOverviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainOverviewResponse
 func (client *Client) DescribeDomainOverviewWithOptions(request *DescribeDomainOverviewRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainOverviewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29767,6 +31172,13 @@ func (client *Client) DescribeDomainOverviewWithOptions(request *DescribeDomainO
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attack overview of a website, such as the peak HTTP and HTTPS traffic.
+//
+// @param request - DescribeDomainOverviewRequest
+//
+// @return DescribeDomainOverviewResponse
 func (client *Client) DescribeDomainOverview(request *DescribeDomainOverviewRequest) (_result *DescribeDomainOverviewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainOverviewResponse{}
@@ -29778,6 +31190,15 @@ func (client *Client) DescribeDomainOverview(request *DescribeDomainOverviewRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on the queries per second (QPS) of a website.
+//
+// @param request - DescribeDomainQPSListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainQPSListResponse
 func (client *Client) DescribeDomainQPSListWithOptions(request *DescribeDomainQPSListRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainQPSListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29827,6 +31248,13 @@ func (client *Client) DescribeDomainQPSListWithOptions(request *DescribeDomainQP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on the queries per second (QPS) of a website.
+//
+// @param request - DescribeDomainQPSListRequest
+//
+// @return DescribeDomainQPSListResponse
 func (client *Client) DescribeDomainQPSList(request *DescribeDomainQPSListRequest) (_result *DescribeDomainQPSListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainQPSListResponse{}
@@ -29838,11 +31266,15 @@ func (client *Client) DescribeDomainQPSList(request *DescribeDomainQPSListReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of a forwarding rule.
+//
 // Description:
 //
 // You can call the DescribeDomainResource operation to query the configurations of the forwarding rules that you create for a website by page. The configurations include the domain name-related configurations, protocol-related configurations, HTTPS-related configurations, and configurations that are used to mitigate HTTP flood attacks.
 //
-// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
 // ### Limits
 //
@@ -29902,11 +31334,15 @@ func (client *Client) DescribeDomainResourceWithOptions(request *DescribeDomainR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of a forwarding rule.
+//
 // Description:
 //
 // You can call the DescribeDomainResource operation to query the configurations of the forwarding rules that you create for a website by page. The configurations include the domain name-related configurations, protocol-related configurations, HTTPS-related configurations, and configurations that are used to mitigate HTTP flood attacks.
 //
-// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
 // ### Limits
 //
@@ -29926,6 +31362,15 @@ func (client *Client) DescribeDomainResource(request *DescribeDomainResourceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the global mitigation policy for a domain name.
+//
+// @param request - DescribeDomainSecurityProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainSecurityProfileResponse
 func (client *Client) DescribeDomainSecurityProfileWithOptions(request *DescribeDomainSecurityProfileRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainSecurityProfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29959,6 +31404,13 @@ func (client *Client) DescribeDomainSecurityProfileWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the global mitigation policy for a domain name.
+//
+// @param request - DescribeDomainSecurityProfileRequest
+//
+// @return DescribeDomainSecurityProfileResponse
 func (client *Client) DescribeDomainSecurityProfile(request *DescribeDomainSecurityProfileRequest) (_result *DescribeDomainSecurityProfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainSecurityProfileResponse{}
@@ -29970,6 +31422,15 @@ func (client *Client) DescribeDomainSecurityProfile(request *DescribeDomainSecur
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on HTTP status codes of a website within a specified period of time.
+//
+// @param request - DescribeDomainStatusCodeCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainStatusCodeCountResponse
 func (client *Client) DescribeDomainStatusCodeCountWithOptions(request *DescribeDomainStatusCodeCountRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainStatusCodeCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30015,6 +31476,13 @@ func (client *Client) DescribeDomainStatusCodeCountWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on HTTP status codes of a website within a specified period of time.
+//
+// @param request - DescribeDomainStatusCodeCountRequest
+//
+// @return DescribeDomainStatusCodeCountResponse
 func (client *Client) DescribeDomainStatusCodeCount(request *DescribeDomainStatusCodeCountRequest) (_result *DescribeDomainStatusCodeCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainStatusCodeCountResponse{}
@@ -30026,6 +31494,15 @@ func (client *Client) DescribeDomainStatusCodeCount(request *DescribeDomainStatu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on HTTP status codes of a website.
+//
+// @param request - DescribeDomainStatusCodeListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainStatusCodeListResponse
 func (client *Client) DescribeDomainStatusCodeListWithOptions(request *DescribeDomainStatusCodeListRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainStatusCodeListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30079,6 +31556,13 @@ func (client *Client) DescribeDomainStatusCodeListWithOptions(request *DescribeD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on HTTP status codes of a website.
+//
+// @param request - DescribeDomainStatusCodeListRequest
+//
+// @return DescribeDomainStatusCodeListResponse
 func (client *Client) DescribeDomainStatusCodeList(request *DescribeDomainStatusCodeListRequest) (_result *DescribeDomainStatusCodeListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainStatusCodeListResponse{}
@@ -30090,6 +31574,15 @@ func (client *Client) DescribeDomainStatusCodeList(request *DescribeDomainStatus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the peak queries per second (QPS) information about a website, such as the attack QPS and total QPS, within a specific period of time.
+//
+// @param request - DescribeDomainTopAttackListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainTopAttackListResponse
 func (client *Client) DescribeDomainTopAttackListWithOptions(request *DescribeDomainTopAttackListRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainTopAttackListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30131,6 +31624,13 @@ func (client *Client) DescribeDomainTopAttackListWithOptions(request *DescribeDo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the peak queries per second (QPS) information about a website, such as the attack QPS and total QPS, within a specific period of time.
+//
+// @param request - DescribeDomainTopAttackListRequest
+//
+// @return DescribeDomainTopAttackListResponse
 func (client *Client) DescribeDomainTopAttackList(request *DescribeDomainTopAttackListRequest) (_result *DescribeDomainTopAttackListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainTopAttackListResponse{}
@@ -30142,6 +31642,15 @@ func (client *Client) DescribeDomainTopAttackList(request *DescribeDomainTopAtta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the areas and countries from which requests are sent to a website within a specified period of time.
+//
+// @param request - DescribeDomainViewSourceCountriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainViewSourceCountriesResponse
 func (client *Client) DescribeDomainViewSourceCountriesWithOptions(request *DescribeDomainViewSourceCountriesRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainViewSourceCountriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30187,6 +31696,13 @@ func (client *Client) DescribeDomainViewSourceCountriesWithOptions(request *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the areas and countries from which requests are sent to a website within a specified period of time.
+//
+// @param request - DescribeDomainViewSourceCountriesRequest
+//
+// @return DescribeDomainViewSourceCountriesResponse
 func (client *Client) DescribeDomainViewSourceCountries(request *DescribeDomainViewSourceCountriesRequest) (_result *DescribeDomainViewSourceCountriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainViewSourceCountriesResponse{}
@@ -30198,6 +31714,15 @@ func (client *Client) DescribeDomainViewSourceCountries(request *DescribeDomainV
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the administrative regions in China from which requests are sent to a website within a specified period of time.
+//
+// @param request - DescribeDomainViewSourceProvincesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainViewSourceProvincesResponse
 func (client *Client) DescribeDomainViewSourceProvincesWithOptions(request *DescribeDomainViewSourceProvincesRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainViewSourceProvincesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30243,6 +31768,13 @@ func (client *Client) DescribeDomainViewSourceProvincesWithOptions(request *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the administrative regions in China from which requests are sent to a website within a specified period of time.
+//
+// @param request - DescribeDomainViewSourceProvincesRequest
+//
+// @return DescribeDomainViewSourceProvincesResponse
 func (client *Client) DescribeDomainViewSourceProvinces(request *DescribeDomainViewSourceProvincesRequest) (_result *DescribeDomainViewSourceProvincesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainViewSourceProvincesResponse{}
@@ -30254,6 +31786,15 @@ func (client *Client) DescribeDomainViewSourceProvinces(request *DescribeDomainV
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top N URLs that require the longest time to respond to requests within a specified period of time.
+//
+// @param request - DescribeDomainViewTopCostTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainViewTopCostTimeResponse
 func (client *Client) DescribeDomainViewTopCostTimeWithOptions(request *DescribeDomainViewTopCostTimeRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainViewTopCostTimeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30303,6 +31844,13 @@ func (client *Client) DescribeDomainViewTopCostTimeWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top N URLs that require the longest time to respond to requests within a specified period of time.
+//
+// @param request - DescribeDomainViewTopCostTimeRequest
+//
+// @return DescribeDomainViewTopCostTimeResponse
 func (client *Client) DescribeDomainViewTopCostTime(request *DescribeDomainViewTopCostTimeRequest) (_result *DescribeDomainViewTopCostTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainViewTopCostTimeResponse{}
@@ -30314,6 +31862,15 @@ func (client *Client) DescribeDomainViewTopCostTime(request *DescribeDomainViewT
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top N URLs that receive the most requests within a specified period of time.
+//
+// @param request - DescribeDomainViewTopUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainViewTopUrlResponse
 func (client *Client) DescribeDomainViewTopUrlWithOptions(request *DescribeDomainViewTopUrlRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainViewTopUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30363,6 +31920,13 @@ func (client *Client) DescribeDomainViewTopUrlWithOptions(request *DescribeDomai
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top N URLs that receive the most requests within a specified period of time.
+//
+// @param request - DescribeDomainViewTopUrlRequest
+//
+// @return DescribeDomainViewTopUrlResponse
 func (client *Client) DescribeDomainViewTopUrl(request *DescribeDomainViewTopUrlRequest) (_result *DescribeDomainViewTopUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainViewTopUrlResponse{}
@@ -30374,6 +31938,15 @@ func (client *Client) DescribeDomainViewTopUrl(request *DescribeDomainViewTopUrl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries domain names for which forwarding rules are created.
+//
+// @param request - DescribeDomainsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainsResponse
 func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30411,6 +31984,13 @@ func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries domain names for which forwarding rules are created.
+//
+// @param request - DescribeDomainsRequest
+//
+// @return DescribeDomainsResponse
 func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result *DescribeDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainsResponse{}
@@ -30422,6 +32002,10 @@ func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the available burstable protection bandwidths of an Anti-DDoS Pro instance.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Pro.
@@ -30464,6 +32048,10 @@ func (client *Client) DescribeElasticBandwidthSpecWithOptions(request *DescribeE
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the available burstable protection bandwidths of an Anti-DDoS Pro instance.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Pro.
@@ -30482,6 +32070,15 @@ func (client *Client) DescribeElasticBandwidthSpec(request *DescribeElasticBandw
 	return _result, _err
 }
 
+// Summary:
+//
+// 高防弹性qps曲线图
+//
+// @param request - DescribeElasticQpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeElasticQpsResponse
 func (client *Client) DescribeElasticQpsWithOptions(request *DescribeElasticQpsRequest, runtime *util.RuntimeOptions) (_result *DescribeElasticQpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30531,6 +32128,13 @@ func (client *Client) DescribeElasticQpsWithOptions(request *DescribeElasticQpsR
 	return _result, _err
 }
 
+// Summary:
+//
+// 高防弹性qps曲线图
+//
+// @param request - DescribeElasticQpsRequest
+//
+// @return DescribeElasticQpsResponse
 func (client *Client) DescribeElasticQps(request *DescribeElasticQpsRequest) (_result *DescribeElasticQpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeElasticQpsResponse{}
@@ -30542,6 +32146,15 @@ func (client *Client) DescribeElasticQps(request *DescribeElasticQpsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询qps日95流量图
+//
+// @param request - DescribeElasticQpsRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeElasticQpsRecordResponse
 func (client *Client) DescribeElasticQpsRecordWithOptions(request *DescribeElasticQpsRecordRequest, runtime *util.RuntimeOptions) (_result *DescribeElasticQpsRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30583,6 +32196,13 @@ func (client *Client) DescribeElasticQpsRecordWithOptions(request *DescribeElast
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询qps日95流量图
+//
+// @param request - DescribeElasticQpsRecordRequest
+//
+// @return DescribeElasticQpsRecordResponse
 func (client *Client) DescribeElasticQpsRecord(request *DescribeElasticQpsRecordRequest) (_result *DescribeElasticQpsRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeElasticQpsRecordResponse{}
@@ -30594,6 +32214,15 @@ func (client *Client) DescribeElasticQpsRecord(request *DescribeElasticQpsRecord
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the custom header that is specified for a domain name.
+//
+// @param request - DescribeHeadersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHeadersResponse
 func (client *Client) DescribeHeadersWithOptions(request *DescribeHeadersRequest, runtime *util.RuntimeOptions) (_result *DescribeHeadersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30631,6 +32260,13 @@ func (client *Client) DescribeHeadersWithOptions(request *DescribeHeadersRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the custom header that is specified for a domain name.
+//
+// @param request - DescribeHeadersRequest
+//
+// @return DescribeHeadersResponse
 func (client *Client) DescribeHeaders(request *DescribeHeadersRequest) (_result *DescribeHeadersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHeadersResponse{}
@@ -30642,6 +32278,15 @@ func (client *Client) DescribeHeaders(request *DescribeHeadersRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Layer 4 or Layer 7 health check configurations of a port forwarding rule.
+//
+// @param request - DescribeHealthCheckListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHealthCheckListResponse
 func (client *Client) DescribeHealthCheckListWithOptions(request *DescribeHealthCheckListRequest, runtime *util.RuntimeOptions) (_result *DescribeHealthCheckListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30675,6 +32320,13 @@ func (client *Client) DescribeHealthCheckListWithOptions(request *DescribeHealth
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Layer 4 or Layer 7 health check configurations of a port forwarding rule.
+//
+// @param request - DescribeHealthCheckListRequest
+//
+// @return DescribeHealthCheckListResponse
 func (client *Client) DescribeHealthCheckList(request *DescribeHealthCheckListRequest) (_result *DescribeHealthCheckListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHealthCheckListResponse{}
@@ -30686,6 +32338,15 @@ func (client *Client) DescribeHealthCheckList(request *DescribeHealthCheckListRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the health status of an origin server.
+//
+// @param request - DescribeHealthCheckStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHealthCheckStatusResponse
 func (client *Client) DescribeHealthCheckStatusWithOptions(request *DescribeHealthCheckStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeHealthCheckStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30719,6 +32380,13 @@ func (client *Client) DescribeHealthCheckStatusWithOptions(request *DescribeHeal
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the health status of an origin server.
+//
+// @param request - DescribeHealthCheckStatusRequest
+//
+// @return DescribeHealthCheckStatusResponse
 func (client *Client) DescribeHealthCheckStatus(request *DescribeHealthCheckStatusRequest) (_result *DescribeHealthCheckStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHealthCheckStatusResponse{}
@@ -30730,6 +32398,10 @@ func (client *Client) DescribeHealthCheckStatus(request *DescribeHealthCheckStat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the IP addresses and Internet service provider (ISP) lines of Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
 // Description:
 //
 // You can call the DescribeInstanceDetails operation to query the information about the IP addresses and ISP lines of the instances. The information includes the IP address, status, and protection line.
@@ -30776,6 +32448,10 @@ func (client *Client) DescribeInstanceDetailsWithOptions(request *DescribeInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the IP addresses and Internet service provider (ISP) lines of Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
 // Description:
 //
 // You can call the DescribeInstanceDetails operation to query the information about the IP addresses and ISP lines of the instances. The information includes the IP address, status, and protection line.
@@ -30798,6 +32474,15 @@ func (client *Client) DescribeInstanceDetails(request *DescribeInstanceDetailsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about Anti-DDoS Pro and Anti-DDoS Premium instances.
+//
+// @param request - DescribeInstanceExtRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceExtResponse
 func (client *Client) DescribeInstanceExtWithOptions(request *DescribeInstanceExtRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceExtResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30839,6 +32524,13 @@ func (client *Client) DescribeInstanceExtWithOptions(request *DescribeInstanceEx
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about Anti-DDoS Pro and Anti-DDoS Premium instances.
+//
+// @param request - DescribeInstanceExtRequest
+//
+// @return DescribeInstanceExtResponse
 func (client *Client) DescribeInstanceExt(request *DescribeInstanceExtRequest) (_result *DescribeInstanceExtResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceExtResponse{}
@@ -30850,6 +32542,15 @@ func (client *Client) DescribeInstanceExt(request *DescribeInstanceExtRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// The description of the instance.
+//
+// @param request - DescribeInstanceIdsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceIdsResponse
 func (client *Client) DescribeInstanceIdsWithOptions(request *DescribeInstanceIdsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceIdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30891,6 +32592,13 @@ func (client *Client) DescribeInstanceIdsWithOptions(request *DescribeInstanceId
 	return _result, _err
 }
 
+// Summary:
+//
+// The description of the instance.
+//
+// @param request - DescribeInstanceIdsRequest
+//
+// @return DescribeInstanceIdsResponse
 func (client *Client) DescribeInstanceIds(request *DescribeInstanceIdsRequest) (_result *DescribeInstanceIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceIdsResponse{}
@@ -30902,6 +32610,10 @@ func (client *Client) DescribeInstanceIds(request *DescribeInstanceIdsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the specifications of Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
 // Description:
 //
 // You can call the DescribeInstanceSpecs operation to query the specifications of multiple Anti-DDoS Pro or Anti-DDoS Premium instances at a time. The specifications include the clean bandwidth, protection bandwidth, function plan, and the numbers of domain names and ports that can be protected.
@@ -30948,6 +32660,10 @@ func (client *Client) DescribeInstanceSpecsWithOptions(request *DescribeInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the specifications of Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
 // Description:
 //
 // You can call the DescribeInstanceSpecs operation to query the specifications of multiple Anti-DDoS Pro or Anti-DDoS Premium instances at a time. The specifications include the clean bandwidth, protection bandwidth, function plan, and the numbers of domain names and ports that can be protected.
@@ -30970,6 +32686,15 @@ func (client *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on one or more Anti-DDoS Pro or Anti-DDoS Premium instances, such as the numbers of protected domain names and ports.
+//
+// @param request - DescribeInstanceStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceStatisticsResponse
 func (client *Client) DescribeInstanceStatisticsWithOptions(request *DescribeInstanceStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31003,6 +32728,13 @@ func (client *Client) DescribeInstanceStatisticsWithOptions(request *DescribeIns
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on one or more Anti-DDoS Pro or Anti-DDoS Premium instances, such as the numbers of protected domain names and ports.
+//
+// @param request - DescribeInstanceStatisticsRequest
+//
+// @return DescribeInstanceStatisticsResponse
 func (client *Client) DescribeInstanceStatistics(request *DescribeInstanceStatisticsRequest) (_result *DescribeInstanceStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceStatisticsResponse{}
@@ -31014,6 +32746,15 @@ func (client *Client) DescribeInstanceStatistics(request *DescribeInstanceStatis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a specified Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DescribeInstanceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceStatusResponse
 func (client *Client) DescribeInstanceStatusWithOptions(request *DescribeInstanceStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31051,6 +32792,13 @@ func (client *Client) DescribeInstanceStatusWithOptions(request *DescribeInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a specified Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DescribeInstanceStatusRequest
+//
+// @return DescribeInstanceStatusResponse
 func (client *Client) DescribeInstanceStatus(request *DescribeInstanceStatusRequest) (_result *DescribeInstanceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceStatusResponse{}
@@ -31166,6 +32914,15 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the back-to-origin policies for the forwarding rule of a website.
+//
+// @param request - DescribeL7RsPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeL7RsPolicyResponse
 func (client *Client) DescribeL7RsPolicyWithOptions(request *DescribeL7RsPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeL7RsPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31207,6 +32964,13 @@ func (client *Client) DescribeL7RsPolicyWithOptions(request *DescribeL7RsPolicyR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the back-to-origin policies for the forwarding rule of a website.
+//
+// @param request - DescribeL7RsPolicyRequest
+//
+// @return DescribeL7RsPolicyResponse
 func (client *Client) DescribeL7RsPolicy(request *DescribeL7RsPolicyRequest) (_result *DescribeL7RsPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeL7RsPolicyResponse{}
@@ -31218,6 +32982,15 @@ func (client *Client) DescribeL7RsPolicy(request *DescribeL7RsPolicyRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the back-to-origin settings of a port forwarding rule.
+//
+// @param request - DescribeLayer4RulePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLayer4RulePolicyResponse
 func (client *Client) DescribeLayer4RulePolicyWithOptions(request *DescribeLayer4RulePolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeLayer4RulePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31251,6 +33024,13 @@ func (client *Client) DescribeLayer4RulePolicyWithOptions(request *DescribeLayer
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the back-to-origin settings of a port forwarding rule.
+//
+// @param request - DescribeLayer4RulePolicyRequest
+//
+// @return DescribeLayer4RulePolicyResponse
 func (client *Client) DescribeLayer4RulePolicy(request *DescribeLayer4RulePolicyRequest) (_result *DescribeLayer4RulePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLayer4RulePolicyResponse{}
@@ -31262,6 +33042,15 @@ func (client *Client) DescribeLayer4RulePolicy(request *DescribeLayer4RulePolicy
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a Logstore is created for Anti-DDoS Pro or Anti-DDoS Premium.
+//
+// @param request - DescribeLogStoreExistStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLogStoreExistStatusResponse
 func (client *Client) DescribeLogStoreExistStatusWithOptions(request *DescribeLogStoreExistStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeLogStoreExistStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31295,6 +33084,13 @@ func (client *Client) DescribeLogStoreExistStatusWithOptions(request *DescribeLo
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a Logstore is created for Anti-DDoS Pro or Anti-DDoS Premium.
+//
+// @param request - DescribeLogStoreExistStatusRequest
+//
+// @return DescribeLogStoreExistStatusResponse
 func (client *Client) DescribeLogStoreExistStatus(request *DescribeLogStoreExistStatusRequest) (_result *DescribeLogStoreExistStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLogStoreExistStatusResponse{}
@@ -31306,6 +33102,15 @@ func (client *Client) DescribeLogStoreExistStatus(request *DescribeLogStoreExist
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the blocked locations that are configured for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DescribeNetworkRegionBlockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNetworkRegionBlockResponse
 func (client *Client) DescribeNetworkRegionBlockWithOptions(request *DescribeNetworkRegionBlockRequest, runtime *util.RuntimeOptions) (_result *DescribeNetworkRegionBlockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31339,6 +33144,13 @@ func (client *Client) DescribeNetworkRegionBlockWithOptions(request *DescribeNet
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the blocked locations that are configured for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DescribeNetworkRegionBlockRequest
+//
+// @return DescribeNetworkRegionBlockResponse
 func (client *Client) DescribeNetworkRegionBlock(request *DescribeNetworkRegionBlockRequest) (_result *DescribeNetworkRegionBlockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNetworkRegionBlockResponse{}
@@ -31350,6 +33162,15 @@ func (client *Client) DescribeNetworkRegionBlock(request *DescribeNetworkRegionB
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the mitigation settings of the port forwarding rule for a non-website service. The mitigation settings include session persistence and DDoS mitigation policies.
+//
+// @param request - DescribeNetworkRuleAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNetworkRuleAttributesResponse
 func (client *Client) DescribeNetworkRuleAttributesWithOptions(request *DescribeNetworkRuleAttributesRequest, runtime *util.RuntimeOptions) (_result *DescribeNetworkRuleAttributesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31383,6 +33204,13 @@ func (client *Client) DescribeNetworkRuleAttributesWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the mitigation settings of the port forwarding rule for a non-website service. The mitigation settings include session persistence and DDoS mitigation policies.
+//
+// @param request - DescribeNetworkRuleAttributesRequest
+//
+// @return DescribeNetworkRuleAttributesResponse
 func (client *Client) DescribeNetworkRuleAttributes(request *DescribeNetworkRuleAttributesRequest) (_result *DescribeNetworkRuleAttributesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNetworkRuleAttributesResponse{}
@@ -31394,6 +33222,15 @@ func (client *Client) DescribeNetworkRuleAttributes(request *DescribeNetworkRule
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries port forwarding rules.
+//
+// @param request - DescribeNetworkRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNetworkRulesResponse
 func (client *Client) DescribeNetworkRulesWithOptions(request *DescribeNetworkRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeNetworkRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31443,6 +33280,13 @@ func (client *Client) DescribeNetworkRulesWithOptions(request *DescribeNetworkRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries port forwarding rules.
+//
+// @param request - DescribeNetworkRulesRequest
+//
+// @return DescribeNetworkRulesResponse
 func (client *Client) DescribeNetworkRules(request *DescribeNetworkRulesRequest) (_result *DescribeNetworkRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNetworkRulesResponse{}
@@ -31454,6 +33298,10 @@ func (client *Client) DescribeNetworkRules(request *DescribeNetworkRulesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the operation logs of Anti-DDoS Pro.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Pro.
@@ -31522,6 +33370,10 @@ func (client *Client) DescribeOpEntitiesWithOptions(request *DescribeOpEntitiesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the operation logs of Anti-DDoS Pro.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Pro.
@@ -31542,9 +33394,13 @@ func (client *Client) DescribeOpEntities(request *DescribeOpEntitiesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the port forwarding rules that are created for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
 // Description:
 //
-// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - DescribePortRequest
 //
@@ -31600,9 +33456,13 @@ func (client *Client) DescribePortWithOptions(request *DescribePortRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the port forwarding rules that are created for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
 // Description:
 //
-// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - DescribePortRequest
 //
@@ -31618,6 +33478,10 @@ func (client *Client) DescribePort(request *DescribePortRequest) (_result *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the peak attack traffic bandwidth and peak attack traffic packet rates of one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specified period of time.
+//
 // Description:
 //
 // You can call this operation to query the peak bandwidth and peak packet rate of attack traffic on one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
@@ -31676,6 +33540,10 @@ func (client *Client) DescribePortAttackMaxFlowWithOptions(request *DescribePort
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the peak attack traffic bandwidth and peak attack traffic packet rates of one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specified period of time.
+//
 // Description:
 //
 // You can call this operation to query the peak bandwidth and peak packet rate of attack traffic on one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
@@ -31698,6 +33566,15 @@ func (client *Client) DescribePortAttackMaxFlow(request *DescribePortAttackMaxFl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of the Intelligent Protection policy for non-website services.
+//
+// @param request - DescribePortAutoCcStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePortAutoCcStatusResponse
 func (client *Client) DescribePortAutoCcStatusWithOptions(request *DescribePortAutoCcStatusRequest, runtime *util.RuntimeOptions) (_result *DescribePortAutoCcStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31731,6 +33608,13 @@ func (client *Client) DescribePortAutoCcStatusWithOptions(request *DescribePortA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of the Intelligent Protection policy for non-website services.
+//
+// @param request - DescribePortAutoCcStatusRequest
+//
+// @return DescribePortAutoCcStatusResponse
 func (client *Client) DescribePortAutoCcStatus(request *DescribePortAutoCcStatusRequest) (_result *DescribePortAutoCcStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePortAutoCcStatusResponse{}
@@ -31742,6 +33626,11 @@ func (client *Client) DescribePortAutoCcStatus(request *DescribePortAutoCcStatus
 	return _result, _err
 }
 
+// @param request - DescribePortCcAttackTopIPRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePortCcAttackTopIPResponse
 func (client *Client) DescribePortCcAttackTopIPWithOptions(request *DescribePortCcAttackTopIPRequest, runtime *util.RuntimeOptions) (_result *DescribePortCcAttackTopIPResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31787,6 +33676,9 @@ func (client *Client) DescribePortCcAttackTopIPWithOptions(request *DescribePort
 	return _result, _err
 }
 
+// @param request - DescribePortCcAttackTopIPRequest
+//
+// @return DescribePortCcAttackTopIPResponse
 func (client *Client) DescribePortCcAttackTopIP(request *DescribePortCcAttackTopIPRequest) (_result *DescribePortCcAttackTopIPResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePortCcAttackTopIPResponse{}
@@ -31798,6 +33690,15 @@ func (client *Client) DescribePortCcAttackTopIP(request *DescribePortCcAttackTop
 	return _result, _err
 }
 
+// Summary:
+//
+// The statistics on the connections established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances are queried.
+//
+// @param request - DescribePortConnsCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePortConnsCountResponse
 func (client *Client) DescribePortConnsCountWithOptions(request *DescribePortConnsCountRequest, runtime *util.RuntimeOptions) (_result *DescribePortConnsCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31847,6 +33748,13 @@ func (client *Client) DescribePortConnsCountWithOptions(request *DescribePortCon
 	return _result, _err
 }
 
+// Summary:
+//
+// The statistics on the connections established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances are queried.
+//
+// @param request - DescribePortConnsCountRequest
+//
+// @return DescribePortConnsCountResponse
 func (client *Client) DescribePortConnsCount(request *DescribePortConnsCountRequest) (_result *DescribePortConnsCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePortConnsCountResponse{}
@@ -31858,6 +33766,15 @@ func (client *Client) DescribePortConnsCount(request *DescribePortConnsCountRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the connections established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// @param request - DescribePortConnsListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePortConnsListResponse
 func (client *Client) DescribePortConnsListWithOptions(request *DescribePortConnsListRequest, runtime *util.RuntimeOptions) (_result *DescribePortConnsListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31911,6 +33828,13 @@ func (client *Client) DescribePortConnsListWithOptions(request *DescribePortConn
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the connections established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// @param request - DescribePortConnsListRequest
+//
+// @return DescribePortConnsListResponse
 func (client *Client) DescribePortConnsList(request *DescribePortConnsListRequest) (_result *DescribePortConnsListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePortConnsListResponse{}
@@ -31922,6 +33846,15 @@ func (client *Client) DescribePortConnsList(request *DescribePortConnsListReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the traffic data of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// @param request - DescribePortFlowListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePortFlowListResponse
 func (client *Client) DescribePortFlowListWithOptions(request *DescribePortFlowListRequest, runtime *util.RuntimeOptions) (_result *DescribePortFlowListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31971,6 +33904,13 @@ func (client *Client) DescribePortFlowListWithOptions(request *DescribePortFlowL
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the traffic data of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// @param request - DescribePortFlowListRequest
+//
+// @return DescribePortFlowListResponse
 func (client *Client) DescribePortFlowList(request *DescribePortFlowListRequest) (_result *DescribePortFlowListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePortFlowListResponse{}
@@ -31982,6 +33922,15 @@ func (client *Client) DescribePortFlowList(request *DescribePortFlowListRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// @param request - DescribePortMaxConnsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePortMaxConnsResponse
 func (client *Client) DescribePortMaxConnsWithOptions(request *DescribePortMaxConnsRequest, runtime *util.RuntimeOptions) (_result *DescribePortMaxConnsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32027,6 +33976,13 @@ func (client *Client) DescribePortMaxConnsWithOptions(request *DescribePortMaxCo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+//
+// @param request - DescribePortMaxConnsRequest
+//
+// @return DescribePortMaxConnsResponse
 func (client *Client) DescribePortMaxConns(request *DescribePortMaxConnsRequest) (_result *DescribePortMaxConnsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePortMaxConnsResponse{}
@@ -32038,6 +33994,15 @@ func (client *Client) DescribePortMaxConns(request *DescribePortMaxConnsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the areas and countries from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within the specified period of time.
+//
+// @param request - DescribePortViewSourceCountriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePortViewSourceCountriesResponse
 func (client *Client) DescribePortViewSourceCountriesWithOptions(request *DescribePortViewSourceCountriesRequest, runtime *util.RuntimeOptions) (_result *DescribePortViewSourceCountriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32083,6 +34048,13 @@ func (client *Client) DescribePortViewSourceCountriesWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the areas and countries from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within the specified period of time.
+//
+// @param request - DescribePortViewSourceCountriesRequest
+//
+// @return DescribePortViewSourceCountriesResponse
 func (client *Client) DescribePortViewSourceCountries(request *DescribePortViewSourceCountriesRequest) (_result *DescribePortViewSourceCountriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePortViewSourceCountriesResponse{}
@@ -32094,11 +34066,15 @@ func (client *Client) DescribePortViewSourceCountries(request *DescribePortViewS
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Internet service providers (ISPs) from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within the specified period of time.
+//
 // Description:
 //
 // You can call the DescribePortViewSourceIsps operation to query the ISPs from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
 //
-// > The data returned for this operation cannot reflect the actual traffic volume because Layer 4 identity authentication algorithms are updated for Anti-DDoS Pro and Anti-DDoS Premium. You can call this operation to calculate only the proportion of requests sent from different ISPs. If you want to query the request traffic volume, we recommend that you call the [DescribePortFlowList](~~157460~~) operation.
+// > The data returned for this operation cannot reflect the actual traffic volume because Layer 4 identity authentication algorithms are updated for Anti-DDoS Pro and Anti-DDoS Premium. You can call this operation to calculate only the proportion of requests sent from different ISPs. If you want to query the request traffic volume, we recommend that you call the [DescribePortFlowList](https://help.aliyun.com/document_detail/157460.html) operation.
 //
 // ### Limits
 //
@@ -32154,11 +34130,15 @@ func (client *Client) DescribePortViewSourceIspsWithOptions(request *DescribePor
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Internet service providers (ISPs) from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within the specified period of time.
+//
 // Description:
 //
 // You can call the DescribePortViewSourceIsps operation to query the ISPs from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
 //
-// > The data returned for this operation cannot reflect the actual traffic volume because Layer 4 identity authentication algorithms are updated for Anti-DDoS Pro and Anti-DDoS Premium. You can call this operation to calculate only the proportion of requests sent from different ISPs. If you want to query the request traffic volume, we recommend that you call the [DescribePortFlowList](~~157460~~) operation.
+// > The data returned for this operation cannot reflect the actual traffic volume because Layer 4 identity authentication algorithms are updated for Anti-DDoS Pro and Anti-DDoS Premium. You can call this operation to calculate only the proportion of requests sent from different ISPs. If you want to query the request traffic volume, we recommend that you call the [DescribePortFlowList](https://help.aliyun.com/document_detail/157460.html) operation.
 //
 // ### Limits
 //
@@ -32178,6 +34158,15 @@ func (client *Client) DescribePortViewSourceIsps(request *DescribePortViewSource
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the administrative regions in China from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specified period of time.
+//
+// @param request - DescribePortViewSourceProvincesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePortViewSourceProvincesResponse
 func (client *Client) DescribePortViewSourceProvincesWithOptions(request *DescribePortViewSourceProvincesRequest, runtime *util.RuntimeOptions) (_result *DescribePortViewSourceProvincesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32223,6 +34212,13 @@ func (client *Client) DescribePortViewSourceProvincesWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the administrative regions in China from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specified period of time.
+//
+// @param request - DescribePortViewSourceProvincesRequest
+//
+// @return DescribePortViewSourceProvincesResponse
 func (client *Client) DescribePortViewSourceProvinces(request *DescribePortViewSourceProvincesRequest) (_result *DescribePortViewSourceProvincesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePortViewSourceProvincesResponse{}
@@ -32234,11 +34230,15 @@ func (client *Client) DescribePortViewSourceProvinces(request *DescribePortViewS
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the protected objects of a scenario-specific custom policy.
+//
 // Description:
 //
 // You can call the DescribeSceneDefenseObjects operation to query the protected objects of a scenario-specific custom policy.
 //
-// Before you call this operation, make sure that you have created a scenario-specific custom policy by calling the [CreateSceneDefensePolicy](~~159779~~) operation.
+// Before you call this operation, make sure that you have created a scenario-specific custom policy by calling the [CreateSceneDefensePolicy](https://help.aliyun.com/document_detail/159779.html) operation.
 //
 // ### Limits
 //
@@ -32286,11 +34286,15 @@ func (client *Client) DescribeSceneDefenseObjectsWithOptions(request *DescribeSc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the protected objects of a scenario-specific custom policy.
+//
 // Description:
 //
 // You can call the DescribeSceneDefenseObjects operation to query the protected objects of a scenario-specific custom policy.
 //
-// Before you call this operation, make sure that you have created a scenario-specific custom policy by calling the [CreateSceneDefensePolicy](~~159779~~) operation.
+// Before you call this operation, make sure that you have created a scenario-specific custom policy by calling the [CreateSceneDefensePolicy](https://help.aliyun.com/document_detail/159779.html) operation.
 //
 // ### Limits
 //
@@ -32310,6 +34314,10 @@ func (client *Client) DescribeSceneDefenseObjects(request *DescribeSceneDefenseO
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of a scenario-specific custom policy.
+//
 // Description:
 //
 // You can call the DescribeSceneDefensePolicies operation to query the configurations of a scenario-specific custom policy that is created. For example, you can query the status, protected objects, and protection rules of the policy.
@@ -32364,6 +34372,10 @@ func (client *Client) DescribeSceneDefensePoliciesWithOptions(request *DescribeS
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of a scenario-specific custom policy.
+//
 // Description:
 //
 // You can call the DescribeSceneDefensePolicies operation to query the configurations of a scenario-specific custom policy that is created. For example, you can query the status, protected objects, and protection rules of the policy.
@@ -32386,6 +34398,11 @@ func (client *Client) DescribeSceneDefensePolicies(request *DescribeSceneDefense
 	return _result, _err
 }
 
+// @param request - DescribeSchedulerRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSchedulerRulesResponse
 func (client *Client) DescribeSchedulerRulesWithOptions(request *DescribeSchedulerRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeSchedulerRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32431,6 +34448,9 @@ func (client *Client) DescribeSchedulerRulesWithOptions(request *DescribeSchedul
 	return _result, _err
 }
 
+// @param request - DescribeSchedulerRulesRequest
+//
+// @return DescribeSchedulerRulesResponse
 func (client *Client) DescribeSchedulerRules(request *DescribeSchedulerRulesRequest) (_result *DescribeSchedulerRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSchedulerRulesResponse{}
@@ -32442,6 +34462,15 @@ func (client *Client) DescribeSchedulerRules(request *DescribeSchedulerRulesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the destination rate limit events.
+//
+// @param request - DescribeSlaEventListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlaEventListResponse
 func (client *Client) DescribeSlaEventListWithOptions(request *DescribeSlaEventListRequest, runtime *util.RuntimeOptions) (_result *DescribeSlaEventListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32495,6 +34524,13 @@ func (client *Client) DescribeSlaEventListWithOptions(request *DescribeSlaEventL
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the destination rate limit events.
+//
+// @param request - DescribeSlaEventListRequest
+//
+// @return DescribeSlaEventListResponse
 func (client *Client) DescribeSlaEventList(request *DescribeSlaEventListRequest) (_result *DescribeSlaEventListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlaEventListResponse{}
@@ -32506,6 +34542,15 @@ func (client *Client) DescribeSlaEventList(request *DescribeSlaEventListRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access Log Service.
+//
+// @param request - DescribeSlsAuthStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlsAuthStatusResponse
 func (client *Client) DescribeSlsAuthStatusWithOptions(request *DescribeSlsAuthStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeSlsAuthStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32539,6 +34584,13 @@ func (client *Client) DescribeSlsAuthStatusWithOptions(request *DescribeSlsAuthS
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access Log Service.
+//
+// @param request - DescribeSlsAuthStatusRequest
+//
+// @return DescribeSlsAuthStatusResponse
 func (client *Client) DescribeSlsAuthStatus(request *DescribeSlsAuthStatusRequest) (_result *DescribeSlsAuthStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlsAuthStatusResponse{}
@@ -32550,6 +34602,15 @@ func (client *Client) DescribeSlsAuthStatus(request *DescribeSlsAuthStatusReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the Logstore of the Anti-DDoS Pro or Anti-DDoS Premium instance, such as the log storage capacity and log storage duration.
+//
+// @param request - DescribeSlsLogstoreInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlsLogstoreInfoResponse
 func (client *Client) DescribeSlsLogstoreInfoWithOptions(request *DescribeSlsLogstoreInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeSlsLogstoreInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32583,6 +34644,13 @@ func (client *Client) DescribeSlsLogstoreInfoWithOptions(request *DescribeSlsLog
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the Logstore of the Anti-DDoS Pro or Anti-DDoS Premium instance, such as the log storage capacity and log storage duration.
+//
+// @param request - DescribeSlsLogstoreInfoRequest
+//
+// @return DescribeSlsLogstoreInfoResponse
 func (client *Client) DescribeSlsLogstoreInfo(request *DescribeSlsLogstoreInfoRequest) (_result *DescribeSlsLogstoreInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlsLogstoreInfoResponse{}
@@ -32594,6 +34662,15 @@ func (client *Client) DescribeSlsLogstoreInfo(request *DescribeSlsLogstoreInfoRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether Log Service is activated.
+//
+// @param request - DescribeSlsOpenStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlsOpenStatusResponse
 func (client *Client) DescribeSlsOpenStatusWithOptions(request *DescribeSlsOpenStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeSlsOpenStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32627,6 +34704,13 @@ func (client *Client) DescribeSlsOpenStatusWithOptions(request *DescribeSlsOpenS
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether Log Service is activated.
+//
+// @param request - DescribeSlsOpenStatusRequest
+//
+// @return DescribeSlsOpenStatusResponse
 func (client *Client) DescribeSlsOpenStatus(request *DescribeSlsOpenStatusRequest) (_result *DescribeSlsOpenStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlsOpenStatusResponse{}
@@ -32638,6 +34722,10 @@ func (client *Client) DescribeSlsOpenStatus(request *DescribeSlsOpenStatusReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access other cloud services.
+//
 // Description:
 //
 // You can call the DescribeStsGrantStatus operation to query whether Anti-DDoS Pro or Anti-DDoS Premium of the current Alibaba Cloud account is authorized to access other cloud services.
@@ -32688,6 +34776,10 @@ func (client *Client) DescribeStsGrantStatusWithOptions(request *DescribeStsGran
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access other cloud services.
+//
 // Description:
 //
 // You can call the DescribeStsGrantStatus operation to query whether Anti-DDoS Pro or Anti-DDoS Premium of the current Alibaba Cloud account is authorized to access other cloud services.
@@ -32710,6 +34802,10 @@ func (client *Client) DescribeStsGrantStatus(request *DescribeStsGrantStatusRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of the bills for the burstable clean bandwidth.
+//
 // Description:
 //
 // You can call the DescribeSystemLog operation to query the system logs of Anti-DDoS Pro or Anti-DDoS Premium. The system logs contain only billing logs for the burstable clean bandwidth.
@@ -32778,6 +34874,10 @@ func (client *Client) DescribeSystemLogWithOptions(request *DescribeSystemLogReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of the bills for the burstable clean bandwidth.
+//
 // Description:
 //
 // You can call the DescribeSystemLog operation to query the system logs of Anti-DDoS Pro or Anti-DDoS Premium. The system logs contain only billing logs for the burstable clean bandwidth.
@@ -32802,6 +34902,10 @@ func (client *Client) DescribeSystemLog(request *DescribeSystemLogRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all tag keys and the Anti-DDoS Pro instances to which the tag keys are added.
+//
 // Description:
 //
 // You can call this operation to query all tag keys and the Anti-DDoS Pro instances to which the tag keys are added by page.
@@ -32866,6 +34970,10 @@ func (client *Client) DescribeTagKeysWithOptions(request *DescribeTagKeysRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all tag keys and the Anti-DDoS Pro instances to which the tag keys are added.
+//
 // Description:
 //
 // You can call this operation to query all tag keys and the Anti-DDoS Pro instances to which the tag keys are added by page.
@@ -32890,6 +34998,10 @@ func (client *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the tags that are added to an Anti-DDoS Pro instance.
+//
 // Description:
 //
 // You can call the DescribeTagResources operation to query the information about the tags that are added to an Anti-DDoS Pro instance.
@@ -32958,6 +35070,10 @@ func (client *Client) DescribeTagResourcesWithOptions(request *DescribeTagResour
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the tags that are added to an Anti-DDoS Pro instance.
+//
 // Description:
 //
 // You can call the DescribeTagResources operation to query the information about the tags that are added to an Anti-DDoS Pro instance.
@@ -32982,6 +35098,15 @@ func (client *Client) DescribeTagResources(request *DescribeTagResourcesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the peak bandwidth and peak packet rates of attack traffic on one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
+//
+// @param request - DescribeTotalAttackMaxFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTotalAttackMaxFlowResponse
 func (client *Client) DescribeTotalAttackMaxFlowWithOptions(request *DescribeTotalAttackMaxFlowRequest, runtime *util.RuntimeOptions) (_result *DescribeTotalAttackMaxFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33027,6 +35152,13 @@ func (client *Client) DescribeTotalAttackMaxFlowWithOptions(request *DescribeTot
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the peak bandwidth and peak packet rates of attack traffic on one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
+//
+// @param request - DescribeTotalAttackMaxFlowRequest
+//
+// @return DescribeTotalAttackMaxFlowResponse
 func (client *Client) DescribeTotalAttackMaxFlow(request *DescribeTotalAttackMaxFlowRequest) (_result *DescribeTotalAttackMaxFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTotalAttackMaxFlowResponse{}
@@ -33038,6 +35170,15 @@ func (client *Client) DescribeTotalAttackMaxFlow(request *DescribeTotalAttackMax
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the source ports of UDP traffic that are filtered out by the filtering policies for UDP reflection attacks on an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DescribeUdpReflectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUdpReflectResponse
 func (client *Client) DescribeUdpReflectWithOptions(request *DescribeUdpReflectRequest, runtime *util.RuntimeOptions) (_result *DescribeUdpReflectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33075,6 +35216,13 @@ func (client *Client) DescribeUdpReflectWithOptions(request *DescribeUdpReflectR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the source ports of UDP traffic that are filtered out by the filtering policies for UDP reflection attacks on an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - DescribeUdpReflectRequest
+//
+// @return DescribeUdpReflectResponse
 func (client *Client) DescribeUdpReflect(request *DescribeUdpReflectRequest) (_result *DescribeUdpReflectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUdpReflectResponse{}
@@ -33086,6 +35234,15 @@ func (client *Client) DescribeUdpReflect(request *DescribeUdpReflectRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the total quota and remaining quota that allow you to deactivate blackhole filtering.
+//
+// @param request - DescribeUnBlackholeCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUnBlackholeCountResponse
 func (client *Client) DescribeUnBlackholeCountWithOptions(request *DescribeUnBlackholeCountRequest, runtime *util.RuntimeOptions) (_result *DescribeUnBlackholeCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33119,6 +35276,13 @@ func (client *Client) DescribeUnBlackholeCountWithOptions(request *DescribeUnBla
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the total quota and remaining quota that allow you to deactivate blackhole filtering.
+//
+// @param request - DescribeUnBlackholeCountRequest
+//
+// @return DescribeUnBlackholeCountResponse
 func (client *Client) DescribeUnBlackholeCount(request *DescribeUnBlackholeCountRequest) (_result *DescribeUnBlackholeCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUnBlackholeCountResponse{}
@@ -33130,6 +35294,10 @@ func (client *Client) DescribeUnBlackholeCount(request *DescribeUnBlackholeCount
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the remaining quota that allows you to use the Diversion from Origin Server policy.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Pro.
@@ -33172,6 +35340,10 @@ func (client *Client) DescribeUnBlockCountWithOptions(request *DescribeUnBlockCo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the remaining quota that allows you to use the Diversion from Origin Server policy.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Pro.
@@ -33190,6 +35362,10 @@ func (client *Client) DescribeUnBlockCount(request *DescribeUnBlockCountRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the log analysis feature is enabled for all domain names.
+//
 // Description:
 //
 // You can call the DescribeWebAccessLogDispatchStatus operation to check whether the log analysis feature is enabled for all domain names that are added to your Anti-DDoS Pro or Anti-DDoS Premium instance.
@@ -33244,6 +35420,10 @@ func (client *Client) DescribeWebAccessLogDispatchStatusWithOptions(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the log analysis feature is enabled for all domain names.
+//
 // Description:
 //
 // You can call the DescribeWebAccessLogDispatchStatus operation to check whether the log analysis feature is enabled for all domain names that are added to your Anti-DDoS Pro or Anti-DDoS Premium instance.
@@ -33266,6 +35446,15 @@ func (client *Client) DescribeWebAccessLogDispatchStatus(request *DescribeWebAcc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the remaining quota that allows you to clear the Logstore.
+//
+// @param request - DescribeWebAccessLogEmptyCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebAccessLogEmptyCountResponse
 func (client *Client) DescribeWebAccessLogEmptyCountWithOptions(request *DescribeWebAccessLogEmptyCountRequest, runtime *util.RuntimeOptions) (_result *DescribeWebAccessLogEmptyCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33299,6 +35488,13 @@ func (client *Client) DescribeWebAccessLogEmptyCountWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the remaining quota that allows you to clear the Logstore.
+//
+// @param request - DescribeWebAccessLogEmptyCountRequest
+//
+// @return DescribeWebAccessLogEmptyCountResponse
 func (client *Client) DescribeWebAccessLogEmptyCount(request *DescribeWebAccessLogEmptyCountRequest) (_result *DescribeWebAccessLogEmptyCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebAccessLogEmptyCountResponse{}
@@ -33310,6 +35506,15 @@ func (client *Client) DescribeWebAccessLogEmptyCount(request *DescribeWebAccessL
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the Log Analysis feature for a website, such as the feature status and the Log Service project and Logstore that are used.
+//
+// @param request - DescribeWebAccessLogStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebAccessLogStatusResponse
 func (client *Client) DescribeWebAccessLogStatusWithOptions(request *DescribeWebAccessLogStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeWebAccessLogStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33347,6 +35552,13 @@ func (client *Client) DescribeWebAccessLogStatusWithOptions(request *DescribeWeb
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the Log Analysis feature for a website, such as the feature status and the Log Service project and Logstore that are used.
+//
+// @param request - DescribeWebAccessLogStatusRequest
+//
+// @return DescribeWebAccessLogStatusResponse
 func (client *Client) DescribeWebAccessLogStatus(request *DescribeWebAccessLogStatusRequest) (_result *DescribeWebAccessLogStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebAccessLogStatusResponse{}
@@ -33358,6 +35570,15 @@ func (client *Client) DescribeWebAccessLogStatus(request *DescribeWebAccessLogSt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the mode in which a website service is added to Anti-DDoS Pro or Anti-DDoS Premium.
+//
+// @param request - DescribeWebAccessModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebAccessModeResponse
 func (client *Client) DescribeWebAccessModeWithOptions(request *DescribeWebAccessModeRequest, runtime *util.RuntimeOptions) (_result *DescribeWebAccessModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33391,6 +35612,13 @@ func (client *Client) DescribeWebAccessModeWithOptions(request *DescribeWebAcces
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the mode in which a website service is added to Anti-DDoS Pro or Anti-DDoS Premium.
+//
+// @param request - DescribeWebAccessModeRequest
+//
+// @return DescribeWebAccessModeResponse
 func (client *Client) DescribeWebAccessMode(request *DescribeWebAccessModeRequest) (_result *DescribeWebAccessModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebAccessModeResponse{}
@@ -33402,6 +35630,15 @@ func (client *Client) DescribeWebAccessMode(request *DescribeWebAccessModeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Location Blacklist (Domain Names) configurations for websites.
+//
+// @param request - DescribeWebAreaBlockConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebAreaBlockConfigsResponse
 func (client *Client) DescribeWebAreaBlockConfigsWithOptions(request *DescribeWebAreaBlockConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeWebAreaBlockConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33439,6 +35676,13 @@ func (client *Client) DescribeWebAreaBlockConfigsWithOptions(request *DescribeWe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Location Blacklist (Domain Names) configurations for websites.
+//
+// @param request - DescribeWebAreaBlockConfigsRequest
+//
+// @return DescribeWebAreaBlockConfigsResponse
 func (client *Client) DescribeWebAreaBlockConfigs(request *DescribeWebAreaBlockConfigsRequest) (_result *DescribeWebAreaBlockConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebAreaBlockConfigsResponse{}
@@ -33450,6 +35694,15 @@ func (client *Client) DescribeWebAreaBlockConfigs(request *DescribeWebAreaBlockC
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the custom frequency control rules that are created for a website.
+//
+// @param request - DescribeWebCCRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebCCRulesResponse
 func (client *Client) DescribeWebCCRulesWithOptions(request *DescribeWebCCRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeWebCCRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33495,6 +35748,13 @@ func (client *Client) DescribeWebCCRulesWithOptions(request *DescribeWebCCRulesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the custom frequency control rules that are created for a website.
+//
+// @param request - DescribeWebCCRulesRequest
+//
+// @return DescribeWebCCRulesResponse
 func (client *Client) DescribeWebCCRules(request *DescribeWebCCRulesRequest) (_result *DescribeWebCCRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebCCRulesResponse{}
@@ -33506,6 +35766,10 @@ func (client *Client) DescribeWebCCRules(request *DescribeWebCCRulesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Static Page Caching configuration of websites.
+//
 // Description:
 //
 // You can call the DescribeWebCacheConfigs operation to query the Static Page Caching configurations of websites. The configurations include cache modes and custom caching rules.
@@ -33556,6 +35820,10 @@ func (client *Client) DescribeWebCacheConfigsWithOptions(request *DescribeWebCac
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Static Page Caching configuration of websites.
+//
 // Description:
 //
 // You can call the DescribeWebCacheConfigs operation to query the Static Page Caching configurations of websites. The configurations include cache modes and custom caching rules.
@@ -33578,6 +35846,15 @@ func (client *Client) DescribeWebCacheConfigs(request *DescribeWebCacheConfigsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of each mitigation policy for a website.
+//
+// @param request - DescribeWebCcProtectSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebCcProtectSwitchResponse
 func (client *Client) DescribeWebCcProtectSwitchWithOptions(request *DescribeWebCcProtectSwitchRequest, runtime *util.RuntimeOptions) (_result *DescribeWebCcProtectSwitchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33615,6 +35892,13 @@ func (client *Client) DescribeWebCcProtectSwitchWithOptions(request *DescribeWeb
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of each mitigation policy for a website.
+//
+// @param request - DescribeWebCcProtectSwitchRequest
+//
+// @return DescribeWebCcProtectSwitchResponse
 func (client *Client) DescribeWebCcProtectSwitch(request *DescribeWebCcProtectSwitchRequest) (_result *DescribeWebCcProtectSwitchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebCcProtectSwitchResponse{}
@@ -33626,6 +35910,15 @@ func (client *Client) DescribeWebCcProtectSwitch(request *DescribeWebCcProtectSw
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the supported custom ports of a website.
+//
+// @param request - DescribeWebCustomPortsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebCustomPortsResponse
 func (client *Client) DescribeWebCustomPortsWithOptions(request *DescribeWebCustomPortsRequest, runtime *util.RuntimeOptions) (_result *DescribeWebCustomPortsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33659,6 +35952,13 @@ func (client *Client) DescribeWebCustomPortsWithOptions(request *DescribeWebCust
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the supported custom ports of a website.
+//
+// @param request - DescribeWebCustomPortsRequest
+//
+// @return DescribeWebCustomPortsResponse
 func (client *Client) DescribeWebCustomPorts(request *DescribeWebCustomPortsRequest) (_result *DescribeWebCustomPortsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebCustomPortsResponse{}
@@ -33670,6 +35970,15 @@ func (client *Client) DescribeWebCustomPorts(request *DescribeWebCustomPortsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about Anti-DDoS Pro or Anti-DDoS Premium instances to which a website service is added.
+//
+// @param request - DescribeWebInstanceRelationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebInstanceRelationsResponse
 func (client *Client) DescribeWebInstanceRelationsWithOptions(request *DescribeWebInstanceRelationsRequest, runtime *util.RuntimeOptions) (_result *DescribeWebInstanceRelationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33707,6 +36016,13 @@ func (client *Client) DescribeWebInstanceRelationsWithOptions(request *DescribeW
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about Anti-DDoS Pro or Anti-DDoS Premium instances to which a website service is added.
+//
+// @param request - DescribeWebInstanceRelationsRequest
+//
+// @return DescribeWebInstanceRelationsResponse
 func (client *Client) DescribeWebInstanceRelations(request *DescribeWebInstanceRelationsRequest) (_result *DescribeWebInstanceRelationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebInstanceRelationsResponse{}
@@ -33718,6 +36034,15 @@ func (client *Client) DescribeWebInstanceRelations(request *DescribeWebInstanceR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the accurate access control rules that are created for websites.
+//
+// @param request - DescribeWebPreciseAccessRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebPreciseAccessRuleResponse
 func (client *Client) DescribeWebPreciseAccessRuleWithOptions(request *DescribeWebPreciseAccessRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeWebPreciseAccessRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33755,6 +36080,13 @@ func (client *Client) DescribeWebPreciseAccessRuleWithOptions(request *DescribeW
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the accurate access control rules that are created for websites.
+//
+// @param request - DescribeWebPreciseAccessRuleRequest
+//
+// @return DescribeWebPreciseAccessRuleResponse
 func (client *Client) DescribeWebPreciseAccessRule(request *DescribeWebPreciseAccessRuleRequest) (_result *DescribeWebPreciseAccessRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebPreciseAccessRuleResponse{}
@@ -33766,6 +36098,11 @@ func (client *Client) DescribeWebPreciseAccessRule(request *DescribeWebPreciseAc
 	return _result, _err
 }
 
+// @param request - DescribeWebReportTopIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebReportTopIpResponse
 func (client *Client) DescribeWebReportTopIpWithOptions(request *DescribeWebReportTopIpRequest, runtime *util.RuntimeOptions) (_result *DescribeWebReportTopIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33819,6 +36156,9 @@ func (client *Client) DescribeWebReportTopIpWithOptions(request *DescribeWebRepo
 	return _result, _err
 }
 
+// @param request - DescribeWebReportTopIpRequest
+//
+// @return DescribeWebReportTopIpResponse
 func (client *Client) DescribeWebReportTopIp(request *DescribeWebReportTopIpRequest) (_result *DescribeWebReportTopIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebReportTopIpResponse{}
@@ -33830,6 +36170,19 @@ func (client *Client) DescribeWebReportTopIp(request *DescribeWebReportTopIpRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Indicates whether Allow Access Only from SM Certificates-based Clients is turned on.
+//
+// 	- 0: no
+//
+// 	- 1: yes
+//
+// @param request - DescribeWebRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebRulesResponse
 func (client *Client) DescribeWebRulesWithOptions(request *DescribeWebRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeWebRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33887,6 +36240,17 @@ func (client *Client) DescribeWebRulesWithOptions(request *DescribeWebRulesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Indicates whether Allow Access Only from SM Certificates-based Clients is turned on.
+//
+// 	- 0: no
+//
+// 	- 1: yes
+//
+// @param request - DescribeWebRulesRequest
+//
+// @return DescribeWebRulesResponse
 func (client *Client) DescribeWebRules(request *DescribeWebRulesRequest) (_result *DescribeWebRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebRulesResponse{}
@@ -33898,6 +36262,15 @@ func (client *Client) DescribeWebRules(request *DescribeWebRulesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a protected object from a scenario-specific custom policy.
+//
+// @param request - DetachSceneDefenseObjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachSceneDefenseObjectResponse
 func (client *Client) DetachSceneDefenseObjectWithOptions(request *DetachSceneDefenseObjectRequest, runtime *util.RuntimeOptions) (_result *DetachSceneDefenseObjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33939,6 +36312,13 @@ func (client *Client) DetachSceneDefenseObjectWithOptions(request *DetachSceneDe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a protected object from a scenario-specific custom policy.
+//
+// @param request - DetachSceneDefenseObjectRequest
+//
+// @return DetachSceneDefenseObjectResponse
 func (client *Client) DetachSceneDefenseObject(request *DetachSceneDefenseObjectRequest) (_result *DetachSceneDefenseObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachSceneDefenseObjectResponse{}
@@ -33950,6 +36330,15 @@ func (client *Client) DetachSceneDefenseObject(request *DetachSceneDefenseObject
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a scenario-specific custom policy.
+//
+// @param request - DisableSceneDefensePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableSceneDefensePolicyResponse
 func (client *Client) DisableSceneDefensePolicyWithOptions(request *DisableSceneDefensePolicyRequest, runtime *util.RuntimeOptions) (_result *DisableSceneDefensePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33983,6 +36372,13 @@ func (client *Client) DisableSceneDefensePolicyWithOptions(request *DisableScene
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a scenario-specific custom policy.
+//
+// @param request - DisableSceneDefensePolicyRequest
+//
+// @return DisableSceneDefensePolicyResponse
 func (client *Client) DisableSceneDefensePolicy(request *DisableSceneDefensePolicyRequest) (_result *DisableSceneDefensePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableSceneDefensePolicyResponse{}
@@ -33994,6 +36390,15 @@ func (client *Client) DisableSceneDefensePolicy(request *DisableSceneDefensePoli
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the log analysis feature for a website.
+//
+// @param request - DisableWebAccessLogConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableWebAccessLogConfigResponse
 func (client *Client) DisableWebAccessLogConfigWithOptions(request *DisableWebAccessLogConfigRequest, runtime *util.RuntimeOptions) (_result *DisableWebAccessLogConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34031,6 +36436,13 @@ func (client *Client) DisableWebAccessLogConfigWithOptions(request *DisableWebAc
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the log analysis feature for a website.
+//
+// @param request - DisableWebAccessLogConfigRequest
+//
+// @return DisableWebAccessLogConfigResponse
 func (client *Client) DisableWebAccessLogConfig(request *DisableWebAccessLogConfigRequest) (_result *DisableWebAccessLogConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableWebAccessLogConfigResponse{}
@@ -34042,6 +36454,15 @@ func (client *Client) DisableWebAccessLogConfig(request *DisableWebAccessLogConf
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the Frequency Control policy for a website.
+//
+// @param request - DisableWebCCRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableWebCCResponse
 func (client *Client) DisableWebCCWithOptions(request *DisableWebCCRequest, runtime *util.RuntimeOptions) (_result *DisableWebCCResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34079,6 +36500,13 @@ func (client *Client) DisableWebCCWithOptions(request *DisableWebCCRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the Frequency Control policy for a website.
+//
+// @param request - DisableWebCCRequest
+//
+// @return DisableWebCCResponse
 func (client *Client) DisableWebCC(request *DisableWebCCRequest) (_result *DisableWebCCResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableWebCCResponse{}
@@ -34090,6 +36518,15 @@ func (client *Client) DisableWebCC(request *DisableWebCCRequest) (_result *Disab
 	return _result, _err
 }
 
+// Summary:
+//
+// Turns off the Custom Rule switch of the Frequency Control policy for a website.
+//
+// @param request - DisableWebCCRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableWebCCRuleResponse
 func (client *Client) DisableWebCCRuleWithOptions(request *DisableWebCCRuleRequest, runtime *util.RuntimeOptions) (_result *DisableWebCCRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34127,6 +36564,13 @@ func (client *Client) DisableWebCCRuleWithOptions(request *DisableWebCCRuleReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Turns off the Custom Rule switch of the Frequency Control policy for a website.
+//
+// @param request - DisableWebCCRuleRequest
+//
+// @return DisableWebCCRuleResponse
 func (client *Client) DisableWebCCRule(request *DisableWebCCRuleRequest) (_result *DisableWebCCRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableWebCCRuleResponse{}
@@ -34138,6 +36582,15 @@ func (client *Client) DisableWebCCRule(request *DisableWebCCRuleRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Clears the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - EmptyAutoCcBlacklistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EmptyAutoCcBlacklistResponse
 func (client *Client) EmptyAutoCcBlacklistWithOptions(request *EmptyAutoCcBlacklistRequest, runtime *util.RuntimeOptions) (_result *EmptyAutoCcBlacklistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34171,6 +36624,13 @@ func (client *Client) EmptyAutoCcBlacklistWithOptions(request *EmptyAutoCcBlackl
 	return _result, _err
 }
 
+// Summary:
+//
+// Clears the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - EmptyAutoCcBlacklistRequest
+//
+// @return EmptyAutoCcBlacklistResponse
 func (client *Client) EmptyAutoCcBlacklist(request *EmptyAutoCcBlacklistRequest) (_result *EmptyAutoCcBlacklistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EmptyAutoCcBlacklistResponse{}
@@ -34182,6 +36642,15 @@ func (client *Client) EmptyAutoCcBlacklist(request *EmptyAutoCcBlacklistRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Clears the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - EmptyAutoCcWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EmptyAutoCcWhitelistResponse
 func (client *Client) EmptyAutoCcWhitelistWithOptions(request *EmptyAutoCcWhitelistRequest, runtime *util.RuntimeOptions) (_result *EmptyAutoCcWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34215,6 +36684,13 @@ func (client *Client) EmptyAutoCcWhitelistWithOptions(request *EmptyAutoCcWhitel
 	return _result, _err
 }
 
+// Summary:
+//
+// Clears the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - EmptyAutoCcWhitelistRequest
+//
+// @return EmptyAutoCcWhitelistResponse
 func (client *Client) EmptyAutoCcWhitelist(request *EmptyAutoCcWhitelistRequest) (_result *EmptyAutoCcWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EmptyAutoCcWhitelistResponse{}
@@ -34226,6 +36702,15 @@ func (client *Client) EmptyAutoCcWhitelist(request *EmptyAutoCcWhitelistRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Clears the Logstore of Anti-DDoS Pro or Anti-DDoS Premium.
+//
+// @param request - EmptySlsLogstoreRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EmptySlsLogstoreResponse
 func (client *Client) EmptySlsLogstoreWithOptions(request *EmptySlsLogstoreRequest, runtime *util.RuntimeOptions) (_result *EmptySlsLogstoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34259,6 +36744,13 @@ func (client *Client) EmptySlsLogstoreWithOptions(request *EmptySlsLogstoreReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Clears the Logstore of Anti-DDoS Pro or Anti-DDoS Premium.
+//
+// @param request - EmptySlsLogstoreRequest
+//
+// @return EmptySlsLogstoreResponse
 func (client *Client) EmptySlsLogstore(request *EmptySlsLogstoreRequest) (_result *EmptySlsLogstoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EmptySlsLogstoreResponse{}
@@ -34270,6 +36762,15 @@ func (client *Client) EmptySlsLogstore(request *EmptySlsLogstoreRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables a scenario-specific custom policy.
+//
+// @param request - EnableSceneDefensePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableSceneDefensePolicyResponse
 func (client *Client) EnableSceneDefensePolicyWithOptions(request *EnableSceneDefensePolicyRequest, runtime *util.RuntimeOptions) (_result *EnableSceneDefensePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34303,6 +36804,13 @@ func (client *Client) EnableSceneDefensePolicyWithOptions(request *EnableSceneDe
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables a scenario-specific custom policy.
+//
+// @param request - EnableSceneDefensePolicyRequest
+//
+// @return EnableSceneDefensePolicyResponse
 func (client *Client) EnableSceneDefensePolicy(request *EnableSceneDefensePolicyRequest) (_result *EnableSceneDefensePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableSceneDefensePolicyResponse{}
@@ -34314,6 +36822,15 @@ func (client *Client) EnableSceneDefensePolicy(request *EnableSceneDefensePolicy
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the log analysis feature for a website.
+//
+// @param request - EnableWebAccessLogConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableWebAccessLogConfigResponse
 func (client *Client) EnableWebAccessLogConfigWithOptions(request *EnableWebAccessLogConfigRequest, runtime *util.RuntimeOptions) (_result *EnableWebAccessLogConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34351,6 +36868,13 @@ func (client *Client) EnableWebAccessLogConfigWithOptions(request *EnableWebAcce
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the log analysis feature for a website.
+//
+// @param request - EnableWebAccessLogConfigRequest
+//
+// @return EnableWebAccessLogConfigResponse
 func (client *Client) EnableWebAccessLogConfig(request *EnableWebAccessLogConfigRequest) (_result *EnableWebAccessLogConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableWebAccessLogConfigResponse{}
@@ -34362,6 +36886,15 @@ func (client *Client) EnableWebAccessLogConfig(request *EnableWebAccessLogConfig
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the Frequency Control policy for a website.
+//
+// @param request - EnableWebCCRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableWebCCResponse
 func (client *Client) EnableWebCCWithOptions(request *EnableWebCCRequest, runtime *util.RuntimeOptions) (_result *EnableWebCCResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34399,6 +36932,13 @@ func (client *Client) EnableWebCCWithOptions(request *EnableWebCCRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the Frequency Control policy for a website.
+//
+// @param request - EnableWebCCRequest
+//
+// @return EnableWebCCResponse
 func (client *Client) EnableWebCC(request *EnableWebCCRequest) (_result *EnableWebCCResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableWebCCResponse{}
@@ -34410,6 +36950,15 @@ func (client *Client) EnableWebCC(request *EnableWebCCRequest) (_result *EnableW
 	return _result, _err
 }
 
+// Summary:
+//
+// Turns on the Custom Rule switch of the Frequency Control policy for a website.
+//
+// @param request - EnableWebCCRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableWebCCRuleResponse
 func (client *Client) EnableWebCCRuleWithOptions(request *EnableWebCCRuleRequest, runtime *util.RuntimeOptions) (_result *EnableWebCCRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34447,6 +36996,13 @@ func (client *Client) EnableWebCCRuleWithOptions(request *EnableWebCCRuleRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Turns on the Custom Rule switch of the Frequency Control policy for a website.
+//
+// @param request - EnableWebCCRuleRequest
+//
+// @return EnableWebCCRuleResponse
 func (client *Client) EnableWebCCRule(request *EnableWebCCRuleRequest) (_result *EnableWebCCRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableWebCCRuleResponse{}
@@ -34458,6 +37014,10 @@ func (client *Client) EnableWebCCRule(request *EnableWebCCRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches between the metering methods of the burstable clean bandwidth feature.
+//
 // Description:
 //
 // You can switch between the metering methods of the burstable clean bandwidth feature. The new metering method takes effect from 00:00 on the first day of the next month. You can change the metering method up to three times each calendar month. The most recent metering method that you select takes effect in the next month. You cannot change the metering method on the last day of each calendar month.
@@ -34504,6 +37064,10 @@ func (client *Client) ModifyBizBandWidthModeWithOptions(request *ModifyBizBandWi
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches between the metering methods of the burstable clean bandwidth feature.
+//
 // Description:
 //
 // You can switch between the metering methods of the burstable clean bandwidth feature. The new metering method takes effect from 00:00 on the first day of the next month. You can change the metering method up to three times each calendar month. The most recent metering method that you select takes effect in the next month. You cannot change the metering method on the last day of each calendar month.
@@ -34522,6 +37086,15 @@ func (client *Client) ModifyBizBandWidthMode(request *ModifyBizBandWidthModeRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deactivates blackhole filtering that is triggered on an instance.
+//
+// @param request - ModifyBlackholeStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBlackholeStatusResponse
 func (client *Client) ModifyBlackholeStatusWithOptions(request *ModifyBlackholeStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyBlackholeStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34559,6 +37132,13 @@ func (client *Client) ModifyBlackholeStatusWithOptions(request *ModifyBlackholeS
 	return _result, _err
 }
 
+// Summary:
+//
+// Deactivates blackhole filtering that is triggered on an instance.
+//
+// @param request - ModifyBlackholeStatusRequest
+//
+// @return ModifyBlackholeStatusResponse
 func (client *Client) ModifyBlackholeStatus(request *ModifyBlackholeStatusRequest) (_result *ModifyBlackholeStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBlackholeStatusResponse{}
@@ -34570,6 +37150,10 @@ func (client *Client) ModifyBlackholeStatus(request *ModifyBlackholeStatusReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the Diversion from Origin Server configuration of an Anti-DDoS Pro instance.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Pro.
@@ -34624,6 +37208,10 @@ func (client *Client) ModifyBlockStatusWithOptions(request *ModifyBlockStatusReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the Diversion from Origin Server configuration of an Anti-DDoS Pro instance.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Pro.
@@ -34642,6 +37230,10 @@ func (client *Client) ModifyBlockStatus(request *ModifyBlockStatusRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables CNAME reuse for a website.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Premium.
@@ -34696,6 +37288,10 @@ func (client *Client) ModifyCnameReuseWithOptions(request *ModifyCnameReuseReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables CNAME reuse for a website.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Premium.
@@ -34714,6 +37310,15 @@ func (client *Client) ModifyCnameReuse(request *ModifyCnameReuseRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the forwarding rule of a website.
+//
+// @param request - ModifyDomainResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDomainResourceResponse
 func (client *Client) ModifyDomainResourceWithOptions(request *ModifyDomainResourceRequest, runtime *util.RuntimeOptions) (_result *ModifyDomainResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34767,6 +37372,13 @@ func (client *Client) ModifyDomainResourceWithOptions(request *ModifyDomainResou
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the forwarding rule of a website.
+//
+// @param request - ModifyDomainResourceRequest
+//
+// @return ModifyDomainResourceResponse
 func (client *Client) ModifyDomainResource(request *ModifyDomainResourceRequest) (_result *ModifyDomainResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDomainResourceResponse{}
@@ -34778,6 +37390,10 @@ func (client *Client) ModifyDomainResource(request *ModifyDomainResourceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the burstable protection bandwidth of a specified Anti-DDoS Pro instance.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Pro.
@@ -34824,6 +37440,10 @@ func (client *Client) ModifyElasticBandWidthWithOptions(request *ModifyElasticBa
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the burstable protection bandwidth of a specified Anti-DDoS Pro instance.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Pro.
@@ -34842,6 +37462,10 @@ func (client *Client) ModifyElasticBandWidth(request *ModifyElasticBandWidthRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the burstable clean bandwidth for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
 // Description:
 //
 // Before you call this operation, make sure that you have fully understood the billing method and [pricing](https://help.aliyun.com/document_detail/283754.html) of the burstable clean bandwidth feature. After you call this operation for the first time, the modification immediately takes effect.
@@ -34892,6 +37516,10 @@ func (client *Client) ModifyElasticBizBandWidthWithOptions(request *ModifyElasti
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the burstable clean bandwidth for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
 // Description:
 //
 // Before you call this operation, make sure that you have fully understood the billing method and [pricing](https://help.aliyun.com/document_detail/283754.html) of the burstable clean bandwidth feature. After you call this operation for the first time, the modification immediately takes effect.
@@ -34910,6 +37538,15 @@ func (client *Client) ModifyElasticBizBandWidth(request *ModifyElasticBizBandWid
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启/关闭弹性QPS 首次模式直接生效
+//
+// @param request - ModifyElasticBizQpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyElasticBizQpsResponse
 func (client *Client) ModifyElasticBizQpsWithOptions(request *ModifyElasticBizQpsRequest, runtime *util.RuntimeOptions) (_result *ModifyElasticBizQpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34951,6 +37588,13 @@ func (client *Client) ModifyElasticBizQpsWithOptions(request *ModifyElasticBizQp
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启/关闭弹性QPS 首次模式直接生效
+//
+// @param request - ModifyElasticBizQpsRequest
+//
+// @return ModifyElasticBizQpsResponse
 func (client *Client) ModifyElasticBizQps(request *ModifyElasticBizQpsRequest) (_result *ModifyElasticBizQpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyElasticBizQpsResponse{}
@@ -34962,6 +37606,15 @@ func (client *Client) ModifyElasticBizQps(request *ModifyElasticBizQpsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the log storage duration for Anti-DDoS Pro or Anti-DDoS Premium.
+//
+// @param request - ModifyFullLogTtlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyFullLogTtlResponse
 func (client *Client) ModifyFullLogTtlWithOptions(request *ModifyFullLogTtlRequest, runtime *util.RuntimeOptions) (_result *ModifyFullLogTtlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34999,6 +37652,13 @@ func (client *Client) ModifyFullLogTtlWithOptions(request *ModifyFullLogTtlReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the log storage duration for Anti-DDoS Pro or Anti-DDoS Premium.
+//
+// @param request - ModifyFullLogTtlRequest
+//
+// @return ModifyFullLogTtlResponse
 func (client *Client) ModifyFullLogTtl(request *ModifyFullLogTtlRequest) (_result *ModifyFullLogTtlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyFullLogTtlResponse{}
@@ -35010,6 +37670,15 @@ func (client *Client) ModifyFullLogTtl(request *ModifyFullLogTtlRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the custom header of a domain name that is added to an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - ModifyHeadersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHeadersResponse
 func (client *Client) ModifyHeadersWithOptions(request *ModifyHeadersRequest, runtime *util.RuntimeOptions) (_result *ModifyHeadersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35051,6 +37720,13 @@ func (client *Client) ModifyHeadersWithOptions(request *ModifyHeadersRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the custom header of a domain name that is added to an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - ModifyHeadersRequest
+//
+// @return ModifyHeadersResponse
 func (client *Client) ModifyHeaders(request *ModifyHeadersRequest) (_result *ModifyHeadersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyHeadersResponse{}
@@ -35062,6 +37738,15 @@ func (client *Client) ModifyHeaders(request *ModifyHeadersRequest) (_result *Mod
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the Layer 4 or Layer 7 health check configuration of a port forwarding rule.
+//
+// @param request - ModifyHealthCheckConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHealthCheckConfigResponse
 func (client *Client) ModifyHealthCheckConfigWithOptions(request *ModifyHealthCheckConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyHealthCheckConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35107,6 +37792,13 @@ func (client *Client) ModifyHealthCheckConfigWithOptions(request *ModifyHealthCh
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the Layer 4 or Layer 7 health check configuration of a port forwarding rule.
+//
+// @param request - ModifyHealthCheckConfigRequest
+//
+// @return ModifyHealthCheckConfigResponse
 func (client *Client) ModifyHealthCheckConfig(request *ModifyHealthCheckConfigRequest) (_result *ModifyHealthCheckConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyHealthCheckConfigResponse{}
@@ -35118,6 +37810,10 @@ func (client *Client) ModifyHealthCheckConfig(request *ModifyHealthCheckConfigRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables HTTP/2 for the forwarding rule of a website.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Pro.
@@ -35168,6 +37864,10 @@ func (client *Client) ModifyHttp2EnableWithOptions(request *ModifyHttp2EnableReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables HTTP/2 for the forwarding rule of a website.
+//
 // Description:
 //
 // > This operation is suitable only for Anti-DDoS Pro.
@@ -35186,6 +37886,15 @@ func (client *Client) ModifyHttp2Enable(request *ModifyHttp2EnableRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - ModifyInstanceRemarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceRemarkResponse
 func (client *Client) ModifyInstanceRemarkWithOptions(request *ModifyInstanceRemarkRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceRemarkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35223,6 +37932,13 @@ func (client *Client) ModifyInstanceRemarkWithOptions(request *ModifyInstanceRem
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// @param request - ModifyInstanceRemarkRequest
+//
+// @return ModifyInstanceRemarkResponse
 func (client *Client) ModifyInstanceRemark(request *ModifyInstanceRemarkRequest) (_result *ModifyInstanceRemarkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceRemarkResponse{}
@@ -35234,6 +37950,15 @@ func (client *Client) ModifyInstanceRemark(request *ModifyInstanceRemarkRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the session persistence settings of a port forwarding rule.
+//
+// @param request - ModifyNetworkRuleAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyNetworkRuleAttributeResponse
 func (client *Client) ModifyNetworkRuleAttributeWithOptions(request *ModifyNetworkRuleAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyNetworkRuleAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35279,6 +38004,13 @@ func (client *Client) ModifyNetworkRuleAttributeWithOptions(request *ModifyNetwo
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the session persistence settings of a port forwarding rule.
+//
+// @param request - ModifyNetworkRuleAttributeRequest
+//
+// @return ModifyNetworkRuleAttributeResponse
 func (client *Client) ModifyNetworkRuleAttribute(request *ModifyNetworkRuleAttributeRequest) (_result *ModifyNetworkRuleAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyNetworkRuleAttributeResponse{}
@@ -35290,6 +38022,10 @@ func (client *Client) ModifyNetworkRuleAttribute(request *ModifyNetworkRuleAttri
 	return _result, _err
 }
 
+// Summary:
+//
+// Specifies whether to enable the Online Certificate Status Protocol (OCSP) feature.
+//
 // Description:
 //
 // This feature is available only for a website that supports HTTPS. If HTTPS is selected for Protocol, we recommend that you enable this feature.
@@ -35336,6 +38072,10 @@ func (client *Client) ModifyOcspStatusWithOptions(request *ModifyOcspStatusReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Specifies whether to enable the Online Certificate Status Protocol (OCSP) feature.
+//
 // Description:
 //
 // This feature is available only for a website that supports HTTPS. If HTTPS is selected for Protocol, we recommend that you enable this feature.
@@ -35354,9 +38094,13 @@ func (client *Client) ModifyOcspStatus(request *ModifyOcspStatusRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a port forwarding rule.
+//
 // Description:
 //
-// You can call the ModifyPort operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+// You can call the ModifyPort operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - ModifyPortRequest
 //
@@ -35412,9 +38156,13 @@ func (client *Client) ModifyPortWithOptions(request *ModifyPortRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a port forwarding rule.
+//
 // Description:
 //
-// You can call the ModifyPort operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+// You can call the ModifyPort operation by using Terraform. For more information about Terraform, see [What is Terraform?](https://help.aliyun.com/document_detail/95820.html).
 //
 // @param request - ModifyPortRequest
 //
@@ -35430,6 +38178,15 @@ func (client *Client) ModifyPort(request *ModifyPortRequest) (_result *ModifyPor
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the Intelligent Protection configuration of a non-website service.
+//
+// @param request - ModifyPortAutoCcStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPortAutoCcStatusResponse
 func (client *Client) ModifyPortAutoCcStatusWithOptions(request *ModifyPortAutoCcStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyPortAutoCcStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35471,6 +38228,13 @@ func (client *Client) ModifyPortAutoCcStatusWithOptions(request *ModifyPortAutoC
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the Intelligent Protection configuration of a non-website service.
+//
+// @param request - ModifyPortAutoCcStatusRequest
+//
+// @return ModifyPortAutoCcStatusResponse
 func (client *Client) ModifyPortAutoCcStatus(request *ModifyPortAutoCcStatusRequest) (_result *ModifyPortAutoCcStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPortAutoCcStatusResponse{}
@@ -35482,6 +38246,15 @@ func (client *Client) ModifyPortAutoCcStatus(request *ModifyPortAutoCcStatusRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改弹性qps模式
+//
+// @param request - ModifyQpsModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyQpsModeResponse
 func (client *Client) ModifyQpsModeWithOptions(request *ModifyQpsModeRequest, runtime *util.RuntimeOptions) (_result *ModifyQpsModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35519,6 +38292,13 @@ func (client *Client) ModifyQpsModeWithOptions(request *ModifyQpsModeRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改弹性qps模式
+//
+// @param request - ModifyQpsModeRequest
+//
+// @return ModifyQpsModeResponse
 func (client *Client) ModifyQpsMode(request *ModifyQpsModeRequest) (_result *ModifyQpsModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyQpsModeResponse{}
@@ -35530,6 +38310,15 @@ func (client *Client) ModifyQpsMode(request *ModifyQpsModeRequest) (_result *Mod
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a scenario-specific custom policy.
+//
+// @param request - ModifySceneDefensePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySceneDefensePolicyResponse
 func (client *Client) ModifySceneDefensePolicyWithOptions(request *ModifySceneDefensePolicyRequest, runtime *util.RuntimeOptions) (_result *ModifySceneDefensePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35579,6 +38368,13 @@ func (client *Client) ModifySceneDefensePolicyWithOptions(request *ModifySceneDe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a scenario-specific custom policy.
+//
+// @param request - ModifySceneDefensePolicyRequest
+//
+// @return ModifySceneDefensePolicyResponse
 func (client *Client) ModifySceneDefensePolicy(request *ModifySceneDefensePolicyRequest) (_result *ModifySceneDefensePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySceneDefensePolicyResponse{}
@@ -35590,6 +38386,15 @@ func (client *Client) ModifySceneDefensePolicy(request *ModifySceneDefensePolicy
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the scheduling rule of Sec-Traffic Manager.
+//
+// @param request - ModifySchedulerRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySchedulerRuleResponse
 func (client *Client) ModifySchedulerRuleWithOptions(request *ModifySchedulerRuleRequest, runtime *util.RuntimeOptions) (_result *ModifySchedulerRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35639,6 +38444,13 @@ func (client *Client) ModifySchedulerRuleWithOptions(request *ModifySchedulerRul
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the scheduling rule of Sec-Traffic Manager.
+//
+// @param request - ModifySchedulerRuleRequest
+//
+// @return ModifySchedulerRuleResponse
 func (client *Client) ModifySchedulerRule(request *ModifySchedulerRuleRequest) (_result *ModifySchedulerRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySchedulerRuleResponse{}
@@ -35650,6 +38462,15 @@ func (client *Client) ModifySchedulerRule(request *ModifySchedulerRuleRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the Transport Layer Security (TLS) policy configuration for the forwarding rule of a website.
+//
+// @param request - ModifyTlsConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTlsConfigResponse
 func (client *Client) ModifyTlsConfigWithOptions(request *ModifyTlsConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyTlsConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35691,6 +38512,13 @@ func (client *Client) ModifyTlsConfigWithOptions(request *ModifyTlsConfigRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the Transport Layer Security (TLS) policy configuration for the forwarding rule of a website.
+//
+// @param request - ModifyTlsConfigRequest
+//
+// @return ModifyTlsConfigResponse
 func (client *Client) ModifyTlsConfig(request *ModifyTlsConfigRequest) (_result *ModifyTlsConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyTlsConfigResponse{}
@@ -35702,6 +38530,15 @@ func (client *Client) ModifyTlsConfig(request *ModifyTlsConfigRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the mode of the Intelligent Protection policy for a website.
+//
+// @param request - ModifyWebAIProtectModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebAIProtectModeResponse
 func (client *Client) ModifyWebAIProtectModeWithOptions(request *ModifyWebAIProtectModeRequest, runtime *util.RuntimeOptions) (_result *ModifyWebAIProtectModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35743,6 +38580,13 @@ func (client *Client) ModifyWebAIProtectModeWithOptions(request *ModifyWebAIProt
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the mode of the Intelligent Protection policy for a website.
+//
+// @param request - ModifyWebAIProtectModeRequest
+//
+// @return ModifyWebAIProtectModeResponse
 func (client *Client) ModifyWebAIProtectMode(request *ModifyWebAIProtectModeRequest) (_result *ModifyWebAIProtectModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebAIProtectModeResponse{}
@@ -35754,6 +38598,15 @@ func (client *Client) ModifyWebAIProtectMode(request *ModifyWebAIProtectModeRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the Intelligent Protection policy for a website.
+//
+// @param request - ModifyWebAIProtectSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebAIProtectSwitchResponse
 func (client *Client) ModifyWebAIProtectSwitchWithOptions(request *ModifyWebAIProtectSwitchRequest, runtime *util.RuntimeOptions) (_result *ModifyWebAIProtectSwitchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35795,6 +38648,13 @@ func (client *Client) ModifyWebAIProtectSwitchWithOptions(request *ModifyWebAIPr
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the Intelligent Protection policy for a website.
+//
+// @param request - ModifyWebAIProtectSwitchRequest
+//
+// @return ModifyWebAIProtectSwitchResponse
 func (client *Client) ModifyWebAIProtectSwitch(request *ModifyWebAIProtectSwitchRequest) (_result *ModifyWebAIProtectSwitchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebAIProtectSwitchResponse{}
@@ -35806,6 +38666,15 @@ func (client *Client) ModifyWebAIProtectSwitch(request *ModifyWebAIProtectSwitch
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the mode in which a website service is added to Anti-DDoS Pro or Anti-DDoS Premium.
+//
+// @param request - ModifyWebAccessModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebAccessModeResponse
 func (client *Client) ModifyWebAccessModeWithOptions(request *ModifyWebAccessModeRequest, runtime *util.RuntimeOptions) (_result *ModifyWebAccessModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35843,6 +38712,13 @@ func (client *Client) ModifyWebAccessModeWithOptions(request *ModifyWebAccessMod
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the mode in which a website service is added to Anti-DDoS Pro or Anti-DDoS Premium.
+//
+// @param request - ModifyWebAccessModeRequest
+//
+// @return ModifyWebAccessModeResponse
 func (client *Client) ModifyWebAccessMode(request *ModifyWebAccessModeRequest) (_result *ModifyWebAccessModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebAccessModeResponse{}
@@ -35854,6 +38730,15 @@ func (client *Client) ModifyWebAccessMode(request *ModifyWebAccessModeRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the blocked locations that are configured in the Location Blacklist (Domain Names) policy for a website.
+//
+// @param request - ModifyWebAreaBlockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebAreaBlockResponse
 func (client *Client) ModifyWebAreaBlockWithOptions(request *ModifyWebAreaBlockRequest, runtime *util.RuntimeOptions) (_result *ModifyWebAreaBlockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35895,6 +38780,13 @@ func (client *Client) ModifyWebAreaBlockWithOptions(request *ModifyWebAreaBlockR
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the blocked locations that are configured in the Location Blacklist (Domain Names) policy for a website.
+//
+// @param request - ModifyWebAreaBlockRequest
+//
+// @return ModifyWebAreaBlockResponse
 func (client *Client) ModifyWebAreaBlock(request *ModifyWebAreaBlockRequest) (_result *ModifyWebAreaBlockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebAreaBlockResponse{}
@@ -35906,6 +38798,10 @@ func (client *Client) ModifyWebAreaBlock(request *ModifyWebAreaBlockRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the Location Blacklist (Domain Names) policy for a domain name.
+//
 // Description:
 //
 // You can call the ModifyWebAreaBlockSwitch operation to enable or disable the Location Blacklist (Domain Names) policy for a domain name.
@@ -35960,6 +38856,10 @@ func (client *Client) ModifyWebAreaBlockSwitchWithOptions(request *ModifyWebArea
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the Location Blacklist (Domain Names) policy for a domain name.
+//
 // Description:
 //
 // You can call the ModifyWebAreaBlockSwitch operation to enable or disable the Location Blacklist (Domain Names) policy for a domain name.
@@ -35982,6 +38882,11 @@ func (client *Client) ModifyWebAreaBlockSwitch(request *ModifyWebAreaBlockSwitch
 	return _result, _err
 }
 
+// @param request - ModifyWebCCRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebCCRuleResponse
 func (client *Client) ModifyWebCCRuleWithOptions(request *ModifyWebCCRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyWebCCRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36047,6 +38952,9 @@ func (client *Client) ModifyWebCCRuleWithOptions(request *ModifyWebCCRuleRequest
 	return _result, _err
 }
 
+// @param request - ModifyWebCCRuleRequest
+//
+// @return ModifyWebCCRuleResponse
 func (client *Client) ModifyWebCCRule(request *ModifyWebCCRuleRequest) (_result *ModifyWebCCRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebCCRuleResponse{}
@@ -36058,6 +38966,15 @@ func (client *Client) ModifyWebCCRule(request *ModifyWebCCRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the custom rule of the Static Page Caching policy for a website.
+//
+// @param request - ModifyWebCacheCustomRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebCacheCustomRuleResponse
 func (client *Client) ModifyWebCacheCustomRuleWithOptions(request *ModifyWebCacheCustomRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyWebCacheCustomRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36099,6 +39016,13 @@ func (client *Client) ModifyWebCacheCustomRuleWithOptions(request *ModifyWebCach
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the custom rule of the Static Page Caching policy for a website.
+//
+// @param request - ModifyWebCacheCustomRuleRequest
+//
+// @return ModifyWebCacheCustomRuleResponse
 func (client *Client) ModifyWebCacheCustomRule(request *ModifyWebCacheCustomRuleRequest) (_result *ModifyWebCacheCustomRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebCacheCustomRuleResponse{}
@@ -36110,6 +39034,15 @@ func (client *Client) ModifyWebCacheCustomRule(request *ModifyWebCacheCustomRule
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the cache mode of the Static Page Caching policy for a website.
+//
+// @param request - ModifyWebCacheModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebCacheModeResponse
 func (client *Client) ModifyWebCacheModeWithOptions(request *ModifyWebCacheModeRequest, runtime *util.RuntimeOptions) (_result *ModifyWebCacheModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36151,6 +39084,13 @@ func (client *Client) ModifyWebCacheModeWithOptions(request *ModifyWebCacheModeR
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the cache mode of the Static Page Caching policy for a website.
+//
+// @param request - ModifyWebCacheModeRequest
+//
+// @return ModifyWebCacheModeResponse
 func (client *Client) ModifyWebCacheMode(request *ModifyWebCacheModeRequest) (_result *ModifyWebCacheModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebCacheModeResponse{}
@@ -36162,6 +39102,10 @@ func (client *Client) ModifyWebCacheMode(request *ModifyWebCacheModeRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the Static Page Caching policy for a website.
+//
 // Description:
 //
 // You can call the ModifyWebCacheSwitch operation to enable or disable the Static Page Caching policy for a website.
@@ -36216,6 +39160,10 @@ func (client *Client) ModifyWebCacheSwitchWithOptions(request *ModifyWebCacheSwi
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the Static Page Caching policy for a website.
+//
 // Description:
 //
 // You can call the ModifyWebCacheSwitch operation to enable or disable the Static Page Caching policy for a website.
@@ -36238,6 +39186,15 @@ func (client *Client) ModifyWebCacheSwitch(request *ModifyWebCacheSwitchRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the Black Lists and White Lists (Domain Names) policy for a domain name.
+//
+// @param request - ModifyWebIpSetSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebIpSetSwitchResponse
 func (client *Client) ModifyWebIpSetSwitchWithOptions(request *ModifyWebIpSetSwitchRequest, runtime *util.RuntimeOptions) (_result *ModifyWebIpSetSwitchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36279,6 +39236,13 @@ func (client *Client) ModifyWebIpSetSwitchWithOptions(request *ModifyWebIpSetSwi
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the Black Lists and White Lists (Domain Names) policy for a domain name.
+//
+// @param request - ModifyWebIpSetSwitchRequest
+//
+// @return ModifyWebIpSetSwitchResponse
 func (client *Client) ModifyWebIpSetSwitch(request *ModifyWebIpSetSwitchRequest) (_result *ModifyWebIpSetSwitchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebIpSetSwitchResponse{}
@@ -36290,6 +39254,15 @@ func (client *Client) ModifyWebIpSetSwitch(request *ModifyWebIpSetSwitchRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the accurate access control rule of a website.
+//
+// @param request - ModifyWebPreciseAccessRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebPreciseAccessRuleResponse
 func (client *Client) ModifyWebPreciseAccessRuleWithOptions(request *ModifyWebPreciseAccessRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyWebPreciseAccessRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36335,6 +39308,13 @@ func (client *Client) ModifyWebPreciseAccessRuleWithOptions(request *ModifyWebPr
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the accurate access control rule of a website.
+//
+// @param request - ModifyWebPreciseAccessRuleRequest
+//
+// @return ModifyWebPreciseAccessRuleResponse
 func (client *Client) ModifyWebPreciseAccessRule(request *ModifyWebPreciseAccessRuleRequest) (_result *ModifyWebPreciseAccessRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebPreciseAccessRuleResponse{}
@@ -36346,6 +39326,15 @@ func (client *Client) ModifyWebPreciseAccessRule(request *ModifyWebPreciseAccess
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the Accurate Access Control policy for a website.
+//
+// @param request - ModifyWebPreciseAccessSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebPreciseAccessSwitchResponse
 func (client *Client) ModifyWebPreciseAccessSwitchWithOptions(request *ModifyWebPreciseAccessSwitchRequest, runtime *util.RuntimeOptions) (_result *ModifyWebPreciseAccessSwitchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36387,6 +39376,13 @@ func (client *Client) ModifyWebPreciseAccessSwitchWithOptions(request *ModifyWeb
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the Accurate Access Control policy for a website.
+//
+// @param request - ModifyWebPreciseAccessSwitchRequest
+//
+// @return ModifyWebPreciseAccessSwitchResponse
 func (client *Client) ModifyWebPreciseAccessSwitch(request *ModifyWebPreciseAccessSwitchRequest) (_result *ModifyWebPreciseAccessSwitchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebPreciseAccessSwitchResponse{}
@@ -36398,6 +39394,11 @@ func (client *Client) ModifyWebPreciseAccessSwitch(request *ModifyWebPreciseAcce
 	return _result, _err
 }
 
+// @param request - ModifyWebRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebRuleResponse
 func (client *Client) ModifyWebRuleWithOptions(request *ModifyWebRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyWebRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36455,6 +39456,9 @@ func (client *Client) ModifyWebRuleWithOptions(request *ModifyWebRuleRequest, ru
 	return _result, _err
 }
 
+// @param request - ModifyWebRuleRequest
+//
+// @return ModifyWebRuleResponse
 func (client *Client) ModifyWebRule(request *ModifyWebRuleRequest) (_result *ModifyWebRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebRuleResponse{}
@@ -36466,6 +39470,12 @@ func (client *Client) ModifyWebRule(request *ModifyWebRuleRequest) (_result *Mod
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the instance that you want to release.
+//
+// > You can release only expired instances. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/91478.html) operation to query the IDs and expiration status of all instances.
+//
 // Description:
 //
 // The ID of the request, which is used to locate and troubleshoot issues.
@@ -36508,6 +39518,12 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the instance that you want to release.
+//
+// > You can release only expired instances. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/91478.html) operation to query the IDs and expiration status of all instances.
+//
 // Description:
 //
 // The ID of the request, which is used to locate and troubleshoot issues.
@@ -36526,11 +39542,15 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches service traffic to your Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing or switches service traffic back to the associated cloud resources.
+//
 // Description:
 //
 // You can call the SwitchSchedulerRule operation to modify the resources to which service traffic is switched for a scheduling rule. For example, you can switch service traffic to an Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing or switch the service traffic back to the associated cloud resources.
 //
-// Before you call this operation, you must have created a scheduling rule by calling the [CreateSchedulerRule](~~157479~~) operation.
+// Before you call this operation, you must have created a scheduling rule by calling the [CreateSchedulerRule](https://help.aliyun.com/document_detail/157479.html) operation.
 //
 // ### Limits
 //
@@ -36582,11 +39602,15 @@ func (client *Client) SwitchSchedulerRuleWithOptions(request *SwitchSchedulerRul
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches service traffic to your Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing or switches service traffic back to the associated cloud resources.
+//
 // Description:
 //
 // You can call the SwitchSchedulerRule operation to modify the resources to which service traffic is switched for a scheduling rule. For example, you can switch service traffic to an Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing or switch the service traffic back to the associated cloud resources.
 //
-// Before you call this operation, you must have created a scheduling rule by calling the [CreateSchedulerRule](~~157479~~) operation.
+// Before you call this operation, you must have created a scheduling rule by calling the [CreateSchedulerRule](https://help.aliyun.com/document_detail/157479.html) operation.
 //
 // ### Limits
 //
