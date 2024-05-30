@@ -16998,6 +16998,7 @@ func (s *DescribeApplicationSlbsResponseBodyData) SetIntranetSlbId(v string) *De
 }
 
 type DescribeApplicationSlbsResponseBodyDataInternet struct {
+	HttpsCaCertId *string `json:"HttpsCaCertId,omitempty" xml:"HttpsCaCertId,omitempty"`
 	// The supported protocol.
 	//
 	// example:
@@ -17032,6 +17033,11 @@ func (s DescribeApplicationSlbsResponseBodyDataInternet) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetHttpsCaCertId(v string) *DescribeApplicationSlbsResponseBodyDataInternet {
+	s.HttpsCaCertId = &v
+	return s
+}
+
 func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetHttpsCertId(v string) *DescribeApplicationSlbsResponseBodyDataInternet {
 	s.HttpsCertId = &v
 	return s
@@ -17053,6 +17059,7 @@ func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetTargetPort(v int32)
 }
 
 type DescribeApplicationSlbsResponseBodyDataIntranet struct {
+	HttpsCaCertId *string `json:"HttpsCaCertId,omitempty" xml:"HttpsCaCertId,omitempty"`
 	// The supported protocol.
 	//
 	// example:
@@ -17085,6 +17092,11 @@ func (s DescribeApplicationSlbsResponseBodyDataIntranet) String() string {
 
 func (s DescribeApplicationSlbsResponseBodyDataIntranet) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetHttpsCaCertId(v string) *DescribeApplicationSlbsResponseBodyDataIntranet {
+	s.HttpsCaCertId = &v
+	return s
 }
 
 func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetHttpsCertId(v string) *DescribeApplicationSlbsResponseBodyDataIntranet {
