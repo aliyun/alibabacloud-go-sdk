@@ -1,3 +1,7 @@
+2024-05-30 Version: v3.0.19
+- Update API AddFaceVideoTemplate: update response param.
+
+
 2024-03-13 Version: v3.0.18
 - Update API QueryFaceVideoTemplate: add param PageNo.
 - Update API QueryFaceVideoTemplate: add param PageSize.

@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -19,10 +16,26 @@ import (
 )
 
 type AbstractEcommerceVideoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Height   *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
-	VideoUrl *string  `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	Width    *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 480
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/AbstractEcommerceVideo/AbstractEcommerceVideo1.mp4
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	// example:
+	//
+	// 480
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s AbstractEcommerceVideoRequest) String() string {
@@ -54,10 +67,26 @@ func (s *AbstractEcommerceVideoRequest) SetWidth(v int32) *AbstractEcommerceVide
 }
 
 type AbstractEcommerceVideoAdvanceRequest struct {
-	Duration       *float32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Height         *int32    `json:"Height,omitempty" xml:"Height,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
+	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 480
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/AbstractEcommerceVideo/AbstractEcommerceVideo1.mp4
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	Width          *int32    `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 480
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s AbstractEcommerceVideoAdvanceRequest) String() string {
@@ -89,9 +118,12 @@ func (s *AbstractEcommerceVideoAdvanceRequest) SetWidth(v int32) *AbstractEcomme
 }
 
 type AbstractEcommerceVideoResponseBody struct {
-	Data      *AbstractEcommerceVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *AbstractEcommerceVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 50B33B81-CCB8-42BC-8A73-AC838618936E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AbstractEcommerceVideoResponseBody) String() string {
@@ -118,8 +150,14 @@ func (s *AbstractEcommerceVideoResponseBody) SetRequestId(v string) *AbstractEco
 }
 
 type AbstractEcommerceVideoResponseBodyData struct {
+	// example:
+	//
+	// http://algo-app-aic-vd-cn-shanghai-prod.oss-cn-shanghai.aliyuncs.com/shop-video-abs/2020-03-20-19/YVgDynxB.jpg?Expires=1584707249&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=e5Q3O%2ByA6H7UhYJeMZxz4p70de****
 	VideoCoverUrl *string `json:"VideoCoverUrl,omitempty" xml:"VideoCoverUrl,omitempty"`
-	VideoUrl      *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	// example:
+	//
+	// http://algo-app-aic-vd-cn-shanghai-prod.oss-cn-shanghai.aliyuncs.com/shop-video-abs/2020-03-20-19/YVgDynxB.mp4?Expires=1584707249&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=KErufmbHvTUYYLRj6i42wY7Tew****
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s AbstractEcommerceVideoResponseBodyData) String() string {
@@ -170,7 +208,17 @@ func (s *AbstractEcommerceVideoResponse) SetBody(v *AbstractEcommerceVideoRespon
 }
 
 type AbstractFilmVideoRequest struct {
-	Length   *int32  `json:"Length,omitempty" xml:"Length,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
+	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/AbstractFilmVideo/AbstractFilmVideo1.mp4
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -193,7 +241,17 @@ func (s *AbstractFilmVideoRequest) SetVideoUrl(v string) *AbstractFilmVideoReque
 }
 
 type AbstractFilmVideoAdvanceRequest struct {
-	Length         *int32    `json:"Length,omitempty" xml:"Length,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
+	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/AbstractFilmVideo/AbstractFilmVideo1.mp4
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -216,9 +274,12 @@ func (s *AbstractFilmVideoAdvanceRequest) SetVideoUrlObject(v io.Reader) *Abstra
 }
 
 type AbstractFilmVideoResponseBody struct {
-	Data      *AbstractFilmVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *AbstractFilmVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9A5B872B-1BF0-4D84-90DA-A2EE1F072B82
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AbstractFilmVideoResponseBody) String() string {
@@ -245,6 +306,9 @@ func (s *AbstractFilmVideoResponseBody) SetRequestId(v string) *AbstractFilmVide
 }
 
 type AbstractFilmVideoResponseBodyData struct {
+	// example:
+	//
+	// http://algo-app-aic-vd-cn-shanghai-prod.oss-cn-shanghai.aliyuncs.com/film-summary/EA61D012-5F89-4102-931E-419158BE2ADA_gb27k00.mp4?Expires=1584707613&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=weTexlBR1wmQlAhuU2JXaE7AyJ****
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -292,7 +356,12 @@ func (s *AbstractFilmVideoResponse) SetBody(v *AbstractFilmVideoResponseBody) *A
 
 type AddFaceVideoTemplateRequest struct {
 	VideoScene *string `json:"VideoScene,omitempty" xml:"VideoScene,omitempty"`
-	VideoURL   *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://invi-label.oss-cn-shanghai.aliyuncs.com/labl/temp/faceswap/test_for_api/xxxx.mp4
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
 func (s AddFaceVideoTemplateRequest) String() string {
@@ -314,7 +383,12 @@ func (s *AddFaceVideoTemplateRequest) SetVideoURL(v string) *AddFaceVideoTemplat
 }
 
 type AddFaceVideoTemplateAdvanceRequest struct {
-	VideoScene     *string   `json:"VideoScene,omitempty" xml:"VideoScene,omitempty"`
+	VideoScene *string `json:"VideoScene,omitempty" xml:"VideoScene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://invi-label.oss-cn-shanghai.aliyuncs.com/labl/temp/faceswap/test_for_api/xxxx.mp4
 	VideoURLObject io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -337,9 +411,12 @@ func (s *AddFaceVideoTemplateAdvanceRequest) SetVideoURLObject(v io.Reader) *Add
 }
 
 type AddFaceVideoTemplateResponseBody struct {
-	Date      *AddFaceVideoTemplateResponseBodyDate `json:"Date,omitempty" xml:"Date,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Date    *AddFaceVideoTemplateResponseBodyDate `json:"Date,omitempty" xml:"Date,omitempty" type:"Struct"`
+	Message *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// F61182AE-515B-5B0A-A877-1C9AE908FF15
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddFaceVideoTemplateResponseBody) String() string {
@@ -366,8 +443,12 @@ func (s *AddFaceVideoTemplateResponseBody) SetRequestId(v string) *AddFaceVideoT
 }
 
 type AddFaceVideoTemplateResponseBodyDate struct {
-	FaceInfos  []*AddFaceVideoTemplateResponseBodyDateFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Repeated"`
-	TemplateId *string                                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	FaceInfos []*AddFaceVideoTemplateResponseBodyDateFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 6cd509ea-54fa-4730-8e9d-c94cadcda048
+	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TransResult *string `json:"TransResult,omitempty" xml:"TransResult,omitempty"`
 }
 
 func (s AddFaceVideoTemplateResponseBodyDate) String() string {
@@ -385,6 +466,11 @@ func (s *AddFaceVideoTemplateResponseBodyDate) SetFaceInfos(v []*AddFaceVideoTem
 
 func (s *AddFaceVideoTemplateResponseBodyDate) SetTemplateId(v string) *AddFaceVideoTemplateResponseBodyDate {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *AddFaceVideoTemplateResponseBodyDate) SetTransResult(v string) *AddFaceVideoTemplateResponseBodyDate {
+	s.TransResult = &v
 	return s
 }
 
@@ -441,11 +527,28 @@ func (s *AddFaceVideoTemplateResponse) SetBody(v *AddFaceVideoTemplateResponseBo
 }
 
 type AdjustVideoColorRequest struct {
-	Mode         *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	VideoBitrate *int64  `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
-	VideoCodec   *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
-	VideoFormat  *string `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
-	VideoUrl     *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	// example:
+	//
+	// LogC
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// 20
+	VideoBitrate *int64 `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	// example:
+	//
+	// h264
+	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
+	// example:
+	//
+	// mp4
+	VideoFormat *string `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/AdjustVideoColor/AdjustVideoColor1.mp4
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s AdjustVideoColorRequest) String() string {
@@ -482,10 +585,27 @@ func (s *AdjustVideoColorRequest) SetVideoUrl(v string) *AdjustVideoColorRequest
 }
 
 type AdjustVideoColorAdvanceRequest struct {
-	Mode           *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	VideoBitrate   *int64    `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
-	VideoCodec     *string   `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
-	VideoFormat    *string   `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
+	// example:
+	//
+	// LogC
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// 20
+	VideoBitrate *int64 `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	// example:
+	//
+	// h264
+	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
+	// example:
+	//
+	// mp4
+	VideoFormat *string `json:"VideoFormat,omitempty" xml:"VideoFormat,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/AdjustVideoColor/AdjustVideoColor1.mp4
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -523,9 +643,12 @@ func (s *AdjustVideoColorAdvanceRequest) SetVideoUrlObject(v io.Reader) *AdjustV
 }
 
 type AdjustVideoColorResponseBody struct {
-	Data      *AdjustVideoColorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *AdjustVideoColorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// C4EB5E0B-0718-42CC-9B2C-1FB149256874
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AdjustVideoColorResponseBody) String() string {
@@ -552,6 +675,9 @@ func (s *AdjustVideoColorResponseBody) SetRequestId(v string) *AdjustVideoColorR
 }
 
 type AdjustVideoColorResponseBodyData struct {
+	// example:
+	//
+	// http://algo-app-aic-vd-cn-shanghai-prod.oss-cn-shanghai.aliyuncs.com/video-recolor/2021-01-21-07/46%3A05-test.mov?Expires=1611216966&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=icKn5gEQ6rNlSHmCi2zAf2tC0L****
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -598,15 +724,48 @@ func (s *AdjustVideoColorResponse) SetBody(v *AdjustVideoColorResponseBody) *Adj
 }
 
 type ChangeVideoSizeRequest struct {
-	B         *int32   `json:"B,omitempty" xml:"B,omitempty"`
-	CropType  *string  `json:"CropType,omitempty" xml:"CropType,omitempty"`
-	FillType  *string  `json:"FillType,omitempty" xml:"FillType,omitempty"`
-	G         *int32   `json:"G,omitempty" xml:"G,omitempty"`
-	Height    *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
-	R         *int32   `json:"R,omitempty" xml:"R,omitempty"`
+	// example:
+	//
+	// 0
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// smart
+	CropType *string `json:"CropType,omitempty" xml:"CropType,omitempty"`
+	// example:
+	//
+	// image
+	FillType *string `json:"FillType,omitempty" xml:"FillType,omitempty"`
+	// example:
+	//
+	// 0
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+	// example:
+	//
+	// 0.5
 	Tightness *float32 `json:"Tightness,omitempty" xml:"Tightness,omitempty"`
-	VideoUrl  *string  `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	Width     *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/ChangeVideoSize/ChangeVideoSize1.mp4
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 600
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s ChangeVideoSizeRequest) String() string {
@@ -663,15 +822,48 @@ func (s *ChangeVideoSizeRequest) SetWidth(v int32) *ChangeVideoSizeRequest {
 }
 
 type ChangeVideoSizeAdvanceRequest struct {
-	B              *int32    `json:"B,omitempty" xml:"B,omitempty"`
-	CropType       *string   `json:"CropType,omitempty" xml:"CropType,omitempty"`
-	FillType       *string   `json:"FillType,omitempty" xml:"FillType,omitempty"`
-	G              *int32    `json:"G,omitempty" xml:"G,omitempty"`
-	Height         *int32    `json:"Height,omitempty" xml:"Height,omitempty"`
-	R              *int32    `json:"R,omitempty" xml:"R,omitempty"`
-	Tightness      *float32  `json:"Tightness,omitempty" xml:"Tightness,omitempty"`
+	// example:
+	//
+	// 0
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// smart
+	CropType *string `json:"CropType,omitempty" xml:"CropType,omitempty"`
+	// example:
+	//
+	// image
+	FillType *string `json:"FillType,omitempty" xml:"FillType,omitempty"`
+	// example:
+	//
+	// 0
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+	// example:
+	//
+	// 0.5
+	Tightness *float32 `json:"Tightness,omitempty" xml:"Tightness,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/ChangeVideoSize/ChangeVideoSize1.mp4
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	Width          *int32    `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 600
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s ChangeVideoSizeAdvanceRequest) String() string {
@@ -728,9 +920,12 @@ func (s *ChangeVideoSizeAdvanceRequest) SetWidth(v int32) *ChangeVideoSizeAdvanc
 }
 
 type ChangeVideoSizeResponseBody struct {
-	Data      *ChangeVideoSizeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *ChangeVideoSizeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// C00C5A32-9F54-44F0-9778-0968DD9BF22A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ChangeVideoSizeResponseBody) String() string {
@@ -757,8 +952,14 @@ func (s *ChangeVideoSizeResponseBody) SetRequestId(v string) *ChangeVideoSizeRes
 }
 
 type ChangeVideoSizeResponseBodyData struct {
+	// example:
+	//
+	// http://vibktprfx-prod-prod-aic-vd-cn-shanghai.oss-cn-shanghai.aliyuncs.com/video-crop/2020-07-24-20/ZTZslWcU.jpg?Expires=1595597077&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=5cq1NNBEzS64U7RTXRBGlo7WPy****
 	VideoCoverUrl *string `json:"VideoCoverUrl,omitempty" xml:"VideoCoverUrl,omitempty"`
-	VideoUrl      *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	// example:
+	//
+	// http://vibktprfx-prod-prod-aic-vd-cn-shanghai.oss-cn-shanghai.aliyuncs.com/video-crop/2020-07-24-20/ZTZslWcU.mp4?Expires=1595597077&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=ZyvD9AXCT2IUFkVJngQdbXMwX6****
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s ChangeVideoSizeResponseBodyData) String() string {
@@ -809,10 +1010,24 @@ func (s *ChangeVideoSizeResponse) SetBody(v *ChangeVideoSizeResponseBody) *Chang
 }
 
 type ConvertHdrVideoRequest struct {
-	Bitrate        *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	HDRFormat      *string `json:"HDRFormat,omitempty" xml:"HDRFormat,omitempty"`
-	MaxIlluminance *int32  `json:"MaxIlluminance,omitempty" xml:"MaxIlluminance,omitempty"`
-	VideoURL       *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	// example:
+	//
+	// 30
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// example:
+	//
+	// HLG
+	HDRFormat *string `json:"HDRFormat,omitempty" xml:"HDRFormat,omitempty"`
+	// example:
+	//
+	// 1000
+	MaxIlluminance *int32 `json:"MaxIlluminance,omitempty" xml:"MaxIlluminance,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://invi-label.oss-cn-shanghai.aliyuncs.com/label/temp/faceswap/test_for_api/xxxx.mp4
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
 func (s ConvertHdrVideoRequest) String() string {
@@ -844,9 +1059,23 @@ func (s *ConvertHdrVideoRequest) SetVideoURL(v string) *ConvertHdrVideoRequest {
 }
 
 type ConvertHdrVideoAdvanceRequest struct {
-	Bitrate        *int32    `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	HDRFormat      *string   `json:"HDRFormat,omitempty" xml:"HDRFormat,omitempty"`
-	MaxIlluminance *int32    `json:"MaxIlluminance,omitempty" xml:"MaxIlluminance,omitempty"`
+	// example:
+	//
+	// 30
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// example:
+	//
+	// HLG
+	HDRFormat *string `json:"HDRFormat,omitempty" xml:"HDRFormat,omitempty"`
+	// example:
+	//
+	// 1000
+	MaxIlluminance *int32 `json:"MaxIlluminance,omitempty" xml:"MaxIlluminance,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://invi-label.oss-cn-shanghai.aliyuncs.com/label/temp/faceswap/test_for_api/xxxx.mp4
 	VideoURLObject io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -879,9 +1108,12 @@ func (s *ConvertHdrVideoAdvanceRequest) SetVideoURLObject(v io.Reader) *ConvertH
 }
 
 type ConvertHdrVideoResponseBody struct {
-	Data      *ConvertHdrVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *ConvertHdrVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E0CF495F-E806-4B9C-B204-E1230608239D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ConvertHdrVideoResponseBody) String() string {
@@ -908,6 +1140,9 @@ func (s *ConvertHdrVideoResponseBody) SetRequestId(v string) *ConvertHdrVideoRes
 }
 
 type ConvertHdrVideoResponseBodyData struct {
+	// example:
+	//
+	// http://vibktprfx-prod-prod-aic-vd-cn-shanghai.oss-cn-shanghai.aliyuncs.com/hdr-enhance/20-12-22/HaKDdTI48i2GQGy7_20-12-22-06-42-45.mp4?Expires=1608621178&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=SWc90T0JHg5eWc64x8GmYHKsvX****
 	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -954,6 +1189,11 @@ func (s *ConvertHdrVideoResponse) SetBody(v *ConvertHdrVideoResponseBody) *Conve
 }
 
 type DeleteFaceVideoTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3bf2418c-7adf-4002-a9d6-2f7cf1889c0d
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -971,6 +1211,9 @@ func (s *DeleteFaceVideoTemplateRequest) SetTemplateId(v string) *DeleteFaceVide
 }
 
 type DeleteFaceVideoTemplateResponseBody struct {
+	// example:
+	//
+	// 2337D184-CD63-57B5-96A2-B60AABCB7B58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1017,6 +1260,11 @@ func (s *DeleteFaceVideoTemplateResponse) SetBody(v *DeleteFaceVideoTemplateResp
 }
 
 type EnhancePortraitVideoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://viapi-test.oss-cn-shanghai.aliyuncs.com/test-team/xxx/shang/video/SD%289516100%29.mp4
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -1034,6 +1282,11 @@ func (s *EnhancePortraitVideoRequest) SetVideoUrl(v string) *EnhancePortraitVide
 }
 
 type EnhancePortraitVideoAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://viapi-test.oss-cn-shanghai.aliyuncs.com/test-team/xxx/shang/video/SD%289516100%29.mp4
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -1051,9 +1304,12 @@ func (s *EnhancePortraitVideoAdvanceRequest) SetVideoUrlObject(v io.Reader) *Enh
 }
 
 type EnhancePortraitVideoResponseBody struct {
-	Data      *EnhancePortraitVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *EnhancePortraitVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// d21a2afa-4d52-4bca-803b-e65028146603
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EnhancePortraitVideoResponseBody) String() string {
@@ -1080,6 +1336,9 @@ func (s *EnhancePortraitVideoResponseBody) SetRequestId(v string) *EnhancePortra
 }
 
 type EnhancePortraitVideoResponseBodyData struct {
+	// example:
+	//
+	// http://vibktprfx-prod-prod-xstream-cn-shanghai.oss-cn-shanghai.aliyuncs.com/xstream-framework/upload_result_video_2023-02-10_09.45.55.mp4?Expires=1675995564&amp;OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&amp;Signature=aIXTeM4IU4nARjy3SNA3YGhhqj****
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -1126,13 +1385,36 @@ func (s *EnhancePortraitVideoResponse) SetBody(v *EnhancePortraitVideoResponseBo
 }
 
 type EnhanceVideoQualityRequest struct {
-	Bitrate        *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	FrameRate      *int32  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	HDRFormat      *string `json:"HDRFormat,omitempty" xml:"HDRFormat,omitempty"`
-	MaxIlluminance *int32  `json:"MaxIlluminance,omitempty" xml:"MaxIlluminance,omitempty"`
-	OutPutHeight   *int32  `json:"OutPutHeight,omitempty" xml:"OutPutHeight,omitempty"`
-	OutPutWidth    *int32  `json:"OutPutWidth,omitempty" xml:"OutPutWidth,omitempty"`
-	VideoURL       *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	// example:
+	//
+	// 20
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// example:
+	//
+	// 50
+	FrameRate *int32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// example:
+	//
+	// PQ
+	HDRFormat *string `json:"HDRFormat,omitempty" xml:"HDRFormat,omitempty"`
+	// example:
+	//
+	// 600
+	MaxIlluminance *int32 `json:"MaxIlluminance,omitempty" xml:"MaxIlluminance,omitempty"`
+	// example:
+	//
+	// 200
+	OutPutHeight *int32 `json:"OutPutHeight,omitempty" xml:"OutPutHeight,omitempty"`
+	// example:
+	//
+	// 200
+	OutPutWidth *int32 `json:"OutPutWidth,omitempty" xml:"OutPutWidth,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://invi-label.oss-cn-shanghai.aliyuncs.com/label/temp/faceswap/test_for_api/xxxx.mp4
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
 func (s EnhanceVideoQualityRequest) String() string {
@@ -1179,12 +1461,35 @@ func (s *EnhanceVideoQualityRequest) SetVideoURL(v string) *EnhanceVideoQualityR
 }
 
 type EnhanceVideoQualityAdvanceRequest struct {
-	Bitrate        *int32    `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	FrameRate      *int32    `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	HDRFormat      *string   `json:"HDRFormat,omitempty" xml:"HDRFormat,omitempty"`
-	MaxIlluminance *int32    `json:"MaxIlluminance,omitempty" xml:"MaxIlluminance,omitempty"`
-	OutPutHeight   *int32    `json:"OutPutHeight,omitempty" xml:"OutPutHeight,omitempty"`
-	OutPutWidth    *int32    `json:"OutPutWidth,omitempty" xml:"OutPutWidth,omitempty"`
+	// example:
+	//
+	// 20
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// example:
+	//
+	// 50
+	FrameRate *int32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// example:
+	//
+	// PQ
+	HDRFormat *string `json:"HDRFormat,omitempty" xml:"HDRFormat,omitempty"`
+	// example:
+	//
+	// 600
+	MaxIlluminance *int32 `json:"MaxIlluminance,omitempty" xml:"MaxIlluminance,omitempty"`
+	// example:
+	//
+	// 200
+	OutPutHeight *int32 `json:"OutPutHeight,omitempty" xml:"OutPutHeight,omitempty"`
+	// example:
+	//
+	// 200
+	OutPutWidth *int32 `json:"OutPutWidth,omitempty" xml:"OutPutWidth,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://invi-label.oss-cn-shanghai.aliyuncs.com/label/temp/faceswap/test_for_api/xxxx.mp4
 	VideoURLObject io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -1232,9 +1537,12 @@ func (s *EnhanceVideoQualityAdvanceRequest) SetVideoURLObject(v io.Reader) *Enha
 }
 
 type EnhanceVideoQualityResponseBody struct {
-	Data      *EnhanceVideoQualityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *EnhanceVideoQualityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 881F39DC-C107-4817-A6D5-000BE833CC2A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EnhanceVideoQualityResponseBody) String() string {
@@ -1261,6 +1569,9 @@ func (s *EnhanceVideoQualityResponseBody) SetRequestId(v string) *EnhanceVideoQu
 }
 
 type EnhanceVideoQualityResponseBodyData struct {
+	// example:
+	//
+	// http://vibktprfx-prod-prod-aic-vd-cn-shanghai.oss-cn-shanghai.aliyuncs.com/uhd-enhance/20-11-20/Wwzf9z75GO5XdisS_20-11-20-07-13-48.mp4?Expires=1605858272&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=vvY0D%2Bl5eEzp%2BD7mPOWz0zMU7v****
 	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -1307,8 +1618,13 @@ func (s *EnhanceVideoQualityResponse) SetBody(v *EnhanceVideoQualityResponseBody
 }
 
 type EraseVideoLogoRequest struct {
-	Boxes    []*EraseVideoLogoRequestBoxes `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
-	VideoUrl *string                       `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	Boxes []*EraseVideoLogoRequestBoxes `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/EraseVideoLogo/EraseVideoLogo1.mp4
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s EraseVideoLogoRequest) String() string {
@@ -1330,9 +1646,21 @@ func (s *EraseVideoLogoRequest) SetVideoUrl(v string) *EraseVideoLogoRequest {
 }
 
 type EraseVideoLogoRequestBoxes struct {
+	// example:
+	//
+	// 1.0
 	H *float32 `json:"H,omitempty" xml:"H,omitempty"`
+	// example:
+	//
+	// 1.0
 	W *float32 `json:"W,omitempty" xml:"W,omitempty"`
+	// example:
+	//
+	// 0.0
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.0
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -1365,8 +1693,13 @@ func (s *EraseVideoLogoRequestBoxes) SetY(v float32) *EraseVideoLogoRequestBoxes
 }
 
 type EraseVideoLogoAdvanceRequest struct {
-	Boxes          []*EraseVideoLogoAdvanceRequestBoxes `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
-	VideoUrlObject io.Reader                            `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	Boxes []*EraseVideoLogoAdvanceRequestBoxes `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/EraseVideoLogo/EraseVideoLogo1.mp4
+	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s EraseVideoLogoAdvanceRequest) String() string {
@@ -1388,9 +1721,21 @@ func (s *EraseVideoLogoAdvanceRequest) SetVideoUrlObject(v io.Reader) *EraseVide
 }
 
 type EraseVideoLogoAdvanceRequestBoxes struct {
+	// example:
+	//
+	// 1.0
 	H *float32 `json:"H,omitempty" xml:"H,omitempty"`
+	// example:
+	//
+	// 1.0
 	W *float32 `json:"W,omitempty" xml:"W,omitempty"`
+	// example:
+	//
+	// 0.0
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.0
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -1423,9 +1768,12 @@ func (s *EraseVideoLogoAdvanceRequestBoxes) SetY(v float32) *EraseVideoLogoAdvan
 }
 
 type EraseVideoLogoResponseBody struct {
-	Data      *EraseVideoLogoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *EraseVideoLogoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 95532F36-98FC-4DCD-815C-282BB26D2DA1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EraseVideoLogoResponseBody) String() string {
@@ -1452,6 +1800,9 @@ func (s *EraseVideoLogoResponseBody) SetRequestId(v string) *EraseVideoLogoRespo
 }
 
 type EraseVideoLogoResponseBodyData struct {
+	// example:
+	//
+	// http://algo-app-aic-vd-cn-shanghai-prod.oss-cn-shanghai.aliyuncs.com/video-delogo/2020-03-20-11/53%3A56-DGNUGG7AcRlAylhr.mp4?Expires=1584707036&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=7CvsX7X1rSU%2B%2FDxnw484lb3LCD****
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -1498,11 +1849,28 @@ func (s *EraseVideoLogoResponse) SetBody(v *EraseVideoLogoResponseBody) *EraseVi
 }
 
 type EraseVideoSubtitlesRequest struct {
-	BH       *float32 `json:"BH,omitempty" xml:"BH,omitempty"`
-	BW       *float32 `json:"BW,omitempty" xml:"BW,omitempty"`
-	BX       *float32 `json:"BX,omitempty" xml:"BX,omitempty"`
-	BY       *float32 `json:"BY,omitempty" xml:"BY,omitempty"`
-	VideoUrl *string  `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	// example:
+	//
+	// 0.25
+	BH *float32 `json:"BH,omitempty" xml:"BH,omitempty"`
+	// example:
+	//
+	// 1
+	BW *float32 `json:"BW,omitempty" xml:"BW,omitempty"`
+	// example:
+	//
+	// 0
+	BX *float32 `json:"BX,omitempty" xml:"BX,omitempty"`
+	// example:
+	//
+	// 0.75
+	BY *float32 `json:"BY,omitempty" xml:"BY,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/EraseVideoSubtitles/EraseVideoSubtitles1.mp4
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s EraseVideoSubtitlesRequest) String() string {
@@ -1539,10 +1907,27 @@ func (s *EraseVideoSubtitlesRequest) SetVideoUrl(v string) *EraseVideoSubtitlesR
 }
 
 type EraseVideoSubtitlesAdvanceRequest struct {
-	BH             *float32  `json:"BH,omitempty" xml:"BH,omitempty"`
-	BW             *float32  `json:"BW,omitempty" xml:"BW,omitempty"`
-	BX             *float32  `json:"BX,omitempty" xml:"BX,omitempty"`
-	BY             *float32  `json:"BY,omitempty" xml:"BY,omitempty"`
+	// example:
+	//
+	// 0.25
+	BH *float32 `json:"BH,omitempty" xml:"BH,omitempty"`
+	// example:
+	//
+	// 1
+	BW *float32 `json:"BW,omitempty" xml:"BW,omitempty"`
+	// example:
+	//
+	// 0
+	BX *float32 `json:"BX,omitempty" xml:"BX,omitempty"`
+	// example:
+	//
+	// 0.75
+	BY *float32 `json:"BY,omitempty" xml:"BY,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/EraseVideoSubtitles/EraseVideoSubtitles1.mp4
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -1580,9 +1965,12 @@ func (s *EraseVideoSubtitlesAdvanceRequest) SetVideoUrlObject(v io.Reader) *Eras
 }
 
 type EraseVideoSubtitlesResponseBody struct {
-	Data      *EraseVideoSubtitlesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *EraseVideoSubtitlesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// CCB082BF-A6B1-4C28-9E49-562EEE7DE639
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EraseVideoSubtitlesResponseBody) String() string {
@@ -1609,6 +1997,9 @@ func (s *EraseVideoSubtitlesResponseBody) SetRequestId(v string) *EraseVideoSubt
 }
 
 type EraseVideoSubtitlesResponseBodyData struct {
+	// example:
+	//
+	// http://algo-app-aic-vd-cn-shanghai-prod.oss-cn-shanghai.aliyuncs.com/video-desubtitle/2021-04-13-10/41%3A57-TcFd6Zug7gXwbeqs.mp4?Expires=1618312317&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=LZnGSQ8019%2Br5rcR4vKOaaT2UE****
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -1655,8 +2046,18 @@ func (s *EraseVideoSubtitlesResponse) SetBody(v *EraseVideoSubtitlesResponseBody
 }
 
 type GenerateHumanAnimeStyleVideoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// anime
 	CartoonStyle *string `json:"CartoonStyle,omitempty" xml:"CartoonStyle,omitempty"`
-	VideoUrl     *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://viapi-test.oss-cn-shanghai.aliyuncs.com/test/xxx/eas/EvaluateVideoQuality/123.mp4
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s GenerateHumanAnimeStyleVideoRequest) String() string {
@@ -1678,7 +2079,17 @@ func (s *GenerateHumanAnimeStyleVideoRequest) SetVideoUrl(v string) *GenerateHum
 }
 
 type GenerateHumanAnimeStyleVideoAdvanceRequest struct {
-	CartoonStyle   *string   `json:"CartoonStyle,omitempty" xml:"CartoonStyle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// anime
+	CartoonStyle *string `json:"CartoonStyle,omitempty" xml:"CartoonStyle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://viapi-test.oss-cn-shanghai.aliyuncs.com/test/xxx/eas/EvaluateVideoQuality/123.mp4
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -1701,9 +2112,12 @@ func (s *GenerateHumanAnimeStyleVideoAdvanceRequest) SetVideoUrlObject(v io.Read
 }
 
 type GenerateHumanAnimeStyleVideoResponseBody struct {
-	Data      *GenerateHumanAnimeStyleVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *GenerateHumanAnimeStyleVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// d21a2afa-4d52-4bca-803b-e65028146603
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateHumanAnimeStyleVideoResponseBody) String() string {
@@ -1730,6 +2144,9 @@ func (s *GenerateHumanAnimeStyleVideoResponseBody) SetRequestId(v string) *Gener
 }
 
 type GenerateHumanAnimeStyleVideoResponseBodyData struct {
+	// example:
+	//
+	// http://vibktprfx-prod-prod-xstream-cn-shanghai.oss-cn-shanghai.aliyuncs.com/xstream-framework/upload_result_video_2023-02-10_09.45.55.mp4?Expires=1675995564&amp;OSSAccessKeyId=LTAI4FoLmvQ9urWXgSR****&amp;Signature=aIXTeM4IU4nARjy3SNA3YGhhqj****
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -1776,18 +2193,50 @@ func (s *GenerateHumanAnimeStyleVideoResponse) SetBody(v *GenerateHumanAnimeStyl
 }
 
 type GenerateVideoRequest struct {
-	Duration         *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	DurationAdaption *bool    `json:"DurationAdaption,omitempty" xml:"DurationAdaption,omitempty"`
+	// example:
+	//
+	// 10
+	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// true
+	DurationAdaption *bool `json:"DurationAdaption,omitempty" xml:"DurationAdaption,omitempty"`
 	// 1
-	FileList        []*GenerateVideoRequestFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
-	Height          *int32                          `json:"Height,omitempty" xml:"Height,omitempty"`
-	Mute            *bool                           `json:"Mute,omitempty" xml:"Mute,omitempty"`
-	PuzzleEffect    *bool                           `json:"PuzzleEffect,omitempty" xml:"PuzzleEffect,omitempty"`
-	Scene           *string                         `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	SmartEffect     *bool                           `json:"SmartEffect,omitempty" xml:"SmartEffect,omitempty"`
-	Style           *string                         `json:"Style,omitempty" xml:"Style,omitempty"`
-	TransitionStyle *string                         `json:"TransitionStyle,omitempty" xml:"TransitionStyle,omitempty"`
-	Width           *int32                          `json:"Width,omitempty" xml:"Width,omitempty"`
+	//
+	// This parameter is required.
+	FileList []*GenerateVideoRequestFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 640
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// true
+	Mute *bool `json:"Mute,omitempty" xml:"Mute,omitempty"`
+	// example:
+	//
+	// true
+	PuzzleEffect *bool `json:"PuzzleEffect,omitempty" xml:"PuzzleEffect,omitempty"`
+	// example:
+	//
+	// costume
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// example:
+	//
+	// true
+	SmartEffect *bool `json:"SmartEffect,omitempty" xml:"SmartEffect,omitempty"`
+	// example:
+	//
+	// fast
+	Style *string `json:"Style,omitempty" xml:"Style,omitempty"`
+	// example:
+	//
+	// brush
+	TransitionStyle *string `json:"TransitionStyle,omitempty" xml:"TransitionStyle,omitempty"`
+	// example:
+	//
+	// 640
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GenerateVideoRequest) String() string {
@@ -1854,9 +2303,24 @@ func (s *GenerateVideoRequest) SetWidth(v int32) *GenerateVideoRequest {
 }
 
 type GenerateVideoRequestFileList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1-video1.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/GenerateVideo/1-video1.mp4
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// video
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GenerateVideoRequestFileList) String() string {
@@ -1883,18 +2347,50 @@ func (s *GenerateVideoRequestFileList) SetType(v string) *GenerateVideoRequestFi
 }
 
 type GenerateVideoAdvanceRequest struct {
-	Duration         *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	DurationAdaption *bool    `json:"DurationAdaption,omitempty" xml:"DurationAdaption,omitempty"`
+	// example:
+	//
+	// 10
+	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// true
+	DurationAdaption *bool `json:"DurationAdaption,omitempty" xml:"DurationAdaption,omitempty"`
 	// 1
-	FileList        []*GenerateVideoAdvanceRequestFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
-	Height          *int32                                 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Mute            *bool                                  `json:"Mute,omitempty" xml:"Mute,omitempty"`
-	PuzzleEffect    *bool                                  `json:"PuzzleEffect,omitempty" xml:"PuzzleEffect,omitempty"`
-	Scene           *string                                `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	SmartEffect     *bool                                  `json:"SmartEffect,omitempty" xml:"SmartEffect,omitempty"`
-	Style           *string                                `json:"Style,omitempty" xml:"Style,omitempty"`
-	TransitionStyle *string                                `json:"TransitionStyle,omitempty" xml:"TransitionStyle,omitempty"`
-	Width           *int32                                 `json:"Width,omitempty" xml:"Width,omitempty"`
+	//
+	// This parameter is required.
+	FileList []*GenerateVideoAdvanceRequestFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 640
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// true
+	Mute *bool `json:"Mute,omitempty" xml:"Mute,omitempty"`
+	// example:
+	//
+	// true
+	PuzzleEffect *bool `json:"PuzzleEffect,omitempty" xml:"PuzzleEffect,omitempty"`
+	// example:
+	//
+	// costume
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// example:
+	//
+	// true
+	SmartEffect *bool `json:"SmartEffect,omitempty" xml:"SmartEffect,omitempty"`
+	// example:
+	//
+	// fast
+	Style *string `json:"Style,omitempty" xml:"Style,omitempty"`
+	// example:
+	//
+	// brush
+	TransitionStyle *string `json:"TransitionStyle,omitempty" xml:"TransitionStyle,omitempty"`
+	// example:
+	//
+	// 640
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GenerateVideoAdvanceRequest) String() string {
@@ -1961,9 +2457,24 @@ func (s *GenerateVideoAdvanceRequest) SetWidth(v int32) *GenerateVideoAdvanceReq
 }
 
 type GenerateVideoAdvanceRequestFileList struct {
-	FileName      *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1-video1.mp4
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/GenerateVideo/1-video1.mp4
 	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Type          *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// video
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GenerateVideoAdvanceRequestFileList) String() string {
@@ -1990,9 +2501,12 @@ func (s *GenerateVideoAdvanceRequestFileList) SetType(v string) *GenerateVideoAd
 }
 
 type GenerateVideoResponseBody struct {
-	Data      *GenerateVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *GenerateVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 7CB9B663-3EF8-4C9C-A464-FDA2B5F1E3A4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateVideoResponseBody) String() string {
@@ -2019,8 +2533,14 @@ func (s *GenerateVideoResponseBody) SetRequestId(v string) *GenerateVideoRespons
 }
 
 type GenerateVideoResponseBodyData struct {
+	// example:
+	//
+	// http://vibktprfx-prod-prod-aic-vd-cn-shanghai.oss-cn-shanghai.aliyuncs.com/video-gen/2021-05-07-15/B9MGfwxu.mp4?Expires=1620372653&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=F9flL1n5GPYaae0dLl%2F8D%2Bn4j6****
 	VideoCoverUrl *string `json:"VideoCoverUrl,omitempty" xml:"VideoCoverUrl,omitempty"`
-	VideoUrl      *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	// example:
+	//
+	// http://vibktprfx-prod-prod-aic-vd-cn-shanghai.oss-cn-shanghai.aliyuncs.com/video-gen/2021-05-07-15/B9MGfwxu.jpg?Expires=1620372653&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=djBvGvdJu8bd%2FC%2BVHdg1d57U%2Bu****
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s GenerateVideoResponseBodyData) String() string {
@@ -2071,6 +2591,11 @@ func (s *GenerateVideoResponse) SetBody(v *GenerateVideoResponseBody) *GenerateV
 }
 
 type GetAsyncJobResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// E75FE679-0303-4DD1-8252-1143B4FA8A27
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -2088,8 +2613,11 @@ func (s *GetAsyncJobResultRequest) SetJobId(v string) *GetAsyncJobResultRequest 
 }
 
 type GetAsyncJobResultResponseBody struct {
-	Data      *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 43A0AEB6-45F4-4138-8E89-E1A5D63200E3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAsyncJobResultResponseBody) String() string {
@@ -2111,11 +2639,26 @@ func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResul
 }
 
 type GetAsyncJobResultResponseBodyData struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// InvalidParameter
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// paramsIllegal
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 49E2CC28-ED1D-4CC5-854D-7D0AE2B20976
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// {\\"VideoUrl\\":\\"http://algo-app-aic-vd-cn-shanghai-prod.oss-cn-shanghai.aliyuncs.com/video-super-resolution/2020-03-26-02/55%3A59-XFLsuEKpPxleHl4n.mp4?Expires=1585193159&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=OqsxMwAKsFVjPO%2Brgw%2BpXHIm6v****\\"}
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// PROCESS_SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAsyncJobResultResponseBodyData) String() string {
@@ -2181,9 +2724,20 @@ func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *G
 }
 
 type InterpolateVideoFrameRequest struct {
-	Bitrate   *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	FrameRate *int32  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	VideoURL  *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	// example:
+	//
+	// 30
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// example:
+	//
+	// 70
+	FrameRate *int32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/InterpolateVideoFrame/InterpolateVideoFrame3.mp4
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
 func (s InterpolateVideoFrameRequest) String() string {
@@ -2210,8 +2764,19 @@ func (s *InterpolateVideoFrameRequest) SetVideoURL(v string) *InterpolateVideoFr
 }
 
 type InterpolateVideoFrameAdvanceRequest struct {
-	Bitrate        *int32    `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	FrameRate      *int32    `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// example:
+	//
+	// 30
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// example:
+	//
+	// 70
+	FrameRate *int32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/InterpolateVideoFrame/InterpolateVideoFrame3.mp4
 	VideoURLObject io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -2239,9 +2804,12 @@ func (s *InterpolateVideoFrameAdvanceRequest) SetVideoURLObject(v io.Reader) *In
 }
 
 type InterpolateVideoFrameResponseBody struct {
-	Data      *InterpolateVideoFrameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *InterpolateVideoFrameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 7EF85B5B-FB44-4C3E-9B8F-08C6CD912CEB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s InterpolateVideoFrameResponseBody) String() string {
@@ -2268,6 +2836,9 @@ func (s *InterpolateVideoFrameResponseBody) SetRequestId(v string) *InterpolateV
 }
 
 type InterpolateVideoFrameResponseBodyData struct {
+	// example:
+	//
+	// http://vibktprfx-prod-prod-aic-vd-cn-shanghai.oss-cn-shanghai.aliyuncs.com/video-interp/20-12-22/mRsPNVunG7717nne_20-12-22-07-29-51.mp4?Expires=1608624020&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=NFjSLll8E7E1tkuLPFyTpr6ULi****
 	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -2314,9 +2885,19 @@ func (s *InterpolateVideoFrameResponse) SetBody(v *InterpolateVideoFrameResponse
 }
 
 type MergeVideoFaceRequest struct {
-	AddWatermark  *bool   `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
-	Enhance       *bool   `json:"Enhance,omitempty" xml:"Enhance,omitempty"`
-	ReferenceURL  *string `json:"ReferenceURL,omitempty" xml:"ReferenceURL,omitempty"`
+	AddWatermark *bool `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
+	Enhance      *bool `json:"Enhance,omitempty" xml:"Enhance,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/MergeVideoFace/MergeVideoFace-pic1.png
+	ReferenceURL *string `json:"ReferenceURL,omitempty" xml:"ReferenceURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/MergeVideoFace/MergeVideoFace1.mp4
 	VideoURL      *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
 }
@@ -2355,11 +2936,21 @@ func (s *MergeVideoFaceRequest) SetWatermarkType(v string) *MergeVideoFaceReques
 }
 
 type MergeVideoFaceAdvanceRequest struct {
-	AddWatermark       *bool     `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
-	Enhance            *bool     `json:"Enhance,omitempty" xml:"Enhance,omitempty"`
+	AddWatermark *bool `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
+	Enhance      *bool `json:"Enhance,omitempty" xml:"Enhance,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/MergeVideoFace/MergeVideoFace-pic1.png
 	ReferenceURLObject io.Reader `json:"ReferenceURL,omitempty" xml:"ReferenceURL,omitempty"`
-	VideoURLObject     io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
-	WatermarkType      *string   `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/MergeVideoFace/MergeVideoFace1.mp4
+	VideoURLObject io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	WatermarkType  *string   `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
 }
 
 func (s MergeVideoFaceAdvanceRequest) String() string {
@@ -2396,9 +2987,12 @@ func (s *MergeVideoFaceAdvanceRequest) SetWatermarkType(v string) *MergeVideoFac
 }
 
 type MergeVideoFaceResponseBody struct {
-	Data      *MergeVideoFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *MergeVideoFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// DEF90E76-B62D-45EF-8835-CA3C83842B18
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s MergeVideoFaceResponseBody) String() string {
@@ -2425,6 +3019,9 @@ func (s *MergeVideoFaceResponseBody) SetRequestId(v string) *MergeVideoFaceRespo
 }
 
 type MergeVideoFaceResponseBodyData struct {
+	// example:
+	//
+	// http://vibktprfx-prod-prod-aic-gd-cn-shanghai.oss-cn-shanghai.aliyuncs.com/video-face-fusion/A657011C-82B4-4705-A5DB-69B18B7CE89D.mp4?Expires=1606378308&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=Hl3cq5XedTGCscOSr0OGVxAS2o****
 	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -2471,12 +3068,20 @@ func (s *MergeVideoFaceResponse) SetBody(v *MergeVideoFaceResponseBody) *MergeVi
 }
 
 type MergeVideoModelFaceRequest struct {
-	AddWatermark  *bool                                   `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
-	Enhance       *bool                                   `json:"Enhance,omitempty" xml:"Enhance,omitempty"`
-	FaceImageURL  *string                                 `json:"FaceImageURL,omitempty" xml:"FaceImageURL,omitempty"`
-	MergeInfos    []*MergeVideoModelFaceRequestMergeInfos `json:"MergeInfos,omitempty" xml:"MergeInfos,omitempty" type:"Repeated"`
-	TemplateId    *string                                 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	WatermarkType *string                                 `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
+	AddWatermark *bool `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
+	Enhance      *bool `json:"Enhance,omitempty" xml:"Enhance,omitempty"`
+	// example:
+	//
+	// https://invi-label.oss-cn-shanghai.aliyuncs.com/label/temp/faceswap/ref/ref.jpg
+	FaceImageURL *string                                 `json:"FaceImageURL,omitempty" xml:"FaceImageURL,omitempty"`
+	MergeInfos   []*MergeVideoModelFaceRequestMergeInfos `json:"MergeInfos,omitempty" xml:"MergeInfos,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3bf2418c-7adf-4002-a9d6-2f7cf1889c0d
+	TemplateId    *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
 }
 
 func (s MergeVideoModelFaceRequest) String() string {
@@ -2547,12 +3152,20 @@ func (s *MergeVideoModelFaceRequestMergeInfos) SetTemplateFaceURL(v string) *Mer
 }
 
 type MergeVideoModelFaceAdvanceRequest struct {
-	AddWatermark       *bool                                          `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
-	Enhance            *bool                                          `json:"Enhance,omitempty" xml:"Enhance,omitempty"`
+	AddWatermark *bool `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
+	Enhance      *bool `json:"Enhance,omitempty" xml:"Enhance,omitempty"`
+	// example:
+	//
+	// https://invi-label.oss-cn-shanghai.aliyuncs.com/label/temp/faceswap/ref/ref.jpg
 	FaceImageURLObject io.Reader                                      `json:"FaceImageURL,omitempty" xml:"FaceImageURL,omitempty"`
 	MergeInfos         []*MergeVideoModelFaceAdvanceRequestMergeInfos `json:"MergeInfos,omitempty" xml:"MergeInfos,omitempty" type:"Repeated"`
-	TemplateId         *string                                        `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	WatermarkType      *string                                        `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3bf2418c-7adf-4002-a9d6-2f7cf1889c0d
+	TemplateId    *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
 }
 
 func (s MergeVideoModelFaceAdvanceRequest) String() string {
@@ -2623,9 +3236,12 @@ func (s *MergeVideoModelFaceAdvanceRequestMergeInfos) SetTemplateFaceURL(v strin
 }
 
 type MergeVideoModelFaceResponseBody struct {
-	Data      *MergeVideoModelFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *MergeVideoModelFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 334F180F-3B50-51CB-B4CB-9A86A542D3BC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s MergeVideoModelFaceResponseBody) String() string {
@@ -2652,6 +3268,9 @@ func (s *MergeVideoModelFaceResponseBody) SetRequestId(v string) *MergeVideoMode
 }
 
 type MergeVideoModelFaceResponseBodyData struct {
+	// example:
+	//
+	// http://vibktprfx-prod-prod-aic-gd-cn-shanghai.oss-cn-shanghai.aliyuncs.com/video-face-fusion/334F180F-3B50-51CB-B4CB-9A86A542D3BC-5716-20210906-074905.mp4?Expires=1630916420&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=OEtNqVYxXRwkyO4BrsYVJ8q5bx****
 	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -2698,8 +3317,14 @@ func (s *MergeVideoModelFaceResponse) SetBody(v *MergeVideoModelFaceResponseBody
 }
 
 type QueryFaceVideoTemplateRequest struct {
-	PageNo     *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 3bf2418c-7adf-4002-a9d6-2f7cf1889c0d
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -2727,8 +3352,11 @@ func (s *QueryFaceVideoTemplateRequest) SetTemplateId(v string) *QueryFaceVideoT
 }
 
 type QueryFaceVideoTemplateResponseBody struct {
-	Data      *QueryFaceVideoTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *QueryFaceVideoTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// A06E3D21-890D-500B-97DA-D8B99D2DDDC4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryFaceVideoTemplateResponseBody) String() string {
@@ -2773,12 +3401,27 @@ func (s *QueryFaceVideoTemplateResponseBodyData) SetTotal(v int64) *QueryFaceVid
 }
 
 type QueryFaceVideoTemplateResponseBodyDataElements struct {
-	CreateTime  *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FaceInfos   []*QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Repeated"`
-	TemplateId  *string                                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateURL *string                                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	UpdateTime  *string                                                    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId      *string                                                    `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 2021-09-06 15:17:19
+	CreateTime *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FaceInfos  []*QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3bf2418c-7adf-4002-a9d6-2f7cf1889c0d
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// http://vibktprfx-prod-prod-aic-gd-cn-shanghai.oss-cn-shanghai.aliyuncs.com/image-face-fusion/OriginUrl/user/2021-09-06/e4d6ecf6-8dc8-4dac-acb5-56a737ccbc06?Expires=1630914551&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=kBcLm66y7%2FZ3eIMgwXJg1zNP7k****
+	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	// example:
+	//
+	// 2021-09-06 15:18:15
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// zhangsan
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryFaceVideoTemplateResponseBodyDataElements) String() string {
@@ -2872,6 +3515,11 @@ func (s *QueryFaceVideoTemplateResponse) SetBody(v *QueryFaceVideoTemplateRespon
 }
 
 type ReduceVideoNoiseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://viapi-test.oss-cn-shanghai.aliyuncs.com/test-team/xxx/shang/video/SD%289516100%29.mp4
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -2889,6 +3537,11 @@ func (s *ReduceVideoNoiseRequest) SetVideoUrl(v string) *ReduceVideoNoiseRequest
 }
 
 type ReduceVideoNoiseAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://viapi-test.oss-cn-shanghai.aliyuncs.com/test-team/xxx/shang/video/SD%289516100%29.mp4
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -2906,9 +3559,12 @@ func (s *ReduceVideoNoiseAdvanceRequest) SetVideoUrlObject(v io.Reader) *ReduceV
 }
 
 type ReduceVideoNoiseResponseBody struct {
-	Data      *ReduceVideoNoiseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *ReduceVideoNoiseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// d21a2afa-4d52-4bca-803b-e65028146603
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ReduceVideoNoiseResponseBody) String() string {
@@ -2935,6 +3591,9 @@ func (s *ReduceVideoNoiseResponseBody) SetRequestId(v string) *ReduceVideoNoiseR
 }
 
 type ReduceVideoNoiseResponseBodyData struct {
+	// example:
+	//
+	// http://vibktprfx-prod-prod-xstream-cn-shanghai.oss-cn-shanghai.aliyuncs.com/xstream-framework/upload_result_video_2023-02-10_09.45.55.mp4?Expires=1675995564&amp;OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&amp;Signature=aIXTeM4IU4nARjy3SNA3YGhhqj****
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -2981,7 +3640,15 @@ func (s *ReduceVideoNoiseResponse) SetBody(v *ReduceVideoNoiseResponseBody) *Red
 }
 
 type SuperResolveVideoRequest struct {
-	BitRate  *int32  `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
+	// example:
+	//
+	// 5
+	BitRate *int32 `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/SuperResolveVideo/SuperResolveVideo2.mp4
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -3004,7 +3671,15 @@ func (s *SuperResolveVideoRequest) SetVideoUrl(v string) *SuperResolveVideoReque
 }
 
 type SuperResolveVideoAdvanceRequest struct {
-	BitRate        *int32    `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
+	// example:
+	//
+	// 5
+	BitRate *int32 `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videoenhan/SuperResolveVideo/SuperResolveVideo2.mp4
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -3027,9 +3702,12 @@ func (s *SuperResolveVideoAdvanceRequest) SetVideoUrlObject(v io.Reader) *SuperR
 }
 
 type SuperResolveVideoResponseBody struct {
-	Data      *SuperResolveVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *SuperResolveVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 186AC396-0EEC-46F1-AAA1-BF3585227427
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SuperResolveVideoResponseBody) String() string {
@@ -3056,6 +3734,9 @@ func (s *SuperResolveVideoResponseBody) SetRequestId(v string) *SuperResolveVide
 }
 
 type SuperResolveVideoResponseBodyData struct {
+	// example:
+	//
+	// http://algo-app-aic-vd-cn-shanghai-prod.oss-cn-shanghai.aliyuncs.com/video-super-resolution/2020-03-20-12/12%3A11-UlLVELFzIy5EAyEh.mp4?Expires=1584708132&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=0V8yKrCVybC4KIPtRuGKJDJaQT****
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -3102,9 +3783,20 @@ func (s *SuperResolveVideoResponse) SetBody(v *SuperResolveVideoResponseBody) *S
 }
 
 type ToneSdrVideoRequest struct {
-	Bitrate      *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// example:
+	//
+	// 30
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// example:
+	//
+	// auto_l2
 	RecolorModel *string `json:"RecolorModel,omitempty" xml:"RecolorModel,omitempty"`
-	VideoURL     *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://invi-label.oss-cn-shanghai.aliyuncs.com/label/temp/faceswap/test_for_api/xxxx.mp4
+	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
 func (s ToneSdrVideoRequest) String() string {
@@ -3131,8 +3823,19 @@ func (s *ToneSdrVideoRequest) SetVideoURL(v string) *ToneSdrVideoRequest {
 }
 
 type ToneSdrVideoAdvanceRequest struct {
-	Bitrate        *int32    `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	RecolorModel   *string   `json:"RecolorModel,omitempty" xml:"RecolorModel,omitempty"`
+	// example:
+	//
+	// 30
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// example:
+	//
+	// auto_l2
+	RecolorModel *string `json:"RecolorModel,omitempty" xml:"RecolorModel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://invi-label.oss-cn-shanghai.aliyuncs.com/label/temp/faceswap/test_for_api/xxxx.mp4
 	VideoURLObject io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -3160,9 +3863,12 @@ func (s *ToneSdrVideoAdvanceRequest) SetVideoURLObject(v io.Reader) *ToneSdrVide
 }
 
 type ToneSdrVideoResponseBody struct {
-	Data      *ToneSdrVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *ToneSdrVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 89B5AFF1-8A64-4F76-B391-56AD7D22DE35
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ToneSdrVideoResponseBody) String() string {
@@ -3189,6 +3895,9 @@ func (s *ToneSdrVideoResponseBody) SetRequestId(v string) *ToneSdrVideoResponseB
 }
 
 type ToneSdrVideoResponseBodyData struct {
+	// example:
+	//
+	// http://vibktprfx-prod-prod-aic-vd-cn-shanghai.oss-cn-shanghai.aliyuncs.com/sdr-color-enhance/20-12-22/SxBKgwBhlObusG20_20-12-22-07-59-45.mp4?Expires=1608625795&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=maoOZ52y7U9ZuL2KqI0IfGq8%2FR****
 	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -3281,6 +3990,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AbstractEcommerceVideoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AbstractEcommerceVideoResponse
 func (client *Client) AbstractEcommerceVideoWithOptions(request *AbstractEcommerceVideoRequest, runtime *util.RuntimeOptions) (_result *AbstractEcommerceVideoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3326,6 +4040,9 @@ func (client *Client) AbstractEcommerceVideoWithOptions(request *AbstractEcommer
 	return _result, _err
 }
 
+// @param request - AbstractEcommerceVideoRequest
+//
+// @return AbstractEcommerceVideoResponse
 func (client *Client) AbstractEcommerceVideo(request *AbstractEcommerceVideoRequest) (_result *AbstractEcommerceVideoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AbstractEcommerceVideoResponse{}
@@ -3356,7 +4073,7 @@ func (client *Client) AbstractEcommerceVideoAdvance(request *AbstractEcommerceVi
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3384,12 +4101,17 @@ func (client *Client) AbstractEcommerceVideoAdvance(request *AbstractEcommerceVi
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -3443,6 +4165,11 @@ func (client *Client) AbstractEcommerceVideoAdvance(request *AbstractEcommerceVi
 	return _result, _err
 }
 
+// @param request - AbstractFilmVideoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AbstractFilmVideoResponse
 func (client *Client) AbstractFilmVideoWithOptions(request *AbstractFilmVideoRequest, runtime *util.RuntimeOptions) (_result *AbstractFilmVideoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3480,6 +4207,9 @@ func (client *Client) AbstractFilmVideoWithOptions(request *AbstractFilmVideoReq
 	return _result, _err
 }
 
+// @param request - AbstractFilmVideoRequest
+//
+// @return AbstractFilmVideoResponse
 func (client *Client) AbstractFilmVideo(request *AbstractFilmVideoRequest) (_result *AbstractFilmVideoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AbstractFilmVideoResponse{}
@@ -3510,7 +4240,7 @@ func (client *Client) AbstractFilmVideoAdvance(request *AbstractFilmVideoAdvance
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3538,12 +4268,17 @@ func (client *Client) AbstractFilmVideoAdvance(request *AbstractFilmVideoAdvance
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -3597,6 +4332,15 @@ func (client *Client) AbstractFilmVideoAdvance(request *AbstractFilmVideoAdvance
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频人脸融合模板增加
+//
+// @param request - AddFaceVideoTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddFaceVideoTemplateResponse
 func (client *Client) AddFaceVideoTemplateWithOptions(request *AddFaceVideoTemplateRequest, runtime *util.RuntimeOptions) (_result *AddFaceVideoTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3634,6 +4378,13 @@ func (client *Client) AddFaceVideoTemplateWithOptions(request *AddFaceVideoTempl
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频人脸融合模板增加
+//
+// @param request - AddFaceVideoTemplateRequest
+//
+// @return AddFaceVideoTemplateResponse
 func (client *Client) AddFaceVideoTemplate(request *AddFaceVideoTemplateRequest) (_result *AddFaceVideoTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddFaceVideoTemplateResponse{}
@@ -3664,7 +4415,7 @@ func (client *Client) AddFaceVideoTemplateAdvance(request *AddFaceVideoTemplateA
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3692,12 +4443,17 @@ func (client *Client) AddFaceVideoTemplateAdvance(request *AddFaceVideoTemplateA
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -3751,6 +4507,11 @@ func (client *Client) AddFaceVideoTemplateAdvance(request *AddFaceVideoTemplateA
 	return _result, _err
 }
 
+// @param request - AdjustVideoColorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AdjustVideoColorResponse
 func (client *Client) AdjustVideoColorWithOptions(request *AdjustVideoColorRequest, runtime *util.RuntimeOptions) (_result *AdjustVideoColorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3800,6 +4561,9 @@ func (client *Client) AdjustVideoColorWithOptions(request *AdjustVideoColorReque
 	return _result, _err
 }
 
+// @param request - AdjustVideoColorRequest
+//
+// @return AdjustVideoColorResponse
 func (client *Client) AdjustVideoColor(request *AdjustVideoColorRequest) (_result *AdjustVideoColorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AdjustVideoColorResponse{}
@@ -3830,7 +4594,7 @@ func (client *Client) AdjustVideoColorAdvance(request *AdjustVideoColorAdvanceRe
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3858,12 +4622,17 @@ func (client *Client) AdjustVideoColorAdvance(request *AdjustVideoColorAdvanceRe
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -3917,6 +4686,11 @@ func (client *Client) AdjustVideoColorAdvance(request *AdjustVideoColorAdvanceRe
 	return _result, _err
 }
 
+// @param request - ChangeVideoSizeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeVideoSizeResponse
 func (client *Client) ChangeVideoSizeWithOptions(request *ChangeVideoSizeRequest, runtime *util.RuntimeOptions) (_result *ChangeVideoSizeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3982,6 +4756,9 @@ func (client *Client) ChangeVideoSizeWithOptions(request *ChangeVideoSizeRequest
 	return _result, _err
 }
 
+// @param request - ChangeVideoSizeRequest
+//
+// @return ChangeVideoSizeResponse
 func (client *Client) ChangeVideoSize(request *ChangeVideoSizeRequest) (_result *ChangeVideoSizeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeVideoSizeResponse{}
@@ -4012,7 +4789,7 @@ func (client *Client) ChangeVideoSizeAdvance(request *ChangeVideoSizeAdvanceRequ
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4040,12 +4817,17 @@ func (client *Client) ChangeVideoSizeAdvance(request *ChangeVideoSizeAdvanceRequ
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4099,6 +4881,11 @@ func (client *Client) ChangeVideoSizeAdvance(request *ChangeVideoSizeAdvanceRequ
 	return _result, _err
 }
 
+// @param request - ConvertHdrVideoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConvertHdrVideoResponse
 func (client *Client) ConvertHdrVideoWithOptions(request *ConvertHdrVideoRequest, runtime *util.RuntimeOptions) (_result *ConvertHdrVideoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4144,6 +4931,9 @@ func (client *Client) ConvertHdrVideoWithOptions(request *ConvertHdrVideoRequest
 	return _result, _err
 }
 
+// @param request - ConvertHdrVideoRequest
+//
+// @return ConvertHdrVideoResponse
 func (client *Client) ConvertHdrVideo(request *ConvertHdrVideoRequest) (_result *ConvertHdrVideoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConvertHdrVideoResponse{}
@@ -4174,7 +4964,7 @@ func (client *Client) ConvertHdrVideoAdvance(request *ConvertHdrVideoAdvanceRequ
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4202,12 +4992,17 @@ func (client *Client) ConvertHdrVideoAdvance(request *ConvertHdrVideoAdvanceRequ
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4261,6 +5056,15 @@ func (client *Client) ConvertHdrVideoAdvance(request *ConvertHdrVideoAdvanceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频人脸融合模板删除
+//
+// @param request - DeleteFaceVideoTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFaceVideoTemplateResponse
 func (client *Client) DeleteFaceVideoTemplateWithOptions(request *DeleteFaceVideoTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteFaceVideoTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4294,6 +5098,13 @@ func (client *Client) DeleteFaceVideoTemplateWithOptions(request *DeleteFaceVide
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频人脸融合模板删除
+//
+// @param request - DeleteFaceVideoTemplateRequest
+//
+// @return DeleteFaceVideoTemplateResponse
 func (client *Client) DeleteFaceVideoTemplate(request *DeleteFaceVideoTemplateRequest) (_result *DeleteFaceVideoTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFaceVideoTemplateResponse{}
@@ -4305,6 +5116,15 @@ func (client *Client) DeleteFaceVideoTemplate(request *DeleteFaceVideoTemplateRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频人像增强
+//
+// @param request - EnhancePortraitVideoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnhancePortraitVideoResponse
 func (client *Client) EnhancePortraitVideoWithOptions(request *EnhancePortraitVideoRequest, runtime *util.RuntimeOptions) (_result *EnhancePortraitVideoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4338,6 +5158,13 @@ func (client *Client) EnhancePortraitVideoWithOptions(request *EnhancePortraitVi
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频人像增强
+//
+// @param request - EnhancePortraitVideoRequest
+//
+// @return EnhancePortraitVideoResponse
 func (client *Client) EnhancePortraitVideo(request *EnhancePortraitVideoRequest) (_result *EnhancePortraitVideoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnhancePortraitVideoResponse{}
@@ -4368,7 +5195,7 @@ func (client *Client) EnhancePortraitVideoAdvance(request *EnhancePortraitVideoA
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4396,12 +5223,17 @@ func (client *Client) EnhancePortraitVideoAdvance(request *EnhancePortraitVideoA
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4455,6 +5287,11 @@ func (client *Client) EnhancePortraitVideoAdvance(request *EnhancePortraitVideoA
 	return _result, _err
 }
 
+// @param request - EnhanceVideoQualityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnhanceVideoQualityResponse
 func (client *Client) EnhanceVideoQualityWithOptions(request *EnhanceVideoQualityRequest, runtime *util.RuntimeOptions) (_result *EnhanceVideoQualityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4512,6 +5349,9 @@ func (client *Client) EnhanceVideoQualityWithOptions(request *EnhanceVideoQualit
 	return _result, _err
 }
 
+// @param request - EnhanceVideoQualityRequest
+//
+// @return EnhanceVideoQualityResponse
 func (client *Client) EnhanceVideoQuality(request *EnhanceVideoQualityRequest) (_result *EnhanceVideoQualityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnhanceVideoQualityResponse{}
@@ -4542,7 +5382,7 @@ func (client *Client) EnhanceVideoQualityAdvance(request *EnhanceVideoQualityAdv
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4570,12 +5410,17 @@ func (client *Client) EnhanceVideoQualityAdvance(request *EnhanceVideoQualityAdv
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4629,6 +5474,11 @@ func (client *Client) EnhanceVideoQualityAdvance(request *EnhanceVideoQualityAdv
 	return _result, _err
 }
 
+// @param request - EraseVideoLogoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EraseVideoLogoResponse
 func (client *Client) EraseVideoLogoWithOptions(request *EraseVideoLogoRequest, runtime *util.RuntimeOptions) (_result *EraseVideoLogoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4666,6 +5516,9 @@ func (client *Client) EraseVideoLogoWithOptions(request *EraseVideoLogoRequest, 
 	return _result, _err
 }
 
+// @param request - EraseVideoLogoRequest
+//
+// @return EraseVideoLogoResponse
 func (client *Client) EraseVideoLogo(request *EraseVideoLogoRequest) (_result *EraseVideoLogoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EraseVideoLogoResponse{}
@@ -4696,7 +5549,7 @@ func (client *Client) EraseVideoLogoAdvance(request *EraseVideoLogoAdvanceReques
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4724,12 +5577,17 @@ func (client *Client) EraseVideoLogoAdvance(request *EraseVideoLogoAdvanceReques
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4783,6 +5641,11 @@ func (client *Client) EraseVideoLogoAdvance(request *EraseVideoLogoAdvanceReques
 	return _result, _err
 }
 
+// @param request - EraseVideoSubtitlesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EraseVideoSubtitlesResponse
 func (client *Client) EraseVideoSubtitlesWithOptions(request *EraseVideoSubtitlesRequest, runtime *util.RuntimeOptions) (_result *EraseVideoSubtitlesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4832,6 +5695,9 @@ func (client *Client) EraseVideoSubtitlesWithOptions(request *EraseVideoSubtitle
 	return _result, _err
 }
 
+// @param request - EraseVideoSubtitlesRequest
+//
+// @return EraseVideoSubtitlesResponse
 func (client *Client) EraseVideoSubtitles(request *EraseVideoSubtitlesRequest) (_result *EraseVideoSubtitlesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EraseVideoSubtitlesResponse{}
@@ -4862,7 +5728,7 @@ func (client *Client) EraseVideoSubtitlesAdvance(request *EraseVideoSubtitlesAdv
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4890,12 +5756,17 @@ func (client *Client) EraseVideoSubtitlesAdvance(request *EraseVideoSubtitlesAdv
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4949,6 +5820,15 @@ func (client *Client) EraseVideoSubtitlesAdvance(request *EraseVideoSubtitlesAdv
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频人像卡通化
+//
+// @param request - GenerateHumanAnimeStyleVideoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateHumanAnimeStyleVideoResponse
 func (client *Client) GenerateHumanAnimeStyleVideoWithOptions(request *GenerateHumanAnimeStyleVideoRequest, runtime *util.RuntimeOptions) (_result *GenerateHumanAnimeStyleVideoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4986,6 +5866,13 @@ func (client *Client) GenerateHumanAnimeStyleVideoWithOptions(request *GenerateH
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频人像卡通化
+//
+// @param request - GenerateHumanAnimeStyleVideoRequest
+//
+// @return GenerateHumanAnimeStyleVideoResponse
 func (client *Client) GenerateHumanAnimeStyleVideo(request *GenerateHumanAnimeStyleVideoRequest) (_result *GenerateHumanAnimeStyleVideoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateHumanAnimeStyleVideoResponse{}
@@ -5016,7 +5903,7 @@ func (client *Client) GenerateHumanAnimeStyleVideoAdvance(request *GenerateHuman
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -5044,12 +5931,17 @@ func (client *Client) GenerateHumanAnimeStyleVideoAdvance(request *GenerateHuman
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -5103,6 +5995,11 @@ func (client *Client) GenerateHumanAnimeStyleVideoAdvance(request *GenerateHuman
 	return _result, _err
 }
 
+// @param request - GenerateVideoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateVideoResponse
 func (client *Client) GenerateVideoWithOptions(request *GenerateVideoRequest, runtime *util.RuntimeOptions) (_result *GenerateVideoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5176,6 +6073,9 @@ func (client *Client) GenerateVideoWithOptions(request *GenerateVideoRequest, ru
 	return _result, _err
 }
 
+// @param request - GenerateVideoRequest
+//
+// @return GenerateVideoResponse
 func (client *Client) GenerateVideo(request *GenerateVideoRequest) (_result *GenerateVideoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateVideoResponse{}
@@ -5206,7 +6106,7 @@ func (client *Client) GenerateVideoAdvance(request *GenerateVideoAdvanceRequest,
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -5234,12 +6134,17 @@ func (client *Client) GenerateVideoAdvance(request *GenerateVideoAdvanceRequest,
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -5301,6 +6206,11 @@ func (client *Client) GenerateVideoAdvance(request *GenerateVideoAdvanceRequest,
 	return _result, _err
 }
 
+// @param request - GetAsyncJobResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultRequest, runtime *util.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5334,6 +6244,9 @@ func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultReq
 	return _result, _err
 }
 
+// @param request - GetAsyncJobResultRequest
+//
+// @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_result *GetAsyncJobResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAsyncJobResultResponse{}
@@ -5345,6 +6258,11 @@ func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_res
 	return _result, _err
 }
 
+// @param request - InterpolateVideoFrameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InterpolateVideoFrameResponse
 func (client *Client) InterpolateVideoFrameWithOptions(request *InterpolateVideoFrameRequest, runtime *util.RuntimeOptions) (_result *InterpolateVideoFrameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5386,6 +6304,9 @@ func (client *Client) InterpolateVideoFrameWithOptions(request *InterpolateVideo
 	return _result, _err
 }
 
+// @param request - InterpolateVideoFrameRequest
+//
+// @return InterpolateVideoFrameResponse
 func (client *Client) InterpolateVideoFrame(request *InterpolateVideoFrameRequest) (_result *InterpolateVideoFrameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InterpolateVideoFrameResponse{}
@@ -5416,7 +6337,7 @@ func (client *Client) InterpolateVideoFrameAdvance(request *InterpolateVideoFram
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -5444,12 +6365,17 @@ func (client *Client) InterpolateVideoFrameAdvance(request *InterpolateVideoFram
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -5503,6 +6429,11 @@ func (client *Client) InterpolateVideoFrameAdvance(request *InterpolateVideoFram
 	return _result, _err
 }
 
+// @param request - MergeVideoFaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MergeVideoFaceResponse
 func (client *Client) MergeVideoFaceWithOptions(request *MergeVideoFaceRequest, runtime *util.RuntimeOptions) (_result *MergeVideoFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5552,6 +6483,9 @@ func (client *Client) MergeVideoFaceWithOptions(request *MergeVideoFaceRequest, 
 	return _result, _err
 }
 
+// @param request - MergeVideoFaceRequest
+//
+// @return MergeVideoFaceResponse
 func (client *Client) MergeVideoFace(request *MergeVideoFaceRequest) (_result *MergeVideoFaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MergeVideoFaceResponse{}
@@ -5582,7 +6516,7 @@ func (client *Client) MergeVideoFaceAdvance(request *MergeVideoFaceAdvanceReques
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -5610,12 +6544,17 @@ func (client *Client) MergeVideoFaceAdvance(request *MergeVideoFaceAdvanceReques
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -5706,6 +6645,15 @@ func (client *Client) MergeVideoFaceAdvance(request *MergeVideoFaceAdvanceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频模板融合换脸
+//
+// @param request - MergeVideoModelFaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MergeVideoModelFaceResponse
 func (client *Client) MergeVideoModelFaceWithOptions(request *MergeVideoModelFaceRequest, runtime *util.RuntimeOptions) (_result *MergeVideoModelFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5759,6 +6707,13 @@ func (client *Client) MergeVideoModelFaceWithOptions(request *MergeVideoModelFac
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频模板融合换脸
+//
+// @param request - MergeVideoModelFaceRequest
+//
+// @return MergeVideoModelFaceResponse
 func (client *Client) MergeVideoModelFace(request *MergeVideoModelFaceRequest) (_result *MergeVideoModelFaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MergeVideoModelFaceResponse{}
@@ -5789,7 +6744,7 @@ func (client *Client) MergeVideoModelFaceAdvance(request *MergeVideoModelFaceAdv
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -5817,12 +6772,17 @@ func (client *Client) MergeVideoModelFaceAdvance(request *MergeVideoModelFaceAdv
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -5876,6 +6836,15 @@ func (client *Client) MergeVideoModelFaceAdvance(request *MergeVideoModelFaceAdv
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频人脸融合模板查询
+//
+// @param request - QueryFaceVideoTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryFaceVideoTemplateResponse
 func (client *Client) QueryFaceVideoTemplateWithOptions(request *QueryFaceVideoTemplateRequest, runtime *util.RuntimeOptions) (_result *QueryFaceVideoTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5917,6 +6886,13 @@ func (client *Client) QueryFaceVideoTemplateWithOptions(request *QueryFaceVideoT
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频人脸融合模板查询
+//
+// @param request - QueryFaceVideoTemplateRequest
+//
+// @return QueryFaceVideoTemplateResponse
 func (client *Client) QueryFaceVideoTemplate(request *QueryFaceVideoTemplateRequest) (_result *QueryFaceVideoTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryFaceVideoTemplateResponse{}
@@ -5928,6 +6904,15 @@ func (client *Client) QueryFaceVideoTemplate(request *QueryFaceVideoTemplateRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频降噪
+//
+// @param request - ReduceVideoNoiseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReduceVideoNoiseResponse
 func (client *Client) ReduceVideoNoiseWithOptions(request *ReduceVideoNoiseRequest, runtime *util.RuntimeOptions) (_result *ReduceVideoNoiseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5961,6 +6946,13 @@ func (client *Client) ReduceVideoNoiseWithOptions(request *ReduceVideoNoiseReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频降噪
+//
+// @param request - ReduceVideoNoiseRequest
+//
+// @return ReduceVideoNoiseResponse
 func (client *Client) ReduceVideoNoise(request *ReduceVideoNoiseRequest) (_result *ReduceVideoNoiseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReduceVideoNoiseResponse{}
@@ -5991,7 +6983,7 @@ func (client *Client) ReduceVideoNoiseAdvance(request *ReduceVideoNoiseAdvanceRe
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -6019,12 +7011,17 @@ func (client *Client) ReduceVideoNoiseAdvance(request *ReduceVideoNoiseAdvanceRe
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -6078,6 +7075,11 @@ func (client *Client) ReduceVideoNoiseAdvance(request *ReduceVideoNoiseAdvanceRe
 	return _result, _err
 }
 
+// @param request - SuperResolveVideoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SuperResolveVideoResponse
 func (client *Client) SuperResolveVideoWithOptions(request *SuperResolveVideoRequest, runtime *util.RuntimeOptions) (_result *SuperResolveVideoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6115,6 +7117,9 @@ func (client *Client) SuperResolveVideoWithOptions(request *SuperResolveVideoReq
 	return _result, _err
 }
 
+// @param request - SuperResolveVideoRequest
+//
+// @return SuperResolveVideoResponse
 func (client *Client) SuperResolveVideo(request *SuperResolveVideoRequest) (_result *SuperResolveVideoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SuperResolveVideoResponse{}
@@ -6145,7 +7150,7 @@ func (client *Client) SuperResolveVideoAdvance(request *SuperResolveVideoAdvance
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -6173,12 +7178,17 @@ func (client *Client) SuperResolveVideoAdvance(request *SuperResolveVideoAdvance
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -6232,6 +7242,11 @@ func (client *Client) SuperResolveVideoAdvance(request *SuperResolveVideoAdvance
 	return _result, _err
 }
 
+// @param request - ToneSdrVideoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ToneSdrVideoResponse
 func (client *Client) ToneSdrVideoWithOptions(request *ToneSdrVideoRequest, runtime *util.RuntimeOptions) (_result *ToneSdrVideoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6273,6 +7288,9 @@ func (client *Client) ToneSdrVideoWithOptions(request *ToneSdrVideoRequest, runt
 	return _result, _err
 }
 
+// @param request - ToneSdrVideoRequest
+//
+// @return ToneSdrVideoResponse
 func (client *Client) ToneSdrVideo(request *ToneSdrVideoRequest) (_result *ToneSdrVideoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ToneSdrVideoResponse{}
@@ -6303,7 +7321,7 @@ func (client *Client) ToneSdrVideoAdvance(request *ToneSdrVideoAdvanceRequest, r
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -6331,12 +7349,17 @@ func (client *Client) ToneSdrVideoAdvance(request *ToneSdrVideoAdvanceRequest, r
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
