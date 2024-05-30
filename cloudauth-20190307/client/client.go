@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -18,13 +15,34 @@ import (
 )
 
 type AIGCFaceVerifyRequest struct {
-	FaceContrastPicture    *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
+	// example:
+	//
+	// /9j/4AAQSkZJRgABAQAASxxxxxxx
+	FaceContrastPicture *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
+	// example:
+	//
+	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
 	FaceContrastPictureUrl *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
-	OssBucketName          *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	OssObjectName          *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
-	OuterOrderNo           *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	ProductCode            *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	SceneId                *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// cn-shanghai-aliyun-cloudauth-xxxxx
+	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// example:
+	//
+	// verify/xxxxx/xxxxxx.jpeg
+	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
+	// example:
+	//
+	// e0c34a77f5ac40a5aa5e6ed20c353888
+	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	// example:
+	//
+	// LR_FR_AIGC
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// 100000xxxx
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s AIGCFaceVerifyRequest) String() string {
@@ -71,8 +89,17 @@ func (s *AIGCFaceVerifyRequest) SetSceneId(v int64) *AIGCFaceVerifyRequest {
 }
 
 type AIGCFaceVerifyResponseBody struct {
-	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *AIGCFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
@@ -107,8 +134,14 @@ func (s *AIGCFaceVerifyResponseBody) SetResultObject(v *AIGCFaceVerifyResponseBo
 
 type AIGCFaceVerifyResponseBodyResultObject struct {
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Score     *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// Y
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 1.0000
+	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
 }
 
 func (s AIGCFaceVerifyResponseBodyResultObject) String() string {
@@ -164,13 +197,31 @@ func (s *AIGCFaceVerifyResponse) SetBody(v *AIGCFaceVerifyResponseBody) *AIGCFac
 }
 
 type BankMetaVerifyRequest struct {
-	BankCard    *string `json:"BankCard,omitempty" xml:"BankCard,omitempty"`
+	// example:
+	//
+	// 610*************1181
+	BankCard *string `json:"BankCard,omitempty" xml:"BankCard,omitempty"`
+	// example:
+	//
+	// 429001********8211
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// example:
+	//
+	// 138******11
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// normal
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// example:
+	//
+	// BANK_CARD_2_META
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	VerifyMode  *string `json:"VerifyMode,omitempty" xml:"VerifyMode,omitempty"`
+	// example:
+	//
+	// VERIFY_BANK_CARD
+	VerifyMode *string `json:"VerifyMode,omitempty" xml:"VerifyMode,omitempty"`
 }
 
 func (s BankMetaVerifyRequest) String() string {
@@ -217,8 +268,17 @@ func (s *BankMetaVerifyRequest) SetVerifyMode(v string) *BankMetaVerifyRequest {
 }
 
 type BankMetaVerifyResponseBody struct {
-	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 473469C7-A***B-A3DC0DE3C83E
 	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *BankMetaVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
@@ -252,7 +312,13 @@ func (s *BankMetaVerifyResponseBody) SetResultObject(v *BankMetaVerifyResponseBo
 }
 
 type BankMetaVerifyResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// 101
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 }
 
@@ -304,20 +370,59 @@ func (s *BankMetaVerifyResponse) SetBody(v *BankMetaVerifyResponseBody) *BankMet
 }
 
 type CompareFaceVerifyRequest struct {
-	Crop                         *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	OuterOrderNo                 *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	ProductCode                  *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	SceneId                      *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SourceCertifyId              *string `json:"SourceCertifyId,omitempty" xml:"SourceCertifyId,omitempty"`
-	SourceFaceContrastPicture    *string `json:"SourceFaceContrastPicture,omitempty" xml:"SourceFaceContrastPicture,omitempty"`
+	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// example:
+	//
+	// e0c34a77f5ac40a5aa5e6ed20c353888
+	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	// example:
+	//
+	// PV_FC
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// 1000000006
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 0bfa7c493f850e5178b9f8613634c9xx
+	SourceCertifyId *string `json:"SourceCertifyId,omitempty" xml:"SourceCertifyId,omitempty"`
+	// example:
+	//
+	// /9j/4AAQSkZJRgABAQAASxxxxxxx
+	SourceFaceContrastPicture *string `json:"SourceFaceContrastPicture,omitempty" xml:"SourceFaceContrastPicture,omitempty"`
+	// example:
+	//
+	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
 	SourceFaceContrastPictureUrl *string `json:"SourceFaceContrastPictureUrl,omitempty" xml:"SourceFaceContrastPictureUrl,omitempty"`
-	SourceOssBucketName          *string `json:"SourceOssBucketName,omitempty" xml:"SourceOssBucketName,omitempty"`
-	SourceOssObjectName          *string `json:"SourceOssObjectName,omitempty" xml:"SourceOssObjectName,omitempty"`
-	TargetCertifyId              *string `json:"TargetCertifyId,omitempty" xml:"TargetCertifyId,omitempty"`
-	TargetFaceContrastPicture    *string `json:"TargetFaceContrastPicture,omitempty" xml:"TargetFaceContrastPicture,omitempty"`
+	// example:
+	//
+	// cn-shanghai-aliyun-cloudauth-xxxxx
+	SourceOssBucketName *string `json:"SourceOssBucketName,omitempty" xml:"SourceOssBucketName,omitempty"`
+	// example:
+	//
+	// verify/xxxxx/xxxxxx.jpeg
+	SourceOssObjectName *string `json:"SourceOssObjectName,omitempty" xml:"SourceOssObjectName,omitempty"`
+	// example:
+	//
+	// 0bfa7c493f850e5178b9f8613634c9xx
+	TargetCertifyId *string `json:"TargetCertifyId,omitempty" xml:"TargetCertifyId,omitempty"`
+	// example:
+	//
+	// /9j/4AAQSkZJRgABAQAASxxxxxxx
+	TargetFaceContrastPicture *string `json:"TargetFaceContrastPicture,omitempty" xml:"TargetFaceContrastPicture,omitempty"`
+	// example:
+	//
+	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
 	TargetFaceContrastPictureUrl *string `json:"TargetFaceContrastPictureUrl,omitempty" xml:"TargetFaceContrastPictureUrl,omitempty"`
-	TargetOssBucketName          *string `json:"TargetOssBucketName,omitempty" xml:"TargetOssBucketName,omitempty"`
-	TargetOssObjectName          *string `json:"TargetOssObjectName,omitempty" xml:"TargetOssObjectName,omitempty"`
+	// example:
+	//
+	// cn-shanghai-aliyun-cloudauth-xxxxx
+	TargetOssBucketName *string `json:"TargetOssBucketName,omitempty" xml:"TargetOssBucketName,omitempty"`
+	// example:
+	//
+	// verify/xxxxx/xxxxxx.jpeg
+	TargetOssObjectName *string `json:"TargetOssObjectName,omitempty" xml:"TargetOssObjectName,omitempty"`
 }
 
 func (s CompareFaceVerifyRequest) String() string {
@@ -399,8 +504,17 @@ func (s *CompareFaceVerifyRequest) SetTargetOssObjectName(v string) *CompareFace
 }
 
 type CompareFaceVerifyResponseBody struct {
-	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 130A2C10-B9EE-4D84-88E3-5384FF039795
 	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *CompareFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
@@ -434,8 +548,14 @@ func (s *CompareFaceVerifyResponseBody) SetResultObject(v *CompareFaceVerifyResp
 }
 
 type CompareFaceVerifyResponseBodyResultObject struct {
-	CertifyId   *string  `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	Passed      *string  `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// example:
+	//
+	// T
+	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// example:
+	//
+	// 99.60875
 	VerifyScore *float32 `json:"VerifyScore,omitempty" xml:"VerifyScore,omitempty"`
 }
 
@@ -492,9 +612,21 @@ func (s *CompareFaceVerifyResponse) SetBody(v *CompareFaceVerifyResponseBody) *C
 }
 
 type CompareFacesRequest struct {
-	SourceImageType  *string `json:"SourceImageType,omitempty" xml:"SourceImageType,omitempty"`
+	// example:
+	//
+	// FacePic
+	SourceImageType *string `json:"SourceImageType,omitempty" xml:"SourceImageType,omitempty"`
+	// example:
+	//
+	// http%3A%2F%2Fjiangsu.china.com.cn%2Fuploadfile%2F2015%2F0114%2F1421221304095989.jpg
 	SourceImageValue *string `json:"SourceImageValue,omitempty" xml:"SourceImageValue,omitempty"`
-	TargetImageType  *string `json:"TargetImageType,omitempty" xml:"TargetImageType,omitempty"`
+	// example:
+	//
+	// FacePic
+	TargetImageType *string `json:"TargetImageType,omitempty" xml:"TargetImageType,omitempty"`
+	// example:
+	//
+	// http%3A%2F%2Fjiangsu.china.com.cn%2Fuploadfile%2F2015%2F0114%2F1421221304095989.jpg
 	TargetImageValue *string `json:"TargetImageValue,omitempty" xml:"TargetImageValue,omitempty"`
 }
 
@@ -527,11 +659,23 @@ func (s *CompareFacesRequest) SetTargetImageValue(v string) *CompareFacesRequest
 }
 
 type CompareFacesResponseBody struct {
-	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CompareFacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CompareFacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Error.InternalError
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CompareFacesResponseBody) String() string {
@@ -568,8 +712,14 @@ func (s *CompareFacesResponseBody) SetSuccess(v bool) *CompareFacesResponseBody 
 }
 
 type CompareFacesResponseBodyData struct {
-	ConfidenceThresholds *string  `json:"ConfidenceThresholds,omitempty" xml:"ConfidenceThresholds,omitempty"`
-	SimilarityScore      *float32 `json:"SimilarityScore,omitempty" xml:"SimilarityScore,omitempty"`
+	// example:
+	//
+	// {"0.0001":"90.07","0.001":"80.01","0.01":"70.02"}
+	ConfidenceThresholds *string `json:"ConfidenceThresholds,omitempty" xml:"ConfidenceThresholds,omitempty"`
+	// example:
+	//
+	// 98.7913
+	SimilarityScore *float32 `json:"SimilarityScore,omitempty" xml:"SimilarityScore,omitempty"`
 }
 
 func (s CompareFacesResponseBodyData) String() string {
@@ -620,25 +770,67 @@ func (s *CompareFacesResponse) SetBody(v *CompareFacesResponseBody) *CompareFace
 }
 
 type ContrastFaceVerifyRequest struct {
-	CertName               *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	CertNo                 *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	CertType               *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	CertifyId              *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	Crop                   *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	DeviceToken            *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	EncryptType            *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	FaceContrastFile       *string `json:"FaceContrastFile,omitempty" xml:"FaceContrastFile,omitempty"`
-	FaceContrastPicture    *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
+	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// example:
+	//
+	// 330103xxxxxxxxxxxx
+	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
+	// example:
+	//
+	// IDENTITY_CARD
+	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// example:
+	//
+	// 0bfa7c493f850e5178b9f8613634c9xx
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	Crop      *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// example:
+	//
+	// McozS1ZWRcRZStlERcZZo_QOytx5jcgZoZJEoRLOxxxxxxx
+	DeviceToken      *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
+	EncryptType      *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	FaceContrastFile *string `json:"FaceContrastFile,omitempty" xml:"FaceContrastFile,omitempty"`
+	// example:
+	//
+	// /9j/4AAQSkZJRgABAQAASxxxxxxx
+	FaceContrastPicture *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
+	// example:
+	//
+	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
 	FaceContrastPictureUrl *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
-	Ip                     *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Mobile                 *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Model                  *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	OssBucketName          *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	OssObjectName          *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
-	OuterOrderNo           *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	ProductCode            *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	SceneId                *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 114.xxx.xxx.xxx
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 130xxxxxxxx
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Model  *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// cn-shanghai-aliyun-cloudauth-xxxxx
+	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// example:
+	//
+	// verify/xxxxx/xxxxxx.jpeg
+	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
+	// example:
+	//
+	// e0c34a77f5ac40a5aa5e6ed20c353888
+	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	// example:
+	//
+	// ID_MIN
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// 1000000006
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 123456789
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ContrastFaceVerifyRequest) String() string {
@@ -745,25 +937,67 @@ func (s *ContrastFaceVerifyRequest) SetUserId(v string) *ContrastFaceVerifyReque
 }
 
 type ContrastFaceVerifyAdvanceRequest struct {
-	CertName               *string   `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	CertNo                 *string   `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	CertType               *string   `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	CertifyId              *string   `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	Crop                   *string   `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// example:
+	//
+	// 330103xxxxxxxxxxxx
+	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
+	// example:
+	//
+	// IDENTITY_CARD
+	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// example:
+	//
+	// 0bfa7c493f850e5178b9f8613634c9xx
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	Crop      *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// example:
+	//
+	// McozS1ZWRcRZStlERcZZo_QOytx5jcgZoZJEoRLOxxxxxxx
 	DeviceToken            *string   `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
 	EncryptType            *string   `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	FaceContrastFileObject io.Reader `json:"FaceContrastFile,omitempty" xml:"FaceContrastFile,omitempty"`
-	FaceContrastPicture    *string   `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
-	FaceContrastPictureUrl *string   `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
-	Ip                     *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Mobile                 *string   `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Model                  *string   `json:"Model,omitempty" xml:"Model,omitempty"`
-	OssBucketName          *string   `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	OssObjectName          *string   `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
-	OuterOrderNo           *string   `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	ProductCode            *string   `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	SceneId                *int64    `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	UserId                 *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// /9j/4AAQSkZJRgABAQAASxxxxxxx
+	FaceContrastPicture *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
+	// example:
+	//
+	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
+	FaceContrastPictureUrl *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
+	// example:
+	//
+	// 114.xxx.xxx.xxx
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 130xxxxxxxx
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Model  *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// cn-shanghai-aliyun-cloudauth-xxxxx
+	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// example:
+	//
+	// verify/xxxxx/xxxxxx.jpeg
+	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
+	// example:
+	//
+	// e0c34a77f5ac40a5aa5e6ed20c353888
+	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	// example:
+	//
+	// ID_MIN
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// 1000000006
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 123456789
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ContrastFaceVerifyAdvanceRequest) String() string {
@@ -870,8 +1104,17 @@ func (s *ContrastFaceVerifyAdvanceRequest) SetUserId(v string) *ContrastFaceVeri
 }
 
 type ContrastFaceVerifyResponseBody struct {
-	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 130A2C10-B9EE-4D84-88E3-5384FF039795
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *ContrastFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
@@ -905,11 +1148,23 @@ func (s *ContrastFaceVerifyResponseBody) SetResultObject(v *ContrastFaceVerifyRe
 }
 
 type ContrastFaceVerifyResponseBodyResultObject struct {
-	CertifyId    *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// example:
+	//
+	// null
 	IdentityInfo *string `json:"IdentityInfo,omitempty" xml:"IdentityInfo,omitempty"`
+	// example:
+	//
+	// {"faceAttack": "F","facialPictureFront": {"qualityScore": 88.3615493774414,"verifyScore": 50.28594166529785}}
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// example:
+	//
+	// T
+	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// example:
+	//
+	// 200
+	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 }
 
 func (s ContrastFaceVerifyResponseBodyResultObject) String() string {
@@ -975,9 +1230,21 @@ func (s *ContrastFaceVerifyResponse) SetBody(v *ContrastFaceVerifyResponseBody) 
 }
 
 type CreateAuthKeyRequest struct {
-	AuthYears    *int32  `json:"AuthYears,omitempty" xml:"AuthYears,omitempty"`
-	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Test         *bool   `json:"Test,omitempty" xml:"Test,omitempty"`
+	// example:
+	//
+	// 1
+	AuthYears *int32 `json:"AuthYears,omitempty" xml:"AuthYears,omitempty"`
+	// example:
+	//
+	// FACE_TEST
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// false
+	Test *bool `json:"Test,omitempty" xml:"Test,omitempty"`
+	// example:
+	//
+	// 3iJ1AY$oHcu7mC69
 	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
 }
 
@@ -1010,7 +1277,13 @@ func (s *CreateAuthKeyRequest) SetUserDeviceId(v string) *CreateAuthKeyRequest {
 }
 
 type CreateAuthKeyResponseBody struct {
-	AuthKey   *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	// example:
+	//
+	// auth.1KQMcnLd4m37LN2D0F0WCD-1qtQI$
+	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1062,12 +1335,32 @@ func (s *CreateAuthKeyResponse) SetBody(v *CreateAuthKeyResponseBody) *CreateAut
 }
 
 type CreateVerifySettingRequest struct {
-	BizName     *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	GuideStep   *bool   `json:"GuideStep,omitempty" xml:"GuideStep,omitempty"`
-	PrivacyStep *bool   `json:"PrivacyStep,omitempty" xml:"PrivacyStep,omitempty"`
-	ResultStep  *bool   `json:"ResultStep,omitempty" xml:"ResultStep,omitempty"`
-	Solution    *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
+	// This parameter is required.
+	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UserRegister
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// false
+	GuideStep *bool `json:"GuideStep,omitempty" xml:"GuideStep,omitempty"`
+	// example:
+	//
+	// true
+	PrivacyStep *bool `json:"PrivacyStep,omitempty" xml:"PrivacyStep,omitempty"`
+	// example:
+	//
+	// false
+	ResultStep *bool `json:"ResultStep,omitempty" xml:"ResultStep,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RPBasic
+	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
 }
 
 func (s CreateVerifySettingRequest) String() string {
@@ -1109,11 +1402,20 @@ func (s *CreateVerifySettingRequest) SetSolution(v string) *CreateVerifySettingR
 }
 
 type CreateVerifySettingResponseBody struct {
-	BizName   *string   `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	BizType   *string   `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Solution  *string   `json:"Solution,omitempty" xml:"Solution,omitempty"`
-	StepList  []*string `json:"StepList,omitempty" xml:"StepList,omitempty" type:"Repeated"`
+	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// example:
+	//
+	// UserRegister
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// RPBasic
+	Solution *string   `json:"Solution,omitempty" xml:"Solution,omitempty"`
+	StepList []*string `json:"StepList,omitempty" xml:"StepList,omitempty" type:"Repeated"`
 }
 
 func (s CreateVerifySettingResponseBody) String() string {
@@ -1179,15 +1481,40 @@ func (s *CreateVerifySettingResponse) SetBody(v *CreateVerifySettingResponseBody
 }
 
 type CredentialVerifyRequest struct {
-	CertNum      *string `json:"CertNum,omitempty" xml:"CertNum,omitempty"`
-	CredName     *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
-	CredType     *string `json:"CredType,omitempty" xml:"CredType,omitempty"`
-	IdentifyNum  *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	// example:
+	//
+	// 4601*****
+	CertNum *string `json:"CertNum,omitempty" xml:"CertNum,omitempty"`
+	// example:
+	//
+	// 0104
+	CredName *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
+	// example:
+	//
+	// 01
+	CredType *string `json:"CredType,omitempty" xml:"CredType,omitempty"`
+	// example:
+	//
+	// 429001********8211
+	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	// example:
+	//
+	// base64
 	ImageContext *string `json:"ImageContext,omitempty" xml:"ImageContext,omitempty"`
-	ImageUrl     *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	IsCheck      *string `json:"IsCheck,omitempty" xml:"IsCheck,omitempty"`
-	IsOCR        *string `json:"IsOCR,omitempty" xml:"IsOCR,omitempty"`
-	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// http://marry.momocdn.com/avatar/3B/B6/3BB6527E-7467-926E-1048-B43614F20CC420230803_L.jpg
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// 0
+	IsCheck *string `json:"IsCheck,omitempty" xml:"IsCheck,omitempty"`
+	// example:
+	//
+	// 1
+	IsOCR      *string `json:"IsOCR,omitempty" xml:"IsOCR,omitempty"`
+	MerchantId *string `json:"MerchantId,omitempty" xml:"MerchantId,omitempty"`
+	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CredentialVerifyRequest) String() string {
@@ -1238,14 +1565,28 @@ func (s *CredentialVerifyRequest) SetIsOCR(v string) *CredentialVerifyRequest {
 	return s
 }
 
+func (s *CredentialVerifyRequest) SetMerchantId(v string) *CredentialVerifyRequest {
+	s.MerchantId = &v
+	return s
+}
+
 func (s *CredentialVerifyRequest) SetUserName(v string) *CredentialVerifyRequest {
 	s.UserName = &v
 	return s
 }
 
 type CredentialVerifyResponseBody struct {
-	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
 	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *CredentialVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
@@ -1279,12 +1620,25 @@ func (s *CredentialVerifyResponseBody) SetResultObject(v *CredentialVerifyRespon
 }
 
 type CredentialVerifyResponseBodyResultObject struct {
-	OcrInfo      *string            `json:"OcrInfo,omitempty" xml:"OcrInfo,omitempty"`
-	Result       *string            `json:"Result,omitempty" xml:"Result,omitempty"`
-	RiskScore    map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
-	RiskTag      *string            `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
-	VerifyDetail *string            `json:"VerifyDetail,omitempty" xml:"VerifyDetail,omitempty"`
-	VerifyResult *string            `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
+	OcrInfo      *string `json:"OcrInfo,omitempty" xml:"OcrInfo,omitempty"`
+	// example:
+	//
+	// 1
+	Result    *string            `json:"Result,omitempty" xml:"Result,omitempty"`
+	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
+	// example:
+	//
+	// PS,SCREEN_PHOTO
+	RiskTag *string `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
+	// example:
+	//
+	// **
+	VerifyDetail *string `json:"VerifyDetail,omitempty" xml:"VerifyDetail,omitempty"`
+	// example:
+	//
+	// *
+	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
 func (s CredentialVerifyResponseBodyResultObject) String() string {
@@ -1293,6 +1647,11 @@ func (s CredentialVerifyResponseBodyResultObject) String() string {
 
 func (s CredentialVerifyResponseBodyResultObject) GoString() string {
 	return s.String()
+}
+
+func (s *CredentialVerifyResponseBodyResultObject) SetMaterialInfo(v string) *CredentialVerifyResponseBodyResultObject {
+	s.MaterialInfo = &v
+	return s
 }
 
 func (s *CredentialVerifyResponseBodyResultObject) SetOcrInfo(v string) *CredentialVerifyResponseBodyResultObject {
@@ -1355,13 +1714,34 @@ func (s *CredentialVerifyResponse) SetBody(v *CredentialVerifyResponseBody) *Cre
 }
 
 type DescribeDeviceInfoRequest struct {
-	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DeviceId        *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	ExpiredEndDay   *string `json:"ExpiredEndDay,omitempty" xml:"ExpiredEndDay,omitempty"`
+	// example:
+	//
+	// FACE_TEST
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// wd.6ziUffspAeW5FVYbaqmexR-1qwNjM
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// example:
+	//
+	// 20200330
+	ExpiredEndDay *string `json:"ExpiredEndDay,omitempty" xml:"ExpiredEndDay,omitempty"`
+	// example:
+	//
+	// 20190401
 	ExpiredStartDay *string `json:"ExpiredStartDay,omitempty" xml:"ExpiredStartDay,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	UserDeviceId    *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 3iJ1AY$oHcu7mC69
+	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
 }
 
 func (s DescribeDeviceInfoRequest) String() string {
@@ -1408,11 +1788,23 @@ func (s *DescribeDeviceInfoRequest) SetUserDeviceId(v string) *DescribeDeviceInf
 }
 
 type DescribeDeviceInfoResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPage    *int32                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DeviceInfoList *DescribeDeviceInfoResponseBodyDeviceInfoList `json:"DeviceInfoList,omitempty" xml:"DeviceInfoList,omitempty" type:"Struct"`
-	PageSize       *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount     *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDeviceInfoResponseBody) String() string {
@@ -1466,10 +1858,25 @@ func (s *DescribeDeviceInfoResponseBodyDeviceInfoList) SetDeviceInfo(v []*Descri
 }
 
 type DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo struct {
-	BeginDay     *string `json:"BeginDay,omitempty" xml:"BeginDay,omitempty"`
-	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	ExpiredDay   *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty"`
+	// example:
+	//
+	// 20180101
+	BeginDay *string `json:"BeginDay,omitempty" xml:"BeginDay,omitempty"`
+	// example:
+	//
+	// FACE_TEST
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// wd.6ziUffspAeW5FVYbaqmexR-1qwNjM
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// example:
+	//
+	// 20180101
+	ExpiredDay *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty"`
+	// example:
+	//
+	// 3iJ1AY$oHcu7mC69
 	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
 }
 
@@ -1536,9 +1943,18 @@ func (s *DescribeDeviceInfoResponse) SetBody(v *DescribeDeviceInfoResponseBody) 
 }
 
 type DescribeFaceVerifyRequest struct {
-	CertifyId         *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// example:
+	//
+	// 91707dc296d469ad38e4c5efa6a0f24b
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// example:
+	//
+	// JPG
 	PictureReturnType *string `json:"PictureReturnType,omitempty" xml:"PictureReturnType,omitempty"`
-	SceneId           *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 1000000006
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s DescribeFaceVerifyRequest) String() string {
@@ -1565,8 +1981,17 @@ func (s *DescribeFaceVerifyRequest) SetSceneId(v int64) *DescribeFaceVerifyReque
 }
 
 type DescribeFaceVerifyResponseBody struct {
-	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 130A2C10-B9EE-4D84-88E3-5384FF039795
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *DescribeFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
@@ -1600,14 +2025,29 @@ func (s *DescribeFaceVerifyResponseBody) SetResultObject(v *DescribeFaceVerifyRe
 }
 
 type DescribeFaceVerifyResponseBodyResultObject struct {
-	DeviceRisk   *string `json:"DeviceRisk,omitempty" xml:"DeviceRisk,omitempty"`
-	DeviceToken  *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
+	DeviceRisk *string `json:"DeviceRisk,omitempty" xml:"DeviceRisk,omitempty"`
+	// example:
+	//
+	// McozS1ZWRcRZStlERcZZo_QOytx5jcgZoZJEoRLOxxxxxxx
+	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
+	// example:
+	//
+	// null
 	IdentityInfo *string `json:"IdentityInfo,omitempty" xml:"IdentityInfo,omitempty"`
+	// example:
+	//
+	// {"faceAttack": "F","facialPictureFront": {"qualityScore": 88.3615493774414,"pictureUrl": "https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg","ossBucketName": "cn-shanghai-aliyun-cloudauth-1260051251634779","ossObjectName": "verify/1260051251634779/6ba7bcfccf33f56cdb44ed086f36ce3e0.jpeg"}}
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	Passed       *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	SubCode      *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	Success      *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	UserInfo     *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+	// example:
+	//
+	// T
+	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// example:
+	//
+	// 200
+	SubCode  *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	Success  *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	UserInfo *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }
 
 func (s DescribeFaceVerifyResponseBodyResultObject) String() string {
@@ -1689,7 +2129,10 @@ func (s *DescribeFaceVerifyResponse) SetBody(v *DescribeFaceVerifyResponseBody) 
 
 type DescribeOssUploadTokenResponseBody struct {
 	OssUploadToken *DescribeOssUploadTokenResponseBodyOssUploadToken `json:"OssUploadToken,omitempty" xml:"OssUploadToken,omitempty" type:"Struct"`
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2FA2C773-47DB-4156-B1EE-5B047321A939
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeOssUploadTokenResponseBody) String() string {
@@ -1711,13 +2154,34 @@ func (s *DescribeOssUploadTokenResponseBody) SetRequestId(v string) *DescribeOss
 }
 
 type DescribeOssUploadTokenResponseBodyOssUploadToken struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// example:
+	//
+	// cloudauth-zhangjiakou-external
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// example:
+	//
+	// https://oss-cn-zhangjiakou.aliyuncs.com
 	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	Expired  *int64  `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Secret   *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
-	Token    *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// 1582636610000
+	Expired *int64 `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// example:
+	//
+	// STS.NU8rUBj****
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// prod/RdNLC@Ox2n-1s7NMt
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// FwmnyoqT8dHj7nJLuM67T****
+	Secret *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
+	// example:
+	//
+	// uWia500nTS5knZaDzq4/KqpvhcLnO****
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s DescribeOssUploadTokenResponseBodyOssUploadToken) String() string {
@@ -1793,12 +2257,30 @@ func (s *DescribeOssUploadTokenResponse) SetBody(v *DescribeOssUploadTokenRespon
 }
 
 type DescribePageFaceVerifyDataRequest struct {
-	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 2023-04-30
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ID_PLUS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	SceneId     *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 36**01
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 2023-04-10
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribePageFaceVerifyDataRequest) String() string {
@@ -1840,15 +2322,39 @@ func (s *DescribePageFaceVerifyDataRequest) SetStartDate(v string) *DescribePage
 }
 
 type DescribePageFaceVerifyDataResponseBody struct {
-	Code        *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1
 	CurrentPage *string                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Items       []*DescribePageFaceVerifyDataResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	Message     *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize    *string                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *string                                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount  *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage   *string                                        `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 473469C7-A***B-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 5
+	TotalPage *string `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s DescribePageFaceVerifyDataResponseBody) String() string {
@@ -1905,12 +2411,27 @@ func (s *DescribePageFaceVerifyDataResponseBody) SetTotalPage(v string) *Describ
 }
 
 type DescribePageFaceVerifyDataResponseBodyItems struct {
-	Date         *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	ProductCode  *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	SceneId      *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SceneName    *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// example:
+	//
+	// 2024-03-24T00:00:00.000Z
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// example:
+	//
+	// ID_PLUS
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// 20**40
+	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// example:
+	//
+	// 1
 	SuccessCount *string `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	TotalCount   *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 19
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePageFaceVerifyDataResponseBodyItems) String() string {
@@ -1981,12 +2502,40 @@ func (s *DescribePageFaceVerifyDataResponse) SetBody(v *DescribePageFaceVerifyDa
 }
 
 type DescribeSmartStatisticsPageListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-11-16 23:59:59 +0800
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 36**01
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// cloudauthst
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-11-01 00:00:00 +0800
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeSmartStatisticsPageListRequest) String() string {
@@ -2028,12 +2577,27 @@ func (s *DescribeSmartStatisticsPageListRequest) SetStartDate(v string) *Describ
 }
 
 type DescribeSmartStatisticsPageListResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPage *int32                                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Items       []*DescribeSmartStatisticsPageListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize    *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage   *int32                                              `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 96943***4E39F805
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 29
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 3
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s DescribeSmartStatisticsPageListResponseBody) String() string {
@@ -2075,13 +2639,31 @@ func (s *DescribeSmartStatisticsPageListResponseBody) SetTotalPage(v int32) *Des
 }
 
 type DescribeSmartStatisticsPageListResponseBodyItems struct {
-	Date         *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	PassRate     *string `json:"PassRate,omitempty" xml:"PassRate,omitempty"`
-	ProductCode  *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	SceneId      *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SceneName    *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	SuccessCount *int32  `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	TotalCount   *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 11/8
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// example:
+	//
+	// 25
+	PassRate *string `json:"PassRate,omitempty" xml:"PassRate,omitempty"`
+	// example:
+	//
+	// SMART_VERIFY
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// 20**40
+	SceneId   *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// example:
+	//
+	// 1
+	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// example:
+	//
+	// 4
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSmartStatisticsPageListResponseBodyItems) String() string {
@@ -2157,7 +2739,17 @@ func (s *DescribeSmartStatisticsPageListResponse) SetBody(v *DescribeSmartStatis
 }
 
 type DescribeVerifyResultRequest struct {
-	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39ecf51e-2f81-4dc5-90ee-ff86125b****
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FVBioOnlyTest
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 }
 
@@ -2180,12 +2772,27 @@ func (s *DescribeVerifyResultRequest) SetBizType(v string) *DescribeVerifyResult
 }
 
 type DescribeVerifyResultResponseBody struct {
-	AuthorityComparisionScore *float32                                  `json:"AuthorityComparisionScore,omitempty" xml:"AuthorityComparisionScore,omitempty"`
-	FaceComparisonScore       *float32                                  `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
+	// example:
+	//
+	// 97
+	AuthorityComparisionScore *float32 `json:"AuthorityComparisionScore,omitempty" xml:"AuthorityComparisionScore,omitempty"`
+	// example:
+	//
+	// 97
+	FaceComparisonScore *float32 `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
+	// example:
+	//
+	// 97
 	IdCardFaceComparisonScore *float32                                  `json:"IdCardFaceComparisonScore,omitempty" xml:"IdCardFaceComparisonScore,omitempty"`
 	Material                  *DescribeVerifyResultResponseBodyMaterial `json:"Material,omitempty" xml:"Material,omitempty" type:"Struct"`
-	RequestId                 *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VerifyStatus              *int32                                    `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	VerifyStatus *int32 `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty"`
 }
 
 func (s DescribeVerifyResultResponseBody) String() string {
@@ -2227,14 +2834,29 @@ func (s *DescribeVerifyResultResponseBody) SetVerifyStatus(v int32) *DescribeVer
 }
 
 type DescribeVerifyResultResponseBodyMaterial struct {
-	FaceGlobalUrl *string                                             `json:"FaceGlobalUrl,omitempty" xml:"FaceGlobalUrl,omitempty"`
-	FaceImageUrl  *string                                             `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
-	FaceMask      *bool                                               `json:"FaceMask,omitempty" xml:"FaceMask,omitempty"`
-	FaceQuality   *string                                             `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
-	IdCardInfo    *DescribeVerifyResultResponseBodyMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" type:"Struct"`
-	IdCardName    *string                                             `json:"IdCardName,omitempty" xml:"IdCardName,omitempty"`
-	IdCardNumber  *string                                             `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
-	VideoUrls     []*string                                           `json:"VideoUrls,omitempty" xml:"VideoUrls,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://image-demo.img-cn-hangzhou.aliyuncs.com/face-global-example.jpg
+	FaceGlobalUrl *string `json:"FaceGlobalUrl,omitempty" xml:"FaceGlobalUrl,omitempty"`
+	// example:
+	//
+	// http://image-demo.img-cn-hangzhou.aliyuncs.com/face-image-example.jpg
+	FaceImageUrl *string `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
+	// example:
+	//
+	// false
+	FaceMask *bool `json:"FaceMask,omitempty" xml:"FaceMask,omitempty"`
+	// example:
+	//
+	// NORMAL
+	FaceQuality *string                                             `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
+	IdCardInfo  *DescribeVerifyResultResponseBodyMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" type:"Struct"`
+	IdCardName  *string                                             `json:"IdCardName,omitempty" xml:"IdCardName,omitempty"`
+	// example:
+	//
+	// 02343218901123****
+	IdCardNumber *string   `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
+	VideoUrls    []*string `json:"VideoUrls,omitempty" xml:"VideoUrls,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVerifyResultResponseBodyMaterial) String() string {
@@ -2286,16 +2908,34 @@ func (s *DescribeVerifyResultResponseBodyMaterial) SetVideoUrls(v []*string) *De
 }
 
 type DescribeVerifyResultResponseBodyMaterialIdCardInfo struct {
-	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	Authority     *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
-	BackImageUrl  *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty"`
-	Birth         *string `json:"Birth,omitempty" xml:"Birth,omitempty"`
-	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Address   *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Authority *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
+	// example:
+	//
+	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example3.jpg
+	BackImageUrl *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty"`
+	// example:
+	//
+	// 19900101
+	Birth *string `json:"Birth,omitempty" xml:"Birth,omitempty"`
+	// example:
+	//
+	// 20201101
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example2.jpg
 	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Nationality   *string `json:"Nationality,omitempty" xml:"Nationality,omitempty"`
-	Number        *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 02343218901123****
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// example:
+	//
+	// 20201101
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeVerifyResultResponseBodyMaterialIdCardInfo) String() string {
@@ -2386,6 +3026,11 @@ func (s *DescribeVerifyResultResponse) SetBody(v *DescribeVerifyResultResponseBo
 }
 
 type DescribeVerifySDKRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1KQMcnLd4m37LN2D0F0WCD
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2403,8 +3048,14 @@ func (s *DescribeVerifySDKRequest) SetTaskId(v string) *DescribeVerifySDKRequest
 }
 
 type DescribeVerifySDKResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SdkUrl    *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
+	// example:
+	//
+	// https://www.xxx.com
+	SdkUrl *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
 }
 
 func (s DescribeVerifySDKResponseBody) String() string {
@@ -2455,21 +3106,67 @@ func (s *DescribeVerifySDKResponse) SetBody(v *DescribeVerifySDKResponseBody) *D
 }
 
 type DescribeVerifyTokenRequest struct {
-	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CallbackSeed         *string `json:"CallbackSeed,omitempty" xml:"CallbackSeed,omitempty"`
-	CallbackUrl          *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39ecf51e-2f81-4dc5-90ee-ff86125be683
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RPBasicTest
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// -
+	CallbackSeed *string `json:"CallbackSeed,omitempty" xml:"CallbackSeed,omitempty"`
+	// example:
+	//
+	// -
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// example:
+	//
+	// http%3A%2F%2Fjiangsu.china.com.cn%2Fuploadfile%2F2015%2F0114%2F1421221304095989.jpg
 	FaceRetainedImageUrl *string `json:"FaceRetainedImageUrl,omitempty" xml:"FaceRetainedImageUrl,omitempty"`
-	FailedRedirectUrl    *string `json:"FailedRedirectUrl,omitempty" xml:"FailedRedirectUrl,omitempty"`
-	IdCardBackImageUrl   *string `json:"IdCardBackImageUrl,omitempty" xml:"IdCardBackImageUrl,omitempty"`
-	IdCardFrontImageUrl  *string `json:"IdCardFrontImageUrl,omitempty" xml:"IdCardFrontImageUrl,omitempty"`
-	IdCardNumber         *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PassedRedirectUrl    *string `json:"PassedRedirectUrl,omitempty" xml:"PassedRedirectUrl,omitempty"`
-	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserIp               *string `json:"UserIp,omitempty" xml:"UserIp,omitempty"`
-	UserPhoneNumber      *string `json:"UserPhoneNumber,omitempty" xml:"UserPhoneNumber,omitempty"`
-	UserRegistTime       *int64  `json:"UserRegistTime,omitempty" xml:"UserRegistTime,omitempty"`
+	// example:
+	//
+	// -
+	FailedRedirectUrl *string `json:"FailedRedirectUrl,omitempty" xml:"FailedRedirectUrl,omitempty"`
+	// example:
+	//
+	// http%3A%2F%2Fjiangsu.china.com.cn%2Fuploadfile%2F2015%2F0114%2F1421221304095989.jpg
+	IdCardBackImageUrl *string `json:"IdCardBackImageUrl,omitempty" xml:"IdCardBackImageUrl,omitempty"`
+	// example:
+	//
+	// http%3A%2F%2Fjiangsu.china.com.cn%2Fuploadfile%2F2015%2F0114%2F1421221304095989.jpg
+	IdCardFrontImageUrl *string `json:"IdCardFrontImageUrl,omitempty" xml:"IdCardFrontImageUrl,omitempty"`
+	// example:
+	//
+	// 330100xxxxxxxxxxxx
+	IdCardNumber *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// -
+	PassedRedirectUrl *string `json:"PassedRedirectUrl,omitempty" xml:"PassedRedirectUrl,omitempty"`
+	// example:
+	//
+	// user111
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 192.168.***.***
+	UserIp *string `json:"UserIp,omitempty" xml:"UserIp,omitempty"`
+	// example:
+	//
+	// 187********
+	UserPhoneNumber *string `json:"UserPhoneNumber,omitempty" xml:"UserPhoneNumber,omitempty"`
+	// example:
+	//
+	// 1577808000000
+	UserRegistTime *int64 `json:"UserRegistTime,omitempty" xml:"UserRegistTime,omitempty"`
 }
 
 func (s DescribeVerifyTokenRequest) String() string {
@@ -2557,9 +3254,18 @@ func (s *DescribeVerifyTokenRequest) SetUserRegistTime(v int64) *DescribeVerifyT
 
 type DescribeVerifyTokenResponseBody struct {
 	OssUploadToken *DescribeVerifyTokenResponseBodyOssUploadToken `json:"OssUploadToken,omitempty" xml:"OssUploadToken,omitempty" type:"Struct"`
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VerifyPageUrl  *string                                        `json:"VerifyPageUrl,omitempty" xml:"VerifyPageUrl,omitempty"`
-	VerifyToken    *string                                        `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// http%3A%2F%2Fjiangsu.china.com.cn%2Fuploadfile%2F2015%2F0114%2F1421221304095989.jpg
+	VerifyPageUrl *string `json:"VerifyPageUrl,omitempty" xml:"VerifyPageUrl,omitempty"`
+	// example:
+	//
+	// c302c0797679457685410ee51a5ba375
+	VerifyToken *string `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
 }
 
 func (s DescribeVerifyTokenResponseBody) String() string {
@@ -2591,13 +3297,34 @@ func (s *DescribeVerifyTokenResponseBody) SetVerifyToken(v string) *DescribeVeri
 }
 
 type DescribeVerifyTokenResponseBodyOssUploadToken struct {
-	Bucket   *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// example:
+	//
+	// cloudauth-zhangjiakou-external
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// example:
+	//
+	// https://oss-cn-zhangjiakou.aliyuncs.com
 	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	Expired  *int64  `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Secret   *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
-	Token    *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// 1582636610000
+	Expired *int64 `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// example:
+	//
+	// STS.NU8rUBj****
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// prod/RdNLC@Ox2n-1s7NMt
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// FwmnyoqT8dHj7nJLuM67T****
+	Secret *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
+	// example:
+	//
+	// uWia500nTS5knZaDzq4/KqpvhcLnO****
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s DescribeVerifyTokenResponseBodyOssUploadToken) String() string {
@@ -2673,7 +3400,15 @@ func (s *DescribeVerifyTokenResponse) SetBody(v *DescribeVerifyTokenResponseBody
 }
 
 type DetectFaceAttributesRequest struct {
-	BizType       *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// RPBasicTest
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg
 	MaterialValue *string `json:"MaterialValue,omitempty" xml:"MaterialValue,omitempty"`
 }
 
@@ -2696,11 +3431,23 @@ func (s *DetectFaceAttributesRequest) SetMaterialValue(v string) *DetectFaceAttr
 }
 
 type DetectFaceAttributesResponseBody struct {
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DetectFaceAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DetectFaceAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Error.InternalError
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DetectFaceAttributesResponseBody) String() string {
@@ -2738,8 +3485,14 @@ func (s *DetectFaceAttributesResponseBody) SetSuccess(v bool) *DetectFaceAttribu
 
 type DetectFaceAttributesResponseBodyData struct {
 	FaceInfos *DetectFaceAttributesResponseBodyDataFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Struct"`
-	ImgHeight *int32                                         `json:"ImgHeight,omitempty" xml:"ImgHeight,omitempty"`
-	ImgWidth  *int32                                         `json:"ImgWidth,omitempty" xml:"ImgWidth,omitempty"`
+	// example:
+	//
+	// 1920
+	ImgHeight *int32 `json:"ImgHeight,omitempty" xml:"ImgHeight,omitempty"`
+	// example:
+	//
+	// 1080
+	ImgWidth *int32 `json:"ImgWidth,omitempty" xml:"ImgWidth,omitempty"`
 }
 
 func (s DetectFaceAttributesResponseBodyData) String() string {
@@ -2806,14 +3559,32 @@ func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo) 
 }
 
 type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes struct {
-	Blur       *float32                                                                                     `json:"Blur,omitempty" xml:"Blur,omitempty"`
-	Facequal   *float32                                                                                     `json:"Facequal,omitempty" xml:"Facequal,omitempty"`
-	Facetype   *string                                                                                      `json:"Facetype,omitempty" xml:"Facetype,omitempty"`
-	Glasses    *string                                                                                      `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
-	Headpose   *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose `json:"Headpose,omitempty" xml:"Headpose,omitempty" type:"Struct"`
-	Integrity  *int32                                                                                       `json:"Integrity,omitempty" xml:"Integrity,omitempty"`
-	Respirator *string                                                                                      `json:"Respirator,omitempty" xml:"Respirator,omitempty"`
-	Smiling    *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling  `json:"Smiling,omitempty" xml:"Smiling,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0.1419367790222168
+	Blur *float32 `json:"Blur,omitempty" xml:"Blur,omitempty"`
+	// example:
+	//
+	// 60
+	Facequal *float32 `json:"Facequal,omitempty" xml:"Facequal,omitempty"`
+	// example:
+	//
+	// Face
+	Facetype *string `json:"Facetype,omitempty" xml:"Facetype,omitempty"`
+	// example:
+	//
+	// None
+	Glasses  *string                                                                                      `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
+	Headpose *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose `json:"Headpose,omitempty" xml:"Headpose,omitempty" type:"Struct"`
+	// example:
+	//
+	// 70
+	Integrity *int32 `json:"Integrity,omitempty" xml:"Integrity,omitempty"`
+	// example:
+	//
+	// Wear
+	Respirator *string                                                                                     `json:"Respirator,omitempty" xml:"Respirator,omitempty"`
+	Smiling    *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling `json:"Smiling,omitempty" xml:"Smiling,omitempty" type:"Struct"`
 }
 
 func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) String() string {
@@ -2865,9 +3636,18 @@ func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFa
 }
 
 type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose struct {
+	// example:
+	//
+	// -1.5683923959732056
 	PitchAngle *float32 `json:"PitchAngle,omitempty" xml:"PitchAngle,omitempty"`
-	RollAngle  *float32 `json:"RollAngle,omitempty" xml:"RollAngle,omitempty"`
-	YawAngle   *float32 `json:"YawAngle,omitempty" xml:"YawAngle,omitempty"`
+	// example:
+	//
+	// 7.163370132446289
+	RollAngle *float32 `json:"RollAngle,omitempty" xml:"RollAngle,omitempty"`
+	// example:
+	//
+	// -6.925303936004639
+	YawAngle *float32 `json:"YawAngle,omitempty" xml:"YawAngle,omitempty"`
 }
 
 func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose) String() string {
@@ -2894,8 +3674,14 @@ func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFa
 }
 
 type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling struct {
+	// example:
+	//
+	// 95
 	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	Value     *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 97
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) String() string {
@@ -2917,10 +3703,22 @@ func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFa
 }
 
 type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect struct {
+	// example:
+	//
+	// 473
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 354
+	Left *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	// example:
+	//
+	// 453
+	Top *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
+	// example:
+	//
+	// 473
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect) String() string {
@@ -2981,9 +3779,15 @@ func (s *DetectFaceAttributesResponse) SetBody(v *DetectFaceAttributesResponseBo
 }
 
 type Id2MetaVerifyRequest struct {
+	// example:
+	//
+	// 412722198610274919
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// normal
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s Id2MetaVerifyRequest) String() string {
@@ -3010,8 +3814,17 @@ func (s *Id2MetaVerifyRequest) SetUserName(v string) *Id2MetaVerifyRequest {
 }
 
 type Id2MetaVerifyResponseBody struct {
-	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
 	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *Id2MetaVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
@@ -3045,6 +3858,9 @@ func (s *Id2MetaVerifyResponseBody) SetResultObject(v *Id2MetaVerifyResponseBody
 }
 
 type Id2MetaVerifyResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 }
 
@@ -3091,36 +3907,81 @@ func (s *Id2MetaVerifyResponse) SetBody(v *Id2MetaVerifyResponseBody) *Id2MetaVe
 }
 
 type InitFaceVerifyRequest struct {
-	AuthId                     *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
-	Birthday                   *string `json:"Birthday,omitempty" xml:"Birthday,omitempty"`
-	CallbackToken              *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
-	CallbackUrl                *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	CertName                   *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	CertNo                     *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	CertType                   *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	CertifyId                  *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	CertifyUrlStyle            *string `json:"CertifyUrlStyle,omitempty" xml:"CertifyUrlStyle,omitempty"`
-	CertifyUrlType             *string `json:"CertifyUrlType,omitempty" xml:"CertifyUrlType,omitempty"`
-	Crop                       *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	EncryptType                *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	FaceContrastPicture        *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
-	FaceContrastPictureUrl     *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
-	FaceGuardOutput            *string `json:"FaceGuardOutput,omitempty" xml:"FaceGuardOutput,omitempty"`
-	Ip                         *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	MetaInfo                   *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
-	Mobile                     *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Mode                       *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Model                      *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	OssBucketName              *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	OssObjectName              *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
-	OuterOrderNo               *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	ProcedurePriority          *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
-	ProductCode                *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	RarelyCharacters           *string `json:"RarelyCharacters,omitempty" xml:"RarelyCharacters,omitempty"`
-	ReadImg                    *string `json:"ReadImg,omitempty" xml:"ReadImg,omitempty"`
-	ReturnUrl                  *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
-	SceneId                    *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SuitableType               *string `json:"SuitableType,omitempty" xml:"SuitableType,omitempty"`
+	AuthId        *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	Birthday      *string `json:"Birthday,omitempty" xml:"Birthday,omitempty"`
+	CallbackToken *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
+	CallbackUrl   *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	CertName      *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// example:
+	//
+	// 330103xxxxxxxxxxxx
+	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
+	// example:
+	//
+	// IDENTITY_CARD
+	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// example:
+	//
+	// 0bfa7c493f850e5178b9f8613634c9xx
+	CertifyId       *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	CertifyUrlStyle *string `json:"CertifyUrlStyle,omitempty" xml:"CertifyUrlStyle,omitempty"`
+	CertifyUrlType  *string `json:"CertifyUrlType,omitempty" xml:"CertifyUrlType,omitempty"`
+	Crop            *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	EncryptType     *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// example:
+	//
+	// /9j/4AAQSkZJRgABAQAASxxxxxxx
+	FaceContrastPicture *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
+	// example:
+	//
+	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
+	FaceContrastPictureUrl *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
+	FaceGuardOutput        *string `json:"FaceGuardOutput,omitempty" xml:"FaceGuardOutput,omitempty"`
+	// example:
+	//
+	// 114.xxx.xxx.xxx
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// {"zimVer":"3.0.0","appVersion": "1","bioMetaInfo": "4.1.0:11501568,0","appName": "com.aliyun.antcloudauth","deviceType": "ios","osVersion": "iOS 10.3.2","apdidToken": "","deviceModel": "iPhone9,1"}
+	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
+	// example:
+	//
+	// 130xxxxxxxx
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Mode   *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Model  *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// cn-shanghai-aliyun-cloudauth-xxxxx
+	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// example:
+	//
+	// verify/xxxxx/xxxxxx.jpeg
+	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
+	// example:
+	//
+	// e0c34a77f5ac40a5aa5e6ed20c353888
+	OuterOrderNo      *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	ProcedurePriority *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
+	// example:
+	//
+	// ID_PRO
+	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	RarelyCharacters *string `json:"RarelyCharacters,omitempty" xml:"RarelyCharacters,omitempty"`
+	ReadImg          *string `json:"ReadImg,omitempty" xml:"ReadImg,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	ReturnUrl *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
+	// example:
+	//
+	// 1000000006
+	SceneId      *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SuitableType *string `json:"SuitableType,omitempty" xml:"SuitableType,omitempty"`
+	// example:
+	//
+	// 123456789
 	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	ValidityDate               *string `json:"ValidityDate,omitempty" xml:"ValidityDate,omitempty"`
 	VoluntaryCustomizedContent *string `json:"VoluntaryCustomizedContent,omitempty" xml:"VoluntaryCustomizedContent,omitempty"`
@@ -3300,8 +4161,17 @@ func (s *InitFaceVerifyRequest) SetVoluntaryCustomizedContent(v string) *InitFac
 }
 
 type InitFaceVerifyResponseBody struct {
-	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 130A2C10-B9EE-4D84-88E3-5384FF039795
 	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *InitFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
@@ -3335,6 +4205,9 @@ func (s *InitFaceVerifyResponseBody) SetResultObject(v *InitFaceVerifyResponseBo
 }
 
 type InitFaceVerifyResponseBodyResultObject struct {
+	// example:
+	//
+	// 91707dc296d469ad38e4c5efa6a0f24b
 	CertifyId  *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
 	CertifyUrl *string `json:"CertifyUrl,omitempty" xml:"CertifyUrl,omitempty"`
 }
@@ -3581,10 +4454,19 @@ func (s *LivenessFaceVerifyResponse) SetBody(v *LivenessFaceVerifyResponseBody) 
 }
 
 type Mobile3MetaDetailVerifyRequest struct {
+	// example:
+	//
+	// 520181199902104631
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// 150000xxxx
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// normal
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s Mobile3MetaDetailVerifyRequest) String() string {
@@ -3616,8 +4498,17 @@ func (s *Mobile3MetaDetailVerifyRequest) SetUserName(v string) *Mobile3MetaDetai
 }
 
 type Mobile3MetaDetailVerifyResponseBody struct {
-	Code         *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 5A6229C0-E156-48E4-B6EC-0F528BDF60D2
 	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *Mobile3MetaDetailVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
@@ -3651,8 +4542,17 @@ func (s *Mobile3MetaDetailVerifyResponseBody) SetResultObject(v *Mobile3MetaDeta
 }
 
 type Mobile3MetaDetailVerifyResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// CMCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// example:
+	//
+	// 101
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 }
 
@@ -3709,10 +4609,19 @@ func (s *Mobile3MetaDetailVerifyResponse) SetBody(v *Mobile3MetaDetailVerifyResp
 }
 
 type Mobile3MetaSimpleVerifyRequest struct {
+	// example:
+	//
+	// 429001********8211
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// 150000****
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// normal
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s Mobile3MetaSimpleVerifyRequest) String() string {
@@ -3744,8 +4653,17 @@ func (s *Mobile3MetaSimpleVerifyRequest) SetUserName(v string) *Mobile3MetaSimpl
 }
 
 type Mobile3MetaSimpleVerifyResponseBody struct {
-	Code         *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *Mobile3MetaSimpleVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
@@ -3779,7 +4697,13 @@ func (s *Mobile3MetaSimpleVerifyResponseBody) SetResultObject(v *Mobile3MetaSimp
 }
 
 type Mobile3MetaSimpleVerifyResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// CMCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
@@ -3831,7 +4755,13 @@ func (s *Mobile3MetaSimpleVerifyResponse) SetBody(v *Mobile3MetaSimpleVerifyResp
 }
 
 type MobileDetectRequest struct {
-	Mobiles   *string `json:"Mobiles,omitempty" xml:"Mobiles,omitempty"`
+	// example:
+	//
+	// 138********,156********
+	Mobiles *string `json:"Mobiles,omitempty" xml:"Mobiles,omitempty"`
+	// example:
+	//
+	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 }
 
@@ -3854,8 +4784,17 @@ func (s *MobileDetectRequest) SetParamType(v string) *MobileDetectRequest {
 }
 
 type MobileDetectResponseBody struct {
-	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 969434DF-926B-4997-9881-4DE94E39F805
 	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *MobileDetectResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
@@ -3889,6 +4828,9 @@ func (s *MobileDetectResponseBody) SetResultObject(v *MobileDetectResponseBodyRe
 }
 
 type MobileDetectResponseBodyResultObject struct {
+	// example:
+	//
+	// 2
 	ChargeCount *string                                      `json:"ChargeCount,omitempty" xml:"ChargeCount,omitempty"`
 	Items       []*MobileDetectResponseBodyResultObjectItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
@@ -3912,10 +4854,22 @@ func (s *MobileDetectResponseBodyResultObject) SetItems(v []*MobileDetectRespons
 }
 
 type MobileDetectResponseBodyResultObjectItems struct {
-	Area    *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// example:
+	//
+	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// CMCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	Mobile  *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// 131********
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// 101
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 }
 
@@ -3982,7 +4936,13 @@ func (s *MobileDetectResponse) SetBody(v *MobileDetectResponseBody) *MobileDetec
 }
 
 type MobileOnlineStatusRequest struct {
-	Mobile    *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// 130********
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 }
 
@@ -4005,8 +4965,17 @@ func (s *MobileOnlineStatusRequest) SetParamType(v string) *MobileOnlineStatusRe
 }
 
 type MobileOnlineStatusResponseBody struct {
-	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B506328A-D84B-4750-82C7-6A207C585CF1
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *MobileOnlineStatusResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
@@ -4040,8 +5009,17 @@ func (s *MobileOnlineStatusResponseBody) SetResultObject(v *MobileOnlineStatusRe
 }
 
 type MobileOnlineStatusResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// CMCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// example:
+	//
+	// 101
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 }
 
@@ -4098,7 +5076,13 @@ func (s *MobileOnlineStatusResponse) SetBody(v *MobileOnlineStatusResponseBody) 
 }
 
 type MobileOnlineTimeRequest struct {
-	Mobile    *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// 130********
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 }
 
@@ -4121,8 +5105,17 @@ func (s *MobileOnlineTimeRequest) SetParamType(v string) *MobileOnlineTimeReques
 }
 
 type MobileOnlineTimeResponseBody struct {
-	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B506328A-D84B-4750-82C7-6A207C585CF1
 	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *MobileOnlineTimeResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
@@ -4156,8 +5149,17 @@ func (s *MobileOnlineTimeResponseBody) SetResultObject(v *MobileOnlineTimeRespon
 }
 
 type MobileOnlineTimeResponseBodyResultObject struct {
-	BizCode  *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	IspName  *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// example:
+	//
+	// 1
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// CMCC
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// example:
+	//
+	// 5
 	TimeCode *string `json:"TimeCode,omitempty" xml:"TimeCode,omitempty"`
 }
 
@@ -4214,10 +5216,27 @@ func (s *MobileOnlineTimeResponse) SetBody(v *MobileOnlineTimeResponseBody) *Mob
 }
 
 type ModifyDeviceInfoRequest struct {
-	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	ExpiredDay   *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty"`
+	// example:
+	//
+	// FACE_TEST
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// wd.6ziUffspAeW5FVYbaqmexR-1qwNjM
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 20190401
+	ExpiredDay *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty"`
+	// example:
+	//
+	// 3iJ1AY$oHcu7mC69
 	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
 }
 
@@ -4255,11 +5274,29 @@ func (s *ModifyDeviceInfoRequest) SetUserDeviceId(v string) *ModifyDeviceInfoReq
 }
 
 type ModifyDeviceInfoResponseBody struct {
-	BeginDay     *string `json:"BeginDay,omitempty" xml:"BeginDay,omitempty"`
-	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	ExpiredDay   *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20190401
+	BeginDay *string `json:"BeginDay,omitempty" xml:"BeginDay,omitempty"`
+	// example:
+	//
+	// FACE_TEST
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// wd.6ziUffspAeW5FVYbaqmexR-1qwNjM
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// example:
+	//
+	// 20200330
+	ExpiredDay *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3iJ1AY$oHcu7mC69
 	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
 }
 
@@ -4331,14 +5368,44 @@ func (s *ModifyDeviceInfoResponse) SetBody(v *ModifyDeviceInfoResponseBody) *Mod
 }
 
 type VerifyMaterialRequest struct {
-	BizId               *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType             *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	FaceImageUrl        *string `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
-	IdCardBackImageUrl  *string `json:"IdCardBackImageUrl,omitempty" xml:"IdCardBackImageUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39ecf51e-2f81-4dc5-90ee-ff86125b****
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RPMinTest
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg
+	FaceImageUrl *string `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
+	// example:
+	//
+	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example3.jpg
+	IdCardBackImageUrl *string `json:"IdCardBackImageUrl,omitempty" xml:"IdCardBackImageUrl,omitempty"`
+	// example:
+	//
+	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example2.jpg
 	IdCardFrontImageUrl *string `json:"IdCardFrontImageUrl,omitempty" xml:"IdCardFrontImageUrl,omitempty"`
-	IdCardNumber        *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 02343218901123****
+	IdCardNumber *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 54sdj
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s VerifyMaterialRequest) String() string {
@@ -4390,12 +5457,27 @@ func (s *VerifyMaterialRequest) SetUserId(v string) *VerifyMaterialRequest {
 }
 
 type VerifyMaterialResponseBody struct {
-	AuthorityComparisionScore *float32                            `json:"AuthorityComparisionScore,omitempty" xml:"AuthorityComparisionScore,omitempty"`
+	// example:
+	//
+	// 97
+	AuthorityComparisionScore *float32 `json:"AuthorityComparisionScore,omitempty" xml:"AuthorityComparisionScore,omitempty"`
+	// example:
+	//
+	// 97
 	IdCardFaceComparisonScore *float32                            `json:"IdCardFaceComparisonScore,omitempty" xml:"IdCardFaceComparisonScore,omitempty"`
 	Material                  *VerifyMaterialResponseBodyMaterial `json:"Material,omitempty" xml:"Material,omitempty" type:"Struct"`
-	RequestId                 *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VerifyStatus              *int32                              `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty"`
-	VerifyToken               *string                             `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	VerifyStatus *int32 `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty"`
+	// example:
+	//
+	// c302c0797679457685410ee51a5ba375
+	VerifyToken *string `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
 }
 
 func (s VerifyMaterialResponseBody) String() string {
@@ -4437,13 +5519,28 @@ func (s *VerifyMaterialResponseBody) SetVerifyToken(v string) *VerifyMaterialRes
 }
 
 type VerifyMaterialResponseBodyMaterial struct {
-	FaceGlobalUrl *string                                       `json:"FaceGlobalUrl,omitempty" xml:"FaceGlobalUrl,omitempty"`
-	FaceImageUrl  *string                                       `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
-	FaceMask      *string                                       `json:"FaceMask,omitempty" xml:"FaceMask,omitempty"`
-	FaceQuality   *string                                       `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
-	IdCardInfo    *VerifyMaterialResponseBodyMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" type:"Struct"`
-	IdCardName    *string                                       `json:"IdCardName,omitempty" xml:"IdCardName,omitempty"`
-	IdCardNumber  *string                                       `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
+	// example:
+	//
+	// http://image-demo.img-cn-hangzhou.aliyuncs.com/face-global-example.jpg
+	FaceGlobalUrl *string `json:"FaceGlobalUrl,omitempty" xml:"FaceGlobalUrl,omitempty"`
+	// example:
+	//
+	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg
+	FaceImageUrl *string `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
+	// example:
+	//
+	// false
+	FaceMask *string `json:"FaceMask,omitempty" xml:"FaceMask,omitempty"`
+	// example:
+	//
+	// NORMAL
+	FaceQuality *string                                       `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
+	IdCardInfo  *VerifyMaterialResponseBodyMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" type:"Struct"`
+	IdCardName  *string                                       `json:"IdCardName,omitempty" xml:"IdCardName,omitempty"`
+	// example:
+	//
+	// 02343218901123****
+	IdCardNumber *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
 }
 
 func (s VerifyMaterialResponseBodyMaterial) String() string {
@@ -4490,16 +5587,34 @@ func (s *VerifyMaterialResponseBodyMaterial) SetIdCardNumber(v string) *VerifyMa
 }
 
 type VerifyMaterialResponseBodyMaterialIdCardInfo struct {
-	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	Authority     *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
-	BackImageUrl  *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty"`
-	Birth         *string `json:"Birth,omitempty" xml:"Birth,omitempty"`
-	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Address   *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Authority *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
+	// example:
+	//
+	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example3.jpg
+	BackImageUrl *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty"`
+	// example:
+	//
+	// 19900101
+	Birth *string `json:"Birth,omitempty" xml:"Birth,omitempty"`
+	// example:
+	//
+	// 20201101
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example2.jpg
 	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Nationality   *string `json:"Nationality,omitempty" xml:"Nationality,omitempty"`
-	Number        *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 02343218901123****
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// example:
+	//
+	// 20201101
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s VerifyMaterialResponseBodyMaterialIdCardInfo) String() string {
@@ -4636,6 +5751,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增AIGC人脸检测能力
+//
+// @param request - AIGCFaceVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AIGCFaceVerifyResponse
 func (client *Client) AIGCFaceVerifyWithOptions(request *AIGCFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *AIGCFaceVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4695,6 +5819,13 @@ func (client *Client) AIGCFaceVerifyWithOptions(request *AIGCFaceVerifyRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增AIGC人脸检测能力
+//
+// @param request - AIGCFaceVerifyRequest
+//
+// @return AIGCFaceVerifyResponse
 func (client *Client) AIGCFaceVerify(request *AIGCFaceVerifyRequest) (_result *AIGCFaceVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AIGCFaceVerifyResponse{}
@@ -4706,6 +5837,15 @@ func (client *Client) AIGCFaceVerify(request *AIGCFaceVerifyRequest) (_result *A
 	return _result, _err
 }
 
+// Summary:
+//
+// 银行卡要素核验接口
+//
+// @param request - BankMetaVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BankMetaVerifyResponse
 func (client *Client) BankMetaVerifyWithOptions(request *BankMetaVerifyRequest, runtime *util.RuntimeOptions) (_result *BankMetaVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4763,6 +5903,13 @@ func (client *Client) BankMetaVerifyWithOptions(request *BankMetaVerifyRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 银行卡要素核验接口
+//
+// @param request - BankMetaVerifyRequest
+//
+// @return BankMetaVerifyResponse
 func (client *Client) BankMetaVerify(request *BankMetaVerifyRequest) (_result *BankMetaVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BankMetaVerifyResponse{}
@@ -4774,6 +5921,11 @@ func (client *Client) BankMetaVerify(request *BankMetaVerifyRequest) (_result *B
 	return _result, _err
 }
 
+// @param request - CompareFaceVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CompareFaceVerifyResponse
 func (client *Client) CompareFaceVerifyWithOptions(request *CompareFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *CompareFaceVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4859,6 +6011,9 @@ func (client *Client) CompareFaceVerifyWithOptions(request *CompareFaceVerifyReq
 	return _result, _err
 }
 
+// @param request - CompareFaceVerifyRequest
+//
+// @return CompareFaceVerifyResponse
 func (client *Client) CompareFaceVerify(request *CompareFaceVerifyRequest) (_result *CompareFaceVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CompareFaceVerifyResponse{}
@@ -4870,6 +6025,11 @@ func (client *Client) CompareFaceVerify(request *CompareFaceVerifyRequest) (_res
 	return _result, _err
 }
 
+// @param request - CompareFacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CompareFacesResponse
 func (client *Client) CompareFacesWithOptions(request *CompareFacesRequest, runtime *util.RuntimeOptions) (_result *CompareFacesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4915,6 +6075,9 @@ func (client *Client) CompareFacesWithOptions(request *CompareFacesRequest, runt
 	return _result, _err
 }
 
+// @param request - CompareFacesRequest
+//
+// @return CompareFacesResponse
 func (client *Client) CompareFaces(request *CompareFacesRequest) (_result *CompareFacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CompareFacesResponse{}
@@ -4926,6 +6089,11 @@ func (client *Client) CompareFaces(request *CompareFacesRequest) (_result *Compa
 	return _result, _err
 }
 
+// @param request - ContrastFaceVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ContrastFaceVerifyResponse
 func (client *Client) ContrastFaceVerifyWithOptions(request *ContrastFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *ContrastFaceVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5033,6 +6201,9 @@ func (client *Client) ContrastFaceVerifyWithOptions(request *ContrastFaceVerifyR
 	return _result, _err
 }
 
+// @param request - ContrastFaceVerifyRequest
+//
+// @return ContrastFaceVerifyResponse
 func (client *Client) ContrastFaceVerify(request *ContrastFaceVerifyRequest) (_result *ContrastFaceVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ContrastFaceVerifyResponse{}
@@ -5063,7 +6234,7 @@ func (client *Client) ContrastFaceVerifyAdvance(request *ContrastFaceVerifyAdvan
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -5091,12 +6262,17 @@ func (client *Client) ContrastFaceVerifyAdvance(request *ContrastFaceVerifyAdvan
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -5150,6 +6326,11 @@ func (client *Client) ContrastFaceVerifyAdvance(request *ContrastFaceVerifyAdvan
 	return _result, _err
 }
 
+// @param request - CreateAuthKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAuthKeyResponse
 func (client *Client) CreateAuthKeyWithOptions(request *CreateAuthKeyRequest, runtime *util.RuntimeOptions) (_result *CreateAuthKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5195,6 +6376,9 @@ func (client *Client) CreateAuthKeyWithOptions(request *CreateAuthKeyRequest, ru
 	return _result, _err
 }
 
+// @param request - CreateAuthKeyRequest
+//
+// @return CreateAuthKeyResponse
 func (client *Client) CreateAuthKey(request *CreateAuthKeyRequest) (_result *CreateAuthKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAuthKeyResponse{}
@@ -5206,6 +6390,11 @@ func (client *Client) CreateAuthKey(request *CreateAuthKeyRequest) (_result *Cre
 	return _result, _err
 }
 
+// @param request - CreateVerifySettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVerifySettingResponse
 func (client *Client) CreateVerifySettingWithOptions(request *CreateVerifySettingRequest, runtime *util.RuntimeOptions) (_result *CreateVerifySettingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5259,6 +6448,9 @@ func (client *Client) CreateVerifySettingWithOptions(request *CreateVerifySettin
 	return _result, _err
 }
 
+// @param request - CreateVerifySettingRequest
+//
+// @return CreateVerifySettingResponse
 func (client *Client) CreateVerifySetting(request *CreateVerifySettingRequest) (_result *CreateVerifySettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVerifySettingResponse{}
@@ -5270,6 +6462,15 @@ func (client *Client) CreateVerifySetting(request *CreateVerifySettingRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 凭证核验
+//
+// @param request - CredentialVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CredentialVerifyResponse
 func (client *Client) CredentialVerifyWithOptions(request *CredentialVerifyRequest, runtime *util.RuntimeOptions) (_result *CredentialVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5302,6 +6503,10 @@ func (client *Client) CredentialVerifyWithOptions(request *CredentialVerifyReque
 
 	if !tea.BoolValue(util.IsUnset(request.IsOCR)) {
 		query["IsOCR"] = request.IsOCR
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantId)) {
+		query["MerchantId"] = request.MerchantId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserName)) {
@@ -5337,6 +6542,13 @@ func (client *Client) CredentialVerifyWithOptions(request *CredentialVerifyReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 凭证核验
+//
+// @param request - CredentialVerifyRequest
+//
+// @return CredentialVerifyResponse
 func (client *Client) CredentialVerify(request *CredentialVerifyRequest) (_result *CredentialVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CredentialVerifyResponse{}
@@ -5348,6 +6560,11 @@ func (client *Client) CredentialVerify(request *CredentialVerifyRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DescribeDeviceInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDeviceInfoResponse
 func (client *Client) DescribeDeviceInfoWithOptions(request *DescribeDeviceInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDeviceInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5405,6 +6622,9 @@ func (client *Client) DescribeDeviceInfoWithOptions(request *DescribeDeviceInfoR
 	return _result, _err
 }
 
+// @param request - DescribeDeviceInfoRequest
+//
+// @return DescribeDeviceInfoResponse
 func (client *Client) DescribeDeviceInfo(request *DescribeDeviceInfoRequest) (_result *DescribeDeviceInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDeviceInfoResponse{}
@@ -5416,6 +6636,11 @@ func (client *Client) DescribeDeviceInfo(request *DescribeDeviceInfoRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribeFaceVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFaceVerifyResponse
 func (client *Client) DescribeFaceVerifyWithOptions(request *DescribeFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *DescribeFaceVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5457,6 +6682,9 @@ func (client *Client) DescribeFaceVerifyWithOptions(request *DescribeFaceVerifyR
 	return _result, _err
 }
 
+// @param request - DescribeFaceVerifyRequest
+//
+// @return DescribeFaceVerifyResponse
 func (client *Client) DescribeFaceVerify(request *DescribeFaceVerifyRequest) (_result *DescribeFaceVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFaceVerifyResponse{}
@@ -5468,6 +6696,11 @@ func (client *Client) DescribeFaceVerify(request *DescribeFaceVerifyRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribeOssUploadTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOssUploadTokenResponse
 func (client *Client) DescribeOssUploadTokenWithOptions(runtime *util.RuntimeOptions) (_result *DescribeOssUploadTokenResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -5490,6 +6723,7 @@ func (client *Client) DescribeOssUploadTokenWithOptions(runtime *util.RuntimeOpt
 	return _result, _err
 }
 
+// @return DescribeOssUploadTokenResponse
 func (client *Client) DescribeOssUploadToken() (_result *DescribeOssUploadTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOssUploadTokenResponse{}
@@ -5501,6 +6735,15 @@ func (client *Client) DescribeOssUploadToken() (_result *DescribeOssUploadTokenR
 	return _result, _err
 }
 
+// Summary:
+//
+// Open API新增金融级数据统计API
+//
+// @param request - DescribePageFaceVerifyDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePageFaceVerifyDataResponse
 func (client *Client) DescribePageFaceVerifyDataWithOptions(request *DescribePageFaceVerifyDataRequest, runtime *util.RuntimeOptions) (_result *DescribePageFaceVerifyDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5554,6 +6797,13 @@ func (client *Client) DescribePageFaceVerifyDataWithOptions(request *DescribePag
 	return _result, _err
 }
 
+// Summary:
+//
+// Open API新增金融级数据统计API
+//
+// @param request - DescribePageFaceVerifyDataRequest
+//
+// @return DescribePageFaceVerifyDataResponse
 func (client *Client) DescribePageFaceVerifyData(request *DescribePageFaceVerifyDataRequest) (_result *DescribePageFaceVerifyDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePageFaceVerifyDataResponse{}
@@ -5565,6 +6815,11 @@ func (client *Client) DescribePageFaceVerifyData(request *DescribePageFaceVerify
 	return _result, _err
 }
 
+// @param request - DescribeSmartStatisticsPageListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSmartStatisticsPageListResponse
 func (client *Client) DescribeSmartStatisticsPageListWithOptions(request *DescribeSmartStatisticsPageListRequest, runtime *util.RuntimeOptions) (_result *DescribeSmartStatisticsPageListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5618,6 +6873,9 @@ func (client *Client) DescribeSmartStatisticsPageListWithOptions(request *Descri
 	return _result, _err
 }
 
+// @param request - DescribeSmartStatisticsPageListRequest
+//
+// @return DescribeSmartStatisticsPageListResponse
 func (client *Client) DescribeSmartStatisticsPageList(request *DescribeSmartStatisticsPageListRequest) (_result *DescribeSmartStatisticsPageListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSmartStatisticsPageListResponse{}
@@ -5629,6 +6887,11 @@ func (client *Client) DescribeSmartStatisticsPageList(request *DescribeSmartStat
 	return _result, _err
 }
 
+// @param request - DescribeVerifyResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVerifyResultResponse
 func (client *Client) DescribeVerifyResultWithOptions(request *DescribeVerifyResultRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifyResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5666,6 +6929,9 @@ func (client *Client) DescribeVerifyResultWithOptions(request *DescribeVerifyRes
 	return _result, _err
 }
 
+// @param request - DescribeVerifyResultRequest
+//
+// @return DescribeVerifyResultResponse
 func (client *Client) DescribeVerifyResult(request *DescribeVerifyResultRequest) (_result *DescribeVerifyResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVerifyResultResponse{}
@@ -5677,6 +6943,11 @@ func (client *Client) DescribeVerifyResult(request *DescribeVerifyResultRequest)
 	return _result, _err
 }
 
+// @param request - DescribeVerifySDKRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVerifySDKResponse
 func (client *Client) DescribeVerifySDKWithOptions(request *DescribeVerifySDKRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifySDKResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5710,6 +6981,9 @@ func (client *Client) DescribeVerifySDKWithOptions(request *DescribeVerifySDKReq
 	return _result, _err
 }
 
+// @param request - DescribeVerifySDKRequest
+//
+// @return DescribeVerifySDKResponse
 func (client *Client) DescribeVerifySDK(request *DescribeVerifySDKRequest) (_result *DescribeVerifySDKResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVerifySDKResponse{}
@@ -5721,6 +6995,11 @@ func (client *Client) DescribeVerifySDK(request *DescribeVerifySDKRequest) (_res
 	return _result, _err
 }
 
+// @param request - DescribeVerifyTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVerifyTokenResponse
 func (client *Client) DescribeVerifyTokenWithOptions(request *DescribeVerifyTokenRequest, runtime *util.RuntimeOptions) (_result *DescribeVerifyTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5810,6 +7089,9 @@ func (client *Client) DescribeVerifyTokenWithOptions(request *DescribeVerifyToke
 	return _result, _err
 }
 
+// @param request - DescribeVerifyTokenRequest
+//
+// @return DescribeVerifyTokenResponse
 func (client *Client) DescribeVerifyToken(request *DescribeVerifyTokenRequest) (_result *DescribeVerifyTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVerifyTokenResponse{}
@@ -5821,6 +7103,11 @@ func (client *Client) DescribeVerifyToken(request *DescribeVerifyTokenRequest) (
 	return _result, _err
 }
 
+// @param request - DetectFaceAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectFaceAttributesResponse
 func (client *Client) DetectFaceAttributesWithOptions(request *DetectFaceAttributesRequest, runtime *util.RuntimeOptions) (_result *DetectFaceAttributesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5858,6 +7145,9 @@ func (client *Client) DetectFaceAttributesWithOptions(request *DetectFaceAttribu
 	return _result, _err
 }
 
+// @param request - DetectFaceAttributesRequest
+//
+// @return DetectFaceAttributesResponse
 func (client *Client) DetectFaceAttributes(request *DetectFaceAttributesRequest) (_result *DetectFaceAttributesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectFaceAttributesResponse{}
@@ -5869,6 +7159,15 @@ func (client *Client) DetectFaceAttributes(request *DetectFaceAttributesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 身份二要素接口
+//
+// @param request - Id2MetaVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return Id2MetaVerifyResponse
 func (client *Client) Id2MetaVerifyWithOptions(request *Id2MetaVerifyRequest, runtime *util.RuntimeOptions) (_result *Id2MetaVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5910,6 +7209,13 @@ func (client *Client) Id2MetaVerifyWithOptions(request *Id2MetaVerifyRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 身份二要素接口
+//
+// @param request - Id2MetaVerifyRequest
+//
+// @return Id2MetaVerifyResponse
 func (client *Client) Id2MetaVerify(request *Id2MetaVerifyRequest) (_result *Id2MetaVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &Id2MetaVerifyResponse{}
@@ -5921,6 +7227,11 @@ func (client *Client) Id2MetaVerify(request *Id2MetaVerifyRequest) (_result *Id2
 	return _result, _err
 }
 
+// @param request - InitFaceVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitFaceVerifyResponse
 func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *InitFaceVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6084,6 +7395,9 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 	return _result, _err
 }
 
+// @param request - InitFaceVerifyRequest
+//
+// @return InitFaceVerifyResponse
 func (client *Client) InitFaceVerify(request *InitFaceVerifyRequest) (_result *InitFaceVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InitFaceVerifyResponse{}
@@ -6095,6 +7409,11 @@ func (client *Client) InitFaceVerify(request *InitFaceVerifyRequest) (_result *I
 	return _result, _err
 }
 
+// @param request - LivenessFaceVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LivenessFaceVerifyResponse
 func (client *Client) LivenessFaceVerifyWithOptions(request *LivenessFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *LivenessFaceVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6182,6 +7501,9 @@ func (client *Client) LivenessFaceVerifyWithOptions(request *LivenessFaceVerifyR
 	return _result, _err
 }
 
+// @param request - LivenessFaceVerifyRequest
+//
+// @return LivenessFaceVerifyResponse
 func (client *Client) LivenessFaceVerify(request *LivenessFaceVerifyRequest) (_result *LivenessFaceVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &LivenessFaceVerifyResponse{}
@@ -6193,6 +7515,15 @@ func (client *Client) LivenessFaceVerify(request *LivenessFaceVerifyRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 手机三要素详版接口
+//
+// @param request - Mobile3MetaDetailVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return Mobile3MetaDetailVerifyResponse
 func (client *Client) Mobile3MetaDetailVerifyWithOptions(request *Mobile3MetaDetailVerifyRequest, runtime *util.RuntimeOptions) (_result *Mobile3MetaDetailVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6238,6 +7569,13 @@ func (client *Client) Mobile3MetaDetailVerifyWithOptions(request *Mobile3MetaDet
 	return _result, _err
 }
 
+// Summary:
+//
+// 手机三要素详版接口
+//
+// @param request - Mobile3MetaDetailVerifyRequest
+//
+// @return Mobile3MetaDetailVerifyResponse
 func (client *Client) Mobile3MetaDetailVerify(request *Mobile3MetaDetailVerifyRequest) (_result *Mobile3MetaDetailVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &Mobile3MetaDetailVerifyResponse{}
@@ -6249,6 +7587,15 @@ func (client *Client) Mobile3MetaDetailVerify(request *Mobile3MetaDetailVerifyRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 手机号三要素简版接口
+//
+// @param request - Mobile3MetaSimpleVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return Mobile3MetaSimpleVerifyResponse
 func (client *Client) Mobile3MetaSimpleVerifyWithOptions(request *Mobile3MetaSimpleVerifyRequest, runtime *util.RuntimeOptions) (_result *Mobile3MetaSimpleVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6294,6 +7641,13 @@ func (client *Client) Mobile3MetaSimpleVerifyWithOptions(request *Mobile3MetaSim
 	return _result, _err
 }
 
+// Summary:
+//
+// 手机号三要素简版接口
+//
+// @param request - Mobile3MetaSimpleVerifyRequest
+//
+// @return Mobile3MetaSimpleVerifyResponse
 func (client *Client) Mobile3MetaSimpleVerify(request *Mobile3MetaSimpleVerifyRequest) (_result *Mobile3MetaSimpleVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &Mobile3MetaSimpleVerifyResponse{}
@@ -6305,6 +7659,15 @@ func (client *Client) Mobile3MetaSimpleVerify(request *Mobile3MetaSimpleVerifyRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 号码检测
+//
+// @param request - MobileDetectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MobileDetectResponse
 func (client *Client) MobileDetectWithOptions(request *MobileDetectRequest, runtime *util.RuntimeOptions) (_result *MobileDetectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6342,6 +7705,13 @@ func (client *Client) MobileDetectWithOptions(request *MobileDetectRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 号码检测
+//
+// @param request - MobileDetectRequest
+//
+// @return MobileDetectResponse
 func (client *Client) MobileDetect(request *MobileDetectRequest) (_result *MobileDetectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MobileDetectResponse{}
@@ -6353,6 +7723,15 @@ func (client *Client) MobileDetect(request *MobileDetectRequest) (_result *Mobil
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询手机号在网状态
+//
+// @param request - MobileOnlineStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MobileOnlineStatusResponse
 func (client *Client) MobileOnlineStatusWithOptions(request *MobileOnlineStatusRequest, runtime *util.RuntimeOptions) (_result *MobileOnlineStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6390,6 +7769,13 @@ func (client *Client) MobileOnlineStatusWithOptions(request *MobileOnlineStatusR
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询手机号在网状态
+//
+// @param request - MobileOnlineStatusRequest
+//
+// @return MobileOnlineStatusResponse
 func (client *Client) MobileOnlineStatus(request *MobileOnlineStatusRequest) (_result *MobileOnlineStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MobileOnlineStatusResponse{}
@@ -6401,6 +7787,15 @@ func (client *Client) MobileOnlineStatus(request *MobileOnlineStatusRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询手机号在网时长
+//
+// @param request - MobileOnlineTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MobileOnlineTimeResponse
 func (client *Client) MobileOnlineTimeWithOptions(request *MobileOnlineTimeRequest, runtime *util.RuntimeOptions) (_result *MobileOnlineTimeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6438,6 +7833,13 @@ func (client *Client) MobileOnlineTimeWithOptions(request *MobileOnlineTimeReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询手机号在网时长
+//
+// @param request - MobileOnlineTimeRequest
+//
+// @return MobileOnlineTimeResponse
 func (client *Client) MobileOnlineTime(request *MobileOnlineTimeRequest) (_result *MobileOnlineTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MobileOnlineTimeResponse{}
@@ -6449,6 +7851,11 @@ func (client *Client) MobileOnlineTime(request *MobileOnlineTimeRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ModifyDeviceInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDeviceInfoResponse
 func (client *Client) ModifyDeviceInfoWithOptions(request *ModifyDeviceInfoRequest, runtime *util.RuntimeOptions) (_result *ModifyDeviceInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6498,6 +7905,9 @@ func (client *Client) ModifyDeviceInfoWithOptions(request *ModifyDeviceInfoReque
 	return _result, _err
 }
 
+// @param request - ModifyDeviceInfoRequest
+//
+// @return ModifyDeviceInfoResponse
 func (client *Client) ModifyDeviceInfo(request *ModifyDeviceInfoRequest) (_result *ModifyDeviceInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDeviceInfoResponse{}
@@ -6509,6 +7919,11 @@ func (client *Client) ModifyDeviceInfo(request *ModifyDeviceInfoRequest) (_resul
 	return _result, _err
 }
 
+// @param request - VerifyMaterialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyMaterialResponse
 func (client *Client) VerifyMaterialWithOptions(request *VerifyMaterialRequest, runtime *util.RuntimeOptions) (_result *VerifyMaterialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6570,6 +7985,9 @@ func (client *Client) VerifyMaterialWithOptions(request *VerifyMaterialRequest, 
 	return _result, _err
 }
 
+// @param request - VerifyMaterialRequest
+//
+// @return VerifyMaterialResponse
 func (client *Client) VerifyMaterial(request *VerifyMaterialRequest) (_result *VerifyMaterialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyMaterialResponse{}
