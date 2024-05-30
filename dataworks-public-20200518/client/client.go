@@ -465,6 +465,14 @@ func (s *AbolishDataServiceApiResponse) SetBody(v *AbolishDataServiceApiResponse
 }
 
 type AddMetaCollectionEntityRequest struct {
+	// The unique identifier of the collection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// album.2222
+	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
 	// The unique identifier of the entity.
 	//
 	// Example: maxcompute-table.projectA.tableA.
@@ -473,17 +481,14 @@ type AddMetaCollectionEntityRequest struct {
 	//
 	// example:
 	//
-	// album.2222
-	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
-	//
-	// This parameter is required.
+	// maxcompute-table.projectA.tableB
+	EntityQualifiedName *string `json:"EntityQualifiedName,omitempty" xml:"EntityQualifiedName,omitempty"`
+	// The remarks on the entity. Example: latest product table.
 	//
 	// example:
 	//
-	// maxcompute-table.projectA.tableB
-	EntityQualifiedName *string `json:"EntityQualifiedName,omitempty" xml:"EntityQualifiedName,omitempty"`
-	Remark              *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// this is a remark
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s AddMetaCollectionEntityRequest) String() string {
@@ -510,28 +515,30 @@ func (s *AddMetaCollectionEntityRequest) SetRemark(v string) *AddMetaCollectionE
 }
 
 type AddMetaCollectionEntityResponseBody struct {
-	// Indicates whether the request was successful. Valid values:
-	//
-	// true: The request was successful.
-	//
-	// false: The request failed.
+	// The error code returned.
 	//
 	// example:
 	//
 	// 9999
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error code returned.
+	// The error message returned.
 	//
 	// example:
 	//
 	// The specified product does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The error message returned.
+	// The HTTP status code returned.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	//
+	// example:
+	//
+	// 0000-ABCD-E****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the operation. Valid values:
 	//
 	// 	- true: succeeded
@@ -540,14 +547,14 @@ type AddMetaCollectionEntityResponseBody struct {
 	//
 	// example:
 	//
-	// 0000-ABCD-E****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code returned.
-	//
-	// example:
-	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// true: The request was successful.
+	//
+	// false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -1915,19 +1922,45 @@ func (s *CheckMetaTableResponse) SetBody(v *CheckMetaTableResponseBody) *CheckMe
 }
 
 type CreateBaselineRequest struct {
+	// example:
+	//
+	// 30
 	AlertMarginThreshold *int32 `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// BaselineName
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// DAILY
 	BaselineType *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
-	NodeIds      *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
+	// example:
+	//
+	// 210001233239,210001236482
+	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 	// This parameter is required.
 	OvertimeSettings []*CreateBaselineRequestOvertimeSettings `json:"OvertimeSettings,omitempty" xml:"OvertimeSettings,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000000000001
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1,3,5,7,8
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -1980,8 +2013,14 @@ func (s *CreateBaselineRequest) SetProjectId(v int64) *CreateBaselineRequest {
 }
 
 type CreateBaselineRequestOvertimeSettings struct {
-	Cycle *int32  `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 1
+	Cycle *int32 `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	// example:
+	//
+	// 00:00
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s CreateBaselineRequestOvertimeSettings) String() string {
@@ -2003,12 +2042,30 @@ func (s *CreateBaselineRequestOvertimeSettings) SetTime(v string) *CreateBaselin
 }
 
 type CreateBaselineResponseBody struct {
-	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 100003
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 401
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The specified parameters are invalid.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// F05080B0-CCE6-5D22-B284-34A51C5D4E28
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateBaselineResponseBody) String() string {
@@ -3427,27 +3484,48 @@ func (s *CreateDIJobResponse) SetBody(v *CreateDIJobResponseBody) *CreateDIJobRe
 }
 
 type CreateDISyncTaskRequest struct {
+	// The client token that is used to ensure the idempotence of the request. This parameter can be left empty
+	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The configurations of the batch synchronization task to be created. Calling this API operation to create a batch synchronization task is equivalent to creating a batch synchronization task by using the code editor in the DataWorks console. For more information, see [Create a synchronization node by using the code editor](https://help.aliyun.com/document_detail/137717.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {"type":"job","version":"2.0","steps":[{"stepType":"mysql","parameter":{"envType":1,"datasource":"mysql_pub","column":["id","name","create_time","age","score","t_01"],"connection":[{"datasource":"mysql_pub","table":["u_pk"]}],"where":"","splitPk":"id","encoding":"UTF-8"},"name":"Reader","category":"reader"},{"stepType":"odps","parameter":{"partition":"pt=${bizdate}","truncate":true,"datasource":"odps_first","envType":1,"column":["id","name","create_time","age","score","t_01"],"emptyAsNull":false,"tableComment":"null","table":"u_pk"},"name":"Writer","category":"writer"}],"setting":{"executeMode":null,"errorLimit":{"record":""},"speed":{"concurrent":2,"throttle":false}},"order":{"hops":[{"from":"Reader","to":"Writer"}]}}
+	// {"type":"job","version":"2.0","steps":[{"stepType":"mysql","parameter":{"envType":1,"datasource":"mysql_pub","column":["id","name","create_time","age","score","t_01"],"connection":[{"datasource":"mysql_pub","table":["u_pk"]}],"where":"","splitPk":"id","encoding":"UTF-8"},"name":"Reader","category":"reader"},{"stepType":"odps","parameter":{"partition":"pt=${bizdate}","truncate":true,"datasource":"odps_source","envType":1,"column":["id","name","create_time","age","score","t_01"],"emptyAsNull":false,"tableComment":"null","table":"u_pk"},"name":"Writer","category":"writer"}],"setting":{"executeMode":null,"errorLimit":{"record":""},"speed":{"concurrent":2,"throttle":false}},"order":{"hops":[{"from":"Reader","to":"Writer"}]}}
 	TaskContent *string `json:"TaskContent,omitempty" xml:"TaskContent,omitempty"`
+	// The name of the data synchronization task.
+	//
 	// example:
 	//
 	// new_di_task
-	TaskName  *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The settings that specify the storage path of the data synchronization task and the resource group used by the task. The following parameters are supported:
+	//
+	// - FileFolderPath: the storage path of the data synchronization task.
+	//
+	// - ResourceGroup: the identifier of the resource group for Data Integration that is used by the data synchronization task. You can call the [ListResourceGroup](https://help.aliyun.com/document_detail/173913.html) operation to query the identifier of the resource group.
+	//
+	// example:
+	//
+	// {"FileFolderPath":"Business Flow/XXX/Data Integration","ResourceGroup":"S_res_group_XXX_XXXX"}
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
+	// The type of the data synchronization task.
+	//
+	// Valid values: DI_OFFLINE, DI_REALTIME, and DI_SOLUTION.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3495,11 +3573,16 @@ func (s *CreateDISyncTaskRequest) SetTaskType(v string) *CreateDISyncTaskRequest
 }
 
 type CreateDISyncTaskResponseBody struct {
+	// The information that indicates whether the data synchronization task is created.
 	Data *CreateDISyncTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 0bc1411515937635973****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -3530,11 +3613,24 @@ func (s *CreateDISyncTaskResponseBody) SetSuccess(v bool) *CreateDISyncTaskRespo
 }
 
 type CreateDISyncTaskResponseBodyData struct {
+	// The ID of the data synchronization task that is created.
+	//
 	// example:
 	//
 	// 1000001
-	FileId  *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The error message that is returned if the data synchronization task fails to be created. If the data synchronization task is successfully created, this parameter is not returned. If the data synchronization task fails to be created, an error message in the "Invalid path: Business Flow/xxxx/Data Integration" format is returned.
+	//
+	// example:
+	//
+	// Invalid path: Business Flow/xxxx/Data Integration
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The creation status of the data synchronization task. Valid values:
+	//
+	// - success
+	//
+	// - fail
+	//
 	// example:
 	//
 	// success
@@ -7240,34 +7336,80 @@ func (s *CreatePermissionApplyOrderResponse) SetBody(v *CreatePermissionApplyOrd
 }
 
 type CreateProjectRequest struct {
+	// The client token that is used to ensure the idempotence of the request. We recommend that you set this parameter to a UUID.
+	//
+	// example:
+	//
+	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to disable the Development role. Valid values:
+	//
+	// 	- false: enables the Development role.
+	//
+	// 	- true: disables the Development role.
+	//
+	// 	- Default value: false.
+	//
 	// example:
 	//
 	// false
 	DisableDevelopment *bool `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
+	// Specifies whether query result download from DataStudio is allowed. Valid values:
+	//
+	// 	- 1: allowed
+	//
+	// 	- 0: not allowed
+	//
+	// 	- Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	IsAllowDownload *int32 `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
-	// This parameter is required.
-	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
+	// The description of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test
+	// test_describe
+	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
+	// The name of the workspace. The name can contain letters, digits, and underscores (_) and must start with a letter or digit.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_project
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// The mode of the workspace. For more information about the differences between the modes of workspaces, see [Differences between workspaces in basic mode and workspaces in standard mode](https://help.aliyun.com/document_detail/85772.html). Valid values:
+	//
+	// 	- 2: basic mode
+	//
+	// 	- 3: standard mode
+	//
+	// 	- Default value: 2.
+	//
 	// example:
 	//
 	// 3
 	ProjectMode *int32 `json:"ProjectMode,omitempty" xml:"ProjectMode,omitempty"`
+	// The display name of the workspace.
+	//
 	// This parameter is required.
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	//
 	// example:
 	//
-	// rg-acfmzbn7pti3***
-	ResourceManagerResourceGroupId *string                     `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	Tags                           []*CreateProjectRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// test_project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmzbn7pti3****
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The tags.
+	Tags []*CreateProjectRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateProjectRequest) String() string {
@@ -7324,17 +7466,21 @@ func (s *CreateProjectRequest) SetTags(v []*CreateProjectRequestTags) *CreatePro
 }
 
 type CreateProjectRequestTags struct {
+	// The tag key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Env
+	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Test
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7357,34 +7503,80 @@ func (s *CreateProjectRequestTags) SetValue(v string) *CreateProjectRequestTags 
 }
 
 type CreateProjectShrinkRequest struct {
+	// The client token that is used to ensure the idempotence of the request. We recommend that you set this parameter to a UUID.
+	//
+	// example:
+	//
+	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to disable the Development role. Valid values:
+	//
+	// 	- false: enables the Development role.
+	//
+	// 	- true: disables the Development role.
+	//
+	// 	- Default value: false.
+	//
 	// example:
 	//
 	// false
 	DisableDevelopment *bool `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
+	// Specifies whether query result download from DataStudio is allowed. Valid values:
+	//
+	// 	- 1: allowed
+	//
+	// 	- 0: not allowed
+	//
+	// 	- Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	IsAllowDownload *int32 `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
-	// This parameter is required.
-	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
+	// The description of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test
+	// test_describe
+	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
+	// The name of the workspace. The name can contain letters, digits, and underscores (_) and must start with a letter or digit.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_project
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// The mode of the workspace. For more information about the differences between the modes of workspaces, see [Differences between workspaces in basic mode and workspaces in standard mode](https://help.aliyun.com/document_detail/85772.html). Valid values:
+	//
+	// 	- 2: basic mode
+	//
+	// 	- 3: standard mode
+	//
+	// 	- Default value: 2.
+	//
 	// example:
 	//
 	// 3
 	ProjectMode *int32 `json:"ProjectMode,omitempty" xml:"ProjectMode,omitempty"`
+	// The display name of the workspace.
+	//
 	// This parameter is required.
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	//
 	// example:
 	//
-	// rg-acfmzbn7pti3***
+	// test_project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmzbn7pti3****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	TagsShrink                     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s CreateProjectShrinkRequest) String() string {
@@ -7441,18 +7633,30 @@ func (s *CreateProjectShrinkRequest) SetTagsShrink(v string) *CreateProjectShrin
 }
 
 type CreateProjectResponseBody struct {
+	// The workspace ID.
+	//
 	// example:
 	//
-	// 25
+	// 466230
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 1AFAE64E-D1BE-432B-A9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -9827,6 +10031,10 @@ type CreateTableThemeRequest struct {
 	// The name of the table folder.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the level of the parent table folder.
 	//
@@ -10227,8 +10435,16 @@ func (s *CreateUdfFileResponse) SetBody(v *CreateUdfFileResponseBody) *CreateUdf
 
 type DeleteBaselineRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -10251,12 +10467,30 @@ func (s *DeleteBaselineRequest) SetProjectId(v int64) *DeleteBaselineRequest {
 }
 
 type DeleteBaselineResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 1031203110000
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Baseline deletion failed with nodes dependent on baseline
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteBaselineResponseBody) String() string {
@@ -11698,9 +11932,20 @@ func (s *DeleteFromMetaCategoryResponse) SetBody(v *DeleteFromMetaCategoryRespon
 
 type DeleteLineageRelationRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// custom-report.report123
 	DestEntityQualifiedName *string `json:"DestEntityQualifiedName,omitempty" xml:"DestEntityQualifiedName,omitempty"`
-	RelationshipGuid        *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
+	// example:
+	//
+	// dfazcdfdfccdedd
+	RelationshipGuid *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-table.project.table
 	SrcEntityQualifiedName *string `json:"SrcEntityQualifiedName,omitempty" xml:"SrcEntityQualifiedName,omitempty"`
 }
 
@@ -11728,12 +11973,30 @@ func (s *DeleteLineageRelationRequest) SetSrcEntityQualifiedName(v string) *Dele
 }
 
 type DeleteLineageRelationResponseBody struct {
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status         *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1010040007
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// qualifiedName should be in format as entity-table.entity-guid
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 64B-587A-8CED-969E1973887FXXX-TT
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteLineageRelationResponseBody) String() string {
@@ -25540,7 +25803,7 @@ func (s *GetDataServiceFolderResponse) SetBody(v *GetDataServiceFolderResponseBo
 }
 
 type GetDataServiceGroupRequest struct {
-	// The ID of the business process.
+	// The business process ID.
 	//
 	// This parameter is required.
 	//
@@ -33386,45 +33649,47 @@ func (s *GetMetaDBTableListResponse) SetBody(v *GetMetaDBTableListResponseBody) 
 }
 
 type GetMetaTableBasicInfoRequest struct {
-	// The name of the metatable in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+	// The ID of the E-MapReduce (EMR) cluster. This parameter is required only if you set the DataSourceType parameter to emr.
 	//
-	// You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the name of the metatable.
+	// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
 	//
 	// example:
 	//
 	// abc
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The HTTP status code returned.
+	// The type of the data source. Valid values: odps and emr.
 	//
 	// example:
 	//
 	// emr
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
-	//
-	// example:
-	//
-	// abc
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The error message returned.
-	//
-	// example:
-	//
-	// false
-	Extension *bool `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// The name of the metadatabase. This parameter is required only if you set the DataSourceType parameter to emr.
 	//
 	// You can call the [ListMetaDB](https://help.aliyun.com/document_detail/185662.html) operation to query the name of the metadatabase.
 	//
 	// example:
 	//
-	// odps.engine_name.table_name
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// abc
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// Specifies whether to include extended fields in query results.
 	//
 	// The extended fields include ReadCount, FavoriteCount, and ViewCount.
 	//
 	// This parameter takes effect only if you set the DataSourceType parameter to odps.
+	//
+	// example:
+	//
+	// false
+	Extension *bool `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The GUID of the MaxCompute table. Specify the GUID in the odps.projectName.tableName format.
+	//
+	// example:
+	//
+	// odps.engine_name.table_name
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The name of the metatable in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+	//
+	// You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the name of the metatable.
 	//
 	// example:
 	//
@@ -33471,33 +33736,33 @@ func (s *GetMetaTableBasicInfoRequest) SetTableName(v string) *GetMetaTableBasic
 }
 
 type GetMetaTableBasicInfoResponseBody struct {
-	// The number of times the metatable was added to a favorite list. This parameter is returned only if you set the Extension parameter to true and takes effect only if you set the DataSourceType parameter to odps.
+	// The business data.
 	Data *GetMetaTableBasicInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The name of the metatable.
+	// The error code.
 	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the request was successful.
+	// The error message.
 	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the request.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error code returned.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0bc1411515937
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The business data returned.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -33544,8 +33809,74 @@ func (s *GetMetaTableBasicInfoResponseBody) SetSuccess(v bool) *GetMetaTableBasi
 }
 
 type GetMetaTableBasicInfoResponseBodyData struct {
-	// The schema information of the metatable. This parameter is returned only if you enable the table schema in MaxCompute.
+	// The display name of the metatable.
+	//
+	// example:
+	//
+	// test
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// The ID of the EMR cluster.
+	//
+	// example:
+	//
+	// abc
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The number of fields.
+	//
+	// example:
+	//
+	// 3
+	ColumnCount *int32 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
+	// The comment of the metatable.
+	//
+	// example:
+	//
+	// test table
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The time when the metatable was created.
+	//
+	// example:
+	//
+	// 1589870294000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The size of storage space that is occupied by the metatable. Unit: bytes.
+	//
+	// example:
+	//
+	// 10
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The name of the metadatabase.
+	//
+	// example:
+	//
+	// abc
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The type of the environment. Valid values:
+	//
+	// 	- 0: development environment
+	//
+	// 	- 1: production environment
+	//
+	// example:
+	//
+	// 1
+	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The number of times the metatable was added to a favorite list. This parameter is returned only if you set the Extension parameter to true and takes effect only if you set the DataSourceType parameter to odps.
+	//
+	// example:
+	//
+	// 6
+	FavoriteCount *int64 `json:"FavoriteCount,omitempty" xml:"FavoriteCount,omitempty"`
+	// Indicates whether the metatable is a partitioned table. Valid values:
+	//
+	// 	- true: The metatable is a partitioned table.
+	//
+	// 	- false: The metatable is a non-partitioned table.
+	//
+	// example:
+	//
+	// true
+	IsPartitionTable *bool `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
 	// Indicates whether the metatable is a view. Valid values:
 	//
 	// 	- true: The metatable is a view.
@@ -33554,38 +33885,8 @@ type GetMetaTableBasicInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// abc
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the workspace.
-	//
-	// example:
-	//
-	// 3
-	ColumnCount *int32 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
-	// The time when the metatable was created.
-	//
-	// example:
-	//
-	// test table
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the metatable owner.
-	//
-	// example:
-	//
-	// 1589870294000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the schema of the metatable was last changed.
-	//
-	// example:
-	//
-	// 10
-	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The GUID of the metatable.
-	//
-	// example:
-	//
-	// abc
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// false
+	IsView *bool `json:"IsView,omitempty" xml:"IsView,omitempty"`
 	// The scope in which the metatable is visible. Valid values:
 	//
 	// 	- 0: The metatable is visible to workspace members.
@@ -33599,120 +33900,92 @@ type GetMetaTableBasicInfoResponseBodyData struct {
 	// example:
 	//
 	// 1
-	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The number of fields.
-	//
-	// example:
-	//
-	// 6
-	FavoriteCount *int64 `json:"FavoriteCount,omitempty" xml:"FavoriteCount,omitempty"`
-	// The lifecycle of the metatable. Unit: days.
-	//
-	// example:
-	//
-	// true
-	IsPartitionTable *bool `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
-	// The name of the workspace.
-	//
-	// example:
-	//
-	// false
-	IsView *bool `json:"IsView,omitempty" xml:"IsView,omitempty"`
-	// The number of times the metatable was read. This parameter is returned only if you set the Extension parameter to true and takes effect only if you set the DataSourceType parameter to odps.
-	//
-	// example:
-	//
-	// 1
 	IsVisible *int32 `json:"IsVisible,omitempty" xml:"IsVisible,omitempty"`
-	// The time when the metatable was last updated.
+	// The time when the metatable was last accessed.
 	//
 	// example:
 	//
 	// 1589870294000
 	LastAccessTime *int64 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
-	// The storage path of the Hive metadatabase.
+	// The time when the schema of the metatable was last changed.
 	//
 	// example:
 	//
 	// 1589870294000
 	LastDdlTime *int64 `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
-	// The partition key of the Hive metatable.
+	// The time when the metatable was last updated.
 	//
 	// example:
 	//
 	// 1589870294000
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// The number of times the metatable was viewed. This parameter is returned only if you set the Extension parameter to true and takes effect only if you set the DataSourceType parameter to odps.
+	// The lifecycle of the metatable. Unit: days.
 	//
 	// example:
 	//
 	// 5
 	LifeCycle *int32 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
-	// The ID of the tenant.
+	// The storage path of the Hive metadatabase.
 	//
 	// example:
 	//
 	// hdfs://
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the metadatabase.
+	// The ID of the metatable owner.
 	//
 	// example:
 	//
 	// 123
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The display name of the metatable.
+	// The partition key of the Hive metatable.
 	//
 	// example:
 	//
 	// ab
 	PartitionKeys *string `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty"`
-	// The type of the environment. Valid values:
-	//
-	// 	- 0: development environment
-	//
-	// 	- 1: production environment
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 232
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The time when the metatable was last accessed.
+	// The name of the workspace.
 	//
 	// example:
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Indicates whether the metatable is a partitioned table. Valid values:
-	//
-	// 	- true: The metatable is a partitioned table.
-	//
-	// 	- false: The metatable is a non-partitioned table.
+	// The number of times the metatable was read. This parameter is returned only if you set the Extension parameter to true and takes effect only if you set the DataSourceType parameter to odps.
 	//
 	// example:
 	//
 	// 3
 	ReadCount *int64 `json:"ReadCount,omitempty" xml:"ReadCount,omitempty"`
+	// The schema information of the metatable. This parameter is returned only if you enable the table schema in MaxCompute.
+	//
 	// example:
 	//
 	// default
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// The ID of the EMR cluster.
+	// The GUID of the metatable.
 	//
 	// example:
 	//
 	// odps.engine_name.table_name
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The comment of the metatable.
+	// The name of the metatable.
 	//
 	// example:
 	//
 	// table_name
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 12345
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The size of storage space that is occupied by the metatable. Unit: bytes.
+	// The number of times the metatable was viewed. This parameter is returned only if you set the Extension parameter to true and takes effect only if you set the DataSourceType parameter to odps.
 	//
 	// example:
 	//
@@ -35660,16 +35933,22 @@ func (s *GetMetaTableLineageResponse) SetBody(v *GetMetaTableLineageResponseBody
 }
 
 type GetMetaTableListByCategoryRequest struct {
+	// The ID of the category. You can call the [GetMetaCategory](https://help.aliyun.com/document_detail/173932.html) operation to query the ID of the category. Categories allow you to efficiently organize and manage tables by category. You can search for the desired table by category.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
@@ -35700,23 +35979,34 @@ func (s *GetMetaTableListByCategoryRequest) SetPageSize(v int32) *GetMetaTableLi
 }
 
 type GetMetaTableListByCategoryResponseBody struct {
+	// The business data returned.
 	Data *GetMetaTableListByCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned.
+	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0bc1ec92159376
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -35762,15 +36052,22 @@ func (s *GetMetaTableListByCategoryResponseBody) SetSuccess(v bool) *GetMetaTabl
 }
 
 type GetMetaTableListByCategoryResponseBodyData struct {
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
-	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned result.
 	TableGuidList []*string `json:"TableGuidList,omitempty" xml:"TableGuidList,omitempty" type:"Repeated"`
+	// The total number of metatables.
+	//
 	// example:
 	//
 	// 20
@@ -36155,53 +36452,51 @@ func (s *GetMetaTableOutputResponse) SetBody(v *GetMetaTableOutputResponseBody) 
 }
 
 type GetMetaTablePartitionRequest struct {
-	// The name of the metatable in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
-	//
-	// You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the name of the metatable.
-	//
-	// example:
-	//
-	// abc
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The field that is used to sort partitions in the metatable. Valid values: name and modify_time.
-	//
-	// By default, partitions in the metatable are sorted based on their creation time.
-	//
-	// example:
-	//
-	// emr
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
-	//
-	// example:
-	//
-	// abc
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The GUID of the metatable.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
 	//
 	// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
 	//
 	// example:
 	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The order in which partitions in the metatable are sorted. Valid values: asc and desc. Default value: desc.
-	SortCriterion *GetMetaTablePartitionRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
+	// abc
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The type of the data source. Valid values: odps and emr.
+	//
+	// example:
+	//
+	// emr
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The name of the metadatabase. This parameter is required only if you set the DataSourceType parameter to emr.
 	//
 	// You can call the [ListMetaDB](https://help.aliyun.com/document_detail/185662.html) operation to query the name of the metadatabase.
 	//
 	// example:
 	//
+	// abc
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The logic for sorting partitions in the metatable.
+	SortCriterion *GetMetaTablePartitionRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
+	// The GUID of the metatable.
+	//
+	// example:
+	//
 	// odps.engine_name.table_name
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The logic for sorting partitions in the metatable.
+	// The name of the metatable in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+	//
+	// You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the name of the metatable.
 	//
 	// example:
 	//
@@ -36258,13 +36553,15 @@ func (s *GetMetaTablePartitionRequest) SetTableName(v string) *GetMetaTableParti
 }
 
 type GetMetaTablePartitionRequestSortCriterion struct {
-	// The error message returned.
+	// The order in which partitions in the metatable are sorted. Valid values: asc and desc. Default value: desc.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The HTTP status code returned.
+	// The field that is used to sort partitions in the metatable. Valid values: name and modify_time.
+	//
+	// By default, partitions in the metatable are sorted based on their creation time.
 	//
 	// example:
 	//
@@ -36291,53 +36588,51 @@ func (s *GetMetaTablePartitionRequestSortCriterion) SetSortField(v string) *GetM
 }
 
 type GetMetaTablePartitionShrinkRequest struct {
-	// The name of the metatable in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
-	//
-	// You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the name of the metatable.
-	//
-	// example:
-	//
-	// abc
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The field that is used to sort partitions in the metatable. Valid values: name and modify_time.
-	//
-	// By default, partitions in the metatable are sorted based on their creation time.
-	//
-	// example:
-	//
-	// emr
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
-	//
-	// example:
-	//
-	// abc
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The GUID of the metatable.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
 	//
 	// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
 	//
 	// example:
 	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The order in which partitions in the metatable are sorted. Valid values: asc and desc. Default value: desc.
-	SortCriterionShrink *string `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty"`
+	// abc
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The type of the data source. Valid values: odps and emr.
+	//
+	// example:
+	//
+	// emr
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The name of the metadatabase. This parameter is required only if you set the DataSourceType parameter to emr.
 	//
 	// You can call the [ListMetaDB](https://help.aliyun.com/document_detail/185662.html) operation to query the name of the metadatabase.
 	//
 	// example:
 	//
+	// abc
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The logic for sorting partitions in the metatable.
+	SortCriterionShrink *string `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty"`
+	// The GUID of the metatable.
+	//
+	// example:
+	//
 	// odps.engine_name.table_name
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The logic for sorting partitions in the metatable.
+	// The name of the metatable in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+	//
+	// You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the name of the metatable.
 	//
 	// example:
 	//
@@ -36394,33 +36689,33 @@ func (s *GetMetaTablePartitionShrinkRequest) SetTableName(v string) *GetMetaTabl
 }
 
 type GetMetaTablePartitionResponseBody struct {
-	// The number of entries returned per page. Default value: 10. Maximum value: 100.
+	// The business data returned.
 	Data *GetMetaTablePartitionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The error code returned.
 	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the request was successful.
+	// The error message returned.
 	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the request.
+	// The HTTP status code returned.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error code returned.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 0bc1ec92159376
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The business data returned.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -36467,21 +36762,21 @@ func (s *GetMetaTablePartitionResponseBody) SetSuccess(v bool) *GetMetaTablePart
 }
 
 type GetMetaTablePartitionResponseBodyData struct {
-	// The size of the partition. Unit: bytes.
+	// The list of partitions.
 	DataEntityList []*GetMetaTablePartitionResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
-	// The total number of partitions.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The list of partitions.
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The path of the partition.
+	// The total number of partitions.
 	//
 	// example:
 	//
@@ -36518,60 +36813,68 @@ func (s *GetMetaTablePartitionResponseBodyData) SetTotalCount(v int64) *GetMetaT
 }
 
 type GetMetaTablePartitionResponseBodyDataDataEntityList struct {
-	// The time when the partition was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The comment.
+	//
+	// example:
+	//
+	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The type of the partition.
+	// The time when the partition was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1590032868000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The comment.
+	// The size of the partition. Unit: bytes.
 	//
 	// example:
 	//
 	// 19
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The number of entries in the partition.
+	// The time when the partition was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1590032868000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The GUID of the metatable.
+	// The GUID of the partition.
 	//
 	// example:
 	//
 	// odps.engine_name.table_name.pt=20170614
 	PartitionGuid *string `json:"PartitionGuid,omitempty" xml:"PartitionGuid,omitempty"`
-	// example:
-	//
-	// abc
-	PartitionLocation *string `json:"PartitionLocation,omitempty" xml:"PartitionLocation,omitempty"`
-	// The time when the partition was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// pt=20170614
-	PartitionName *string `json:"PartitionName,omitempty" xml:"PartitionName,omitempty"`
-	// The name of the partition.
-	//
-	// example:
-	//
-	// abc
-	PartitionPath *string `json:"PartitionPath,omitempty" xml:"PartitionPath,omitempty"`
 	// The location of the Hive partition.
 	//
 	// example:
 	//
 	// abc
+	PartitionLocation *string `json:"PartitionLocation,omitempty" xml:"PartitionLocation,omitempty"`
+	// The name of the partition.
+	//
+	// example:
+	//
+	// pt=20170614
+	PartitionName *string `json:"PartitionName,omitempty" xml:"PartitionName,omitempty"`
+	// The path of the partition.
+	//
+	// example:
+	//
+	// abc
+	PartitionPath *string `json:"PartitionPath,omitempty" xml:"PartitionPath,omitempty"`
+	// The type of the partition.
+	//
+	// example:
+	//
+	// abc
 	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
-	// The GUID of the partition.
+	// The number of entries in the partition.
 	//
 	// example:
 	//
 	// 233
 	RecordCount *int64 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	// The GUID of the metatable.
+	//
 	// example:
 	//
 	// odps.engine_name.table_name
@@ -36991,6 +37294,10 @@ func (s *GetMetaTableThemeLevelResponseBodyEntity) SetTheme(v []*GetMetaTableThe
 
 type GetMetaTableThemeLevelResponseBodyEntityLevel struct {
 	// The description of the table level.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the table level.
 	//
@@ -37681,12 +37988,14 @@ type GetNodeResponseBodyData struct {
 	//
 	// odps_first_dev
 	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The environment of the workspace. Valid values: PROD and DEV.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
+	DeployDate  *int64  `json:"DeployDate,omitempty" xml:"DeployDate,omitempty"`
 	// The name of the resource group.
 	//
 	// example:
@@ -37704,8 +38013,11 @@ type GetNodeResponseBodyData struct {
 	// example:
 	//
 	// 1
-	DqcType  *int32 `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
-	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	DqcType     *int32 `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
+	FileId      *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	FileType    *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileVersion *int32 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
+	ModifyTime  *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The HTTP status code returned.
 	//
 	// example:
@@ -37812,8 +38124,18 @@ func (s *GetNodeResponseBodyData) SetConnection(v string) *GetNodeResponseBodyDa
 	return s
 }
 
+func (s *GetNodeResponseBodyData) SetCreateTime(v int64) *GetNodeResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
 func (s *GetNodeResponseBodyData) SetCronExpress(v string) *GetNodeResponseBodyData {
 	s.CronExpress = &v
+	return s
+}
+
+func (s *GetNodeResponseBodyData) SetDeployDate(v int64) *GetNodeResponseBodyData {
+	s.DeployDate = &v
 	return s
 }
 
@@ -37832,8 +38154,23 @@ func (s *GetNodeResponseBodyData) SetDqcType(v int32) *GetNodeResponseBodyData {
 	return s
 }
 
+func (s *GetNodeResponseBodyData) SetFileId(v int64) *GetNodeResponseBodyData {
+	s.FileId = &v
+	return s
+}
+
 func (s *GetNodeResponseBodyData) SetFileType(v int32) *GetNodeResponseBodyData {
 	s.FileType = &v
+	return s
+}
+
+func (s *GetNodeResponseBodyData) SetFileVersion(v int32) *GetNodeResponseBodyData {
+	s.FileVersion = &v
+	return s
+}
+
+func (s *GetNodeResponseBodyData) SetModifyTime(v int64) *GetNodeResponseBodyData {
+	s.ModifyTime = &v
 	return s
 }
 
@@ -38132,6 +38469,7 @@ type GetNodeChildrenResponseBodyDataNodes struct {
 	//
 	// NORMAL
 	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
+	StepType      *string `json:"StepType,omitempty" xml:"StepType,omitempty"`
 }
 
 func (s GetNodeChildrenResponseBodyDataNodes) String() string {
@@ -38189,6 +38527,11 @@ func (s *GetNodeChildrenResponseBodyDataNodes) SetRepeatability(v bool) *GetNode
 
 func (s *GetNodeChildrenResponseBodyDataNodes) SetSchedulerType(v string) *GetNodeChildrenResponseBodyDataNodes {
 	s.SchedulerType = &v
+	return s
+}
+
+func (s *GetNodeChildrenResponseBodyDataNodes) SetStepType(v string) *GetNodeChildrenResponseBodyDataNodes {
+	s.StepType = &v
 	return s
 }
 
@@ -38583,7 +38926,7 @@ type GetNodeParentsResponseBody struct {
 	//
 	// example:
 	//
-	// asdfasdfas-adfasdf-asfas-dfasdf-asdf
+	// asfasdfs-adfasdf-asfas-dfasdf-asdf
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
 	//
@@ -38722,6 +39065,7 @@ type GetNodeParentsResponseBodyDataNodes struct {
 	//
 	// NORMAL
 	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
+	StepType      *string `json:"StepType,omitempty" xml:"StepType,omitempty"`
 }
 
 func (s GetNodeParentsResponseBodyDataNodes) String() string {
@@ -38779,6 +39123,11 @@ func (s *GetNodeParentsResponseBodyDataNodes) SetRepeatability(v bool) *GetNodeP
 
 func (s *GetNodeParentsResponseBodyDataNodes) SetSchedulerType(v string) *GetNodeParentsResponseBodyDataNodes {
 	s.SchedulerType = &v
+	return s
+}
+
+func (s *GetNodeParentsResponseBodyDataNodes) SetStepType(v string) *GetNodeParentsResponseBodyDataNodes {
+	s.StepType = &v
 	return s
 }
 
@@ -41725,31 +42074,31 @@ func (s *GetRemindRequest) SetRemindId(v int64) *GetRemindRequest {
 type GetRemindResponseBody struct {
 	// The details of the custom alert rule.
 	Data *GetRemindResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// 1031203110005
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// The specified parameters are invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The unique ID of the request. You can troubleshoot issues based on the ID.
+	// The request ID. You can troubleshoot issues based on the ID.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFGH-IJKLMNOPQ
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -41804,11 +42153,11 @@ type GetRemindResponseBodyData struct {
 	AlertInterval *int32 `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
 	// The notification method. Valid values:
 	//
-	// 	- MAIL: Alert notifications are sent by emails.
+	// 	- MAIL
 	//
-	// 	- SMS: Alert notifications are sent by text messages.
+	// 	- SMS
 	//
-	//     Alert notifications can be sent by text messages only in the Singapore (Singapore), Malaysia (Kuala Lumpur), and Germany (Frankfurt) regions.
+	//     Alert notifications can be sent by text messages only in the Singapore, Malaysia (Kuala Lumpur), and Germany (Frankfurt) regions.
 	//
 	// 	- Multiple notification methods are separated by commas (,).
 	AlertMethods []*string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty" type:"Repeated"`
@@ -41816,7 +42165,7 @@ type GetRemindResponseBodyData struct {
 	//
 	// 	- If the value of the AlertUnit parameter is OTHER, the ID of the Alibaba Cloud account used by the specified user is returned. Multiple IDs are separated by commas (,).
 	AlertTargets []*string `json:"AlertTargets,omitempty" xml:"AlertTargets,omitempty" type:"Repeated"`
-	// The recipient of the alert. Valid values: OWNER and OTHER. A value of OWNER indicates the node owner. A value of OTHER indicates a specified user.
+	// The recipient of the alert. Valid values: OWNER and OTHER. The value OWNER indicates the node owner. The value OTHER indicates a specified user.
 	//
 	// example:
 	//
@@ -41832,9 +42181,9 @@ type GetRemindResponseBodyData struct {
 	//
 	// 	- If the value of the RemindType parameter is ERROR, this parameter is left empty.
 	//
-	// 	- If the value of the RemindType parameter is CYCLE_UNFINISHED, the trigger conditions are returned as key-value pairs. Example: {"1":"05:50","2":"06:50","3":"07:50","4":"08:50","5":"09:50","6":"10:50","7":"11:50","8":"12:50","9":"13:50","10":"14:50","11":"15:50","12":"16:50","13":"17:50","14":"18:50","15":"19:50","16":"20:50","17":"21:50","18":"22:50","19":"23:50","20":"24:50","21":"25:50"}. The key indicates the ID of the cycle. Valid values: 1 to 288. The value indicates the timeout period of the node that is run in the cycle. The value is in the hh:mm format. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
+	// 	- If the value of the RemindType parameter is CYCLE_UNFINISHED, the trigger conditions are returned as key-value pairs. Example: {"1":"05:50","2":"06:50","3":"07:50","4":"08:50","5":"09:50","6":"10:50","7":"11:50","8":"12:50","9":"13:50","10":"14:50","11":"15:50","12":"16:50","13":"17:50","14":"18:50","15":"19:50","16":"20:50","17":"21:50","18":"22:50","19":"23:50","20":"24:50","21":"25:50"}. The key indicates the ID of the cycle. Valid values of the ID: 1 to 288. The value indicates the timeout period of the node that is running in the cycle. The value is in the hh:mm format. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
 	//
-	// 	- If the value of the RemindType parameter is TIMEOUT, the timeout period is returned. Unit: seconds. Example: 1800. This value indicates that an alert is reported if the node is run for more than 30 minutes.
+	// 	- If the value of the RemindType parameter is TIMEOUT, the timeout period is returned. Unit: seconds. Example: 1800. This value indicates that an alert is reported if the node has run for more than 30 minutes.
 	//
 	// example:
 	//
@@ -41876,13 +42225,13 @@ type GetRemindResponseBodyData struct {
 	RemindId *int64 `json:"RemindId,omitempty" xml:"RemindId,omitempty"`
 	// The name of the custom alert rule.
 	RemindName *string `json:"RemindName,omitempty" xml:"RemindName,omitempty"`
-	// The conditions that trigger an alert. Valid values: FINISHED, UNFINISHED, ERROR, CYCLE_UNFINISHED, and TIMEOUT. A value of FINISHED indicates that the node is run. A value of UNFINISHED indicates that the node is still running at the specified point in time. A value of ERROR indicates that an error occurs when the node is running. A value of CYCLE_UNFINISHED indicates that the node is still running in the specified cycle. A value of TIMEOUT indicates that the node times out.
+	// The conditions that trigger an alert for the node. Valid values: FINISHED, UNFINISHED, ERROR, CYCLE_UNFINISHED, and TIMEOUT. The value FINISHED indicates that the node finishes running. The value UNFINISHED indicates that the node is still running at the specified point in time. The value ERROR indicates that an error occurs when the node is running. The value CYCLE_UNFINISHED indicates that the node does not finish running in the specified scheduling cycle. The value TIMEOUT indicates that the node times out.
 	//
 	// example:
 	//
 	// FINISHED
 	RemindType *string `json:"RemindType,omitempty" xml:"RemindType,omitempty"`
-	// The type of the object to which the custom alert rule is applied. Valid values: NODE, BASELINE, PROJECT, and BIZPROCESS. A value of NODE indicates that the monitored object is a node. A value of BASELINE indicates that the monitored object is a baseline. A value of PROJECT indicates that the monitored object is a workspace. A value of BIZPROCESS indicates that the monitored object is a workflow.
+	// The type of the object to which the custom alert rule is applied. Valid values: NODE, BASELINE, PROJECT, and BIZPROCESS. The value NODE indicates that the monitored object is a node. The value BASELINE indicates that the monitored object is a baseline. The value PROJECT indicates that the monitored object is a workspace. The value BIZPROCESS indicates that the monitored object is a workflow.
 	//
 	// example:
 	//
@@ -41896,7 +42245,9 @@ type GetRemindResponseBodyData struct {
 	//
 	// true
 	Useflag *bool `json:"Useflag,omitempty" xml:"Useflag,omitempty"`
-	// -
+	// The webhook URL of the WeCom or Lark chatbot. If multiple webhook URLs are involved, the webhook URLs are separated by commas (,). The value of AlertMethods must include WEBHOOKS. Only DataWorks Enterprise Edition supports this parameter.
+	//
+	// The webhook URL-based alerting feature is supported in the following regions: China (Shanghai), China (Chengdu), China (Zhangjiakou), China (Beijing), China (Hangzhou), China (Shenzhen), China (Hong Kong), Germany (Frankfurt), and Singapore.
 	Webhooks []*string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty" type:"Repeated"`
 }
 
@@ -44823,16 +45174,43 @@ func (s *ListBaselineStatusesResponse) SetBody(v *ListBaselineStatusesResponseBo
 }
 
 type ListBaselinesRequest struct {
+	// example:
+	//
+	// DAILY
 	BaselineTypes *string `json:"BaselineTypes,omitempty" xml:"BaselineTypes,omitempty"`
-	Enable        *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 3726346****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// This parameter is required.
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	//
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// This parameter is required.
-	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	//
+	// example:
+	//
+	// 123456
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// baselineName
 	SearchText *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
 }
 
@@ -44885,12 +45263,27 @@ func (s *ListBaselinesRequest) SetSearchText(v string) *ListBaselinesRequest {
 }
 
 type ListBaselinesResponseBody struct {
-	Data           *ListBaselinesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *ListBaselinesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 103630001
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The user does not exist. 276571706358178756
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 952795279527ab****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListBaselinesResponseBody) String() string {
@@ -44932,10 +45325,19 @@ func (s *ListBaselinesResponseBody) SetSuccess(v bool) *ListBaselinesResponseBod
 }
 
 type ListBaselinesResponseBodyData struct {
-	Baselines  []*ListBaselinesResponseBodyDataBaselines `json:"Baselines,omitempty" xml:"Baselines,omitempty" type:"Repeated"`
-	PageNumber *string                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *string                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Baselines []*ListBaselinesResponseBodyDataBaselines `json:"Baselines,omitempty" xml:"Baselines,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListBaselinesResponseBodyData) String() string {
@@ -44967,16 +45369,43 @@ func (s *ListBaselinesResponseBodyData) SetTotalCount(v string) *ListBaselinesRe
 }
 
 type ListBaselinesResponseBodyDataBaselines struct {
-	AlertEnabled         *bool                                                     `json:"AlertEnabled,omitempty" xml:"AlertEnabled,omitempty"`
-	AlertMarginThreshold *int32                                                    `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
-	BaselineId           *int64                                                    `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	BaselineName         *string                                                   `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	BaselineType         *string                                                   `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
-	Enabled              *bool                                                     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	OverTimeSettings     []*ListBaselinesResponseBodyDataBaselinesOverTimeSettings `json:"OverTimeSettings,omitempty" xml:"OverTimeSettings,omitempty" type:"Repeated"`
-	Owner                *string                                                   `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Priority             *int32                                                    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ProjectId            *int64                                                    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// true
+	AlertEnabled *bool `json:"AlertEnabled,omitempty" xml:"AlertEnabled,omitempty"`
+	// example:
+	//
+	// 30
+	AlertMarginThreshold *int32 `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
+	// example:
+	//
+	// 1234
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// BaselineName
+	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	// example:
+	//
+	// DAILY
+	BaselineType *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
+	// example:
+	//
+	// true
+	Enabled          *bool                                                     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	OverTimeSettings []*ListBaselinesResponseBodyDataBaselinesOverTimeSettings `json:"OverTimeSettings,omitempty" xml:"OverTimeSettings,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 952795****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 9527
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s ListBaselinesResponseBodyDataBaselines) String() string {
@@ -45038,8 +45467,14 @@ func (s *ListBaselinesResponseBodyDataBaselines) SetProjectId(v int64) *ListBase
 }
 
 type ListBaselinesResponseBodyDataBaselinesOverTimeSettings struct {
-	Cycle *int32  `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 1
+	Cycle *int32 `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	// example:
+	//
+	// 00:00
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s ListBaselinesResponseBodyDataBaselinesOverTimeSettings) String() string {
@@ -45390,28 +45825,40 @@ func (s *ListBusinessResponse) SetBody(v *ListBusinessResponseBody) *ListBusines
 }
 
 type ListCalcEnginesRequest struct {
+	// The type of the compute engine instance. Valid values: `ODPS`, `EMR`, `BLINK`, `HOLO`, `MaxGraph`, `HYBRIDDB_FOR_POSTGRESQL`, `ADB_MYSQL`, and `HADOOP_CDH`. The values are not case-sensitive.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ODPS
 	CalcEngineType *string `json:"CalcEngineType,omitempty" xml:"CalcEngineType,omitempty"`
+	// The environment in which the compute engine instance runs. Valid values: DEV and PRD. The value DEV indicates the development environment, and the value PRD indicates the production environment.
+	//
 	// example:
 	//
 	// PRD
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The name of the compute engine instance that you want to query. Only exact match is supported.
+	//
 	// example:
 	//
 	// abc
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 100. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DataWorks workspace with which the compute engine instances are associated.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45459,15 +45906,22 @@ func (s *ListCalcEnginesRequest) SetProjectId(v int64) *ListCalcEnginesRequest {
 }
 
 type ListCalcEnginesResponseBody struct {
+	// The query results for compute engine instances that are returned on multiple pages.
 	Data *ListCalcEnginesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0bc1ec92159376****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -45503,15 +45957,22 @@ func (s *ListCalcEnginesResponseBody) SetSuccess(v bool) *ListCalcEnginesRespons
 }
 
 type ListCalcEnginesResponseBodyData struct {
+	// The compute engine instances.
 	CalcEngines []*ListCalcEnginesResponseBodyDataCalcEngines `json:"CalcEngines,omitempty" xml:"CalcEngines,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of compute engine instances.
+	//
 	// example:
 	//
 	// 1
@@ -45547,51 +46008,292 @@ func (s *ListCalcEnginesResponseBodyData) SetTotalCount(v int32) *ListCalcEngine
 }
 
 type ListCalcEnginesResponseBodyDataCalcEngines struct {
+	// The ID of the workspace with which the compute engine instance is associated.
+	//
 	// example:
 	//
 	// 27
 	BindingProjectId *int32 `json:"BindingProjectId,omitempty" xml:"BindingProjectId,omitempty"`
+	// The name of the workspace with which the compute engine instance is associated.
+	//
 	// example:
 	//
 	// abc
 	BindingProjectName *string `json:"BindingProjectName,omitempty" xml:"BindingProjectName,omitempty"`
+	// The type of the compute engine instance. Valid values: `ODPS`, `EMR`, `BLINK`, `HOLO`, `MaxGraph`, `HYBRIDDB_FOR_POSTGRESQL`, `ADB_MYSQL`, and `HADOOP_CDH`.
+	//
 	// example:
 	//
 	// ODPS
 	CalcEngineType *string `json:"CalcEngineType,omitempty" xml:"CalcEngineType,omitempty"`
+	// The region ID of the DataWorks workspace with which the compute engine instance is associated.
+	//
 	// example:
 	//
 	// cn-zhangjiakou
 	DwRegion *string `json:"DwRegion,omitempty" xml:"DwRegion,omitempty"`
+	// The ID of the compute engine instance.
+	//
 	// example:
 	//
 	// 35
-	EngineId   *int32                 `json:"EngineId,omitempty" xml:"EngineId,omitempty"`
+	EngineId *int32 `json:"EngineId,omitempty" xml:"EngineId,omitempty"`
+	// The details of the compute engine instance.
+	//
+	// 	- ODPS
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//       "pubEndpoint": "service.cn.maxcompute.aliyun.com/api",
+	//
+	//       "endpoint": "service.cn.maxcompute.aliyun-inc.com/api",
+	//
+	//       "resourceGroupType": "ODPS",
+	//
+	//       "resourceGroupId": "361826516****",
+	//
+	//       "vpcEndpoint": "service.cn.maxcompute.aliyun-inc.com/api",
+	//
+	//       "projectName": "onefall_test_zjk",
+	//
+	//       "taskSameAsOwner": "true"
+	//
+	//     }
+	//
+	// 	- EMR
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//       "emrClusterId": "C-xxx",
+	//
+	//       "specs": "{\\"emrClusterId\\":\\"C-xxx\\",\\"emrAccessMode\\":\\"simple\\",\\"emrResourceQueueName\\":\\"default\\",\\"emrProjectId\\":\\"FP-xxx\\"}",
+	//
+	//       "endpoint": "emr.aliyuncs.com",
+	//
+	//       "emrResourceQueueName": "default",
+	//
+	//       "emrAccessMode": "simple",
+	//
+	//       "resourceGroupType": "DW",
+	//
+	//       "projectName": "xx-xxxx",
+	//
+	//       "emrProjectId": "FP-xxxx",
+	//
+	//       "taskSameAsOwner": "false"
+	//
+	//     }
+	//
+	// 	- BLINK
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//       "bayesProjectId": "xxxx",
+	//
+	//       "bayesProjectName": "xc_blxxixxxnk_1",
+	//
+	//       "cluster": "xxxssxsx",
+	//
+	//       "endpoint": "https://stream.console.aliyun.com",
+	//
+	//       "engineType": "BLINK",
+	//
+	//       "name": "xsxsxxxxx",
+	//
+	//       "projectName": "xc_blxxxsxink_1",
+	//
+	//       "queue": "root.xc_blxsxxxxxxink_1",
+	//
+	//       "resourceGroupType": "DW",
+	//
+	//       "specs": "{\\"cluster\\":\\"xxxxxx\\",\\"bayesProjectName\\":\\"xc_blxxixxxnk_1\\",\\"bayesProjectId\\":\\"ssxxxsa\\",\\"name\\":\\"sxsxsxxx\\",\\"queue\\":\\"root.sxxsxxsx\\"}",
+	//
+	//       "taskSameAsOwner": false
+	//
+	//     }
+	//
+	// 	- HOLO
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//       "endpoint": "hgprecn-cn-xsxssxsx-cn-shanghai-internal.hologres.aliyuncs.com:80",
+	//
+	//       "engineType": "ODPS",
+	//
+	//       "odpsEndpoint": "hgprecn-cn-xsxssxxs-cn-shanghai-internal.hologres.aliyuncs.com:80",
+	//
+	//       "odpsProjectName": "xsxssxsxsx",
+	//
+	//       "projectName": "xsxssxsxsx",
+	//
+	//       "resourceGroupType": "DW",
+	//
+	//       "specs": "{\\"pubEndpoint\\":\\"hgprecn-cn-xsxssxsxs-cn-shanghai.hologres.aliyuncs.com:80\\",\\"commonBuyInstanceId\\":\\"hgprecn-cn-xsxsxsxs\\",\\"project\\":\\"holo_upxsxgrade1\\",\\"common_buy_instance_id\\":\\"hgprecn-cn-xsxsxs\\",\\"endpoint\\":\\"hgprecn-cn-xsxxsxs-cn-shanghai-internal.hologres.aliyuncs.com:80\\",\\"port\\":\\"80\\",\\"host\\":\\"hgprecn-cn-xsxsxsxs-cn-shanghai-internal.hologres.aliyuncs.com\\",\\"vpcEndpoint\\":\\"hgprecn-cn-xsxsxsxs-cn-shanghai-vpc.hologres.aliyuncs.com:80\\",\\"authType\\":2,\\"region\\":\\"cn-shanghai\\"}",
+	//
+	//       "taskSameAsOwner": false
+	//
+	//     }
+	//
+	// 	- MaxGraph
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//       "endpoint": "http://pre-graphcompute.aliyuncs.com",
+	//
+	//       "engineType": "ODPS",
+	//
+	//       "odpsEndpoint": "http://pre-graphcompute.aliyuncs.com",
+	//
+	//       "odpsProjectName": "xsxsxsxs",
+	//
+	//       "projectName": "xsxsxsxs",
+	//
+	//       "resourceGroupType": "DW",
+	//
+	//       "taskSameAsOwner": false
+	//
+	//     }
+	//
+	// 	- HYBRIDDB_FOR_POSTGRESQL
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//       "endpoint": "hybriddb_for_postgresql_mo12121ck_endpoint",
+	//
+	//       "engineType": "ODPS",
+	//
+	//       "odpsEndpoint": "hybriddb_for_postgresql_m121212ock_endpoint",
+	//
+	//       "odpsProjectName": "sxasaxsaxaxas",
+	//
+	//       "projectName": "sxasaxsaxaxas",
+	//
+	//       "resourceGroupType": "DW",
+	//
+	//       "specs": "{\\"connectionString\\":\\"gp-xsxsxsxxs.gpdb.rds.aliyuncs.com\\",\\"database\\":\\"xsxsxxsxs\\",\\"password\\":\\"xxxxxxx\\",\\"instanceId\\":\\"gp-cdcdacdacda\\",\\"port\\":\\"3432\\",\\"ownerId\\":\\"12121212\\",\\"username\\":\\"sdasaddsa\\"}",
+	//
+	//       "taskSameAsOwner": false
+	//
+	//     }
+	//
+	// 	- ADB_MYSQL
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//       "endpoint": "adb_mysql_mock_endpoint",
+	//
+	//       "engineType": "ODPS",
+	//
+	//       "odpsEndpoint": "adb_mysql_mock_endpoint",
+	//
+	//       "odpsProjectName": "am-xsaxaxa",
+	//
+	//       "projectName": "am-xsxsaxa",
+	//
+	//       "resourceGroupType": "DW",
+	//
+	//       "specs": "{\\"connectionString\\":\\"am-xsaxsa.ads.aliyuncs.com:3306\\",\\"database\\":\\"xsaxsaxa\\",\\"password\\":\\"xsaxsaxassxsa\\",\\"instanceId\\":\\"am-xsaxsasx\\",\\"username\\":\\"xsaxsadsd\\"}",
+	//
+	//       "taskSameAsOwner": false
+	//
+	//     }
+	//
+	// 	- HADOOP_CDH
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//       "bindingBaseId": "xsaxsaxs",
+	//
+	//       "endpoint": "xsaaaaa",
+	//
+	//       "engineType": "ODPS",
+	//
+	//       "odpsEndpoint": "axsxaxssxs",
+	//
+	//       "odpsProjectName": "ssxxax",
+	//
+	//       "projectName": "xsaxsaxsa",
+	//
+	//       "resourceGroupId": 45208xxxxxx,
+	//
+	//       "resourceGroupType": "GATEWAY",
+	//
+	//       "specs": "{\\"cluster\\":{\\"hive\\":{\\"hiveServer2Url\\":\\"jdbc:hive2://xxxxxxer-1-cn-shanghai-pre-kerberos-1:10000\\",\\"hiveMetastore\\":\\"thrift://xxxxxxxr-1-cn-shanghai-pre-kerberos-1:9083\\",\\"version\\":\\"2.1.1\\"},\\"configFiles\\":{\\"coreSite\\":\\"4534574xxxxxx\\",\\"hdfsSite\\":\\"453457919xxxxxxx\\",\\"mapredSite\\":\\"45345750xxxxxx\\",\\"yarnSite\\":\\"4534575xxxxx\\",\\"krb5Conf\\":\\"4534576xxxxx1\\",\\"hiveSite\\":\\"453457xxxxx20\\"},\\"spark\\":{\\"version\\":\\"2.4.0\\"},\\"cdh\\":{\\"version\\":\\"6.3.2\\"},\\"hdfs\\":{\\"version\\":\\"3.0.0\\"},\\"impala\\":{\\"impalaUrl\\":\\"jdbc:impala://cdh-xsxssxxsx-1-cn-shanghai-pre-kerberos-1:21050\\",\\"version\\":\\"3.2.0\\"},\\"yarn\\":{\\"YarnUrl\\":\\"http://cdh-xsxsxsxsxs-1-cn-shanghai-pre-kerberos-1:8032\\",\\"webUrl\\":\\"http://cdh-xsxsxssxxssx-1-cn-shanghai-pre-kerberos-1:8088\\",\\"version\\":\\"3.0.0\\"},\\"presto\\":{\\"prestoUrl\\":\\"jdbc:presto://cdh-xssxsxxsxsxs-1-cn-shanghai-pre-kerberos-1:8080/hive/default\\",\\"version\\":\\"0.244.1\\"}},\\"instanceId\\":161sdads733,\\"authDetail\\":{\\"principal\\":\\"hive@HADOOP. COM\\",\\"keytabFileId\\":\\"45345815xsxsxs3\\",\\"type\\":\\"kerberos\\",\\"username\\":\\"xsxsxsxsa@HADOOP. COM\\"},\\"resGroupStatus\\":\\"\\",\\"hadoopAuthType\\":\\"kerberos\\",\\"clusterIdentifier\\":\\"xssxsxsxsx\\",\\"clusterId\\":xsxsx,\\"resGroupId\\":4520870619xsxssxxs,\\"accessMode\\":\\"security\\",\\"authType\\":2}",
+	//
+	//       "taskSameAsOwner": false
+	//
+	//     }
+	//
+	// example:
+	//
+	// {"pubEndpoint":"http://service.cn.maxcompute.aliyun.com/api","endpoint":"http://service.cn.maxcompute.aliyun-inc.com/api","resourceGroupType":"ODPS","resourceGroupId":"361826516****","vpcEndpoint":"http://service.cn.maxcompute.aliyun-inc.com/api","projectName":"onefall_test_zjk","taskSameAsOwner":"true"}
 	EngineInfo map[string]interface{} `json:"EngineInfo,omitempty" xml:"EngineInfo,omitempty"`
+	// The environment in which the compute engine instance runs. Valid values:
+	//
+	// 	- DEV: development environment
+	//
+	// 	- PRD: production environment
+	//
 	// example:
 	//
 	// PRD
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The time when the compute engine instance was created. This value is a timestamp.
+	//
 	// example:
 	//
 	// Oct 10, 2019 3:42:44 PM
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Indicates whether the compute engine instance is the default instance of the current compute engine type.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The display name of the compute engine instance.
+	//
 	// example:
 	//
 	// abc
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the region in which the compute engine instance resides.
+	//
 	// example:
 	//
 	// cn-zhangjiakou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The identity that is used to access the compute engine instance. Valid values:
+	//
+	// 	- USER: current user
+	//
+	// 	- PROJECT: workspace executor
+	//
+	// 	- SUBACCOUNT: RAM user
+	//
+	// 	- STS_ROLE: Security Token Service (STS) role
+	//
 	// example:
 	//
 	// PROJECT
 	TaskAuthType *string `json:"TaskAuthType,omitempty" xml:"TaskAuthType,omitempty"`
+	// The ID of the tenant.
+	//
 	// example:
 	//
 	// 1234567
@@ -56421,26 +57123,40 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListLineageRequest struct {
+	// The lineage type. Valid values:
+	//
+	// 	- up: ancestor lineage
+	//
+	// 	- down: descendant lineage
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// up
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The unique identifier of the entity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// maxcompute-table.project.table
 	EntityQualifiedName *string `json:"EntityQualifiedName,omitempty" xml:"EntityQualifiedName,omitempty"`
+	// The keyword of the entity name.
+	//
 	// example:
 	//
 	// name-keyword
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// next-token-from-previous-request
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
@@ -56481,23 +57197,38 @@ func (s *ListLineageRequest) SetPageSize(v int32) *ListLineageRequest {
 }
 
 type ListLineageResponseBody struct {
+	// The structure returned.
 	Data *ListLineageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// 1010040007
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// qualifiedName should be in format as entity-table.entity-guid
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	//
 	// example:
 	//
 	// 64B-587A-8CED-969E1973887FXXX-TT
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -56543,7 +57274,10 @@ func (s *ListLineageResponseBody) SetSuccess(v bool) *ListLineageResponseBody {
 }
 
 type ListLineageResponseBodyData struct {
+	// The array of the entity structure.
 	DataEntityList []*ListLineageResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// nextTokenFromRequest-xxxsd-ff
@@ -56572,9 +57306,10 @@ type ListLineageResponseBodyDataDataEntityList struct {
 	// example:
 	//
 	// 1686215809269
-	CreateTimestamp *int64                                                   `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Entity          *Entity                                                  `json:"Entity,omitempty" xml:"Entity,omitempty"`
-	RelationList    []*ListLineageResponseBodyDataDataEntityListRelationList `json:"RelationList,omitempty" xml:"RelationList,omitempty" type:"Repeated"`
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The array of the entity structure.
+	Entity       *Entity                                                  `json:"Entity,omitempty" xml:"Entity,omitempty"`
+	RelationList []*ListLineageResponseBodyDataDataEntityListRelationList `json:"RelationList,omitempty" xml:"RelationList,omitempty" type:"Repeated"`
 }
 
 func (s ListLineageResponseBodyDataDataEntityList) String() string {
@@ -57015,9 +57750,7 @@ func (s *ListManualDagInstancesResponse) SetBody(v *ListManualDagInstancesRespon
 }
 
 type ListMetaCollectionEntitiesRequest struct {
-	// The type of the entities.
-	//
-	// For example, if this parameter is set to maxcompute-table, the entity is a MaxCompute table.
+	// The unique identifier of the collection.
 	//
 	// This parameter is required.
 	//
@@ -57025,25 +57758,27 @@ type ListMetaCollectionEntitiesRequest struct {
 	//
 	// album.12345
 	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
-	// The search keyword.
+	// The type of the entities.
+	//
+	// For example, if this parameter is set to maxcompute-table, the entity is a MaxCompute table.
 	//
 	// example:
 	//
 	// maxcompute-table
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The paging information. This parameter specifies the start point of the query.
+	// The search keyword.
 	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The number of entries to return on each page.
+	// The paging information. This parameter specifies the start point of the query.
 	//
 	// example:
 	//
 	// 12222
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The object returned.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
@@ -57085,35 +57820,37 @@ func (s *ListMetaCollectionEntitiesRequest) SetPageSize(v int32) *ListMetaCollec
 }
 
 type ListMetaCollectionEntitiesResponseBody struct {
-	// The token that is used for the next query.
+	// The object returned.
 	Data *ListMetaCollectionEntitiesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error code returned.
 	//
 	// example:
 	//
 	// Invalid.Collection.NotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The error message returned.
 	//
 	// example:
 	//
 	// The specified parameters are invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// true: The request was successful.
-	//
-	// false: The request failed.
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// E25887B7-579C-54A5-9C4F-83A0DE367DD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The error code returned.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// true: The request was successful.
+	//
+	// false: The request failed.
 	//
 	// example:
 	//
@@ -57160,9 +57897,9 @@ func (s *ListMetaCollectionEntitiesResponseBody) SetSuccess(v bool) *ListMetaCol
 }
 
 type ListMetaCollectionEntitiesResponseBodyData struct {
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
-	EntityList []*Entity `json:"EntityList,omitempty" xml:"EntityList,omitempty" type:"Repeated"`
 	// The entities.
+	EntityList []*Entity `json:"EntityList,omitempty" xml:"EntityList,omitempty" type:"Repeated"`
+	// The token that is used for the next query.
 	//
 	// example:
 	//
@@ -57218,51 +57955,59 @@ func (s *ListMetaCollectionEntitiesResponse) SetBody(v *ListMetaCollectionEntiti
 }
 
 type ListMetaCollectionsRequest struct {
-	// The ID of the collection follower.
-	//
-	// example:
-	//
-	// 1200759642363000
-	Administrator *string `json:"Administrator,omitempty" xml:"Administrator,omitempty"`
-	// The ID of the collection creator.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// ALBUM、ALBUM_CATEGORY
-	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
 	// The ID of the collection administrator.
 	//
 	// example:
 	//
 	// 1200759642363000
+	Administrator *string `json:"Administrator,omitempty" xml:"Administrator,omitempty"`
+	// - **ALBUM**: data album
+	//
+	// - **ALBUM_CATEGORY**: category in a data album
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALBUM
+	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	// The ID of the collection creator.
+	//
+	// example:
+	//
+	// 1200759642363000
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	// The ID of the collection follower.
 	//
 	// example:
 	//
 	// 1200759642363000
 	Follower *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
-	// The name of the sorting field.
+	// The keyword.
+	//
+	// example:
+	//
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	// The paging information. This parameter specifies the start point of the query.
 	//
 	// example:
 	//
 	// 12345
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// ALBUM: data album
+	// The name of the sorting field.
 	//
-	// ALBUM_CATEGORY: category in a data album
+	// example:
+	//
+	// test
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The keyword.
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The paging information. This parameter specifies the start point of the query.
+	// The unique identifier of the parent collection.
 	//
 	// example:
 	//
@@ -57324,31 +58069,37 @@ func (s *ListMetaCollectionsRequest) SetParentQualifiedName(v string) *ListMetaC
 }
 
 type ListMetaCollectionsResponseBody struct {
-	// The token that is used for the next query.
+	// The object returned.
 	Data *ListMetaCollectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error code returned.
 	//
 	// example:
 	//
 	// Invalid.Collection.NotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The error message returned.
 	//
 	// example:
 	//
 	// The specified parameters are invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The object returned.
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// E25887B7-579C-54A5-9C4F-83A0DE367DDE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The error code returned.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
 	//
 	// example:
 	//
@@ -57395,13 +58146,9 @@ func (s *ListMetaCollectionsResponseBody) SetSuccess(v bool) *ListMetaCollection
 }
 
 type ListMetaCollectionsResponseBodyData struct {
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true: The request was successful.
-	//
-	// 	- false: The request failed.
-	CollectionList []*Collection `json:"CollectionList,omitempty" xml:"CollectionList,omitempty" type:"Repeated"`
 	// The collections.
+	CollectionList []*Collection `json:"CollectionList,omitempty" xml:"CollectionList,omitempty" type:"Repeated"`
+	// The token that is used for the next query.
 	//
 	// example:
 	//
@@ -58732,12 +59479,14 @@ type ListNodesResponseBodyDataNodes struct {
 	//
 	// odps_first
 	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The name of the workflow.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
+	DeployDate  *int64  `json:"DeployDate,omitempty" xml:"DeployDate,omitempty"`
 	// The priority for running the node. Valid values: 1, 3, 5, 7, and 8.
 	//
 	// example:
@@ -58755,8 +59504,11 @@ type ListNodesResponseBodyDataNodes struct {
 	// example:
 	//
 	// 1
-	DqcType  *int32 `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
-	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	DqcType     *int32 `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
+	FileId      *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	FileType    *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileVersion *int32 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
+	ModifyTime  *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The types of the nodes. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to query the type of the node.
 	//
 	// example:
@@ -58855,8 +59607,18 @@ func (s *ListNodesResponseBodyDataNodes) SetConnection(v string) *ListNodesRespo
 	return s
 }
 
+func (s *ListNodesResponseBodyDataNodes) SetCreateTime(v int64) *ListNodesResponseBodyDataNodes {
+	s.CreateTime = &v
+	return s
+}
+
 func (s *ListNodesResponseBodyDataNodes) SetCronExpress(v string) *ListNodesResponseBodyDataNodes {
 	s.CronExpress = &v
+	return s
+}
+
+func (s *ListNodesResponseBodyDataNodes) SetDeployDate(v int64) *ListNodesResponseBodyDataNodes {
+	s.DeployDate = &v
 	return s
 }
 
@@ -58875,8 +59637,23 @@ func (s *ListNodesResponseBodyDataNodes) SetDqcType(v int32) *ListNodesResponseB
 	return s
 }
 
+func (s *ListNodesResponseBodyDataNodes) SetFileId(v int64) *ListNodesResponseBodyDataNodes {
+	s.FileId = &v
+	return s
+}
+
 func (s *ListNodesResponseBodyDataNodes) SetFileType(v int32) *ListNodesResponseBodyDataNodes {
 	s.FileType = &v
+	return s
+}
+
+func (s *ListNodesResponseBodyDataNodes) SetFileVersion(v int32) *ListNodesResponseBodyDataNodes {
+	s.FileVersion = &v
+	return s
+}
+
+func (s *ListNodesResponseBodyDataNodes) SetModifyTime(v int64) *ListNodesResponseBodyDataNodes {
+	s.ModifyTime = &v
 	return s
 }
 
@@ -60185,19 +60962,19 @@ func (s *ListProjectIdsResponse) SetBody(v *ListProjectIdsResponseBody) *ListPro
 }
 
 type ListProjectMembersRequest struct {
-	// The ID of the request.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The results that are returned.
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	// The DataWorks workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -60231,9 +61008,9 @@ func (s *ListProjectMembersRequest) SetProjectId(v int64) *ListProjectMembersReq
 }
 
 type ListProjectMembersResponseBody struct {
-	// The number of entries returned per page. Default value: 10. Maximum value: 100.
+	// The results that are returned.
 	Data *ListProjectMembersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The request ID.
 	//
 	// example:
 	//
@@ -60260,27 +61037,21 @@ func (s *ListProjectMembersResponseBody) SetRequestId(v string) *ListProjectMemb
 }
 
 type ListProjectMembersResponseBodyData struct {
-	// The total number of entries returned.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The information of members in the DataWorks workspace.
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the member.
+	// The information of members in the DataWorks workspace.
 	ProjectMemberList []*ListProjectMembersResponseBodyDataProjectMemberList `json:"ProjectMemberList,omitempty" xml:"ProjectMemberList,omitempty" type:"Repeated"`
-	// The status of the member. Valid values:
-	//
-	// 	- 0: NORMAL, which indicates that the member is in a normal state.
-	//
-	// 	- 1: FORBIDDEN, which indicates that the member is disabled.
-	//
-	// 	- 2: DELETED, which indicates that the member is deleted.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -60317,6 +61088,24 @@ func (s *ListProjectMembersResponseBodyData) SetTotalCount(v int32) *ListProject
 }
 
 type ListProjectMembersResponseBodyDataProjectMemberList struct {
+	// The nickname of the member.
+	//
+	// example:
+	//
+	// zhangsan
+	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	// The member ID.
+	//
+	// example:
+	//
+	// 121
+	ProjectMemberId *string `json:"ProjectMemberId,omitempty" xml:"ProjectMemberId,omitempty"`
+	// The name of the member.
+	//
+	// example:
+	//
+	// zhangsan
+	ProjectMemberName *string `json:"ProjectMemberName,omitempty" xml:"ProjectMemberName,omitempty"`
 	// The type of the member. Valid values:
 	//
 	// 	- 1: USER_ALIYUN, which indicates that the member is an Alibaba Cloud account.
@@ -60327,29 +61116,17 @@ type ListProjectMembersResponseBodyDataProjectMemberList struct {
 	//
 	// example:
 	//
-	// zhangsan
-	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
-	// The name of the member.
-	//
-	// example:
-	//
-	// 121
-	ProjectMemberId *string `json:"ProjectMemberId,omitempty" xml:"ProjectMemberId,omitempty"`
-	// The roles that are assigned to the member.
-	ProjectMemberName *string `json:"ProjectMemberName,omitempty" xml:"ProjectMemberName,omitempty"`
-	// The ID of the role.
-	//
-	// example:
-	//
 	// 1
 	ProjectMemberType *string `json:"ProjectMemberType,omitempty" xml:"ProjectMemberType,omitempty"`
-	// The type of the role. Valid values:
-	//
-	// 	- 0: SYSTEM, which indicates that the role is a built-in role.
-	//
-	// 	- 2: USER_CUSTOM, which indicates that the role is a custom role.
+	// The roles that are assigned to the member.
 	ProjectRoleList []*ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList `json:"ProjectRoleList,omitempty" xml:"ProjectRoleList,omitempty" type:"Repeated"`
-	// The nickname of the member.
+	// The status of the member. Valid values:
+	//
+	// 	- 0: NORMAL, which indicates that the member is in a normal state.
+	//
+	// 	- 1: FORBIDDEN, which indicates that the member is disabled.
+	//
+	// 	- 2: DELETED, which indicates that the member is deleted.
 	//
 	// example:
 	//
@@ -60396,22 +61173,33 @@ func (s *ListProjectMembersResponseBodyDataProjectMemberList) SetStatus(v string
 }
 
 type ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList struct {
+	// The code of the role.
+	//
+	// DataWorks provides built-in roles and allows you to create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](https://help.aliyun.com/document_detail/295463.html).
+	//
 	// example:
 	//
 	// role_project_guest
 	ProjectRoleCode *string `json:"ProjectRoleCode,omitempty" xml:"ProjectRoleCode,omitempty"`
+	// The role ID.
+	//
+	// example:
+	//
+	// 1
+	ProjectRoleId *int32 `json:"ProjectRoleId,omitempty" xml:"ProjectRoleId,omitempty"`
 	// The name of the role.
 	//
 	// DataWorks provides built-in roles and allows you to create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](https://help.aliyun.com/document_detail/295463.html).
 	//
 	// example:
 	//
-	// 1
-	ProjectRoleId   *int32  `json:"ProjectRoleId,omitempty" xml:"ProjectRoleId,omitempty"`
+	// test
 	ProjectRoleName *string `json:"ProjectRoleName,omitempty" xml:"ProjectRoleName,omitempty"`
-	// The code of the role.
+	// The type of the role. Valid values:
 	//
-	// DataWorks provides built-in roles and allows you to create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](https://help.aliyun.com/document_detail/295463.html).
+	// 	- 0: SYSTEM, which indicates that the role is a built-in role.
+	//
+	// 	- 2: USER_CUSTOM, which indicates that the role is a custom role.
 	//
 	// example:
 	//
@@ -60477,7 +61265,7 @@ func (s *ListProjectMembersResponse) SetBody(v *ListProjectMembersResponseBody) 
 }
 
 type ListProjectRolesRequest struct {
-	// Dataworks ID of the region where the workspace is located.
+	// The ID of the DataWorks workspace.
 	//
 	// This parameter is required.
 	//
@@ -60501,9 +61289,9 @@ func (s *ListProjectRolesRequest) SetProjectId(v int64) *ListProjectRolesRequest
 }
 
 type ListProjectRolesResponseBody struct {
-	// The role ID of the workspace.
+	// The roles in the DataWorks workspace.
 	ProjectRoleList []*ListProjectRolesResponseBodyProjectRoleList `json:"ProjectRoleList,omitempty" xml:"ProjectRoleList,omitempty" type:"Repeated"`
-	// The roles of the workspace.
+	// The request ID.
 	//
 	// example:
 	//
@@ -60530,19 +61318,25 @@ func (s *ListProjectRolesResponseBody) SetRequestId(v string) *ListProjectRolesR
 }
 
 type ListProjectRolesResponseBodyProjectRoleList struct {
+	// The code of the role in the DataWorks workspace.
+	//
 	// example:
 	//
 	// role_project_guest
 	ProjectRoleCode *string `json:"ProjectRoleCode,omitempty" xml:"ProjectRoleCode,omitempty"`
-	// The role type of the workspace. Valid values:
+	// The ID of the role in the DataWorks workspace.
 	//
 	// example:
 	//
 	// 1
 	ProjectRoleId *int32 `json:"ProjectRoleId,omitempty" xml:"ProjectRoleId,omitempty"`
-	// The role Code of the workspace.
+	// The name of the role in the DataWorks workspace.
+	//
+	// example:
+	//
+	// visitor
 	ProjectRoleName *string `json:"ProjectRoleName,omitempty" xml:"ProjectRoleName,omitempty"`
-	// The role name of the workspace.
+	// The type of the role in the DataWorks workspace.
 	//
 	// example:
 	//
@@ -65238,6 +66032,10 @@ func (s *ListTableLevelResponseBodyTableLevelInfo) SetTotalCount(v int64) *ListT
 
 type ListTableLevelResponseBodyTableLevelInfoLevelList struct {
 	// The description of the table level.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the table level.
 	//
@@ -65252,6 +66050,10 @@ type ListTableLevelResponseBodyTableLevelInfoLevelList struct {
 	// 1
 	LevelType *int32 `json:"LevelType,omitempty" xml:"LevelType,omitempty"`
 	// The name of the table level.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the DataWorks workspace.
 	//
@@ -65500,6 +66302,10 @@ type ListTableThemeResponseBodyDataThemeList struct {
 	// 1
 	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The name of the level of the table folder.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the parent node.
 	//
@@ -67572,12 +68378,27 @@ func (s *RegisterLineageRelationShrinkRequest) SetLineageRelationRegisterVOShrin
 }
 
 type RegisterLineageRelationResponseBody struct {
-	ErrorCode       *string                                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage    *string                                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 1010210001
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The entity of lineage not exist, xxx
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
 	HttpStatusCode  *int32                                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	LineageRelation *RegisterLineageRelationResponseBodyLineageRelation `json:"LineageRelation,omitempty" xml:"LineageRelation,omitempty" type:"Struct"`
-	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success         *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// EE50E05E-028C-182B-9xxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RegisterLineageRelationResponseBody) String() string {
@@ -67619,9 +68440,18 @@ func (s *RegisterLineageRelationResponseBody) SetSuccess(v bool) *RegisterLineag
 }
 
 type RegisterLineageRelationResponseBodyLineageRelation struct {
+	// example:
+	//
+	// custom-report.month_stat_user
 	DestEntityQualifiedName *string `json:"DestEntityQualifiedName,omitempty" xml:"DestEntityQualifiedName,omitempty"`
-	RelationshipGuid        *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
-	SrcEntityQualifiedName  *string `json:"SrcEntityQualifiedName,omitempty" xml:"SrcEntityQualifiedName,omitempty"`
+	// example:
+	//
+	// dfsldfdlsfdsaaaabbbb
+	RelationshipGuid *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
+	// example:
+	//
+	// maxcompute-table.project.table
+	SrcEntityQualifiedName *string `json:"SrcEntityQualifiedName,omitempty" xml:"SrcEntityQualifiedName,omitempty"`
 }
 
 func (s RegisterLineageRelationResponseBodyLineageRelation) String() string {
@@ -73022,20 +73852,55 @@ func (s *UmountDirectoryResponse) SetBody(v *UmountDirectoryResponseBody) *Umoun
 }
 
 type UpdateBaselineRequest struct {
-	AlertEnabled         *bool                                 `json:"AlertEnabled,omitempty" xml:"AlertEnabled,omitempty"`
+	// example:
+	//
+	// true
+	AlertEnabled *bool `json:"AlertEnabled,omitempty" xml:"AlertEnabled,omitempty"`
+	// example:
+	//
+	// 30
 	AlertMarginThreshold *int32                                `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
 	AlertSettings        []*UpdateBaselineRequestAlertSettings `json:"AlertSettings,omitempty" xml:"AlertSettings,omitempty" type:"Repeated"`
 	// This parameter is required.
-	BaselineId       *int64                                   `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	BaselineName     *string                                  `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	BaselineType     *string                                  `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
-	Enabled          *bool                                    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	//
+	// example:
+	//
+	// 1000010800007
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// BaselineName
+	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	// example:
+	//
+	// DAILY
+	BaselineType *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 1,2,3
 	NodeIds          *string                                  `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 	OvertimeSettings []*UpdateBaselineRequestOvertimeSettings `json:"OvertimeSettings,omitempty" xml:"OvertimeSettings,omitempty" type:"Repeated"`
-	Owner            *string                                  `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Priority         *int32                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 3726346****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 7
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// This parameter is required.
-	ProjectId     *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	//
+	// example:
+	//
+	// 2043
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 123,456
 	RemoveNodeIds *string `json:"RemoveNodeIds,omitempty" xml:"RemoveNodeIds,omitempty"`
 }
 
@@ -73113,18 +73978,42 @@ func (s *UpdateBaselineRequest) SetRemoveNodeIds(v string) *UpdateBaselineReques
 }
 
 type UpdateBaselineRequestAlertSettings struct {
-	AlertInterval        *int32                                          `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
-	AlertMaximum         *int32                                          `json:"AlertMaximum,omitempty" xml:"AlertMaximum,omitempty"`
-	AlertMethods         []*string                                       `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty" type:"Repeated"`
-	AlertRecipient       *string                                         `json:"AlertRecipient,omitempty" xml:"AlertRecipient,omitempty"`
-	AlertRecipientType   *string                                         `json:"AlertRecipientType,omitempty" xml:"AlertRecipientType,omitempty"`
-	AlertType            *string                                         `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// example:
+	//
+	// 1800
+	AlertInterval *int32 `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
+	// example:
+	//
+	// 1
+	AlertMaximum *int32    `json:"AlertMaximum,omitempty" xml:"AlertMaximum,omitempty"`
+	AlertMethods []*string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123123
+	AlertRecipient *string `json:"AlertRecipient,omitempty" xml:"AlertRecipient,omitempty"`
+	// example:
+	//
+	// OWNER
+	AlertRecipientType *string `json:"AlertRecipientType,omitempty" xml:"AlertRecipientType,omitempty"`
+	// example:
+	//
+	// BASELINE
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// example:
+	//
+	// true
 	BaselineAlertEnabled *bool                                           `json:"BaselineAlertEnabled,omitempty" xml:"BaselineAlertEnabled,omitempty"`
 	DingRobots           []*UpdateBaselineRequestAlertSettingsDingRobots `json:"DingRobots,omitempty" xml:"DingRobots,omitempty" type:"Repeated"`
-	SilenceEndTime       *string                                         `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
-	SilenceStartTime     *string                                         `json:"SilenceStartTime,omitempty" xml:"SilenceStartTime,omitempty"`
-	TopicTypes           []*string                                       `json:"TopicTypes,omitempty" xml:"TopicTypes,omitempty" type:"Repeated"`
-	Webhooks             []*string                                       `json:"Webhooks,omitempty" xml:"Webhooks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 00:00:00
+	SilenceEndTime *string `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
+	// example:
+	//
+	// 00:00:00
+	SilenceStartTime *string   `json:"SilenceStartTime,omitempty" xml:"SilenceStartTime,omitempty"`
+	TopicTypes       []*string `json:"TopicTypes,omitempty" xml:"TopicTypes,omitempty" type:"Repeated"`
+	Webhooks         []*string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty" type:"Repeated"`
 }
 
 func (s UpdateBaselineRequestAlertSettings) String() string {
@@ -73196,7 +74085,13 @@ func (s *UpdateBaselineRequestAlertSettings) SetWebhooks(v []*string) *UpdateBas
 }
 
 type UpdateBaselineRequestAlertSettingsDingRobots struct {
-	AtAll  *bool   `json:"AtAll,omitempty" xml:"AtAll,omitempty"`
+	// example:
+	//
+	// false
+	AtAll *bool `json:"AtAll,omitempty" xml:"AtAll,omitempty"`
+	// example:
+	//
+	// https://oapi.dingtalk.com/robot/send?access_token=xxx
 	WebUrl *string `json:"WebUrl,omitempty" xml:"WebUrl,omitempty"`
 }
 
@@ -73219,8 +74114,14 @@ func (s *UpdateBaselineRequestAlertSettingsDingRobots) SetWebUrl(v string) *Upda
 }
 
 type UpdateBaselineRequestOvertimeSettings struct {
-	Cycle *int32  `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 1
+	Cycle *int32 `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	// example:
+	//
+	// 00:00
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s UpdateBaselineRequestOvertimeSettings) String() string {
@@ -73242,20 +74143,55 @@ func (s *UpdateBaselineRequestOvertimeSettings) SetTime(v string) *UpdateBaselin
 }
 
 type UpdateBaselineShrinkRequest struct {
-	AlertEnabled         *bool   `json:"AlertEnabled,omitempty" xml:"AlertEnabled,omitempty"`
+	// example:
+	//
+	// true
+	AlertEnabled *bool `json:"AlertEnabled,omitempty" xml:"AlertEnabled,omitempty"`
+	// example:
+	//
+	// 30
 	AlertMarginThreshold *int32  `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
 	AlertSettingsShrink  *string `json:"AlertSettings,omitempty" xml:"AlertSettings,omitempty"`
 	// This parameter is required.
-	BaselineId             *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	BaselineName           *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	BaselineType           *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
-	Enabled                *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	//
+	// example:
+	//
+	// 1000010800007
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// BaselineName
+	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	// example:
+	//
+	// DAILY
+	BaselineType *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 1,2,3
 	NodeIds                *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 	OvertimeSettingsShrink *string `json:"OvertimeSettings,omitempty" xml:"OvertimeSettings,omitempty"`
-	Owner                  *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Priority               *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 3726346****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 7
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// This parameter is required.
-	ProjectId     *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	//
+	// example:
+	//
+	// 2043
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 123,456
 	RemoveNodeIds *string `json:"RemoveNodeIds,omitempty" xml:"RemoveNodeIds,omitempty"`
 }
 
@@ -73333,12 +74269,30 @@ func (s *UpdateBaselineShrinkRequest) SetRemoveNodeIds(v string) *UpdateBaseline
 }
 
 type UpdateBaselineResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 401
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The specified parameters are invalid.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 6E07E90B-D9BC-5D6B-896A-82BA41A34AE1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateBaselineResponseBody) String() string {
@@ -76782,6 +77736,10 @@ type UpdateMetaTableRequest struct {
 	// a,b,c
 	AddedLabels *string `json:"AddedLabels,omitempty" xml:"AddedLabels,omitempty"`
 	// The display name of the table.
+	//
+	// example:
+	//
+	// test
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// The ID of the category that you want to associate.
 	//
@@ -79890,7 +80848,7 @@ func (client *Client) AbolishDataServiceApi(request *AbolishDataServiceApiReques
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to **AddMetaCollectionEntity**.
+// Adds an entity to a collection.
 //
 // @param request - AddMetaCollectionEntityRequest
 //
@@ -79940,7 +80898,7 @@ func (client *Client) AddMetaCollectionEntityWithOptions(request *AddMetaCollect
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to **AddMetaCollectionEntity**.
+// Adds an entity to a collection.
 //
 // @param request - AddMetaCollectionEntityRequest
 //
@@ -81120,9 +82078,9 @@ func (client *Client) CreateDIJob(request *CreateDIJobRequest) (_result *CreateD
 	return _result, _err
 }
 
-// Description:
+// Summary:
 //
-// DataWorks allows you to use only the CreateDISyncTask operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
+// Creates a data synchronization task.
 //
 // @param request - CreateDISyncTaskRequest
 //
@@ -81182,9 +82140,9 @@ func (client *Client) CreateDISyncTaskWithOptions(request *CreateDISyncTaskReque
 	return _result, _err
 }
 
-// Description:
+// Summary:
 //
-// DataWorks allows you to use only the CreateDISyncTask operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
+// Creates a data synchronization task.
 //
 // @param request - CreateDISyncTaskRequest
 //
@@ -82303,7 +83261,7 @@ func (client *Client) CreateImportMigrationAdvance(request *CreateImportMigratio
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -82331,12 +83289,17 @@ func (client *Client) CreateImportMigrationAdvance(request *CreateImportMigratio
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -83453,7 +84416,7 @@ func (client *Client) CreateResourceFileAdvance(request *CreateResourceFileAdvan
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -83481,12 +84444,17 @@ func (client *Client) CreateResourceFileAdvance(request *CreateResourceFileAdvan
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -83750,6 +84718,10 @@ func (client *Client) CreateTableLevel(request *CreateTableLevelRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a table folder. This API operation will be replaced soon. We recommend that you do not call this API operation.
+//
 // @param request - CreateTableThemeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -83800,6 +84772,10 @@ func (client *Client) CreateTableThemeWithOptions(request *CreateTableThemeReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a table folder. This API operation will be replaced soon. We recommend that you do not call this API operation.
+//
 // @param request - CreateTableThemeRequest
 //
 // @return CreateTableThemeResponse
@@ -90031,11 +91007,7 @@ func (client *Client) GetMetaDBTableList(request *GetMetaDBTableListRequest) (_r
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to **GetMetaTableBasicInfo**.
-//
-// Description:
-//
-// ***
+// Queries the basic information about a metatable.
 //
 // @param request - GetMetaTableBasicInfoRequest
 //
@@ -90073,11 +91045,7 @@ func (client *Client) GetMetaTableBasicInfoWithOptions(request *GetMetaTableBasi
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to **GetMetaTableBasicInfo**.
-//
-// Description:
-//
-// ***
+// Queries the basic information about a metatable.
 //
 // @param request - GetMetaTableBasicInfoRequest
 //
@@ -90441,6 +91409,10 @@ func (client *Client) GetMetaTableLineage(request *GetMetaTableLineageRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries metatables in a specified category.
+//
 // @param request - GetMetaTableListByCategoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -90475,6 +91447,10 @@ func (client *Client) GetMetaTableListByCategoryWithOptions(request *GetMetaTabl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries metatables in a specified category.
+//
 // @param request - GetMetaTableListByCategoryRequest
 //
 // @return GetMetaTableListByCategoryResponse
@@ -90563,11 +91539,11 @@ func (client *Client) GetMetaTableOutput(request *GetMetaTableOutputRequest) (_r
 
 // Summary:
 //
-// For more information about the example on how to use the GetMetaTablePartition operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+// Queries the partitions of a metatable.
 //
 // Description:
 //
-// The operation that you want to perform. Set the value to **GetMetaTablePartition**.
+// You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine instance.
 //
 // @param tmpReq - GetMetaTablePartitionRequest
 //
@@ -90643,11 +91619,11 @@ func (client *Client) GetMetaTablePartitionWithOptions(tmpReq *GetMetaTableParti
 
 // Summary:
 //
-// For more information about the example on how to use the GetMetaTablePartition operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+// Queries the partitions of a metatable.
 //
 // Description:
 //
-// The operation that you want to perform. Set the value to **GetMetaTablePartition**.
+// You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine instance.
 //
 // @param request - GetMetaTablePartitionRequest
 //
@@ -91161,6 +92137,10 @@ func (client *Client) GetNodeOnBaseline(request *GetNodeOnBaselineRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ancestor nodes of a node.
+//
 // @param request - GetNodeParentsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -91203,6 +92183,10 @@ func (client *Client) GetNodeParentsWithOptions(request *GetNodeParentsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ancestor nodes of a node.
+//
 // @param request - GetNodeParentsRequest
 //
 // @return GetNodeParentsResponse
@@ -91833,6 +92817,16 @@ func (client *Client) GetQualityRule(request *GetQualityRuleRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a custom alert rule.
+//
+// Description:
+//
+// ## Debugging
+//
+// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetRemind\\&type=RPC\\&version=2020-05-18)
+//
 // @param request - GetRemindRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -91871,6 +92865,16 @@ func (client *Client) GetRemindWithOptions(request *GetRemindRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a custom alert rule.
+//
+// Description:
+//
+// ## Debugging
+//
+// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetRemind\\&type=RPC\\&version=2020-05-18)
+//
 // @param request - GetRemindRequest
 //
 // @return GetRemindResponse
@@ -92599,6 +93603,10 @@ func (client *Client) ListBusiness(request *ListBusinessRequest) (_result *ListB
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries compute engine instances.
+//
 // @param request - ListCalcEnginesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -92657,6 +93665,10 @@ func (client *Client) ListCalcEnginesWithOptions(request *ListCalcEnginesRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries compute engine instances.
+//
 // @param request - ListCalcEnginesRequest
 //
 // @return ListCalcEnginesResponse
@@ -94841,7 +95853,7 @@ func (client *Client) ListManualDagInstances(request *ListManualDagInstancesRequ
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to **ListMetaCollectionEntities**.
+// Queries the entities in a collection.
 //
 // @param request - ListMetaCollectionEntitiesRequest
 //
@@ -94899,7 +95911,7 @@ func (client *Client) ListMetaCollectionEntitiesWithOptions(request *ListMetaCol
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to **ListMetaCollectionEntities**.
+// Queries the entities in a collection.
 //
 // @param request - ListMetaCollectionEntitiesRequest
 //
@@ -94917,11 +95929,11 @@ func (client *Client) ListMetaCollectionEntities(request *ListMetaCollectionEnti
 
 // Summary:
 //
-// The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
+// Queries information about collections. Collections include data albums that are displayed on the DataMap page and categories that are created in the data albums. You can call this API operation to query collections by type.
 //
 // Description:
 //
-// You can configure only one of the Creator, Administrator, and Follower parameters.
+// The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
 //
 // @param request - ListMetaCollectionsRequest
 //
@@ -94995,11 +96007,11 @@ func (client *Client) ListMetaCollectionsWithOptions(request *ListMetaCollection
 
 // Summary:
 //
-// The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
+// Queries information about collections. Collections include data albums that are displayed on the DataMap page and categories that are created in the data albums. You can call this API operation to query collections by type.
 //
 // Description:
 //
-// You can configure only one of the Creator, Administrator, and Follower parameters.
+// The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
 //
 // @param request - ListMetaCollectionsRequest
 //
@@ -95679,6 +96691,10 @@ func (client *Client) ListProjectIds(request *ListProjectIdsRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries members in a DataWorks workspace.
+//
 // @param request - ListProjectMembersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -95725,6 +96741,10 @@ func (client *Client) ListProjectMembersWithOptions(request *ListProjectMembersR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries members in a DataWorks workspace.
+//
 // @param request - ListProjectMembersRequest
 //
 // @return ListProjectMembersResponse
@@ -95741,7 +96761,13 @@ func (client *Client) ListProjectMembers(request *ListProjectMembersRequest) (_r
 
 // Summary:
 //
-// Dataworks ID of the workspace.
+// A topic is added to describe how to call the ListProjectRoles operation to query all roles in a workspace.
+//
+// Description:
+//
+// ## Debugging
+//
+// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=ListProjectRoles\\&type=RPC\\&version=2020-05-18)
 //
 // @param request - ListProjectRolesRequest
 //
@@ -95783,7 +96809,13 @@ func (client *Client) ListProjectRolesWithOptions(request *ListProjectRolesReque
 
 // Summary:
 //
-// Dataworks ID of the workspace.
+// A topic is added to describe how to call the ListProjectRoles operation to query all roles in a workspace.
+//
+// Description:
+//
+// ## Debugging
+//
+// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=ListProjectRoles\\&type=RPC\\&version=2020-05-18)
 //
 // @param request - ListProjectRolesRequest
 //
@@ -96551,6 +97583,10 @@ func (client *Client) ListSuccessInstanceAmount(request *ListSuccessInstanceAmou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries table levels. This API operation will be replaced soon. We recommend that you do not call this API operation.
+//
 // @param request - ListTableLevelRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -96585,6 +97621,10 @@ func (client *Client) ListTableLevelWithOptions(request *ListTableLevelRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries table levels. This API operation will be replaced soon. We recommend that you do not call this API operation.
+//
 // @param request - ListTableLevelRequest
 //
 // @return ListTableLevelResponse
@@ -96599,6 +97639,10 @@ func (client *Client) ListTableLevel(request *ListTableLevelRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries table folders. This API operation will be replaced soon. We recommend that you do not call this API operation.
+//
 // @param request - ListTableThemeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -96633,6 +97677,10 @@ func (client *Client) ListTableThemeWithOptions(request *ListTableThemeRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries table folders. This API operation will be replaced soon. We recommend that you do not call this API operation.
+//
 // @param request - ListTableThemeRequest
 //
 // @return ListTableThemeResponse
@@ -101068,6 +102116,10 @@ func (client *Client) UpdateMetaCollection(request *UpdateMetaCollectionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the metadata information about a table.
+//
 // @param request - UpdateMetaTableRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -101148,6 +102200,10 @@ func (client *Client) UpdateMetaTableWithOptions(request *UpdateMetaTableRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the metadata information about a table.
+//
 // @param request - UpdateMetaTableRequest
 //
 // @return UpdateMetaTableResponse

@@ -1,3 +1,10 @@
+2024-05-30 Version: v6.5.1
+- Update API GetNode: update response param.
+- Update API GetNodeChildren: update response param.
+- Update API GetNodeParents: update response param.
+- Update API ListNodes: update response param.
+
+
 2024-05-20 Version: v6.5.0
 - Support API DsgDesensPlanAddOrUpdate.
 - Support API DsgDesensPlanDelete.
