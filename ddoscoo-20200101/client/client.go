@@ -1289,6 +1289,97 @@ func (s *ConfigUdpReflectResponse) SetBody(v *ConfigUdpReflectResponseBody) *Con
 	return s
 }
 
+type ConfigWebCCRuleV2Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 600
+	Expires *int64 `json:"Expires,omitempty" xml:"Expires,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"action":"block","name":"trdsss","ratelimit":{"interval":60,"ttl":300,"threshold":70,"target":"ip"},"condition":[{"field":"ip","match_method":"belong","content":"1.1.1.1"}]}]
+	RuleList *string `json:"RuleList,omitempty" xml:"RuleList,omitempty"`
+}
+
+func (s ConfigWebCCRuleV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigWebCCRuleV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigWebCCRuleV2Request) SetDomain(v string) *ConfigWebCCRuleV2Request {
+	s.Domain = &v
+	return s
+}
+
+func (s *ConfigWebCCRuleV2Request) SetExpires(v int64) *ConfigWebCCRuleV2Request {
+	s.Expires = &v
+	return s
+}
+
+func (s *ConfigWebCCRuleV2Request) SetRuleList(v string) *ConfigWebCCRuleV2Request {
+	s.RuleList = &v
+	return s
+}
+
+type ConfigWebCCRuleV2ResponseBody struct {
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ConfigWebCCRuleV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigWebCCRuleV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigWebCCRuleV2ResponseBody) SetRequestId(v string) *ConfigWebCCRuleV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ConfigWebCCRuleV2Response struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigWebCCRuleV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ConfigWebCCRuleV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigWebCCRuleV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigWebCCRuleV2Response) SetHeaders(v map[string]*string) *ConfigWebCCRuleV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *ConfigWebCCRuleV2Response) SetStatusCode(v int32) *ConfigWebCCRuleV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConfigWebCCRuleV2Response) SetBody(v *ConfigWebCCRuleV2ResponseBody) *ConfigWebCCRuleV2Response {
+	s.Body = v
+	return s
+}
+
 type ConfigWebCCTemplateRequest struct {
 	// The domain name of the website.
 	//
@@ -20276,6 +20367,459 @@ func (s *DescribeWebCCRulesResponse) SetBody(v *DescribeWebCCRulesResponseBody) 
 	return s
 }
 
+type DescribeWebCCRulesV2Request struct {
+	// example:
+	//
+	// example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// example:
+	//
+	// manual
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeWebCCRulesV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebCCRulesV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebCCRulesV2Request) SetDomain(v string) *DescribeWebCCRulesV2Request {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2Request) SetOffset(v string) *DescribeWebCCRulesV2Request {
+	s.Offset = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2Request) SetOwner(v string) *DescribeWebCCRulesV2Request {
+	s.Owner = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2Request) SetPageSize(v string) *DescribeWebCCRulesV2Request {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeWebCCRulesV2ResponseBody struct {
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 12
+	TotalCount *string                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	WebCCRules []*DescribeWebCCRulesV2ResponseBodyWebCCRules `json:"WebCCRules,omitempty" xml:"WebCCRules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeWebCCRulesV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebCCRulesV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebCCRulesV2ResponseBody) SetDomain(v string) *DescribeWebCCRulesV2ResponseBody {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBody) SetRequestId(v string) *DescribeWebCCRulesV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBody) SetTotalCount(v string) *DescribeWebCCRulesV2ResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBody) SetWebCCRules(v []*DescribeWebCCRulesV2ResponseBodyWebCCRules) *DescribeWebCCRulesV2ResponseBody {
+	s.WebCCRules = v
+	return s
+}
+
+type DescribeWebCCRulesV2ResponseBodyWebCCRules struct {
+	// example:
+	//
+	// 0
+	Expires *int64 `json:"Expires,omitempty" xml:"Expires,omitempty"`
+	// example:
+	//
+	// wq
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// manual
+	Owner      *string                                               `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	RuleDetail *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail `json:"RuleDetail,omitempty" xml:"RuleDetail,omitempty" type:"Struct"`
+}
+
+func (s DescribeWebCCRulesV2ResponseBodyWebCCRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebCCRulesV2ResponseBodyWebCCRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRules) SetExpires(v int64) *DescribeWebCCRulesV2ResponseBodyWebCCRules {
+	s.Expires = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRules) SetName(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRules {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRules) SetOwner(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRules {
+	s.Owner = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRules) SetRuleDetail(v *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) *DescribeWebCCRulesV2ResponseBodyWebCCRules {
+	s.RuleDetail = v
+	return s
+}
+
+type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail struct {
+	// example:
+	//
+	// block
+	Action    *string                                                          `json:"Action,omitempty" xml:"Action,omitempty"`
+	Condition []*DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Repeated"`
+	Count     *int32                                                           `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 60
+	Interval *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// ccauto14
+	Name       *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	RateLimit  *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit  `json:"RateLimit,omitempty" xml:"RateLimit,omitempty" type:"Struct"`
+	Statistics *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
+	StatusCode *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode `json:"StatusCode,omitempty" xml:"StatusCode,omitempty" type:"Struct"`
+	// example:
+	//
+	// 300
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// example:
+	//
+	// /p3shijihao
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) SetAction(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail {
+	s.Action = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) SetCondition(v []*DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail {
+	s.Condition = v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) SetCount(v int32) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) SetInterval(v int32) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) SetMode(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail {
+	s.Mode = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) SetName(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) SetRateLimit(v *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail {
+	s.RateLimit = v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) SetStatistics(v *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail {
+	s.Statistics = v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) SetStatusCode(v *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail {
+	s.StatusCode = v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) SetTtl(v int32) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail {
+	s.Ttl = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) SetUri(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail {
+	s.Uri = &v
+	return s
+}
+
+type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition struct {
+	// example:
+	//
+	// 192.0.XX.XX
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// ip
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// example:
+	//
+	// null
+	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
+	// example:
+	//
+	// belong
+	MatchMethod *string `json:"MatchMethod,omitempty" xml:"MatchMethod,omitempty"`
+}
+
+func (s DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) SetContent(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) SetField(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition {
+	s.Field = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) SetHeaderName(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition {
+	s.HeaderName = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) SetMatchMethod(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition {
+	s.MatchMethod = &v
+	return s
+}
+
+type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit struct {
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// action
+	SubKey *string `json:"SubKey,omitempty" xml:"SubKey,omitempty"`
+	// example:
+	//
+	// ip
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// example:
+	//
+	// 20
+	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// example:
+	//
+	// 15
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+}
+
+func (s DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit) SetInterval(v int32) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit) SetSubKey(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit {
+	s.SubKey = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit) SetTarget(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit {
+	s.Target = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit) SetThreshold(v int32) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit {
+	s.Threshold = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit) SetTtl(v int32) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit {
+	s.Ttl = &v
+	return s
+}
+
+type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics struct {
+	// example:
+	//
+	// uri
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// example:
+	//
+	// hello
+	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
+	// example:
+	//
+	// count
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+}
+
+func (s DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics) SetField(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics {
+	s.Field = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics) SetHeaderName(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics {
+	s.HeaderName = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics) SetMode(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics {
+	s.Mode = &v
+	return s
+}
+
+type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 10
+	CountThreshold *int32 `json:"CountThreshold,omitempty" xml:"CountThreshold,omitempty"`
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 10
+	RatioThreshold *int32 `json:"RatioThreshold,omitempty" xml:"RatioThreshold,omitempty"`
+	// example:
+	//
+	// true
+	UseRatio *bool `json:"UseRatio,omitempty" xml:"UseRatio,omitempty"`
+}
+
+func (s DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode) SetCode(v int32) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode) SetCountThreshold(v int32) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode {
+	s.CountThreshold = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode) SetEnabled(v bool) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode) SetRatioThreshold(v int32) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode {
+	s.RatioThreshold = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode) SetUseRatio(v bool) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode {
+	s.UseRatio = &v
+	return s
+}
+
+type DescribeWebCCRulesV2Response struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeWebCCRulesV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeWebCCRulesV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebCCRulesV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebCCRulesV2Response) SetHeaders(v map[string]*string) *DescribeWebCCRulesV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2Response) SetStatusCode(v int32) *DescribeWebCCRulesV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2Response) SetBody(v *DescribeWebCCRulesV2ResponseBody) *DescribeWebCCRulesV2Response {
+	s.Body = v
+	return s
+}
+
 type DescribeWebCacheConfigsRequest struct {
 	// An array consisting of domain names for which you want to query the Static Page Caching configurations.
 	//
@@ -28050,6 +28594,74 @@ func (client *Client) ConfigUdpReflect(request *ConfigUdpReflectRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigUdpReflectResponse{}
 	_body, _err := client.ConfigUdpReflectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置新版基于匹配条件的cc规则
+//
+// @param request - ConfigWebCCRuleV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigWebCCRuleV2Response
+func (client *Client) ConfigWebCCRuleV2WithOptions(request *ConfigWebCCRuleV2Request, runtime *util.RuntimeOptions) (_result *ConfigWebCCRuleV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expires)) {
+		query["Expires"] = request.Expires
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleList)) {
+		query["RuleList"] = request.RuleList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfigWebCCRuleV2"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ConfigWebCCRuleV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置新版基于匹配条件的cc规则
+//
+// @param request - ConfigWebCCRuleV2Request
+//
+// @return ConfigWebCCRuleV2Response
+func (client *Client) ConfigWebCCRuleV2(request *ConfigWebCCRuleV2Request) (_result *ConfigWebCCRuleV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConfigWebCCRuleV2Response{}
+	_body, _err := client.ConfigWebCCRuleV2WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35998,6 +36610,78 @@ func (client *Client) DescribeWebCCRules(request *DescribeWebCCRulesRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebCCRulesResponse{}
 	_body, _err := client.DescribeWebCCRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询新版cc规则
+//
+// @param request - DescribeWebCCRulesV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebCCRulesV2Response
+func (client *Client) DescribeWebCCRulesV2WithOptions(request *DescribeWebCCRulesV2Request, runtime *util.RuntimeOptions) (_result *DescribeWebCCRulesV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		query["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWebCCRulesV2"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWebCCRulesV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询新版cc规则
+//
+// @param request - DescribeWebCCRulesV2Request
+//
+// @return DescribeWebCCRulesV2Response
+func (client *Client) DescribeWebCCRulesV2(request *DescribeWebCCRulesV2Request) (_result *DescribeWebCCRulesV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWebCCRulesV2Response{}
+	_body, _err := client.DescribeWebCCRulesV2WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
