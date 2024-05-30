@@ -1486,8 +1486,12 @@ func (s *ImageModerationResponseBodyData) SetResult(v []*ImageModerationResponse
 }
 
 type ImageModerationResponseBodyDataExt struct {
-	OcrResult   []*ImageModerationResponseBodyDataExtOcrResult   `json:"OcrResult,omitempty" xml:"OcrResult,omitempty" type:"Repeated"`
-	Recognition []*ImageModerationResponseBodyDataExtRecognition `json:"Recognition,omitempty" xml:"Recognition,omitempty" type:"Repeated"`
+	CustomImage  []*ImageModerationResponseBodyDataExtCustomImage  `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
+	LogoData     []*ImageModerationResponseBodyDataExtLogoData     `json:"LogoData,omitempty" xml:"LogoData,omitempty" type:"Repeated"`
+	OcrResult    []*ImageModerationResponseBodyDataExtOcrResult    `json:"OcrResult,omitempty" xml:"OcrResult,omitempty" type:"Repeated"`
+	PublicFigure []*ImageModerationResponseBodyDataExtPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
+	Recognition  []*ImageModerationResponseBodyDataExtRecognition  `json:"Recognition,omitempty" xml:"Recognition,omitempty" type:"Repeated"`
+	TextInImage  *ImageModerationResponseBodyDataExtTextInImage    `json:"TextInImage,omitempty" xml:"TextInImage,omitempty" type:"Struct"`
 }
 
 func (s ImageModerationResponseBodyDataExt) String() string {
@@ -1498,13 +1502,149 @@ func (s ImageModerationResponseBodyDataExt) GoString() string {
 	return s.String()
 }
 
+func (s *ImageModerationResponseBodyDataExt) SetCustomImage(v []*ImageModerationResponseBodyDataExtCustomImage) *ImageModerationResponseBodyDataExt {
+	s.CustomImage = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExt) SetLogoData(v []*ImageModerationResponseBodyDataExtLogoData) *ImageModerationResponseBodyDataExt {
+	s.LogoData = v
+	return s
+}
+
 func (s *ImageModerationResponseBodyDataExt) SetOcrResult(v []*ImageModerationResponseBodyDataExtOcrResult) *ImageModerationResponseBodyDataExt {
 	s.OcrResult = v
 	return s
 }
 
+func (s *ImageModerationResponseBodyDataExt) SetPublicFigure(v []*ImageModerationResponseBodyDataExtPublicFigure) *ImageModerationResponseBodyDataExt {
+	s.PublicFigure = v
+	return s
+}
+
 func (s *ImageModerationResponseBodyDataExt) SetRecognition(v []*ImageModerationResponseBodyDataExtRecognition) *ImageModerationResponseBodyDataExt {
 	s.Recognition = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExt) SetTextInImage(v *ImageModerationResponseBodyDataExtTextInImage) *ImageModerationResponseBodyDataExt {
+	s.TextInImage = v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtCustomImage struct {
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtCustomImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtCustomImage) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtCustomImage) SetImageId(v string) *ImageModerationResponseBodyDataExtCustomImage {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtCustomImage) SetLibId(v string) *ImageModerationResponseBodyDataExtCustomImage {
+	s.LibId = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtCustomImage) SetLibName(v string) *ImageModerationResponseBodyDataExtCustomImage {
+	s.LibName = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtLogoData struct {
+	Location *ImageModerationResponseBodyDataExtLogoDataLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	Logo     []*ImageModerationResponseBodyDataExtLogoDataLogo   `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
+}
+
+func (s ImageModerationResponseBodyDataExtLogoData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtLogoData) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtLogoData) SetLocation(v *ImageModerationResponseBodyDataExtLogoDataLocation) *ImageModerationResponseBodyDataExtLogoData {
+	s.Location = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtLogoData) SetLogo(v []*ImageModerationResponseBodyDataExtLogoDataLogo) *ImageModerationResponseBodyDataExtLogoData {
+	s.Logo = v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtLogoDataLocation struct {
+	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtLogoDataLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtLogoDataLocation) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtLogoDataLocation) SetH(v int32) *ImageModerationResponseBodyDataExtLogoDataLocation {
+	s.H = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtLogoDataLocation) SetW(v int32) *ImageModerationResponseBodyDataExtLogoDataLocation {
+	s.W = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtLogoDataLocation) SetX(v int32) *ImageModerationResponseBodyDataExtLogoDataLocation {
+	s.X = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtLogoDataLocation) SetY(v int32) *ImageModerationResponseBodyDataExtLogoDataLocation {
+	s.Y = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtLogoDataLogo struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Label      *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+	Name       *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtLogoDataLogo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtLogoDataLogo) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtLogoDataLogo) SetConfidence(v float32) *ImageModerationResponseBodyDataExtLogoDataLogo {
+	s.Confidence = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtLogoDataLogo) SetLabel(v string) *ImageModerationResponseBodyDataExtLogoDataLogo {
+	s.Label = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtLogoDataLogo) SetName(v string) *ImageModerationResponseBodyDataExtLogoDataLogo {
+	s.Name = &v
 	return s
 }
 
@@ -1566,6 +1706,29 @@ func (s *ImageModerationResponseBodyDataExtOcrResultLocation) SetY(v int32) *Ima
 	return s
 }
 
+type ImageModerationResponseBodyDataExtPublicFigure struct {
+	FigureId   *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+	FigureName *string `json:"FigureName,omitempty" xml:"FigureName,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtPublicFigure) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtPublicFigure) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtPublicFigure) SetFigureId(v string) *ImageModerationResponseBodyDataExtPublicFigure {
+	s.FigureId = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtPublicFigure) SetFigureName(v string) *ImageModerationResponseBodyDataExtPublicFigure {
+	s.FigureName = &v
+	return s
+}
+
 type ImageModerationResponseBodyDataExtRecognition struct {
 	Classification *string  `json:"Classification,omitempty" xml:"Classification,omitempty"`
 	Confidence     *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
@@ -1586,6 +1749,122 @@ func (s *ImageModerationResponseBodyDataExtRecognition) SetClassification(v stri
 
 func (s *ImageModerationResponseBodyDataExtRecognition) SetConfidence(v float32) *ImageModerationResponseBodyDataExtRecognition {
 	s.Confidence = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtTextInImage struct {
+	CustomText []*ImageModerationResponseBodyDataExtTextInImageCustomText `json:"CustomText,omitempty" xml:"CustomText,omitempty" type:"Repeated"`
+	OcrResult  []*ImageModerationResponseBodyDataExtTextInImageOcrResult  `json:"OcrResult,omitempty" xml:"OcrResult,omitempty" type:"Repeated"`
+	RiskWord   []*string                                                  `json:"RiskWord,omitempty" xml:"RiskWord,omitempty" type:"Repeated"`
+}
+
+func (s ImageModerationResponseBodyDataExtTextInImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtTextInImage) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtTextInImage) SetCustomText(v []*ImageModerationResponseBodyDataExtTextInImageCustomText) *ImageModerationResponseBodyDataExtTextInImage {
+	s.CustomText = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtTextInImage) SetOcrResult(v []*ImageModerationResponseBodyDataExtTextInImageOcrResult) *ImageModerationResponseBodyDataExtTextInImage {
+	s.OcrResult = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtTextInImage) SetRiskWord(v []*string) *ImageModerationResponseBodyDataExtTextInImage {
+	s.RiskWord = v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtTextInImageCustomText struct {
+	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	LibId    *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibName  *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtTextInImageCustomText) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtTextInImageCustomText) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtTextInImageCustomText) SetKeyWords(v string) *ImageModerationResponseBodyDataExtTextInImageCustomText {
+	s.KeyWords = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtTextInImageCustomText) SetLibId(v string) *ImageModerationResponseBodyDataExtTextInImageCustomText {
+	s.LibId = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtTextInImageCustomText) SetLibName(v string) *ImageModerationResponseBodyDataExtTextInImageCustomText {
+	s.LibName = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtTextInImageOcrResult struct {
+	Location *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	Text     *string                                                         `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtTextInImageOcrResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtTextInImageOcrResult) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtTextInImageOcrResult) SetLocation(v *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation) *ImageModerationResponseBodyDataExtTextInImageOcrResult {
+	s.Location = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtTextInImageOcrResult) SetText(v string) *ImageModerationResponseBodyDataExtTextInImageOcrResult {
+	s.Text = &v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtTextInImageOcrResultLocation struct {
+	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtTextInImageOcrResultLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtTextInImageOcrResultLocation) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation) SetH(v int32) *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation {
+	s.H = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation) SetW(v int32) *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation {
+	s.W = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation) SetX(v int32) *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation {
+	s.X = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation) SetY(v int32) *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation {
+	s.Y = &v
 	return s
 }
 
