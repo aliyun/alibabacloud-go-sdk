@@ -3234,6 +3234,81 @@ func (s *GetTrackListByMailFromAndTagNameResponse) SetBody(v *GetTrackListByMail
 	return s
 }
 
+type GetUserResponseBody struct {
+	Data *GetUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 10A1AD70-E48E-476D-98D9-39BD92193837
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserResponseBody) SetData(v *GetUserResponseBodyData) *GetUserResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetUserResponseBody) SetRequestId(v string) *GetUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetUserResponseBodyData struct {
+	// example:
+	//
+	// true
+	EnableEventbridge *bool `json:"EnableEventbridge,omitempty" xml:"EnableEventbridge,omitempty"`
+}
+
+func (s GetUserResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserResponseBodyData) SetEnableEventbridge(v bool) *GetUserResponseBodyData {
+	s.EnableEventbridge = &v
+	return s
+}
+
+type GetUserResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserResponse) SetHeaders(v map[string]*string) *GetUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserResponse) SetStatusCode(v int32) *GetUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserSuppressionRequest struct {
 	// example:
 	//
@@ -6725,6 +6800,111 @@ func (s *UpdateIpProtectionResponse) SetBody(v *UpdateIpProtectionResponseBody) 
 	return s
 }
 
+type UpdateUserRequest struct {
+	User *UpdateUserRequestUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+}
+
+func (s UpdateUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserRequest) SetUser(v *UpdateUserRequestUser) *UpdateUserRequest {
+	s.User = v
+	return s
+}
+
+type UpdateUserRequestUser struct {
+	// example:
+	//
+	// true
+	EnableEventbridge *bool `json:"EnableEventbridge,omitempty" xml:"EnableEventbridge,omitempty"`
+}
+
+func (s UpdateUserRequestUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserRequestUser) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserRequestUser) SetEnableEventbridge(v bool) *UpdateUserRequestUser {
+	s.EnableEventbridge = &v
+	return s
+}
+
+type UpdateUserShrinkRequest struct {
+	UserShrink *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s UpdateUserShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserShrinkRequest) SetUserShrink(v string) *UpdateUserShrinkRequest {
+	s.UserShrink = &v
+	return s
+}
+
+type UpdateUserResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 7BC346F6-1092-5852-B6E2-CCE2E5AAE51F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserResponseBody) SetRequestId(v string) *UpdateUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateUserResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserResponse) SetHeaders(v map[string]*string) *UpdateUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUserResponse) SetStatusCode(v int32) *UpdateUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateUserResponse) SetBody(v *UpdateUserResponseBody) *UpdateUserResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -8610,6 +8790,53 @@ func (client *Client) GetTrackListByMailFromAndTagName(request *GetTrackListByMa
 
 // Summary:
 //
+// 获取账号详情
+//
+// @param request - GetUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserResponse
+func (client *Client) GetUserWithOptions(runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetUser"),
+		Version:     tea.String("2015-11-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取账号详情
+//
+// @return GetUserResponse
+func (client *Client) GetUser() (_result *GetUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserResponse{}
+	_body, _err := client.GetUserWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 列出用户无效地址
 //
 // @param request - ListUserSuppressionRequest
@@ -10197,6 +10424,72 @@ func (client *Client) UpdateIpProtection(request *UpdateIpProtectionRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateIpProtectionResponse{}
 	_body, _err := client.UpdateIpProtectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新帐号信息
+//
+// @param tmpReq - UpdateUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserResponse
+func (client *Client) UpdateUserWithOptions(tmpReq *UpdateUserRequest, runtime *util.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateUserShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.User)) {
+		request.UserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.User, tea.String("User"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserShrink)) {
+		body["User"] = request.UserShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUser"),
+		Version:     tea.String("2015-11-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新帐号信息
+//
+// @param request - UpdateUserRequest
+//
+// @return UpdateUserResponse
+func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUserResponse{}
+	_body, _err := client.UpdateUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
