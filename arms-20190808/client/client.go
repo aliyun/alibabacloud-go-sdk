@@ -6524,6 +6524,9 @@ type CreateEnvironmentRequest struct {
 	//
 	// CS_Basic
 	FeePackage *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	// if can be null:
+	// true
+	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
 	// Specifies whether agents or exporters are managed. Valid values:
 	//
 	// 	- none: No. By default, no managed agents or exporters are provided for ACK clusters.
@@ -6598,6 +6601,11 @@ func (s *CreateEnvironmentRequest) SetEnvironmentType(v string) *CreateEnvironme
 
 func (s *CreateEnvironmentRequest) SetFeePackage(v string) *CreateEnvironmentRequest {
 	s.FeePackage = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetGrafanaWorkspaceId(v string) *CreateEnvironmentRequest {
+	s.GrafanaWorkspaceId = &v
 	return s
 }
 
@@ -22529,7 +22537,54 @@ type DescribeEnvironmentResponseBodyData struct {
 	// example:
 	//
 	// 192.168.0.0/16
-	BindVpcCidr      *string `json:"BindVpcCidr,omitempty" xml:"BindVpcCidr,omitempty"`
+	BindVpcCidr *string `json:"BindVpcCidr,omitempty" xml:"BindVpcCidr,omitempty"`
+	// The status of the database that is bound to the Prometheus instance.
+	//
+	// Valid values:
+	//
+	// 	- UNINSTALLING
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- INSTALLING
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- UNINSTALLED
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- RUNNING
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- MODIFYING
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// RUNNING
 	DbInstanceStatus *string `json:"DbInstanceStatus,omitempty" xml:"DbInstanceStatus,omitempty"`
 	// The ID of the environment instance.
 	//
@@ -22567,7 +22622,16 @@ type DescribeEnvironmentResponseBodyData struct {
 	//
 	// CS
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
-	FeePackage      *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	// The payable resource plan. Valid values:
+	//
+	// 	- If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro.
+	//
+	// 	- Otherwise, leave the parameter empty.
+	//
+	// example:
+	//
+	// CS_Basic
+	FeePackage *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
 	// The name of the Grafana data source.
 	//
 	// example:
@@ -22598,6 +22662,12 @@ type DescribeEnvironmentResponseBodyData struct {
 	//
 	// https://g.console.aliyun.com/dashboards/f/xxx/yyyy
 	GrafanaFolderUrl *string `json:"GrafanaFolderUrl,omitempty" xml:"GrafanaFolderUrl,omitempty"`
+	// grafana工作区id
+	//
+	// example:
+	//
+	// grafana-cn-27a3m8eem0a
+	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
 	// managed type:
 	//
 	// - none: unmanaged. The default value for ACK clusters.
@@ -22743,6 +22813,11 @@ func (s *DescribeEnvironmentResponseBodyData) SetGrafanaFolderUrl(v string) *Des
 	return s
 }
 
+func (s *DescribeEnvironmentResponseBodyData) SetGrafanaWorkspaceId(v string) *DescribeEnvironmentResponseBodyData {
+	s.GrafanaWorkspaceId = &v
+	return s
+}
+
 func (s *DescribeEnvironmentResponseBodyData) SetManagedType(v string) *DescribeEnvironmentResponseBodyData {
 	s.ManagedType = &v
 	return s
@@ -22790,7 +22865,7 @@ type DescribeEnvironmentResponseBodyDataTags struct {
 	//
 	// user1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The value of the tag
 	//
 	// example:
 	//
@@ -24804,7 +24879,7 @@ type GetAlertRulesResponseBodyPageBeanAlertRules struct {
 	// example:
 	//
 	// 5730***
-	AlertId *float32 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
 	// The name of the alert rule.
 	//
 	// example:
@@ -24963,7 +25038,7 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRules) SetAlertGroup(v int64) *Ge
 	return s
 }
 
-func (s *GetAlertRulesResponseBodyPageBeanAlertRules) SetAlertId(v float32) *GetAlertRulesResponseBodyPageBeanAlertRules {
+func (s *GetAlertRulesResponseBodyPageBeanAlertRules) SetAlertId(v int64) *GetAlertRulesResponseBodyPageBeanAlertRules {
 	s.AlertId = &v
 	return s
 }
@@ -25137,7 +25212,7 @@ type GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems s
 	// example:
 	//
 	// 1
-	N *float32 `json:"N,omitempty" xml:"N,omitempty"`
+	N *int64 `json:"N,omitempty" xml:"N,omitempty"`
 	// The comparison operator that was used to compare the metric value with the threshold. Valid values:
 	//
 	// 	- CURRENT_GTE: greater than or equal to
@@ -25186,7 +25261,7 @@ func (s *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleIte
 	return s
 }
 
-func (s *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems) SetN(v float32) *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems {
+func (s *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems) SetN(v int64) *GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems {
 	s.N = &v
 	return s
 }
@@ -28505,7 +28580,15 @@ func (s *GetPrometheusInstanceResponseBody) SetRequestId(v string) *GetPrometheu
 }
 
 type GetPrometheusInstanceResponseBodyData struct {
-	// The number of days for automatic archiving after storage expiration (optional values: 60, 90, 180, 365). 0 means not archive.
+	// 权限类型：
+	//
+	// readWrite、readOnly、httpReadOnly
+	//
+	// example:
+	//
+	// readWrite
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The number of days for which data is automatically archived after the storage expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
 	//
 	// example:
 	//
@@ -28529,15 +28612,15 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// prom1
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// 	- remote-write: Prometheus instance for Remote Write
+	// 	- remote-write: general-purpose Prometheus instance
 	//
 	// 	- ecs: Prometheus instances for ECS
 	//
-	// 	- cloud-monitor: Prometheus instance for cloud services (Chinese mainland)
+	// 	- cloud-monitor: Prometheus instance for Alibaba Cloud services in the Chinese mainland
 	//
-	// 	- cloud-monitor: Prometheus instance for cloud services (regions outside the Chinese mainland)
+	// 	- cloud-product: Prometheus instance for Alibaba Cloud services outside the Chinese mainland
 	//
-	// 	- global-view: Prometheus instance for GlobalView
+	// 	- global-view: global aggregation instance
 	//
 	// 	- aliyun-cs: Prometheus instance for Container Service
 	//
@@ -28585,7 +28668,6 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// http://cn-beijing-intranet.arms.aliyuncs.com/prometheus/xxx/api/v2
 	PushGatewayIntraUrl *string `json:"PushGatewayIntraUrl,omitempty" xml:"PushGatewayIntraUrl,omitempty"`
-	ReadOnly            *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -28634,7 +28716,7 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// sg-8vbdgmf4nraiqa9bx0jo
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// Storage duration (days).
+	// The data storage duration. Unit: days.
 	//
 	// example:
 	//
@@ -28674,6 +28756,11 @@ func (s GetPrometheusInstanceResponseBodyData) String() string {
 
 func (s GetPrometheusInstanceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetAccessType(v string) *GetPrometheusInstanceResponseBodyData {
+	s.AccessType = &v
+	return s
 }
 
 func (s *GetPrometheusInstanceResponseBodyData) SetArchiveDuration(v int32) *GetPrometheusInstanceResponseBodyData {
@@ -28728,11 +28815,6 @@ func (s *GetPrometheusInstanceResponseBodyData) SetPushGatewayInterUrl(v string)
 
 func (s *GetPrometheusInstanceResponseBodyData) SetPushGatewayIntraUrl(v string) *GetPrometheusInstanceResponseBodyData {
 	s.PushGatewayIntraUrl = &v
-	return s
-}
-
-func (s *GetPrometheusInstanceResponseBodyData) SetReadOnly(v bool) *GetPrometheusInstanceResponseBodyData {
-	s.ReadOnly = &v
 	return s
 }
 
@@ -36659,7 +36741,8 @@ type GetTraceAppResponseBodyTraceApp struct {
 	// example:
 	//
 	// arms-k8s-demo
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The timestamp generated when the task was created.
 	//
 	// example:
@@ -36667,7 +36750,8 @@ type GetTraceAppResponseBodyTraceApp struct {
 	// 1576599253000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The aliases of the application.
-	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Labels   []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Language *string   `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The process identifier (PID) of the application.
 	//
 	// example:
@@ -36746,6 +36830,11 @@ func (s *GetTraceAppResponseBodyTraceApp) SetAppName(v string) *GetTraceAppRespo
 	return s
 }
 
+func (s *GetTraceAppResponseBodyTraceApp) SetClusterId(v string) *GetTraceAppResponseBodyTraceApp {
+	s.ClusterId = &v
+	return s
+}
+
 func (s *GetTraceAppResponseBodyTraceApp) SetCreateTime(v int64) *GetTraceAppResponseBodyTraceApp {
 	s.CreateTime = &v
 	return s
@@ -36753,6 +36842,11 @@ func (s *GetTraceAppResponseBodyTraceApp) SetCreateTime(v int64) *GetTraceAppRes
 
 func (s *GetTraceAppResponseBodyTraceApp) SetLabels(v []*string) *GetTraceAppResponseBodyTraceApp {
 	s.Labels = v
+	return s
+}
+
+func (s *GetTraceAppResponseBodyTraceApp) SetLanguage(v string) *GetTraceAppResponseBodyTraceApp {
+	s.Language = &v
 	return s
 }
 
@@ -53506,12 +53600,16 @@ func (s *RemoveAliClusterIdsFromPrometheusGlobalViewRequest) SetRegionId(v strin
 }
 
 type RemoveAliClusterIdsFromPrometheusGlobalViewResponseBody struct {
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned struct.
 	Data *RemoveAliClusterIdsFromPrometheusGlobalViewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	//
 	// example:
 	//
 	// success
@@ -68736,6 +68834,10 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 		query["FeePackage"] = request.FeePackage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GrafanaWorkspaceId)) {
+		query["GrafanaWorkspaceId"] = request.GrafanaWorkspaceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ManagedType)) {
 		query["ManagedType"] = request.ManagedType
 	}
@@ -80997,7 +81099,7 @@ func (client *Client) QueryReleaseMetric(request *QueryReleaseMetricRequest) (_r
 
 // Summary:
 //
-// Removes data sources from a global aggregation instance in Prometheus Service.
+// Removes data sources from a global aggregation instance.
 //
 // @param request - RemoveAliClusterIdsFromPrometheusGlobalViewRequest
 //
@@ -81051,7 +81153,7 @@ func (client *Client) RemoveAliClusterIdsFromPrometheusGlobalViewWithOptions(req
 
 // Summary:
 //
-// Removes data sources from a global aggregation instance in Prometheus Service.
+// Removes data sources from a global aggregation instance.
 //
 // @param request - RemoveAliClusterIdsFromPrometheusGlobalViewRequest
 //
