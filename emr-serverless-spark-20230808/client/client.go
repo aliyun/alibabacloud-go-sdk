@@ -575,6 +575,7 @@ type Task struct {
 	DefaultDatabase        *string   `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
 	DefaultResourceQueueId *string   `json:"defaultResourceQueueId,omitempty" xml:"defaultResourceQueueId,omitempty"`
 	DefaultSqlComputeId    *string   `json:"defaultSqlComputeId,omitempty" xml:"defaultSqlComputeId,omitempty"`
+	DeploymentId           *string   `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
 	ExtraArtifactIds       []*string `json:"extraArtifactIds,omitempty" xml:"extraArtifactIds,omitempty" type:"Repeated"`
 	ExtraSparkSubmitParams *string   `json:"extraSparkSubmitParams,omitempty" xml:"extraSparkSubmitParams,omitempty"`
 	Files                  []*string `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
@@ -585,6 +586,7 @@ type Task struct {
 	HasChanged  *bool   `json:"hasChanged,omitempty" xml:"hasChanged,omitempty"`
 	// This parameter is required.
 	HasCommited            *bool     `json:"hasCommited,omitempty" xml:"hasCommited,omitempty"`
+	IsStreaming            *bool     `json:"isStreaming,omitempty" xml:"isStreaming,omitempty"`
 	Jars                   []*string `json:"jars,omitempty" xml:"jars,omitempty" type:"Repeated"`
 	LastRunResourceQueueId *string   `json:"lastRunResourceQueueId,omitempty" xml:"lastRunResourceQueueId,omitempty"`
 	// This parameter is required.
@@ -609,7 +611,8 @@ type Task struct {
 	// This parameter is required.
 	SparkLogLevel *string `json:"sparkLogLevel,omitempty" xml:"sparkLogLevel,omitempty"`
 	// This parameter is required.
-	SparkLogPath *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
+	SparkLogPath      *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
+	SparkSubmitClause *string `json:"sparkSubmitClause,omitempty" xml:"sparkSubmitClause,omitempty"`
 	// This parameter is required.
 	SparkVersion *string            `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
 	Tags         map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
@@ -675,6 +678,11 @@ func (s *Task) SetDefaultSqlComputeId(v string) *Task {
 	return s
 }
 
+func (s *Task) SetDeploymentId(v string) *Task {
+	s.DeploymentId = &v
+	return s
+}
+
 func (s *Task) SetExtraArtifactIds(v []*string) *Task {
 	s.ExtraArtifactIds = v
 	return s
@@ -707,6 +715,11 @@ func (s *Task) SetHasChanged(v bool) *Task {
 
 func (s *Task) SetHasCommited(v bool) *Task {
 	s.HasCommited = &v
+	return s
+}
+
+func (s *Task) SetIsStreaming(v bool) *Task {
+	s.IsStreaming = &v
 	return s
 }
 
@@ -777,6 +790,11 @@ func (s *Task) SetSparkLogLevel(v string) *Task {
 
 func (s *Task) SetSparkLogPath(v string) *Task {
 	s.SparkLogPath = &v
+	return s
+}
+
+func (s *Task) SetSparkSubmitClause(v string) *Task {
+	s.SparkSubmitClause = &v
 	return s
 }
 
@@ -1207,6 +1225,146 @@ func (s *CancelJobRunResponse) SetBody(v *CancelJobRunResponseBody) *CancelJobRu
 	return s
 }
 
+type CreateSqlStatementRequest struct {
+	// example:
+	//
+	// SHOW TABLES
+	CodeContent *string `json:"codeContent,omitempty" xml:"codeContent,omitempty"`
+	// example:
+	//
+	// default_catalog
+	DefaultCatalog *string `json:"defaultCatalog,omitempty" xml:"defaultCatalog,omitempty"`
+	// example:
+	//
+	// default
+	DefaultDatabase *string `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
+	// example:
+	//
+	// 1000
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// example:
+	//
+	// sc-dfahdfjafhajd****
+	SqlComputeId *string `json:"sqlComputeId,omitempty" xml:"sqlComputeId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s CreateSqlStatementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlStatementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlStatementRequest) SetCodeContent(v string) *CreateSqlStatementRequest {
+	s.CodeContent = &v
+	return s
+}
+
+func (s *CreateSqlStatementRequest) SetDefaultCatalog(v string) *CreateSqlStatementRequest {
+	s.DefaultCatalog = &v
+	return s
+}
+
+func (s *CreateSqlStatementRequest) SetDefaultDatabase(v string) *CreateSqlStatementRequest {
+	s.DefaultDatabase = &v
+	return s
+}
+
+func (s *CreateSqlStatementRequest) SetLimit(v int32) *CreateSqlStatementRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *CreateSqlStatementRequest) SetSqlComputeId(v string) *CreateSqlStatementRequest {
+	s.SqlComputeId = &v
+	return s
+}
+
+func (s *CreateSqlStatementRequest) SetRegionId(v string) *CreateSqlStatementRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateSqlStatementResponseBody struct {
+	Data *CreateSqlStatementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateSqlStatementResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlStatementResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlStatementResponseBody) SetData(v *CreateSqlStatementResponseBodyData) *CreateSqlStatementResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateSqlStatementResponseBody) SetRequestId(v string) *CreateSqlStatementResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSqlStatementResponseBodyData struct {
+	// example:
+	//
+	// st-1231dfafadfa***
+	StatementId *string `json:"statementId,omitempty" xml:"statementId,omitempty"`
+}
+
+func (s CreateSqlStatementResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlStatementResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlStatementResponseBodyData) SetStatementId(v string) *CreateSqlStatementResponseBodyData {
+	s.StatementId = &v
+	return s
+}
+
+type CreateSqlStatementResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSqlStatementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSqlStatementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlStatementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlStatementResponse) SetHeaders(v map[string]*string) *CreateSqlStatementResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSqlStatementResponse) SetStatusCode(v int32) *CreateSqlStatementResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSqlStatementResponse) SetBody(v *CreateSqlStatementResponseBody) *CreateSqlStatementResponse {
+	s.Body = v
+	return s
+}
+
 type GetJobRunRequest struct {
 	// example:
 	//
@@ -1500,6 +1658,169 @@ func (s *GetJobRunResponse) SetBody(v *GetJobRunResponseBody) *GetJobRunResponse
 	return s
 }
 
+type GetSqlStatementRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s GetSqlStatementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSqlStatementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSqlStatementRequest) SetRegionId(v string) *GetSqlStatementRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetSqlStatementResponseBody struct {
+	Data *GetSqlStatementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetSqlStatementResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSqlStatementResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSqlStatementResponseBody) SetData(v *GetSqlStatementResponseBodyData) *GetSqlStatementResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSqlStatementResponseBody) SetRequestId(v string) *GetSqlStatementResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSqlStatementResponseBodyData struct {
+	ExecutionTime []*int64 `json:"executionTime,omitempty" xml:"executionTime,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ERROR-102
+	SqlErrorCode *string `json:"sqlErrorCode,omitempty" xml:"sqlErrorCode,omitempty"`
+	// example:
+	//
+	// error message
+	SqlErrorMessage *string                                      `json:"sqlErrorMessage,omitempty" xml:"sqlErrorMessage,omitempty"`
+	SqlOutputs      []*GetSqlStatementResponseBodyDataSqlOutputs `json:"sqlOutputs,omitempty" xml:"sqlOutputs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// running
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// example:
+	//
+	// st-1231311abadfaa
+	StatementId *string `json:"statementId,omitempty" xml:"statementId,omitempty"`
+}
+
+func (s GetSqlStatementResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSqlStatementResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSqlStatementResponseBodyData) SetExecutionTime(v []*int64) *GetSqlStatementResponseBodyData {
+	s.ExecutionTime = v
+	return s
+}
+
+func (s *GetSqlStatementResponseBodyData) SetSqlErrorCode(v string) *GetSqlStatementResponseBodyData {
+	s.SqlErrorCode = &v
+	return s
+}
+
+func (s *GetSqlStatementResponseBodyData) SetSqlErrorMessage(v string) *GetSqlStatementResponseBodyData {
+	s.SqlErrorMessage = &v
+	return s
+}
+
+func (s *GetSqlStatementResponseBodyData) SetSqlOutputs(v []*GetSqlStatementResponseBodyDataSqlOutputs) *GetSqlStatementResponseBodyData {
+	s.SqlOutputs = v
+	return s
+}
+
+func (s *GetSqlStatementResponseBodyData) SetState(v string) *GetSqlStatementResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *GetSqlStatementResponseBodyData) SetStatementId(v string) *GetSqlStatementResponseBodyData {
+	s.StatementId = &v
+	return s
+}
+
+type GetSqlStatementResponseBodyDataSqlOutputs struct {
+	// example:
+	//
+	// [{\\"values\\":[\\"test_db\\",\\"test_table\\",false]}
+	Rows *string `json:"rows,omitempty" xml:"rows,omitempty"`
+	// example:
+	//
+	// {\\"type\\":\\"struct\\",\\"fields\\":[{\\"name\\":\\"namespace\\",\\"type\\":\\"string\\",\\"nullable\\":false,\\"metadata\\":{}},{\\"name\\":\\"tableName\\",\\"type\\":\\"string\\",\\"nullable\\":false,\\"metadata\\":{}},{\\"name\\":\\"isTemporary\\",\\"type\\":\\"boolean\\",\\"nullable\\":false,\\"metadata\\":{}}]}
+	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
+}
+
+func (s GetSqlStatementResponseBodyDataSqlOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSqlStatementResponseBodyDataSqlOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *GetSqlStatementResponseBodyDataSqlOutputs) SetRows(v string) *GetSqlStatementResponseBodyDataSqlOutputs {
+	s.Rows = &v
+	return s
+}
+
+func (s *GetSqlStatementResponseBodyDataSqlOutputs) SetSchema(v string) *GetSqlStatementResponseBodyDataSqlOutputs {
+	s.Schema = &v
+	return s
+}
+
+type GetSqlStatementResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSqlStatementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSqlStatementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSqlStatementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSqlStatementResponse) SetHeaders(v map[string]*string) *GetSqlStatementResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSqlStatementResponse) SetStatusCode(v int32) *GetSqlStatementResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSqlStatementResponse) SetBody(v *GetSqlStatementResponseBody) *GetSqlStatementResponse {
+	s.Body = v
+	return s
+}
+
 type GrantRoleToUsersRequest struct {
 	// example:
 	//
@@ -1590,8 +1911,9 @@ type ListJobRunsRequest struct {
 	// example:
 	//
 	// 1509789347011222
-	Creator *string                    `json:"creator,omitempty" xml:"creator,omitempty"`
-	EndTime *ListJobRunsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
+	Creator            *string                    `json:"creator,omitempty" xml:"creator,omitempty"`
+	EndTime            *ListJobRunsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
+	JobRunDeploymentId *string                    `json:"jobRunDeploymentId,omitempty" xml:"jobRunDeploymentId,omitempty"`
 	// 作业id。
 	//
 	// example:
@@ -1650,6 +1972,11 @@ func (s *ListJobRunsRequest) SetCreator(v string) *ListJobRunsRequest {
 
 func (s *ListJobRunsRequest) SetEndTime(v *ListJobRunsRequestEndTime) *ListJobRunsRequest {
 	s.EndTime = v
+	return s
+}
+
+func (s *ListJobRunsRequest) SetJobRunDeploymentId(v string) *ListJobRunsRequest {
+	s.JobRunDeploymentId = &v
 	return s
 }
 
@@ -1791,8 +2118,9 @@ type ListJobRunsShrinkRequest struct {
 	// example:
 	//
 	// 1509789347011222
-	Creator       *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	EndTimeShrink *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Creator            *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	EndTimeShrink      *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	JobRunDeploymentId *string `json:"jobRunDeploymentId,omitempty" xml:"jobRunDeploymentId,omitempty"`
 	// 作业id。
 	//
 	// example:
@@ -1851,6 +2179,11 @@ func (s *ListJobRunsShrinkRequest) SetCreator(v string) *ListJobRunsShrinkReques
 
 func (s *ListJobRunsShrinkRequest) SetEndTimeShrink(v string) *ListJobRunsShrinkRequest {
 	s.EndTimeShrink = &v
+	return s
+}
+
+func (s *ListJobRunsShrinkRequest) SetJobRunDeploymentId(v string) *ListJobRunsShrinkRequest {
+	s.JobRunDeploymentId = &v
 	return s
 }
 
@@ -3717,6 +4050,75 @@ func (s *StartJobRunResponse) SetBody(v *StartJobRunResponseBody) *StartJobRunRe
 	return s
 }
 
+type TerminateSqlStatementRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s TerminateSqlStatementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TerminateSqlStatementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TerminateSqlStatementRequest) SetRegionId(v string) *TerminateSqlStatementRequest {
+	s.RegionId = &v
+	return s
+}
+
+type TerminateSqlStatementResponseBody struct {
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s TerminateSqlStatementResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TerminateSqlStatementResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TerminateSqlStatementResponseBody) SetRequestId(v string) *TerminateSqlStatementResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TerminateSqlStatementResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TerminateSqlStatementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TerminateSqlStatementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TerminateSqlStatementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TerminateSqlStatementResponse) SetHeaders(v map[string]*string) *TerminateSqlStatementResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TerminateSqlStatementResponse) SetStatusCode(v int32) *TerminateSqlStatementResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TerminateSqlStatementResponse) SetBody(v *TerminateSqlStatementResponseBody) *TerminateSqlStatementResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -3904,6 +4306,92 @@ func (client *Client) CancelJobRun(workspaceId *string, jobRunId *string, reques
 
 // Summary:
 //
+// 使用session运行SQL
+//
+// @param request - CreateSqlStatementRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSqlStatementResponse
+func (client *Client) CreateSqlStatementWithOptions(workspaceId *string, request *CreateSqlStatementRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSqlStatementResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CodeContent)) {
+		body["codeContent"] = request.CodeContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultCatalog)) {
+		body["defaultCatalog"] = request.DefaultCatalog
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultDatabase)) {
+		body["defaultDatabase"] = request.DefaultDatabase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlComputeId)) {
+		body["sqlComputeId"] = request.SqlComputeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSqlStatement"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/statement"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSqlStatementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 使用session运行SQL
+//
+// @param request - CreateSqlStatementRequest
+//
+// @return CreateSqlStatementResponse
+func (client *Client) CreateSqlStatement(workspaceId *string, request *CreateSqlStatementRequest) (_result *CreateSqlStatementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSqlStatementResponse{}
+	_body, _err := client.CreateSqlStatementWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取任务
 //
 // @param request - GetJobRunRequest
@@ -3959,6 +4447,70 @@ func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *
 	headers := make(map[string]*string)
 	_result = &GetJobRunResponse{}
 	_body, _err := client.GetJobRunWithOptions(workspaceId, jobRunId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Sql Statement状态
+//
+// @param request - GetSqlStatementRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSqlStatementResponse
+func (client *Client) GetSqlStatementWithOptions(workspaceId *string, statementId *string, request *GetSqlStatementRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSqlStatementResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSqlStatement"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/statement/" + tea.StringValue(openapiutil.GetEncodeParam(statementId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSqlStatementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Sql Statement状态
+//
+// @param request - GetSqlStatementRequest
+//
+// @return GetSqlStatementResponse
+func (client *Client) GetSqlStatement(workspaceId *string, statementId *string, request *GetSqlStatementRequest) (_result *GetSqlStatementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSqlStatementResponse{}
+	_body, _err := client.GetSqlStatementWithOptions(workspaceId, statementId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4081,6 +4633,10 @@ func (client *Client) ListJobRunsWithOptions(workspaceId *string, tmpReq *ListJo
 
 	if !tea.BoolValue(util.IsUnset(request.EndTimeShrink)) {
 		query["endTime"] = request.EndTimeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobRunDeploymentId)) {
+		query["jobRunDeploymentId"] = request.JobRunDeploymentId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JobRunId)) {
@@ -4565,6 +5121,70 @@ func (client *Client) StartJobRun(workspaceId *string, request *StartJobRunReque
 	headers := make(map[string]*string)
 	_result = &StartJobRunResponse{}
 	_body, _err := client.StartJobRunWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 终止 session statement
+//
+// @param request - TerminateSqlStatementRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TerminateSqlStatementResponse
+func (client *Client) TerminateSqlStatementWithOptions(workspaceId *string, statementId *string, request *TerminateSqlStatementRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TerminateSqlStatementResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TerminateSqlStatement"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/statement/" + tea.StringValue(openapiutil.GetEncodeParam(statementId)) + "/terminate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TerminateSqlStatementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 终止 session statement
+//
+// @param request - TerminateSqlStatementRequest
+//
+// @return TerminateSqlStatementResponse
+func (client *Client) TerminateSqlStatement(workspaceId *string, statementId *string, request *TerminateSqlStatementRequest) (_result *TerminateSqlStatementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TerminateSqlStatementResponse{}
+	_body, _err := client.TerminateSqlStatementWithOptions(workspaceId, statementId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
