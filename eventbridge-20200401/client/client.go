@@ -5438,6 +5438,7 @@ func (s *CreateEventStreamingRequestSinkSinkSLSParametersTopic) SetValue(v strin
 }
 
 type CreateEventStreamingRequestSource struct {
+	SourceApacheKafkaParameters *CreateEventStreamingRequestSourceSourceApacheKafkaParameters `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Data Transmission Service (DTS) as the event source.
 	SourceDTSParameters *CreateEventStreamingRequestSourceSourceDTSParameters `json:"SourceDTSParameters,omitempty" xml:"SourceDTSParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify ApsaraMQ for Kafka as the event source.
@@ -5462,6 +5463,11 @@ func (s CreateEventStreamingRequestSource) String() string {
 
 func (s CreateEventStreamingRequestSource) GoString() string {
 	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSource) SetSourceApacheKafkaParameters(v *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) *CreateEventStreamingRequestSource {
+	s.SourceApacheKafkaParameters = v
+	return s
 }
 
 func (s *CreateEventStreamingRequestSource) SetSourceDTSParameters(v *CreateEventStreamingRequestSourceSourceDTSParameters) *CreateEventStreamingRequestSource {
@@ -5501,6 +5507,95 @@ func (s *CreateEventStreamingRequestSource) SetSourceRocketMQParameters(v *Creat
 
 func (s *CreateEventStreamingRequestSource) SetSourceSLSParameters(v *CreateEventStreamingRequestSourceSourceSLSParameters) *CreateEventStreamingRequestSource {
 	s.SourceSLSParameters = v
+	return s
+}
+
+type CreateEventStreamingRequestSourceSourceApacheKafkaParameters struct {
+	Bootstraps       *string `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
+	ConsumerGroup    *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OffsetReset      *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	SaslMechanism    *string `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
+	SaslPassword     *string `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
+	SaslUser         *string `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
+	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityProtocol *string `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
+	Topic            *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds       *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	ValueDataType    *string `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
+	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSourceSourceApacheKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSourceSourceApacheKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetBootstraps(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.Bootstraps = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetConsumerGroup(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.ConsumerGroup = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetNetworkType(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetOffsetReset(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.OffsetReset = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSaslMechanism(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SaslMechanism = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSaslPassword(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SaslPassword = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSaslUser(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SaslUser = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSecurityGroupId(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSecurityProtocol(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SecurityProtocol = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetTopic(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.Topic = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetVSwitchIds(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetValueDataType(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.ValueDataType = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetVpcId(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.VpcId = &v
 	return s
 }
 
@@ -5909,7 +6004,8 @@ type CreateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	// example:
 	//
 	// ACL
-	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	AuthType     *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	BodyDataType *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
 	// The SQL statement that you want to use to filter messages.
 	//
 	// example:
@@ -6060,6 +6156,11 @@ func (s CreateEventStreamingRequestSourceSourceRocketMQParameters) GoString() st
 
 func (s *CreateEventStreamingRequestSourceSourceRocketMQParameters) SetAuthType(v string) *CreateEventStreamingRequestSourceSourceRocketMQParameters {
 	s.AuthType = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceRocketMQParameters) SetBodyDataType(v string) *CreateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.BodyDataType = &v
 	return s
 }
 
@@ -12259,6 +12360,7 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkSLSParametersTopic) SetValue(v
 }
 
 type GetEventStreamingResponseBodyDataSource struct {
+	SourceApacheKafkaParameters *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if the event source is Data Transmission Service (DTS).
 	SourceDTSParameters *GetEventStreamingResponseBodyDataSourceSourceDTSParameters `json:"SourceDTSParameters,omitempty" xml:"SourceDTSParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if ApsaraMQ for Kafka is specified as the event source.
@@ -12282,6 +12384,11 @@ func (s GetEventStreamingResponseBodyDataSource) String() string {
 
 func (s GetEventStreamingResponseBodyDataSource) GoString() string {
 	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSource) SetSourceApacheKafkaParameters(v *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) *GetEventStreamingResponseBodyDataSource {
+	s.SourceApacheKafkaParameters = v
+	return s
 }
 
 func (s *GetEventStreamingResponseBodyDataSource) SetSourceDTSParameters(v *GetEventStreamingResponseBodyDataSourceSourceDTSParameters) *GetEventStreamingResponseBodyDataSource {
@@ -12321,6 +12428,95 @@ func (s *GetEventStreamingResponseBodyDataSource) SetSourceRocketMQParameters(v 
 
 func (s *GetEventStreamingResponseBodyDataSource) SetSourceSLSParameters(v *GetEventStreamingResponseBodyDataSourceSourceSLSParameters) *GetEventStreamingResponseBodyDataSource {
 	s.SourceSLSParameters = v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters struct {
+	Bootstraps       *string `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
+	ConsumerGroup    *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OffsetReset      *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	SaslMechanism    *string `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
+	SaslPassword     *string `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
+	SaslUser         *string `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
+	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityProtocol *string `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
+	Topic            *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds       *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	ValueDataType    *string `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
+	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetBootstraps(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
+	s.Bootstraps = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetConsumerGroup(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
+	s.ConsumerGroup = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetNetworkType(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetOffsetReset(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
+	s.OffsetReset = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetSaslMechanism(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
+	s.SaslMechanism = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetSaslPassword(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
+	s.SaslPassword = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetSaslUser(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
+	s.SaslUser = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetSecurityGroupId(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetSecurityProtocol(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
+	s.SecurityProtocol = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetTopic(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
+	s.Topic = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetVSwitchIds(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetValueDataType(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
+	s.ValueDataType = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetVpcId(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
+	s.VpcId = &v
 	return s
 }
 
@@ -12720,7 +12916,8 @@ type GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters struct {
 	// example:
 	//
 	// ACL
-	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	AuthType     *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	BodyDataType *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
 	// The ID of the consumer group in the Message Queue for Apache RocketMQ instance.
 	//
 	// example:
@@ -12807,6 +13004,11 @@ func (s GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) GoStrin
 
 func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetAuthType(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
 	s.AuthType = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetBodyDataType(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.BodyDataType = &v
 	return s
 }
 
@@ -17311,6 +17513,7 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSource struct {
+	SourceApacheKafkaParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Data Transmission Service (DTS) is specified as the event source.
 	SourceDTSParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceDTSParameters `json:"SourceDTSParameters,omitempty" xml:"SourceDTSParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Message Queue for Apache Kafka is specified as the event source.
@@ -17334,6 +17537,11 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSource) String() strin
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSource) GoString() string {
 	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceApacheKafkaParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
+	s.SourceApacheKafkaParameters = v
+	return s
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceDTSParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceDTSParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
@@ -17373,6 +17581,95 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceRock
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceSLSParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceSLSParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
 	s.SourceSLSParameters = v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters struct {
+	Bootstraps       *string `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
+	ConsumerGroup    *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OffsetReset      *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	SaslMechanism    *string `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
+	SaslPassword     *string `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
+	SaslUser         *string `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
+	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityProtocol *string `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
+	Topic            *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds       *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	ValueDataType    *string `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
+	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetBootstraps(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.Bootstraps = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetConsumerGroup(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.ConsumerGroup = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetNetworkType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetOffsetReset(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.OffsetReset = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSaslMechanism(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.SaslMechanism = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSaslPassword(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.SaslPassword = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSaslUser(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.SaslUser = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSecurityGroupId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSecurityProtocol(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.SecurityProtocol = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetTopic(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.Topic = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetVSwitchIds(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetValueDataType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.ValueDataType = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetVpcId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.VpcId = &v
 	return s
 }
 
@@ -17754,7 +18051,8 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParam
 	// example:
 	//
 	// ACL
-	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	AuthType     *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	BodyDataType *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
 	// The ID of the group on the Message Queue for Apache RocketMQ instance.
 	//
 	// example:
@@ -17861,6 +18159,11 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQPa
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetAuthType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
 	s.AuthType = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetBodyDataType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.BodyDataType = &v
 	return s
 }
 
@@ -26027,6 +26330,7 @@ func (s *UpdateEventStreamingRequestSinkSinkSLSParametersTopic) SetValue(v strin
 }
 
 type UpdateEventStreamingRequestSource struct {
+	SourceApacheKafkaParameters *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Data Transmission Service (DTS) as the event source.
 	SourceDTSParameters *UpdateEventStreamingRequestSourceSourceDTSParameters `json:"SourceDTSParameters,omitempty" xml:"SourceDTSParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify ApsaraMQ for Kafka as the event source.
@@ -26051,6 +26355,11 @@ func (s UpdateEventStreamingRequestSource) String() string {
 
 func (s UpdateEventStreamingRequestSource) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSource) SetSourceApacheKafkaParameters(v *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) *UpdateEventStreamingRequestSource {
+	s.SourceApacheKafkaParameters = v
+	return s
 }
 
 func (s *UpdateEventStreamingRequestSource) SetSourceDTSParameters(v *UpdateEventStreamingRequestSourceSourceDTSParameters) *UpdateEventStreamingRequestSource {
@@ -26090,6 +26399,95 @@ func (s *UpdateEventStreamingRequestSource) SetSourceRocketMQParameters(v *Updat
 
 func (s *UpdateEventStreamingRequestSource) SetSourceSLSParameters(v *UpdateEventStreamingRequestSourceSourceSLSParameters) *UpdateEventStreamingRequestSource {
 	s.SourceSLSParameters = v
+	return s
+}
+
+type UpdateEventStreamingRequestSourceSourceApacheKafkaParameters struct {
+	Bootstraps       *string `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
+	ConsumerGroup    *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OffsetReset      *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	SaslMechanism    *string `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
+	SaslPassword     *string `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
+	SaslUser         *string `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
+	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityProtocol *string `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
+	Topic            *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds       *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	ValueDataType    *string `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
+	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetBootstraps(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.Bootstraps = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetConsumerGroup(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.ConsumerGroup = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetNetworkType(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetOffsetReset(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.OffsetReset = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSaslMechanism(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SaslMechanism = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSaslPassword(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SaslPassword = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSaslUser(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SaslUser = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSecurityGroupId(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSecurityProtocol(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SecurityProtocol = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetTopic(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.Topic = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetVSwitchIds(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetValueDataType(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.ValueDataType = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetVpcId(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.VpcId = &v
 	return s
 }
 
@@ -26497,7 +26895,8 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	// example:
 	//
 	// ACL
-	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	AuthType     *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	BodyDataType *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
 	// The ID of the consumer group on the ApsaraMQ for RocketMQ instance.
 	//
 	// example:
@@ -26610,6 +27009,11 @@ func (s UpdateEventStreamingRequestSourceSourceRocketMQParameters) GoString() st
 
 func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetAuthType(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
 	s.AuthType = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetBodyDataType(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.BodyDataType = &v
 	return s
 }
 
