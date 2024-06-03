@@ -7289,6 +7289,7 @@ type DescribeInstanceResponseBodyResult struct {
 	AdvancedDedicateMaster  *bool                                                      `json:"advancedDedicateMaster,omitempty" xml:"advancedDedicateMaster,omitempty"`
 	AdvancedSetting         *DescribeInstanceResponseBodyResultAdvancedSetting         `json:"advancedSetting,omitempty" xml:"advancedSetting,omitempty" type:"Struct"`
 	AliwsDicts              []*DescribeInstanceResponseBodyResultAliwsDicts            `json:"aliwsDicts,omitempty" xml:"aliwsDicts,omitempty" type:"Repeated"`
+	ArchType                *string                                                    `json:"archType,omitempty" xml:"archType,omitempty"`
 	ClientNodeConfiguration *DescribeInstanceResponseBodyResultClientNodeConfiguration `json:"clientNodeConfiguration,omitempty" xml:"clientNodeConfiguration,omitempty" type:"Struct"`
 	// example:
 	//
@@ -7451,6 +7452,11 @@ func (s *DescribeInstanceResponseBodyResult) SetAdvancedSetting(v *DescribeInsta
 
 func (s *DescribeInstanceResponseBodyResult) SetAliwsDicts(v []*DescribeInstanceResponseBodyResultAliwsDicts) *DescribeInstanceResponseBodyResult {
 	s.AliwsDicts = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResult) SetArchType(v string) *DescribeInstanceResponseBodyResult {
+	s.ArchType = &v
 	return s
 }
 
