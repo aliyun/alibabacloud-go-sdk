@@ -26339,10 +26339,11 @@ type FlightExceedApplyQueryResponseBodyModule struct {
 	// example:
 	//
 	// 1231
-	ApplyId               *int64                                                         `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ApplyIntentionInfoDo  *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo  `json:"apply_intention_info_do,omitempty" xml:"apply_intention_info_do,omitempty" type:"Struct"`
-	ApplyRecommendFlights *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights `json:"apply_recommend_flights,omitempty" xml:"apply_recommend_flights,omitempty" type:"Struct"`
-	BtripCause            *string                                                        `json:"btrip_cause,omitempty" xml:"btrip_cause,omitempty"`
+	ApplyId                  *int64                                                              `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApplyIntentionInfoDo     *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo       `json:"apply_intention_info_do,omitempty" xml:"apply_intention_info_do,omitempty" type:"Struct"`
+	ApplyIntentionInfoDoList []*FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList `json:"apply_intention_info_do_list,omitempty" xml:"apply_intention_info_do_list,omitempty" type:"Repeated"`
+	ApplyRecommendFlights    *FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights      `json:"apply_recommend_flights,omitempty" xml:"apply_recommend_flights,omitempty" type:"Struct"`
+	BtripCause               *string                                                             `json:"btrip_cause,omitempty" xml:"btrip_cause,omitempty"`
 	// example:
 	//
 	// 123
@@ -26390,6 +26391,11 @@ func (s *FlightExceedApplyQueryResponseBodyModule) SetApplyId(v int64) *FlightEx
 
 func (s *FlightExceedApplyQueryResponseBodyModule) SetApplyIntentionInfoDo(v *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) *FlightExceedApplyQueryResponseBodyModule {
 	s.ApplyIntentionInfoDo = v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModule) SetApplyIntentionInfoDoList(v []*FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) *FlightExceedApplyQueryResponseBodyModule {
+	s.ApplyIntentionInfoDoList = v
 	return s
 }
 
@@ -26575,6 +26581,107 @@ func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) SetPrice(
 }
 
 func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) SetType(v int32) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo {
+	s.Type = &v
+	return s
+}
+
+type FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList struct {
+	ArrAirportName *string `json:"arr_airport_name,omitempty" xml:"arr_airport_name,omitempty"`
+	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityName    *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ArrTime        *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	Cabin          *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass     *int32  `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinClassStr  *string `json:"cabin_class_str,omitempty" xml:"cabin_class_str,omitempty"`
+	DepAirportName *string `json:"dep_airport_name,omitempty" xml:"dep_airport_name,omitempty"`
+	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityName    *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepTime        *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	Discount       *string `json:"discount,omitempty" xml:"discount,omitempty"`
+	FlightNo       *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	Price          *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	Type           *int32  `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) GoString() string {
+	return s.String()
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetArrAirportName(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.ArrAirportName = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetArrCity(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.ArrCity = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetArrCityName(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.ArrCityName = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetArrTime(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetCabin(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.Cabin = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetCabinClass(v int32) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetCabinClassStr(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.CabinClassStr = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetDepAirportName(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.DepAirportName = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetDepCity(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.DepCity = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetDepCityName(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.DepCityName = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetDepTime(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.DepTime = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetDiscount(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.Discount = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetFlightNo(v string) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.FlightNo = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetPrice(v int64) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
+	s.Price = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList) SetType(v int32) *FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList {
 	s.Type = &v
 	return s
 }
@@ -98844,6 +98951,7 @@ type VatInvoiceScanQueryResponseBodyModuleItems struct {
 	//
 	// <87*>>53>5023>-446>/4+83/5	- *>5/81<75/1931>4>>
 	PasswordArea             *string `json:"password_area,omitempty" xml:"password_area,omitempty"`
+	PdfOssUrl                *string `json:"pdf_oss_url,omitempty" xml:"pdf_oss_url,omitempty"`
 	PurchaserBankAccountInfo *string `json:"purchaser_bank_account_info,omitempty" xml:"purchaser_bank_account_info,omitempty"`
 	PurchaserContactInfo     *string `json:"purchaser_contact_info,omitempty" xml:"purchaser_contact_info,omitempty"`
 	PurchaserName            *string `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
@@ -98972,6 +99080,11 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetOssUrl(v string) *VatInv
 
 func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetPasswordArea(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
 	s.PasswordArea = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetPdfOssUrl(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.PdfOssUrl = &v
 	return s
 }
 
