@@ -37025,6 +37025,214 @@ func (s *SearchMediaByFaceResponse) SetBody(v *SearchMediaByFaceResponseBody) *S
 	return s
 }
 
+type SearchMediaByHybridRequest struct {
+	// example:
+	//
+	// ****c469e944b5a856828dc2****
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// video
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test-1
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	Text          *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s SearchMediaByHybridRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByHybridRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByHybridRequest) SetMediaId(v string) *SearchMediaByHybridRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *SearchMediaByHybridRequest) SetMediaType(v string) *SearchMediaByHybridRequest {
+	s.MediaType = &v
+	return s
+}
+
+func (s *SearchMediaByHybridRequest) SetPageNo(v int32) *SearchMediaByHybridRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *SearchMediaByHybridRequest) SetPageSize(v int32) *SearchMediaByHybridRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchMediaByHybridRequest) SetSearchLibName(v string) *SearchMediaByHybridRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+func (s *SearchMediaByHybridRequest) SetText(v string) *SearchMediaByHybridRequest {
+	s.Text = &v
+	return s
+}
+
+type SearchMediaByHybridResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	MediaList []*SearchMediaByHybridResponseBodyMediaList `json:"MediaList,omitempty" xml:"MediaList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ******3B-0E1A-586A-AC29-742247******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s SearchMediaByHybridResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByHybridResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByHybridResponseBody) SetCode(v string) *SearchMediaByHybridResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SearchMediaByHybridResponseBody) SetMediaList(v []*SearchMediaByHybridResponseBodyMediaList) *SearchMediaByHybridResponseBody {
+	s.MediaList = v
+	return s
+}
+
+func (s *SearchMediaByHybridResponseBody) SetRequestId(v string) *SearchMediaByHybridResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchMediaByHybridResponseBody) SetSuccess(v string) *SearchMediaByHybridResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SearchMediaByHybridResponseBody) SetTotal(v int64) *SearchMediaByHybridResponseBody {
+	s.Total = &v
+	return s
+}
+
+type SearchMediaByHybridResponseBodyMediaList struct {
+	ClipInfo []*SearchMediaByHybridResponseBodyMediaListClipInfo `json:"ClipInfo,omitempty" xml:"ClipInfo,omitempty" type:"Repeated"`
+	// example:
+	//
+	// a18936e0e28771edb59ae6f6f47a****
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s SearchMediaByHybridResponseBodyMediaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByHybridResponseBodyMediaList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByHybridResponseBodyMediaList) SetClipInfo(v []*SearchMediaByHybridResponseBodyMediaListClipInfo) *SearchMediaByHybridResponseBodyMediaList {
+	s.ClipInfo = v
+	return s
+}
+
+func (s *SearchMediaByHybridResponseBodyMediaList) SetMediaId(v string) *SearchMediaByHybridResponseBodyMediaList {
+	s.MediaId = &v
+	return s
+}
+
+type SearchMediaByHybridResponseBodyMediaListClipInfo struct {
+	// example:
+	//
+	// 2
+	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// 0.99
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// 4
+	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+}
+
+func (s SearchMediaByHybridResponseBodyMediaListClipInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByHybridResponseBodyMediaListClipInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByHybridResponseBodyMediaListClipInfo) SetFrom(v float64) *SearchMediaByHybridResponseBodyMediaListClipInfo {
+	s.From = &v
+	return s
+}
+
+func (s *SearchMediaByHybridResponseBodyMediaListClipInfo) SetScore(v float64) *SearchMediaByHybridResponseBodyMediaListClipInfo {
+	s.Score = &v
+	return s
+}
+
+func (s *SearchMediaByHybridResponseBodyMediaListClipInfo) SetTo(v float64) *SearchMediaByHybridResponseBodyMediaListClipInfo {
+	s.To = &v
+	return s
+}
+
+type SearchMediaByHybridResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchMediaByHybridResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SearchMediaByHybridResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByHybridResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByHybridResponse) SetHeaders(v map[string]*string) *SearchMediaByHybridResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchMediaByHybridResponse) SetStatusCode(v int32) *SearchMediaByHybridResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchMediaByHybridResponse) SetBody(v *SearchMediaByHybridResponseBody) *SearchMediaByHybridResponse {
+	s.Body = v
+	return s
+}
+
 type SearchMediaByMultimodalRequest struct {
 	// example:
 	//
@@ -57278,7 +57486,7 @@ func (client *Client) GetPublicMediaInfoWithOptions(request *GetPublicMediaInfoR
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
 		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
+		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
@@ -61542,6 +61750,86 @@ func (client *Client) SearchMediaByFace(request *SearchMediaByFaceRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchMediaByFaceResponse{}
 	_body, _err := client.SearchMediaByFaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 混合搜索
+//
+// @param request - SearchMediaByHybridRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchMediaByHybridResponse
+func (client *Client) SearchMediaByHybridWithOptions(request *SearchMediaByHybridRequest, runtime *util.RuntimeOptions) (_result *SearchMediaByHybridResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		query["Text"] = request.Text
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchMediaByHybrid"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchMediaByHybridResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 混合搜索
+//
+// @param request - SearchMediaByHybridRequest
+//
+// @return SearchMediaByHybridResponse
+func (client *Client) SearchMediaByHybrid(request *SearchMediaByHybridRequest) (_result *SearchMediaByHybridResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchMediaByHybridResponse{}
+	_body, _err := client.SearchMediaByHybridWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
